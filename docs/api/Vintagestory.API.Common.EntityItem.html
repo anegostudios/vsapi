@@ -1,89 +1,127 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class EntityItem
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class EntityItem
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class EntityItem | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class EntityItem | VintageStory API ">
+      
+      
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.EntityItem">
-  
-  
-  <h1 id="Vintagestory_API_Common_EntityItem" data-uid="Vintagestory.API.Common.EntityItem" class="text-break">Class EntityItem
+
+        <article data-uid="Vintagestory.API.Common.EntityItem">
+
+
+
+  <h1 id="Vintagestory_API_Common_EntityItem" data-uid="Vintagestory.API.Common.EntityItem" class="text-break">
+Class EntityItem  
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Vintagestory.API.Common.RegistryObject.html">RegistryObject</a></div>
-    <div class="level2"><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></div>
-    <div class="level3"><span class="xref">EntityItem</span></div>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class EntityItem : Entity</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.RegistryObject.html">RegistryObject</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></div>
+      <div><span class="xref">EntityItem</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SplashParticleProps">Entity.SplashParticleProps</a>
     </div>
@@ -110,6 +148,9 @@
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Api">Entity.Api</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsCreature">Entity.IsCreature</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_PhysicsUpdateWatcher">Entity.PhysicsUpdateWatcher</a>
@@ -283,10 +324,10 @@
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_LadderFixDelta">Entity.LadderFixDelta</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnHurt_Vintagestory_API_Common_DamageSource_System_Single_">Entity.OnHurt(DamageSource, Single)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnHurt_Vintagestory_API_Common_DamageSource_System_Single_">Entity.OnHurt(DamageSource, float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_AfterInitialized_System_Boolean_">Entity.AfterInitialized(Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_AfterInitialized_System_Boolean_">Entity.AfterInitialized(bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TriggerOnInitialized">Entity.TriggerOnInitialized()</a>
@@ -307,10 +348,10 @@
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetDrops_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_">Entity.GetDrops(IWorldAccessor, BlockPos, IPlayer)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportToDouble_System_Double_System_Double_System_Double_Action_">Entity.TeleportToDouble(Double, Double, Double, Action)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportToDouble_System_Double_System_Double_System_Double_System_Action_">Entity.TeleportToDouble(double, double, double, Action)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportTo_System_Int32_System_Int32_System_Int32_">Entity.TeleportTo(Int32, Int32, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportTo_System_Int32_System_Int32_System_Int32_">Entity.TeleportTo(int, int, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportTo_Vintagestory_API_MathTools_Vec3d_">Entity.TeleportTo(Vec3d)</a>
@@ -319,31 +360,31 @@
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportTo_Vintagestory_API_MathTools_BlockPos_">Entity.TeleportTo(BlockPos)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportTo_Vintagestory_API_Common_Entities_EntityPos_Action_">Entity.TeleportTo(EntityPos, Action)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportTo_Vintagestory_API_Common_Entities_EntityPos_System_Action_">Entity.TeleportTo(EntityPos, Action)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ApplyFireDamage_System_Single_">Entity.ApplyFireDamage(Single)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ApplyFireDamage_System_Single_">Entity.ApplyFireDamage(float)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_DieInLava">Entity.DieInLava()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnAsyncParticleTick_System_Single_Vintagestory_API_Client_IAsyncParticleManager_">Entity.OnAsyncParticleTick(Single, IAsyncParticleManager)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnAsyncParticleTick_System_Single_Vintagestory_API_Client_IAsyncParticleManager_">Entity.OnAsyncParticleTick(float, IAsyncParticleManager)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Ignite">Entity.Ignite()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_">Entity.OnTesselation(Shape, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_">Entity.OnTesselation(ref Shape, string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnFallToGround_System_Double_">Entity.OnFallToGround(Double)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnFallToGround_System_Double_">Entity.OnFallToGround(double)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnCollided">Entity.OnCollided()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SpawnWaterMovementParticles_System_Single_System_Double_System_Double_System_Double_">Entity.SpawnWaterMovementParticles(Single, Double, Double, Double)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SpawnWaterMovementParticles_System_Single_System_Double_System_Double_System_Double_">Entity.SpawnWaterMovementParticles(float, double, double, double)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnEntityLoaded">Entity.OnEntityLoaded()</a>
@@ -361,22 +402,22 @@
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetInteractionHelp_Vintagestory_API_Client_IClientWorldAccessor_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Client_IClientPlayer_">Entity.GetInteractionHelp(IClientWorldAccessor, EntitySelection, IClientPlayer)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnReceivedServerPos_System_Boolean_">Entity.OnReceivedServerPos(Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnReceivedServerPos_System_Boolean_">Entity.OnReceivedServerPos(bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnReceivedClientPacket_Vintagestory_API_Server_IServerPlayer_System_Int32_System_Byte___">Entity.OnReceivedClientPacket(IServerPlayer, Int32, Byte[])</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnReceivedClientPacket_Vintagestory_API_Server_IServerPlayer_System_Int32_System_Byte___">Entity.OnReceivedClientPacket(IServerPlayer, int, byte[])</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnReceivedServerPacket_System_Int32_System_Byte___">Entity.OnReceivedServerPacket(Int32, Byte[])</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnReceivedServerPacket_System_Int32_System_Byte___">Entity.OnReceivedServerPacket(int, byte[])</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnStateChanged_Vintagestory_API_Common_EnumEntityState_">Entity.OnStateChanged(EnumEntityState)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SetCollisionBox_System_Single_System_Single_">Entity.SetCollisionBox(Single, Single)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SetCollisionBox_System_Single_System_Single_">Entity.SetCollisionBox(float, float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SetSelectionBox_System_Single_System_Single_">Entity.SetSelectionBox(Single, Single)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SetSelectionBox_System_Single_System_Single_">Entity.SetSelectionBox(float, float)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_AddBehavior_Vintagestory_API_Common_Entities_EntityBehavior_">Entity.AddBehavior(EntityBehavior)</a>
@@ -385,31 +426,31 @@
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_RemoveBehavior_Vintagestory_API_Common_Entities_EntityBehavior_">Entity.RemoveBehavior(EntityBehavior)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HasBehavior_System_String_">Entity.HasBehavior(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HasBehavior_System_String_">Entity.HasBehavior(string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HasBehavior__1">Entity.HasBehavior&lt;T&gt;()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetBehavior_System_String_">Entity.GetBehavior(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetBehavior_System_String_">Entity.GetBehavior(string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetBehavior__1">Entity.GetBehavior&lt;T&gt;()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsActivityRunning_System_String_">Entity.IsActivityRunning(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsActivityRunning_System_String_">Entity.IsActivityRunning(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_RemainingActivityTime_System_String_">Entity.RemainingActivityTime(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_RemainingActivityTime_System_String_">Entity.RemainingActivityTime(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SetActivityRunning_System_String_System_Int32_">Entity.SetActivityRunning(String, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SetActivityRunning_System_String_System_Int32_">Entity.SetActivityRunning(string, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_FromBytes_BinaryReader_System_Boolean_Dictionary_System_String_System_String__">Entity.FromBytes(BinaryReader, Boolean, Dictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_FromBytes_System_IO_BinaryReader_System_Boolean_System_Collections_Generic_Dictionary_System_String_System_String__">Entity.FromBytes(BinaryReader, bool, Dictionary&lt;string, string&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ToBytes_BinaryWriter_System_Boolean_">Entity.ToBytes(BinaryWriter, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ToBytes_System_IO_BinaryWriter_System_Boolean_">Entity.ToBytes(BinaryWriter, bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SetHeadPositionToWatchedAttributes">Entity.SetHeadPositionToWatchedAttributes()</a>
@@ -421,10 +462,10 @@
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Revive">Entity.Revive()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_PlayEntitySound_System_String_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_">Entity.PlayEntitySound(String, IPlayer, Boolean, Single)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_PlayEntitySound_System_String_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_">Entity.PlayEntitySound(string, IPlayer, bool, float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Notify_System_String_System_Object_">Entity.Notify(String, Object)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Notify_System_String_System_Object_">Entity.Notify(string, object)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_WillExport_Vintagestory_API_MathTools_BlockPos_">Entity.WillExport(BlockPos)</a>
@@ -433,13 +474,13 @@
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_DidImportOrExport_Vintagestory_API_MathTools_BlockPos_">Entity.DidImportOrExport(BlockPos)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnStoreCollectibleMappings_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__">Entity.OnStoreCollectibleMappings(Dictionary&lt;Int32, AssetLocation&gt;, Dictionary&lt;Int32, AssetLocation&gt;)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnStoreCollectibleMappings_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__">Entity.OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_">Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;Int32, AssetLocation&gt;, Dictionary&lt;Int32, AssetLocation&gt;, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_">Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_">Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;Int32, AssetLocation&gt;, Dictionary&lt;Int32, AssetLocation&gt;, Int32, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_">Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int, bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetName">Entity.GetName()</a>
@@ -460,37 +501,37 @@
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_Class">RegistryObject.Class</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithPath_System_String_">RegistryObject.CodeWithPath(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithPath_System_String_">RegistryObject.CodeWithPath(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithoutParts_System_Int32_">RegistryObject.CodeWithoutParts(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithoutParts_System_Int32_">RegistryObject.CodeWithoutParts(int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeEndWithoutParts_System_Int32_">RegistryObject.CodeEndWithoutParts(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeEndWithoutParts_System_Int32_">RegistryObject.CodeEndWithoutParts(int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithParts_System_String___">RegistryObject.CodeWithParts(String[])</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithParts_System_String___">RegistryObject.CodeWithParts(params string[])</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithParts_System_String_">RegistryObject.CodeWithParts(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithParts_System_String_">RegistryObject.CodeWithParts(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithVariant_System_String_System_String_">RegistryObject.CodeWithVariant(String, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithVariant_System_String_System_String_">RegistryObject.CodeWithVariant(string, string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithVariants_Dictionary_System_String_System_String__">RegistryObject.CodeWithVariants(Dictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithVariants_System_Collections_Generic_Dictionary_System_String_System_String__">RegistryObject.CodeWithVariants(Dictionary&lt;string, string&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithVariants_System_String___System_String___">RegistryObject.CodeWithVariants(String[], String[])</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithVariants_System_String___System_String___">RegistryObject.CodeWithVariants(string[], string[])</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithPart_System_String_System_Int32_">RegistryObject.CodeWithPart(String, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithPart_System_String_System_Int32_">RegistryObject.CodeWithPart(string, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_LastCodePart_System_Int32_">RegistryObject.LastCodePart(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_LastCodePart_System_Int32_">RegistryObject.LastCodePart(int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FirstCodePart_System_Int32_">RegistryObject.FirstCodePart(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FirstCodePart_System_Int32_">RegistryObject.FirstCodePart(int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_Vintagestory_API_Common_AssetLocation___">RegistryObject.WildCardMatch(AssetLocation[])</a>
@@ -499,951 +540,886 @@
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_Vintagestory_API_Common_AssetLocation_">RegistryObject.WildCardMatch(AssetLocation)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_System_String___">RegistryObject.WildCardMatch(String[])</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_System_String___">RegistryObject.WildCardMatch(string[])</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_System_String_">RegistryObject.WildCardMatch(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_System_String_">RegistryObject.WildCardMatch(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Datastructures_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(AssetLocation, OrderedDictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Datastructures_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(AssetLocation, OrderedDictionary&lt;string, string&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_System_String_Vintagestory_API_Datastructures_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(String, OrderedDictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_System_String_Vintagestory_API_Datastructures_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(string, OrderedDictionary&lt;string, string&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_System_String_System_String_System_String_">RegistryObject.FillPlaceHolder(String, String, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_System_String_System_String_System_String_">RegistryObject.FillPlaceHolder(string, string, string)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_EntityItem_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class EntityItem : Entity</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem__ctor.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L73">View Source</a>
-  </span>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Vintagestory_API_Common_EntityItem__ctor_" data-uid="Vintagestory.API.Common.EntityItem.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem__ctor" data-uid="Vintagestory.API.Common.EntityItem.#ctor">EntityItem()</h4>
+
+  <h3 id="Vintagestory_API_Common_EntityItem__ctor" data-uid="Vintagestory.API.Common.EntityItem.#ctor">
+  EntityItem()
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public EntityItem()</code></pre>
   </div>
-  <h3 id="fields">Fields
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityItem_Slot" data-uid="Vintagestory.API.Common.EntityItem.Slot">
+  Slot
+  
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_itemSpawnedMilliseconds.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.itemSpawnedMilliseconds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L24">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityItem_itemSpawnedMilliseconds" data-uid="Vintagestory.API.Common.EntityItem.itemSpawnedMilliseconds">itemSpawnedMilliseconds</h4>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public long itemSpawnedMilliseconds</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_Slot.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.Slot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L22">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityItem_Slot" data-uid="Vintagestory.API.Common.EntityItem.Slot">Slot</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public EntityItemSlot Slot</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EntityItemSlot.html">EntityItemSlot</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EntityItemSlot.html">EntityItemSlot</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityItem_itemSpawnedMilliseconds" data-uid="Vintagestory.API.Common.EntityItem.itemSpawnedMilliseconds">
+  itemSpawnedMilliseconds
+  
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_ByPlayerUid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.ByPlayerUid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L38">View Source</a>
-  </span>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long itemSpawnedMilliseconds</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Vintagestory_API_Common_EntityItem_ByPlayerUid_" data-uid="Vintagestory.API.Common.EntityItem.ByPlayerUid*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_ByPlayerUid" data-uid="Vintagestory.API.Common.EntityItem.ByPlayerUid">ByPlayerUid</h4>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_ByPlayerUid" data-uid="Vintagestory.API.Common.EntityItem.ByPlayerUid">
+  ByPlayerUid
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>The UID of the player that dropped this itemstack.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string ByPlayerUid { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_IsInteractable.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.IsInteractable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L55">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_IsInteractable_" data-uid="Vintagestory.API.Common.EntityItem.IsInteractable*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_IsInteractable" data-uid="Vintagestory.API.Common.EntityItem.IsInteractable">IsInteractable</h4>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_IsInteractable" data-uid="Vintagestory.API.Common.EntityItem.IsInteractable">
+  IsInteractable
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Whether or not the EntityItem is interactable.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool IsInteractable { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsInteractable">Entity.IsInteractable</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_Itemstack.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.Itemstack%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L29">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_Itemstack_" data-uid="Vintagestory.API.Common.EntityItem.Itemstack*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_Itemstack" data-uid="Vintagestory.API.Common.EntityItem.Itemstack">Itemstack</h4>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_Itemstack" data-uid="Vintagestory.API.Common.EntityItem.Itemstack">
+  Itemstack
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>The itemstack attached to this Item Entity.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ItemStack Itemstack { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_LightHsv.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.LightHsv%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L63">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_LightHsv_" data-uid="Vintagestory.API.Common.EntityItem.LightHsv*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_LightHsv" data-uid="Vintagestory.API.Common.EntityItem.LightHsv">LightHsv</h4>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_LightHsv" data-uid="Vintagestory.API.Common.EntityItem.LightHsv">
+  LightHsv
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Get the HSV colors for the lighting.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override byte[] LightHsv { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Byte</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_LightHsv">Entity.LightHsv</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_MaterialDensity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.MaterialDensity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L47">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_MaterialDensity_" data-uid="Vintagestory.API.Common.EntityItem.MaterialDensity*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_MaterialDensity" data-uid="Vintagestory.API.Common.EntityItem.MaterialDensity">MaterialDensity</h4>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_MaterialDensity" data-uid="Vintagestory.API.Common.EntityItem.MaterialDensity">
+  MaterialDensity
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns the material density of the item.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override float MaterialDensity { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_MaterialDensity">Entity.MaterialDensity</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_SwimmingOffsetY.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.SwimmingOffsetY%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L388">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_SwimmingOffsetY_" data-uid="Vintagestory.API.Common.EntityItem.SwimmingOffsetY*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_SwimmingOffsetY" data-uid="Vintagestory.API.Common.EntityItem.SwimmingOffsetY">SwimmingOffsetY</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_SwimmingOffsetY" data-uid="Vintagestory.API.Common.EntityItem.SwimmingOffsetY">
+  SwimmingOffsetY
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Used for passive physics simulation, together with the MaterialDensity to check how deep in the water the entity should float</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override double SwimmingOffsetY { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SwimmingOffsetY">Entity.SwimmingOffsetY</a></div>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_CanCollect_Vintagestory_API_Common_Entities_Entity_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.CanCollect(Vintagestory.API.Common.Entities.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L338">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Vintagestory_API_Common_EntityItem_CanCollect_" data-uid="Vintagestory.API.Common.EntityItem.CanCollect*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_CanCollect_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Common.EntityItem.CanCollect(Vintagestory.API.Common.Entities.Entity)">CanCollect(Entity)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_CanCollect_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Common.EntityItem.CanCollect(Vintagestory.API.Common.Entities.Entity)">
+  CanCollect(Entity)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Should return true if this item can be picked up as an itemstack</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool CanCollect(Entity byEntity)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></td>
-        <td><span class="parametername">byEntity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_CanCollect_Vintagestory_API_Common_Entities_Entity_">Entity.CanCollect(Entity)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_Die_Vintagestory_API_Common_EnumDespawnReason_Vintagestory_API_Common_DamageSource_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.Die(Vintagestory.API.Common.EnumDespawnReason%2CVintagestory.API.Common.DamageSource)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L293">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byEntity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_Die_" data-uid="Vintagestory.API.Common.EntityItem.Die*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_Die_Vintagestory_API_Common_EnumDespawnReason_Vintagestory_API_Common_DamageSource_" data-uid="Vintagestory.API.Common.EntityItem.Die(Vintagestory.API.Common.EnumDespawnReason,Vintagestory.API.Common.DamageSource)">Die(EnumDespawnReason, DamageSource)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_Die_Vintagestory_API_Common_EnumDespawnReason_Vintagestory_API_Common_DamageSource_" data-uid="Vintagestory.API.Common.EntityItem.Die(Vintagestory.API.Common.EnumDespawnReason,Vintagestory.API.Common.DamageSource)">
+  Die(EnumDespawnReason, DamageSource)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Makes the entity despawn. Entities only drop something on EnumDespawnReason.Death</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void Die(EnumDespawnReason reason = EnumDespawnReason.Death, DamageSource damageSourceForDeath = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumDespawnReason.html">EnumDespawnReason</a></td>
-        <td><span class="parametername">reason</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.DamageSource.html">DamageSource</a></td>
-        <td><span class="parametername">damageSourceForDeath</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Die_Vintagestory_API_Common_EnumDespawnReason_Vintagestory_API_Common_DamageSource_">Entity.Die(EnumDespawnReason, DamageSource)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_FromBytes_BinaryReader_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.FromBytes(BinaryReader%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L369">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reason</code> <a class="xref" href="Vintagestory.API.Common.EnumDespawnReason.html">EnumDespawnReason</a></dt>
+    <dd></dd>
+    <dt><code>damageSourceForDeath</code> <a class="xref" href="Vintagestory.API.Common.DamageSource.html">DamageSource</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_FromBytes_" data-uid="Vintagestory.API.Common.EntityItem.FromBytes*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_FromBytes_BinaryReader_System_Boolean_" data-uid="Vintagestory.API.Common.EntityItem.FromBytes(BinaryReader,System.Boolean)">FromBytes(BinaryReader, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_FromBytes_System_IO_BinaryReader_System_Boolean_" data-uid="Vintagestory.API.Common.EntityItem.FromBytes(System.IO.BinaryReader,System.Boolean)">
+  FromBytes(BinaryReader, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Loads the entity from a stored byte array from the SaveGame</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void FromBytes(BinaryReader reader, bool forClient)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">BinaryReader</span></td>
-        <td><span class="parametername">reader</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">forClient</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_FromBytes_BinaryReader_System_Boolean_">Entity.FromBytes(BinaryReader, Boolean)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_FromItemstack_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_IWorldAccessor_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.FromItemstack(Vintagestory.API.Common.ItemStack%2CVintagestory.API.MathTools.Vec3d%2CVintagestory.API.MathTools.Vec3d%2CVintagestory.API.Common.IWorldAccessor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L315">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+    <dt><code>forClient</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_FromItemstack_" data-uid="Vintagestory.API.Common.EntityItem.FromItemstack*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_FromItemstack_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.EntityItem.FromItemstack(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.Common.IWorldAccessor)">FromItemstack(ItemStack, Vec3d, Vec3d, IWorldAccessor)</h4>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_FromItemstack_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.EntityItem.FromItemstack(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.Common.IWorldAccessor)">
+  FromItemstack(ItemStack, Vec3d, Vec3d, IWorldAccessor)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Builds and spawns an EntityItem from a provided ItemStack.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public static EntityItem FromItemstack(ItemStack itemstack, Vec3d position, Vec3d velocity, IWorldAccessor world)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
-        <td><span class="parametername">itemstack</span></td>
-        <td><p>The contents of the EntityItem</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">position</span></td>
-        <td><p>The position of the EntityItem</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">velocity</span></td>
-        <td><p>The velocity of the EntityItem</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td><p>The world the EntityItems preside in.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EntityItem.html">EntityItem</a></td>
-        <td><p>A freshly baked EntityItem to introduce to the world.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_Initialize_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Common_ICoreAPI_System_Int64_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.Initialize(Vintagestory.API.Common.Entities.EntityProperties%2CVintagestory.API.Common.ICoreAPI%2CSystem.Int64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L79">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>itemstack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd><p>The contents of the EntityItem</p>
+</dd>
+    <dt><code>position</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd><p>The position of the EntityItem</p>
+</dd>
+    <dt><code>velocity</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd><p>The velocity of the EntityItem</p>
+</dd>
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd><p>The world the EntityItems preside in.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EntityItem.html">EntityItem</a></dt>
+    <dd><p>A freshly baked EntityItem to introduce to the world.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_Initialize_" data-uid="Vintagestory.API.Common.EntityItem.Initialize*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_Initialize_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Common_ICoreAPI_System_Int64_" data-uid="Vintagestory.API.Common.EntityItem.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Common.ICoreAPI,System.Int64)">Initialize(EntityProperties, ICoreAPI, Int64)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_Initialize_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Common_ICoreAPI_System_Int64_" data-uid="Vintagestory.API.Common.EntityItem.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Common.ICoreAPI,System.Int64)">
+  Initialize(EntityProperties, ICoreAPI, long)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when this entity got created or loaded</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void Initialize(EntityProperties properties, ICoreAPI api, long chunkindex3d)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Entities.EntityProperties.html">EntityProperties</a></td>
-        <td><span class="parametername">properties</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td><span class="parametername">chunkindex3d</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Initialize_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Common_ICoreAPI_System_Int64_">Entity.Initialize(EntityProperties, ICoreAPI, Int64)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_OnCollected_Vintagestory_API_Common_Entities_Entity_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.OnCollected(Vintagestory.API.Common.Entities.Entity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L343">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>properties</code> <a class="xref" href="Vintagestory.API.Common.Entities.EntityProperties.html">EntityProperties</a></dt>
+    <dd></dd>
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+    <dt><code>chunkindex3d</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_OnCollected_" data-uid="Vintagestory.API.Common.EntityItem.OnCollected*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_OnCollected_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Common.EntityItem.OnCollected(Vintagestory.API.Common.Entities.Entity)">OnCollected(Entity)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_OnCollected_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Common.EntityItem.OnCollected(Vintagestory.API.Common.Entities.Entity)">
+  OnCollected(Entity)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called by BehaviorCollectEntities of nearby entities. Should return the itemstack that should be collected. If the item stack was fully picked up, BehaviorCollectEntities will kill this entity</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override ItemStack OnCollected(Entity byEntity)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></td>
-        <td><span class="parametername">byEntity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnCollected_Vintagestory_API_Common_Entities_Entity_">Entity.OnCollected(Entity)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_OnCollideWithLiquid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.OnCollideWithLiquid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L348">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byEntity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_OnCollideWithLiquid_" data-uid="Vintagestory.API.Common.EntityItem.OnCollideWithLiquid*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_OnCollideWithLiquid" data-uid="Vintagestory.API.Common.EntityItem.OnCollideWithLiquid">OnCollideWithLiquid()</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_OnCollideWithLiquid" data-uid="Vintagestory.API.Common.EntityItem.OnCollideWithLiquid">
+  OnCollideWithLiquid()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the entity got in touch with a liquid</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnCollideWithLiquid()</code></pre>
   </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnCollideWithLiquid">Entity.OnCollideWithLiquid()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L264">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_OnEntityDespawn_" data-uid="Vintagestory.API.Common.EntityItem.OnEntityDespawn*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_" data-uid="Vintagestory.API.Common.EntityItem.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)">OnEntityDespawn(EntityDespawnData)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_" data-uid="Vintagestory.API.Common.EntityItem.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)">
+  OnEntityDespawn(EntityDespawnData)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the entity despawns</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnEntityDespawn(EntityDespawnData despawn)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Entities.EntityDespawnData.html">EntityDespawnData</a></td>
-        <td><span class="parametername">despawn</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_">Entity.OnEntityDespawn(EntityDespawnData)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_OnGameTick_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.OnGameTick(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L147">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>despawn</code> <a class="xref" href="Vintagestory.API.Common.Entities.EntityDespawnData.html">EntityDespawnData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_OnGameTick_" data-uid="Vintagestory.API.Common.EntityItem.OnGameTick*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_OnGameTick_System_Single_" data-uid="Vintagestory.API.Common.EntityItem.OnGameTick(System.Single)">OnGameTick(Single)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_OnGameTick_System_Single_" data-uid="Vintagestory.API.Common.EntityItem.OnGameTick(System.Single)">
+  OnGameTick(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called every 1/75 second</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnGameTick(float dt)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">dt</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnGameTick_System_Single_">Entity.OnGameTick(Single)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_OnReceivedServerAnimations_System_Int32___System_Int32_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.OnReceivedServerAnimations(System.Int32%5B%5D%2CSystem.Int32%2CSystem.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L275">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_OnReceivedServerAnimations_" data-uid="Vintagestory.API.Common.EntityItem.OnReceivedServerAnimations*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_OnReceivedServerAnimations_System_Int32___System_Int32_System_Single___" data-uid="Vintagestory.API.Common.EntityItem.OnReceivedServerAnimations(System.Int32[],System.Int32,System.Single[])">OnReceivedServerAnimations(Int32[], Int32, Single[])</h4>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_OnReceivedServerAnimations_System_Int32___System_Int32_System_Single___" data-uid="Vintagestory.API.Common.EntityItem.OnReceivedServerAnimations(System.Int32[],System.Int32,System.Single[])">
+  OnReceivedServerAnimations(int[], int, float[])
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnReceivedServerAnimations(int[] activeAnimations, int activeAnimationsCount, float[] activeAnimationSpeeds)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span>[]</td>
-        <td><span class="parametername">activeAnimations</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">activeAnimationsCount</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span>[]</td>
-        <td><span class="parametername">activeAnimationSpeeds</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnReceivedServerAnimations_System_Int32___System_Int32_System_Single___">Entity.OnReceivedServerAnimations(Int32[], Int32, Single[])</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_ReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.ReceiveDamage(Vintagestory.API.Common.DamageSource%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L361">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>activeAnimations</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd></dd>
+    <dt><code>activeAnimationsCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>activeAnimationSpeeds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_ReceiveDamage_" data-uid="Vintagestory.API.Common.EntityItem.ReceiveDamage*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_ReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_" data-uid="Vintagestory.API.Common.EntityItem.ReceiveDamage(Vintagestory.API.Common.DamageSource,System.Single)">ReceiveDamage(DamageSource, Single)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_ReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_" data-uid="Vintagestory.API.Common.EntityItem.ReceiveDamage(Vintagestory.API.Common.DamageSource,System.Single)">
+  ReceiveDamage(DamageSource, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the entity should be receiving damage from given source</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool ReceiveDamage(DamageSource damageSource, float damage)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.DamageSource.html">DamageSource</a></td>
-        <td><span class="parametername">damageSource</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">damage</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_">Entity.ReceiveDamage(DamageSource, Single)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_ShouldReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.ShouldReceiveDamage(Vintagestory.API.Common.DamageSource%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L354">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>damageSource</code> <a class="xref" href="Vintagestory.API.Common.DamageSource.html">DamageSource</a></dt>
+    <dd></dd>
+    <dt><code>damage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>True if the entity actually received damage</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_ShouldReceiveDamage_" data-uid="Vintagestory.API.Common.EntityItem.ShouldReceiveDamage*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_ShouldReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_" data-uid="Vintagestory.API.Common.EntityItem.ShouldReceiveDamage(Vintagestory.API.Common.DamageSource,System.Single)">ShouldReceiveDamage(DamageSource, Single)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_ShouldReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_" data-uid="Vintagestory.API.Common.EntityItem.ShouldReceiveDamage(Vintagestory.API.Common.DamageSource,System.Single)">
+  ShouldReceiveDamage(DamageSource, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Should return true if the entity can get damaged by given damageSource. Is called by ReceiveDamage.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool ShouldReceiveDamage(DamageSource damageSource, float damage)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.DamageSource.html">DamageSource</a></td>
-        <td><span class="parametername">damageSource</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">damage</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ShouldReceiveDamage_Vintagestory_API_Common_DamageSource_System_Single_">Entity.ShouldReceiveDamage(DamageSource, Single)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_StartAnimation_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.StartAnimation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L285">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>damageSource</code> <a class="xref" href="Vintagestory.API.Common.DamageSource.html">DamageSource</a></dt>
+    <dd></dd>
+    <dt><code>damage</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_StartAnimation_" data-uid="Vintagestory.API.Common.EntityItem.StartAnimation*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_StartAnimation_System_String_" data-uid="Vintagestory.API.Common.EntityItem.StartAnimation(System.String)">StartAnimation(String)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_StartAnimation_System_String_" data-uid="Vintagestory.API.Common.EntityItem.StartAnimation(System.String)">
+  StartAnimation(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts the animation for the entity.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void StartAnimation(string code)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">code</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_StartAnimation_System_String_">Entity.StartAnimation(String)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_StopAnimation_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.StopAnimation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L289">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_StopAnimation_" data-uid="Vintagestory.API.Common.EntityItem.StopAnimation*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_StopAnimation_System_String_" data-uid="Vintagestory.API.Common.EntityItem.StopAnimation(System.String)">StopAnimation(String)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_StopAnimation_System_String_" data-uid="Vintagestory.API.Common.EntityItem.StopAnimation(System.String)">
+  StopAnimation(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>stops the animation for the entity.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void StopAnimation(string code)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">code</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_StopAnimation_System_String_">Entity.StopAnimation(String)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem_UpdateDebugAttributes.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem.UpdateDebugAttributes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L280">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_UpdateDebugAttributes_" data-uid="Vintagestory.API.Common.EntityItem.UpdateDebugAttributes*"></a>
-  <h4 id="Vintagestory_API_Common_EntityItem_UpdateDebugAttributes" data-uid="Vintagestory.API.Common.EntityItem.UpdateDebugAttributes">UpdateDebugAttributes()</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_UpdateDebugAttributes" data-uid="Vintagestory.API.Common.EntityItem.UpdateDebugAttributes">
+  UpdateDebugAttributes()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the DebugAttributes tree</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void UpdateDebugAttributes()</code></pre>
   </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_UpdateDebugAttributes">Entity.UpdateDebugAttributes()</a></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityItem.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityItem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityItem.cs/#L20" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

@@ -8,6 +8,8 @@ namespace Vintagestory.API.MathTools
     /// </summary>
     public class Cuboidd : ICuboid<double,Cuboidd>
     {
+        const double epsilon = 0.000016;   // 1 millionth of a block multiplied by 16.  See RemoveRoundingErrors().  Needed because a rounding error of this kind of size is seen in practice when EntityBox is offset by EntityPos and EntityPos is in the region of 500,000, due to limits on the precision of double arithmetic on large numbers.  The error leads to clipping of the player into blocks, when testing collisions, because with the rounding error the player is seen as "already" inside the block: for example player z-pos is 500000.3, player half-width is 0.3, entityBox.Z1 is 499999.999999988 with the rounding error.  Actually the error in that example is 1/90th of epsilon at positions around 500,000 but choosing this epsilon value of 0.000001 allows some safety even for map edge positions in larger world sizes up to 32Mx32M blocks with no problem. 64M worlds could maybe have minor clipping issues far away from the map centre, untested.
+
         public double X1;
         public double Y1;
         public double Z1;
@@ -131,6 +133,18 @@ namespace Vintagestory.API.MathTools
             this.Y2 = selectionBox.Y2 + dY;
             this.Z2 = selectionBox.Z2 + dZ;
             return this;
+        }
+
+        public void RemoveRoundingErrors()
+        {
+            double x1Test = X1 * 16;   // Prevents clipping for whole blocks and other common block hitbox sizes based on 16 voxels; multiplication and later division by a power of 2 will not cause loss of precision in a double
+            double z1Test = Z1 * 16;
+            double x2Test = X2 * 16;
+            double z2Test = Z2 * 16;
+            if (Math.Ceiling(x1Test) - x1Test < epsilon) X1 = Math.Ceiling(x1Test) / 16;   // Push out X1 from being just inside a block's collision box (e.g. at xxx.99999) due to precision errors
+            if (Math.Ceiling(z1Test) - z1Test < epsilon) Z1 = Math.Ceiling(z1Test) / 16;
+            if (x2Test - Math.Floor(x2Test) < epsilon) X2 = Math.Floor(x2Test) / 16;
+            if (z2Test - Math.Floor(z2Test) < epsilon) Z2 = Math.Floor(z2Test) / 16;
         }
 
 

@@ -41,9 +41,9 @@ namespace Vintagestory.API.Util
             if (count > 127) Array.Copy(src, 0, dest, 0, count);
             else
             {
-                while (--count >= 0)
+                for (int i = 0; i < dest.Length; i++)
                 {
-                    dest[count] = src[count];
+                    dest[i] = src[i];
                 }
             }
 

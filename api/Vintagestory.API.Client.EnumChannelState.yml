@@ -1,0 +1,184 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.EnumChannelState
+  commentId: T:Vintagestory.API.Client.EnumChannelState
+  id: EnumChannelState
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.EnumChannelState.Connected
+  - Vintagestory.API.Client.EnumChannelState.NotConnected
+  - Vintagestory.API.Client.EnumChannelState.NotFound
+  - Vintagestory.API.Client.EnumChannelState.Registered
+  langs:
+  - csharp
+  - vb
+  name: EnumChannelState
+  nameWithType: EnumChannelState
+  fullName: Vintagestory.API.Client.EnumChannelState
+  type: Enum
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnumChannelState
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 29
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The state of a network channel
+  example: []
+  syntax:
+    content: public enum EnumChannelState
+    content.vb: Public Enum EnumChannelState
+- uid: Vintagestory.API.Client.EnumChannelState.NotFound
+  commentId: F:Vintagestory.API.Client.EnumChannelState.NotFound
+  id: NotFound
+  parent: Vintagestory.API.Client.EnumChannelState
+  langs:
+  - csharp
+  - vb
+  name: NotFound
+  nameWithType: EnumChannelState.NotFound
+  fullName: Vintagestory.API.Client.EnumChannelState.NotFound
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NotFound
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 34
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: No such channel was registered
+  example: []
+  syntax:
+    content: NotFound = 0
+    return:
+      type: Vintagestory.API.Client.EnumChannelState
+- uid: Vintagestory.API.Client.EnumChannelState.Registered
+  commentId: F:Vintagestory.API.Client.EnumChannelState.Registered
+  id: Registered
+  parent: Vintagestory.API.Client.EnumChannelState
+  langs:
+  - csharp
+  - vb
+  name: Registered
+  nameWithType: EnumChannelState.Registered
+  fullName: Vintagestory.API.Client.EnumChannelState.Registered
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Registered
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 38
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: This channel has been registered but he server did not send the server channel information yet
+  example: []
+  syntax:
+    content: Registered = 1
+    return:
+      type: Vintagestory.API.Client.EnumChannelState
+- uid: Vintagestory.API.Client.EnumChannelState.Connected
+  commentId: F:Vintagestory.API.Client.EnumChannelState.Connected
+  id: Connected
+  parent: Vintagestory.API.Client.EnumChannelState
+  langs:
+  - csharp
+  - vb
+  name: Connected
+  nameWithType: EnumChannelState.Connected
+  fullName: Vintagestory.API.Client.EnumChannelState.Connected
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Connected
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 42
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: This channel has been registered client and server side. It is ready to send and receive messages
+  example: []
+  syntax:
+    content: Connected = 2
+    return:
+      type: Vintagestory.API.Client.EnumChannelState
+- uid: Vintagestory.API.Client.EnumChannelState.NotConnected
+  commentId: F:Vintagestory.API.Client.EnumChannelState.NotConnected
+  id: NotConnected
+  parent: Vintagestory.API.Client.EnumChannelState
+  langs:
+  - csharp
+  - vb
+  name: NotConnected
+  nameWithType: EnumChannelState.NotConnected
+  fullName: Vintagestory.API.Client.EnumChannelState.NotConnected
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NotConnected
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 46
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: This channel has been registered only client side. You cannot send data on this channel
+  example: []
+  syntax:
+    content: NotConnected = 3
+    return:
+      type: Vintagestory.API.Client.EnumChannelState
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.EnumChannelState
+  commentId: T:Vintagestory.API.Client.EnumChannelState
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumChannelState.html
+  name: EnumChannelState
+  nameWithType: EnumChannelState
+  fullName: Vintagestory.API.Client.EnumChannelState

@@ -1,0 +1,216 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EnumHandHandling
+  commentId: T:Vintagestory.API.Common.EnumHandHandling
+  id: EnumHandHandling
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.EnumHandHandling.Handled
+  - Vintagestory.API.Common.EnumHandHandling.NotHandled
+  - Vintagestory.API.Common.EnumHandHandling.PreventDefault
+  - Vintagestory.API.Common.EnumHandHandling.PreventDefaultAction
+  - Vintagestory.API.Common.EnumHandHandling.PreventDefaultAnimation
+  langs:
+  - csharp
+  - vb
+  name: EnumHandHandling
+  nameWithType: EnumHandHandling
+  fullName: Vintagestory.API.Common.EnumHandHandling
+  type: Enum
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/EnumHandHandling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnumHandHandling
+    path: Common/Entity/Player/EnumHandHandling.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: How the engine should handle attacking with an item in hands
+  example: []
+  syntax:
+    content: public enum EnumHandHandling
+    content.vb: Public Enum EnumHandHandling
+- uid: Vintagestory.API.Common.EnumHandHandling.NotHandled
+  commentId: F:Vintagestory.API.Common.EnumHandHandling.NotHandled
+  id: NotHandled
+  parent: Vintagestory.API.Common.EnumHandHandling
+  langs:
+  - csharp
+  - vb
+  name: NotHandled
+  nameWithType: EnumHandHandling.NotHandled
+  fullName: Vintagestory.API.Common.EnumHandHandling.NotHandled
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/EnumHandHandling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NotHandled
+    path: Common/Entity/Player/EnumHandHandling.cs
+    startLine: 10
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Uses the engine default behavior which is to play an attack animation and do block breaking/damage entities if in range. Will not call the *Step and *Stop methods.
+  example: []
+  syntax:
+    content: NotHandled = 0
+    return:
+      type: Vintagestory.API.Common.EnumHandHandling
+- uid: Vintagestory.API.Common.EnumHandHandling.Handled
+  commentId: F:Vintagestory.API.Common.EnumHandHandling.Handled
+  id: Handled
+  parent: Vintagestory.API.Common.EnumHandHandling
+  langs:
+  - csharp
+  - vb
+  name: Handled
+  nameWithType: EnumHandHandling.Handled
+  fullName: Vintagestory.API.Common.EnumHandHandling.Handled
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/EnumHandHandling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Handled
+    path: Common/Entity/Player/EnumHandHandling.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Uses the engine default behavior which is to play an attack or build animation and do block breaking/damage entities if in range,
+
+    but also notify the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.
+  example: []
+  syntax:
+    content: Handled = 1
+    return:
+      type: Vintagestory.API.Common.EnumHandHandling
+- uid: Vintagestory.API.Common.EnumHandHandling.PreventDefaultAnimation
+  commentId: F:Vintagestory.API.Common.EnumHandHandling.PreventDefaultAnimation
+  id: PreventDefaultAnimation
+  parent: Vintagestory.API.Common.EnumHandHandling
+  langs:
+  - csharp
+  - vb
+  name: PreventDefaultAnimation
+  nameWithType: EnumHandHandling.PreventDefaultAnimation
+  fullName: Vintagestory.API.Common.EnumHandHandling.PreventDefaultAnimation
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/EnumHandHandling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PreventDefaultAnimation
+    path: Common/Entity/Player/EnumHandHandling.cs
+    startLine: 19
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Do not play any default first person attack animation, but do block breaking/damage entities if in range. Notifies that the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.
+  example: []
+  syntax:
+    content: PreventDefaultAnimation = 2
+    return:
+      type: Vintagestory.API.Common.EnumHandHandling
+- uid: Vintagestory.API.Common.EnumHandHandling.PreventDefaultAction
+  commentId: F:Vintagestory.API.Common.EnumHandHandling.PreventDefaultAction
+  id: PreventDefaultAction
+  parent: Vintagestory.API.Common.EnumHandHandling
+  langs:
+  - csharp
+  - vb
+  name: PreventDefaultAction
+  nameWithType: EnumHandHandling.PreventDefaultAction
+  fullName: Vintagestory.API.Common.EnumHandHandling.PreventDefaultAction
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/EnumHandHandling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PreventDefaultAction
+    path: Common/Entity/Player/EnumHandHandling.cs
+    startLine: 23
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Do play first person attack animation, don't break blocks/damage entities in range. Notifies that the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.
+  example: []
+  syntax:
+    content: PreventDefaultAction = 3
+    return:
+      type: Vintagestory.API.Common.EnumHandHandling
+- uid: Vintagestory.API.Common.EnumHandHandling.PreventDefault
+  commentId: F:Vintagestory.API.Common.EnumHandHandling.PreventDefault
+  id: PreventDefault
+  parent: Vintagestory.API.Common.EnumHandHandling
+  langs:
+  - csharp
+  - vb
+  name: PreventDefault
+  nameWithType: EnumHandHandling.PreventDefault
+  fullName: Vintagestory.API.Common.EnumHandHandling.PreventDefault
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/EnumHandHandling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PreventDefault
+    path: Common/Entity/Player/EnumHandHandling.cs
+    startLine: 27
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Do not play any first person attack animation, don't break blocks in range or damage entities in range. Notifies that the server that the Use/Attack method has to be called serverside as well. Will call the *Step and *Stop methods.
+  example: []
+  syntax:
+    content: PreventDefault = 4
+    return:
+      type: Vintagestory.API.Common.EnumHandHandling
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.EnumHandHandling
+  commentId: T:Vintagestory.API.Common.EnumHandHandling
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumHandHandling.html
+  name: EnumHandHandling
+  nameWithType: EnumHandHandling
+  fullName: Vintagestory.API.Common.EnumHandHandling

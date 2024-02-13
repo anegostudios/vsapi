@@ -1,6 +1,8 @@
-﻿using Vintagestory.API.Client;
+﻿using System.Numerics;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -61,7 +63,7 @@ namespace Vintagestory.API.Common
 
         public override bool StartAnimation(AnimationMetaData animdata)
         {
-            if (useFpAnimSet && !animdata.Code.EndsWith(fpEnding))
+            if (useFpAnimSet && !animdata.Code.EndsWithOrdinal(fpEnding))
             {
                 plrEntity.TpAnimManager.StartAnimation(animdata);
 
@@ -77,7 +79,7 @@ namespace Vintagestory.API.Common
 
         public override void RegisterFrameCallback(AnimFrameCallback trigger)
         {
-            if (useFpAnimSet && !trigger.Animation.EndsWith(fpEnding) && entity.Properties.Client.AnimationsByMetaCode.ContainsKey(trigger.Animation + fpEnding))
+            if (useFpAnimSet && !trigger.Animation.EndsWithOrdinal(fpEnding) && entity.Properties.Client.AnimationsByMetaCode.ContainsKey(trigger.Animation + fpEnding))
             {
                 trigger.Animation += fpEnding;
             }
@@ -117,13 +119,13 @@ namespace Vintagestory.API.Common
         public bool IsAnimationActiveOrRunning(string anim)
         {
             if (anim == null || Animator == null) return false;
-            return IsAnimationMostlyRunning(anim) || IsAnimationMostlyRunning(anim + fpEnding) || IsAnimationActive(anim);
+            return IsAnimationMostlyRunning(anim) || IsAnimationMostlyRunning(anim + fpEnding);
         }
 
         protected bool IsAnimationMostlyRunning(string anim)
         {
             var ranim = Animator.GetAnimationState(anim);
-            return ranim != null && ranim.Running; // && ranim.AnimProgress < 0.9;
+            return ranim != null && ranim.Running && ranim.AnimProgress < 0.95;
         }
 
         protected override void onReceivedServerAnimation(AnimationMetaData animmetadata)
@@ -150,6 +152,9 @@ namespace Vintagestory.API.Common
         public void OnActiveSlotChanged(ItemSlot slot)
         {
             string beginholdAnim = slot.Itemstack?.Collectible?.GetHeldReadyAnimation(slot, entity, EnumHand.Right);
+            
+            if (beginholdAnim != lastActiveHeldReadyAnimation) StopHeldReadyAnim();
+
             if (beginholdAnim != null) StartHeldReadyAnim(beginholdAnim);
         }
         

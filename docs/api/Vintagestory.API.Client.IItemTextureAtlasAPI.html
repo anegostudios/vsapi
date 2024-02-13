@@ -1,85 +1,121 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IItemTextureAtlasAPI
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IItemTextureAtlasAPI
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Interface IItemTextureAtlasAPI | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IItemTextureAtlasAPI | VintageStory API ">
+      
+      <meta name="description" content="Item texture Atlas.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Client.IItemTextureAtlasAPI">
-  
-  
-  <h1 id="Vintagestory_API_Client_IItemTextureAtlasAPI" data-uid="Vintagestory.API.Client.IItemTextureAtlasAPI" class="text-break">Interface IItemTextureAtlasAPI
+
+        <article data-uid="Vintagestory.API.Client.IItemTextureAtlasAPI">
+
+
+
+  <h1 id="Vintagestory_API_Client_IItemTextureAtlasAPI" data-uid="Vintagestory.API.Client.IItemTextureAtlasAPI" class="text-break">
+Interface IItemTextureAtlasAPI  
   </h1>
-  <div class="markdown level0 summary"><p>Item texture Atlas.</p>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Client.html">Client</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Item texture Atlas.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IItemTextureAtlasAPI : ITextureAtlasAPI</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_Item_Vintagestory_API_Common_AssetLocation_">ITextureAtlasAPI.Item[AssetLocation]</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_Item_Vintagestory_API_Common_AssetLocation_">ITextureAtlasAPI.this[AssetLocation]</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_UnknownTexturePosition">ITextureAtlasAPI.UnknownTexturePosition</a>
@@ -100,160 +136,127 @@
       <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_AtlasTextures">ITextureAtlasAPI.AtlasTextures</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_AllocateTextureSpace_System_Int32_System_Int32_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__">ITextureAtlasAPI.AllocateTextureSpace(Int32, Int32, Int32, TextureAtlasPosition)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_AllocateTextureSpace_System_Int32_System_Int32_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__">ITextureAtlasAPI.AllocateTextureSpace(int, int, out int, out TextureAtlasPosition)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTexture_Vintagestory_API_Common_IBitmap_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_">ITextureAtlasAPI.InsertTexture(IBitmap, Int32, TextureAtlasPosition, Single)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTexture_Vintagestory_API_Common_IBitmap_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_">ITextureAtlasAPI.InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTexture_System_Byte___System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_">ITextureAtlasAPI.InsertTexture(Byte[], Int32, TextureAtlasPosition, Single)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTexture_System_Byte___System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_">ITextureAtlasAPI.InsertTexture(byte[], out int, out TextureAtlasPosition, float)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocation_">ITextureAtlasAPI.LoadCompositeBitmap(AssetLocation)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetOrInsertTexture_Vintagestory_API_Common_AssetLocation_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__Vintagestory_API_Client_CreateTextureDelegate_System_Single_">ITextureAtlasAPI.GetOrInsertTexture(AssetLocation, Int32, TextureAtlasPosition, CreateTextureDelegate, Single)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetOrInsertTexture_Vintagestory_API_Common_AssetLocation_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__Vintagestory_API_Client_CreateTextureDelegate_System_Single_">ITextureAtlasAPI.GetOrInsertTexture(AssetLocation, out int, out TextureAtlasPosition, CreateTextureDelegate, float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_IBitmap_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_">ITextureAtlasAPI.InsertTextureCached(AssetLocation, IBitmap, Int32, TextureAtlasPosition, Single)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_IBitmap_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_">ITextureAtlasAPI.InsertTextureCached(AssetLocation, IBitmap, out int, out TextureAtlasPosition, float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Common_AssetLocation_System_Byte___System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_">ITextureAtlasAPI.InsertTextureCached(AssetLocation, Byte[], Int32, TextureAtlasPosition, Single)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Common_AssetLocation_System_Byte___System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_">ITextureAtlasAPI.InsertTextureCached(AssetLocation, byte[], out int, out TextureAtlasPosition, float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Client_CompositeTexture_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_">ITextureAtlasAPI.InsertTextureCached(CompositeTexture, Int32, TextureAtlasPosition, Single)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Client_CompositeTexture_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_">ITextureAtlasAPI.InsertTextureCached(CompositeTexture, out int, out TextureAtlasPosition, float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_FreeTextureSpace_System_Int32_">ITextureAtlasAPI.FreeTextureSpace(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_FreeTextureSpace_System_Int32_">ITextureAtlasAPI.FreeTextureSpace(int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_System_Int32_">ITextureAtlasAPI.GetRandomColor(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_System_Int32_">ITextureAtlasAPI.GetRandomColor(int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_RegenMipMaps_System_Int32_">ITextureAtlasAPI.RegenMipMaps(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_RegenMipMaps_System_Int32_">ITextureAtlasAPI.RegenMipMaps(int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_System_Int32_System_Int32_">ITextureAtlasAPI.GetRandomColor(Int32, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_System_Int32_System_Int32_">ITextureAtlasAPI.GetRandomColor(int, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_Vintagestory_API_Client_TextureAtlasPosition_System_Int32_">ITextureAtlasAPI.GetRandomColor(TextureAtlasPosition, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_Vintagestory_API_Client_TextureAtlasPosition_System_Int32_">ITextureAtlasAPI.GetRandomColor(TextureAtlasPosition, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColors_Vintagestory_API_Client_TextureAtlasPosition_">ITextureAtlasAPI.GetRandomColors(TextureAtlasPosition)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetAverageColor_System_Int32_">ITextureAtlasAPI.GetAverageColor(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetAverageColor_System_Int32_">ITextureAtlasAPI.GetAverageColor(int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_RenderTextureIntoAtlas_System_Int32_Vintagestory_API_Client_LoadedTexture_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_">ITextureAtlasAPI.RenderTextureIntoAtlas(Int32, LoadedTexture, Single, Single, Single, Single, Single, Single, Single)</a>
+      <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_RenderTextureIntoAtlas_System_Int32_Vintagestory_API_Client_LoadedTexture_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_">ITextureAtlasAPI.RenderTextureIntoAtlas(int, LoadedTexture, float, float, float, float, float, float, float)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Client_IItemTextureAtlasAPI_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IItemTextureAtlasAPI : ITextureAtlasAPI</code></pre>
-  </div>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IItemTextureAtlasAPI_GetPosition_Vintagestory_API_Common_Item_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition(Vintagestory.API.Common.Item%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ITextureAtlasAPI.cs/#L22">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Vintagestory_API_Client_IItemTextureAtlasAPI_GetPosition_" data-uid="Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition*"></a>
-  <h4 id="Vintagestory_API_Client_IItemTextureAtlasAPI_GetPosition_Vintagestory_API_Common_Item_System_String_System_Boolean_" data-uid="Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition(Vintagestory.API.Common.Item,System.String,System.Boolean)">GetPosition(Item, String, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Returns the position in the item texture atlas of given item. For items that don&apos;t use custom shapes you don&apos;t have to supply the textureName</p>
+
+  <h3 id="Vintagestory_API_Client_IItemTextureAtlasAPI_GetPosition_Vintagestory_API_Common_Item_System_String_System_Boolean_" data-uid="Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition(Vintagestory.API.Common.Item,System.String,System.Boolean)">
+  GetPosition(Item, string, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the position in the item texture atlas of given item. For items that don't use custom shapes you don't have to supply the textureName</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">TextureAtlasPosition GetPosition(Item item, string textureName = null, bool returnNullWhenMissing = false)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Item.html">Item</a></td>
-        <td><span class="parametername">item</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">textureName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">returnNullWhenMissing</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.TextureAtlasPosition.html">TextureAtlasPosition</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="Vintagestory.API.Common.Item.html">Item</a></dt>
+    <dd></dd>
+    <dt><code>textureName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>returnNullWhenMissing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.TextureAtlasPosition.html">TextureAtlasPosition</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_IItemTextureAtlasAPI.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.IItemTextureAtlasAPI%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/API/ITextureAtlasAPI.cs/#L13" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,761 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EntityFloatStats
+  commentId: T:Vintagestory.API.Common.EntityFloatStats
+  id: EntityFloatStats
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.EntityFloatStats.#ctor
+  - Vintagestory.API.Common.EntityFloatStats.BlendType
+  - Vintagestory.API.Common.EntityFloatStats.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  - Vintagestory.API.Common.EntityFloatStats.GetBlended
+  - Vintagestory.API.Common.EntityFloatStats.Remove(System.String)
+  - Vintagestory.API.Common.EntityFloatStats.Set(System.String,System.Single,System.Boolean)
+  - Vintagestory.API.Common.EntityFloatStats.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,System.Boolean)
+  - Vintagestory.API.Common.EntityFloatStats.ValuesByKey
+  langs:
+  - csharp
+  - vb
+  name: EntityFloatStats
+  nameWithType: EntityFloatStats
+  fullName: Vintagestory.API.Common.EntityFloatStats
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityStats.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EntityFloatStats
+    path: Common/Entity/EntityStats.cs
+    startLine: 178
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public class EntityFloatStats
+    content.vb: Public Class EntityFloatStats
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Common.EntityFloatStats.ValuesByKey
+  commentId: F:Vintagestory.API.Common.EntityFloatStats.ValuesByKey
+  id: ValuesByKey
+  parent: Vintagestory.API.Common.EntityFloatStats
+  langs:
+  - csharp
+  - vb
+  name: ValuesByKey
+  nameWithType: EntityFloatStats.ValuesByKey
+  fullName: Vintagestory.API.Common.EntityFloatStats.ValuesByKey
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityStats.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ValuesByKey
+    path: Common/Entity/EntityStats.cs
+    startLine: 180
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public OrderedDictionary<string, EntityStat<float>> ValuesByKey
+    return:
+      type: Vintagestory.API.Datastructures.OrderedDictionary{System.String,Vintagestory.API.Common.EntityStat{System.Single}}
+    content.vb: Public ValuesByKey As OrderedDictionary(Of String, EntityStat(Of Single))
+- uid: Vintagestory.API.Common.EntityFloatStats.BlendType
+  commentId: F:Vintagestory.API.Common.EntityFloatStats.BlendType
+  id: BlendType
+  parent: Vintagestory.API.Common.EntityFloatStats
+  langs:
+  - csharp
+  - vb
+  name: BlendType
+  nameWithType: EntityFloatStats.BlendType
+  fullName: Vintagestory.API.Common.EntityFloatStats.BlendType
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityStats.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BlendType
+    path: Common/Entity/EntityStats.cs
+    startLine: 181
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public EnumStatBlendType BlendType
+    return:
+      type: Vintagestory.API.Common.EnumStatBlendType
+    content.vb: Public BlendType As EnumStatBlendType
+- uid: Vintagestory.API.Common.EntityFloatStats.#ctor
+  commentId: M:Vintagestory.API.Common.EntityFloatStats.#ctor
+  id: '#ctor'
+  parent: Vintagestory.API.Common.EntityFloatStats
+  langs:
+  - csharp
+  - vb
+  name: EntityFloatStats()
+  nameWithType: EntityFloatStats.EntityFloatStats()
+  fullName: Vintagestory.API.Common.EntityFloatStats.EntityFloatStats()
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityStats.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Entity/EntityStats.cs
+    startLine: 182
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public EntityFloatStats()
+    content.vb: Public Sub New()
+  overload: Vintagestory.API.Common.EntityFloatStats.#ctor*
+  nameWithType.vb: EntityFloatStats.New()
+  fullName.vb: Vintagestory.API.Common.EntityFloatStats.New()
+  name.vb: New()
+- uid: Vintagestory.API.Common.EntityFloatStats.GetBlended
+  commentId: M:Vintagestory.API.Common.EntityFloatStats.GetBlended
+  id: GetBlended
+  parent: Vintagestory.API.Common.EntityFloatStats
+  langs:
+  - csharp
+  - vb
+  name: GetBlended()
+  nameWithType: EntityFloatStats.GetBlended()
+  fullName: Vintagestory.API.Common.EntityFloatStats.GetBlended()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityStats.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetBlended
+    path: Common/Entity/EntityStats.cs
+    startLine: 187
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public float GetBlended()
+    return:
+      type: System.Single
+    content.vb: Public Function GetBlended() As Single
+  overload: Vintagestory.API.Common.EntityFloatStats.GetBlended*
+- uid: Vintagestory.API.Common.EntityFloatStats.Set(System.String,System.Single,System.Boolean)
+  commentId: M:Vintagestory.API.Common.EntityFloatStats.Set(System.String,System.Single,System.Boolean)
+  id: Set(System.String,System.Single,System.Boolean)
+  parent: Vintagestory.API.Common.EntityFloatStats
+  langs:
+  - csharp
+  - vb
+  name: Set(string, float, bool)
+  nameWithType: EntityFloatStats.Set(string, float, bool)
+  fullName: Vintagestory.API.Common.EntityFloatStats.Set(string, float, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityStats.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Set
+    path: Common/Entity/EntityStats.cs
+    startLine: 232
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void Set(string code, float value, bool persistent = false)
+    parameters:
+    - id: code
+      type: System.String
+    - id: value
+      type: System.Single
+    - id: persistent
+      type: System.Boolean
+    content.vb: Public Sub [Set](code As String, value As Single, persistent As Boolean = False)
+  overload: Vintagestory.API.Common.EntityFloatStats.Set*
+  nameWithType.vb: EntityFloatStats.Set(String, Single, Boolean)
+  fullName.vb: Vintagestory.API.Common.EntityFloatStats.Set(String, Single, Boolean)
+  name.vb: Set(String, Single, Boolean)
+- uid: Vintagestory.API.Common.EntityFloatStats.Remove(System.String)
+  commentId: M:Vintagestory.API.Common.EntityFloatStats.Remove(System.String)
+  id: Remove(System.String)
+  parent: Vintagestory.API.Common.EntityFloatStats
+  langs:
+  - csharp
+  - vb
+  name: Remove(string)
+  nameWithType: EntityFloatStats.Remove(string)
+  fullName: Vintagestory.API.Common.EntityFloatStats.Remove(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityStats.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Remove
+    path: Common/Entity/EntityStats.cs
+    startLine: 236
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void Remove(string code)
+    parameters:
+    - id: code
+      type: System.String
+    content.vb: Public Sub Remove(code As String)
+  overload: Vintagestory.API.Common.EntityFloatStats.Remove*
+  nameWithType.vb: EntityFloatStats.Remove(String)
+  fullName.vb: Vintagestory.API.Common.EntityFloatStats.Remove(String)
+  name.vb: Remove(String)
+- uid: Vintagestory.API.Common.EntityFloatStats.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,System.Boolean)
+  commentId: M:Vintagestory.API.Common.EntityFloatStats.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,System.Boolean)
+  id: ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,System.Boolean)
+  parent: Vintagestory.API.Common.EntityFloatStats
+  langs:
+  - csharp
+  - vb
+  name: ToTreeAttributes(ITreeAttribute, bool)
+  nameWithType: EntityFloatStats.ToTreeAttributes(ITreeAttribute, bool)
+  fullName: Vintagestory.API.Common.EntityFloatStats.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityStats.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToTreeAttributes
+    path: Common/Entity/EntityStats.cs
+    startLine: 241
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void ToTreeAttributes(ITreeAttribute tree, bool forClient)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    - id: forClient
+      type: System.Boolean
+    content.vb: Public Sub ToTreeAttributes(tree As ITreeAttribute, forClient As Boolean)
+  overload: Vintagestory.API.Common.EntityFloatStats.ToTreeAttributes*
+  nameWithType.vb: EntityFloatStats.ToTreeAttributes(ITreeAttribute, Boolean)
+  fullName.vb: Vintagestory.API.Common.EntityFloatStats.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute, Boolean)
+  name.vb: ToTreeAttributes(ITreeAttribute, Boolean)
+- uid: Vintagestory.API.Common.EntityFloatStats.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  commentId: M:Vintagestory.API.Common.EntityFloatStats.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  id: FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  parent: Vintagestory.API.Common.EntityFloatStats
+  langs:
+  - csharp
+  - vb
+  name: FromTreeAttributes(ITreeAttribute)
+  nameWithType: EntityFloatStats.FromTreeAttributes(ITreeAttribute)
+  fullName: Vintagestory.API.Common.EntityFloatStats.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityStats.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FromTreeAttributes
+    path: Common/Entity/EntityStats.cs
+    startLine: 250
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void FromTreeAttributes(ITreeAttribute tree)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    content.vb: Public Sub FromTreeAttributes(tree As ITreeAttribute)
+  overload: Vintagestory.API.Common.EntityFloatStats.FromTreeAttributes*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Datastructures.OrderedDictionary{System.String,Vintagestory.API.Common.EntityStat{System.Single}}
+  commentId: T:Vintagestory.API.Datastructures.OrderedDictionary{System.String,Vintagestory.API.Common.EntityStat{System.Single}}
+  parent: Vintagestory.API.Datastructures
+  definition: Vintagestory.API.Datastructures.OrderedDictionary`2
+  href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  name: OrderedDictionary<string, EntityStat<float>>
+  nameWithType: OrderedDictionary<string, EntityStat<float>>
+  fullName: Vintagestory.API.Datastructures.OrderedDictionary<string, Vintagestory.API.Common.EntityStat<float>>
+  nameWithType.vb: OrderedDictionary(Of String, EntityStat(Of Single))
+  fullName.vb: Vintagestory.API.Datastructures.OrderedDictionary(Of String, Vintagestory.API.Common.EntityStat(Of Single))
+  name.vb: OrderedDictionary(Of String, EntityStat(Of Single))
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+    name: OrderedDictionary
+    href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EntityStat`1
+    name: EntityStat
+    href: Vintagestory.API.Common.EntityStat-1.html
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+    name: OrderedDictionary
+    href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EntityStat`1
+    name: EntityStat
+    href: Vintagestory.API.Common.EntityStat-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+  commentId: T:Vintagestory.API.Datastructures.OrderedDictionary`2
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  name: OrderedDictionary<TKey, TValue>
+  nameWithType: OrderedDictionary<TKey, TValue>
+  fullName: Vintagestory.API.Datastructures.OrderedDictionary<TKey, TValue>
+  nameWithType.vb: OrderedDictionary(Of TKey, TValue)
+  fullName.vb: Vintagestory.API.Datastructures.OrderedDictionary(Of TKey, TValue)
+  name.vb: OrderedDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+    name: OrderedDictionary
+    href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+    name: OrderedDictionary
+    href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Common.EnumStatBlendType
+  commentId: T:Vintagestory.API.Common.EnumStatBlendType
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumStatBlendType.html
+  name: EnumStatBlendType
+  nameWithType: EnumStatBlendType
+  fullName: Vintagestory.API.Common.EnumStatBlendType
+- uid: Vintagestory.API.Common.EntityFloatStats.#ctor*
+  commentId: Overload:Vintagestory.API.Common.EntityFloatStats.#ctor
+  href: Vintagestory.API.Common.EntityFloatStats.html#Vintagestory_API_Common_EntityFloatStats__ctor
+  name: EntityFloatStats
+  nameWithType: EntityFloatStats.EntityFloatStats
+  fullName: Vintagestory.API.Common.EntityFloatStats.EntityFloatStats
+  nameWithType.vb: EntityFloatStats.New
+  fullName.vb: Vintagestory.API.Common.EntityFloatStats.New
+  name.vb: New
+- uid: Vintagestory.API.Common.EntityFloatStats.GetBlended*
+  commentId: Overload:Vintagestory.API.Common.EntityFloatStats.GetBlended
+  href: Vintagestory.API.Common.EntityFloatStats.html#Vintagestory_API_Common_EntityFloatStats_GetBlended
+  name: GetBlended
+  nameWithType: EntityFloatStats.GetBlended
+  fullName: Vintagestory.API.Common.EntityFloatStats.GetBlended
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.EntityFloatStats.Set*
+  commentId: Overload:Vintagestory.API.Common.EntityFloatStats.Set
+  href: Vintagestory.API.Common.EntityFloatStats.html#Vintagestory_API_Common_EntityFloatStats_Set_System_String_System_Single_System_Boolean_
+  name: Set
+  nameWithType: EntityFloatStats.Set
+  fullName: Vintagestory.API.Common.EntityFloatStats.Set
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.EntityFloatStats.Remove*
+  commentId: Overload:Vintagestory.API.Common.EntityFloatStats.Remove
+  href: Vintagestory.API.Common.EntityFloatStats.html#Vintagestory_API_Common_EntityFloatStats_Remove_System_String_
+  name: Remove
+  nameWithType: EntityFloatStats.Remove
+  fullName: Vintagestory.API.Common.EntityFloatStats.Remove
+- uid: Vintagestory.API.Common.EntityFloatStats.ToTreeAttributes*
+  commentId: Overload:Vintagestory.API.Common.EntityFloatStats.ToTreeAttributes
+  href: Vintagestory.API.Common.EntityFloatStats.html#Vintagestory_API_Common_EntityFloatStats_ToTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_System_Boolean_
+  name: ToTreeAttributes
+  nameWithType: EntityFloatStats.ToTreeAttributes
+  fullName: Vintagestory.API.Common.EntityFloatStats.ToTreeAttributes
+- uid: Vintagestory.API.Datastructures.ITreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.ITreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  name: ITreeAttribute
+  nameWithType: ITreeAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute
+- uid: Vintagestory.API.Common.EntityFloatStats.FromTreeAttributes*
+  commentId: Overload:Vintagestory.API.Common.EntityFloatStats.FromTreeAttributes
+  href: Vintagestory.API.Common.EntityFloatStats.html#Vintagestory_API_Common_EntityFloatStats_FromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_
+  name: FromTreeAttributes
+  nameWithType: EntityFloatStats.FromTreeAttributes
+  fullName: Vintagestory.API.Common.EntityFloatStats.FromTreeAttributes

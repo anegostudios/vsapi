@@ -1,0 +1,184 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EnumHandling
+  commentId: T:Vintagestory.API.Common.EnumHandling
+  id: EnumHandling
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.EnumHandling.Handled
+  - Vintagestory.API.Common.EnumHandling.PassThrough
+  - Vintagestory.API.Common.EnumHandling.PreventDefault
+  - Vintagestory.API.Common.EnumHandling.PreventSubsequent
+  langs:
+  - csharp
+  - vb
+  name: EnumHandling
+  nameWithType: EnumHandling
+  fullName: Vintagestory.API.Common.EnumHandling
+  type: Enum
+  source:
+    remote:
+      path: VintagestoryApi/Common/EnumHandling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnumHandling
+    path: Common/EnumHandling.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Tells the engine how to handle default or subsequent similar behaviors
+  example: []
+  syntax:
+    content: public enum EnumHandling
+    content.vb: Public Enum EnumHandling
+- uid: Vintagestory.API.Common.EnumHandling.PassThrough
+  commentId: F:Vintagestory.API.Common.EnumHandling.PassThrough
+  id: PassThrough
+  parent: Vintagestory.API.Common.EnumHandling
+  langs:
+  - csharp
+  - vb
+  name: PassThrough
+  nameWithType: EnumHandling.PassThrough
+  fullName: Vintagestory.API.Common.EnumHandling.PassThrough
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/EnumHandling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PassThrough
+    path: Common/EnumHandling.cs
+    startLine: 10
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Do run default and subsequent behaviors/event listeneres, ignore return values
+  example: []
+  syntax:
+    content: PassThrough = 0
+    return:
+      type: Vintagestory.API.Common.EnumHandling
+- uid: Vintagestory.API.Common.EnumHandling.Handled
+  commentId: F:Vintagestory.API.Common.EnumHandling.Handled
+  id: Handled
+  parent: Vintagestory.API.Common.EnumHandling
+  langs:
+  - csharp
+  - vb
+  name: Handled
+  nameWithType: EnumHandling.Handled
+  fullName: Vintagestory.API.Common.EnumHandling.Handled
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/EnumHandling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Handled
+    path: Common/EnumHandling.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Do run default and subsequent behaviors/event listeneres, use return values
+  example: []
+  syntax:
+    content: Handled = 1
+    return:
+      type: Vintagestory.API.Common.EnumHandling
+- uid: Vintagestory.API.Common.EnumHandling.PreventDefault
+  commentId: F:Vintagestory.API.Common.EnumHandling.PreventDefault
+  id: PreventDefault
+  parent: Vintagestory.API.Common.EnumHandling
+  langs:
+  - csharp
+  - vb
+  name: PreventDefault
+  nameWithType: EnumHandling.PreventDefault
+  fullName: Vintagestory.API.Common.EnumHandling.PreventDefault
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/EnumHandling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PreventDefault
+    path: Common/EnumHandling.cs
+    startLine: 18
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Do not execute the default behavior, but let subsequent behaviors/event listeneres still execute, use return values
+  example: []
+  syntax:
+    content: PreventDefault = 2
+    return:
+      type: Vintagestory.API.Common.EnumHandling
+- uid: Vintagestory.API.Common.EnumHandling.PreventSubsequent
+  commentId: F:Vintagestory.API.Common.EnumHandling.PreventSubsequent
+  id: PreventSubsequent
+  parent: Vintagestory.API.Common.EnumHandling
+  langs:
+  - csharp
+  - vb
+  name: PreventSubsequent
+  nameWithType: EnumHandling.PreventSubsequent
+  fullName: Vintagestory.API.Common.EnumHandling.PreventSubsequent
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/EnumHandling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PreventSubsequent
+    path: Common/EnumHandling.cs
+    startLine: 22
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Do not execute default behavior and do not let subsequent behaviors/event listeneres execute, use return values
+  example: []
+  syntax:
+    content: PreventSubsequent = 3
+    return:
+      type: Vintagestory.API.Common.EnumHandling
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.EnumHandling
+  commentId: T:Vintagestory.API.Common.EnumHandling
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumHandling.html
+  name: EnumHandling
+  nameWithType: EnumHandling
+  fullName: Vintagestory.API.Common.EnumHandling

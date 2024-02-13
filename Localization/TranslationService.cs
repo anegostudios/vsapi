@@ -213,10 +213,10 @@ namespace Vintagestory.API.Config
         //
         private string PluralFormat(string value, object[] args)
         {
-            int start = value.IndexOf("{p");
+            int start = value.IndexOfOrdinal("{p");
             if (value.Length < start + 5) return TryFormat(value, args);   // Fail: too short to even allow sense checks without error
             int pluralOffset = start + 4;
-            int end = value.IndexOf("}", pluralOffset);
+            int end = value.IndexOf('}', pluralOffset);
 
             // Sense checks
             char c = value[start + 2];
@@ -507,7 +507,7 @@ namespace Vintagestory.API.Config
                 case 0:
                     entryCache[key] = entry.Value;
                     break;
-                case 1 when key.EndsWith("*"):
+                case 1 when key.EndsWith('*'):
                     wildcardCache[key.TrimEnd('*')] = entry.Value;
                     break;
                     // we can probably do better here, as we have our own wildcardsearch now

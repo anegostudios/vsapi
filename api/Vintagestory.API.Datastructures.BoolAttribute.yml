@@ -1,0 +1,1071 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Datastructures.BoolAttribute
+  commentId: T:Vintagestory.API.Datastructures.BoolAttribute
+  id: BoolAttribute
+  parent: Vintagestory.API.Datastructures
+  children:
+  - Vintagestory.API.Datastructures.BoolAttribute.#ctor
+  - Vintagestory.API.Datastructures.BoolAttribute.#ctor(System.Boolean)
+  - Vintagestory.API.Datastructures.BoolAttribute.Clone
+  - Vintagestory.API.Datastructures.BoolAttribute.FromBytes(System.IO.BinaryReader)
+  - Vintagestory.API.Datastructures.BoolAttribute.GetAttributeId
+  - Vintagestory.API.Datastructures.BoolAttribute.ToBytes(System.IO.BinaryWriter)
+  - Vintagestory.API.Datastructures.BoolAttribute.ToJsonToken
+  langs:
+  - csharp
+  - vb
+  name: BoolAttribute
+  nameWithType: BoolAttribute
+  fullName: Vintagestory.API.Datastructures.BoolAttribute
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/BoolAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BoolAttribute
+    path: Datastructures/AttributeTree/BoolAttribute.cs
+    startLine: 4
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: 'public class BoolAttribute : ScalarAttribute<bool>, IAttribute'
+    content.vb: Public Class BoolAttribute Inherits ScalarAttribute(Of Boolean) Implements IAttribute
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}
+  implements:
+  - Vintagestory.API.Datastructures.IAttribute
+  inheritedMembers:
+  - Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.value
+  - Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  - Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.Equals(System.Object)
+  - Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.GetValue
+  - Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.ToString
+  - Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.GetHashCode
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Vintagestory.API.Datastructures.BoolAttribute.#ctor
+  commentId: M:Vintagestory.API.Datastructures.BoolAttribute.#ctor
+  id: '#ctor'
+  parent: Vintagestory.API.Datastructures.BoolAttribute
+  langs:
+  - csharp
+  - vb
+  name: BoolAttribute()
+  nameWithType: BoolAttribute.BoolAttribute()
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.BoolAttribute()
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/BoolAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Datastructures/AttributeTree/BoolAttribute.cs
+    startLine: 6
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public BoolAttribute()
+    content.vb: Public Sub New()
+  overload: Vintagestory.API.Datastructures.BoolAttribute.#ctor*
+  nameWithType.vb: BoolAttribute.New()
+  fullName.vb: Vintagestory.API.Datastructures.BoolAttribute.New()
+  name.vb: New()
+- uid: Vintagestory.API.Datastructures.BoolAttribute.#ctor(System.Boolean)
+  commentId: M:Vintagestory.API.Datastructures.BoolAttribute.#ctor(System.Boolean)
+  id: '#ctor(System.Boolean)'
+  parent: Vintagestory.API.Datastructures.BoolAttribute
+  langs:
+  - csharp
+  - vb
+  name: BoolAttribute(bool)
+  nameWithType: BoolAttribute.BoolAttribute(bool)
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.BoolAttribute(bool)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/BoolAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Datastructures/AttributeTree/BoolAttribute.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public BoolAttribute(bool value)
+    parameters:
+    - id: value
+      type: System.Boolean
+    content.vb: Public Sub New(value As Boolean)
+  overload: Vintagestory.API.Datastructures.BoolAttribute.#ctor*
+  nameWithType.vb: BoolAttribute.New(Boolean)
+  fullName.vb: Vintagestory.API.Datastructures.BoolAttribute.New(Boolean)
+  name.vb: New(Boolean)
+- uid: Vintagestory.API.Datastructures.BoolAttribute.FromBytes(System.IO.BinaryReader)
+  commentId: M:Vintagestory.API.Datastructures.BoolAttribute.FromBytes(System.IO.BinaryReader)
+  id: FromBytes(System.IO.BinaryReader)
+  parent: Vintagestory.API.Datastructures.BoolAttribute
+  langs:
+  - csharp
+  - vb
+  name: FromBytes(BinaryReader)
+  nameWithType: BoolAttribute.FromBytes(BinaryReader)
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.FromBytes(System.IO.BinaryReader)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/BoolAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FromBytes
+    path: Datastructures/AttributeTree/BoolAttribute.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  example: []
+  syntax:
+    content: public void FromBytes(BinaryReader stream)
+    parameters:
+    - id: stream
+      type: System.IO.BinaryReader
+    content.vb: Public Sub FromBytes(stream As BinaryReader)
+  overload: Vintagestory.API.Datastructures.BoolAttribute.FromBytes*
+  implements:
+  - Vintagestory.API.Datastructures.IAttribute.FromBytes(System.IO.BinaryReader)
+- uid: Vintagestory.API.Datastructures.BoolAttribute.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Datastructures.BoolAttribute.ToBytes(System.IO.BinaryWriter)
+  id: ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Datastructures.BoolAttribute
+  langs:
+  - csharp
+  - vb
+  name: ToBytes(BinaryWriter)
+  nameWithType: BoolAttribute.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.ToBytes(System.IO.BinaryWriter)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/BoolAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToBytes
+    path: Datastructures/AttributeTree/BoolAttribute.cs
+    startLine: 21
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  example: []
+  syntax:
+    content: public void ToBytes(BinaryWriter stream)
+    parameters:
+    - id: stream
+      type: System.IO.BinaryWriter
+    content.vb: Public Sub ToBytes(stream As BinaryWriter)
+  overload: Vintagestory.API.Datastructures.BoolAttribute.ToBytes*
+  implements:
+  - Vintagestory.API.Datastructures.IAttribute.ToBytes(System.IO.BinaryWriter)
+- uid: Vintagestory.API.Datastructures.BoolAttribute.GetAttributeId
+  commentId: M:Vintagestory.API.Datastructures.BoolAttribute.GetAttributeId
+  id: GetAttributeId
+  parent: Vintagestory.API.Datastructures.BoolAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetAttributeId()
+  nameWithType: BoolAttribute.GetAttributeId()
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.GetAttributeId()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/BoolAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetAttributeId
+    path: Datastructures/AttributeTree/BoolAttribute.cs
+    startLine: 26
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  example: []
+  syntax:
+    content: public int GetAttributeId()
+    return:
+      type: System.Int32
+    content.vb: Public Function GetAttributeId() As Integer
+  overload: Vintagestory.API.Datastructures.BoolAttribute.GetAttributeId*
+  implements:
+  - Vintagestory.API.Datastructures.IAttribute.GetAttributeId
+- uid: Vintagestory.API.Datastructures.BoolAttribute.ToJsonToken
+  commentId: M:Vintagestory.API.Datastructures.BoolAttribute.ToJsonToken
+  id: ToJsonToken
+  parent: Vintagestory.API.Datastructures.BoolAttribute
+  langs:
+  - csharp
+  - vb
+  name: ToJsonToken()
+  nameWithType: BoolAttribute.ToJsonToken()
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.ToJsonToken()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/BoolAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToJsonToken
+    path: Datastructures/AttributeTree/BoolAttribute.cs
+    startLine: 31
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  example: []
+  syntax:
+    content: public override string ToJsonToken()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function ToJsonToken() As String
+  overridden: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.ToJsonToken
+  overload: Vintagestory.API.Datastructures.BoolAttribute.ToJsonToken*
+  implements:
+  - Vintagestory.API.Datastructures.IAttribute.ToJsonToken
+- uid: Vintagestory.API.Datastructures.BoolAttribute.Clone
+  commentId: M:Vintagestory.API.Datastructures.BoolAttribute.Clone
+  id: Clone
+  parent: Vintagestory.API.Datastructures.BoolAttribute
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: BoolAttribute.Clone()
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.Clone()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/BoolAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Clone
+    path: Datastructures/AttributeTree/BoolAttribute.cs
+    startLine: 37
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  example: []
+  syntax:
+    content: public IAttribute Clone()
+    return:
+      type: Vintagestory.API.Datastructures.IAttribute
+    content.vb: Public Function Clone() As IAttribute
+  overload: Vintagestory.API.Datastructures.BoolAttribute.Clone*
+  implements:
+  - Vintagestory.API.Datastructures.IAttribute.Clone
+references:
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}
+  commentId: T:Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}
+  parent: Vintagestory.API.Datastructures
+  definition: Vintagestory.API.Datastructures.ScalarAttribute`1
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html
+  name: ScalarAttribute<bool>
+  nameWithType: ScalarAttribute<bool>
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<bool>
+  nameWithType.vb: ScalarAttribute(Of Boolean)
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of Boolean)
+  name.vb: ScalarAttribute(Of Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1
+    name: ScalarAttribute
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1
+    name: ScalarAttribute
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vintagestory.API.Datastructures.IAttribute
+  commentId: T:Vintagestory.API.Datastructures.IAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.IAttribute.html
+  name: IAttribute
+  nameWithType: IAttribute
+  fullName: Vintagestory.API.Datastructures.IAttribute
+- uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.value
+  commentId: F:Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.value
+  parent: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}
+  definition: Vintagestory.API.Datastructures.ScalarAttribute`1.value
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_value
+  name: value
+  nameWithType: ScalarAttribute<bool>.value
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<bool>.value
+  nameWithType.vb: ScalarAttribute(Of Boolean).value
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of Boolean).value
+- uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  parent: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}
+  definition: Vintagestory.API.Datastructures.ScalarAttribute`1.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_
+  name: Equals(IWorldAccessor, IAttribute)
+  nameWithType: ScalarAttribute<bool>.Equals(IWorldAccessor, IAttribute)
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<bool>.Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Datastructures.IAttribute)
+  nameWithType.vb: ScalarAttribute(Of Boolean).Equals(IWorldAccessor, IAttribute)
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of Boolean).Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Datastructures.IAttribute)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+    name: Equals
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+    name: Equals
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.Equals(System.Object)
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.Equals(System.Object)
+  parent: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}
+  definition: Vintagestory.API.Datastructures.ScalarAttribute`1.Equals(System.Object)
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_Equals_System_Object_
+  name: Equals(object)
+  nameWithType: ScalarAttribute<bool>.Equals(object)
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<bool>.Equals(object)
+  nameWithType.vb: ScalarAttribute(Of Boolean).Equals(Object)
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of Boolean).Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.Equals(System.Object)
+    name: Equals
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.Equals(System.Object)
+    name: Equals
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.GetValue
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.GetValue
+  parent: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}
+  definition: Vintagestory.API.Datastructures.ScalarAttribute`1.GetValue
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetValue
+  name: GetValue()
+  nameWithType: ScalarAttribute<bool>.GetValue()
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<bool>.GetValue()
+  nameWithType.vb: ScalarAttribute(Of Boolean).GetValue()
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of Boolean).GetValue()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.GetValue
+    name: GetValue
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetValue
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.GetValue
+    name: GetValue
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetValue
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.ToString
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.ToString
+  parent: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}
+  definition: Vintagestory.API.Datastructures.ScalarAttribute`1.ToString
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToString
+  name: ToString()
+  nameWithType: ScalarAttribute<bool>.ToString()
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<bool>.ToString()
+  nameWithType.vb: ScalarAttribute(Of Boolean).ToString()
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of Boolean).ToString()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.ToString
+    name: ToString
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.ToString
+    name: ToString
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToString
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.GetHashCode
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.GetHashCode
+  parent: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}
+  definition: Vintagestory.API.Datastructures.ScalarAttribute`1.GetHashCode
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetHashCode
+  name: GetHashCode()
+  nameWithType: ScalarAttribute<bool>.GetHashCode()
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<bool>.GetHashCode()
+  nameWithType.vb: ScalarAttribute(Of Boolean).GetHashCode()
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of Boolean).GetHashCode()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.GetHashCode
+    name: GetHashCode
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetHashCode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.GetHashCode
+    name: GetHashCode
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetHashCode
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Datastructures.ScalarAttribute`1
+  commentId: T:Vintagestory.API.Datastructures.ScalarAttribute`1
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html
+  name: ScalarAttribute<T>
+  nameWithType: ScalarAttribute<T>
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<T>
+  nameWithType.vb: ScalarAttribute(Of T)
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of T)
+  name.vb: ScalarAttribute(Of T)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1
+    name: ScalarAttribute
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1
+    name: ScalarAttribute
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Datastructures.ScalarAttribute`1.value
+  commentId: F:Vintagestory.API.Datastructures.ScalarAttribute`1.value
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_value
+  name: value
+  nameWithType: ScalarAttribute<T>.value
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<T>.value
+  nameWithType.vb: ScalarAttribute(Of T).value
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of T).value
+- uid: Vintagestory.API.Datastructures.ScalarAttribute`1.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute`1.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_
+  name: Equals(IWorldAccessor, IAttribute)
+  nameWithType: ScalarAttribute<T>.Equals(IWorldAccessor, IAttribute)
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<T>.Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Datastructures.IAttribute)
+  nameWithType.vb: ScalarAttribute(Of T).Equals(IWorldAccessor, IAttribute)
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of T).Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Datastructures.IAttribute)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+    name: Equals
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+    name: Equals
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.ScalarAttribute`1.Equals(System.Object)
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute`1.Equals(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_Equals_System_Object_
+  name: Equals(object)
+  nameWithType: ScalarAttribute<T>.Equals(object)
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<T>.Equals(object)
+  nameWithType.vb: ScalarAttribute(Of T).Equals(Object)
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of T).Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.Equals(System.Object)
+    name: Equals
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.Equals(System.Object)
+    name: Equals
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Datastructures.ScalarAttribute`1.GetValue
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute`1.GetValue
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetValue
+  name: GetValue()
+  nameWithType: ScalarAttribute<T>.GetValue()
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<T>.GetValue()
+  nameWithType.vb: ScalarAttribute(Of T).GetValue()
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of T).GetValue()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.GetValue
+    name: GetValue
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetValue
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.GetValue
+    name: GetValue
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetValue
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.ScalarAttribute`1.ToString
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute`1.ToString
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToString
+  name: ToString()
+  nameWithType: ScalarAttribute<T>.ToString()
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<T>.ToString()
+  nameWithType.vb: ScalarAttribute(Of T).ToString()
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of T).ToString()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.ToString
+    name: ToString
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.ToString
+    name: ToString
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToString
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.ScalarAttribute`1.GetHashCode
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute`1.GetHashCode
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetHashCode
+  name: GetHashCode()
+  nameWithType: ScalarAttribute<T>.GetHashCode()
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<T>.GetHashCode()
+  nameWithType.vb: ScalarAttribute(Of T).GetHashCode()
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of T).GetHashCode()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.GetHashCode
+    name: GetHashCode
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetHashCode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.GetHashCode
+    name: GetHashCode
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetHashCode
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.BoolAttribute.#ctor*
+  commentId: Overload:Vintagestory.API.Datastructures.BoolAttribute.#ctor
+  href: Vintagestory.API.Datastructures.BoolAttribute.html#Vintagestory_API_Datastructures_BoolAttribute__ctor
+  name: BoolAttribute
+  nameWithType: BoolAttribute.BoolAttribute
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.BoolAttribute
+  nameWithType.vb: BoolAttribute.New
+  fullName.vb: Vintagestory.API.Datastructures.BoolAttribute.New
+  name.vb: New
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Datastructures.BoolAttribute.FromBytes*
+  commentId: Overload:Vintagestory.API.Datastructures.BoolAttribute.FromBytes
+  href: Vintagestory.API.Datastructures.BoolAttribute.html#Vintagestory_API_Datastructures_BoolAttribute_FromBytes_System_IO_BinaryReader_
+  name: FromBytes
+  nameWithType: BoolAttribute.FromBytes
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.FromBytes
+- uid: Vintagestory.API.Datastructures.IAttribute.FromBytes(System.IO.BinaryReader)
+  commentId: M:Vintagestory.API.Datastructures.IAttribute.FromBytes(System.IO.BinaryReader)
+  parent: Vintagestory.API.Datastructures.IAttribute
+  isExternal: true
+  href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_FromBytes_System_IO_BinaryReader_
+  name: FromBytes(BinaryReader)
+  nameWithType: IAttribute.FromBytes(BinaryReader)
+  fullName: Vintagestory.API.Datastructures.IAttribute.FromBytes(System.IO.BinaryReader)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute.FromBytes(System.IO.BinaryReader)
+    name: FromBytes
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_FromBytes_System_IO_BinaryReader_
+  - name: (
+  - uid: System.IO.BinaryReader
+    name: BinaryReader
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute.FromBytes(System.IO.BinaryReader)
+    name: FromBytes
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_FromBytes_System_IO_BinaryReader_
+  - name: (
+  - uid: System.IO.BinaryReader
+    name: BinaryReader
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  - name: )
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Vintagestory.API.Datastructures.BoolAttribute.ToBytes*
+  commentId: Overload:Vintagestory.API.Datastructures.BoolAttribute.ToBytes
+  href: Vintagestory.API.Datastructures.BoolAttribute.html#Vintagestory_API_Datastructures_BoolAttribute_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes
+  nameWithType: BoolAttribute.ToBytes
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.ToBytes
+- uid: Vintagestory.API.Datastructures.IAttribute.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Datastructures.IAttribute.ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Datastructures.IAttribute
+  isExternal: true
+  href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes(BinaryWriter)
+  nameWithType: IAttribute.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Datastructures.IAttribute.ToBytes(System.IO.BinaryWriter)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute.ToBytes(System.IO.BinaryWriter)
+    name: ToBytes
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToBytes_System_IO_BinaryWriter_
+  - name: (
+  - uid: System.IO.BinaryWriter
+    name: BinaryWriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute.ToBytes(System.IO.BinaryWriter)
+    name: ToBytes
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToBytes_System_IO_BinaryWriter_
+  - name: (
+  - uid: System.IO.BinaryWriter
+    name: BinaryWriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  - name: )
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: Vintagestory.API.Datastructures.BoolAttribute.GetAttributeId*
+  commentId: Overload:Vintagestory.API.Datastructures.BoolAttribute.GetAttributeId
+  href: Vintagestory.API.Datastructures.BoolAttribute.html#Vintagestory_API_Datastructures_BoolAttribute_GetAttributeId
+  name: GetAttributeId
+  nameWithType: BoolAttribute.GetAttributeId
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.GetAttributeId
+- uid: Vintagestory.API.Datastructures.IAttribute.GetAttributeId
+  commentId: M:Vintagestory.API.Datastructures.IAttribute.GetAttributeId
+  parent: Vintagestory.API.Datastructures.IAttribute
+  href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetAttributeId
+  name: GetAttributeId()
+  nameWithType: IAttribute.GetAttributeId()
+  fullName: Vintagestory.API.Datastructures.IAttribute.GetAttributeId()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute.GetAttributeId
+    name: GetAttributeId
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetAttributeId
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute.GetAttributeId
+    name: GetAttributeId
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetAttributeId
+  - name: (
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.ToJsonToken
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.ToJsonToken
+  parent: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}
+  definition: Vintagestory.API.Datastructures.ScalarAttribute`1.ToJsonToken
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToJsonToken
+  name: ToJsonToken()
+  nameWithType: ScalarAttribute<bool>.ToJsonToken()
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<bool>.ToJsonToken()
+  nameWithType.vb: ScalarAttribute(Of Boolean).ToJsonToken()
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of Boolean).ToJsonToken()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.ToJsonToken
+    name: ToJsonToken
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToJsonToken
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Boolean}.ToJsonToken
+    name: ToJsonToken
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToJsonToken
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.BoolAttribute.ToJsonToken*
+  commentId: Overload:Vintagestory.API.Datastructures.BoolAttribute.ToJsonToken
+  href: Vintagestory.API.Datastructures.BoolAttribute.html#Vintagestory_API_Datastructures_BoolAttribute_ToJsonToken
+  name: ToJsonToken
+  nameWithType: BoolAttribute.ToJsonToken
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.ToJsonToken
+- uid: Vintagestory.API.Datastructures.IAttribute.ToJsonToken
+  commentId: M:Vintagestory.API.Datastructures.IAttribute.ToJsonToken
+  parent: Vintagestory.API.Datastructures.IAttribute
+  href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToJsonToken
+  name: ToJsonToken()
+  nameWithType: IAttribute.ToJsonToken()
+  fullName: Vintagestory.API.Datastructures.IAttribute.ToJsonToken()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute.ToJsonToken
+    name: ToJsonToken
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToJsonToken
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute.ToJsonToken
+    name: ToJsonToken
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToJsonToken
+  - name: (
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Datastructures.ScalarAttribute`1.ToJsonToken
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute`1.ToJsonToken
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToJsonToken
+  name: ToJsonToken()
+  nameWithType: ScalarAttribute<T>.ToJsonToken()
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<T>.ToJsonToken()
+  nameWithType.vb: ScalarAttribute(Of T).ToJsonToken()
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of T).ToJsonToken()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.ToJsonToken
+    name: ToJsonToken
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToJsonToken
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.ToJsonToken
+    name: ToJsonToken
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToJsonToken
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.BoolAttribute.Clone*
+  commentId: Overload:Vintagestory.API.Datastructures.BoolAttribute.Clone
+  href: Vintagestory.API.Datastructures.BoolAttribute.html#Vintagestory_API_Datastructures_BoolAttribute_Clone
+  name: Clone
+  nameWithType: BoolAttribute.Clone
+  fullName: Vintagestory.API.Datastructures.BoolAttribute.Clone
+- uid: Vintagestory.API.Datastructures.IAttribute.Clone
+  commentId: M:Vintagestory.API.Datastructures.IAttribute.Clone
+  parent: Vintagestory.API.Datastructures.IAttribute
+  href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_Clone
+  name: Clone()
+  nameWithType: IAttribute.Clone()
+  fullName: Vintagestory.API.Datastructures.IAttribute.Clone()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute.Clone
+    name: Clone
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_Clone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute.Clone
+    name: Clone
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_Clone
+  - name: (
+  - name: )

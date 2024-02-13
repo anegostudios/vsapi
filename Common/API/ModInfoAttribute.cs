@@ -23,6 +23,9 @@ namespace Vintagestory.API.Common
         /// <summary> The version of this mod. For example "2.10.4". (optional) </summary>
         public string Version { get; set; }
 
+        /// <summary> Is this mod part of the core game, i.e. vanilla Vintage Story?  (optional)  <br/>Only affects whether the player is given a warning when attempting to disable this mod.<br/>Mods other than VSSurvival, VSEssentials, VSCreative should not use this, obviously... </summary>
+        public bool CoreMod { get; set; }
+
         /// <summary>
         /// The network version of this mod. Change this number when a user that has an older version of your mod should not be allowed to connected to server with a newer version. If not set, the version value is used.
         /// </summary>

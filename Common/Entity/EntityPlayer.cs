@@ -70,6 +70,7 @@ namespace Vintagestory.API.Common
 
         public EntityTalkUtil talkUtil;
         public Vec2f BodyYawLimits;
+        public Vec2f HeadYawLimits;
 
         /// <summary>
         /// Used to assist if this EntityPlayer needs to be repartitioned
@@ -792,7 +793,7 @@ namespace Vintagestory.API.Common
             bool shouldRightReadyStack = 
                 haveHandUseOrHit 
                 && !servercontrols.LeftMouseDown && !servercontrols.RightMouseDown 
-                && Controls.HandUse == EnumHandInteract.None 
+            //    && Controls.HandUse == EnumHandInteract.None - Cannot wait until fully complete, need to start at 95% completion of the action
                 && !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldHitAnimation) && !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldUseAnimation)
             ;
             bool isRightReadyStack = plrAnimMngr.IsRightHeldReadyActive();
@@ -940,6 +941,7 @@ namespace Vintagestory.API.Common
                             capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.Serialize(1));
                             BodyYaw = (float)Math.Round(BodyYaw * GameMath.RAD2DEG / 90) * 90f * GameMath.DEG2RAD;
                             BodyYawLimits = new Vec2f(BodyYaw - 0.2f, BodyYaw + 0.2f);
+                            HeadYawLimits = new Vec2f(BodyYaw - GameMath.PIHALF*0.95f, BodyYaw + GameMath.PIHALF * 0.95f);
                         }
                         return true;
                     }
@@ -948,6 +950,7 @@ namespace Vintagestory.API.Common
                         AnimManager.StopAnimation("sitidle");
                         capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.Serialize(0));
                         BodyYawLimits = null;
+                        HeadYawLimits = null;
                     }
                 }
                 else
@@ -957,6 +960,7 @@ namespace Vintagestory.API.Common
                         AnimManager.StopAnimation("sitidle");
                         capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.Serialize(0));
                         BodyYawLimits = null;
+                        HeadYawLimits = null;
                     }
                 }
 
@@ -968,7 +972,24 @@ namespace Vintagestory.API.Common
 
         protected bool canPlayEdgeSitAnim()
         {
-            var frontPos = Pos.XYZ.AsBlockPos;
+            var bl = Api.World.BlockAccessor;
+            var pos = Pos.XYZ;
+
+            float byaw = BodyYawLimits == null ? Pos.Yaw : (BodyYawLimits.X + BodyYawLimits.Y) / 2f;
+            float cosYaw = GameMath.Cos(byaw + GameMath.PI / 2);
+            float sinYaw = GameMath.Sin(byaw + GameMath.PI / 2);
+            var frontBelowPos = new Vec3d(Pos.X + sinYaw * 0.3f, Pos.Y - 1, Pos.Z + cosYaw * 0.3f).AsBlockPos;
+            
+            Block frontBelowBlock = bl.GetBlock(frontBelowPos);
+            var frontBellowCollBoxes = frontBelowBlock.GetCollisionBoxes(bl, frontBelowPos);
+            if (frontBellowCollBoxes == null) return true;
+
+            double sitHeight = pos.Y - (frontBelowPos.Y + frontBellowCollBoxes.Max(box => box.Y2));
+
+            return sitHeight >= 0.45;
+
+            // WTF is this completely utter nonesense
+            /*var frontPos = Pos.XYZ.AsBlockPos;
             frontPos.Y = (int)Math.Ceiling(Pos.Y);
 
             float byaw = BodyYawLimits == null ? Pos.Yaw : (BodyYawLimits.X + BodyYawLimits.Y) / 2f;
@@ -987,7 +1008,7 @@ namespace Vintagestory.API.Common
             var frontFree = face != null && !frontBlock.CanAttachBlockAt(Api.World.BlockAccessor, frontBlock, frontPos, face);
             var frontBelowFree = frontBelowBlock.GetCollisionBoxes(Api.World.BlockAccessor, frontBelowPos)?.FirstOrDefault(c => c.Y2 > 0.5) == null;
 
-            return frontFree && frontBelowFree && backBlock.Replaceable < 6000;
+            return frontFree && frontBelowFree && backBlock.Replaceable < 6000;*/
         }
 
 
@@ -1230,6 +1251,11 @@ namespace Vintagestory.API.Common
                 if (tt != EnumTalkType.Death && !Alive) return;
 
                 talkUtil.Talk(tt);
+            }
+
+            if (packetid == (int)EntityServerPacketId.PlayPlayerAnim)
+            {
+                AnimManager.StartAnimation(SerializerUtil.Deserialize<string>(data));
             }
 
             base.OnReceivedServerPacket(packetid, data);

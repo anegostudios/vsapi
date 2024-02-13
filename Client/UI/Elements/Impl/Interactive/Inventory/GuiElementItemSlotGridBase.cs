@@ -611,7 +611,7 @@ namespace Vintagestory.API.Client
                     }
 
                     // Prio 9: Contained anywhere in the description
-                    if (cachedtext.CaseInsensitiveContains(searchText))
+                    if (cachedtext.CaseInsensitiveContains(searchText, StringComparison.InvariantCultureIgnoreCase))
                     {
                         wSlots.Add(val.Key, new WeightedSlot() { slot = slot, weight = 3 });
                         continue;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Vintagestory.API.Config;
@@ -247,12 +248,33 @@ namespace Vintagestory.API.Common
             if (arg == null) return defaultValue;
 
             int val;
-            if (int.TryParse(arg, out val))
+            if (TryParseIntFancy(arg, out val))
             {
                 return val;
             }
 
             return defaultValue;
+        }
+
+        /// <summary>
+        /// Tries to parse a string to an integer, returns 0 if it fails
+        /// <br/>Enhancements over system int.TryParse():  (1) the thousands separator (comma) is ignored  (2) hex numbers are possible with 0x prefix  (3) uint values over int.MaxValue are possible (may convert to a negative int, but that can be converted back to the original uint), more generally any valid long value is permitted
+        /// <br/>All three enhancements are useful if we ever need, in a command, to set - for example - a color value (32 bits) from hex or unsigned decimal
+        /// </summary>
+        /// <param name="arg"></param>
+        /// <param name="val"></param>
+        /// <returns></returns>
+        private bool TryParseIntFancy(string arg, out int val)
+        {
+            arg = arg.Replace(",", "");
+            if (arg.StartsWith("0x") && int.TryParse(arg.Substring(2), NumberStyles.HexNumber, GlobalConstants.DefaultCultureInfo, out val)) return true;
+            if (long.TryParse(arg, out long longval))
+            {
+                val = (int)longval;
+                return true;
+            }
+            val = 0;
+            return false;
         }
 
         /// <summary>

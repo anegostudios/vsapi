@@ -1,0 +1,122 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ChunkDirtyDelegate
+  commentId: T:Vintagestory.API.Common.ChunkDirtyDelegate
+  id: ChunkDirtyDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: ChunkDirtyDelegate
+  nameWithType: ChunkDirtyDelegate
+  fullName: Vintagestory.API.Common.ChunkDirtyDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IEventAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ChunkDirtyDelegate
+    path: Common/API/IEventAPI.cs
+    startLine: 28
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: For handling dirty chunks
+  example: []
+  syntax:
+    content: public delegate void ChunkDirtyDelegate(Vec3i chunkCoord, IWorldChunk chunk, EnumChunkDirtyReason reason)
+    parameters:
+    - id: chunkCoord
+      type: Vintagestory.API.MathTools.Vec3i
+      description: ''
+    - id: chunk
+      type: Vintagestory.API.Common.IWorldChunk
+      description: ''
+    - id: reason
+      type: Vintagestory.API.Common.EnumChunkDirtyReason
+      description: ''
+    content.vb: Public Delegate Sub ChunkDirtyDelegate(chunkCoord As Vec3i, chunk As IWorldChunk, reason As EnumChunkDirtyReason)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.MathTools.Vec3i
+  commentId: T:Vintagestory.API.MathTools.Vec3i
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3i.html
+  name: Vec3i
+  nameWithType: Vec3i
+  fullName: Vintagestory.API.MathTools.Vec3i
+- uid: Vintagestory.API.Common.IWorldChunk
+  commentId: T:Vintagestory.API.Common.IWorldChunk
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldChunk.html
+  name: IWorldChunk
+  nameWithType: IWorldChunk
+  fullName: Vintagestory.API.Common.IWorldChunk
+- uid: Vintagestory.API.Common.EnumChunkDirtyReason
+  commentId: T:Vintagestory.API.Common.EnumChunkDirtyReason
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumChunkDirtyReason.html
+  name: EnumChunkDirtyReason
+  nameWithType: EnumChunkDirtyReason
+  fullName: Vintagestory.API.Common.EnumChunkDirtyReason
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html

@@ -125,6 +125,11 @@ namespace Vintagestory.API.Client
         ITextureAtlasAPI EntityTextureAtlas { get; }
 
         /// <summary>
+        /// Fetch color configs, used for accessibility e.g. for knapping wireframe gridlines
+        /// </summary>
+        IColorPresets ColorPreset { get; }
+
+        /// <summary>
         /// API for Rendering stuff onto the screen using OpenGL
         /// </summary>
         IShaderAPI Shader { get; }

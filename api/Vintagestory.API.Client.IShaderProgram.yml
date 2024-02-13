@@ -1,0 +1,1104 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.IShaderProgram
+  commentId: T:Vintagestory.API.Client.IShaderProgram
+  id: IShaderProgram
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.IShaderProgram.BindTexture2D(System.String,System.Int32,System.Int32)
+  - Vintagestory.API.Client.IShaderProgram.BindTextureCube(System.String,System.Int32,System.Int32)
+  - Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge
+  - Vintagestory.API.Client.IShaderProgram.Compile
+  - Vintagestory.API.Client.IShaderProgram.Disposed
+  - Vintagestory.API.Client.IShaderProgram.FragmentShader
+  - Vintagestory.API.Client.IShaderProgram.GeometryShader
+  - Vintagestory.API.Client.IShaderProgram.HasUniform(System.String)
+  - Vintagestory.API.Client.IShaderProgram.LoadError
+  - Vintagestory.API.Client.IShaderProgram.PassId
+  - Vintagestory.API.Client.IShaderProgram.PassName
+  - Vintagestory.API.Client.IShaderProgram.Stop
+  - Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Int32)
+  - Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Single)
+  - Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec2f)
+  - Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec3f)
+  - Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec4f)
+  - Vintagestory.API.Client.IShaderProgram.UniformMatrices(System.String,System.Int32,System.Single[])
+  - Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3(System.String,System.Int32,System.Single[])
+  - Vintagestory.API.Client.IShaderProgram.UniformMatrix(System.String,System.Single[])
+  - Vintagestory.API.Client.IShaderProgram.Uniforms4(System.String,System.Int32,System.Single[])
+  - Vintagestory.API.Client.IShaderProgram.Use
+  - Vintagestory.API.Client.IShaderProgram.VertexShader
+  langs:
+  - csharp
+  - vb
+  name: IShaderProgram
+  nameWithType: IShaderProgram
+  fullName: Vintagestory.API.Client.IShaderProgram
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IShaderProgram
+    path: Client/Render/IShaderProgram.cs
+    startLine: 32
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: 'public interface IShaderProgram : IDisposable'
+    content.vb: Public Interface IShaderProgram Inherits IDisposable
+  inheritedMembers:
+  - System.IDisposable.Dispose
+- uid: Vintagestory.API.Client.IShaderProgram.PassId
+  commentId: P:Vintagestory.API.Client.IShaderProgram.PassId
+  id: PassId
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: PassId
+  nameWithType: IShaderProgram.PassId
+  fullName: Vintagestory.API.Client.IShaderProgram.PassId
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PassId
+    path: Client/Render/IShaderProgram.cs
+    startLine: 37
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: A uniqe shader pass number assigned to each shader program
+  example: []
+  syntax:
+    content: int PassId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property PassId As Integer
+  overload: Vintagestory.API.Client.IShaderProgram.PassId*
+- uid: Vintagestory.API.Client.IShaderProgram.PassName
+  commentId: P:Vintagestory.API.Client.IShaderProgram.PassName
+  id: PassName
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: PassName
+  nameWithType: IShaderProgram.PassName
+  fullName: Vintagestory.API.Client.IShaderProgram.PassName
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PassName
+    path: Client/Render/IShaderProgram.cs
+    startLine: 42
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The name it was registered with. If you want to load this shader from a file, make sure the use the filename here
+  example: []
+  syntax:
+    content: string PassName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property PassName As String
+  overload: Vintagestory.API.Client.IShaderProgram.PassName*
+- uid: Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge
+  commentId: P:Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge
+  id: ClampTexturesToEdge
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ClampTexturesToEdge
+  nameWithType: IShaderProgram.ClampTexturesToEdge
+  fullName: Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ClampTexturesToEdge
+    path: Client/Render/IShaderProgram.cs
+    startLine: 47
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: If true, it well configure the textures to clamp to the edge (CLAMP_TO_EDGE). Requires the textureid to be defined using SetTextureIds
+  example: []
+  syntax:
+    content: bool ClampTexturesToEdge { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property ClampTexturesToEdge As Boolean
+  overload: Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge*
+- uid: Vintagestory.API.Client.IShaderProgram.VertexShader
+  commentId: P:Vintagestory.API.Client.IShaderProgram.VertexShader
+  id: VertexShader
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: VertexShader
+  nameWithType: IShaderProgram.VertexShader
+  fullName: Vintagestory.API.Client.IShaderProgram.VertexShader
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: VertexShader
+    path: Client/Render/IShaderProgram.cs
+    startLine: 52
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The vertex shader of this shader program
+  example: []
+  syntax:
+    content: IShader VertexShader { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.IShader
+    content.vb: Property VertexShader As IShader
+  overload: Vintagestory.API.Client.IShaderProgram.VertexShader*
+- uid: Vintagestory.API.Client.IShaderProgram.FragmentShader
+  commentId: P:Vintagestory.API.Client.IShaderProgram.FragmentShader
+  id: FragmentShader
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: FragmentShader
+  nameWithType: IShaderProgram.FragmentShader
+  fullName: Vintagestory.API.Client.IShaderProgram.FragmentShader
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FragmentShader
+    path: Client/Render/IShaderProgram.cs
+    startLine: 57
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The fragment shader of this shader program
+  example: []
+  syntax:
+    content: IShader FragmentShader { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.IShader
+    content.vb: Property FragmentShader As IShader
+  overload: Vintagestory.API.Client.IShaderProgram.FragmentShader*
+- uid: Vintagestory.API.Client.IShaderProgram.GeometryShader
+  commentId: P:Vintagestory.API.Client.IShaderProgram.GeometryShader
+  id: GeometryShader
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: GeometryShader
+  nameWithType: IShaderProgram.GeometryShader
+  fullName: Vintagestory.API.Client.IShaderProgram.GeometryShader
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GeometryShader
+    path: Client/Render/IShaderProgram.cs
+    startLine: 62
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The geometry shader of this shader program
+  example: []
+  syntax:
+    content: IShader GeometryShader { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.IShader
+    content.vb: Property GeometryShader As IShader
+  overload: Vintagestory.API.Client.IShaderProgram.GeometryShader*
+- uid: Vintagestory.API.Client.IShaderProgram.Use
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Use
+  id: Use
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Use()
+  nameWithType: IShaderProgram.Use()
+  fullName: Vintagestory.API.Client.IShaderProgram.Use()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Use
+    path: Client/Render/IShaderProgram.cs
+    startLine: 65
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void Use()
+    content.vb: Sub Use()
+  overload: Vintagestory.API.Client.IShaderProgram.Use*
+- uid: Vintagestory.API.Client.IShaderProgram.Stop
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Stop
+  id: Stop
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Stop()
+  nameWithType: IShaderProgram.Stop()
+  fullName: Vintagestory.API.Client.IShaderProgram.Stop()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Stop
+    path: Client/Render/IShaderProgram.cs
+    startLine: 66
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void Stop()
+    content.vb: Sub [Stop]()
+  overload: Vintagestory.API.Client.IShaderProgram.Stop*
+- uid: Vintagestory.API.Client.IShaderProgram.Compile
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Compile
+  id: Compile
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Compile()
+  nameWithType: IShaderProgram.Compile()
+  fullName: Vintagestory.API.Client.IShaderProgram.Compile()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Compile
+    path: Client/Render/IShaderProgram.cs
+    startLine: 67
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: bool Compile()
+    return:
+      type: System.Boolean
+    content.vb: Function Compile() As Boolean
+  overload: Vintagestory.API.Client.IShaderProgram.Compile*
+- uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Single)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Single)
+  id: Uniform(System.String,System.Single)
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Uniform(string, float)
+  nameWithType: IShaderProgram.Uniform(string, float)
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniform(string, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Uniform
+    path: Client/Render/IShaderProgram.cs
+    startLine: 69
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void Uniform(string uniformName, float value)
+    parameters:
+    - id: uniformName
+      type: System.String
+    - id: value
+      type: System.Single
+    content.vb: Sub Uniform(uniformName As String, value As Single)
+  overload: Vintagestory.API.Client.IShaderProgram.Uniform*
+  nameWithType.vb: IShaderProgram.Uniform(String, Single)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.Uniform(String, Single)
+  name.vb: Uniform(String, Single)
+- uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Int32)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Int32)
+  id: Uniform(System.String,System.Int32)
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Uniform(string, int)
+  nameWithType: IShaderProgram.Uniform(string, int)
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniform(string, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Uniform
+    path: Client/Render/IShaderProgram.cs
+    startLine: 71
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void Uniform(string uniformName, int value)
+    parameters:
+    - id: uniformName
+      type: System.String
+    - id: value
+      type: System.Int32
+    content.vb: Sub Uniform(uniformName As String, value As Integer)
+  overload: Vintagestory.API.Client.IShaderProgram.Uniform*
+  nameWithType.vb: IShaderProgram.Uniform(String, Integer)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.Uniform(String, Integer)
+  name.vb: Uniform(String, Integer)
+- uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec2f)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec2f)
+  id: Uniform(System.String,Vintagestory.API.MathTools.Vec2f)
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Uniform(string, Vec2f)
+  nameWithType: IShaderProgram.Uniform(string, Vec2f)
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniform(string, Vintagestory.API.MathTools.Vec2f)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Uniform
+    path: Client/Render/IShaderProgram.cs
+    startLine: 73
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void Uniform(string uniformName, Vec2f value)
+    parameters:
+    - id: uniformName
+      type: System.String
+    - id: value
+      type: Vintagestory.API.MathTools.Vec2f
+    content.vb: Sub Uniform(uniformName As String, value As Vec2f)
+  overload: Vintagestory.API.Client.IShaderProgram.Uniform*
+  nameWithType.vb: IShaderProgram.Uniform(String, Vec2f)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.Uniform(String, Vintagestory.API.MathTools.Vec2f)
+  name.vb: Uniform(String, Vec2f)
+- uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec3f)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec3f)
+  id: Uniform(System.String,Vintagestory.API.MathTools.Vec3f)
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Uniform(string, Vec3f)
+  nameWithType: IShaderProgram.Uniform(string, Vec3f)
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniform(string, Vintagestory.API.MathTools.Vec3f)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Uniform
+    path: Client/Render/IShaderProgram.cs
+    startLine: 75
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void Uniform(string uniformName, Vec3f value)
+    parameters:
+    - id: uniformName
+      type: System.String
+    - id: value
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: Sub Uniform(uniformName As String, value As Vec3f)
+  overload: Vintagestory.API.Client.IShaderProgram.Uniform*
+  nameWithType.vb: IShaderProgram.Uniform(String, Vec3f)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.Uniform(String, Vintagestory.API.MathTools.Vec3f)
+  name.vb: Uniform(String, Vec3f)
+- uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec4f)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec4f)
+  id: Uniform(System.String,Vintagestory.API.MathTools.Vec4f)
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Uniform(string, Vec4f)
+  nameWithType: IShaderProgram.Uniform(string, Vec4f)
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniform(string, Vintagestory.API.MathTools.Vec4f)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Uniform
+    path: Client/Render/IShaderProgram.cs
+    startLine: 77
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void Uniform(string uniformName, Vec4f value)
+    parameters:
+    - id: uniformName
+      type: System.String
+    - id: value
+      type: Vintagestory.API.MathTools.Vec4f
+    content.vb: Sub Uniform(uniformName As String, value As Vec4f)
+  overload: Vintagestory.API.Client.IShaderProgram.Uniform*
+  nameWithType.vb: IShaderProgram.Uniform(String, Vec4f)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.Uniform(String, Vintagestory.API.MathTools.Vec4f)
+  name.vb: Uniform(String, Vec4f)
+- uid: Vintagestory.API.Client.IShaderProgram.Uniforms4(System.String,System.Int32,System.Single[])
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Uniforms4(System.String,System.Int32,System.Single[])
+  id: Uniforms4(System.String,System.Int32,System.Single[])
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Uniforms4(string, int, float[])
+  nameWithType: IShaderProgram.Uniforms4(string, int, float[])
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniforms4(string, int, float[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Uniforms4
+    path: Client/Render/IShaderProgram.cs
+    startLine: 79
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void Uniforms4(string uniformName, int count, float[] values)
+    parameters:
+    - id: uniformName
+      type: System.String
+    - id: count
+      type: System.Int32
+    - id: values
+      type: System.Single[]
+    content.vb: Sub Uniforms4(uniformName As String, count As Integer, values As Single())
+  overload: Vintagestory.API.Client.IShaderProgram.Uniforms4*
+  nameWithType.vb: IShaderProgram.Uniforms4(String, Integer, Single())
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.Uniforms4(String, Integer, Single())
+  name.vb: Uniforms4(String, Integer, Single())
+- uid: Vintagestory.API.Client.IShaderProgram.UniformMatrix(System.String,System.Single[])
+  commentId: M:Vintagestory.API.Client.IShaderProgram.UniformMatrix(System.String,System.Single[])
+  id: UniformMatrix(System.String,System.Single[])
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: UniformMatrix(string, float[])
+  nameWithType: IShaderProgram.UniformMatrix(string, float[])
+  fullName: Vintagestory.API.Client.IShaderProgram.UniformMatrix(string, float[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: UniformMatrix
+    path: Client/Render/IShaderProgram.cs
+    startLine: 81
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void UniformMatrix(string uniformName, float[] matrix)
+    parameters:
+    - id: uniformName
+      type: System.String
+    - id: matrix
+      type: System.Single[]
+    content.vb: Sub UniformMatrix(uniformName As String, matrix As Single())
+  overload: Vintagestory.API.Client.IShaderProgram.UniformMatrix*
+  nameWithType.vb: IShaderProgram.UniformMatrix(String, Single())
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.UniformMatrix(String, Single())
+  name.vb: UniformMatrix(String, Single())
+- uid: Vintagestory.API.Client.IShaderProgram.BindTexture2D(System.String,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.BindTexture2D(System.String,System.Int32,System.Int32)
+  id: BindTexture2D(System.String,System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: BindTexture2D(string, int, int)
+  nameWithType: IShaderProgram.BindTexture2D(string, int, int)
+  fullName: Vintagestory.API.Client.IShaderProgram.BindTexture2D(string, int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BindTexture2D
+    path: Client/Render/IShaderProgram.cs
+    startLine: 83
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void BindTexture2D(string samplerName, int textureId, int textureNumber)
+    parameters:
+    - id: samplerName
+      type: System.String
+    - id: textureId
+      type: System.Int32
+    - id: textureNumber
+      type: System.Int32
+    content.vb: Sub BindTexture2D(samplerName As String, textureId As Integer, textureNumber As Integer)
+  overload: Vintagestory.API.Client.IShaderProgram.BindTexture2D*
+  nameWithType.vb: IShaderProgram.BindTexture2D(String, Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.BindTexture2D(String, Integer, Integer)
+  name.vb: BindTexture2D(String, Integer, Integer)
+- uid: Vintagestory.API.Client.IShaderProgram.BindTextureCube(System.String,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.BindTextureCube(System.String,System.Int32,System.Int32)
+  id: BindTextureCube(System.String,System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: BindTextureCube(string, int, int)
+  nameWithType: IShaderProgram.BindTextureCube(string, int, int)
+  fullName: Vintagestory.API.Client.IShaderProgram.BindTextureCube(string, int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BindTextureCube
+    path: Client/Render/IShaderProgram.cs
+    startLine: 85
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void BindTextureCube(string samplerName, int textureId, int textureNumber)
+    parameters:
+    - id: samplerName
+      type: System.String
+    - id: textureId
+      type: System.Int32
+    - id: textureNumber
+      type: System.Int32
+    content.vb: Sub BindTextureCube(samplerName As String, textureId As Integer, textureNumber As Integer)
+  overload: Vintagestory.API.Client.IShaderProgram.BindTextureCube*
+  nameWithType.vb: IShaderProgram.BindTextureCube(String, Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.BindTextureCube(String, Integer, Integer)
+  name.vb: BindTextureCube(String, Integer, Integer)
+- uid: Vintagestory.API.Client.IShaderProgram.UniformMatrices(System.String,System.Int32,System.Single[])
+  commentId: M:Vintagestory.API.Client.IShaderProgram.UniformMatrices(System.String,System.Int32,System.Single[])
+  id: UniformMatrices(System.String,System.Int32,System.Single[])
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: UniformMatrices(string, int, float[])
+  nameWithType: IShaderProgram.UniformMatrices(string, int, float[])
+  fullName: Vintagestory.API.Client.IShaderProgram.UniformMatrices(string, int, float[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: UniformMatrices
+    path: Client/Render/IShaderProgram.cs
+    startLine: 87
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void UniformMatrices(string uniformName, int count, float[] matrix)
+    parameters:
+    - id: uniformName
+      type: System.String
+    - id: count
+      type: System.Int32
+    - id: matrix
+      type: System.Single[]
+    content.vb: Sub UniformMatrices(uniformName As String, count As Integer, matrix As Single())
+  overload: Vintagestory.API.Client.IShaderProgram.UniformMatrices*
+  nameWithType.vb: IShaderProgram.UniformMatrices(String, Integer, Single())
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.UniformMatrices(String, Integer, Single())
+  name.vb: UniformMatrices(String, Integer, Single())
+- uid: Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3(System.String,System.Int32,System.Single[])
+  commentId: M:Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3(System.String,System.Int32,System.Single[])
+  id: UniformMatrices4x3(System.String,System.Int32,System.Single[])
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: UniformMatrices4x3(string, int, float[])
+  nameWithType: IShaderProgram.UniformMatrices4x3(string, int, float[])
+  fullName: Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3(string, int, float[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: UniformMatrices4x3
+    path: Client/Render/IShaderProgram.cs
+    startLine: 89
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void UniformMatrices4x3(string uniformName, int count, float[] matrix)
+    parameters:
+    - id: uniformName
+      type: System.String
+    - id: count
+      type: System.Int32
+    - id: matrix
+      type: System.Single[]
+    content.vb: Sub UniformMatrices4x3(uniformName As String, count As Integer, matrix As Single())
+  overload: Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3*
+  nameWithType.vb: IShaderProgram.UniformMatrices4x3(String, Integer, Single())
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3(String, Integer, Single())
+  name.vb: UniformMatrices4x3(String, Integer, Single())
+- uid: Vintagestory.API.Client.IShaderProgram.HasUniform(System.String)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.HasUniform(System.String)
+  id: HasUniform(System.String)
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: HasUniform(string)
+  nameWithType: IShaderProgram.HasUniform(string)
+  fullName: Vintagestory.API.Client.IShaderProgram.HasUniform(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: HasUniform
+    path: Client/Render/IShaderProgram.cs
+    startLine: 91
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: bool HasUniform(string uniformName)
+    parameters:
+    - id: uniformName
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Function HasUniform(uniformName As String) As Boolean
+  overload: Vintagestory.API.Client.IShaderProgram.HasUniform*
+  nameWithType.vb: IShaderProgram.HasUniform(String)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.HasUniform(String)
+  name.vb: HasUniform(String)
+- uid: Vintagestory.API.Client.IShaderProgram.Disposed
+  commentId: P:Vintagestory.API.Client.IShaderProgram.Disposed
+  id: Disposed
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Disposed
+  nameWithType: IShaderProgram.Disposed
+  fullName: Vintagestory.API.Client.IShaderProgram.Disposed
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Disposed
+    path: Client/Render/IShaderProgram.cs
+    startLine: 97
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: True if this shader has been disposed
+  example: []
+  syntax:
+    content: bool Disposed { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property Disposed As Boolean
+  overload: Vintagestory.API.Client.IShaderProgram.Disposed*
+- uid: Vintagestory.API.Client.IShaderProgram.LoadError
+  commentId: P:Vintagestory.API.Client.IShaderProgram.LoadError
+  id: LoadError
+  parent: Vintagestory.API.Client.IShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: LoadError
+  nameWithType: IShaderProgram.LoadError
+  fullName: Vintagestory.API.Client.IShaderProgram.LoadError
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LoadError
+    path: Client/Render/IShaderProgram.cs
+    startLine: 98
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: bool LoadError { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property LoadError As Boolean
+  overload: Vintagestory.API.Client.IShaderProgram.LoadError*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.IShaderProgram.PassId*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.PassId
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_PassId
+  name: PassId
+  nameWithType: IShaderProgram.PassId
+  fullName: Vintagestory.API.Client.IShaderProgram.PassId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Client.IShaderProgram.PassName*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.PassName
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_PassName
+  name: PassName
+  nameWithType: IShaderProgram.PassName
+  fullName: Vintagestory.API.Client.IShaderProgram.PassName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_ClampTexturesToEdge
+  name: ClampTexturesToEdge
+  nameWithType: IShaderProgram.ClampTexturesToEdge
+  fullName: Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Client.IShaderProgram.VertexShader*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.VertexShader
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_VertexShader
+  name: VertexShader
+  nameWithType: IShaderProgram.VertexShader
+  fullName: Vintagestory.API.Client.IShaderProgram.VertexShader
+- uid: Vintagestory.API.Client.IShader
+  commentId: T:Vintagestory.API.Client.IShader
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IShader.html
+  name: IShader
+  nameWithType: IShader
+  fullName: Vintagestory.API.Client.IShader
+- uid: Vintagestory.API.Client.IShaderProgram.FragmentShader*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.FragmentShader
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_FragmentShader
+  name: FragmentShader
+  nameWithType: IShaderProgram.FragmentShader
+  fullName: Vintagestory.API.Client.IShaderProgram.FragmentShader
+- uid: Vintagestory.API.Client.IShaderProgram.GeometryShader*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.GeometryShader
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_GeometryShader
+  name: GeometryShader
+  nameWithType: IShaderProgram.GeometryShader
+  fullName: Vintagestory.API.Client.IShaderProgram.GeometryShader
+- uid: Vintagestory.API.Client.IShaderProgram.Use*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.Use
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Use
+  name: Use
+  nameWithType: IShaderProgram.Use
+  fullName: Vintagestory.API.Client.IShaderProgram.Use
+- uid: Vintagestory.API.Client.IShaderProgram.Stop*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.Stop
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Stop
+  name: Stop
+  nameWithType: IShaderProgram.Stop
+  fullName: Vintagestory.API.Client.IShaderProgram.Stop
+- uid: Vintagestory.API.Client.IShaderProgram.Compile*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.Compile
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Compile
+  name: Compile
+  nameWithType: IShaderProgram.Compile
+  fullName: Vintagestory.API.Client.IShaderProgram.Compile
+- uid: Vintagestory.API.Client.IShaderProgram.Uniform*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.Uniform
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_System_Single_
+  name: Uniform
+  nameWithType: IShaderProgram.Uniform
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniform
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.MathTools.Vec2f
+  commentId: T:Vintagestory.API.MathTools.Vec2f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec2f.html
+  name: Vec2f
+  nameWithType: Vec2f
+  fullName: Vintagestory.API.MathTools.Vec2f
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.MathTools.Vec3f
+  commentId: T:Vintagestory.API.MathTools.Vec3f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3f.html
+  name: Vec3f
+  nameWithType: Vec3f
+  fullName: Vintagestory.API.MathTools.Vec3f
+- uid: Vintagestory.API.MathTools.Vec4f
+  commentId: T:Vintagestory.API.MathTools.Vec4f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec4f.html
+  name: Vec4f
+  nameWithType: Vec4f
+  fullName: Vintagestory.API.MathTools.Vec4f
+- uid: Vintagestory.API.Client.IShaderProgram.Uniforms4*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.Uniforms4
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniforms4_System_String_System_Int32_System_Single___
+  name: Uniforms4
+  nameWithType: IShaderProgram.Uniforms4
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniforms4
+- uid: System.Single[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.UniformMatrix*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.UniformMatrix
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UniformMatrix_System_String_System_Single___
+  name: UniformMatrix
+  nameWithType: IShaderProgram.UniformMatrix
+  fullName: Vintagestory.API.Client.IShaderProgram.UniformMatrix
+- uid: Vintagestory.API.Client.IShaderProgram.BindTexture2D*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.BindTexture2D
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_BindTexture2D_System_String_System_Int32_System_Int32_
+  name: BindTexture2D
+  nameWithType: IShaderProgram.BindTexture2D
+  fullName: Vintagestory.API.Client.IShaderProgram.BindTexture2D
+- uid: Vintagestory.API.Client.IShaderProgram.BindTextureCube*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.BindTextureCube
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_BindTextureCube_System_String_System_Int32_System_Int32_
+  name: BindTextureCube
+  nameWithType: IShaderProgram.BindTextureCube
+  fullName: Vintagestory.API.Client.IShaderProgram.BindTextureCube
+- uid: Vintagestory.API.Client.IShaderProgram.UniformMatrices*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.UniformMatrices
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UniformMatrices_System_String_System_Int32_System_Single___
+  name: UniformMatrices
+  nameWithType: IShaderProgram.UniformMatrices
+  fullName: Vintagestory.API.Client.IShaderProgram.UniformMatrices
+- uid: Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UniformMatrices4x3_System_String_System_Int32_System_Single___
+  name: UniformMatrices4x3
+  nameWithType: IShaderProgram.UniformMatrices4x3
+  fullName: Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3
+- uid: Vintagestory.API.Client.IShaderProgram.HasUniform*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.HasUniform
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_HasUniform_System_String_
+  name: HasUniform
+  nameWithType: IShaderProgram.HasUniform
+  fullName: Vintagestory.API.Client.IShaderProgram.HasUniform
+- uid: Vintagestory.API.Client.IShaderProgram.Disposed*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.Disposed
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Disposed
+  name: Disposed
+  nameWithType: IShaderProgram.Disposed
+  fullName: Vintagestory.API.Client.IShaderProgram.Disposed
+- uid: Vintagestory.API.Client.IShaderProgram.LoadError*
+  commentId: Overload:Vintagestory.API.Client.IShaderProgram.LoadError
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_LoadError
+  name: LoadError
+  nameWithType: IShaderProgram.LoadError
+  fullName: Vintagestory.API.Client.IShaderProgram.LoadError

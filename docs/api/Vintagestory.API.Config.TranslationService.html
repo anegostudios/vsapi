@@ -1,895 +1,852 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TranslationService
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TranslationService
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class TranslationService | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class TranslationService | VintageStory API ">
+      
+      <meta name="description" content="A service, which provides access to translated strings, based on key/value pairs read from JSON files.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Config.TranslationService">
-  
-  
-  <h1 id="Vintagestory_API_Config_TranslationService" data-uid="Vintagestory.API.Config.TranslationService" class="text-break">Class TranslationService
-  </h1>
-  <div class="markdown level0 summary"><p>A service, which provides access to translated strings, based on key/value pairs read from JSON files.</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">TranslationService</span></div>
-  </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Vintagestory.API.Config.ITranslationService.html">ITranslationService</a></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Config.html">Vintagestory.API.Config</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Config_TranslationService_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class TranslationService : object, ITranslationService</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService__ctor_System_String_Vintagestory_API_Common_ILogger_Vintagestory_API_Common_IAssetManager_Vintagestory_API_Client_EnumLinebreakBehavior_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.%23ctor(System.String%2CVintagestory.API.Common.ILogger%2CVintagestory.API.Common.IAssetManager%2CVintagestory.API.Client.EnumLinebreakBehavior)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L46">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService__ctor_" data-uid="Vintagestory.API.Config.TranslationService.#ctor*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService__ctor_System_String_Vintagestory_API_Common_ILogger_Vintagestory_API_Common_IAssetManager_Vintagestory_API_Client_EnumLinebreakBehavior_" data-uid="Vintagestory.API.Config.TranslationService.#ctor(System.String,Vintagestory.API.Common.ILogger,Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.EnumLinebreakBehavior)">TranslationService(String, ILogger, IAssetManager, EnumLinebreakBehavior)</h4>
-  <div class="markdown level1 summary"><p>Initialises a new instance of the <a class="xref" href="Vintagestory.API.Config.TranslationService.html">TranslationService</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TranslationService(string languageCode, ILogger logger, IAssetManager assetManager = null, EnumLinebreakBehavior lbBehavior = EnumLinebreakBehavior.AfterWord)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">languageCode</span></td>
-        <td><p>The language code that this translation service caters for.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></td>
-        <td><span class="parametername">logger</span></td>
-        <td><p>The <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a> instance used within the sided API.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a></td>
-        <td><span class="parametername">assetManager</span></td>
-        <td><p>The <a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a> instance used within the sided API.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></td>
-        <td><span class="parametername">lbBehavior</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_LanguageCode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.LanguageCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L58">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_LanguageCode_" data-uid="Vintagestory.API.Config.TranslationService.LanguageCode*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_LanguageCode" data-uid="Vintagestory.API.Config.TranslationService.LanguageCode">LanguageCode</h4>
-  <div class="markdown level1 summary"><p>Gets the language code that this translation service caters for.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string LanguageCode { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>A string, that contains the language code that this translation service caters for.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_LineBreakBehavior.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.LineBreakBehavior%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L36">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_LineBreakBehavior_" data-uid="Vintagestory.API.Config.TranslationService.LineBreakBehavior*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_LineBreakBehavior" data-uid="Vintagestory.API.Config.TranslationService.LineBreakBehavior">LineBreakBehavior</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumLinebreakBehavior LineBreakBehavior { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_EnsureLoaded.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.EnsureLoaded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L137">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_EnsureLoaded_" data-uid="Vintagestory.API.Config.TranslationService.EnsureLoaded*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_EnsureLoaded" data-uid="Vintagestory.API.Config.TranslationService.EnsureLoaded">EnsureLoaded()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected void EnsureLoaded()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_Format_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.Format(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L154">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_Format_" data-uid="Vintagestory.API.Config.TranslationService.Format*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_Format_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.Format(System.String,System.Object[])">Format(String, Object[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected string Format(string value, params object[] args)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">value</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_Get_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.Get(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L378">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_Get_" data-uid="Vintagestory.API.Config.TranslationService.Get*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_Get_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.Get(System.String,System.Object[])">Get(String, Object[])</h4>
-  <div class="markdown level1 summary"><p>Gets a translation for a given key.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Get(string key, params object[] args)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>The key.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td><p>The arguments to interpolate into the resulting string.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated
-value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_GetAllEntries.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.GetAllEntries%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L387">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_GetAllEntries_" data-uid="Vintagestory.API.Config.TranslationService.GetAllEntries*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_GetAllEntries" data-uid="Vintagestory.API.Config.TranslationService.GetAllEntries">GetAllEntries()</h4>
-  <div class="markdown level1 summary"><p>Retrieves a list of all translation entries within the cache.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, string&gt; GetAllEntries()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-        <td><p>A dictionary of localisation entries.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_GetIfExists_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.GetIfExists(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L361">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_GetIfExists_" data-uid="Vintagestory.API.Config.TranslationService.GetIfExists*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_GetIfExists_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.GetIfExists(System.String,System.Object[])">GetIfExists(String, Object[])</h4>
-  <div class="markdown level1 summary"><p>Gets a translation for a given key, if any matching wildcarded keys are found within the cache.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string GetIfExists(string key, params object[] args)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>The key.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td><p>The arguments to interpolate into the resulting string.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated
-value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_GetMatching_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.GetMatching(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L417">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_GetMatching_" data-uid="Vintagestory.API.Config.TranslationService.GetMatching*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_GetMatching_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.GetMatching(System.String,System.Object[])">GetMatching(String, Object[])</h4>
-  <div class="markdown level1 summary"><p>Gets a translation for a given key, if any matching wildcarded keys are found within the cache.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string GetMatching(string key, params object[] args)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>The key.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td><p>The arguments to interpolate into the resulting string.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated
-value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_GetMatchingIfExists_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.GetMatchingIfExists(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L477">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_GetMatchingIfExists_" data-uid="Vintagestory.API.Config.TranslationService.GetMatchingIfExists*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_GetMatchingIfExists_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.GetMatchingIfExists(System.String,System.Object[])">GetMatchingIfExists(String, Object[])</h4>
-  <div class="markdown level1 summary"><p>Gets a translation for a given key, if any matching wildcarded keys are found within the cache.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string GetMatchingIfExists(string key, params object[] args)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>The key.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td><p>The arguments to interpolate into the resulting string.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>Returns <code>null</code> as a default value, if no results are found; otherwise returns the pre-formatted, translated value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_GetUnformatted_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.GetUnformatted(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L401">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_GetUnformatted_" data-uid="Vintagestory.API.Config.TranslationService.GetUnformatted*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_GetUnformatted_System_String_" data-uid="Vintagestory.API.Config.TranslationService.GetUnformatted(System.String)">GetUnformatted(String)</h4>
-  <div class="markdown level1 summary"><p>Gets the raw, unformatted translated value for the key provided.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string GetUnformatted(string key)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>The key.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>Returns the key as a default value, if no results are found; otherwise returns the unformatted, translated
-value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_HasTranslation_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.HasTranslation(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L432">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_HasTranslation_" data-uid="Vintagestory.API.Config.TranslationService.HasTranslation*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_HasTranslation_System_String_System_Boolean_" data-uid="Vintagestory.API.Config.TranslationService.HasTranslation(System.String,System.Boolean)">HasTranslation(String, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Determines whether the specified key has a translation.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool HasTranslation(string key, bool findWildcarded = true)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>The key.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">findWildcarded</span></td>
-        <td><p>if set to <code>true</code>, the scan will include any wildcarded values.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p><code>true</code> if the specified key has a translation; otherwise, <code>false</code>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_HasTranslation_System_String_System_Boolean_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.HasTranslation(System.String%2CSystem.Boolean%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L444">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_HasTranslation_" data-uid="Vintagestory.API.Config.TranslationService.HasTranslation*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_HasTranslation_System_String_System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Config.TranslationService.HasTranslation(System.String,System.Boolean,System.Boolean)">HasTranslation(String, Boolean, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Determines whether the specified key has a translation.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool HasTranslation(string key, bool findWildcarded, bool logErrors)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">key</span></td>
-        <td><p>The key.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">findWildcarded</span></td>
-        <td><p>if set to <code>true</code>, the scan will include any wildcarded values.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">logErrors</span></td>
-        <td><p>if set to <code>true</code>, will add &quot;Lang key not found&quot; logging</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p><code>true</code> if the specified key has a translation; otherwise, <code>false</code>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_InitialiseSearch.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.InitialiseSearch%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L532">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_InitialiseSearch_" data-uid="Vintagestory.API.Config.TranslationService.InitialiseSearch*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_InitialiseSearch" data-uid="Vintagestory.API.Config.TranslationService.InitialiseSearch">InitialiseSearch()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void InitialiseSearch()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_Invalidate.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.Invalidate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L149">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_Invalidate_" data-uid="Vintagestory.API.Config.TranslationService.Invalidate*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_Invalidate" data-uid="Vintagestory.API.Config.TranslationService.Invalidate">Invalidate()</h4>
-  <div class="markdown level1 summary"><p>Sets the loaded flag to false, so that the next lookup causes it to reload all translation entries</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Invalidate()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_Load_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.Load(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L63">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_Load_" data-uid="Vintagestory.API.Config.TranslationService.Load*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_Load_System_Boolean_" data-uid="Vintagestory.API.Config.TranslationService.Load(System.Boolean)">Load(Boolean)</h4>
-  <div class="markdown level1 summary"><p>Loads translation key/value pairs from all relevant JSON files within the Asset Manager.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Load(bool lazyLoad = false)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">lazyLoad</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_PreLoad_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.PreLoad(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L101">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_PreLoad_" data-uid="Vintagestory.API.Config.TranslationService.PreLoad*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_PreLoad_System_String_System_Boolean_" data-uid="Vintagestory.API.Config.TranslationService.PreLoad(System.String,System.Boolean)">PreLoad(String, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Loads only the vanilla JSON files, without dealing with mods, or resource-packs.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void PreLoad(string assetsPath, bool lazyLoad = false)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">assetsPath</span></td>
-        <td><p>The root assets path to load the vanilla files from.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">lazyLoad</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService_UseAssetManager_Vintagestory_API_Common_IAssetManager_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService.UseAssetManager(Vintagestory.API.Common.IAssetManager)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L464">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Config_TranslationService_UseAssetManager_" data-uid="Vintagestory.API.Config.TranslationService.UseAssetManager*"></a>
-  <h4 id="Vintagestory_API_Config_TranslationService_UseAssetManager_Vintagestory_API_Common_IAssetManager_" data-uid="Vintagestory.API.Config.TranslationService.UseAssetManager(Vintagestory.API.Common.IAssetManager)">UseAssetManager(IAssetManager)</h4>
-  <div class="markdown level1 summary"><p>Specifies an asset manager to use, when the service has been lazy-loaded.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UseAssetManager(IAssetManager assetManager)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a></td>
-        <td><span class="parametername">assetManager</span></td>
-        <td><p>The <a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a> instance used within the sided API.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Vintagestory.API.Config.ITranslationService.html">ITranslationService</a>
-  </div>
-  <h3 id="seealso">See Also</h3>
-  <div class="seealso">
-      <div><a class="xref" href="Vintagestory.API.Config.ITranslationService.html">ITranslationService</a></div>
-  </div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Config_TranslationService.md&amp;value=---%0Auid%3A%20Vintagestory.API.Config.TranslationService%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Localization/TranslationService.cs/#L25" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="Vintagestory.API.Config.TranslationService">
+
+
+
+  <h1 id="Vintagestory_API_Config_TranslationService" data-uid="Vintagestory.API.Config.TranslationService" class="text-break">
+Class TranslationService  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Config.html">Config</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>A service, which provides access to translated strings, based on key/value pairs read from JSON files.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TranslationService : ITranslationService</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">TranslationService</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Config.ITranslationService.html">ITranslationService</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_Config_TranslationService__ctor_" data-uid="Vintagestory.API.Config.TranslationService.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService__ctor_System_String_Vintagestory_API_Common_ILogger_Vintagestory_API_Common_IAssetManager_Vintagestory_API_Client_EnumLinebreakBehavior_" data-uid="Vintagestory.API.Config.TranslationService.#ctor(System.String,Vintagestory.API.Common.ILogger,Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.EnumLinebreakBehavior)">
+  TranslationService(string, ILogger, IAssetManager, EnumLinebreakBehavior)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initialises a new instance of the <a class="xref" href="Vintagestory.API.Config.TranslationService.html">TranslationService</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TranslationService(string languageCode, ILogger logger, IAssetManager assetManager = null, EnumLinebreakBehavior lbBehavior = EnumLinebreakBehavior.AfterWord)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>languageCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The language code that this translation service caters for.</p>
+</dd>
+    <dt><code>logger</code> <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
+    <dd><p>The <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a> instance used within the sided API.</p>
+</dd>
+    <dt><code>assetManager</code> <a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a></dt>
+    <dd><p>The <a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a> instance used within the sided API.</p>
+</dd>
+    <dt><code>lbBehavior</code> <a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Config_TranslationService_LanguageCode_" data-uid="Vintagestory.API.Config.TranslationService.LanguageCode*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_LanguageCode" data-uid="Vintagestory.API.Config.TranslationService.LanguageCode">
+  LanguageCode
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the language code that this translation service caters for.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string LanguageCode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A string, that contains the language code that this translation service caters for.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_LineBreakBehavior_" data-uid="Vintagestory.API.Config.TranslationService.LineBreakBehavior*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_LineBreakBehavior" data-uid="Vintagestory.API.Config.TranslationService.LineBreakBehavior">
+  LineBreakBehavior
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumLinebreakBehavior LineBreakBehavior { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.EnumLinebreakBehavior.html">EnumLinebreakBehavior</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Config_TranslationService_EnsureLoaded_" data-uid="Vintagestory.API.Config.TranslationService.EnsureLoaded*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_EnsureLoaded" data-uid="Vintagestory.API.Config.TranslationService.EnsureLoaded">
+  EnsureLoaded()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void EnsureLoaded()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_Format_" data-uid="Vintagestory.API.Config.TranslationService.Format*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_Format_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.Format(System.String,System.Object[])">
+  Format(string, params object[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected string Format(string value, params object[] args)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_Get_" data-uid="Vintagestory.API.Config.TranslationService.Get*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_Get_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.Get(System.String,System.Object[])">
+  Get(string, params object[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a translation for a given key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Get(string key, params object[] args)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key.</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>The arguments to interpolate into the resulting string.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated
+value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_GetAllEntries_" data-uid="Vintagestory.API.Config.TranslationService.GetAllEntries*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_GetAllEntries" data-uid="Vintagestory.API.Config.TranslationService.GetAllEntries">
+  GetAllEntries()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a list of all translation entries within the cache.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, string&gt; GetAllEntries()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>A dictionary of localisation entries.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_GetIfExists_" data-uid="Vintagestory.API.Config.TranslationService.GetIfExists*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_GetIfExists_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.GetIfExists(System.String,System.Object[])">
+  GetIfExists(string, params object[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a translation for a given key, if any matching wildcarded keys are found within the cache.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetIfExists(string key, params object[] args)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key.</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>The arguments to interpolate into the resulting string.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated
+value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_GetMatching_" data-uid="Vintagestory.API.Config.TranslationService.GetMatching*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_GetMatching_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.GetMatching(System.String,System.Object[])">
+  GetMatching(string, params object[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a translation for a given key, if any matching wildcarded keys are found within the cache.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetMatching(string key, params object[] args)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key.</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>The arguments to interpolate into the resulting string.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated
+value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_GetMatchingIfExists_" data-uid="Vintagestory.API.Config.TranslationService.GetMatchingIfExists*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_GetMatchingIfExists_System_String_System_Object___" data-uid="Vintagestory.API.Config.TranslationService.GetMatchingIfExists(System.String,System.Object[])">
+  GetMatchingIfExists(string, params object[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets a translation for a given key, if any matching wildcarded keys are found within the cache.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetMatchingIfExists(string key, params object[] args)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key.</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>The arguments to interpolate into the resulting string.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Returns <code>null</code> as a default value, if no results are found; otherwise returns the pre-formatted, translated value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_GetUnformatted_" data-uid="Vintagestory.API.Config.TranslationService.GetUnformatted*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_GetUnformatted_System_String_" data-uid="Vintagestory.API.Config.TranslationService.GetUnformatted(System.String)">
+  GetUnformatted(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the raw, unformatted translated value for the key provided.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GetUnformatted(string key)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Returns the key as a default value, if no results are found; otherwise returns the unformatted, translated
+value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_HasTranslation_" data-uid="Vintagestory.API.Config.TranslationService.HasTranslation*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_HasTranslation_System_String_System_Boolean_" data-uid="Vintagestory.API.Config.TranslationService.HasTranslation(System.String,System.Boolean)">
+  HasTranslation(string, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the specified key has a translation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasTranslation(string key, bool findWildcarded = true)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key.</p>
+</dd>
+    <dt><code>findWildcarded</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code>, the scan will include any wildcarded values.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> if the specified key has a translation; otherwise, <code>false</code>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_HasTranslation_" data-uid="Vintagestory.API.Config.TranslationService.HasTranslation*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_HasTranslation_System_String_System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Config.TranslationService.HasTranslation(System.String,System.Boolean,System.Boolean)">
+  HasTranslation(string, bool, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether the specified key has a translation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasTranslation(string key, bool findWildcarded, bool logErrors)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key.</p>
+</dd>
+    <dt><code>findWildcarded</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code>, the scan will include any wildcarded values.</p>
+</dd>
+    <dt><code>logErrors</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code>, will add &quot;Lang key not found&quot; logging</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><code>true</code> if the specified key has a translation; otherwise, <code>false</code>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_InitialiseSearch_" data-uid="Vintagestory.API.Config.TranslationService.InitialiseSearch*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_InitialiseSearch" data-uid="Vintagestory.API.Config.TranslationService.InitialiseSearch">
+  InitialiseSearch()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Used to compile the regexes, to save time on the first 'actual' wildcard search - saves about 300ms</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InitialiseSearch()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_Invalidate_" data-uid="Vintagestory.API.Config.TranslationService.Invalidate*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_Invalidate" data-uid="Vintagestory.API.Config.TranslationService.Invalidate">
+  Invalidate()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the loaded flag to false, so that the next lookup causes it to reload all translation entries</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Invalidate()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_Load_" data-uid="Vintagestory.API.Config.TranslationService.Load*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_Load_System_Boolean_" data-uid="Vintagestory.API.Config.TranslationService.Load(System.Boolean)">
+  Load(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Loads translation key/value pairs from all relevant JSON files within the Asset Manager.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Load(bool lazyLoad = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>lazyLoad</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_PreLoad_" data-uid="Vintagestory.API.Config.TranslationService.PreLoad*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_PreLoad_System_String_System_Boolean_" data-uid="Vintagestory.API.Config.TranslationService.PreLoad(System.String,System.Boolean)">
+  PreLoad(string, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Loads only the vanilla JSON files, without dealing with mods, or resource-packs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PreLoad(string assetsPath, bool lazyLoad = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>assetsPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The root assets path to load the vanilla files from.</p>
+</dd>
+    <dt><code>lazyLoad</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Config_TranslationService_UseAssetManager_" data-uid="Vintagestory.API.Config.TranslationService.UseAssetManager*"></a>
+
+  <h3 id="Vintagestory_API_Config_TranslationService_UseAssetManager_Vintagestory_API_Common_IAssetManager_" data-uid="Vintagestory.API.Config.TranslationService.UseAssetManager(Vintagestory.API.Common.IAssetManager)">
+  UseAssetManager(IAssetManager)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Specifies an asset manager to use, when the service has been lazy-loaded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseAssetManager(IAssetManager assetManager)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>assetManager</code> <a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a></dt>
+    <dd><p>The <a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a> instance used within the sided API.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 id="seealso">See Also</h2>
+  <div class="seealso">
+      <div><a class="xref" href="Vintagestory.API.Config.ITranslationService.html">ITranslationService</a></div>
+  </div>
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

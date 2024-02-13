@@ -1,0 +1,827 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D
+  commentId: T:Vintagestory.API.Datastructures.FloatDataMap3D
+  id: FloatDataMap3D
+  parent: Vintagestory.API.Datastructures
+  children:
+  - Vintagestory.API.Datastructures.FloatDataMap3D.#ctor
+  - Vintagestory.API.Datastructures.FloatDataMap3D.#ctor(System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Datastructures.FloatDataMap3D.AddValue(System.Int32,System.Int32,System.Int32,System.Single)
+  - Vintagestory.API.Datastructures.FloatDataMap3D.Data
+  - Vintagestory.API.Datastructures.FloatDataMap3D.GetLerped(System.Single,System.Single,System.Single)
+  - Vintagestory.API.Datastructures.FloatDataMap3D.GetLerpedCenterPixel(System.Single,System.Single,System.Single)
+  - Vintagestory.API.Datastructures.FloatDataMap3D.GetValue(System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Datastructures.FloatDataMap3D.Height
+  - Vintagestory.API.Datastructures.FloatDataMap3D.Length
+  - Vintagestory.API.Datastructures.FloatDataMap3D.SetValue(System.Int32,System.Int32,System.Int32,System.Single)
+  - Vintagestory.API.Datastructures.FloatDataMap3D.Width
+  langs:
+  - csharp
+  - vb
+  name: FloatDataMap3D
+  nameWithType: FloatDataMap3D
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/FloatDataMap3D.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FloatDataMap3D
+    path: Datastructures/FloatDataMap3D.cs
+    startLine: 10
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: >-
+    A datastructure to hold 3 dimensional data in the form of floats 
+
+    Can be used to perfrom trilinear interpolation between individual values
+  example: []
+  syntax:
+    content: >-
+      [ProtoContract]
+
+      public class FloatDataMap3D
+    content.vb: >-
+      <ProtoContract>
+
+      Public Class FloatDataMap3D
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: ProtoBuf.ProtoContractAttribute
+    ctor: ProtoBuf.ProtoContractAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.Data
+  commentId: F:Vintagestory.API.Datastructures.FloatDataMap3D.Data
+  id: Data
+  parent: Vintagestory.API.Datastructures.FloatDataMap3D
+  langs:
+  - csharp
+  - vb
+  name: Data
+  nameWithType: FloatDataMap3D.Data
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.Data
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/FloatDataMap3D.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Data
+    path: Datastructures/FloatDataMap3D.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: >-
+      [ProtoMember(1)]
+
+      public float[] Data
+    return:
+      type: System.Single[]
+    content.vb: >-
+      <ProtoMember(1)>
+
+      Public Data As Single()
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.Width
+  commentId: F:Vintagestory.API.Datastructures.FloatDataMap3D.Width
+  id: Width
+  parent: Vintagestory.API.Datastructures.FloatDataMap3D
+  langs:
+  - csharp
+  - vb
+  name: Width
+  nameWithType: FloatDataMap3D.Width
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.Width
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/FloatDataMap3D.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Width
+    path: Datastructures/FloatDataMap3D.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: >-
+      [ProtoMember(2)]
+
+      public int Width
+    return:
+      type: System.Int32
+    content.vb: >-
+      <ProtoMember(2)>
+
+      Public Width As Integer
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 2
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.Length
+  commentId: F:Vintagestory.API.Datastructures.FloatDataMap3D.Length
+  id: Length
+  parent: Vintagestory.API.Datastructures.FloatDataMap3D
+  langs:
+  - csharp
+  - vb
+  name: Length
+  nameWithType: FloatDataMap3D.Length
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.Length
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/FloatDataMap3D.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Length
+    path: Datastructures/FloatDataMap3D.cs
+    startLine: 18
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: >-
+      [ProtoMember(3)]
+
+      public int Length
+    return:
+      type: System.Int32
+    content.vb: >-
+      <ProtoMember(3)>
+
+      Public Length As Integer
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 3
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.Height
+  commentId: F:Vintagestory.API.Datastructures.FloatDataMap3D.Height
+  id: Height
+  parent: Vintagestory.API.Datastructures.FloatDataMap3D
+  langs:
+  - csharp
+  - vb
+  name: Height
+  nameWithType: FloatDataMap3D.Height
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.Height
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/FloatDataMap3D.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Height
+    path: Datastructures/FloatDataMap3D.cs
+    startLine: 20
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: >-
+      [ProtoMember(4)]
+
+      public int Height
+    return:
+      type: System.Int32
+    content.vb: >-
+      <ProtoMember(4)>
+
+      Public Height As Integer
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.#ctor
+  commentId: M:Vintagestory.API.Datastructures.FloatDataMap3D.#ctor
+  id: '#ctor'
+  parent: Vintagestory.API.Datastructures.FloatDataMap3D
+  langs:
+  - csharp
+  - vb
+  name: FloatDataMap3D()
+  nameWithType: FloatDataMap3D.FloatDataMap3D()
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.FloatDataMap3D()
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/FloatDataMap3D.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Datastructures/FloatDataMap3D.cs
+    startLine: 22
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public FloatDataMap3D()
+    content.vb: Public Sub New()
+  overload: Vintagestory.API.Datastructures.FloatDataMap3D.#ctor*
+  nameWithType.vb: FloatDataMap3D.New()
+  fullName.vb: Vintagestory.API.Datastructures.FloatDataMap3D.New()
+  name.vb: New()
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.#ctor(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Datastructures.FloatDataMap3D.#ctor(System.Int32,System.Int32,System.Int32)
+  id: '#ctor(System.Int32,System.Int32,System.Int32)'
+  parent: Vintagestory.API.Datastructures.FloatDataMap3D
+  langs:
+  - csharp
+  - vb
+  name: FloatDataMap3D(int, int, int)
+  nameWithType: FloatDataMap3D.FloatDataMap3D(int, int, int)
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.FloatDataMap3D(int, int, int)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/FloatDataMap3D.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Datastructures/FloatDataMap3D.cs
+    startLine: 28
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public FloatDataMap3D(int width, int height, int length)
+    parameters:
+    - id: width
+      type: System.Int32
+    - id: height
+      type: System.Int32
+    - id: length
+      type: System.Int32
+    content.vb: Public Sub New(width As Integer, height As Integer, length As Integer)
+  overload: Vintagestory.API.Datastructures.FloatDataMap3D.#ctor*
+  nameWithType.vb: FloatDataMap3D.New(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Datastructures.FloatDataMap3D.New(Integer, Integer, Integer)
+  name.vb: New(Integer, Integer, Integer)
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.GetValue(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Datastructures.FloatDataMap3D.GetValue(System.Int32,System.Int32,System.Int32)
+  id: GetValue(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Datastructures.FloatDataMap3D
+  langs:
+  - csharp
+  - vb
+  name: GetValue(int, int, int)
+  nameWithType: FloatDataMap3D.GetValue(int, int, int)
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.GetValue(int, int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/FloatDataMap3D.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetValue
+    path: Datastructures/FloatDataMap3D.cs
+    startLine: 37
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public float GetValue(int x, int y, int z)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    - id: z
+      type: System.Int32
+    return:
+      type: System.Single
+    content.vb: Public Function GetValue(x As Integer, y As Integer, z As Integer) As Single
+  overload: Vintagestory.API.Datastructures.FloatDataMap3D.GetValue*
+  nameWithType.vb: FloatDataMap3D.GetValue(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Datastructures.FloatDataMap3D.GetValue(Integer, Integer, Integer)
+  name.vb: GetValue(Integer, Integer, Integer)
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.SetValue(System.Int32,System.Int32,System.Int32,System.Single)
+  commentId: M:Vintagestory.API.Datastructures.FloatDataMap3D.SetValue(System.Int32,System.Int32,System.Int32,System.Single)
+  id: SetValue(System.Int32,System.Int32,System.Int32,System.Single)
+  parent: Vintagestory.API.Datastructures.FloatDataMap3D
+  langs:
+  - csharp
+  - vb
+  name: SetValue(int, int, int, float)
+  nameWithType: FloatDataMap3D.SetValue(int, int, int, float)
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.SetValue(int, int, int, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/FloatDataMap3D.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetValue
+    path: Datastructures/FloatDataMap3D.cs
+    startLine: 42
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public void SetValue(int x, int y, int z, float value)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    - id: z
+      type: System.Int32
+    - id: value
+      type: System.Single
+    content.vb: Public Sub SetValue(x As Integer, y As Integer, z As Integer, value As Single)
+  overload: Vintagestory.API.Datastructures.FloatDataMap3D.SetValue*
+  nameWithType.vb: FloatDataMap3D.SetValue(Integer, Integer, Integer, Single)
+  fullName.vb: Vintagestory.API.Datastructures.FloatDataMap3D.SetValue(Integer, Integer, Integer, Single)
+  name.vb: SetValue(Integer, Integer, Integer, Single)
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.AddValue(System.Int32,System.Int32,System.Int32,System.Single)
+  commentId: M:Vintagestory.API.Datastructures.FloatDataMap3D.AddValue(System.Int32,System.Int32,System.Int32,System.Single)
+  id: AddValue(System.Int32,System.Int32,System.Int32,System.Single)
+  parent: Vintagestory.API.Datastructures.FloatDataMap3D
+  langs:
+  - csharp
+  - vb
+  name: AddValue(int, int, int, float)
+  nameWithType: FloatDataMap3D.AddValue(int, int, int, float)
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.AddValue(int, int, int, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/FloatDataMap3D.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AddValue
+    path: Datastructures/FloatDataMap3D.cs
+    startLine: 47
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public void AddValue(int x, int y, int z, float value)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    - id: z
+      type: System.Int32
+    - id: value
+      type: System.Single
+    content.vb: Public Sub AddValue(x As Integer, y As Integer, z As Integer, value As Single)
+  overload: Vintagestory.API.Datastructures.FloatDataMap3D.AddValue*
+  nameWithType.vb: FloatDataMap3D.AddValue(Integer, Integer, Integer, Single)
+  fullName.vb: Vintagestory.API.Datastructures.FloatDataMap3D.AddValue(Integer, Integer, Integer, Single)
+  name.vb: AddValue(Integer, Integer, Integer, Single)
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.GetLerped(System.Single,System.Single,System.Single)
+  commentId: M:Vintagestory.API.Datastructures.FloatDataMap3D.GetLerped(System.Single,System.Single,System.Single)
+  id: GetLerped(System.Single,System.Single,System.Single)
+  parent: Vintagestory.API.Datastructures.FloatDataMap3D
+  langs:
+  - csharp
+  - vb
+  name: GetLerped(float, float, float)
+  nameWithType: FloatDataMap3D.GetLerped(float, float, float)
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.GetLerped(float, float, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/FloatDataMap3D.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetLerped
+    path: Datastructures/FloatDataMap3D.cs
+    startLine: 53
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public float GetLerped(float x, float y, float z)
+    parameters:
+    - id: x
+      type: System.Single
+    - id: y
+      type: System.Single
+    - id: z
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Function GetLerped(x As Single, y As Single, z As Single) As Single
+  overload: Vintagestory.API.Datastructures.FloatDataMap3D.GetLerped*
+  nameWithType.vb: FloatDataMap3D.GetLerped(Single, Single, Single)
+  fullName.vb: Vintagestory.API.Datastructures.FloatDataMap3D.GetLerped(Single, Single, Single)
+  name.vb: GetLerped(Single, Single, Single)
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.GetLerpedCenterPixel(System.Single,System.Single,System.Single)
+  commentId: M:Vintagestory.API.Datastructures.FloatDataMap3D.GetLerpedCenterPixel(System.Single,System.Single,System.Single)
+  id: GetLerpedCenterPixel(System.Single,System.Single,System.Single)
+  parent: Vintagestory.API.Datastructures.FloatDataMap3D
+  langs:
+  - csharp
+  - vb
+  name: GetLerpedCenterPixel(float, float, float)
+  nameWithType: FloatDataMap3D.GetLerpedCenterPixel(float, float, float)
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.GetLerpedCenterPixel(float, float, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/FloatDataMap3D.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetLerpedCenterPixel
+    path: Datastructures/FloatDataMap3D.cs
+    startLine: 87
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public float GetLerpedCenterPixel(float x, float y, float z)
+    parameters:
+    - id: x
+      type: System.Single
+    - id: y
+      type: System.Single
+    - id: z
+      type: System.Single
+    return:
+      type: System.Single
+    content.vb: Public Function GetLerpedCenterPixel(x As Single, y As Single, z As Single) As Single
+  overload: Vintagestory.API.Datastructures.FloatDataMap3D.GetLerpedCenterPixel*
+  nameWithType.vb: FloatDataMap3D.GetLerpedCenterPixel(Single, Single, Single)
+  fullName.vb: Vintagestory.API.Datastructures.FloatDataMap3D.GetLerpedCenterPixel(Single, Single, Single)
+  name.vb: GetLerpedCenterPixel(Single, Single, Single)
+references:
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Single[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.#ctor*
+  commentId: Overload:Vintagestory.API.Datastructures.FloatDataMap3D.#ctor
+  href: Vintagestory.API.Datastructures.FloatDataMap3D.html#Vintagestory_API_Datastructures_FloatDataMap3D__ctor
+  name: FloatDataMap3D
+  nameWithType: FloatDataMap3D.FloatDataMap3D
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.FloatDataMap3D
+  nameWithType.vb: FloatDataMap3D.New
+  fullName.vb: Vintagestory.API.Datastructures.FloatDataMap3D.New
+  name.vb: New
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.GetValue*
+  commentId: Overload:Vintagestory.API.Datastructures.FloatDataMap3D.GetValue
+  href: Vintagestory.API.Datastructures.FloatDataMap3D.html#Vintagestory_API_Datastructures_FloatDataMap3D_GetValue_System_Int32_System_Int32_System_Int32_
+  name: GetValue
+  nameWithType: FloatDataMap3D.GetValue
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.GetValue
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.SetValue*
+  commentId: Overload:Vintagestory.API.Datastructures.FloatDataMap3D.SetValue
+  href: Vintagestory.API.Datastructures.FloatDataMap3D.html#Vintagestory_API_Datastructures_FloatDataMap3D_SetValue_System_Int32_System_Int32_System_Int32_System_Single_
+  name: SetValue
+  nameWithType: FloatDataMap3D.SetValue
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.SetValue
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.AddValue*
+  commentId: Overload:Vintagestory.API.Datastructures.FloatDataMap3D.AddValue
+  href: Vintagestory.API.Datastructures.FloatDataMap3D.html#Vintagestory_API_Datastructures_FloatDataMap3D_AddValue_System_Int32_System_Int32_System_Int32_System_Single_
+  name: AddValue
+  nameWithType: FloatDataMap3D.AddValue
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.AddValue
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.GetLerped*
+  commentId: Overload:Vintagestory.API.Datastructures.FloatDataMap3D.GetLerped
+  href: Vintagestory.API.Datastructures.FloatDataMap3D.html#Vintagestory_API_Datastructures_FloatDataMap3D_GetLerped_System_Single_System_Single_System_Single_
+  name: GetLerped
+  nameWithType: FloatDataMap3D.GetLerped
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.GetLerped
+- uid: Vintagestory.API.Datastructures.FloatDataMap3D.GetLerpedCenterPixel*
+  commentId: Overload:Vintagestory.API.Datastructures.FloatDataMap3D.GetLerpedCenterPixel
+  href: Vintagestory.API.Datastructures.FloatDataMap3D.html#Vintagestory_API_Datastructures_FloatDataMap3D_GetLerpedCenterPixel_System_Single_System_Single_System_Single_
+  name: GetLerpedCenterPixel
+  nameWithType: FloatDataMap3D.GetLerpedCenterPixel
+  fullName: Vintagestory.API.Datastructures.FloatDataMap3D.GetLerpedCenterPixel

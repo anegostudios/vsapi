@@ -1,0 +1,940 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.AmbientModifier
+  commentId: T:Vintagestory.API.Common.AmbientModifier
+  id: AmbientModifier
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.AmbientModifier.AmbientColor
+  - Vintagestory.API.Common.AmbientModifier.Clone
+  - Vintagestory.API.Common.AmbientModifier.CloudBrightness
+  - Vintagestory.API.Common.AmbientModifier.CloudDensity
+  - Vintagestory.API.Common.AmbientModifier.DefaultAmbient
+  - Vintagestory.API.Common.AmbientModifier.EnsurePopulated
+  - Vintagestory.API.Common.AmbientModifier.FlatFogDensity
+  - Vintagestory.API.Common.AmbientModifier.FlatFogYPos
+  - Vintagestory.API.Common.AmbientModifier.FogBrightness
+  - Vintagestory.API.Common.AmbientModifier.FogColor
+  - Vintagestory.API.Common.AmbientModifier.FogDensity
+  - Vintagestory.API.Common.AmbientModifier.FogMin
+  - Vintagestory.API.Common.AmbientModifier.FromBytes(System.IO.BinaryReader)
+  - Vintagestory.API.Common.AmbientModifier.LerpSpeed
+  - Vintagestory.API.Common.AmbientModifier.SceneBrightness
+  - Vintagestory.API.Common.AmbientModifier.SetLerped(Vintagestory.API.Common.AmbientModifier,Vintagestory.API.Common.AmbientModifier,System.Single)
+  - Vintagestory.API.Common.AmbientModifier.ToBytes(System.IO.BinaryWriter)
+  langs:
+  - csharp
+  - vb
+  name: AmbientModifier
+  nameWithType: AmbientModifier
+  fullName: Vintagestory.API.Common.AmbientModifier
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AmbientModifier
+    path: Common/AmbientModifier.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public class AmbientModifier
+    content.vb: Public Class AmbientModifier
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Common.AmbientModifier.FlatFogDensity
+  commentId: F:Vintagestory.API.Common.AmbientModifier.FlatFogDensity
+  id: FlatFogDensity
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: FlatFogDensity
+  nameWithType: AmbientModifier.FlatFogDensity
+  fullName: Vintagestory.API.Common.AmbientModifier.FlatFogDensity
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FlatFogDensity
+    path: Common/AmbientModifier.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WeightedFloat FlatFogDensity
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloat
+    content.vb: Public FlatFogDensity As WeightedFloat
+- uid: Vintagestory.API.Common.AmbientModifier.FlatFogYPos
+  commentId: F:Vintagestory.API.Common.AmbientModifier.FlatFogYPos
+  id: FlatFogYPos
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: FlatFogYPos
+  nameWithType: AmbientModifier.FlatFogYPos
+  fullName: Vintagestory.API.Common.AmbientModifier.FlatFogYPos
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FlatFogYPos
+    path: Common/AmbientModifier.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WeightedFloat FlatFogYPos
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloat
+    content.vb: Public FlatFogYPos As WeightedFloat
+- uid: Vintagestory.API.Common.AmbientModifier.FogMin
+  commentId: F:Vintagestory.API.Common.AmbientModifier.FogMin
+  id: FogMin
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: FogMin
+  nameWithType: AmbientModifier.FogMin
+  fullName: Vintagestory.API.Common.AmbientModifier.FogMin
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FogMin
+    path: Common/AmbientModifier.cs
+    startLine: 10
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WeightedFloat FogMin
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloat
+    content.vb: Public FogMin As WeightedFloat
+- uid: Vintagestory.API.Common.AmbientModifier.FogDensity
+  commentId: F:Vintagestory.API.Common.AmbientModifier.FogDensity
+  id: FogDensity
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: FogDensity
+  nameWithType: AmbientModifier.FogDensity
+  fullName: Vintagestory.API.Common.AmbientModifier.FogDensity
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FogDensity
+    path: Common/AmbientModifier.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WeightedFloat FogDensity
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloat
+    content.vb: Public FogDensity As WeightedFloat
+- uid: Vintagestory.API.Common.AmbientModifier.FogColor
+  commentId: F:Vintagestory.API.Common.AmbientModifier.FogColor
+  id: FogColor
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: FogColor
+  nameWithType: AmbientModifier.FogColor
+  fullName: Vintagestory.API.Common.AmbientModifier.FogColor
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FogColor
+    path: Common/AmbientModifier.cs
+    startLine: 12
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WeightedFloatArray FogColor
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloatArray
+    content.vb: Public FogColor As WeightedFloatArray
+- uid: Vintagestory.API.Common.AmbientModifier.AmbientColor
+  commentId: F:Vintagestory.API.Common.AmbientModifier.AmbientColor
+  id: AmbientColor
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: AmbientColor
+  nameWithType: AmbientModifier.AmbientColor
+  fullName: Vintagestory.API.Common.AmbientModifier.AmbientColor
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AmbientColor
+    path: Common/AmbientModifier.cs
+    startLine: 13
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WeightedFloatArray AmbientColor
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloatArray
+    content.vb: Public AmbientColor As WeightedFloatArray
+- uid: Vintagestory.API.Common.AmbientModifier.CloudDensity
+  commentId: F:Vintagestory.API.Common.AmbientModifier.CloudDensity
+  id: CloudDensity
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: CloudDensity
+  nameWithType: AmbientModifier.CloudDensity
+  fullName: Vintagestory.API.Common.AmbientModifier.CloudDensity
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CloudDensity
+    path: Common/AmbientModifier.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WeightedFloat CloudDensity
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloat
+    content.vb: Public CloudDensity As WeightedFloat
+- uid: Vintagestory.API.Common.AmbientModifier.CloudBrightness
+  commentId: F:Vintagestory.API.Common.AmbientModifier.CloudBrightness
+  id: CloudBrightness
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: CloudBrightness
+  nameWithType: AmbientModifier.CloudBrightness
+  fullName: Vintagestory.API.Common.AmbientModifier.CloudBrightness
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CloudBrightness
+    path: Common/AmbientModifier.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WeightedFloat CloudBrightness
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloat
+    content.vb: Public CloudBrightness As WeightedFloat
+- uid: Vintagestory.API.Common.AmbientModifier.LerpSpeed
+  commentId: F:Vintagestory.API.Common.AmbientModifier.LerpSpeed
+  id: LerpSpeed
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: LerpSpeed
+  nameWithType: AmbientModifier.LerpSpeed
+  fullName: Vintagestory.API.Common.AmbientModifier.LerpSpeed
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LerpSpeed
+    path: Common/AmbientModifier.cs
+    startLine: 17
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WeightedFloat LerpSpeed
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloat
+    content.vb: Public LerpSpeed As WeightedFloat
+- uid: Vintagestory.API.Common.AmbientModifier.SceneBrightness
+  commentId: F:Vintagestory.API.Common.AmbientModifier.SceneBrightness
+  id: SceneBrightness
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: SceneBrightness
+  nameWithType: AmbientModifier.SceneBrightness
+  fullName: Vintagestory.API.Common.AmbientModifier.SceneBrightness
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SceneBrightness
+    path: Common/AmbientModifier.cs
+    startLine: 18
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WeightedFloat SceneBrightness
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloat
+    content.vb: Public SceneBrightness As WeightedFloat
+- uid: Vintagestory.API.Common.AmbientModifier.FogBrightness
+  commentId: F:Vintagestory.API.Common.AmbientModifier.FogBrightness
+  id: FogBrightness
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: FogBrightness
+  nameWithType: AmbientModifier.FogBrightness
+  fullName: Vintagestory.API.Common.AmbientModifier.FogBrightness
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FogBrightness
+    path: Common/AmbientModifier.cs
+    startLine: 20
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public WeightedFloat FogBrightness
+    return:
+      type: Vintagestory.API.MathTools.WeightedFloat
+    content.vb: Public FogBrightness As WeightedFloat
+- uid: Vintagestory.API.Common.AmbientModifier.SetLerped(Vintagestory.API.Common.AmbientModifier,Vintagestory.API.Common.AmbientModifier,System.Single)
+  commentId: M:Vintagestory.API.Common.AmbientModifier.SetLerped(Vintagestory.API.Common.AmbientModifier,Vintagestory.API.Common.AmbientModifier,System.Single)
+  id: SetLerped(Vintagestory.API.Common.AmbientModifier,Vintagestory.API.Common.AmbientModifier,System.Single)
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: SetLerped(AmbientModifier, AmbientModifier, float)
+  nameWithType: AmbientModifier.SetLerped(AmbientModifier, AmbientModifier, float)
+  fullName: Vintagestory.API.Common.AmbientModifier.SetLerped(Vintagestory.API.Common.AmbientModifier, Vintagestory.API.Common.AmbientModifier, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetLerped
+    path: Common/AmbientModifier.cs
+    startLine: 22
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void SetLerped(AmbientModifier left, AmbientModifier right, float w)
+    parameters:
+    - id: left
+      type: Vintagestory.API.Common.AmbientModifier
+    - id: right
+      type: Vintagestory.API.Common.AmbientModifier
+    - id: w
+      type: System.Single
+    content.vb: Public Sub SetLerped(left As AmbientModifier, right As AmbientModifier, w As Single)
+  overload: Vintagestory.API.Common.AmbientModifier.SetLerped*
+  nameWithType.vb: AmbientModifier.SetLerped(AmbientModifier, AmbientModifier, Single)
+  fullName.vb: Vintagestory.API.Common.AmbientModifier.SetLerped(Vintagestory.API.Common.AmbientModifier, Vintagestory.API.Common.AmbientModifier, Single)
+  name.vb: SetLerped(AmbientModifier, AmbientModifier, Single)
+- uid: Vintagestory.API.Common.AmbientModifier.Clone
+  commentId: M:Vintagestory.API.Common.AmbientModifier.Clone
+  id: Clone
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: AmbientModifier.Clone()
+  fullName: Vintagestory.API.Common.AmbientModifier.Clone()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Clone
+    path: Common/AmbientModifier.cs
+    startLine: 41
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AmbientModifier Clone()
+    return:
+      type: Vintagestory.API.Common.AmbientModifier
+    content.vb: Public Function Clone() As AmbientModifier
+  overload: Vintagestory.API.Common.AmbientModifier.Clone*
+- uid: Vintagestory.API.Common.AmbientModifier.DefaultAmbient
+  commentId: P:Vintagestory.API.Common.AmbientModifier.DefaultAmbient
+  id: DefaultAmbient
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: DefaultAmbient
+  nameWithType: AmbientModifier.DefaultAmbient
+  fullName: Vintagestory.API.Common.AmbientModifier.DefaultAmbient
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DefaultAmbient
+    path: Common/AmbientModifier.cs
+    startLine: 58
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static AmbientModifier DefaultAmbient { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.AmbientModifier
+    content.vb: Public Shared ReadOnly Property DefaultAmbient As AmbientModifier
+  overload: Vintagestory.API.Common.AmbientModifier.DefaultAmbient*
+- uid: Vintagestory.API.Common.AmbientModifier.EnsurePopulated
+  commentId: M:Vintagestory.API.Common.AmbientModifier.EnsurePopulated
+  id: EnsurePopulated
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: EnsurePopulated()
+  nameWithType: AmbientModifier.EnsurePopulated()
+  fullName: Vintagestory.API.Common.AmbientModifier.EnsurePopulated()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnsurePopulated
+    path: Common/AmbientModifier.cs
+    startLine: 75
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AmbientModifier EnsurePopulated()
+    return:
+      type: Vintagestory.API.Common.AmbientModifier
+    content.vb: Public Function EnsurePopulated() As AmbientModifier
+  overload: Vintagestory.API.Common.AmbientModifier.EnsurePopulated*
+- uid: Vintagestory.API.Common.AmbientModifier.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Common.AmbientModifier.ToBytes(System.IO.BinaryWriter)
+  id: ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: ToBytes(BinaryWriter)
+  nameWithType: AmbientModifier.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Common.AmbientModifier.ToBytes(System.IO.BinaryWriter)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToBytes
+    path: Common/AmbientModifier.cs
+    startLine: 92
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void ToBytes(BinaryWriter writer)
+    parameters:
+    - id: writer
+      type: System.IO.BinaryWriter
+    content.vb: Public Sub ToBytes(writer As BinaryWriter)
+  overload: Vintagestory.API.Common.AmbientModifier.ToBytes*
+- uid: Vintagestory.API.Common.AmbientModifier.FromBytes(System.IO.BinaryReader)
+  commentId: M:Vintagestory.API.Common.AmbientModifier.FromBytes(System.IO.BinaryReader)
+  id: FromBytes(System.IO.BinaryReader)
+  parent: Vintagestory.API.Common.AmbientModifier
+  langs:
+  - csharp
+  - vb
+  name: FromBytes(BinaryReader)
+  nameWithType: AmbientModifier.FromBytes(BinaryReader)
+  fullName: Vintagestory.API.Common.AmbientModifier.FromBytes(System.IO.BinaryReader)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/AmbientModifier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FromBytes
+    path: Common/AmbientModifier.cs
+    startLine: 107
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void FromBytes(BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+    content.vb: Public Sub FromBytes(reader As BinaryReader)
+  overload: Vintagestory.API.Common.AmbientModifier.FromBytes*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.MathTools.WeightedFloat
+  commentId: T:Vintagestory.API.MathTools.WeightedFloat
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.WeightedFloat.html
+  name: WeightedFloat
+  nameWithType: WeightedFloat
+  fullName: Vintagestory.API.MathTools.WeightedFloat
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.MathTools.WeightedFloatArray
+  commentId: T:Vintagestory.API.MathTools.WeightedFloatArray
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.WeightedFloatArray.html
+  name: WeightedFloatArray
+  nameWithType: WeightedFloatArray
+  fullName: Vintagestory.API.MathTools.WeightedFloatArray
+- uid: Vintagestory.API.Common.AmbientModifier.SetLerped*
+  commentId: Overload:Vintagestory.API.Common.AmbientModifier.SetLerped
+  href: Vintagestory.API.Common.AmbientModifier.html#Vintagestory_API_Common_AmbientModifier_SetLerped_Vintagestory_API_Common_AmbientModifier_Vintagestory_API_Common_AmbientModifier_System_Single_
+  name: SetLerped
+  nameWithType: AmbientModifier.SetLerped
+  fullName: Vintagestory.API.Common.AmbientModifier.SetLerped
+- uid: Vintagestory.API.Common.AmbientModifier
+  commentId: T:Vintagestory.API.Common.AmbientModifier
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AmbientModifier.html
+  name: AmbientModifier
+  nameWithType: AmbientModifier
+  fullName: Vintagestory.API.Common.AmbientModifier
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.AmbientModifier.Clone*
+  commentId: Overload:Vintagestory.API.Common.AmbientModifier.Clone
+  href: Vintagestory.API.Common.AmbientModifier.html#Vintagestory_API_Common_AmbientModifier_Clone
+  name: Clone
+  nameWithType: AmbientModifier.Clone
+  fullName: Vintagestory.API.Common.AmbientModifier.Clone
+- uid: Vintagestory.API.Common.AmbientModifier.DefaultAmbient*
+  commentId: Overload:Vintagestory.API.Common.AmbientModifier.DefaultAmbient
+  href: Vintagestory.API.Common.AmbientModifier.html#Vintagestory_API_Common_AmbientModifier_DefaultAmbient
+  name: DefaultAmbient
+  nameWithType: AmbientModifier.DefaultAmbient
+  fullName: Vintagestory.API.Common.AmbientModifier.DefaultAmbient
+- uid: Vintagestory.API.Common.AmbientModifier.EnsurePopulated*
+  commentId: Overload:Vintagestory.API.Common.AmbientModifier.EnsurePopulated
+  href: Vintagestory.API.Common.AmbientModifier.html#Vintagestory_API_Common_AmbientModifier_EnsurePopulated
+  name: EnsurePopulated
+  nameWithType: AmbientModifier.EnsurePopulated
+  fullName: Vintagestory.API.Common.AmbientModifier.EnsurePopulated
+- uid: Vintagestory.API.Common.AmbientModifier.ToBytes*
+  commentId: Overload:Vintagestory.API.Common.AmbientModifier.ToBytes
+  href: Vintagestory.API.Common.AmbientModifier.html#Vintagestory_API_Common_AmbientModifier_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes
+  nameWithType: AmbientModifier.ToBytes
+  fullName: Vintagestory.API.Common.AmbientModifier.ToBytes
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Vintagestory.API.Common.AmbientModifier.FromBytes*
+  commentId: Overload:Vintagestory.API.Common.AmbientModifier.FromBytes
+  href: Vintagestory.API.Common.AmbientModifier.html#Vintagestory_API_Common_AmbientModifier_FromBytes_System_IO_BinaryReader_
+  name: FromBytes
+  nameWithType: AmbientModifier.FromBytes
+  fullName: Vintagestory.API.Common.AmbientModifier.FromBytes
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader

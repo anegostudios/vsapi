@@ -261,7 +261,7 @@ namespace Vintagestory.API.Common.Entities
             {
                 foreach (var val in Sounds)
                 {
-                    if (val.Value.Path.EndsWith("*"))
+                    if (val.Value.Path.EndsWith('*'))
                     {
                         List<IAsset> assets = assetManager.GetManyInCategory("sounds", val.Value.Path.Substring(0, val.Value.Path.Length - 1), val.Value.Domain);
                         AssetLocation[] sounds = new AssetLocation[assets.Count];

@@ -1,0 +1,684 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.MeshDataPoolManager
+  commentId: T:Vintagestory.API.Client.MeshDataPoolManager
+  id: MeshDataPoolManager
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.MeshDataPoolManager.#ctor(Vintagestory.API.Client.MeshDataPoolMasterManager,Vintagestory.API.Client.FrustumCulling,Vintagestory.API.Client.ICoreClientAPI,System.Int32,System.Int32,System.Int32,Vintagestory.API.Client.CustomMeshDataPartFloat,Vintagestory.API.Client.CustomMeshDataPartShort,Vintagestory.API.Client.CustomMeshDataPartByte,Vintagestory.API.Client.CustomMeshDataPartInt)
+  - Vintagestory.API.Client.MeshDataPoolManager.AddModel(Vintagestory.API.Client.MeshData,Vintagestory.API.MathTools.Vec3i,System.Int32,Vintagestory.API.MathTools.Sphere)
+  - Vintagestory.API.Client.MeshDataPoolManager.GetStats(System.Int64@,System.Int64@,System.Int64@)
+  - Vintagestory.API.Client.MeshDataPoolManager.Render(Vintagestory.API.MathTools.Vec3d,System.String,Vintagestory.API.Client.EnumFrustumCullMode)
+  langs:
+  - csharp
+  - vb
+  name: MeshDataPoolManager
+  nameWithType: MeshDataPoolManager
+  fullName: Vintagestory.API.Client.MeshDataPoolManager
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataPoolManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MeshDataPoolManager
+    path: Client/MeshPool/MeshDataPoolManager.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Holds a collection of pools, usually for 1 render pass
+  example: []
+  syntax:
+    content: public class MeshDataPoolManager
+    content.vb: Public Class MeshDataPoolManager
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Client.MeshDataPoolManager.#ctor(Vintagestory.API.Client.MeshDataPoolMasterManager,Vintagestory.API.Client.FrustumCulling,Vintagestory.API.Client.ICoreClientAPI,System.Int32,System.Int32,System.Int32,Vintagestory.API.Client.CustomMeshDataPartFloat,Vintagestory.API.Client.CustomMeshDataPartShort,Vintagestory.API.Client.CustomMeshDataPartByte,Vintagestory.API.Client.CustomMeshDataPartInt)
+  commentId: M:Vintagestory.API.Client.MeshDataPoolManager.#ctor(Vintagestory.API.Client.MeshDataPoolMasterManager,Vintagestory.API.Client.FrustumCulling,Vintagestory.API.Client.ICoreClientAPI,System.Int32,System.Int32,System.Int32,Vintagestory.API.Client.CustomMeshDataPartFloat,Vintagestory.API.Client.CustomMeshDataPartShort,Vintagestory.API.Client.CustomMeshDataPartByte,Vintagestory.API.Client.CustomMeshDataPartInt)
+  id: '#ctor(Vintagestory.API.Client.MeshDataPoolMasterManager,Vintagestory.API.Client.FrustumCulling,Vintagestory.API.Client.ICoreClientAPI,System.Int32,System.Int32,System.Int32,Vintagestory.API.Client.CustomMeshDataPartFloat,Vintagestory.API.Client.CustomMeshDataPartShort,Vintagestory.API.Client.CustomMeshDataPartByte,Vintagestory.API.Client.CustomMeshDataPartInt)'
+  parent: Vintagestory.API.Client.MeshDataPoolManager
+  langs:
+  - csharp
+  - vb
+  name: MeshDataPoolManager(MeshDataPoolMasterManager, FrustumCulling, ICoreClientAPI, int, int, int, CustomMeshDataPartFloat, CustomMeshDataPartShort, CustomMeshDataPartByte, CustomMeshDataPartInt)
+  nameWithType: MeshDataPoolManager.MeshDataPoolManager(MeshDataPoolMasterManager, FrustumCulling, ICoreClientAPI, int, int, int, CustomMeshDataPartFloat, CustomMeshDataPartShort, CustomMeshDataPartByte, CustomMeshDataPartInt)
+  fullName: Vintagestory.API.Client.MeshDataPoolManager.MeshDataPoolManager(Vintagestory.API.Client.MeshDataPoolMasterManager, Vintagestory.API.Client.FrustumCulling, Vintagestory.API.Client.ICoreClientAPI, int, int, int, Vintagestory.API.Client.CustomMeshDataPartFloat, Vintagestory.API.Client.CustomMeshDataPartShort, Vintagestory.API.Client.CustomMeshDataPartByte, Vintagestory.API.Client.CustomMeshDataPartInt)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataPoolManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Client/MeshPool/MeshDataPoolManager.cs
+    startLine: 43
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a new Mesh Data Pool
+  example: []
+  syntax:
+    content: public MeshDataPoolManager(MeshDataPoolMasterManager masterPool, FrustumCulling frustumCuller, ICoreClientAPI capi, int defaultVertexPoolSize, int defaultIndexPoolSize, int maxPartsPerPool, CustomMeshDataPartFloat customFloats = null, CustomMeshDataPartShort customShorts = null, CustomMeshDataPartByte customBytes = null, CustomMeshDataPartInt customInts = null)
+    parameters:
+    - id: masterPool
+      type: Vintagestory.API.Client.MeshDataPoolMasterManager
+      description: The master mesh data pool manager
+    - id: frustumCuller
+      type: Vintagestory.API.Client.FrustumCulling
+      description: the Frustum Culler for the Pool
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+      description: The Client API
+    - id: defaultVertexPoolSize
+      type: System.Int32
+      description: Size allocated for the Vertices.
+    - id: defaultIndexPoolSize
+      type: System.Int32
+      description: Size allocated for the Indices
+    - id: maxPartsPerPool
+      type: System.Int32
+      description: The maximum number of parts for this pool.
+    - id: customFloats
+      type: Vintagestory.API.Client.CustomMeshDataPartFloat
+      description: Additional float data
+    - id: customShorts
+      type: Vintagestory.API.Client.CustomMeshDataPartShort
+      description: ''
+    - id: customBytes
+      type: Vintagestory.API.Client.CustomMeshDataPartByte
+      description: Additional byte data
+    - id: customInts
+      type: Vintagestory.API.Client.CustomMeshDataPartInt
+      description: additional int data
+    content.vb: Public Sub New(masterPool As MeshDataPoolMasterManager, frustumCuller As FrustumCulling, capi As ICoreClientAPI, defaultVertexPoolSize As Integer, defaultIndexPoolSize As Integer, maxPartsPerPool As Integer, customFloats As CustomMeshDataPartFloat = Nothing, customShorts As CustomMeshDataPartShort = Nothing, customBytes As CustomMeshDataPartByte = Nothing, customInts As CustomMeshDataPartInt = Nothing)
+  overload: Vintagestory.API.Client.MeshDataPoolManager.#ctor*
+  nameWithType.vb: MeshDataPoolManager.New(MeshDataPoolMasterManager, FrustumCulling, ICoreClientAPI, Integer, Integer, Integer, CustomMeshDataPartFloat, CustomMeshDataPartShort, CustomMeshDataPartByte, CustomMeshDataPartInt)
+  fullName.vb: Vintagestory.API.Client.MeshDataPoolManager.New(Vintagestory.API.Client.MeshDataPoolMasterManager, Vintagestory.API.Client.FrustumCulling, Vintagestory.API.Client.ICoreClientAPI, Integer, Integer, Integer, Vintagestory.API.Client.CustomMeshDataPartFloat, Vintagestory.API.Client.CustomMeshDataPartShort, Vintagestory.API.Client.CustomMeshDataPartByte, Vintagestory.API.Client.CustomMeshDataPartInt)
+  name.vb: New(MeshDataPoolMasterManager, FrustumCulling, ICoreClientAPI, Integer, Integer, Integer, CustomMeshDataPartFloat, CustomMeshDataPartShort, CustomMeshDataPartByte, CustomMeshDataPartInt)
+- uid: Vintagestory.API.Client.MeshDataPoolManager.AddModel(Vintagestory.API.Client.MeshData,Vintagestory.API.MathTools.Vec3i,System.Int32,Vintagestory.API.MathTools.Sphere)
+  commentId: M:Vintagestory.API.Client.MeshDataPoolManager.AddModel(Vintagestory.API.Client.MeshData,Vintagestory.API.MathTools.Vec3i,System.Int32,Vintagestory.API.MathTools.Sphere)
+  id: AddModel(Vintagestory.API.Client.MeshData,Vintagestory.API.MathTools.Vec3i,System.Int32,Vintagestory.API.MathTools.Sphere)
+  parent: Vintagestory.API.Client.MeshDataPoolManager
+  langs:
+  - csharp
+  - vb
+  name: AddModel(MeshData, Vec3i, int, Sphere)
+  nameWithType: MeshDataPoolManager.AddModel(MeshData, Vec3i, int, Sphere)
+  fullName: Vintagestory.API.Client.MeshDataPoolManager.AddModel(Vintagestory.API.Client.MeshData, Vintagestory.API.MathTools.Vec3i, int, Vintagestory.API.MathTools.Sphere)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataPoolManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AddModel
+    path: Client/MeshPool/MeshDataPoolManager.cs
+    startLine: 65
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Adds a model to the mesh pool.
+  example: []
+  syntax:
+    content: public ModelDataPoolLocation AddModel(MeshData modeldata, Vec3i modelOrigin, int dimension, Sphere frustumCullSphere)
+    parameters:
+    - id: modeldata
+      type: Vintagestory.API.Client.MeshData
+      description: The model data
+    - id: modelOrigin
+      type: Vintagestory.API.MathTools.Vec3i
+      description: The origin point of the Model
+    - id: dimension
+      type: System.Int32
+      description: ''
+    - id: frustumCullSphere
+      type: Vintagestory.API.MathTools.Sphere
+      description: The culling sphere.
+    return:
+      type: Vintagestory.API.Client.ModelDataPoolLocation
+      description: The location identifier for the pooled model.
+    content.vb: Public Function AddModel(modeldata As MeshData, modelOrigin As Vec3i, dimension As Integer, frustumCullSphere As Sphere) As ModelDataPoolLocation
+  overload: Vintagestory.API.Client.MeshDataPoolManager.AddModel*
+  nameWithType.vb: MeshDataPoolManager.AddModel(MeshData, Vec3i, Integer, Sphere)
+  fullName.vb: Vintagestory.API.Client.MeshDataPoolManager.AddModel(Vintagestory.API.Client.MeshData, Vintagestory.API.MathTools.Vec3i, Integer, Vintagestory.API.MathTools.Sphere)
+  name.vb: AddModel(MeshData, Vec3i, Integer, Sphere)
+- uid: Vintagestory.API.Client.MeshDataPoolManager.Render(Vintagestory.API.MathTools.Vec3d,System.String,Vintagestory.API.Client.EnumFrustumCullMode)
+  commentId: M:Vintagestory.API.Client.MeshDataPoolManager.Render(Vintagestory.API.MathTools.Vec3d,System.String,Vintagestory.API.Client.EnumFrustumCullMode)
+  id: Render(Vintagestory.API.MathTools.Vec3d,System.String,Vintagestory.API.Client.EnumFrustumCullMode)
+  parent: Vintagestory.API.Client.MeshDataPoolManager
+  langs:
+  - csharp
+  - vb
+  name: Render(Vec3d, string, EnumFrustumCullMode)
+  nameWithType: MeshDataPoolManager.Render(Vec3d, string, EnumFrustumCullMode)
+  fullName: Vintagestory.API.Client.MeshDataPoolManager.Render(Vintagestory.API.MathTools.Vec3d, string, Vintagestory.API.Client.EnumFrustumCullMode)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataPoolManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Render
+    path: Client/MeshPool/MeshDataPoolManager.cs
+    startLine: 108
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Renders the chunk models to the GPU.  One of the most important methods in the entire game!
+  example: []
+  syntax:
+    content: public void Render(Vec3d playerpos, string originUniformName, EnumFrustumCullMode frustumCullMode = EnumFrustumCullMode.CullNormal)
+    parameters:
+    - id: playerpos
+      type: Vintagestory.API.MathTools.Vec3d
+      description: The position of the Player
+    - id: originUniformName
+      type: System.String
+      description: ''
+    - id: frustumCullMode
+      type: Vintagestory.API.Client.EnumFrustumCullMode
+      description: The culling mode.  Default is CulHideDelay.
+    content.vb: Public Sub Render(playerpos As Vec3d, originUniformName As String, frustumCullMode As EnumFrustumCullMode = EnumFrustumCullMode.CullNormal)
+  overload: Vintagestory.API.Client.MeshDataPoolManager.Render*
+  nameWithType.vb: MeshDataPoolManager.Render(Vec3d, String, EnumFrustumCullMode)
+  fullName.vb: Vintagestory.API.Client.MeshDataPoolManager.Render(Vintagestory.API.MathTools.Vec3d, String, Vintagestory.API.Client.EnumFrustumCullMode)
+  name.vb: Render(Vec3d, String, EnumFrustumCullMode)
+- uid: Vintagestory.API.Client.MeshDataPoolManager.GetStats(System.Int64@,System.Int64@,System.Int64@)
+  commentId: M:Vintagestory.API.Client.MeshDataPoolManager.GetStats(System.Int64@,System.Int64@,System.Int64@)
+  id: GetStats(System.Int64@,System.Int64@,System.Int64@)
+  parent: Vintagestory.API.Client.MeshDataPoolManager
+  langs:
+  - csharp
+  - vb
+  name: GetStats(ref long, ref long, ref long)
+  nameWithType: MeshDataPoolManager.GetStats(ref long, ref long, ref long)
+  fullName: Vintagestory.API.Client.MeshDataPoolManager.GetStats(ref long, ref long, ref long)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataPoolManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetStats
+    path: Client/MeshPool/MeshDataPoolManager.cs
+    startLine: 193
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Gets the stats of the model.
+  example: []
+  syntax:
+    content: public void GetStats(ref long usedVideoMemory, ref long renderedTris, ref long allocatedTris)
+    parameters:
+    - id: usedVideoMemory
+      type: System.Int64
+      description: The amount of memory used by this pool.
+    - id: renderedTris
+      type: System.Int64
+      description: The number of Tris rendered by this pool.
+    - id: allocatedTris
+      type: System.Int64
+      description: The number of tris allocated by this pool.
+    content.vb: Public Sub GetStats(usedVideoMemory As Long, renderedTris As Long, allocatedTris As Long)
+  overload: Vintagestory.API.Client.MeshDataPoolManager.GetStats*
+  nameWithType.vb: MeshDataPoolManager.GetStats(Long, Long, Long)
+  fullName.vb: Vintagestory.API.Client.MeshDataPoolManager.GetStats(Long, Long, Long)
+  name.vb: GetStats(Long, Long, Long)
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.MeshDataPoolManager.#ctor*
+  commentId: Overload:Vintagestory.API.Client.MeshDataPoolManager.#ctor
+  href: Vintagestory.API.Client.MeshDataPoolManager.html#Vintagestory_API_Client_MeshDataPoolManager__ctor_Vintagestory_API_Client_MeshDataPoolMasterManager_Vintagestory_API_Client_FrustumCulling_Vintagestory_API_Client_ICoreClientAPI_System_Int32_System_Int32_System_Int32_Vintagestory_API_Client_CustomMeshDataPartFloat_Vintagestory_API_Client_CustomMeshDataPartShort_Vintagestory_API_Client_CustomMeshDataPartByte_Vintagestory_API_Client_CustomMeshDataPartInt_
+  name: MeshDataPoolManager
+  nameWithType: MeshDataPoolManager.MeshDataPoolManager
+  fullName: Vintagestory.API.Client.MeshDataPoolManager.MeshDataPoolManager
+  nameWithType.vb: MeshDataPoolManager.New
+  fullName.vb: Vintagestory.API.Client.MeshDataPoolManager.New
+  name.vb: New
+- uid: Vintagestory.API.Client.MeshDataPoolMasterManager
+  commentId: T:Vintagestory.API.Client.MeshDataPoolMasterManager
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MeshDataPoolMasterManager.html
+  name: MeshDataPoolMasterManager
+  nameWithType: MeshDataPoolMasterManager
+  fullName: Vintagestory.API.Client.MeshDataPoolMasterManager
+- uid: Vintagestory.API.Client.FrustumCulling
+  commentId: T:Vintagestory.API.Client.FrustumCulling
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.FrustumCulling.html
+  name: FrustumCulling
+  nameWithType: FrustumCulling
+  fullName: Vintagestory.API.Client.FrustumCulling
+- uid: Vintagestory.API.Client.ICoreClientAPI
+  commentId: T:Vintagestory.API.Client.ICoreClientAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ICoreClientAPI.html
+  name: ICoreClientAPI
+  nameWithType: ICoreClientAPI
+  fullName: Vintagestory.API.Client.ICoreClientAPI
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Client.CustomMeshDataPartFloat
+  commentId: T:Vintagestory.API.Client.CustomMeshDataPartFloat
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.CustomMeshDataPartFloat.html
+  name: CustomMeshDataPartFloat
+  nameWithType: CustomMeshDataPartFloat
+  fullName: Vintagestory.API.Client.CustomMeshDataPartFloat
+- uid: Vintagestory.API.Client.CustomMeshDataPartShort
+  commentId: T:Vintagestory.API.Client.CustomMeshDataPartShort
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.CustomMeshDataPartShort.html
+  name: CustomMeshDataPartShort
+  nameWithType: CustomMeshDataPartShort
+  fullName: Vintagestory.API.Client.CustomMeshDataPartShort
+- uid: Vintagestory.API.Client.CustomMeshDataPartByte
+  commentId: T:Vintagestory.API.Client.CustomMeshDataPartByte
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.CustomMeshDataPartByte.html
+  name: CustomMeshDataPartByte
+  nameWithType: CustomMeshDataPartByte
+  fullName: Vintagestory.API.Client.CustomMeshDataPartByte
+- uid: Vintagestory.API.Client.CustomMeshDataPartInt
+  commentId: T:Vintagestory.API.Client.CustomMeshDataPartInt
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.CustomMeshDataPartInt.html
+  name: CustomMeshDataPartInt
+  nameWithType: CustomMeshDataPartInt
+  fullName: Vintagestory.API.Client.CustomMeshDataPartInt
+- uid: Vintagestory.API.Client.MeshDataPoolManager.AddModel*
+  commentId: Overload:Vintagestory.API.Client.MeshDataPoolManager.AddModel
+  href: Vintagestory.API.Client.MeshDataPoolManager.html#Vintagestory_API_Client_MeshDataPoolManager_AddModel_Vintagestory_API_Client_MeshData_Vintagestory_API_MathTools_Vec3i_System_Int32_Vintagestory_API_MathTools_Sphere_
+  name: AddModel
+  nameWithType: MeshDataPoolManager.AddModel
+  fullName: Vintagestory.API.Client.MeshDataPoolManager.AddModel
+- uid: Vintagestory.API.Client.MeshData
+  commentId: T:Vintagestory.API.Client.MeshData
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MeshData.html
+  name: MeshData
+  nameWithType: MeshData
+  fullName: Vintagestory.API.Client.MeshData
+- uid: Vintagestory.API.MathTools.Vec3i
+  commentId: T:Vintagestory.API.MathTools.Vec3i
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3i.html
+  name: Vec3i
+  nameWithType: Vec3i
+  fullName: Vintagestory.API.MathTools.Vec3i
+- uid: Vintagestory.API.MathTools.Sphere
+  commentId: T:Vintagestory.API.MathTools.Sphere
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Sphere.html
+  name: Sphere
+  nameWithType: Sphere
+  fullName: Vintagestory.API.MathTools.Sphere
+- uid: Vintagestory.API.Client.ModelDataPoolLocation
+  commentId: T:Vintagestory.API.Client.ModelDataPoolLocation
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ModelDataPoolLocation.html
+  name: ModelDataPoolLocation
+  nameWithType: ModelDataPoolLocation
+  fullName: Vintagestory.API.Client.ModelDataPoolLocation
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Client.MeshDataPoolManager.Render*
+  commentId: Overload:Vintagestory.API.Client.MeshDataPoolManager.Render
+  href: Vintagestory.API.Client.MeshDataPoolManager.html#Vintagestory_API_Client_MeshDataPoolManager_Render_Vintagestory_API_MathTools_Vec3d_System_String_Vintagestory_API_Client_EnumFrustumCullMode_
+  name: Render
+  nameWithType: MeshDataPoolManager.Render
+  fullName: Vintagestory.API.Client.MeshDataPoolManager.Render
+- uid: Vintagestory.API.MathTools.Vec3d
+  commentId: T:Vintagestory.API.MathTools.Vec3d
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3d.html
+  name: Vec3d
+  nameWithType: Vec3d
+  fullName: Vintagestory.API.MathTools.Vec3d
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Client.EnumFrustumCullMode
+  commentId: T:Vintagestory.API.Client.EnumFrustumCullMode
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumFrustumCullMode.html
+  name: EnumFrustumCullMode
+  nameWithType: EnumFrustumCullMode
+  fullName: Vintagestory.API.Client.EnumFrustumCullMode
+- uid: Vintagestory.API.Client.MeshDataPoolManager.GetStats*
+  commentId: Overload:Vintagestory.API.Client.MeshDataPoolManager.GetStats
+  href: Vintagestory.API.Client.MeshDataPoolManager.html#Vintagestory_API_Client_MeshDataPoolManager_GetStats_System_Int64__System_Int64__System_Int64__
+  name: GetStats
+  nameWithType: MeshDataPoolManager.GetStats
+  fullName: Vintagestory.API.Client.MeshDataPoolManager.GetStats
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long

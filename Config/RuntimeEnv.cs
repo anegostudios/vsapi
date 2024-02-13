@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Net;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Config
 {
@@ -155,7 +156,7 @@ namespace Vintagestory.API.Config
                         if (File.Exists("/etc/os-release"))
                         {
                             var lines = File.ReadAllLines("/etc/os-release");
-                            var distro = lines.FirstOrDefault(line => line.StartsWith("PRETTY_NAME="))
+                            var distro = lines.FirstOrDefault(line => line.StartsWithOrdinal("PRETTY_NAME="))
                                 ?.Split('=').ElementAt(1)
                                 .Trim('"');
                             return $"Linux ({distro}) [Kernel {Environment.OSVersion.Version}]";

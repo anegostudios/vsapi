@@ -31,7 +31,12 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Snow/ice melting
         /// </summary>
-        Melt
+        Melt,
+
+        /// <summary>
+        /// Glue hardening
+        /// </summary>
+        Harden
     }
 
 

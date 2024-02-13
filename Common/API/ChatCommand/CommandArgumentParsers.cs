@@ -1151,9 +1151,19 @@ namespace Vintagestory.API.Common
         {
             this.words = words;
         }
+        public override string GetSyntax()
+        {
+            string options = string.Join("/", words);
+            return isMandatoryArg ? "<i>&lt;" + options + "&gt;</i>" : "<i>[" + options + "]</i>";
+        }
+        public override string GetSyntaxUnformatted()
+        {
+            string options = string.Join("/", words);
+            return isMandatoryArg ? "&lt;" + options + "&gt;" : "[" + options + "]";
+        }
         public override string GetSyntaxExplanation(string indent)
         {
-            return indent + GetSyntax() + " is one of the following: " + string.Join(", ", words);
+            return indent + GetSyntax() + (isMandatoryArg ? " is the " : " is (optionally) the ") + argName;
         }
 
         public override string[] GetValidRange(CmdArgs args)
@@ -2028,7 +2038,7 @@ namespace Vintagestory.API.Common
                 lastErrorMessage = Lang.Get("Not a color");
                 return EnumParseResult.Bad;
             }
-            if (colorString.StartsWith("#"))
+            if (colorString.StartsWith('#'))
             {
                 try
                 {

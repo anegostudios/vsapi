@@ -1,90 +1,133 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BlockBehavior
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BlockBehavior
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class BlockBehavior | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BlockBehavior | VintageStory API ">
+      
+      <meta name="description" content="Allows for definitions of behaviors of a block that can be applied to any block">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.BlockBehavior">
-  
-  
-  <h1 id="Vintagestory_API_Common_BlockBehavior" data-uid="Vintagestory.API.Common.BlockBehavior" class="text-break">Class BlockBehavior
+
+        <article data-uid="Vintagestory.API.Common.BlockBehavior">
+
+
+
+  <h1 id="Vintagestory_API_Common_BlockBehavior" data-uid="Vintagestory.API.Common.BlockBehavior" class="text-break">
+Class BlockBehavior  
   </h1>
-  <div class="markdown level0 summary"><p>Allows for definitions of behaviors of a block that can be applied to any block</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html">CollectibleBehavior</a></div>
-    <div class="level2"><span class="xref">BlockBehavior</span></div>
-      <div class="level3"><a class="xref" href="Vintagestory.API.Common.StrongBlockBehavior.html">StrongBlockBehavior</a></div>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"><p>Allows for definitions of behaviors of a block that can be applied to any block</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class BlockBehavior : CollectibleBehavior</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html">CollectibleBehavior</a></div>
+      <div><span class="xref">BlockBehavior</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.StrongBlockBehavior.html">StrongBlockBehavior</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_collObj">CollectibleBehavior.collObj</a>
     </div>
@@ -104,37 +147,37 @@
       <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnUnloaded_Vintagestory_API_Common_ICoreAPI_">CollectibleBehavior.OnUnloaded(ICoreAPI)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetStorageFlags_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.GetStorageFlags(ItemStack, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetStorageFlags_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.GetStorageFlags(ItemStack, ref EnumHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldAttackStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandHandling__Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldAttackStart(ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumHandHandling, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldAttackStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandHandling__Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldAttackStart(ItemSlot, EntityAgent, BlockSelection, EntitySelection, ref EnumHandHandling, ref EnumHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldAttackCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumItemUseCancelReason_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldAttackCancel(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumItemUseCancelReason, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldAttackCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumItemUseCancelReason_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldAttackCancel(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumItemUseCancelReason, ref EnumHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldAttackStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldAttackStep(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldAttackStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldAttackStep(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection, ref EnumHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldAttackStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldAttackStop(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldAttackStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldAttackStop(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection, ref EnumHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldInteractStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_System_Boolean_Vintagestory_API_Common_EnumHandHandling__Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldInteractStart(ItemSlot, EntityAgent, BlockSelection, EntitySelection, Boolean, EnumHandHandling, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldInteractStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_System_Boolean_Vintagestory_API_Common_EnumHandHandling__Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldInteractStart(ItemSlot, EntityAgent, BlockSelection, EntitySelection, bool, ref EnumHandHandling, ref EnumHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldInteractStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldInteractStep(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldInteractStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldInteractStep(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection, ref EnumHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldInteractStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldInteractStop(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldInteractStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldInteractStop(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection, ref EnumHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldInteractCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumItemUseCancelReason_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldInteractCancel(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumItemUseCancelReason, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnHeldInteractCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumItemUseCancelReason_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnHeldInteractCancel(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumItemUseCancelReason, ref EnumHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnBeforeRender_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemStack_Vintagestory_API_Client_EnumItemRenderTarget_Vintagestory_API_Client_ItemRenderInfo__">CollectibleBehavior.OnBeforeRender(ICoreClientAPI, ItemStack, EnumItemRenderTarget, ItemRenderInfo)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnBeforeRender_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemStack_Vintagestory_API_Client_EnumItemRenderTarget_Vintagestory_API_Client_ItemRenderInfo__">CollectibleBehavior.OnBeforeRender(ICoreClientAPI, ItemStack, EnumItemRenderTarget, ref ItemRenderInfo)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetHeldInteractionHelp_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.GetHeldInteractionHelp(ItemSlot, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetHeldInteractionHelp_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.GetHeldInteractionHelp(ItemSlot, ref EnumHandling)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetToolModes_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Client_IClientPlayer_Vintagestory_API_Common_BlockSelection_">CollectibleBehavior.GetToolModes(ItemSlot, IClientPlayer, BlockSelection)</a>
@@ -143,2012 +186,1501 @@
       <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetToolMode_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_">CollectibleBehavior.GetToolMode(ItemSlot, IPlayer, BlockSelection)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_SetToolMode_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_System_Int32_">CollectibleBehavior.SetToolMode(ItemSlot, IPlayer, BlockSelection, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_SetToolMode_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_System_Int32_">CollectibleBehavior.SetToolMode(ItemSlot, IPlayer, BlockSelection, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetHeldItemInfo_Vintagestory_API_Common_ItemSlot_StringBuilder_Vintagestory_API_Common_IWorldAccessor_System_Boolean_">CollectibleBehavior.GetHeldItemInfo(ItemSlot, StringBuilder, IWorldAccessor, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetHeldItemInfo_Vintagestory_API_Common_ItemSlot_System_Text_StringBuilder_Vintagestory_API_Common_IWorldAccessor_System_Boolean_">CollectibleBehavior.GetHeldItemInfo(ItemSlot, StringBuilder, IWorldAccessor, bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetHeldItemName_StringBuilder_Vintagestory_API_Common_ItemStack_">CollectibleBehavior.GetHeldItemName(StringBuilder, ItemStack)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetHeldItemName_System_Text_StringBuilder_Vintagestory_API_Common_ItemStack_">CollectibleBehavior.GetHeldItemName(StringBuilder, ItemStack)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnBlockBrokenWith_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_BlockSelection_System_Single_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnBlockBrokenWith(IWorldAccessor, Entity, ItemSlot, BlockSelection, Single, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnBlockBrokenWith_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_BlockSelection_System_Single_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnBlockBrokenWith(IWorldAccessor, Entity, ItemSlot, BlockSelection, float, ref EnumHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnBlockBreaking_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemSlot_System_Single_System_Single_System_Int32_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnBlockBreaking(IPlayer, BlockSelection, ItemSlot, Single, Single, Int32, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnBlockBreaking_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemSlot_System_Single_System_Single_System_Int32_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.OnBlockBreaking(IPlayer, BlockSelection, ItemSlot, float, float, int, ref EnumHandling)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_BlockBehavior_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class BlockBehavior : CollectibleBehavior</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior__ctor_Vintagestory_API_Common_Block_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.%23ctor(Vintagestory.API.Common.Block)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L21">View Source</a>
-  </span>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetHeldTpHitAnimation_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.GetHeldTpHitAnimation(ItemSlot, Entity, ref EnumHandling)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetHeldReadyAnimation_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_EnumHand_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.GetHeldReadyAnimation(ItemSlot, Entity, EnumHand, ref EnumHandling)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetHeldTpIdleAnimation_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_EnumHand_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.GetHeldTpIdleAnimation(ItemSlot, Entity, EnumHand, ref EnumHandling)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_GetHeldTpUseAnimation_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_EnumHandling__">CollectibleBehavior.GetHeldTpUseAnimation(ItemSlot, Entity, ref EnumHandling)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Vintagestory_API_Common_BlockBehavior__ctor_" data-uid="Vintagestory.API.Common.BlockBehavior.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior__ctor_Vintagestory_API_Common_Block_" data-uid="Vintagestory.API.Common.BlockBehavior.#ctor(Vintagestory.API.Common.Block)">BlockBehavior(Block)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior__ctor_Vintagestory_API_Common_Block_" data-uid="Vintagestory.API.Common.BlockBehavior.#ctor(Vintagestory.API.Common.Block)">
+  BlockBehavior(Block)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public BlockBehavior(Block block)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
-        <td><span class="parametername">block</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>block</code> <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_block" data-uid="Vintagestory.API.Common.BlockBehavior.block">
+  block
+  
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_block.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.block%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L18">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_block" data-uid="Vintagestory.API.Common.BlockBehavior.block">block</h4>
+
   <div class="markdown level1 summary"><p>The block for this behavior instance.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Block block</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_Activate_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Caller_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Datastructures_ITreeAttribute_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.Activate(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Common.Caller%2CVintagestory.API.Common.BlockSelection%2CVintagestory.API.Datastructures.ITreeAttribute%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L205">View Source</a>
-  </span>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_Activate_" data-uid="Vintagestory.API.Common.BlockBehavior.Activate*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_Activate_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Caller_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Datastructures_ITreeAttribute_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.Activate(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Caller,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.EnumHandling@)">Activate(IWorldAccessor, Caller, BlockSelection, ITreeAttribute, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_Activate_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Caller_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Datastructures_ITreeAttribute_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.Activate(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Caller,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.EnumHandling@)">
+  Activate(IWorldAccessor, Caller, BlockSelection, ITreeAttribute, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void Activate(IWorldAccessor world, Caller caller, BlockSelection blockSel, ITreeAttribute activationArgs, ref EnumHandling handled)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Caller.html">Caller</a></td>
-        <td><span class="parametername">caller</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
-        <td><span class="parametername">blockSel</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
-        <td><span class="parametername">activationArgs</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handled</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_CanAttachBlockAt_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_EnumHandling__Vintagestory_API_MathTools_Cuboidi_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.CanAttachBlockAt(Vintagestory.API.Common.IBlockAccessor%2CVintagestory.API.Common.Block%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockFacing%2CVintagestory.API.Common.EnumHandling%40%2CVintagestory.API.MathTools.Cuboidi)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L91">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>caller</code> <a class="xref" href="Vintagestory.API.Common.Caller.html">Caller</a></dt>
+    <dd></dd>
+    <dt><code>blockSel</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+    <dt><code>activationArgs</code> <a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></dt>
+    <dd></dd>
+    <dt><code>handled</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_CanAttachBlockAt_" data-uid="Vintagestory.API.Common.BlockBehavior.CanAttachBlockAt*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_CanAttachBlockAt_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_EnumHandling__Vintagestory_API_MathTools_Cuboidi_" data-uid="Vintagestory.API.Common.BlockBehavior.CanAttachBlockAt(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Block,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.Common.EnumHandling@,Vintagestory.API.MathTools.Cuboidi)">CanAttachBlockAt(IBlockAccessor, Block, BlockPos, BlockFacing, ref EnumHandling, Cuboidi)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_CanAttachBlockAt_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Block_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_EnumHandling__Vintagestory_API_MathTools_Cuboidi_" data-uid="Vintagestory.API.Common.BlockBehavior.CanAttachBlockAt(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Block,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.Common.EnumHandling@,Vintagestory.API.MathTools.Cuboidi)">
+  CanAttachBlockAt(IBlockAccessor, Block, BlockPos, BlockFacing, ref EnumHandling, Cuboidi)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Used by torches and other blocks to check if it can attach itself to that block. The default behavior tests for SideSolid[blockFace.Index]</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual bool CanAttachBlockAt(IBlockAccessor world, Block block, BlockPos pos, BlockFacing blockFace, ref EnumHandling handling, Cuboidi attachmentArea = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
-        <td><span class="parametername">block</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
-        <td><span class="parametername">blockFace</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Cuboidi.html">Cuboidi</a></td>
-        <td><span class="parametername">attachmentArea</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_CanCreatureSpawnOn_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Common_Entities_BaseSpawnConditions_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.CanCreatureSpawnOn(Vintagestory.API.Common.IBlockAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.Entities.EntityProperties%2CVintagestory.API.Common.Entities.BaseSpawnConditions%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L108">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
+    <dd></dd>
+    <dt><code>block</code> <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>blockFace</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+    <dt><code>attachmentArea</code> <a class="xref" href="Vintagestory.API.MathTools.Cuboidi.html">Cuboidi</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_CanCreatureSpawnOn_" data-uid="Vintagestory.API.Common.BlockBehavior.CanCreatureSpawnOn*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_CanCreatureSpawnOn_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Common_Entities_BaseSpawnConditions_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.CanCreatureSpawnOn(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Common.Entities.BaseSpawnConditions,Vintagestory.API.Common.EnumHandling@)">CanCreatureSpawnOn(IBlockAccessor, BlockPos, EntityProperties, BaseSpawnConditions, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_CanCreatureSpawnOn_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Common_Entities_BaseSpawnConditions_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.CanCreatureSpawnOn(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Common.Entities.BaseSpawnConditions,Vintagestory.API.Common.EnumHandling@)">
+  CanCreatureSpawnOn(IBlockAccessor, BlockPos, EntityProperties, BaseSpawnConditions, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Should return if supplied entitytype is allowed to spawn on this block</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual bool CanCreatureSpawnOn(IBlockAccessor blockAccessor, BlockPos pos, EntityProperties type, BaseSpawnConditions sc, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
-        <td><span class="parametername">blockAccessor</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Entities.EntityProperties.html">EntityProperties</a></td>
-        <td><span class="parametername">type</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Entities.BaseSpawnConditions.html">BaseSpawnConditions</a></td>
-        <td><span class="parametername">sc</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_CanPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__System_String__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.CanPlaceBlock(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Common.IPlayer%2CVintagestory.API.Common.BlockSelection%2CVintagestory.API.Common.EnumHandling%40%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L294">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockAccessor</code> <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>type</code> <a class="xref" href="Vintagestory.API.Common.Entities.EntityProperties.html">EntityProperties</a></dt>
+    <dd></dd>
+    <dt><code>sc</code> <a class="xref" href="Vintagestory.API.Common.Entities.BaseSpawnConditions.html">BaseSpawnConditions</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_CanPlaceBlock_" data-uid="Vintagestory.API.Common.BlockBehavior.CanPlaceBlock*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_CanPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__System_String__" data-uid="Vintagestory.API.Common.BlockBehavior.CanPlaceBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EnumHandling@,System.String@)">CanPlaceBlock(IWorldAccessor, IPlayer, BlockSelection, ref EnumHandling, ref String)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_CanPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__System_String__" data-uid="Vintagestory.API.Common.BlockBehavior.CanPlaceBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EnumHandling@,System.String@)">
+  CanPlaceBlock(IWorldAccessor, IPlayer, BlockSelection, ref EnumHandling, ref string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Step 2: Test if the block can be placed</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual bool CanPlaceBlock(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling, ref string failureCode)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">byPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
-        <td><span class="parametername">blockSel</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">failureCode</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_DoPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.DoPlaceBlock(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Common.IPlayer%2CVintagestory.API.Common.BlockSelection%2CVintagestory.API.Common.ItemStack%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L309">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>blockSel</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+    <dt><code>failureCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_DoPlaceBlock_" data-uid="Vintagestory.API.Common.BlockBehavior.DoPlaceBlock*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_DoPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.DoPlaceBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.EnumHandling@)">DoPlaceBlock(IWorldAccessor, IPlayer, BlockSelection, ItemStack, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_DoPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.DoPlaceBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.EnumHandling@)">
+  DoPlaceBlock(IWorldAccessor, IPlayer, BlockSelection, ItemStack, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Step 3: Place the block. Return false if it cannot be placed (but you should rather return false in CanPlaceBlock).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual bool DoPlaceBlock(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ItemStack byItemStack, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">byPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
-        <td><span class="parametername">blockSel</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
-        <td><span class="parametername">byItemStack</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetDrops_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_System_Single__Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetDrops(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.IPlayer%2CSystem.Single%40%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L62">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>blockSel</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+    <dt><code>byItemStack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetDrops_" data-uid="Vintagestory.API.Common.BlockBehavior.GetDrops*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetDrops_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_System_Single__Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetDrops(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer,System.Single@,Vintagestory.API.Common.EnumHandling@)">GetDrops(IWorldAccessor, BlockPos, IPlayer, ref Single, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetDrops_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_System_Single__Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetDrops(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer,System.Single@,Vintagestory.API.Common.EnumHandling@)">
+  GetDrops(IWorldAccessor, BlockPos, IPlayer, ref float, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Is called before a block is broken, should return what items this block should drop. Return null or empty array for no drops. The default behavior drops whatever block.Drops is set to.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref float dropChanceMultiplier, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">byPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">dropChanceMultiplier</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetHeatRetention_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetHeatRetention(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockFacing%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L355">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>dropChanceMultiplier</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetHeatRetention_" data-uid="Vintagestory.API.Common.BlockBehavior.GetHeatRetention*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetHeatRetention_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetHeatRetention(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.Common.EnumHandling@)">GetHeatRetention(BlockPos, BlockFacing, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetHeatRetention_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetHeatRetention(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.Common.EnumHandling@)">
+  GetHeatRetention(BlockPos, BlockFacing, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing, ref EnumHandling handled)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetRetention() instead&quot;)]
+public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing, ref EnumHandling handled)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
-        <td><span class="parametername">facing</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handled</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetHeldBlockInfo_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetHeldBlockInfo(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Common.ItemSlot)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L332">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>facing</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></dt>
+    <dd></dd>
+    <dt><code>handled</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetHeldBlockInfo_" data-uid="Vintagestory.API.Common.BlockBehavior.GetHeldBlockInfo*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetHeldBlockInfo_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Common.BlockBehavior.GetHeldBlockInfo(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot)">GetHeldBlockInfo(IWorldAccessor, ItemSlot)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetHeldBlockInfo_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_" data-uid="Vintagestory.API.Common.BlockBehavior.GetHeldBlockInfo(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot)">
+  GetHeldBlockInfo(IWorldAccessor, ItemSlot)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual string GetHeldBlockInfo(IWorldAccessor world, ItemSlot inSlot)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
-        <td><span class="parametername">inSlot</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetHorizontallyFlippedBlockCode_Vintagestory_API_MathTools_EnumAxis_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetHorizontallyFlippedBlockCode(Vintagestory.API.MathTools.EnumAxis%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L146">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>inSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetHorizontallyFlippedBlockCode_" data-uid="Vintagestory.API.Common.BlockBehavior.GetHorizontallyFlippedBlockCode*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetHorizontallyFlippedBlockCode_Vintagestory_API_MathTools_EnumAxis_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetHorizontallyFlippedBlockCode(Vintagestory.API.MathTools.EnumAxis,Vintagestory.API.Common.EnumHandling@)">GetHorizontallyFlippedBlockCode(EnumAxis, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetHorizontallyFlippedBlockCode_Vintagestory_API_MathTools_EnumAxis_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetHorizontallyFlippedBlockCode(Vintagestory.API.MathTools.EnumAxis,Vintagestory.API.Common.EnumHandling@)">
+  GetHorizontallyFlippedBlockCode(EnumAxis, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>For any block that can be flipped vertically, this method should be implemented to return the correctly flipped block code. It is used by the world edit tool for allowing block data rotations</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual AssetLocation GetHorizontallyFlippedBlockCode(EnumAxis axis, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EnumAxis.html">EnumAxis</a></td>
-        <td><span class="parametername">axis</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetLiquidBarrierHeightOnSide_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetLiquidBarrierHeightOnSide(Vintagestory.API.MathTools.BlockFacing%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L366">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>axis</code> <a class="xref" href="Vintagestory.API.MathTools.EnumAxis.html">EnumAxis</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetLiquidBarrierHeightOnSide_" data-uid="Vintagestory.API.Common.BlockBehavior.GetLiquidBarrierHeightOnSide*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetLiquidBarrierHeightOnSide_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetLiquidBarrierHeightOnSide(Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumHandling@)">GetLiquidBarrierHeightOnSide(BlockFacing, BlockPos, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetLiquidBarrierHeightOnSide_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetLiquidBarrierHeightOnSide(Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumHandling@)">
+  GetLiquidBarrierHeightOnSide(BlockFacing, BlockPos, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual float GetLiquidBarrierHeightOnSide(BlockFacing face, BlockPos pos, ref EnumHandling handled)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
-        <td><span class="parametername">face</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handled</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetMiningSpeedModifier_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetMiningSpeedModifier(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.IPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L345">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>face</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>handled</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetMiningSpeedModifier_" data-uid="Vintagestory.API.Common.BlockBehavior.GetMiningSpeedModifier*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetMiningSpeedModifier_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.BlockBehavior.GetMiningSpeedModifier(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer)">GetMiningSpeedModifier(IWorldAccessor, BlockPos, IPlayer)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetMiningSpeedModifier_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.BlockBehavior.GetMiningSpeedModifier(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer)">
+  GetMiningSpeedModifier(IWorldAccessor, BlockPos, IPlayer)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>If this is less than 1.0, will slow down mining of the given block  (e.g. used for reinforced blocks)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual float GetMiningSpeedModifier(IWorldAccessor world, BlockPos pos, IPlayer byPlayer)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">byPlayer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetPlacedBlockInfo_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetPlacedBlockInfo(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.IPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L231">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockInfo_" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockInfo*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockInfo_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockInfo(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer)">GetPlacedBlockInfo(IWorldAccessor, BlockPos, IPlayer)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockInfo_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockInfo(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer)">
+  GetPlacedBlockInfo(IWorldAccessor, BlockPos, IPlayer)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Called by the block info HUD for displaying additional information</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual string GetPlacedBlockInfo(IWorldAccessor world, BlockPos pos, IPlayer forPlayer)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">forPlayer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetPlacedBlockInteractionHelp_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetPlacedBlockInteractionHelp(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Common.BlockSelection%2CVintagestory.API.Common.IPlayer%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L243">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>forPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockInteractionHelp_" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockInteractionHelp*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockInteractionHelp_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockInteractionHelp(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumHandling@)">GetPlacedBlockInteractionHelp(IWorldAccessor, BlockSelection, IPlayer, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockInteractionHelp_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockInteractionHelp(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumHandling@)">
+  GetPlacedBlockInteractionHelp(IWorldAccessor, BlockSelection, IPlayer, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual WorldInteraction[] GetPlacedBlockInteractionHelp(IWorldAccessor world, BlockSelection selection, IPlayer forPlayer, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
-        <td><span class="parametername">selection</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">forPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.WorldInteraction.html">WorldInteraction</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetPlacedBlockName_StringBuilder_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetPlacedBlockName(StringBuilder%2CVintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L350">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>selection</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+    <dt><code>forPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.WorldInteraction.html">WorldInteraction</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockName_" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockName*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockName_StringBuilder_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockName(StringBuilder,Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)">GetPlacedBlockName(StringBuilder, IWorldAccessor, BlockPos)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetPlacedBlockName_System_Text_StringBuilder_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockBehavior.GetPlacedBlockName(System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)">
+  GetPlacedBlockName(StringBuilder, IWorldAccessor, BlockPos)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void GetPlacedBlockName(StringBuilder sb, IWorldAccessor world, BlockPos pos)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">StringBuilder</span></td>
-        <td><span class="parametername">sb</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetRetention_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_EnumRetentionType_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetRetention(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockFacing%2CVintagestory.API.Common.EnumRetentionType%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L361">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sb</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.stringbuilder">StringBuilder</a></dt>
+    <dd></dd>
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetRetention_" data-uid="Vintagestory.API.Common.BlockBehavior.GetRetention*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetRetention_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_EnumRetentionType_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetRetention(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.Common.EnumRetentionType,Vintagestory.API.Common.EnumHandling@)">GetRetention(BlockPos, BlockFacing, EnumRetentionType, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetRetention_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_EnumRetentionType_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetRetention(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.Common.EnumRetentionType,Vintagestory.API.Common.EnumHandling@)">
+  GetRetention(BlockPos, BlockFacing, EnumRetentionType, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual int GetRetention(BlockPos pos, BlockFacing facing, EnumRetentionType type, ref EnumHandling handled)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
-        <td><span class="parametername">facing</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumRetentionType.html">EnumRetentionType</a></td>
-        <td><span class="parametername">type</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handled</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetRotatedBlockCode_System_Int32_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetRotatedBlockCode(System.Int32%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L122">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>facing</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></dt>
+    <dd></dd>
+    <dt><code>type</code> <a class="xref" href="Vintagestory.API.Common.EnumRetentionType.html">EnumRetentionType</a></dt>
+    <dd></dd>
+    <dt><code>handled</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetRotatedBlockCode_" data-uid="Vintagestory.API.Common.BlockBehavior.GetRotatedBlockCode*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetRotatedBlockCode_System_Int32_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetRotatedBlockCode(System.Int32,Vintagestory.API.Common.EnumHandling@)">GetRotatedBlockCode(Int32, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetRotatedBlockCode_System_Int32_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetRotatedBlockCode(System.Int32,Vintagestory.API.Common.EnumHandling@)">
+  GetRotatedBlockCode(int, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>For any block that can be rotated, this method should be implemented to return the correct rotated block code. It is used by the world edit tool for allowing block data rotations</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual AssetLocation GetRotatedBlockCode(int angle, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">angle</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetSnowCoveredBlockCode_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetSnowCoveredBlockCode(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L337">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>angle</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetSnowCoveredBlockCode_" data-uid="Vintagestory.API.Common.BlockBehavior.GetSnowCoveredBlockCode*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetSnowCoveredBlockCode_System_Single_" data-uid="Vintagestory.API.Common.BlockBehavior.GetSnowCoveredBlockCode(System.Single)">GetSnowCoveredBlockCode(Single)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetSnowCoveredBlockCode_System_Single_" data-uid="Vintagestory.API.Common.BlockBehavior.GetSnowCoveredBlockCode(System.Single)">
+  GetSnowCoveredBlockCode(float)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual AssetLocation GetSnowCoveredBlockCode(float snowLevel)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">snowLevel</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_GetVerticallyFlippedBlockCode_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.GetVerticallyFlippedBlockCode(Vintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L134">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>snowLevel</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_GetVerticallyFlippedBlockCode_" data-uid="Vintagestory.API.Common.BlockBehavior.GetVerticallyFlippedBlockCode*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_GetVerticallyFlippedBlockCode_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetVerticallyFlippedBlockCode(Vintagestory.API.Common.EnumHandling@)">GetVerticallyFlippedBlockCode(ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_GetVerticallyFlippedBlockCode_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.GetVerticallyFlippedBlockCode(Vintagestory.API.Common.EnumHandling@)">
+  GetVerticallyFlippedBlockCode(ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>For any block that can be flipped upside down, this method should be implemented to return the correctly flipped block code. It is used by the world edit tool for allowing block data rotations</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual AssetLocation GetVerticallyFlippedBlockCode(ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_IsReplacableBy_Vintagestory_API_Common_Block_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.IsReplacableBy(Vintagestory.API.Common.Block%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L158">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_IsReplacableBy_" data-uid="Vintagestory.API.Common.BlockBehavior.IsReplacableBy*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_IsReplacableBy_Vintagestory_API_Common_Block_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.IsReplacableBy(Vintagestory.API.Common.Block,Vintagestory.API.Common.EnumHandling@)">IsReplacableBy(Block, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_IsReplacableBy_Vintagestory_API_Common_Block_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.IsReplacableBy(Vintagestory.API.Common.Block,Vintagestory.API.Common.EnumHandling@)">
+  IsReplacableBy(Block, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Used to determine if a block should be treated like air when placing blocks. (e.g. used for tallgrass)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual bool IsReplacableBy(Block block, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
-        <td><span class="parametername">block</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_OnAsyncClientParticleTick_Vintagestory_API_Client_IAsyncParticleManager_Vintagestory_API_MathTools_BlockPos_System_Single_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.OnAsyncClientParticleTick(Vintagestory.API.Client.IAsyncParticleManager%2CVintagestory.API.MathTools.BlockPos%2CSystem.Single%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L185">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>block</code> <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_OnAsyncClientParticleTick_" data-uid="Vintagestory.API.Common.BlockBehavior.OnAsyncClientParticleTick*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_OnAsyncClientParticleTick_Vintagestory_API_Client_IAsyncParticleManager_Vintagestory_API_MathTools_BlockPos_System_Single_System_Single_" data-uid="Vintagestory.API.Common.BlockBehavior.OnAsyncClientParticleTick(Vintagestory.API.Client.IAsyncParticleManager,Vintagestory.API.MathTools.BlockPos,System.Single,System.Single)">OnAsyncClientParticleTick(IAsyncParticleManager, BlockPos, Single, Single)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_OnAsyncClientParticleTick_Vintagestory_API_Client_IAsyncParticleManager_Vintagestory_API_MathTools_BlockPos_System_Single_System_Single_" data-uid="Vintagestory.API.Common.BlockBehavior.OnAsyncClientParticleTick(Vintagestory.API.Client.IAsyncParticleManager,Vintagestory.API.MathTools.BlockPos,System.Single,System.Single)">
+  OnAsyncClientParticleTick(IAsyncParticleManager, BlockPos, float, float)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void OnAsyncClientParticleTick(IAsyncParticleManager manager, BlockPos pos, float windAffectednessAtPos, float secondsTicking)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.IAsyncParticleManager.html">IAsyncParticleManager</a></td>
-        <td><span class="parametername">manager</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">windAffectednessAtPos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">secondsTicking</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_OnBlockBroken_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.OnBlockBroken(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.IPlayer%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L34">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>manager</code> <a class="xref" href="Vintagestory.API.Client.IAsyncParticleManager.html">IAsyncParticleManager</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>windAffectednessAtPos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>secondsTicking</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_OnBlockBroken_" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockBroken*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_OnBlockBroken_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockBroken(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumHandling@)">OnBlockBroken(IWorldAccessor, BlockPos, IPlayer, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_OnBlockBroken_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockBroken(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumHandling@)">
+  OnBlockBroken(IWorldAccessor, BlockPos, IPlayer, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Called when a survival player has broken the block. The default behavior removes the block and spawns the block drops.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void OnBlockBroken(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">byPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_OnBlockExploded_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlastType_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.OnBlockExploded(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.EnumBlastType%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L238">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_OnBlockExploded_" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockExploded*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_OnBlockExploded_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlastType_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockExploded(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlastType,Vintagestory.API.Common.EnumHandling@)">OnBlockExploded(IWorldAccessor, BlockPos, BlockPos, EnumBlastType, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_OnBlockExploded_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlastType_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockExploded(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlastType,Vintagestory.API.Common.EnumHandling@)">
+  OnBlockExploded(IWorldAccessor, BlockPos, BlockPos, EnumBlastType, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void OnBlockExploded(IWorldAccessor world, BlockPos pos, BlockPos explosionCenter, EnumBlastType blastType, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">explosionCenter</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumBlastType.html">EnumBlastType</a></td>
-        <td><span class="parametername">blastType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_OnBlockInteractCancel_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.OnBlockInteractCancel(System.Single%2CVintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Common.IPlayer%2CVintagestory.API.Common.BlockSelection%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L261">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>explosionCenter</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>blastType</code> <a class="xref" href="Vintagestory.API.Common.EnumBlastType.html">EnumBlastType</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_OnBlockInteractCancel_" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockInteractCancel*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_OnBlockInteractCancel_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockInteractCancel(System.Single,Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EnumHandling@)">OnBlockInteractCancel(Single, IWorldAccessor, IPlayer, BlockSelection, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_OnBlockInteractCancel_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockInteractCancel(System.Single,Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EnumHandling@)">
+  OnBlockInteractCancel(float, IWorldAccessor, IPlayer, BlockSelection, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual bool OnBlockInteractCancel(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">secondsUsed</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">byPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
-        <td><span class="parametername">blockSel</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_OnBlockInteractStart_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.OnBlockInteractStart(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Common.IPlayer%2CVintagestory.API.Common.BlockSelection%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L218">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>secondsUsed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>blockSel</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_OnBlockInteractStart_" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockInteractStart*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_OnBlockInteractStart_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockInteractStart(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EnumHandling@)">OnBlockInteractStart(IWorldAccessor, IPlayer, BlockSelection, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_OnBlockInteractStart_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockInteractStart(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EnumHandling@)">
+  OnBlockInteractStart(IWorldAccessor, IPlayer, BlockSelection, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>When a player does a right click while targeting this placed block. Should return true if the event is handled, so that other events can occur, e.g. eating a held item if the block is not interactable with.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual bool OnBlockInteractStart(IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">byPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
-        <td><span class="parametername">blockSel</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_OnBlockInteractStep_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.OnBlockInteractStep(System.Single%2CVintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Common.IPlayer%2CVintagestory.API.Common.BlockSelection%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L255">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>blockSel</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_OnBlockInteractStep_" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockInteractStep*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_OnBlockInteractStep_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockInteractStep(System.Single,Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EnumHandling@)">OnBlockInteractStep(Single, IWorldAccessor, IPlayer, BlockSelection, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_OnBlockInteractStep_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockInteractStep(System.Single,Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EnumHandling@)">
+  OnBlockInteractStep(float, IWorldAccessor, IPlayer, BlockSelection, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual bool OnBlockInteractStep(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">secondsUsed</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">byPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
-        <td><span class="parametername">blockSel</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_OnBlockInteractStop_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.OnBlockInteractStop(System.Single%2CVintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Common.IPlayer%2CVintagestory.API.Common.BlockSelection%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L250">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>secondsUsed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>blockSel</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_OnBlockInteractStop_" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockInteractStop*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_OnBlockInteractStop_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockInteractStop(System.Single,Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EnumHandling@)">OnBlockInteractStop(Single, IWorldAccessor, IPlayer, BlockSelection, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_OnBlockInteractStop_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockInteractStop(System.Single,Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EnumHandling@)">
+  OnBlockInteractStop(float, IWorldAccessor, IPlayer, BlockSelection, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void OnBlockInteractStop(float secondsUsed, IWorldAccessor world, IPlayer byPlayer, BlockSelection blockSel, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">secondsUsed</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">byPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
-        <td><span class="parametername">blockSel</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_OnBlockPlaced_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.OnBlockPlaced(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L322">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>secondsUsed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>blockSel</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_OnBlockPlaced_" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockPlaced*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_OnBlockPlaced_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockPlaced(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumHandling@)">OnBlockPlaced(IWorldAccessor, BlockPos, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_OnBlockPlaced_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockPlaced(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumHandling@)">
+  OnBlockPlaced(IWorldAccessor, BlockPos, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Step 4: Block was placed. Always called when a block has been placed through whatever method, except during worldgen or via ExchangeBlock()
 Be aware that the vanilla OnBlockPlaced block behavior is to spawn the block entity if any is associated with this block, so this code will not get executed if you set handled to PreventDefault or Last</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void OnBlockPlaced(IWorldAccessor world, BlockPos blockPos, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">blockPos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_OnBlockRemoved_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.OnBlockRemoved(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L199">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>blockPos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_OnBlockRemoved_" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockRemoved*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_OnBlockRemoved_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockRemoved(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumHandling@)">OnBlockRemoved(IWorldAccessor, BlockPos, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_OnBlockRemoved_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnBlockRemoved(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumHandling@)">
+  OnBlockRemoved(IWorldAccessor, BlockPos, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Always called when a block has been removed through whatever method, except during worldgen or via ExchangeBlock()
 For Worldgen you might be able to use TryPlaceBlockForWorldGen() to attach custom behaviors during placement/removal</p>
 <p>The default behavior is to delete the block entity, if this block has any</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void OnBlockRemoved(IWorldAccessor world, BlockPos pos, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_OnCreatedByCrafting_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.OnCreatedByCrafting(Vintagestory.API.Common.ItemSlot%5B%5D%2CVintagestory.API.Common.ItemSlot%2CVintagestory.API.Common.GridRecipe%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L327">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_OnCreatedByCrafting_" data-uid="Vintagestory.API.Common.BlockBehavior.OnCreatedByCrafting*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_OnCreatedByCrafting_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnCreatedByCrafting(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.EnumHandling@)">OnCreatedByCrafting(ItemSlot[], ItemSlot, GridRecipe, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_OnCreatedByCrafting_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnCreatedByCrafting(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.EnumHandling@)">
+  OnCreatedByCrafting(ItemSlot[], ItemSlot, GridRecipe, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe, ref EnumHandling handled)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</td>
-        <td><span class="parametername">allInputslots</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></td>
-        <td><span class="parametername">outputSlot</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.GridRecipe.html">GridRecipe</a></td>
-        <td><span class="parametername">byRecipe</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handled</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_OnNeighbourBlockChange_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.OnNeighbourBlockChange(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L76">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>allInputslots</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a>[]</dt>
+    <dd></dd>
+    <dt><code>outputSlot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+    <dd></dd>
+    <dt><code>byRecipe</code> <a class="xref" href="Vintagestory.API.Common.GridRecipe.html">GridRecipe</a></dt>
+    <dd></dd>
+    <dt><code>handled</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_OnNeighbourBlockChange_" data-uid="Vintagestory.API.Common.BlockBehavior.OnNeighbourBlockChange*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_OnNeighbourBlockChange_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnNeighbourBlockChange(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumHandling@)">OnNeighbourBlockChange(IWorldAccessor, BlockPos, BlockPos, ref EnumHandling)</h4>
-  <div class="markdown level1 summary"><p>Called when any of it&apos;s 6 neighbour blocks has been changed</p>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_OnNeighbourBlockChange_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnNeighbourBlockChange(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumHandling@)">
+  OnNeighbourBlockChange(IWorldAccessor, BlockPos, BlockPos, ref EnumHandling)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when any of it's 6 neighbour blocks has been changed</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void OnNeighbourBlockChange(IWorldAccessor world, BlockPos pos, BlockPos neibpos, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">neibpos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_OnPickBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.OnPickBlock(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L46">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>neibpos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_OnPickBlock_" data-uid="Vintagestory.API.Common.BlockBehavior.OnPickBlock*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_OnPickBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnPickBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumHandling@)">OnPickBlock(IWorldAccessor, BlockPos, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_OnPickBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.OnPickBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumHandling@)">
+  OnPickBlock(IWorldAccessor, BlockPos, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>When the player has presed the middle mouse click on the block. The default behavior returns an itemstack with the block itself</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual ItemStack OnPickBlock(IWorldAccessor world, BlockPos pos, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_ShouldReceiveClientParticleTicks_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.ShouldReceiveClientParticleTicks(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Common.IPlayer%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Common.EnumHandling%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L177">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_ShouldReceiveClientParticleTicks_" data-uid="Vintagestory.API.Common.BlockBehavior.ShouldReceiveClientParticleTicks*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_ShouldReceiveClientParticleTicks_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.ShouldReceiveClientParticleTicks(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumHandling@)">ShouldReceiveClientParticleTicks(IWorldAccessor, IPlayer, BlockPos, ref EnumHandling)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_ShouldReceiveClientParticleTicks_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.BlockBehavior.ShouldReceiveClientParticleTicks(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumHandling@)">
+  ShouldReceiveClientParticleTicks(IWorldAccessor, IPlayer, BlockPos, ref EnumHandling)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Everytime the player moves by 8 blocks (or rather leaves the current 8-grid), a scan of all blocks 32x32x32 blocks around the player is initiated
 and this method is called. If the method returns true, the block is registered to a client side game ticking for spawning particles and such.
-This method will be called everytime the player left his current 8-grid area. </p>
+This method will be called everytime the player left his current 8-grid area.</p>
 <p>The default behavior is to return true if block.ParticleProperties are set</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual bool ShouldReceiveClientParticleTicks(IWorldAccessor world, IPlayer byPlayer, BlockPos pos, ref EnumHandling handling)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">byPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior_TryPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__System_String__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior.TryPlaceBlock(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Common.IPlayer%2CVintagestory.API.Common.ItemStack%2CVintagestory.API.Common.BlockSelection%2CVintagestory.API.Common.EnumHandling%40%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L279">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockBehavior_TryPlaceBlock_" data-uid="Vintagestory.API.Common.BlockBehavior.TryPlaceBlock*"></a>
-  <h4 id="Vintagestory_API_Common_BlockBehavior_TryPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__System_String__" data-uid="Vintagestory.API.Common.BlockBehavior.TryPlaceBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EnumHandling@,System.String@)">TryPlaceBlock(IWorldAccessor, IPlayer, ItemStack, BlockSelection, ref EnumHandling, ref String)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockBehavior_TryPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumHandling__System_String__" data-uid="Vintagestory.API.Common.BlockBehavior.TryPlaceBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EnumHandling@,System.String@)">
+  TryPlaceBlock(IWorldAccessor, IPlayer, ItemStack, BlockSelection, ref EnumHandling, ref string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Step 1: Called when the player attempts to place this block. The default behavior calls Block.DoPlaceBlock().
 If returned true and default behavior has not been prevented, the game will next call CanPlaceBlock(). If that method also returns true and default behavior has not been overriden, DoPlaceBlock() will get called.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual bool TryPlaceBlock(IWorldAccessor world, IPlayer byPlayer, ItemStack itemstack, BlockSelection blockSel, ref EnumHandling handling, ref string failureCode)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">byPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
-        <td><span class="parametername">itemstack</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
-        <td><span class="parametername">blockSel</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></td>
-        <td><span class="parametername">handling</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">failureCode</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>itemstack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+    <dt><code>blockSel</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+    <dt><code>failureCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockBehavior.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockBehavior%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockBehavior.cs/#L13" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

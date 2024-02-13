@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Datastructures
 {
@@ -86,7 +87,7 @@ namespace Vintagestory.API.Datastructures
             {
                 foreach (TreeModifiedListener listener in OnModified)
                 {
-                    if (listener.path == null || path.StartsWith(listener.path))
+                    if (listener.path == null || path.StartsWithOrdinal(listener.path))
                     {
                         listener.listener();
                     }
@@ -239,7 +240,7 @@ namespace Vintagestory.API.Datastructures
 
             foreach (TreeModifiedListener listener in OnModified)
             {
-                if (listener.path == null || path.StartsWith(listener.path))
+                if (listener.path == null || path.StartsWithOrdinal(listener.path))
                 {
                     listener.listener();
                 }

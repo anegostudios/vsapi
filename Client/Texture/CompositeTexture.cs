@@ -23,6 +23,9 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class CompositeTexture
     {
+        public const char AlphaSeparator = 'å';   // This is the ASCII multiplication character (ASCII code 215), very unlikely to be used in a filename!
+        public const string AlphaSeparatorRegexSearch = @"å\d+";
+
         /// <summary>
         /// The basic texture for this composite texture
         /// </summary>
@@ -354,7 +357,7 @@ namespace Vintagestory.API.Client
                     throw new Exception("Texture definition " + ct.Base + " has a alpha value outside the 0..255 range.");
                 }
 
-                bct.BakedName.Path += "å" + ct.Alpha;
+                bct.BakedName.Path += "" + AlphaSeparator + ct.Alpha;
             }
 
             if (ct.Alternates != null)

@@ -1,0 +1,1643 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IChatCommandApi
+  commentId: T:Vintagestory.API.Common.IChatCommandApi
+  id: IChatCommandApi
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IChatCommandApi.Create
+  - Vintagestory.API.Common.IChatCommandApi.Create(System.String)
+  - Vintagestory.API.Common.IChatCommandApi.Execute(System.String,Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.TextCommandResult})
+  - Vintagestory.API.Common.IChatCommandApi.ExecuteUnparsed(System.String,Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.TextCommandResult})
+  - Vintagestory.API.Common.IChatCommandApi.Get(System.String)
+  - Vintagestory.API.Common.IChatCommandApi.GetOrCreate(System.String)
+  - Vintagestory.API.Common.IChatCommandApi.GetOrdered(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.IChatCommand})
+  - Vintagestory.API.Common.IChatCommandApi.GetOrdered(Vintagestory.API.Common.IChatCommandApi)
+  - Vintagestory.API.Common.IChatCommandApi.Item(System.String)
+  - Vintagestory.API.Common.IChatCommandApi.Parsers
+  langs:
+  - csharp
+  - vb
+  name: IChatCommandApi
+  nameWithType: IChatCommandApi
+  fullName: Vintagestory.API.Common.IChatCommandApi
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IChatCommandApi
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 245
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: 'public interface IChatCommandApi : IEnumerable<KeyValuePair<string, IChatCommand>>, IEnumerable'
+    content.vb: Public Interface IChatCommandApi Inherits IEnumerable(Of KeyValuePair(Of String, IChatCommand)), IEnumerable
+  inheritedMembers:
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}.GetEnumerator
+  - System.Collections.IEnumerable.GetEnumerator
+  extensionMethods:
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}.Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Action{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}})
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}.Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand},System.Double})
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}.Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand},System.Double})
+- uid: Vintagestory.API.Common.IChatCommandApi.Item(System.String)
+  commentId: P:Vintagestory.API.Common.IChatCommandApi.Item(System.String)
+  id: Item(System.String)
+  parent: Vintagestory.API.Common.IChatCommandApi
+  langs:
+  - csharp
+  - vb
+  name: this[string]
+  nameWithType: IChatCommandApi.this[string]
+  fullName: Vintagestory.API.Common.IChatCommandApi.this[string]
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: this[]
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 247
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IChatCommand this[string name] { get; }
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.IChatCommand
+    content.vb: ReadOnly Default Property this[](name As String) As IChatCommand
+  overload: Vintagestory.API.Common.IChatCommandApi.Item*
+  nameWithType.vb: IChatCommandApi.this[](String)
+  fullName.vb: Vintagestory.API.Common.IChatCommandApi.this[](String)
+  name.vb: this[](String)
+- uid: Vintagestory.API.Common.IChatCommandApi.Create
+  commentId: M:Vintagestory.API.Common.IChatCommandApi.Create
+  id: Create
+  parent: Vintagestory.API.Common.IChatCommandApi
+  langs:
+  - csharp
+  - vb
+  name: Create()
+  nameWithType: IChatCommandApi.Create()
+  fullName: Vintagestory.API.Common.IChatCommandApi.Create()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Create
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 248
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IChatCommand Create()
+    return:
+      type: Vintagestory.API.Common.IChatCommand
+    content.vb: Function Create() As IChatCommand
+  overload: Vintagestory.API.Common.IChatCommandApi.Create*
+- uid: Vintagestory.API.Common.IChatCommandApi.Create(System.String)
+  commentId: M:Vintagestory.API.Common.IChatCommandApi.Create(System.String)
+  id: Create(System.String)
+  parent: Vintagestory.API.Common.IChatCommandApi
+  langs:
+  - csharp
+  - vb
+  name: Create(string)
+  nameWithType: IChatCommandApi.Create(string)
+  fullName: Vintagestory.API.Common.IChatCommandApi.Create(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Create
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 249
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IChatCommand Create(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.IChatCommand
+    content.vb: Function Create(name As String) As IChatCommand
+  overload: Vintagestory.API.Common.IChatCommandApi.Create*
+  nameWithType.vb: IChatCommandApi.Create(String)
+  fullName.vb: Vintagestory.API.Common.IChatCommandApi.Create(String)
+  name.vb: Create(String)
+- uid: Vintagestory.API.Common.IChatCommandApi.Get(System.String)
+  commentId: M:Vintagestory.API.Common.IChatCommandApi.Get(System.String)
+  id: Get(System.String)
+  parent: Vintagestory.API.Common.IChatCommandApi
+  langs:
+  - csharp
+  - vb
+  name: Get(string)
+  nameWithType: IChatCommandApi.Get(string)
+  fullName: Vintagestory.API.Common.IChatCommandApi.Get(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Get
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 251
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IChatCommand Get(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.IChatCommand
+    content.vb: Function [Get](name As String) As IChatCommand
+  overload: Vintagestory.API.Common.IChatCommandApi.Get*
+  nameWithType.vb: IChatCommandApi.Get(String)
+  fullName.vb: Vintagestory.API.Common.IChatCommandApi.Get(String)
+  name.vb: Get(String)
+- uid: Vintagestory.API.Common.IChatCommandApi.GetOrCreate(System.String)
+  commentId: M:Vintagestory.API.Common.IChatCommandApi.GetOrCreate(System.String)
+  id: GetOrCreate(System.String)
+  parent: Vintagestory.API.Common.IChatCommandApi
+  langs:
+  - csharp
+  - vb
+  name: GetOrCreate(string)
+  nameWithType: IChatCommandApi.GetOrCreate(string)
+  fullName: Vintagestory.API.Common.IChatCommandApi.GetOrCreate(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetOrCreate
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 252
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IChatCommand GetOrCreate(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.IChatCommand
+    content.vb: Function GetOrCreate(name As String) As IChatCommand
+  overload: Vintagestory.API.Common.IChatCommandApi.GetOrCreate*
+  nameWithType.vb: IChatCommandApi.GetOrCreate(String)
+  fullName.vb: Vintagestory.API.Common.IChatCommandApi.GetOrCreate(String)
+  name.vb: GetOrCreate(String)
+- uid: Vintagestory.API.Common.IChatCommandApi.Parsers
+  commentId: P:Vintagestory.API.Common.IChatCommandApi.Parsers
+  id: Parsers
+  parent: Vintagestory.API.Common.IChatCommandApi
+  langs:
+  - csharp
+  - vb
+  name: Parsers
+  nameWithType: IChatCommandApi.Parsers
+  fullName: Vintagestory.API.Common.IChatCommandApi.Parsers
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Parsers
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 254
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: CommandArgumentParsers Parsers { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.CommandArgumentParsers
+    content.vb: ReadOnly Property Parsers As CommandArgumentParsers
+  overload: Vintagestory.API.Common.IChatCommandApi.Parsers*
+- uid: Vintagestory.API.Common.IChatCommandApi.Execute(System.String,Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.TextCommandResult})
+  commentId: M:Vintagestory.API.Common.IChatCommandApi.Execute(System.String,Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.TextCommandResult})
+  id: Execute(System.String,Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.TextCommandResult})
+  parent: Vintagestory.API.Common.IChatCommandApi
+  langs:
+  - csharp
+  - vb
+  name: Execute(string, TextCommandCallingArgs, Action<TextCommandResult>)
+  nameWithType: IChatCommandApi.Execute(string, TextCommandCallingArgs, Action<TextCommandResult>)
+  fullName: Vintagestory.API.Common.IChatCommandApi.Execute(string, Vintagestory.API.Common.TextCommandCallingArgs, System.Action<Vintagestory.API.Common.TextCommandResult>)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Execute
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 263
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Executes a parsed command
+  example: []
+  syntax:
+    content: void Execute(string name, TextCommandCallingArgs args, Action<TextCommandResult> onCommandComplete = null)
+    parameters:
+    - id: name
+      type: System.String
+      description: Name of the command without arguments, without prefix
+    - id: args
+      type: Vintagestory.API.Common.TextCommandCallingArgs
+      description: ''
+    - id: onCommandComplete
+      type: System.Action{Vintagestory.API.Common.TextCommandResult}
+      description: Called when the command finished executing
+    content.vb: Sub Execute(name As String, args As TextCommandCallingArgs, onCommandComplete As Action(Of TextCommandResult) = Nothing)
+  overload: Vintagestory.API.Common.IChatCommandApi.Execute*
+  nameWithType.vb: IChatCommandApi.Execute(String, TextCommandCallingArgs, Action(Of TextCommandResult))
+  fullName.vb: Vintagestory.API.Common.IChatCommandApi.Execute(String, Vintagestory.API.Common.TextCommandCallingArgs, System.Action(Of Vintagestory.API.Common.TextCommandResult))
+  name.vb: Execute(String, TextCommandCallingArgs, Action(Of TextCommandResult))
+- uid: Vintagestory.API.Common.IChatCommandApi.ExecuteUnparsed(System.String,Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.TextCommandResult})
+  commentId: M:Vintagestory.API.Common.IChatCommandApi.ExecuteUnparsed(System.String,Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.TextCommandResult})
+  id: ExecuteUnparsed(System.String,Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.TextCommandResult})
+  parent: Vintagestory.API.Common.IChatCommandApi
+  langs:
+  - csharp
+  - vb
+  name: ExecuteUnparsed(string, TextCommandCallingArgs, Action<TextCommandResult>)
+  nameWithType: IChatCommandApi.ExecuteUnparsed(string, TextCommandCallingArgs, Action<TextCommandResult>)
+  fullName: Vintagestory.API.Common.IChatCommandApi.ExecuteUnparsed(string, Vintagestory.API.Common.TextCommandCallingArgs, System.Action<Vintagestory.API.Common.TextCommandResult>)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ExecuteUnparsed
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 272
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Executes a raw command
+  example: []
+  syntax:
+    content: void ExecuteUnparsed(string message, TextCommandCallingArgs args, Action<TextCommandResult> onCommandComplete = null)
+    parameters:
+    - id: message
+      type: System.String
+      description: Full command line, e.g. /entity spawn chicken-hen 1
+    - id: args
+      type: Vintagestory.API.Common.TextCommandCallingArgs
+      description: ''
+    - id: onCommandComplete
+      type: System.Action{Vintagestory.API.Common.TextCommandResult}
+      description: Called when the command finished executing
+    content.vb: Sub ExecuteUnparsed(message As String, args As TextCommandCallingArgs, onCommandComplete As Action(Of TextCommandResult) = Nothing)
+  overload: Vintagestory.API.Common.IChatCommandApi.ExecuteUnparsed*
+  nameWithType.vb: IChatCommandApi.ExecuteUnparsed(String, TextCommandCallingArgs, Action(Of TextCommandResult))
+  fullName.vb: Vintagestory.API.Common.IChatCommandApi.ExecuteUnparsed(String, Vintagestory.API.Common.TextCommandCallingArgs, System.Action(Of Vintagestory.API.Common.TextCommandResult))
+  name.vb: ExecuteUnparsed(String, TextCommandCallingArgs, Action(Of TextCommandResult))
+- uid: Vintagestory.API.Common.IChatCommandApi.GetOrdered(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.IChatCommand})
+  commentId: M:Vintagestory.API.Common.IChatCommandApi.GetOrdered(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.IChatCommand})
+  id: GetOrdered(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.IChatCommand})
+  parent: Vintagestory.API.Common.IChatCommandApi
+  langs:
+  - csharp
+  - vb
+  name: GetOrdered(Dictionary<string, IChatCommand>)
+  nameWithType: IChatCommandApi.GetOrdered(Dictionary<string, IChatCommand>)
+  fullName: Vintagestory.API.Common.IChatCommandApi.GetOrdered(System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.IChatCommand>)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetOrdered
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 279
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Get all commands ordered by name ASC
+  example: []
+  syntax:
+    content: public static Dictionary<string, IChatCommand> GetOrdered(Dictionary<string, IChatCommand> command)
+    parameters:
+    - id: command
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.IChatCommand}
+      description: ''
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.IChatCommand}
+      description: ''
+    content.vb: Public Shared Function GetOrdered(command As Dictionary(Of String, IChatCommand)) As Dictionary(Of String, IChatCommand)
+  overload: Vintagestory.API.Common.IChatCommandApi.GetOrdered*
+  nameWithType.vb: IChatCommandApi.GetOrdered(Dictionary(Of String, IChatCommand))
+  fullName.vb: Vintagestory.API.Common.IChatCommandApi.GetOrdered(System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.IChatCommand))
+  name.vb: GetOrdered(Dictionary(Of String, IChatCommand))
+- uid: Vintagestory.API.Common.IChatCommandApi.GetOrdered(Vintagestory.API.Common.IChatCommandApi)
+  commentId: M:Vintagestory.API.Common.IChatCommandApi.GetOrdered(Vintagestory.API.Common.IChatCommandApi)
+  id: GetOrdered(Vintagestory.API.Common.IChatCommandApi)
+  parent: Vintagestory.API.Common.IChatCommandApi
+  langs:
+  - csharp
+  - vb
+  name: GetOrdered(IChatCommandApi)
+  nameWithType: IChatCommandApi.GetOrdered(IChatCommandApi)
+  fullName: Vintagestory.API.Common.IChatCommandApi.GetOrdered(Vintagestory.API.Common.IChatCommandApi)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetOrdered
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 289
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Get all commands from <xref href="Vintagestory.API.Common.IChatCommandApi" data-throw-if-not-resolved="false"></xref> ordered by name ASC
+  example: []
+  syntax:
+    content: public static Dictionary<string, IChatCommand> GetOrdered(IChatCommandApi chatCommandApi)
+    parameters:
+    - id: chatCommandApi
+      type: Vintagestory.API.Common.IChatCommandApi
+      description: ''
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.IChatCommand}
+      description: ''
+    content.vb: Public Shared Function GetOrdered(chatCommandApi As IChatCommandApi) As Dictionary(Of String, IChatCommand)
+  overload: Vintagestory.API.Common.IChatCommandApi.GetOrdered*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<KeyValuePair<string, IChatCommand>>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Common.IChatCommand>>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of String, IChatCommand)).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Common.IChatCommand)).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.IEnumerable.GetEnumerator
+  commentId: M:System.Collections.IEnumerable.GetEnumerator
+  parent: System.Collections.IEnumerable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable.GetEnumerator()
+  fullName: System.Collections.IEnumerable.GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.IEnumerable.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.IEnumerable.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}.Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Action{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  name: Foreach<KeyValuePair<string, IChatCommand>>(IEnumerable<KeyValuePair<string, IChatCommand>>, Action<KeyValuePair<string, IChatCommand>>)
+  nameWithType: EnumerableExtensions.Foreach<KeyValuePair<string, IChatCommand>>(IEnumerable<KeyValuePair<string, IChatCommand>>, Action<KeyValuePair<string, IChatCommand>>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Foreach<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Common.IChatCommand>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Common.IChatCommand>>, System.Action<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Common.IChatCommand>>)
+  nameWithType.vb: EnumerableExtensions.Foreach(Of KeyValuePair(Of String, IChatCommand))(IEnumerable(Of KeyValuePair(Of String, IChatCommand)), Action(Of KeyValuePair(Of String, IChatCommand)))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Foreach(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Common.IChatCommand))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Common.IChatCommand)), System.Action(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Common.IChatCommand)))
+  name.vb: Foreach(Of KeyValuePair(Of String, IChatCommand))(IEnumerable(Of KeyValuePair(Of String, IChatCommand)), Action(Of KeyValuePair(Of String, IChatCommand)))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}},System.Action{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}},System.Action{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}.Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand},System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: NearestDistance<KeyValuePair<string, IChatCommand>>(IEnumerable<KeyValuePair<string, IChatCommand>>, Func<KeyValuePair<string, IChatCommand>, double>)
+  nameWithType: EnumerableExtensions.NearestDistance<KeyValuePair<string, IChatCommand>>(IEnumerable<KeyValuePair<string, IChatCommand>>, Func<KeyValuePair<string, IChatCommand>, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.NearestDistance<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Common.IChatCommand>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Common.IChatCommand>>, System.Func<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Common.IChatCommand>, double>)
+  nameWithType.vb: EnumerableExtensions.NearestDistance(Of KeyValuePair(Of String, IChatCommand))(IEnumerable(Of KeyValuePair(Of String, IChatCommand)), Func(Of KeyValuePair(Of String, IChatCommand), Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.NearestDistance(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Common.IChatCommand))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Common.IChatCommand)), System.Func(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Common.IChatCommand), Double))
+  name.vb: NearestDistance(Of KeyValuePair(Of String, IChatCommand))(IEnumerable(Of KeyValuePair(Of String, IChatCommand)), Func(Of KeyValuePair(Of String, IChatCommand), Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}},System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand},System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}},System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand},System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}.Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand},System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: Nearest<KeyValuePair<string, IChatCommand>>(IEnumerable<KeyValuePair<string, IChatCommand>>, Func<KeyValuePair<string, IChatCommand>, double>)
+  nameWithType: EnumerableExtensions.Nearest<KeyValuePair<string, IChatCommand>>(IEnumerable<KeyValuePair<string, IChatCommand>>, Func<KeyValuePair<string, IChatCommand>, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Nearest<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Common.IChatCommand>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Common.IChatCommand>>, System.Func<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Common.IChatCommand>, double>)
+  nameWithType.vb: EnumerableExtensions.Nearest(Of KeyValuePair(Of String, IChatCommand))(IEnumerable(Of KeyValuePair(Of String, IChatCommand)), Func(Of KeyValuePair(Of String, IChatCommand), Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Nearest(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Common.IChatCommand))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Common.IChatCommand)), System.Func(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Common.IChatCommand), Double))
+  name.vb: Nearest(Of KeyValuePair(Of String, IChatCommand))(IEnumerable(Of KeyValuePair(Of String, IChatCommand)), Func(Of KeyValuePair(Of String, IChatCommand), Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}},System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand},System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}},System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand},System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Common.IChatCommand}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<KeyValuePair<string, IChatCommand>>
+  nameWithType: IEnumerable<KeyValuePair<string, IChatCommand>>
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Common.IChatCommand>>
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of String, IChatCommand))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Common.IChatCommand))
+  name.vb: IEnumerable(Of KeyValuePair(Of String, IChatCommand))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: )
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  name: Foreach<T>(IEnumerable<T>, Action<T>)
+  nameWithType: EnumerableExtensions.Foreach<T>(IEnumerable<T>, Action<T>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Foreach<T>(System.Collections.Generic.IEnumerable<T>, System.Action<T>)
+  nameWithType.vb: EnumerableExtensions.Foreach(Of T)(IEnumerable(Of T), Action(Of T))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Foreach(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Action(Of T))
+  name.vb: Foreach(Of T)(IEnumerable(Of T), Action(Of T))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions
+  commentId: T:Vintagestory.API.Util.EnumerableExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Vintagestory.API.Util.EnumerableExtensions
+- uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: NearestDistance<T>(IEnumerable<T>, Func<T, double>)
+  nameWithType: EnumerableExtensions.NearestDistance<T>(IEnumerable<T>, Func<T, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.NearestDistance<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, double>)
+  nameWithType.vb: EnumerableExtensions.NearestDistance(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.NearestDistance(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, Double))
+  name.vb: NearestDistance(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: Nearest<T>(IEnumerable<T>, Func<T, double>)
+  nameWithType: EnumerableExtensions.Nearest<T>(IEnumerable<T>, Func<T, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Nearest<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, double>)
+  nameWithType.vb: EnumerableExtensions.Nearest(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Nearest(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, Double))
+  name.vb: Nearest(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.IChatCommandApi.Item*
+  commentId: Overload:Vintagestory.API.Common.IChatCommandApi.Item
+  href: Vintagestory.API.Common.IChatCommandApi.html#Vintagestory_API_Common_IChatCommandApi_Item_System_String_
+  name: this
+  nameWithType: IChatCommandApi.this
+  fullName: Vintagestory.API.Common.IChatCommandApi.this
+  nameWithType.vb: IChatCommandApi.this[]
+  fullName.vb: Vintagestory.API.Common.IChatCommandApi.this[]
+  name.vb: this[]
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.IChatCommand
+  commentId: T:Vintagestory.API.Common.IChatCommand
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IChatCommand.html
+  name: IChatCommand
+  nameWithType: IChatCommand
+  fullName: Vintagestory.API.Common.IChatCommand
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IChatCommandApi.Create*
+  commentId: Overload:Vintagestory.API.Common.IChatCommandApi.Create
+  href: Vintagestory.API.Common.IChatCommandApi.html#Vintagestory_API_Common_IChatCommandApi_Create
+  name: Create
+  nameWithType: IChatCommandApi.Create
+  fullName: Vintagestory.API.Common.IChatCommandApi.Create
+- uid: Vintagestory.API.Common.IChatCommandApi.Get*
+  commentId: Overload:Vintagestory.API.Common.IChatCommandApi.Get
+  href: Vintagestory.API.Common.IChatCommandApi.html#Vintagestory_API_Common_IChatCommandApi_Get_System_String_
+  name: Get
+  nameWithType: IChatCommandApi.Get
+  fullName: Vintagestory.API.Common.IChatCommandApi.Get
+- uid: Vintagestory.API.Common.IChatCommandApi.GetOrCreate*
+  commentId: Overload:Vintagestory.API.Common.IChatCommandApi.GetOrCreate
+  href: Vintagestory.API.Common.IChatCommandApi.html#Vintagestory_API_Common_IChatCommandApi_GetOrCreate_System_String_
+  name: GetOrCreate
+  nameWithType: IChatCommandApi.GetOrCreate
+  fullName: Vintagestory.API.Common.IChatCommandApi.GetOrCreate
+- uid: Vintagestory.API.Common.IChatCommandApi.Parsers*
+  commentId: Overload:Vintagestory.API.Common.IChatCommandApi.Parsers
+  href: Vintagestory.API.Common.IChatCommandApi.html#Vintagestory_API_Common_IChatCommandApi_Parsers
+  name: Parsers
+  nameWithType: IChatCommandApi.Parsers
+  fullName: Vintagestory.API.Common.IChatCommandApi.Parsers
+- uid: Vintagestory.API.Common.CommandArgumentParsers
+  commentId: T:Vintagestory.API.Common.CommandArgumentParsers
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CommandArgumentParsers.html
+  name: CommandArgumentParsers
+  nameWithType: CommandArgumentParsers
+  fullName: Vintagestory.API.Common.CommandArgumentParsers
+- uid: Vintagestory.API.Common.IChatCommandApi.Execute*
+  commentId: Overload:Vintagestory.API.Common.IChatCommandApi.Execute
+  href: Vintagestory.API.Common.IChatCommandApi.html#Vintagestory_API_Common_IChatCommandApi_Execute_System_String_Vintagestory_API_Common_TextCommandCallingArgs_System_Action_Vintagestory_API_Common_TextCommandResult__
+  name: Execute
+  nameWithType: IChatCommandApi.Execute
+  fullName: Vintagestory.API.Common.IChatCommandApi.Execute
+- uid: Vintagestory.API.Common.TextCommandCallingArgs
+  commentId: T:Vintagestory.API.Common.TextCommandCallingArgs
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.TextCommandCallingArgs.html
+  name: TextCommandCallingArgs
+  nameWithType: TextCommandCallingArgs
+  fullName: Vintagestory.API.Common.TextCommandCallingArgs
+- uid: System.Action{Vintagestory.API.Common.TextCommandResult}
+  commentId: T:System.Action{Vintagestory.API.Common.TextCommandResult}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<TextCommandResult>
+  nameWithType: Action<TextCommandResult>
+  fullName: System.Action<Vintagestory.API.Common.TextCommandResult>
+  nameWithType.vb: Action(Of TextCommandResult)
+  fullName.vb: System.Action(Of Vintagestory.API.Common.TextCommandResult)
+  name.vb: Action(Of TextCommandResult)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Vintagestory.API.Common.TextCommandResult
+    name: TextCommandResult
+    href: Vintagestory.API.Common.TextCommandResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.TextCommandResult
+    name: TextCommandResult
+    href: Vintagestory.API.Common.TextCommandResult.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.IChatCommandApi.ExecuteUnparsed*
+  commentId: Overload:Vintagestory.API.Common.IChatCommandApi.ExecuteUnparsed
+  href: Vintagestory.API.Common.IChatCommandApi.html#Vintagestory_API_Common_IChatCommandApi_ExecuteUnparsed_System_String_Vintagestory_API_Common_TextCommandCallingArgs_System_Action_Vintagestory_API_Common_TextCommandResult__
+  name: ExecuteUnparsed
+  nameWithType: IChatCommandApi.ExecuteUnparsed
+  fullName: Vintagestory.API.Common.IChatCommandApi.ExecuteUnparsed
+- uid: Vintagestory.API.Common.IChatCommandApi.GetOrdered*
+  commentId: Overload:Vintagestory.API.Common.IChatCommandApi.GetOrdered
+  href: Vintagestory.API.Common.IChatCommandApi.html#Vintagestory_API_Common_IChatCommandApi_GetOrdered_System_Collections_Generic_Dictionary_System_String_Vintagestory_API_Common_IChatCommand__
+  name: GetOrdered
+  nameWithType: IChatCommandApi.GetOrdered
+  fullName: Vintagestory.API.Common.IChatCommandApi.GetOrdered
+- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.IChatCommand}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.IChatCommand}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, IChatCommand>
+  nameWithType: Dictionary<string, IChatCommand>
+  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.IChatCommand>
+  nameWithType.vb: Dictionary(Of String, IChatCommand)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.IChatCommand)
+  name.vb: Dictionary(Of String, IChatCommand)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IChatCommand
+    name: IChatCommand
+    href: Vintagestory.API.Common.IChatCommand.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Vintagestory.API.Common.IChatCommandApi
+  commentId: T:Vintagestory.API.Common.IChatCommandApi
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IChatCommandApi.html
+  name: IChatCommandApi
+  nameWithType: IChatCommandApi
+  fullName: Vintagestory.API.Common.IChatCommandApi

@@ -1,0 +1,390 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EnumAppSide
+  commentId: T:Vintagestory.API.Common.EnumAppSide
+  id: EnumAppSide
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.EnumAppSide.Client
+  - Vintagestory.API.Common.EnumAppSide.Server
+  - Vintagestory.API.Common.EnumAppSide.Universal
+  langs:
+  - csharp
+  - vb
+  name: EnumAppSide
+  nameWithType: EnumAppSide
+  fullName: Vintagestory.API.Common.EnumAppSide
+  type: Enum
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/EnumAppSide.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnumAppSide
+    path: Common/API/EnumAppSide.cs
+    startLine: 4
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [Flags]
+
+      public enum EnumAppSide
+    content.vb: >-
+      <Flags>
+
+      Public Enum EnumAppSide
+  extensionMethods:
+  - Vintagestory.API.Common.EnumAppSide.Vintagestory.API.Common.EnumAppSideExtensions.Is(Vintagestory.API.Common.EnumAppSide)
+  - Vintagestory.API.Common.EnumAppSide.Vintagestory.API.Common.EnumAppSideExtensions.IsClient
+  - Vintagestory.API.Common.EnumAppSide.Vintagestory.API.Common.EnumAppSideExtensions.IsServer
+  - Vintagestory.API.Common.EnumAppSide.Vintagestory.API.Common.EnumAppSideExtensions.IsUniversal
+  attributes:
+  - type: System.FlagsAttribute
+    ctor: System.FlagsAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.EnumAppSide.Server
+  commentId: F:Vintagestory.API.Common.EnumAppSide.Server
+  id: Server
+  parent: Vintagestory.API.Common.EnumAppSide
+  langs:
+  - csharp
+  - vb
+  name: Server
+  nameWithType: EnumAppSide.Server
+  fullName: Vintagestory.API.Common.EnumAppSide.Server
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/EnumAppSide.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Server
+    path: Common/API/EnumAppSide.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Server = 1
+    return:
+      type: Vintagestory.API.Common.EnumAppSide
+- uid: Vintagestory.API.Common.EnumAppSide.Client
+  commentId: F:Vintagestory.API.Common.EnumAppSide.Client
+  id: Client
+  parent: Vintagestory.API.Common.EnumAppSide
+  langs:
+  - csharp
+  - vb
+  name: Client
+  nameWithType: EnumAppSide.Client
+  fullName: Vintagestory.API.Common.EnumAppSide.Client
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/EnumAppSide.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Client
+    path: Common/API/EnumAppSide.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Client = 2
+    return:
+      type: Vintagestory.API.Common.EnumAppSide
+- uid: Vintagestory.API.Common.EnumAppSide.Universal
+  commentId: F:Vintagestory.API.Common.EnumAppSide.Universal
+  id: Universal
+  parent: Vintagestory.API.Common.EnumAppSide
+  langs:
+  - csharp
+  - vb
+  name: Universal
+  nameWithType: EnumAppSide.Universal
+  fullName: Vintagestory.API.Common.EnumAppSide.Universal
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/EnumAppSide.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Universal
+    path: Common/API/EnumAppSide.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Universal = Server | Client
+    return:
+      type: Vintagestory.API.Common.EnumAppSide
+    content.vb: Universal = Server Or Client
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.EnumAppSide.Vintagestory.API.Common.EnumAppSideExtensions.Is(Vintagestory.API.Common.EnumAppSide)
+  commentId: M:Vintagestory.API.Common.EnumAppSideExtensions.Is(Vintagestory.API.Common.EnumAppSide,Vintagestory.API.Common.EnumAppSide)
+  parent: Vintagestory.API.Common.EnumAppSideExtensions
+  definition: Vintagestory.API.Common.EnumAppSideExtensions.Is(Vintagestory.API.Common.EnumAppSide,Vintagestory.API.Common.EnumAppSide)
+  href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_Is_Vintagestory_API_Common_EnumAppSide_Vintagestory_API_Common_EnumAppSide_
+  name: Is(EnumAppSide, EnumAppSide)
+  nameWithType: EnumAppSideExtensions.Is(EnumAppSide, EnumAppSide)
+  fullName: Vintagestory.API.Common.EnumAppSideExtensions.Is(Vintagestory.API.Common.EnumAppSide, Vintagestory.API.Common.EnumAppSide)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.Is(Vintagestory.API.Common.EnumAppSide,Vintagestory.API.Common.EnumAppSide)
+    name: Is
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_Is_Vintagestory_API_Common_EnumAppSide_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.Is(Vintagestory.API.Common.EnumAppSide,Vintagestory.API.Common.EnumAppSide)
+    name: Is
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_Is_Vintagestory_API_Common_EnumAppSide_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+- uid: Vintagestory.API.Common.EnumAppSide.Vintagestory.API.Common.EnumAppSideExtensions.IsClient
+  commentId: M:Vintagestory.API.Common.EnumAppSideExtensions.IsClient(Vintagestory.API.Common.EnumAppSide)
+  parent: Vintagestory.API.Common.EnumAppSideExtensions
+  definition: Vintagestory.API.Common.EnumAppSideExtensions.IsClient(Vintagestory.API.Common.EnumAppSide)
+  href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsClient_Vintagestory_API_Common_EnumAppSide_
+  name: IsClient(EnumAppSide)
+  nameWithType: EnumAppSideExtensions.IsClient(EnumAppSide)
+  fullName: Vintagestory.API.Common.EnumAppSideExtensions.IsClient(Vintagestory.API.Common.EnumAppSide)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.IsClient(Vintagestory.API.Common.EnumAppSide)
+    name: IsClient
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsClient_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.IsClient(Vintagestory.API.Common.EnumAppSide)
+    name: IsClient
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsClient_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+- uid: Vintagestory.API.Common.EnumAppSide.Vintagestory.API.Common.EnumAppSideExtensions.IsServer
+  commentId: M:Vintagestory.API.Common.EnumAppSideExtensions.IsServer(Vintagestory.API.Common.EnumAppSide)
+  parent: Vintagestory.API.Common.EnumAppSideExtensions
+  definition: Vintagestory.API.Common.EnumAppSideExtensions.IsServer(Vintagestory.API.Common.EnumAppSide)
+  href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsServer_Vintagestory_API_Common_EnumAppSide_
+  name: IsServer(EnumAppSide)
+  nameWithType: EnumAppSideExtensions.IsServer(EnumAppSide)
+  fullName: Vintagestory.API.Common.EnumAppSideExtensions.IsServer(Vintagestory.API.Common.EnumAppSide)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.IsServer(Vintagestory.API.Common.EnumAppSide)
+    name: IsServer
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsServer_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.IsServer(Vintagestory.API.Common.EnumAppSide)
+    name: IsServer
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsServer_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+- uid: Vintagestory.API.Common.EnumAppSide.Vintagestory.API.Common.EnumAppSideExtensions.IsUniversal
+  commentId: M:Vintagestory.API.Common.EnumAppSideExtensions.IsUniversal(Vintagestory.API.Common.EnumAppSide)
+  parent: Vintagestory.API.Common.EnumAppSideExtensions
+  definition: Vintagestory.API.Common.EnumAppSideExtensions.IsUniversal(Vintagestory.API.Common.EnumAppSide)
+  href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsUniversal_Vintagestory_API_Common_EnumAppSide_
+  name: IsUniversal(EnumAppSide)
+  nameWithType: EnumAppSideExtensions.IsUniversal(EnumAppSide)
+  fullName: Vintagestory.API.Common.EnumAppSideExtensions.IsUniversal(Vintagestory.API.Common.EnumAppSide)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.IsUniversal(Vintagestory.API.Common.EnumAppSide)
+    name: IsUniversal
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsUniversal_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.IsUniversal(Vintagestory.API.Common.EnumAppSide)
+    name: IsUniversal
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsUniversal_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+- uid: Vintagestory.API.Common.EnumAppSideExtensions.Is(Vintagestory.API.Common.EnumAppSide,Vintagestory.API.Common.EnumAppSide)
+  commentId: M:Vintagestory.API.Common.EnumAppSideExtensions.Is(Vintagestory.API.Common.EnumAppSide,Vintagestory.API.Common.EnumAppSide)
+  href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_Is_Vintagestory_API_Common_EnumAppSide_Vintagestory_API_Common_EnumAppSide_
+  name: Is(EnumAppSide, EnumAppSide)
+  nameWithType: EnumAppSideExtensions.Is(EnumAppSide, EnumAppSide)
+  fullName: Vintagestory.API.Common.EnumAppSideExtensions.Is(Vintagestory.API.Common.EnumAppSide, Vintagestory.API.Common.EnumAppSide)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.Is(Vintagestory.API.Common.EnumAppSide,Vintagestory.API.Common.EnumAppSide)
+    name: Is
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_Is_Vintagestory_API_Common_EnumAppSide_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.Is(Vintagestory.API.Common.EnumAppSide,Vintagestory.API.Common.EnumAppSide)
+    name: Is
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_Is_Vintagestory_API_Common_EnumAppSide_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+- uid: Vintagestory.API.Common.EnumAppSideExtensions
+  commentId: T:Vintagestory.API.Common.EnumAppSideExtensions
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumAppSideExtensions.html
+  name: EnumAppSideExtensions
+  nameWithType: EnumAppSideExtensions
+  fullName: Vintagestory.API.Common.EnumAppSideExtensions
+- uid: Vintagestory.API.Common.EnumAppSideExtensions.IsClient(Vintagestory.API.Common.EnumAppSide)
+  commentId: M:Vintagestory.API.Common.EnumAppSideExtensions.IsClient(Vintagestory.API.Common.EnumAppSide)
+  href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsClient_Vintagestory_API_Common_EnumAppSide_
+  name: IsClient(EnumAppSide)
+  nameWithType: EnumAppSideExtensions.IsClient(EnumAppSide)
+  fullName: Vintagestory.API.Common.EnumAppSideExtensions.IsClient(Vintagestory.API.Common.EnumAppSide)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.IsClient(Vintagestory.API.Common.EnumAppSide)
+    name: IsClient
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsClient_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.IsClient(Vintagestory.API.Common.EnumAppSide)
+    name: IsClient
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsClient_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+- uid: Vintagestory.API.Common.EnumAppSideExtensions.IsServer(Vintagestory.API.Common.EnumAppSide)
+  commentId: M:Vintagestory.API.Common.EnumAppSideExtensions.IsServer(Vintagestory.API.Common.EnumAppSide)
+  href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsServer_Vintagestory_API_Common_EnumAppSide_
+  name: IsServer(EnumAppSide)
+  nameWithType: EnumAppSideExtensions.IsServer(EnumAppSide)
+  fullName: Vintagestory.API.Common.EnumAppSideExtensions.IsServer(Vintagestory.API.Common.EnumAppSide)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.IsServer(Vintagestory.API.Common.EnumAppSide)
+    name: IsServer
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsServer_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.IsServer(Vintagestory.API.Common.EnumAppSide)
+    name: IsServer
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsServer_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+- uid: Vintagestory.API.Common.EnumAppSideExtensions.IsUniversal(Vintagestory.API.Common.EnumAppSide)
+  commentId: M:Vintagestory.API.Common.EnumAppSideExtensions.IsUniversal(Vintagestory.API.Common.EnumAppSide)
+  href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsUniversal_Vintagestory_API_Common_EnumAppSide_
+  name: IsUniversal(EnumAppSide)
+  nameWithType: EnumAppSideExtensions.IsUniversal(EnumAppSide)
+  fullName: Vintagestory.API.Common.EnumAppSideExtensions.IsUniversal(Vintagestory.API.Common.EnumAppSide)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.IsUniversal(Vintagestory.API.Common.EnumAppSide)
+    name: IsUniversal
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsUniversal_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.EnumAppSideExtensions.IsUniversal(Vintagestory.API.Common.EnumAppSide)
+    name: IsUniversal
+    href: Vintagestory.API.Common.EnumAppSideExtensions.html#Vintagestory_API_Common_EnumAppSideExtensions_IsUniversal_Vintagestory_API_Common_EnumAppSide_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumAppSide
+    name: EnumAppSide
+    href: Vintagestory.API.Common.EnumAppSide.html
+  - name: )
+- uid: Vintagestory.API.Common.EnumAppSide
+  commentId: T:Vintagestory.API.Common.EnumAppSide
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumAppSide.html
+  name: EnumAppSide
+  nameWithType: EnumAppSide
+  fullName: Vintagestory.API.Common.EnumAppSide

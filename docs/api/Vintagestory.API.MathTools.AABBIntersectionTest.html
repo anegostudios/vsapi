@@ -1,739 +1,696 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AABBIntersectionTest
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AABBIntersectionTest
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class AABBIntersectionTest | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AABBIntersectionTest | VintageStory API ">
+      
+      
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest">
-  
-  
-  <h1 id="Vintagestory_API_MathTools_AABBIntersectionTest" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest" class="text-break">Class AABBIntersectionTest
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">AABBIntersectionTest</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.MathTools.html">Vintagestory.API.MathTools</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_MathTools_AABBIntersectionTest_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AABBIntersectionTest : object</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest__ctor_Vintagestory_API_MathTools_IWorldIntersectionSupplier_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.%23ctor(Vintagestory.API.MathTools.IWorldIntersectionSupplier)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L41">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_AABBIntersectionTest__ctor_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.#ctor*"></a>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest__ctor_Vintagestory_API_MathTools_IWorldIntersectionSupplier_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.#ctor(Vintagestory.API.MathTools.IWorldIntersectionSupplier)">AABBIntersectionTest(IWorldIntersectionSupplier)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AABBIntersectionTest(IWorldIntersectionSupplier blockSelectionTester)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.IWorldIntersectionSupplier.html">IWorldIntersectionSupplier</a></td>
-        <td><span class="parametername">blockSelectionTester</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_blockSelectionTester.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.blockSelectionTester%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L29">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_blockSelectionTester" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.blockSelectionTester">blockSelectionTester</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IWorldIntersectionSupplier blockSelectionTester</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.IWorldIntersectionSupplier.html">IWorldIntersectionSupplier</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_hitOnBlockFace.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.hitOnBlockFace%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L35">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_hitOnBlockFace" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.hitOnBlockFace">hitOnBlockFace</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BlockFacing hitOnBlockFace</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_hitOnSelectionBox.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.hitOnSelectionBox%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L36">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_hitOnSelectionBox" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.hitOnSelectionBox">hitOnSelectionBox</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int hitOnSelectionBox</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_hitPosition.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.hitPosition%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L32">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_hitPosition" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.hitPosition">hitPosition</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3d hitPosition</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_pos.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.pos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L34">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_pos" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.pos">pos</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BlockPos pos</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_ray.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.ray%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L33">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_ray" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.ray">ray</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Ray ray</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Ray.html">Ray</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_System_Single_Vintagestory_API_MathTools_BlockFilter_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(System.Single%2CVintagestory.API.MathTools.BlockFilter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L75">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock*"></a>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_System_Single_Vintagestory_API_MathTools_BlockFilter_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(System.Single,Vintagestory.API.MathTools.BlockFilter)">GetSelectedBlock(Single, BlockFilter)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BlockSelection GetSelectedBlock(float maxDistance, BlockFilter filter = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">maxDistance</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFilter.html">BlockFilter</a></td>
-        <td><span class="parametername">filter</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_BlockFilter_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(Vintagestory.API.MathTools.Vec3d%2CVintagestory.API.MathTools.Vec3d%2CVintagestory.API.MathTools.BlockFilter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L62">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock*"></a>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_BlockFilter_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.BlockFilter)">GetSelectedBlock(Vec3d, Vec3d, BlockFilter)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BlockSelection GetSelectedBlock(Vec3d from, Vec3d to, BlockFilter filter = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">from</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">to</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFilter.html">BlockFilter</a></td>
-        <td><span class="parametername">filter</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_LoadRayAndPos_Vintagestory_API_MathTools_Line3D_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos(Vintagestory.API.MathTools.Line3D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L46">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_LoadRayAndPos_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos*"></a>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_LoadRayAndPos_Vintagestory_API_MathTools_Line3D_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos(Vintagestory.API.MathTools.Line3D)">LoadRayAndPos(Line3D)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void LoadRayAndPos(Line3D line3d)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Line3D.html">Line3D</a></td>
-        <td><span class="parametername">line3d</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_LoadRayAndPos_Vintagestory_API_MathTools_Ray_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos(Vintagestory.API.MathTools.Ray)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L56">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_LoadRayAndPos_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos*"></a>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_LoadRayAndPos_Vintagestory_API_MathTools_Ray_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos(Vintagestory.API.MathTools.Ray)">LoadRayAndPos(Ray)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void LoadRayAndPos(Ray ray)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Ray.html">Ray</a></td>
-        <td><span class="parametername">ray</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_RayInteresectWithCuboidSlabMethod_Vintagestory_API_MathTools_Cuboidd_Vintagestory_API_MathTools_Ray_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.RayInteresectWithCuboidSlabMethod(Vintagestory.API.MathTools.Cuboidd%2CVintagestory.API.MathTools.Ray)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L225">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_RayInteresectWithCuboidSlabMethod_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayInteresectWithCuboidSlabMethod*"></a>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_RayInteresectWithCuboidSlabMethod_Vintagestory_API_MathTools_Cuboidd_Vintagestory_API_MathTools_Ray_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayInteresectWithCuboidSlabMethod(Vintagestory.API.MathTools.Cuboidd,Vintagestory.API.MathTools.Ray)">RayInteresectWithCuboidSlabMethod(Cuboidd, Ray)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static bool RayInteresectWithCuboidSlabMethod(Cuboidd b, Ray r)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Cuboidd.html">Cuboidd</a></td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Ray.html">Ray</a></td>
-        <td><span class="parametername">r</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsBlockSelectionBox_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFilter_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockFilter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L114">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsBlockSelectionBox_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox*"></a>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsBlockSelectionBox_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFilter_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter)">RayIntersectsBlockSelectionBox(BlockPos, BlockFilter)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool RayIntersectsBlockSelectionBox(BlockPos pos, BlockFilter filter)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFilter.html">BlockFilter</a></td>
-        <td><span class="parametername">filter</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_Vintagestory_API_MathTools_Cuboidd_Vintagestory_API_MathTools_BlockFacing__Vintagestory_API_MathTools_Vec3d__.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd%2CVintagestory.API.MathTools.BlockFacing%40%2CVintagestory.API.MathTools.Vec3d%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L176">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid*"></a>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_Vintagestory_API_MathTools_Cuboidd_Vintagestory_API_MathTools_BlockFacing__Vintagestory_API_MathTools_Vec3d__" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd,Vintagestory.API.MathTools.BlockFacing@,Vintagestory.API.MathTools.Vec3d@)">RayIntersectsWithCuboid(Cuboidd, ref BlockFacing, ref Vec3d)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool RayIntersectsWithCuboid(Cuboidd selectionBox, ref BlockFacing hitOnBlockFace, ref Vec3d hitPosition)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Cuboidd.html">Cuboidd</a></td>
-        <td><span class="parametername">selectionBox</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
-        <td><span class="parametername">hitOnBlockFace</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">hitPosition</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_Vintagestory_API_MathTools_Cuboidf_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidf%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L167">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid*"></a>
-  <h4 id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_Vintagestory_API_MathTools_Cuboidf_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidf,System.Double,System.Double,System.Double)">RayIntersectsWithCuboid(Cuboidf, Double, Double, Double)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool RayIntersectsWithCuboid(Cuboidf selectionBox, double posX, double posY, double posZ)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></td>
-        <td><span class="parametername">selectionBox</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">posX</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">posY</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">posZ</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_AABBIntersectionTest.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.AABBIntersectionTest%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/AABBIntersectionTest.cs/#L23" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="Vintagestory.API.MathTools.AABBIntersectionTest">
+
+
+
+  <h1 id="Vintagestory_API_MathTools_AABBIntersectionTest" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest" class="text-break">
+Class AABBIntersectionTest  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.MathTools.html">MathTools</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AABBIntersectionTest</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AABBIntersectionTest</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_MathTools_AABBIntersectionTest__ctor_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest__ctor_Vintagestory_API_MathTools_IWorldIntersectionSupplier_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.#ctor(Vintagestory.API.MathTools.IWorldIntersectionSupplier)">
+  AABBIntersectionTest(IWorldIntersectionSupplier)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AABBIntersectionTest(IWorldIntersectionSupplier blockSelectionTester)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockSelectionTester</code> <a class="xref" href="Vintagestory.API.MathTools.IWorldIntersectionSupplier.html">IWorldIntersectionSupplier</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_blockSelectionTester" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.blockSelectionTester">
+  blockSelectionTester
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IWorldIntersectionSupplier blockSelectionTester</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.IWorldIntersectionSupplier.html">IWorldIntersectionSupplier</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_hitOnBlockFace" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.hitOnBlockFace">
+  hitOnBlockFace
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockFacing hitOnBlockFace</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_hitOnSelectionBox" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.hitOnSelectionBox">
+  hitOnSelectionBox
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int hitOnSelectionBox</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_hitPosition" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.hitPosition">
+  hitPosition
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d hitPosition</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_pos" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.pos">
+  pos
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockPos pos</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_ray" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.ray">
+  ray
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Ray ray</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Ray.html">Ray</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_System_Single_Vintagestory_API_MathTools_BlockFilter_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(System.Single,Vintagestory.API.MathTools.BlockFilter)">
+  GetSelectedBlock(float, BlockFilter)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockSelection GetSelectedBlock(float maxDistance, BlockFilter filter = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>maxDistance</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>filter</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFilter.html">BlockFilter</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_BlockFilter_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.BlockFilter)">
+  GetSelectedBlock(Vec3d, Vec3d, BlockFilter)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockSelection GetSelectedBlock(Vec3d from, Vec3d to, BlockFilter filter = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>from</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+    <dt><code>to</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+    <dt><code>filter</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFilter.html">BlockFilter</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_LoadRayAndPos_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_LoadRayAndPos_Vintagestory_API_MathTools_Line3D_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos(Vintagestory.API.MathTools.Line3D)">
+  LoadRayAndPos(Line3D)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadRayAndPos(Line3D line3d)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>line3d</code> <a class="xref" href="Vintagestory.API.MathTools.Line3D.html">Line3D</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_LoadRayAndPos_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_LoadRayAndPos_Vintagestory_API_MathTools_Ray_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos(Vintagestory.API.MathTools.Ray)">
+  LoadRayAndPos(Ray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadRayAndPos(Ray ray)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ray</code> <a class="xref" href="Vintagestory.API.MathTools.Ray.html">Ray</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_RayInteresectWithCuboidSlabMethod_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayInteresectWithCuboidSlabMethod*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_RayInteresectWithCuboidSlabMethod_Vintagestory_API_MathTools_Cuboidd_Vintagestory_API_MathTools_Ray_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayInteresectWithCuboidSlabMethod(Vintagestory.API.MathTools.Cuboidd,Vintagestory.API.MathTools.Ray)">
+  RayInteresectWithCuboidSlabMethod(Cuboidd, Ray)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool RayInteresectWithCuboidSlabMethod(Cuboidd b, Ray r)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>b</code> <a class="xref" href="Vintagestory.API.MathTools.Cuboidd.html">Cuboidd</a></dt>
+    <dd></dd>
+    <dt><code>r</code> <a class="xref" href="Vintagestory.API.MathTools.Ray.html">Ray</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsBlockSelectionBox_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsBlockSelectionBox_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFilter_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter)">
+  RayIntersectsBlockSelectionBox(BlockPos, BlockFilter)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RayIntersectsBlockSelectionBox(BlockPos pos, BlockFilter filter)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>filter</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFilter.html">BlockFilter</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_Vintagestory_API_MathTools_Cuboidd_Vintagestory_API_MathTools_BlockFacing__Vintagestory_API_MathTools_Vec3d__" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd,Vintagestory.API.MathTools.BlockFacing@,Vintagestory.API.MathTools.Vec3d@)">
+  RayIntersectsWithCuboid(Cuboidd, ref BlockFacing, ref Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RayIntersectsWithCuboid(Cuboidd selectionBox, ref BlockFacing hitOnBlockFace, ref Vec3d hitPosition)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>selectionBox</code> <a class="xref" href="Vintagestory.API.MathTools.Cuboidd.html">Cuboidd</a></dt>
+    <dd></dd>
+    <dt><code>hitOnBlockFace</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></dt>
+    <dd></dd>
+    <dt><code>hitPosition</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_Vintagestory_API_MathTools_Cuboidf_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidf,System.Double,System.Double,System.Double)">
+  RayIntersectsWithCuboid(Cuboidf, double, double, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RayIntersectsWithCuboid(Cuboidf selectionBox, double posX, double posY, double posZ)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>selectionBox</code> <a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></dt>
+    <dd></dd>
+    <dt><code>posX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>posY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>posZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

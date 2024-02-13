@@ -33,6 +33,8 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class EntityAgent : Entity
     {
+        public override bool IsCreature { get { return true; } }
+
         /// <summary>
         /// The yaw of the agents body
         /// </summary>
@@ -299,7 +301,7 @@ namespace Vintagestory.API.Common
 
                 damage *= byEntity.Stats.GetBlended("meleeWeaponsDamage");
 
-                if (Attributes.GetBool("isMechanical", false))
+                if (Properties.Attributes?["isMechanical"].AsBool() == true)
                 {
                     damage *= byEntity.Stats.GetBlended("mechanicalsDamage");
                 }
@@ -423,7 +425,8 @@ namespace Vintagestory.API.Common
             Revive = 196,
             Emote = 197,
             Death = 198,
-            Hurt = 199
+            Hurt = 199,
+            PlayPlayerAnim = 200
         }
         public enum EntityClientPacketId
         {
@@ -445,7 +448,7 @@ namespace Vintagestory.API.Common
                         (Swimming && !servercontrols.FloorSitting ? EnumEntityActivity.Swim : 0) |
                         (servercontrols.FloorSitting ? EnumEntityActivity.FloorSitting : 0) |
                         (servercontrols.Sneak && !servercontrols.IsClimbing && !servercontrols.FloorSitting && !Swimming ? EnumEntityActivity.SneakMode : 0) |
-                        (servercontrols.Sprint && !Swimming && !servercontrols.Sneak ? EnumEntityActivity.SprintMode : 0) |
+                        (servercontrols.TriesToMove && servercontrols.Sprint && !Swimming && !servercontrols.Sneak ? EnumEntityActivity.SprintMode : 0) |
                         (servercontrols.IsFlying ? servercontrols.Gliding ? EnumEntityActivity.Glide : EnumEntityActivity.Fly : 0) |
                         (servercontrols.IsClimbing ? EnumEntityActivity.Climb : 0) |
                         (servercontrols.Jump && OnGround ? EnumEntityActivity.Jump : 0) |

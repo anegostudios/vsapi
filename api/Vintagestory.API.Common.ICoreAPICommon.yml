@@ -1,0 +1,1101 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ICoreAPICommon
+  commentId: T:Vintagestory.API.Common.ICoreAPICommon
+  id: ICoreAPICommon
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.ICoreAPICommon.DataBasePath
+  - Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath(System.String)
+  - Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(System.String)
+  - Vintagestory.API.Common.ICoreAPICommon.LoadModConfig``1(System.String)
+  - Vintagestory.API.Common.ICoreAPICommon.ObjectCache
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap(Vintagestory.API.Common.ColorMap)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterEntity(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterMountable(System.String,Vintagestory.API.Common.GetMountableDelegate)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry``1(System.String)
+  - Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Vintagestory.API.Datastructures.JsonObject,System.String)
+  - Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1(``0,System.String)
+  langs:
+  - csharp
+  - vb
+  name: ICoreAPICommon
+  nameWithType: ICoreAPICommon
+  fullName: Vintagestory.API.Common.ICoreAPICommon
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ICoreAPICommon
+    path: Common/API/ICoreAPI.cs
+    startLine: 19
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: API Methods common to the server and client
+  example: []
+  syntax:
+    content: public interface ICoreAPICommon
+    content.vb: Public Interface ICoreAPICommon
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry``1(System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry``1(System.String)
+  id: RegisterRecipeRegistry``1(System.String)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: RegisterRecipeRegistry<T>(string)
+  nameWithType: ICoreAPICommon.RegisterRecipeRegistry<T>(string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry<T>(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterRecipeRegistry
+    path: Common/API/ICoreAPI.cs
+    startLine: 30
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Registers a recipe registry
+  example: []
+  syntax:
+    content: 'T RegisterRecipeRegistry<T>(string recipeRegistryCode) where T : RecipeRegistryBase'
+    parameters:
+    - id: recipeRegistryCode
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Function RegisterRecipeRegistry(Of T As RecipeRegistryBase)(recipeRegistryCode As String) As T
+  overload: Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry*
+  nameWithType.vb: ICoreAPICommon.RegisterRecipeRegistry(Of T)(String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry(Of T)(String)
+  name.vb: RegisterRecipeRegistry(Of T)(String)
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap(Vintagestory.API.Common.ColorMap)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap(Vintagestory.API.Common.ColorMap)
+  id: RegisterColorMap(Vintagestory.API.Common.ColorMap)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: RegisterColorMap(ColorMap)
+  nameWithType: ICoreAPICommon.RegisterColorMap(ColorMap)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap(Vintagestory.API.Common.ColorMap)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterColorMap
+    path: Common/API/ICoreAPI.cs
+    startLine: 36
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Registers a new color map. Typically used to color in-game blocks with a texture - i.e. climate and seasonal coloring
+  example: []
+  syntax:
+    content: void RegisterColorMap(ColorMap map)
+    parameters:
+    - id: map
+      type: Vintagestory.API.Common.ColorMap
+    content.vb: Sub RegisterColorMap(map As ColorMap)
+  overload: Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap*
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterEntity(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterEntity(System.String,System.Type)
+  id: RegisterEntity(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: RegisterEntity(string, Type)
+  nameWithType: ICoreAPICommon.RegisterEntity(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterEntity(string, System.Type)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterEntity
+    path: Common/API/ICoreAPI.cs
+    startLine: 43
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Registers a non-block entity. Be sure to register it on the client and server side.
+  example: []
+  syntax:
+    content: void RegisterEntity(string className, Type entity)
+    parameters:
+    - id: className
+      type: System.String
+      description: ''
+    - id: entity
+      type: System.Type
+      description: ''
+    content.vb: Sub RegisterEntity(className As String, entity As Type)
+  overload: Vintagestory.API.Common.ICoreAPICommon.RegisterEntity*
+  nameWithType.vb: ICoreAPICommon.RegisterEntity(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterEntity(String, System.Type)
+  name.vb: RegisterEntity(String, Type)
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass(System.String,System.Type)
+  id: RegisterEntityBehaviorClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: RegisterEntityBehaviorClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterEntityBehaviorClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass(string, System.Type)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterEntityBehaviorClass
+    path: Common/API/ICoreAPI.cs
+    startLine: 50
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Registers a non-block entity behavior. Be sure to register it on the client and server side.
+  example: []
+  syntax:
+    content: void RegisterEntityBehaviorClass(string className, Type entityBehavior)
+    parameters:
+    - id: className
+      type: System.String
+      description: ''
+    - id: entityBehavior
+      type: System.Type
+      description: ''
+    content.vb: Sub RegisterEntityBehaviorClass(className As String, entityBehavior As Type)
+  overload: Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass*
+  nameWithType.vb: ICoreAPICommon.RegisterEntityBehaviorClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass(String, System.Type)
+  name.vb: RegisterEntityBehaviorClass(String, Type)
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass(System.String,System.Type)
+  id: RegisterBlockClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: RegisterBlockClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterBlockClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass(string, System.Type)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterBlockClass
+    path: Common/API/ICoreAPI.cs
+    startLine: 57
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Register a new Blockclass. Must happen before any blocks are loaded. Be sure to register it on the client and server side.
+  example: []
+  syntax:
+    content: void RegisterBlockClass(string className, Type blockType)
+    parameters:
+    - id: className
+      type: System.String
+      description: Class to register
+    - id: blockType
+      type: System.Type
+      description: Name of the class
+    content.vb: Sub RegisterBlockClass(className As String, blockType As Type)
+  overload: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass*
+  nameWithType.vb: ICoreAPICommon.RegisterBlockClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass(String, System.Type)
+  name.vb: RegisterBlockClass(String, Type)
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior(System.String,System.Type)
+  id: RegisterCropBehavior(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: RegisterCropBehavior(string, Type)
+  nameWithType: ICoreAPICommon.RegisterCropBehavior(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior(string, System.Type)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterCropBehavior
+    path: Common/API/ICoreAPI.cs
+    startLine: 64
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Register a new crop behavior
+  example: []
+  syntax:
+    content: void RegisterCropBehavior(string className, Type type)
+    parameters:
+    - id: className
+      type: System.String
+      description: ''
+    - id: type
+      type: System.Type
+      description: ''
+    content.vb: Sub RegisterCropBehavior(className As String, type As Type)
+  overload: Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior*
+  nameWithType.vb: ICoreAPICommon.RegisterCropBehavior(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior(String, System.Type)
+  name.vb: RegisterCropBehavior(String, Type)
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass(System.String,System.Type)
+  id: RegisterBlockEntityClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: RegisterBlockEntityClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterBlockEntityClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass(string, System.Type)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterBlockEntityClass
+    path: Common/API/ICoreAPI.cs
+    startLine: 72
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Register a new BlockEntity Class. Must happen before any blocks are loaded. Be sure to register it on the client and server side.
+  example: []
+  syntax:
+    content: void RegisterBlockEntityClass(string className, Type blockentityType)
+    parameters:
+    - id: className
+      type: System.String
+      description: ''
+    - id: blockentityType
+      type: System.Type
+      description: ''
+    content.vb: Sub RegisterBlockEntityClass(className As String, blockentityType As Type)
+  overload: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass*
+  nameWithType.vb: ICoreAPICommon.RegisterBlockEntityClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass(String, System.Type)
+  name.vb: RegisterBlockEntityClass(String, Type)
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass(System.String,System.Type)
+  id: RegisterItemClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: RegisterItemClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterItemClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass(string, System.Type)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterItemClass
+    path: Common/API/ICoreAPI.cs
+    startLine: 79
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Register a new Item Class. Must happen before any blocks are loaded. Be sure to register it on the client and server side.
+  example: []
+  syntax:
+    content: void RegisterItemClass(string className, Type itemType)
+    parameters:
+    - id: className
+      type: System.String
+      description: ''
+    - id: itemType
+      type: System.Type
+      description: ''
+    content.vb: Sub RegisterItemClass(className As String, itemType As Type)
+  overload: Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass*
+  nameWithType.vb: ICoreAPICommon.RegisterItemClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass(String, System.Type)
+  name.vb: RegisterItemClass(String, Type)
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass(System.String,System.Type)
+  id: RegisterCollectibleBehaviorClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: RegisterCollectibleBehaviorClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterCollectibleBehaviorClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass(string, System.Type)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterCollectibleBehaviorClass
+    path: Common/API/ICoreAPI.cs
+    startLine: 86
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Registers a new collectible behavior class, which can be used for items or for blocks.
+  example: []
+  syntax:
+    content: void RegisterCollectibleBehaviorClass(string className, Type blockBehaviorType)
+    parameters:
+    - id: className
+      type: System.String
+      description: ''
+    - id: blockBehaviorType
+      type: System.Type
+      description: ''
+    content.vb: Sub RegisterCollectibleBehaviorClass(className As String, blockBehaviorType As Type)
+  overload: Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass*
+  nameWithType.vb: ICoreAPICommon.RegisterCollectibleBehaviorClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass(String, System.Type)
+  name.vb: RegisterCollectibleBehaviorClass(String, Type)
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass(System.String,System.Type)
+  id: RegisterBlockBehaviorClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: RegisterBlockBehaviorClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterBlockBehaviorClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass(string, System.Type)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterBlockBehaviorClass
+    path: Common/API/ICoreAPI.cs
+    startLine: 94
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Register a new block behavior class. Must happen before any blocks are loaded. Be sure to register it on the client and server side.
+  example: []
+  syntax:
+    content: void RegisterBlockBehaviorClass(string className, Type blockBehaviorType)
+    parameters:
+    - id: className
+      type: System.String
+      description: ''
+    - id: blockBehaviorType
+      type: System.Type
+      description: ''
+    content.vb: Sub RegisterBlockBehaviorClass(className As String, blockBehaviorType As Type)
+  overload: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass*
+  nameWithType.vb: ICoreAPICommon.RegisterBlockBehaviorClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass(String, System.Type)
+  name.vb: RegisterBlockBehaviorClass(String, Type)
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass(System.String,System.Type)
+  id: RegisterBlockEntityBehaviorClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: RegisterBlockEntityBehaviorClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterBlockEntityBehaviorClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass(string, System.Type)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterBlockEntityBehaviorClass
+    path: Common/API/ICoreAPI.cs
+    startLine: 101
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Register a new block entity behavior class. Must happen before any blocks are loaded. Be sure to register it on the client and server side.
+  example: []
+  syntax:
+    content: void RegisterBlockEntityBehaviorClass(string className, Type blockEntityBehaviorType)
+    parameters:
+    - id: className
+      type: System.String
+      description: ''
+    - id: blockEntityBehaviorType
+      type: System.Type
+      description: ''
+    content.vb: Sub RegisterBlockEntityBehaviorClass(className As String, blockEntityBehaviorType As Type)
+  overload: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass*
+  nameWithType.vb: ICoreAPICommon.RegisterBlockEntityBehaviorClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass(String, System.Type)
+  name.vb: RegisterBlockEntityBehaviorClass(String, Type)
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterMountable(System.String,Vintagestory.API.Common.GetMountableDelegate)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterMountable(System.String,Vintagestory.API.Common.GetMountableDelegate)
+  id: RegisterMountable(System.String,Vintagestory.API.Common.GetMountableDelegate)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: RegisterMountable(string, GetMountableDelegate)
+  nameWithType: ICoreAPICommon.RegisterMountable(string, GetMountableDelegate)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterMountable(string, Vintagestory.API.Common.GetMountableDelegate)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterMountable
+    path: Common/API/ICoreAPI.cs
+    startLine: 110
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Register a new block behavior class. Must happen before any blocks are loaded. Be sure to register it on the client and server side.
+
+    Make your your delegate also set tree.SetString("className", "[your className]");
+  example: []
+  syntax:
+    content: void RegisterMountable(string className, GetMountableDelegate mountableInstancer)
+    parameters:
+    - id: className
+      type: System.String
+      description: ''
+    - id: mountableInstancer
+      type: Vintagestory.API.Common.GetMountableDelegate
+      description: ''
+    content.vb: Sub RegisterMountable(className As String, mountableInstancer As GetMountableDelegate)
+  overload: Vintagestory.API.Common.ICoreAPICommon.RegisterMountable*
+  nameWithType.vb: ICoreAPICommon.RegisterMountable(String, GetMountableDelegate)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterMountable(String, Vintagestory.API.Common.GetMountableDelegate)
+  name.vb: RegisterMountable(String, GetMountableDelegate)
+- uid: Vintagestory.API.Common.ICoreAPICommon.ObjectCache
+  commentId: P:Vintagestory.API.Common.ICoreAPICommon.ObjectCache
+  id: ObjectCache
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: ObjectCache
+  nameWithType: ICoreAPICommon.ObjectCache
+  fullName: Vintagestory.API.Common.ICoreAPICommon.ObjectCache
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ObjectCache
+    path: Common/API/ICoreAPI.cs
+    startLine: 119
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Can be used to store non-persistent, game wide data. E.g. used for firewood piles to pregenerate all meshes only once during startup
+  example: []
+  syntax:
+    content: Dictionary<string, object> ObjectCache { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Object}
+    content.vb: ReadOnly Property ObjectCache As Dictionary(Of String, Object)
+  overload: Vintagestory.API.Common.ICoreAPICommon.ObjectCache*
+- uid: Vintagestory.API.Common.ICoreAPICommon.DataBasePath
+  commentId: P:Vintagestory.API.Common.ICoreAPICommon.DataBasePath
+  id: DataBasePath
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: DataBasePath
+  nameWithType: ICoreAPICommon.DataBasePath
+  fullName: Vintagestory.API.Common.ICoreAPICommon.DataBasePath
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DataBasePath
+    path: Common/API/ICoreAPI.cs
+    startLine: 125
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the root path of the games data folder
+  example: []
+  syntax:
+    content: string DataBasePath { get; }
+    parameters: []
+    return:
+      type: System.String
+      description: ''
+    content.vb: ReadOnly Property DataBasePath As String
+  overload: Vintagestory.API.Common.ICoreAPICommon.DataBasePath*
+- uid: Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath(System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath(System.String)
+  id: GetOrCreateDataPath(System.String)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: GetOrCreateDataPath(string)
+  nameWithType: ICoreAPICommon.GetOrCreateDataPath(string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetOrCreateDataPath
+    path: Common/API/ICoreAPI.cs
+    startLine: 132
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the path to given foldername inside the games data folder. Ensures that the folder exists
+  example: []
+  syntax:
+    content: string GetOrCreateDataPath(string foldername)
+    parameters:
+    - id: foldername
+      type: System.String
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Function GetOrCreateDataPath(foldername As String) As String
+  overload: Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath*
+  nameWithType.vb: ICoreAPICommon.GetOrCreateDataPath(String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath(String)
+  name.vb: GetOrCreateDataPath(String)
+- uid: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1(``0,System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1(``0,System.String)
+  id: StoreModConfig``1(``0,System.String)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: StoreModConfig<T>(T, string)
+  nameWithType: ICoreAPICommon.StoreModConfig<T>(T, string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig<T>(T, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: StoreModConfig
+    path: Common/API/ICoreAPI.cs
+    startLine: 142
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Milo kept asking for a standardized way to load and store mod configuration data, so here you go :P
+
+    For T just make a class with all fields public - this is your configuration class. Be sure to set useful default values for your settings
+  example: []
+  syntax:
+    content: void StoreModConfig<T>(T jsonSerializeableData, string filename)
+    parameters:
+    - id: jsonSerializeableData
+      type: '{T}'
+      description: ''
+    - id: filename
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Sub StoreModConfig(Of T)(jsonSerializeableData As T, filename As String)
+  overload: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig*
+  nameWithType.vb: ICoreAPICommon.StoreModConfig(Of T)(T, String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Of T)(T, String)
+  name.vb: StoreModConfig(Of T)(T, String)
+- uid: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Vintagestory.API.Datastructures.JsonObject,System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Vintagestory.API.Datastructures.JsonObject,System.String)
+  id: StoreModConfig(Vintagestory.API.Datastructures.JsonObject,System.String)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: StoreModConfig(JsonObject, string)
+  nameWithType: ICoreAPICommon.StoreModConfig(JsonObject, string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Vintagestory.API.Datastructures.JsonObject, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: StoreModConfig
+    path: Common/API/ICoreAPI.cs
+    startLine: 144
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: void StoreModConfig(JsonObject jobj, string filename)
+    parameters:
+    - id: jobj
+      type: Vintagestory.API.Datastructures.JsonObject
+    - id: filename
+      type: System.String
+    content.vb: Sub StoreModConfig(jobj As JsonObject, filename As String)
+  overload: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig*
+  nameWithType.vb: ICoreAPICommon.StoreModConfig(JsonObject, String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Vintagestory.API.Datastructures.JsonObject, String)
+  name.vb: StoreModConfig(JsonObject, String)
+- uid: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig``1(System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.LoadModConfig``1(System.String)
+  id: LoadModConfig``1(System.String)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: LoadModConfig<T>(string)
+  nameWithType: ICoreAPICommon.LoadModConfig<T>(string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig<T>(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LoadModConfig
+    path: Common/API/ICoreAPI.cs
+    startLine: 155
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Milo kept asking for a standardized way to load and store mod configuration data, so here you go :P
+
+    Recommendation: Surround this call with a try/catch in case the user made a typo while changing the configuration
+
+    Returns null if the file does not exist
+  example: []
+  syntax:
+    content: T LoadModConfig<T>(string filename)
+    parameters:
+    - id: filename
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Function LoadModConfig(Of T)(filename As String) As T
+  overload: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig*
+  nameWithType.vb: ICoreAPICommon.LoadModConfig(Of T)(String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(Of T)(String)
+  name.vb: LoadModConfig(Of T)(String)
+- uid: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(System.String)
+  id: LoadModConfig(System.String)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  langs:
+  - csharp
+  - vb
+  name: LoadModConfig(string)
+  nameWithType: ICoreAPICommon.LoadModConfig(string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LoadModConfig
+    path: Common/API/ICoreAPI.cs
+    startLine: 157
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: JsonObject LoadModConfig(string filename)
+    parameters:
+    - id: filename
+      type: System.String
+    return:
+      type: Vintagestory.API.Datastructures.JsonObject
+    content.vb: Function LoadModConfig(filename As String) As JsonObject
+  overload: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig*
+  nameWithType.vb: ICoreAPICommon.LoadModConfig(String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(String)
+  name.vb: LoadModConfig(String)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterRecipeRegistry__1_System_String_
+  name: RegisterRecipeRegistry
+  nameWithType: ICoreAPICommon.RegisterRecipeRegistry
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterColorMap_Vintagestory_API_Common_ColorMap_
+  name: RegisterColorMap
+  nameWithType: ICoreAPICommon.RegisterColorMap
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap
+- uid: Vintagestory.API.Common.ColorMap
+  commentId: T:Vintagestory.API.Common.ColorMap
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ColorMap.html
+  name: ColorMap
+  nameWithType: ColorMap
+  fullName: Vintagestory.API.Common.ColorMap
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterEntity*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.RegisterEntity
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntity_System_String_System_Type_
+  name: RegisterEntity
+  nameWithType: ICoreAPICommon.RegisterEntity
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterEntity
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntityBehaviorClass_System_String_System_Type_
+  name: RegisterEntityBehaviorClass
+  nameWithType: ICoreAPICommon.RegisterEntityBehaviorClass
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockClass_System_String_System_Type_
+  name: RegisterBlockClass
+  nameWithType: ICoreAPICommon.RegisterBlockClass
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCropBehavior_System_String_System_Type_
+  name: RegisterCropBehavior
+  nameWithType: ICoreAPICommon.RegisterCropBehavior
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityClass_System_String_System_Type_
+  name: RegisterBlockEntityClass
+  nameWithType: ICoreAPICommon.RegisterBlockEntityClass
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterItemClass_System_String_System_Type_
+  name: RegisterItemClass
+  nameWithType: ICoreAPICommon.RegisterItemClass
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCollectibleBehaviorClass_System_String_System_Type_
+  name: RegisterCollectibleBehaviorClass
+  nameWithType: ICoreAPICommon.RegisterCollectibleBehaviorClass
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockBehaviorClass_System_String_System_Type_
+  name: RegisterBlockBehaviorClass
+  nameWithType: ICoreAPICommon.RegisterBlockBehaviorClass
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityBehaviorClass_System_String_System_Type_
+  name: RegisterBlockEntityBehaviorClass
+  nameWithType: ICoreAPICommon.RegisterBlockEntityBehaviorClass
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterMountable*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.RegisterMountable
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterMountable_System_String_Vintagestory_API_Common_GetMountableDelegate_
+  name: RegisterMountable
+  nameWithType: ICoreAPICommon.RegisterMountable
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterMountable
+- uid: Vintagestory.API.Common.GetMountableDelegate
+  commentId: T:Vintagestory.API.Common.GetMountableDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.GetMountableDelegate.html
+  name: GetMountableDelegate
+  nameWithType: GetMountableDelegate
+  fullName: Vintagestory.API.Common.GetMountableDelegate
+- uid: Vintagestory.API.Common.ICoreAPICommon.ObjectCache*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.ObjectCache
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_ObjectCache
+  name: ObjectCache
+  nameWithType: ICoreAPICommon.ObjectCache
+  fullName: Vintagestory.API.Common.ICoreAPICommon.ObjectCache
+- uid: System.Collections.Generic.Dictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, object>
+  nameWithType: Dictionary<string, object>
+  fullName: System.Collections.Generic.Dictionary<string, object>
+  nameWithType.vb: Dictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Object)
+  name.vb: Dictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.ICoreAPICommon.DataBasePath*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.DataBasePath
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_DataBasePath
+  name: DataBasePath
+  nameWithType: ICoreAPICommon.DataBasePath
+  fullName: Vintagestory.API.Common.ICoreAPICommon.DataBasePath
+- uid: Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_GetOrCreateDataPath_System_String_
+  name: GetOrCreateDataPath
+  nameWithType: ICoreAPICommon.GetOrCreateDataPath
+  fullName: Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath
+- uid: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.StoreModConfig
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig__1___0_System_String_
+  name: StoreModConfig
+  nameWithType: ICoreAPICommon.StoreModConfig
+  fullName: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig
+- uid: Vintagestory.API.Datastructures.JsonObject
+  commentId: T:Vintagestory.API.Datastructures.JsonObject
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.JsonObject.html
+  name: JsonObject
+  nameWithType: JsonObject
+  fullName: Vintagestory.API.Datastructures.JsonObject
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig*
+  commentId: Overload:Vintagestory.API.Common.ICoreAPICommon.LoadModConfig
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig__1_System_String_
+  name: LoadModConfig
+  nameWithType: ICoreAPICommon.LoadModConfig
+  fullName: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig

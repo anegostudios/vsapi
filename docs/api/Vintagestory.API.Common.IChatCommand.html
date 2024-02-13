@@ -1,1697 +1,1512 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IChatCommand
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IChatCommand
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Interface IChatCommand | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface IChatCommand | VintageStory API ">
+      
+      
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.IChatCommand">
-  
-  
-  <h1 id="Vintagestory_API_Common_IChatCommand" data-uid="Vintagestory.API.Common.IChatCommand" class="text-break">Interface IChatCommand
+
+        <article data-uid="Vintagestory.API.Common.IChatCommand">
+
+
+
+  <h1 id="Vintagestory_API_Common_IChatCommand" data-uid="Vintagestory.API.Common.IChatCommand" class="text-break">
+Interface IChatCommand  
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_IChatCommand_syntax">Syntax</h5>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IChatCommand</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_AdditionalInformation.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.AdditionalInformation%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L27">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_AdditionalInformation_" data-uid="Vintagestory.API.Common.IChatCommand.AdditionalInformation*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_AdditionalInformation" data-uid="Vintagestory.API.Common.IChatCommand.AdditionalInformation">AdditionalInformation</h4>
-  <div class="markdown level1 summary"><p>Get the detailed description of this command</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string AdditionalInformation { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_Aliases.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.Aliases%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L42">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_Aliases_" data-uid="Vintagestory.API.Common.IChatCommand.Aliases*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_Aliases" data-uid="Vintagestory.API.Common.IChatCommand.Aliases">Aliases</h4>
-  <div class="markdown level1 summary"><p>Aliases for this command or subcommand</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">List&lt;string&gt; Aliases { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_AllSubcommands.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.AllSubcommands%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L166">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_AllSubcommands_" data-uid="Vintagestory.API.Common.IChatCommand.AllSubcommands*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_AllSubcommands" data-uid="Vintagestory.API.Common.IChatCommand.AllSubcommands">AllSubcommands</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Dictionary&lt;string, IChatCommand&gt; AllSubcommands { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_CallSyntax.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.CallSyntax%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L173">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_CallSyntax_" data-uid="Vintagestory.API.Common.IChatCommand.CallSyntax*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_CallSyntax" data-uid="Vintagestory.API.Common.IChatCommand.CallSyntax">CallSyntax</h4>
-  <div class="markdown level1 summary"><p>Get a string showing how to call this command or subcommand</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string CallSyntax { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_CallSyntaxUnformatted.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.CallSyntaxUnformatted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L175">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_CallSyntaxUnformatted_" data-uid="Vintagestory.API.Common.IChatCommand.CallSyntaxUnformatted*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_CallSyntaxUnformatted" data-uid="Vintagestory.API.Common.IChatCommand.CallSyntaxUnformatted">CallSyntaxUnformatted</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string CallSyntaxUnformatted { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_CommandPrefix.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.CommandPrefix%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L52">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_CommandPrefix_" data-uid="Vintagestory.API.Common.IChatCommand.CommandPrefix*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_CommandPrefix" data-uid="Vintagestory.API.Common.IChatCommand.CommandPrefix">CommandPrefix</h4>
-  <div class="markdown level1 summary"><p>Get the prefix of this command</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string CommandPrefix { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_Description.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L22">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_Description_" data-uid="Vintagestory.API.Common.IChatCommand.Description*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_Description" data-uid="Vintagestory.API.Common.IChatCommand.Description">Description</h4>
-  <div class="markdown level1 summary"><p>Get the description of this command</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Description { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_Examples.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.Examples%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L32">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_Examples_" data-uid="Vintagestory.API.Common.IChatCommand.Examples*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_Examples" data-uid="Vintagestory.API.Common.IChatCommand.Examples">Examples</h4>
-  <div class="markdown level1 summary"><p>Get the examples of this command</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string[] Examples { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_FullName.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.FullName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L12">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_FullName_" data-uid="Vintagestory.API.Common.IChatCommand.FullName*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_FullName" data-uid="Vintagestory.API.Common.IChatCommand.FullName">FullName</h4>
-  <div class="markdown level1 summary"><p>Name of this command plus parent command names</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string FullName { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_Incomplete.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.Incomplete%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L37">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_Incomplete_" data-uid="Vintagestory.API.Common.IChatCommand.Incomplete*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_Incomplete" data-uid="Vintagestory.API.Common.IChatCommand.Incomplete">Incomplete</h4>
-  <div class="markdown level1 summary"><p>True if either name or privilege has not been set</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool Incomplete { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_Item_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.Item(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L59">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_Item_" data-uid="Vintagestory.API.Common.IChatCommand.Item*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_Item_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.Item(System.String)">Item[String]</h4>
-  <div class="markdown level1 summary"><p>Retrieve subcommand</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand this[string name] { get; }</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_Name.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L17">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_Name_" data-uid="Vintagestory.API.Common.IChatCommand.Name*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_Name" data-uid="Vintagestory.API.Common.IChatCommand.Name">Name</h4>
-  <div class="markdown level1 summary"><p>Name of this command</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string Name { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_RootAliases.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.RootAliases%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L47">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_RootAliases_" data-uid="Vintagestory.API.Common.IChatCommand.RootAliases*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_RootAliases" data-uid="Vintagestory.API.Common.IChatCommand.RootAliases">RootAliases</h4>
-  <div class="markdown level1 summary"><p>RootAliases for this command or subcommand</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">List&lt;string&gt; RootAliases { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_Subcommands.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.Subcommands%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L165">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_Subcommands_" data-uid="Vintagestory.API.Common.IChatCommand.Subcommands*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_Subcommands" data-uid="Vintagestory.API.Common.IChatCommand.Subcommands">Subcommands</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IEnumerable&lt;IChatCommand&gt; Subcommands { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">IEnumerable</span>&lt;<a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_AddParameterSyntax_StringBuilder_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.AddParameterSyntax(StringBuilder%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L180">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_AddParameterSyntax_" data-uid="Vintagestory.API.Common.IChatCommand.AddParameterSyntax*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_AddParameterSyntax_StringBuilder_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.AddParameterSyntax(StringBuilder,System.String)">AddParameterSyntax(StringBuilder, String)</h4>
-  <div class="markdown level1 summary"><p>Add text listing the parameters</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void AddParameterSyntax(StringBuilder sb, string indent)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">StringBuilder</span></td>
-        <td><span class="parametername">sb</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">indent</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_AddSyntaxExplanation_StringBuilder_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.AddSyntaxExplanation(StringBuilder%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L184">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_AddSyntaxExplanation_" data-uid="Vintagestory.API.Common.IChatCommand.AddSyntaxExplanation*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_AddSyntaxExplanation_StringBuilder_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.AddSyntaxExplanation(StringBuilder,System.String)">AddSyntaxExplanation(StringBuilder, String)</h4>
-  <div class="markdown level1 summary"><p>Add text explaining the form and interpretation of some of the more complex parameter types</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void AddSyntaxExplanation(StringBuilder sb, string indent)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">StringBuilder</span></td>
-        <td><span class="parametername">sb</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">indent</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_BeginSubCommand_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.BeginSubCommand(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L127">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_BeginSubCommand_" data-uid="Vintagestory.API.Common.IChatCommand.BeginSubCommand*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_BeginSubCommand_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.BeginSubCommand(System.String)">BeginSubCommand(String)</h4>
-  <div class="markdown level1 summary"><p>Define/Modify a subcommnad. Returns a new subcommand instance.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand BeginSubCommand(string name)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_BeginSubCommands_System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.BeginSubCommands(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L134">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_BeginSubCommands_" data-uid="Vintagestory.API.Common.IChatCommand.BeginSubCommands*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_BeginSubCommands_System_String___" data-uid="Vintagestory.API.Common.IChatCommand.BeginSubCommands(System.String[])">BeginSubCommands(String[])</h4>
-  <div class="markdown level1 summary"><p>Define/Modify multiple subcommands. Returns a new subcommand instance.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand BeginSubCommands(params string[] name)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">name</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_EndSubCommand.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.EndSubCommand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L140">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_EndSubCommand_" data-uid="Vintagestory.API.Common.IChatCommand.EndSubCommand*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_EndSubCommand" data-uid="Vintagestory.API.Common.IChatCommand.EndSubCommand">EndSubCommand()</h4>
-  <div class="markdown level1 summary"><p>Leave current subcommand. Returns parent command instance.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand EndSubCommand()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_Execute_Vintagestory_API_Common_TextCommandCallingArgs_Action_Vintagestory_API_Common_TextCommandResult__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.Execute(Vintagestory.API.Common.TextCommandCallingArgs%2CAction%7BVintagestory.API.Common.TextCommandResult%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L152">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_Execute_" data-uid="Vintagestory.API.Common.IChatCommand.Execute*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_Execute_Vintagestory_API_Common_TextCommandCallingArgs_Action_Vintagestory_API_Common_TextCommandResult__" data-uid="Vintagestory.API.Common.IChatCommand.Execute(Vintagestory.API.Common.TextCommandCallingArgs,Action{Vintagestory.API.Common.TextCommandResult})">Execute(TextCommandCallingArgs, Action&lt;TextCommandResult&gt;)</h4>
-  <div class="markdown level1 summary"><p>Manually execute this command</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Execute(TextCommandCallingArgs callargs, Action&lt;TextCommandResult&gt; onCommandComplete = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.TextCommandCallingArgs.html">TextCommandCallingArgs</a></td>
-        <td><span class="parametername">callargs</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Action</span>&lt;<a class="xref" href="Vintagestory.API.Common.TextCommandResult.html">TextCommandResult</a>&gt;</td>
-        <td><span class="parametername">onCommandComplete</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_GetCallSyntax_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.GetCallSyntax(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L186">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_GetCallSyntax_" data-uid="Vintagestory.API.Common.IChatCommand.GetCallSyntax*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_GetCallSyntax_System_String_System_Boolean_" data-uid="Vintagestory.API.Common.IChatCommand.GetCallSyntax(System.String,System.Boolean)">GetCallSyntax(String, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string GetCallSyntax(string alias, bool isRootAlias = false)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">alias</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">isRootAlias</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_GetCallSyntaxUnformatted_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.GetCallSyntaxUnformatted(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L187">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_GetCallSyntaxUnformatted_" data-uid="Vintagestory.API.Common.IChatCommand.GetCallSyntaxUnformatted*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_GetCallSyntaxUnformatted_System_String_System_Boolean_" data-uid="Vintagestory.API.Common.IChatCommand.GetCallSyntaxUnformatted(System.String,System.Boolean)">GetCallSyntaxUnformatted(String, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string GetCallSyntaxUnformatted(string alias, bool isRootAlias = false)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">alias</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">isRootAlias</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_GetFullName_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.GetFullName(System.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L185">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_GetFullName_" data-uid="Vintagestory.API.Common.IChatCommand.GetFullName*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_GetFullName_System_String_System_Boolean_" data-uid="Vintagestory.API.Common.IChatCommand.GetFullName(System.String,System.Boolean)">GetFullName(String, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string GetFullName(string alias, bool isRootAlias = false)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">alias</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">isRootAlias</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_GetFullSyntaxConsole_Vintagestory_API_Common_Caller_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.GetFullSyntaxConsole(Vintagestory.API.Common.Caller)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L167">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_GetFullSyntaxConsole_" data-uid="Vintagestory.API.Common.IChatCommand.GetFullSyntaxConsole*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_GetFullSyntaxConsole_Vintagestory_API_Common_Caller_" data-uid="Vintagestory.API.Common.IChatCommand.GetFullSyntaxConsole(Vintagestory.API.Common.Caller)">GetFullSyntaxConsole(Caller)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string GetFullSyntaxConsole(Caller caller)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Caller.html">Caller</a></td>
-        <td><span class="parametername">caller</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_GetFullSyntaxHandbook_Vintagestory_API_Common_Caller_System_String_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.GetFullSyntaxHandbook(Vintagestory.API.Common.Caller%2CSystem.String%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L168">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_GetFullSyntaxHandbook_" data-uid="Vintagestory.API.Common.IChatCommand.GetFullSyntaxHandbook*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_GetFullSyntaxHandbook_Vintagestory_API_Common_Caller_System_String_System_Boolean_" data-uid="Vintagestory.API.Common.IChatCommand.GetFullSyntaxHandbook(Vintagestory.API.Common.Caller,System.String,System.Boolean)">GetFullSyntaxHandbook(Caller, String, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string GetFullSyntaxHandbook(Caller caller, string indent = &quot;&quot;, bool isRootAlias = false)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Caller.html">Caller</a></td>
-        <td><span class="parametername">caller</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">indent</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">isRootAlias</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_HandleWith_Vintagestory_API_Common_OnCommandDelegate_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.HandleWith(Vintagestory.API.Common.OnCommandDelegate)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L146">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_HandleWith_" data-uid="Vintagestory.API.Common.IChatCommand.HandleWith*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_HandleWith_Vintagestory_API_Common_OnCommandDelegate_" data-uid="Vintagestory.API.Common.IChatCommand.HandleWith(Vintagestory.API.Common.OnCommandDelegate)">HandleWith(OnCommandDelegate)</h4>
-  <div class="markdown level1 summary"><p>Define method to be called when the command is executed</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand HandleWith(OnCommandDelegate handler)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.OnCommandDelegate.html">OnCommandDelegate</a></td>
-        <td><span class="parametername">handler</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_IgnoreAdditionalArgs.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.IgnoreAdditionalArgs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L163">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_IgnoreAdditionalArgs_" data-uid="Vintagestory.API.Common.IChatCommand.IgnoreAdditionalArgs*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_IgnoreAdditionalArgs" data-uid="Vintagestory.API.Common.IChatCommand.IgnoreAdditionalArgs">IgnoreAdditionalArgs()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand IgnoreAdditionalArgs()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_IsAvailableTo_Vintagestory_API_Common_Caller_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.IsAvailableTo(Vintagestory.API.Common.Caller)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L158">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_IsAvailableTo_" data-uid="Vintagestory.API.Common.IChatCommand.IsAvailableTo*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_IsAvailableTo_Vintagestory_API_Common_Caller_" data-uid="Vintagestory.API.Common.IChatCommand.IsAvailableTo(Vintagestory.API.Common.Caller)">IsAvailableTo(Caller)</h4>
-  <div class="markdown level1 summary"><p>Confirm whether the specified caller has the required privilege for this command</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IsAvailableTo(Caller caller)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Caller.html">Caller</a></td>
-        <td><span class="parametername">caller</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_RequiresPlayer.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.RequiresPlayer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L119">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_RequiresPlayer_" data-uid="Vintagestory.API.Common.IChatCommand.RequiresPlayer*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_RequiresPlayer" data-uid="Vintagestory.API.Common.IChatCommand.RequiresPlayer">RequiresPlayer()</h4>
-  <div class="markdown level1 summary"><p>This command can only be run if the caller is a player</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand RequiresPlayer()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_RequiresPrivilege_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.RequiresPrivilege(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L113">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_RequiresPrivilege_" data-uid="Vintagestory.API.Common.IChatCommand.RequiresPrivilege*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_RequiresPrivilege_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.RequiresPrivilege(System.String)">RequiresPrivilege(String)</h4>
-  <div class="markdown level1 summary"><p>Define the required privilege to run this command / subcommand</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand RequiresPrivilege(string privilege)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">privilege</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_Validate.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.Validate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L162">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_Validate_" data-uid="Vintagestory.API.Common.IChatCommand.Validate*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_Validate" data-uid="Vintagestory.API.Common.IChatCommand.Validate">Validate()</h4>
-  <div class="markdown level1 summary"><p>Optional validation step that ensures that all the command and all its subcommands has a name, handler, privilege and description defined</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Validate()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_WithAdditionalInformation_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.WithAdditionalInformation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L95">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_WithAdditionalInformation_" data-uid="Vintagestory.API.Common.IChatCommand.WithAdditionalInformation*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_WithAdditionalInformation_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.WithAdditionalInformation(System.String)">WithAdditionalInformation(String)</h4>
-  <div class="markdown level1 summary"><p>Set additional detailed command description, for command-specific help</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand WithAdditionalInformation(string detail)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">detail</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_WithAlias_System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.WithAlias(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L77">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_WithAlias_" data-uid="Vintagestory.API.Common.IChatCommand.WithAlias*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_WithAlias_System_String___" data-uid="Vintagestory.API.Common.IChatCommand.WithAlias(System.String[])">WithAlias(String[])</h4>
-  <div class="markdown level1 summary"><p>Registers alternative names for this command</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand WithAlias(params string[] name)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">name</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_WithArgs_Vintagestory_API_Common_ICommandArgumentParser___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.WithArgs(Vintagestory.API.Common.ICommandArgumentParser%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L107">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_WithArgs_" data-uid="Vintagestory.API.Common.IChatCommand.WithArgs*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_WithArgs_Vintagestory_API_Common_ICommandArgumentParser___" data-uid="Vintagestory.API.Common.IChatCommand.WithArgs(Vintagestory.API.Common.ICommandArgumentParser[])">WithArgs(ICommandArgumentParser[])</h4>
-  <div class="markdown level1 summary"><p>Define command arguments, you&apos;d usually want to use one of the parsers supplied from from capi.ChatCommands.Parsers</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand WithArgs(params ICommandArgumentParser[] args)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICommandArgumentParser.html">ICommandArgumentParser</a>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_WithDescription_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.WithDescription(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L89">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_WithDescription_" data-uid="Vintagestory.API.Common.IChatCommand.WithDescription*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_WithDescription_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.WithDescription(System.String)">WithDescription(String)</h4>
-  <div class="markdown level1 summary"><p>Set command description</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand WithDescription(string description)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">description</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_WithExamples_System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.WithExamples(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L101">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_WithExamples_" data-uid="Vintagestory.API.Common.IChatCommand.WithExamples*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_WithExamples_System_String___" data-uid="Vintagestory.API.Common.IChatCommand.WithExamples(System.String[])">WithExamples(String[])</h4>
-  <div class="markdown level1 summary"><p>Define one ore more examples on how this command can be executed</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand WithExamples(params string[] examaples)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">examaples</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_WithName_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.WithName(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L71">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_WithName_" data-uid="Vintagestory.API.Common.IChatCommand.WithName*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_WithName_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.WithName(System.String)">WithName(String)</h4>
-  <div class="markdown level1 summary"><p>Sets the command name</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand WithName(string name)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_WithPreCondition_Vintagestory_API_Common_CommandPreconditionDelegate_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.WithPreCondition(Vintagestory.API.Common.CommandPreconditionDelegate)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L65">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_WithPreCondition_" data-uid="Vintagestory.API.Common.IChatCommand.WithPreCondition*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_WithPreCondition_Vintagestory_API_Common_CommandPreconditionDelegate_" data-uid="Vintagestory.API.Common.IChatCommand.WithPreCondition(Vintagestory.API.Common.CommandPreconditionDelegate)">WithPreCondition(CommandPreconditionDelegate)</h4>
-  <div class="markdown level1 summary"><p>If return value is error, command cannot be executed</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand WithPreCondition(CommandPreconditionDelegate p)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.CommandPreconditionDelegate.html">CommandPreconditionDelegate</a></td>
-        <td><span class="parametername">p</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand_WithRootAlias_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand.WithRootAlias(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L83">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_IChatCommand_WithRootAlias_" data-uid="Vintagestory.API.Common.IChatCommand.WithRootAlias*"></a>
-  <h4 id="Vintagestory_API_Common_IChatCommand_WithRootAlias_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.WithRootAlias(System.String)">WithRootAlias(String)</h4>
-  <div class="markdown level1 summary"><p>Registers an alternative name for this command, always at the root level, i.e. /name</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IChatCommand WithRootAlias(string name)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="extensionmethods">Extension Methods</h3>
+
+
+
+
+
+
+
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
   <div>
-      <a class="xref" href="Vintagestory.API.Common.CommandAbbr.IChatCommandExt.html#Vintagestory_API_Common_CommandAbbr_IChatCommandExt_WithDesc_Vintagestory_API_Common_IChatCommand_System_String_">IChatCommandExt.WithDesc(IChatCommand, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.CommandAbbr.IChatCommandExt.html#Vintagestory_API_Common_CommandAbbr_IChatCommandExt_BeginSub_Vintagestory_API_Common_IChatCommand_System_String_">IChatCommandExt.BeginSub(IChatCommand, string)</a>
   </div>
   <div>
-      <a class="xref" href="Vintagestory.API.Common.CommandAbbr.IChatCommandExt.html#Vintagestory_API_Common_CommandAbbr_IChatCommandExt_BeginSub_Vintagestory_API_Common_IChatCommand_System_String_">IChatCommandExt.BeginSub(IChatCommand, String)</a>
-  </div>
-  <div>
-      <a class="xref" href="Vintagestory.API.Common.CommandAbbr.IChatCommandExt.html#Vintagestory_API_Common_CommandAbbr_IChatCommandExt_BeginSubs_Vintagestory_API_Common_IChatCommand_System_String___">IChatCommandExt.BeginSubs(IChatCommand, String[])</a>
+      <a class="xref" href="Vintagestory.API.Common.CommandAbbr.IChatCommandExt.html#Vintagestory_API_Common_CommandAbbr_IChatCommandExt_BeginSubs_Vintagestory_API_Common_IChatCommand_System_String___">IChatCommandExt.BeginSubs(IChatCommand, params string[])</a>
   </div>
   <div>
       <a class="xref" href="Vintagestory.API.Common.CommandAbbr.IChatCommandExt.html#Vintagestory_API_Common_CommandAbbr_IChatCommandExt_EndSub_Vintagestory_API_Common_IChatCommand_">IChatCommandExt.EndSub(IChatCommand)</a>
   </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Common.CommandAbbr.IChatCommandExt.html#Vintagestory_API_Common_CommandAbbr_IChatCommandExt_WithDesc_Vintagestory_API_Common_IChatCommand_System_String_">IChatCommandExt.WithDesc(IChatCommand, string)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_AdditionalInformation_" data-uid="Vintagestory.API.Common.IChatCommand.AdditionalInformation*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_AdditionalInformation" data-uid="Vintagestory.API.Common.IChatCommand.AdditionalInformation">
+  AdditionalInformation
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the detailed description of this command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string AdditionalInformation { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_Aliases_" data-uid="Vintagestory.API.Common.IChatCommand.Aliases*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_Aliases" data-uid="Vintagestory.API.Common.IChatCommand.Aliases">
+  Aliases
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Aliases for this command or subcommand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">List&lt;string&gt; Aliases { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_AllSubcommands_" data-uid="Vintagestory.API.Common.IChatCommand.AllSubcommands*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_AllSubcommands" data-uid="Vintagestory.API.Common.IChatCommand.AllSubcommands">
+  AllSubcommands
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Dictionary&lt;string, IChatCommand&gt; AllSubcommands { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_CallSyntax_" data-uid="Vintagestory.API.Common.IChatCommand.CallSyntax*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_CallSyntax" data-uid="Vintagestory.API.Common.IChatCommand.CallSyntax">
+  CallSyntax
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a string showing how to call this command or subcommand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string CallSyntax { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_CallSyntaxUnformatted_" data-uid="Vintagestory.API.Common.IChatCommand.CallSyntaxUnformatted*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_CallSyntaxUnformatted" data-uid="Vintagestory.API.Common.IChatCommand.CallSyntaxUnformatted">
+  CallSyntaxUnformatted
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string CallSyntaxUnformatted { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_CommandPrefix_" data-uid="Vintagestory.API.Common.IChatCommand.CommandPrefix*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_CommandPrefix" data-uid="Vintagestory.API.Common.IChatCommand.CommandPrefix">
+  CommandPrefix
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the prefix of this command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string CommandPrefix { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_Description_" data-uid="Vintagestory.API.Common.IChatCommand.Description*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_Description" data-uid="Vintagestory.API.Common.IChatCommand.Description">
+  Description
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the description of this command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Description { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_Examples_" data-uid="Vintagestory.API.Common.IChatCommand.Examples*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_Examples" data-uid="Vintagestory.API.Common.IChatCommand.Examples">
+  Examples
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the examples of this command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string[] Examples { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_FullName_" data-uid="Vintagestory.API.Common.IChatCommand.FullName*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_FullName" data-uid="Vintagestory.API.Common.IChatCommand.FullName">
+  FullName
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Name of this command plus parent command names</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string FullName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_Incomplete_" data-uid="Vintagestory.API.Common.IChatCommand.Incomplete*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_Incomplete" data-uid="Vintagestory.API.Common.IChatCommand.Incomplete">
+  Incomplete
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>True if either name or privilege has not been set</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool Incomplete { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_Item_" data-uid="Vintagestory.API.Common.IChatCommand.Item*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_Item_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.Item(System.String)">
+  this[string]
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieve subcommand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand this[string name] { get; }</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_Name_" data-uid="Vintagestory.API.Common.IChatCommand.Name*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_Name" data-uid="Vintagestory.API.Common.IChatCommand.Name">
+  Name
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Name of this command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string Name { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_RootAliases_" data-uid="Vintagestory.API.Common.IChatCommand.RootAliases*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_RootAliases" data-uid="Vintagestory.API.Common.IChatCommand.RootAliases">
+  RootAliases
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>RootAliases for this command or subcommand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">List&lt;string&gt; RootAliases { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_Subcommands_" data-uid="Vintagestory.API.Common.IChatCommand.Subcommands*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_Subcommands" data-uid="Vintagestory.API.Common.IChatCommand.Subcommands">
+  Subcommands
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IEnumerable&lt;IChatCommand&gt; Subcommands { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_AddParameterSyntax_" data-uid="Vintagestory.API.Common.IChatCommand.AddParameterSyntax*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_AddParameterSyntax_System_Text_StringBuilder_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.AddParameterSyntax(System.Text.StringBuilder,System.String)">
+  AddParameterSyntax(StringBuilder, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add text listing the parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddParameterSyntax(StringBuilder sb, string indent)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sb</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.stringbuilder">StringBuilder</a></dt>
+    <dd></dd>
+    <dt><code>indent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_AddSyntaxExplanation_" data-uid="Vintagestory.API.Common.IChatCommand.AddSyntaxExplanation*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_AddSyntaxExplanation_System_Text_StringBuilder_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.AddSyntaxExplanation(System.Text.StringBuilder,System.String)">
+  AddSyntaxExplanation(StringBuilder, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add text explaining the form and interpretation of some of the more complex parameter types</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddSyntaxExplanation(StringBuilder sb, string indent)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sb</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.stringbuilder">StringBuilder</a></dt>
+    <dd></dd>
+    <dt><code>indent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_BeginSubCommand_" data-uid="Vintagestory.API.Common.IChatCommand.BeginSubCommand*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_BeginSubCommand_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.BeginSubCommand(System.String)">
+  BeginSubCommand(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Define/Modify a subcommnad. Returns a new subcommand instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand BeginSubCommand(string name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_BeginSubCommands_" data-uid="Vintagestory.API.Common.IChatCommand.BeginSubCommands*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_BeginSubCommands_System_String___" data-uid="Vintagestory.API.Common.IChatCommand.BeginSubCommands(System.String[])">
+  BeginSubCommands(params string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Define/Modify multiple subcommands. Returns a new subcommand instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand BeginSubCommands(params string[] name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_EndSubCommand_" data-uid="Vintagestory.API.Common.IChatCommand.EndSubCommand*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_EndSubCommand" data-uid="Vintagestory.API.Common.IChatCommand.EndSubCommand">
+  EndSubCommand()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Leave current subcommand. Returns parent command instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand EndSubCommand()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_Execute_" data-uid="Vintagestory.API.Common.IChatCommand.Execute*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_Execute_Vintagestory_API_Common_TextCommandCallingArgs_System_Action_Vintagestory_API_Common_TextCommandResult__" data-uid="Vintagestory.API.Common.IChatCommand.Execute(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.TextCommandResult})">
+  Execute(TextCommandCallingArgs, Action&lt;TextCommandResult&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Manually execute this command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Execute(TextCommandCallingArgs callargs, Action&lt;TextCommandResult&gt; onCommandComplete = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>callargs</code> <a class="xref" href="Vintagestory.API.Common.TextCommandCallingArgs.html">TextCommandCallingArgs</a></dt>
+    <dd></dd>
+    <dt><code>onCommandComplete</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Vintagestory.API.Common.TextCommandResult.html">TextCommandResult</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_GetCallSyntax_" data-uid="Vintagestory.API.Common.IChatCommand.GetCallSyntax*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_GetCallSyntax_System_String_System_Boolean_" data-uid="Vintagestory.API.Common.IChatCommand.GetCallSyntax(System.String,System.Boolean)">
+  GetCallSyntax(string, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string GetCallSyntax(string alias, bool isRootAlias = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>alias</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>isRootAlias</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_GetCallSyntaxUnformatted_" data-uid="Vintagestory.API.Common.IChatCommand.GetCallSyntaxUnformatted*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_GetCallSyntaxUnformatted_System_String_System_Boolean_" data-uid="Vintagestory.API.Common.IChatCommand.GetCallSyntaxUnformatted(System.String,System.Boolean)">
+  GetCallSyntaxUnformatted(string, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string GetCallSyntaxUnformatted(string alias, bool isRootAlias = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>alias</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>isRootAlias</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_GetFullName_" data-uid="Vintagestory.API.Common.IChatCommand.GetFullName*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_GetFullName_System_String_System_Boolean_" data-uid="Vintagestory.API.Common.IChatCommand.GetFullName(System.String,System.Boolean)">
+  GetFullName(string, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string GetFullName(string alias, bool isRootAlias = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>alias</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>isRootAlias</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_GetFullSyntaxConsole_" data-uid="Vintagestory.API.Common.IChatCommand.GetFullSyntaxConsole*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_GetFullSyntaxConsole_Vintagestory_API_Common_Caller_" data-uid="Vintagestory.API.Common.IChatCommand.GetFullSyntaxConsole(Vintagestory.API.Common.Caller)">
+  GetFullSyntaxConsole(Caller)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string GetFullSyntaxConsole(Caller caller)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>caller</code> <a class="xref" href="Vintagestory.API.Common.Caller.html">Caller</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_GetFullSyntaxHandbook_" data-uid="Vintagestory.API.Common.IChatCommand.GetFullSyntaxHandbook*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_GetFullSyntaxHandbook_Vintagestory_API_Common_Caller_System_String_System_Boolean_" data-uid="Vintagestory.API.Common.IChatCommand.GetFullSyntaxHandbook(Vintagestory.API.Common.Caller,System.String,System.Boolean)">
+  GetFullSyntaxHandbook(Caller, string, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string GetFullSyntaxHandbook(Caller caller, string indent = &quot;&quot;, bool isRootAlias = false)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>caller</code> <a class="xref" href="Vintagestory.API.Common.Caller.html">Caller</a></dt>
+    <dd></dd>
+    <dt><code>indent</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>isRootAlias</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_HandleWith_" data-uid="Vintagestory.API.Common.IChatCommand.HandleWith*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_HandleWith_Vintagestory_API_Common_OnCommandDelegate_" data-uid="Vintagestory.API.Common.IChatCommand.HandleWith(Vintagestory.API.Common.OnCommandDelegate)">
+  HandleWith(OnCommandDelegate)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Define method to be called when the command is executed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand HandleWith(OnCommandDelegate handler)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handler</code> <a class="xref" href="Vintagestory.API.Common.OnCommandDelegate.html">OnCommandDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_IgnoreAdditionalArgs_" data-uid="Vintagestory.API.Common.IChatCommand.IgnoreAdditionalArgs*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_IgnoreAdditionalArgs" data-uid="Vintagestory.API.Common.IChatCommand.IgnoreAdditionalArgs">
+  IgnoreAdditionalArgs()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand IgnoreAdditionalArgs()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_IsAvailableTo_" data-uid="Vintagestory.API.Common.IChatCommand.IsAvailableTo*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_IsAvailableTo_Vintagestory_API_Common_Caller_" data-uid="Vintagestory.API.Common.IChatCommand.IsAvailableTo(Vintagestory.API.Common.Caller)">
+  IsAvailableTo(Caller)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Confirm whether the specified caller has the required privilege for this command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IsAvailableTo(Caller caller)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>caller</code> <a class="xref" href="Vintagestory.API.Common.Caller.html">Caller</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_RequiresPlayer_" data-uid="Vintagestory.API.Common.IChatCommand.RequiresPlayer*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_RequiresPlayer" data-uid="Vintagestory.API.Common.IChatCommand.RequiresPlayer">
+  RequiresPlayer()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>This command can only be run if the caller is a player</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand RequiresPlayer()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_RequiresPrivilege_" data-uid="Vintagestory.API.Common.IChatCommand.RequiresPrivilege*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_RequiresPrivilege_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.RequiresPrivilege(System.String)">
+  RequiresPrivilege(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Define the required privilege to run this command / subcommand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand RequiresPrivilege(string privilege)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>privilege</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_Validate_" data-uid="Vintagestory.API.Common.IChatCommand.Validate*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_Validate" data-uid="Vintagestory.API.Common.IChatCommand.Validate">
+  Validate()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Optional validation step that ensures that all the command and all its subcommands has a name, handler, privilege and description defined</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Validate()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_WithAdditionalInformation_" data-uid="Vintagestory.API.Common.IChatCommand.WithAdditionalInformation*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_WithAdditionalInformation_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.WithAdditionalInformation(System.String)">
+  WithAdditionalInformation(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set additional detailed command description, for command-specific help</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand WithAdditionalInformation(string detail)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>detail</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_WithAlias_" data-uid="Vintagestory.API.Common.IChatCommand.WithAlias*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_WithAlias_System_String___" data-uid="Vintagestory.API.Common.IChatCommand.WithAlias(System.String[])">
+  WithAlias(params string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers alternative names for this command</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand WithAlias(params string[] name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_WithArgs_" data-uid="Vintagestory.API.Common.IChatCommand.WithArgs*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_WithArgs_Vintagestory_API_Common_ICommandArgumentParser___" data-uid="Vintagestory.API.Common.IChatCommand.WithArgs(Vintagestory.API.Common.ICommandArgumentParser[])">
+  WithArgs(params ICommandArgumentParser[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Define command arguments, you'd usually want to use one of the parsers supplied from from capi.ChatCommands.Parsers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand WithArgs(params ICommandArgumentParser[] args)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>args</code> <a class="xref" href="Vintagestory.API.Common.ICommandArgumentParser.html">ICommandArgumentParser</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_WithDescription_" data-uid="Vintagestory.API.Common.IChatCommand.WithDescription*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_WithDescription_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.WithDescription(System.String)">
+  WithDescription(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set command description</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand WithDescription(string description)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>description</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_WithExamples_" data-uid="Vintagestory.API.Common.IChatCommand.WithExamples*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_WithExamples_System_String___" data-uid="Vintagestory.API.Common.IChatCommand.WithExamples(System.String[])">
+  WithExamples(params string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Define one ore more examples on how this command can be executed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand WithExamples(params string[] examaples)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>examaples</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_WithName_" data-uid="Vintagestory.API.Common.IChatCommand.WithName*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_WithName_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.WithName(System.String)">
+  WithName(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the command name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand WithName(string name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_WithPreCondition_" data-uid="Vintagestory.API.Common.IChatCommand.WithPreCondition*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_WithPreCondition_Vintagestory_API_Common_CommandPreconditionDelegate_" data-uid="Vintagestory.API.Common.IChatCommand.WithPreCondition(Vintagestory.API.Common.CommandPreconditionDelegate)">
+  WithPreCondition(CommandPreconditionDelegate)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If return value is error, command cannot be executed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand WithPreCondition(CommandPreconditionDelegate p)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>p</code> <a class="xref" href="Vintagestory.API.Common.CommandPreconditionDelegate.html">CommandPreconditionDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IChatCommand_WithRootAlias_" data-uid="Vintagestory.API.Common.IChatCommand.WithRootAlias*"></a>
+
+  <h3 id="Vintagestory_API_Common_IChatCommand_WithRootAlias_System_String_" data-uid="Vintagestory.API.Common.IChatCommand.WithRootAlias(System.String)">
+  WithRootAlias(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers an alternative name for this command, always at the root level, i.e. /name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChatCommand WithRootAlias(string name)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_IChatCommand.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.IChatCommand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/IChatCommand.cs/#L7" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

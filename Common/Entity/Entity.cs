@@ -118,6 +118,13 @@ namespace Vintagestory.API.Common.Entities
         public ICoreAPI Api;
 
         /// <summary>
+        /// Used by AItasks for perfomance. When searching for nearby entities we distinguish between (A) Creatures and (B) Inanimate entitie. Inanimate entities are items on the ground, projectiles, armor stands, rafts, falling blocks etc
+        /// <br/>Note 1: Dead creatures / corpses count as a Creature. EntityPlayer is a Creature of course.
+        /// <br/>Note 2: Straw Dummy we count as a Creature, because weapons can target it and bees can attack it. In contrast, Armor Stand we count as Inanimate, because nothing should ever attack or target it.
+        /// </summary>
+        public virtual bool IsCreature { get { return false; } }
+
+        /// <summary>
         /// The vanilla physics systems will call this method if a physics behavior was assigned to it. The game client for example requires this to be called for the current player to properly render the player. Available on the game client and server.
         /// </summary>
         public PhysicsTickDelegate PhysicsUpdateWatcher;
@@ -685,7 +692,7 @@ namespace Vintagestory.API.Common.Entities
 
             float dropMul = 1;
 
-            if (Attributes?.GetBool("isMechanical", false) != true && byPlayer?.Entity != null)
+            if (Properties.Attributes?["isMechanical"].AsBool() != true && byPlayer?.Entity != null)
             {
                 dropMul = 1 + byPlayer.Entity.Stats.GetBlended("animalLootDropRate");
             }

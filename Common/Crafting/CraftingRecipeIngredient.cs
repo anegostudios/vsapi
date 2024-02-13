@@ -88,7 +88,7 @@ namespace Vintagestory.API.Common
                 ReturnedStack.Resolve(resolver, sourceForErrorLogging + " recipe with output ", Code);
             }
 
-            if (Code.Path.Contains("*"))
+            if (Code.Path.Contains('*'))
             {
                 IsWildCard = true;
                 return true;

@@ -1,0 +1,1180 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.IItemTextureAtlasAPI
+  commentId: T:Vintagestory.API.Client.IItemTextureAtlasAPI
+  id: IItemTextureAtlasAPI
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition(Vintagestory.API.Common.Item,System.String,System.Boolean)
+  langs:
+  - csharp
+  - vb
+  name: IItemTextureAtlasAPI
+  nameWithType: IItemTextureAtlasAPI
+  fullName: Vintagestory.API.Client.IItemTextureAtlasAPI
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/ITextureAtlasAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IItemTextureAtlasAPI
+    path: Client/API/ITextureAtlasAPI.cs
+    startLine: 12
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Item texture Atlas.
+  example: []
+  syntax:
+    content: 'public interface IItemTextureAtlasAPI : ITextureAtlasAPI'
+    content.vb: Public Interface IItemTextureAtlasAPI Inherits ITextureAtlasAPI
+  inheritedMembers:
+  - Vintagestory.API.Client.ITextureAtlasAPI.Item(Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Client.ITextureAtlasAPI.UnknownTexturePosition
+  - Vintagestory.API.Client.ITextureAtlasAPI.Size
+  - Vintagestory.API.Client.ITextureAtlasAPI.SubPixelPaddingX
+  - Vintagestory.API.Client.ITextureAtlasAPI.SubPixelPaddingY
+  - Vintagestory.API.Client.ITextureAtlasAPI.Positions
+  - Vintagestory.API.Client.ITextureAtlasAPI.AtlasTextures
+  - Vintagestory.API.Client.ITextureAtlasAPI.AllocateTextureSpace(System.Int32,System.Int32,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@)
+  - Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  - Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  - Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocation,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
+  - Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  - Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  - Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  - Vintagestory.API.Client.ITextureAtlasAPI.FreeTextureSpace(System.Int32)
+  - Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32)
+  - Vintagestory.API.Client.ITextureAtlasAPI.RegenMipMaps(System.Int32)
+  - Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32,System.Int32)
+  - Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(Vintagestory.API.Client.TextureAtlasPosition,System.Int32)
+  - Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColors(Vintagestory.API.Client.TextureAtlasPosition)
+  - Vintagestory.API.Client.ITextureAtlasAPI.GetAverageColor(System.Int32)
+  - Vintagestory.API.Client.ITextureAtlasAPI.RenderTextureIntoAtlas(System.Int32,Vintagestory.API.Client.LoadedTexture,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+- uid: Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition(Vintagestory.API.Common.Item,System.String,System.Boolean)
+  commentId: M:Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition(Vintagestory.API.Common.Item,System.String,System.Boolean)
+  id: GetPosition(Vintagestory.API.Common.Item,System.String,System.Boolean)
+  parent: Vintagestory.API.Client.IItemTextureAtlasAPI
+  langs:
+  - csharp
+  - vb
+  name: GetPosition(Item, string, bool)
+  nameWithType: IItemTextureAtlasAPI.GetPosition(Item, string, bool)
+  fullName: Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition(Vintagestory.API.Common.Item, string, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/ITextureAtlasAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetPosition
+    path: Client/API/ITextureAtlasAPI.cs
+    startLine: 21
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns the position in the item texture atlas of given item. For items that don't use custom shapes you don't have to supply the textureName
+  example: []
+  syntax:
+    content: TextureAtlasPosition GetPosition(Item item, string textureName = null, bool returnNullWhenMissing = false)
+    parameters:
+    - id: item
+      type: Vintagestory.API.Common.Item
+      description: ''
+    - id: textureName
+      type: System.String
+      description: ''
+    - id: returnNullWhenMissing
+      type: System.Boolean
+      description: ''
+    return:
+      type: Vintagestory.API.Client.TextureAtlasPosition
+      description: ''
+    content.vb: Function GetPosition(item As Item, textureName As String = Nothing, returnNullWhenMissing As Boolean = False) As TextureAtlasPosition
+  overload: Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition*
+  nameWithType.vb: IItemTextureAtlasAPI.GetPosition(Item, String, Boolean)
+  fullName.vb: Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition(Vintagestory.API.Common.Item, String, Boolean)
+  name.vb: GetPosition(Item, String, Boolean)
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.Item(Vintagestory.API.Common.AssetLocation)
+  commentId: P:Vintagestory.API.Client.ITextureAtlasAPI.Item(Vintagestory.API.Common.AssetLocation)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: this[AssetLocation]
+  nameWithType: ITextureAtlasAPI.this[AssetLocation]
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.this[Vintagestory.API.Common.AssetLocation]
+  nameWithType.vb: ITextureAtlasAPI.this[](AssetLocation)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.this[](Vintagestory.API.Common.AssetLocation)
+  name.vb: this[](AssetLocation)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.Item(Vintagestory.API.Common.AssetLocation)
+    name: this[]
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_Item_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.UnknownTexturePosition
+  commentId: P:Vintagestory.API.Client.ITextureAtlasAPI.UnknownTexturePosition
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_UnknownTexturePosition
+  name: UnknownTexturePosition
+  nameWithType: ITextureAtlasAPI.UnknownTexturePosition
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.UnknownTexturePosition
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.Size
+  commentId: P:Vintagestory.API.Client.ITextureAtlasAPI.Size
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_Size
+  name: Size
+  nameWithType: ITextureAtlasAPI.Size
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.Size
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.SubPixelPaddingX
+  commentId: P:Vintagestory.API.Client.ITextureAtlasAPI.SubPixelPaddingX
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_SubPixelPaddingX
+  name: SubPixelPaddingX
+  nameWithType: ITextureAtlasAPI.SubPixelPaddingX
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.SubPixelPaddingX
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.SubPixelPaddingY
+  commentId: P:Vintagestory.API.Client.ITextureAtlasAPI.SubPixelPaddingY
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_SubPixelPaddingY
+  name: SubPixelPaddingY
+  nameWithType: ITextureAtlasAPI.SubPixelPaddingY
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.SubPixelPaddingY
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.Positions
+  commentId: P:Vintagestory.API.Client.ITextureAtlasAPI.Positions
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_Positions
+  name: Positions
+  nameWithType: ITextureAtlasAPI.Positions
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.Positions
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.AtlasTextures
+  commentId: P:Vintagestory.API.Client.ITextureAtlasAPI.AtlasTextures
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_AtlasTextures
+  name: AtlasTextures
+  nameWithType: ITextureAtlasAPI.AtlasTextures
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.AtlasTextures
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.AllocateTextureSpace(System.Int32,System.Int32,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.AllocateTextureSpace(System.Int32,System.Int32,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_AllocateTextureSpace_System_Int32_System_Int32_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__
+  name: AllocateTextureSpace(int, int, out int, out TextureAtlasPosition)
+  nameWithType: ITextureAtlasAPI.AllocateTextureSpace(int, int, out int, out TextureAtlasPosition)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.AllocateTextureSpace(int, int, out int, out Vintagestory.API.Client.TextureAtlasPosition)
+  nameWithType.vb: ITextureAtlasAPI.AllocateTextureSpace(Integer, Integer, Integer, TextureAtlasPosition)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.AllocateTextureSpace(Integer, Integer, Integer, Vintagestory.API.Client.TextureAtlasPosition)
+  name.vb: AllocateTextureSpace(Integer, Integer, Integer, TextureAtlasPosition)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.AllocateTextureSpace(System.Int32,System.Int32,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@)
+    name: AllocateTextureSpace
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_AllocateTextureSpace_System_Int32_System_Int32_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.AllocateTextureSpace(System.Int32,System.Int32,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@)
+    name: AllocateTextureSpace
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_AllocateTextureSpace_System_Int32_System_Int32_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTexture_Vintagestory_API_Common_IBitmap_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  name: InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)
+  nameWithType: ITextureAtlasAPI.InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Vintagestory.API.Common.IBitmap, out int, out Vintagestory.API.Client.TextureAtlasPosition, float)
+  nameWithType.vb: ITextureAtlasAPI.InsertTexture(IBitmap, Integer, TextureAtlasPosition, Single)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Vintagestory.API.Common.IBitmap, Integer, Vintagestory.API.Client.TextureAtlasPosition, Single)
+  name.vb: InsertTexture(IBitmap, Integer, TextureAtlasPosition, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+    name: InsertTexture
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTexture_Vintagestory_API_Common_IBitmap_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  - name: (
+  - uid: Vintagestory.API.Common.IBitmap
+    name: IBitmap
+    href: Vintagestory.API.Common.IBitmap.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+    name: InsertTexture
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTexture_Vintagestory_API_Common_IBitmap_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  - name: (
+  - uid: Vintagestory.API.Common.IBitmap
+    name: IBitmap
+    href: Vintagestory.API.Common.IBitmap.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTexture_System_Byte___System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  name: InsertTexture(byte[], out int, out TextureAtlasPosition, float)
+  nameWithType: ITextureAtlasAPI.InsertTexture(byte[], out int, out TextureAtlasPosition, float)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(byte[], out int, out Vintagestory.API.Client.TextureAtlasPosition, float)
+  nameWithType.vb: ITextureAtlasAPI.InsertTexture(Byte(), Integer, TextureAtlasPosition, Single)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Byte(), Integer, Vintagestory.API.Client.TextureAtlasPosition, Single)
+  name.vb: InsertTexture(Byte(), Integer, TextureAtlasPosition, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+    name: InsertTexture
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTexture_System_Byte___System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  - name: (
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+    name: InsertTexture
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTexture_System_Byte___System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  - name: (
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocation_
+  name: LoadCompositeBitmap(AssetLocation)
+  nameWithType: ITextureAtlasAPI.LoadCompositeBitmap(AssetLocation)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+    name: LoadCompositeBitmap
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+    name: LoadCompositeBitmap
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocation,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocation,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetOrInsertTexture_Vintagestory_API_Common_AssetLocation_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__Vintagestory_API_Client_CreateTextureDelegate_System_Single_
+  name: GetOrInsertTexture(AssetLocation, out int, out TextureAtlasPosition, CreateTextureDelegate, float)
+  nameWithType: ITextureAtlasAPI.GetOrInsertTexture(AssetLocation, out int, out TextureAtlasPosition, CreateTextureDelegate, float)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocation, out int, out Vintagestory.API.Client.TextureAtlasPosition, Vintagestory.API.Client.CreateTextureDelegate, float)
+  nameWithType.vb: ITextureAtlasAPI.GetOrInsertTexture(AssetLocation, Integer, TextureAtlasPosition, CreateTextureDelegate, Single)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocation, Integer, Vintagestory.API.Client.TextureAtlasPosition, Vintagestory.API.Client.CreateTextureDelegate, Single)
+  name.vb: GetOrInsertTexture(AssetLocation, Integer, TextureAtlasPosition, CreateTextureDelegate, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocation,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
+    name: GetOrInsertTexture
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetOrInsertTexture_Vintagestory_API_Common_AssetLocation_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__Vintagestory_API_Client_CreateTextureDelegate_System_Single_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.CreateTextureDelegate
+    name: CreateTextureDelegate
+    href: Vintagestory.API.Client.CreateTextureDelegate.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocation,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
+    name: GetOrInsertTexture
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetOrInsertTexture_Vintagestory_API_Common_AssetLocation_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__Vintagestory_API_Client_CreateTextureDelegate_System_Single_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.CreateTextureDelegate
+    name: CreateTextureDelegate
+    href: Vintagestory.API.Client.CreateTextureDelegate.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_IBitmap_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  name: InsertTextureCached(AssetLocation, IBitmap, out int, out TextureAtlasPosition, float)
+  nameWithType: ITextureAtlasAPI.InsertTextureCached(AssetLocation, IBitmap, out int, out TextureAtlasPosition, float)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation, Vintagestory.API.Common.IBitmap, out int, out Vintagestory.API.Client.TextureAtlasPosition, float)
+  nameWithType.vb: ITextureAtlasAPI.InsertTextureCached(AssetLocation, IBitmap, Integer, TextureAtlasPosition, Single)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation, Vintagestory.API.Common.IBitmap, Integer, Vintagestory.API.Client.TextureAtlasPosition, Single)
+  name.vb: InsertTextureCached(AssetLocation, IBitmap, Integer, TextureAtlasPosition, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+    name: InsertTextureCached
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_IBitmap_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IBitmap
+    name: IBitmap
+    href: Vintagestory.API.Common.IBitmap.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+    name: InsertTextureCached
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_IBitmap_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IBitmap
+    name: IBitmap
+    href: Vintagestory.API.Common.IBitmap.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Common_AssetLocation_System_Byte___System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  name: InsertTextureCached(AssetLocation, byte[], out int, out TextureAtlasPosition, float)
+  nameWithType: ITextureAtlasAPI.InsertTextureCached(AssetLocation, byte[], out int, out TextureAtlasPosition, float)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation, byte[], out int, out Vintagestory.API.Client.TextureAtlasPosition, float)
+  nameWithType.vb: ITextureAtlasAPI.InsertTextureCached(AssetLocation, Byte(), Integer, TextureAtlasPosition, Single)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation, Byte(), Integer, Vintagestory.API.Client.TextureAtlasPosition, Single)
+  name.vb: InsertTextureCached(AssetLocation, Byte(), Integer, TextureAtlasPosition, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+    name: InsertTextureCached
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Common_AssetLocation_System_Byte___System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+    name: InsertTextureCached
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Common_AssetLocation_System_Byte___System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Client_CompositeTexture_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  name: InsertTextureCached(CompositeTexture, out int, out TextureAtlasPosition, float)
+  nameWithType: ITextureAtlasAPI.InsertTextureCached(CompositeTexture, out int, out TextureAtlasPosition, float)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Client.CompositeTexture, out int, out Vintagestory.API.Client.TextureAtlasPosition, float)
+  nameWithType.vb: ITextureAtlasAPI.InsertTextureCached(CompositeTexture, Integer, TextureAtlasPosition, Single)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Client.CompositeTexture, Integer, Vintagestory.API.Client.TextureAtlasPosition, Single)
+  name.vb: InsertTextureCached(CompositeTexture, Integer, TextureAtlasPosition, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+    name: InsertTextureCached
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Client_CompositeTexture_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  - name: (
+  - uid: Vintagestory.API.Client.CompositeTexture
+    name: CompositeTexture
+    href: Vintagestory.API.Client.CompositeTexture.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+    name: InsertTextureCached
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTextureCached_Vintagestory_API_Client_CompositeTexture_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_
+  - name: (
+  - uid: Vintagestory.API.Client.CompositeTexture
+    name: CompositeTexture
+    href: Vintagestory.API.Client.CompositeTexture.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.FreeTextureSpace(System.Int32)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.FreeTextureSpace(System.Int32)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_FreeTextureSpace_System_Int32_
+  name: FreeTextureSpace(int)
+  nameWithType: ITextureAtlasAPI.FreeTextureSpace(int)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.FreeTextureSpace(int)
+  nameWithType.vb: ITextureAtlasAPI.FreeTextureSpace(Integer)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.FreeTextureSpace(Integer)
+  name.vb: FreeTextureSpace(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.FreeTextureSpace(System.Int32)
+    name: FreeTextureSpace
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_FreeTextureSpace_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.FreeTextureSpace(System.Int32)
+    name: FreeTextureSpace
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_FreeTextureSpace_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_System_Int32_
+  name: GetRandomColor(int)
+  nameWithType: ITextureAtlasAPI.GetRandomColor(int)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(int)
+  nameWithType.vb: ITextureAtlasAPI.GetRandomColor(Integer)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(Integer)
+  name.vb: GetRandomColor(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32)
+    name: GetRandomColor
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32)
+    name: GetRandomColor
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.RegenMipMaps(System.Int32)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.RegenMipMaps(System.Int32)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_RegenMipMaps_System_Int32_
+  name: RegenMipMaps(int)
+  nameWithType: ITextureAtlasAPI.RegenMipMaps(int)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.RegenMipMaps(int)
+  nameWithType.vb: ITextureAtlasAPI.RegenMipMaps(Integer)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.RegenMipMaps(Integer)
+  name.vb: RegenMipMaps(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.RegenMipMaps(System.Int32)
+    name: RegenMipMaps
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_RegenMipMaps_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.RegenMipMaps(System.Int32)
+    name: RegenMipMaps
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_RegenMipMaps_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_System_Int32_System_Int32_
+  name: GetRandomColor(int, int)
+  nameWithType: ITextureAtlasAPI.GetRandomColor(int, int)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(int, int)
+  nameWithType.vb: ITextureAtlasAPI.GetRandomColor(Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(Integer, Integer)
+  name.vb: GetRandomColor(Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32,System.Int32)
+    name: GetRandomColor
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32,System.Int32)
+    name: GetRandomColor
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(Vintagestory.API.Client.TextureAtlasPosition,System.Int32)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(Vintagestory.API.Client.TextureAtlasPosition,System.Int32)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_Vintagestory_API_Client_TextureAtlasPosition_System_Int32_
+  name: GetRandomColor(TextureAtlasPosition, int)
+  nameWithType: ITextureAtlasAPI.GetRandomColor(TextureAtlasPosition, int)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(Vintagestory.API.Client.TextureAtlasPosition, int)
+  nameWithType.vb: ITextureAtlasAPI.GetRandomColor(TextureAtlasPosition, Integer)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(Vintagestory.API.Client.TextureAtlasPosition, Integer)
+  name.vb: GetRandomColor(TextureAtlasPosition, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(Vintagestory.API.Client.TextureAtlasPosition,System.Int32)
+    name: GetRandomColor
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_Vintagestory_API_Client_TextureAtlasPosition_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(Vintagestory.API.Client.TextureAtlasPosition,System.Int32)
+    name: GetRandomColor
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColor_Vintagestory_API_Client_TextureAtlasPosition_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColors(Vintagestory.API.Client.TextureAtlasPosition)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColors(Vintagestory.API.Client.TextureAtlasPosition)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColors_Vintagestory_API_Client_TextureAtlasPosition_
+  name: GetRandomColors(TextureAtlasPosition)
+  nameWithType: ITextureAtlasAPI.GetRandomColors(TextureAtlasPosition)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColors(Vintagestory.API.Client.TextureAtlasPosition)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColors(Vintagestory.API.Client.TextureAtlasPosition)
+    name: GetRandomColors
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColors_Vintagestory_API_Client_TextureAtlasPosition_
+  - name: (
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColors(Vintagestory.API.Client.TextureAtlasPosition)
+    name: GetRandomColors
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetRandomColors_Vintagestory_API_Client_TextureAtlasPosition_
+  - name: (
+  - uid: Vintagestory.API.Client.TextureAtlasPosition
+    name: TextureAtlasPosition
+    href: Vintagestory.API.Client.TextureAtlasPosition.html
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.GetAverageColor(System.Int32)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.GetAverageColor(System.Int32)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetAverageColor_System_Int32_
+  name: GetAverageColor(int)
+  nameWithType: ITextureAtlasAPI.GetAverageColor(int)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.GetAverageColor(int)
+  nameWithType.vb: ITextureAtlasAPI.GetAverageColor(Integer)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.GetAverageColor(Integer)
+  name.vb: GetAverageColor(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetAverageColor(System.Int32)
+    name: GetAverageColor
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetAverageColor_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetAverageColor(System.Int32)
+    name: GetAverageColor
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetAverageColor_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.RenderTextureIntoAtlas(System.Int32,Vintagestory.API.Client.LoadedTexture,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.RenderTextureIntoAtlas(System.Int32,Vintagestory.API.Client.LoadedTexture,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  isExternal: true
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_RenderTextureIntoAtlas_System_Int32_Vintagestory_API_Client_LoadedTexture_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_
+  name: RenderTextureIntoAtlas(int, LoadedTexture, float, float, float, float, float, float, float)
+  nameWithType: ITextureAtlasAPI.RenderTextureIntoAtlas(int, LoadedTexture, float, float, float, float, float, float, float)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.RenderTextureIntoAtlas(int, Vintagestory.API.Client.LoadedTexture, float, float, float, float, float, float, float)
+  nameWithType.vb: ITextureAtlasAPI.RenderTextureIntoAtlas(Integer, LoadedTexture, Single, Single, Single, Single, Single, Single, Single)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.RenderTextureIntoAtlas(Integer, Vintagestory.API.Client.LoadedTexture, Single, Single, Single, Single, Single, Single, Single)
+  name.vb: RenderTextureIntoAtlas(Integer, LoadedTexture, Single, Single, Single, Single, Single, Single, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.RenderTextureIntoAtlas(System.Int32,Vintagestory.API.Client.LoadedTexture,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+    name: RenderTextureIntoAtlas
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_RenderTextureIntoAtlas_System_Int32_Vintagestory_API_Client_LoadedTexture_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.LoadedTexture
+    name: LoadedTexture
+    href: Vintagestory.API.Client.LoadedTexture.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.RenderTextureIntoAtlas(System.Int32,Vintagestory.API.Client.LoadedTexture,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+    name: RenderTextureIntoAtlas
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_RenderTextureIntoAtlas_System_Int32_Vintagestory_API_Client_LoadedTexture_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.LoadedTexture
+    name: LoadedTexture
+    href: Vintagestory.API.Client.LoadedTexture.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.ITextureAtlasAPI
+  commentId: T:Vintagestory.API.Client.ITextureAtlasAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html
+  name: ITextureAtlasAPI
+  nameWithType: ITextureAtlasAPI
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI
+- uid: Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition*
+  commentId: Overload:Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition
+  href: Vintagestory.API.Client.IItemTextureAtlasAPI.html#Vintagestory_API_Client_IItemTextureAtlasAPI_GetPosition_Vintagestory_API_Common_Item_System_String_System_Boolean_
+  name: GetPosition
+  nameWithType: IItemTextureAtlasAPI.GetPosition
+  fullName: Vintagestory.API.Client.IItemTextureAtlasAPI.GetPosition
+- uid: Vintagestory.API.Common.Item
+  commentId: T:Vintagestory.API.Common.Item
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Item.html
+  name: Item
+  nameWithType: Item
+  fullName: Vintagestory.API.Common.Item
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Client.TextureAtlasPosition
+  commentId: T:Vintagestory.API.Client.TextureAtlasPosition
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.TextureAtlasPosition.html
+  name: TextureAtlasPosition
+  nameWithType: TextureAtlasPosition
+  fullName: Vintagestory.API.Client.TextureAtlasPosition
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

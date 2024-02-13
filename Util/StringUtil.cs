@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Globalization;
 using System.Text;
 using Vintagestory.API.Config;
@@ -7,6 +8,60 @@ namespace Vintagestory.API.Util
 {
     public static class StringUtil
     {
+        /// <summary>
+        /// IMPORTANT!   This method should be used for every IndexOf operation in our code (except possibly in localised output to the user). This is important in order to avoid any
+        /// culture-specific different results even when indexing GLSL shader code or other code strings, etc., or other strings in English, when the current culture is a different language
+        /// (Known issue in the Thai language which has no spaces and treats punctuation marks as invisible, see https://github.com/dotnet/runtime/issues/59120)
+        /// <br/>See also: https://learn.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static int IndexOfOrdinal(this String a, String b)
+        {
+            return a.IndexOf(b, StringComparison.Ordinal);
+        }
+
+        /// <summary>
+        /// IMPORTANT!   This method should be used for every StartsWith operation in our code (except possibly in localised output to the user). This is important in order to avoid any
+        /// culture-specific different results even when examining strings in English, when the user machine's current culture is a different language
+        /// (Known issue in the Thai language which has no spaces and treats punctuation marks as invisible, see https://github.com/dotnet/runtime/issues/59120)
+        /// <br/>See also: https://learn.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool StartsWithOrdinal(this String a, String b)
+        {
+            return a.StartsWith(b, StringComparison.Ordinal);
+        }
+
+        /// <summary>
+        /// IMPORTANT!   This method should be used for every EndsWith operation in our code (except possibly in localised output to the user). This is important in order to avoid any
+        /// culture-specific different results even when examining strings in English, when the user machine's current culture is a different language
+        /// (Known issue in the Thai language which has no spaces and treats punctuation marks as invisible, see https://github.com/dotnet/runtime/issues/59120)
+        /// <br/>See also: https://learn.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool EndsWithOrdinal(this String a, String b)
+        {
+            return a.EndsWith(b, StringComparison.Ordinal);
+        }
+
+        /// <summary>
+        /// This should be used for every string comparison when ordering strings (except possibly in localised output to the user) in order to avoid any
+        /// culture specific string comparison issues in certain languages (worst in the Thai language which has no spaces and treats punctuation marks as invisible)
+        /// <br/>See also: https://learn.microsoft.com/en-us/dotnet/standard/base-types/best-practices-strings
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static int CompareOrdinal(this String a, String b)
+        {
+            return String.CompareOrdinal(a, b);
+        }
 
         /// <summary>
         /// Convert the first character to an uppercase one
@@ -28,7 +83,7 @@ namespace Vintagestory.API.Util
 
         public static string RemoveFileEnding(this string text)
         {
-            return text.Substring(0, text.IndexOf("."));
+            return text.Substring(0, text.IndexOf('.'));
         }
 
         public static int ToInt(this string text, int defaultValue = 0)

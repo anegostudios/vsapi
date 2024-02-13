@@ -1,0 +1,1089 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IMapChunk
+  commentId: T:Vintagestory.API.Common.IMapChunk
+  id: IMapChunk
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IMapChunk.CaveHeightDistort
+  - Vintagestory.API.Common.IMapChunk.CurrentPass
+  - Vintagestory.API.Common.IMapChunk.GetData(System.String)
+  - Vintagestory.API.Common.IMapChunk.GetModdata(System.String)
+  - Vintagestory.API.Common.IMapChunk.GetModdata``1(System.String,``0)
+  - Vintagestory.API.Common.IMapChunk.MapRegion
+  - Vintagestory.API.Common.IMapChunk.MarkDirty
+  - Vintagestory.API.Common.IMapChunk.MarkFresh
+  - Vintagestory.API.Common.IMapChunk.RainHeightMap
+  - Vintagestory.API.Common.IMapChunk.RemoveModdata(System.String)
+  - Vintagestory.API.Common.IMapChunk.SedimentaryThicknessMap
+  - Vintagestory.API.Common.IMapChunk.SetData(System.String,System.Byte[])
+  - Vintagestory.API.Common.IMapChunk.SetModdata(System.String,System.Byte[])
+  - Vintagestory.API.Common.IMapChunk.SetModdata``1(System.String,``0)
+  - Vintagestory.API.Common.IMapChunk.SnowAccum
+  - Vintagestory.API.Common.IMapChunk.TopRockIdMap
+  - Vintagestory.API.Common.IMapChunk.WorldGenTerrainHeightMap
+  - Vintagestory.API.Common.IMapChunk.YMax
+  langs:
+  - csharp
+  - vb
+  name: IMapChunk
+  nameWithType: IMapChunk
+  fullName: Vintagestory.API.Common.IMapChunk
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IMapChunk
+    path: Common/API/IMapChunk.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Holds 2 dimensional data for one chunk column
+  example: []
+  syntax:
+    content: public interface IMapChunk
+    content.vb: Public Interface IMapChunk
+- uid: Vintagestory.API.Common.IMapChunk.SnowAccum
+  commentId: P:Vintagestory.API.Common.IMapChunk.SnowAccum
+  id: SnowAccum
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: SnowAccum
+  nameWithType: IMapChunk.SnowAccum
+  fullName: Vintagestory.API.Common.IMapChunk.SnowAccum
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SnowAccum
+    path: Common/API/IMapChunk.cs
+    startLine: 17
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: ConcurrentDictionary<Vec2i, float> SnowAccum { get; }
+    parameters: []
+    return:
+      type: System.Collections.Concurrent.ConcurrentDictionary{Vintagestory.API.MathTools.Vec2i,System.Single}
+    content.vb: ReadOnly Property SnowAccum As ConcurrentDictionary(Of Vec2i, Single)
+  overload: Vintagestory.API.Common.IMapChunk.SnowAccum*
+- uid: Vintagestory.API.Common.IMapChunk.MapRegion
+  commentId: P:Vintagestory.API.Common.IMapChunk.MapRegion
+  id: MapRegion
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: MapRegion
+  nameWithType: IMapChunk.MapRegion
+  fullName: Vintagestory.API.Common.IMapChunk.MapRegion
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MapRegion
+    path: Common/API/IMapChunk.cs
+    startLine: 22
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The map region this map chunk resides in
+  example: []
+  syntax:
+    content: IMapRegion MapRegion { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.IMapRegion
+    content.vb: ReadOnly Property MapRegion As IMapRegion
+  overload: Vintagestory.API.Common.IMapChunk.MapRegion*
+- uid: Vintagestory.API.Common.IMapChunk.CurrentPass
+  commentId: P:Vintagestory.API.Common.IMapChunk.CurrentPass
+  id: CurrentPass
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: CurrentPass
+  nameWithType: IMapChunk.CurrentPass
+  fullName: Vintagestory.API.Common.IMapChunk.CurrentPass
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CurrentPass
+    path: Common/API/IMapChunk.cs
+    startLine: 27
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The current world generation pass this chunk column is in
+  example: []
+  syntax:
+    content: EnumWorldGenPass CurrentPass { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Server.EnumWorldGenPass
+    content.vb: Property CurrentPass As EnumWorldGenPass
+  overload: Vintagestory.API.Common.IMapChunk.CurrentPass*
+- uid: Vintagestory.API.Common.IMapChunk.SetData(System.String,System.Byte[])
+  commentId: M:Vintagestory.API.Common.IMapChunk.SetData(System.String,System.Byte[])
+  id: SetData(System.String,System.Byte[])
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: SetData(string, byte[])
+  nameWithType: IMapChunk.SetData(string, byte[])
+  fullName: Vintagestory.API.Common.IMapChunk.SetData(string, byte[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetData
+    path: Common/API/IMapChunk.cs
+    startLine: 36
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server: Can be used to store custom data along with the map chunk
+
+    Client: Not implemented. Map chunk Moddata is not synced from server to client
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use SetModData instead")]
+
+      void SetData(string key, byte[] data)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: data
+      type: System.Byte[]
+      description: ''
+    content.vb: >-
+      <Obsolete("Use SetModData instead")>
+
+      Sub SetData(key As String, data As Byte())
+  overload: Vintagestory.API.Common.IMapChunk.SetData*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use SetModData instead
+  nameWithType.vb: IMapChunk.SetData(String, Byte())
+  fullName.vb: Vintagestory.API.Common.IMapChunk.SetData(String, Byte())
+  name.vb: SetData(String, Byte())
+- uid: Vintagestory.API.Common.IMapChunk.GetData(System.String)
+  commentId: M:Vintagestory.API.Common.IMapChunk.GetData(System.String)
+  id: GetData(System.String)
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: GetData(string)
+  nameWithType: IMapChunk.GetData(string)
+  fullName: Vintagestory.API.Common.IMapChunk.GetData(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetData
+    path: Common/API/IMapChunk.cs
+    startLine: 46
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server: Can be used to retrieve custom data from the map chunk (as previously set by SetModdata)
+
+    Client: Not implemented. Map chunk Moddata is not synced from server to client
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use GetModData instead")]
+
+      byte[] GetData(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: System.Byte[]
+      description: ''
+    content.vb: >-
+      <Obsolete("Use GetModData instead")>
+
+      Function GetData(key As String) As Byte()
+  overload: Vintagestory.API.Common.IMapChunk.GetData*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use GetModData instead
+  nameWithType.vb: IMapChunk.GetData(String)
+  fullName.vb: Vintagestory.API.Common.IMapChunk.GetData(String)
+  name.vb: GetData(String)
+- uid: Vintagestory.API.Common.IMapChunk.SetModdata(System.String,System.Byte[])
+  commentId: M:Vintagestory.API.Common.IMapChunk.SetModdata(System.String,System.Byte[])
+  id: SetModdata(System.String,System.Byte[])
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: SetModdata(string, byte[])
+  nameWithType: IMapChunk.SetModdata(string, byte[])
+  fullName: Vintagestory.API.Common.IMapChunk.SetModdata(string, byte[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetModdata
+    path: Common/API/IMapChunk.cs
+    startLine: 56
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server: Allows setting of arbitrary, permanently stored moddata of this map chunk.
+
+    Client: Not implemented. Map chunk Moddata is not synced from server to client
+  example: []
+  syntax:
+    content: void SetModdata(string key, byte[] data)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: data
+      type: System.Byte[]
+      description: ''
+    content.vb: Sub SetModdata(key As String, data As Byte())
+  overload: Vintagestory.API.Common.IMapChunk.SetModdata*
+  nameWithType.vb: IMapChunk.SetModdata(String, Byte())
+  fullName.vb: Vintagestory.API.Common.IMapChunk.SetModdata(String, Byte())
+  name.vb: SetModdata(String, Byte())
+- uid: Vintagestory.API.Common.IMapChunk.RemoveModdata(System.String)
+  commentId: M:Vintagestory.API.Common.IMapChunk.RemoveModdata(System.String)
+  id: RemoveModdata(System.String)
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: RemoveModdata(string)
+  nameWithType: IMapChunk.RemoveModdata(string)
+  fullName: Vintagestory.API.Common.IMapChunk.RemoveModdata(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RemoveModdata
+    path: Common/API/IMapChunk.cs
+    startLine: 63
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server: Removes the permanently stored data. 
+
+    Client: Not implemented. Map chunk Moddata is not synced from server to client
+  example: []
+  syntax:
+    content: void RemoveModdata(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    content.vb: Sub RemoveModdata(key As String)
+  overload: Vintagestory.API.Common.IMapChunk.RemoveModdata*
+  nameWithType.vb: IMapChunk.RemoveModdata(String)
+  fullName.vb: Vintagestory.API.Common.IMapChunk.RemoveModdata(String)
+  name.vb: RemoveModdata(String)
+- uid: Vintagestory.API.Common.IMapChunk.GetModdata(System.String)
+  commentId: M:Vintagestory.API.Common.IMapChunk.GetModdata(System.String)
+  id: GetModdata(System.String)
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: GetModdata(string)
+  nameWithType: IMapChunk.GetModdata(string)
+  fullName: Vintagestory.API.Common.IMapChunk.GetModdata(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetModdata
+    path: Common/API/IMapChunk.cs
+    startLine: 71
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server: Retrieve arbitrary, permanently stored mod data
+
+    Client: Not implemented. Map chunk Moddata is not synced from server to client
+  example: []
+  syntax:
+    content: byte[] GetModdata(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: System.Byte[]
+      description: ''
+    content.vb: Function GetModdata(key As String) As Byte()
+  overload: Vintagestory.API.Common.IMapChunk.GetModdata*
+  nameWithType.vb: IMapChunk.GetModdata(String)
+  fullName.vb: Vintagestory.API.Common.IMapChunk.GetModdata(String)
+  name.vb: GetModdata(String)
+- uid: Vintagestory.API.Common.IMapChunk.SetModdata``1(System.String,``0)
+  commentId: M:Vintagestory.API.Common.IMapChunk.SetModdata``1(System.String,``0)
+  id: SetModdata``1(System.String,``0)
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: SetModdata<T>(string, T)
+  nameWithType: IMapChunk.SetModdata<T>(string, T)
+  fullName: Vintagestory.API.Common.IMapChunk.SetModdata<T>(string, T)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetModdata
+    path: Common/API/IMapChunk.cs
+    startLine: 81
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server: Allows setting of arbitrary, permanantly stored moddata of this map chunk.
+
+    Client: Not implemented. Map chunk Moddata is not synced from server to client
+  example: []
+  syntax:
+    content: void SetModdata<T>(string key, T data)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: data
+      type: '{T}'
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Sub SetModdata(Of T)(key As String, data As T)
+  overload: Vintagestory.API.Common.IMapChunk.SetModdata*
+  nameWithType.vb: IMapChunk.SetModdata(Of T)(String, T)
+  fullName.vb: Vintagestory.API.Common.IMapChunk.SetModdata(Of T)(String, T)
+  name.vb: SetModdata(Of T)(String, T)
+- uid: Vintagestory.API.Common.IMapChunk.GetModdata``1(System.String,``0)
+  commentId: M:Vintagestory.API.Common.IMapChunk.GetModdata``1(System.String,``0)
+  id: GetModdata``1(System.String,``0)
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: GetModdata<T>(string, T)
+  nameWithType: IMapChunk.GetModdata<T>(string, T)
+  fullName: Vintagestory.API.Common.IMapChunk.GetModdata<T>(string, T)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetModdata
+    path: Common/API/IMapChunk.cs
+    startLine: 90
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server: Retrieve arbitrary, permantly stored mod data
+
+    Client: Not implemented. Map chunk Moddata is not synced from server to client
+  example: []
+  syntax:
+    content: T GetModdata<T>(string key, T defaultValue = default)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: '{T}'
+      description: Default value
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Function GetModdata(Of T)(key As String, defaultValue As T = Nothing) As T
+  overload: Vintagestory.API.Common.IMapChunk.GetModdata*
+  nameWithType.vb: IMapChunk.GetModdata(Of T)(String, T)
+  fullName.vb: Vintagestory.API.Common.IMapChunk.GetModdata(Of T)(String, T)
+  name.vb: GetModdata(Of T)(String, T)
+- uid: Vintagestory.API.Common.IMapChunk.CaveHeightDistort
+  commentId: P:Vintagestory.API.Common.IMapChunk.CaveHeightDistort
+  id: CaveHeightDistort
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: CaveHeightDistort
+  nameWithType: IMapChunk.CaveHeightDistort
+  fullName: Vintagestory.API.Common.IMapChunk.CaveHeightDistort
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CaveHeightDistort
+    path: Common/API/IMapChunk.cs
+    startLine: 93
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: byte[] CaveHeightDistort { get; set; }
+    parameters: []
+    return:
+      type: System.Byte[]
+    content.vb: Property CaveHeightDistort As Byte()
+  overload: Vintagestory.API.Common.IMapChunk.CaveHeightDistort*
+- uid: Vintagestory.API.Common.IMapChunk.RainHeightMap
+  commentId: P:Vintagestory.API.Common.IMapChunk.RainHeightMap
+  id: RainHeightMap
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: RainHeightMap
+  nameWithType: IMapChunk.RainHeightMap
+  fullName: Vintagestory.API.Common.IMapChunk.RainHeightMap
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RainHeightMap
+    path: Common/API/IMapChunk.cs
+    startLine: 98
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The position of the last block that is not rain permeable before the first airblock
+  example: []
+  syntax:
+    content: ushort[] RainHeightMap { get; }
+    parameters: []
+    return:
+      type: System.UInt16[]
+    content.vb: ReadOnly Property RainHeightMap As UShort()
+  overload: Vintagestory.API.Common.IMapChunk.RainHeightMap*
+- uid: Vintagestory.API.Common.IMapChunk.WorldGenTerrainHeightMap
+  commentId: P:Vintagestory.API.Common.IMapChunk.WorldGenTerrainHeightMap
+  id: WorldGenTerrainHeightMap
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: WorldGenTerrainHeightMap
+  nameWithType: IMapChunk.WorldGenTerrainHeightMap
+  fullName: Vintagestory.API.Common.IMapChunk.WorldGenTerrainHeightMap
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WorldGenTerrainHeightMap
+    path: Common/API/IMapChunk.cs
+    startLine: 103
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The position of the last block before the first airblock before world gen pass Vegetation
+  example: []
+  syntax:
+    content: ushort[] WorldGenTerrainHeightMap { get; }
+    parameters: []
+    return:
+      type: System.UInt16[]
+    content.vb: ReadOnly Property WorldGenTerrainHeightMap As UShort()
+  overload: Vintagestory.API.Common.IMapChunk.WorldGenTerrainHeightMap*
+- uid: Vintagestory.API.Common.IMapChunk.TopRockIdMap
+  commentId: P:Vintagestory.API.Common.IMapChunk.TopRockIdMap
+  id: TopRockIdMap
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: TopRockIdMap
+  nameWithType: IMapChunk.TopRockIdMap
+  fullName: Vintagestory.API.Common.IMapChunk.TopRockIdMap
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TopRockIdMap
+    path: Common/API/IMapChunk.cs
+    startLine: 108
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The rock block id of the topmost rock layer
+  example: []
+  syntax:
+    content: int[] TopRockIdMap { get; }
+    parameters: []
+    return:
+      type: System.Int32[]
+    content.vb: ReadOnly Property TopRockIdMap As Integer()
+  overload: Vintagestory.API.Common.IMapChunk.TopRockIdMap*
+- uid: Vintagestory.API.Common.IMapChunk.SedimentaryThicknessMap
+  commentId: P:Vintagestory.API.Common.IMapChunk.SedimentaryThicknessMap
+  id: SedimentaryThicknessMap
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: SedimentaryThicknessMap
+  nameWithType: IMapChunk.SedimentaryThicknessMap
+  fullName: Vintagestory.API.Common.IMapChunk.SedimentaryThicknessMap
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SedimentaryThicknessMap
+    path: Common/API/IMapChunk.cs
+    startLine: 110
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: ushort[] SedimentaryThicknessMap { get; }
+    parameters: []
+    return:
+      type: System.UInt16[]
+    content.vb: ReadOnly Property SedimentaryThicknessMap As UShort()
+  overload: Vintagestory.API.Common.IMapChunk.SedimentaryThicknessMap*
+- uid: Vintagestory.API.Common.IMapChunk.YMax
+  commentId: P:Vintagestory.API.Common.IMapChunk.YMax
+  id: YMax
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: YMax
+  nameWithType: IMapChunk.YMax
+  fullName: Vintagestory.API.Common.IMapChunk.YMax
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: YMax
+    path: Common/API/IMapChunk.cs
+    startLine: 116
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The highest position of any non-air block
+  example: []
+  syntax:
+    content: ushort YMax { get; set; }
+    parameters: []
+    return:
+      type: System.UInt16
+    content.vb: Property YMax As UShort
+  overload: Vintagestory.API.Common.IMapChunk.YMax*
+- uid: Vintagestory.API.Common.IMapChunk.MarkFresh
+  commentId: M:Vintagestory.API.Common.IMapChunk.MarkFresh
+  id: MarkFresh
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: MarkFresh()
+  nameWithType: IMapChunk.MarkFresh()
+  fullName: Vintagestory.API.Common.IMapChunk.MarkFresh()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MarkFresh
+    path: Common/API/IMapChunk.cs
+    startLine: 121
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Causes the TTL counter to reset so that it the mapchunk does not unload. No effect when called client side.
+  example: []
+  syntax:
+    content: void MarkFresh()
+    content.vb: Sub MarkFresh()
+  overload: Vintagestory.API.Common.IMapChunk.MarkFresh*
+- uid: Vintagestory.API.Common.IMapChunk.MarkDirty
+  commentId: M:Vintagestory.API.Common.IMapChunk.MarkDirty
+  id: MarkDirty
+  parent: Vintagestory.API.Common.IMapChunk
+  langs:
+  - csharp
+  - vb
+  name: MarkDirty()
+  nameWithType: IMapChunk.MarkDirty()
+  fullName: Vintagestory.API.Common.IMapChunk.MarkDirty()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IMapChunk.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MarkDirty
+    path: Common/API/IMapChunk.cs
+    startLine: 126
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Tells the server that it has to save the changes of this chunk to disk. No effect when called client side.
+  example: []
+  syntax:
+    content: void MarkDirty()
+    content.vb: Sub MarkDirty()
+  overload: Vintagestory.API.Common.IMapChunk.MarkDirty*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IMapChunk.SnowAccum*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.SnowAccum
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_SnowAccum
+  name: SnowAccum
+  nameWithType: IMapChunk.SnowAccum
+  fullName: Vintagestory.API.Common.IMapChunk.SnowAccum
+- uid: System.Collections.Concurrent.ConcurrentDictionary{Vintagestory.API.MathTools.Vec2i,System.Single}
+  commentId: T:System.Collections.Concurrent.ConcurrentDictionary{Vintagestory.API.MathTools.Vec2i,System.Single}
+  parent: System.Collections.Concurrent
+  definition: System.Collections.Concurrent.ConcurrentDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2
+  name: ConcurrentDictionary<Vec2i, float>
+  nameWithType: ConcurrentDictionary<Vec2i, float>
+  fullName: System.Collections.Concurrent.ConcurrentDictionary<Vintagestory.API.MathTools.Vec2i, float>
+  nameWithType.vb: ConcurrentDictionary(Of Vec2i, Single)
+  fullName.vb: System.Collections.Concurrent.ConcurrentDictionary(Of Vintagestory.API.MathTools.Vec2i, Single)
+  name.vb: ConcurrentDictionary(Of Vec2i, Single)
+  spec.csharp:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2
+  - name: <
+  - uid: Vintagestory.API.MathTools.Vec2i
+    name: Vec2i
+    href: Vintagestory.API.MathTools.Vec2i.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec2i
+    name: Vec2i
+    href: Vintagestory.API.MathTools.Vec2i.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.Collections.Concurrent.ConcurrentDictionary`2
+  commentId: T:System.Collections.Concurrent.ConcurrentDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2
+  name: ConcurrentDictionary<TKey, TValue>
+  nameWithType: ConcurrentDictionary<TKey, TValue>
+  fullName: System.Collections.Concurrent.ConcurrentDictionary<TKey, TValue>
+  nameWithType.vb: ConcurrentDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Concurrent.ConcurrentDictionary(Of TKey, TValue)
+  name.vb: ConcurrentDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Concurrent.ConcurrentDictionary`2
+    name: ConcurrentDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Concurrent
+  commentId: N:System.Collections.Concurrent
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Concurrent
+  nameWithType: System.Collections.Concurrent
+  fullName: System.Collections.Concurrent
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Concurrent
+    name: Concurrent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.concurrent
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Concurrent
+    name: Concurrent
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.concurrent
+- uid: Vintagestory.API.Common.IMapChunk.MapRegion*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.MapRegion
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_MapRegion
+  name: MapRegion
+  nameWithType: IMapChunk.MapRegion
+  fullName: Vintagestory.API.Common.IMapChunk.MapRegion
+- uid: Vintagestory.API.Common.IMapRegion
+  commentId: T:Vintagestory.API.Common.IMapRegion
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IMapRegion.html
+  name: IMapRegion
+  nameWithType: IMapRegion
+  fullName: Vintagestory.API.Common.IMapRegion
+- uid: Vintagestory.API.Common.IMapChunk.CurrentPass*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.CurrentPass
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_CurrentPass
+  name: CurrentPass
+  nameWithType: IMapChunk.CurrentPass
+  fullName: Vintagestory.API.Common.IMapChunk.CurrentPass
+- uid: Vintagestory.API.Server.EnumWorldGenPass
+  commentId: T:Vintagestory.API.Server.EnumWorldGenPass
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.EnumWorldGenPass.html
+  name: EnumWorldGenPass
+  nameWithType: EnumWorldGenPass
+  fullName: Vintagestory.API.Server.EnumWorldGenPass
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: Vintagestory.API.Common.IMapChunk.SetData*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.SetData
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_SetData_System_String_System_Byte___
+  name: SetData
+  nameWithType: IMapChunk.SetData
+  fullName: Vintagestory.API.Common.IMapChunk.SetData
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IMapChunk.GetData*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.GetData
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_GetData_System_String_
+  name: GetData
+  nameWithType: IMapChunk.GetData
+  fullName: Vintagestory.API.Common.IMapChunk.GetData
+- uid: Vintagestory.API.Common.IMapChunk.SetModdata*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.SetModdata
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_SetModdata_System_String_System_Byte___
+  name: SetModdata
+  nameWithType: IMapChunk.SetModdata
+  fullName: Vintagestory.API.Common.IMapChunk.SetModdata
+- uid: Vintagestory.API.Common.IMapChunk.RemoveModdata*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.RemoveModdata
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_RemoveModdata_System_String_
+  name: RemoveModdata
+  nameWithType: IMapChunk.RemoveModdata
+  fullName: Vintagestory.API.Common.IMapChunk.RemoveModdata
+- uid: Vintagestory.API.Common.IMapChunk.GetModdata*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.GetModdata
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_GetModdata_System_String_
+  name: GetModdata
+  nameWithType: IMapChunk.GetModdata
+  fullName: Vintagestory.API.Common.IMapChunk.GetModdata
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Vintagestory.API.Common.IMapChunk.CaveHeightDistort*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.CaveHeightDistort
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_CaveHeightDistort
+  name: CaveHeightDistort
+  nameWithType: IMapChunk.CaveHeightDistort
+  fullName: Vintagestory.API.Common.IMapChunk.CaveHeightDistort
+- uid: Vintagestory.API.Common.IMapChunk.RainHeightMap*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.RainHeightMap
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_RainHeightMap
+  name: RainHeightMap
+  nameWithType: IMapChunk.RainHeightMap
+  fullName: Vintagestory.API.Common.IMapChunk.RainHeightMap
+- uid: System.UInt16[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint16
+  name: ushort[]
+  nameWithType: ushort[]
+  fullName: ushort[]
+  nameWithType.vb: UShort()
+  fullName.vb: UShort()
+  name.vb: UShort()
+  spec.csharp:
+  - uid: System.UInt16
+    name: ushort
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint16
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.UInt16
+    name: UShort
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint16
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IMapChunk.WorldGenTerrainHeightMap*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.WorldGenTerrainHeightMap
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_WorldGenTerrainHeightMap
+  name: WorldGenTerrainHeightMap
+  nameWithType: IMapChunk.WorldGenTerrainHeightMap
+  fullName: Vintagestory.API.Common.IMapChunk.WorldGenTerrainHeightMap
+- uid: Vintagestory.API.Common.IMapChunk.TopRockIdMap*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.TopRockIdMap
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_TopRockIdMap
+  name: TopRockIdMap
+  nameWithType: IMapChunk.TopRockIdMap
+  fullName: Vintagestory.API.Common.IMapChunk.TopRockIdMap
+- uid: System.Int32[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IMapChunk.SedimentaryThicknessMap*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.SedimentaryThicknessMap
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_SedimentaryThicknessMap
+  name: SedimentaryThicknessMap
+  nameWithType: IMapChunk.SedimentaryThicknessMap
+  fullName: Vintagestory.API.Common.IMapChunk.SedimentaryThicknessMap
+- uid: Vintagestory.API.Common.IMapChunk.YMax*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.YMax
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_YMax
+  name: YMax
+  nameWithType: IMapChunk.YMax
+  fullName: Vintagestory.API.Common.IMapChunk.YMax
+- uid: System.UInt16
+  commentId: T:System.UInt16
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint16
+  name: ushort
+  nameWithType: ushort
+  fullName: ushort
+  nameWithType.vb: UShort
+  fullName.vb: UShort
+  name.vb: UShort
+- uid: Vintagestory.API.Common.IMapChunk.MarkFresh*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.MarkFresh
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_MarkFresh
+  name: MarkFresh
+  nameWithType: IMapChunk.MarkFresh
+  fullName: Vintagestory.API.Common.IMapChunk.MarkFresh
+- uid: Vintagestory.API.Common.IMapChunk.MarkDirty*
+  commentId: Overload:Vintagestory.API.Common.IMapChunk.MarkDirty
+  href: Vintagestory.API.Common.IMapChunk.html#Vintagestory_API_Common_IMapChunk_MarkDirty
+  name: MarkDirty
+  nameWithType: IMapChunk.MarkDirty
+  fullName: Vintagestory.API.Common.IMapChunk.MarkDirty

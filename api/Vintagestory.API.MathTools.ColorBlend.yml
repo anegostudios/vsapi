@@ -1,0 +1,713 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.MathTools.ColorBlend
+  commentId: T:Vintagestory.API.MathTools.ColorBlend
+  id: ColorBlend
+  parent: Vintagestory.API.MathTools
+  children:
+  - Vintagestory.API.MathTools.ColorBlend.Blend(Vintagestory.API.MathTools.EnumColorBlendMode,System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.ColorBlend.ColorBurn(System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.ColorBlend.ColorDodge(System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.ColorBlend.Darken(System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.ColorBlend.Lighten(System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.ColorBlend.Multiply(System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.ColorBlend.Normal(System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.ColorBlend.Overlay(System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.ColorBlend.Screen(System.Int32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: ColorBlend
+  nameWithType: ColorBlend
+  fullName: Vintagestory.API.MathTools.ColorBlend
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorBlend.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ColorBlend
+    path: Math/ColorBlend.cs
+    startLine: 67
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static class ColorBlend
+    content.vb: Public Module ColorBlend
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.MathTools.ColorBlend.Blend(Vintagestory.API.MathTools.EnumColorBlendMode,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.ColorBlend.Blend(Vintagestory.API.MathTools.EnumColorBlendMode,System.Int32,System.Int32)
+  id: Blend(Vintagestory.API.MathTools.EnumColorBlendMode,System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.ColorBlend
+  langs:
+  - csharp
+  - vb
+  name: Blend(EnumColorBlendMode, int, int)
+  nameWithType: ColorBlend.Blend(EnumColorBlendMode, int, int)
+  fullName: Vintagestory.API.MathTools.ColorBlend.Blend(Vintagestory.API.MathTools.EnumColorBlendMode, int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorBlend.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Blend
+    path: Math/ColorBlend.cs
+    startLine: 87
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static int Blend(EnumColorBlendMode blendMode, int colorBase, int colorOver)
+    parameters:
+    - id: blendMode
+      type: Vintagestory.API.MathTools.EnumColorBlendMode
+    - id: colorBase
+      type: System.Int32
+    - id: colorOver
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function Blend(blendMode As EnumColorBlendMode, colorBase As Integer, colorOver As Integer) As Integer
+  overload: Vintagestory.API.MathTools.ColorBlend.Blend*
+  nameWithType.vb: ColorBlend.Blend(EnumColorBlendMode, Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.ColorBlend.Blend(Vintagestory.API.MathTools.EnumColorBlendMode, Integer, Integer)
+  name.vb: Blend(EnumColorBlendMode, Integer, Integer)
+- uid: Vintagestory.API.MathTools.ColorBlend.Normal(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.ColorBlend.Normal(System.Int32,System.Int32)
+  id: Normal(System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.ColorBlend
+  langs:
+  - csharp
+  - vb
+  name: Normal(int, int)
+  nameWithType: ColorBlend.Normal(int, int)
+  fullName: Vintagestory.API.MathTools.ColorBlend.Normal(int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorBlend.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Normal
+    path: Math/ColorBlend.cs
+    startLine: 92
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static int Normal(int rgb1, int rgb2)
+    parameters:
+    - id: rgb1
+      type: System.Int32
+    - id: rgb2
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function Normal(rgb1 As Integer, rgb2 As Integer) As Integer
+  overload: Vintagestory.API.MathTools.ColorBlend.Normal*
+  nameWithType.vb: ColorBlend.Normal(Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.ColorBlend.Normal(Integer, Integer)
+  name.vb: Normal(Integer, Integer)
+- uid: Vintagestory.API.MathTools.ColorBlend.Overlay(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.ColorBlend.Overlay(System.Int32,System.Int32)
+  id: Overlay(System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.ColorBlend
+  langs:
+  - csharp
+  - vb
+  name: Overlay(int, int)
+  nameWithType: ColorBlend.Overlay(int, int)
+  fullName: Vintagestory.API.MathTools.ColorBlend.Overlay(int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorBlend.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Overlay
+    path: Math/ColorBlend.cs
+    startLine: 363
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static int Overlay(int rgb1, int rgb2)
+    parameters:
+    - id: rgb1
+      type: System.Int32
+    - id: rgb2
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function Overlay(rgb1 As Integer, rgb2 As Integer) As Integer
+  overload: Vintagestory.API.MathTools.ColorBlend.Overlay*
+  nameWithType.vb: ColorBlend.Overlay(Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.ColorBlend.Overlay(Integer, Integer)
+  name.vb: Overlay(Integer, Integer)
+- uid: Vintagestory.API.MathTools.ColorBlend.Darken(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.ColorBlend.Darken(System.Int32,System.Int32)
+  id: Darken(System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.ColorBlend
+  langs:
+  - csharp
+  - vb
+  name: Darken(int, int)
+  nameWithType: ColorBlend.Darken(int, int)
+  fullName: Vintagestory.API.MathTools.ColorBlend.Darken(int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorBlend.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Darken
+    path: Math/ColorBlend.cs
+    startLine: 476
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static int Darken(int rgb1, int rgb2)
+    parameters:
+    - id: rgb1
+      type: System.Int32
+    - id: rgb2
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function Darken(rgb1 As Integer, rgb2 As Integer) As Integer
+  overload: Vintagestory.API.MathTools.ColorBlend.Darken*
+  nameWithType.vb: ColorBlend.Darken(Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.ColorBlend.Darken(Integer, Integer)
+  name.vb: Darken(Integer, Integer)
+- uid: Vintagestory.API.MathTools.ColorBlend.Lighten(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.ColorBlend.Lighten(System.Int32,System.Int32)
+  id: Lighten(System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.ColorBlend
+  langs:
+  - csharp
+  - vb
+  name: Lighten(int, int)
+  nameWithType: ColorBlend.Lighten(int, int)
+  fullName: Vintagestory.API.MathTools.ColorBlend.Lighten(int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorBlend.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Lighten
+    path: Math/ColorBlend.cs
+    startLine: 542
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static int Lighten(int rgb1, int rgb2)
+    parameters:
+    - id: rgb1
+      type: System.Int32
+    - id: rgb2
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function Lighten(rgb1 As Integer, rgb2 As Integer) As Integer
+  overload: Vintagestory.API.MathTools.ColorBlend.Lighten*
+  nameWithType.vb: ColorBlend.Lighten(Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.ColorBlend.Lighten(Integer, Integer)
+  name.vb: Lighten(Integer, Integer)
+- uid: Vintagestory.API.MathTools.ColorBlend.Multiply(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.ColorBlend.Multiply(System.Int32,System.Int32)
+  id: Multiply(System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.ColorBlend
+  langs:
+  - csharp
+  - vb
+  name: Multiply(int, int)
+  nameWithType: ColorBlend.Multiply(int, int)
+  fullName: Vintagestory.API.MathTools.ColorBlend.Multiply(int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorBlend.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Multiply
+    path: Math/ColorBlend.cs
+    startLine: 609
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static int Multiply(int rgb1, int rgb2)
+    parameters:
+    - id: rgb1
+      type: System.Int32
+    - id: rgb2
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function Multiply(rgb1 As Integer, rgb2 As Integer) As Integer
+  overload: Vintagestory.API.MathTools.ColorBlend.Multiply*
+  nameWithType.vb: ColorBlend.Multiply(Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.ColorBlend.Multiply(Integer, Integer)
+  name.vb: Multiply(Integer, Integer)
+- uid: Vintagestory.API.MathTools.ColorBlend.Screen(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.ColorBlend.Screen(System.Int32,System.Int32)
+  id: Screen(System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.ColorBlend
+  langs:
+  - csharp
+  - vb
+  name: Screen(int, int)
+  nameWithType: ColorBlend.Screen(int, int)
+  fullName: Vintagestory.API.MathTools.ColorBlend.Screen(int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorBlend.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Screen
+    path: Math/ColorBlend.cs
+    startLine: 686
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static int Screen(int rgb1, int rgb2)
+    parameters:
+    - id: rgb1
+      type: System.Int32
+    - id: rgb2
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function Screen(rgb1 As Integer, rgb2 As Integer) As Integer
+  overload: Vintagestory.API.MathTools.ColorBlend.Screen*
+  nameWithType.vb: ColorBlend.Screen(Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.ColorBlend.Screen(Integer, Integer)
+  name.vb: Screen(Integer, Integer)
+- uid: Vintagestory.API.MathTools.ColorBlend.ColorDodge(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.ColorBlend.ColorDodge(System.Int32,System.Int32)
+  id: ColorDodge(System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.ColorBlend
+  langs:
+  - csharp
+  - vb
+  name: ColorDodge(int, int)
+  nameWithType: ColorBlend.ColorDodge(int, int)
+  fullName: Vintagestory.API.MathTools.ColorBlend.ColorDodge(int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorBlend.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ColorDodge
+    path: Math/ColorBlend.cs
+    startLine: 765
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static int ColorDodge(int rgb1, int rgb2)
+    parameters:
+    - id: rgb1
+      type: System.Int32
+    - id: rgb2
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function ColorDodge(rgb1 As Integer, rgb2 As Integer) As Integer
+  overload: Vintagestory.API.MathTools.ColorBlend.ColorDodge*
+  nameWithType.vb: ColorBlend.ColorDodge(Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.ColorBlend.ColorDodge(Integer, Integer)
+  name.vb: ColorDodge(Integer, Integer)
+- uid: Vintagestory.API.MathTools.ColorBlend.ColorBurn(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.ColorBlend.ColorBurn(System.Int32,System.Int32)
+  id: ColorBurn(System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.ColorBlend
+  langs:
+  - csharp
+  - vb
+  name: ColorBurn(int, int)
+  nameWithType: ColorBlend.ColorBurn(int, int)
+  fullName: Vintagestory.API.MathTools.ColorBlend.ColorBurn(int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorBlend.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ColorBurn
+    path: Math/ColorBlend.cs
+    startLine: 874
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static int ColorBurn(int rgb1, int rgb2)
+    parameters:
+    - id: rgb1
+      type: System.Int32
+    - id: rgb2
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function ColorBurn(rgb1 As Integer, rgb2 As Integer) As Integer
+  overload: Vintagestory.API.MathTools.ColorBlend.ColorBurn*
+  nameWithType.vb: ColorBlend.ColorBurn(Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.ColorBlend.ColorBurn(Integer, Integer)
+  name.vb: ColorBurn(Integer, Integer)
+references:
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.MathTools.ColorBlend.Blend*
+  commentId: Overload:Vintagestory.API.MathTools.ColorBlend.Blend
+  href: Vintagestory.API.MathTools.ColorBlend.html#Vintagestory_API_MathTools_ColorBlend_Blend_Vintagestory_API_MathTools_EnumColorBlendMode_System_Int32_System_Int32_
+  name: Blend
+  nameWithType: ColorBlend.Blend
+  fullName: Vintagestory.API.MathTools.ColorBlend.Blend
+- uid: Vintagestory.API.MathTools.EnumColorBlendMode
+  commentId: T:Vintagestory.API.MathTools.EnumColorBlendMode
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.EnumColorBlendMode.html
+  name: EnumColorBlendMode
+  nameWithType: EnumColorBlendMode
+  fullName: Vintagestory.API.MathTools.EnumColorBlendMode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.MathTools.ColorBlend.Normal*
+  commentId: Overload:Vintagestory.API.MathTools.ColorBlend.Normal
+  href: Vintagestory.API.MathTools.ColorBlend.html#Vintagestory_API_MathTools_ColorBlend_Normal_System_Int32_System_Int32_
+  name: Normal
+  nameWithType: ColorBlend.Normal
+  fullName: Vintagestory.API.MathTools.ColorBlend.Normal
+- uid: Vintagestory.API.MathTools.ColorBlend.Overlay*
+  commentId: Overload:Vintagestory.API.MathTools.ColorBlend.Overlay
+  href: Vintagestory.API.MathTools.ColorBlend.html#Vintagestory_API_MathTools_ColorBlend_Overlay_System_Int32_System_Int32_
+  name: Overlay
+  nameWithType: ColorBlend.Overlay
+  fullName: Vintagestory.API.MathTools.ColorBlend.Overlay
+- uid: Vintagestory.API.MathTools.ColorBlend.Darken*
+  commentId: Overload:Vintagestory.API.MathTools.ColorBlend.Darken
+  href: Vintagestory.API.MathTools.ColorBlend.html#Vintagestory_API_MathTools_ColorBlend_Darken_System_Int32_System_Int32_
+  name: Darken
+  nameWithType: ColorBlend.Darken
+  fullName: Vintagestory.API.MathTools.ColorBlend.Darken
+- uid: Vintagestory.API.MathTools.ColorBlend.Lighten*
+  commentId: Overload:Vintagestory.API.MathTools.ColorBlend.Lighten
+  href: Vintagestory.API.MathTools.ColorBlend.html#Vintagestory_API_MathTools_ColorBlend_Lighten_System_Int32_System_Int32_
+  name: Lighten
+  nameWithType: ColorBlend.Lighten
+  fullName: Vintagestory.API.MathTools.ColorBlend.Lighten
+- uid: Vintagestory.API.MathTools.ColorBlend.Multiply*
+  commentId: Overload:Vintagestory.API.MathTools.ColorBlend.Multiply
+  href: Vintagestory.API.MathTools.ColorBlend.html#Vintagestory_API_MathTools_ColorBlend_Multiply_System_Int32_System_Int32_
+  name: Multiply
+  nameWithType: ColorBlend.Multiply
+  fullName: Vintagestory.API.MathTools.ColorBlend.Multiply
+- uid: Vintagestory.API.MathTools.ColorBlend.Screen*
+  commentId: Overload:Vintagestory.API.MathTools.ColorBlend.Screen
+  href: Vintagestory.API.MathTools.ColorBlend.html#Vintagestory_API_MathTools_ColorBlend_Screen_System_Int32_System_Int32_
+  name: Screen
+  nameWithType: ColorBlend.Screen
+  fullName: Vintagestory.API.MathTools.ColorBlend.Screen
+- uid: Vintagestory.API.MathTools.ColorBlend.ColorDodge*
+  commentId: Overload:Vintagestory.API.MathTools.ColorBlend.ColorDodge
+  href: Vintagestory.API.MathTools.ColorBlend.html#Vintagestory_API_MathTools_ColorBlend_ColorDodge_System_Int32_System_Int32_
+  name: ColorDodge
+  nameWithType: ColorBlend.ColorDodge
+  fullName: Vintagestory.API.MathTools.ColorBlend.ColorDodge
+- uid: Vintagestory.API.MathTools.ColorBlend.ColorBurn*
+  commentId: Overload:Vintagestory.API.MathTools.ColorBlend.ColorBurn
+  href: Vintagestory.API.MathTools.ColorBlend.html#Vintagestory_API_MathTools_ColorBlend_ColorBurn_System_Int32_System_Int32_
+  name: ColorBurn
+  nameWithType: ColorBlend.ColorBurn
+  fullName: Vintagestory.API.MathTools.ColorBlend.ColorBurn

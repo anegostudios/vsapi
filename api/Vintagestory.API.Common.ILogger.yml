@@ -1,0 +1,1343 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ILogger
+  commentId: T:Vintagestory.API.Common.ILogger
+  id: ILogger
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.ILogger.Audit(System.String)
+  - Vintagestory.API.Common.ILogger.Audit(System.String,System.Object[])
+  - Vintagestory.API.Common.ILogger.Build(System.String)
+  - Vintagestory.API.Common.ILogger.Build(System.String,System.Object[])
+  - Vintagestory.API.Common.ILogger.Chat(System.String)
+  - Vintagestory.API.Common.ILogger.Chat(System.String,System.Object[])
+  - Vintagestory.API.Common.ILogger.ClearWatchers
+  - Vintagestory.API.Common.ILogger.Debug(System.String)
+  - Vintagestory.API.Common.ILogger.Debug(System.String,System.Object[])
+  - Vintagestory.API.Common.ILogger.EntryAdded
+  - Vintagestory.API.Common.ILogger.Error(System.Exception)
+  - Vintagestory.API.Common.ILogger.Error(System.String)
+  - Vintagestory.API.Common.ILogger.Error(System.String,System.Object[])
+  - Vintagestory.API.Common.ILogger.Event(System.String)
+  - Vintagestory.API.Common.ILogger.Event(System.String,System.Object[])
+  - Vintagestory.API.Common.ILogger.Fatal(System.Exception)
+  - Vintagestory.API.Common.ILogger.Fatal(System.String)
+  - Vintagestory.API.Common.ILogger.Fatal(System.String,System.Object[])
+  - Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType,System.String)
+  - Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType,System.String,System.Object[])
+  - Vintagestory.API.Common.ILogger.Notification(System.String)
+  - Vintagestory.API.Common.ILogger.Notification(System.String,System.Object[])
+  - Vintagestory.API.Common.ILogger.StoryEvent(System.String)
+  - Vintagestory.API.Common.ILogger.StoryEvent(System.String,System.Object[])
+  - Vintagestory.API.Common.ILogger.TraceLog
+  - Vintagestory.API.Common.ILogger.VerboseDebug(System.String)
+  - Vintagestory.API.Common.ILogger.VerboseDebug(System.String,System.Object[])
+  - Vintagestory.API.Common.ILogger.Warning(System.Exception)
+  - Vintagestory.API.Common.ILogger.Warning(System.String)
+  - Vintagestory.API.Common.ILogger.Warning(System.String,System.Object[])
+  langs:
+  - csharp
+  - vb
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Vintagestory.API.Common.ILogger
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ILogger
+    path: Common/API/ILogger.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Interface to the client's and server's event, debug and error logging utilty.
+  example: []
+  syntax:
+    content: public interface ILogger
+    content.vb: Public Interface ILogger
+- uid: Vintagestory.API.Common.ILogger.TraceLog
+  commentId: P:Vintagestory.API.Common.ILogger.TraceLog
+  id: TraceLog
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: TraceLog
+  nameWithType: ILogger.TraceLog
+  fullName: Vintagestory.API.Common.ILogger.TraceLog
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TraceLog
+    path: Common/API/ILogger.cs
+    startLine: 13
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If true, will also print to Diagnostics.Debug.
+  example: []
+  syntax:
+    content: bool TraceLog { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property TraceLog As Boolean
+  overload: Vintagestory.API.Common.ILogger.TraceLog*
+- uid: Vintagestory.API.Common.ILogger.EntryAdded
+  commentId: E:Vintagestory.API.Common.ILogger.EntryAdded
+  id: EntryAdded
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: EntryAdded
+  nameWithType: ILogger.EntryAdded
+  fullName: Vintagestory.API.Common.ILogger.EntryAdded
+  type: Event
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EntryAdded
+    path: Common/API/ILogger.cs
+    startLine: 18
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Fired each time a new log entry has been added.
+  example: []
+  syntax:
+    content: event LogEntryDelegate EntryAdded
+    return:
+      type: Vintagestory.API.Common.LogEntryDelegate
+    content.vb: Event EntryAdded As LogEntryDelegate
+- uid: Vintagestory.API.Common.ILogger.ClearWatchers
+  commentId: M:Vintagestory.API.Common.ILogger.ClearWatchers
+  id: ClearWatchers
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: ClearWatchers()
+  nameWithType: ILogger.ClearWatchers()
+  fullName: Vintagestory.API.Common.ILogger.ClearWatchers()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ClearWatchers
+    path: Common/API/ILogger.cs
+    startLine: 24
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Removes any handler that registered to the EntryAdded event.
+
+    This method is called when the client leaves a world or server shuts down.
+  example: []
+  syntax:
+    content: void ClearWatchers()
+    content.vb: Sub ClearWatchers()
+  overload: Vintagestory.API.Common.ILogger.ClearWatchers*
+- uid: Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType,System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType,System.String,System.Object[])
+  id: Log(Vintagestory.API.Common.EnumLogType,System.String,System.Object[])
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Log(EnumLogType, string, params object[])
+  nameWithType: ILogger.Log(EnumLogType, string, params object[])
+  fullName: Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType, string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Log
+    path: Common/API/ILogger.cs
+    startLine: 29
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new log entry with the specified log type, format string and arguments.
+  example: []
+  syntax:
+    content: void Log(EnumLogType logType, string format, params object[] args)
+    parameters:
+    - id: logType
+      type: Vintagestory.API.Common.EnumLogType
+    - id: format
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Sub Log(logType As EnumLogType, format As String, ParamArray args As Object())
+  overload: Vintagestory.API.Common.ILogger.Log*
+  nameWithType.vb: ILogger.Log(EnumLogType, String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType, String, ParamArray Object())
+  name.vb: Log(EnumLogType, String, ParamArray Object())
+- uid: Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType,System.String)
+  commentId: M:Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType,System.String)
+  id: Log(Vintagestory.API.Common.EnumLogType,System.String)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Log(EnumLogType, string)
+  nameWithType: ILogger.Log(EnumLogType, string)
+  fullName: Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Log
+    path: Common/API/ILogger.cs
+    startLine: 33
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new log entry with the specified log type and message.
+  example: []
+  syntax:
+    content: void Log(EnumLogType logType, string message)
+    parameters:
+    - id: logType
+      type: Vintagestory.API.Common.EnumLogType
+    - id: message
+      type: System.String
+    content.vb: Sub Log(logType As EnumLogType, message As String)
+  overload: Vintagestory.API.Common.ILogger.Log*
+  nameWithType.vb: ILogger.Log(EnumLogType, String)
+  fullName.vb: Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType, String)
+  name.vb: Log(EnumLogType, String)
+- uid: Vintagestory.API.Common.ILogger.Chat(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.ILogger.Chat(System.String,System.Object[])
+  id: Chat(System.String,System.Object[])
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Chat(string, params object[])
+  nameWithType: ILogger.Chat(string, params object[])
+  fullName: Vintagestory.API.Common.ILogger.Chat(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Chat
+    path: Common/API/ILogger.cs
+    startLine: 38
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Chat" data-throw-if-not-resolved="false"></xref> log entry with the specified format string and arguments.
+  example: []
+  syntax:
+    content: void Chat(string format, params object[] args)
+    parameters:
+    - id: format
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Sub Chat(format As String, ParamArray args As Object())
+  overload: Vintagestory.API.Common.ILogger.Chat*
+  nameWithType.vb: ILogger.Chat(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.ILogger.Chat(String, ParamArray Object())
+  name.vb: Chat(String, ParamArray Object())
+- uid: Vintagestory.API.Common.ILogger.Chat(System.String)
+  commentId: M:Vintagestory.API.Common.ILogger.Chat(System.String)
+  id: Chat(System.String)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Chat(string)
+  nameWithType: ILogger.Chat(string)
+  fullName: Vintagestory.API.Common.ILogger.Chat(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Chat
+    path: Common/API/ILogger.cs
+    startLine: 43
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Chat" data-throw-if-not-resolved="false"></xref> log entry with the specified message.
+  example: []
+  syntax:
+    content: void Chat(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub Chat(message As String)
+  overload: Vintagestory.API.Common.ILogger.Chat*
+  nameWithType.vb: ILogger.Chat(String)
+  fullName.vb: Vintagestory.API.Common.ILogger.Chat(String)
+  name.vb: Chat(String)
+- uid: Vintagestory.API.Common.ILogger.Event(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.ILogger.Event(System.String,System.Object[])
+  id: Event(System.String,System.Object[])
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Event(string, params object[])
+  nameWithType: ILogger.Event(string, params object[])
+  fullName: Vintagestory.API.Common.ILogger.Event(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Event
+    path: Common/API/ILogger.cs
+    startLine: 48
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Event" data-throw-if-not-resolved="false"></xref> log entry with the specified format string and arguments.
+  example: []
+  syntax:
+    content: void Event(string format, params object[] args)
+    parameters:
+    - id: format
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Sub [Event](format As String, ParamArray args As Object())
+  overload: Vintagestory.API.Common.ILogger.Event*
+  nameWithType.vb: ILogger.Event(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.ILogger.Event(String, ParamArray Object())
+  name.vb: Event(String, ParamArray Object())
+- uid: Vintagestory.API.Common.ILogger.Event(System.String)
+  commentId: M:Vintagestory.API.Common.ILogger.Event(System.String)
+  id: Event(System.String)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Event(string)
+  nameWithType: ILogger.Event(string)
+  fullName: Vintagestory.API.Common.ILogger.Event(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Event
+    path: Common/API/ILogger.cs
+    startLine: 52
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Event" data-throw-if-not-resolved="false"></xref> log entry with the specified message.
+  example: []
+  syntax:
+    content: void Event(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub [Event](message As String)
+  overload: Vintagestory.API.Common.ILogger.Event*
+  nameWithType.vb: ILogger.Event(String)
+  fullName.vb: Vintagestory.API.Common.ILogger.Event(String)
+  name.vb: Event(String)
+- uid: Vintagestory.API.Common.ILogger.StoryEvent(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.ILogger.StoryEvent(System.String,System.Object[])
+  id: StoryEvent(System.String,System.Object[])
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: StoryEvent(string, params object[])
+  nameWithType: ILogger.StoryEvent(string, params object[])
+  fullName: Vintagestory.API.Common.ILogger.StoryEvent(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: StoryEvent
+    path: Common/API/ILogger.cs
+    startLine: 57
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.StoryEvent" data-throw-if-not-resolved="false"></xref> log entry with the specified format string and arguments.
+  example: []
+  syntax:
+    content: void StoryEvent(string format, params object[] args)
+    parameters:
+    - id: format
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Sub StoryEvent(format As String, ParamArray args As Object())
+  overload: Vintagestory.API.Common.ILogger.StoryEvent*
+  nameWithType.vb: ILogger.StoryEvent(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.ILogger.StoryEvent(String, ParamArray Object())
+  name.vb: StoryEvent(String, ParamArray Object())
+- uid: Vintagestory.API.Common.ILogger.StoryEvent(System.String)
+  commentId: M:Vintagestory.API.Common.ILogger.StoryEvent(System.String)
+  id: StoryEvent(System.String)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: StoryEvent(string)
+  nameWithType: ILogger.StoryEvent(string)
+  fullName: Vintagestory.API.Common.ILogger.StoryEvent(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: StoryEvent
+    path: Common/API/ILogger.cs
+    startLine: 61
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.StoryEvent" data-throw-if-not-resolved="false"></xref> log entry with the specified message.
+  example: []
+  syntax:
+    content: void StoryEvent(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub StoryEvent(message As String)
+  overload: Vintagestory.API.Common.ILogger.StoryEvent*
+  nameWithType.vb: ILogger.StoryEvent(String)
+  fullName.vb: Vintagestory.API.Common.ILogger.StoryEvent(String)
+  name.vb: StoryEvent(String)
+- uid: Vintagestory.API.Common.ILogger.Build(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.ILogger.Build(System.String,System.Object[])
+  id: Build(System.String,System.Object[])
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Build(string, params object[])
+  nameWithType: ILogger.Build(string, params object[])
+  fullName: Vintagestory.API.Common.ILogger.Build(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Build
+    path: Common/API/ILogger.cs
+    startLine: 66
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Build" data-throw-if-not-resolved="false"></xref> log entry with the specified format string and arguments.
+  example: []
+  syntax:
+    content: void Build(string format, params object[] args)
+    parameters:
+    - id: format
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Sub Build(format As String, ParamArray args As Object())
+  overload: Vintagestory.API.Common.ILogger.Build*
+  nameWithType.vb: ILogger.Build(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.ILogger.Build(String, ParamArray Object())
+  name.vb: Build(String, ParamArray Object())
+- uid: Vintagestory.API.Common.ILogger.Build(System.String)
+  commentId: M:Vintagestory.API.Common.ILogger.Build(System.String)
+  id: Build(System.String)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Build(string)
+  nameWithType: ILogger.Build(string)
+  fullName: Vintagestory.API.Common.ILogger.Build(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Build
+    path: Common/API/ILogger.cs
+    startLine: 70
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Build" data-throw-if-not-resolved="false"></xref> log entry with the specified message.
+  example: []
+  syntax:
+    content: void Build(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub Build(message As String)
+  overload: Vintagestory.API.Common.ILogger.Build*
+  nameWithType.vb: ILogger.Build(String)
+  fullName.vb: Vintagestory.API.Common.ILogger.Build(String)
+  name.vb: Build(String)
+- uid: Vintagestory.API.Common.ILogger.VerboseDebug(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.ILogger.VerboseDebug(System.String,System.Object[])
+  id: VerboseDebug(System.String,System.Object[])
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: VerboseDebug(string, params object[])
+  nameWithType: ILogger.VerboseDebug(string, params object[])
+  fullName: Vintagestory.API.Common.ILogger.VerboseDebug(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: VerboseDebug
+    path: Common/API/ILogger.cs
+    startLine: 75
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.VerboseDebug" data-throw-if-not-resolved="false"></xref> log entry with the specified format string and arguments.
+  example: []
+  syntax:
+    content: void VerboseDebug(string format, params object[] args)
+    parameters:
+    - id: format
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Sub VerboseDebug(format As String, ParamArray args As Object())
+  overload: Vintagestory.API.Common.ILogger.VerboseDebug*
+  nameWithType.vb: ILogger.VerboseDebug(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.ILogger.VerboseDebug(String, ParamArray Object())
+  name.vb: VerboseDebug(String, ParamArray Object())
+- uid: Vintagestory.API.Common.ILogger.VerboseDebug(System.String)
+  commentId: M:Vintagestory.API.Common.ILogger.VerboseDebug(System.String)
+  id: VerboseDebug(System.String)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: VerboseDebug(string)
+  nameWithType: ILogger.VerboseDebug(string)
+  fullName: Vintagestory.API.Common.ILogger.VerboseDebug(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: VerboseDebug
+    path: Common/API/ILogger.cs
+    startLine: 79
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.VerboseDebug" data-throw-if-not-resolved="false"></xref> log entry with the specified message.
+  example: []
+  syntax:
+    content: void VerboseDebug(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub VerboseDebug(message As String)
+  overload: Vintagestory.API.Common.ILogger.VerboseDebug*
+  nameWithType.vb: ILogger.VerboseDebug(String)
+  fullName.vb: Vintagestory.API.Common.ILogger.VerboseDebug(String)
+  name.vb: VerboseDebug(String)
+- uid: Vintagestory.API.Common.ILogger.Debug(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.ILogger.Debug(System.String,System.Object[])
+  id: Debug(System.String,System.Object[])
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Debug(string, params object[])
+  nameWithType: ILogger.Debug(string, params object[])
+  fullName: Vintagestory.API.Common.ILogger.Debug(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Debug
+    path: Common/API/ILogger.cs
+    startLine: 84
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Debug" data-throw-if-not-resolved="false"></xref> log entry with the specified format string and arguments.
+  example: []
+  syntax:
+    content: void Debug(string format, params object[] args)
+    parameters:
+    - id: format
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Sub Debug(format As String, ParamArray args As Object())
+  overload: Vintagestory.API.Common.ILogger.Debug*
+  nameWithType.vb: ILogger.Debug(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.ILogger.Debug(String, ParamArray Object())
+  name.vb: Debug(String, ParamArray Object())
+- uid: Vintagestory.API.Common.ILogger.Debug(System.String)
+  commentId: M:Vintagestory.API.Common.ILogger.Debug(System.String)
+  id: Debug(System.String)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Debug(string)
+  nameWithType: ILogger.Debug(string)
+  fullName: Vintagestory.API.Common.ILogger.Debug(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Debug
+    path: Common/API/ILogger.cs
+    startLine: 88
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Debug" data-throw-if-not-resolved="false"></xref> log entry with the specified message.
+  example: []
+  syntax:
+    content: void Debug(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub Debug(message As String)
+  overload: Vintagestory.API.Common.ILogger.Debug*
+  nameWithType.vb: ILogger.Debug(String)
+  fullName.vb: Vintagestory.API.Common.ILogger.Debug(String)
+  name.vb: Debug(String)
+- uid: Vintagestory.API.Common.ILogger.Notification(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.ILogger.Notification(System.String,System.Object[])
+  id: Notification(System.String,System.Object[])
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Notification(string, params object[])
+  nameWithType: ILogger.Notification(string, params object[])
+  fullName: Vintagestory.API.Common.ILogger.Notification(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Notification
+    path: Common/API/ILogger.cs
+    startLine: 93
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Notification" data-throw-if-not-resolved="false"></xref> log entry with the specified format string and arguments.
+  example: []
+  syntax:
+    content: void Notification(string format, params object[] args)
+    parameters:
+    - id: format
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Sub Notification(format As String, ParamArray args As Object())
+  overload: Vintagestory.API.Common.ILogger.Notification*
+  nameWithType.vb: ILogger.Notification(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.ILogger.Notification(String, ParamArray Object())
+  name.vb: Notification(String, ParamArray Object())
+- uid: Vintagestory.API.Common.ILogger.Notification(System.String)
+  commentId: M:Vintagestory.API.Common.ILogger.Notification(System.String)
+  id: Notification(System.String)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Notification(string)
+  nameWithType: ILogger.Notification(string)
+  fullName: Vintagestory.API.Common.ILogger.Notification(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Notification
+    path: Common/API/ILogger.cs
+    startLine: 97
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Notification" data-throw-if-not-resolved="false"></xref> log entry with the specified message.
+  example: []
+  syntax:
+    content: void Notification(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub Notification(message As String)
+  overload: Vintagestory.API.Common.ILogger.Notification*
+  nameWithType.vb: ILogger.Notification(String)
+  fullName.vb: Vintagestory.API.Common.ILogger.Notification(String)
+  name.vb: Notification(String)
+- uid: Vintagestory.API.Common.ILogger.Warning(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.ILogger.Warning(System.String,System.Object[])
+  id: Warning(System.String,System.Object[])
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Warning(string, params object[])
+  nameWithType: ILogger.Warning(string, params object[])
+  fullName: Vintagestory.API.Common.ILogger.Warning(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Warning
+    path: Common/API/ILogger.cs
+    startLine: 102
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Warning" data-throw-if-not-resolved="false"></xref> log entry with the specified format string and arguments.
+  example: []
+  syntax:
+    content: void Warning(string format, params object[] args)
+    parameters:
+    - id: format
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Sub Warning(format As String, ParamArray args As Object())
+  overload: Vintagestory.API.Common.ILogger.Warning*
+  nameWithType.vb: ILogger.Warning(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.ILogger.Warning(String, ParamArray Object())
+  name.vb: Warning(String, ParamArray Object())
+- uid: Vintagestory.API.Common.ILogger.Warning(System.String)
+  commentId: M:Vintagestory.API.Common.ILogger.Warning(System.String)
+  id: Warning(System.String)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Warning(string)
+  nameWithType: ILogger.Warning(string)
+  fullName: Vintagestory.API.Common.ILogger.Warning(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Warning
+    path: Common/API/ILogger.cs
+    startLine: 106
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Warning" data-throw-if-not-resolved="false"></xref> log entry with the specified message.
+  example: []
+  syntax:
+    content: void Warning(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub Warning(message As String)
+  overload: Vintagestory.API.Common.ILogger.Warning*
+  nameWithType.vb: ILogger.Warning(String)
+  fullName.vb: Vintagestory.API.Common.ILogger.Warning(String)
+  name.vb: Warning(String)
+- uid: Vintagestory.API.Common.ILogger.Warning(System.Exception)
+  commentId: M:Vintagestory.API.Common.ILogger.Warning(System.Exception)
+  id: Warning(System.Exception)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Warning(Exception)
+  nameWithType: ILogger.Warning(Exception)
+  fullName: Vintagestory.API.Common.ILogger.Warning(System.Exception)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Warning
+    path: Common/API/ILogger.cs
+    startLine: 110
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Convenience method for logging exceptions in try/catch blocks
+  example: []
+  syntax:
+    content: void Warning(Exception e)
+    parameters:
+    - id: e
+      type: System.Exception
+    content.vb: Sub Warning(e As Exception)
+  overload: Vintagestory.API.Common.ILogger.Warning*
+- uid: Vintagestory.API.Common.ILogger.Error(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.ILogger.Error(System.String,System.Object[])
+  id: Error(System.String,System.Object[])
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Error(string, params object[])
+  nameWithType: ILogger.Error(string, params object[])
+  fullName: Vintagestory.API.Common.ILogger.Error(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Error
+    path: Common/API/ILogger.cs
+    startLine: 115
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Error" data-throw-if-not-resolved="false"></xref> log entry with the specified format string and arguments.
+  example: []
+  syntax:
+    content: void Error(string format, params object[] args)
+    parameters:
+    - id: format
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Sub [Error](format As String, ParamArray args As Object())
+  overload: Vintagestory.API.Common.ILogger.Error*
+  nameWithType.vb: ILogger.Error(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.ILogger.Error(String, ParamArray Object())
+  name.vb: Error(String, ParamArray Object())
+- uid: Vintagestory.API.Common.ILogger.Error(System.String)
+  commentId: M:Vintagestory.API.Common.ILogger.Error(System.String)
+  id: Error(System.String)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Error(string)
+  nameWithType: ILogger.Error(string)
+  fullName: Vintagestory.API.Common.ILogger.Error(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Error
+    path: Common/API/ILogger.cs
+    startLine: 119
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Error" data-throw-if-not-resolved="false"></xref> log entry with the specified message.
+  example: []
+  syntax:
+    content: void Error(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub [Error](message As String)
+  overload: Vintagestory.API.Common.ILogger.Error*
+  nameWithType.vb: ILogger.Error(String)
+  fullName.vb: Vintagestory.API.Common.ILogger.Error(String)
+  name.vb: Error(String)
+- uid: Vintagestory.API.Common.ILogger.Error(System.Exception)
+  commentId: M:Vintagestory.API.Common.ILogger.Error(System.Exception)
+  id: Error(System.Exception)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Error(Exception)
+  nameWithType: ILogger.Error(Exception)
+  fullName: Vintagestory.API.Common.ILogger.Error(System.Exception)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Error
+    path: Common/API/ILogger.cs
+    startLine: 123
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Convenience method for logging exceptions in try/catch blocks
+  example: []
+  syntax:
+    content: void Error(Exception e)
+    parameters:
+    - id: e
+      type: System.Exception
+    content.vb: Sub [Error](e As Exception)
+  overload: Vintagestory.API.Common.ILogger.Error*
+- uid: Vintagestory.API.Common.ILogger.Fatal(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.ILogger.Fatal(System.String,System.Object[])
+  id: Fatal(System.String,System.Object[])
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Fatal(string, params object[])
+  nameWithType: ILogger.Fatal(string, params object[])
+  fullName: Vintagestory.API.Common.ILogger.Fatal(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Fatal
+    path: Common/API/ILogger.cs
+    startLine: 128
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Fatal" data-throw-if-not-resolved="false"></xref> log entry with the specified format string and arguments.
+  example: []
+  syntax:
+    content: void Fatal(string format, params object[] args)
+    parameters:
+    - id: format
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Sub Fatal(format As String, ParamArray args As Object())
+  overload: Vintagestory.API.Common.ILogger.Fatal*
+  nameWithType.vb: ILogger.Fatal(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.ILogger.Fatal(String, ParamArray Object())
+  name.vb: Fatal(String, ParamArray Object())
+- uid: Vintagestory.API.Common.ILogger.Fatal(System.String)
+  commentId: M:Vintagestory.API.Common.ILogger.Fatal(System.String)
+  id: Fatal(System.String)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Fatal(string)
+  nameWithType: ILogger.Fatal(string)
+  fullName: Vintagestory.API.Common.ILogger.Fatal(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Fatal
+    path: Common/API/ILogger.cs
+    startLine: 132
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Fatal" data-throw-if-not-resolved="false"></xref> log entry with the specified message.
+  example: []
+  syntax:
+    content: void Fatal(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub Fatal(message As String)
+  overload: Vintagestory.API.Common.ILogger.Fatal*
+  nameWithType.vb: ILogger.Fatal(String)
+  fullName.vb: Vintagestory.API.Common.ILogger.Fatal(String)
+  name.vb: Fatal(String)
+- uid: Vintagestory.API.Common.ILogger.Fatal(System.Exception)
+  commentId: M:Vintagestory.API.Common.ILogger.Fatal(System.Exception)
+  id: Fatal(System.Exception)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Fatal(Exception)
+  nameWithType: ILogger.Fatal(Exception)
+  fullName: Vintagestory.API.Common.ILogger.Fatal(System.Exception)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Fatal
+    path: Common/API/ILogger.cs
+    startLine: 136
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Convenience method for logging exceptions in try/catch blocks
+  example: []
+  syntax:
+    content: void Fatal(Exception e)
+    parameters:
+    - id: e
+      type: System.Exception
+    content.vb: Sub Fatal(e As Exception)
+  overload: Vintagestory.API.Common.ILogger.Fatal*
+- uid: Vintagestory.API.Common.ILogger.Audit(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.ILogger.Audit(System.String,System.Object[])
+  id: Audit(System.String,System.Object[])
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Audit(string, params object[])
+  nameWithType: ILogger.Audit(string, params object[])
+  fullName: Vintagestory.API.Common.ILogger.Audit(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Audit
+    path: Common/API/ILogger.cs
+    startLine: 141
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Audit" data-throw-if-not-resolved="false"></xref> log entry with the specified format string and arguments.
+  example: []
+  syntax:
+    content: void Audit(string format, params object[] args)
+    parameters:
+    - id: format
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Sub Audit(format As String, ParamArray args As Object())
+  overload: Vintagestory.API.Common.ILogger.Audit*
+  nameWithType.vb: ILogger.Audit(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.ILogger.Audit(String, ParamArray Object())
+  name.vb: Audit(String, ParamArray Object())
+- uid: Vintagestory.API.Common.ILogger.Audit(System.String)
+  commentId: M:Vintagestory.API.Common.ILogger.Audit(System.String)
+  id: Audit(System.String)
+  parent: Vintagestory.API.Common.ILogger
+  langs:
+  - csharp
+  - vb
+  name: Audit(string)
+  nameWithType: ILogger.Audit(string)
+  fullName: Vintagestory.API.Common.ILogger.Audit(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILogger.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Audit
+    path: Common/API/ILogger.cs
+    startLine: 145
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a new <xref href="Vintagestory.API.Common.EnumLogType.Audit" data-throw-if-not-resolved="false"></xref> log entry with the specified message.
+  example: []
+  syntax:
+    content: void Audit(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub Audit(message As String)
+  overload: Vintagestory.API.Common.ILogger.Audit*
+  nameWithType.vb: ILogger.Audit(String)
+  fullName.vb: Vintagestory.API.Common.ILogger.Audit(String)
+  name.vb: Audit(String)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.ILogger.TraceLog*
+  commentId: Overload:Vintagestory.API.Common.ILogger.TraceLog
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_TraceLog
+  name: TraceLog
+  nameWithType: ILogger.TraceLog
+  fullName: Vintagestory.API.Common.ILogger.TraceLog
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.LogEntryDelegate
+  commentId: T:Vintagestory.API.Common.LogEntryDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.LogEntryDelegate.html
+  name: LogEntryDelegate
+  nameWithType: LogEntryDelegate
+  fullName: Vintagestory.API.Common.LogEntryDelegate
+- uid: Vintagestory.API.Common.ILogger.ClearWatchers*
+  commentId: Overload:Vintagestory.API.Common.ILogger.ClearWatchers
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_ClearWatchers
+  name: ClearWatchers
+  nameWithType: ILogger.ClearWatchers
+  fullName: Vintagestory.API.Common.ILogger.ClearWatchers
+- uid: Vintagestory.API.Common.ILogger.Log*
+  commentId: Overload:Vintagestory.API.Common.ILogger.Log
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_Log_Vintagestory_API_Common_EnumLogType_System_String_System_Object___
+  name: Log
+  nameWithType: ILogger.Log
+  fullName: Vintagestory.API.Common.ILogger.Log
+- uid: Vintagestory.API.Common.EnumLogType
+  commentId: T:Vintagestory.API.Common.EnumLogType
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumLogType.html
+  name: EnumLogType
+  nameWithType: EnumLogType
+  fullName: Vintagestory.API.Common.EnumLogType
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Object[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object[]
+  nameWithType: object[]
+  fullName: object[]
+  nameWithType.vb: Object()
+  fullName.vb: Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.EnumLogType.Chat
+  commentId: F:Vintagestory.API.Common.EnumLogType.Chat
+  href: Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Chat
+  name: Chat
+  nameWithType: EnumLogType.Chat
+  fullName: Vintagestory.API.Common.EnumLogType.Chat
+- uid: Vintagestory.API.Common.ILogger.Chat*
+  commentId: Overload:Vintagestory.API.Common.ILogger.Chat
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_Chat_System_String_System_Object___
+  name: Chat
+  nameWithType: ILogger.Chat
+  fullName: Vintagestory.API.Common.ILogger.Chat
+- uid: Vintagestory.API.Common.EnumLogType.Event
+  commentId: F:Vintagestory.API.Common.EnumLogType.Event
+  href: Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Event
+  name: Event
+  nameWithType: EnumLogType.Event
+  fullName: Vintagestory.API.Common.EnumLogType.Event
+- uid: Vintagestory.API.Common.ILogger.Event*
+  commentId: Overload:Vintagestory.API.Common.ILogger.Event
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_Event_System_String_System_Object___
+  name: Event
+  nameWithType: ILogger.Event
+  fullName: Vintagestory.API.Common.ILogger.Event
+- uid: Vintagestory.API.Common.EnumLogType.StoryEvent
+  commentId: F:Vintagestory.API.Common.EnumLogType.StoryEvent
+  href: Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_StoryEvent
+  name: StoryEvent
+  nameWithType: EnumLogType.StoryEvent
+  fullName: Vintagestory.API.Common.EnumLogType.StoryEvent
+- uid: Vintagestory.API.Common.ILogger.StoryEvent*
+  commentId: Overload:Vintagestory.API.Common.ILogger.StoryEvent
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_StoryEvent_System_String_System_Object___
+  name: StoryEvent
+  nameWithType: ILogger.StoryEvent
+  fullName: Vintagestory.API.Common.ILogger.StoryEvent
+- uid: Vintagestory.API.Common.EnumLogType.Build
+  commentId: F:Vintagestory.API.Common.EnumLogType.Build
+  href: Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Build
+  name: Build
+  nameWithType: EnumLogType.Build
+  fullName: Vintagestory.API.Common.EnumLogType.Build
+- uid: Vintagestory.API.Common.ILogger.Build*
+  commentId: Overload:Vintagestory.API.Common.ILogger.Build
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_Build_System_String_System_Object___
+  name: Build
+  nameWithType: ILogger.Build
+  fullName: Vintagestory.API.Common.ILogger.Build
+- uid: Vintagestory.API.Common.EnumLogType.VerboseDebug
+  commentId: F:Vintagestory.API.Common.EnumLogType.VerboseDebug
+  href: Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_VerboseDebug
+  name: VerboseDebug
+  nameWithType: EnumLogType.VerboseDebug
+  fullName: Vintagestory.API.Common.EnumLogType.VerboseDebug
+- uid: Vintagestory.API.Common.ILogger.VerboseDebug*
+  commentId: Overload:Vintagestory.API.Common.ILogger.VerboseDebug
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_VerboseDebug_System_String_System_Object___
+  name: VerboseDebug
+  nameWithType: ILogger.VerboseDebug
+  fullName: Vintagestory.API.Common.ILogger.VerboseDebug
+- uid: Vintagestory.API.Common.EnumLogType.Debug
+  commentId: F:Vintagestory.API.Common.EnumLogType.Debug
+  href: Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Debug
+  name: Debug
+  nameWithType: EnumLogType.Debug
+  fullName: Vintagestory.API.Common.EnumLogType.Debug
+- uid: Vintagestory.API.Common.ILogger.Debug*
+  commentId: Overload:Vintagestory.API.Common.ILogger.Debug
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_Debug_System_String_System_Object___
+  name: Debug
+  nameWithType: ILogger.Debug
+  fullName: Vintagestory.API.Common.ILogger.Debug
+- uid: Vintagestory.API.Common.EnumLogType.Notification
+  commentId: F:Vintagestory.API.Common.EnumLogType.Notification
+  href: Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Notification
+  name: Notification
+  nameWithType: EnumLogType.Notification
+  fullName: Vintagestory.API.Common.EnumLogType.Notification
+- uid: Vintagestory.API.Common.ILogger.Notification*
+  commentId: Overload:Vintagestory.API.Common.ILogger.Notification
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_Notification_System_String_System_Object___
+  name: Notification
+  nameWithType: ILogger.Notification
+  fullName: Vintagestory.API.Common.ILogger.Notification
+- uid: Vintagestory.API.Common.EnumLogType.Warning
+  commentId: F:Vintagestory.API.Common.EnumLogType.Warning
+  href: Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Warning
+  name: Warning
+  nameWithType: EnumLogType.Warning
+  fullName: Vintagestory.API.Common.EnumLogType.Warning
+- uid: Vintagestory.API.Common.ILogger.Warning*
+  commentId: Overload:Vintagestory.API.Common.ILogger.Warning
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_Warning_System_String_System_Object___
+  name: Warning
+  nameWithType: ILogger.Warning
+  fullName: Vintagestory.API.Common.ILogger.Warning
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: Vintagestory.API.Common.EnumLogType.Error
+  commentId: F:Vintagestory.API.Common.EnumLogType.Error
+  href: Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Error
+  name: Error
+  nameWithType: EnumLogType.Error
+  fullName: Vintagestory.API.Common.EnumLogType.Error
+- uid: Vintagestory.API.Common.ILogger.Error*
+  commentId: Overload:Vintagestory.API.Common.ILogger.Error
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_Error_System_String_System_Object___
+  name: Error
+  nameWithType: ILogger.Error
+  fullName: Vintagestory.API.Common.ILogger.Error
+- uid: Vintagestory.API.Common.EnumLogType.Fatal
+  commentId: F:Vintagestory.API.Common.EnumLogType.Fatal
+  href: Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Fatal
+  name: Fatal
+  nameWithType: EnumLogType.Fatal
+  fullName: Vintagestory.API.Common.EnumLogType.Fatal
+- uid: Vintagestory.API.Common.ILogger.Fatal*
+  commentId: Overload:Vintagestory.API.Common.ILogger.Fatal
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_Fatal_System_String_System_Object___
+  name: Fatal
+  nameWithType: ILogger.Fatal
+  fullName: Vintagestory.API.Common.ILogger.Fatal
+- uid: Vintagestory.API.Common.EnumLogType.Audit
+  commentId: F:Vintagestory.API.Common.EnumLogType.Audit
+  href: Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Audit
+  name: Audit
+  nameWithType: EnumLogType.Audit
+  fullName: Vintagestory.API.Common.EnumLogType.Audit
+- uid: Vintagestory.API.Common.ILogger.Audit*
+  commentId: Overload:Vintagestory.API.Common.ILogger.Audit
+  href: Vintagestory.API.Common.ILogger.html#Vintagestory_API_Common_ILogger_Audit_System_String_System_Object___
+  name: Audit
+  nameWithType: ILogger.Audit
+  fullName: Vintagestory.API.Common.ILogger.Audit

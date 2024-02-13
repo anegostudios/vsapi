@@ -1,0 +1,2103 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.IStandardShaderProgram
+  commentId: T:Vintagestory.API.Client.IStandardShaderProgram
+  id: IStandardShaderProgram
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.IStandardShaderProgram.AddRenderFlags
+  - Vintagestory.API.Client.IStandardShaderProgram.AlphaTest
+  - Vintagestory.API.Client.IStandardShaderProgram.BaseTextureSize
+  - Vintagestory.API.Client.IStandardShaderProgram.BaseUvOrigin
+  - Vintagestory.API.Client.IStandardShaderProgram.DamageEffect
+  - Vintagestory.API.Client.IStandardShaderProgram.DontWarpVertices
+  - Vintagestory.API.Client.IStandardShaderProgram.ExtraGlow
+  - Vintagestory.API.Client.IStandardShaderProgram.ExtraGodray
+  - Vintagestory.API.Client.IStandardShaderProgram.ExtraZOffset
+  - Vintagestory.API.Client.IStandardShaderProgram.FogDensityIn
+  - Vintagestory.API.Client.IStandardShaderProgram.FogMinIn
+  - Vintagestory.API.Client.IStandardShaderProgram.ModelMatrix
+  - Vintagestory.API.Client.IStandardShaderProgram.NormalShaded
+  - Vintagestory.API.Client.IStandardShaderProgram.OverlayOpacity
+  - Vintagestory.API.Client.IStandardShaderProgram.OverlayTextureSize
+  - Vintagestory.API.Client.IStandardShaderProgram.ProjectionMatrix
+  - Vintagestory.API.Client.IStandardShaderProgram.RgbaAmbientIn
+  - Vintagestory.API.Client.IStandardShaderProgram.RgbaFogIn
+  - Vintagestory.API.Client.IStandardShaderProgram.RgbaGlowIn
+  - Vintagestory.API.Client.IStandardShaderProgram.RgbaLightIn
+  - Vintagestory.API.Client.IStandardShaderProgram.RgbaTint
+  - Vintagestory.API.Client.IStandardShaderProgram.ShadowMapFar2D
+  - Vintagestory.API.Client.IStandardShaderProgram.ShadowMapNear2D
+  - Vintagestory.API.Client.IStandardShaderProgram.SsaoAttn
+  - Vintagestory.API.Client.IStandardShaderProgram.Tex2D
+  - Vintagestory.API.Client.IStandardShaderProgram.Tex2dOverlay2D
+  - Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixFar
+  - Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixNear
+  - Vintagestory.API.Client.IStandardShaderProgram.ViewMatrix
+  - Vintagestory.API.Client.IStandardShaderProgram.WaterWaveCounter
+  - Vintagestory.API.Client.IStandardShaderProgram.ZFar
+  - Vintagestory.API.Client.IStandardShaderProgram.ZNear
+  langs:
+  - csharp
+  - vb
+  name: IStandardShaderProgram
+  nameWithType: IStandardShaderProgram
+  fullName: Vintagestory.API.Client.IStandardShaderProgram
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IStandardShaderProgram
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 4
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: 'public interface IStandardShaderProgram : IShaderProgram, IDisposable'
+    content.vb: Public Interface IStandardShaderProgram Inherits IShaderProgram, IDisposable
+  inheritedMembers:
+  - Vintagestory.API.Client.IShaderProgram.PassId
+  - Vintagestory.API.Client.IShaderProgram.PassName
+  - Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge
+  - Vintagestory.API.Client.IShaderProgram.VertexShader
+  - Vintagestory.API.Client.IShaderProgram.FragmentShader
+  - Vintagestory.API.Client.IShaderProgram.GeometryShader
+  - Vintagestory.API.Client.IShaderProgram.Use
+  - Vintagestory.API.Client.IShaderProgram.Stop
+  - Vintagestory.API.Client.IShaderProgram.Compile
+  - Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Single)
+  - Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Int32)
+  - Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec2f)
+  - Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec3f)
+  - Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec4f)
+  - Vintagestory.API.Client.IShaderProgram.Uniforms4(System.String,System.Int32,System.Single[])
+  - Vintagestory.API.Client.IShaderProgram.UniformMatrix(System.String,System.Single[])
+  - Vintagestory.API.Client.IShaderProgram.BindTexture2D(System.String,System.Int32,System.Int32)
+  - Vintagestory.API.Client.IShaderProgram.BindTextureCube(System.String,System.Int32,System.Int32)
+  - Vintagestory.API.Client.IShaderProgram.UniformMatrices(System.String,System.Int32,System.Single[])
+  - Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3(System.String,System.Int32,System.Single[])
+  - Vintagestory.API.Client.IShaderProgram.HasUniform(System.String)
+  - Vintagestory.API.Client.IShaderProgram.Disposed
+  - Vintagestory.API.Client.IShaderProgram.LoadError
+  - System.IDisposable.Dispose
+- uid: Vintagestory.API.Client.IStandardShaderProgram.Tex2D
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.Tex2D
+  id: Tex2D
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Tex2D
+  nameWithType: IStandardShaderProgram.Tex2D
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.Tex2D
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Tex2D
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The texture 2D for this mesh.
+  example: []
+  syntax:
+    content: int Tex2D { set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: WriteOnly Property Tex2D As Integer
+  overload: Vintagestory.API.Client.IStandardShaderProgram.Tex2D*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ShadowMapNear2D
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ShadowMapNear2D
+  id: ShadowMapNear2D
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ShadowMapNear2D
+  nameWithType: IStandardShaderProgram.ShadowMapNear2D
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ShadowMapNear2D
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ShadowMapNear2D
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The shadowmap ID for nearby shadows.
+  example: []
+  syntax:
+    content: int ShadowMapNear2D { set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: WriteOnly Property ShadowMapNear2D As Integer
+  overload: Vintagestory.API.Client.IStandardShaderProgram.ShadowMapNear2D*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ShadowMapFar2D
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ShadowMapFar2D
+  id: ShadowMapFar2D
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ShadowMapFar2D
+  nameWithType: IStandardShaderProgram.ShadowMapFar2D
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ShadowMapFar2D
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ShadowMapFar2D
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 19
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The shadowmap ID for far away shadows.
+  example: []
+  syntax:
+    content: int ShadowMapFar2D { set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: WriteOnly Property ShadowMapFar2D As Integer
+  overload: Vintagestory.API.Client.IStandardShaderProgram.ShadowMapFar2D*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.NormalShaded
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.NormalShaded
+  id: NormalShaded
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: NormalShaded
+  nameWithType: IStandardShaderProgram.NormalShaded
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.NormalShaded
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NormalShaded
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 21
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: int NormalShaded { set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: WriteOnly Property NormalShaded As Integer
+  overload: Vintagestory.API.Client.IStandardShaderProgram.NormalShaded*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ZNear
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ZNear
+  id: ZNear
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ZNear
+  nameWithType: IStandardShaderProgram.ZNear
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ZNear
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ZNear
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 26
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The Near plane distance.
+  example: []
+  syntax:
+    content: float ZNear { set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: WriteOnly Property ZNear As Single
+  overload: Vintagestory.API.Client.IStandardShaderProgram.ZNear*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ZFar
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ZFar
+  id: ZFar
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ZFar
+  nameWithType: IStandardShaderProgram.ZFar
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ZFar
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ZFar
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 31
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The far plane distance.
+  example: []
+  syntax:
+    content: float ZFar { set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: WriteOnly Property ZFar As Single
+  overload: Vintagestory.API.Client.IStandardShaderProgram.ZFar*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.AlphaTest
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.AlphaTest
+  id: AlphaTest
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: AlphaTest
+  nameWithType: IStandardShaderProgram.AlphaTest
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.AlphaTest
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AlphaTest
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 36
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The shader will discard things below this threshold.
+  example: []
+  syntax:
+    content: float AlphaTest { set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: WriteOnly Property AlphaTest As Single
+  overload: Vintagestory.API.Client.IStandardShaderProgram.AlphaTest*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.DamageEffect
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.DamageEffect
+  id: DamageEffect
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: DamageEffect
+  nameWithType: IStandardShaderProgram.DamageEffect
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.DamageEffect
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DamageEffect
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 38
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: float DamageEffect { set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: WriteOnly Property DamageEffect As Single
+  overload: Vintagestory.API.Client.IStandardShaderProgram.DamageEffect*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ExtraZOffset
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ExtraZOffset
+  id: ExtraZOffset
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ExtraZOffset
+  nameWithType: IStandardShaderProgram.ExtraZOffset
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ExtraZOffset
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ExtraZOffset
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 40
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: float ExtraZOffset { set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: WriteOnly Property ExtraZOffset As Single
+  overload: Vintagestory.API.Client.IStandardShaderProgram.ExtraZOffset*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ExtraGodray
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ExtraGodray
+  id: ExtraGodray
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ExtraGodray
+  nameWithType: IStandardShaderProgram.ExtraGodray
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ExtraGodray
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ExtraGodray
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 42
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: float ExtraGodray { set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: WriteOnly Property ExtraGodray As Single
+  overload: Vintagestory.API.Client.IStandardShaderProgram.ExtraGodray*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.RgbaAmbientIn
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.RgbaAmbientIn
+  id: RgbaAmbientIn
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: RgbaAmbientIn
+  nameWithType: IStandardShaderProgram.RgbaAmbientIn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.RgbaAmbientIn
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RgbaAmbientIn
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 47
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The color of the ambient light source.
+  example: []
+  syntax:
+    content: Vec3f RgbaAmbientIn { set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: WriteOnly Property RgbaAmbientIn As Vec3f
+  overload: Vintagestory.API.Client.IStandardShaderProgram.RgbaAmbientIn*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.RgbaLightIn
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.RgbaLightIn
+  id: RgbaLightIn
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: RgbaLightIn
+  nameWithType: IStandardShaderProgram.RgbaLightIn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.RgbaLightIn
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RgbaLightIn
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 52
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The color of the general light.
+  example: []
+  syntax:
+    content: Vec4f RgbaLightIn { set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec4f
+    content.vb: WriteOnly Property RgbaLightIn As Vec4f
+  overload: Vintagestory.API.Client.IStandardShaderProgram.RgbaLightIn*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.RgbaGlowIn
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.RgbaGlowIn
+  id: RgbaGlowIn
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: RgbaGlowIn
+  nameWithType: IStandardShaderProgram.RgbaGlowIn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.RgbaGlowIn
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RgbaGlowIn
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 57
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The color of the glow light.
+  example: []
+  syntax:
+    content: Vec4f RgbaGlowIn { set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec4f
+    content.vb: WriteOnly Property RgbaGlowIn As Vec4f
+  overload: Vintagestory.API.Client.IStandardShaderProgram.RgbaGlowIn*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.RgbaFogIn
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.RgbaFogIn
+  id: RgbaFogIn
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: RgbaFogIn
+  nameWithType: IStandardShaderProgram.RgbaFogIn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.RgbaFogIn
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RgbaFogIn
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 62
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The color of the fog.
+  example: []
+  syntax:
+    content: Vec4f RgbaFogIn { set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec4f
+    content.vb: WriteOnly Property RgbaFogIn As Vec4f
+  overload: Vintagestory.API.Client.IStandardShaderProgram.RgbaFogIn*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.RgbaTint
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.RgbaTint
+  id: RgbaTint
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: RgbaTint
+  nameWithType: IStandardShaderProgram.RgbaTint
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.RgbaTint
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RgbaTint
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 67
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The color of the tint.
+  example: []
+  syntax:
+    content: Vec4f RgbaTint { set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec4f
+    content.vb: WriteOnly Property RgbaTint As Vec4f
+  overload: Vintagestory.API.Client.IStandardShaderProgram.RgbaTint*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.FogMinIn
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.FogMinIn
+  id: FogMinIn
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: FogMinIn
+  nameWithType: IStandardShaderProgram.FogMinIn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.FogMinIn
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FogMinIn
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 72
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The minimum distance for fog.
+  example: []
+  syntax:
+    content: float FogMinIn { set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: WriteOnly Property FogMinIn As Single
+  overload: Vintagestory.API.Client.IStandardShaderProgram.FogMinIn*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.FogDensityIn
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.FogDensityIn
+  id: FogDensityIn
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: FogDensityIn
+  nameWithType: IStandardShaderProgram.FogDensityIn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.FogDensityIn
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FogDensityIn
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 77
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The density level of the fog.
+  example: []
+  syntax:
+    content: float FogDensityIn { set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: WriteOnly Property FogDensityIn As Single
+  overload: Vintagestory.API.Client.IStandardShaderProgram.FogDensityIn*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ProjectionMatrix
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ProjectionMatrix
+  id: ProjectionMatrix
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ProjectionMatrix
+  nameWithType: IStandardShaderProgram.ProjectionMatrix
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ProjectionMatrix
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ProjectionMatrix
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 82
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The projection matrix.
+  example: []
+  syntax:
+    content: float[] ProjectionMatrix { set; }
+    parameters: []
+    return:
+      type: System.Single[]
+    content.vb: WriteOnly Property ProjectionMatrix As Single()
+  overload: Vintagestory.API.Client.IStandardShaderProgram.ProjectionMatrix*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ModelMatrix
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ModelMatrix
+  id: ModelMatrix
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ModelMatrix
+  nameWithType: IStandardShaderProgram.ModelMatrix
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ModelMatrix
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ModelMatrix
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 87
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The model Matrix.
+  example: []
+  syntax:
+    content: float[] ModelMatrix { set; }
+    parameters: []
+    return:
+      type: System.Single[]
+    content.vb: WriteOnly Property ModelMatrix As Single()
+  overload: Vintagestory.API.Client.IStandardShaderProgram.ModelMatrix*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ViewMatrix
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ViewMatrix
+  id: ViewMatrix
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ViewMatrix
+  nameWithType: IStandardShaderProgram.ViewMatrix
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ViewMatrix
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ViewMatrix
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 92
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The view matrix.
+  example: []
+  syntax:
+    content: float[] ViewMatrix { set; }
+    parameters: []
+    return:
+      type: System.Single[]
+    content.vb: WriteOnly Property ViewMatrix As Single()
+  overload: Vintagestory.API.Client.IStandardShaderProgram.ViewMatrix*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ExtraGlow
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ExtraGlow
+  id: ExtraGlow
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ExtraGlow
+  nameWithType: IStandardShaderProgram.ExtraGlow
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ExtraGlow
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ExtraGlow
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 94
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: int ExtraGlow { set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: WriteOnly Property ExtraGlow As Integer
+  overload: Vintagestory.API.Client.IStandardShaderProgram.ExtraGlow*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixFar
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixFar
+  id: ToShadowMapSpaceMatrixFar
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ToShadowMapSpaceMatrixFar
+  nameWithType: IStandardShaderProgram.ToShadowMapSpaceMatrixFar
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixFar
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToShadowMapSpaceMatrixFar
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 99
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The matrix for converting the vertex position from world space to far shadow space as supplied by IRenderAPI.CurrentShadowProjectionMatrix.
+  example: []
+  syntax:
+    content: float[] ToShadowMapSpaceMatrixFar { set; }
+    parameters: []
+    return:
+      type: System.Single[]
+    content.vb: WriteOnly Property ToShadowMapSpaceMatrixFar As Single()
+  overload: Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixFar*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixNear
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixNear
+  id: ToShadowMapSpaceMatrixNear
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: ToShadowMapSpaceMatrixNear
+  nameWithType: IStandardShaderProgram.ToShadowMapSpaceMatrixNear
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixNear
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToShadowMapSpaceMatrixNear
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 104
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The matrix for converting the vertex position from world space to near shadow space as supplied by IRenderAPI.CurrentShadowProjectionMatrix.
+  example: []
+  syntax:
+    content: float[] ToShadowMapSpaceMatrixNear { set; }
+    parameters: []
+    return:
+      type: System.Single[]
+    content.vb: WriteOnly Property ToShadowMapSpaceMatrixNear As Single()
+  overload: Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixNear*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.WaterWaveCounter
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.WaterWaveCounter
+  id: WaterWaveCounter
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: WaterWaveCounter
+  nameWithType: IStandardShaderProgram.WaterWaveCounter
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.WaterWaveCounter
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WaterWaveCounter
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 109
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Required for water waving meshes.  Supplied the water counter as supplied as IRenderAPI.WaterWaveCounter.
+  example: []
+  syntax:
+    content: float WaterWaveCounter { set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: WriteOnly Property WaterWaveCounter As Single
+  overload: Vintagestory.API.Client.IStandardShaderProgram.WaterWaveCounter*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.DontWarpVertices
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.DontWarpVertices
+  id: DontWarpVertices
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: DontWarpVertices
+  nameWithType: IStandardShaderProgram.DontWarpVertices
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.DontWarpVertices
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DontWarpVertices
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 117
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The position of the player.
+  example: []
+  syntax:
+    content: int DontWarpVertices { set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: WriteOnly Property DontWarpVertices As Integer
+  overload: Vintagestory.API.Client.IStandardShaderProgram.DontWarpVertices*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.AddRenderFlags
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.AddRenderFlags
+  id: AddRenderFlags
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: AddRenderFlags
+  nameWithType: IStandardShaderProgram.AddRenderFlags
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.AddRenderFlags
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AddRenderFlags
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 119
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: int AddRenderFlags { set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: WriteOnly Property AddRenderFlags As Integer
+  overload: Vintagestory.API.Client.IStandardShaderProgram.AddRenderFlags*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.Tex2dOverlay2D
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.Tex2dOverlay2D
+  id: Tex2dOverlay2D
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: Tex2dOverlay2D
+  nameWithType: IStandardShaderProgram.Tex2dOverlay2D
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.Tex2dOverlay2D
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Tex2dOverlay2D
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 122
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: int Tex2dOverlay2D { set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: WriteOnly Property Tex2dOverlay2D As Integer
+  overload: Vintagestory.API.Client.IStandardShaderProgram.Tex2dOverlay2D*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.OverlayOpacity
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.OverlayOpacity
+  id: OverlayOpacity
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: OverlayOpacity
+  nameWithType: IStandardShaderProgram.OverlayOpacity
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.OverlayOpacity
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OverlayOpacity
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 123
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: float OverlayOpacity { set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: WriteOnly Property OverlayOpacity As Single
+  overload: Vintagestory.API.Client.IStandardShaderProgram.OverlayOpacity*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.SsaoAttn
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.SsaoAttn
+  id: SsaoAttn
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: SsaoAttn
+  nameWithType: IStandardShaderProgram.SsaoAttn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.SsaoAttn
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SsaoAttn
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 125
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: float SsaoAttn { set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: WriteOnly Property SsaoAttn As Single
+  overload: Vintagestory.API.Client.IStandardShaderProgram.SsaoAttn*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.OverlayTextureSize
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.OverlayTextureSize
+  id: OverlayTextureSize
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: OverlayTextureSize
+  nameWithType: IStandardShaderProgram.OverlayTextureSize
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.OverlayTextureSize
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OverlayTextureSize
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 127
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: Vec2f OverlayTextureSize { set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec2f
+    content.vb: WriteOnly Property OverlayTextureSize As Vec2f
+  overload: Vintagestory.API.Client.IStandardShaderProgram.OverlayTextureSize*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.BaseTextureSize
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.BaseTextureSize
+  id: BaseTextureSize
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: BaseTextureSize
+  nameWithType: IStandardShaderProgram.BaseTextureSize
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.BaseTextureSize
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BaseTextureSize
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 128
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: Vec2f BaseTextureSize { set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec2f
+    content.vb: WriteOnly Property BaseTextureSize As Vec2f
+  overload: Vintagestory.API.Client.IStandardShaderProgram.BaseTextureSize*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.BaseUvOrigin
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.BaseUvOrigin
+  id: BaseUvOrigin
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: BaseUvOrigin
+  nameWithType: IStandardShaderProgram.BaseUvOrigin
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.BaseUvOrigin
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/IStandardShaderProgram.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BaseUvOrigin
+    path: Client/Render/IStandardShaderProgram.cs
+    startLine: 129
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: Vec2f BaseUvOrigin { set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec2f
+    content.vb: WriteOnly Property BaseUvOrigin As Vec2f
+  overload: Vintagestory.API.Client.IStandardShaderProgram.BaseUvOrigin*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.IShaderProgram.PassId
+  commentId: P:Vintagestory.API.Client.IShaderProgram.PassId
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_PassId
+  name: PassId
+  nameWithType: IShaderProgram.PassId
+  fullName: Vintagestory.API.Client.IShaderProgram.PassId
+- uid: Vintagestory.API.Client.IShaderProgram.PassName
+  commentId: P:Vintagestory.API.Client.IShaderProgram.PassName
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_PassName
+  name: PassName
+  nameWithType: IShaderProgram.PassName
+  fullName: Vintagestory.API.Client.IShaderProgram.PassName
+- uid: Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge
+  commentId: P:Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_ClampTexturesToEdge
+  name: ClampTexturesToEdge
+  nameWithType: IShaderProgram.ClampTexturesToEdge
+  fullName: Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge
+- uid: Vintagestory.API.Client.IShaderProgram.VertexShader
+  commentId: P:Vintagestory.API.Client.IShaderProgram.VertexShader
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_VertexShader
+  name: VertexShader
+  nameWithType: IShaderProgram.VertexShader
+  fullName: Vintagestory.API.Client.IShaderProgram.VertexShader
+- uid: Vintagestory.API.Client.IShaderProgram.FragmentShader
+  commentId: P:Vintagestory.API.Client.IShaderProgram.FragmentShader
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_FragmentShader
+  name: FragmentShader
+  nameWithType: IShaderProgram.FragmentShader
+  fullName: Vintagestory.API.Client.IShaderProgram.FragmentShader
+- uid: Vintagestory.API.Client.IShaderProgram.GeometryShader
+  commentId: P:Vintagestory.API.Client.IShaderProgram.GeometryShader
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_GeometryShader
+  name: GeometryShader
+  nameWithType: IShaderProgram.GeometryShader
+  fullName: Vintagestory.API.Client.IShaderProgram.GeometryShader
+- uid: Vintagestory.API.Client.IShaderProgram.Use
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Use
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Use
+  name: Use()
+  nameWithType: IShaderProgram.Use()
+  fullName: Vintagestory.API.Client.IShaderProgram.Use()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.Use
+    name: Use
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Use
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.Use
+    name: Use
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Use
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.Stop
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Stop
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Stop
+  name: Stop()
+  nameWithType: IShaderProgram.Stop()
+  fullName: Vintagestory.API.Client.IShaderProgram.Stop()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.Stop
+    name: Stop
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Stop
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.Stop
+    name: Stop
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Stop
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.Compile
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Compile
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Compile
+  name: Compile()
+  nameWithType: IShaderProgram.Compile()
+  fullName: Vintagestory.API.Client.IShaderProgram.Compile()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.Compile
+    name: Compile
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Compile
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.Compile
+    name: Compile
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Compile
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Single)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Single)
+  parent: Vintagestory.API.Client.IShaderProgram
+  isExternal: true
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_System_Single_
+  name: Uniform(string, float)
+  nameWithType: IShaderProgram.Uniform(string, float)
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniform(string, float)
+  nameWithType.vb: IShaderProgram.Uniform(String, Single)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.Uniform(String, Single)
+  name.vb: Uniform(String, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Single)
+    name: Uniform
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_System_Single_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Single)
+    name: Uniform
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_System_Single_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Int32)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Int32)
+  parent: Vintagestory.API.Client.IShaderProgram
+  isExternal: true
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_System_Int32_
+  name: Uniform(string, int)
+  nameWithType: IShaderProgram.Uniform(string, int)
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniform(string, int)
+  nameWithType.vb: IShaderProgram.Uniform(String, Integer)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.Uniform(String, Integer)
+  name.vb: Uniform(String, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Int32)
+    name: Uniform
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,System.Int32)
+    name: Uniform
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_System_Int32_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec2f)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec2f)
+  parent: Vintagestory.API.Client.IShaderProgram
+  isExternal: true
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_Vintagestory_API_MathTools_Vec2f_
+  name: Uniform(string, Vec2f)
+  nameWithType: IShaderProgram.Uniform(string, Vec2f)
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniform(string, Vintagestory.API.MathTools.Vec2f)
+  nameWithType.vb: IShaderProgram.Uniform(String, Vec2f)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.Uniform(String, Vintagestory.API.MathTools.Vec2f)
+  name.vb: Uniform(String, Vec2f)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec2f)
+    name: Uniform
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_Vintagestory_API_MathTools_Vec2f_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec2f
+    name: Vec2f
+    href: Vintagestory.API.MathTools.Vec2f.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec2f)
+    name: Uniform
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_Vintagestory_API_MathTools_Vec2f_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec2f
+    name: Vec2f
+    href: Vintagestory.API.MathTools.Vec2f.html
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec3f)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec3f)
+  parent: Vintagestory.API.Client.IShaderProgram
+  isExternal: true
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_Vintagestory_API_MathTools_Vec3f_
+  name: Uniform(string, Vec3f)
+  nameWithType: IShaderProgram.Uniform(string, Vec3f)
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniform(string, Vintagestory.API.MathTools.Vec3f)
+  nameWithType.vb: IShaderProgram.Uniform(String, Vec3f)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.Uniform(String, Vintagestory.API.MathTools.Vec3f)
+  name.vb: Uniform(String, Vec3f)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec3f)
+    name: Uniform
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_Vintagestory_API_MathTools_Vec3f_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3f
+    name: Vec3f
+    href: Vintagestory.API.MathTools.Vec3f.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec3f)
+    name: Uniform
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_Vintagestory_API_MathTools_Vec3f_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3f
+    name: Vec3f
+    href: Vintagestory.API.MathTools.Vec3f.html
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec4f)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec4f)
+  parent: Vintagestory.API.Client.IShaderProgram
+  isExternal: true
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_Vintagestory_API_MathTools_Vec4f_
+  name: Uniform(string, Vec4f)
+  nameWithType: IShaderProgram.Uniform(string, Vec4f)
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniform(string, Vintagestory.API.MathTools.Vec4f)
+  nameWithType.vb: IShaderProgram.Uniform(String, Vec4f)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.Uniform(String, Vintagestory.API.MathTools.Vec4f)
+  name.vb: Uniform(String, Vec4f)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec4f)
+    name: Uniform
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_Vintagestory_API_MathTools_Vec4f_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec4f
+    name: Vec4f
+    href: Vintagestory.API.MathTools.Vec4f.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.Uniform(System.String,Vintagestory.API.MathTools.Vec4f)
+    name: Uniform
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniform_System_String_Vintagestory_API_MathTools_Vec4f_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec4f
+    name: Vec4f
+    href: Vintagestory.API.MathTools.Vec4f.html
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.Uniforms4(System.String,System.Int32,System.Single[])
+  commentId: M:Vintagestory.API.Client.IShaderProgram.Uniforms4(System.String,System.Int32,System.Single[])
+  parent: Vintagestory.API.Client.IShaderProgram
+  isExternal: true
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniforms4_System_String_System_Int32_System_Single___
+  name: Uniforms4(string, int, float[])
+  nameWithType: IShaderProgram.Uniforms4(string, int, float[])
+  fullName: Vintagestory.API.Client.IShaderProgram.Uniforms4(string, int, float[])
+  nameWithType.vb: IShaderProgram.Uniforms4(String, Integer, Single())
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.Uniforms4(String, Integer, Single())
+  name.vb: Uniforms4(String, Integer, Single())
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.Uniforms4(System.String,System.Int32,System.Single[])
+    name: Uniforms4
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniforms4_System_String_System_Int32_System_Single___
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.Uniforms4(System.String,System.Int32,System.Single[])
+    name: Uniforms4
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Uniforms4_System_String_System_Int32_System_Single___
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.UniformMatrix(System.String,System.Single[])
+  commentId: M:Vintagestory.API.Client.IShaderProgram.UniformMatrix(System.String,System.Single[])
+  parent: Vintagestory.API.Client.IShaderProgram
+  isExternal: true
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UniformMatrix_System_String_System_Single___
+  name: UniformMatrix(string, float[])
+  nameWithType: IShaderProgram.UniformMatrix(string, float[])
+  fullName: Vintagestory.API.Client.IShaderProgram.UniformMatrix(string, float[])
+  nameWithType.vb: IShaderProgram.UniformMatrix(String, Single())
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.UniformMatrix(String, Single())
+  name.vb: UniformMatrix(String, Single())
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.UniformMatrix(System.String,System.Single[])
+    name: UniformMatrix
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UniformMatrix_System_String_System_Single___
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.UniformMatrix(System.String,System.Single[])
+    name: UniformMatrix
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UniformMatrix_System_String_System_Single___
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.BindTexture2D(System.String,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.BindTexture2D(System.String,System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.IShaderProgram
+  isExternal: true
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_BindTexture2D_System_String_System_Int32_System_Int32_
+  name: BindTexture2D(string, int, int)
+  nameWithType: IShaderProgram.BindTexture2D(string, int, int)
+  fullName: Vintagestory.API.Client.IShaderProgram.BindTexture2D(string, int, int)
+  nameWithType.vb: IShaderProgram.BindTexture2D(String, Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.BindTexture2D(String, Integer, Integer)
+  name.vb: BindTexture2D(String, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.BindTexture2D(System.String,System.Int32,System.Int32)
+    name: BindTexture2D
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_BindTexture2D_System_String_System_Int32_System_Int32_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.BindTexture2D(System.String,System.Int32,System.Int32)
+    name: BindTexture2D
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_BindTexture2D_System_String_System_Int32_System_Int32_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.BindTextureCube(System.String,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.BindTextureCube(System.String,System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.IShaderProgram
+  isExternal: true
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_BindTextureCube_System_String_System_Int32_System_Int32_
+  name: BindTextureCube(string, int, int)
+  nameWithType: IShaderProgram.BindTextureCube(string, int, int)
+  fullName: Vintagestory.API.Client.IShaderProgram.BindTextureCube(string, int, int)
+  nameWithType.vb: IShaderProgram.BindTextureCube(String, Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.BindTextureCube(String, Integer, Integer)
+  name.vb: BindTextureCube(String, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.BindTextureCube(System.String,System.Int32,System.Int32)
+    name: BindTextureCube
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_BindTextureCube_System_String_System_Int32_System_Int32_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.BindTextureCube(System.String,System.Int32,System.Int32)
+    name: BindTextureCube
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_BindTextureCube_System_String_System_Int32_System_Int32_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.UniformMatrices(System.String,System.Int32,System.Single[])
+  commentId: M:Vintagestory.API.Client.IShaderProgram.UniformMatrices(System.String,System.Int32,System.Single[])
+  parent: Vintagestory.API.Client.IShaderProgram
+  isExternal: true
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UniformMatrices_System_String_System_Int32_System_Single___
+  name: UniformMatrices(string, int, float[])
+  nameWithType: IShaderProgram.UniformMatrices(string, int, float[])
+  fullName: Vintagestory.API.Client.IShaderProgram.UniformMatrices(string, int, float[])
+  nameWithType.vb: IShaderProgram.UniformMatrices(String, Integer, Single())
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.UniformMatrices(String, Integer, Single())
+  name.vb: UniformMatrices(String, Integer, Single())
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.UniformMatrices(System.String,System.Int32,System.Single[])
+    name: UniformMatrices
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UniformMatrices_System_String_System_Int32_System_Single___
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.UniformMatrices(System.String,System.Int32,System.Single[])
+    name: UniformMatrices
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UniformMatrices_System_String_System_Int32_System_Single___
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3(System.String,System.Int32,System.Single[])
+  commentId: M:Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3(System.String,System.Int32,System.Single[])
+  parent: Vintagestory.API.Client.IShaderProgram
+  isExternal: true
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UniformMatrices4x3_System_String_System_Int32_System_Single___
+  name: UniformMatrices4x3(string, int, float[])
+  nameWithType: IShaderProgram.UniformMatrices4x3(string, int, float[])
+  fullName: Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3(string, int, float[])
+  nameWithType.vb: IShaderProgram.UniformMatrices4x3(String, Integer, Single())
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3(String, Integer, Single())
+  name.vb: UniformMatrices4x3(String, Integer, Single())
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3(System.String,System.Int32,System.Single[])
+    name: UniformMatrices4x3
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UniformMatrices4x3_System_String_System_Int32_System_Single___
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.UniformMatrices4x3(System.String,System.Int32,System.Single[])
+    name: UniformMatrices4x3
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UniformMatrices4x3_System_String_System_Int32_System_Single___
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.HasUniform(System.String)
+  commentId: M:Vintagestory.API.Client.IShaderProgram.HasUniform(System.String)
+  parent: Vintagestory.API.Client.IShaderProgram
+  isExternal: true
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_HasUniform_System_String_
+  name: HasUniform(string)
+  nameWithType: IShaderProgram.HasUniform(string)
+  fullName: Vintagestory.API.Client.IShaderProgram.HasUniform(string)
+  nameWithType.vb: IShaderProgram.HasUniform(String)
+  fullName.vb: Vintagestory.API.Client.IShaderProgram.HasUniform(String)
+  name.vb: HasUniform(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IShaderProgram.HasUniform(System.String)
+    name: HasUniform
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_HasUniform_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IShaderProgram.HasUniform(System.String)
+    name: HasUniform
+    href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_HasUniform_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram.Disposed
+  commentId: P:Vintagestory.API.Client.IShaderProgram.Disposed
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_Disposed
+  name: Disposed
+  nameWithType: IShaderProgram.Disposed
+  fullName: Vintagestory.API.Client.IShaderProgram.Disposed
+- uid: Vintagestory.API.Client.IShaderProgram.LoadError
+  commentId: P:Vintagestory.API.Client.IShaderProgram.LoadError
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_LoadError
+  name: LoadError
+  nameWithType: IShaderProgram.LoadError
+  fullName: Vintagestory.API.Client.IShaderProgram.LoadError
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.IShaderProgram
+  commentId: T:Vintagestory.API.Client.IShaderProgram
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IShaderProgram.html
+  name: IShaderProgram
+  nameWithType: IShaderProgram
+  fullName: Vintagestory.API.Client.IShaderProgram
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.IStandardShaderProgram.Tex2D*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.Tex2D
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_Tex2D
+  name: Tex2D
+  nameWithType: IStandardShaderProgram.Tex2D
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.Tex2D
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ShadowMapNear2D*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ShadowMapNear2D
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ShadowMapNear2D
+  name: ShadowMapNear2D
+  nameWithType: IStandardShaderProgram.ShadowMapNear2D
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ShadowMapNear2D
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ShadowMapFar2D*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ShadowMapFar2D
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ShadowMapFar2D
+  name: ShadowMapFar2D
+  nameWithType: IStandardShaderProgram.ShadowMapFar2D
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ShadowMapFar2D
+- uid: Vintagestory.API.Client.IStandardShaderProgram.NormalShaded*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.NormalShaded
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_NormalShaded
+  name: NormalShaded
+  nameWithType: IStandardShaderProgram.NormalShaded
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.NormalShaded
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ZNear*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ZNear
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ZNear
+  name: ZNear
+  nameWithType: IStandardShaderProgram.ZNear
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ZNear
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ZFar*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ZFar
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ZFar
+  name: ZFar
+  nameWithType: IStandardShaderProgram.ZFar
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ZFar
+- uid: Vintagestory.API.Client.IStandardShaderProgram.AlphaTest*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.AlphaTest
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_AlphaTest
+  name: AlphaTest
+  nameWithType: IStandardShaderProgram.AlphaTest
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.AlphaTest
+- uid: Vintagestory.API.Client.IStandardShaderProgram.DamageEffect*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.DamageEffect
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_DamageEffect
+  name: DamageEffect
+  nameWithType: IStandardShaderProgram.DamageEffect
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.DamageEffect
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ExtraZOffset*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ExtraZOffset
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ExtraZOffset
+  name: ExtraZOffset
+  nameWithType: IStandardShaderProgram.ExtraZOffset
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ExtraZOffset
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ExtraGodray*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ExtraGodray
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ExtraGodray
+  name: ExtraGodray
+  nameWithType: IStandardShaderProgram.ExtraGodray
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ExtraGodray
+- uid: Vintagestory.API.Client.IStandardShaderProgram.RgbaAmbientIn*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.RgbaAmbientIn
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_RgbaAmbientIn
+  name: RgbaAmbientIn
+  nameWithType: IStandardShaderProgram.RgbaAmbientIn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.RgbaAmbientIn
+- uid: Vintagestory.API.MathTools.Vec3f
+  commentId: T:Vintagestory.API.MathTools.Vec3f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3f.html
+  name: Vec3f
+  nameWithType: Vec3f
+  fullName: Vintagestory.API.MathTools.Vec3f
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Client.IStandardShaderProgram.RgbaLightIn*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.RgbaLightIn
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_RgbaLightIn
+  name: RgbaLightIn
+  nameWithType: IStandardShaderProgram.RgbaLightIn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.RgbaLightIn
+- uid: Vintagestory.API.MathTools.Vec4f
+  commentId: T:Vintagestory.API.MathTools.Vec4f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec4f.html
+  name: Vec4f
+  nameWithType: Vec4f
+  fullName: Vintagestory.API.MathTools.Vec4f
+- uid: Vintagestory.API.Client.IStandardShaderProgram.RgbaGlowIn*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.RgbaGlowIn
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_RgbaGlowIn
+  name: RgbaGlowIn
+  nameWithType: IStandardShaderProgram.RgbaGlowIn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.RgbaGlowIn
+- uid: Vintagestory.API.Client.IStandardShaderProgram.RgbaFogIn*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.RgbaFogIn
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_RgbaFogIn
+  name: RgbaFogIn
+  nameWithType: IStandardShaderProgram.RgbaFogIn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.RgbaFogIn
+- uid: Vintagestory.API.Client.IStandardShaderProgram.RgbaTint*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.RgbaTint
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_RgbaTint
+  name: RgbaTint
+  nameWithType: IStandardShaderProgram.RgbaTint
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.RgbaTint
+- uid: Vintagestory.API.Client.IStandardShaderProgram.FogMinIn*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.FogMinIn
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_FogMinIn
+  name: FogMinIn
+  nameWithType: IStandardShaderProgram.FogMinIn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.FogMinIn
+- uid: Vintagestory.API.Client.IStandardShaderProgram.FogDensityIn*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.FogDensityIn
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_FogDensityIn
+  name: FogDensityIn
+  nameWithType: IStandardShaderProgram.FogDensityIn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.FogDensityIn
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ProjectionMatrix*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ProjectionMatrix
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ProjectionMatrix
+  name: ProjectionMatrix
+  nameWithType: IStandardShaderProgram.ProjectionMatrix
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ProjectionMatrix
+- uid: System.Single[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ModelMatrix*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ModelMatrix
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ModelMatrix
+  name: ModelMatrix
+  nameWithType: IStandardShaderProgram.ModelMatrix
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ModelMatrix
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ViewMatrix*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ViewMatrix
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ViewMatrix
+  name: ViewMatrix
+  nameWithType: IStandardShaderProgram.ViewMatrix
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ViewMatrix
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ExtraGlow*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ExtraGlow
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ExtraGlow
+  name: ExtraGlow
+  nameWithType: IStandardShaderProgram.ExtraGlow
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ExtraGlow
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixFar*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixFar
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ToShadowMapSpaceMatrixFar
+  name: ToShadowMapSpaceMatrixFar
+  nameWithType: IStandardShaderProgram.ToShadowMapSpaceMatrixFar
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixFar
+- uid: Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixNear*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixNear
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ToShadowMapSpaceMatrixNear
+  name: ToShadowMapSpaceMatrixNear
+  nameWithType: IStandardShaderProgram.ToShadowMapSpaceMatrixNear
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixNear
+- uid: Vintagestory.API.Client.IStandardShaderProgram.WaterWaveCounter*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.WaterWaveCounter
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_WaterWaveCounter
+  name: WaterWaveCounter
+  nameWithType: IStandardShaderProgram.WaterWaveCounter
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.WaterWaveCounter
+- uid: Vintagestory.API.Client.IStandardShaderProgram.DontWarpVertices*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.DontWarpVertices
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_DontWarpVertices
+  name: DontWarpVertices
+  nameWithType: IStandardShaderProgram.DontWarpVertices
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.DontWarpVertices
+- uid: Vintagestory.API.Client.IStandardShaderProgram.AddRenderFlags*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.AddRenderFlags
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_AddRenderFlags
+  name: AddRenderFlags
+  nameWithType: IStandardShaderProgram.AddRenderFlags
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.AddRenderFlags
+- uid: Vintagestory.API.Client.IStandardShaderProgram.Tex2dOverlay2D*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.Tex2dOverlay2D
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_Tex2dOverlay2D
+  name: Tex2dOverlay2D
+  nameWithType: IStandardShaderProgram.Tex2dOverlay2D
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.Tex2dOverlay2D
+- uid: Vintagestory.API.Client.IStandardShaderProgram.OverlayOpacity*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.OverlayOpacity
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_OverlayOpacity
+  name: OverlayOpacity
+  nameWithType: IStandardShaderProgram.OverlayOpacity
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.OverlayOpacity
+- uid: Vintagestory.API.Client.IStandardShaderProgram.SsaoAttn*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.SsaoAttn
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_SsaoAttn
+  name: SsaoAttn
+  nameWithType: IStandardShaderProgram.SsaoAttn
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.SsaoAttn
+- uid: Vintagestory.API.Client.IStandardShaderProgram.OverlayTextureSize*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.OverlayTextureSize
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_OverlayTextureSize
+  name: OverlayTextureSize
+  nameWithType: IStandardShaderProgram.OverlayTextureSize
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.OverlayTextureSize
+- uid: Vintagestory.API.MathTools.Vec2f
+  commentId: T:Vintagestory.API.MathTools.Vec2f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec2f.html
+  name: Vec2f
+  nameWithType: Vec2f
+  fullName: Vintagestory.API.MathTools.Vec2f
+- uid: Vintagestory.API.Client.IStandardShaderProgram.BaseTextureSize*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.BaseTextureSize
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_BaseTextureSize
+  name: BaseTextureSize
+  nameWithType: IStandardShaderProgram.BaseTextureSize
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.BaseTextureSize
+- uid: Vintagestory.API.Client.IStandardShaderProgram.BaseUvOrigin*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.BaseUvOrigin
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_BaseUvOrigin
+  name: BaseUvOrigin
+  nameWithType: IStandardShaderProgram.BaseUvOrigin
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.BaseUvOrigin

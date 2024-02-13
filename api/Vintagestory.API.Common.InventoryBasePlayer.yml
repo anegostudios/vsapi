@@ -1,0 +1,3292 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.InventoryBasePlayer
+  commentId: T:Vintagestory.API.Common.InventoryBasePlayer
+  id: InventoryBasePlayer
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.InventoryBasePlayer.#ctor(System.String,System.String,Vintagestory.API.Common.ICoreAPI)
+  - Vintagestory.API.Common.InventoryBasePlayer.#ctor(System.String,Vintagestory.API.Common.ICoreAPI)
+  - Vintagestory.API.Common.InventoryBasePlayer.CanPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+  - Vintagestory.API.Common.InventoryBasePlayer.DropAll(Vintagestory.API.MathTools.Vec3d,System.Int32)
+  - Vintagestory.API.Common.InventoryBasePlayer.HasOpened(Vintagestory.API.Common.IPlayer)
+  - Vintagestory.API.Common.InventoryBasePlayer.Player
+  - Vintagestory.API.Common.InventoryBasePlayer.RemoveOnClose
+  - Vintagestory.API.Common.InventoryBasePlayer.playerUID
+  - Vintagestory.API.Common.InventoryBasePlayer.spawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.Vec3d,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: InventoryBasePlayer
+  nameWithType: InventoryBasePlayer
+  fullName: Vintagestory.API.Common.InventoryBasePlayer
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/InventoryBasePlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InventoryBasePlayer
+    path: Common/Inventory/InventoryBasePlayer.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Abstract class used for all inventories that are "on" the player. Any inventory not inheriting from this class will not be stored to the savegame as part of the players inventory.
+  example: []
+  syntax:
+    content: 'public abstract class InventoryBasePlayer : InventoryBase, IInventory, IReadOnlyCollection<ItemSlot>, IEnumerable<ItemSlot>, IEnumerable'
+    content.vb: Public MustInherit Class InventoryBasePlayer Inherits InventoryBase Implements IInventory, IReadOnlyCollection(Of ItemSlot), IEnumerable(Of ItemSlot), IEnumerable
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Common.InventoryBase
+  implements:
+  - Vintagestory.API.Common.IInventory
+  - System.Collections.Generic.IReadOnlyCollection{Vintagestory.API.Common.ItemSlot}
+  - System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}
+  - System.Collections.IEnumerable
+  inheritedMembers:
+  - Vintagestory.API.Common.InventoryBase.Api
+  - Vintagestory.API.Common.InventoryBase.Pos
+  - Vintagestory.API.Common.InventoryBase.MaxContentDimensions
+  - Vintagestory.API.Common.InventoryBase.baseWeight
+  - Vintagestory.API.Common.InventoryBase.className
+  - Vintagestory.API.Common.InventoryBase.instanceID
+  - Vintagestory.API.Common.InventoryBase.lastChangedSinceServerStart
+  - Vintagestory.API.Common.InventoryBase.openedByPlayerGUIds
+  - Vintagestory.API.Common.InventoryBase.InvNetworkUtil
+  - Vintagestory.API.Common.InventoryBase.dirtySlots
+  - Vintagestory.API.Common.InventoryBase.InventoryID
+  - Vintagestory.API.Common.InventoryBase.ClassName
+  - Vintagestory.API.Common.InventoryBase.LastChanged
+  - Vintagestory.API.Common.InventoryBase.Count
+  - Vintagestory.API.Common.InventoryBase.CountForNetworkPacket
+  - Vintagestory.API.Common.InventoryBase.Item(System.Int32)
+  - Vintagestory.API.Common.InventoryBase.IsDirty
+  - Vintagestory.API.Common.InventoryBase.DirtySlots
+  - Vintagestory.API.Common.InventoryBase.TakeLocked
+  - Vintagestory.API.Common.InventoryBase.PutLocked
+  - Vintagestory.API.Common.InventoryBase.SlotModified
+  - Vintagestory.API.Common.InventoryBase.SlotNotified
+  - Vintagestory.API.Common.InventoryBase.OnInventoryOpened
+  - Vintagestory.API.Common.InventoryBase.OnInventoryClosed
+  - Vintagestory.API.Common.InventoryBase.OnAcquireTransitionSpeed
+  - Vintagestory.API.Common.InventoryBase.Empty
+  - Vintagestory.API.Common.InventoryBase.FirstNonEmptySlot
+  - Vintagestory.API.Common.InventoryBase.LateInitialize(System.String,Vintagestory.API.Common.ICoreAPI)
+  - Vintagestory.API.Common.InventoryBase.AfterBlocksLoaded(Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.InventoryBase.ResolveBlocksOrItems
+  - Vintagestory.API.Common.InventoryBase.GetSlotId(Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  - Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  - Vintagestory.API.Common.InventoryBase.GetSuitability(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  - Vintagestory.API.Common.InventoryBase.CanContain(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Common.InventoryBase.TryFlipItems(System.Int32,Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Common.InventoryBase.CanPlayerModify(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+  - Vintagestory.API.Common.InventoryBase.OnSearchTerm(System.String)
+  - Vintagestory.API.Common.InventoryBase.ActivateSlot(System.Int32,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  - Vintagestory.API.Common.InventoryBase.OnItemSlotModified(Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Common.InventoryBase.DidModifyItemSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStack)
+  - Vintagestory.API.Common.InventoryBase.PerformNotifySlot(System.Int32)
+  - Vintagestory.API.Common.InventoryBase.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  - Vintagestory.API.Common.InventoryBase.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  - Vintagestory.API.Common.InventoryBase.TryFlipItemStack(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[],System.Int64[])
+  - Vintagestory.API.Common.InventoryBase.TryMoveItemStack(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[],Vintagestory.API.Common.ItemStackMoveOperation@)
+  - Vintagestory.API.Common.InventoryBase.GetSlotsIfExists(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[])
+  - Vintagestory.API.Common.InventoryBase.SlotsFromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.ItemSlot[],System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  - Vintagestory.API.Common.InventoryBase.SlotsToTreeAttributes(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Datastructures.ITreeAttribute)
+  - Vintagestory.API.Common.InventoryBase.GenEmptySlots(System.Int32)
+  - Vintagestory.API.Common.InventoryBase.NewSlot(System.Int32)
+  - Vintagestory.API.Common.InventoryBase.MarkSlotDirty(System.Int32)
+  - Vintagestory.API.Common.InventoryBase.DiscardAll
+  - Vintagestory.API.Common.InventoryBase.DropSlotIfHot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  - Vintagestory.API.Common.InventoryBase.DropSlots(Vintagestory.API.MathTools.Vec3d,System.Int32[])
+  - Vintagestory.API.Common.InventoryBase.Clear
+  - Vintagestory.API.Common.InventoryBase.OnOwningEntityDeath(Vintagestory.API.MathTools.Vec3d)
+  - Vintagestory.API.Common.InventoryBase.GetTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType,Vintagestory.API.Common.ItemStack)
+  - Vintagestory.API.Common.InventoryBase.GetDefaultTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType)
+  - Vintagestory.API.Common.InventoryBase.Open(Vintagestory.API.Common.IPlayer)
+  - Vintagestory.API.Common.InventoryBase.Close(Vintagestory.API.Common.IPlayer)
+  - Vintagestory.API.Common.InventoryBase.GetEnumerator
+  - Vintagestory.API.Common.InventoryBase.GetAutoPushIntoSlot(Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Common.InventoryBase.GetAutoPullFromSlot(Vintagestory.API.MathTools.BlockFacing)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}.Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Action{Vintagestory.API.Common.ItemSlot})
+  - System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}.Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Func{Vintagestory.API.Common.ItemSlot,System.Double})
+  - System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}.Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Func{Vintagestory.API.Common.ItemSlot,System.Double})
+- uid: Vintagestory.API.Common.InventoryBasePlayer.RemoveOnClose
+  commentId: P:Vintagestory.API.Common.InventoryBasePlayer.RemoveOnClose
+  id: RemoveOnClose
+  parent: Vintagestory.API.Common.InventoryBasePlayer
+  langs:
+  - csharp
+  - vb
+  name: RemoveOnClose
+  nameWithType: InventoryBasePlayer.RemoveOnClose
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.RemoveOnClose
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/InventoryBasePlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RemoveOnClose
+    path: Common/Inventory/InventoryBasePlayer.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If true, the inventory will be removed from the list of available inventories once closed (i.e. is not a personal inventory that the player carries with him)
+  example: []
+  syntax:
+    content: public override bool RemoveOnClose { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides ReadOnly Property RemoveOnClose As Boolean
+  overridden: Vintagestory.API.Common.InventoryBase.RemoveOnClose
+  overload: Vintagestory.API.Common.InventoryBasePlayer.RemoveOnClose*
+- uid: Vintagestory.API.Common.InventoryBasePlayer.playerUID
+  commentId: F:Vintagestory.API.Common.InventoryBasePlayer.playerUID
+  id: playerUID
+  parent: Vintagestory.API.Common.InventoryBasePlayer
+  langs:
+  - csharp
+  - vb
+  name: playerUID
+  nameWithType: InventoryBasePlayer.playerUID
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.playerUID
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/InventoryBasePlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: playerUID
+    path: Common/Inventory/InventoryBasePlayer.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The player ID for the inventory.
+  example: []
+  syntax:
+    content: protected string playerUID
+    return:
+      type: System.String
+    content.vb: Protected playerUID As String
+- uid: Vintagestory.API.Common.InventoryBasePlayer.Player
+  commentId: P:Vintagestory.API.Common.InventoryBasePlayer.Player
+  id: Player
+  parent: Vintagestory.API.Common.InventoryBasePlayer
+  langs:
+  - csharp
+  - vb
+  name: Player
+  nameWithType: InventoryBasePlayer.Player
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.Player
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/InventoryBasePlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Player
+    path: Common/Inventory/InventoryBasePlayer.cs
+    startLine: 21
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The owning player of this inventory
+  example: []
+  syntax:
+    content: public IPlayer Player { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.IPlayer
+    content.vb: Public ReadOnly Property Player As IPlayer
+  overload: Vintagestory.API.Common.InventoryBasePlayer.Player*
+- uid: Vintagestory.API.Common.InventoryBasePlayer.#ctor(System.String,System.String,Vintagestory.API.Common.ICoreAPI)
+  commentId: M:Vintagestory.API.Common.InventoryBasePlayer.#ctor(System.String,System.String,Vintagestory.API.Common.ICoreAPI)
+  id: '#ctor(System.String,System.String,Vintagestory.API.Common.ICoreAPI)'
+  parent: Vintagestory.API.Common.InventoryBasePlayer
+  langs:
+  - csharp
+  - vb
+  name: InventoryBasePlayer(string, string, ICoreAPI)
+  nameWithType: InventoryBasePlayer.InventoryBasePlayer(string, string, ICoreAPI)
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.InventoryBasePlayer(string, string, Vintagestory.API.Common.ICoreAPI)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/InventoryBasePlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Inventory/InventoryBasePlayer.cs
+    startLine: 24
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public InventoryBasePlayer(string className, string playerUID, ICoreAPI api)
+    parameters:
+    - id: className
+      type: System.String
+    - id: playerUID
+      type: System.String
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+    content.vb: Public Sub New(className As String, playerUID As String, api As ICoreAPI)
+  overload: Vintagestory.API.Common.InventoryBasePlayer.#ctor*
+  nameWithType.vb: InventoryBasePlayer.New(String, String, ICoreAPI)
+  fullName.vb: Vintagestory.API.Common.InventoryBasePlayer.New(String, String, Vintagestory.API.Common.ICoreAPI)
+  name.vb: New(String, String, ICoreAPI)
+- uid: Vintagestory.API.Common.InventoryBasePlayer.#ctor(System.String,Vintagestory.API.Common.ICoreAPI)
+  commentId: M:Vintagestory.API.Common.InventoryBasePlayer.#ctor(System.String,Vintagestory.API.Common.ICoreAPI)
+  id: '#ctor(System.String,Vintagestory.API.Common.ICoreAPI)'
+  parent: Vintagestory.API.Common.InventoryBasePlayer
+  langs:
+  - csharp
+  - vb
+  name: InventoryBasePlayer(string, ICoreAPI)
+  nameWithType: InventoryBasePlayer.InventoryBasePlayer(string, ICoreAPI)
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.InventoryBasePlayer(string, Vintagestory.API.Common.ICoreAPI)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/InventoryBasePlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Inventory/InventoryBasePlayer.cs
+    startLine: 29
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public InventoryBasePlayer(string inventoryID, ICoreAPI api)
+    parameters:
+    - id: inventoryID
+      type: System.String
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+    content.vb: Public Sub New(inventoryID As String, api As ICoreAPI)
+  overload: Vintagestory.API.Common.InventoryBasePlayer.#ctor*
+  nameWithType.vb: InventoryBasePlayer.New(String, ICoreAPI)
+  fullName.vb: Vintagestory.API.Common.InventoryBasePlayer.New(String, Vintagestory.API.Common.ICoreAPI)
+  name.vb: New(String, ICoreAPI)
+- uid: Vintagestory.API.Common.InventoryBasePlayer.CanPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+  commentId: M:Vintagestory.API.Common.InventoryBasePlayer.CanPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+  id: CanPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+  parent: Vintagestory.API.Common.InventoryBasePlayer
+  langs:
+  - csharp
+  - vb
+  name: CanPlayerAccess(IPlayer, EntityPos)
+  nameWithType: InventoryBasePlayer.CanPlayerAccess(IPlayer, EntityPos)
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.CanPlayerAccess(Vintagestory.API.Common.IPlayer, Vintagestory.API.Common.Entities.EntityPos)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/InventoryBasePlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CanPlayerAccess
+    path: Common/Inventory/InventoryBasePlayer.cs
+    startLine: 34
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Determines whether or not the player can access the invnetory.
+  example: []
+  syntax:
+    content: public override bool CanPlayerAccess(IPlayer player, EntityPos position)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+      description: The player attempting access.
+    - id: position
+      type: Vintagestory.API.Common.Entities.EntityPos
+      description: The postion of the entity.
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function CanPlayerAccess(player As IPlayer, position As EntityPos) As Boolean
+  overridden: Vintagestory.API.Common.InventoryBase.CanPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+  overload: Vintagestory.API.Common.InventoryBasePlayer.CanPlayerAccess*
+- uid: Vintagestory.API.Common.InventoryBasePlayer.HasOpened(Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.InventoryBasePlayer.HasOpened(Vintagestory.API.Common.IPlayer)
+  id: HasOpened(Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.InventoryBasePlayer
+  langs:
+  - csharp
+  - vb
+  name: HasOpened(IPlayer)
+  nameWithType: InventoryBasePlayer.HasOpened(IPlayer)
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.HasOpened(Vintagestory.API.Common.IPlayer)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/InventoryBasePlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: HasOpened
+    path: Common/Inventory/InventoryBasePlayer.cs
+    startLine: 39
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Checks if given player has this inventory currently opened
+  example: []
+  syntax:
+    content: public override bool HasOpened(IPlayer player)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Overrides Function HasOpened(player As IPlayer) As Boolean
+  overridden: Vintagestory.API.Common.InventoryBase.HasOpened(Vintagestory.API.Common.IPlayer)
+  overload: Vintagestory.API.Common.InventoryBasePlayer.HasOpened*
+- uid: Vintagestory.API.Common.InventoryBasePlayer.DropAll(Vintagestory.API.MathTools.Vec3d,System.Int32)
+  commentId: M:Vintagestory.API.Common.InventoryBasePlayer.DropAll(Vintagestory.API.MathTools.Vec3d,System.Int32)
+  id: DropAll(Vintagestory.API.MathTools.Vec3d,System.Int32)
+  parent: Vintagestory.API.Common.InventoryBasePlayer
+  langs:
+  - csharp
+  - vb
+  name: DropAll(Vec3d, int)
+  nameWithType: InventoryBasePlayer.DropAll(Vec3d, int)
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.DropAll(Vintagestory.API.MathTools.Vec3d, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/InventoryBasePlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DropAll
+    path: Common/Inventory/InventoryBasePlayer.cs
+    startLine: 44
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Drops the contents of all the slots into the world.
+  example: []
+  syntax:
+    content: public override void DropAll(Vec3d pos, int maxStackSize = 0)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec3d
+      description: Where to drop all this stuff.
+    - id: maxStackSize
+      type: System.Int32
+      description: If non-zero, will split up the stacks into stacks of give max stack size
+    content.vb: Public Overrides Sub DropAll(pos As Vec3d, maxStackSize As Integer = 0)
+  overridden: Vintagestory.API.Common.InventoryBase.DropAll(Vintagestory.API.MathTools.Vec3d,System.Int32)
+  overload: Vintagestory.API.Common.InventoryBasePlayer.DropAll*
+  nameWithType.vb: InventoryBasePlayer.DropAll(Vec3d, Integer)
+  fullName.vb: Vintagestory.API.Common.InventoryBasePlayer.DropAll(Vintagestory.API.MathTools.Vec3d, Integer)
+  name.vb: DropAll(Vec3d, Integer)
+- uid: Vintagestory.API.Common.InventoryBasePlayer.spawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.Vec3d,System.Int32)
+  commentId: M:Vintagestory.API.Common.InventoryBasePlayer.spawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.Vec3d,System.Int32)
+  id: spawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.Vec3d,System.Int32)
+  parent: Vintagestory.API.Common.InventoryBasePlayer
+  langs:
+  - csharp
+  - vb
+  name: spawnItemEntity(ItemStack, Vec3d, int)
+  nameWithType: InventoryBasePlayer.spawnItemEntity(ItemStack, Vec3d, int)
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.spawnItemEntity(Vintagestory.API.Common.ItemStack, Vintagestory.API.MathTools.Vec3d, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/InventoryBasePlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: spawnItemEntity
+    path: Common/Inventory/InventoryBasePlayer.cs
+    startLine: 82
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected void spawnItemEntity(ItemStack itemstack, Vec3d pos, int timer)
+    parameters:
+    - id: itemstack
+      type: Vintagestory.API.Common.ItemStack
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec3d
+    - id: timer
+      type: System.Int32
+    content.vb: Protected Sub spawnItemEntity(itemstack As ItemStack, pos As Vec3d, timer As Integer)
+  overload: Vintagestory.API.Common.InventoryBasePlayer.spawnItemEntity*
+  nameWithType.vb: InventoryBasePlayer.spawnItemEntity(ItemStack, Vec3d, Integer)
+  fullName.vb: Vintagestory.API.Common.InventoryBasePlayer.spawnItemEntity(Vintagestory.API.Common.ItemStack, Vintagestory.API.MathTools.Vec3d, Integer)
+  name.vb: spawnItemEntity(ItemStack, Vec3d, Integer)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.InventoryBase
+  commentId: T:Vintagestory.API.Common.InventoryBase
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.InventoryBase.html
+  name: InventoryBase
+  nameWithType: InventoryBase
+  fullName: Vintagestory.API.Common.InventoryBase
+- uid: Vintagestory.API.Common.IInventory
+  commentId: T:Vintagestory.API.Common.IInventory
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IInventory.html
+  name: IInventory
+  nameWithType: IInventory
+  fullName: Vintagestory.API.Common.IInventory
+- uid: System.Collections.Generic.IReadOnlyCollection{Vintagestory.API.Common.ItemSlot}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{Vintagestory.API.Common.ItemSlot}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<ItemSlot>
+  nameWithType: IReadOnlyCollection<ItemSlot>
+  fullName: System.Collections.Generic.IReadOnlyCollection<Vintagestory.API.Common.ItemSlot>
+  nameWithType.vb: IReadOnlyCollection(Of ItemSlot)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of Vintagestory.API.Common.ItemSlot)
+  name.vb: IReadOnlyCollection(Of ItemSlot)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}
+  commentId: T:System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<ItemSlot>
+  nameWithType: IEnumerable<ItemSlot>
+  fullName: System.Collections.Generic.IEnumerable<Vintagestory.API.Common.ItemSlot>
+  nameWithType.vb: IEnumerable(Of ItemSlot)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Vintagestory.API.Common.ItemSlot)
+  name.vb: IEnumerable(Of ItemSlot)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: Vintagestory.API.Common.InventoryBase.Api
+  commentId: F:Vintagestory.API.Common.InventoryBase.Api
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Api
+  name: Api
+  nameWithType: InventoryBase.Api
+  fullName: Vintagestory.API.Common.InventoryBase.Api
+- uid: Vintagestory.API.Common.InventoryBase.Pos
+  commentId: F:Vintagestory.API.Common.InventoryBase.Pos
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Pos
+  name: Pos
+  nameWithType: InventoryBase.Pos
+  fullName: Vintagestory.API.Common.InventoryBase.Pos
+- uid: Vintagestory.API.Common.InventoryBase.MaxContentDimensions
+  commentId: P:Vintagestory.API.Common.InventoryBase.MaxContentDimensions
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_MaxContentDimensions
+  name: MaxContentDimensions
+  nameWithType: InventoryBase.MaxContentDimensions
+  fullName: Vintagestory.API.Common.InventoryBase.MaxContentDimensions
+- uid: Vintagestory.API.Common.InventoryBase.baseWeight
+  commentId: F:Vintagestory.API.Common.InventoryBase.baseWeight
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_baseWeight
+  name: baseWeight
+  nameWithType: InventoryBase.baseWeight
+  fullName: Vintagestory.API.Common.InventoryBase.baseWeight
+- uid: Vintagestory.API.Common.InventoryBase.className
+  commentId: F:Vintagestory.API.Common.InventoryBase.className
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_className
+  name: className
+  nameWithType: InventoryBase.className
+  fullName: Vintagestory.API.Common.InventoryBase.className
+- uid: Vintagestory.API.Common.InventoryBase.instanceID
+  commentId: F:Vintagestory.API.Common.InventoryBase.instanceID
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_instanceID
+  name: instanceID
+  nameWithType: InventoryBase.instanceID
+  fullName: Vintagestory.API.Common.InventoryBase.instanceID
+- uid: Vintagestory.API.Common.InventoryBase.lastChangedSinceServerStart
+  commentId: F:Vintagestory.API.Common.InventoryBase.lastChangedSinceServerStart
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_lastChangedSinceServerStart
+  name: lastChangedSinceServerStart
+  nameWithType: InventoryBase.lastChangedSinceServerStart
+  fullName: Vintagestory.API.Common.InventoryBase.lastChangedSinceServerStart
+- uid: Vintagestory.API.Common.InventoryBase.openedByPlayerGUIds
+  commentId: F:Vintagestory.API.Common.InventoryBase.openedByPlayerGUIds
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_openedByPlayerGUIds
+  name: openedByPlayerGUIds
+  nameWithType: InventoryBase.openedByPlayerGUIds
+  fullName: Vintagestory.API.Common.InventoryBase.openedByPlayerGUIds
+- uid: Vintagestory.API.Common.InventoryBase.InvNetworkUtil
+  commentId: F:Vintagestory.API.Common.InventoryBase.InvNetworkUtil
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_InvNetworkUtil
+  name: InvNetworkUtil
+  nameWithType: InventoryBase.InvNetworkUtil
+  fullName: Vintagestory.API.Common.InventoryBase.InvNetworkUtil
+- uid: Vintagestory.API.Common.InventoryBase.dirtySlots
+  commentId: F:Vintagestory.API.Common.InventoryBase.dirtySlots
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_dirtySlots
+  name: dirtySlots
+  nameWithType: InventoryBase.dirtySlots
+  fullName: Vintagestory.API.Common.InventoryBase.dirtySlots
+- uid: Vintagestory.API.Common.InventoryBase.InventoryID
+  commentId: P:Vintagestory.API.Common.InventoryBase.InventoryID
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_InventoryID
+  name: InventoryID
+  nameWithType: InventoryBase.InventoryID
+  fullName: Vintagestory.API.Common.InventoryBase.InventoryID
+- uid: Vintagestory.API.Common.InventoryBase.ClassName
+  commentId: P:Vintagestory.API.Common.InventoryBase.ClassName
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ClassName
+  name: ClassName
+  nameWithType: InventoryBase.ClassName
+  fullName: Vintagestory.API.Common.InventoryBase.ClassName
+- uid: Vintagestory.API.Common.InventoryBase.LastChanged
+  commentId: P:Vintagestory.API.Common.InventoryBase.LastChanged
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_LastChanged
+  name: LastChanged
+  nameWithType: InventoryBase.LastChanged
+  fullName: Vintagestory.API.Common.InventoryBase.LastChanged
+- uid: Vintagestory.API.Common.InventoryBase.Count
+  commentId: P:Vintagestory.API.Common.InventoryBase.Count
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Count
+  name: Count
+  nameWithType: InventoryBase.Count
+  fullName: Vintagestory.API.Common.InventoryBase.Count
+- uid: Vintagestory.API.Common.InventoryBase.CountForNetworkPacket
+  commentId: P:Vintagestory.API.Common.InventoryBase.CountForNetworkPacket
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CountForNetworkPacket
+  name: CountForNetworkPacket
+  nameWithType: InventoryBase.CountForNetworkPacket
+  fullName: Vintagestory.API.Common.InventoryBase.CountForNetworkPacket
+- uid: Vintagestory.API.Common.InventoryBase.Item(System.Int32)
+  commentId: P:Vintagestory.API.Common.InventoryBase.Item(System.Int32)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: this[int]
+  nameWithType: InventoryBase.this[int]
+  fullName: Vintagestory.API.Common.InventoryBase.this[int]
+  nameWithType.vb: InventoryBase.this[](Integer)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.this[](Integer)
+  name.vb: this[](Integer)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.Item(System.Int32)
+    name: this[]
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Item_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.IsDirty
+  commentId: P:Vintagestory.API.Common.InventoryBase.IsDirty
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_IsDirty
+  name: IsDirty
+  nameWithType: InventoryBase.IsDirty
+  fullName: Vintagestory.API.Common.InventoryBase.IsDirty
+- uid: Vintagestory.API.Common.InventoryBase.DirtySlots
+  commentId: P:Vintagestory.API.Common.InventoryBase.DirtySlots
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DirtySlots
+  name: DirtySlots
+  nameWithType: InventoryBase.DirtySlots
+  fullName: Vintagestory.API.Common.InventoryBase.DirtySlots
+- uid: Vintagestory.API.Common.InventoryBase.TakeLocked
+  commentId: P:Vintagestory.API.Common.InventoryBase.TakeLocked
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TakeLocked
+  name: TakeLocked
+  nameWithType: InventoryBase.TakeLocked
+  fullName: Vintagestory.API.Common.InventoryBase.TakeLocked
+- uid: Vintagestory.API.Common.InventoryBase.PutLocked
+  commentId: P:Vintagestory.API.Common.InventoryBase.PutLocked
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_PutLocked
+  name: PutLocked
+  nameWithType: InventoryBase.PutLocked
+  fullName: Vintagestory.API.Common.InventoryBase.PutLocked
+- uid: Vintagestory.API.Common.InventoryBase.SlotModified
+  commentId: E:Vintagestory.API.Common.InventoryBase.SlotModified
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_SlotModified
+  name: SlotModified
+  nameWithType: InventoryBase.SlotModified
+  fullName: Vintagestory.API.Common.InventoryBase.SlotModified
+- uid: Vintagestory.API.Common.InventoryBase.SlotNotified
+  commentId: E:Vintagestory.API.Common.InventoryBase.SlotNotified
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_SlotNotified
+  name: SlotNotified
+  nameWithType: InventoryBase.SlotNotified
+  fullName: Vintagestory.API.Common.InventoryBase.SlotNotified
+- uid: Vintagestory.API.Common.InventoryBase.OnInventoryOpened
+  commentId: E:Vintagestory.API.Common.InventoryBase.OnInventoryOpened
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnInventoryOpened
+  name: OnInventoryOpened
+  nameWithType: InventoryBase.OnInventoryOpened
+  fullName: Vintagestory.API.Common.InventoryBase.OnInventoryOpened
+- uid: Vintagestory.API.Common.InventoryBase.OnInventoryClosed
+  commentId: E:Vintagestory.API.Common.InventoryBase.OnInventoryClosed
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnInventoryClosed
+  name: OnInventoryClosed
+  nameWithType: InventoryBase.OnInventoryClosed
+  fullName: Vintagestory.API.Common.InventoryBase.OnInventoryClosed
+- uid: Vintagestory.API.Common.InventoryBase.OnAcquireTransitionSpeed
+  commentId: F:Vintagestory.API.Common.InventoryBase.OnAcquireTransitionSpeed
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnAcquireTransitionSpeed
+  name: OnAcquireTransitionSpeed
+  nameWithType: InventoryBase.OnAcquireTransitionSpeed
+  fullName: Vintagestory.API.Common.InventoryBase.OnAcquireTransitionSpeed
+- uid: Vintagestory.API.Common.InventoryBase.Empty
+  commentId: P:Vintagestory.API.Common.InventoryBase.Empty
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Empty
+  name: Empty
+  nameWithType: InventoryBase.Empty
+  fullName: Vintagestory.API.Common.InventoryBase.Empty
+- uid: Vintagestory.API.Common.InventoryBase.FirstNonEmptySlot
+  commentId: P:Vintagestory.API.Common.InventoryBase.FirstNonEmptySlot
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_FirstNonEmptySlot
+  name: FirstNonEmptySlot
+  nameWithType: InventoryBase.FirstNonEmptySlot
+  fullName: Vintagestory.API.Common.InventoryBase.FirstNonEmptySlot
+- uid: Vintagestory.API.Common.InventoryBase.LateInitialize(System.String,Vintagestory.API.Common.ICoreAPI)
+  commentId: M:Vintagestory.API.Common.InventoryBase.LateInitialize(System.String,Vintagestory.API.Common.ICoreAPI)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_LateInitialize_System_String_Vintagestory_API_Common_ICoreAPI_
+  name: LateInitialize(string, ICoreAPI)
+  nameWithType: InventoryBase.LateInitialize(string, ICoreAPI)
+  fullName: Vintagestory.API.Common.InventoryBase.LateInitialize(string, Vintagestory.API.Common.ICoreAPI)
+  nameWithType.vb: InventoryBase.LateInitialize(String, ICoreAPI)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.LateInitialize(String, Vintagestory.API.Common.ICoreAPI)
+  name.vb: LateInitialize(String, ICoreAPI)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.LateInitialize(System.String,Vintagestory.API.Common.ICoreAPI)
+    name: LateInitialize
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_LateInitialize_System_String_Vintagestory_API_Common_ICoreAPI_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.LateInitialize(System.String,Vintagestory.API.Common.ICoreAPI)
+    name: LateInitialize
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_LateInitialize_System_String_Vintagestory_API_Common_ICoreAPI_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.AfterBlocksLoaded(Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.InventoryBase.AfterBlocksLoaded(Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_AfterBlocksLoaded_Vintagestory_API_Common_IWorldAccessor_
+  name: AfterBlocksLoaded(IWorldAccessor)
+  nameWithType: InventoryBase.AfterBlocksLoaded(IWorldAccessor)
+  fullName: Vintagestory.API.Common.InventoryBase.AfterBlocksLoaded(Vintagestory.API.Common.IWorldAccessor)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.AfterBlocksLoaded(Vintagestory.API.Common.IWorldAccessor)
+    name: AfterBlocksLoaded
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_AfterBlocksLoaded_Vintagestory_API_Common_IWorldAccessor_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.AfterBlocksLoaded(Vintagestory.API.Common.IWorldAccessor)
+    name: AfterBlocksLoaded
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_AfterBlocksLoaded_Vintagestory_API_Common_IWorldAccessor_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.ResolveBlocksOrItems
+  commentId: M:Vintagestory.API.Common.InventoryBase.ResolveBlocksOrItems
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ResolveBlocksOrItems
+  name: ResolveBlocksOrItems()
+  nameWithType: InventoryBase.ResolveBlocksOrItems()
+  fullName: Vintagestory.API.Common.InventoryBase.ResolveBlocksOrItems()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.ResolveBlocksOrItems
+    name: ResolveBlocksOrItems
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ResolveBlocksOrItems
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.ResolveBlocksOrItems
+    name: ResolveBlocksOrItems
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ResolveBlocksOrItems
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.GetSlotId(Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Common.InventoryBase.GetSlotId(Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetSlotId_Vintagestory_API_Common_ItemSlot_
+  name: GetSlotId(ItemSlot)
+  nameWithType: InventoryBase.GetSlotId(ItemSlot)
+  fullName: Vintagestory.API.Common.InventoryBase.GetSlotId(Vintagestory.API.Common.ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.GetSlotId(Vintagestory.API.Common.ItemSlot)
+    name: GetSlotId
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetSlotId_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.GetSlotId(Vintagestory.API.Common.ItemSlot)
+    name: GetSlotId
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetSlotId_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  commentId: M:Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetBestSuitedSlot_Vintagestory_API_Common_ItemSlot_System_Collections_Generic_List_Vintagestory_API_Common_ItemSlot__
+  name: GetBestSuitedSlot(ItemSlot, List<ItemSlot>)
+  nameWithType: InventoryBase.GetBestSuitedSlot(ItemSlot, List<ItemSlot>)
+  fullName: Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot, System.Collections.Generic.List<Vintagestory.API.Common.ItemSlot>)
+  nameWithType.vb: InventoryBase.GetBestSuitedSlot(ItemSlot, List(Of ItemSlot))
+  fullName.vb: Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot, System.Collections.Generic.List(Of Vintagestory.API.Common.ItemSlot))
+  name.vb: GetBestSuitedSlot(ItemSlot, List(Of ItemSlot))
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+    name: GetBestSuitedSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetBestSuitedSlot_Vintagestory_API_Common_ItemSlot_System_Collections_Generic_List_Vintagestory_API_Common_ItemSlot__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+    name: GetBestSuitedSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetBestSuitedSlot_Vintagestory_API_Common_ItemSlot_System_Collections_Generic_List_Vintagestory_API_Common_ItemSlot__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  commentId: M:Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetBestSuitedSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation_System_Collections_Generic_List_Vintagestory_API_Common_ItemSlot__
+  name: GetBestSuitedSlot(ItemSlot, ItemStackMoveOperation, List<ItemSlot>)
+  nameWithType: InventoryBase.GetBestSuitedSlot(ItemSlot, ItemStackMoveOperation, List<ItemSlot>)
+  fullName: Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation, System.Collections.Generic.List<Vintagestory.API.Common.ItemSlot>)
+  nameWithType.vb: InventoryBase.GetBestSuitedSlot(ItemSlot, ItemStackMoveOperation, List(Of ItemSlot))
+  fullName.vb: Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation, System.Collections.Generic.List(Of Vintagestory.API.Common.ItemSlot))
+  name.vb: GetBestSuitedSlot(ItemSlot, ItemStackMoveOperation, List(Of ItemSlot))
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+    name: GetBestSuitedSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetBestSuitedSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation_System_Collections_Generic_List_Vintagestory_API_Common_ItemSlot__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+    name: GetBestSuitedSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetBestSuitedSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation_System_Collections_Generic_List_Vintagestory_API_Common_ItemSlot__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.GetSuitability(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  commentId: M:Vintagestory.API.Common.InventoryBase.GetSuitability(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetSuitability_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot_System_Boolean_
+  name: GetSuitability(ItemSlot, ItemSlot, bool)
+  nameWithType: InventoryBase.GetSuitability(ItemSlot, ItemSlot, bool)
+  fullName: Vintagestory.API.Common.InventoryBase.GetSuitability(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemSlot, bool)
+  nameWithType.vb: InventoryBase.GetSuitability(ItemSlot, ItemSlot, Boolean)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.GetSuitability(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemSlot, Boolean)
+  name.vb: GetSuitability(ItemSlot, ItemSlot, Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.GetSuitability(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot,System.Boolean)
+    name: GetSuitability
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetSuitability_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot_System_Boolean_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.GetSuitability(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot,System.Boolean)
+    name: GetSuitability
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetSuitability_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot_System_Boolean_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.CanContain(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Common.InventoryBase.CanContain(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CanContain_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot_
+  name: CanContain(ItemSlot, ItemSlot)
+  nameWithType: InventoryBase.CanContain(ItemSlot, ItemSlot)
+  fullName: Vintagestory.API.Common.InventoryBase.CanContain(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.CanContain(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot)
+    name: CanContain
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CanContain_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.CanContain(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot)
+    name: CanContain
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CanContain_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.TryFlipItems(System.Int32,Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Common.InventoryBase.TryFlipItems(System.Int32,Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TryFlipItems_System_Int32_Vintagestory_API_Common_ItemSlot_
+  name: TryFlipItems(int, ItemSlot)
+  nameWithType: InventoryBase.TryFlipItems(int, ItemSlot)
+  fullName: Vintagestory.API.Common.InventoryBase.TryFlipItems(int, Vintagestory.API.Common.ItemSlot)
+  nameWithType.vb: InventoryBase.TryFlipItems(Integer, ItemSlot)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.TryFlipItems(Integer, Vintagestory.API.Common.ItemSlot)
+  name.vb: TryFlipItems(Integer, ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.TryFlipItems(System.Int32,Vintagestory.API.Common.ItemSlot)
+    name: TryFlipItems
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TryFlipItems_System_Int32_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.TryFlipItems(System.Int32,Vintagestory.API.Common.ItemSlot)
+    name: TryFlipItems
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TryFlipItems_System_Int32_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.CanPlayerModify(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+  commentId: M:Vintagestory.API.Common.InventoryBase.CanPlayerModify(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CanPlayerModify_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_Entities_EntityPos_
+  name: CanPlayerModify(IPlayer, EntityPos)
+  nameWithType: InventoryBase.CanPlayerModify(IPlayer, EntityPos)
+  fullName: Vintagestory.API.Common.InventoryBase.CanPlayerModify(Vintagestory.API.Common.IPlayer, Vintagestory.API.Common.Entities.EntityPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.CanPlayerModify(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+    name: CanPlayerModify
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CanPlayerModify_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_Entities_EntityPos_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.EntityPos
+    name: EntityPos
+    href: Vintagestory.API.Common.Entities.EntityPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.CanPlayerModify(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+    name: CanPlayerModify
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CanPlayerModify_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_Entities_EntityPos_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.EntityPos
+    name: EntityPos
+    href: Vintagestory.API.Common.Entities.EntityPos.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.OnSearchTerm(System.String)
+  commentId: M:Vintagestory.API.Common.InventoryBase.OnSearchTerm(System.String)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnSearchTerm_System_String_
+  name: OnSearchTerm(string)
+  nameWithType: InventoryBase.OnSearchTerm(string)
+  fullName: Vintagestory.API.Common.InventoryBase.OnSearchTerm(string)
+  nameWithType.vb: InventoryBase.OnSearchTerm(String)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.OnSearchTerm(String)
+  name.vb: OnSearchTerm(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.OnSearchTerm(System.String)
+    name: OnSearchTerm
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnSearchTerm_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.OnSearchTerm(System.String)
+    name: OnSearchTerm
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnSearchTerm_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.ActivateSlot(System.Int32,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  commentId: M:Vintagestory.API.Common.InventoryBase.ActivateSlot(System.Int32,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ActivateSlot_System_Int32_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  name: ActivateSlot(int, ItemSlot, ref ItemStackMoveOperation)
+  nameWithType: InventoryBase.ActivateSlot(int, ItemSlot, ref ItemStackMoveOperation)
+  fullName: Vintagestory.API.Common.InventoryBase.ActivateSlot(int, Vintagestory.API.Common.ItemSlot, ref Vintagestory.API.Common.ItemStackMoveOperation)
+  nameWithType.vb: InventoryBase.ActivateSlot(Integer, ItemSlot, ItemStackMoveOperation)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.ActivateSlot(Integer, Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation)
+  name.vb: ActivateSlot(Integer, ItemSlot, ItemStackMoveOperation)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.ActivateSlot(System.Int32,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: ActivateSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ActivateSlot_System_Int32_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.ActivateSlot(System.Int32,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: ActivateSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ActivateSlot_System_Int32_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.OnItemSlotModified(Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Common.InventoryBase.OnItemSlotModified(Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnItemSlotModified_Vintagestory_API_Common_ItemSlot_
+  name: OnItemSlotModified(ItemSlot)
+  nameWithType: InventoryBase.OnItemSlotModified(ItemSlot)
+  fullName: Vintagestory.API.Common.InventoryBase.OnItemSlotModified(Vintagestory.API.Common.ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.OnItemSlotModified(Vintagestory.API.Common.ItemSlot)
+    name: OnItemSlotModified
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnItemSlotModified_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.OnItemSlotModified(Vintagestory.API.Common.ItemSlot)
+    name: OnItemSlotModified
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnItemSlotModified_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.DidModifyItemSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStack)
+  commentId: M:Vintagestory.API.Common.InventoryBase.DidModifyItemSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStack)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DidModifyItemSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStack_
+  name: DidModifyItemSlot(ItemSlot, ItemStack)
+  nameWithType: InventoryBase.DidModifyItemSlot(ItemSlot, ItemStack)
+  fullName: Vintagestory.API.Common.InventoryBase.DidModifyItemSlot(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStack)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.DidModifyItemSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStack)
+    name: DidModifyItemSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DidModifyItemSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.DidModifyItemSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStack)
+    name: DidModifyItemSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DidModifyItemSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.PerformNotifySlot(System.Int32)
+  commentId: M:Vintagestory.API.Common.InventoryBase.PerformNotifySlot(System.Int32)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_PerformNotifySlot_System_Int32_
+  name: PerformNotifySlot(int)
+  nameWithType: InventoryBase.PerformNotifySlot(int)
+  fullName: Vintagestory.API.Common.InventoryBase.PerformNotifySlot(int)
+  nameWithType.vb: InventoryBase.PerformNotifySlot(Integer)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.PerformNotifySlot(Integer)
+  name.vb: PerformNotifySlot(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.PerformNotifySlot(System.Int32)
+    name: PerformNotifySlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_PerformNotifySlot_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.PerformNotifySlot(System.Int32)
+    name: PerformNotifySlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_PerformNotifySlot_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  commentId: M:Vintagestory.API.Common.InventoryBase.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_FromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_
+  name: FromTreeAttributes(ITreeAttribute)
+  nameWithType: InventoryBase.FromTreeAttributes(ITreeAttribute)
+  fullName: Vintagestory.API.Common.InventoryBase.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+    name: FromTreeAttributes
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_FromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+    name: FromTreeAttributes
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_FromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  commentId: M:Vintagestory.API.Common.InventoryBase.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ToTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_
+  name: ToTreeAttributes(ITreeAttribute)
+  nameWithType: InventoryBase.ToTreeAttributes(ITreeAttribute)
+  fullName: Vintagestory.API.Common.InventoryBase.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+    name: ToTreeAttributes
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ToTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)
+    name: ToTreeAttributes
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_ToTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.TryFlipItemStack(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[],System.Int64[])
+  commentId: M:Vintagestory.API.Common.InventoryBase.TryFlipItemStack(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[],System.Int64[])
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TryFlipItemStack_Vintagestory_API_Common_IPlayer_System_String___System_Int32___System_Int64___
+  name: TryFlipItemStack(IPlayer, string[], int[], long[])
+  nameWithType: InventoryBase.TryFlipItemStack(IPlayer, string[], int[], long[])
+  fullName: Vintagestory.API.Common.InventoryBase.TryFlipItemStack(Vintagestory.API.Common.IPlayer, string[], int[], long[])
+  nameWithType.vb: InventoryBase.TryFlipItemStack(IPlayer, String(), Integer(), Long())
+  fullName.vb: Vintagestory.API.Common.InventoryBase.TryFlipItemStack(Vintagestory.API.Common.IPlayer, String(), Integer(), Long())
+  name.vb: TryFlipItemStack(IPlayer, String(), Integer(), Long())
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.TryFlipItemStack(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[],System.Int64[])
+    name: TryFlipItemStack
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TryFlipItemStack_Vintagestory_API_Common_IPlayer_System_String___System_Int32___System_Int64___
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.TryFlipItemStack(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[],System.Int64[])
+    name: TryFlipItemStack
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TryFlipItemStack_Vintagestory_API_Common_IPlayer_System_String___System_Int32___System_Int64___
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.TryMoveItemStack(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[],Vintagestory.API.Common.ItemStackMoveOperation@)
+  commentId: M:Vintagestory.API.Common.InventoryBase.TryMoveItemStack(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[],Vintagestory.API.Common.ItemStackMoveOperation@)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TryMoveItemStack_Vintagestory_API_Common_IPlayer_System_String___System_Int32___Vintagestory_API_Common_ItemStackMoveOperation__
+  name: TryMoveItemStack(IPlayer, string[], int[], ref ItemStackMoveOperation)
+  nameWithType: InventoryBase.TryMoveItemStack(IPlayer, string[], int[], ref ItemStackMoveOperation)
+  fullName: Vintagestory.API.Common.InventoryBase.TryMoveItemStack(Vintagestory.API.Common.IPlayer, string[], int[], ref Vintagestory.API.Common.ItemStackMoveOperation)
+  nameWithType.vb: InventoryBase.TryMoveItemStack(IPlayer, String(), Integer(), ItemStackMoveOperation)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.TryMoveItemStack(Vintagestory.API.Common.IPlayer, String(), Integer(), Vintagestory.API.Common.ItemStackMoveOperation)
+  name.vb: TryMoveItemStack(IPlayer, String(), Integer(), ItemStackMoveOperation)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.TryMoveItemStack(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[],Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: TryMoveItemStack
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TryMoveItemStack_Vintagestory_API_Common_IPlayer_System_String___System_Int32___Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.TryMoveItemStack(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[],Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: TryMoveItemStack
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_TryMoveItemStack_Vintagestory_API_Common_IPlayer_System_String___System_Int32___Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.GetSlotsIfExists(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[])
+  commentId: M:Vintagestory.API.Common.InventoryBase.GetSlotsIfExists(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[])
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetSlotsIfExists_Vintagestory_API_Common_IPlayer_System_String___System_Int32___
+  name: GetSlotsIfExists(IPlayer, string[], int[])
+  nameWithType: InventoryBase.GetSlotsIfExists(IPlayer, string[], int[])
+  fullName: Vintagestory.API.Common.InventoryBase.GetSlotsIfExists(Vintagestory.API.Common.IPlayer, string[], int[])
+  nameWithType.vb: InventoryBase.GetSlotsIfExists(IPlayer, String(), Integer())
+  fullName.vb: Vintagestory.API.Common.InventoryBase.GetSlotsIfExists(Vintagestory.API.Common.IPlayer, String(), Integer())
+  name.vb: GetSlotsIfExists(IPlayer, String(), Integer())
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.GetSlotsIfExists(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[])
+    name: GetSlotsIfExists
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetSlotsIfExists_Vintagestory_API_Common_IPlayer_System_String___System_Int32___
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.GetSlotsIfExists(Vintagestory.API.Common.IPlayer,System.String[],System.Int32[])
+    name: GetSlotsIfExists
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetSlotsIfExists_Vintagestory_API_Common_IPlayer_System_String___System_Int32___
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.SlotsFromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.ItemSlot[],System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  commentId: M:Vintagestory.API.Common.InventoryBase.SlotsFromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.ItemSlot[],System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_SlotsFromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_Vintagestory_API_Common_ItemSlot___System_Collections_Generic_List_Vintagestory_API_Common_ItemSlot__
+  name: SlotsFromTreeAttributes(ITreeAttribute, ItemSlot[], List<ItemSlot>)
+  nameWithType: InventoryBase.SlotsFromTreeAttributes(ITreeAttribute, ItemSlot[], List<ItemSlot>)
+  fullName: Vintagestory.API.Common.InventoryBase.SlotsFromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute, Vintagestory.API.Common.ItemSlot[], System.Collections.Generic.List<Vintagestory.API.Common.ItemSlot>)
+  nameWithType.vb: InventoryBase.SlotsFromTreeAttributes(ITreeAttribute, ItemSlot(), List(Of ItemSlot))
+  fullName.vb: Vintagestory.API.Common.InventoryBase.SlotsFromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute, Vintagestory.API.Common.ItemSlot(), System.Collections.Generic.List(Of Vintagestory.API.Common.ItemSlot))
+  name.vb: SlotsFromTreeAttributes(ITreeAttribute, ItemSlot(), List(Of ItemSlot))
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.SlotsFromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.ItemSlot[],System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+    name: SlotsFromTreeAttributes
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_SlotsFromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_Vintagestory_API_Common_ItemSlot___System_Collections_Generic_List_Vintagestory_API_Common_ItemSlot__
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.SlotsFromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.ItemSlot[],System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+    name: SlotsFromTreeAttributes
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_SlotsFromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_Vintagestory_API_Common_ItemSlot___System_Collections_Generic_List_Vintagestory_API_Common_ItemSlot__
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.SlotsToTreeAttributes(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Datastructures.ITreeAttribute)
+  commentId: M:Vintagestory.API.Common.InventoryBase.SlotsToTreeAttributes(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Datastructures.ITreeAttribute)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_SlotsToTreeAttributes_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Datastructures_ITreeAttribute_
+  name: SlotsToTreeAttributes(ItemSlot[], ITreeAttribute)
+  nameWithType: InventoryBase.SlotsToTreeAttributes(ItemSlot[], ITreeAttribute)
+  fullName: Vintagestory.API.Common.InventoryBase.SlotsToTreeAttributes(Vintagestory.API.Common.ItemSlot[], Vintagestory.API.Datastructures.ITreeAttribute)
+  nameWithType.vb: InventoryBase.SlotsToTreeAttributes(ItemSlot(), ITreeAttribute)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.SlotsToTreeAttributes(Vintagestory.API.Common.ItemSlot(), Vintagestory.API.Datastructures.ITreeAttribute)
+  name.vb: SlotsToTreeAttributes(ItemSlot(), ITreeAttribute)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.SlotsToTreeAttributes(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Datastructures.ITreeAttribute)
+    name: SlotsToTreeAttributes
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_SlotsToTreeAttributes_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Datastructures_ITreeAttribute_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.SlotsToTreeAttributes(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Datastructures.ITreeAttribute)
+    name: SlotsToTreeAttributes
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_SlotsToTreeAttributes_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Datastructures_ITreeAttribute_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.GenEmptySlots(System.Int32)
+  commentId: M:Vintagestory.API.Common.InventoryBase.GenEmptySlots(System.Int32)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GenEmptySlots_System_Int32_
+  name: GenEmptySlots(int)
+  nameWithType: InventoryBase.GenEmptySlots(int)
+  fullName: Vintagestory.API.Common.InventoryBase.GenEmptySlots(int)
+  nameWithType.vb: InventoryBase.GenEmptySlots(Integer)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.GenEmptySlots(Integer)
+  name.vb: GenEmptySlots(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.GenEmptySlots(System.Int32)
+    name: GenEmptySlots
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GenEmptySlots_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.GenEmptySlots(System.Int32)
+    name: GenEmptySlots
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GenEmptySlots_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.NewSlot(System.Int32)
+  commentId: M:Vintagestory.API.Common.InventoryBase.NewSlot(System.Int32)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_NewSlot_System_Int32_
+  name: NewSlot(int)
+  nameWithType: InventoryBase.NewSlot(int)
+  fullName: Vintagestory.API.Common.InventoryBase.NewSlot(int)
+  nameWithType.vb: InventoryBase.NewSlot(Integer)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.NewSlot(Integer)
+  name.vb: NewSlot(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.NewSlot(System.Int32)
+    name: NewSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_NewSlot_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.NewSlot(System.Int32)
+    name: NewSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_NewSlot_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.MarkSlotDirty(System.Int32)
+  commentId: M:Vintagestory.API.Common.InventoryBase.MarkSlotDirty(System.Int32)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_MarkSlotDirty_System_Int32_
+  name: MarkSlotDirty(int)
+  nameWithType: InventoryBase.MarkSlotDirty(int)
+  fullName: Vintagestory.API.Common.InventoryBase.MarkSlotDirty(int)
+  nameWithType.vb: InventoryBase.MarkSlotDirty(Integer)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.MarkSlotDirty(Integer)
+  name.vb: MarkSlotDirty(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.MarkSlotDirty(System.Int32)
+    name: MarkSlotDirty
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_MarkSlotDirty_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.MarkSlotDirty(System.Int32)
+    name: MarkSlotDirty
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_MarkSlotDirty_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.DiscardAll
+  commentId: M:Vintagestory.API.Common.InventoryBase.DiscardAll
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DiscardAll
+  name: DiscardAll()
+  nameWithType: InventoryBase.DiscardAll()
+  fullName: Vintagestory.API.Common.InventoryBase.DiscardAll()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.DiscardAll
+    name: DiscardAll
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DiscardAll
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.DiscardAll
+    name: DiscardAll
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DiscardAll
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.DropSlotIfHot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.InventoryBase.DropSlotIfHot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DropSlotIfHot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_
+  name: DropSlotIfHot(ItemSlot, IPlayer)
+  nameWithType: InventoryBase.DropSlotIfHot(ItemSlot, IPlayer)
+  fullName: Vintagestory.API.Common.InventoryBase.DropSlotIfHot(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.IPlayer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.DropSlotIfHot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+    name: DropSlotIfHot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DropSlotIfHot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.DropSlotIfHot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+    name: DropSlotIfHot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DropSlotIfHot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.DropSlots(Vintagestory.API.MathTools.Vec3d,System.Int32[])
+  commentId: M:Vintagestory.API.Common.InventoryBase.DropSlots(Vintagestory.API.MathTools.Vec3d,System.Int32[])
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DropSlots_Vintagestory_API_MathTools_Vec3d_System_Int32___
+  name: DropSlots(Vec3d, params int[])
+  nameWithType: InventoryBase.DropSlots(Vec3d, params int[])
+  fullName: Vintagestory.API.Common.InventoryBase.DropSlots(Vintagestory.API.MathTools.Vec3d, params int[])
+  nameWithType.vb: InventoryBase.DropSlots(Vec3d, ParamArray Integer())
+  fullName.vb: Vintagestory.API.Common.InventoryBase.DropSlots(Vintagestory.API.MathTools.Vec3d, ParamArray Integer())
+  name.vb: DropSlots(Vec3d, ParamArray Integer())
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.DropSlots(Vintagestory.API.MathTools.Vec3d,System.Int32[])
+    name: DropSlots
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DropSlots_Vintagestory_API_MathTools_Vec3d_System_Int32___
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.DropSlots(Vintagestory.API.MathTools.Vec3d,System.Int32[])
+    name: DropSlots
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DropSlots_Vintagestory_API_MathTools_Vec3d_System_Int32___
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.Clear
+  commentId: M:Vintagestory.API.Common.InventoryBase.Clear
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Clear
+  name: Clear()
+  nameWithType: InventoryBase.Clear()
+  fullName: Vintagestory.API.Common.InventoryBase.Clear()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.Clear
+    name: Clear
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Clear
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.Clear
+    name: Clear
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Clear
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.OnOwningEntityDeath(Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.Common.InventoryBase.OnOwningEntityDeath(Vintagestory.API.MathTools.Vec3d)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnOwningEntityDeath_Vintagestory_API_MathTools_Vec3d_
+  name: OnOwningEntityDeath(Vec3d)
+  nameWithType: InventoryBase.OnOwningEntityDeath(Vec3d)
+  fullName: Vintagestory.API.Common.InventoryBase.OnOwningEntityDeath(Vintagestory.API.MathTools.Vec3d)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.OnOwningEntityDeath(Vintagestory.API.MathTools.Vec3d)
+    name: OnOwningEntityDeath
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnOwningEntityDeath_Vintagestory_API_MathTools_Vec3d_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.OnOwningEntityDeath(Vintagestory.API.MathTools.Vec3d)
+    name: OnOwningEntityDeath
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnOwningEntityDeath_Vintagestory_API_MathTools_Vec3d_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.GetTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType,Vintagestory.API.Common.ItemStack)
+  commentId: M:Vintagestory.API.Common.InventoryBase.GetTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType,Vintagestory.API.Common.ItemStack)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetTransitionSpeedMul_Vintagestory_API_Common_EnumTransitionType_Vintagestory_API_Common_ItemStack_
+  name: GetTransitionSpeedMul(EnumTransitionType, ItemStack)
+  nameWithType: InventoryBase.GetTransitionSpeedMul(EnumTransitionType, ItemStack)
+  fullName: Vintagestory.API.Common.InventoryBase.GetTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType, Vintagestory.API.Common.ItemStack)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.GetTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType,Vintagestory.API.Common.ItemStack)
+    name: GetTransitionSpeedMul
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetTransitionSpeedMul_Vintagestory_API_Common_EnumTransitionType_Vintagestory_API_Common_ItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumTransitionType
+    name: EnumTransitionType
+    href: Vintagestory.API.Common.EnumTransitionType.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.GetTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType,Vintagestory.API.Common.ItemStack)
+    name: GetTransitionSpeedMul
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetTransitionSpeedMul_Vintagestory_API_Common_EnumTransitionType_Vintagestory_API_Common_ItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumTransitionType
+    name: EnumTransitionType
+    href: Vintagestory.API.Common.EnumTransitionType.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.GetDefaultTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType)
+  commentId: M:Vintagestory.API.Common.InventoryBase.GetDefaultTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetDefaultTransitionSpeedMul_Vintagestory_API_Common_EnumTransitionType_
+  name: GetDefaultTransitionSpeedMul(EnumTransitionType)
+  nameWithType: InventoryBase.GetDefaultTransitionSpeedMul(EnumTransitionType)
+  fullName: Vintagestory.API.Common.InventoryBase.GetDefaultTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.GetDefaultTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType)
+    name: GetDefaultTransitionSpeedMul
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetDefaultTransitionSpeedMul_Vintagestory_API_Common_EnumTransitionType_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumTransitionType
+    name: EnumTransitionType
+    href: Vintagestory.API.Common.EnumTransitionType.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.GetDefaultTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType)
+    name: GetDefaultTransitionSpeedMul
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetDefaultTransitionSpeedMul_Vintagestory_API_Common_EnumTransitionType_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumTransitionType
+    name: EnumTransitionType
+    href: Vintagestory.API.Common.EnumTransitionType.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.Open(Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.InventoryBase.Open(Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Open_Vintagestory_API_Common_IPlayer_
+  name: Open(IPlayer)
+  nameWithType: InventoryBase.Open(IPlayer)
+  fullName: Vintagestory.API.Common.InventoryBase.Open(Vintagestory.API.Common.IPlayer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.Open(Vintagestory.API.Common.IPlayer)
+    name: Open
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Open_Vintagestory_API_Common_IPlayer_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.Open(Vintagestory.API.Common.IPlayer)
+    name: Open
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Open_Vintagestory_API_Common_IPlayer_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.Close(Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.InventoryBase.Close(Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Close_Vintagestory_API_Common_IPlayer_
+  name: Close(IPlayer)
+  nameWithType: InventoryBase.Close(IPlayer)
+  fullName: Vintagestory.API.Common.InventoryBase.Close(Vintagestory.API.Common.IPlayer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.Close(Vintagestory.API.Common.IPlayer)
+    name: Close
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Close_Vintagestory_API_Common_IPlayer_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.Close(Vintagestory.API.Common.IPlayer)
+    name: Close
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_Close_Vintagestory_API_Common_IPlayer_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.GetEnumerator
+  commentId: M:Vintagestory.API.Common.InventoryBase.GetEnumerator
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetEnumerator
+  name: GetEnumerator()
+  nameWithType: InventoryBase.GetEnumerator()
+  fullName: Vintagestory.API.Common.InventoryBase.GetEnumerator()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.GetEnumerator
+    name: GetEnumerator
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetEnumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.GetEnumerator
+    name: GetEnumerator
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetEnumerator
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.GetAutoPushIntoSlot(Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Common.InventoryBase.GetAutoPushIntoSlot(Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetAutoPushIntoSlot_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_ItemSlot_
+  name: GetAutoPushIntoSlot(BlockFacing, ItemSlot)
+  nameWithType: InventoryBase.GetAutoPushIntoSlot(BlockFacing, ItemSlot)
+  fullName: Vintagestory.API.Common.InventoryBase.GetAutoPushIntoSlot(Vintagestory.API.MathTools.BlockFacing, Vintagestory.API.Common.ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.GetAutoPushIntoSlot(Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.Common.ItemSlot)
+    name: GetAutoPushIntoSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetAutoPushIntoSlot_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.GetAutoPushIntoSlot(Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.Common.ItemSlot)
+    name: GetAutoPushIntoSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetAutoPushIntoSlot_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBase.GetAutoPullFromSlot(Vintagestory.API.MathTools.BlockFacing)
+  commentId: M:Vintagestory.API.Common.InventoryBase.GetAutoPullFromSlot(Vintagestory.API.MathTools.BlockFacing)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetAutoPullFromSlot_Vintagestory_API_MathTools_BlockFacing_
+  name: GetAutoPullFromSlot(BlockFacing)
+  nameWithType: InventoryBase.GetAutoPullFromSlot(BlockFacing)
+  fullName: Vintagestory.API.Common.InventoryBase.GetAutoPullFromSlot(Vintagestory.API.MathTools.BlockFacing)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.GetAutoPullFromSlot(Vintagestory.API.MathTools.BlockFacing)
+    name: GetAutoPullFromSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetAutoPullFromSlot_Vintagestory_API_MathTools_BlockFacing_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.GetAutoPullFromSlot(Vintagestory.API.MathTools.BlockFacing)
+    name: GetAutoPullFromSlot
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetAutoPullFromSlot_Vintagestory_API_MathTools_BlockFacing_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}.Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Action{Vintagestory.API.Common.ItemSlot})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  name: Foreach<ItemSlot>(IEnumerable<ItemSlot>, Action<ItemSlot>)
+  nameWithType: EnumerableExtensions.Foreach<ItemSlot>(IEnumerable<ItemSlot>, Action<ItemSlot>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Foreach<Vintagestory.API.Common.ItemSlot>(System.Collections.Generic.IEnumerable<Vintagestory.API.Common.ItemSlot>, System.Action<Vintagestory.API.Common.ItemSlot>)
+  nameWithType.vb: EnumerableExtensions.Foreach(Of ItemSlot)(IEnumerable(Of ItemSlot), Action(Of ItemSlot))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Foreach(Of Vintagestory.API.Common.ItemSlot)(System.Collections.Generic.IEnumerable(Of Vintagestory.API.Common.ItemSlot), System.Action(Of Vintagestory.API.Common.ItemSlot))
+  name.vb: Foreach(Of ItemSlot)(IEnumerable(Of ItemSlot), Action(Of ItemSlot))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot},System.Action{Vintagestory.API.Common.ItemSlot})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot},System.Action{Vintagestory.API.Common.ItemSlot})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}.Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Func{Vintagestory.API.Common.ItemSlot,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: NearestDistance<ItemSlot>(IEnumerable<ItemSlot>, Func<ItemSlot, double>)
+  nameWithType: EnumerableExtensions.NearestDistance<ItemSlot>(IEnumerable<ItemSlot>, Func<ItemSlot, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.NearestDistance<Vintagestory.API.Common.ItemSlot>(System.Collections.Generic.IEnumerable<Vintagestory.API.Common.ItemSlot>, System.Func<Vintagestory.API.Common.ItemSlot, double>)
+  nameWithType.vb: EnumerableExtensions.NearestDistance(Of ItemSlot)(IEnumerable(Of ItemSlot), Func(Of ItemSlot, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.NearestDistance(Of Vintagestory.API.Common.ItemSlot)(System.Collections.Generic.IEnumerable(Of Vintagestory.API.Common.ItemSlot), System.Func(Of Vintagestory.API.Common.ItemSlot, Double))
+  name.vb: NearestDistance(Of ItemSlot)(IEnumerable(Of ItemSlot), Func(Of ItemSlot, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot},System.Func{Vintagestory.API.Common.ItemSlot,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot},System.Func{Vintagestory.API.Common.ItemSlot,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}.Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Func{Vintagestory.API.Common.ItemSlot,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: Nearest<ItemSlot>(IEnumerable<ItemSlot>, Func<ItemSlot, double>)
+  nameWithType: EnumerableExtensions.Nearest<ItemSlot>(IEnumerable<ItemSlot>, Func<ItemSlot, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Nearest<Vintagestory.API.Common.ItemSlot>(System.Collections.Generic.IEnumerable<Vintagestory.API.Common.ItemSlot>, System.Func<Vintagestory.API.Common.ItemSlot, double>)
+  nameWithType.vb: EnumerableExtensions.Nearest(Of ItemSlot)(IEnumerable(Of ItemSlot), Func(Of ItemSlot, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Nearest(Of Vintagestory.API.Common.ItemSlot)(System.Collections.Generic.IEnumerable(Of Vintagestory.API.Common.ItemSlot), System.Func(Of Vintagestory.API.Common.ItemSlot, Double))
+  name.vb: Nearest(Of ItemSlot)(IEnumerable(Of ItemSlot), Func(Of ItemSlot, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot},System.Func{Vintagestory.API.Common.ItemSlot,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot},System.Func{Vintagestory.API.Common.ItemSlot,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  name: Foreach<T>(IEnumerable<T>, Action<T>)
+  nameWithType: EnumerableExtensions.Foreach<T>(IEnumerable<T>, Action<T>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Foreach<T>(System.Collections.Generic.IEnumerable<T>, System.Action<T>)
+  nameWithType.vb: EnumerableExtensions.Foreach(Of T)(IEnumerable(Of T), Action(Of T))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Foreach(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Action(Of T))
+  name.vb: Foreach(Of T)(IEnumerable(Of T), Action(Of T))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions
+  commentId: T:Vintagestory.API.Util.EnumerableExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Vintagestory.API.Util.EnumerableExtensions
+- uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: NearestDistance<T>(IEnumerable<T>, Func<T, double>)
+  nameWithType: EnumerableExtensions.NearestDistance<T>(IEnumerable<T>, Func<T, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.NearestDistance<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, double>)
+  nameWithType.vb: EnumerableExtensions.NearestDistance(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.NearestDistance(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, Double))
+  name.vb: NearestDistance(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: Nearest<T>(IEnumerable<T>, Func<T, double>)
+  nameWithType: EnumerableExtensions.Nearest<T>(IEnumerable<T>, Func<T, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Nearest<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, double>)
+  nameWithType.vb: EnumerableExtensions.Nearest(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Nearest(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, Double))
+  name.vb: Nearest(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.InventoryBase.RemoveOnClose
+  commentId: P:Vintagestory.API.Common.InventoryBase.RemoveOnClose
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_RemoveOnClose
+  name: RemoveOnClose
+  nameWithType: InventoryBase.RemoveOnClose
+  fullName: Vintagestory.API.Common.InventoryBase.RemoveOnClose
+- uid: Vintagestory.API.Common.InventoryBasePlayer.RemoveOnClose*
+  commentId: Overload:Vintagestory.API.Common.InventoryBasePlayer.RemoveOnClose
+  href: Vintagestory.API.Common.InventoryBasePlayer.html#Vintagestory_API_Common_InventoryBasePlayer_RemoveOnClose
+  name: RemoveOnClose
+  nameWithType: InventoryBasePlayer.RemoveOnClose
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.RemoveOnClose
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.InventoryBasePlayer.Player*
+  commentId: Overload:Vintagestory.API.Common.InventoryBasePlayer.Player
+  href: Vintagestory.API.Common.InventoryBasePlayer.html#Vintagestory_API_Common_InventoryBasePlayer_Player
+  name: Player
+  nameWithType: InventoryBasePlayer.Player
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.Player
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: Vintagestory.API.Common.InventoryBasePlayer.#ctor*
+  commentId: Overload:Vintagestory.API.Common.InventoryBasePlayer.#ctor
+  href: Vintagestory.API.Common.InventoryBasePlayer.html#Vintagestory_API_Common_InventoryBasePlayer__ctor_System_String_System_String_Vintagestory_API_Common_ICoreAPI_
+  name: InventoryBasePlayer
+  nameWithType: InventoryBasePlayer.InventoryBasePlayer
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.InventoryBasePlayer
+  nameWithType.vb: InventoryBasePlayer.New
+  fullName.vb: Vintagestory.API.Common.InventoryBasePlayer.New
+  name.vb: New
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
+- uid: Vintagestory.API.Common.InventoryBase.CanPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+  commentId: M:Vintagestory.API.Common.InventoryBase.CanPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CanPlayerAccess_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_Entities_EntityPos_
+  name: CanPlayerAccess(IPlayer, EntityPos)
+  nameWithType: InventoryBase.CanPlayerAccess(IPlayer, EntityPos)
+  fullName: Vintagestory.API.Common.InventoryBase.CanPlayerAccess(Vintagestory.API.Common.IPlayer, Vintagestory.API.Common.Entities.EntityPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.CanPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+    name: CanPlayerAccess
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CanPlayerAccess_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_Entities_EntityPos_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.EntityPos
+    name: EntityPos
+    href: Vintagestory.API.Common.Entities.EntityPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.CanPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
+    name: CanPlayerAccess
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_CanPlayerAccess_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_Entities_EntityPos_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.EntityPos
+    name: EntityPos
+    href: Vintagestory.API.Common.Entities.EntityPos.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBasePlayer.CanPlayerAccess*
+  commentId: Overload:Vintagestory.API.Common.InventoryBasePlayer.CanPlayerAccess
+  href: Vintagestory.API.Common.InventoryBasePlayer.html#Vintagestory_API_Common_InventoryBasePlayer_CanPlayerAccess_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_Entities_EntityPos_
+  name: CanPlayerAccess
+  nameWithType: InventoryBasePlayer.CanPlayerAccess
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.CanPlayerAccess
+- uid: Vintagestory.API.Common.Entities.EntityPos
+  commentId: T:Vintagestory.API.Common.Entities.EntityPos
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.EntityPos.html
+  name: EntityPos
+  nameWithType: EntityPos
+  fullName: Vintagestory.API.Common.Entities.EntityPos
+- uid: Vintagestory.API.Common.Entities
+  commentId: N:Vintagestory.API.Common.Entities
+  href: Vintagestory.html
+  name: Vintagestory.API.Common.Entities
+  nameWithType: Vintagestory.API.Common.Entities
+  fullName: Vintagestory.API.Common.Entities
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+- uid: Vintagestory.API.Common.InventoryBase.HasOpened(Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.InventoryBase.HasOpened(Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.InventoryBase
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_HasOpened_Vintagestory_API_Common_IPlayer_
+  name: HasOpened(IPlayer)
+  nameWithType: InventoryBase.HasOpened(IPlayer)
+  fullName: Vintagestory.API.Common.InventoryBase.HasOpened(Vintagestory.API.Common.IPlayer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.HasOpened(Vintagestory.API.Common.IPlayer)
+    name: HasOpened
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_HasOpened_Vintagestory_API_Common_IPlayer_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.HasOpened(Vintagestory.API.Common.IPlayer)
+    name: HasOpened
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_HasOpened_Vintagestory_API_Common_IPlayer_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBasePlayer.HasOpened*
+  commentId: Overload:Vintagestory.API.Common.InventoryBasePlayer.HasOpened
+  href: Vintagestory.API.Common.InventoryBasePlayer.html#Vintagestory_API_Common_InventoryBasePlayer_HasOpened_Vintagestory_API_Common_IPlayer_
+  name: HasOpened
+  nameWithType: InventoryBasePlayer.HasOpened
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.HasOpened
+- uid: Vintagestory.API.Common.InventoryBase.DropAll(Vintagestory.API.MathTools.Vec3d,System.Int32)
+  commentId: M:Vintagestory.API.Common.InventoryBase.DropAll(Vintagestory.API.MathTools.Vec3d,System.Int32)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DropAll_Vintagestory_API_MathTools_Vec3d_System_Int32_
+  name: DropAll(Vec3d, int)
+  nameWithType: InventoryBase.DropAll(Vec3d, int)
+  fullName: Vintagestory.API.Common.InventoryBase.DropAll(Vintagestory.API.MathTools.Vec3d, int)
+  nameWithType.vb: InventoryBase.DropAll(Vec3d, Integer)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.DropAll(Vintagestory.API.MathTools.Vec3d, Integer)
+  name.vb: DropAll(Vec3d, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.DropAll(Vintagestory.API.MathTools.Vec3d,System.Int32)
+    name: DropAll
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DropAll_Vintagestory_API_MathTools_Vec3d_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.DropAll(Vintagestory.API.MathTools.Vec3d,System.Int32)
+    name: DropAll
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_DropAll_Vintagestory_API_MathTools_Vec3d_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.InventoryBasePlayer.DropAll*
+  commentId: Overload:Vintagestory.API.Common.InventoryBasePlayer.DropAll
+  href: Vintagestory.API.Common.InventoryBasePlayer.html#Vintagestory_API_Common_InventoryBasePlayer_DropAll_Vintagestory_API_MathTools_Vec3d_System_Int32_
+  name: DropAll
+  nameWithType: InventoryBasePlayer.DropAll
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.DropAll
+- uid: Vintagestory.API.MathTools.Vec3d
+  commentId: T:Vintagestory.API.MathTools.Vec3d
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3d.html
+  name: Vec3d
+  nameWithType: Vec3d
+  fullName: Vintagestory.API.MathTools.Vec3d
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.InventoryBasePlayer.spawnItemEntity*
+  commentId: Overload:Vintagestory.API.Common.InventoryBasePlayer.spawnItemEntity
+  href: Vintagestory.API.Common.InventoryBasePlayer.html#Vintagestory_API_Common_InventoryBasePlayer_spawnItemEntity_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_Vec3d_System_Int32_
+  name: spawnItemEntity
+  nameWithType: InventoryBasePlayer.spawnItemEntity
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.spawnItemEntity
+- uid: Vintagestory.API.Common.ItemStack
+  commentId: T:Vintagestory.API.Common.ItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemStack.html
+  name: ItemStack
+  nameWithType: ItemStack
+  fullName: Vintagestory.API.Common.ItemStack

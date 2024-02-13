@@ -1,0 +1,387 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.MathTools.EnumDistribution
+  commentId: T:Vintagestory.API.MathTools.EnumDistribution
+  id: EnumDistribution
+  parent: Vintagestory.API.MathTools
+  children:
+  - Vintagestory.API.MathTools.EnumDistribution.DIRAC
+  - Vintagestory.API.MathTools.EnumDistribution.GAUSSIAN
+  - Vintagestory.API.MathTools.EnumDistribution.INVERSEGAUSSIAN
+  - Vintagestory.API.MathTools.EnumDistribution.INVEXP
+  - Vintagestory.API.MathTools.EnumDistribution.NARROWGAUSSIAN
+  - Vintagestory.API.MathTools.EnumDistribution.NARROWINVERSEGAUSSIAN
+  - Vintagestory.API.MathTools.EnumDistribution.STRONGERINVEXP
+  - Vintagestory.API.MathTools.EnumDistribution.STRONGINVEXP
+  - Vintagestory.API.MathTools.EnumDistribution.TRIANGLE
+  - Vintagestory.API.MathTools.EnumDistribution.UNIFORM
+  - Vintagestory.API.MathTools.EnumDistribution.VERYNARROWGAUSSIAN
+  langs:
+  - csharp
+  - vb
+  name: EnumDistribution
+  nameWithType: EnumDistribution
+  fullName: Vintagestory.API.MathTools.EnumDistribution
+  type: Enum
+  source:
+    remote:
+      path: VintagestoryApi/Math/NatFloat.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnumDistribution
+    path: Math/NatFloat.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: The distribution of the random numbers
+  example: []
+  syntax:
+    content: public enum EnumDistribution
+    content.vb: Public Enum EnumDistribution
+- uid: Vintagestory.API.MathTools.EnumDistribution.UNIFORM
+  commentId: F:Vintagestory.API.MathTools.EnumDistribution.UNIFORM
+  id: UNIFORM
+  parent: Vintagestory.API.MathTools.EnumDistribution
+  langs:
+  - csharp
+  - vb
+  name: UNIFORM
+  nameWithType: EnumDistribution.UNIFORM
+  fullName: Vintagestory.API.MathTools.EnumDistribution.UNIFORM
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/NatFloat.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: UNIFORM
+    path: Math/NatFloat.cs
+    startLine: 13
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Select completely random numbers within avg-var until avg+var
+  example: []
+  syntax:
+    content: UNIFORM = 0
+    return:
+      type: Vintagestory.API.MathTools.EnumDistribution
+- uid: Vintagestory.API.MathTools.EnumDistribution.TRIANGLE
+  commentId: F:Vintagestory.API.MathTools.EnumDistribution.TRIANGLE
+  id: TRIANGLE
+  parent: Vintagestory.API.MathTools.EnumDistribution
+  langs:
+  - csharp
+  - vb
+  name: TRIANGLE
+  nameWithType: EnumDistribution.TRIANGLE
+  fullName: Vintagestory.API.MathTools.EnumDistribution.TRIANGLE
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/NatFloat.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TRIANGLE
+    path: Math/NatFloat.cs
+    startLine: 17
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Select random numbers with numbers near avg being the most commonly selected ones, following a triangle curve
+  example: []
+  syntax:
+    content: TRIANGLE = 1
+    return:
+      type: Vintagestory.API.MathTools.EnumDistribution
+- uid: Vintagestory.API.MathTools.EnumDistribution.GAUSSIAN
+  commentId: F:Vintagestory.API.MathTools.EnumDistribution.GAUSSIAN
+  id: GAUSSIAN
+  parent: Vintagestory.API.MathTools.EnumDistribution
+  langs:
+  - csharp
+  - vb
+  name: GAUSSIAN
+  nameWithType: EnumDistribution.GAUSSIAN
+  fullName: Vintagestory.API.MathTools.EnumDistribution.GAUSSIAN
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/NatFloat.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GAUSSIAN
+    path: Math/NatFloat.cs
+    startLine: 21
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Select random numbers with numbers near avg being the more commonly selected ones, following a gaussian curve
+  example: []
+  syntax:
+    content: GAUSSIAN = 2
+    return:
+      type: Vintagestory.API.MathTools.EnumDistribution
+- uid: Vintagestory.API.MathTools.EnumDistribution.NARROWGAUSSIAN
+  commentId: F:Vintagestory.API.MathTools.EnumDistribution.NARROWGAUSSIAN
+  id: NARROWGAUSSIAN
+  parent: Vintagestory.API.MathTools.EnumDistribution
+  langs:
+  - csharp
+  - vb
+  name: NARROWGAUSSIAN
+  nameWithType: EnumDistribution.NARROWGAUSSIAN
+  fullName: Vintagestory.API.MathTools.EnumDistribution.NARROWGAUSSIAN
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/NatFloat.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NARROWGAUSSIAN
+    path: Math/NatFloat.cs
+    startLine: 25
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Select random numbers with numbers near avg being the much more commonly selected ones, following a narrow gaussian curve
+  example: []
+  syntax:
+    content: NARROWGAUSSIAN = 3
+    return:
+      type: Vintagestory.API.MathTools.EnumDistribution
+- uid: Vintagestory.API.MathTools.EnumDistribution.VERYNARROWGAUSSIAN
+  commentId: F:Vintagestory.API.MathTools.EnumDistribution.VERYNARROWGAUSSIAN
+  id: VERYNARROWGAUSSIAN
+  parent: Vintagestory.API.MathTools.EnumDistribution
+  langs:
+  - csharp
+  - vb
+  name: VERYNARROWGAUSSIAN
+  nameWithType: EnumDistribution.VERYNARROWGAUSSIAN
+  fullName: Vintagestory.API.MathTools.EnumDistribution.VERYNARROWGAUSSIAN
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/NatFloat.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: VERYNARROWGAUSSIAN
+    path: Math/NatFloat.cs
+    startLine: 29
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Select random numbers with numbers near avg being the much much more commonly selected ones, following an even narrower gaussian curve
+  example: []
+  syntax:
+    content: VERYNARROWGAUSSIAN = 10
+    return:
+      type: Vintagestory.API.MathTools.EnumDistribution
+- uid: Vintagestory.API.MathTools.EnumDistribution.INVERSEGAUSSIAN
+  commentId: F:Vintagestory.API.MathTools.EnumDistribution.INVERSEGAUSSIAN
+  id: INVERSEGAUSSIAN
+  parent: Vintagestory.API.MathTools.EnumDistribution
+  langs:
+  - csharp
+  - vb
+  name: INVERSEGAUSSIAN
+  nameWithType: EnumDistribution.INVERSEGAUSSIAN
+  fullName: Vintagestory.API.MathTools.EnumDistribution.INVERSEGAUSSIAN
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/NatFloat.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: INVERSEGAUSSIAN
+    path: Math/NatFloat.cs
+    startLine: 33
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Select random numbers with numbers near avg being the less commonly selected ones, following an upside down gaussian curve
+  example: []
+  syntax:
+    content: INVERSEGAUSSIAN = 4
+    return:
+      type: Vintagestory.API.MathTools.EnumDistribution
+- uid: Vintagestory.API.MathTools.EnumDistribution.NARROWINVERSEGAUSSIAN
+  commentId: F:Vintagestory.API.MathTools.EnumDistribution.NARROWINVERSEGAUSSIAN
+  id: NARROWINVERSEGAUSSIAN
+  parent: Vintagestory.API.MathTools.EnumDistribution
+  langs:
+  - csharp
+  - vb
+  name: NARROWINVERSEGAUSSIAN
+  nameWithType: EnumDistribution.NARROWINVERSEGAUSSIAN
+  fullName: Vintagestory.API.MathTools.EnumDistribution.NARROWINVERSEGAUSSIAN
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/NatFloat.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NARROWINVERSEGAUSSIAN
+    path: Math/NatFloat.cs
+    startLine: 37
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Select random numbers with numbers near avg being the much less commonly selected ones, following an upside down gaussian curve
+  example: []
+  syntax:
+    content: NARROWINVERSEGAUSSIAN = 5
+    return:
+      type: Vintagestory.API.MathTools.EnumDistribution
+- uid: Vintagestory.API.MathTools.EnumDistribution.INVEXP
+  commentId: F:Vintagestory.API.MathTools.EnumDistribution.INVEXP
+  id: INVEXP
+  parent: Vintagestory.API.MathTools.EnumDistribution
+  langs:
+  - csharp
+  - vb
+  name: INVEXP
+  nameWithType: EnumDistribution.INVEXP
+  fullName: Vintagestory.API.MathTools.EnumDistribution.INVEXP
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/NatFloat.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: INVEXP
+    path: Math/NatFloat.cs
+    startLine: 41
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Select numbers in the form of avg + var, wheras low value of var are preferred
+  example: []
+  syntax:
+    content: INVEXP = 6
+    return:
+      type: Vintagestory.API.MathTools.EnumDistribution
+- uid: Vintagestory.API.MathTools.EnumDistribution.STRONGINVEXP
+  commentId: F:Vintagestory.API.MathTools.EnumDistribution.STRONGINVEXP
+  id: STRONGINVEXP
+  parent: Vintagestory.API.MathTools.EnumDistribution
+  langs:
+  - csharp
+  - vb
+  name: STRONGINVEXP
+  nameWithType: EnumDistribution.STRONGINVEXP
+  fullName: Vintagestory.API.MathTools.EnumDistribution.STRONGINVEXP
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/NatFloat.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: STRONGINVEXP
+    path: Math/NatFloat.cs
+    startLine: 45
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Select numbers in the form of avg + var, wheras low value of var are strongly preferred
+  example: []
+  syntax:
+    content: STRONGINVEXP = 7
+    return:
+      type: Vintagestory.API.MathTools.EnumDistribution
+- uid: Vintagestory.API.MathTools.EnumDistribution.STRONGERINVEXP
+  commentId: F:Vintagestory.API.MathTools.EnumDistribution.STRONGERINVEXP
+  id: STRONGERINVEXP
+  parent: Vintagestory.API.MathTools.EnumDistribution
+  langs:
+  - csharp
+  - vb
+  name: STRONGERINVEXP
+  nameWithType: EnumDistribution.STRONGERINVEXP
+  fullName: Vintagestory.API.MathTools.EnumDistribution.STRONGERINVEXP
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/NatFloat.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: STRONGERINVEXP
+    path: Math/NatFloat.cs
+    startLine: 49
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Select numbers in the form of avg + var, wheras low value of var are very strongly preferred
+  example: []
+  syntax:
+    content: STRONGERINVEXP = 8
+    return:
+      type: Vintagestory.API.MathTools.EnumDistribution
+- uid: Vintagestory.API.MathTools.EnumDistribution.DIRAC
+  commentId: F:Vintagestory.API.MathTools.EnumDistribution.DIRAC
+  id: DIRAC
+  parent: Vintagestory.API.MathTools.EnumDistribution
+  langs:
+  - csharp
+  - vb
+  name: DIRAC
+  nameWithType: EnumDistribution.DIRAC
+  fullName: Vintagestory.API.MathTools.EnumDistribution.DIRAC
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/NatFloat.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DIRAC
+    path: Math/NatFloat.cs
+    startLine: 53
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Select completely random numbers within avg-var until avg+var only ONCE and then always 0
+  example: []
+  syntax:
+    content: DIRAC = 9
+    return:
+      type: Vintagestory.API.MathTools.EnumDistribution
+references:
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.MathTools.EnumDistribution
+  commentId: T:Vintagestory.API.MathTools.EnumDistribution
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.EnumDistribution.html
+  name: EnumDistribution
+  nameWithType: EnumDistribution
+  fullName: Vintagestory.API.MathTools.EnumDistribution

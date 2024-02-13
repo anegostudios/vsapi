@@ -1,0 +1,553 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IRecipeBase`1
+  commentId: T:Vintagestory.API.Common.IRecipeBase`1
+  id: IRecipeBase`1
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IRecipeBase`1.Clone
+  - Vintagestory.API.Common.IRecipeBase`1.Enabled
+  - Vintagestory.API.Common.IRecipeBase`1.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.IRecipeBase`1.Ingredients
+  - Vintagestory.API.Common.IRecipeBase`1.Name
+  - Vintagestory.API.Common.IRecipeBase`1.Output
+  - Vintagestory.API.Common.IRecipeBase`1.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  langs:
+  - csharp
+  - vb
+  name: IRecipeBase<T>
+  nameWithType: IRecipeBase<T>
+  fullName: Vintagestory.API.Common.IRecipeBase<T>
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/Crafting/RecipeBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IRecipeBase
+    path: Common/Crafting/RecipeBase.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public interface IRecipeBase<T>
+    typeParameters:
+    - id: T
+    content.vb: Public Interface IRecipeBase(Of T)
+  nameWithType.vb: IRecipeBase(Of T)
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T)
+  name.vb: IRecipeBase(Of T)
+- uid: Vintagestory.API.Common.IRecipeBase`1.Name
+  commentId: P:Vintagestory.API.Common.IRecipeBase`1.Name
+  id: Name
+  parent: Vintagestory.API.Common.IRecipeBase`1
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: IRecipeBase<T>.Name
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.Name
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Crafting/RecipeBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Name
+    path: Common/Crafting/RecipeBase.cs
+    startLine: 18
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: AssetLocation Name { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.AssetLocation
+    content.vb: Property Name As AssetLocation
+  overload: Vintagestory.API.Common.IRecipeBase`1.Name*
+  nameWithType.vb: IRecipeBase(Of T).Name
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).Name
+- uid: Vintagestory.API.Common.IRecipeBase`1.Enabled
+  commentId: P:Vintagestory.API.Common.IRecipeBase`1.Enabled
+  id: Enabled
+  parent: Vintagestory.API.Common.IRecipeBase`1
+  langs:
+  - csharp
+  - vb
+  name: Enabled
+  nameWithType: IRecipeBase<T>.Enabled
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.Enabled
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Crafting/RecipeBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Enabled
+    path: Common/Crafting/RecipeBase.cs
+    startLine: 19
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: bool Enabled { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property Enabled As Boolean
+  overload: Vintagestory.API.Common.IRecipeBase`1.Enabled*
+  nameWithType.vb: IRecipeBase(Of T).Enabled
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).Enabled
+- uid: Vintagestory.API.Common.IRecipeBase`1.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.IRecipeBase`1.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  id: GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.IRecipeBase`1
+  langs:
+  - csharp
+  - vb
+  name: GetNameToCodeMapping(IWorldAccessor)
+  nameWithType: IRecipeBase<T>.GetNameToCodeMapping(IWorldAccessor)
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Crafting/RecipeBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetNameToCodeMapping
+    path: Common/Crafting/RecipeBase.cs
+    startLine: 22
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Dictionary<string, string[]> GetNameToCodeMapping(IWorldAccessor world)
+    parameters:
+    - id: world
+      type: Vintagestory.API.Common.IWorldAccessor
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String[]}
+    content.vb: Function GetNameToCodeMapping(world As IWorldAccessor) As Dictionary(Of String, String())
+  overload: Vintagestory.API.Common.IRecipeBase`1.GetNameToCodeMapping*
+  nameWithType.vb: IRecipeBase(Of T).GetNameToCodeMapping(IWorldAccessor)
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).GetNameToCodeMapping(Vintagestory.API.Common.IWorldAccessor)
+- uid: Vintagestory.API.Common.IRecipeBase`1.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  commentId: M:Vintagestory.API.Common.IRecipeBase`1.Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  id: Resolve(Vintagestory.API.Common.IWorldAccessor,System.String)
+  parent: Vintagestory.API.Common.IRecipeBase`1
+  langs:
+  - csharp
+  - vb
+  name: Resolve(IWorldAccessor, string)
+  nameWithType: IRecipeBase<T>.Resolve(IWorldAccessor, string)
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.Resolve(Vintagestory.API.Common.IWorldAccessor, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Crafting/RecipeBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Resolve
+    path: Common/Crafting/RecipeBase.cs
+    startLine: 23
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: bool Resolve(IWorldAccessor world, string sourceForErrorLogging)
+    parameters:
+    - id: world
+      type: Vintagestory.API.Common.IWorldAccessor
+    - id: sourceForErrorLogging
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Function Resolve(world As IWorldAccessor, sourceForErrorLogging As String) As Boolean
+  overload: Vintagestory.API.Common.IRecipeBase`1.Resolve*
+  nameWithType.vb: IRecipeBase(Of T).Resolve(IWorldAccessor, String)
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).Resolve(Vintagestory.API.Common.IWorldAccessor, String)
+  name.vb: Resolve(IWorldAccessor, String)
+- uid: Vintagestory.API.Common.IRecipeBase`1.Clone
+  commentId: M:Vintagestory.API.Common.IRecipeBase`1.Clone
+  id: Clone
+  parent: Vintagestory.API.Common.IRecipeBase`1
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: IRecipeBase<T>.Clone()
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.Clone()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Crafting/RecipeBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Clone
+    path: Common/Crafting/RecipeBase.cs
+    startLine: 24
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: T Clone()
+    return:
+      type: '{T}'
+    content.vb: Function Clone() As T
+  overload: Vintagestory.API.Common.IRecipeBase`1.Clone*
+  nameWithType.vb: IRecipeBase(Of T).Clone()
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).Clone()
+- uid: Vintagestory.API.Common.IRecipeBase`1.Ingredients
+  commentId: P:Vintagestory.API.Common.IRecipeBase`1.Ingredients
+  id: Ingredients
+  parent: Vintagestory.API.Common.IRecipeBase`1
+  langs:
+  - csharp
+  - vb
+  name: Ingredients
+  nameWithType: IRecipeBase<T>.Ingredients
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.Ingredients
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Crafting/RecipeBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Ingredients
+    path: Common/Crafting/RecipeBase.cs
+    startLine: 26
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IRecipeIngredient[] Ingredients { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.IRecipeIngredient[]
+    content.vb: ReadOnly Property Ingredients As IRecipeIngredient()
+  overload: Vintagestory.API.Common.IRecipeBase`1.Ingredients*
+  nameWithType.vb: IRecipeBase(Of T).Ingredients
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).Ingredients
+- uid: Vintagestory.API.Common.IRecipeBase`1.Output
+  commentId: P:Vintagestory.API.Common.IRecipeBase`1.Output
+  id: Output
+  parent: Vintagestory.API.Common.IRecipeBase`1
+  langs:
+  - csharp
+  - vb
+  name: Output
+  nameWithType: IRecipeBase<T>.Output
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.Output
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Crafting/RecipeBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Output
+    path: Common/Crafting/RecipeBase.cs
+    startLine: 28
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: IRecipeOutput Output { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.IRecipeOutput
+    content.vb: ReadOnly Property Output As IRecipeOutput
+  overload: Vintagestory.API.Common.IRecipeBase`1.Output*
+  nameWithType.vb: IRecipeBase(Of T).Output
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).Output
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IRecipeBase`1.Name*
+  commentId: Overload:Vintagestory.API.Common.IRecipeBase`1.Name
+  href: Vintagestory.API.Common.IRecipeBase-1.html#Vintagestory_API_Common_IRecipeBase_1_Name
+  name: Name
+  nameWithType: IRecipeBase<T>.Name
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.Name
+  nameWithType.vb: IRecipeBase(Of T).Name
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).Name
+- uid: Vintagestory.API.Common.AssetLocation
+  commentId: T:Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: AssetLocation
+  nameWithType: AssetLocation
+  fullName: Vintagestory.API.Common.AssetLocation
+- uid: Vintagestory.API.Common.IRecipeBase`1.Enabled*
+  commentId: Overload:Vintagestory.API.Common.IRecipeBase`1.Enabled
+  href: Vintagestory.API.Common.IRecipeBase-1.html#Vintagestory_API_Common_IRecipeBase_1_Enabled
+  name: Enabled
+  nameWithType: IRecipeBase<T>.Enabled
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.Enabled
+  nameWithType.vb: IRecipeBase(Of T).Enabled
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).Enabled
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IRecipeBase`1.GetNameToCodeMapping*
+  commentId: Overload:Vintagestory.API.Common.IRecipeBase`1.GetNameToCodeMapping
+  href: Vintagestory.API.Common.IRecipeBase-1.html#Vintagestory_API_Common_IRecipeBase_1_GetNameToCodeMapping_Vintagestory_API_Common_IWorldAccessor_
+  name: GetNameToCodeMapping
+  nameWithType: IRecipeBase<T>.GetNameToCodeMapping
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.GetNameToCodeMapping
+  nameWithType.vb: IRecipeBase(Of T).GetNameToCodeMapping
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).GetNameToCodeMapping
+- uid: Vintagestory.API.Common.IWorldAccessor
+  commentId: T:Vintagestory.API.Common.IWorldAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldAccessor.html
+  name: IWorldAccessor
+  nameWithType: IWorldAccessor
+  fullName: Vintagestory.API.Common.IWorldAccessor
+- uid: System.Collections.Generic.Dictionary{System.String,System.String[]}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String[]}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, string[]>
+  nameWithType: Dictionary<string, string[]>
+  fullName: System.Collections.Generic.Dictionary<string, string[]>
+  nameWithType.vb: Dictionary(Of String, String())
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, String())
+  name.vb: Dictionary(Of String, String())
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.IRecipeBase`1.Resolve*
+  commentId: Overload:Vintagestory.API.Common.IRecipeBase`1.Resolve
+  href: Vintagestory.API.Common.IRecipeBase-1.html#Vintagestory_API_Common_IRecipeBase_1_Resolve_Vintagestory_API_Common_IWorldAccessor_System_String_
+  name: Resolve
+  nameWithType: IRecipeBase<T>.Resolve
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.Resolve
+  nameWithType.vb: IRecipeBase(Of T).Resolve
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).Resolve
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.IRecipeBase`1.Clone*
+  commentId: Overload:Vintagestory.API.Common.IRecipeBase`1.Clone
+  href: Vintagestory.API.Common.IRecipeBase-1.html#Vintagestory_API_Common_IRecipeBase_1_Clone
+  name: Clone
+  nameWithType: IRecipeBase<T>.Clone
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.Clone
+  nameWithType.vb: IRecipeBase(Of T).Clone
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).Clone
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Vintagestory.API.Common.IRecipeBase`1.Ingredients*
+  commentId: Overload:Vintagestory.API.Common.IRecipeBase`1.Ingredients
+  href: Vintagestory.API.Common.IRecipeBase-1.html#Vintagestory_API_Common_IRecipeBase_1_Ingredients
+  name: Ingredients
+  nameWithType: IRecipeBase<T>.Ingredients
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.Ingredients
+  nameWithType.vb: IRecipeBase(Of T).Ingredients
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).Ingredients
+- uid: Vintagestory.API.Common.IRecipeIngredient[]
+  isExternal: true
+  href: Vintagestory.API.Common.IRecipeIngredient.html
+  name: IRecipeIngredient[]
+  nameWithType: IRecipeIngredient[]
+  fullName: Vintagestory.API.Common.IRecipeIngredient[]
+  nameWithType.vb: IRecipeIngredient()
+  fullName.vb: Vintagestory.API.Common.IRecipeIngredient()
+  name.vb: IRecipeIngredient()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IRecipeIngredient
+    name: IRecipeIngredient
+    href: Vintagestory.API.Common.IRecipeIngredient.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.IRecipeIngredient
+    name: IRecipeIngredient
+    href: Vintagestory.API.Common.IRecipeIngredient.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IRecipeBase`1.Output*
+  commentId: Overload:Vintagestory.API.Common.IRecipeBase`1.Output
+  href: Vintagestory.API.Common.IRecipeBase-1.html#Vintagestory_API_Common_IRecipeBase_1_Output
+  name: Output
+  nameWithType: IRecipeBase<T>.Output
+  fullName: Vintagestory.API.Common.IRecipeBase<T>.Output
+  nameWithType.vb: IRecipeBase(Of T).Output
+  fullName.vb: Vintagestory.API.Common.IRecipeBase(Of T).Output
+- uid: Vintagestory.API.Common.IRecipeOutput
+  commentId: T:Vintagestory.API.Common.IRecipeOutput
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IRecipeOutput.html
+  name: IRecipeOutput
+  nameWithType: IRecipeOutput
+  fullName: Vintagestory.API.Common.IRecipeOutput

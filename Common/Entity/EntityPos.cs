@@ -589,16 +589,13 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool BasicallySameAs(EntityPos pos, double epsilon = 0.0001)
         {
+            double epsilonSquared = epsilon * epsilon;
             return
-                Math.Abs(X - pos.x) < epsilon &&
-                Math.Abs(Y - pos.y) < epsilon &&
-                Math.Abs(Z - pos.z) < epsilon &&
-                Math.Abs(roll - pos.roll) < epsilon &&
-                Math.Abs(yaw - pos.yaw) < epsilon &&
-                Math.Abs(pitch - pos.pitch) < epsilon &&
-                Math.Abs(Motion.X - pos.Motion.X) < epsilon &&
-                Math.Abs(Motion.Y - pos.Motion.Y) < epsilon &&
-                Math.Abs(Motion.Z - pos.Motion.Z) < epsilon
+                GameMath.SumOfSquares(X - pos.x, Y - pos.y, Z - pos.z) < epsilonSquared &&            // Math.Abs involves conditional statements; instead of comparing absolutes, it is faster (and mathematically equivalent) to compare the squared values
+                GameMath.Square(roll - pos.roll) < epsilonSquared &&
+                GameMath.Square(yaw - pos.yaw) < epsilonSquared &&
+                GameMath.Square(pitch - pos.pitch) < epsilonSquared &&
+                GameMath.SumOfSquares(Motion.X - pos.Motion.X, Motion.Y - pos.Motion.Y, Motion.Z - pos.Motion.Z) < epsilonSquared
             ;
         }
 
@@ -611,13 +608,14 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool BasicallySameAsIgnoreMotion(EntityPos pos, double epsilon = 0.0001)
         {
+            double epsilonSquared = epsilon * epsilon;
             return
-                Math.Abs(X - pos.x) < epsilon &&
-                Math.Abs(Y - pos.y) < epsilon &&
-                Math.Abs(Z - pos.z) < epsilon &&
-                Math.Abs(roll - pos.roll) < epsilon &&
-                Math.Abs(yaw - pos.yaw) < epsilon &&
-                Math.Abs(pitch - pos.pitch) < epsilon
+                GameMath.Square(X - pos.x) < epsilonSquared &&
+                GameMath.Square(Y - pos.y) < epsilonSquared &&
+                GameMath.Square(Z - pos.z) < epsilonSquared &&
+                GameMath.Square(roll - pos.roll) < epsilonSquared &&
+                GameMath.Square(yaw - pos.yaw) < epsilonSquared &&
+                GameMath.Square(pitch - pos.pitch) < epsilonSquared
             ;
         }
 
@@ -629,13 +627,10 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool BasicallySameAsIgnoreAngles(EntityPos pos, double epsilon = 0.0001)
         {
+            double epsilonSquared = epsilon * epsilon;
             return
-                Math.Abs(X - pos.x) < epsilon &&
-                Math.Abs(Y - pos.y) < epsilon &&
-                Math.Abs(Z - pos.z) < epsilon &&
-                Math.Abs(Motion.X - pos.Motion.X) < epsilon &&
-                Math.Abs(Motion.Y - pos.Motion.Y) < epsilon &&
-                Math.Abs(Motion.Z - pos.Motion.Z) < epsilon
+                GameMath.SumOfSquares(X - pos.x, Y - pos.y, Z - pos.z) < epsilonSquared &&            // Math.Abs involves conditional statements; instead of comparing absolutes, it is faster (and mathematically equivalent) to compare the squared values
+                GameMath.SumOfSquares(Motion.X - pos.Motion.X, Motion.Y - pos.Motion.Y, Motion.Z - pos.Motion.Z) < epsilonSquared
             ;
         }
 

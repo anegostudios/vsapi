@@ -1,0 +1,1668 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Datastructures.JsonObject
+  commentId: T:Vintagestory.API.Datastructures.JsonObject
+  id: JsonObject
+  parent: Vintagestory.API.Datastructures
+  children:
+  - Vintagestory.API.Datastructures.JsonObject.#ctor(Newtonsoft.Json.Linq.JToken)
+  - Vintagestory.API.Datastructures.JsonObject.#ctor(Vintagestory.API.Datastructures.JsonObject,System.Boolean)
+  - Vintagestory.API.Datastructures.JsonObject.AsArray
+  - Vintagestory.API.Datastructures.JsonObject.AsArray``1(``0[],System.String)
+  - Vintagestory.API.Datastructures.JsonObject.AsBool(System.Boolean)
+  - Vintagestory.API.Datastructures.JsonObject.AsDouble(System.Double)
+  - Vintagestory.API.Datastructures.JsonObject.AsFloat(System.Single)
+  - Vintagestory.API.Datastructures.JsonObject.AsFloatArray(System.Single[])
+  - Vintagestory.API.Datastructures.JsonObject.AsInt(System.Int32)
+  - Vintagestory.API.Datastructures.JsonObject.AsObject``1(Newtonsoft.Json.JsonSerializerSettings,``0,System.String)
+  - Vintagestory.API.Datastructures.JsonObject.AsObject``1(``0)
+  - Vintagestory.API.Datastructures.JsonObject.AsObject``1(``0,System.String)
+  - Vintagestory.API.Datastructures.JsonObject.AsString(System.String)
+  - Vintagestory.API.Datastructures.JsonObject.AsStringArray(System.String[],System.String)
+  - Vintagestory.API.Datastructures.JsonObject.Clone
+  - Vintagestory.API.Datastructures.JsonObject.Exists
+  - Vintagestory.API.Datastructures.JsonObject.FillPlaceHolder(System.String,System.String)
+  - Vintagestory.API.Datastructures.JsonObject.FromJson(System.String)
+  - Vintagestory.API.Datastructures.JsonObject.IsArray
+  - Vintagestory.API.Datastructures.JsonObject.IsTrue(System.String)
+  - Vintagestory.API.Datastructures.JsonObject.Item(System.String)
+  - Vintagestory.API.Datastructures.JsonObject.KeyExists(System.String)
+  - Vintagestory.API.Datastructures.JsonObject.ToAttribute
+  - Vintagestory.API.Datastructures.JsonObject.ToPrimitiveArray``1(Newtonsoft.Json.Linq.JArray)
+  - Vintagestory.API.Datastructures.JsonObject.ToString
+  - Vintagestory.API.Datastructures.JsonObject.Token
+  langs:
+  - csharp
+  - vb
+  name: JsonObject
+  nameWithType: JsonObject
+  fullName: Vintagestory.API.Datastructures.JsonObject
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: JsonObject
+    path: Datastructures/JsonObject.cs
+    startLine: 12
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Elegant, yet somewhat inefficently designed (because wasteful with heap objects) wrapper class to abstract away the type-casting nightmare of JToken O.O
+  example: []
+  syntax:
+    content: public class JsonObject
+    content.vb: Public Class JsonObject
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Vintagestory.API.Datastructures.JsonObject.FromJson(System.String)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.FromJson(System.String)
+  id: FromJson(System.String)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: FromJson(string)
+  nameWithType: JsonObject.FromJson(string)
+  fullName: Vintagestory.API.Datastructures.JsonObject.FromJson(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FromJson
+    path: Datastructures/JsonObject.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public static JsonObject FromJson(string jsonCode)
+    parameters:
+    - id: jsonCode
+      type: System.String
+    return:
+      type: Vintagestory.API.Datastructures.JsonObject
+    content.vb: Public Shared Function FromJson(jsonCode As String) As JsonObject
+  overload: Vintagestory.API.Datastructures.JsonObject.FromJson*
+  nameWithType.vb: JsonObject.FromJson(String)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.FromJson(String)
+  name.vb: FromJson(String)
+- uid: Vintagestory.API.Datastructures.JsonObject.#ctor(Newtonsoft.Json.Linq.JToken)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.#ctor(Newtonsoft.Json.Linq.JToken)
+  id: '#ctor(Newtonsoft.Json.Linq.JToken)'
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: JsonObject(JToken)
+  nameWithType: JsonObject.JsonObject(JToken)
+  fullName: Vintagestory.API.Datastructures.JsonObject.JsonObject(Newtonsoft.Json.Linq.JToken)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Datastructures/JsonObject.cs
+    startLine: 25
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Create a new instance of a JsonObject
+  example: []
+  syntax:
+    content: public JsonObject(JToken token)
+    parameters:
+    - id: token
+      type: Newtonsoft.Json.Linq.JToken
+      description: ''
+    content.vb: Public Sub New(token As JToken)
+  overload: Vintagestory.API.Datastructures.JsonObject.#ctor*
+  nameWithType.vb: JsonObject.New(JToken)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.New(Newtonsoft.Json.Linq.JToken)
+  name.vb: New(JToken)
+- uid: Vintagestory.API.Datastructures.JsonObject.#ctor(Vintagestory.API.Datastructures.JsonObject,System.Boolean)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.#ctor(Vintagestory.API.Datastructures.JsonObject,System.Boolean)
+  id: '#ctor(Vintagestory.API.Datastructures.JsonObject,System.Boolean)'
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: JsonObject(JsonObject, bool)
+  nameWithType: JsonObject.JsonObject(JsonObject, bool)
+  fullName: Vintagestory.API.Datastructures.JsonObject.JsonObject(Vintagestory.API.Datastructures.JsonObject, bool)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Datastructures/JsonObject.cs
+    startLine: 34
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Create a new instance of a JsonObject
+  example: []
+  syntax:
+    content: public JsonObject(JsonObject original, bool unused)
+    parameters:
+    - id: original
+      type: Vintagestory.API.Datastructures.JsonObject
+      description: ''
+    - id: unused
+      type: System.Boolean
+      description: Only present so that the Constructor with a sole null parameter has an unambiguous signature
+    content.vb: Public Sub New(original As JsonObject, unused As Boolean)
+  overload: Vintagestory.API.Datastructures.JsonObject.#ctor*
+  nameWithType.vb: JsonObject.New(JsonObject, Boolean)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.New(Vintagestory.API.Datastructures.JsonObject, Boolean)
+  name.vb: New(JsonObject, Boolean)
+- uid: Vintagestory.API.Datastructures.JsonObject.Item(System.String)
+  commentId: P:Vintagestory.API.Datastructures.JsonObject.Item(System.String)
+  id: Item(System.String)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: this[string]
+  nameWithType: JsonObject.this[string]
+  fullName: Vintagestory.API.Datastructures.JsonObject.this[string]
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: this[]
+    path: Datastructures/JsonObject.cs
+    startLine: 44
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Access a tokens element with given key
+  example: []
+  syntax:
+    content: public JsonObject this[string key] { get; }
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Datastructures.JsonObject
+      description: ''
+    content.vb: Public ReadOnly Default Property this[](key As String) As JsonObject
+  overload: Vintagestory.API.Datastructures.JsonObject.Item*
+  nameWithType.vb: JsonObject.this[](String)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.this[](String)
+  name.vb: this[](String)
+- uid: Vintagestory.API.Datastructures.JsonObject.Exists
+  commentId: P:Vintagestory.API.Datastructures.JsonObject.Exists
+  id: Exists
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: Exists
+  nameWithType: JsonObject.Exists
+  fullName: Vintagestory.API.Datastructures.JsonObject.Exists
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Exists
+    path: Datastructures/JsonObject.cs
+    startLine: 57
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: True if the token is not null
+  example: []
+  syntax:
+    content: public bool Exists { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property Exists As Boolean
+  overload: Vintagestory.API.Datastructures.JsonObject.Exists*
+- uid: Vintagestory.API.Datastructures.JsonObject.Token
+  commentId: P:Vintagestory.API.Datastructures.JsonObject.Token
+  id: Token
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: Token
+  nameWithType: JsonObject.Token
+  fullName: Vintagestory.API.Datastructures.JsonObject.Token
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Token
+    path: Datastructures/JsonObject.cs
+    startLine: 62
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public virtual JToken Token { get; set; }
+    parameters: []
+    return:
+      type: Newtonsoft.Json.Linq.JToken
+    content.vb: Public Overridable Property Token As JToken
+  overload: Vintagestory.API.Datastructures.JsonObject.Token*
+- uid: Vintagestory.API.Datastructures.JsonObject.KeyExists(System.String)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.KeyExists(System.String)
+  id: KeyExists(System.String)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: KeyExists(string)
+  nameWithType: JsonObject.KeyExists(string)
+  fullName: Vintagestory.API.Datastructures.JsonObject.KeyExists(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: KeyExists
+    path: Datastructures/JsonObject.cs
+    startLine: 72
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: True if the token has an element with given key
+  example: []
+  syntax:
+    content: public bool KeyExists(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function KeyExists(key As String) As Boolean
+  overload: Vintagestory.API.Datastructures.JsonObject.KeyExists*
+  nameWithType.vb: JsonObject.KeyExists(String)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.KeyExists(String)
+  name.vb: KeyExists(String)
+- uid: Vintagestory.API.Datastructures.JsonObject.AsObject``1(``0)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.AsObject``1(``0)
+  id: AsObject``1(``0)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: AsObject<T>(T)
+  nameWithType: JsonObject.AsObject<T>(T)
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsObject<T>(T)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsObject
+    path: Datastructures/JsonObject.cs
+    startLine: 82
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Deserialize the token to an object of the specified type T
+  example: []
+  syntax:
+    content: public T AsObject<T>(T defaultValue = default)
+    parameters:
+    - id: defaultValue
+      type: '{T}'
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Public Function AsObject(Of T)(defaultValue As T = Nothing) As T
+  overload: Vintagestory.API.Datastructures.JsonObject.AsObject*
+  nameWithType.vb: JsonObject.AsObject(Of T)(T)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.AsObject(Of T)(T)
+  name.vb: AsObject(Of T)(T)
+- uid: Vintagestory.API.Datastructures.JsonObject.AsObject``1(``0,System.String)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.AsObject``1(``0,System.String)
+  id: AsObject``1(``0,System.String)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: AsObject<T>(T, string)
+  nameWithType: JsonObject.AsObject<T>(T, string)
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsObject<T>(T, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsObject
+    path: Datastructures/JsonObject.cs
+    startLine: 94
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Deserialize the token to an object of the specified type T, with the specified domain for any AssetLocation which needs to be parsed
+  example: []
+  syntax:
+    content: public T AsObject<T>(T defaultValue, string domain)
+    parameters:
+    - id: defaultValue
+      type: '{T}'
+    - id: domain
+      type: System.String
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Public Function AsObject(Of T)(defaultValue As T, domain As String) As T
+  overload: Vintagestory.API.Datastructures.JsonObject.AsObject*
+  nameWithType.vb: JsonObject.AsObject(Of T)(T, String)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.AsObject(Of T)(T, String)
+  name.vb: AsObject(Of T)(T, String)
+- uid: Vintagestory.API.Datastructures.JsonObject.AsObject``1(Newtonsoft.Json.JsonSerializerSettings,``0,System.String)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.AsObject``1(Newtonsoft.Json.JsonSerializerSettings,``0,System.String)
+  id: AsObject``1(Newtonsoft.Json.JsonSerializerSettings,``0,System.String)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: AsObject<T>(JsonSerializerSettings, T, string)
+  nameWithType: JsonObject.AsObject<T>(JsonSerializerSettings, T, string)
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsObject<T>(Newtonsoft.Json.JsonSerializerSettings, T, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsObject
+    path: Datastructures/JsonObject.cs
+    startLine: 107
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public T AsObject<T>(JsonSerializerSettings settings, T defaultValue, string domain = "game")
+    parameters:
+    - id: settings
+      type: Newtonsoft.Json.JsonSerializerSettings
+    - id: defaultValue
+      type: '{T}'
+    - id: domain
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+    content.vb: Public Function AsObject(Of T)(settings As JsonSerializerSettings, defaultValue As T, domain As String = "game") As T
+  overload: Vintagestory.API.Datastructures.JsonObject.AsObject*
+  nameWithType.vb: JsonObject.AsObject(Of T)(JsonSerializerSettings, T, String)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.AsObject(Of T)(Newtonsoft.Json.JsonSerializerSettings, T, String)
+  name.vb: AsObject(Of T)(JsonSerializerSettings, T, String)
+- uid: Vintagestory.API.Datastructures.JsonObject.AsArray
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.AsArray
+  id: AsArray
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: AsArray()
+  nameWithType: JsonObject.AsArray()
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsArray()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsArray
+    path: Datastructures/JsonObject.cs
+    startLine: 126
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Turn the token into an array of JsonObjects
+  example: []
+  syntax:
+    content: public JsonObject[] AsArray()
+    return:
+      type: Vintagestory.API.Datastructures.JsonObject[]
+      description: ''
+    content.vb: Public Function AsArray() As JsonObject()
+  overload: Vintagestory.API.Datastructures.JsonObject.AsArray*
+- uid: Vintagestory.API.Datastructures.JsonObject.AsString(System.String)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.AsString(System.String)
+  id: AsString(System.String)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: AsString(string)
+  nameWithType: JsonObject.AsString(string)
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsString(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsString
+    path: Datastructures/JsonObject.cs
+    startLine: 146
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Turn the token into a string
+  example: []
+  syntax:
+    content: public string AsString(string defaultValue = null)
+    parameters:
+    - id: defaultValue
+      type: System.String
+      description: If the conversion fails, this value is used instead
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Function AsString(defaultValue As String = Nothing) As String
+  overload: Vintagestory.API.Datastructures.JsonObject.AsString*
+  nameWithType.vb: JsonObject.AsString(String)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.AsString(String)
+  name.vb: AsString(String)
+- uid: Vintagestory.API.Datastructures.JsonObject.AsStringArray(System.String[],System.String)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.AsStringArray(System.String[],System.String)
+  id: AsStringArray(System.String[],System.String)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: AsStringArray(string[], string)
+  nameWithType: JsonObject.AsStringArray(string[], string)
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsStringArray(string[], string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsStringArray
+    path: Datastructures/JsonObject.cs
+    startLine: 151
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: >-
+      [Obsolete("Use AsArray<string>() instead")]
+
+      public string[] AsStringArray(string[] defaultValue = null, string defaultDomain = null)
+    parameters:
+    - id: defaultValue
+      type: System.String[]
+    - id: defaultDomain
+      type: System.String
+    return:
+      type: System.String[]
+    content.vb: >-
+      <Obsolete("Use AsArray<string>() instead")>
+
+      Public Function AsStringArray(defaultValue As String() = Nothing, defaultDomain As String = Nothing) As String()
+  overload: Vintagestory.API.Datastructures.JsonObject.AsStringArray*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use AsArray<string>() instead
+  nameWithType.vb: JsonObject.AsStringArray(String(), String)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.AsStringArray(String(), String)
+  name.vb: AsStringArray(String(), String)
+- uid: Vintagestory.API.Datastructures.JsonObject.AsFloatArray(System.Single[])
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.AsFloatArray(System.Single[])
+  id: AsFloatArray(System.Single[])
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: AsFloatArray(float[])
+  nameWithType: JsonObject.AsFloatArray(float[])
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsFloatArray(float[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsFloatArray
+    path: Datastructures/JsonObject.cs
+    startLine: 157
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: >-
+      [Obsolete("Use AsArray<float>() instead")]
+
+      public float[] AsFloatArray(float[] defaultValue = null)
+    parameters:
+    - id: defaultValue
+      type: System.Single[]
+    return:
+      type: System.Single[]
+    content.vb: >-
+      <Obsolete("Use AsArray<float>() instead")>
+
+      Public Function AsFloatArray(defaultValue As Single() = Nothing) As Single()
+  overload: Vintagestory.API.Datastructures.JsonObject.AsFloatArray*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use AsArray<float>() instead
+  nameWithType.vb: JsonObject.AsFloatArray(Single())
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.AsFloatArray(Single())
+  name.vb: AsFloatArray(Single())
+- uid: Vintagestory.API.Datastructures.JsonObject.AsArray``1(``0[],System.String)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.AsArray``1(``0[],System.String)
+  id: AsArray``1(``0[],System.String)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: AsArray<T>(T[], string)
+  nameWithType: JsonObject.AsArray<T>(T[], string)
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsArray<T>(T[], string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsArray
+    path: Datastructures/JsonObject.cs
+    startLine: 169
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Turn the token into an array
+  example: []
+  syntax:
+    content: public T[] AsArray<T>(T[] defaultValue = null, string defaultDomain = null)
+    parameters:
+    - id: defaultValue
+      type: '{T}[]'
+      description: If the conversion fails, this value is used instead
+    - id: defaultDomain
+      type: System.String
+      description: ''
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}[]'
+      description: ''
+    content.vb: Public Function AsArray(Of T)(defaultValue As T() = Nothing, defaultDomain As String = Nothing) As T()
+  overload: Vintagestory.API.Datastructures.JsonObject.AsArray*
+  nameWithType.vb: JsonObject.AsArray(Of T)(T(), String)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.AsArray(Of T)(T(), String)
+  name.vb: AsArray(Of T)(T(), String)
+- uid: Vintagestory.API.Datastructures.JsonObject.AsBool(System.Boolean)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.AsBool(System.Boolean)
+  id: AsBool(System.Boolean)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: AsBool(bool)
+  nameWithType: JsonObject.AsBool(bool)
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsBool(bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsBool
+    path: Datastructures/JsonObject.cs
+    startLine: 197
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Turn the token into a boolean
+  example: []
+  syntax:
+    content: public bool AsBool(bool defaultValue = false)
+    parameters:
+    - id: defaultValue
+      type: System.Boolean
+      description: If the conversion fails, this value is used instead
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function AsBool(defaultValue As Boolean = False) As Boolean
+  overload: Vintagestory.API.Datastructures.JsonObject.AsBool*
+  nameWithType.vb: JsonObject.AsBool(Boolean)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.AsBool(Boolean)
+  name.vb: AsBool(Boolean)
+- uid: Vintagestory.API.Datastructures.JsonObject.AsInt(System.Int32)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.AsInt(System.Int32)
+  id: AsInt(System.Int32)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: AsInt(int)
+  nameWithType: JsonObject.AsInt(int)
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsInt(int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsInt
+    path: Datastructures/JsonObject.cs
+    startLine: 223
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Turn the token into an integer
+  example: []
+  syntax:
+    content: public int AsInt(int defaultValue = 0)
+    parameters:
+    - id: defaultValue
+      type: System.Int32
+      description: If the conversion fails, this value is used instead
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Public Function AsInt(defaultValue As Integer = 0) As Integer
+  overload: Vintagestory.API.Datastructures.JsonObject.AsInt*
+  nameWithType.vb: JsonObject.AsInt(Integer)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.AsInt(Integer)
+  name.vb: AsInt(Integer)
+- uid: Vintagestory.API.Datastructures.JsonObject.AsFloat(System.Single)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.AsFloat(System.Single)
+  id: AsFloat(System.Single)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: AsFloat(float)
+  nameWithType: JsonObject.AsFloat(float)
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsFloat(float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsFloat
+    path: Datastructures/JsonObject.cs
+    startLine: 251
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Turn the token into a float
+  example: []
+  syntax:
+    content: public float AsFloat(float defaultValue = 0)
+    parameters:
+    - id: defaultValue
+      type: System.Single
+      description: If the conversion fails, this value is used instead
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Public Function AsFloat(defaultValue As Single = 0) As Single
+  overload: Vintagestory.API.Datastructures.JsonObject.AsFloat*
+  nameWithType.vb: JsonObject.AsFloat(Single)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.AsFloat(Single)
+  name.vb: AsFloat(Single)
+- uid: Vintagestory.API.Datastructures.JsonObject.AsDouble(System.Double)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.AsDouble(System.Double)
+  id: AsDouble(System.Double)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: AsDouble(double)
+  nameWithType: JsonObject.AsDouble(double)
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsDouble(double)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsDouble
+    path: Datastructures/JsonObject.cs
+    startLine: 280
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Turn the token into a double
+  example: []
+  syntax:
+    content: public double AsDouble(double defaultValue = 0)
+    parameters:
+    - id: defaultValue
+      type: System.Double
+      description: If the conversion fails, this value is used instead
+    return:
+      type: System.Double
+      description: ''
+    content.vb: Public Function AsDouble(defaultValue As Double = 0) As Double
+  overload: Vintagestory.API.Datastructures.JsonObject.AsDouble*
+  nameWithType.vb: JsonObject.AsDouble(Double)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.AsDouble(Double)
+  name.vb: AsDouble(Double)
+- uid: Vintagestory.API.Datastructures.JsonObject.ToString
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.ToString
+  id: ToString
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: JsonObject.ToString()
+  fullName: Vintagestory.API.Datastructures.JsonObject.ToString()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToString
+    path: Datastructures/JsonObject.cs
+    startLine: 317
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Calls token.ToString()
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Vintagestory.API.Datastructures.JsonObject.ToString*
+- uid: Vintagestory.API.Datastructures.JsonObject.IsArray
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.IsArray
+  id: IsArray
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: IsArray()
+  nameWithType: JsonObject.IsArray()
+  fullName: Vintagestory.API.Datastructures.JsonObject.IsArray()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IsArray
+    path: Datastructures/JsonObject.cs
+    startLine: 326
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: True if the token is a JArray
+  example: []
+  syntax:
+    content: public bool IsArray()
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function IsArray() As Boolean
+  overload: Vintagestory.API.Datastructures.JsonObject.IsArray*
+- uid: Vintagestory.API.Datastructures.JsonObject.ToAttribute
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.ToAttribute
+  id: ToAttribute
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: ToAttribute()
+  nameWithType: JsonObject.ToAttribute()
+  fullName: Vintagestory.API.Datastructures.JsonObject.ToAttribute()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToAttribute
+    path: Datastructures/JsonObject.cs
+    startLine: 336
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: >-
+    Turns the token into an IAttribute with all its child elements, if it has any.<br />
+
+    Note: If you converting this to a tree attribute, a subsequent call to tree.GetInt() might not work because Newtonsoft.JSON seems to load integers as long, so use GetDecimal() or GetLong() instead. Similar things might happen with float&lt;-&gt;double
+  example: []
+  syntax:
+    content: public IAttribute ToAttribute()
+    return:
+      type: Vintagestory.API.Datastructures.IAttribute
+      description: ''
+    content.vb: Public Function ToAttribute() As IAttribute
+  overload: Vintagestory.API.Datastructures.JsonObject.ToAttribute*
+- uid: Vintagestory.API.Datastructures.JsonObject.FillPlaceHolder(System.String,System.String)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.FillPlaceHolder(System.String,System.String)
+  id: FillPlaceHolder(System.String,System.String)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: FillPlaceHolder(string, string)
+  nameWithType: JsonObject.FillPlaceHolder(string, string)
+  fullName: Vintagestory.API.Datastructures.JsonObject.FillPlaceHolder(string, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FillPlaceHolder
+    path: Datastructures/JsonObject.cs
+    startLine: 341
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public virtual void FillPlaceHolder(string key, string value)
+    parameters:
+    - id: key
+      type: System.String
+    - id: value
+      type: System.String
+    content.vb: Public Overridable Sub FillPlaceHolder(key As String, value As String)
+  overload: Vintagestory.API.Datastructures.JsonObject.FillPlaceHolder*
+  nameWithType.vb: JsonObject.FillPlaceHolder(String, String)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.FillPlaceHolder(String, String)
+  name.vb: FillPlaceHolder(String, String)
+- uid: Vintagestory.API.Datastructures.JsonObject.ToPrimitiveArray``1(Newtonsoft.Json.Linq.JArray)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.ToPrimitiveArray``1(Newtonsoft.Json.Linq.JArray)
+  id: ToPrimitiveArray``1(Newtonsoft.Json.Linq.JArray)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: ToPrimitiveArray<T>(JArray)
+  nameWithType: JsonObject.ToPrimitiveArray<T>(JArray)
+  fullName: Vintagestory.API.Datastructures.JsonObject.ToPrimitiveArray<T>(Newtonsoft.Json.Linq.JArray)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToPrimitiveArray
+    path: Datastructures/JsonObject.cs
+    startLine: 461
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Turn a JArray into a primitive array
+  example: []
+  syntax:
+    content: public static T[] ToPrimitiveArray<T>(JArray array)
+    parameters:
+    - id: array
+      type: Newtonsoft.Json.Linq.JArray
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}[]'
+      description: ''
+    content.vb: Public Shared Function ToPrimitiveArray(Of T)(array As JArray) As T()
+  overload: Vintagestory.API.Datastructures.JsonObject.ToPrimitiveArray*
+  nameWithType.vb: JsonObject.ToPrimitiveArray(Of T)(JArray)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.ToPrimitiveArray(Of T)(Newtonsoft.Json.Linq.JArray)
+  name.vb: ToPrimitiveArray(Of T)(JArray)
+- uid: Vintagestory.API.Datastructures.JsonObject.Clone
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.Clone
+  id: Clone
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: JsonObject.Clone()
+  fullName: Vintagestory.API.Datastructures.JsonObject.Clone()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Clone
+    path: Datastructures/JsonObject.cs
+    startLine: 477
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Returns a deep clone
+  example: []
+  syntax:
+    content: public JsonObject Clone()
+    return:
+      type: Vintagestory.API.Datastructures.JsonObject
+      description: ''
+    content.vb: Public Function Clone() As JsonObject
+  overload: Vintagestory.API.Datastructures.JsonObject.Clone*
+- uid: Vintagestory.API.Datastructures.JsonObject.IsTrue(System.String)
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.IsTrue(System.String)
+  id: IsTrue(System.String)
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: IsTrue(string)
+  nameWithType: JsonObject.IsTrue(string)
+  fullName: Vintagestory.API.Datastructures.JsonObject.IsTrue(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/JsonObject.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IsTrue
+    path: Datastructures/JsonObject.cs
+    startLine: 487
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Returns true if this object has the named bool attribute, and it is true
+  example: []
+  syntax:
+    content: public bool IsTrue(string attrName)
+    parameters:
+    - id: attrName
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsTrue(attrName As String) As Boolean
+  overload: Vintagestory.API.Datastructures.JsonObject.IsTrue*
+  nameWithType.vb: JsonObject.IsTrue(String)
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.IsTrue(String)
+  name.vb: IsTrue(String)
+references:
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Datastructures.JsonObject.FromJson*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.FromJson
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_FromJson_System_String_
+  name: FromJson
+  nameWithType: JsonObject.FromJson
+  fullName: Vintagestory.API.Datastructures.JsonObject.FromJson
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Datastructures.JsonObject
+  commentId: T:Vintagestory.API.Datastructures.JsonObject
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.JsonObject.html
+  name: JsonObject
+  nameWithType: JsonObject
+  fullName: Vintagestory.API.Datastructures.JsonObject
+- uid: Vintagestory.API.Datastructures.JsonObject.#ctor*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.#ctor
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject__ctor_Newtonsoft_Json_Linq_JToken_
+  name: JsonObject
+  nameWithType: JsonObject.JsonObject
+  fullName: Vintagestory.API.Datastructures.JsonObject.JsonObject
+  nameWithType.vb: JsonObject.New
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.New
+  name.vb: New
+- uid: Newtonsoft.Json.Linq.JToken
+  commentId: T:Newtonsoft.Json.Linq.JToken
+  parent: Newtonsoft.Json.Linq
+  isExternal: true
+  name: JToken
+  nameWithType: JToken
+  fullName: Newtonsoft.Json.Linq.JToken
+- uid: Newtonsoft.Json.Linq
+  commentId: N:Newtonsoft.Json.Linq
+  isExternal: true
+  name: Newtonsoft.Json.Linq
+  nameWithType: Newtonsoft.Json.Linq
+  fullName: Newtonsoft.Json.Linq
+  spec.csharp:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json.Linq
+    name: Linq
+    isExternal: true
+  spec.vb:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json.Linq
+    name: Linq
+    isExternal: true
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Datastructures.JsonObject.Item*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.Item
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_Item_System_String_
+  name: this
+  nameWithType: JsonObject.this
+  fullName: Vintagestory.API.Datastructures.JsonObject.this
+  nameWithType.vb: JsonObject.this[]
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject.this[]
+  name.vb: this[]
+- uid: Vintagestory.API.Datastructures.JsonObject.Exists*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.Exists
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_Exists
+  name: Exists
+  nameWithType: JsonObject.Exists
+  fullName: Vintagestory.API.Datastructures.JsonObject.Exists
+- uid: Vintagestory.API.Datastructures.JsonObject.Token*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.Token
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_Token
+  name: Token
+  nameWithType: JsonObject.Token
+  fullName: Vintagestory.API.Datastructures.JsonObject.Token
+- uid: Vintagestory.API.Datastructures.JsonObject.KeyExists*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.KeyExists
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_KeyExists_System_String_
+  name: KeyExists
+  nameWithType: JsonObject.KeyExists
+  fullName: Vintagestory.API.Datastructures.JsonObject.KeyExists
+- uid: Vintagestory.API.Datastructures.JsonObject.AsObject*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.AsObject
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_AsObject__1___0_
+  name: AsObject
+  nameWithType: JsonObject.AsObject
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsObject
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: Newtonsoft.Json.JsonSerializerSettings
+  commentId: T:Newtonsoft.Json.JsonSerializerSettings
+  parent: Newtonsoft.Json
+  isExternal: true
+  name: JsonSerializerSettings
+  nameWithType: JsonSerializerSettings
+  fullName: Newtonsoft.Json.JsonSerializerSettings
+- uid: Newtonsoft.Json
+  commentId: N:Newtonsoft.Json
+  isExternal: true
+  name: Newtonsoft.Json
+  nameWithType: Newtonsoft.Json
+  fullName: Newtonsoft.Json
+  spec.csharp:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+  spec.vb:
+  - uid: Newtonsoft
+    name: Newtonsoft
+    isExternal: true
+  - name: .
+  - uid: Newtonsoft.Json
+    name: Json
+    isExternal: true
+- uid: Vintagestory.API.Datastructures.JsonObject.AsArray*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.AsArray
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_AsArray
+  name: AsArray
+  nameWithType: JsonObject.AsArray
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsArray
+- uid: Vintagestory.API.Datastructures.JsonObject[]
+  isExternal: true
+  href: Vintagestory.API.Datastructures.JsonObject.html
+  name: JsonObject[]
+  nameWithType: JsonObject[]
+  fullName: Vintagestory.API.Datastructures.JsonObject[]
+  nameWithType.vb: JsonObject()
+  fullName.vb: Vintagestory.API.Datastructures.JsonObject()
+  name.vb: JsonObject()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.JsonObject.AsString*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.AsString
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_AsString_System_String_
+  name: AsString
+  nameWithType: JsonObject.AsString
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsString
+- uid: Vintagestory.API.Datastructures.JsonObject.AsStringArray*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.AsStringArray
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_AsStringArray_System_String___System_String_
+  name: AsStringArray
+  nameWithType: JsonObject.AsStringArray
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsStringArray
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.JsonObject.AsFloatArray*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.AsFloatArray
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_AsFloatArray_System_Single___
+  name: AsFloatArray
+  nameWithType: JsonObject.AsFloatArray
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsFloatArray
+- uid: System.Single[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+- uid: '{T}[]'
+  isExternal: true
+  name: T[]
+  nameWithType: T[]
+  fullName: T[]
+  nameWithType.vb: T()
+  fullName.vb: T()
+  name.vb: T()
+  spec.csharp:
+  - name: T
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: T
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.JsonObject.AsBool*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.AsBool
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_AsBool_System_Boolean_
+  name: AsBool
+  nameWithType: JsonObject.AsBool
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsBool
+- uid: Vintagestory.API.Datastructures.JsonObject.AsInt*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.AsInt
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_AsInt_System_Int32_
+  name: AsInt
+  nameWithType: JsonObject.AsInt
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsInt
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Datastructures.JsonObject.AsFloat*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.AsFloat
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_AsFloat_System_Single_
+  name: AsFloat
+  nameWithType: JsonObject.AsFloat
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsFloat
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Datastructures.JsonObject.AsDouble*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.AsDouble
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_AsDouble_System_Double_
+  name: AsDouble
+  nameWithType: JsonObject.AsDouble
+  fullName: Vintagestory.API.Datastructures.JsonObject.AsDouble
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.JsonObject.ToString*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.ToString
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_ToString
+  name: ToString
+  nameWithType: JsonObject.ToString
+  fullName: Vintagestory.API.Datastructures.JsonObject.ToString
+- uid: Vintagestory.API.Datastructures.JsonObject.IsArray*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.IsArray
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_IsArray
+  name: IsArray
+  nameWithType: JsonObject.IsArray
+  fullName: Vintagestory.API.Datastructures.JsonObject.IsArray
+- uid: Vintagestory.API.Datastructures.JsonObject.ToAttribute*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.ToAttribute
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_ToAttribute
+  name: ToAttribute
+  nameWithType: JsonObject.ToAttribute
+  fullName: Vintagestory.API.Datastructures.JsonObject.ToAttribute
+- uid: Vintagestory.API.Datastructures.IAttribute
+  commentId: T:Vintagestory.API.Datastructures.IAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.IAttribute.html
+  name: IAttribute
+  nameWithType: IAttribute
+  fullName: Vintagestory.API.Datastructures.IAttribute
+- uid: Vintagestory.API.Datastructures.JsonObject.FillPlaceHolder*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.FillPlaceHolder
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_FillPlaceHolder_System_String_System_String_
+  name: FillPlaceHolder
+  nameWithType: JsonObject.FillPlaceHolder
+  fullName: Vintagestory.API.Datastructures.JsonObject.FillPlaceHolder
+- uid: Vintagestory.API.Datastructures.JsonObject.ToPrimitiveArray*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.ToPrimitiveArray
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_ToPrimitiveArray__1_Newtonsoft_Json_Linq_JArray_
+  name: ToPrimitiveArray
+  nameWithType: JsonObject.ToPrimitiveArray
+  fullName: Vintagestory.API.Datastructures.JsonObject.ToPrimitiveArray
+- uid: Newtonsoft.Json.Linq.JArray
+  commentId: T:Newtonsoft.Json.Linq.JArray
+  parent: Newtonsoft.Json.Linq
+  isExternal: true
+  name: JArray
+  nameWithType: JArray
+  fullName: Newtonsoft.Json.Linq.JArray
+- uid: Vintagestory.API.Datastructures.JsonObject.Clone*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.Clone
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_Clone
+  name: Clone
+  nameWithType: JsonObject.Clone
+  fullName: Vintagestory.API.Datastructures.JsonObject.Clone
+- uid: Vintagestory.API.Datastructures.JsonObject.IsTrue*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.IsTrue
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_IsTrue_System_String_
+  name: IsTrue
+  nameWithType: JsonObject.IsTrue
+  fullName: Vintagestory.API.Datastructures.JsonObject.IsTrue

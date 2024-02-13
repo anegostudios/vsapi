@@ -1,0 +1,128 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.CanUseDelegate
+  commentId: T:Vintagestory.API.Common.CanUseDelegate
+  id: CanUseDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: CanUseDelegate
+  nameWithType: CanUseDelegate
+  fullName: Vintagestory.API.Common.CanUseDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/Delegates.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CanUseDelegate
+    path: Common/API/Delegates.cs
+    startLine: 143
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public delegate bool CanUseDelegate(IServerPlayer byPlayer, BlockSelection blockSel)
+    parameters:
+    - id: byPlayer
+      type: Vintagestory.API.Server.IServerPlayer
+    - id: blockSel
+      type: Vintagestory.API.Common.BlockSelection
+    return:
+      type: System.Boolean
+    content.vb: Public Delegate Function CanUseDelegate(byPlayer As IServerPlayer, blockSel As BlockSelection) As Boolean
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Server.IServerPlayer
+  commentId: T:Vintagestory.API.Server.IServerPlayer
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IServerPlayer.html
+  name: IServerPlayer
+  nameWithType: IServerPlayer
+  fullName: Vintagestory.API.Server.IServerPlayer
+- uid: Vintagestory.API.Common.BlockSelection
+  commentId: T:Vintagestory.API.Common.BlockSelection
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockSelection.html
+  name: BlockSelection
+  nameWithType: BlockSelection
+  fullName: Vintagestory.API.Common.BlockSelection
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

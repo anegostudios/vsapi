@@ -1,0 +1,562 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ILandClaimAPI
+  commentId: T:Vintagestory.API.Common.ILandClaimAPI
+  id: ILandClaimAPI
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.ILandClaimAPI.Add(Vintagestory.API.Common.LandClaim)
+  - Vintagestory.API.Common.ILandClaimAPI.All
+  - Vintagestory.API.Common.ILandClaimAPI.Get(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.ILandClaimAPI.Remove(Vintagestory.API.Common.LandClaim)
+  - Vintagestory.API.Common.ILandClaimAPI.TestAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlockAccessFlags)
+  - Vintagestory.API.Common.ILandClaimAPI.TryAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlockAccessFlags)
+  langs:
+  - csharp
+  - vb
+  name: ILandClaimAPI
+  nameWithType: ILandClaimAPI
+  fullName: Vintagestory.API.Common.ILandClaimAPI
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILandClaimAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ILandClaimAPI
+    path: Common/API/ILandClaimAPI.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public interface ILandClaimAPI
+    content.vb: Public Interface ILandClaimAPI
+- uid: Vintagestory.API.Common.ILandClaimAPI.All
+  commentId: P:Vintagestory.API.Common.ILandClaimAPI.All
+  id: All
+  parent: Vintagestory.API.Common.ILandClaimAPI
+  langs:
+  - csharp
+  - vb
+  name: All
+  nameWithType: ILandClaimAPI.All
+  fullName: Vintagestory.API.Common.ILandClaimAPI.All
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILandClaimAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: All
+    path: Common/API/ILandClaimAPI.cs
+    startLine: 10
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: List of all claims on the server. Same as WorldManager.SaveGame.Claims.
+  example: []
+  syntax:
+    content: List<LandClaim> All { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.Common.LandClaim}
+    content.vb: ReadOnly Property All As List(Of LandClaim)
+  overload: Vintagestory.API.Common.ILandClaimAPI.All*
+- uid: Vintagestory.API.Common.ILandClaimAPI.TestAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlockAccessFlags)
+  commentId: M:Vintagestory.API.Common.ILandClaimAPI.TestAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlockAccessFlags)
+  id: TestAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlockAccessFlags)
+  parent: Vintagestory.API.Common.ILandClaimAPI
+  langs:
+  - csharp
+  - vb
+  name: TestAccess(IPlayer, BlockPos, EnumBlockAccessFlags)
+  nameWithType: ILandClaimAPI.TestAccess(IPlayer, BlockPos, EnumBlockAccessFlags)
+  fullName: Vintagestory.API.Common.ILandClaimAPI.TestAccess(Vintagestory.API.Common.IPlayer, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.Common.EnumBlockAccessFlags)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILandClaimAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TestAccess
+    path: Common/API/ILandClaimAPI.cs
+    startLine: 19
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Checks with the permission system if given player has use or place/break permissions on supplied position. Returns always true when called on the client!
+  example: []
+  syntax:
+    content: EnumWorldAccessResponse TestAccess(IPlayer player, BlockPos pos, EnumBlockAccessFlags accessFlag)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+      description: ''
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    - id: accessFlag
+      type: Vintagestory.API.Common.EnumBlockAccessFlags
+      description: ''
+    return:
+      type: Vintagestory.API.Common.EnumWorldAccessResponse
+      description: ''
+    content.vb: Function TestAccess(player As IPlayer, pos As BlockPos, accessFlag As EnumBlockAccessFlags) As EnumWorldAccessResponse
+  overload: Vintagestory.API.Common.ILandClaimAPI.TestAccess*
+- uid: Vintagestory.API.Common.ILandClaimAPI.TryAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlockAccessFlags)
+  commentId: M:Vintagestory.API.Common.ILandClaimAPI.TryAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlockAccessFlags)
+  id: TryAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlockAccessFlags)
+  parent: Vintagestory.API.Common.ILandClaimAPI
+  langs:
+  - csharp
+  - vb
+  name: TryAccess(IPlayer, BlockPos, EnumBlockAccessFlags)
+  nameWithType: ILandClaimAPI.TryAccess(IPlayer, BlockPos, EnumBlockAccessFlags)
+  fullName: Vintagestory.API.Common.ILandClaimAPI.TryAccess(Vintagestory.API.Common.IPlayer, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.Common.EnumBlockAccessFlags)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILandClaimAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryAccess
+    path: Common/API/ILandClaimAPI.cs
+    startLine: 29
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Same as <xref href="Vintagestory.API.Common.ILandClaimAPI.TestAccess(Vintagestory.API.Common.IPlayer%2cVintagestory.API.MathTools.BlockPos%2cVintagestory.API.Common.EnumBlockAccessFlags)" data-throw-if-not-resolved="false"></xref> but also sends an error message to the player and executes a MarkDirty() event the block. Returns always true when called on the client!
+  example: []
+  syntax:
+    content: bool TryAccess(IPlayer player, BlockPos pos, EnumBlockAccessFlags accessFlag)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+      description: ''
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    - id: accessFlag
+      type: Vintagestory.API.Common.EnumBlockAccessFlags
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function TryAccess(player As IPlayer, pos As BlockPos, accessFlag As EnumBlockAccessFlags) As Boolean
+  overload: Vintagestory.API.Common.ILandClaimAPI.TryAccess*
+- uid: Vintagestory.API.Common.ILandClaimAPI.Get(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.ILandClaimAPI.Get(Vintagestory.API.MathTools.BlockPos)
+  id: Get(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.ILandClaimAPI
+  langs:
+  - csharp
+  - vb
+  name: Get(BlockPos)
+  nameWithType: ILandClaimAPI.Get(BlockPos)
+  fullName: Vintagestory.API.Common.ILandClaimAPI.Get(Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILandClaimAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Get
+    path: Common/API/ILandClaimAPI.cs
+    startLine: 36
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Get all claims registered at this position
+  example: []
+  syntax:
+    content: LandClaim[] Get(BlockPos pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    return:
+      type: Vintagestory.API.Common.LandClaim[]
+      description: ''
+    content.vb: Function [Get](pos As BlockPos) As LandClaim()
+  overload: Vintagestory.API.Common.ILandClaimAPI.Get*
+- uid: Vintagestory.API.Common.ILandClaimAPI.Add(Vintagestory.API.Common.LandClaim)
+  commentId: M:Vintagestory.API.Common.ILandClaimAPI.Add(Vintagestory.API.Common.LandClaim)
+  id: Add(Vintagestory.API.Common.LandClaim)
+  parent: Vintagestory.API.Common.ILandClaimAPI
+  langs:
+  - csharp
+  - vb
+  name: Add(LandClaim)
+  nameWithType: ILandClaimAPI.Add(LandClaim)
+  fullName: Vintagestory.API.Common.ILandClaimAPI.Add(Vintagestory.API.Common.LandClaim)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILandClaimAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Add
+    path: Common/API/ILandClaimAPI.cs
+    startLine: 43
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Add a new claim.
+  example: []
+  syntax:
+    content: void Add(LandClaim claim)
+    parameters:
+    - id: claim
+      type: Vintagestory.API.Common.LandClaim
+      description: ''
+    content.vb: Sub Add(claim As LandClaim)
+  overload: Vintagestory.API.Common.ILandClaimAPI.Add*
+- uid: Vintagestory.API.Common.ILandClaimAPI.Remove(Vintagestory.API.Common.LandClaim)
+  commentId: M:Vintagestory.API.Common.ILandClaimAPI.Remove(Vintagestory.API.Common.LandClaim)
+  id: Remove(Vintagestory.API.Common.LandClaim)
+  parent: Vintagestory.API.Common.ILandClaimAPI
+  langs:
+  - csharp
+  - vb
+  name: Remove(LandClaim)
+  nameWithType: ILandClaimAPI.Remove(LandClaim)
+  fullName: Vintagestory.API.Common.ILandClaimAPI.Remove(Vintagestory.API.Common.LandClaim)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ILandClaimAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Remove
+    path: Common/API/ILandClaimAPI.cs
+    startLine: 51
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Remove a claim. Returns false if no such claim was registered
+  example: []
+  syntax:
+    content: bool Remove(LandClaim claim)
+    parameters:
+    - id: claim
+      type: Vintagestory.API.Common.LandClaim
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function Remove(claim As LandClaim) As Boolean
+  overload: Vintagestory.API.Common.ILandClaimAPI.Remove*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.ILandClaimAPI.All*
+  commentId: Overload:Vintagestory.API.Common.ILandClaimAPI.All
+  href: Vintagestory.API.Common.ILandClaimAPI.html#Vintagestory_API_Common_ILandClaimAPI_All
+  name: All
+  nameWithType: ILandClaimAPI.All
+  fullName: Vintagestory.API.Common.ILandClaimAPI.All
+- uid: System.Collections.Generic.List{Vintagestory.API.Common.LandClaim}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.LandClaim}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<LandClaim>
+  nameWithType: List<LandClaim>
+  fullName: System.Collections.Generic.List<Vintagestory.API.Common.LandClaim>
+  nameWithType.vb: List(Of LandClaim)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Common.LandClaim)
+  name.vb: List(Of LandClaim)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Common.LandClaim
+    name: LandClaim
+    href: Vintagestory.API.Common.LandClaim.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.LandClaim
+    name: LandClaim
+    href: Vintagestory.API.Common.LandClaim.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.ILandClaimAPI.TestAccess*
+  commentId: Overload:Vintagestory.API.Common.ILandClaimAPI.TestAccess
+  href: Vintagestory.API.Common.ILandClaimAPI.html#Vintagestory_API_Common_ILandClaimAPI_TestAccess_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlockAccessFlags_
+  name: TestAccess
+  nameWithType: ILandClaimAPI.TestAccess
+  fullName: Vintagestory.API.Common.ILandClaimAPI.TestAccess
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.Common.EnumBlockAccessFlags
+  commentId: T:Vintagestory.API.Common.EnumBlockAccessFlags
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumBlockAccessFlags.html
+  name: EnumBlockAccessFlags
+  nameWithType: EnumBlockAccessFlags
+  fullName: Vintagestory.API.Common.EnumBlockAccessFlags
+- uid: Vintagestory.API.Common.EnumWorldAccessResponse
+  commentId: T:Vintagestory.API.Common.EnumWorldAccessResponse
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumWorldAccessResponse.html
+  name: EnumWorldAccessResponse
+  nameWithType: EnumWorldAccessResponse
+  fullName: Vintagestory.API.Common.EnumWorldAccessResponse
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.ILandClaimAPI.TestAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlockAccessFlags)
+  commentId: M:Vintagestory.API.Common.ILandClaimAPI.TestAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlockAccessFlags)
+  href: Vintagestory.API.Common.ILandClaimAPI.html#Vintagestory_API_Common_ILandClaimAPI_TestAccess_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlockAccessFlags_
+  name: TestAccess(IPlayer, BlockPos, EnumBlockAccessFlags)
+  nameWithType: ILandClaimAPI.TestAccess(IPlayer, BlockPos, EnumBlockAccessFlags)
+  fullName: Vintagestory.API.Common.ILandClaimAPI.TestAccess(Vintagestory.API.Common.IPlayer, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.Common.EnumBlockAccessFlags)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ILandClaimAPI.TestAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlockAccessFlags)
+    name: TestAccess
+    href: Vintagestory.API.Common.ILandClaimAPI.html#Vintagestory_API_Common_ILandClaimAPI_TestAccess_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlockAccessFlags_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumBlockAccessFlags
+    name: EnumBlockAccessFlags
+    href: Vintagestory.API.Common.EnumBlockAccessFlags.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ILandClaimAPI.TestAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumBlockAccessFlags)
+    name: TestAccess
+    href: Vintagestory.API.Common.ILandClaimAPI.html#Vintagestory_API_Common_ILandClaimAPI_TestAccess_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlockAccessFlags_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumBlockAccessFlags
+    name: EnumBlockAccessFlags
+    href: Vintagestory.API.Common.EnumBlockAccessFlags.html
+  - name: )
+- uid: Vintagestory.API.Common.ILandClaimAPI.TryAccess*
+  commentId: Overload:Vintagestory.API.Common.ILandClaimAPI.TryAccess
+  href: Vintagestory.API.Common.ILandClaimAPI.html#Vintagestory_API_Common_ILandClaimAPI_TryAccess_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlockAccessFlags_
+  name: TryAccess
+  nameWithType: ILandClaimAPI.TryAccess
+  fullName: Vintagestory.API.Common.ILandClaimAPI.TryAccess
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.ILandClaimAPI.Get*
+  commentId: Overload:Vintagestory.API.Common.ILandClaimAPI.Get
+  href: Vintagestory.API.Common.ILandClaimAPI.html#Vintagestory_API_Common_ILandClaimAPI_Get_Vintagestory_API_MathTools_BlockPos_
+  name: Get
+  nameWithType: ILandClaimAPI.Get
+  fullName: Vintagestory.API.Common.ILandClaimAPI.Get
+- uid: Vintagestory.API.Common.LandClaim[]
+  isExternal: true
+  href: Vintagestory.API.Common.LandClaim.html
+  name: LandClaim[]
+  nameWithType: LandClaim[]
+  fullName: Vintagestory.API.Common.LandClaim[]
+  nameWithType.vb: LandClaim()
+  fullName.vb: Vintagestory.API.Common.LandClaim()
+  name.vb: LandClaim()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.LandClaim
+    name: LandClaim
+    href: Vintagestory.API.Common.LandClaim.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.LandClaim
+    name: LandClaim
+    href: Vintagestory.API.Common.LandClaim.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ILandClaimAPI.Add*
+  commentId: Overload:Vintagestory.API.Common.ILandClaimAPI.Add
+  href: Vintagestory.API.Common.ILandClaimAPI.html#Vintagestory_API_Common_ILandClaimAPI_Add_Vintagestory_API_Common_LandClaim_
+  name: Add
+  nameWithType: ILandClaimAPI.Add
+  fullName: Vintagestory.API.Common.ILandClaimAPI.Add
+- uid: Vintagestory.API.Common.LandClaim
+  commentId: T:Vintagestory.API.Common.LandClaim
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.LandClaim.html
+  name: LandClaim
+  nameWithType: LandClaim
+  fullName: Vintagestory.API.Common.LandClaim
+- uid: Vintagestory.API.Common.ILandClaimAPI.Remove*
+  commentId: Overload:Vintagestory.API.Common.ILandClaimAPI.Remove
+  href: Vintagestory.API.Common.ILandClaimAPI.html#Vintagestory_API_Common_ILandClaimAPI_Remove_Vintagestory_API_Common_LandClaim_
+  name: Remove
+  nameWithType: ILandClaimAPI.Remove
+  fullName: Vintagestory.API.Common.ILandClaimAPI.Remove

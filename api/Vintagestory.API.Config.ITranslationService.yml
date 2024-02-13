@@ -1,0 +1,943 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Config.ITranslationService
+  commentId: T:Vintagestory.API.Config.ITranslationService
+  id: ITranslationService
+  parent: Vintagestory.API.Config
+  children:
+  - Vintagestory.API.Config.ITranslationService.Get(System.String,System.Object[])
+  - Vintagestory.API.Config.ITranslationService.GetAllEntries
+  - Vintagestory.API.Config.ITranslationService.GetIfExists(System.String,System.Object[])
+  - Vintagestory.API.Config.ITranslationService.GetMatching(System.String,System.Object[])
+  - Vintagestory.API.Config.ITranslationService.GetMatchingIfExists(System.String,System.Object[])
+  - Vintagestory.API.Config.ITranslationService.GetUnformatted(System.String)
+  - Vintagestory.API.Config.ITranslationService.HasTranslation(System.String,System.Boolean)
+  - Vintagestory.API.Config.ITranslationService.HasTranslation(System.String,System.Boolean,System.Boolean)
+  - Vintagestory.API.Config.ITranslationService.InitialiseSearch
+  - Vintagestory.API.Config.ITranslationService.Invalidate
+  - Vintagestory.API.Config.ITranslationService.LanguageCode
+  - Vintagestory.API.Config.ITranslationService.LineBreakBehavior
+  - Vintagestory.API.Config.ITranslationService.Load(System.Boolean)
+  - Vintagestory.API.Config.ITranslationService.PreLoad(System.String,System.Boolean)
+  - Vintagestory.API.Config.ITranslationService.UseAssetManager(Vintagestory.API.Common.IAssetManager)
+  langs:
+  - csharp
+  - vb
+  name: ITranslationService
+  nameWithType: ITranslationService
+  fullName: Vintagestory.API.Config.ITranslationService
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ITranslationService
+    path: Localization/ITranslationService.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Represents a service, which provides access to translated strings, based on key/value pairs read from JSON files.
+  example: []
+  syntax:
+    content: public interface ITranslationService
+    content.vb: Public Interface ITranslationService
+- uid: Vintagestory.API.Config.ITranslationService.LineBreakBehavior
+  commentId: P:Vintagestory.API.Config.ITranslationService.LineBreakBehavior
+  id: LineBreakBehavior
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: LineBreakBehavior
+  nameWithType: ITranslationService.LineBreakBehavior
+  fullName: Vintagestory.API.Config.ITranslationService.LineBreakBehavior
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LineBreakBehavior
+    path: Localization/ITranslationService.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  syntax:
+    content: EnumLinebreakBehavior LineBreakBehavior { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.EnumLinebreakBehavior
+    content.vb: ReadOnly Property LineBreakBehavior As EnumLinebreakBehavior
+  overload: Vintagestory.API.Config.ITranslationService.LineBreakBehavior*
+- uid: Vintagestory.API.Config.ITranslationService.LanguageCode
+  commentId: P:Vintagestory.API.Config.ITranslationService.LanguageCode
+  id: LanguageCode
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: LanguageCode
+  nameWithType: ITranslationService.LanguageCode
+  fullName: Vintagestory.API.Config.ITranslationService.LanguageCode
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LanguageCode
+    path: Localization/ITranslationService.cs
+    startLine: 22
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Gets the language code that this translation service caters for.
+  example: []
+  syntax:
+    content: string LanguageCode { get; }
+    parameters: []
+    return:
+      type: System.String
+      description: A string, that contains the language code that this translation service caters for.
+    content.vb: ReadOnly Property LanguageCode As String
+  overload: Vintagestory.API.Config.ITranslationService.LanguageCode*
+- uid: Vintagestory.API.Config.ITranslationService.Load(System.Boolean)
+  commentId: M:Vintagestory.API.Config.ITranslationService.Load(System.Boolean)
+  id: Load(System.Boolean)
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: Load(bool)
+  nameWithType: ITranslationService.Load(bool)
+  fullName: Vintagestory.API.Config.ITranslationService.Load(bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Load
+    path: Localization/ITranslationService.cs
+    startLine: 27
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Loads translation key/value pairs from all relevant JSON files within the Asset Manager.
+  example: []
+  syntax:
+    content: void Load(bool lazyload = false)
+    parameters:
+    - id: lazyload
+      type: System.Boolean
+    content.vb: Sub Load(lazyload As Boolean = False)
+  overload: Vintagestory.API.Config.ITranslationService.Load*
+  nameWithType.vb: ITranslationService.Load(Boolean)
+  fullName.vb: Vintagestory.API.Config.ITranslationService.Load(Boolean)
+  name.vb: Load(Boolean)
+- uid: Vintagestory.API.Config.ITranslationService.PreLoad(System.String,System.Boolean)
+  commentId: M:Vintagestory.API.Config.ITranslationService.PreLoad(System.String,System.Boolean)
+  id: PreLoad(System.String,System.Boolean)
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: PreLoad(string, bool)
+  nameWithType: ITranslationService.PreLoad(string, bool)
+  fullName: Vintagestory.API.Config.ITranslationService.PreLoad(string, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PreLoad
+    path: Localization/ITranslationService.cs
+    startLine: 34
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Loads only the vanilla JSON files, without dealing with mods, or resource-packs.
+  example: []
+  syntax:
+    content: void PreLoad(string assetsPath, bool lazyLoad = false)
+    parameters:
+    - id: assetsPath
+      type: System.String
+      description: The root assets path to load the vanilla files from.
+    - id: lazyLoad
+      type: System.Boolean
+      description: ''
+    content.vb: Sub PreLoad(assetsPath As String, lazyLoad As Boolean = False)
+  overload: Vintagestory.API.Config.ITranslationService.PreLoad*
+  nameWithType.vb: ITranslationService.PreLoad(String, Boolean)
+  fullName.vb: Vintagestory.API.Config.ITranslationService.PreLoad(String, Boolean)
+  name.vb: PreLoad(String, Boolean)
+- uid: Vintagestory.API.Config.ITranslationService.GetIfExists(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Config.ITranslationService.GetIfExists(System.String,System.Object[])
+  id: GetIfExists(System.String,System.Object[])
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: GetIfExists(string, params object[])
+  nameWithType: ITranslationService.GetIfExists(string, params object[])
+  fullName: Vintagestory.API.Config.ITranslationService.GetIfExists(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetIfExists
+    path: Localization/ITranslationService.cs
+    startLine: 42
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Gets a translation for a given key, if any matching wildcarded keys are found within the cache.
+  example: []
+  syntax:
+    content: string GetIfExists(string key, params object[] args)
+    parameters:
+    - id: key
+      type: System.String
+      description: The key.
+    - id: args
+      type: System.Object[]
+      description: The arguments to interpolate into the resulting string.
+    return:
+      type: System.String
+      description: Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated value.
+    content.vb: Function GetIfExists(key As String, ParamArray args As Object()) As String
+  overload: Vintagestory.API.Config.ITranslationService.GetIfExists*
+  nameWithType.vb: ITranslationService.GetIfExists(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Config.ITranslationService.GetIfExists(String, ParamArray Object())
+  name.vb: GetIfExists(String, ParamArray Object())
+- uid: Vintagestory.API.Config.ITranslationService.Get(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Config.ITranslationService.Get(System.String,System.Object[])
+  id: Get(System.String,System.Object[])
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: Get(string, params object[])
+  nameWithType: ITranslationService.Get(string, params object[])
+  fullName: Vintagestory.API.Config.ITranslationService.Get(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Get
+    path: Localization/ITranslationService.cs
+    startLine: 50
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Gets a translation for a given key.
+  example: []
+  syntax:
+    content: string Get(string key, params object[] args)
+    parameters:
+    - id: key
+      type: System.String
+      description: The key.
+    - id: args
+      type: System.Object[]
+      description: The arguments to interpolate into the resulting string.
+    return:
+      type: System.String
+      description: Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated value.
+    content.vb: Function [Get](key As String, ParamArray args As Object()) As String
+  overload: Vintagestory.API.Config.ITranslationService.Get*
+  nameWithType.vb: ITranslationService.Get(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Config.ITranslationService.Get(String, ParamArray Object())
+  name.vb: Get(String, ParamArray Object())
+- uid: Vintagestory.API.Config.ITranslationService.GetAllEntries
+  commentId: M:Vintagestory.API.Config.ITranslationService.GetAllEntries
+  id: GetAllEntries
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: GetAllEntries()
+  nameWithType: ITranslationService.GetAllEntries()
+  fullName: Vintagestory.API.Config.ITranslationService.GetAllEntries()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetAllEntries
+    path: Localization/ITranslationService.cs
+    startLine: 56
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Retrieves a list of all translation entries within the cache.
+  example: []
+  syntax:
+    content: IDictionary<string, string> GetAllEntries()
+    return:
+      type: System.Collections.Generic.IDictionary{System.String,System.String}
+      description: A dictionary of localisation entries.
+    content.vb: Function GetAllEntries() As IDictionary(Of String, String)
+  overload: Vintagestory.API.Config.ITranslationService.GetAllEntries*
+- uid: Vintagestory.API.Config.ITranslationService.GetUnformatted(System.String)
+  commentId: M:Vintagestory.API.Config.ITranslationService.GetUnformatted(System.String)
+  id: GetUnformatted(System.String)
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: GetUnformatted(string)
+  nameWithType: ITranslationService.GetUnformatted(string)
+  fullName: Vintagestory.API.Config.ITranslationService.GetUnformatted(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetUnformatted
+    path: Localization/ITranslationService.cs
+    startLine: 63
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Gets the raw, unformatted translated value for the key provided.
+  example: []
+  syntax:
+    content: string GetUnformatted(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: The key.
+    return:
+      type: System.String
+      description: Returns the key as a default value, if no results are found; otherwise returns the unformatted, translated value.
+    content.vb: Function GetUnformatted(key As String) As String
+  overload: Vintagestory.API.Config.ITranslationService.GetUnformatted*
+  nameWithType.vb: ITranslationService.GetUnformatted(String)
+  fullName.vb: Vintagestory.API.Config.ITranslationService.GetUnformatted(String)
+  name.vb: GetUnformatted(String)
+- uid: Vintagestory.API.Config.ITranslationService.GetMatching(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Config.ITranslationService.GetMatching(System.String,System.Object[])
+  id: GetMatching(System.String,System.Object[])
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: GetMatching(string, params object[])
+  nameWithType: ITranslationService.GetMatching(string, params object[])
+  fullName: Vintagestory.API.Config.ITranslationService.GetMatching(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetMatching
+    path: Localization/ITranslationService.cs
+    startLine: 71
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Gets a translation for a given key, if any matching wildcarded keys are found within the cache.
+  example: []
+  syntax:
+    content: string GetMatching(string key, params object[] args)
+    parameters:
+    - id: key
+      type: System.String
+      description: The key.
+    - id: args
+      type: System.Object[]
+      description: The arguments to interpolate into the resulting string.
+    return:
+      type: System.String
+      description: Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated value.
+    content.vb: Function GetMatching(key As String, ParamArray args As Object()) As String
+  overload: Vintagestory.API.Config.ITranslationService.GetMatching*
+  nameWithType.vb: ITranslationService.GetMatching(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Config.ITranslationService.GetMatching(String, ParamArray Object())
+  name.vb: GetMatching(String, ParamArray Object())
+- uid: Vintagestory.API.Config.ITranslationService.GetMatchingIfExists(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Config.ITranslationService.GetMatchingIfExists(System.String,System.Object[])
+  id: GetMatchingIfExists(System.String,System.Object[])
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: GetMatchingIfExists(string, params object[])
+  nameWithType: ITranslationService.GetMatchingIfExists(string, params object[])
+  fullName: Vintagestory.API.Config.ITranslationService.GetMatchingIfExists(string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetMatchingIfExists
+    path: Localization/ITranslationService.cs
+    startLine: 79
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Gets a translation for a given key, if any matching wildcarded keys are found within the cache.
+  example: []
+  syntax:
+    content: string GetMatchingIfExists(string key, params object[] args)
+    parameters:
+    - id: key
+      type: System.String
+      description: The key.
+    - id: args
+      type: System.Object[]
+      description: The arguments to interpolate into the resulting string.
+    return:
+      type: System.String
+      description: Returns <code>null</code> as a default value, if no results are found; otherwise returns the pre-formatted, translated value.
+    content.vb: Function GetMatchingIfExists(key As String, ParamArray args As Object()) As String
+  overload: Vintagestory.API.Config.ITranslationService.GetMatchingIfExists*
+  nameWithType.vb: ITranslationService.GetMatchingIfExists(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Config.ITranslationService.GetMatchingIfExists(String, ParamArray Object())
+  name.vb: GetMatchingIfExists(String, ParamArray Object())
+- uid: Vintagestory.API.Config.ITranslationService.HasTranslation(System.String,System.Boolean)
+  commentId: M:Vintagestory.API.Config.ITranslationService.HasTranslation(System.String,System.Boolean)
+  id: HasTranslation(System.String,System.Boolean)
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: HasTranslation(string, bool)
+  nameWithType: ITranslationService.HasTranslation(string, bool)
+  fullName: Vintagestory.API.Config.ITranslationService.HasTranslation(string, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: HasTranslation
+    path: Localization/ITranslationService.cs
+    startLine: 87
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Determines whether the specified key has a translation.
+  example: []
+  syntax:
+    content: bool HasTranslation(string key, bool findWildcarded = true)
+    parameters:
+    - id: key
+      type: System.String
+      description: The key.
+    - id: findWildcarded
+      type: System.Boolean
+      description: if set to <code>true</code>, the scan will include any wildcarded values.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the specified key has a translation; otherwise, <code>false</code>.
+    content.vb: Function HasTranslation(key As String, findWildcarded As Boolean = True) As Boolean
+  overload: Vintagestory.API.Config.ITranslationService.HasTranslation*
+  nameWithType.vb: ITranslationService.HasTranslation(String, Boolean)
+  fullName.vb: Vintagestory.API.Config.ITranslationService.HasTranslation(String, Boolean)
+  name.vb: HasTranslation(String, Boolean)
+- uid: Vintagestory.API.Config.ITranslationService.HasTranslation(System.String,System.Boolean,System.Boolean)
+  commentId: M:Vintagestory.API.Config.ITranslationService.HasTranslation(System.String,System.Boolean,System.Boolean)
+  id: HasTranslation(System.String,System.Boolean,System.Boolean)
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: HasTranslation(string, bool, bool)
+  nameWithType: ITranslationService.HasTranslation(string, bool, bool)
+  fullName: Vintagestory.API.Config.ITranslationService.HasTranslation(string, bool, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: HasTranslation
+    path: Localization/ITranslationService.cs
+    startLine: 96
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Determines whether the specified key has a translation.
+  example: []
+  syntax:
+    content: bool HasTranslation(string key, bool findWildcarded, bool logErrors)
+    parameters:
+    - id: key
+      type: System.String
+      description: The key.
+    - id: findWildcarded
+      type: System.Boolean
+      description: if set to <code>true</code>, the scan will include any wildcarded values.
+    - id: logErrors
+      type: System.Boolean
+      description: if set to <code>true</code>, will add "Lang key not found" logging
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the specified key has a translation; otherwise, <code>false</code>.
+    content.vb: Function HasTranslation(key As String, findWildcarded As Boolean, logErrors As Boolean) As Boolean
+  overload: Vintagestory.API.Config.ITranslationService.HasTranslation*
+  nameWithType.vb: ITranslationService.HasTranslation(String, Boolean, Boolean)
+  fullName.vb: Vintagestory.API.Config.ITranslationService.HasTranslation(String, Boolean, Boolean)
+  name.vb: HasTranslation(String, Boolean, Boolean)
+- uid: Vintagestory.API.Config.ITranslationService.UseAssetManager(Vintagestory.API.Common.IAssetManager)
+  commentId: M:Vintagestory.API.Config.ITranslationService.UseAssetManager(Vintagestory.API.Common.IAssetManager)
+  id: UseAssetManager(Vintagestory.API.Common.IAssetManager)
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: UseAssetManager(IAssetManager)
+  nameWithType: ITranslationService.UseAssetManager(IAssetManager)
+  fullName: Vintagestory.API.Config.ITranslationService.UseAssetManager(Vintagestory.API.Common.IAssetManager)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: UseAssetManager
+    path: Localization/ITranslationService.cs
+    startLine: 102
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Specifies an asset manager to use, when the service has been lazy-loaded.
+  example: []
+  syntax:
+    content: void UseAssetManager(IAssetManager assetManager)
+    parameters:
+    - id: assetManager
+      type: Vintagestory.API.Common.IAssetManager
+      description: The <xref href="Vintagestory.API.Common.IAssetManager" data-throw-if-not-resolved="false"></xref> instance used within the sided API.
+    content.vb: Sub UseAssetManager(assetManager As IAssetManager)
+  overload: Vintagestory.API.Config.ITranslationService.UseAssetManager*
+- uid: Vintagestory.API.Config.ITranslationService.InitialiseSearch
+  commentId: M:Vintagestory.API.Config.ITranslationService.InitialiseSearch
+  id: InitialiseSearch
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: InitialiseSearch()
+  nameWithType: ITranslationService.InitialiseSearch()
+  fullName: Vintagestory.API.Config.ITranslationService.InitialiseSearch()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InitialiseSearch
+    path: Localization/ITranslationService.cs
+    startLine: 107
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Used to compile the regexes, to save time on the first 'actual' wildcard search - saves about 300ms
+  example: []
+  syntax:
+    content: void InitialiseSearch()
+    content.vb: Sub InitialiseSearch()
+  overload: Vintagestory.API.Config.ITranslationService.InitialiseSearch*
+- uid: Vintagestory.API.Config.ITranslationService.Invalidate
+  commentId: M:Vintagestory.API.Config.ITranslationService.Invalidate
+  id: Invalidate
+  parent: Vintagestory.API.Config.ITranslationService
+  langs:
+  - csharp
+  - vb
+  name: Invalidate()
+  nameWithType: ITranslationService.Invalidate()
+  fullName: Vintagestory.API.Config.ITranslationService.Invalidate()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Localization/ITranslationService.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Invalidate
+    path: Localization/ITranslationService.cs
+    startLine: 112
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: Sets the loaded flag to false, so that the next lookup causes it to reload all translation entries
+  example: []
+  syntax:
+    content: void Invalidate()
+    content.vb: Sub Invalidate()
+  overload: Vintagestory.API.Config.ITranslationService.Invalidate*
+references:
+- uid: Vintagestory.API.Config
+  commentId: N:Vintagestory.API.Config
+  href: Vintagestory.html
+  name: Vintagestory.API.Config
+  nameWithType: Vintagestory.API.Config
+  fullName: Vintagestory.API.Config
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Config
+    name: Config
+    href: Vintagestory.API.Config.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Config
+    name: Config
+    href: Vintagestory.API.Config.html
+- uid: Vintagestory.API.Config.ITranslationService.LineBreakBehavior*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.LineBreakBehavior
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_LineBreakBehavior
+  name: LineBreakBehavior
+  nameWithType: ITranslationService.LineBreakBehavior
+  fullName: Vintagestory.API.Config.ITranslationService.LineBreakBehavior
+- uid: Vintagestory.API.Client.EnumLinebreakBehavior
+  commentId: T:Vintagestory.API.Client.EnumLinebreakBehavior
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumLinebreakBehavior.html
+  name: EnumLinebreakBehavior
+  nameWithType: EnumLinebreakBehavior
+  fullName: Vintagestory.API.Client.EnumLinebreakBehavior
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Config.ITranslationService.LanguageCode*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.LanguageCode
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_LanguageCode
+  name: LanguageCode
+  nameWithType: ITranslationService.LanguageCode
+  fullName: Vintagestory.API.Config.ITranslationService.LanguageCode
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Config.ITranslationService.Load*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.Load
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_Load_System_Boolean_
+  name: Load
+  nameWithType: ITranslationService.Load
+  fullName: Vintagestory.API.Config.ITranslationService.Load
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Config.ITranslationService.PreLoad*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.PreLoad
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_PreLoad_System_String_System_Boolean_
+  name: PreLoad
+  nameWithType: ITranslationService.PreLoad
+  fullName: Vintagestory.API.Config.ITranslationService.PreLoad
+- uid: Vintagestory.API.Config.ITranslationService.GetIfExists*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.GetIfExists
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_GetIfExists_System_String_System_Object___
+  name: GetIfExists
+  nameWithType: ITranslationService.GetIfExists
+  fullName: Vintagestory.API.Config.ITranslationService.GetIfExists
+- uid: System.Object[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object[]
+  nameWithType: object[]
+  fullName: object[]
+  nameWithType.vb: Object()
+  fullName.vb: Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Config.ITranslationService.Get*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.Get
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_Get_System_String_System_Object___
+  name: Get
+  nameWithType: ITranslationService.Get
+  fullName: Vintagestory.API.Config.ITranslationService.Get
+- uid: Vintagestory.API.Config.ITranslationService.GetAllEntries*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.GetAllEntries
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_GetAllEntries
+  name: GetAllEntries
+  nameWithType: ITranslationService.GetAllEntries
+  fullName: Vintagestory.API.Config.ITranslationService.GetAllEntries
+- uid: System.Collections.Generic.IDictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<string, string>
+  nameWithType: IDictionary<string, string>
+  fullName: System.Collections.Generic.IDictionary<string, string>
+  nameWithType.vb: IDictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.IDictionary(Of String, String)
+  name.vb: IDictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Config.ITranslationService.GetUnformatted*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.GetUnformatted
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_GetUnformatted_System_String_
+  name: GetUnformatted
+  nameWithType: ITranslationService.GetUnformatted
+  fullName: Vintagestory.API.Config.ITranslationService.GetUnformatted
+- uid: Vintagestory.API.Config.ITranslationService.GetMatching*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.GetMatching
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_GetMatching_System_String_System_Object___
+  name: GetMatching
+  nameWithType: ITranslationService.GetMatching
+  fullName: Vintagestory.API.Config.ITranslationService.GetMatching
+- uid: Vintagestory.API.Config.ITranslationService.GetMatchingIfExists*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.GetMatchingIfExists
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_GetMatchingIfExists_System_String_System_Object___
+  name: GetMatchingIfExists
+  nameWithType: ITranslationService.GetMatchingIfExists
+  fullName: Vintagestory.API.Config.ITranslationService.GetMatchingIfExists
+- uid: Vintagestory.API.Config.ITranslationService.HasTranslation*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.HasTranslation
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_HasTranslation_System_String_System_Boolean_
+  name: HasTranslation
+  nameWithType: ITranslationService.HasTranslation
+  fullName: Vintagestory.API.Config.ITranslationService.HasTranslation
+- uid: Vintagestory.API.Common.IAssetManager
+  commentId: T:Vintagestory.API.Common.IAssetManager
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IAssetManager.html
+  name: IAssetManager
+  nameWithType: IAssetManager
+  fullName: Vintagestory.API.Common.IAssetManager
+- uid: Vintagestory.API.Config.ITranslationService.UseAssetManager*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.UseAssetManager
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_UseAssetManager_Vintagestory_API_Common_IAssetManager_
+  name: UseAssetManager
+  nameWithType: ITranslationService.UseAssetManager
+  fullName: Vintagestory.API.Config.ITranslationService.UseAssetManager
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Config.ITranslationService.InitialiseSearch*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.InitialiseSearch
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_InitialiseSearch
+  name: InitialiseSearch
+  nameWithType: ITranslationService.InitialiseSearch
+  fullName: Vintagestory.API.Config.ITranslationService.InitialiseSearch
+- uid: Vintagestory.API.Config.ITranslationService.Invalidate*
+  commentId: Overload:Vintagestory.API.Config.ITranslationService.Invalidate
+  href: Vintagestory.API.Config.ITranslationService.html#Vintagestory_API_Config_ITranslationService_Invalidate
+  name: Invalidate
+  nameWithType: ITranslationService.Invalidate
+  fullName: Vintagestory.API.Config.ITranslationService.Invalidate

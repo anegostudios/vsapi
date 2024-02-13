@@ -1,0 +1,610 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.FoodNutritionProperties
+  commentId: T:Vintagestory.API.Common.FoodNutritionProperties
+  id: FoodNutritionProperties
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.FoodNutritionProperties.Clone
+  - Vintagestory.API.Common.FoodNutritionProperties.EatenStack
+  - Vintagestory.API.Common.FoodNutritionProperties.FoodCategory
+  - Vintagestory.API.Common.FoodNutritionProperties.Health
+  - Vintagestory.API.Common.FoodNutritionProperties.Intoxication
+  - Vintagestory.API.Common.FoodNutritionProperties.Satiety
+  - Vintagestory.API.Common.FoodNutritionProperties.Saturation
+  - Vintagestory.API.Common.FoodNutritionProperties.SaturationLossDelay
+  langs:
+  - csharp
+  - vb
+  name: FoodNutritionProperties
+  nameWithType: FoodNutritionProperties
+  fullName: Vintagestory.API.Common.FoodNutritionProperties
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/NutritionProperties.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FoodNutritionProperties
+    path: Common/Collectible/NutritionProperties.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public class FoodNutritionProperties
+    content.vb: Public Class FoodNutritionProperties
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Common.FoodNutritionProperties.FoodCategory
+  commentId: F:Vintagestory.API.Common.FoodNutritionProperties.FoodCategory
+  id: FoodCategory
+  parent: Vintagestory.API.Common.FoodNutritionProperties
+  langs:
+  - csharp
+  - vb
+  name: FoodCategory
+  nameWithType: FoodNutritionProperties.FoodCategory
+  fullName: Vintagestory.API.Common.FoodNutritionProperties.FoodCategory
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/NutritionProperties.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FoodCategory
+    path: Common/Collectible/NutritionProperties.cs
+    startLine: 20
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The category of the food.
+  example: []
+  syntax:
+    content: public EnumFoodCategory FoodCategory
+    return:
+      type: Vintagestory.API.Common.EnumFoodCategory
+    content.vb: Public FoodCategory As EnumFoodCategory
+- uid: Vintagestory.API.Common.FoodNutritionProperties.Satiety
+  commentId: F:Vintagestory.API.Common.FoodNutritionProperties.Satiety
+  id: Satiety
+  parent: Vintagestory.API.Common.FoodNutritionProperties
+  langs:
+  - csharp
+  - vb
+  name: Satiety
+  nameWithType: FoodNutritionProperties.Satiety
+  fullName: Vintagestory.API.Common.FoodNutritionProperties.Satiety
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/NutritionProperties.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Satiety
+    path: Common/Collectible/NutritionProperties.cs
+    startLine: 25
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The saturation restored by the food.
+  example: []
+  syntax:
+    content: public float Satiety
+    return:
+      type: System.Single
+    content.vb: Public Satiety As Single
+- uid: Vintagestory.API.Common.FoodNutritionProperties.Saturation
+  commentId: P:Vintagestory.API.Common.FoodNutritionProperties.Saturation
+  id: Saturation
+  parent: Vintagestory.API.Common.FoodNutritionProperties
+  langs:
+  - csharp
+  - vb
+  name: Saturation
+  nameWithType: FoodNutritionProperties.Saturation
+  fullName: Vintagestory.API.Common.FoodNutritionProperties.Saturation
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/NutritionProperties.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Saturation
+    path: Common/Collectible/NutritionProperties.cs
+    startLine: 27
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [Obsolete("Use Satiety instead.")]
+
+      public float Saturation { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <Obsolete("Use Satiety instead.")>
+
+      Public Property Saturation As Single
+  overload: Vintagestory.API.Common.FoodNutritionProperties.Saturation*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use Satiety instead.
+- uid: Vintagestory.API.Common.FoodNutritionProperties.Intoxication
+  commentId: P:Vintagestory.API.Common.FoodNutritionProperties.Intoxication
+  id: Intoxication
+  parent: Vintagestory.API.Common.FoodNutritionProperties
+  langs:
+  - csharp
+  - vb
+  name: Intoxication
+  nameWithType: FoodNutritionProperties.Intoxication
+  fullName: Vintagestory.API.Common.FoodNutritionProperties.Intoxication
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/NutritionProperties.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Intoxication
+    path: Common/Collectible/NutritionProperties.cs
+    startLine: 34
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public float Intoxication { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Intoxication As Single
+  overload: Vintagestory.API.Common.FoodNutritionProperties.Intoxication*
+- uid: Vintagestory.API.Common.FoodNutritionProperties.SaturationLossDelay
+  commentId: F:Vintagestory.API.Common.FoodNutritionProperties.SaturationLossDelay
+  id: SaturationLossDelay
+  parent: Vintagestory.API.Common.FoodNutritionProperties
+  langs:
+  - csharp
+  - vb
+  name: SaturationLossDelay
+  nameWithType: FoodNutritionProperties.SaturationLossDelay
+  fullName: Vintagestory.API.Common.FoodNutritionProperties.SaturationLossDelay
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/NutritionProperties.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SaturationLossDelay
+    path: Common/Collectible/NutritionProperties.cs
+    startLine: 42
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The delay before that extra saturation starts to go away.
+  example: []
+  syntax:
+    content: public float SaturationLossDelay
+    return:
+      type: System.Single
+    content.vb: Public SaturationLossDelay As Single
+- uid: Vintagestory.API.Common.FoodNutritionProperties.Health
+  commentId: F:Vintagestory.API.Common.FoodNutritionProperties.Health
+  id: Health
+  parent: Vintagestory.API.Common.FoodNutritionProperties
+  langs:
+  - csharp
+  - vb
+  name: Health
+  nameWithType: FoodNutritionProperties.Health
+  fullName: Vintagestory.API.Common.FoodNutritionProperties.Health
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/NutritionProperties.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Health
+    path: Common/Collectible/NutritionProperties.cs
+    startLine: 47
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The health restored by the food.
+  example: []
+  syntax:
+    content: public float Health
+    return:
+      type: System.Single
+    content.vb: Public Health As Single
+- uid: Vintagestory.API.Common.FoodNutritionProperties.EatenStack
+  commentId: F:Vintagestory.API.Common.FoodNutritionProperties.EatenStack
+  id: EatenStack
+  parent: Vintagestory.API.Common.FoodNutritionProperties
+  langs:
+  - csharp
+  - vb
+  name: EatenStack
+  nameWithType: FoodNutritionProperties.EatenStack
+  fullName: Vintagestory.API.Common.FoodNutritionProperties.EatenStack
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/NutritionProperties.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EatenStack
+    path: Common/Collectible/NutritionProperties.cs
+    startLine: 52
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The item that was eaten.
+  example: []
+  syntax:
+    content: public JsonItemStack EatenStack
+    return:
+      type: Vintagestory.API.Common.JsonItemStack
+    content.vb: Public EatenStack As JsonItemStack
+- uid: Vintagestory.API.Common.FoodNutritionProperties.Clone
+  commentId: M:Vintagestory.API.Common.FoodNutritionProperties.Clone
+  id: Clone
+  parent: Vintagestory.API.Common.FoodNutritionProperties
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: FoodNutritionProperties.Clone()
+  fullName: Vintagestory.API.Common.FoodNutritionProperties.Clone()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/NutritionProperties.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Clone
+    path: Common/Collectible/NutritionProperties.cs
+    startLine: 58
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Duplicates the nutrition properties, which includes cloning the stack that was eaten.
+  example: []
+  syntax:
+    content: public FoodNutritionProperties Clone()
+    return:
+      type: Vintagestory.API.Common.FoodNutritionProperties
+      description: ''
+    content.vb: Public Function Clone() As FoodNutritionProperties
+  overload: Vintagestory.API.Common.FoodNutritionProperties.Clone*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.EnumFoodCategory
+  commentId: T:Vintagestory.API.Common.EnumFoodCategory
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumFoodCategory.html
+  name: EnumFoodCategory
+  nameWithType: EnumFoodCategory
+  fullName: Vintagestory.API.Common.EnumFoodCategory
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.FoodNutritionProperties.Saturation*
+  commentId: Overload:Vintagestory.API.Common.FoodNutritionProperties.Saturation
+  href: Vintagestory.API.Common.FoodNutritionProperties.html#Vintagestory_API_Common_FoodNutritionProperties_Saturation
+  name: Saturation
+  nameWithType: FoodNutritionProperties.Saturation
+  fullName: Vintagestory.API.Common.FoodNutritionProperties.Saturation
+- uid: Vintagestory.API.Common.FoodNutritionProperties.Intoxication*
+  commentId: Overload:Vintagestory.API.Common.FoodNutritionProperties.Intoxication
+  href: Vintagestory.API.Common.FoodNutritionProperties.html#Vintagestory_API_Common_FoodNutritionProperties_Intoxication
+  name: Intoxication
+  nameWithType: FoodNutritionProperties.Intoxication
+  fullName: Vintagestory.API.Common.FoodNutritionProperties.Intoxication
+- uid: Vintagestory.API.Common.JsonItemStack
+  commentId: T:Vintagestory.API.Common.JsonItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.JsonItemStack.html
+  name: JsonItemStack
+  nameWithType: JsonItemStack
+  fullName: Vintagestory.API.Common.JsonItemStack
+- uid: Vintagestory.API.Common.FoodNutritionProperties.Clone*
+  commentId: Overload:Vintagestory.API.Common.FoodNutritionProperties.Clone
+  href: Vintagestory.API.Common.FoodNutritionProperties.html#Vintagestory_API_Common_FoodNutritionProperties_Clone
+  name: Clone
+  nameWithType: FoodNutritionProperties.Clone
+  fullName: Vintagestory.API.Common.FoodNutritionProperties.Clone
+- uid: Vintagestory.API.Common.FoodNutritionProperties
+  commentId: T:Vintagestory.API.Common.FoodNutritionProperties
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.FoodNutritionProperties.html
+  name: FoodNutritionProperties
+  nameWithType: FoodNutritionProperties
+  fullName: Vintagestory.API.Common.FoodNutritionProperties

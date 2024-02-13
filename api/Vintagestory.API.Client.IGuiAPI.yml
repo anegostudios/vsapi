@@ -1,0 +1,1567 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.IGuiAPI
+  commentId: T:Vintagestory.API.Client.IGuiAPI
+  id: IGuiAPI
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.IGuiAPI.CreateCompo(System.String,Vintagestory.API.Client.ElementBounds)
+  - Vintagestory.API.Client.IGuiAPI.DeleteTexture(System.Int32)
+  - Vintagestory.API.Client.IGuiAPI.DrawSvg(Vintagestory.API.Common.IAsset,Cairo.ImageSurface,Cairo.Matrix,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  - Vintagestory.API.Client.IGuiAPI.DrawSvg(Vintagestory.API.Common.IAsset,Cairo.ImageSurface,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  - Vintagestory.API.Client.IGuiAPI.GetDialogBoundsInArea(Vintagestory.API.Client.EnumDialogArea)
+  - Vintagestory.API.Client.IGuiAPI.GetDialogPosition(System.String)
+  - Vintagestory.API.Client.IGuiAPI.Icons
+  - Vintagestory.API.Client.IGuiAPI.LoadCairoTexture(Cairo.ImageSurface,System.Boolean)
+  - Vintagestory.API.Client.IGuiAPI.LoadOrUpdateCairoTexture(Cairo.ImageSurface,System.Boolean,Vintagestory.API.Client.LoadedTexture@)
+  - Vintagestory.API.Client.IGuiAPI.LoadSvg(Vintagestory.API.Common.AssetLocation,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  - Vintagestory.API.Client.IGuiAPI.LoadSvgWithPadding(Vintagestory.API.Common.AssetLocation,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  - Vintagestory.API.Client.IGuiAPI.LoadedGuis
+  - Vintagestory.API.Client.IGuiAPI.OpenLink(System.String)
+  - Vintagestory.API.Client.IGuiAPI.OpenedGuis
+  - Vintagestory.API.Client.IGuiAPI.PlaySound(System.String,System.Boolean,System.Single)
+  - Vintagestory.API.Client.IGuiAPI.PlaySound(Vintagestory.API.Common.AssetLocation,System.Boolean,System.Single)
+  - Vintagestory.API.Client.IGuiAPI.QuadMeshRef
+  - Vintagestory.API.Client.IGuiAPI.RegisterDialog(Vintagestory.API.Client.GuiDialog[])
+  - Vintagestory.API.Client.IGuiAPI.RequestFocus(Vintagestory.API.Client.GuiDialog)
+  - Vintagestory.API.Client.IGuiAPI.SetDialogPosition(System.String,Vintagestory.API.MathTools.Vec2i)
+  - Vintagestory.API.Client.IGuiAPI.Text
+  - Vintagestory.API.Client.IGuiAPI.TextTexture
+  - Vintagestory.API.Client.IGuiAPI.TriggerDialogClosed(Vintagestory.API.Client.GuiDialog)
+  - Vintagestory.API.Client.IGuiAPI.TriggerDialogOpened(Vintagestory.API.Client.GuiDialog)
+  - Vintagestory.API.Client.IGuiAPI.WindowBounds
+  langs:
+  - csharp
+  - vb
+  name: IGuiAPI
+  nameWithType: IGuiAPI
+  fullName: Vintagestory.API.Client.IGuiAPI
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IGuiAPI
+    path: Client/API/IGuiAPI.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public interface IGuiAPI
+    content.vb: Public Interface IGuiAPI
+- uid: Vintagestory.API.Client.IGuiAPI.QuadMeshRef
+  commentId: P:Vintagestory.API.Client.IGuiAPI.QuadMeshRef
+  id: QuadMeshRef
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: QuadMeshRef
+  nameWithType: IGuiAPI.QuadMeshRef
+  fullName: Vintagestory.API.Client.IGuiAPI.QuadMeshRef
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: QuadMeshRef
+    path: Client/API/IGuiAPI.cs
+    startLine: 12
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Just a default gpu-uploaded quad for 2d texture rendering, for your convenience
+  example: []
+  syntax:
+    content: MeshRef QuadMeshRef { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.MeshRef
+    content.vb: ReadOnly Property QuadMeshRef As MeshRef
+  overload: Vintagestory.API.Client.IGuiAPI.QuadMeshRef*
+- uid: Vintagestory.API.Client.IGuiAPI.LoadedGuis
+  commentId: P:Vintagestory.API.Client.IGuiAPI.LoadedGuis
+  id: LoadedGuis
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: LoadedGuis
+  nameWithType: IGuiAPI.LoadedGuis
+  fullName: Vintagestory.API.Client.IGuiAPI.LoadedGuis
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LoadedGuis
+    path: Client/API/IGuiAPI.cs
+    startLine: 17
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: List of all registered guis
+  example: []
+  syntax:
+    content: List<GuiDialog> LoadedGuis { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.Client.GuiDialog}
+    content.vb: ReadOnly Property LoadedGuis As List(Of GuiDialog)
+  overload: Vintagestory.API.Client.IGuiAPI.LoadedGuis*
+- uid: Vintagestory.API.Client.IGuiAPI.OpenedGuis
+  commentId: P:Vintagestory.API.Client.IGuiAPI.OpenedGuis
+  id: OpenedGuis
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: OpenedGuis
+  nameWithType: IGuiAPI.OpenedGuis
+  fullName: Vintagestory.API.Client.IGuiAPI.OpenedGuis
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OpenedGuis
+    path: Client/API/IGuiAPI.cs
+    startLine: 22
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: List of all currently opened guis
+  example: []
+  syntax:
+    content: List<GuiDialog> OpenedGuis { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.Client.GuiDialog}
+    content.vb: ReadOnly Property OpenedGuis As List(Of GuiDialog)
+  overload: Vintagestory.API.Client.IGuiAPI.OpenedGuis*
+- uid: Vintagestory.API.Client.IGuiAPI.TextTexture
+  commentId: P:Vintagestory.API.Client.IGuiAPI.TextTexture
+  id: TextTexture
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: TextTexture
+  nameWithType: IGuiAPI.TextTexture
+  fullName: Vintagestory.API.Client.IGuiAPI.TextTexture
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TextTexture
+    path: Client/API/IGuiAPI.cs
+    startLine: 28
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: A utility class that does text texture generation for you
+  example: []
+  syntax:
+    content: TextTextureUtil TextTexture { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.TextTextureUtil
+    content.vb: ReadOnly Property TextTexture As TextTextureUtil
+  overload: Vintagestory.API.Client.IGuiAPI.TextTexture*
+- uid: Vintagestory.API.Client.IGuiAPI.Text
+  commentId: P:Vintagestory.API.Client.IGuiAPI.Text
+  id: Text
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: Text
+  nameWithType: IGuiAPI.Text
+  fullName: Vintagestory.API.Client.IGuiAPI.Text
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Text
+    path: Client/API/IGuiAPI.cs
+    startLine: 33
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: A utlity class that helps draw text
+  example: []
+  syntax:
+    content: TextDrawUtil Text { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.TextDrawUtil
+    content.vb: ReadOnly Property Text As TextDrawUtil
+  overload: Vintagestory.API.Client.IGuiAPI.Text*
+- uid: Vintagestory.API.Client.IGuiAPI.Icons
+  commentId: P:Vintagestory.API.Client.IGuiAPI.Icons
+  id: Icons
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: Icons
+  nameWithType: IGuiAPI.Icons
+  fullName: Vintagestory.API.Client.IGuiAPI.Icons
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Icons
+    path: Client/API/IGuiAPI.cs
+    startLine: 38
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: A utility class that contains a bunch of hardcoded icons
+  example: []
+  syntax:
+    content: IconUtil Icons { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.IconUtil
+    content.vb: ReadOnly Property Icons As IconUtil
+  overload: Vintagestory.API.Client.IGuiAPI.Icons*
+- uid: Vintagestory.API.Client.IGuiAPI.WindowBounds
+  commentId: P:Vintagestory.API.Client.IGuiAPI.WindowBounds
+  id: WindowBounds
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: WindowBounds
+  nameWithType: IGuiAPI.WindowBounds
+  fullName: Vintagestory.API.Client.IGuiAPI.WindowBounds
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WindowBounds
+    path: Client/API/IGuiAPI.cs
+    startLine: 44
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns a ElementBounds that is always the size of the game window
+  example: []
+  syntax:
+    content: ElementBounds WindowBounds { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.ElementBounds
+    content.vb: ReadOnly Property WindowBounds As ElementBounds
+  overload: Vintagestory.API.Client.IGuiAPI.WindowBounds*
+- uid: Vintagestory.API.Client.IGuiAPI.GetDialogBoundsInArea(Vintagestory.API.Client.EnumDialogArea)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.GetDialogBoundsInArea(Vintagestory.API.Client.EnumDialogArea)
+  id: GetDialogBoundsInArea(Vintagestory.API.Client.EnumDialogArea)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: GetDialogBoundsInArea(EnumDialogArea)
+  nameWithType: IGuiAPI.GetDialogBoundsInArea(EnumDialogArea)
+  fullName: Vintagestory.API.Client.IGuiAPI.GetDialogBoundsInArea(Vintagestory.API.Client.EnumDialogArea)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetDialogBoundsInArea
+    path: Client/API/IGuiAPI.cs
+    startLine: 52
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: If there is a currenly opened dialog or hud element, the method will return the bounds occuppying that area, otherwise null
+  example: []
+  syntax:
+    content: List<ElementBounds> GetDialogBoundsInArea(EnumDialogArea area)
+    parameters:
+    - id: area
+      type: Vintagestory.API.Client.EnumDialogArea
+      description: ''
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.Client.ElementBounds}
+      description: ''
+    content.vb: Function GetDialogBoundsInArea(area As EnumDialogArea) As List(Of ElementBounds)
+  overload: Vintagestory.API.Client.IGuiAPI.GetDialogBoundsInArea*
+- uid: Vintagestory.API.Client.IGuiAPI.CreateCompo(System.String,Vintagestory.API.Client.ElementBounds)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.CreateCompo(System.String,Vintagestory.API.Client.ElementBounds)
+  id: CreateCompo(System.String,Vintagestory.API.Client.ElementBounds)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateCompo(string, ElementBounds)
+  nameWithType: IGuiAPI.CreateCompo(string, ElementBounds)
+  fullName: Vintagestory.API.Client.IGuiAPI.CreateCompo(string, Vintagestory.API.Client.ElementBounds)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CreateCompo
+    path: Client/API/IGuiAPI.cs
+    startLine: 60
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a new gui composition
+  example: []
+  syntax:
+    content: GuiComposer CreateCompo(string dialogName, ElementBounds bounds)
+    parameters:
+    - id: dialogName
+      type: System.String
+      description: ''
+    - id: bounds
+      type: Vintagestory.API.Client.ElementBounds
+      description: ''
+    return:
+      type: Vintagestory.API.Client.GuiComposer
+      description: ''
+    content.vb: Function CreateCompo(dialogName As String, bounds As ElementBounds) As GuiComposer
+  overload: Vintagestory.API.Client.IGuiAPI.CreateCompo*
+  nameWithType.vb: IGuiAPI.CreateCompo(String, ElementBounds)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.CreateCompo(String, Vintagestory.API.Client.ElementBounds)
+  name.vb: CreateCompo(String, ElementBounds)
+- uid: Vintagestory.API.Client.IGuiAPI.RegisterDialog(Vintagestory.API.Client.GuiDialog[])
+  commentId: M:Vintagestory.API.Client.IGuiAPI.RegisterDialog(Vintagestory.API.Client.GuiDialog[])
+  id: RegisterDialog(Vintagestory.API.Client.GuiDialog[])
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterDialog(params GuiDialog[])
+  nameWithType: IGuiAPI.RegisterDialog(params GuiDialog[])
+  fullName: Vintagestory.API.Client.IGuiAPI.RegisterDialog(params Vintagestory.API.Client.GuiDialog[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterDialog
+    path: Client/API/IGuiAPI.cs
+    startLine: 68
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: >-
+    Register given dialog(s) to the gui/input event listening chain. You only need to call this if your dialog has to listen to events 
+
+    even while closed. The method GuiDialog.TryOpen() also does the register if not registered already.
+  example: []
+  syntax:
+    content: void RegisterDialog(params GuiDialog[] dialogs)
+    parameters:
+    - id: dialogs
+      type: Vintagestory.API.Client.GuiDialog[]
+      description: ''
+    content.vb: Sub RegisterDialog(ParamArray dialogs As GuiDialog())
+  overload: Vintagestory.API.Client.IGuiAPI.RegisterDialog*
+  nameWithType.vb: IGuiAPI.RegisterDialog(ParamArray GuiDialog())
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.RegisterDialog(ParamArray Vintagestory.API.Client.GuiDialog())
+  name.vb: RegisterDialog(ParamArray GuiDialog())
+- uid: Vintagestory.API.Client.IGuiAPI.DeleteTexture(System.Int32)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.DeleteTexture(System.Int32)
+  id: DeleteTexture(System.Int32)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: DeleteTexture(int)
+  nameWithType: IGuiAPI.DeleteTexture(int)
+  fullName: Vintagestory.API.Client.IGuiAPI.DeleteTexture(int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DeleteTexture
+    path: Client/API/IGuiAPI.cs
+    startLine: 75
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Removes given texture from graphics card memory
+  example: []
+  syntax:
+    content: void DeleteTexture(int textureid)
+    parameters:
+    - id: textureid
+      type: System.Int32
+      description: ''
+    content.vb: Sub DeleteTexture(textureid As Integer)
+  overload: Vintagestory.API.Client.IGuiAPI.DeleteTexture*
+  nameWithType.vb: IGuiAPI.DeleteTexture(Integer)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.DeleteTexture(Integer)
+  name.vb: DeleteTexture(Integer)
+- uid: Vintagestory.API.Client.IGuiAPI.LoadSvg(Vintagestory.API.Common.AssetLocation,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  commentId: M:Vintagestory.API.Client.IGuiAPI.LoadSvg(Vintagestory.API.Common.AssetLocation,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  id: LoadSvg(Vintagestory.API.Common.AssetLocation,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: LoadSvg(AssetLocation, int, int, int, int, int?)
+  nameWithType: IGuiAPI.LoadSvg(AssetLocation, int, int, int, int, int?)
+  fullName: Vintagestory.API.Client.IGuiAPI.LoadSvg(Vintagestory.API.Common.AssetLocation, int, int, int, int, int?)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LoadSvg
+    path: Client/API/IGuiAPI.cs
+    startLine: 88
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Loads an external .svg file into a texture. Will return null if the file is not found
+  example: []
+  syntax:
+    content: LoadedTexture LoadSvg(AssetLocation loc, int textureWidth, int textureHeight, int width = 0, int height = 0, int? color = 0)
+    parameters:
+    - id: loc
+      type: Vintagestory.API.Common.AssetLocation
+      description: ''
+    - id: textureWidth
+      type: System.Int32
+      description: ''
+    - id: textureHeight
+      type: System.Int32
+      description: ''
+    - id: width
+      type: System.Int32
+      description: ''
+    - id: height
+      type: System.Int32
+      description: ''
+    - id: color
+      type: System.Nullable{System.Int32}
+      description: ''
+    return:
+      type: Vintagestory.API.Client.LoadedTexture
+      description: ''
+    content.vb: Function LoadSvg(loc As AssetLocation, textureWidth As Integer, textureHeight As Integer, width As Integer = 0, height As Integer = 0, color As Integer? = 0) As LoadedTexture
+  overload: Vintagestory.API.Client.IGuiAPI.LoadSvg*
+  nameWithType.vb: IGuiAPI.LoadSvg(AssetLocation, Integer, Integer, Integer, Integer, Integer?)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.LoadSvg(Vintagestory.API.Common.AssetLocation, Integer, Integer, Integer, Integer, Integer?)
+  name.vb: LoadSvg(AssetLocation, Integer, Integer, Integer, Integer, Integer?)
+- uid: Vintagestory.API.Client.IGuiAPI.DrawSvg(Vintagestory.API.Common.IAsset,Cairo.ImageSurface,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  commentId: M:Vintagestory.API.Client.IGuiAPI.DrawSvg(Vintagestory.API.Common.IAsset,Cairo.ImageSurface,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  id: DrawSvg(Vintagestory.API.Common.IAsset,Cairo.ImageSurface,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: DrawSvg(IAsset, ImageSurface, int, int, int, int, int?)
+  nameWithType: IGuiAPI.DrawSvg(IAsset, ImageSurface, int, int, int, int, int?)
+  fullName: Vintagestory.API.Client.IGuiAPI.DrawSvg(Vintagestory.API.Common.IAsset, Cairo.ImageSurface, int, int, int, int, int?)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DrawSvg
+    path: Client/API/IGuiAPI.cs
+    startLine: 91
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void DrawSvg(IAsset svgAsset, ImageSurface intoSurface, int posx, int posy, int width = 0, int height = 0, int? color = 0)
+    parameters:
+    - id: svgAsset
+      type: Vintagestory.API.Common.IAsset
+    - id: intoSurface
+      type: Cairo.ImageSurface
+    - id: posx
+      type: System.Int32
+    - id: posy
+      type: System.Int32
+    - id: width
+      type: System.Int32
+    - id: height
+      type: System.Int32
+    - id: color
+      type: System.Nullable{System.Int32}
+    content.vb: Sub DrawSvg(svgAsset As IAsset, intoSurface As ImageSurface, posx As Integer, posy As Integer, width As Integer = 0, height As Integer = 0, color As Integer? = 0)
+  overload: Vintagestory.API.Client.IGuiAPI.DrawSvg*
+  nameWithType.vb: IGuiAPI.DrawSvg(IAsset, ImageSurface, Integer, Integer, Integer, Integer, Integer?)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.DrawSvg(Vintagestory.API.Common.IAsset, Cairo.ImageSurface, Integer, Integer, Integer, Integer, Integer?)
+  name.vb: DrawSvg(IAsset, ImageSurface, Integer, Integer, Integer, Integer, Integer?)
+- uid: Vintagestory.API.Client.IGuiAPI.DrawSvg(Vintagestory.API.Common.IAsset,Cairo.ImageSurface,Cairo.Matrix,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  commentId: M:Vintagestory.API.Client.IGuiAPI.DrawSvg(Vintagestory.API.Common.IAsset,Cairo.ImageSurface,Cairo.Matrix,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  id: DrawSvg(Vintagestory.API.Common.IAsset,Cairo.ImageSurface,Cairo.Matrix,System.Int32,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: DrawSvg(IAsset, ImageSurface, Matrix, int, int, int, int, int?)
+  nameWithType: IGuiAPI.DrawSvg(IAsset, ImageSurface, Matrix, int, int, int, int, int?)
+  fullName: Vintagestory.API.Client.IGuiAPI.DrawSvg(Vintagestory.API.Common.IAsset, Cairo.ImageSurface, Cairo.Matrix, int, int, int, int, int?)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DrawSvg
+    path: Client/API/IGuiAPI.cs
+    startLine: 92
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void DrawSvg(IAsset svgAsset, ImageSurface intoSurface, Matrix transform, int posx, int posy, int width = 0, int height = 0, int? color = 0)
+    parameters:
+    - id: svgAsset
+      type: Vintagestory.API.Common.IAsset
+    - id: intoSurface
+      type: Cairo.ImageSurface
+    - id: transform
+      type: Cairo.Matrix
+    - id: posx
+      type: System.Int32
+    - id: posy
+      type: System.Int32
+    - id: width
+      type: System.Int32
+    - id: height
+      type: System.Int32
+    - id: color
+      type: System.Nullable{System.Int32}
+    content.vb: Sub DrawSvg(svgAsset As IAsset, intoSurface As ImageSurface, transform As Matrix, posx As Integer, posy As Integer, width As Integer = 0, height As Integer = 0, color As Integer? = 0)
+  overload: Vintagestory.API.Client.IGuiAPI.DrawSvg*
+  nameWithType.vb: IGuiAPI.DrawSvg(IAsset, ImageSurface, Matrix, Integer, Integer, Integer, Integer, Integer?)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.DrawSvg(Vintagestory.API.Common.IAsset, Cairo.ImageSurface, Cairo.Matrix, Integer, Integer, Integer, Integer, Integer?)
+  name.vb: DrawSvg(IAsset, ImageSurface, Matrix, Integer, Integer, Integer, Integer, Integer?)
+- uid: Vintagestory.API.Client.IGuiAPI.LoadSvgWithPadding(Vintagestory.API.Common.AssetLocation,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  commentId: M:Vintagestory.API.Client.IGuiAPI.LoadSvgWithPadding(Vintagestory.API.Common.AssetLocation,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  id: LoadSvgWithPadding(Vintagestory.API.Common.AssetLocation,System.Int32,System.Int32,System.Int32,System.Nullable{System.Int32})
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: LoadSvgWithPadding(AssetLocation, int, int, int, int?)
+  nameWithType: IGuiAPI.LoadSvgWithPadding(AssetLocation, int, int, int, int?)
+  fullName: Vintagestory.API.Client.IGuiAPI.LoadSvgWithPadding(Vintagestory.API.Common.AssetLocation, int, int, int, int?)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LoadSvgWithPadding
+    path: Client/API/IGuiAPI.cs
+    startLine: 103
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Loads an external .svg file into a texture. Will return null if the file is not found
+  example: []
+  syntax:
+    content: LoadedTexture LoadSvgWithPadding(AssetLocation loc, int textureWidth, int textureHeight, int padding = 0, int? color = 0)
+    parameters:
+    - id: loc
+      type: Vintagestory.API.Common.AssetLocation
+      description: ''
+    - id: textureWidth
+      type: System.Int32
+      description: ''
+    - id: textureHeight
+      type: System.Int32
+      description: ''
+    - id: padding
+      type: System.Int32
+      description: ''
+    - id: color
+      type: System.Nullable{System.Int32}
+      description: ''
+    return:
+      type: Vintagestory.API.Client.LoadedTexture
+      description: ''
+    content.vb: Function LoadSvgWithPadding(loc As AssetLocation, textureWidth As Integer, textureHeight As Integer, padding As Integer = 0, color As Integer? = 0) As LoadedTexture
+  overload: Vintagestory.API.Client.IGuiAPI.LoadSvgWithPadding*
+  nameWithType.vb: IGuiAPI.LoadSvgWithPadding(AssetLocation, Integer, Integer, Integer, Integer?)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.LoadSvgWithPadding(Vintagestory.API.Common.AssetLocation, Integer, Integer, Integer, Integer?)
+  name.vb: LoadSvgWithPadding(AssetLocation, Integer, Integer, Integer, Integer?)
+- uid: Vintagestory.API.Client.IGuiAPI.LoadCairoTexture(Cairo.ImageSurface,System.Boolean)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.LoadCairoTexture(Cairo.ImageSurface,System.Boolean)
+  id: LoadCairoTexture(Cairo.ImageSurface,System.Boolean)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: LoadCairoTexture(ImageSurface, bool)
+  nameWithType: IGuiAPI.LoadCairoTexture(ImageSurface, bool)
+  fullName: Vintagestory.API.Client.IGuiAPI.LoadCairoTexture(Cairo.ImageSurface, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LoadCairoTexture
+    path: Client/API/IGuiAPI.cs
+    startLine: 111
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Load the contents of a cairo surface into a opengl texture. Returns the texture id
+  example: []
+  syntax:
+    content: int LoadCairoTexture(ImageSurface surface, bool linearMag)
+    parameters:
+    - id: surface
+      type: Cairo.ImageSurface
+      description: ''
+    - id: linearMag
+      type: System.Boolean
+      description: ''
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Function LoadCairoTexture(surface As ImageSurface, linearMag As Boolean) As Integer
+  overload: Vintagestory.API.Client.IGuiAPI.LoadCairoTexture*
+  nameWithType.vb: IGuiAPI.LoadCairoTexture(ImageSurface, Boolean)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.LoadCairoTexture(Cairo.ImageSurface, Boolean)
+  name.vb: LoadCairoTexture(ImageSurface, Boolean)
+- uid: Vintagestory.API.Client.IGuiAPI.LoadOrUpdateCairoTexture(Cairo.ImageSurface,System.Boolean,Vintagestory.API.Client.LoadedTexture@)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.LoadOrUpdateCairoTexture(Cairo.ImageSurface,System.Boolean,Vintagestory.API.Client.LoadedTexture@)
+  id: LoadOrUpdateCairoTexture(Cairo.ImageSurface,System.Boolean,Vintagestory.API.Client.LoadedTexture@)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: LoadOrUpdateCairoTexture(ImageSurface, bool, ref LoadedTexture)
+  nameWithType: IGuiAPI.LoadOrUpdateCairoTexture(ImageSurface, bool, ref LoadedTexture)
+  fullName: Vintagestory.API.Client.IGuiAPI.LoadOrUpdateCairoTexture(Cairo.ImageSurface, bool, ref Vintagestory.API.Client.LoadedTexture)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LoadOrUpdateCairoTexture
+    path: Client/API/IGuiAPI.cs
+    startLine: 120
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Load the contents of a cairo surface into a opengl texture. Re-uses the supplied texture exists and the size is correct. Otherwise deletes the texture and regenerates it.
+  example: []
+  syntax:
+    content: void LoadOrUpdateCairoTexture(ImageSurface surface, bool linearMag, ref LoadedTexture intoTexture)
+    parameters:
+    - id: surface
+      type: Cairo.ImageSurface
+      description: ''
+    - id: linearMag
+      type: System.Boolean
+      description: ''
+    - id: intoTexture
+      type: Vintagestory.API.Client.LoadedTexture
+      description: ''
+    content.vb: Sub LoadOrUpdateCairoTexture(surface As ImageSurface, linearMag As Boolean, intoTexture As LoadedTexture)
+  overload: Vintagestory.API.Client.IGuiAPI.LoadOrUpdateCairoTexture*
+  nameWithType.vb: IGuiAPI.LoadOrUpdateCairoTexture(ImageSurface, Boolean, LoadedTexture)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.LoadOrUpdateCairoTexture(Cairo.ImageSurface, Boolean, Vintagestory.API.Client.LoadedTexture)
+  name.vb: LoadOrUpdateCairoTexture(ImageSurface, Boolean, LoadedTexture)
+- uid: Vintagestory.API.Client.IGuiAPI.GetDialogPosition(System.String)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.GetDialogPosition(System.String)
+  id: GetDialogPosition(System.String)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: GetDialogPosition(string)
+  nameWithType: IGuiAPI.GetDialogPosition(string)
+  fullName: Vintagestory.API.Client.IGuiAPI.GetDialogPosition(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetDialogPosition
+    path: Client/API/IGuiAPI.cs
+    startLine: 128
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Retrieve the saved dialog position from settings
+  example: []
+  syntax:
+    content: Vec2i GetDialogPosition(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.MathTools.Vec2i
+      description: ''
+    content.vb: Function GetDialogPosition(key As String) As Vec2i
+  overload: Vintagestory.API.Client.IGuiAPI.GetDialogPosition*
+  nameWithType.vb: IGuiAPI.GetDialogPosition(String)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.GetDialogPosition(String)
+  name.vb: GetDialogPosition(String)
+- uid: Vintagestory.API.Client.IGuiAPI.SetDialogPosition(System.String,Vintagestory.API.MathTools.Vec2i)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.SetDialogPosition(System.String,Vintagestory.API.MathTools.Vec2i)
+  id: SetDialogPosition(System.String,Vintagestory.API.MathTools.Vec2i)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: SetDialogPosition(string, Vec2i)
+  nameWithType: IGuiAPI.SetDialogPosition(string, Vec2i)
+  fullName: Vintagestory.API.Client.IGuiAPI.SetDialogPosition(string, Vintagestory.API.MathTools.Vec2i)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetDialogPosition
+    path: Client/API/IGuiAPI.cs
+    startLine: 135
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Remember the dialog position for given dialog key
+  example: []
+  syntax:
+    content: void SetDialogPosition(string key, Vec2i pos)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec2i
+      description: ''
+    content.vb: Sub SetDialogPosition(key As String, pos As Vec2i)
+  overload: Vintagestory.API.Client.IGuiAPI.SetDialogPosition*
+  nameWithType.vb: IGuiAPI.SetDialogPosition(String, Vec2i)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.SetDialogPosition(String, Vintagestory.API.MathTools.Vec2i)
+  name.vb: SetDialogPosition(String, Vec2i)
+- uid: Vintagestory.API.Client.IGuiAPI.PlaySound(System.String,System.Boolean,System.Single)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.PlaySound(System.String,System.Boolean,System.Single)
+  id: PlaySound(System.String,System.Boolean,System.Single)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: PlaySound(string, bool, float)
+  nameWithType: IGuiAPI.PlaySound(string, bool, float)
+  fullName: Vintagestory.API.Client.IGuiAPI.PlaySound(string, bool, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PlaySound
+    path: Client/API/IGuiAPI.cs
+    startLine: 143
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Plays a sound, non location specific
+  example: []
+  syntax:
+    content: void PlaySound(string soundname, bool randomizePitch = false, float volume = 1)
+    parameters:
+    - id: soundname
+      type: System.String
+      description: The name of the sound
+    - id: randomizePitch
+      type: System.Boolean
+      description: If true, the pitch is slightly randomized each time
+    - id: volume
+      type: System.Single
+      description: ''
+    content.vb: Sub PlaySound(soundname As String, randomizePitch As Boolean = False, volume As Single = 1)
+  overload: Vintagestory.API.Client.IGuiAPI.PlaySound*
+  nameWithType.vb: IGuiAPI.PlaySound(String, Boolean, Single)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.PlaySound(String, Boolean, Single)
+  name.vb: PlaySound(String, Boolean, Single)
+- uid: Vintagestory.API.Client.IGuiAPI.PlaySound(Vintagestory.API.Common.AssetLocation,System.Boolean,System.Single)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.PlaySound(Vintagestory.API.Common.AssetLocation,System.Boolean,System.Single)
+  id: PlaySound(Vintagestory.API.Common.AssetLocation,System.Boolean,System.Single)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: PlaySound(AssetLocation, bool, float)
+  nameWithType: IGuiAPI.PlaySound(AssetLocation, bool, float)
+  fullName: Vintagestory.API.Client.IGuiAPI.PlaySound(Vintagestory.API.Common.AssetLocation, bool, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PlaySound
+    path: Client/API/IGuiAPI.cs
+    startLine: 151
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Plays a sound, non location specific.
+  example: []
+  syntax:
+    content: void PlaySound(AssetLocation soundname, bool randomizePitch = false, float volume = 1)
+    parameters:
+    - id: soundname
+      type: Vintagestory.API.Common.AssetLocation
+      description: The name of the sound
+    - id: randomizePitch
+      type: System.Boolean
+      description: If true, the pitch is slightly randomized each time
+    - id: volume
+      type: System.Single
+      description: ''
+    content.vb: Sub PlaySound(soundname As AssetLocation, randomizePitch As Boolean = False, volume As Single = 1)
+  overload: Vintagestory.API.Client.IGuiAPI.PlaySound*
+  nameWithType.vb: IGuiAPI.PlaySound(AssetLocation, Boolean, Single)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.PlaySound(Vintagestory.API.Common.AssetLocation, Boolean, Single)
+  name.vb: PlaySound(AssetLocation, Boolean, Single)
+- uid: Vintagestory.API.Client.IGuiAPI.RequestFocus(Vintagestory.API.Client.GuiDialog)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.RequestFocus(Vintagestory.API.Client.GuiDialog)
+  id: RequestFocus(Vintagestory.API.Client.GuiDialog)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: RequestFocus(GuiDialog)
+  nameWithType: IGuiAPI.RequestFocus(GuiDialog)
+  fullName: Vintagestory.API.Client.IGuiAPI.RequestFocus(Vintagestory.API.Client.GuiDialog)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RequestFocus
+    path: Client/API/IGuiAPI.cs
+    startLine: 157
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Requests the given GUI to be given focus.
+  example: []
+  syntax:
+    content: void RequestFocus(GuiDialog guiDialog)
+    parameters:
+    - id: guiDialog
+      type: Vintagestory.API.Client.GuiDialog
+      description: The dialogue wanting attention.
+    content.vb: Sub RequestFocus(guiDialog As GuiDialog)
+  overload: Vintagestory.API.Client.IGuiAPI.RequestFocus*
+- uid: Vintagestory.API.Client.IGuiAPI.TriggerDialogOpened(Vintagestory.API.Client.GuiDialog)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.TriggerDialogOpened(Vintagestory.API.Client.GuiDialog)
+  id: TriggerDialogOpened(Vintagestory.API.Client.GuiDialog)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: TriggerDialogOpened(GuiDialog)
+  nameWithType: IGuiAPI.TriggerDialogOpened(GuiDialog)
+  fullName: Vintagestory.API.Client.IGuiAPI.TriggerDialogOpened(Vintagestory.API.Client.GuiDialog)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TriggerDialogOpened
+    path: Client/API/IGuiAPI.cs
+    startLine: 163
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Triggers the opening of a dialogue.
+  example: []
+  syntax:
+    content: void TriggerDialogOpened(GuiDialog guiDialog)
+    parameters:
+    - id: guiDialog
+      type: Vintagestory.API.Client.GuiDialog
+      description: The dialogue to be opened.
+    content.vb: Sub TriggerDialogOpened(guiDialog As GuiDialog)
+  overload: Vintagestory.API.Client.IGuiAPI.TriggerDialogOpened*
+- uid: Vintagestory.API.Client.IGuiAPI.TriggerDialogClosed(Vintagestory.API.Client.GuiDialog)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.TriggerDialogClosed(Vintagestory.API.Client.GuiDialog)
+  id: TriggerDialogClosed(Vintagestory.API.Client.GuiDialog)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: TriggerDialogClosed(GuiDialog)
+  nameWithType: IGuiAPI.TriggerDialogClosed(GuiDialog)
+  fullName: Vintagestory.API.Client.IGuiAPI.TriggerDialogClosed(Vintagestory.API.Client.GuiDialog)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TriggerDialogClosed
+    path: Client/API/IGuiAPI.cs
+    startLine: 169
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Triggers the closing of a dialogue.
+  example: []
+  syntax:
+    content: void TriggerDialogClosed(GuiDialog guiDialog)
+    parameters:
+    - id: guiDialog
+      type: Vintagestory.API.Client.GuiDialog
+      description: The dialogue to be closed.
+    content.vb: Sub TriggerDialogClosed(guiDialog As GuiDialog)
+  overload: Vintagestory.API.Client.IGuiAPI.TriggerDialogClosed*
+- uid: Vintagestory.API.Client.IGuiAPI.OpenLink(System.String)
+  commentId: M:Vintagestory.API.Client.IGuiAPI.OpenLink(System.String)
+  id: OpenLink(System.String)
+  parent: Vintagestory.API.Client.IGuiAPI
+  langs:
+  - csharp
+  - vb
+  name: OpenLink(string)
+  nameWithType: IGuiAPI.OpenLink(string)
+  fullName: Vintagestory.API.Client.IGuiAPI.OpenLink(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IGuiAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OpenLink
+    path: Client/API/IGuiAPI.cs
+    startLine: 175
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Opens up a confirm dialog asking the player if he wants to open an external link
+  example: []
+  syntax:
+    content: void OpenLink(string href)
+    parameters:
+    - id: href
+      type: System.String
+      description: ''
+    content.vb: Sub OpenLink(href As String)
+  overload: Vintagestory.API.Client.IGuiAPI.OpenLink*
+  nameWithType.vb: IGuiAPI.OpenLink(String)
+  fullName.vb: Vintagestory.API.Client.IGuiAPI.OpenLink(String)
+  name.vb: OpenLink(String)
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.IGuiAPI.QuadMeshRef*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.QuadMeshRef
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_QuadMeshRef
+  name: QuadMeshRef
+  nameWithType: IGuiAPI.QuadMeshRef
+  fullName: Vintagestory.API.Client.IGuiAPI.QuadMeshRef
+- uid: Vintagestory.API.Client.MeshRef
+  commentId: T:Vintagestory.API.Client.MeshRef
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MeshRef.html
+  name: MeshRef
+  nameWithType: MeshRef
+  fullName: Vintagestory.API.Client.MeshRef
+- uid: Vintagestory.API.Client.IGuiAPI.LoadedGuis*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.LoadedGuis
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_LoadedGuis
+  name: LoadedGuis
+  nameWithType: IGuiAPI.LoadedGuis
+  fullName: Vintagestory.API.Client.IGuiAPI.LoadedGuis
+- uid: System.Collections.Generic.List{Vintagestory.API.Client.GuiDialog}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.Client.GuiDialog}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<GuiDialog>
+  nameWithType: List<GuiDialog>
+  fullName: System.Collections.Generic.List<Vintagestory.API.Client.GuiDialog>
+  nameWithType.vb: List(Of GuiDialog)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Client.GuiDialog)
+  name.vb: List(Of GuiDialog)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Client.GuiDialog
+    name: GuiDialog
+    href: Vintagestory.API.Client.GuiDialog.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Client.GuiDialog
+    name: GuiDialog
+    href: Vintagestory.API.Client.GuiDialog.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Client.IGuiAPI.OpenedGuis*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.OpenedGuis
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_OpenedGuis
+  name: OpenedGuis
+  nameWithType: IGuiAPI.OpenedGuis
+  fullName: Vintagestory.API.Client.IGuiAPI.OpenedGuis
+- uid: Vintagestory.API.Client.IGuiAPI.TextTexture*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.TextTexture
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_TextTexture
+  name: TextTexture
+  nameWithType: IGuiAPI.TextTexture
+  fullName: Vintagestory.API.Client.IGuiAPI.TextTexture
+- uid: Vintagestory.API.Client.TextTextureUtil
+  commentId: T:Vintagestory.API.Client.TextTextureUtil
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.TextTextureUtil.html
+  name: TextTextureUtil
+  nameWithType: TextTextureUtil
+  fullName: Vintagestory.API.Client.TextTextureUtil
+- uid: Vintagestory.API.Client.IGuiAPI.Text*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.Text
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_Text
+  name: Text
+  nameWithType: IGuiAPI.Text
+  fullName: Vintagestory.API.Client.IGuiAPI.Text
+- uid: Vintagestory.API.Client.TextDrawUtil
+  commentId: T:Vintagestory.API.Client.TextDrawUtil
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.TextDrawUtil.html
+  name: TextDrawUtil
+  nameWithType: TextDrawUtil
+  fullName: Vintagestory.API.Client.TextDrawUtil
+- uid: Vintagestory.API.Client.IGuiAPI.Icons*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.Icons
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_Icons
+  name: Icons
+  nameWithType: IGuiAPI.Icons
+  fullName: Vintagestory.API.Client.IGuiAPI.Icons
+- uid: Vintagestory.API.Client.IconUtil
+  commentId: T:Vintagestory.API.Client.IconUtil
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IconUtil.html
+  name: IconUtil
+  nameWithType: IconUtil
+  fullName: Vintagestory.API.Client.IconUtil
+- uid: Vintagestory.API.Client.IGuiAPI.WindowBounds*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.WindowBounds
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_WindowBounds
+  name: WindowBounds
+  nameWithType: IGuiAPI.WindowBounds
+  fullName: Vintagestory.API.Client.IGuiAPI.WindowBounds
+- uid: Vintagestory.API.Client.ElementBounds
+  commentId: T:Vintagestory.API.Client.ElementBounds
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ElementBounds.html
+  name: ElementBounds
+  nameWithType: ElementBounds
+  fullName: Vintagestory.API.Client.ElementBounds
+- uid: Vintagestory.API.Client.IGuiAPI.GetDialogBoundsInArea*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.GetDialogBoundsInArea
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_GetDialogBoundsInArea_Vintagestory_API_Client_EnumDialogArea_
+  name: GetDialogBoundsInArea
+  nameWithType: IGuiAPI.GetDialogBoundsInArea
+  fullName: Vintagestory.API.Client.IGuiAPI.GetDialogBoundsInArea
+- uid: Vintagestory.API.Client.EnumDialogArea
+  commentId: T:Vintagestory.API.Client.EnumDialogArea
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumDialogArea.html
+  name: EnumDialogArea
+  nameWithType: EnumDialogArea
+  fullName: Vintagestory.API.Client.EnumDialogArea
+- uid: System.Collections.Generic.List{Vintagestory.API.Client.ElementBounds}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.Client.ElementBounds}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<ElementBounds>
+  nameWithType: List<ElementBounds>
+  fullName: System.Collections.Generic.List<Vintagestory.API.Client.ElementBounds>
+  nameWithType.vb: List(Of ElementBounds)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Client.ElementBounds)
+  name.vb: List(Of ElementBounds)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: )
+- uid: Vintagestory.API.Client.IGuiAPI.CreateCompo*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.CreateCompo
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_CreateCompo_System_String_Vintagestory_API_Client_ElementBounds_
+  name: CreateCompo
+  nameWithType: IGuiAPI.CreateCompo
+  fullName: Vintagestory.API.Client.IGuiAPI.CreateCompo
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Client.GuiComposer
+  commentId: T:Vintagestory.API.Client.GuiComposer
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.GuiComposer.html
+  name: GuiComposer
+  nameWithType: GuiComposer
+  fullName: Vintagestory.API.Client.GuiComposer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.IGuiAPI.RegisterDialog*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.RegisterDialog
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_RegisterDialog_Vintagestory_API_Client_GuiDialog___
+  name: RegisterDialog
+  nameWithType: IGuiAPI.RegisterDialog
+  fullName: Vintagestory.API.Client.IGuiAPI.RegisterDialog
+- uid: Vintagestory.API.Client.GuiDialog[]
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialog.html
+  name: GuiDialog[]
+  nameWithType: GuiDialog[]
+  fullName: Vintagestory.API.Client.GuiDialog[]
+  nameWithType.vb: GuiDialog()
+  fullName.vb: Vintagestory.API.Client.GuiDialog()
+  name.vb: GuiDialog()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog
+    name: GuiDialog
+    href: Vintagestory.API.Client.GuiDialog.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog
+    name: GuiDialog
+    href: Vintagestory.API.Client.GuiDialog.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.IGuiAPI.DeleteTexture*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.DeleteTexture
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_DeleteTexture_System_Int32_
+  name: DeleteTexture
+  nameWithType: IGuiAPI.DeleteTexture
+  fullName: Vintagestory.API.Client.IGuiAPI.DeleteTexture
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Client.IGuiAPI.LoadSvg*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.LoadSvg
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_LoadSvg_Vintagestory_API_Common_AssetLocation_System_Int32_System_Int32_System_Int32_System_Int32_System_Nullable_System_Int32__
+  name: LoadSvg
+  nameWithType: IGuiAPI.LoadSvg
+  fullName: Vintagestory.API.Client.IGuiAPI.LoadSvg
+- uid: Vintagestory.API.Common.AssetLocation
+  commentId: T:Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: AssetLocation
+  nameWithType: AssetLocation
+  fullName: Vintagestory.API.Common.AssetLocation
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: Vintagestory.API.Client.LoadedTexture
+  commentId: T:Vintagestory.API.Client.LoadedTexture
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.LoadedTexture.html
+  name: LoadedTexture
+  nameWithType: LoadedTexture
+  fullName: Vintagestory.API.Client.LoadedTexture
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Client.IGuiAPI.DrawSvg*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.DrawSvg
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_DrawSvg_Vintagestory_API_Common_IAsset_Cairo_ImageSurface_System_Int32_System_Int32_System_Int32_System_Int32_System_Nullable_System_Int32__
+  name: DrawSvg
+  nameWithType: IGuiAPI.DrawSvg
+  fullName: Vintagestory.API.Client.IGuiAPI.DrawSvg
+- uid: Vintagestory.API.Common.IAsset
+  commentId: T:Vintagestory.API.Common.IAsset
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IAsset.html
+  name: IAsset
+  nameWithType: IAsset
+  fullName: Vintagestory.API.Common.IAsset
+- uid: Cairo.ImageSurface
+  commentId: T:Cairo.ImageSurface
+  parent: Cairo
+  name: ImageSurface
+  nameWithType: ImageSurface
+  fullName: Cairo.ImageSurface
+- uid: Cairo
+  commentId: N:Cairo
+  name: Cairo
+  nameWithType: Cairo
+  fullName: Cairo
+- uid: Cairo.Matrix
+  commentId: T:Cairo.Matrix
+  parent: Cairo
+  name: Matrix
+  nameWithType: Matrix
+  fullName: Cairo.Matrix
+- uid: Vintagestory.API.Client.IGuiAPI.LoadSvgWithPadding*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.LoadSvgWithPadding
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_LoadSvgWithPadding_Vintagestory_API_Common_AssetLocation_System_Int32_System_Int32_System_Int32_System_Nullable_System_Int32__
+  name: LoadSvgWithPadding
+  nameWithType: IGuiAPI.LoadSvgWithPadding
+  fullName: Vintagestory.API.Client.IGuiAPI.LoadSvgWithPadding
+- uid: Vintagestory.API.Client.IGuiAPI.LoadCairoTexture*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.LoadCairoTexture
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_LoadCairoTexture_Cairo_ImageSurface_System_Boolean_
+  name: LoadCairoTexture
+  nameWithType: IGuiAPI.LoadCairoTexture
+  fullName: Vintagestory.API.Client.IGuiAPI.LoadCairoTexture
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Client.IGuiAPI.LoadOrUpdateCairoTexture*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.LoadOrUpdateCairoTexture
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_LoadOrUpdateCairoTexture_Cairo_ImageSurface_System_Boolean_Vintagestory_API_Client_LoadedTexture__
+  name: LoadOrUpdateCairoTexture
+  nameWithType: IGuiAPI.LoadOrUpdateCairoTexture
+  fullName: Vintagestory.API.Client.IGuiAPI.LoadOrUpdateCairoTexture
+- uid: Vintagestory.API.Client.IGuiAPI.GetDialogPosition*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.GetDialogPosition
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_GetDialogPosition_System_String_
+  name: GetDialogPosition
+  nameWithType: IGuiAPI.GetDialogPosition
+  fullName: Vintagestory.API.Client.IGuiAPI.GetDialogPosition
+- uid: Vintagestory.API.MathTools.Vec2i
+  commentId: T:Vintagestory.API.MathTools.Vec2i
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec2i.html
+  name: Vec2i
+  nameWithType: Vec2i
+  fullName: Vintagestory.API.MathTools.Vec2i
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Client.IGuiAPI.SetDialogPosition*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.SetDialogPosition
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_SetDialogPosition_System_String_Vintagestory_API_MathTools_Vec2i_
+  name: SetDialogPosition
+  nameWithType: IGuiAPI.SetDialogPosition
+  fullName: Vintagestory.API.Client.IGuiAPI.SetDialogPosition
+- uid: Vintagestory.API.Client.IGuiAPI.PlaySound*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.PlaySound
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_PlaySound_System_String_System_Boolean_System_Single_
+  name: PlaySound
+  nameWithType: IGuiAPI.PlaySound
+  fullName: Vintagestory.API.Client.IGuiAPI.PlaySound
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Client.IGuiAPI.RequestFocus*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.RequestFocus
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_RequestFocus_Vintagestory_API_Client_GuiDialog_
+  name: RequestFocus
+  nameWithType: IGuiAPI.RequestFocus
+  fullName: Vintagestory.API.Client.IGuiAPI.RequestFocus
+- uid: Vintagestory.API.Client.GuiDialog
+  commentId: T:Vintagestory.API.Client.GuiDialog
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.GuiDialog.html
+  name: GuiDialog
+  nameWithType: GuiDialog
+  fullName: Vintagestory.API.Client.GuiDialog
+- uid: Vintagestory.API.Client.IGuiAPI.TriggerDialogOpened*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.TriggerDialogOpened
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_TriggerDialogOpened_Vintagestory_API_Client_GuiDialog_
+  name: TriggerDialogOpened
+  nameWithType: IGuiAPI.TriggerDialogOpened
+  fullName: Vintagestory.API.Client.IGuiAPI.TriggerDialogOpened
+- uid: Vintagestory.API.Client.IGuiAPI.TriggerDialogClosed*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.TriggerDialogClosed
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_TriggerDialogClosed_Vintagestory_API_Client_GuiDialog_
+  name: TriggerDialogClosed
+  nameWithType: IGuiAPI.TriggerDialogClosed
+  fullName: Vintagestory.API.Client.IGuiAPI.TriggerDialogClosed
+- uid: Vintagestory.API.Client.IGuiAPI.OpenLink*
+  commentId: Overload:Vintagestory.API.Client.IGuiAPI.OpenLink
+  href: Vintagestory.API.Client.IGuiAPI.html#Vintagestory_API_Client_IGuiAPI_OpenLink_System_String_
+  name: OpenLink
+  nameWithType: IGuiAPI.OpenLink
+  fullName: Vintagestory.API.Client.IGuiAPI.OpenLink

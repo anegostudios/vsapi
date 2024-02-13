@@ -63,6 +63,7 @@ namespace Vintagestory.API.MathTools
             double tmpPositionVecZ = pos.Z;
 
             entityBox.SetAndTranslate(entity.CollisionBox, tmpPositionVecX, tmpPositionVecY, tmpPositionVecZ);
+            entityBox.RemoveRoundingErrors();   // Necessary to prevent unwanted clipping through blocks when there is knockback
 
             double motionX = entitypos.Motion.X * dtFac;
             double motionY = entitypos.Motion.Y * dtFac;

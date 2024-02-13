@@ -1,0 +1,102 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ChunkColumnUnloadDelegate
+  commentId: T:Vintagestory.API.Common.ChunkColumnUnloadDelegate
+  id: ChunkColumnUnloadDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: ChunkColumnUnloadDelegate
+  nameWithType: ChunkColumnUnloadDelegate
+  fullName: Vintagestory.API.Common.ChunkColumnUnloadDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IEventAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ChunkColumnUnloadDelegate
+    path: Common/API/IEventAPI.cs
+    startLine: 50
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Triggered just before a chunk column gets unloaded
+  example: []
+  syntax:
+    content: public delegate void ChunkColumnUnloadDelegate(Vec3i chunkCoord)
+    parameters:
+    - id: chunkCoord
+      type: Vintagestory.API.MathTools.Vec3i
+      description: chunkX and chunkZ of the column (multiply with chunksize to get position). The Y component is zero
+    content.vb: Public Delegate Sub ChunkColumnUnloadDelegate(chunkCoord As Vec3i)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.MathTools.Vec3i
+  commentId: T:Vintagestory.API.MathTools.Vec3i
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3i.html
+  name: Vec3i
+  nameWithType: Vec3i
+  fullName: Vintagestory.API.MathTools.Vec3i
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html

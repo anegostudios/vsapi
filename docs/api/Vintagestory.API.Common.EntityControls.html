@@ -1,1607 +1,1676 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class EntityControls
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class EntityControls
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class EntityControls | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class EntityControls | VintageStory API ">
+      
+      <meta name="description" content="The available controls to move around a character in a game world">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.EntityControls">
-  
-  
-  <h1 id="Vintagestory_API_Common_EntityControls" data-uid="Vintagestory.API.Common.EntityControls" class="text-break">Class EntityControls
-  </h1>
-  <div class="markdown level0 summary"><p>The available controls to move around a character in a game world</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">EntityControls</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_EntityControls_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class EntityControls : object</code></pre>
-  </div>
-  <h3 id="fields">Fields
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_DetachedMode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.DetachedMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L108">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_DetachedMode" data-uid="Vintagestory.API.Common.EntityControls.DetachedMode">DetachedMode</h4>
-  <div class="markdown level1 summary"><p>If true, the entity is either flying, gliding or swimming.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool DetachedMode</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Dirty.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Dirty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L181">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_Dirty" data-uid="Vintagestory.API.Common.EntityControls.Dirty">Dirty</h4>
-  <div class="markdown level1 summary"><p>Whether or not this entity is dirty.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Dirty</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_FlyPlaneLock.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.FlyPlaneLock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L118">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_FlyPlaneLock" data-uid="Vintagestory.API.Common.EntityControls.FlyPlaneLock">FlyPlaneLock</h4>
-  <div class="markdown level1 summary"><p>the axis lock for the fly plane.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumFreeMovAxisLock FlyPlaneLock</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumFreeMovAxisLock.html">EnumFreeMovAxisLock</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_FlyVector.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.FlyVector%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L128">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_FlyVector" data-uid="Vintagestory.API.Common.EntityControls.FlyVector">FlyVector</h4>
-  <div class="markdown level1 summary"><p>Current flying direction</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3d FlyVector</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_GlideSpeed.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.GlideSpeed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L183">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_GlideSpeed" data-uid="Vintagestory.API.Common.EntityControls.GlideSpeed">GlideSpeed</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double GlideSpeed</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_HandUse.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.HandUse%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L158">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_HandUse" data-uid="Vintagestory.API.Common.EntityControls.HandUse">HandUse</h4>
-  <div class="markdown level1 summary"><p>If the player is currently using the currently held item in a special way (e.g. attacking with smithing hammer or eating an edible item)</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumHandInteract HandUse</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumHandInteract.html">EnumHandInteract</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_HandUsingBlockSel.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.HandUsingBlockSel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L163">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_HandUsingBlockSel" data-uid="Vintagestory.API.Common.EntityControls.HandUsingBlockSel">HandUsingBlockSel</h4>
-  <div class="markdown level1 summary"><p>The block pos the player started using</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BlockSelection HandUsingBlockSel</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_IsAiming.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.IsAiming%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L148">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_IsAiming" data-uid="Vintagestory.API.Common.EntityControls.IsAiming">IsAiming</h4>
-  <div class="markdown level1 summary"><p>Whether or not the entity is aiming</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsAiming</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_IsClimbing.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.IsClimbing%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L143">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_IsClimbing" data-uid="Vintagestory.API.Common.EntityControls.IsClimbing">IsClimbing</h4>
-  <div class="markdown level1 summary"><p>Whether or not the entity is climbing</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsClimbing</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_IsFlying.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.IsFlying%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L138">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_IsFlying" data-uid="Vintagestory.API.Common.EntityControls.IsFlying">IsFlying</h4>
-  <div class="markdown level1 summary"><p>Whether or not the entity is flying.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsFlying</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_IsStepping.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.IsStepping%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L153">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_IsStepping" data-uid="Vintagestory.API.Common.EntityControls.IsStepping">IsStepping</h4>
-  <div class="markdown level1 summary"><p>Whether or not the entity is currently stepping up a block</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsStepping</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_LeftUsingHeldItemTransformBefore.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.LeftUsingHeldItemTransformBefore%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L168">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_LeftUsingHeldItemTransformBefore" data-uid="Vintagestory.API.Common.EntityControls.LeftUsingHeldItemTransformBefore">LeftUsingHeldItemTransformBefore</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ModelTransform LeftUsingHeldItemTransformBefore</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_MovespeedMultiplier.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.MovespeedMultiplier%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L176">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_MovespeedMultiplier" data-uid="Vintagestory.API.Common.EntityControls.MovespeedMultiplier">MovespeedMultiplier</h4>
-  <div class="markdown level1 summary"><p>The movement speed multiplier.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float MovespeedMultiplier</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_NoClip.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.NoClip%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L113">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_NoClip" data-uid="Vintagestory.API.Common.EntityControls.NoClip">NoClip</h4>
-  <div class="markdown level1 summary"><p>If true, the entity has NoClip active.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool NoClip</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_OnAction.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.OnAction%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L99">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_OnAction" data-uid="Vintagestory.API.Common.EntityControls.OnAction">OnAction</h4>
-  <div class="markdown level1 summary"><p>To execute a call handler registered by the engine. Don&apos;t use this one, use api.Input.InWorldAction instead.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public OnEntityAction OnAction</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.OnEntityAction.html">OnEntityAction</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_UsingBeginMS.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.UsingBeginMS%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L167">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_UsingBeginMS" data-uid="Vintagestory.API.Common.EntityControls.UsingBeginMS">UsingBeginMS</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public long UsingBeginMS</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int64</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_UsingCount.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.UsingCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L166">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_UsingCount" data-uid="Vintagestory.API.Common.EntityControls.UsingCount">UsingCount</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int UsingCount</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_UsingHeldItemTransformAfter.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.UsingHeldItemTransformAfter%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L171">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_UsingHeldItemTransformAfter" data-uid="Vintagestory.API.Common.EntityControls.UsingHeldItemTransformAfter">UsingHeldItemTransformAfter</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ModelTransform UsingHeldItemTransformAfter</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_UsingHeldItemTransformBefore.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.UsingHeldItemTransformBefore%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L170">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_UsingHeldItemTransformBefore" data-uid="Vintagestory.API.Common.EntityControls.UsingHeldItemTransformBefore">UsingHeldItemTransformBefore</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ModelTransform UsingHeldItemTransformBefore</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_WalkVector.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.WalkVector%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L123">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_EntityControls_WalkVector" data-uid="Vintagestory.API.Common.EntityControls.WalkVector">WalkVector</h4>
-  <div class="markdown level1 summary"><p>Current walking direction.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3d WalkVector</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Backward.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Backward%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L201">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_Backward_" data-uid="Vintagestory.API.Common.EntityControls.Backward*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_Backward" data-uid="Vintagestory.API.Common.EntityControls.Backward">Backward</h4>
-  <div class="markdown level1 summary"><p>A check for if the entity is moving the opposite direction it&apos;s facing.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Backward { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_CtrlKey.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.CtrlKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L309">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_CtrlKey_" data-uid="Vintagestory.API.Common.EntityControls.CtrlKey*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_CtrlKey" data-uid="Vintagestory.API.Common.EntityControls.CtrlKey">CtrlKey</h4>
-  <div class="markdown level1 summary"><p>A check to see if the entity is holding down the Ctrl key (which may be the same as the Sprint key or one or other may have been remapped).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool CtrlKey { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Down.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Down%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L282">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_Down_" data-uid="Vintagestory.API.Common.EntityControls.Down*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_Down" data-uid="Vintagestory.API.Common.EntityControls.Down">Down</h4>
-  <div class="markdown level1 summary"><p>A check to see whether the entity is moving down.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Down { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Flags.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Flags%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L103">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_Flags_" data-uid="Vintagestory.API.Common.EntityControls.Flags*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_Flags" data-uid="Vintagestory.API.Common.EntityControls.Flags">Flags</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool[] Flags { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_FloorSitting.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.FloorSitting%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L255">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_FloorSitting_" data-uid="Vintagestory.API.Common.EntityControls.FloorSitting*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_FloorSitting" data-uid="Vintagestory.API.Common.EntityControls.FloorSitting">FloorSitting</h4>
-  <div class="markdown level1 summary"><p>A check to see whether the entity is sitting on the floor.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool FloorSitting { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Forward.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Forward%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L189">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_Forward_" data-uid="Vintagestory.API.Common.EntityControls.Forward*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_Forward" data-uid="Vintagestory.API.Common.EntityControls.Forward">Forward</h4>
-  <div class="markdown level1 summary"><p>A check for if the entity is moving in the direction it&apos;s facing.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Forward { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Gliding.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Gliding%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L246">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_Gliding_" data-uid="Vintagestory.API.Common.EntityControls.Gliding*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_Gliding" data-uid="Vintagestory.API.Common.EntityControls.Gliding">Gliding</h4>
-  <div class="markdown level1 summary"><p>A check to see whether the entity is gliding</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Gliding { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Item_Vintagestory_API_Common_EnumEntityAction_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Item(Vintagestory.API.Common.EnumEntityAction)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L324">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_Item_" data-uid="Vintagestory.API.Common.EntityControls.Item*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_Item_Vintagestory_API_Common_EnumEntityAction_" data-uid="Vintagestory.API.Common.EntityControls.Item(Vintagestory.API.Common.EnumEntityAction)">Item[EnumEntityAction]</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool this[EnumEntityAction action] { get; set; }</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumEntityAction.html">EnumEntityAction</a></td>
-        <td><span class="parametername">action</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Jump.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Jump%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L228">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_Jump_" data-uid="Vintagestory.API.Common.EntityControls.Jump*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_Jump" data-uid="Vintagestory.API.Common.EntityControls.Jump">Jump</h4>
-  <div class="markdown level1 summary"><p>A check whether to see if the entity is jumping.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Jump { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Left.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Left%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L210">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_Left_" data-uid="Vintagestory.API.Common.EntityControls.Left*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_Left" data-uid="Vintagestory.API.Common.EntityControls.Left">Left</h4>
-  <div class="markdown level1 summary"><p>A check to see if the entity is moving left the direction it&apos;s facing.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Left { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_LeftMouseDown.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.LeftMouseDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L291">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_LeftMouseDown_" data-uid="Vintagestory.API.Common.EntityControls.LeftMouseDown*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_LeftMouseDown" data-uid="Vintagestory.API.Common.EntityControls.LeftMouseDown">LeftMouseDown</h4>
-  <div class="markdown level1 summary"><p>A check to see if the entity is holding the in-world rleft mouse button down.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool LeftMouseDown { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Right.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Right%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L219">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_Right_" data-uid="Vintagestory.API.Common.EntityControls.Right*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_Right" data-uid="Vintagestory.API.Common.EntityControls.Right">Right</h4>
-  <div class="markdown level1 summary"><p>A check to see if the entity is moving right the direction it&apos;s facing.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Right { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_RightMouseDown.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.RightMouseDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L300">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_RightMouseDown_" data-uid="Vintagestory.API.Common.EntityControls.RightMouseDown*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_RightMouseDown" data-uid="Vintagestory.API.Common.EntityControls.RightMouseDown">RightMouseDown</h4>
-  <div class="markdown level1 summary"><p>A check to see if the entity is holding the in-world right mouse button down.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool RightMouseDown { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_ShiftKey.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.ShiftKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L318">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_ShiftKey_" data-uid="Vintagestory.API.Common.EntityControls.ShiftKey*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_ShiftKey" data-uid="Vintagestory.API.Common.EntityControls.ShiftKey">ShiftKey</h4>
-  <div class="markdown level1 summary"><p>A check to see if the entity is holding down the Shift key (which may be the same as the Sneak key or one or other may have been remapped).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool ShiftKey { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Sneak.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Sneak%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L237">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_Sneak_" data-uid="Vintagestory.API.Common.EntityControls.Sneak*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_Sneak" data-uid="Vintagestory.API.Common.EntityControls.Sneak">Sneak</h4>
-  <div class="markdown level1 summary"><p>A check whether to see if the entity is sneaking.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Sneak { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Sprint.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Sprint%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L264">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_Sprint_" data-uid="Vintagestory.API.Common.EntityControls.Sprint*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_Sprint" data-uid="Vintagestory.API.Common.EntityControls.Sprint">Sprint</h4>
-  <div class="markdown level1 summary"><p>A check to see whether the entity is sprinting.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Sprint { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_TriesToMove.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.TriesToMove%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L133">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_TriesToMove_" data-uid="Vintagestory.API.Common.EntityControls.TriesToMove*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_TriesToMove" data-uid="Vintagestory.API.Common.EntityControls.TriesToMove">TriesToMove</h4>
-  <div class="markdown level1 summary"><p>Checks to see if the entity is attempting to move in any direction (excluding jumping)</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TriesToMove { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_Up.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.Up%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L273">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_Up_" data-uid="Vintagestory.API.Common.EntityControls.Up*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_Up" data-uid="Vintagestory.API.Common.EntityControls.Up">Up</h4>
-  <div class="markdown level1 summary"><p>A check to see whether the entity is moving up.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool Up { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_AttemptToggleAction_Vintagestory_API_Common_EnumEntityAction_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.AttemptToggleAction(Vintagestory.API.Common.EnumEntityAction%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L338">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_AttemptToggleAction_" data-uid="Vintagestory.API.Common.EntityControls.AttemptToggleAction*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_AttemptToggleAction_Vintagestory_API_Common_EnumEntityAction_System_Boolean_" data-uid="Vintagestory.API.Common.EntityControls.AttemptToggleAction(Vintagestory.API.Common.EnumEntityAction,System.Boolean)">AttemptToggleAction(EnumEntityAction, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void AttemptToggleAction(EnumEntityAction action, bool on)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumEntityAction.html">EnumEntityAction</a></td>
-        <td><span class="parametername">action</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">on</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_CalcMovementVectors_Vintagestory_API_Common_Entities_EntityPos_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.CalcMovementVectors(Vintagestory.API.Common.Entities.EntityPos%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L356">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_CalcMovementVectors_" data-uid="Vintagestory.API.Common.EntityControls.CalcMovementVectors*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_CalcMovementVectors_Vintagestory_API_Common_Entities_EntityPos_System_Single_" data-uid="Vintagestory.API.Common.EntityControls.CalcMovementVectors(Vintagestory.API.Common.Entities.EntityPos,System.Single)">CalcMovementVectors(EntityPos, Single)</h4>
-  <div class="markdown level1 summary"><p>Calculates the movement vectors for the player.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void CalcMovementVectors(EntityPos pos, float dt)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html">EntityPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td><p>The position of the player.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">dt</span></td>
-        <td><p>The change in time.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_FromBytes_BinaryReader_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.FromBytes(BinaryReader%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L490">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_FromBytes_" data-uid="Vintagestory.API.Common.EntityControls.FromBytes*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_FromBytes_BinaryReader_System_Boolean_" data-uid="Vintagestory.API.Common.EntityControls.FromBytes(BinaryReader,System.Boolean)">FromBytes(BinaryReader, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void FromBytes(BinaryReader reader, bool ignoreData)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">BinaryReader</span></td>
-        <td><span class="parametername">reader</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">ignoreData</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_FromInt_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.FromInt(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L461">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_FromInt_" data-uid="Vintagestory.API.Common.EntityControls.FromInt*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_FromInt_System_Int32_" data-uid="Vintagestory.API.Common.EntityControls.FromInt(System.Int32)">FromInt(Int32)</h4>
-  <div class="markdown level1 summary"><p>Converts the int flags to movement controls.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void FromInt(int flagsInt)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">flagsInt</span></td>
-        <td><p>The compressed integer.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_SetFrom_Vintagestory_API_Common_EntityControls_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.SetFrom(Vintagestory.API.Common.EntityControls)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L395">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_SetFrom_" data-uid="Vintagestory.API.Common.EntityControls.SetFrom*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_SetFrom_Vintagestory_API_Common_EntityControls_" data-uid="Vintagestory.API.Common.EntityControls.SetFrom(Vintagestory.API.Common.EntityControls)">SetFrom(EntityControls)</h4>
-  <div class="markdown level1 summary"><p>Copies the controls from the provided controls to this set of controls.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void SetFrom(EntityControls controls)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EntityControls.html">EntityControls</a></td>
-        <td><span class="parametername">controls</span></td>
-        <td><p>The controls to copy over.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_StopAllMovement.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.StopAllMovement%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L426">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_StopAllMovement_" data-uid="Vintagestory.API.Common.EntityControls.StopAllMovement*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_StopAllMovement" data-uid="Vintagestory.API.Common.EntityControls.StopAllMovement">StopAllMovement()</h4>
-  <div class="markdown level1 summary"><p>Forces the entity to stop all movements, resets all flags to false</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void StopAllMovement()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_ToBytes_BinaryWriter_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.ToBytes(BinaryWriter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L485">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_ToBytes_" data-uid="Vintagestory.API.Common.EntityControls.ToBytes*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_ToBytes_BinaryWriter_" data-uid="Vintagestory.API.Common.EntityControls.ToBytes(BinaryWriter)">ToBytes(BinaryWriter)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void ToBytes(BinaryWriter writer)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">BinaryWriter</span></td>
-        <td><span class="parametername">writer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_ToInt.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.ToInt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L435">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_ToInt_" data-uid="Vintagestory.API.Common.EntityControls.ToInt*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_ToInt" data-uid="Vintagestory.API.Common.EntityControls.ToInt">ToInt()</h4>
-  <div class="markdown level1 summary"><p>Converts the values to a single int flag.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual int ToInt()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><p>the compressed integer.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls_UpdateFromPacket_System_Boolean_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls.UpdateFromPacket(System.Boolean%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L414">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_EntityControls_UpdateFromPacket_" data-uid="Vintagestory.API.Common.EntityControls.UpdateFromPacket*"></a>
-  <h4 id="Vintagestory_API_Common_EntityControls_UpdateFromPacket_System_Boolean_System_Int32_" data-uid="Vintagestory.API.Common.EntityControls.UpdateFromPacket(System.Boolean,System.Int32)">UpdateFromPacket(Boolean, Int32)</h4>
-  <div class="markdown level1 summary"><p>Updates the data from the packet.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void UpdateFromPacket(bool pressed, int action)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">pressed</span></td>
-        <td><p>Whether or not the key was pressed.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">action</span></td>
-        <td><p>the id of the key that was pressed.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_EntityControls.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.EntityControls%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/EntityControls.cs/#L94" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="Vintagestory.API.Common.EntityControls">
+
+
+
+  <h1 id="Vintagestory_API_Common_EntityControls" data-uid="Vintagestory.API.Common.EntityControls" class="text-break">
+Class EntityControls  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The available controls to move around a character in a game world</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class EntityControls</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">EntityControls</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_DetachedMode" data-uid="Vintagestory.API.Common.EntityControls.DetachedMode">
+  DetachedMode
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, the entity is either flying, gliding or swimming.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DetachedMode</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Dirty" data-uid="Vintagestory.API.Common.EntityControls.Dirty">
+  Dirty
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not this entity is dirty.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Dirty</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_FlyPlaneLock" data-uid="Vintagestory.API.Common.EntityControls.FlyPlaneLock">
+  FlyPlaneLock
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>the axis lock for the fly plane.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumFreeMovAxisLock FlyPlaneLock</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumFreeMovAxisLock.html">EnumFreeMovAxisLock</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_FlyVector" data-uid="Vintagestory.API.Common.EntityControls.FlyVector">
+  FlyVector
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current flying direction</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d FlyVector</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_GlideSpeed" data-uid="Vintagestory.API.Common.EntityControls.GlideSpeed">
+  GlideSpeed
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GlideSpeed</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_HandUse" data-uid="Vintagestory.API.Common.EntityControls.HandUse">
+  HandUse
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If the player is currently using the currently held item in a special way (e.g. attacking with smithing hammer or eating an edible item)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumHandInteract HandUse</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumHandInteract.html">EnumHandInteract</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_HandUsingBlockSel" data-uid="Vintagestory.API.Common.EntityControls.HandUsingBlockSel">
+  HandUsingBlockSel
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The block pos the player started using</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockSelection HandUsingBlockSel</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_IsAiming" data-uid="Vintagestory.API.Common.EntityControls.IsAiming">
+  IsAiming
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the entity is aiming</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsAiming</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_IsClimbing" data-uid="Vintagestory.API.Common.EntityControls.IsClimbing">
+  IsClimbing
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the entity is climbing</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsClimbing</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_IsFlying" data-uid="Vintagestory.API.Common.EntityControls.IsFlying">
+  IsFlying
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the entity is flying.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFlying</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_IsStepping" data-uid="Vintagestory.API.Common.EntityControls.IsStepping">
+  IsStepping
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the entity is currently stepping up a block</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsStepping</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_LeftUsingHeldItemTransformBefore" data-uid="Vintagestory.API.Common.EntityControls.LeftUsingHeldItemTransformBefore">
+  LeftUsingHeldItemTransformBefore
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ModelTransform LeftUsingHeldItemTransformBefore</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_MovespeedMultiplier" data-uid="Vintagestory.API.Common.EntityControls.MovespeedMultiplier">
+  MovespeedMultiplier
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The movement speed multiplier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float MovespeedMultiplier</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_NoClip" data-uid="Vintagestory.API.Common.EntityControls.NoClip">
+  NoClip
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, the entity has NoClip active.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool NoClip</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_OnAction" data-uid="Vintagestory.API.Common.EntityControls.OnAction">
+  OnAction
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>To execute a call handler registered by the engine. Don't use this one, use api.Input.InWorldAction instead.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OnEntityAction OnAction</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.OnEntityAction.html">OnEntityAction</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_UsingBeginMS" data-uid="Vintagestory.API.Common.EntityControls.UsingBeginMS">
+  UsingBeginMS
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long UsingBeginMS</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_UsingCount" data-uid="Vintagestory.API.Common.EntityControls.UsingCount">
+  UsingCount
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int UsingCount</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_UsingHeldItemTransformAfter" data-uid="Vintagestory.API.Common.EntityControls.UsingHeldItemTransformAfter">
+  UsingHeldItemTransformAfter
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ModelTransform UsingHeldItemTransformAfter</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_UsingHeldItemTransformBefore" data-uid="Vintagestory.API.Common.EntityControls.UsingHeldItemTransformBefore">
+  UsingHeldItemTransformBefore
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ModelTransform UsingHeldItemTransformBefore</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityControls_WalkVector" data-uid="Vintagestory.API.Common.EntityControls.WalkVector">
+  WalkVector
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Current walking direction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d WalkVector</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_EntityControls_Backward_" data-uid="Vintagestory.API.Common.EntityControls.Backward*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Backward" data-uid="Vintagestory.API.Common.EntityControls.Backward">
+  Backward
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check for if the entity is moving the opposite direction it's facing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Backward { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_CtrlKey_" data-uid="Vintagestory.API.Common.EntityControls.CtrlKey*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_CtrlKey" data-uid="Vintagestory.API.Common.EntityControls.CtrlKey">
+  CtrlKey
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check to see if the entity is holding down the Ctrl key (which may be the same as the Sprint key or one or other may have been remapped).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool CtrlKey { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_Down_" data-uid="Vintagestory.API.Common.EntityControls.Down*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Down" data-uid="Vintagestory.API.Common.EntityControls.Down">
+  Down
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check to see whether the entity is moving down.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Down { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_Flags_" data-uid="Vintagestory.API.Common.EntityControls.Flags*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Flags" data-uid="Vintagestory.API.Common.EntityControls.Flags">
+  Flags
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool[] Flags { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_FloorSitting_" data-uid="Vintagestory.API.Common.EntityControls.FloorSitting*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_FloorSitting" data-uid="Vintagestory.API.Common.EntityControls.FloorSitting">
+  FloorSitting
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check to see whether the entity is sitting on the floor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool FloorSitting { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_Forward_" data-uid="Vintagestory.API.Common.EntityControls.Forward*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Forward" data-uid="Vintagestory.API.Common.EntityControls.Forward">
+  Forward
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check for if the entity is moving in the direction it's facing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Forward { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_Gliding_" data-uid="Vintagestory.API.Common.EntityControls.Gliding*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Gliding" data-uid="Vintagestory.API.Common.EntityControls.Gliding">
+  Gliding
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check to see whether the entity is gliding</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Gliding { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_Item_" data-uid="Vintagestory.API.Common.EntityControls.Item*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Item_Vintagestory_API_Common_EnumEntityAction_" data-uid="Vintagestory.API.Common.EntityControls.Item(Vintagestory.API.Common.EnumEntityAction)">
+  this[EnumEntityAction]
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool this[EnumEntityAction action] { get; set; }</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>action</code> <a class="xref" href="Vintagestory.API.Common.EnumEntityAction.html">EnumEntityAction</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_Jump_" data-uid="Vintagestory.API.Common.EntityControls.Jump*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Jump" data-uid="Vintagestory.API.Common.EntityControls.Jump">
+  Jump
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check whether to see if the entity is jumping.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Jump { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_Left_" data-uid="Vintagestory.API.Common.EntityControls.Left*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Left" data-uid="Vintagestory.API.Common.EntityControls.Left">
+  Left
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check to see if the entity is moving left the direction it's facing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Left { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_LeftMouseDown_" data-uid="Vintagestory.API.Common.EntityControls.LeftMouseDown*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_LeftMouseDown" data-uid="Vintagestory.API.Common.EntityControls.LeftMouseDown">
+  LeftMouseDown
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check to see if the entity is holding the in-world rleft mouse button down.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool LeftMouseDown { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_Right_" data-uid="Vintagestory.API.Common.EntityControls.Right*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Right" data-uid="Vintagestory.API.Common.EntityControls.Right">
+  Right
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check to see if the entity is moving right the direction it's facing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Right { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_RightMouseDown_" data-uid="Vintagestory.API.Common.EntityControls.RightMouseDown*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_RightMouseDown" data-uid="Vintagestory.API.Common.EntityControls.RightMouseDown">
+  RightMouseDown
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check to see if the entity is holding the in-world right mouse button down.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool RightMouseDown { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_ShiftKey_" data-uid="Vintagestory.API.Common.EntityControls.ShiftKey*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_ShiftKey" data-uid="Vintagestory.API.Common.EntityControls.ShiftKey">
+  ShiftKey
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check to see if the entity is holding down the Shift key (which may be the same as the Sneak key or one or other may have been remapped).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool ShiftKey { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_Sneak_" data-uid="Vintagestory.API.Common.EntityControls.Sneak*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Sneak" data-uid="Vintagestory.API.Common.EntityControls.Sneak">
+  Sneak
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check whether to see if the entity is sneaking.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Sneak { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_Sprint_" data-uid="Vintagestory.API.Common.EntityControls.Sprint*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Sprint" data-uid="Vintagestory.API.Common.EntityControls.Sprint">
+  Sprint
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check to see whether the entity is sprinting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Sprint { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_TriesToMove_" data-uid="Vintagestory.API.Common.EntityControls.TriesToMove*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_TriesToMove" data-uid="Vintagestory.API.Common.EntityControls.TriesToMove">
+  TriesToMove
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Checks to see if the entity is attempting to move in any direction (excluding jumping)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TriesToMove { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_Up_" data-uid="Vintagestory.API.Common.EntityControls.Up*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_Up" data-uid="Vintagestory.API.Common.EntityControls.Up">
+  Up
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A check to see whether the entity is moving up.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Up { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Common_EntityControls_AttemptToggleAction_" data-uid="Vintagestory.API.Common.EntityControls.AttemptToggleAction*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_AttemptToggleAction_Vintagestory_API_Common_EnumEntityAction_System_Boolean_" data-uid="Vintagestory.API.Common.EntityControls.AttemptToggleAction(Vintagestory.API.Common.EnumEntityAction,System.Boolean)">
+  AttemptToggleAction(EnumEntityAction, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void AttemptToggleAction(EnumEntityAction action, bool on)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>action</code> <a class="xref" href="Vintagestory.API.Common.EnumEntityAction.html">EnumEntityAction</a></dt>
+    <dd></dd>
+    <dt><code>on</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_CalcMovementVectors_" data-uid="Vintagestory.API.Common.EntityControls.CalcMovementVectors*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_CalcMovementVectors_Vintagestory_API_Common_Entities_EntityPos_System_Single_" data-uid="Vintagestory.API.Common.EntityControls.CalcMovementVectors(Vintagestory.API.Common.Entities.EntityPos,System.Single)">
+  CalcMovementVectors(EntityPos, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calculates the movement vectors for the player.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void CalcMovementVectors(EntityPos pos, float dt)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html">EntityPos</a></dt>
+    <dd><p>The position of the player.</p>
+</dd>
+    <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The change in time.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_FromBytes_" data-uid="Vintagestory.API.Common.EntityControls.FromBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_FromBytes_System_IO_BinaryReader_System_Boolean_" data-uid="Vintagestory.API.Common.EntityControls.FromBytes(System.IO.BinaryReader,System.Boolean)">
+  FromBytes(BinaryReader, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void FromBytes(BinaryReader reader, bool ignoreData)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+    <dt><code>ignoreData</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_FromInt_" data-uid="Vintagestory.API.Common.EntityControls.FromInt*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_FromInt_System_Int32_" data-uid="Vintagestory.API.Common.EntityControls.FromInt(System.Int32)">
+  FromInt(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Converts the int flags to movement controls.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void FromInt(int flagsInt)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>flagsInt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The compressed integer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_SetFrom_" data-uid="Vintagestory.API.Common.EntityControls.SetFrom*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_SetFrom_Vintagestory_API_Common_EntityControls_" data-uid="Vintagestory.API.Common.EntityControls.SetFrom(Vintagestory.API.Common.EntityControls)">
+  SetFrom(EntityControls)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Copies the controls from the provided controls to this set of controls.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void SetFrom(EntityControls controls)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>controls</code> <a class="xref" href="Vintagestory.API.Common.EntityControls.html">EntityControls</a></dt>
+    <dd><p>The controls to copy over.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_StopAllMovement_" data-uid="Vintagestory.API.Common.EntityControls.StopAllMovement*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_StopAllMovement" data-uid="Vintagestory.API.Common.EntityControls.StopAllMovement">
+  StopAllMovement()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Forces the entity to stop all movements, resets all flags to false</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void StopAllMovement()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_ToBytes_" data-uid="Vintagestory.API.Common.EntityControls.ToBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_ToBytes_System_IO_BinaryWriter_" data-uid="Vintagestory.API.Common.EntityControls.ToBytes(System.IO.BinaryWriter)">
+  ToBytes(BinaryWriter)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ToBytes(BinaryWriter writer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_ToInt_" data-uid="Vintagestory.API.Common.EntityControls.ToInt*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_ToInt" data-uid="Vintagestory.API.Common.EntityControls.ToInt">
+  ToInt()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Converts the values to a single int flag.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual int ToInt()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>the compressed integer.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityControls_UpdateFromPacket_" data-uid="Vintagestory.API.Common.EntityControls.UpdateFromPacket*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityControls_UpdateFromPacket_System_Boolean_System_Int32_" data-uid="Vintagestory.API.Common.EntityControls.UpdateFromPacket(System.Boolean,System.Int32)">
+  UpdateFromPacket(bool, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates the data from the packet.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void UpdateFromPacket(bool pressed, int action)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pressed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether or not the key was pressed.</p>
+</dd>
+    <dt><code>action</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>the id of the key that was pressed.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

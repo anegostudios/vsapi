@@ -1,0 +1,113 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.SolarSphericalCoordsDelegate
+  commentId: T:Vintagestory.API.Common.SolarSphericalCoordsDelegate
+  id: SolarSphericalCoordsDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: SolarSphericalCoordsDelegate
+  nameWithType: SolarSphericalCoordsDelegate
+  fullName: Vintagestory.API.Common.SolarSphericalCoordsDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SolarSphericalCoordsDelegate
+    path: Common/API/IGameCalendar.cs
+    startLine: 117
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Should return sin(solar altitude angle). i.e. -1 for 90 degrees far below horizon, 0 for horizon and 1 for vertical
+  example: []
+  syntax:
+    content: public delegate SolarSphericalCoords SolarSphericalCoordsDelegate(double posX, double posZ, float yearRel, float dayRel)
+    parameters:
+    - id: posX
+      type: System.Double
+      description: World x coordinate
+    - id: posZ
+      type: System.Double
+      description: World z coordinate
+    - id: yearRel
+      type: System.Single
+      description: Current year progress, from 0..1
+    - id: dayRel
+      type: System.Single
+      description: Current day progress, from 0..1
+    return:
+      type: Vintagestory.API.Common.SolarSphericalCoords
+      description: ''
+    content.vb: Public Delegate Function SolarSphericalCoordsDelegate(posX As Double, posZ As Double, yearRel As Single, dayRel As Single) As SolarSphericalCoords
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.SolarSphericalCoords
+  commentId: T:Vintagestory.API.Common.SolarSphericalCoords
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.SolarSphericalCoords.html
+  name: SolarSphericalCoords
+  nameWithType: SolarSphericalCoords
+  fullName: Vintagestory.API.Common.SolarSphericalCoords
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

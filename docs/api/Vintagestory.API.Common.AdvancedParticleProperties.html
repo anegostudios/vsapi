@@ -1,2002 +1,1695 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AdvancedParticleProperties
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AdvancedParticleProperties
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class AdvancedParticleProperties | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AdvancedParticleProperties | VintageStory API ">
+      
+      
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.AdvancedParticleProperties">
-  
-  
-  <h1 id="Vintagestory_API_Common_AdvancedParticleProperties" data-uid="Vintagestory.API.Common.AdvancedParticleProperties" class="text-break">Class AdvancedParticleProperties
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">AdvancedParticleProperties</span></div>
-  </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_AdvancedParticleProperties_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AdvancedParticleProperties : object, IParticlePropertiesProvider</code></pre>
-  </div>
-  <h3 id="fields">Fields
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_basePos.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.basePos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L183">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_basePos" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.basePos">basePos</h4>
-  <div class="markdown level1 summary"><p>The base position for the particles.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3d basePos</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_baseVelocity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.baseVelocity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L186">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_baseVelocity" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.baseVelocity">baseVelocity</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3f baseVelocity</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_block.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.block%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L191">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_block" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.block">block</h4>
-  <div class="markdown level1 summary"><p>The base block for the particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Block block</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Color.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Color%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L202">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Color" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Color">Color</h4>
-  <div class="markdown level1 summary"><p>When HsvaColor is null, this is used</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Color</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_HsvaColor.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.HsvaColor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L60">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_HsvaColor" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.HsvaColor">HsvaColor</h4>
-  <div class="markdown level1 summary"><p>The Hue/Saturation/Value/Alpha for the color of the particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NatFloat[] HsvaColor</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_PosOffset.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.PosOffset%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L113">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_PosOffset" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.PosOffset">PosOffset</h4>
-  <div class="markdown level1 summary"><p>Offset from the blocks hitboxes top middle position</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NatFloat[] PosOffset</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Async.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Async%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L12">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Async_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Async*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Async" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Async">Async</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Async { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_BlueEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L94">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_BlueEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_BlueEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve">BlueEvolve</h4>
-  <div class="markdown level1 summary"><p>A transforming Blue value.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvolvingNatFloat BlueEvolve { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Bounciness.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Bounciness%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L38">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Bounciness_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Bounciness*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Bounciness" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Bounciness">Bounciness</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Bounciness { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_ColorByBlock.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L70">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_ColorByBlock_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_ColorByBlock" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock">ColorByBlock</h4>
-  <div class="markdown level1 summary"><p>Whether or not to color the particle by the block it&apos;s on.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ColorByBlock { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_DeathParticles.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L29">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_DeathParticles_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_DeathParticles" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles">DeathParticles</h4>
-  <div class="markdown level1 summary"><p>The death particles for the JsonObject.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AdvancedParticleProperties[] DeathParticles { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_DieInAir.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.DieInAir%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L44">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_DieInAir_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInAir*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_DieInAir" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInAir">DieInAir</h4>
-  <div class="markdown level1 summary"><p>Whether or not the entity dies in air.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool DieInAir { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_DieInLiquid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L50">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_DieInLiquid_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_DieInLiquid" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid">DieInLiquid</h4>
-  <div class="markdown level1 summary"><p>Whether or not the entity dies in water.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool DieInLiquid { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_DieOnRainHeightmap.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L17">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_DieOnRainHeightmap_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_DieOnRainHeightmap" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap">DieOnRainHeightmap</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool DieOnRainHeightmap { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_GravityEffect.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L100">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_GravityEffect_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_GravityEffect" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect">GravityEffect</h4>
-  <div class="markdown level1 summary"><p>The gravity effect on the particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NatFloat GravityEffect { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_GreenEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L88">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_GreenEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_GreenEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve">GreenEvolve</h4>
-  <div class="markdown level1 summary"><p>A transforming Green value.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvolvingNatFloat GreenEvolve { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_LifeLength.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.LifeLength%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L106">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_LifeLength_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.LifeLength*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_LifeLength" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.LifeLength">LifeLength</h4>
-  <div class="markdown level1 summary"><p>The life length of the particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NatFloat LifeLength { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_OpacityEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L76">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_OpacityEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_OpacityEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve">OpacityEvolve</h4>
-  <div class="markdown level1 summary"><p>a transforming opacity value.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvolvingNatFloat OpacityEvolve { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_ParentVelocity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L275">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_ParentVelocity_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_ParentVelocity" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity">ParentVelocity</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3f ParentVelocity { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_ParentVelocityWeight.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L280">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_ParentVelocityWeight_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_ParentVelocityWeight" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight">ParentVelocityWeight</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float ParentVelocityWeight { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_ParticleModel.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L154">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_ParticleModel_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_ParticleModel" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel">ParticleModel</h4>
-  <div class="markdown level1 summary"><p>Sets the base model for the particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumParticleModel ParticleModel { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumParticleModel.html">EnumParticleModel</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Pos.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Pos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L240">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Pos_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Pos*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Pos" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Pos">Pos</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3d Pos { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Quantity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Quantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L121">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Quantity_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Quantity*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Quantity" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Quantity">Quantity</h4>
-  <div class="markdown level1 summary"><p>The quantity of the particles given.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NatFloat Quantity { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_RandomVelocityChange.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L14">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_RandomVelocityChange_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_RandomVelocityChange" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange">RandomVelocityChange</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool RandomVelocityChange { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_RedEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L82">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_RedEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_RedEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve">RedEvolve</h4>
-  <div class="markdown level1 summary"><p>A transforming Red value.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvolvingNatFloat RedEvolve { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L23">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles">SecondaryParticles</h4>
-  <div class="markdown level1 summary"><p>The Secondary particles for the JsonObject.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AdvancedParticleProperties[] SecondaryParticles { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L35">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval">SecondarySpawnInterval</h4>
-  <div class="markdown level1 summary"><p>The inverval that the secondary particles spawn.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NatFloat SecondarySpawnInterval { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_SelfPropelled.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L166">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SelfPropelled_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_SelfPropelled" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled">SelfPropelled</h4>
-  <div class="markdown level1 summary"><p>Whether or not the particle is self propelled.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool SelfPropelled { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Size.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L127">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Size_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Size*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Size" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Size">Size</h4>
-  <div class="markdown level1 summary"><p>The size of the particles given.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NatFloat Size { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_SizeEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L133">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SizeEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_SizeEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve">SizeEvolve</h4>
-  <div class="markdown level1 summary"><p>a transforming Size value.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvolvingNatFloat SizeEvolve { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_SwimOnLiquid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L53">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SwimOnLiquid_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_SwimOnLiquid" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid">SwimOnLiquid</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool SwimOnLiquid { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_TerrainCollision.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L172">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_TerrainCollision_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_TerrainCollision" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision">TerrainCollision</h4>
-  <div class="markdown level1 summary"><p>Whether or not the particle collides with the terrain.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TerrainCollision { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Velocity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Velocity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L139">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Velocity_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Velocity*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Velocity" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Velocity">Velocity</h4>
-  <div class="markdown level1 summary"><p>The velocity of the particles.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NatFloat[] Velocity { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_VelocityEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L148">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_VelocityEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_VelocityEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve">VelocityEvolve</h4>
-  <div class="markdown level1 summary"><p>A dynamic velocity value.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvolvingNatFloat[] VelocityEvolve { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_VertexFlags.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L160">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_VertexFlags_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_VertexFlags" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags">VertexFlags</h4>
-  <div class="markdown level1 summary"><p>The level of glow in the particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int VertexFlags { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednes.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L176">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednes_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednes" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes">WindAffectednes</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float WindAffectednes { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednesAtPos.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L278">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednesAtPos_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednesAtPos" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos">WindAffectednesAtPos</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float WindAffectednesAtPos { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_BeginParticle.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L478">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_BeginParticle_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_BeginParticle" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle">BeginParticle()</h4>
-  <div class="markdown level1 summary"><p>Begins the advanced particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void BeginParticle()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Clone.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L456">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Clone_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Clone*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Clone" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Clone">Clone()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AdvancedParticleProperties Clone()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_createFromBytes_BinaryReader_Vintagestory_API_Common_IWorldAccessor_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes(BinaryReader%2CVintagestory.API.Common.IWorldAccessor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L449">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_createFromBytes_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_createFromBytes_BinaryReader_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes(BinaryReader,Vintagestory.API.Common.IWorldAccessor)">createFromBytes(BinaryReader, IWorldAccessor)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AdvancedParticleProperties createFromBytes(BinaryReader reader, IWorldAccessor resolver)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">BinaryReader</span></td>
-        <td><span class="parametername">reader</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">resolver</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_FromBytes_BinaryReader_Vintagestory_API_Common_IWorldAccessor_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.FromBytes(BinaryReader%2CVintagestory.API.Common.IWorldAccessor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L369">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_FromBytes_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.FromBytes*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_FromBytes_BinaryReader_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.FromBytes(BinaryReader,Vintagestory.API.Common.IWorldAccessor)">FromBytes(BinaryReader, IWorldAccessor)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void FromBytes(BinaryReader reader, IWorldAccessor resolver)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">BinaryReader</span></td>
-        <td><span class="parametername">reader</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">resolver</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L215">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_GetRgbaColor_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)">GetRgbaColor(ICoreClientAPI)</h4>
-  <div class="markdown level1 summary"><p>Converts the color to RGBA.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int GetRgbaColor(ICoreClientAPI capi)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
-        <td><span class="parametername">capi</span></td>
-        <td><p>The Core Client API.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><p>The set RGBA color.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_GetVelocity_Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity(Vintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L269">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_GetVelocity_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_GetVelocity_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity(Vintagestory.API.MathTools.Vec3d)">GetVelocity(Vec3d)</h4>
-  <div class="markdown level1 summary"><p>Gets the velocity of the particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3f GetVelocity(Vec3d pos)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Init_Vintagestory_API_Common_ICoreAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Init(Vintagestory.API.Common.ICoreAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L197">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Init_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Init*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Init_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Init(Vintagestory.API.Common.ICoreAPI)">Init(ICoreAPI)</h4>
-  <div class="markdown level1 summary"><p>Initializes the particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Init(ICoreAPI api)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td><p>The core API.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L501">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_PrepareForSecondarySpawn_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)">PrepareForSecondarySpawn(ParticleBase)</h4>
-  <div class="markdown level1 summary"><p>prepares the particle for secondary spawning.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void PrepareForSecondarySpawn(ParticleBase particleInstance)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ParticleBase.html">ParticleBase</a></td>
-        <td><span class="parametername">particleInstance</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_ToBytes_BinaryWriter_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.ToBytes(BinaryWriter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L284">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_ToBytes_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ToBytes*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_ToBytes_BinaryWriter_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ToBytes(BinaryWriter)">ToBytes(BinaryWriter)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ToBytes(BinaryWriter writer)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">BinaryWriter</span></td>
-        <td><span class="parametername">writer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="eii">Explicit Interface Implementations
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_DeathParticles.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23DeathParticles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L518">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_DeathParticles_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#DeathParticles*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_DeathParticles" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#DeathParticles">IParticlePropertiesProvider.DeathParticles</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IParticlePropertiesProvider[] IParticlePropertiesProvider.DeathParticles { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_DieInAir.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23DieInAir%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L204">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_DieInAir_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#DieInAir*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_DieInAir" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#DieInAir">IParticlePropertiesProvider.DieInAir</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IParticlePropertiesProvider.DieInAir { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_DieInLiquid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23DieInLiquid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L206">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_DieInLiquid_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#DieInLiquid*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_DieInLiquid" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#DieInLiquid">IParticlePropertiesProvider.DieInLiquid</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IParticlePropertiesProvider.DieInLiquid { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_GravityEffect.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23GravityEffect%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L512">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_GravityEffect_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#GravityEffect*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_GravityEffect" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#GravityEffect">IParticlePropertiesProvider.GravityEffect</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">float IParticlePropertiesProvider.GravityEffect { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_LifeLength.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23LifeLength%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L514">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_LifeLength_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#LifeLength*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_LifeLength" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#LifeLength">IParticlePropertiesProvider.LifeLength</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">float IParticlePropertiesProvider.LifeLength { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_ParticleModel.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23ParticleModel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L282">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_ParticleModel_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#ParticleModel*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_ParticleModel" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#ParticleModel">IParticlePropertiesProvider.ParticleModel</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">EnumParticleModel IParticlePropertiesProvider.ParticleModel { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumParticleModel.html">EnumParticleModel</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_Quantity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23Quantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L258">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_Quantity_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#Quantity*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_Quantity" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#Quantity">IParticlePropertiesProvider.Quantity</h4>
-  <div class="markdown level1 summary"><p>gets the quantity released.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">float IParticlePropertiesProvider.Quantity { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_SecondaryParticles.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23SecondaryParticles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L516">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_SecondaryParticles_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#SecondaryParticles*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_SecondaryParticles" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#SecondaryParticles">IParticlePropertiesProvider.SecondaryParticles</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IParticlePropertiesProvider[] IParticlePropertiesProvider.SecondaryParticles { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_SecondarySpawnInterval.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23SecondarySpawnInterval%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L495">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_SecondarySpawnInterval_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#SecondarySpawnInterval*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_SecondarySpawnInterval" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#SecondarySpawnInterval">IParticlePropertiesProvider.SecondarySpawnInterval</h4>
-  <div class="markdown level1 summary"><p>Gets the secondary spawn interval.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">float IParticlePropertiesProvider.SecondarySpawnInterval { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_SelfPropelled.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23SelfPropelled%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L473">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_SelfPropelled_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#SelfPropelled*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_SelfPropelled" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#SelfPropelled">IParticlePropertiesProvider.SelfPropelled</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IParticlePropertiesProvider.SelfPropelled { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_Size.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L263">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_Size_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#Size*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_Size" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#Size">IParticlePropertiesProvider.Size</h4>
-  <div class="markdown level1 summary"><p>Gets the dynamic size of the particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">float IParticlePropertiesProvider.Size { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_SwimOnLiquid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23SwimOnLiquid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L208">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_SwimOnLiquid_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#SwimOnLiquid*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_SwimOnLiquid" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#SwimOnLiquid">IParticlePropertiesProvider.SwimOnLiquid</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IParticlePropertiesProvider.SwimOnLiquid { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_TerrainCollision.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23TerrainCollision%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L509">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_TerrainCollision_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#TerrainCollision*"></a>
-  <h4 id="Vintagestory_API_Common_AdvancedParticleProperties_Vintagestory_API_Common_IParticlePropertiesProvider_TerrainCollision" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Vintagestory#API#Common#IParticlePropertiesProvider#TerrainCollision">IParticlePropertiesProvider.TerrainCollision</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool IParticlePropertiesProvider.TerrainCollision { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a>
-  </div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AdvancedParticleProperties.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AdvancedParticleProperties%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AdvancedParticleProperties.cs/#L9" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="Vintagestory.API.Common.AdvancedParticleProperties">
+
+
+
+  <h1 id="Vintagestory_API_Common_AdvancedParticleProperties" data-uid="Vintagestory.API.Common.AdvancedParticleProperties" class="text-break">
+Class AdvancedParticleProperties  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+public class AdvancedParticleProperties : IParticlePropertiesProvider</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AdvancedParticleProperties</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Color" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Color">
+  Color
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>When HsvaColor is null, this is used</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Color</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_HsvaColor" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.HsvaColor">
+  HsvaColor
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The Hue/Saturation/Value/Alpha for the color of the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat[] HsvaColor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_PosOffset" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.PosOffset">
+  PosOffset
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Offset from the blocks hitboxes top middle position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat[] PosOffset</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_basePos" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.basePos">
+  basePos
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The base position for the particles.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d basePos</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_baseVelocity" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.baseVelocity">
+  baseVelocity
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3f baseVelocity</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_block" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.block">
+  block
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The base block for the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Block block</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Async_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Async*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Async" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Async">
+  Async
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, will be be spawned in the async particle system, which does not affect main game performance, recommended for large quantities of particles, slightly less optimal for particles that spawn very often</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Async { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_BlueEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_BlueEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve">
+  BlueEvolve
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A transforming Blue value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EvolvingNatFloat BlueEvolve { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Bounciness_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Bounciness*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Bounciness" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Bounciness">
+  Bounciness
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float Bounciness { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_ColorByBlock_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_ColorByBlock" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock">
+  ColorByBlock
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not to color the particle by the block it's on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool ColorByBlock { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_DeathParticles_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_DeathParticles" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles">
+  DeathParticles
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The death particles for the JsonObject.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public AdvancedParticleProperties[] DeathParticles { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_DieInAir_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInAir*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_DieInAir" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInAir">
+  DieInAir
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the entity dies in air.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool DieInAir { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_DieInLiquid_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_DieInLiquid" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid">
+  DieInLiquid
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the entity dies in water.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool DieInLiquid { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_DieOnRainHeightmap_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_DieOnRainHeightmap" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap">
+  DieOnRainHeightmap
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, particle dies if it falls below the rain height at its given location</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool DieOnRainHeightmap { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_GravityEffect_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_GravityEffect" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect">
+  GravityEffect
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The gravity effect on the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat GravityEffect { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_GreenEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_GreenEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve">
+  GreenEvolve
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A transforming Green value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EvolvingNatFloat GreenEvolve { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_LifeLength_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.LifeLength*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_LifeLength" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.LifeLength">
+  LifeLength
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The life length of the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat LifeLength { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_OpacityEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_OpacityEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve">
+  OpacityEvolve
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>a transforming opacity value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EvolvingNatFloat OpacityEvolve { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_ParentVelocity_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_ParentVelocity" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity">
+  ParentVelocity
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3f ParentVelocity { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_ParentVelocityWeight_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_ParentVelocityWeight" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight">
+  ParentVelocityWeight
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float ParentVelocityWeight { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_ParticleModel_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_ParticleModel" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel">
+  ParticleModel
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the base model for the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EnumParticleModel ParticleModel { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumParticleModel.html">EnumParticleModel</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Pos_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Pos*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Pos" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Pos">
+  Pos
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Position in the world where the particle should spawn</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d Pos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Quantity_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Quantity*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Quantity" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Quantity">
+  Quantity
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The quantity of the particles given.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat Quantity { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_RandomVelocityChange_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_RandomVelocityChange" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange">
+  RandomVelocityChange
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool RandomVelocityChange { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_RedEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_RedEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve">
+  RedEvolve
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A transforming Red value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EvolvingNatFloat RedEvolve { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles">
+  SecondaryParticles
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The Secondary particles for the JsonObject.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public AdvancedParticleProperties[] SecondaryParticles { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval">
+  SecondarySpawnInterval
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The inverval that the secondary particles spawn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat SecondarySpawnInterval { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SelfPropelled_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_SelfPropelled" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled">
+  SelfPropelled
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the particle is self propelled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool SelfPropelled { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Size_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Size*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Size" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Size">
+  Size
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The size of the particles given.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat Size { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SizeEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_SizeEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve">
+  SizeEvolve
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>a transforming Size value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EvolvingNatFloat SizeEvolve { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SwimOnLiquid_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_SwimOnLiquid" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid">
+  SwimOnLiquid
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool SwimOnLiquid { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_TerrainCollision_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_TerrainCollision" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision">
+  TerrainCollision
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the particle collides with the terrain.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool TerrainCollision { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Velocity_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Velocity*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Velocity" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Velocity">
+  Velocity
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The velocity of the particles.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat[] Velocity { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_VelocityEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_VelocityEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve">
+  VelocityEvolve
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A dynamic velocity value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EvolvingNatFloat[] VelocityEvolve { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_VertexFlags_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_VertexFlags" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags">
+  VertexFlags
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The level of glow in the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public int VertexFlags { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednes_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednes" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes">
+  WindAffectednes
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float WindAffectednes { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednesAtPos_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednesAtPos" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednesAtPos">
+  WindAffectednesAtPos
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float WindAffectednesAtPos { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_BeginParticle_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_BeginParticle" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.BeginParticle">
+  BeginParticle()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Begins the advanced particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BeginParticle()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Clone_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Clone*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Clone" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Clone">
+  Clone()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AdvancedParticleProperties Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_FromBytes_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.FromBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)">
+  FromBytes(BinaryReader, IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>For reading from the network</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void FromBytes(BinaryReader reader, IWorldAccessor resolver)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+    <dt><code>resolver</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_GetRgbaColor_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)">
+  GetRgbaColor(ICoreClientAPI)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Converts the color to RGBA.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetRgbaColor(ICoreClientAPI capi)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>capi</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd><p>The Core Client API.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The set RGBA color.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_GetVelocity_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_GetVelocity_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GetVelocity(Vintagestory.API.MathTools.Vec3d)">
+  GetVelocity(Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the velocity of the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3f GetVelocity(Vec3d pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Init_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Init*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Init_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Init(Vintagestory.API.Common.ICoreAPI)">
+  Init(ICoreAPI)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Init(ICoreAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd><p>The core API.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_PrepareForSecondarySpawn_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)">
+  PrepareForSecondarySpawn(ParticleBase)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>prepares the particle for secondary spawning.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PrepareForSecondarySpawn(ParticleBase particleInstance)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>particleInstance</code> <a class="xref" href="Vintagestory.API.Common.ParticleBase.html">ParticleBase</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_ToBytes_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ToBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_ToBytes_System_IO_BinaryWriter_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ToBytes(System.IO.BinaryWriter)">
+  ToBytes(BinaryWriter)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>For sending over the network</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ToBytes(BinaryWriter writer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_createFromBytes_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_createFromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.createFromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)">
+  createFromBytes(BinaryReader, IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AdvancedParticleProperties createFromBytes(BinaryReader reader, IWorldAccessor resolver)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+    <dt><code>resolver</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -7,6 +7,7 @@ using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -562,6 +563,7 @@ namespace Vintagestory.API.Common
                             for (int dz = 0; dz < SizeZ; dz++)
                             {
                                 curPos.Set(dx + startPos.X, dy + startPos.Y, dz + startPos.Z);
+                                if (!blockAccessor.IsValidPos(curPos)) continue;    // Deal with cases where we are at the map edge
                                 blockAccessor.SetBlock(0, curPos);
                             }
                         }
@@ -597,6 +599,7 @@ namespace Vintagestory.API.Common
                 if (newBlock == null || (replaceMetaBlocks && newBlock == undergroundBlock)) continue;
 
                 curPos.Set(dx + startPos.X, dy + startPos.Y, dz + startPos.Z);
+                if (!blockAccessor.IsValidPos(curPos)) continue;    // Deal with cases where we are at the map edge
                 placed += handler(blockAccessor, curPos, newBlock, replaceMetaBlocks);
 
 
@@ -661,6 +664,7 @@ namespace Vintagestory.API.Common
             if (newBlock == null) return;
 
             curPos.Set(posX, posY, posZ);
+            if (!blockAccessor.IsValidPos(curPos)) return;    // Deal with cases where we are at the map edge
             blockAccessor.SetDecor(newBlock, curPos, face);
         }
 
@@ -849,15 +853,15 @@ namespace Vintagestory.API.Common
                 if (entityclass != null)
                 {
                     BlockEntity be = worldForResolve.ClassRegistry.CreateBlockEntity(entityclass);
+                    ITreeAttribute tree = DecodeBlockEntityData(beData);
                     if (be is IRotatable rotatable)
                     {
                         be.Pos = pos;
                         be.CreateBehaviors(block, worldForResolve);
-                        ITreeAttribute tree = DecodeBlockEntityData(beData);
                         rotatable.OnTransformed(worldForResolve ,tree, angle, BlockCodes, ItemCodes, flipAxis);
-                        beData = StringEncodeTreeAttribute(tree);
                     }
-
+                    tree.SetString("blockCode", block.Code.ToShortString());
+                    beData = StringEncodeTreeAttribute(tree);
                     BlockEntitiesUnpacked[pos] = beData;
                 }
             }
@@ -996,6 +1000,7 @@ namespace Vintagestory.API.Common
                 int dz = (int)((index >> 10) & 0x1ff);
 
                 curPos.Set(dx + startPos.X, dy + startPos.Y, dz + startPos.Z);
+                if (!blockAccessor.IsValidPos(curPos)) continue;
 
                 BlockEntity be = blockAccessor.GetBlockEntity(curPos);
 
@@ -1024,6 +1029,19 @@ namespace Vintagestory.API.Common
                     }
 
                     ITreeAttribute tree = DecodeBlockEntityData(val.Value);
+
+                    // Check that blockCode in the stored tree matches the block at the current position, otherwise it's unlikely that this tree belongs to this BlockEntity at all!
+                    string treeBlockCode = tree.GetString("blockCode");
+                    if (be.Block != null && treeBlockCode != null)
+                    {
+                        Block encodedBlock = worldForCollectibleResolve.GetBlock(new AssetLocation(treeBlockCode));
+                        if (encodedBlock != null && encodedBlock.GetType() != be.Block.GetType())   // It should be the same type at least, though it might have been rotated or had some other state change eg. snow to free or vice-versa
+                        {
+                            worldForCollectibleResolve.Logger.Warning("Could not import block entity data for schematic at {0}. There is already {1}, expected {2}. Probably overlapping ruins.", curPos, be.Block, treeBlockCode);
+                            continue;
+                        }
+                    }
+
                     tree.SetInt("posx", curPos.X);
                     tree.SetInt("posy", curPos.InternalY);
                     tree.SetInt("posz", curPos.Z);
@@ -1032,6 +1050,7 @@ namespace Vintagestory.API.Common
                     be.OnLoadCollectibleMappings(worldForCollectibleResolve, blockCodes, itemCodes, schematicSeed, resolveImports);
                     Block layerBlock = null;
                     layerBlockForBlockEntities?.TryGetValue(curPos, out layerBlock);
+                    if (layerBlock != null && layerBlock.Id == 0) layerBlock = null;   // Necessary legacy fix for some positions in the Arctic where rockBlockId is 0, due to an older bug
                     be.OnPlacementBySchematic(worldForCollectibleResolve.Api as ICoreServerAPI, blockAccessor, curPos, replaceBlocks, centerrockblockid, layerBlock, resolveImports);
                     if (!(blockAccessor is IWorldGenBlockAccessor)) be.MarkDirty();
                 }
@@ -1044,31 +1063,38 @@ namespace Vintagestory.API.Common
                     BinaryReader reader = new BinaryReader(ms);
 
                     string className = reader.ReadString();
-                    Entity entity = worldForCollectibleResolve.ClassRegistry.CreateEntity(className);
-
-                    entity.FromBytes(reader, false, ((IServerWorldAccessor)worldForCollectibleResolve).RemappedEntities);
-                    entity.DidImportOrExport(startPos);
-
-                    if (worldForCollectibleResolve.GetEntityType(entity.Code) != null) // Can be null if its a no longer existent mob type
+                    try
                     {
-                        // Not ideal but whatever
-                        if (blockAccessor is IWorldGenBlockAccessor accessor)
+                        Entity entity = worldForCollectibleResolve.ClassRegistry.CreateEntity(className);
+
+                        entity.FromBytes(reader, false, ((IServerWorldAccessor)worldForCollectibleResolve).RemappedEntities);
+                        entity.DidImportOrExport(startPos);
+
+                        if (worldForCollectibleResolve.GetEntityType(entity.Code) != null) // Can be null if its a no longer existent mob type
                         {
-                            accessor.AddEntity(entity);
-                            entity.OnInitialized += () => entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed, resolveImports);
-                        } else
-                        {
-                            worldForCollectibleResolve.SpawnEntity(entity);
-                            if (blockAccessor is IBlockAccessorRevertable re)
+                            // Not ideal but whatever
+                            if (blockAccessor is IWorldGenBlockAccessor accessor)
                             {
-                                re.StoreEntitySpawnToHistory(entity);
+                                accessor.AddEntity(entity);
+                                entity.OnInitialized += () => entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed, resolveImports);
+                            } else
+                            {
+                                worldForCollectibleResolve.SpawnEntity(entity);
+                                if (blockAccessor is IBlockAccessorRevertable re)
+                                {
+                                    re.StoreEntitySpawnToHistory(entity);
+                                }
+                                entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed, resolveImports);
                             }
-                            entity.OnLoadCollectibleMappings(worldForCollectibleResolve, BlockCodes, ItemCodes, schematicSeed, resolveImports);
+                        }
+                        else
+                        {
+                            worldForCollectibleResolve.Logger.Error("Couldn't import entity {0} with id {1} and code {2} - it's Type is null! Maybe from an older game version or a missing mod.", entity.GetType(), entity.EntityId, entity.Code);
                         }
                     }
-                    else
+                    catch (Exception)
                     {
-                        worldForCollectibleResolve.Logger.Error("Couldn't import entity {0} with id {1} and code {2} - it's Type is null! Maybe from an older game version or a missing mod.", entity.GetType(), entity.EntityId, entity.Code);
+                        worldForCollectibleResolve.Logger.Error("Couldn't import entity with classname {0} - Maybe from an older game version or a missing mod.", className);
                     }
                 }
             }
@@ -1205,7 +1231,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string Save(string outfilepath)
         {
-            if (!outfilepath.EndsWith(".json"))
+            if (!outfilepath.EndsWithOrdinal(".json"))
             {
                 outfilepath += ".json";
             }

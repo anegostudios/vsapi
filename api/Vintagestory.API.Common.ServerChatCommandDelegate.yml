@@ -1,0 +1,128 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ServerChatCommandDelegate
+  commentId: T:Vintagestory.API.Common.ServerChatCommandDelegate
+  id: ServerChatCommandDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: ServerChatCommandDelegate
+  nameWithType: ServerChatCommandDelegate
+  fullName: Vintagestory.API.Common.ServerChatCommandDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/Legacy/ChatCommand.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ServerChatCommandDelegate
+    path: Common/API/ChatCommand/Legacy/ChatCommand.cs
+    startLine: 4
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public delegate void ServerChatCommandDelegate(IServerPlayer player, int groupId, CmdArgs args)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Server.IServerPlayer
+    - id: groupId
+      type: System.Int32
+    - id: args
+      type: Vintagestory.API.Common.CmdArgs
+    content.vb: Public Delegate Sub ServerChatCommandDelegate(player As IServerPlayer, groupId As Integer, args As CmdArgs)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Server.IServerPlayer
+  commentId: T:Vintagestory.API.Server.IServerPlayer
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IServerPlayer.html
+  name: IServerPlayer
+  nameWithType: IServerPlayer
+  fullName: Vintagestory.API.Server.IServerPlayer
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.CmdArgs
+  commentId: T:Vintagestory.API.Common.CmdArgs
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CmdArgs.html
+  name: CmdArgs
+  nameWithType: CmdArgs
+  fullName: Vintagestory.API.Common.CmdArgs
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

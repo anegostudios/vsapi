@@ -1,0 +1,114 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.LogEntryDelegate
+  commentId: T:Vintagestory.API.Common.LogEntryDelegate
+  id: LogEntryDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: LogEntryDelegate
+  nameWithType: LogEntryDelegate
+  fullName: Vintagestory.API.Common.LogEntryDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/Delegates.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LogEntryDelegate
+    path: Common/API/Delegates.cs
+    startLine: 148
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public delegate void LogEntryDelegate(EnumLogType logType, string message, params object[] args)
+    parameters:
+    - id: logType
+      type: Vintagestory.API.Common.EnumLogType
+    - id: message
+      type: System.String
+    - id: args
+      type: System.Object[]
+    content.vb: Public Delegate Sub LogEntryDelegate(logType As EnumLogType, message As String, ParamArray args As Object())
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.EnumLogType
+  commentId: T:Vintagestory.API.Common.EnumLogType
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumLogType.html
+  name: EnumLogType
+  nameWithType: EnumLogType
+  fullName: Vintagestory.API.Common.EnumLogType
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Object[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object[]
+  nameWithType: object[]
+  fullName: object[]
+  nameWithType.vb: Object()
+  fullName.vb: Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

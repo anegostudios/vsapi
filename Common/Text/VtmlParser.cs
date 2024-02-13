@@ -74,7 +74,14 @@ namespace Vintagestory.API.Common
 
                     case "hotkey":
                     case "hk":
-                        var hcmp = new HotkeyComponent(capi, tagToken.ContentText, fontStack.Peek());
+                        string hotkeyName = tagToken.ContentText;
+                        if (hotkeyName == "leftmouse") hotkeyName = "primarymouse";    //alias names for a few, to make things simpler for handbook editors
+                        if (hotkeyName == "rightmouse") hotkeyName = "secondarymouse";
+                        if (hotkeyName == "toolmode") hotkeyName = "toolmodeselect";
+
+                        var hcmp = new HotkeyComponent(capi, hotkeyName, fontStack.Peek());
+                        hcmp.PaddingLeft -= 1;   // Tweak positioning, without this it is kinda janky
+                        hcmp.PaddingRight += 3;
                         elems.Add(hcmp);
                         break;
 

@@ -1,90 +1,133 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BaseSpawnConditions
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BaseSpawnConditions
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class BaseSpawnConditions | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BaseSpawnConditions | VintageStory API ">
+      
+      
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions">
-  
-  
-  <h1 id="Vintagestory_API_Common_Entities_BaseSpawnConditions" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions" class="text-break">Class BaseSpawnConditions
+
+        <article data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions">
+
+
+
+  <h1 id="Vintagestory_API_Common_Entities_BaseSpawnConditions" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions" class="text-break">
+Class BaseSpawnConditions  
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html">ClimateSpawnCondition</a></div>
-    <div class="level2"><span class="xref">BaseSpawnConditions</span></div>
-      <div class="level3"><a class="xref" href="Vintagestory.API.Common.Entities.RuntimeSpawnConditions.html">RuntimeSpawnConditions</a></div>
-      <div class="level3"><a class="xref" href="Vintagestory.API.Common.Entities.WorldGenSpawnConditions.html">WorldGenSpawnConditions</a></div>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a>.<a class="xref" href="Vintagestory.API.Common.Entities.html">Entities</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class BaseSpawnConditions : ClimateSpawnCondition</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html">ClimateSpawnCondition</a></div>
+      <div><span class="xref">BaseSpawnConditions</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.Entities.RuntimeSpawnConditions.html">RuntimeSpawnConditions</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.Entities.WorldGenSpawnConditions.html">WorldGenSpawnConditions</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_MinTemp">ClimateSpawnCondition.MinTemp</a>
     </div>
@@ -121,594 +164,601 @@
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html#Vintagestory_API_Common_Entities_ClimateSpawnCondition_SetFrom_Vintagestory_API_Common_Entities_ClimateSpawnCondition_">ClimateSpawnCondition.SetFrom(ClimateSpawnCondition)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.Entities.html">Vintagestory.API.Common.Entities</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class BaseSpawnConditions : ClimateSpawnCondition</code></pre>
-  </div>
-  <h3 id="fields">Fields
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_ClimateValueMode" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.ClimateValueMode">
+  ClimateValueMode
+  
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_ClimateValueMode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.ClimateValueMode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L276">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_ClimateValueMode" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.ClimateValueMode">ClimateValueMode</h4>
+
   <div class="markdown level1 summary"><p>Whether the rain and temperature values are referring to the worldgen values (i.e. yearly averages) or the current values at the moment of spawning</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public EnumGetClimateMode ClimateValueMode</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumGetClimateMode.html">EnumGetClimateMode</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_Companions.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.Companions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L256">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_Companions" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.Companions">Companions</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumGetClimateMode.html">EnumGetClimateMode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_Companions" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.Companions">
+  Companions
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Additional companions for the spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public AssetLocation[] Companions</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_Group.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.Group%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L228">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_Group" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.Group">Group</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_Group" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.Group">
+  Group
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>The group of the spawn conditions.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string Group</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_HerdSize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.HerdSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L248">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_HerdSize" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.HerdSize">HerdSize</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_HerdSize" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.HerdSize">
+  HerdSize
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>the group size for the spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public NatFloat HerdSize</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodes.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L261">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodes" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodes">InsideBlockCodes</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodes" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodes">
+  InsideBlockCodes
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>The blocks that the object will spawn in.  (default: air)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public AssetLocation[] InsideBlockCodes</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodesBeginsWith.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesBeginsWith%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L280">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodesBeginsWith" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesBeginsWith">InsideBlockCodesBeginsWith</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodesBeginsWith" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesBeginsWith">
+  InsideBlockCodesBeginsWith
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected string[] InsideBlockCodesBeginsWith</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodesExact.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesExact%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L281">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodesExact" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesExact">InsideBlockCodesExact</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodesExact" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesExact">
+  InsideBlockCodesExact
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected string[] InsideBlockCodesExact</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodesResolved.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesResolved%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L279">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodesResolved" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesResolved">InsideBlockCodesResolved</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockCodesResolved" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockCodesResolved">
+  InsideBlockCodesResolved
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected HashSet&lt;Block&gt; InsideBlockCodesResolved</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">HashSet</span>&lt;<a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockFirstLetters.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockFirstLetters%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L282">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockFirstLetters" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockFirstLetters">InsideBlockFirstLetters</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.hashset-1">HashSet</a>&lt;<a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_InsideBlockFirstLetters" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.InsideBlockFirstLetters">
+  InsideBlockFirstLetters
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected string InsideBlockFirstLetters</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_LightLevelType.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.LightLevelType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L243">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_LightLevelType" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.LightLevelType">LightLevelType</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_LightLevelType" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.LightLevelType">
+  LightLevelType
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>The type of light counted for spawning purposes.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public EnumLightLevelType LightLevelType</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumLightLevelType.html">EnumLightLevelType</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_MaxLightLevel.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.MaxLightLevel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L238">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_MaxLightLevel" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.MaxLightLevel">MaxLightLevel</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumLightLevelType.html">EnumLightLevelType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_MaxLightLevel" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.MaxLightLevel">
+  MaxLightLevel
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>The maximum light level for an object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int MaxLightLevel</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_MinLightLevel.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.MinLightLevel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L233">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_MinLightLevel" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.MinLightLevel">MinLightLevel</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_MinLightLevel" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.MinLightLevel">
+  MinLightLevel
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>The minimum light level for an object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int MinLightLevel</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_RequireSolidGround.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.RequireSolidGround%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L266">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_RequireSolidGround" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.RequireSolidGround">RequireSolidGround</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_RequireSolidGround" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.RequireSolidGround">
+  RequireSolidGround
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Checks to see if the object requires solid ground.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool RequireSolidGround</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_TryOnlySurface.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.TryOnlySurface%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L271">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_TryOnlySurface" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.TryOnlySurface">TryOnlySurface</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_TryOnlySurface" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.TryOnlySurface">
+  TryOnlySurface
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>checks to see if the object can only spawn in the surface.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool TryOnlySurface</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_GroupSize.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.GroupSize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L250">View Source</a>
-  </span>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Vintagestory_API_Common_Entities_BaseSpawnConditions_GroupSize_" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.GroupSize*"></a>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_GroupSize" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.GroupSize">GroupSize</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public NatFloat GroupSize { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_GroupSize" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.GroupSize">
+  GroupSize
+  
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_CanSpawnInside_Vintagestory_API_Common_Block_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.CanSpawnInside(Vintagestory.API.Common.Block)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L284">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_Entities_BaseSpawnConditions_CanSpawnInside_" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.CanSpawnInside*"></a>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_CanSpawnInside_Vintagestory_API_Common_Block_" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.CanSpawnInside(Vintagestory.API.Common.Block)">CanSpawnInside(Block)</h4>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use HerdSize instead&quot;)]
+public NatFloat GroupSize { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Common_Entities_BaseSpawnConditions_CanSpawnInside_" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.CanSpawnInside*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_CanSpawnInside_Vintagestory_API_Common_Block_" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.CanSpawnInside(Vintagestory.API.Common.Block)">
+  CanSpawnInside(Block)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool CanSpawnInside(Block testBlock)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
-        <td><span class="parametername">testBlock</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions_Initialise_Vintagestory_API_Server_IServerWorldAccessor_System_String_Dictionary_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Block____.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise(Vintagestory.API.Server.IServerWorldAccessor%2CSystem.String%2CDictionary%7BVintagestory.API.Common.AssetLocation%2CVintagestory.API.Common.Block%5B%5D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L312">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>testBlock</code> <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Entities_BaseSpawnConditions_Initialise_" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise*"></a>
-  <h4 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_Initialise_Vintagestory_API_Server_IServerWorldAccessor_System_String_Dictionary_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Block____" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise(Vintagestory.API.Server.IServerWorldAccessor,System.String,Dictionary{Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Block[]})">Initialise(IServerWorldAccessor, String, Dictionary&lt;AssetLocation, Block[]&gt;)</h4>
+
+  <h3 id="Vintagestory_API_Common_Entities_BaseSpawnConditions_Initialise_Vintagestory_API_Server_IServerWorldAccessor_System_String_System_Collections_Generic_Dictionary_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Block____" data-uid="Vintagestory.API.Common.Entities.BaseSpawnConditions.Initialise(Vintagestory.API.Server.IServerWorldAccessor,System.String,System.Collections.Generic.Dictionary{Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Block[]})">
+  Initialise(IServerWorldAccessor, string, Dictionary&lt;AssetLocation, Block[]&gt;)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Initialise(IServerWorldAccessor server, string entityName, Dictionary&lt;AssetLocation, Block[]&gt; searchCache)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IServerWorldAccessor.html">IServerWorldAccessor</a></td>
-        <td><span class="parametername">server</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">entityName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Dictionary</span>&lt;<a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>, <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>[]&gt;</td>
-        <td><span class="parametername">searchCache</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>server</code> <a class="xref" href="Vintagestory.API.Server.IServerWorldAccessor.html">IServerWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>entityName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>searchCache</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>, <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_Entities_BaseSpawnConditions.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.Entities.BaseSpawnConditions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Entity/SpawnConditions.cs/#L223" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

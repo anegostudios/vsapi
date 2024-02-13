@@ -1,1676 +1,1494 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Struct FastVec3d
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Struct FastVec3d
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Struct FastVec3d | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Struct FastVec3d | VintageStory API ">
+      
+      <meta name="description" content="Represents a vector of 3 doubles">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.MathTools.FastVec3d">
-  
-  
-  <h1 id="Vintagestory_API_MathTools_FastVec3d" data-uid="Vintagestory.API.MathTools.FastVec3d" class="text-break">Struct FastVec3d
-  </h1>
-  <div class="markdown level0 summary"><p>Represents a vector of 3 doubles</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.MathTools.html">Vintagestory.API.MathTools</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_MathTools_FastVec3d_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public struct FastVec3d</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d__ctor_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.%23ctor(System.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L31">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d__ctor_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d__ctor_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor(System.Double,System.Double,System.Double)">FastVec3d(Double, Double, Double)</h4>
-  <div class="markdown level1 summary"><p>Create a new vector with given coordinates</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d(double x, double y, double z)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">x</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">y</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">z</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d__ctor_System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.%23ctor(System.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L53">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d__ctor_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d__ctor_System_Double___" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor(System.Double[])">FastVec3d(Double[])</h4>
-  <div class="markdown level1 summary"><p>Create a new vector with given coordinates</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d(double[] values)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">values</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d__ctor_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.%23ctor(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L67">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d__ctor_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d__ctor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor(Vintagestory.API.MathTools.BlockPos)">FastVec3d(BlockPos)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d(BlockPos pos)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d__ctor_Vintagestory_API_MathTools_Vec3i_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.%23ctor(Vintagestory.API.MathTools.Vec3i)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L60">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d__ctor_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d__ctor_Vintagestory_API_MathTools_Vec3i_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor(Vintagestory.API.MathTools.Vec3i)">FastVec3d(Vec3i)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d(Vec3i vec3i)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></td>
-        <td><span class="parametername">vec3i</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d__ctor_Vintagestory_API_MathTools_Vec4d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.%23ctor(Vintagestory.API.MathTools.Vec4d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L42">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d__ctor_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d__ctor_Vintagestory_API_MathTools_Vec4d_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor(Vintagestory.API.MathTools.Vec4d)">FastVec3d(Vec4d)</h4>
-  <div class="markdown level1 summary"><p>Create a new vector with given coordinates</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d(Vec4d vec)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec4d.html">Vec4d</a></td>
-        <td><span class="parametername">vec</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_X.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.X%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L14">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_X" data-uid="Vintagestory.API.MathTools.FastVec3d.X">X</h4>
-  <div class="markdown level1 summary"><p>The X-Component of the vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double X</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Y.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Y%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L18">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Y" data-uid="Vintagestory.API.MathTools.FastVec3d.Y">Y</h4>
-  <div class="markdown level1 summary"><p>The Y-Component of the vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Y</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Z.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Z%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L22">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Z" data-uid="Vintagestory.API.MathTools.FastVec3d.Z">Z</h4>
-  <div class="markdown level1 summary"><p>The Z-Component of the vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Z</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Item_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L79">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Item_" data-uid="Vintagestory.API.MathTools.FastVec3d.Item*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Item_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec3d.Item(System.Int32)">Item[Int32]</h4>
-  <div class="markdown level1 summary"><p>Returns the n-th coordinate</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double this[int index] { get; set; }</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">index</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Add_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Add(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L164">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Add_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Add_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add(System.Double)">Add(Double)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d Add(double d)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">d</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Add_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Add(System.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L156">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Add_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Add_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add(System.Double,System.Double,System.Double)">Add(Double, Double, Double)</h4>
-  <div class="markdown level1 summary"><p>Adds given x/y/z coordinates to the vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d Add(double x, double y, double z)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">x</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">y</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">z</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Add_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Add(Vintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L186">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Add_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Add_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add(Vintagestory.API.MathTools.BlockPos)">Add(BlockPos)</h4>
-  <div class="markdown level1 summary"><p>Adds given BlockPos&apos;s x/y/z coordinates to the vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d Add(BlockPos pos)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Add_Vintagestory_API_MathTools_Vec3i_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Add(Vintagestory.API.MathTools.Vec3i)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L175">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Add_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Add_Vintagestory_API_MathTools_Vec3i_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add(Vintagestory.API.MathTools.Vec3i)">Add(Vec3i)</h4>
-  <div class="markdown level1 summary"><p>Adds given vector&apos;s x/y/z coordinates to the vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d Add(Vec3i vec)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></td>
-        <td><span class="parametername">vec</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_AddCopy_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.AddCopy(System.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L287">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_AddCopy_" data-uid="Vintagestory.API.MathTools.FastVec3d.AddCopy*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_AddCopy_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.AddCopy(System.Double,System.Double,System.Double)">AddCopy(Double, Double, Double)</h4>
-  <div class="markdown level1 summary"><p>Adds given coordinates to a new vectors and returns it. The original calling vector remains unchanged</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d AddCopy(double x, double y, double z)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">x</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">y</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">z</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_AddCopy_Vintagestory_API_MathTools_FastVec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.AddCopy(Vintagestory.API.MathTools.FastVec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L297">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_AddCopy_" data-uid="Vintagestory.API.MathTools.FastVec3d.AddCopy*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_AddCopy_Vintagestory_API_MathTools_FastVec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.AddCopy(Vintagestory.API.MathTools.FastVec3d)">AddCopy(FastVec3d)</h4>
-  <div class="markdown level1 summary"><p>Adds both vectors into a new vector. Both source vectors remain unchanged.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d AddCopy(FastVec3d vec)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td><span class="parametername">vec</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Clone.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L211">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Clone_" data-uid="Vintagestory.API.MathTools.FastVec3d.Clone*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Clone" data-uid="Vintagestory.API.MathTools.FastVec3d.Clone">Clone()</h4>
-  <div class="markdown level1 summary"><p>Creates a copy of the vetor</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d Clone()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_CreateFromBytes_BinaryReader_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.CreateFromBytes(BinaryReader)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L400">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_CreateFromBytes_" data-uid="Vintagestory.API.MathTools.FastVec3d.CreateFromBytes*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_CreateFromBytes_BinaryReader_" data-uid="Vintagestory.API.MathTools.FastVec3d.CreateFromBytes(BinaryReader)">CreateFromBytes(BinaryReader)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static FastVec3d CreateFromBytes(BinaryReader reader)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">BinaryReader</span></td>
-        <td><span class="parametername">reader</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Distance_Vintagestory_API_MathTools_FastVec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Distance(Vintagestory.API.MathTools.FastVec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L239">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Distance_" data-uid="Vintagestory.API.MathTools.FastVec3d.Distance*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Distance_Vintagestory_API_MathTools_FastVec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.Distance(Vintagestory.API.MathTools.FastVec3d)">Distance(FastVec3d)</h4>
-  <div class="markdown level1 summary"><p>Calculates the distance the two endpoints</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Distance(FastVec3d vec)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td><span class="parametername">vec</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Distance_Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Distance(Vintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L271">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Distance_" data-uid="Vintagestory.API.MathTools.FastVec3d.Distance*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Distance_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.Distance(Vintagestory.API.MathTools.Vec3d)">Distance(Vec3d)</h4>
-  <div class="markdown level1 summary"><p>Calculates the distance the two endpoints</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Distance(Vec3d vec)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">vec</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_DistanceSq_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.DistanceSq(System.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L256">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_DistanceSq_" data-uid="Vintagestory.API.MathTools.FastVec3d.DistanceSq*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_DistanceSq_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.DistanceSq(System.Double,System.Double,System.Double)">DistanceSq(Double, Double, Double)</h4>
-  <div class="markdown level1 summary"><p>Calculates the square distance the two endpoints</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double DistanceSq(double x, double y, double z)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">x</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">y</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">z</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Dot_System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Dot(System.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L139">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Dot_" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Dot_System_Double___" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot(System.Double[])">Dot(Double[])</h4>
-  <div class="markdown level1 summary"><p>Returns the dot product with given vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Dot(double[] pos)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Dot_System_Single___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Dot(System.Single%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L129">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Dot_" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Dot_System_Single___" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot(System.Single[])">Dot(Single[])</h4>
-  <div class="markdown level1 summary"><p>Returns the dot product with given vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Dot(float[] pos)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span>[]</td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Dot_Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Dot(Vintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L119">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Dot_" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Dot_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot(Vintagestory.API.MathTools.Vec3d)">Dot(Vec3d)</h4>
-  <div class="markdown level1 summary"><p>Returns the dot product with given vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Dot(Vec3d a)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Dot_Vintagestory_API_MathTools_Vec3f_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Dot(Vintagestory.API.MathTools.Vec3f)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L109">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Dot_" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Dot_Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot(Vintagestory.API.MathTools.Vec3f)">Dot(Vec3f)</h4>
-  <div class="markdown level1 summary"><p>Returns the dot product with given vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Dot(Vec3f a)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Length.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Length%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L90">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Length_" data-uid="Vintagestory.API.MathTools.FastVec3d.Length*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Length" data-uid="Vintagestory.API.MathTools.FastVec3d.Length">Length()</h4>
-  <div class="markdown level1 summary"><p>Returns the length of this vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double Length()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Mul_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Mul(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L199">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Mul_" data-uid="Vintagestory.API.MathTools.FastVec3d.Mul*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Mul_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.Mul(System.Double)">Mul(Double)</h4>
-  <div class="markdown level1 summary"><p>Multiplies each coordinate with given multiplier</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d Mul(double multiplier)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">multiplier</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Negate.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Negate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L95">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Negate_" data-uid="Vintagestory.API.MathTools.FastVec3d.Negate*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Negate" data-uid="Vintagestory.API.MathTools.FastVec3d.Negate">Negate()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Negate()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Normalize.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Normalize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L220">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Normalize_" data-uid="Vintagestory.API.MathTools.FastVec3d.Normalize*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Normalize" data-uid="Vintagestory.API.MathTools.FastVec3d.Normalize">Normalize()</h4>
-  <div class="markdown level1 summary"><p>Turns the vector into a unit vector with length 1, but only if length is non-zero</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d Normalize()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_NormalizedCopy.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.NormalizedCopy%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L319">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_NormalizedCopy_" data-uid="Vintagestory.API.MathTools.FastVec3d.NormalizedCopy*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_NormalizedCopy" data-uid="Vintagestory.API.MathTools.FastVec3d.NormalizedCopy">NormalizedCopy()</h4>
-  <div class="markdown level1 summary"><p>Creates a new vectors that is the normalized version of this vector. </p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d NormalizedCopy()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_ReduceBy_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.ReduceBy(System.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L308">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_ReduceBy_" data-uid="Vintagestory.API.MathTools.FastVec3d.ReduceBy*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_ReduceBy_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.ReduceBy(System.Double)">ReduceBy(Double)</h4>
-  <div class="markdown level1 summary"><p>Substracts val from each coordinate if the coordinate if positive, otherwise it is added. If 0, the value is unchanged. The value must be a positive number</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ReduceBy(double val)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">val</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Set_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Set(System.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L344">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Set_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Set_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set(System.Double,System.Double,System.Double)">Set(Double, Double, Double)</h4>
-  <div class="markdown level1 summary"><p>Sets the vector to this coordinates</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d Set(double x, double y, double z)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">x</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">y</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">z</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Set_System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Set(System.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L364">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Set_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Set_System_Double___" data-uid="Vintagestory.API.MathTools.FastVec3d.Set(System.Double[])">Set(Double[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d Set(double[] vec)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">vec</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Set_Vintagestory_API_MathTools_FastVec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Set(Vintagestory.API.MathTools.FastVec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L376">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Set_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Set_Vintagestory_API_MathTools_FastVec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set(Vintagestory.API.MathTools.FastVec3d)">Set(FastVec3d)</h4>
-  <div class="markdown level1 summary"><p>Sets the vector to the coordinates of given vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Set(FastVec3d vec)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td><span class="parametername">vec</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Set_Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Set(Vintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L356">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Set_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Set_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set(Vintagestory.API.MathTools.Vec3d)">Set(Vec3d)</h4>
-  <div class="markdown level1 summary"><p>Sets the vector to the coordinates of given vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FastVec3d Set(Vec3d vec)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">vec</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_ToDoubleArray.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.ToDoubleArray%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L144">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_ToDoubleArray_" data-uid="Vintagestory.API.MathTools.FastVec3d.ToDoubleArray*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_ToDoubleArray" data-uid="Vintagestory.API.MathTools.FastVec3d.ToDoubleArray">ToDoubleArray()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double[] ToDoubleArray()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_ToString.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.ToString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L387">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_ToString_" data-uid="Vintagestory.API.MathTools.FastVec3d.ToString*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_ToString" data-uid="Vintagestory.API.MathTools.FastVec3d.ToString">ToString()</h4>
-  <div class="markdown level1 summary"><p>Simple string represenation of the x/y/z components</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_ToVec3d.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.ToVec3d%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L333">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_ToVec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.ToVec3d*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_ToVec3d" data-uid="Vintagestory.API.MathTools.FastVec3d.ToVec3d">ToVec3d()</h4>
-  <div class="markdown level1 summary"><p>Creates a new double precision vector with the same coordinates</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3d ToVec3d()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d_Write_BinaryWriter_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d.Write(BinaryWriter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L393">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_FastVec3d_Write_" data-uid="Vintagestory.API.MathTools.FastVec3d.Write*"></a>
-  <h4 id="Vintagestory_API_MathTools_FastVec3d_Write_BinaryWriter_" data-uid="Vintagestory.API.MathTools.FastVec3d.Write(BinaryWriter)">Write(BinaryWriter)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Write(BinaryWriter writer)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">BinaryWriter</span></td>
-        <td><span class="parametername">writer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_FastVec3d.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.FastVec3d%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Vector/FastVec3d.cs/#L9" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="Vintagestory.API.MathTools.FastVec3d">
+
+
+
+  <h1 id="Vintagestory_API_MathTools_FastVec3d" data-uid="Vintagestory.API.MathTools.FastVec3d" class="text-break">
+Struct FastVec3d  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.MathTools.html">MathTools</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents a vector of 3 doubles</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public struct FastVec3d</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.equals">ValueType.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode">ValueType.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d__ctor_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d__ctor_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor(System.Double,System.Double,System.Double)">
+  FastVec3d(double, double, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a new vector with given coordinates</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d(double x, double y, double z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d__ctor_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d__ctor_System_Double___" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor(System.Double[])">
+  FastVec3d(double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a new vector with given coordinates</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d(double[] values)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>values</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d__ctor_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d__ctor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor(Vintagestory.API.MathTools.BlockPos)">
+  FastVec3d(BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d(BlockPos pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d__ctor_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d__ctor_Vintagestory_API_MathTools_Vec3i_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor(Vintagestory.API.MathTools.Vec3i)">
+  FastVec3d(Vec3i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d(Vec3i vec3i)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vec3i</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d__ctor_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d__ctor_Vintagestory_API_MathTools_Vec4d_" data-uid="Vintagestory.API.MathTools.FastVec3d.#ctor(Vintagestory.API.MathTools.Vec4d)">
+  FastVec3d(Vec4d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a new vector with given coordinates</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d(Vec4d vec)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vec</code> <a class="xref" href="Vintagestory.API.MathTools.Vec4d.html">Vec4d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_X" data-uid="Vintagestory.API.MathTools.FastVec3d.X">
+  X
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The X-Component of the vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double X</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Y" data-uid="Vintagestory.API.MathTools.FastVec3d.Y">
+  Y
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The Y-Component of the vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Y</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Z" data-uid="Vintagestory.API.MathTools.FastVec3d.Z">
+  Z
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The Z-Component of the vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Z</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Item_" data-uid="Vintagestory.API.MathTools.FastVec3d.Item*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Item_System_Int32_" data-uid="Vintagestory.API.MathTools.FastVec3d.Item(System.Int32)">
+  this[int]
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the n-th coordinate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double this[int index] { get; set; }</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Add_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Add_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add(System.Double)">
+  Add(double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d Add(double d)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>d</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Add_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Add_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add(System.Double,System.Double,System.Double)">
+  Add(double, double, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds given x/y/z coordinates to the vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d Add(double x, double y, double z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Add_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Add_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add(Vintagestory.API.MathTools.BlockPos)">
+  Add(BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds given BlockPos's x/y/z coordinates to the vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d Add(BlockPos pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Add_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Add_Vintagestory_API_MathTools_Vec3i_" data-uid="Vintagestory.API.MathTools.FastVec3d.Add(Vintagestory.API.MathTools.Vec3i)">
+  Add(Vec3i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds given vector's x/y/z coordinates to the vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d Add(Vec3i vec)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vec</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_AddCopy_" data-uid="Vintagestory.API.MathTools.FastVec3d.AddCopy*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_AddCopy_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.AddCopy(System.Double,System.Double,System.Double)">
+  AddCopy(double, double, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds given coordinates to a new vectors and returns it. The original calling vector remains unchanged</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d AddCopy(double x, double y, double z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_AddCopy_" data-uid="Vintagestory.API.MathTools.FastVec3d.AddCopy*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_AddCopy_Vintagestory_API_MathTools_FastVec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.AddCopy(Vintagestory.API.MathTools.FastVec3d)">
+  AddCopy(FastVec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds both vectors into a new vector. Both source vectors remain unchanged.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d AddCopy(FastVec3d vec)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vec</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Clone_" data-uid="Vintagestory.API.MathTools.FastVec3d.Clone*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Clone" data-uid="Vintagestory.API.MathTools.FastVec3d.Clone">
+  Clone()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a copy of the vetor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_CreateFromBytes_" data-uid="Vintagestory.API.MathTools.FastVec3d.CreateFromBytes*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_CreateFromBytes_System_IO_BinaryReader_" data-uid="Vintagestory.API.MathTools.FastVec3d.CreateFromBytes(System.IO.BinaryReader)">
+  CreateFromBytes(BinaryReader)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static FastVec3d CreateFromBytes(BinaryReader reader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Distance_" data-uid="Vintagestory.API.MathTools.FastVec3d.Distance*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Distance_Vintagestory_API_MathTools_FastVec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.Distance(Vintagestory.API.MathTools.FastVec3d)">
+  Distance(FastVec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calculates the distance the two endpoints</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Distance(FastVec3d vec)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vec</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Distance_" data-uid="Vintagestory.API.MathTools.FastVec3d.Distance*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Distance_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.Distance(Vintagestory.API.MathTools.Vec3d)">
+  Distance(Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calculates the distance the two endpoints</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Distance(Vec3d vec)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vec</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_DistanceSq_" data-uid="Vintagestory.API.MathTools.FastVec3d.DistanceSq*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_DistanceSq_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.DistanceSq(System.Double,System.Double,System.Double)">
+  DistanceSq(double, double, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calculates the square distance the two endpoints</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double DistanceSq(double x, double y, double z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Dot_" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Dot_System_Double___" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot(System.Double[])">
+  Dot(double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the dot product with given vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Dot(double[] pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Dot_" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Dot_System_Single___" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot(System.Single[])">
+  Dot(float[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the dot product with given vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Dot(float[] pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Dot_" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Dot_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot(Vintagestory.API.MathTools.Vec3d)">
+  Dot(Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the dot product with given vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Dot(Vec3d a)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Dot_" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Dot_Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.MathTools.FastVec3d.Dot(Vintagestory.API.MathTools.Vec3f)">
+  Dot(Vec3f)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the dot product with given vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Dot(Vec3f a)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Length_" data-uid="Vintagestory.API.MathTools.FastVec3d.Length*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Length" data-uid="Vintagestory.API.MathTools.FastVec3d.Length">
+  Length()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the length of this vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double Length()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Mul_" data-uid="Vintagestory.API.MathTools.FastVec3d.Mul*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Mul_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.Mul(System.Double)">
+  Mul(double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multiplies each coordinate with given multiplier</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d Mul(double multiplier)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>multiplier</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Negate_" data-uid="Vintagestory.API.MathTools.FastVec3d.Negate*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Negate" data-uid="Vintagestory.API.MathTools.FastVec3d.Negate">
+  Negate()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Negate()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Normalize_" data-uid="Vintagestory.API.MathTools.FastVec3d.Normalize*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Normalize" data-uid="Vintagestory.API.MathTools.FastVec3d.Normalize">
+  Normalize()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Turns the vector into a unit vector with length 1, but only if length is non-zero</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d Normalize()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_NormalizedCopy_" data-uid="Vintagestory.API.MathTools.FastVec3d.NormalizedCopy*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_NormalizedCopy" data-uid="Vintagestory.API.MathTools.FastVec3d.NormalizedCopy">
+  NormalizedCopy()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new vectors that is the normalized version of this vector.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d NormalizedCopy()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_ReduceBy_" data-uid="Vintagestory.API.MathTools.FastVec3d.ReduceBy*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_ReduceBy_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.ReduceBy(System.Double)">
+  ReduceBy(double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Substracts val from each coordinate if the coordinate if positive, otherwise it is added. If 0, the value is unchanged. The value must be a positive number</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReduceBy(double val)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>val</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Set_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Set_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set(System.Double,System.Double,System.Double)">
+  Set(double, double, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the vector to this coordinates</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d Set(double x, double y, double z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Set_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Set_System_Double___" data-uid="Vintagestory.API.MathTools.FastVec3d.Set(System.Double[])">
+  Set(double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d Set(double[] vec)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Set_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Set_Vintagestory_API_MathTools_FastVec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set(Vintagestory.API.MathTools.FastVec3d)">
+  Set(FastVec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the vector to the coordinates of given vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Set(FastVec3d vec)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vec</code> <a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Set_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Set_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.Set(Vintagestory.API.MathTools.Vec3d)">
+  Set(Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the vector to the coordinates of given vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FastVec3d Set(Vec3d vec)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>vec</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.FastVec3d.html">FastVec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_ToDoubleArray_" data-uid="Vintagestory.API.MathTools.FastVec3d.ToDoubleArray*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_ToDoubleArray" data-uid="Vintagestory.API.MathTools.FastVec3d.ToDoubleArray">
+  ToDoubleArray()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double[] ToDoubleArray()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_ToString_" data-uid="Vintagestory.API.MathTools.FastVec3d.ToString*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_ToString" data-uid="Vintagestory.API.MathTools.FastVec3d.ToString">
+  ToString()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Simple string represenation of the x/y/z components</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_ToVec3d_" data-uid="Vintagestory.API.MathTools.FastVec3d.ToVec3d*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_ToVec3d" data-uid="Vintagestory.API.MathTools.FastVec3d.ToVec3d">
+  ToVec3d()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new double precision vector with the same coordinates</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d ToVec3d()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_FastVec3d_Write_" data-uid="Vintagestory.API.MathTools.FastVec3d.Write*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_FastVec3d_Write_System_IO_BinaryWriter_" data-uid="Vintagestory.API.MathTools.FastVec3d.Write(System.IO.BinaryWriter)">
+  Write(BinaryWriter)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(BinaryWriter writer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

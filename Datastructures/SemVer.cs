@@ -305,7 +305,7 @@ namespace ProperVersion
 					// If they're numeric, compare them as numbers.
 					? int.Parse(leftIndent).CompareTo(int.Parse(rightIndent))
 					// Otherwise compare them lexically in ASCII sort order.
-					: string.Compare(leftIndent, rightIndent, StringComparison.Ordinal);
+					: string.CompareOrdinal(leftIndent, rightIndent);
 				
 				// Only return the difference if there is one,
 				// otherwise move on to the next identifier.

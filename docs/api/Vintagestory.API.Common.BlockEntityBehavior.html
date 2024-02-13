@@ -1,890 +1,883 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BlockEntityBehavior
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BlockEntityBehavior
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class BlockEntityBehavior | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BlockEntityBehavior | VintageStory API ">
+      
+      <meta name="description" content="Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it&#39;s contents">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.BlockEntityBehavior">
-  
-  
-  <h1 id="Vintagestory_API_Common_BlockEntityBehavior" data-uid="Vintagestory.API.Common.BlockEntityBehavior" class="text-break">Class BlockEntityBehavior
-  </h1>
-  <div class="markdown level0 summary"><p>Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it&apos;s contents</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">BlockEntityBehavior</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_BlockEntityBehavior_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class BlockEntityBehavior : object</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior__ctor_Vintagestory_API_Common_BlockEntity_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.%23ctor(Vintagestory.API.Common.BlockEntity)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L48">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior__ctor_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior__ctor_Vintagestory_API_Common_BlockEntity_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.#ctor(Vintagestory.API.Common.BlockEntity)">BlockEntityBehavior(BlockEntity)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BlockEntityBehavior(BlockEntity blockentity)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockEntity.html">BlockEntity</a></td>
-        <td><span class="parametername">blockentity</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_Api.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.Api%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L46">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_Api" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Api">Api</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ICoreAPI Api</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_Blockentity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.Blockentity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L29">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_Blockentity" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Blockentity">Blockentity</h4>
-  <div class="markdown level1 summary"><p>The block for this behavior instance.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BlockEntity Blockentity</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BlockEntity.html">BlockEntity</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_properties.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.properties%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L44">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_properties" data-uid="Vintagestory.API.Common.BlockEntityBehavior.properties">properties</h4>
-  <div class="markdown level1 summary"><p>The properties of this block behavior.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public JsonObject properties</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_Block.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.Block%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L39">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_Block_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Block*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_Block" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Block">Block</h4>
-  <div class="markdown level1 summary"><p>Alias of BlockEntity.Block</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Block Block { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_Pos.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.Pos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L34">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_Pos_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Pos*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_Pos" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Pos">Pos</h4>
-  <div class="markdown level1 summary"><p>Alias of Blockentity.Pos</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BlockPos Pos { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_FromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_Vintagestory_API_Common_IWorldAccessor_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute%2CVintagestory.API.Common.IWorldAccessor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L88">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_FromTreeAttributes_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.FromTreeAttributes*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_FromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.IWorldAccessor)">FromTreeAttributes(ITreeAttribute, IWorldAccessor)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
-        <td><span class="parametername">tree</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">worldAccessForResolve</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_GetBlockInfo_Vintagestory_API_Common_IPlayer_StringBuilder_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.GetBlockInfo(Vintagestory.API.Common.IPlayer%2CStringBuilder)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L103">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_GetBlockInfo_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.GetBlockInfo*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_GetBlockInfo_Vintagestory_API_Common_IPlayer_StringBuilder_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.GetBlockInfo(Vintagestory.API.Common.IPlayer,StringBuilder)">GetBlockInfo(IPlayer, StringBuilder)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void GetBlockInfo(IPlayer forPlayer, StringBuilder dsc)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">forPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">StringBuilder</span></td>
-        <td><span class="parametername">dsc</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_Initialize_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Datastructures_JsonObject_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.Initialize(Vintagestory.API.Common.ICoreAPI%2CVintagestory.API.Datastructures.JsonObject)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L58">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_Initialize_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Initialize*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_Initialize_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Datastructures_JsonObject_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Initialize(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Datastructures.JsonObject)">Initialize(ICoreAPI, JsonObject)</h4>
-  <div class="markdown level1 summary"><p>Called right after the block behavior was created</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void Initialize(ICoreAPI api, JsonObject properties)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></td>
-        <td><span class="parametername">properties</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_OnBlockBroken_Vintagestory_API_Common_IPlayer_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.OnBlockBroken(Vintagestory.API.Common.IPlayer)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L73">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockBroken_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockBroken*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockBroken_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockBroken(Vintagestory.API.Common.IPlayer)">OnBlockBroken(IPlayer)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnBlockBroken(IPlayer byPlayer = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">byPlayer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_OnBlockPlaced_Vintagestory_API_Common_ItemStack_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.OnBlockPlaced(Vintagestory.API.Common.ItemStack)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L78">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockPlaced_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockPlaced*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockPlaced_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockPlaced(Vintagestory.API.Common.ItemStack)">OnBlockPlaced(ItemStack)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnBlockPlaced(ItemStack byItemStack = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></td>
-        <td><span class="parametername">byItemStack</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_OnBlockRemoved.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.OnBlockRemoved%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L63">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockRemoved_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockRemoved*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockRemoved" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockRemoved">OnBlockRemoved()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnBlockRemoved()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_OnBlockUnloaded.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.OnBlockUnloaded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L68">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockUnloaded_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockUnloaded*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockUnloaded" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockUnloaded">OnBlockUnloaded()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnBlockUnloaded()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AssetLocation%7D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AssetLocation%7D%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L113">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnLoadCollectibleMappings*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32)">OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;Int32, AssetLocation&gt;, Dictionary&lt;Int32, AssetLocation&gt;, Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary&lt;int, AssetLocation&gt; oldBlockIdMapping, Dictionary&lt;int, AssetLocation&gt; oldItemIdMapping, int schematicSeed)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">worldForNewMappings</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</td>
-        <td><span class="parametername">oldBlockIdMapping</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</td>
-        <td><span class="parametername">oldItemIdMapping</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">schematicSeed</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AssetLocation%7D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AssetLocation%7D%2CSystem.Int32%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L119">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnLoadCollectibleMappings*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)">OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;Int32, AssetLocation&gt;, Dictionary&lt;Int32, AssetLocation&gt;, Int32, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary&lt;int, AssetLocation&gt; oldBlockIdMapping, Dictionary&lt;int, AssetLocation&gt; oldItemIdMapping, int schematicSeed, bool resolveImports)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">worldForNewMappings</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</td>
-        <td><span class="parametername">oldBlockIdMapping</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</td>
-        <td><span class="parametername">oldItemIdMapping</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">schematicSeed</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">resolveImports</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_OnPlacementBySchematic_Vintagestory_API_Server_ICoreServerAPI_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Dictionary_System_Int32_Dictionary_System_Int32_System_Int32___System_Int32_Vintagestory_API_Common_Block_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.OnPlacementBySchematic(Vintagestory.API.Server.ICoreServerAPI%2CVintagestory.API.Common.IBlockAccessor%2CVintagestory.API.MathTools.BlockPos%2CDictionary%7BSystem.Int32%2CDictionary%7BSystem.Int32%2CSystem.Int32%7D%7D%2CSystem.Int32%2CVintagestory.API.Common.Block%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L129">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnPlacementBySchematic_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnPlacementBySchematic*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_OnPlacementBySchematic_Vintagestory_API_Server_ICoreServerAPI_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Dictionary_System_Int32_Dictionary_System_Int32_System_Int32___System_Int32_Vintagestory_API_Common_Block_System_Boolean_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnPlacementBySchematic(Vintagestory.API.Server.ICoreServerAPI,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Dictionary{System.Int32,Dictionary{System.Int32,System.Int32}},System.Int32,Vintagestory.API.Common.Block,System.Boolean)">OnPlacementBySchematic(ICoreServerAPI, IBlockAccessor, BlockPos, Dictionary&lt;Int32, Dictionary&lt;Int32, Int32&gt;&gt;, Int32, Block, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnPlacementBySchematic(ICoreServerAPI api, IBlockAccessor blockAccessor, BlockPos pos, Dictionary&lt;int, Dictionary&lt;int, int&gt;&gt; replaceBlocks, int centerrockblockid, Block layerBlock, bool resolveImports)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.ICoreServerAPI.html">ICoreServerAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
-        <td><span class="parametername">blockAccessor</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Int32</span>&gt;&gt;</td>
-        <td><span class="parametername">replaceBlocks</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">centerrockblockid</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
-        <td><span class="parametername">layerBlock</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">resolveImports</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_OnReceivedClientPacket_Vintagestory_API_Common_IPlayer_System_Int32_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.OnReceivedClientPacket(Vintagestory.API.Common.IPlayer%2CSystem.Int32%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L93">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnReceivedClientPacket_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnReceivedClientPacket*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_OnReceivedClientPacket_Vintagestory_API_Common_IPlayer_System_Int32_System_Byte___" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnReceivedClientPacket(Vintagestory.API.Common.IPlayer,System.Int32,System.Byte[])">OnReceivedClientPacket(IPlayer, Int32, Byte[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnReceivedClientPacket(IPlayer fromPlayer, int packetid, byte[] data)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">fromPlayer</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">packetid</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Byte</span>[]</td>
-        <td><span class="parametername">data</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_OnReceivedServerPacket_System_Int32_System_Byte___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.OnReceivedServerPacket(System.Int32%2CSystem.Byte%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L98">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnReceivedServerPacket_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnReceivedServerPacket*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_OnReceivedServerPacket_System_Int32_System_Byte___" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnReceivedServerPacket(System.Int32,System.Byte[])">OnReceivedServerPacket(Int32, Byte[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnReceivedServerPacket(int packetid, byte[] data)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">packetid</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Byte</span>[]</td>
-        <td><span class="parametername">data</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_OnStoreCollectibleMappings_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.OnStoreCollectibleMappings(Dictionary%7BSystem.Int32%2CVintagestory.API.Common.AssetLocation%7D%2CDictionary%7BSystem.Int32%2CVintagestory.API.Common.AssetLocation%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L108">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnStoreCollectibleMappings_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnStoreCollectibleMappings*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_OnStoreCollectibleMappings_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnStoreCollectibleMappings(Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})">OnStoreCollectibleMappings(Dictionary&lt;Int32, AssetLocation&gt;, Dictionary&lt;Int32, AssetLocation&gt;)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt; blockIdMapping, Dictionary&lt;int, AssetLocation&gt; itemIdMapping)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</td>
-        <td><span class="parametername">blockIdMapping</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</td>
-        <td><span class="parametername">itemIdMapping</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_OnTesselation_Vintagestory_API_Client_ITerrainMeshPool_Vintagestory_API_Client_ITesselatorAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.OnTesselation(Vintagestory.API.Client.ITerrainMeshPool%2CVintagestory.API.Client.ITesselatorAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L124">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnTesselation_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnTesselation*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_OnTesselation_Vintagestory_API_Client_ITerrainMeshPool_Vintagestory_API_Client_ITesselatorAPI_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnTesselation(Vintagestory.API.Client.ITerrainMeshPool,Vintagestory.API.Client.ITesselatorAPI)">OnTesselation(ITerrainMeshPool, ITesselatorAPI)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tessThreadTesselator)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ITerrainMeshPool.html">ITerrainMeshPool</a></td>
-        <td><span class="parametername">mesher</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ITesselatorAPI.html">ITesselatorAPI</a></td>
-        <td><span class="parametername">tessThreadTesselator</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior_ToTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L83">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_BlockEntityBehavior_ToTreeAttributes_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.ToTreeAttributes*"></a>
-  <h4 id="Vintagestory_API_Common_BlockEntityBehavior_ToTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)">ToTreeAttributes(ITreeAttribute)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void ToTreeAttributes(ITreeAttribute tree)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></td>
-        <td><span class="parametername">tree</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockEntityBehavior.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockEntityBehavior%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockEntityBehavior.cs/#L24" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="Vintagestory.API.Common.BlockEntityBehavior">
+
+
+
+  <h1 id="Vintagestory_API_Common_BlockEntityBehavior" data-uid="Vintagestory.API.Common.BlockEntityBehavior" class="text-break">
+Class BlockEntityBehavior  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it's contents</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class BlockEntityBehavior</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">BlockEntityBehavior</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior__ctor_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior__ctor_Vintagestory_API_Common_BlockEntity_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.#ctor(Vintagestory.API.Common.BlockEntity)">
+  BlockEntityBehavior(BlockEntity)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockEntityBehavior(BlockEntity blockentity)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockentity</code> <a class="xref" href="Vintagestory.API.Common.BlockEntity.html">BlockEntity</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_Api" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Api">
+  Api
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICoreAPI Api</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_Blockentity" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Blockentity">
+  Blockentity
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The block for this behavior instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockEntity Blockentity</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.BlockEntity.html">BlockEntity</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_properties" data-uid="Vintagestory.API.Common.BlockEntityBehavior.properties">
+  properties
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The properties of this block behavior.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public JsonObject properties</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_Block_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Block*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_Block" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Block">
+  Block
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Alias of BlockEntity.Block</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Block Block { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_Pos_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Pos*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_Pos" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Pos">
+  Pos
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Alias of Blockentity.Pos</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockPos Pos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_FromTreeAttributes_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.FromTreeAttributes*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_FromTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.FromTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute,Vintagestory.API.Common.IWorldAccessor)">
+  FromTreeAttributes(ITreeAttribute, IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldAccessForResolve)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tree</code> <a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></dt>
+    <dd></dd>
+    <dt><code>worldAccessForResolve</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_GetBlockInfo_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.GetBlockInfo*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_GetBlockInfo_Vintagestory_API_Common_IPlayer_System_Text_StringBuilder_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.GetBlockInfo(Vintagestory.API.Common.IPlayer,System.Text.StringBuilder)">
+  GetBlockInfo(IPlayer, StringBuilder)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void GetBlockInfo(IPlayer forPlayer, StringBuilder dsc)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>dsc</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.stringbuilder">StringBuilder</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_Initialize_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Initialize*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_Initialize_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Datastructures_JsonObject_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.Initialize(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Datastructures.JsonObject)">
+  Initialize(ICoreAPI, JsonObject)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called right after the block behavior was created</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Initialize(ICoreAPI api, JsonObject properties)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+    <dt><code>properties</code> <a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockBroken_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockBroken*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockBroken_Vintagestory_API_Common_IPlayer_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockBroken(Vintagestory.API.Common.IPlayer)">
+  OnBlockBroken(IPlayer)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnBlockBroken(IPlayer byPlayer = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockPlaced_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockPlaced*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockPlaced_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockPlaced(Vintagestory.API.Common.ItemStack)">
+  OnBlockPlaced(ItemStack)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnBlockPlaced(ItemStack byItemStack = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byItemStack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockRemoved_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockRemoved*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockRemoved" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockRemoved">
+  OnBlockRemoved()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnBlockRemoved()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockUnloaded_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockUnloaded*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnBlockUnloaded" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnBlockUnloaded">
+  OnBlockUnloaded()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnBlockUnloaded()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnLoadCollectibleMappings*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32)">
+  OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the variant with resolveImports parameter&quot;)]
+public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary&lt;int, AssetLocation&gt; oldBlockIdMapping, Dictionary&lt;int, AssetLocation&gt; oldItemIdMapping, int schematicSeed)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>worldForNewMappings</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>oldBlockIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>oldItemIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>schematicSeed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnLoadCollectibleMappings*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)">
+  OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary&lt;int, AssetLocation&gt; oldBlockIdMapping, Dictionary&lt;int, AssetLocation&gt; oldItemIdMapping, int schematicSeed, bool resolveImports)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>worldForNewMappings</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>oldBlockIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>oldItemIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>schematicSeed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>resolveImports</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnPlacementBySchematic_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnPlacementBySchematic*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnPlacementBySchematic_Vintagestory_API_Server_ICoreServerAPI_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Collections_Generic_Dictionary_System_Int32_System_Collections_Generic_Dictionary_System_Int32_System_Int32___System_Int32_Vintagestory_API_Common_Block_System_Boolean_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnPlacementBySchematic(Vintagestory.API.Server.ICoreServerAPI,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Int32}},System.Int32,Vintagestory.API.Common.Block,System.Boolean)">
+  OnPlacementBySchematic(ICoreServerAPI, IBlockAccessor, BlockPos, Dictionary&lt;int, Dictionary&lt;int, int&gt;&gt;, int, Block, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnPlacementBySchematic(ICoreServerAPI api, IBlockAccessor blockAccessor, BlockPos pos, Dictionary&lt;int, Dictionary&lt;int, int&gt;&gt; replaceBlocks, int centerrockblockid, Block layerBlock, bool resolveImports)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Server.ICoreServerAPI.html">ICoreServerAPI</a></dt>
+    <dd></dd>
+    <dt><code>blockAccessor</code> <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>replaceBlocks</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;&gt;</dt>
+    <dd></dd>
+    <dt><code>centerrockblockid</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>layerBlock</code> <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd></dd>
+    <dt><code>resolveImports</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnReceivedClientPacket_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnReceivedClientPacket*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnReceivedClientPacket_Vintagestory_API_Common_IPlayer_System_Int32_System_Byte___" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnReceivedClientPacket(Vintagestory.API.Common.IPlayer,System.Int32,System.Byte[])">
+  OnReceivedClientPacket(IPlayer, int, byte[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnReceivedClientPacket(IPlayer fromPlayer, int packetid, byte[] data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fromPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>packetid</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnReceivedServerPacket_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnReceivedServerPacket*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnReceivedServerPacket_System_Int32_System_Byte___" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnReceivedServerPacket(System.Int32,System.Byte[])">
+  OnReceivedServerPacket(int, byte[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnReceivedServerPacket(int packetid, byte[] data)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>packetid</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnStoreCollectibleMappings_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnStoreCollectibleMappings*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnStoreCollectibleMappings_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnStoreCollectibleMappings(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})">
+  OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt; blockIdMapping, Dictionary&lt;int, AssetLocation&gt; itemIdMapping)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>itemIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_OnTesselation_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnTesselation*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_OnTesselation_Vintagestory_API_Client_ITerrainMeshPool_Vintagestory_API_Client_ITesselatorAPI_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.OnTesselation(Vintagestory.API.Client.ITerrainMeshPool,Vintagestory.API.Client.ITesselatorAPI)">
+  OnTesselation(ITerrainMeshPool, ITesselatorAPI)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool OnTesselation(ITerrainMeshPool mesher, ITesselatorAPI tessThreadTesselator)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mesher</code> <a class="xref" href="Vintagestory.API.Client.ITerrainMeshPool.html">ITerrainMeshPool</a></dt>
+    <dd></dd>
+    <dt><code>tessThreadTesselator</code> <a class="xref" href="Vintagestory.API.Client.ITesselatorAPI.html">ITesselatorAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_BlockEntityBehavior_ToTreeAttributes_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.ToTreeAttributes*"></a>
+
+  <h3 id="Vintagestory_API_Common_BlockEntityBehavior_ToTreeAttributes_Vintagestory_API_Datastructures_ITreeAttribute_" data-uid="Vintagestory.API.Common.BlockEntityBehavior.ToTreeAttributes(Vintagestory.API.Datastructures.ITreeAttribute)">
+  ToTreeAttributes(ITreeAttribute)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ToTreeAttributes(ITreeAttribute tree)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tree</code> <a class="xref" href="Vintagestory.API.Datastructures.ITreeAttribute.html">ITreeAttribute</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

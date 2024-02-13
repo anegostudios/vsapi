@@ -1,0 +1,930 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.Entities.EntityRenderer
+  commentId: T:Vintagestory.API.Common.Entities.EntityRenderer
+  id: EntityRenderer
+  parent: Vintagestory.API.Common.Entities
+  children:
+  - Vintagestory.API.Common.Entities.EntityRenderer.#ctor(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Client.ICoreClientAPI)
+  - Vintagestory.API.Common.Entities.EntityRenderer.BeforeRender(System.Single)
+  - Vintagestory.API.Common.Entities.EntityRenderer.Dispose
+  - Vintagestory.API.Common.Entities.EntityRenderer.DoRender2D(System.Single)
+  - Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DAfterOIT(System.Single,System.Boolean)
+  - Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOIT(System.Single)
+  - Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOITBatched(System.Single)
+  - Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaque(System.Single,System.Boolean)
+  - Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaqueBatched(System.Single,System.Boolean)
+  - Vintagestory.API.Common.Entities.EntityRenderer.OnEntityLoaded
+  - Vintagestory.API.Common.Entities.EntityRenderer.RenderToGui(System.Single,System.Double,System.Double,System.Double,System.Single,System.Single)
+  - Vintagestory.API.Common.Entities.EntityRenderer.capi
+  - Vintagestory.API.Common.Entities.EntityRenderer.entity
+  langs:
+  - csharp
+  - vb
+  name: EntityRenderer
+  nameWithType: EntityRenderer
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EntityRenderer
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Base class for entity rendering
+  example: []
+  syntax:
+    content: public abstract class EntityRenderer
+    content.vb: Public MustInherit Class EntityRenderer
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.entity
+  commentId: F:Vintagestory.API.Common.Entities.EntityRenderer.entity
+  id: entity
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: entity
+  nameWithType: EntityRenderer.entity
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.entity
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: entity
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 12
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: The current entity
+  example: []
+  syntax:
+    content: public Entity entity
+    return:
+      type: Vintagestory.API.Common.Entities.Entity
+    content.vb: Public entity As Entity
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.capi
+  commentId: F:Vintagestory.API.Common.Entities.EntityRenderer.capi
+  id: capi
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: capi
+  nameWithType: EntityRenderer.capi
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.capi
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: capi
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: A reference to the client api
+  example: []
+  syntax:
+    content: public ICoreClientAPI capi
+    return:
+      type: Vintagestory.API.Client.ICoreClientAPI
+    content.vb: Public capi As ICoreClientAPI
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.#ctor(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Client.ICoreClientAPI)
+  commentId: M:Vintagestory.API.Common.Entities.EntityRenderer.#ctor(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Client.ICoreClientAPI)
+  id: '#ctor(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Client.ICoreClientAPI)'
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: EntityRenderer(Entity, ICoreClientAPI)
+  nameWithType: EntityRenderer.EntityRenderer(Entity, ICoreClientAPI)
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.EntityRenderer(Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Client.ICoreClientAPI)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 24
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Creates a new entity renderer instance
+  example: []
+  syntax:
+    content: public EntityRenderer(Entity entity, ICoreClientAPI api)
+    parameters:
+    - id: entity
+      type: Vintagestory.API.Common.Entities.Entity
+      description: ''
+    - id: api
+      type: Vintagestory.API.Client.ICoreClientAPI
+      description: ''
+    content.vb: Public Sub New(entity As Entity, api As ICoreClientAPI)
+  overload: Vintagestory.API.Common.Entities.EntityRenderer.#ctor*
+  nameWithType.vb: EntityRenderer.New(Entity, ICoreClientAPI)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityRenderer.New(Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Client.ICoreClientAPI)
+  name.vb: New(Entity, ICoreClientAPI)
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.OnEntityLoaded
+  commentId: M:Vintagestory.API.Common.Entities.EntityRenderer.OnEntityLoaded
+  id: OnEntityLoaded
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: OnEntityLoaded()
+  nameWithType: EntityRenderer.OnEntityLoaded()
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.OnEntityLoaded()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnEntityLoaded
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 33
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Called when the entity is now fully either spawned or fully loaded
+  example: []
+  syntax:
+    content: public virtual void OnEntityLoaded()
+    content.vb: Public Overridable Sub OnEntityLoaded()
+  overload: Vintagestory.API.Common.Entities.EntityRenderer.OnEntityLoaded*
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaque(System.Single,System.Boolean)
+  commentId: M:Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaque(System.Single,System.Boolean)
+  id: DoRender3DOpaque(System.Single,System.Boolean)
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: DoRender3DOpaque(float, bool)
+  nameWithType: EntityRenderer.DoRender3DOpaque(float, bool)
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaque(float, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DoRender3DOpaque
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 44
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Draw call with no shader initialized
+  example: []
+  syntax:
+    content: public virtual void DoRender3DOpaque(float dt, bool isShadowPass)
+    parameters:
+    - id: dt
+      type: System.Single
+      description: ''
+    - id: isShadowPass
+      type: System.Boolean
+      description: ''
+    content.vb: Public Overridable Sub DoRender3DOpaque(dt As Single, isShadowPass As Boolean)
+  overload: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaque*
+  nameWithType.vb: EntityRenderer.DoRender3DOpaque(Single, Boolean)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaque(Single, Boolean)
+  name.vb: DoRender3DOpaque(Single, Boolean)
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaqueBatched(System.Single,System.Boolean)
+  commentId: M:Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaqueBatched(System.Single,System.Boolean)
+  id: DoRender3DOpaqueBatched(System.Single,System.Boolean)
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: DoRender3DOpaqueBatched(float, bool)
+  nameWithType: EntityRenderer.DoRender3DOpaqueBatched(float, bool)
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaqueBatched(float, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DoRender3DOpaqueBatched
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 52
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: >-
+    Draw call with the Entityanimated shader loaded and initialized with the correct color/fog/sunlight/texture values
+
+    If shadows are enabled, then this method is called again with shadowmap shader intialized
+  example: []
+  syntax:
+    content: public virtual void DoRender3DOpaqueBatched(float dt, bool isShadowPass)
+    parameters:
+    - id: dt
+      type: System.Single
+      description: ''
+    - id: isShadowPass
+      type: System.Boolean
+      description: ''
+    content.vb: Public Overridable Sub DoRender3DOpaqueBatched(dt As Single, isShadowPass As Boolean)
+  overload: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaqueBatched*
+  nameWithType.vb: EntityRenderer.DoRender3DOpaqueBatched(Single, Boolean)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaqueBatched(Single, Boolean)
+  name.vb: DoRender3DOpaqueBatched(Single, Boolean)
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DAfterOIT(System.Single,System.Boolean)
+  commentId: M:Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DAfterOIT(System.Single,System.Boolean)
+  id: DoRender3DAfterOIT(System.Single,System.Boolean)
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: DoRender3DAfterOIT(float, bool)
+  nameWithType: EntityRenderer.DoRender3DAfterOIT(float, bool)
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DAfterOIT(float, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DoRender3DAfterOIT
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 55
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual void DoRender3DAfterOIT(float dt, bool isShadowPass)
+    parameters:
+    - id: dt
+      type: System.Single
+    - id: isShadowPass
+      type: System.Boolean
+    content.vb: Public Overridable Sub DoRender3DAfterOIT(dt As Single, isShadowPass As Boolean)
+  overload: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DAfterOIT*
+  nameWithType.vb: EntityRenderer.DoRender3DAfterOIT(Single, Boolean)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DAfterOIT(Single, Boolean)
+  name.vb: DoRender3DAfterOIT(Single, Boolean)
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.DoRender2D(System.Single)
+  commentId: M:Vintagestory.API.Common.Entities.EntityRenderer.DoRender2D(System.Single)
+  id: DoRender2D(System.Single)
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: DoRender2D(float)
+  nameWithType: EntityRenderer.DoRender2D(float)
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.DoRender2D(float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DoRender2D
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 61
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Ortho mode draw call for 2d gui stuff, like name tags. Gui shader initialized already.
+  example: []
+  syntax:
+    content: public virtual void DoRender2D(float dt)
+    parameters:
+    - id: dt
+      type: System.Single
+      description: ''
+    content.vb: Public Overridable Sub DoRender2D(dt As Single)
+  overload: Vintagestory.API.Common.Entities.EntityRenderer.DoRender2D*
+  nameWithType.vb: EntityRenderer.DoRender2D(Single)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityRenderer.DoRender2D(Single)
+  name.vb: DoRender2D(Single)
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.RenderToGui(System.Single,System.Double,System.Double,System.Double,System.Single,System.Single)
+  commentId: M:Vintagestory.API.Common.Entities.EntityRenderer.RenderToGui(System.Single,System.Double,System.Double,System.Double,System.Single,System.Single)
+  id: RenderToGui(System.Single,System.Double,System.Double,System.Double,System.Single,System.Single)
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: RenderToGui(float, double, double, double, float, float)
+  nameWithType: EntityRenderer.RenderToGui(float, double, double, double, float, float)
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.RenderToGui(float, double, double, double, float, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RenderToGui
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 72
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Called before gui rendering starts. Drawing of the whole model into a gui dialog. Gui shader initialized already.
+  example: []
+  syntax:
+    content: public virtual void RenderToGui(float dt, double posX, double posY, double posZ, float yawDelta, float size)
+    parameters:
+    - id: dt
+      type: System.Single
+      description: ''
+    - id: posX
+      type: System.Double
+      description: ''
+    - id: posY
+      type: System.Double
+      description: ''
+    - id: posZ
+      type: System.Double
+      description: ''
+    - id: yawDelta
+      type: System.Single
+      description: ''
+    - id: size
+      type: System.Single
+      description: ''
+    content.vb: Public Overridable Sub RenderToGui(dt As Single, posX As Double, posY As Double, posZ As Double, yawDelta As Single, size As Single)
+  overload: Vintagestory.API.Common.Entities.EntityRenderer.RenderToGui*
+  nameWithType.vb: EntityRenderer.RenderToGui(Single, Double, Double, Double, Single, Single)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityRenderer.RenderToGui(Single, Double, Double, Double, Single, Single)
+  name.vb: RenderToGui(Single, Double, Double, Double, Single, Single)
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.BeforeRender(System.Single)
+  commentId: M:Vintagestory.API.Common.Entities.EntityRenderer.BeforeRender(System.Single)
+  id: BeforeRender(System.Single)
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: BeforeRender(float)
+  nameWithType: EntityRenderer.BeforeRender(float)
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.BeforeRender(float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BeforeRender
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 80
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Called before in-world rendering starts
+  example: []
+  syntax:
+    content: public virtual void BeforeRender(float dt)
+    parameters:
+    - id: dt
+      type: System.Single
+      description: ''
+    content.vb: Public Overridable Sub BeforeRender(dt As Single)
+  overload: Vintagestory.API.Common.Entities.EntityRenderer.BeforeRender*
+  nameWithType.vb: EntityRenderer.BeforeRender(Single)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityRenderer.BeforeRender(Single)
+  name.vb: BeforeRender(Single)
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.Dispose
+  commentId: M:Vintagestory.API.Common.Entities.EntityRenderer.Dispose
+  id: Dispose
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: EntityRenderer.Dispose()
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.Dispose()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Dispose
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 90
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Should free up all the resources
+  example: []
+  syntax:
+    content: public abstract void Dispose()
+    content.vb: Public MustOverride Sub Dispose()
+  overload: Vintagestory.API.Common.Entities.EntityRenderer.Dispose*
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOIT(System.Single)
+  commentId: M:Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOIT(System.Single)
+  id: DoRender3DOIT(System.Single)
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: DoRender3DOIT(float)
+  nameWithType: EntityRenderer.DoRender3DOIT(float)
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOIT(float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DoRender3DOIT
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 97
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Render call for the transparent pass
+  example: []
+  syntax:
+    content: public virtual void DoRender3DOIT(float dt)
+    parameters:
+    - id: dt
+      type: System.Single
+      description: ''
+    content.vb: Public Overridable Sub DoRender3DOIT(dt As Single)
+  overload: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOIT*
+  nameWithType.vb: EntityRenderer.DoRender3DOIT(Single)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOIT(Single)
+  name.vb: DoRender3DOIT(Single)
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOITBatched(System.Single)
+  commentId: M:Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOITBatched(System.Single)
+  id: DoRender3DOITBatched(System.Single)
+  parent: Vintagestory.API.Common.Entities.EntityRenderer
+  langs:
+  - csharp
+  - vb
+  name: DoRender3DOITBatched(float)
+  nameWithType: EntityRenderer.DoRender3DOITBatched(float)
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOITBatched(float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityRenderer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DoRender3DOITBatched
+    path: Common/Entity/EntityRenderer.cs
+    startLine: 106
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Batched render call for the transparent pass
+  example: []
+  syntax:
+    content: public virtual void DoRender3DOITBatched(float dt)
+    parameters:
+    - id: dt
+      type: System.Single
+      description: ''
+    content.vb: Public Overridable Sub DoRender3DOITBatched(dt As Single)
+  overload: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOITBatched*
+  nameWithType.vb: EntityRenderer.DoRender3DOITBatched(Single)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOITBatched(Single)
+  name.vb: DoRender3DOITBatched(Single)
+references:
+- uid: Vintagestory.API.Common.Entities
+  commentId: N:Vintagestory.API.Common.Entities
+  href: Vintagestory.html
+  name: Vintagestory.API.Common.Entities
+  nameWithType: Vintagestory.API.Common.Entities
+  fullName: Vintagestory.API.Common.Entities
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.Entities.Entity
+  commentId: T:Vintagestory.API.Common.Entities.Entity
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Vintagestory.API.Common.Entities.Entity
+- uid: Vintagestory.API.Client.ICoreClientAPI
+  commentId: T:Vintagestory.API.Client.ICoreClientAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ICoreClientAPI.html
+  name: ICoreClientAPI
+  nameWithType: ICoreClientAPI
+  fullName: Vintagestory.API.Client.ICoreClientAPI
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.#ctor*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityRenderer.#ctor
+  href: Vintagestory.API.Common.Entities.EntityRenderer.html#Vintagestory_API_Common_Entities_EntityRenderer__ctor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Client_ICoreClientAPI_
+  name: EntityRenderer
+  nameWithType: EntityRenderer.EntityRenderer
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.EntityRenderer
+  nameWithType.vb: EntityRenderer.New
+  fullName.vb: Vintagestory.API.Common.Entities.EntityRenderer.New
+  name.vb: New
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.OnEntityLoaded*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityRenderer.OnEntityLoaded
+  href: Vintagestory.API.Common.Entities.EntityRenderer.html#Vintagestory_API_Common_Entities_EntityRenderer_OnEntityLoaded
+  name: OnEntityLoaded
+  nameWithType: EntityRenderer.OnEntityLoaded
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.OnEntityLoaded
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaque*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaque
+  href: Vintagestory.API.Common.Entities.EntityRenderer.html#Vintagestory_API_Common_Entities_EntityRenderer_DoRender3DOpaque_System_Single_System_Boolean_
+  name: DoRender3DOpaque
+  nameWithType: EntityRenderer.DoRender3DOpaque
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaque
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaqueBatched*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaqueBatched
+  href: Vintagestory.API.Common.Entities.EntityRenderer.html#Vintagestory_API_Common_Entities_EntityRenderer_DoRender3DOpaqueBatched_System_Single_System_Boolean_
+  name: DoRender3DOpaqueBatched
+  nameWithType: EntityRenderer.DoRender3DOpaqueBatched
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOpaqueBatched
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DAfterOIT*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DAfterOIT
+  href: Vintagestory.API.Common.Entities.EntityRenderer.html#Vintagestory_API_Common_Entities_EntityRenderer_DoRender3DAfterOIT_System_Single_System_Boolean_
+  name: DoRender3DAfterOIT
+  nameWithType: EntityRenderer.DoRender3DAfterOIT
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DAfterOIT
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.DoRender2D*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityRenderer.DoRender2D
+  href: Vintagestory.API.Common.Entities.EntityRenderer.html#Vintagestory_API_Common_Entities_EntityRenderer_DoRender2D_System_Single_
+  name: DoRender2D
+  nameWithType: EntityRenderer.DoRender2D
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.DoRender2D
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.RenderToGui*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityRenderer.RenderToGui
+  href: Vintagestory.API.Common.Entities.EntityRenderer.html#Vintagestory_API_Common_Entities_EntityRenderer_RenderToGui_System_Single_System_Double_System_Double_System_Double_System_Single_System_Single_
+  name: RenderToGui
+  nameWithType: EntityRenderer.RenderToGui
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.RenderToGui
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.BeforeRender*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityRenderer.BeforeRender
+  href: Vintagestory.API.Common.Entities.EntityRenderer.html#Vintagestory_API_Common_Entities_EntityRenderer_BeforeRender_System_Single_
+  name: BeforeRender
+  nameWithType: EntityRenderer.BeforeRender
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.BeforeRender
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.Dispose*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityRenderer.Dispose
+  href: Vintagestory.API.Common.Entities.EntityRenderer.html#Vintagestory_API_Common_Entities_EntityRenderer_Dispose
+  name: Dispose
+  nameWithType: EntityRenderer.Dispose
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.Dispose
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOIT*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOIT
+  href: Vintagestory.API.Common.Entities.EntityRenderer.html#Vintagestory_API_Common_Entities_EntityRenderer_DoRender3DOIT_System_Single_
+  name: DoRender3DOIT
+  nameWithType: EntityRenderer.DoRender3DOIT
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOIT
+- uid: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOITBatched*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOITBatched
+  href: Vintagestory.API.Common.Entities.EntityRenderer.html#Vintagestory_API_Common_Entities_EntityRenderer_DoRender3DOITBatched_System_Single_
+  name: DoRender3DOITBatched
+  nameWithType: EntityRenderer.DoRender3DOITBatched
+  fullName: Vintagestory.API.Common.Entities.EntityRenderer.DoRender3DOITBatched

@@ -307,8 +307,9 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="pos"></param>
         /// <param name="index3d"></param>
-        void BreakAllDecorFast(IWorldAccessor world, BlockPos pos, int index3d);
-
+        /// <param name="callOnBrokenAsDecor">When set to true it will call block.OnBrokenAsDecor(...) which is used to drop the decors of that block</param>
+        void BreakAllDecorFast(IWorldAccessor world, BlockPos pos, int index3d, bool callOnBrokenAsDecor = true);
+        
         /// <summary>
         /// 
         /// </summary>

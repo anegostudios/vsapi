@@ -1,0 +1,649 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Datastructures.ArrayAttribute`1
+  commentId: T:Vintagestory.API.Datastructures.ArrayAttribute`1
+  id: ArrayAttribute`1
+  parent: Vintagestory.API.Datastructures
+  children:
+  - Vintagestory.API.Datastructures.ArrayAttribute`1.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  - Vintagestory.API.Datastructures.ArrayAttribute`1.GetHashCode
+  - Vintagestory.API.Datastructures.ArrayAttribute`1.GetValue
+  - Vintagestory.API.Datastructures.ArrayAttribute`1.ToJsonToken
+  - Vintagestory.API.Datastructures.ArrayAttribute`1.ToString
+  - Vintagestory.API.Datastructures.ArrayAttribute`1.value
+  langs:
+  - csharp
+  - vb
+  name: ArrayAttribute<T>
+  nameWithType: ArrayAttribute<T>
+  fullName: Vintagestory.API.Datastructures.ArrayAttribute<T>
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/Other/ArrayAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ArrayAttribute
+    path: Datastructures/AttributeTree/Other/ArrayAttribute.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public abstract class ArrayAttribute<T>
+    typeParameters:
+    - id: T
+    content.vb: Public MustInherit Class ArrayAttribute(Of T)
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Vintagestory.API.Datastructures.BoolArrayAttribute
+  - Vintagestory.API.Datastructures.ByteArrayAttribute
+  - Vintagestory.API.Datastructures.DoubleArrayAttribute
+  - Vintagestory.API.Datastructures.FloatArrayAttribute
+  - Vintagestory.API.Datastructures.IntArrayAttribute
+  - Vintagestory.API.Datastructures.LongArrayAttribute
+  - Vintagestory.API.Datastructures.StringArrayAttribute
+  - Vintagestory.API.Datastructures.TreeArrayAttribute
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  nameWithType.vb: ArrayAttribute(Of T)
+  fullName.vb: Vintagestory.API.Datastructures.ArrayAttribute(Of T)
+  name.vb: ArrayAttribute(Of T)
+- uid: Vintagestory.API.Datastructures.ArrayAttribute`1.value
+  commentId: F:Vintagestory.API.Datastructures.ArrayAttribute`1.value
+  id: value
+  parent: Vintagestory.API.Datastructures.ArrayAttribute`1
+  langs:
+  - csharp
+  - vb
+  name: value
+  nameWithType: ArrayAttribute<T>.value
+  fullName: Vintagestory.API.Datastructures.ArrayAttribute<T>.value
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/Other/ArrayAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: value
+    path: Datastructures/AttributeTree/Other/ArrayAttribute.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public T[] value
+    return:
+      type: '{T}[]'
+    content.vb: Public value As T()
+  nameWithType.vb: ArrayAttribute(Of T).value
+  fullName.vb: Vintagestory.API.Datastructures.ArrayAttribute(Of T).value
+- uid: Vintagestory.API.Datastructures.ArrayAttribute`1.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  commentId: M:Vintagestory.API.Datastructures.ArrayAttribute`1.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  id: Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  parent: Vintagestory.API.Datastructures.ArrayAttribute`1
+  langs:
+  - csharp
+  - vb
+  name: Equals(IWorldAccessor, IAttribute)
+  nameWithType: ArrayAttribute<T>.Equals(IWorldAccessor, IAttribute)
+  fullName: Vintagestory.API.Datastructures.ArrayAttribute<T>.Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Datastructures.IAttribute)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/Other/ArrayAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Equals
+    path: Datastructures/AttributeTree/Other/ArrayAttribute.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public virtual bool Equals(IWorldAccessor worldForResolve, IAttribute attr)
+    parameters:
+    - id: worldForResolve
+      type: Vintagestory.API.Common.IWorldAccessor
+    - id: attr
+      type: Vintagestory.API.Datastructures.IAttribute
+    return:
+      type: System.Boolean
+    content.vb: Public Overridable Function Equals(worldForResolve As IWorldAccessor, attr As IAttribute) As Boolean
+  overload: Vintagestory.API.Datastructures.ArrayAttribute`1.Equals*
+  nameWithType.vb: ArrayAttribute(Of T).Equals(IWorldAccessor, IAttribute)
+  fullName.vb: Vintagestory.API.Datastructures.ArrayAttribute(Of T).Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Datastructures.IAttribute)
+- uid: Vintagestory.API.Datastructures.ArrayAttribute`1.GetValue
+  commentId: M:Vintagestory.API.Datastructures.ArrayAttribute`1.GetValue
+  id: GetValue
+  parent: Vintagestory.API.Datastructures.ArrayAttribute`1
+  langs:
+  - csharp
+  - vb
+  name: GetValue()
+  nameWithType: ArrayAttribute<T>.GetValue()
+  fullName: Vintagestory.API.Datastructures.ArrayAttribute<T>.GetValue()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/Other/ArrayAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetValue
+    path: Datastructures/AttributeTree/Other/ArrayAttribute.cs
+    startLine: 34
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public virtual object GetValue()
+    return:
+      type: System.Object
+    content.vb: Public Overridable Function GetValue() As Object
+  overload: Vintagestory.API.Datastructures.ArrayAttribute`1.GetValue*
+  nameWithType.vb: ArrayAttribute(Of T).GetValue()
+  fullName.vb: Vintagestory.API.Datastructures.ArrayAttribute(Of T).GetValue()
+- uid: Vintagestory.API.Datastructures.ArrayAttribute`1.ToJsonToken
+  commentId: M:Vintagestory.API.Datastructures.ArrayAttribute`1.ToJsonToken
+  id: ToJsonToken
+  parent: Vintagestory.API.Datastructures.ArrayAttribute`1
+  langs:
+  - csharp
+  - vb
+  name: ToJsonToken()
+  nameWithType: ArrayAttribute<T>.ToJsonToken()
+  fullName: Vintagestory.API.Datastructures.ArrayAttribute<T>.ToJsonToken()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/Other/ArrayAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToJsonToken
+    path: Datastructures/AttributeTree/Other/ArrayAttribute.cs
+    startLine: 40
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public virtual string ToJsonToken()
+    return:
+      type: System.String
+    content.vb: Public Overridable Function ToJsonToken() As String
+  overload: Vintagestory.API.Datastructures.ArrayAttribute`1.ToJsonToken*
+  nameWithType.vb: ArrayAttribute(Of T).ToJsonToken()
+  fullName.vb: Vintagestory.API.Datastructures.ArrayAttribute(Of T).ToJsonToken()
+- uid: Vintagestory.API.Datastructures.ArrayAttribute`1.ToString
+  commentId: M:Vintagestory.API.Datastructures.ArrayAttribute`1.ToString
+  id: ToString
+  parent: Vintagestory.API.Datastructures.ArrayAttribute`1
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: ArrayAttribute<T>.ToString()
+  fullName: Vintagestory.API.Datastructures.ArrayAttribute<T>.ToString()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/Other/ArrayAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToString
+    path: Datastructures/AttributeTree/Other/ArrayAttribute.cs
+    startLine: 62
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Returns a string that represents the current object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the current object.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Vintagestory.API.Datastructures.ArrayAttribute`1.ToString*
+  nameWithType.vb: ArrayAttribute(Of T).ToString()
+  fullName.vb: Vintagestory.API.Datastructures.ArrayAttribute(Of T).ToString()
+- uid: Vintagestory.API.Datastructures.ArrayAttribute`1.GetHashCode
+  commentId: M:Vintagestory.API.Datastructures.ArrayAttribute`1.GetHashCode
+  id: GetHashCode
+  parent: Vintagestory.API.Datastructures.ArrayAttribute`1
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: ArrayAttribute<T>.GetHashCode()
+  fullName: Vintagestory.API.Datastructures.ArrayAttribute<T>.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/Other/ArrayAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetHashCode
+    path: Datastructures/AttributeTree/Other/ArrayAttribute.cs
+    startLine: 80
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Serves as the default hash function.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: A hash code for the current object.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.Object.GetHashCode
+  overload: Vintagestory.API.Datastructures.ArrayAttribute`1.GetHashCode*
+  nameWithType.vb: ArrayAttribute(Of T).GetHashCode()
+  fullName.vb: Vintagestory.API.Datastructures.ArrayAttribute(Of T).GetHashCode()
+references:
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: '{T}[]'
+  isExternal: true
+  name: T[]
+  nameWithType: T[]
+  fullName: T[]
+  nameWithType.vb: T()
+  fullName.vb: T()
+  name.vb: T()
+  spec.csharp:
+  - name: T
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: T
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.ArrayAttribute`1.Equals*
+  commentId: Overload:Vintagestory.API.Datastructures.ArrayAttribute`1.Equals
+  href: Vintagestory.API.Datastructures.ArrayAttribute-1.html#Vintagestory_API_Datastructures_ArrayAttribute_1_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_
+  name: Equals
+  nameWithType: ArrayAttribute<T>.Equals
+  fullName: Vintagestory.API.Datastructures.ArrayAttribute<T>.Equals
+  nameWithType.vb: ArrayAttribute(Of T).Equals
+  fullName.vb: Vintagestory.API.Datastructures.ArrayAttribute(Of T).Equals
+- uid: Vintagestory.API.Common.IWorldAccessor
+  commentId: T:Vintagestory.API.Common.IWorldAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldAccessor.html
+  name: IWorldAccessor
+  nameWithType: IWorldAccessor
+  fullName: Vintagestory.API.Common.IWorldAccessor
+- uid: Vintagestory.API.Datastructures.IAttribute
+  commentId: T:Vintagestory.API.Datastructures.IAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.IAttribute.html
+  name: IAttribute
+  nameWithType: IAttribute
+  fullName: Vintagestory.API.Datastructures.IAttribute
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Datastructures.ArrayAttribute`1.GetValue*
+  commentId: Overload:Vintagestory.API.Datastructures.ArrayAttribute`1.GetValue
+  href: Vintagestory.API.Datastructures.ArrayAttribute-1.html#Vintagestory_API_Datastructures_ArrayAttribute_1_GetValue
+  name: GetValue
+  nameWithType: ArrayAttribute<T>.GetValue
+  fullName: Vintagestory.API.Datastructures.ArrayAttribute<T>.GetValue
+  nameWithType.vb: ArrayAttribute(Of T).GetValue
+  fullName.vb: Vintagestory.API.Datastructures.ArrayAttribute(Of T).GetValue
+- uid: Vintagestory.API.Datastructures.ArrayAttribute`1.ToJsonToken*
+  commentId: Overload:Vintagestory.API.Datastructures.ArrayAttribute`1.ToJsonToken
+  href: Vintagestory.API.Datastructures.ArrayAttribute-1.html#Vintagestory_API_Datastructures_ArrayAttribute_1_ToJsonToken
+  name: ToJsonToken
+  nameWithType: ArrayAttribute<T>.ToJsonToken
+  fullName: Vintagestory.API.Datastructures.ArrayAttribute<T>.ToJsonToken
+  nameWithType.vb: ArrayAttribute(Of T).ToJsonToken
+  fullName.vb: Vintagestory.API.Datastructures.ArrayAttribute(Of T).ToJsonToken
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.ArrayAttribute`1.ToString*
+  commentId: Overload:Vintagestory.API.Datastructures.ArrayAttribute`1.ToString
+  href: Vintagestory.API.Datastructures.ArrayAttribute-1.html#Vintagestory_API_Datastructures_ArrayAttribute_1_ToString
+  name: ToString
+  nameWithType: ArrayAttribute<T>.ToString
+  fullName: Vintagestory.API.Datastructures.ArrayAttribute<T>.ToString
+  nameWithType.vb: ArrayAttribute(Of T).ToString
+  fullName.vb: Vintagestory.API.Datastructures.ArrayAttribute(Of T).ToString
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.ArrayAttribute`1.GetHashCode*
+  commentId: Overload:Vintagestory.API.Datastructures.ArrayAttribute`1.GetHashCode
+  href: Vintagestory.API.Datastructures.ArrayAttribute-1.html#Vintagestory_API_Datastructures_ArrayAttribute_1_GetHashCode
+  name: GetHashCode
+  nameWithType: ArrayAttribute<T>.GetHashCode
+  fullName: Vintagestory.API.Datastructures.ArrayAttribute<T>.GetHashCode
+  nameWithType.vb: ArrayAttribute(Of T).GetHashCode
+  fullName.vb: Vintagestory.API.Datastructures.ArrayAttribute(Of T).GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

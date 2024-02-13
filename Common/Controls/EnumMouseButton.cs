@@ -8,18 +8,13 @@ namespace Vintagestory.API.Common
         Left = 0,
         Middle = 1,
         Right = 2,
-        Button1 = 3,
-        Button2 = 4,
-        Button3 = 5,
-        Button4 = 6,
-        Button5 = 7,
-        Button6 = 8,
-        Button7 = 9,
-        Button8 = 10,
-        Button9 = 11,
-        LastButton = 12,
+        Button4 = 3,
+        Button5 = 4,
+        Button6 = 5,
+        Button7 = 6,
+        Button8 = 7,
 
-        Wheel = 13,
+        Wheel = 13,   // Used to signal to event handlers, but not actually a button: activated when the wheel is scrolled
 
         None = 255,
     }
@@ -37,7 +32,7 @@ namespace Vintagestory.API.Common
                 MouseButton.Button5 => EnumMouseButton.Button5,
                 MouseButton.Button6 => EnumMouseButton.Button6,
                 MouseButton.Button7 => EnumMouseButton.Button7,
-                MouseButton.Button8 => EnumMouseButton.Button8,
+                MouseButton.Last => EnumMouseButton.Button8,
                 _ => throw new ArgumentOutOfRangeException(nameof(button), button, null)
             };
         }

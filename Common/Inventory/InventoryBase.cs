@@ -810,7 +810,7 @@ namespace Vintagestory.API.Common
 
         protected virtual float GetDefaultTransitionSpeedMul(EnumTransitionType transType)
         {
-            return (transType == EnumTransitionType.Perish || transType == EnumTransitionType.Cure || transType == EnumTransitionType.Dry || transType == EnumTransitionType.Melt) ? 1 : 0;
+            return (transType == EnumTransitionType.Perish || transType == EnumTransitionType.Cure || transType == EnumTransitionType.Dry || transType == EnumTransitionType.Melt || transType == EnumTransitionType.Harden) ? 1 : 0;
         }
 
         /// <summary>

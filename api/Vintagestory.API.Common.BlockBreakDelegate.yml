@@ -1,0 +1,137 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.BlockBreakDelegate
+  commentId: T:Vintagestory.API.Common.BlockBreakDelegate
+  id: BlockBreakDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: BlockBreakDelegate
+  nameWithType: BlockBreakDelegate
+  fullName: Vintagestory.API.Common.BlockBreakDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/Delegates.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BlockBreakDelegate
+    path: Common/API/Delegates.cs
+    startLine: 141
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public delegate void BlockBreakDelegate(IServerPlayer byPlayer, BlockSelection blockSel, ref float dropQuantityMultiplier, ref EnumHandling handling)
+    parameters:
+    - id: byPlayer
+      type: Vintagestory.API.Server.IServerPlayer
+    - id: blockSel
+      type: Vintagestory.API.Common.BlockSelection
+    - id: dropQuantityMultiplier
+      type: System.Single
+    - id: handling
+      type: Vintagestory.API.Common.EnumHandling
+    content.vb: Public Delegate Sub BlockBreakDelegate(byPlayer As IServerPlayer, blockSel As BlockSelection, dropQuantityMultiplier As Single, handling As EnumHandling)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Server.IServerPlayer
+  commentId: T:Vintagestory.API.Server.IServerPlayer
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IServerPlayer.html
+  name: IServerPlayer
+  nameWithType: IServerPlayer
+  fullName: Vintagestory.API.Server.IServerPlayer
+- uid: Vintagestory.API.Common.BlockSelection
+  commentId: T:Vintagestory.API.Common.BlockSelection
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockSelection.html
+  name: BlockSelection
+  nameWithType: BlockSelection
+  fullName: Vintagestory.API.Common.BlockSelection
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.EnumHandling
+  commentId: T:Vintagestory.API.Common.EnumHandling
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumHandling.html
+  name: EnumHandling
+  nameWithType: EnumHandling
+  fullName: Vintagestory.API.Common.EnumHandling
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

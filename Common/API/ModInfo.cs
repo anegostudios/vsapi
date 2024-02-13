@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using Vintagestory.API.Config;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -125,6 +126,8 @@ namespace Vintagestory.API.Common
         public IReadOnlyList<ModDependency> Dependencies { get; set; }
             = new List<ModDependency>().AsReadOnly();
 
+        /// <summary> Not exposed as a JsonProperty, only coded mods can set this to true </summary>
+        public bool CoreMod = false;
 
         // Parameterless constructor is needed for JSON conversion.
         public ModInfo() {  }
@@ -220,7 +223,7 @@ namespace Vintagestory.API.Common
 
         public int CompareTo(ModInfo other)
         {
-            int r = ModID.CompareTo(other.ModID);
+            int r = ModID.CompareOrdinal(other.ModID);
             if (r != 0) return r;
 
             if (GameVersion.IsNewerVersionThan(Version, other.Version)) return -1;

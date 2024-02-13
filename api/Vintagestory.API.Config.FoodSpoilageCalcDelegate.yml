@@ -1,0 +1,130 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Config.FoodSpoilageCalcDelegate
+  commentId: T:Vintagestory.API.Config.FoodSpoilageCalcDelegate
+  id: FoodSpoilageCalcDelegate
+  parent: Vintagestory.API.Config
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: FoodSpoilageCalcDelegate
+  nameWithType: FoodSpoilageCalcDelegate
+  fullName: Vintagestory.API.Config.FoodSpoilageCalcDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Config/GlobalConstants.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FoodSpoilageCalcDelegate
+    path: Config/GlobalConstants.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  syntax:
+    content: public delegate float FoodSpoilageCalcDelegate(float spoilState, ItemStack stack, EntityAgent byEntity)
+    parameters:
+    - id: spoilState
+      type: System.Single
+    - id: stack
+      type: Vintagestory.API.Common.ItemStack
+    - id: byEntity
+      type: Vintagestory.API.Common.EntityAgent
+    return:
+      type: System.Single
+    content.vb: Public Delegate Function FoodSpoilageCalcDelegate(spoilState As Single, stack As ItemStack, byEntity As EntityAgent) As Single
+references:
+- uid: Vintagestory.API.Config
+  commentId: N:Vintagestory.API.Config
+  href: Vintagestory.html
+  name: Vintagestory.API.Config
+  nameWithType: Vintagestory.API.Config
+  fullName: Vintagestory.API.Config
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Config
+    name: Config
+    href: Vintagestory.API.Config.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Config
+    name: Config
+    href: Vintagestory.API.Config.html
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.ItemStack
+  commentId: T:Vintagestory.API.Common.ItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemStack.html
+  name: ItemStack
+  nameWithType: ItemStack
+  fullName: Vintagestory.API.Common.ItemStack
+- uid: Vintagestory.API.Common.EntityAgent
+  commentId: T:Vintagestory.API.Common.EntityAgent
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntityAgent.html
+  name: EntityAgent
+  nameWithType: EntityAgent
+  fullName: Vintagestory.API.Common.EntityAgent
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html

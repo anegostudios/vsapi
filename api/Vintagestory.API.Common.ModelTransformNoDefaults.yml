@@ -1,0 +1,728 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ModelTransformNoDefaults
+  commentId: T:Vintagestory.API.Common.ModelTransformNoDefaults
+  id: ModelTransformNoDefaults
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.ModelTransformNoDefaults.AsMatrix
+  - Vintagestory.API.Common.ModelTransformNoDefaults.Clear
+  - Vintagestory.API.Common.ModelTransformNoDefaults.Origin
+  - Vintagestory.API.Common.ModelTransformNoDefaults.Rotate
+  - Vintagestory.API.Common.ModelTransformNoDefaults.Rotation
+  - Vintagestory.API.Common.ModelTransformNoDefaults.Scale
+  - Vintagestory.API.Common.ModelTransformNoDefaults.ScaleXYZ
+  - Vintagestory.API.Common.ModelTransformNoDefaults.Translation
+  langs:
+  - csharp
+  - vb
+  name: ModelTransformNoDefaults
+  nameWithType: ModelTransformNoDefaults
+  fullName: Vintagestory.API.Common.ModelTransformNoDefaults
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ModelTransform.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ModelTransformNoDefaults
+    path: Common/Collectible/ModelTransform.cs
+    startLine: 6
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [JsonObject(MemberSerialization.OptIn)]
+
+      public class ModelTransformNoDefaults
+    content.vb: >-
+      <JsonObject(MemberSerialization.OptIn)>
+
+      Public Class ModelTransformNoDefaults
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Vintagestory.API.Common.ModelTransform
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: Newtonsoft.Json.JsonObjectAttribute
+    ctor: Newtonsoft.Json.JsonObjectAttribute.#ctor(Newtonsoft.Json.MemberSerialization)
+    arguments:
+    - type: Newtonsoft.Json.MemberSerialization
+      value: 1
+- uid: Vintagestory.API.Common.ModelTransformNoDefaults.Translation
+  commentId: F:Vintagestory.API.Common.ModelTransformNoDefaults.Translation
+  id: Translation
+  parent: Vintagestory.API.Common.ModelTransformNoDefaults
+  langs:
+  - csharp
+  - vb
+  name: Translation
+  nameWithType: ModelTransformNoDefaults.Translation
+  fullName: Vintagestory.API.Common.ModelTransformNoDefaults.Translation
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ModelTransform.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Translation
+    path: Common/Collectible/ModelTransform.cs
+    startLine: 13
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Offsetting
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public Vec3f Translation
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: >-
+      <JsonProperty>
+
+      Public Translation As Vec3f
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModelTransformNoDefaults.Rotation
+  commentId: F:Vintagestory.API.Common.ModelTransformNoDefaults.Rotation
+  id: Rotation
+  parent: Vintagestory.API.Common.ModelTransformNoDefaults
+  langs:
+  - csharp
+  - vb
+  name: Rotation
+  nameWithType: ModelTransformNoDefaults.Rotation
+  fullName: Vintagestory.API.Common.ModelTransformNoDefaults.Rotation
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ModelTransform.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Rotation
+    path: Common/Collectible/ModelTransform.cs
+    startLine: 18
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Rotation in degrees
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public Vec3f Rotation
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: >-
+      <JsonProperty>
+
+      Public Rotation As Vec3f
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModelTransformNoDefaults.Scale
+  commentId: P:Vintagestory.API.Common.ModelTransformNoDefaults.Scale
+  id: Scale
+  parent: Vintagestory.API.Common.ModelTransformNoDefaults
+  langs:
+  - csharp
+  - vb
+  name: Scale
+  nameWithType: ModelTransformNoDefaults.Scale
+  fullName: Vintagestory.API.Common.ModelTransformNoDefaults.Scale
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ModelTransform.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Scale
+    path: Common/Collectible/ModelTransform.cs
+    startLine: 22
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: To set uniform Scaling on all Axes
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float Scale { set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public WriteOnly Property Scale As Single
+  overload: Vintagestory.API.Common.ModelTransformNoDefaults.Scale*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModelTransformNoDefaults.Origin
+  commentId: F:Vintagestory.API.Common.ModelTransformNoDefaults.Origin
+  id: Origin
+  parent: Vintagestory.API.Common.ModelTransformNoDefaults
+  langs:
+  - csharp
+  - vb
+  name: Origin
+  nameWithType: ModelTransformNoDefaults.Origin
+  fullName: Vintagestory.API.Common.ModelTransformNoDefaults.Origin
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ModelTransform.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Origin
+    path: Common/Collectible/ModelTransform.cs
+    startLine: 28
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Rotation/Scaling Origin
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public Vec3f Origin
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: >-
+      <JsonProperty>
+
+      Public Origin As Vec3f
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModelTransformNoDefaults.Rotate
+  commentId: F:Vintagestory.API.Common.ModelTransformNoDefaults.Rotate
+  id: Rotate
+  parent: Vintagestory.API.Common.ModelTransformNoDefaults
+  langs:
+  - csharp
+  - vb
+  name: Rotate
+  nameWithType: ModelTransformNoDefaults.Rotate
+  fullName: Vintagestory.API.Common.ModelTransformNoDefaults.Rotate
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ModelTransform.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Rotate
+    path: Common/Collectible/ModelTransform.cs
+    startLine: 35
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    For Gui Transform: Whether to slowly spin in gui item preview 
+
+    For Ground Transform: Whether to apply a random rotation to the dropped item
+
+    No effect on other transforms
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public bool Rotate
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonProperty>
+
+      Public Rotate As Boolean
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModelTransformNoDefaults.ScaleXYZ
+  commentId: F:Vintagestory.API.Common.ModelTransformNoDefaults.ScaleXYZ
+  id: ScaleXYZ
+  parent: Vintagestory.API.Common.ModelTransformNoDefaults
+  langs:
+  - csharp
+  - vb
+  name: ScaleXYZ
+  nameWithType: ModelTransformNoDefaults.ScaleXYZ
+  fullName: Vintagestory.API.Common.ModelTransformNoDefaults.ScaleXYZ
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ModelTransform.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ScaleXYZ
+    path: Common/Collectible/ModelTransform.cs
+    startLine: 41
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Scaling per axis
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public Vec3f ScaleXYZ
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: >-
+      <JsonProperty>
+
+      Public ScaleXYZ As Vec3f
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModelTransformNoDefaults.AsMatrix
+  commentId: P:Vintagestory.API.Common.ModelTransformNoDefaults.AsMatrix
+  id: AsMatrix
+  parent: Vintagestory.API.Common.ModelTransformNoDefaults
+  langs:
+  - csharp
+  - vb
+  name: AsMatrix
+  nameWithType: ModelTransformNoDefaults.AsMatrix
+  fullName: Vintagestory.API.Common.ModelTransformNoDefaults.AsMatrix
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ModelTransform.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsMatrix
+    path: Common/Collectible/ModelTransform.cs
+    startLine: 47
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Converts the transform into a matrix.
+  example: []
+  syntax:
+    content: public float[] AsMatrix { get; }
+    parameters: []
+    return:
+      type: System.Single[]
+    content.vb: Public ReadOnly Property AsMatrix As Single()
+  overload: Vintagestory.API.Common.ModelTransformNoDefaults.AsMatrix*
+- uid: Vintagestory.API.Common.ModelTransformNoDefaults.Clear
+  commentId: M:Vintagestory.API.Common.ModelTransformNoDefaults.Clear
+  id: Clear
+  parent: Vintagestory.API.Common.ModelTransformNoDefaults
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: ModelTransformNoDefaults.Clear()
+  fullName: Vintagestory.API.Common.ModelTransformNoDefaults.Clear()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ModelTransform.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Clear
+    path: Common/Collectible/ModelTransform.cs
+    startLine: 71
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Clears the transformation values.
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: Vintagestory.API.Common.ModelTransformNoDefaults.Clear*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.MathTools.Vec3f
+  commentId: T:Vintagestory.API.MathTools.Vec3f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3f.html
+  name: Vec3f
+  nameWithType: Vec3f
+  fullName: Vintagestory.API.MathTools.Vec3f
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.ModelTransformNoDefaults.Scale*
+  commentId: Overload:Vintagestory.API.Common.ModelTransformNoDefaults.Scale
+  href: Vintagestory.API.Common.ModelTransformNoDefaults.html#Vintagestory_API_Common_ModelTransformNoDefaults_Scale
+  name: Scale
+  nameWithType: ModelTransformNoDefaults.Scale
+  fullName: Vintagestory.API.Common.ModelTransformNoDefaults.Scale
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.ModelTransformNoDefaults.AsMatrix*
+  commentId: Overload:Vintagestory.API.Common.ModelTransformNoDefaults.AsMatrix
+  href: Vintagestory.API.Common.ModelTransformNoDefaults.html#Vintagestory_API_Common_ModelTransformNoDefaults_AsMatrix
+  name: AsMatrix
+  nameWithType: ModelTransformNoDefaults.AsMatrix
+  fullName: Vintagestory.API.Common.ModelTransformNoDefaults.AsMatrix
+- uid: System.Single[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ModelTransformNoDefaults.Clear*
+  commentId: Overload:Vintagestory.API.Common.ModelTransformNoDefaults.Clear
+  href: Vintagestory.API.Common.ModelTransformNoDefaults.html#Vintagestory_API_Common_ModelTransformNoDefaults_Clear
+  name: Clear
+  nameWithType: ModelTransformNoDefaults.Clear
+  fullName: Vintagestory.API.Common.ModelTransformNoDefaults.Clear

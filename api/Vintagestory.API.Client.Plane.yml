@@ -1,0 +1,587 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.Plane
+  commentId: T:Vintagestory.API.Client.Plane
+  id: Plane
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.Plane.#ctor(System.Double,System.Double,System.Double,System.Double)
+  - Vintagestory.API.Client.Plane.AABBisOutside(Vintagestory.API.MathTools.Sphere)
+  - Vintagestory.API.Client.Plane.D
+  - Vintagestory.API.Client.Plane.distanceOfPoint(System.Double,System.Double,System.Double)
+  - Vintagestory.API.Client.Plane.normalX
+  - Vintagestory.API.Client.Plane.normalY
+  - Vintagestory.API.Client.Plane.normalZ
+  langs:
+  - csharp
+  - vb
+  name: Plane
+  nameWithType: Plane
+  fullName: Vintagestory.API.Client.Plane
+  type: Struct
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/FrustumCulling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Plane
+    path: Client/Render/FrustumCulling.cs
+    startLine: 29
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public struct Plane
+    content.vb: Public Structure Plane
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Vintagestory.API.Client.Plane.normalX
+  commentId: F:Vintagestory.API.Client.Plane.normalX
+  id: normalX
+  parent: Vintagestory.API.Client.Plane
+  langs:
+  - csharp
+  - vb
+  name: normalX
+  nameWithType: Plane.normalX
+  fullName: Vintagestory.API.Client.Plane.normalX
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/FrustumCulling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: normalX
+    path: Client/Render/FrustumCulling.cs
+    startLine: 31
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public double normalX
+    return:
+      type: System.Double
+    content.vb: Public normalX As Double
+- uid: Vintagestory.API.Client.Plane.normalY
+  commentId: F:Vintagestory.API.Client.Plane.normalY
+  id: normalY
+  parent: Vintagestory.API.Client.Plane
+  langs:
+  - csharp
+  - vb
+  name: normalY
+  nameWithType: Plane.normalY
+  fullName: Vintagestory.API.Client.Plane.normalY
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/FrustumCulling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: normalY
+    path: Client/Render/FrustumCulling.cs
+    startLine: 32
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public double normalY
+    return:
+      type: System.Double
+    content.vb: Public normalY As Double
+- uid: Vintagestory.API.Client.Plane.normalZ
+  commentId: F:Vintagestory.API.Client.Plane.normalZ
+  id: normalZ
+  parent: Vintagestory.API.Client.Plane
+  langs:
+  - csharp
+  - vb
+  name: normalZ
+  nameWithType: Plane.normalZ
+  fullName: Vintagestory.API.Client.Plane.normalZ
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/FrustumCulling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: normalZ
+    path: Client/Render/FrustumCulling.cs
+    startLine: 33
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public double normalZ
+    return:
+      type: System.Double
+    content.vb: Public normalZ As Double
+- uid: Vintagestory.API.Client.Plane.D
+  commentId: F:Vintagestory.API.Client.Plane.D
+  id: D
+  parent: Vintagestory.API.Client.Plane
+  langs:
+  - csharp
+  - vb
+  name: D
+  nameWithType: Plane.D
+  fullName: Vintagestory.API.Client.Plane.D
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/FrustumCulling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: D
+    path: Client/Render/FrustumCulling.cs
+    startLine: 34
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public double D
+    return:
+      type: System.Double
+    content.vb: Public D As Double
+- uid: Vintagestory.API.Client.Plane.#ctor(System.Double,System.Double,System.Double,System.Double)
+  commentId: M:Vintagestory.API.Client.Plane.#ctor(System.Double,System.Double,System.Double,System.Double)
+  id: '#ctor(System.Double,System.Double,System.Double,System.Double)'
+  parent: Vintagestory.API.Client.Plane
+  langs:
+  - csharp
+  - vb
+  name: Plane(double, double, double, double)
+  nameWithType: Plane.Plane(double, double, double, double)
+  fullName: Vintagestory.API.Client.Plane.Plane(double, double, double, double)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/FrustumCulling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Client/Render/FrustumCulling.cs
+    startLine: 40
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a Plane with normalised (length 1.0) normal vector
+  example: []
+  syntax:
+    content: public Plane(double x, double y, double z, double d)
+    parameters:
+    - id: x
+      type: System.Double
+    - id: y
+      type: System.Double
+    - id: z
+      type: System.Double
+    - id: d
+      type: System.Double
+    content.vb: Public Sub New(x As Double, y As Double, z As Double, d As Double)
+  overload: Vintagestory.API.Client.Plane.#ctor*
+  nameWithType.vb: Plane.New(Double, Double, Double, Double)
+  fullName.vb: Vintagestory.API.Client.Plane.New(Double, Double, Double, Double)
+  name.vb: New(Double, Double, Double, Double)
+- uid: Vintagestory.API.Client.Plane.distanceOfPoint(System.Double,System.Double,System.Double)
+  commentId: M:Vintagestory.API.Client.Plane.distanceOfPoint(System.Double,System.Double,System.Double)
+  id: distanceOfPoint(System.Double,System.Double,System.Double)
+  parent: Vintagestory.API.Client.Plane
+  langs:
+  - csharp
+  - vb
+  name: distanceOfPoint(double, double, double)
+  nameWithType: Plane.distanceOfPoint(double, double, double)
+  fullName: Vintagestory.API.Client.Plane.distanceOfPoint(double, double, double)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/FrustumCulling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: distanceOfPoint
+    path: Client/Render/FrustumCulling.cs
+    startLine: 49
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public double distanceOfPoint(double x, double y, double z)
+    parameters:
+    - id: x
+      type: System.Double
+    - id: y
+      type: System.Double
+    - id: z
+      type: System.Double
+    return:
+      type: System.Double
+    content.vb: Public Function distanceOfPoint(x As Double, y As Double, z As Double) As Double
+  overload: Vintagestory.API.Client.Plane.distanceOfPoint*
+  nameWithType.vb: Plane.distanceOfPoint(Double, Double, Double)
+  fullName.vb: Vintagestory.API.Client.Plane.distanceOfPoint(Double, Double, Double)
+  name.vb: distanceOfPoint(Double, Double, Double)
+- uid: Vintagestory.API.Client.Plane.AABBisOutside(Vintagestory.API.MathTools.Sphere)
+  commentId: M:Vintagestory.API.Client.Plane.AABBisOutside(Vintagestory.API.MathTools.Sphere)
+  id: AABBisOutside(Vintagestory.API.MathTools.Sphere)
+  parent: Vintagestory.API.Client.Plane
+  langs:
+  - csharp
+  - vb
+  name: AABBisOutside(Sphere)
+  nameWithType: Plane.AABBisOutside(Sphere)
+  fullName: Vintagestory.API.Client.Plane.AABBisOutside(Vintagestory.API.MathTools.Sphere)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/FrustumCulling.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AABBisOutside
+    path: Client/Render/FrustumCulling.cs
+    startLine: 54
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public bool AABBisOutside(Sphere sphere)
+    parameters:
+    - id: sphere
+      type: Vintagestory.API.MathTools.Sphere
+    return:
+      type: System.Boolean
+    content.vb: Public Function AABBisOutside(sphere As Sphere) As Boolean
+  overload: Vintagestory.API.Client.Plane.AABBisOutside*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.Client.Plane.#ctor*
+  commentId: Overload:Vintagestory.API.Client.Plane.#ctor
+  href: Vintagestory.API.Client.Plane.html#Vintagestory_API_Client_Plane__ctor_System_Double_System_Double_System_Double_System_Double_
+  name: Plane
+  nameWithType: Plane.Plane
+  fullName: Vintagestory.API.Client.Plane.Plane
+  nameWithType.vb: Plane.New
+  fullName.vb: Vintagestory.API.Client.Plane.New
+  name.vb: New
+- uid: Vintagestory.API.Client.Plane.distanceOfPoint*
+  commentId: Overload:Vintagestory.API.Client.Plane.distanceOfPoint
+  href: Vintagestory.API.Client.Plane.html#Vintagestory_API_Client_Plane_distanceOfPoint_System_Double_System_Double_System_Double_
+  name: distanceOfPoint
+  nameWithType: Plane.distanceOfPoint
+  fullName: Vintagestory.API.Client.Plane.distanceOfPoint
+- uid: Vintagestory.API.Client.Plane.AABBisOutside*
+  commentId: Overload:Vintagestory.API.Client.Plane.AABBisOutside
+  href: Vintagestory.API.Client.Plane.html#Vintagestory_API_Client_Plane_AABBisOutside_Vintagestory_API_MathTools_Sphere_
+  name: AABBisOutside
+  nameWithType: Plane.AABBisOutside
+  fullName: Vintagestory.API.Client.Plane.AABBisOutside
+- uid: Vintagestory.API.MathTools.Sphere
+  commentId: T:Vintagestory.API.MathTools.Sphere
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Sphere.html
+  name: Sphere
+  nameWithType: Sphere
+  fullName: Vintagestory.API.MathTools.Sphere
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html

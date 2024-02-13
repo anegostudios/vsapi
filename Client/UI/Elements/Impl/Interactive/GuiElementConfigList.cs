@@ -104,7 +104,7 @@ namespace Vintagestory.API.Client
         /// Automatically adjusts the height of the element.
         /// </summary>
         public void Autoheight() {
-            double totalHeight = 0;
+            double totalHeight = 9;
             double pad = scaled(unscaledPadding);
 
             Bounds.CalcWorldBounds();
@@ -152,7 +152,7 @@ namespace Vintagestory.API.Client
             ImageSurface surface = new ImageSurface(Format.Argb32, innerBounds.OuterWidthInt, innerBounds.OuterHeightInt);
             Context ctx = genContext(surface);
 
-            double height = 0;
+            double height = 4;
             double pad = scaled(unscaledPadding);
             bool first = true;
 

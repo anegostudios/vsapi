@@ -1,0 +1,133 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EventBusListenerDelegate
+  commentId: T:Vintagestory.API.Common.EventBusListenerDelegate
+  id: EventBusListenerDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: EventBusListenerDelegate
+  nameWithType: EventBusListenerDelegate
+  fullName: Vintagestory.API.Common.EventBusListenerDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IEventAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EventBusListenerDelegate
+    path: Common/API/IEventAPI.cs
+    startLine: 13
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: For handling events on the event bus
+  example: []
+  syntax:
+    content: public delegate void EventBusListenerDelegate(string eventName, ref EnumHandling handling, IAttribute data)
+    parameters:
+    - id: eventName
+      type: System.String
+      description: ''
+    - id: handling
+      type: Vintagestory.API.Common.EnumHandling
+      description: Set to EnumHandling.Last to stop further propagation of the event
+    - id: data
+      type: Vintagestory.API.Datastructures.IAttribute
+      description: ''
+    content.vb: Public Delegate Sub EventBusListenerDelegate(eventName As String, handling As EnumHandling, data As IAttribute)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.EnumHandling
+  commentId: T:Vintagestory.API.Common.EnumHandling
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumHandling.html
+  name: EnumHandling
+  nameWithType: EnumHandling
+  fullName: Vintagestory.API.Common.EnumHandling
+- uid: Vintagestory.API.Datastructures.IAttribute
+  commentId: T:Vintagestory.API.Datastructures.IAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.IAttribute.html
+  name: IAttribute
+  nameWithType: IAttribute
+  fullName: Vintagestory.API.Datastructures.IAttribute
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html

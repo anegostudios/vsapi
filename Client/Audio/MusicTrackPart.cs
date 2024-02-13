@@ -153,7 +153,7 @@ namespace Vintagestory.API.Client
             for (int i = 0; i < Files.Length; i++)
             {
                 AssetLocation fileLocation = Files[i];
-                if (fileLocation.Path.EndsWith("*"))
+                if (fileLocation.Path.EndsWith('*'))
                 {
                     List<AssetLocation> locations = assetManager.GetLocations("music/" + fileLocation.Path.Substring(0, fileLocation.Path.Length - 1), fileLocation.Domain);
 

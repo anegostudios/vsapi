@@ -1,0 +1,118 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.TestBlockAccessDelegate
+  commentId: T:Vintagestory.API.Common.TestBlockAccessDelegate
+  id: TestBlockAccessDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: TestBlockAccessDelegate
+  nameWithType: TestBlockAccessDelegate
+  fullName: Vintagestory.API.Common.TestBlockAccessDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IEventAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TestBlockAccessDelegate
+    path: Common/API/IEventAPI.cs
+    startLine: 73
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public delegate EnumWorldAccessResponse TestBlockAccessDelegate(IPlayer player, BlockSelection blockSel, EnumBlockAccessFlags accessType, string claimant, EnumWorldAccessResponse response)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+    - id: blockSel
+      type: Vintagestory.API.Common.BlockSelection
+    - id: accessType
+      type: Vintagestory.API.Common.EnumBlockAccessFlags
+    - id: claimant
+      type: System.String
+    - id: response
+      type: Vintagestory.API.Common.EnumWorldAccessResponse
+    return:
+      type: Vintagestory.API.Common.EnumWorldAccessResponse
+    content.vb: Public Delegate Function TestBlockAccessDelegate(player As IPlayer, blockSel As BlockSelection, accessType As EnumBlockAccessFlags, claimant As String, response As EnumWorldAccessResponse) As EnumWorldAccessResponse
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: Vintagestory.API.Common.BlockSelection
+  commentId: T:Vintagestory.API.Common.BlockSelection
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockSelection.html
+  name: BlockSelection
+  nameWithType: BlockSelection
+  fullName: Vintagestory.API.Common.BlockSelection
+- uid: Vintagestory.API.Common.EnumBlockAccessFlags
+  commentId: T:Vintagestory.API.Common.EnumBlockAccessFlags
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumBlockAccessFlags.html
+  name: EnumBlockAccessFlags
+  nameWithType: EnumBlockAccessFlags
+  fullName: Vintagestory.API.Common.EnumBlockAccessFlags
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.EnumWorldAccessResponse
+  commentId: T:Vintagestory.API.Common.EnumWorldAccessResponse
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumWorldAccessResponse.html
+  name: EnumWorldAccessResponse
+  nameWithType: EnumWorldAccessResponse
+  fullName: Vintagestory.API.Common.EnumWorldAccessResponse
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

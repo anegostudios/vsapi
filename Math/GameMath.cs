@@ -194,6 +194,18 @@ namespace Vintagestory.API.MathTools
             return (float)Math.Sqrt(a * a + b * b + c * c);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double SumOfSquares(double a, double b, double c)
+        {
+            return a * a + b * b + c * c;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Square(double a)
+        {
+            return a * a;
+        }
+
         #endregion
 
         #region Clamping
@@ -352,6 +364,23 @@ namespace Vintagestory.API.MathTools
         public static float AngleRadDistance(float start, float end)
         {
             return ((((end - start) % TWOPI) + TWOPI + PI) % TWOPI) - PI;
+        }
+
+        /// <summary>
+        /// For angles in radians, normalise to the range 0 to 2 * PI and also, if barely close to a right angle, set it to a right angle (fixes loss of precision after multiple rotation operations etc.)
+        /// </summary>
+        /// <param name="angleRad"></param>
+        /// <returns></returns>
+        public static float NormaliseAngleRad(float angleRad)
+        {
+            float epsilon = 0.0000032f;
+            float angle = GameMath.Mod(angleRad, GameMath.TWOPI);
+            if ((angle + epsilon) % GameMath.PIHALF <= epsilon * 2)    // If within epsilon of a right angle, set it to a right angle
+            {
+                int quadrant = (int)((angle + epsilon) / GameMath.PIHALF) % 4;
+                angle = quadrant * GameMath.PIHALF;
+            }
+            return angle;
         }
 
         /// <summary>

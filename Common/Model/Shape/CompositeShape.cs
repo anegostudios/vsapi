@@ -149,7 +149,7 @@ namespace Vintagestory.API.Common
         {
             List<CompositeShape> resolvedAlternates = new List<CompositeShape>();
 
-            if (Base.Path.EndsWith("*"))
+            if (Base.Path.EndsWith('*'))
             {
                 resolvedAlternates.AddRange(resolveShapeWildCards(this, assetManager, logger, true));
             }
@@ -159,7 +159,7 @@ namespace Vintagestory.API.Common
                 foreach (var alt in this.Alternates)
                 {
                     if (alt.Base == null) alt.Base = Base.Clone();
-                    if (alt.Base.Path.EndsWith("*"))
+                    if (alt.Base.Path.EndsWith('*'))
                     {
                         resolvedAlternates.AddRange(resolveShapeWildCards(alt, assetManager, logger, false));
                     }

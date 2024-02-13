@@ -64,7 +64,10 @@ namespace Vintagestory.API.Datastructures
         public T Dequeue()
         {
             Count--;
-            return array[head++ % maxSize];
+            int index = head++ % maxSize;
+            T result = array[index];
+            array[index] = default;
+            return result;
         }
 
         public void Sort()

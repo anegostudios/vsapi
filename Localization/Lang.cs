@@ -150,9 +150,16 @@ namespace Vintagestory.API.Config
         /// <returns></returns>
         public static string GetL(string langcode, string key, params object[] args)
         {
-            return AvailableLanguages[langcode].HasTranslation(key)
+            return AvailableLanguages[langcode].HasTranslation(key, false)
                 ? AvailableLanguages[langcode].Get(key, args)
                 : AvailableLanguages[DefaultLocale].Get(key, args);
+        }
+
+        public static string GetMatchingL(string langcode, string key, params object[] args)
+        {
+            return AvailableLanguages[langcode].HasTranslation(key)
+                ? AvailableLanguages[langcode].GetMatching(key, args)
+                : AvailableLanguages[DefaultLocale].GetMatching(key, args);
         }
 
         /// <summary>
@@ -163,7 +170,7 @@ namespace Vintagestory.API.Config
         /// <returns>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated value.</returns>
         public static string Get(string key, params object[] args)
         {
-            return HasTranslation(key)
+            return HasTranslation(key, false)
                 ? AvailableLanguages[CurrentLocale].Get(key, args)
                 : AvailableLanguages[DefaultLocale].Get(key, args);
         }

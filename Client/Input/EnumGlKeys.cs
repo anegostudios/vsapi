@@ -30,6 +30,9 @@ namespace Vintagestory.API.Client
                 GlKeys.KeypadDecimal => "Keypad Decimal",
                 GlKeys.KeypadEnter => "Keypad Enter",
                 GlKeys.Unknown => "Unknown",
+                GlKeys.LShift => "Shift",    // Replace the default "LShift" which is hideous and confusing (it's not what the key cap says, especially for non-English languages)
+                GlKeys.LControl => "Ctrl",    // Replace the default "LCtrl" which is hideous and confusing (it's not what the key cap says, especially for non-English languages)
+                GlKeys.LAlt => "Alt",    // Replace the default "LAlt" which is hideous and confusing (it's not what the key cap says, especially for non-English languages)
                 _ => GetKeyName(key)
             };
             ;
@@ -360,5 +363,7 @@ namespace Vintagestory.API.Client
         Slash = 128,
         BackSlash = 129,
         LastKey = 130,
+
+        // We reserve 240-248 for mouse buttons - see also KeyCombination.MouseStart
     }
 }

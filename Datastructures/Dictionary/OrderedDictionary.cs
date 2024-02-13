@@ -308,6 +308,9 @@ namespace Vintagestory.API.Datastructures
         }
 
 
+		/// <summary>
+		/// Important: these are NOT ordered.   The ordered values is obtained by .ValuesOrdered
+		/// </summary>
 		public ICollection<TValue> Values
 		{
 			get

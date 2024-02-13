@@ -1,0 +1,852 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.IClientNetworkAPI
+  commentId: T:Vintagestory.API.Client.IClientNetworkAPI
+  id: IClientNetworkAPI
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.IClientNetworkAPI.GetChannel(System.String)
+  - Vintagestory.API.Client.IClientNetworkAPI.GetChannelState(System.String)
+  - Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel(System.String)
+  - Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket(System.Byte[])
+  - Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
+  - Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Object)
+  - Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
+  - Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket``1(Vintagestory.API.MathTools.BlockPos,System.Int32,``0)
+  - Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(System.Int64,System.Int32,System.Byte[])
+  - Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(System.Int64,System.Object)
+  - Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction(System.Int32,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Common.EnumHandInteract,System.Int32,System.Boolean,Vintagestory.API.Common.EnumItemUseCancelReason)
+  - Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient(System.Object)
+  - Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady
+  langs:
+  - csharp
+  - vb
+  name: IClientNetworkAPI
+  nameWithType: IClientNetworkAPI
+  fullName: Vintagestory.API.Client.IClientNetworkAPI
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IClientNetworkAPI
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 53
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: API Features to set up a network channel for custom server&lt;-&gt;client data exchange. Client side.
+  example: []
+  syntax:
+    content: 'public interface IClientNetworkAPI : INetworkAPI'
+    content.vb: Public Interface IClientNetworkAPI Inherits INetworkAPI
+- uid: Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel(System.String)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel(System.String)
+  id: RegisterChannel(System.String)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterChannel(string)
+  nameWithType: IClientNetworkAPI.RegisterChannel(string)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterChannel
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 60
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.
+  example: []
+  syntax:
+    content: IClientNetworkChannel RegisterChannel(string channelName)
+    parameters:
+    - id: channelName
+      type: System.String
+      description: Unique channel identifier
+    return:
+      type: Vintagestory.API.Client.IClientNetworkChannel
+      description: ''
+    content.vb: Function RegisterChannel(channelName As String) As IClientNetworkChannel
+  overload: Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel*
+  nameWithType.vb: IClientNetworkAPI.RegisterChannel(String)
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel(String)
+  name.vb: RegisterChannel(String)
+- uid: Vintagestory.API.Client.IClientNetworkAPI.GetChannel(System.String)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.GetChannel(System.String)
+  id: GetChannel(System.String)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: GetChannel(string)
+  nameWithType: IClientNetworkAPI.GetChannel(string)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.GetChannel(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetChannel
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 67
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns a previoulsy registered channeled, null otherwise
+  example: []
+  syntax:
+    content: IClientNetworkChannel GetChannel(string channelName)
+    parameters:
+    - id: channelName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Client.IClientNetworkChannel
+      description: ''
+    content.vb: Function GetChannel(channelName As String) As IClientNetworkChannel
+  overload: Vintagestory.API.Client.IClientNetworkAPI.GetChannel*
+  nameWithType.vb: IClientNetworkAPI.GetChannel(String)
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.GetChannel(String)
+  name.vb: GetChannel(String)
+- uid: Vintagestory.API.Client.IClientNetworkAPI.GetChannelState(System.String)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.GetChannelState(System.String)
+  id: GetChannelState(System.String)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: GetChannelState(string)
+  nameWithType: IClientNetworkAPI.GetChannelState(string)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.GetChannelState(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetChannelState
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 74
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Check in what state a channel currently is in
+  example: []
+  syntax:
+    content: EnumChannelState GetChannelState(string channelName)
+    parameters:
+    - id: channelName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Client.EnumChannelState
+      description: ''
+    content.vb: Function GetChannelState(channelName As String) As EnumChannelState
+  overload: Vintagestory.API.Client.IClientNetworkAPI.GetChannelState*
+  nameWithType.vb: IClientNetworkAPI.GetChannelState(String)
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.GetChannelState(String)
+  name.vb: GetChannelState(String)
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
+  id: SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendBlockEntityPacket(int, int, int, int, byte[])
+  nameWithType: IClientNetworkAPI.SendBlockEntityPacket(int, int, int, int, byte[])
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(int, int, int, int, byte[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendBlockEntityPacket
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 84
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.
+  example: []
+  syntax:
+    content: void SendBlockEntityPacket(int x, int y, int z, int packetId, byte[] data = null)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: ''
+    - id: y
+      type: System.Int32
+      description: ''
+    - id: z
+      type: System.Int32
+      description: ''
+    - id: packetId
+      type: System.Int32
+      description: ''
+    - id: data
+      type: System.Byte[]
+      description: ''
+    content.vb: Sub SendBlockEntityPacket(x As Integer, y As Integer, z As Integer, packetId As Integer, data As Byte() = Nothing)
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket*
+  nameWithType.vb: IClientNetworkAPI.SendBlockEntityPacket(Integer, Integer, Integer, Integer, Byte())
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(Integer, Integer, Integer, Integer, Byte())
+  name.vb: SendBlockEntityPacket(Integer, Integer, Integer, Integer, Byte())
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
+  id: SendBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendBlockEntityPacket(BlockPos, int, byte[])
+  nameWithType: IClientNetworkAPI.SendBlockEntityPacket(BlockPos, int, byte[])
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(Vintagestory.API.MathTools.BlockPos, int, byte[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendBlockEntityPacket
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 92
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.
+  example: []
+  syntax:
+    content: void SendBlockEntityPacket(BlockPos pos, int packetId, byte[] data = null)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    - id: packetId
+      type: System.Int32
+      description: ''
+    - id: data
+      type: System.Byte[]
+      description: ''
+    content.vb: Sub SendBlockEntityPacket(pos As BlockPos, packetId As Integer, data As Byte() = Nothing)
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket*
+  nameWithType.vb: IClientNetworkAPI.SendBlockEntityPacket(BlockPos, Integer, Byte())
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(Vintagestory.API.MathTools.BlockPos, Integer, Byte())
+  name.vb: SendBlockEntityPacket(BlockPos, Integer, Byte())
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(System.Int64,System.Int32,System.Byte[])
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(System.Int64,System.Int32,System.Byte[])
+  id: SendEntityPacket(System.Int64,System.Int32,System.Byte[])
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendEntityPacket(long, int, byte[])
+  nameWithType: IClientNetworkAPI.SendEntityPacket(long, int, byte[])
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(long, int, byte[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendEntityPacket
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 100
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sends a entity interaction packet to the server. For quick an easy entity network communication without setting up a channel first.
+  example: []
+  syntax:
+    content: void SendEntityPacket(long entityid, int packetId, byte[] data = null)
+    parameters:
+    - id: entityid
+      type: System.Int64
+      description: ''
+    - id: packetId
+      type: System.Int32
+      description: ''
+    - id: data
+      type: System.Byte[]
+      description: ''
+    content.vb: Sub SendEntityPacket(entityid As Long, packetId As Integer, data As Byte() = Nothing)
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket*
+  nameWithType.vb: IClientNetworkAPI.SendEntityPacket(Long, Integer, Byte())
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(Long, Integer, Byte())
+  name.vb: SendEntityPacket(Long, Integer, Byte())
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Object)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Object)
+  id: SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Object)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendBlockEntityPacket(int, int, int, object)
+  nameWithType: IClientNetworkAPI.SendBlockEntityPacket(int, int, int, object)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(int, int, int, object)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendBlockEntityPacket
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 110
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.
+  example: []
+  syntax:
+    content: void SendBlockEntityPacket(int x, int y, int z, object internalPacket)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: ''
+    - id: y
+      type: System.Int32
+      description: ''
+    - id: z
+      type: System.Int32
+      description: ''
+    - id: internalPacket
+      type: System.Object
+      description: ''
+    content.vb: Sub SendBlockEntityPacket(x As Integer, y As Integer, z As Integer, internalPacket As Object)
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket*
+  nameWithType.vb: IClientNetworkAPI.SendBlockEntityPacket(Integer, Integer, Integer, Object)
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(Integer, Integer, Integer, Object)
+  name.vb: SendBlockEntityPacket(Integer, Integer, Integer, Object)
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(System.Int64,System.Object)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(System.Int64,System.Object)
+  id: SendEntityPacket(System.Int64,System.Object)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendEntityPacket(long, object)
+  nameWithType: IClientNetworkAPI.SendEntityPacket(long, object)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(long, object)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendEntityPacket
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 118
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sends a entity interaction packet to the server. For quick an easy entity network communication without setting up a channel first.
+  example: []
+  syntax:
+    content: void SendEntityPacket(long entityid, object internalPacket)
+    parameters:
+    - id: entityid
+      type: System.Int64
+      description: ''
+    - id: internalPacket
+      type: System.Object
+      description: ''
+    content.vb: Sub SendEntityPacket(entityid As Long, internalPacket As Object)
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket*
+  nameWithType.vb: IClientNetworkAPI.SendEntityPacket(Long, Object)
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(Long, Object)
+  name.vb: SendEntityPacket(Long, Object)
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket(System.Byte[])
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket(System.Byte[])
+  id: SendArbitraryPacket(System.Byte[])
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendArbitraryPacket(byte[])
+  nameWithType: IClientNetworkAPI.SendArbitraryPacket(byte[])
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket(byte[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendArbitraryPacket
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 125
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sends given packet data to the server. This let's you mess with the raw network communication and fiddle with internal engine packets if you know the protocol. For normal network communication you probably want to register your own network channel.
+  example: []
+  syntax:
+    content: void SendArbitraryPacket(byte[] data)
+    parameters:
+    - id: data
+      type: System.Byte[]
+      description: ''
+    content.vb: Sub SendArbitraryPacket(data As Byte())
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket*
+  nameWithType.vb: IClientNetworkAPI.SendArbitraryPacket(Byte())
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket(Byte())
+  name.vb: SendArbitraryPacket(Byte())
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient(System.Object)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient(System.Object)
+  id: SendPacketClient(System.Object)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendPacketClient(object)
+  nameWithType: IClientNetworkAPI.SendPacketClient(object)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient(object)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendPacketClient
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 132
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sends given packet to server. For use with inventory supplied network packets only, since the packet format is not exposed to the api
+  example: []
+  syntax:
+    content: void SendPacketClient(object packetClient)
+    parameters:
+    - id: packetClient
+      type: System.Object
+      description: The network packet to send.
+    content.vb: Sub SendPacketClient(packetClient As Object)
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient*
+  nameWithType.vb: IClientNetworkAPI.SendPacketClient(Object)
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient(Object)
+  name.vb: SendPacketClient(Object)
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction(System.Int32,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Common.EnumHandInteract,System.Int32,System.Boolean,Vintagestory.API.Common.EnumItemUseCancelReason)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction(System.Int32,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Common.EnumHandInteract,System.Int32,System.Boolean,Vintagestory.API.Common.EnumItemUseCancelReason)
+  id: SendHandInteraction(System.Int32,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Common.EnumHandInteract,System.Int32,System.Boolean,Vintagestory.API.Common.EnumItemUseCancelReason)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendHandInteraction(int, BlockSelection, EntitySelection, EnumHandInteract, int, bool, EnumItemUseCancelReason)
+  nameWithType: IClientNetworkAPI.SendHandInteraction(int, BlockSelection, EntitySelection, EnumHandInteract, int, bool, EnumItemUseCancelReason)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction(int, Vintagestory.API.Common.BlockSelection, Vintagestory.API.Common.EntitySelection, Vintagestory.API.Common.EnumHandInteract, int, bool, Vintagestory.API.Common.EnumItemUseCancelReason)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendHandInteraction
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 144
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sends the current hand interaction.
+  example: []
+  syntax:
+    content: void SendHandInteraction(int mouseButton, BlockSelection blockSelection, EntitySelection entitySelection, EnumHandInteract beforeUseType, int state, bool firstEvent, EnumItemUseCancelReason cancelReason)
+    parameters:
+    - id: mouseButton
+      type: System.Int32
+      description: the current mouse button press
+    - id: blockSelection
+      type: Vintagestory.API.Common.BlockSelection
+      description: the currently selected Block (if there is one)
+    - id: entitySelection
+      type: Vintagestory.API.Common.EntitySelection
+      description: the currently selected Entity (if there is one)
+    - id: beforeUseType
+      type: Vintagestory.API.Common.EnumHandInteract
+      description: ''
+    - id: state
+      type: System.Int32
+      description: The state of the hand.
+    - id: firstEvent
+      type: System.Boolean
+      description: Is it the first of this events for this block? (by default the client calls the interaction every second while the player holds down the right mouse button)
+    - id: cancelReason
+      type: Vintagestory.API.Common.EnumItemUseCancelReason
+      description: The reason we cancelled the use of an item (if there is  one)
+    content.vb: Sub SendHandInteraction(mouseButton As Integer, blockSelection As BlockSelection, entitySelection As EntitySelection, beforeUseType As EnumHandInteract, state As Integer, firstEvent As Boolean, cancelReason As EnumItemUseCancelReason)
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction*
+  nameWithType.vb: IClientNetworkAPI.SendHandInteraction(Integer, BlockSelection, EntitySelection, EnumHandInteract, Integer, Boolean, EnumItemUseCancelReason)
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction(Integer, Vintagestory.API.Common.BlockSelection, Vintagestory.API.Common.EntitySelection, Vintagestory.API.Common.EnumHandInteract, Integer, Boolean, Vintagestory.API.Common.EnumItemUseCancelReason)
+  name.vb: SendHandInteraction(Integer, BlockSelection, EntitySelection, EnumHandInteract, Integer, Boolean, EnumItemUseCancelReason)
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady
+  id: SendPlayerNowReady
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendPlayerNowReady()
+  nameWithType: IClientNetworkAPI.SendPlayerNowReady()
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendPlayerNowReady
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 150
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: If any mod denies the client event IsPlayerReady, then it has to call this method once to indicate that the player is now ready to play (which switches the server side client state from Connected to Playing)
+  example: []
+  syntax:
+    content: void SendPlayerNowReady()
+    content.vb: Sub SendPlayerNowReady()
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady*
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket``1(Vintagestory.API.MathTools.BlockPos,System.Int32,``0)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket``1(Vintagestory.API.MathTools.BlockPos,System.Int32,``0)
+  id: SendBlockEntityPacket``1(Vintagestory.API.MathTools.BlockPos,System.Int32,``0)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendBlockEntityPacket<T>(BlockPos, int, T)
+  nameWithType: IClientNetworkAPI.SendBlockEntityPacket<T>(BlockPos, int, T)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket<T>(Vintagestory.API.MathTools.BlockPos, int, T)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendBlockEntityPacket
+    path: Client/API/IClientNetworkAPI.cs
+    startLine: 161
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first. Uses Protobuf.net to serialize your data
+  example: []
+  syntax:
+    content: void SendBlockEntityPacket<T>(BlockPos pos, int packetId, T data = default)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    - id: packetId
+      type: System.Int32
+      description: ''
+    - id: data
+      type: '{T}'
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Sub SendBlockEntityPacket(Of T)(pos As BlockPos, packetId As Integer, data As T = Nothing)
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket*
+  nameWithType.vb: IClientNetworkAPI.SendBlockEntityPacket(Of T)(BlockPos, Integer, T)
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(Of T)(Vintagestory.API.MathTools.BlockPos, Integer, T)
+  name.vb: SendBlockEntityPacket(Of T)(BlockPos, Integer, T)
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_RegisterChannel_System_String_
+  name: RegisterChannel
+  nameWithType: IClientNetworkAPI.RegisterChannel
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Client.IClientNetworkChannel
+  commentId: T:Vintagestory.API.Client.IClientNetworkChannel
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IClientNetworkChannel.html
+  name: IClientNetworkChannel
+  nameWithType: IClientNetworkChannel
+  fullName: Vintagestory.API.Client.IClientNetworkChannel
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.IClientNetworkAPI.GetChannel*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.GetChannel
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_GetChannel_System_String_
+  name: GetChannel
+  nameWithType: IClientNetworkAPI.GetChannel
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.GetChannel
+- uid: Vintagestory.API.Client.IClientNetworkAPI.GetChannelState*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.GetChannelState
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_GetChannelState_System_String_
+  name: GetChannelState
+  nameWithType: IClientNetworkAPI.GetChannelState
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.GetChannelState
+- uid: Vintagestory.API.Client.EnumChannelState
+  commentId: T:Vintagestory.API.Client.EnumChannelState
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumChannelState.html
+  name: EnumChannelState
+  nameWithType: EnumChannelState
+  fullName: Vintagestory.API.Client.EnumChannelState
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket_System_Int32_System_Int32_System_Int32_System_Int32_System_Byte___
+  name: SendBlockEntityPacket
+  nameWithType: IClientNetworkAPI.SendBlockEntityPacket
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_SendEntityPacket_System_Int64_System_Int32_System_Byte___
+  name: SendEntityPacket
+  nameWithType: IClientNetworkAPI.SendEntityPacket
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_SendArbitraryPacket_System_Byte___
+  name: SendArbitraryPacket
+  nameWithType: IClientNetworkAPI.SendArbitraryPacket
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_SendPacketClient_System_Object_
+  name: SendPacketClient
+  nameWithType: IClientNetworkAPI.SendPacketClient
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_SendHandInteraction_System_Int32_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandInteract_System_Int32_System_Boolean_Vintagestory_API_Common_EnumItemUseCancelReason_
+  name: SendHandInteraction
+  nameWithType: IClientNetworkAPI.SendHandInteraction
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction
+- uid: Vintagestory.API.Common.BlockSelection
+  commentId: T:Vintagestory.API.Common.BlockSelection
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockSelection.html
+  name: BlockSelection
+  nameWithType: BlockSelection
+  fullName: Vintagestory.API.Common.BlockSelection
+- uid: Vintagestory.API.Common.EntitySelection
+  commentId: T:Vintagestory.API.Common.EntitySelection
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntitySelection.html
+  name: EntitySelection
+  nameWithType: EntitySelection
+  fullName: Vintagestory.API.Common.EntitySelection
+- uid: Vintagestory.API.Common.EnumHandInteract
+  commentId: T:Vintagestory.API.Common.EnumHandInteract
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumHandInteract.html
+  name: EnumHandInteract
+  nameWithType: EnumHandInteract
+  fullName: Vintagestory.API.Common.EnumHandInteract
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.EnumItemUseCancelReason
+  commentId: T:Vintagestory.API.Common.EnumItemUseCancelReason
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumItemUseCancelReason.html
+  name: EnumItemUseCancelReason
+  nameWithType: EnumItemUseCancelReason
+  fullName: Vintagestory.API.Common.EnumItemUseCancelReason
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_SendPlayerNowReady
+  name: SendPlayerNowReady
+  nameWithType: IClientNetworkAPI.SendPlayerNowReady
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

@@ -1,0 +1,1227 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.ItemstackComponentBase
+  commentId: T:Vintagestory.API.Client.ItemstackComponentBase
+  id: ItemstackComponentBase
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.ItemstackComponentBase.#ctor(Vintagestory.API.Client.ICoreClientAPI)
+  - Vintagestory.API.Client.ItemstackComponentBase.Dispose
+  - Vintagestory.API.Client.ItemstackComponentBase.OnRequireInfoText(Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Client.ItemstackComponentBase.RenderItemstackTooltip(Vintagestory.API.Common.ItemSlot,System.Double,System.Double,System.Single)
+  - Vintagestory.API.Client.ItemstackComponentBase.capi
+  - Vintagestory.API.Client.ItemstackComponentBase.dummyInv
+  - Vintagestory.API.Client.ItemstackComponentBase.offX
+  - Vintagestory.API.Client.ItemstackComponentBase.offY
+  - Vintagestory.API.Client.ItemstackComponentBase.parentBounds
+  - Vintagestory.API.Client.ItemstackComponentBase.renderedTooltipSlot
+  - Vintagestory.API.Client.ItemstackComponentBase.stackInfo
+  - Vintagestory.API.Client.ItemstackComponentBase.stackInfoBounds
+  langs:
+  - csharp
+  - vb
+  name: ItemstackComponentBase
+  nameWithType: ItemstackComponentBase
+  fullName: Vintagestory.API.Client.ItemstackComponentBase
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ItemstackComponentBase
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Draws an itemstack
+  example: []
+  syntax:
+    content: 'public class ItemstackComponentBase : RichTextComponentBase'
+    content.vb: Public Class ItemstackComponentBase Inherits RichTextComponentBase
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Client.RichTextComponentBase
+  derivedClasses:
+  - Vintagestory.API.Client.ItemstackTextComponent
+  - Vintagestory.API.Client.SlideshowGridRecipeTextComponent
+  - Vintagestory.API.Client.SlideshowItemstackTextComponent
+  inheritedMembers:
+  - Vintagestory.API.Client.RichTextComponentBase.MouseOverCursor
+  - Vintagestory.API.Client.RichTextComponentBase.api
+  - Vintagestory.API.Client.RichTextComponentBase.BoundsPerLine
+  - Vintagestory.API.Client.RichTextComponentBase.UnscaledMarginTop
+  - Vintagestory.API.Client.RichTextComponentBase.PaddingRight
+  - Vintagestory.API.Client.RichTextComponentBase.PaddingLeft
+  - Vintagestory.API.Client.RichTextComponentBase.Float
+  - Vintagestory.API.Client.RichTextComponentBase.RenderColor
+  - Vintagestory.API.Client.RichTextComponentBase.VerticalAlign
+  - Vintagestory.API.Client.RichTextComponentBase.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+  - Vintagestory.API.Client.RichTextComponentBase.RenderInteractiveElements(System.Single,System.Double,System.Double,System.Double)
+  - Vintagestory.API.Client.RichTextComponentBase.CalcBounds(Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double,System.Double@)
+  - Vintagestory.API.Client.RichTextComponentBase.GetCurrentFlowPathSection(Vintagestory.API.Client.TextFlowPath[],System.Double)
+  - Vintagestory.API.Client.RichTextComponentBase.OnMouseMove(Vintagestory.API.Client.MouseEvent)
+  - Vintagestory.API.Client.RichTextComponentBase.OnMouseDown(Vintagestory.API.Client.MouseEvent)
+  - Vintagestory.API.Client.RichTextComponentBase.OnMouseUp(Vintagestory.API.Client.MouseEvent)
+  - Vintagestory.API.Client.RichTextComponentBase.UseMouseOverCursor(Vintagestory.API.Client.ElementBounds)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Client.ItemstackComponentBase.renderedTooltipSlot
+  commentId: F:Vintagestory.API.Client.ItemstackComponentBase.renderedTooltipSlot
+  id: renderedTooltipSlot
+  parent: Vintagestory.API.Client.ItemstackComponentBase
+  langs:
+  - csharp
+  - vb
+  name: renderedTooltipSlot
+  nameWithType: ItemstackComponentBase.renderedTooltipSlot
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.renderedTooltipSlot
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: renderedTooltipSlot
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: protected ItemSlot renderedTooltipSlot
+    return:
+      type: Vintagestory.API.Common.ItemSlot
+    content.vb: Protected renderedTooltipSlot As ItemSlot
+- uid: Vintagestory.API.Client.ItemstackComponentBase.stackInfo
+  commentId: F:Vintagestory.API.Client.ItemstackComponentBase.stackInfo
+  id: stackInfo
+  parent: Vintagestory.API.Client.ItemstackComponentBase
+  langs:
+  - csharp
+  - vb
+  name: stackInfo
+  nameWithType: ItemstackComponentBase.stackInfo
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.stackInfo
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: stackInfo
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: protected GuiElementItemstackInfo stackInfo
+    return:
+      type: Vintagestory.API.Client.GuiElementItemstackInfo
+    content.vb: Protected stackInfo As GuiElementItemstackInfo
+- uid: Vintagestory.API.Client.ItemstackComponentBase.capi
+  commentId: F:Vintagestory.API.Client.ItemstackComponentBase.capi
+  id: capi
+  parent: Vintagestory.API.Client.ItemstackComponentBase
+  langs:
+  - csharp
+  - vb
+  name: capi
+  nameWithType: ItemstackComponentBase.capi
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.capi
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: capi
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: protected ICoreClientAPI capi
+    return:
+      type: Vintagestory.API.Client.ICoreClientAPI
+    content.vb: Protected capi As ICoreClientAPI
+- uid: Vintagestory.API.Client.ItemstackComponentBase.stackInfoBounds
+  commentId: F:Vintagestory.API.Client.ItemstackComponentBase.stackInfoBounds
+  id: stackInfoBounds
+  parent: Vintagestory.API.Client.ItemstackComponentBase
+  langs:
+  - csharp
+  - vb
+  name: stackInfoBounds
+  nameWithType: ItemstackComponentBase.stackInfoBounds
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.stackInfoBounds
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: stackInfoBounds
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 21
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: protected ElementBounds stackInfoBounds
+    return:
+      type: Vintagestory.API.Client.ElementBounds
+    content.vb: Protected stackInfoBounds As ElementBounds
+- uid: Vintagestory.API.Client.ItemstackComponentBase.parentBounds
+  commentId: F:Vintagestory.API.Client.ItemstackComponentBase.parentBounds
+  id: parentBounds
+  parent: Vintagestory.API.Client.ItemstackComponentBase
+  langs:
+  - csharp
+  - vb
+  name: parentBounds
+  nameWithType: ItemstackComponentBase.parentBounds
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.parentBounds
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: parentBounds
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 23
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: protected ElementBounds parentBounds
+    return:
+      type: Vintagestory.API.Client.ElementBounds
+    content.vb: Protected parentBounds As ElementBounds
+- uid: Vintagestory.API.Client.ItemstackComponentBase.offY
+  commentId: F:Vintagestory.API.Client.ItemstackComponentBase.offY
+  id: offY
+  parent: Vintagestory.API.Client.ItemstackComponentBase
+  langs:
+  - csharp
+  - vb
+  name: offY
+  nameWithType: ItemstackComponentBase.offY
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.offY
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: offY
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 25
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public double offY
+    return:
+      type: System.Double
+    content.vb: Public offY As Double
+- uid: Vintagestory.API.Client.ItemstackComponentBase.offX
+  commentId: F:Vintagestory.API.Client.ItemstackComponentBase.offX
+  id: offX
+  parent: Vintagestory.API.Client.ItemstackComponentBase
+  langs:
+  - csharp
+  - vb
+  name: offX
+  nameWithType: ItemstackComponentBase.offX
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.offX
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: offX
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 26
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public double offX
+    return:
+      type: System.Double
+    content.vb: Public offX As Double
+- uid: Vintagestory.API.Client.ItemstackComponentBase.dummyInv
+  commentId: F:Vintagestory.API.Client.ItemstackComponentBase.dummyInv
+  id: dummyInv
+  parent: Vintagestory.API.Client.ItemstackComponentBase
+  langs:
+  - csharp
+  - vb
+  name: dummyInv
+  nameWithType: ItemstackComponentBase.dummyInv
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.dummyInv
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: dummyInv
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 27
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: protected DummyInventory dummyInv
+    return:
+      type: Vintagestory.API.Common.DummyInventory
+    content.vb: Protected dummyInv As DummyInventory
+- uid: Vintagestory.API.Client.ItemstackComponentBase.#ctor(Vintagestory.API.Client.ICoreClientAPI)
+  commentId: M:Vintagestory.API.Client.ItemstackComponentBase.#ctor(Vintagestory.API.Client.ICoreClientAPI)
+  id: '#ctor(Vintagestory.API.Client.ICoreClientAPI)'
+  parent: Vintagestory.API.Client.ItemstackComponentBase
+  langs:
+  - csharp
+  - vb
+  name: ItemstackComponentBase(ICoreClientAPI)
+  nameWithType: ItemstackComponentBase.ItemstackComponentBase(ICoreClientAPI)
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.ItemstackComponentBase(Vintagestory.API.Client.ICoreClientAPI)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 31
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public ItemstackComponentBase(ICoreClientAPI capi)
+    parameters:
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+    content.vb: Public Sub New(capi As ICoreClientAPI)
+  overload: Vintagestory.API.Client.ItemstackComponentBase.#ctor*
+  nameWithType.vb: ItemstackComponentBase.New(ICoreClientAPI)
+  fullName.vb: Vintagestory.API.Client.ItemstackComponentBase.New(Vintagestory.API.Client.ICoreClientAPI)
+  name.vb: New(ICoreClientAPI)
+- uid: Vintagestory.API.Client.ItemstackComponentBase.OnRequireInfoText(Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Client.ItemstackComponentBase.OnRequireInfoText(Vintagestory.API.Common.ItemSlot)
+  id: OnRequireInfoText(Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Client.ItemstackComponentBase
+  langs:
+  - csharp
+  - vb
+  name: OnRequireInfoText(ItemSlot)
+  nameWithType: ItemstackComponentBase.OnRequireInfoText(ItemSlot)
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.OnRequireInfoText(Vintagestory.API.Common.ItemSlot)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnRequireInfoText
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 59
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: protected virtual string OnRequireInfoText(ItemSlot slot)
+    parameters:
+    - id: slot
+      type: Vintagestory.API.Common.ItemSlot
+    return:
+      type: System.String
+    content.vb: Protected Overridable Function OnRequireInfoText(slot As ItemSlot) As String
+  overload: Vintagestory.API.Client.ItemstackComponentBase.OnRequireInfoText*
+- uid: Vintagestory.API.Client.ItemstackComponentBase.RenderItemstackTooltip(Vintagestory.API.Common.ItemSlot,System.Double,System.Double,System.Single)
+  commentId: M:Vintagestory.API.Client.ItemstackComponentBase.RenderItemstackTooltip(Vintagestory.API.Common.ItemSlot,System.Double,System.Double,System.Single)
+  id: RenderItemstackTooltip(Vintagestory.API.Common.ItemSlot,System.Double,System.Double,System.Single)
+  parent: Vintagestory.API.Client.ItemstackComponentBase
+  langs:
+  - csharp
+  - vb
+  name: RenderItemstackTooltip(ItemSlot, double, double, float)
+  nameWithType: ItemstackComponentBase.RenderItemstackTooltip(ItemSlot, double, double, float)
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.RenderItemstackTooltip(Vintagestory.API.Common.ItemSlot, double, double, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RenderItemstackTooltip
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 64
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public void RenderItemstackTooltip(ItemSlot slot, double renderX, double renderY, float dt)
+    parameters:
+    - id: slot
+      type: Vintagestory.API.Common.ItemSlot
+    - id: renderX
+      type: System.Double
+    - id: renderY
+      type: System.Double
+    - id: dt
+      type: System.Single
+    content.vb: Public Sub RenderItemstackTooltip(slot As ItemSlot, renderX As Double, renderY As Double, dt As Single)
+  overload: Vintagestory.API.Client.ItemstackComponentBase.RenderItemstackTooltip*
+  nameWithType.vb: ItemstackComponentBase.RenderItemstackTooltip(ItemSlot, Double, Double, Single)
+  fullName.vb: Vintagestory.API.Client.ItemstackComponentBase.RenderItemstackTooltip(Vintagestory.API.Common.ItemSlot, Double, Double, Single)
+  name.vb: RenderItemstackTooltip(ItemSlot, Double, Double, Single)
+- uid: Vintagestory.API.Client.ItemstackComponentBase.Dispose
+  commentId: M:Vintagestory.API.Client.ItemstackComponentBase.Dispose
+  id: Dispose
+  parent: Vintagestory.API.Client.ItemstackComponentBase
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: ItemstackComponentBase.Dispose()
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.Dispose()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Dispose
+    path: Client/UI/Elements/Impl/Interactive/Text/Richtext/ItemstackComponentBase.cs
+    startLine: 112
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  example: []
+  syntax:
+    content: public override void Dispose()
+    content.vb: Public Overrides Sub Dispose()
+  overridden: Vintagestory.API.Client.RichTextComponentBase.Dispose
+  overload: Vintagestory.API.Client.ItemstackComponentBase.Dispose*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Client.RichTextComponentBase
+  commentId: T:Vintagestory.API.Client.RichTextComponentBase
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.RichTextComponentBase.html
+  name: RichTextComponentBase
+  nameWithType: RichTextComponentBase
+  fullName: Vintagestory.API.Client.RichTextComponentBase
+- uid: Vintagestory.API.Client.RichTextComponentBase.MouseOverCursor
+  commentId: P:Vintagestory.API.Client.RichTextComponentBase.MouseOverCursor
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_MouseOverCursor
+  name: MouseOverCursor
+  nameWithType: RichTextComponentBase.MouseOverCursor
+  fullName: Vintagestory.API.Client.RichTextComponentBase.MouseOverCursor
+- uid: Vintagestory.API.Client.RichTextComponentBase.api
+  commentId: F:Vintagestory.API.Client.RichTextComponentBase.api
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_api
+  name: api
+  nameWithType: RichTextComponentBase.api
+  fullName: Vintagestory.API.Client.RichTextComponentBase.api
+- uid: Vintagestory.API.Client.RichTextComponentBase.BoundsPerLine
+  commentId: P:Vintagestory.API.Client.RichTextComponentBase.BoundsPerLine
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_BoundsPerLine
+  name: BoundsPerLine
+  nameWithType: RichTextComponentBase.BoundsPerLine
+  fullName: Vintagestory.API.Client.RichTextComponentBase.BoundsPerLine
+- uid: Vintagestory.API.Client.RichTextComponentBase.UnscaledMarginTop
+  commentId: P:Vintagestory.API.Client.RichTextComponentBase.UnscaledMarginTop
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_UnscaledMarginTop
+  name: UnscaledMarginTop
+  nameWithType: RichTextComponentBase.UnscaledMarginTop
+  fullName: Vintagestory.API.Client.RichTextComponentBase.UnscaledMarginTop
+- uid: Vintagestory.API.Client.RichTextComponentBase.PaddingRight
+  commentId: P:Vintagestory.API.Client.RichTextComponentBase.PaddingRight
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_PaddingRight
+  name: PaddingRight
+  nameWithType: RichTextComponentBase.PaddingRight
+  fullName: Vintagestory.API.Client.RichTextComponentBase.PaddingRight
+- uid: Vintagestory.API.Client.RichTextComponentBase.PaddingLeft
+  commentId: P:Vintagestory.API.Client.RichTextComponentBase.PaddingLeft
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_PaddingLeft
+  name: PaddingLeft
+  nameWithType: RichTextComponentBase.PaddingLeft
+  fullName: Vintagestory.API.Client.RichTextComponentBase.PaddingLeft
+- uid: Vintagestory.API.Client.RichTextComponentBase.Float
+  commentId: P:Vintagestory.API.Client.RichTextComponentBase.Float
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_Float
+  name: Float
+  nameWithType: RichTextComponentBase.Float
+  fullName: Vintagestory.API.Client.RichTextComponentBase.Float
+- uid: Vintagestory.API.Client.RichTextComponentBase.RenderColor
+  commentId: P:Vintagestory.API.Client.RichTextComponentBase.RenderColor
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_RenderColor
+  name: RenderColor
+  nameWithType: RichTextComponentBase.RenderColor
+  fullName: Vintagestory.API.Client.RichTextComponentBase.RenderColor
+- uid: Vintagestory.API.Client.RichTextComponentBase.VerticalAlign
+  commentId: P:Vintagestory.API.Client.RichTextComponentBase.VerticalAlign
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_VerticalAlign
+  name: VerticalAlign
+  nameWithType: RichTextComponentBase.VerticalAlign
+  fullName: Vintagestory.API.Client.RichTextComponentBase.VerticalAlign
+- uid: Vintagestory.API.Client.RichTextComponentBase.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+  commentId: M:Vintagestory.API.Client.RichTextComponentBase.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_ComposeElements_Cairo_Context_Cairo_ImageSurface_
+  name: ComposeElements(Context, ImageSurface)
+  nameWithType: RichTextComponentBase.ComposeElements(Context, ImageSurface)
+  fullName: Vintagestory.API.Client.RichTextComponentBase.ComposeElements(Cairo.Context, Cairo.ImageSurface)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+    name: ComposeElements
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_ComposeElements_Cairo_Context_Cairo_ImageSurface_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Cairo.ImageSurface
+    name: ImageSurface
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.ComposeElements(Cairo.Context,Cairo.ImageSurface)
+    name: ComposeElements
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_ComposeElements_Cairo_Context_Cairo_ImageSurface_
+  - name: (
+  - uid: Cairo.Context
+    name: Context
+  - name: ','
+  - name: " "
+  - uid: Cairo.ImageSurface
+    name: ImageSurface
+  - name: )
+- uid: Vintagestory.API.Client.RichTextComponentBase.RenderInteractiveElements(System.Single,System.Double,System.Double,System.Double)
+  commentId: M:Vintagestory.API.Client.RichTextComponentBase.RenderInteractiveElements(System.Single,System.Double,System.Double,System.Double)
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  isExternal: true
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_RenderInteractiveElements_System_Single_System_Double_System_Double_System_Double_
+  name: RenderInteractiveElements(float, double, double, double)
+  nameWithType: RichTextComponentBase.RenderInteractiveElements(float, double, double, double)
+  fullName: Vintagestory.API.Client.RichTextComponentBase.RenderInteractiveElements(float, double, double, double)
+  nameWithType.vb: RichTextComponentBase.RenderInteractiveElements(Single, Double, Double, Double)
+  fullName.vb: Vintagestory.API.Client.RichTextComponentBase.RenderInteractiveElements(Single, Double, Double, Double)
+  name.vb: RenderInteractiveElements(Single, Double, Double, Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.RenderInteractiveElements(System.Single,System.Double,System.Double,System.Double)
+    name: RenderInteractiveElements
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_RenderInteractiveElements_System_Single_System_Double_System_Double_System_Double_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.RenderInteractiveElements(System.Single,System.Double,System.Double,System.Double)
+    name: RenderInteractiveElements
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_RenderInteractiveElements_System_Single_System_Double_System_Double_System_Double_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Vintagestory.API.Client.RichTextComponentBase.CalcBounds(Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double,System.Double@)
+  commentId: M:Vintagestory.API.Client.RichTextComponentBase.CalcBounds(Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double,System.Double@)
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  isExternal: true
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_CalcBounds_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_System_Double__
+  name: CalcBounds(TextFlowPath[], double, double, double, out double)
+  nameWithType: RichTextComponentBase.CalcBounds(TextFlowPath[], double, double, double, out double)
+  fullName: Vintagestory.API.Client.RichTextComponentBase.CalcBounds(Vintagestory.API.Client.TextFlowPath[], double, double, double, out double)
+  nameWithType.vb: RichTextComponentBase.CalcBounds(TextFlowPath(), Double, Double, Double, Double)
+  fullName.vb: Vintagestory.API.Client.RichTextComponentBase.CalcBounds(Vintagestory.API.Client.TextFlowPath(), Double, Double, Double, Double)
+  name.vb: CalcBounds(TextFlowPath(), Double, Double, Double, Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.CalcBounds(Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double,System.Double@)
+    name: CalcBounds
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_CalcBounds_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_System_Double__
+  - name: (
+  - uid: Vintagestory.API.Client.TextFlowPath
+    name: TextFlowPath
+    href: Vintagestory.API.Client.TextFlowPath.html
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.CalcBounds(Vintagestory.API.Client.TextFlowPath[],System.Double,System.Double,System.Double,System.Double@)
+    name: CalcBounds
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_CalcBounds_Vintagestory_API_Client_TextFlowPath___System_Double_System_Double_System_Double_System_Double__
+  - name: (
+  - uid: Vintagestory.API.Client.TextFlowPath
+    name: TextFlowPath
+    href: Vintagestory.API.Client.TextFlowPath.html
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Vintagestory.API.Client.RichTextComponentBase.GetCurrentFlowPathSection(Vintagestory.API.Client.TextFlowPath[],System.Double)
+  commentId: M:Vintagestory.API.Client.RichTextComponentBase.GetCurrentFlowPathSection(Vintagestory.API.Client.TextFlowPath[],System.Double)
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  isExternal: true
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_GetCurrentFlowPathSection_Vintagestory_API_Client_TextFlowPath___System_Double_
+  name: GetCurrentFlowPathSection(TextFlowPath[], double)
+  nameWithType: RichTextComponentBase.GetCurrentFlowPathSection(TextFlowPath[], double)
+  fullName: Vintagestory.API.Client.RichTextComponentBase.GetCurrentFlowPathSection(Vintagestory.API.Client.TextFlowPath[], double)
+  nameWithType.vb: RichTextComponentBase.GetCurrentFlowPathSection(TextFlowPath(), Double)
+  fullName.vb: Vintagestory.API.Client.RichTextComponentBase.GetCurrentFlowPathSection(Vintagestory.API.Client.TextFlowPath(), Double)
+  name.vb: GetCurrentFlowPathSection(TextFlowPath(), Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.GetCurrentFlowPathSection(Vintagestory.API.Client.TextFlowPath[],System.Double)
+    name: GetCurrentFlowPathSection
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_GetCurrentFlowPathSection_Vintagestory_API_Client_TextFlowPath___System_Double_
+  - name: (
+  - uid: Vintagestory.API.Client.TextFlowPath
+    name: TextFlowPath
+    href: Vintagestory.API.Client.TextFlowPath.html
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.GetCurrentFlowPathSection(Vintagestory.API.Client.TextFlowPath[],System.Double)
+    name: GetCurrentFlowPathSection
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_GetCurrentFlowPathSection_Vintagestory_API_Client_TextFlowPath___System_Double_
+  - name: (
+  - uid: Vintagestory.API.Client.TextFlowPath
+    name: TextFlowPath
+    href: Vintagestory.API.Client.TextFlowPath.html
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Vintagestory.API.Client.RichTextComponentBase.OnMouseMove(Vintagestory.API.Client.MouseEvent)
+  commentId: M:Vintagestory.API.Client.RichTextComponentBase.OnMouseMove(Vintagestory.API.Client.MouseEvent)
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_OnMouseMove_Vintagestory_API_Client_MouseEvent_
+  name: OnMouseMove(MouseEvent)
+  nameWithType: RichTextComponentBase.OnMouseMove(MouseEvent)
+  fullName: Vintagestory.API.Client.RichTextComponentBase.OnMouseMove(Vintagestory.API.Client.MouseEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.OnMouseMove(Vintagestory.API.Client.MouseEvent)
+    name: OnMouseMove
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_OnMouseMove_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.OnMouseMove(Vintagestory.API.Client.MouseEvent)
+    name: OnMouseMove
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_OnMouseMove_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.RichTextComponentBase.OnMouseDown(Vintagestory.API.Client.MouseEvent)
+  commentId: M:Vintagestory.API.Client.RichTextComponentBase.OnMouseDown(Vintagestory.API.Client.MouseEvent)
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_OnMouseDown_Vintagestory_API_Client_MouseEvent_
+  name: OnMouseDown(MouseEvent)
+  nameWithType: RichTextComponentBase.OnMouseDown(MouseEvent)
+  fullName: Vintagestory.API.Client.RichTextComponentBase.OnMouseDown(Vintagestory.API.Client.MouseEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.OnMouseDown(Vintagestory.API.Client.MouseEvent)
+    name: OnMouseDown
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_OnMouseDown_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.OnMouseDown(Vintagestory.API.Client.MouseEvent)
+    name: OnMouseDown
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_OnMouseDown_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.RichTextComponentBase.OnMouseUp(Vintagestory.API.Client.MouseEvent)
+  commentId: M:Vintagestory.API.Client.RichTextComponentBase.OnMouseUp(Vintagestory.API.Client.MouseEvent)
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_OnMouseUp_Vintagestory_API_Client_MouseEvent_
+  name: OnMouseUp(MouseEvent)
+  nameWithType: RichTextComponentBase.OnMouseUp(MouseEvent)
+  fullName: Vintagestory.API.Client.RichTextComponentBase.OnMouseUp(Vintagestory.API.Client.MouseEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.OnMouseUp(Vintagestory.API.Client.MouseEvent)
+    name: OnMouseUp
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_OnMouseUp_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.OnMouseUp(Vintagestory.API.Client.MouseEvent)
+    name: OnMouseUp
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_OnMouseUp_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.RichTextComponentBase.UseMouseOverCursor(Vintagestory.API.Client.ElementBounds)
+  commentId: M:Vintagestory.API.Client.RichTextComponentBase.UseMouseOverCursor(Vintagestory.API.Client.ElementBounds)
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_UseMouseOverCursor_Vintagestory_API_Client_ElementBounds_
+  name: UseMouseOverCursor(ElementBounds)
+  nameWithType: RichTextComponentBase.UseMouseOverCursor(ElementBounds)
+  fullName: Vintagestory.API.Client.RichTextComponentBase.UseMouseOverCursor(Vintagestory.API.Client.ElementBounds)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.UseMouseOverCursor(Vintagestory.API.Client.ElementBounds)
+    name: UseMouseOverCursor
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_UseMouseOverCursor_Vintagestory_API_Client_ElementBounds_
+  - name: (
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.UseMouseOverCursor(Vintagestory.API.Client.ElementBounds)
+    name: UseMouseOverCursor
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_UseMouseOverCursor_Vintagestory_API_Client_ElementBounds_
+  - name: (
+  - uid: Vintagestory.API.Client.ElementBounds
+    name: ElementBounds
+    href: Vintagestory.API.Client.ElementBounds.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.ItemSlot
+  commentId: T:Vintagestory.API.Common.ItemSlot
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemSlot.html
+  name: ItemSlot
+  nameWithType: ItemSlot
+  fullName: Vintagestory.API.Common.ItemSlot
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Client.GuiElementItemstackInfo
+  commentId: T:Vintagestory.API.Client.GuiElementItemstackInfo
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.GuiElementItemstackInfo.html
+  name: GuiElementItemstackInfo
+  nameWithType: GuiElementItemstackInfo
+  fullName: Vintagestory.API.Client.GuiElementItemstackInfo
+- uid: Vintagestory.API.Client.ICoreClientAPI
+  commentId: T:Vintagestory.API.Client.ICoreClientAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ICoreClientAPI.html
+  name: ICoreClientAPI
+  nameWithType: ICoreClientAPI
+  fullName: Vintagestory.API.Client.ICoreClientAPI
+- uid: Vintagestory.API.Client.ElementBounds
+  commentId: T:Vintagestory.API.Client.ElementBounds
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ElementBounds.html
+  name: ElementBounds
+  nameWithType: ElementBounds
+  fullName: Vintagestory.API.Client.ElementBounds
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.Common.DummyInventory
+  commentId: T:Vintagestory.API.Common.DummyInventory
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.DummyInventory.html
+  name: DummyInventory
+  nameWithType: DummyInventory
+  fullName: Vintagestory.API.Common.DummyInventory
+- uid: Vintagestory.API.Client.ItemstackComponentBase.#ctor*
+  commentId: Overload:Vintagestory.API.Client.ItemstackComponentBase.#ctor
+  href: Vintagestory.API.Client.ItemstackComponentBase.html#Vintagestory_API_Client_ItemstackComponentBase__ctor_Vintagestory_API_Client_ICoreClientAPI_
+  name: ItemstackComponentBase
+  nameWithType: ItemstackComponentBase.ItemstackComponentBase
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.ItemstackComponentBase
+  nameWithType.vb: ItemstackComponentBase.New
+  fullName.vb: Vintagestory.API.Client.ItemstackComponentBase.New
+  name.vb: New
+- uid: Vintagestory.API.Client.ItemstackComponentBase.OnRequireInfoText*
+  commentId: Overload:Vintagestory.API.Client.ItemstackComponentBase.OnRequireInfoText
+  href: Vintagestory.API.Client.ItemstackComponentBase.html#Vintagestory_API_Client_ItemstackComponentBase_OnRequireInfoText_Vintagestory_API_Common_ItemSlot_
+  name: OnRequireInfoText
+  nameWithType: ItemstackComponentBase.OnRequireInfoText
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.OnRequireInfoText
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Client.ItemstackComponentBase.RenderItemstackTooltip*
+  commentId: Overload:Vintagestory.API.Client.ItemstackComponentBase.RenderItemstackTooltip
+  href: Vintagestory.API.Client.ItemstackComponentBase.html#Vintagestory_API_Client_ItemstackComponentBase_RenderItemstackTooltip_Vintagestory_API_Common_ItemSlot_System_Double_System_Double_System_Single_
+  name: RenderItemstackTooltip
+  nameWithType: ItemstackComponentBase.RenderItemstackTooltip
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.RenderItemstackTooltip
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Client.RichTextComponentBase.Dispose
+  commentId: M:Vintagestory.API.Client.RichTextComponentBase.Dispose
+  parent: Vintagestory.API.Client.RichTextComponentBase
+  href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_Dispose
+  name: Dispose()
+  nameWithType: RichTextComponentBase.Dispose()
+  fullName: Vintagestory.API.Client.RichTextComponentBase.Dispose()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.Dispose
+    name: Dispose
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.RichTextComponentBase.Dispose
+    name: Dispose
+    href: Vintagestory.API.Client.RichTextComponentBase.html#Vintagestory_API_Client_RichTextComponentBase_Dispose
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.ItemstackComponentBase.Dispose*
+  commentId: Overload:Vintagestory.API.Client.ItemstackComponentBase.Dispose
+  href: Vintagestory.API.Client.ItemstackComponentBase.html#Vintagestory_API_Client_ItemstackComponentBase_Dispose
+  name: Dispose
+  nameWithType: ItemstackComponentBase.Dispose
+  fullName: Vintagestory.API.Client.ItemstackComponentBase.Dispose

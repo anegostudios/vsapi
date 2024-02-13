@@ -1,0 +1,636 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ClimateCondition
+  commentId: T:Vintagestory.API.Common.ClimateCondition
+  id: ClimateCondition
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.ClimateCondition.Fertility
+  - Vintagestory.API.Common.ClimateCondition.ForestDensity
+  - Vintagestory.API.Common.ClimateCondition.GeologicActivity
+  - Vintagestory.API.Common.ClimateCondition.RainCloudOverlay
+  - Vintagestory.API.Common.ClimateCondition.Rainfall
+  - Vintagestory.API.Common.ClimateCondition.SetLerped(Vintagestory.API.Common.ClimateCondition,Vintagestory.API.Common.ClimateCondition,System.Single)
+  - Vintagestory.API.Common.ClimateCondition.ShrubDensity
+  - Vintagestory.API.Common.ClimateCondition.Temperature
+  - Vintagestory.API.Common.ClimateCondition.WorldGenTemperature
+  - Vintagestory.API.Common.ClimateCondition.WorldgenRainfall
+  langs:
+  - csharp
+  - vb
+  name: ClimateCondition
+  nameWithType: ClimateCondition
+  fullName: Vintagestory.API.Common.ClimateCondition
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ClimateCondition
+    path: Common/API/IBlockAccessor.cs
+    startLine: 60
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public class ClimateCondition
+    content.vb: Public Class ClimateCondition
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Common.ClimateCondition.Temperature
+  commentId: F:Vintagestory.API.Common.ClimateCondition.Temperature
+  id: Temperature
+  parent: Vintagestory.API.Common.ClimateCondition
+  langs:
+  - csharp
+  - vb
+  name: Temperature
+  nameWithType: ClimateCondition.Temperature
+  fullName: Vintagestory.API.Common.ClimateCondition.Temperature
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Temperature
+    path: Common/API/IBlockAccessor.cs
+    startLine: 65
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Between -20 and +40 degrees
+  example: []
+  syntax:
+    content: public float Temperature
+    return:
+      type: System.Single
+    content.vb: Public Temperature As Single
+- uid: Vintagestory.API.Common.ClimateCondition.WorldgenRainfall
+  commentId: F:Vintagestory.API.Common.ClimateCondition.WorldgenRainfall
+  id: WorldgenRainfall
+  parent: Vintagestory.API.Common.ClimateCondition
+  langs:
+  - csharp
+  - vb
+  name: WorldgenRainfall
+  nameWithType: ClimateCondition.WorldgenRainfall
+  fullName: Vintagestory.API.Common.ClimateCondition.WorldgenRainfall
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WorldgenRainfall
+    path: Common/API/IBlockAccessor.cs
+    startLine: 70
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If you read the now values, you can still get the world gen rain fall from this value. Between 0..1
+  example: []
+  syntax:
+    content: public float WorldgenRainfall
+    return:
+      type: System.Single
+    content.vb: Public WorldgenRainfall As Single
+- uid: Vintagestory.API.Common.ClimateCondition.WorldGenTemperature
+  commentId: F:Vintagestory.API.Common.ClimateCondition.WorldGenTemperature
+  id: WorldGenTemperature
+  parent: Vintagestory.API.Common.ClimateCondition
+  langs:
+  - csharp
+  - vb
+  name: WorldGenTemperature
+  nameWithType: ClimateCondition.WorldGenTemperature
+  fullName: Vintagestory.API.Common.ClimateCondition.WorldGenTemperature
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WorldGenTemperature
+    path: Common/API/IBlockAccessor.cs
+    startLine: 75
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If you read the now values, you can still get the world gen temp from this value
+  example: []
+  syntax:
+    content: public float WorldGenTemperature
+    return:
+      type: System.Single
+    content.vb: Public WorldGenTemperature As Single
+- uid: Vintagestory.API.Common.ClimateCondition.GeologicActivity
+  commentId: F:Vintagestory.API.Common.ClimateCondition.GeologicActivity
+  id: GeologicActivity
+  parent: Vintagestory.API.Common.ClimateCondition
+  langs:
+  - csharp
+  - vb
+  name: GeologicActivity
+  nameWithType: ClimateCondition.GeologicActivity
+  fullName: Vintagestory.API.Common.ClimateCondition.GeologicActivity
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GeologicActivity
+    path: Common/API/IBlockAccessor.cs
+    startLine: 80
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Nomalized value between 0..1. Static value determined on world generation
+  example: []
+  syntax:
+    content: public float GeologicActivity
+    return:
+      type: System.Single
+    content.vb: Public GeologicActivity As Single
+- uid: Vintagestory.API.Common.ClimateCondition.Rainfall
+  commentId: F:Vintagestory.API.Common.ClimateCondition.Rainfall
+  id: Rainfall
+  parent: Vintagestory.API.Common.ClimateCondition
+  langs:
+  - csharp
+  - vb
+  name: Rainfall
+  nameWithType: ClimateCondition.Rainfall
+  fullName: Vintagestory.API.Common.ClimateCondition.Rainfall
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Rainfall
+    path: Common/API/IBlockAccessor.cs
+    startLine: 85
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Nomalized value between 0..1. When loading the now values, this is set to the current precipitation value, otherwise to "yearly averages" or the values generated during worldgen
+  example: []
+  syntax:
+    content: public float Rainfall
+    return:
+      type: System.Single
+    content.vb: Public Rainfall As Single
+- uid: Vintagestory.API.Common.ClimateCondition.RainCloudOverlay
+  commentId: F:Vintagestory.API.Common.ClimateCondition.RainCloudOverlay
+  id: RainCloudOverlay
+  parent: Vintagestory.API.Common.ClimateCondition
+  langs:
+  - csharp
+  - vb
+  name: RainCloudOverlay
+  nameWithType: ClimateCondition.RainCloudOverlay
+  fullName: Vintagestory.API.Common.ClimateCondition.RainCloudOverlay
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RainCloudOverlay
+    path: Common/API/IBlockAccessor.cs
+    startLine: 87
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public float RainCloudOverlay
+    return:
+      type: System.Single
+    content.vb: Public RainCloudOverlay As Single
+- uid: Vintagestory.API.Common.ClimateCondition.Fertility
+  commentId: F:Vintagestory.API.Common.ClimateCondition.Fertility
+  id: Fertility
+  parent: Vintagestory.API.Common.ClimateCondition
+  langs:
+  - csharp
+  - vb
+  name: Fertility
+  nameWithType: ClimateCondition.Fertility
+  fullName: Vintagestory.API.Common.ClimateCondition.Fertility
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Fertility
+    path: Common/API/IBlockAccessor.cs
+    startLine: 92
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Nomalized value between 0..1
+  example: []
+  syntax:
+    content: public float Fertility
+    return:
+      type: System.Single
+    content.vb: Public Fertility As Single
+- uid: Vintagestory.API.Common.ClimateCondition.ForestDensity
+  commentId: F:Vintagestory.API.Common.ClimateCondition.ForestDensity
+  id: ForestDensity
+  parent: Vintagestory.API.Common.ClimateCondition
+  langs:
+  - csharp
+  - vb
+  name: ForestDensity
+  nameWithType: ClimateCondition.ForestDensity
+  fullName: Vintagestory.API.Common.ClimateCondition.ForestDensity
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ForestDensity
+    path: Common/API/IBlockAccessor.cs
+    startLine: 97
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Nomalized value between 0..1
+  example: []
+  syntax:
+    content: public float ForestDensity
+    return:
+      type: System.Single
+    content.vb: Public ForestDensity As Single
+- uid: Vintagestory.API.Common.ClimateCondition.ShrubDensity
+  commentId: F:Vintagestory.API.Common.ClimateCondition.ShrubDensity
+  id: ShrubDensity
+  parent: Vintagestory.API.Common.ClimateCondition
+  langs:
+  - csharp
+  - vb
+  name: ShrubDensity
+  nameWithType: ClimateCondition.ShrubDensity
+  fullName: Vintagestory.API.Common.ClimateCondition.ShrubDensity
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ShrubDensity
+    path: Common/API/IBlockAccessor.cs
+    startLine: 101
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Nomalized value between 0..1
+  example: []
+  syntax:
+    content: public float ShrubDensity
+    return:
+      type: System.Single
+    content.vb: Public ShrubDensity As Single
+- uid: Vintagestory.API.Common.ClimateCondition.SetLerped(Vintagestory.API.Common.ClimateCondition,Vintagestory.API.Common.ClimateCondition,System.Single)
+  commentId: M:Vintagestory.API.Common.ClimateCondition.SetLerped(Vintagestory.API.Common.ClimateCondition,Vintagestory.API.Common.ClimateCondition,System.Single)
+  id: SetLerped(Vintagestory.API.Common.ClimateCondition,Vintagestory.API.Common.ClimateCondition,System.Single)
+  parent: Vintagestory.API.Common.ClimateCondition
+  langs:
+  - csharp
+  - vb
+  name: SetLerped(ClimateCondition, ClimateCondition, float)
+  nameWithType: ClimateCondition.SetLerped(ClimateCondition, ClimateCondition, float)
+  fullName: Vintagestory.API.Common.ClimateCondition.SetLerped(Vintagestory.API.Common.ClimateCondition, Vintagestory.API.Common.ClimateCondition, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetLerped
+    path: Common/API/IBlockAccessor.cs
+    startLine: 103
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void SetLerped(ClimateCondition left, ClimateCondition right, float w)
+    parameters:
+    - id: left
+      type: Vintagestory.API.Common.ClimateCondition
+    - id: right
+      type: Vintagestory.API.Common.ClimateCondition
+    - id: w
+      type: System.Single
+    content.vb: Public Sub SetLerped(left As ClimateCondition, right As ClimateCondition, w As Single)
+  overload: Vintagestory.API.Common.ClimateCondition.SetLerped*
+  nameWithType.vb: ClimateCondition.SetLerped(ClimateCondition, ClimateCondition, Single)
+  fullName.vb: Vintagestory.API.Common.ClimateCondition.SetLerped(Vintagestory.API.Common.ClimateCondition, Vintagestory.API.Common.ClimateCondition, Single)
+  name.vb: SetLerped(ClimateCondition, ClimateCondition, Single)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.ClimateCondition.SetLerped*
+  commentId: Overload:Vintagestory.API.Common.ClimateCondition.SetLerped
+  href: Vintagestory.API.Common.ClimateCondition.html#Vintagestory_API_Common_ClimateCondition_SetLerped_Vintagestory_API_Common_ClimateCondition_Vintagestory_API_Common_ClimateCondition_System_Single_
+  name: SetLerped
+  nameWithType: ClimateCondition.SetLerped
+  fullName: Vintagestory.API.Common.ClimateCondition.SetLerped
+- uid: Vintagestory.API.Common.ClimateCondition
+  commentId: T:Vintagestory.API.Common.ClimateCondition
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ClimateCondition.html
+  name: ClimateCondition
+  nameWithType: ClimateCondition
+  fullName: Vintagestory.API.Common.ClimateCondition

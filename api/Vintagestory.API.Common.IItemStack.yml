@@ -1,0 +1,823 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IItemStack
+  commentId: T:Vintagestory.API.Common.IItemStack
+  id: IItemStack
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IItemStack.Attributes
+  - Vintagestory.API.Common.IItemStack.Block
+  - Vintagestory.API.Common.IItemStack.Class
+  - Vintagestory.API.Common.IItemStack.Clone
+  - Vintagestory.API.Common.IItemStack.Collectible
+  - Vintagestory.API.Common.IItemStack.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+  - Vintagestory.API.Common.IItemStack.FromBytes(System.IO.BinaryReader)
+  - Vintagestory.API.Common.IItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  - Vintagestory.API.Common.IItemStack.GetName
+  - Vintagestory.API.Common.IItemStack.Id
+  - Vintagestory.API.Common.IItemStack.Item
+  - Vintagestory.API.Common.IItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+  - Vintagestory.API.Common.IItemStack.StackSize
+  - Vintagestory.API.Common.IItemStack.ToBytes(System.IO.BinaryWriter)
+  langs:
+  - csharp
+  - vb
+  name: IItemStack
+  nameWithType: IItemStack
+  fullName: Vintagestory.API.Common.IItemStack
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IItemStack
+    path: Common/Collectible/IItemStack.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Represents a stack of items or blocks
+  example: []
+  syntax:
+    content: public interface IItemStack
+    content.vb: Public Interface IItemStack
+- uid: Vintagestory.API.Common.IItemStack.Collectible
+  commentId: P:Vintagestory.API.Common.IItemStack.Collectible
+  id: Collectible
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: Collectible
+  nameWithType: IItemStack.Collectible
+  fullName: Vintagestory.API.Common.IItemStack.Collectible
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Collectible
+    path: Common/Collectible/IItemStack.cs
+    startLine: 13
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The base class the Item/Block inherits from
+  example: []
+  syntax:
+    content: CollectibleObject Collectible { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.CollectibleObject
+    content.vb: ReadOnly Property Collectible As CollectibleObject
+  overload: Vintagestory.API.Common.IItemStack.Collectible*
+- uid: Vintagestory.API.Common.IItemStack.Class
+  commentId: P:Vintagestory.API.Common.IItemStack.Class
+  id: Class
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: Class
+  nameWithType: IItemStack.Class
+  fullName: Vintagestory.API.Common.IItemStack.Class
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Class
+    path: Common/Collectible/IItemStack.cs
+    startLine: 18
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Is it a Block or Item?
+  example: []
+  syntax:
+    content: EnumItemClass Class { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.EnumItemClass
+    content.vb: ReadOnly Property [Class] As EnumItemClass
+  overload: Vintagestory.API.Common.IItemStack.Class*
+- uid: Vintagestory.API.Common.IItemStack.Item
+  commentId: P:Vintagestory.API.Common.IItemStack.Item
+  id: Item
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: Item
+  nameWithType: IItemStack.Item
+  fullName: Vintagestory.API.Common.IItemStack.Item
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Item
+    path: Common/Collectible/IItemStack.cs
+    startLine: 23
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The Item if ItemClass==Item, otherwise null
+  example: []
+  syntax:
+    content: Item Item { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.Item
+    content.vb: ReadOnly Property Item As Item
+  overload: Vintagestory.API.Common.IItemStack.Item*
+- uid: Vintagestory.API.Common.IItemStack.Block
+  commentId: P:Vintagestory.API.Common.IItemStack.Block
+  id: Block
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: Block
+  nameWithType: IItemStack.Block
+  fullName: Vintagestory.API.Common.IItemStack.Block
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Block
+    path: Common/Collectible/IItemStack.cs
+    startLine: 28
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The Block if ItemClass==Block, otherwise null
+  example: []
+  syntax:
+    content: Block Block { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.Block
+    content.vb: ReadOnly Property Block As Block
+  overload: Vintagestory.API.Common.IItemStack.Block*
+- uid: Vintagestory.API.Common.IItemStack.StackSize
+  commentId: P:Vintagestory.API.Common.IItemStack.StackSize
+  id: StackSize
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: StackSize
+  nameWithType: IItemStack.StackSize
+  fullName: Vintagestory.API.Common.IItemStack.StackSize
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: StackSize
+    path: Common/Collectible/IItemStack.cs
+    startLine: 33
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Amount of items or blocks in this stack
+  example: []
+  syntax:
+    content: int StackSize { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property StackSize As Integer
+  overload: Vintagestory.API.Common.IItemStack.StackSize*
+- uid: Vintagestory.API.Common.IItemStack.Id
+  commentId: P:Vintagestory.API.Common.IItemStack.Id
+  id: Id
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: IItemStack.Id
+  fullName: Vintagestory.API.Common.IItemStack.Id
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Id
+    path: Common/Collectible/IItemStack.cs
+    startLine: 38
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The items or blocks unique id
+  example: []
+  syntax:
+    content: int Id { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Id As Integer
+  overload: Vintagestory.API.Common.IItemStack.Id*
+- uid: Vintagestory.API.Common.IItemStack.Attributes
+  commentId: P:Vintagestory.API.Common.IItemStack.Attributes
+  id: Attributes
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: Attributes
+  nameWithType: IItemStack.Attributes
+  fullName: Vintagestory.API.Common.IItemStack.Attributes
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Attributes
+    path: Common/Collectible/IItemStack.cs
+    startLine: 43
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Attributes assigned to this itemstack. Modifiable.
+  example: []
+  syntax:
+    content: ITreeAttribute Attributes { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    content.vb: Property Attributes As ITreeAttribute
+  overload: Vintagestory.API.Common.IItemStack.Attributes*
+- uid: Vintagestory.API.Common.IItemStack.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+  commentId: M:Vintagestory.API.Common.IItemStack.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+  id: Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.String[])
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: Equals(IWorldAccessor, ItemStack, params string[])
+  nameWithType: IItemStack.Equals(IWorldAccessor, ItemStack, params string[])
+  fullName: Vintagestory.API.Common.IItemStack.Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemStack, params string[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Equals
+    path: Common/Collectible/IItemStack.cs
+    startLine: 52
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Checks if this item stack is of the same class, id and has the same stack attributes. Ignores stack size
+  example: []
+  syntax:
+    content: bool Equals(IWorldAccessor worldForResolve, ItemStack sourceStack, params string[] ignoreAttributeSubTrees)
+    parameters:
+    - id: worldForResolve
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    - id: sourceStack
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    - id: ignoreAttributeSubTrees
+      type: System.String[]
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function Equals(worldForResolve As IWorldAccessor, sourceStack As ItemStack, ParamArray ignoreAttributeSubTrees As String()) As Boolean
+  overload: Vintagestory.API.Common.IItemStack.Equals*
+  nameWithType.vb: IItemStack.Equals(IWorldAccessor, ItemStack, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.IItemStack.Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemStack, ParamArray String())
+  name.vb: Equals(IWorldAccessor, ItemStack, ParamArray String())
+- uid: Vintagestory.API.Common.IItemStack.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Common.IItemStack.ToBytes(System.IO.BinaryWriter)
+  id: ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: ToBytes(BinaryWriter)
+  nameWithType: IItemStack.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Common.IItemStack.ToBytes(System.IO.BinaryWriter)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToBytes
+    path: Common/Collectible/IItemStack.cs
+    startLine: 58
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Serializes this itemstack into a byte stream
+  example: []
+  syntax:
+    content: void ToBytes(BinaryWriter stream)
+    parameters:
+    - id: stream
+      type: System.IO.BinaryWriter
+      description: ''
+    content.vb: Sub ToBytes(stream As BinaryWriter)
+  overload: Vintagestory.API.Common.IItemStack.ToBytes*
+- uid: Vintagestory.API.Common.IItemStack.FromBytes(System.IO.BinaryReader)
+  commentId: M:Vintagestory.API.Common.IItemStack.FromBytes(System.IO.BinaryReader)
+  id: FromBytes(System.IO.BinaryReader)
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: FromBytes(BinaryReader)
+  nameWithType: IItemStack.FromBytes(BinaryReader)
+  fullName: Vintagestory.API.Common.IItemStack.FromBytes(System.IO.BinaryReader)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FromBytes
+    path: Common/Collectible/IItemStack.cs
+    startLine: 64
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Deserializes an itemstack from given byte stream
+  example: []
+  syntax:
+    content: void FromBytes(BinaryReader stream)
+    parameters:
+    - id: stream
+      type: System.IO.BinaryReader
+      description: ''
+    content.vb: Sub FromBytes(stream As BinaryReader)
+  overload: Vintagestory.API.Common.IItemStack.FromBytes*
+- uid: Vintagestory.API.Common.IItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+  commentId: M:Vintagestory.API.Common.IItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+  id: MatchesSearchText(Vintagestory.API.Common.IWorldAccessor,System.String)
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: MatchesSearchText(IWorldAccessor, string)
+  nameWithType: IItemStack.MatchesSearchText(IWorldAccessor, string)
+  fullName: Vintagestory.API.Common.IItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MatchesSearchText
+    path: Common/Collectible/IItemStack.cs
+    startLine: 72
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Checks if the contained item or block name contains given searchtext
+  example: []
+  syntax:
+    content: bool MatchesSearchText(IWorldAccessor world, string searchText)
+    parameters:
+    - id: world
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    - id: searchText
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function MatchesSearchText(world As IWorldAccessor, searchText As String) As Boolean
+  overload: Vintagestory.API.Common.IItemStack.MatchesSearchText*
+  nameWithType.vb: IItemStack.MatchesSearchText(IWorldAccessor, String)
+  fullName.vb: Vintagestory.API.Common.IItemStack.MatchesSearchText(Vintagestory.API.Common.IWorldAccessor, String)
+  name.vb: MatchesSearchText(IWorldAccessor, String)
+- uid: Vintagestory.API.Common.IItemStack.GetName
+  commentId: M:Vintagestory.API.Common.IItemStack.GetName
+  id: GetName
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: GetName()
+  nameWithType: IItemStack.GetName()
+  fullName: Vintagestory.API.Common.IItemStack.GetName()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetName
+    path: Common/Collectible/IItemStack.cs
+    startLine: 78
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the name displayed in the players inventory
+  example: []
+  syntax:
+    content: string GetName()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Function GetName() As String
+  overload: Vintagestory.API.Common.IItemStack.GetName*
+- uid: Vintagestory.API.Common.IItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  commentId: M:Vintagestory.API.Common.IItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  id: GetDescription(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Boolean)
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: GetDescription(IWorldAccessor, ItemSlot, bool)
+  nameWithType: IItemStack.GetDescription(IWorldAccessor, ItemSlot, bool)
+  fullName: Vintagestory.API.Common.IItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemSlot, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetDescription
+    path: Common/Collectible/IItemStack.cs
+    startLine: 87
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a multiline description text of the item
+  example: []
+  syntax:
+    content: string GetDescription(IWorldAccessor world, ItemSlot inSlot, bool debug = false)
+    parameters:
+    - id: world
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    - id: inSlot
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    - id: debug
+      type: System.Boolean
+      description: Whether to show additional debug info
+    return:
+      type: System.String
+      description: ''
+    content.vb: Function GetDescription(world As IWorldAccessor, inSlot As ItemSlot, debug As Boolean = False) As String
+  overload: Vintagestory.API.Common.IItemStack.GetDescription*
+  nameWithType.vb: IItemStack.GetDescription(IWorldAccessor, ItemSlot, Boolean)
+  fullName.vb: Vintagestory.API.Common.IItemStack.GetDescription(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemSlot, Boolean)
+  name.vb: GetDescription(IWorldAccessor, ItemSlot, Boolean)
+- uid: Vintagestory.API.Common.IItemStack.Clone
+  commentId: M:Vintagestory.API.Common.IItemStack.Clone
+  id: Clone
+  parent: Vintagestory.API.Common.IItemStack
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: IItemStack.Clone()
+  fullName: Vintagestory.API.Common.IItemStack.Clone()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IItemStack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Clone
+    path: Common/Collectible/IItemStack.cs
+    startLine: 93
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a deep copy of the itemstack
+  example: []
+  syntax:
+    content: ItemStack Clone()
+    return:
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    content.vb: Function Clone() As ItemStack
+  overload: Vintagestory.API.Common.IItemStack.Clone*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IItemStack.Collectible*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.Collectible
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Collectible
+  name: Collectible
+  nameWithType: IItemStack.Collectible
+  fullName: Vintagestory.API.Common.IItemStack.Collectible
+- uid: Vintagestory.API.Common.CollectibleObject
+  commentId: T:Vintagestory.API.Common.CollectibleObject
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CollectibleObject.html
+  name: CollectibleObject
+  nameWithType: CollectibleObject
+  fullName: Vintagestory.API.Common.CollectibleObject
+- uid: Vintagestory.API.Common.IItemStack.Class*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.Class
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Class
+  name: Class
+  nameWithType: IItemStack.Class
+  fullName: Vintagestory.API.Common.IItemStack.Class
+- uid: Vintagestory.API.Common.EnumItemClass
+  commentId: T:Vintagestory.API.Common.EnumItemClass
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumItemClass.html
+  name: EnumItemClass
+  nameWithType: EnumItemClass
+  fullName: Vintagestory.API.Common.EnumItemClass
+- uid: Vintagestory.API.Common.IItemStack.Item*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.Item
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Item
+  name: Item
+  nameWithType: IItemStack.Item
+  fullName: Vintagestory.API.Common.IItemStack.Item
+- uid: Vintagestory.API.Common.Item
+  commentId: T:Vintagestory.API.Common.Item
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Item.html
+  name: Item
+  nameWithType: Item
+  fullName: Vintagestory.API.Common.Item
+- uid: Vintagestory.API.Common.IItemStack.Block*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.Block
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Block
+  name: Block
+  nameWithType: IItemStack.Block
+  fullName: Vintagestory.API.Common.IItemStack.Block
+- uid: Vintagestory.API.Common.Block
+  commentId: T:Vintagestory.API.Common.Block
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Block.html
+  name: Block
+  nameWithType: Block
+  fullName: Vintagestory.API.Common.Block
+- uid: Vintagestory.API.Common.IItemStack.StackSize*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.StackSize
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_StackSize
+  name: StackSize
+  nameWithType: IItemStack.StackSize
+  fullName: Vintagestory.API.Common.IItemStack.StackSize
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IItemStack.Id*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.Id
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Id
+  name: Id
+  nameWithType: IItemStack.Id
+  fullName: Vintagestory.API.Common.IItemStack.Id
+- uid: Vintagestory.API.Common.IItemStack.Attributes*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.Attributes
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Attributes
+  name: Attributes
+  nameWithType: IItemStack.Attributes
+  fullName: Vintagestory.API.Common.IItemStack.Attributes
+- uid: Vintagestory.API.Datastructures.ITreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.ITreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  name: ITreeAttribute
+  nameWithType: ITreeAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Common.IItemStack.Equals*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.Equals
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_String___
+  name: Equals
+  nameWithType: IItemStack.Equals
+  fullName: Vintagestory.API.Common.IItemStack.Equals
+- uid: Vintagestory.API.Common.IWorldAccessor
+  commentId: T:Vintagestory.API.Common.IWorldAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldAccessor.html
+  name: IWorldAccessor
+  nameWithType: IWorldAccessor
+  fullName: Vintagestory.API.Common.IWorldAccessor
+- uid: Vintagestory.API.Common.ItemStack
+  commentId: T:Vintagestory.API.Common.ItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemStack.html
+  name: ItemStack
+  nameWithType: ItemStack
+  fullName: Vintagestory.API.Common.ItemStack
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.IItemStack.ToBytes*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.ToBytes
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes
+  nameWithType: IItemStack.ToBytes
+  fullName: Vintagestory.API.Common.IItemStack.ToBytes
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Vintagestory.API.Common.IItemStack.FromBytes*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.FromBytes
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_FromBytes_System_IO_BinaryReader_
+  name: FromBytes
+  nameWithType: IItemStack.FromBytes
+  fullName: Vintagestory.API.Common.IItemStack.FromBytes
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+- uid: Vintagestory.API.Common.IItemStack.MatchesSearchText*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.MatchesSearchText
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_MatchesSearchText_Vintagestory_API_Common_IWorldAccessor_System_String_
+  name: MatchesSearchText
+  nameWithType: IItemStack.MatchesSearchText
+  fullName: Vintagestory.API.Common.IItemStack.MatchesSearchText
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.IItemStack.GetName*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.GetName
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_GetName
+  name: GetName
+  nameWithType: IItemStack.GetName
+  fullName: Vintagestory.API.Common.IItemStack.GetName
+- uid: Vintagestory.API.Common.IItemStack.GetDescription*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.GetDescription
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_GetDescription_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_System_Boolean_
+  name: GetDescription
+  nameWithType: IItemStack.GetDescription
+  fullName: Vintagestory.API.Common.IItemStack.GetDescription
+- uid: Vintagestory.API.Common.ItemSlot
+  commentId: T:Vintagestory.API.Common.ItemSlot
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemSlot.html
+  name: ItemSlot
+  nameWithType: ItemSlot
+  fullName: Vintagestory.API.Common.ItemSlot
+- uid: Vintagestory.API.Common.IItemStack.Clone*
+  commentId: Overload:Vintagestory.API.Common.IItemStack.Clone
+  href: Vintagestory.API.Common.IItemStack.html#Vintagestory_API_Common_IItemStack_Clone
+  name: Clone
+  nameWithType: IItemStack.Clone
+  fullName: Vintagestory.API.Common.IItemStack.Clone

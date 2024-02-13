@@ -1,0 +1,269 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EnumWorldAccessResponse
+  commentId: T:Vintagestory.API.Common.EnumWorldAccessResponse
+  id: EnumWorldAccessResponse
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.EnumWorldAccessResponse.DeniedByMod
+  - Vintagestory.API.Common.EnumWorldAccessResponse.Granted
+  - Vintagestory.API.Common.EnumWorldAccessResponse.InGuestMode
+  - Vintagestory.API.Common.EnumWorldAccessResponse.InSpectatorMode
+  - Vintagestory.API.Common.EnumWorldAccessResponse.LandClaimed
+  - Vintagestory.API.Common.EnumWorldAccessResponse.NoPrivilege
+  - Vintagestory.API.Common.EnumWorldAccessResponse.PlayerDead
+  langs:
+  - csharp
+  - vb
+  name: EnumWorldAccessResponse
+  nameWithType: EnumWorldAccessResponse
+  fullName: Vintagestory.API.Common.EnumWorldAccessResponse
+  type: Enum
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/EnumBlockAccessResponse.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnumWorldAccessResponse
+    path: Common/API/EnumBlockAccessResponse.cs
+    startLine: 2
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public enum EnumWorldAccessResponse
+    content.vb: Public Enum EnumWorldAccessResponse
+- uid: Vintagestory.API.Common.EnumWorldAccessResponse.Granted
+  commentId: F:Vintagestory.API.Common.EnumWorldAccessResponse.Granted
+  id: Granted
+  parent: Vintagestory.API.Common.EnumWorldAccessResponse
+  langs:
+  - csharp
+  - vb
+  name: Granted
+  nameWithType: EnumWorldAccessResponse.Granted
+  fullName: Vintagestory.API.Common.EnumWorldAccessResponse.Granted
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/EnumBlockAccessResponse.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Granted
+    path: Common/API/EnumBlockAccessResponse.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Access ok or was called client side
+  example: []
+  syntax:
+    content: Granted = 0
+    return:
+      type: Vintagestory.API.Common.EnumWorldAccessResponse
+- uid: Vintagestory.API.Common.EnumWorldAccessResponse.InSpectatorMode
+  commentId: F:Vintagestory.API.Common.EnumWorldAccessResponse.InSpectatorMode
+  id: InSpectatorMode
+  parent: Vintagestory.API.Common.EnumWorldAccessResponse
+  langs:
+  - csharp
+  - vb
+  name: InSpectatorMode
+  nameWithType: EnumWorldAccessResponse.InSpectatorMode
+  fullName: Vintagestory.API.Common.EnumWorldAccessResponse.InSpectatorMode
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/EnumBlockAccessResponse.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InSpectatorMode
+    path: Common/API/EnumBlockAccessResponse.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Players in spectator mode may not place blocks
+  example: []
+  syntax:
+    content: InSpectatorMode = 1
+    return:
+      type: Vintagestory.API.Common.EnumWorldAccessResponse
+- uid: Vintagestory.API.Common.EnumWorldAccessResponse.InGuestMode
+  commentId: F:Vintagestory.API.Common.EnumWorldAccessResponse.InGuestMode
+  id: InGuestMode
+  parent: Vintagestory.API.Common.EnumWorldAccessResponse
+  langs:
+  - csharp
+  - vb
+  name: InGuestMode
+  nameWithType: EnumWorldAccessResponse.InGuestMode
+  fullName: Vintagestory.API.Common.EnumWorldAccessResponse.InGuestMode
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/EnumBlockAccessResponse.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InGuestMode
+    path: Common/API/EnumBlockAccessResponse.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Player tries to place/break blocks but is in guest mode
+  example: []
+  syntax:
+    content: InGuestMode = 2
+    return:
+      type: Vintagestory.API.Common.EnumWorldAccessResponse
+- uid: Vintagestory.API.Common.EnumWorldAccessResponse.PlayerDead
+  commentId: F:Vintagestory.API.Common.EnumWorldAccessResponse.PlayerDead
+  id: PlayerDead
+  parent: Vintagestory.API.Common.EnumWorldAccessResponse
+  langs:
+  - csharp
+  - vb
+  name: PlayerDead
+  nameWithType: EnumWorldAccessResponse.PlayerDead
+  fullName: Vintagestory.API.Common.EnumWorldAccessResponse.PlayerDead
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/EnumBlockAccessResponse.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PlayerDead
+    path: Common/API/EnumBlockAccessResponse.cs
+    startLine: 19
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Dead players may not place blocks
+  example: []
+  syntax:
+    content: PlayerDead = 3
+    return:
+      type: Vintagestory.API.Common.EnumWorldAccessResponse
+- uid: Vintagestory.API.Common.EnumWorldAccessResponse.NoPrivilege
+  commentId: F:Vintagestory.API.Common.EnumWorldAccessResponse.NoPrivilege
+  id: NoPrivilege
+  parent: Vintagestory.API.Common.EnumWorldAccessResponse
+  langs:
+  - csharp
+  - vb
+  name: NoPrivilege
+  nameWithType: EnumWorldAccessResponse.NoPrivilege
+  fullName: Vintagestory.API.Common.EnumWorldAccessResponse.NoPrivilege
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/EnumBlockAccessResponse.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NoPrivilege
+    path: Common/API/EnumBlockAccessResponse.cs
+    startLine: 23
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: This player was not granted the block build or use privilege
+  example: []
+  syntax:
+    content: NoPrivilege = 4
+    return:
+      type: Vintagestory.API.Common.EnumWorldAccessResponse
+- uid: Vintagestory.API.Common.EnumWorldAccessResponse.LandClaimed
+  commentId: F:Vintagestory.API.Common.EnumWorldAccessResponse.LandClaimed
+  id: LandClaimed
+  parent: Vintagestory.API.Common.EnumWorldAccessResponse
+  langs:
+  - csharp
+  - vb
+  name: LandClaimed
+  nameWithType: EnumWorldAccessResponse.LandClaimed
+  fullName: Vintagestory.API.Common.EnumWorldAccessResponse.LandClaimed
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/EnumBlockAccessResponse.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LandClaimed
+    path: Common/API/EnumBlockAccessResponse.cs
+    startLine: 27
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Player does not have the build/use blocks every privilege and the position is claimed by another player
+  example: []
+  syntax:
+    content: LandClaimed = 5
+    return:
+      type: Vintagestory.API.Common.EnumWorldAccessResponse
+- uid: Vintagestory.API.Common.EnumWorldAccessResponse.DeniedByMod
+  commentId: F:Vintagestory.API.Common.EnumWorldAccessResponse.DeniedByMod
+  id: DeniedByMod
+  parent: Vintagestory.API.Common.EnumWorldAccessResponse
+  langs:
+  - csharp
+  - vb
+  name: DeniedByMod
+  nameWithType: EnumWorldAccessResponse.DeniedByMod
+  fullName: Vintagestory.API.Common.EnumWorldAccessResponse.DeniedByMod
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/EnumBlockAccessResponse.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DeniedByMod
+    path: Common/API/EnumBlockAccessResponse.cs
+    startLine: 31
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: A mod denied use/placement
+  example: []
+  syntax:
+    content: DeniedByMod = 6
+    return:
+      type: Vintagestory.API.Common.EnumWorldAccessResponse
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.EnumWorldAccessResponse
+  commentId: T:Vintagestory.API.Common.EnumWorldAccessResponse
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumWorldAccessResponse.html
+  name: EnumWorldAccessResponse
+  nameWithType: EnumWorldAccessResponse
+  fullName: Vintagestory.API.Common.EnumWorldAccessResponse

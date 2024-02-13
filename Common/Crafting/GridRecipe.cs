@@ -182,8 +182,8 @@ namespace Vintagestory.API.Common
             foreach (var val in Ingredients)
             {
                 if (val.Value.Name == null || val.Value.Name.Length == 0) continue;
-                if (!val.Value.Code.Path.Contains("*")) continue;
-                int wildcardStartLen = val.Value.Code.Path.IndexOf("*");
+                if (!val.Value.Code.Path.Contains('*')) continue;
+                int wildcardStartLen = val.Value.Code.Path.IndexOf('*');
                 int wildcardEndLen = val.Value.Code.Path.Length - wildcardStartLen - 1;
 
                 List<string> codes = new List<string>();

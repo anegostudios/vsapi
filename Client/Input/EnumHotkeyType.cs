@@ -38,5 +38,9 @@
         /// Developer tools
         /// </summary>
         DevTool,
+        /// <summary>
+        /// Primary mouse controls
+        /// </summary>
+        MouseControls
     }
 }

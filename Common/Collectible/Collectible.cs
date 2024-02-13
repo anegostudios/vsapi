@@ -27,7 +27,7 @@ namespace Vintagestory.API.Common
         public EnumMatterState MatterState = EnumMatterState.Solid;
 
         /// <summary>
-        /// This value is set the the BlockId or ItemId-Remapper if it encounters a block/item in the savegame, 
+        /// This value is set the the BlockId or ItemId-Remapper if it encounters a block/item in the savegame,
         /// but no longer exists as a loaded block/item
         /// </summary>
         public bool IsMissing { get; set; }
@@ -104,7 +104,7 @@ namespace Vintagestory.API.Common
 
         [Obsolete("Use tool tier")]
         public int MiningTier { get { return ToolTier; } set { ToolTier = value; } }
-        
+
         public HeldSounds HeldSounds;
 
         /// <summary>
@@ -219,12 +219,12 @@ namespace Vintagestory.API.Common
         public string HeldLeftTpIdleAnimation;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string HeldLeftReadyAnimation;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string HeldRightReadyAnimation;
 
@@ -235,7 +235,7 @@ namespace Vintagestory.API.Common
         public string HeldTpUseAnimation = "interactstatic";
 
 
-        
+
         /// <summary>
         /// The api object, assigned during OnLoaded
         /// </summary>
@@ -286,7 +286,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Should return the light HSV values. 
+        /// Should return the light HSV values.
         /// Warning: This method is likely to get called in a background thread. Please make sure your code in here is thread safe.
         /// </summary>
         /// <param name="blockAccessor"></param>
@@ -396,7 +396,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// This method is called before rendering the item stack into GUI, first person hand, third person hand and/or on the ground
-        /// The renderinfo object is pre-filled with default values. 
+        /// The renderinfo object is pre-filled with default values.
         /// </summary>
         /// <param name="capi"></param>
         /// <param name="itemstack"></param>
@@ -535,7 +535,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Whenever the collectible was modified while inside a slot, usually when it was moved, split or merged.  
+        /// Whenever the collectible was modified while inside a slot, usually when it was moved, split or merged.
         /// </summary>
         /// <param name="world"></param>
         /// <param name="slot">The slot the item is or was in</param>
@@ -574,7 +574,7 @@ namespace Vintagestory.API.Common
 
             if (preventDefault) return result;
 
-            
+
             IPlayer byPlayer = null;
             if (byEntity is EntityPlayer) byPlayer = world.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
 
@@ -620,6 +620,7 @@ namespace Vintagestory.API.Common
         /// <param name="slot"></param>
         /// <param name="byEntity"></param>
         /// <returns></returns>
+        [Obsolete]
         public virtual ModelTransformKeyFrame[] GeldHeldFpHitAnimation(ItemSlot slot, Entity byEntity)
         {
             return null;
@@ -633,7 +634,17 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldTpHitAnimation(ItemSlot slot, Entity byEntity)
         {
-            return HeldTpHitAnimation;
+            EnumHandling bhHandling = EnumHandling.PassThrough;
+            string anim = null;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    string bhanim = bh.GetHeldTpHitAnimation(slot, byEntity, ref bhHandling);
+                    if (bhHandling != EnumHandling.PassThrough) anim = bhanim;
+                },
+                () => { anim = HeldTpHitAnimation; }
+            );
+
+            return anim;
         }
 
         /// <summary>
@@ -645,7 +656,17 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldReadyAnimation(ItemSlot activeHotbarSlot, Entity forEntity, EnumHand hand)
         {
-            return hand == EnumHand.Left ? HeldLeftReadyAnimation : HeldRightReadyAnimation;
+            EnumHandling bhHandling = EnumHandling.PassThrough;
+            string anim = null;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    string bhanim = bh.GetHeldReadyAnimation(activeHotbarSlot, forEntity, hand, ref bhHandling);
+                    if (bhHandling != EnumHandling.PassThrough) anim = bhanim;
+                },
+                () => { anim = hand == EnumHand.Left ? HeldLeftReadyAnimation : HeldRightReadyAnimation; }
+            );
+
+            return anim;
         }
 
 
@@ -658,7 +679,17 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldTpIdleAnimation(ItemSlot activeHotbarSlot, Entity forEntity, EnumHand hand)
         {
-            return hand == EnumHand.Left ? HeldLeftTpIdleAnimation : HeldRightTpIdleAnimation;
+            EnumHandling bhHandling = EnumHandling.PassThrough;
+            string anim = null;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    string bhanim = bh.GetHeldTpIdleAnimation(activeHotbarSlot, forEntity, hand, ref bhHandling);
+                    if (bhHandling != EnumHandling.PassThrough) anim = bhanim;
+                },
+                () => { anim = hand == EnumHand.Left ? HeldLeftTpIdleAnimation : HeldRightTpIdleAnimation; }
+            );
+
+            return anim;
         }
 
         /// <summary>
@@ -669,9 +700,22 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual string GetHeldTpUseAnimation(ItemSlot activeHotbarSlot, Entity forEntity)
         {
-            if (GetNutritionProperties(forEntity.World, activeHotbarSlot.Itemstack, forEntity) != null) return null;
+            EnumHandling bhHandling = EnumHandling.PassThrough;
+            string anim = null;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    string bhanim = bh.GetHeldTpUseAnimation(activeHotbarSlot, forEntity, ref bhHandling);
+                    if (bhHandling != EnumHandling.PassThrough) anim = bhanim;
+                },
+                () => {
+                    if (GetNutritionProperties(forEntity.World, activeHotbarSlot.Itemstack, forEntity) == null)
+                    {
+                        anim = HeldTpUseAnimation;
+                    }
+                }
+            );
 
-            return HeldTpUseAnimation;
+            return anim;
         }
 
         /// <summary>
@@ -1027,7 +1071,7 @@ namespace Vintagestory.API.Common
         /// <param name="entity"></param>
         public virtual void OnCollected(ItemStack stack, Entity entity)
         {
-            
+
         }
 
 
@@ -1217,18 +1261,18 @@ namespace Vintagestory.API.Common
         {
             EnumHandHandling bhHandHandling = EnumHandHandling.NotHandled;
             bool preventDefault = false;
-            
+
             foreach (CollectibleBehavior behavior in CollectibleBehaviors)
             {
                 EnumHandling bhHandling = EnumHandling.PassThrough;
-            
+
                 behavior.OnHeldInteractStart(slot, byEntity, blockSel, entitySel, firstEvent, ref bhHandHandling, ref bhHandling);
                 if (bhHandling != EnumHandling.PassThrough)
                 {
                     handling = bhHandHandling;
                     preventDefault = true;
                 }
-            
+
                 if (bhHandling == EnumHandling.PreventSubsequent) return;
             }
 
@@ -1362,7 +1406,7 @@ namespace Vintagestory.API.Common
         protected void playEatSound(EntityAgent byEntity, string eatSound = "eat", int eatSoundRepeats = 1)
         {
             if (byEntity.Controls.HandUse != EnumHandInteract.HeldItemInteract) return;
-            
+
             IPlayer player = null;
             if (byEntity is EntityPlayer) player = byEntity.World.PlayerByUid(((EntityPlayer)byEntity).PlayerUID);
 
@@ -1530,10 +1574,7 @@ namespace Vintagestory.API.Common
         {
             ItemStack stack = inSlot.Itemstack;
 
-            string descLangCode = Code?.Domain + AssetLocation.LocationSeparator + ItemClass.ToString().ToLowerInvariant() + "desc-" + Code?.Path;
-            string descText = Lang.GetMatching(descLangCode);
-            if (descText == descLangCode) descText = "";
-            else descText = descText + "\n";
+            string descText = GetItemDescText();
 
             if (withDebugInfo)
             {
@@ -1712,6 +1753,15 @@ namespace Vintagestory.API.Common
             }
         }
 
+        public virtual string GetItemDescText()
+        {
+            string descLangCode = Code?.Domain + AssetLocation.LocationSeparator + ItemClass.ToString().ToLowerInvariant() + "desc-" + Code?.Path;
+            string descText = Lang.GetMatching(descLangCode);
+            if (descText == descLangCode) descText = "";
+            else descText = descText + "\n";
+            return descText;
+        }
+
 
         /// <summary>
         /// Interaction help thats displayed above the hotbar, when the player puts this item/block in his active hand slot
@@ -1761,7 +1811,7 @@ namespace Vintagestory.API.Common
             bool nowSpoiling = false;
 
             if (transitionStates == null) return 0;
-            
+
             for (int i = 0; i < transitionStates.Length; i++)
             {
                 spoilState = Math.Max(spoilState, AppendPerishableInfoText(inSlot, dsc, world, transitionStates[i], nowSpoiling));
@@ -1961,6 +2011,35 @@ namespace Vintagestory.API.Common
                         }
                     }
                     break;
+
+                case EnumTransitionType.Harden:
+                    if (nowSpoiling) break;
+
+                    if (transitionLevel > 0 || freshHoursLeft <= 0)
+                    {
+                        dsc.AppendLine(Lang.Get("itemstack-hardenable-hardened", (int)Math.Round(transitionLevel * 100)));
+                    }
+                    else
+                    {
+                        double hoursPerday = api.World.Calendar.HoursPerDay;
+
+                        if (transitionRate <= 0)
+                        {
+                            dsc.AppendLine(Lang.Get("itemstack-hardenable"));
+                        }
+                        else
+                        {
+                            if (freshHoursLeft > hoursPerday)
+                            {
+                                dsc.AppendLine(Lang.Get("itemstack-hardenable-duration-days", Math.Round(freshHoursLeft / hoursPerday, 1)));
+                            }
+                            else
+                            {
+                                dsc.AppendLine(Lang.Get("itemstack-hardenable-duration-hours", Math.Round(freshHoursLeft, 1)));
+                            }
+                        }
+                    }
+                    break;
             }
 
             return 0;
@@ -2023,7 +2102,7 @@ namespace Vintagestory.API.Common
             return stacks;
         }
 
-        
+
 
         /// <summary>
         /// Should return true if the stack can be placed into given slot
@@ -2096,7 +2175,7 @@ namespace Vintagestory.API.Common
                 bool canDirectStack = true;
                 bool canAutoStack = true;
 
-                
+
                 if (targetTransitionStates == null)
                 {
                     op.MovedQuantity = 0;
@@ -2185,7 +2264,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        
+
 
         /// <summary>
         /// If the item is smeltable, this is the time it takes to smelt at smelting point
@@ -2334,13 +2413,13 @@ namespace Vintagestory.API.Common
             for (int i = 0; i < propsm.Length; i++)
             {
                 if (propsm[i].Type == type)
-                {        
+                {
                     (attr["transitionedHours"] as FloatArrayAttribute).value[i] = transitionedHours;
                     return;
                 }
             }
         }
-        
+
 
         public virtual float GetTransitionRateMul(IWorldAccessor world, ItemSlot inSlot, EnumTransitionType transType)
         {
@@ -2377,7 +2456,7 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="inslot"></param>
         /// <returns></returns>
-        protected virtual TransitionState[] UpdateAndGetTransitionStatesNative(IWorldAccessor world, ItemSlot inslot) 
+        protected virtual TransitionState[] UpdateAndGetTransitionStatesNative(IWorldAccessor world, ItemSlot inslot)
         {
             if (inslot is ItemSlotCreative) return null;
 
@@ -2456,7 +2535,7 @@ namespace Vintagestory.API.Common
 
 
             bool nowSpoiling = false;
-         
+
             float hoursPassed = (float)(nowTotalHours - lastUpdatedTotalHours);
 
             for (int i = 0; i < propsm.Length; i++)
@@ -2477,11 +2556,11 @@ namespace Vintagestory.API.Common
                     }*/
                 }
 
-                
+
 
                 float freshHoursLeft = Math.Max(0, freshHours[i] - transitionedHours[i]);
                 float transitionLevel = Math.Max(0, transitionedHours[i] - freshHours[i]) / transitionHours[i];
-                
+
                 // Don't continue transitioning spoiled foods
                 if (transitionLevel > 0)
                 {
@@ -2611,7 +2690,7 @@ namespace Vintagestory.API.Common
                     attr["transitionedHours"] = new FloatArrayAttribute(new float[] { Math.Max(0, transitionedHoursRelative * (0.8f + (2 + quantity) * spoilageRelMax) * (transitionHours + freshHours)) });
                 }
 
-                
+
             }
         }
 
@@ -2635,7 +2714,7 @@ namespace Vintagestory.API.Common
             if (propsm == null) return true;
             ITreeAttribute attr = (ITreeAttribute)itemstack.Attributes["transitionstate"];
             if (attr == null) return true;
-            
+
             float[] freshHours = (attr["freshHours"] as FloatArrayAttribute).value;
             float[] transitionedHours = (attr["transitionedHours"] as FloatArrayAttribute).value;
             for (int i = 0; i < propsm.Length; i++)
@@ -2774,7 +2853,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual bool Equals(ItemStack thisStack, ItemStack otherStack, params string[] ignoreAttributeSubTrees)
         {
-            return 
+            return
                 thisStack.Class == otherStack.Class &&
                 thisStack.Id == otherStack.Id &&
                 thisStack.Attributes.Equals(api.World, otherStack.Attributes, ignoreAttributeSubTrees)
@@ -2815,7 +2894,7 @@ namespace Vintagestory.API.Common
             }
 
             OnStoreCollectibleMappings(world, inSlot.Itemstack.Attributes, blockIdMapping, itemIdMapping);
-                
+
             // on export of schematic save the temperature to the TreeAttribute since in import we need the temperatureLastUpdate to be up to date
             if ((inSlot.Itemstack.Attributes["temperature"] as ITreeAttribute)?.HasAttribute("temperatureLastUpdate") == true)
             {
@@ -2861,7 +2940,13 @@ namespace Vintagestory.API.Common
                 if (val.Value is ItemstackAttribute itemAttribute)
                 {
                     ItemStack stack = itemAttribute.value;
-                    stack?.FixMapping(oldBlockIdMapping, oldItemIdMapping, worldForResolve);
+
+                    // if the Collectible is null the item maybe from a missing mod so we need to remove it
+                    if (stack?.FixMapping(oldBlockIdMapping, oldItemIdMapping, worldForResolve) == false)
+                    {
+                        itemAttribute.value = null;
+                        continue;
+                    }
                     stack?.Collectible.OnLoadCollectibleMappings(worldForResolve, stack.Attributes, oldBlockIdMapping, oldItemIdMapping);
                 }
             }
@@ -2870,17 +2955,17 @@ namespace Vintagestory.API.Common
             {
                 tree.SetDouble("temperatureLastUpdate", worldForResolve.Calendar.TotalHours);
             }
-            
+
             // update food transition time
             if (tree.HasAttribute("createdTotalHours"))
             {
                 var created = tree.GetDouble("createdTotalHours");
                 var lasUpdated = tree.GetDouble("lastUpdatedTotalHours");
-                var diff = lasUpdated - created; 
+                var diff = lasUpdated - created;
                 tree.SetDouble("lastUpdatedTotalHours", worldForResolve.Calendar.TotalHours);
                 tree.SetDouble("createdTotalHours", worldForResolve.Calendar.TotalHours - diff);
             }
-            
+
         }
 
         void OnStoreCollectibleMappings(IWorldAccessor world, ITreeAttribute tree, Dictionary<int, AssetLocation> blockIdMapping, Dictionary<int, AssetLocation> itemIdMapping)
@@ -3058,6 +3143,14 @@ namespace Vintagestory.API.Common
             return (T)GetCollectibleBehavior(typeof(T), false);
         }
 
-
+        /// <summary>
+        /// Called immediately prior to a firepit or similar testing whether this Collectible can be smelted
+        /// <br/>Returns true if the caller should be marked dirty
+        /// </summary>
+        /// <param name="inventorySmelting"></param>
+        public virtual bool OnSmeltAttempt(InventoryBase inventorySmelting)
+        {
+            return false;
+        }
     }
 }

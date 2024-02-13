@@ -1,0 +1,330 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.ITesselatorManager
+  commentId: T:Vintagestory.API.Client.ITesselatorManager
+  id: ITesselatorManager
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.ITesselatorManager.GetCachedShape(Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMesh(Vintagestory.API.Common.Block)
+  - Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMeshRef(Vintagestory.API.Common.Block)
+  - Vintagestory.API.Client.ITesselatorManager.GetDefaultItemMeshRef(Vintagestory.API.Common.Item)
+  - Vintagestory.API.Client.ITesselatorManager.ThreadDispose
+  langs:
+  - csharp
+  - vb
+  name: ITesselatorManager
+  nameWithType: ITesselatorManager
+  fullName: Vintagestory.API.Client.ITesselatorManager
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/ITesselatorAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ITesselatorManager
+    path: Client/API/ITesselatorAPI.cs
+    startLine: 54
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Manager interface for Tesselators.
+  example: []
+  syntax:
+    content: public interface ITesselatorManager
+    content.vb: Public Interface ITesselatorManager
+- uid: Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMesh(Vintagestory.API.Common.Block)
+  commentId: M:Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMesh(Vintagestory.API.Common.Block)
+  id: GetDefaultBlockMesh(Vintagestory.API.Common.Block)
+  parent: Vintagestory.API.Client.ITesselatorManager
+  langs:
+  - csharp
+  - vb
+  name: GetDefaultBlockMesh(Block)
+  nameWithType: ITesselatorManager.GetDefaultBlockMesh(Block)
+  fullName: Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMesh(Vintagestory.API.Common.Block)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/ITesselatorAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetDefaultBlockMesh
+    path: Client/API/ITesselatorAPI.cs
+    startLine: 61
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns the default block mesh that being used by the engine when tesselating a chunk. The alternate and inventory versions are seperate.
+  example: []
+  syntax:
+    content: MeshData GetDefaultBlockMesh(Block block)
+    parameters:
+    - id: block
+      type: Vintagestory.API.Common.Block
+      description: ''
+    return:
+      type: Vintagestory.API.Client.MeshData
+      description: ''
+    content.vb: Function GetDefaultBlockMesh(block As Block) As MeshData
+  overload: Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMesh*
+- uid: Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMeshRef(Vintagestory.API.Common.Block)
+  commentId: M:Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMeshRef(Vintagestory.API.Common.Block)
+  id: GetDefaultBlockMeshRef(Vintagestory.API.Common.Block)
+  parent: Vintagestory.API.Client.ITesselatorManager
+  langs:
+  - csharp
+  - vb
+  name: GetDefaultBlockMeshRef(Block)
+  nameWithType: ITesselatorManager.GetDefaultBlockMeshRef(Block)
+  fullName: Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMeshRef(Vintagestory.API.Common.Block)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/ITesselatorAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetDefaultBlockMeshRef
+    path: Client/API/ITesselatorAPI.cs
+    startLine: 68
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns the default block mesh ref that being used by the engine when rendering a block in the inventory. The alternate and inventory versions are seperate.
+  example: []
+  syntax:
+    content: MultiTextureMeshRef GetDefaultBlockMeshRef(Block block)
+    parameters:
+    - id: block
+      type: Vintagestory.API.Common.Block
+      description: ''
+    return:
+      type: Vintagestory.API.Client.MultiTextureMeshRef
+      description: ''
+    content.vb: Function GetDefaultBlockMeshRef(block As Block) As MultiTextureMeshRef
+  overload: Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMeshRef*
+- uid: Vintagestory.API.Client.ITesselatorManager.GetDefaultItemMeshRef(Vintagestory.API.Common.Item)
+  commentId: M:Vintagestory.API.Client.ITesselatorManager.GetDefaultItemMeshRef(Vintagestory.API.Common.Item)
+  id: GetDefaultItemMeshRef(Vintagestory.API.Common.Item)
+  parent: Vintagestory.API.Client.ITesselatorManager
+  langs:
+  - csharp
+  - vb
+  name: GetDefaultItemMeshRef(Item)
+  nameWithType: ITesselatorManager.GetDefaultItemMeshRef(Item)
+  fullName: Vintagestory.API.Client.ITesselatorManager.GetDefaultItemMeshRef(Vintagestory.API.Common.Item)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/ITesselatorAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetDefaultItemMeshRef
+    path: Client/API/ITesselatorAPI.cs
+    startLine: 75
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns the default block mesh ref that being used by the engine when rendering an item in the inventory. The alternate and inventory versions are seperate.
+  example: []
+  syntax:
+    content: MultiTextureMeshRef GetDefaultItemMeshRef(Item block)
+    parameters:
+    - id: block
+      type: Vintagestory.API.Common.Item
+      description: ''
+    return:
+      type: Vintagestory.API.Client.MultiTextureMeshRef
+      description: ''
+    content.vb: Function GetDefaultItemMeshRef(block As Item) As MultiTextureMeshRef
+  overload: Vintagestory.API.Client.ITesselatorManager.GetDefaultItemMeshRef*
+- uid: Vintagestory.API.Client.ITesselatorManager.GetCachedShape(Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Client.ITesselatorManager.GetCachedShape(Vintagestory.API.Common.AssetLocation)
+  id: GetCachedShape(Vintagestory.API.Common.AssetLocation)
+  parent: Vintagestory.API.Client.ITesselatorManager
+  langs:
+  - csharp
+  - vb
+  name: GetCachedShape(AssetLocation)
+  nameWithType: ITesselatorManager.GetCachedShape(AssetLocation)
+  fullName: Vintagestory.API.Client.ITesselatorManager.GetCachedShape(Vintagestory.API.Common.AssetLocation)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/ITesselatorAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetCachedShape
+    path: Client/API/ITesselatorAPI.cs
+    startLine: 77
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: Shape GetCachedShape(AssetLocation location)
+    parameters:
+    - id: location
+      type: Vintagestory.API.Common.AssetLocation
+    return:
+      type: Vintagestory.API.Common.Shape
+    content.vb: Function GetCachedShape(location As AssetLocation) As Shape
+  overload: Vintagestory.API.Client.ITesselatorManager.GetCachedShape*
+- uid: Vintagestory.API.Client.ITesselatorManager.ThreadDispose
+  commentId: M:Vintagestory.API.Client.ITesselatorManager.ThreadDispose
+  id: ThreadDispose
+  parent: Vintagestory.API.Client.ITesselatorManager
+  langs:
+  - csharp
+  - vb
+  name: ThreadDispose()
+  nameWithType: ITesselatorManager.ThreadDispose()
+  fullName: Vintagestory.API.Client.ITesselatorManager.ThreadDispose()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/ITesselatorAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ThreadDispose
+    path: Client/API/ITesselatorAPI.cs
+    startLine: 78
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void ThreadDispose()
+    content.vb: Sub ThreadDispose()
+  overload: Vintagestory.API.Client.ITesselatorManager.ThreadDispose*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMesh*
+  commentId: Overload:Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMesh
+  href: Vintagestory.API.Client.ITesselatorManager.html#Vintagestory_API_Client_ITesselatorManager_GetDefaultBlockMesh_Vintagestory_API_Common_Block_
+  name: GetDefaultBlockMesh
+  nameWithType: ITesselatorManager.GetDefaultBlockMesh
+  fullName: Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMesh
+- uid: Vintagestory.API.Common.Block
+  commentId: T:Vintagestory.API.Common.Block
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Block.html
+  name: Block
+  nameWithType: Block
+  fullName: Vintagestory.API.Common.Block
+- uid: Vintagestory.API.Client.MeshData
+  commentId: T:Vintagestory.API.Client.MeshData
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MeshData.html
+  name: MeshData
+  nameWithType: MeshData
+  fullName: Vintagestory.API.Client.MeshData
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMeshRef*
+  commentId: Overload:Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMeshRef
+  href: Vintagestory.API.Client.ITesselatorManager.html#Vintagestory_API_Client_ITesselatorManager_GetDefaultBlockMeshRef_Vintagestory_API_Common_Block_
+  name: GetDefaultBlockMeshRef
+  nameWithType: ITesselatorManager.GetDefaultBlockMeshRef
+  fullName: Vintagestory.API.Client.ITesselatorManager.GetDefaultBlockMeshRef
+- uid: Vintagestory.API.Client.MultiTextureMeshRef
+  commentId: T:Vintagestory.API.Client.MultiTextureMeshRef
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MultiTextureMeshRef.html
+  name: MultiTextureMeshRef
+  nameWithType: MultiTextureMeshRef
+  fullName: Vintagestory.API.Client.MultiTextureMeshRef
+- uid: Vintagestory.API.Client.ITesselatorManager.GetDefaultItemMeshRef*
+  commentId: Overload:Vintagestory.API.Client.ITesselatorManager.GetDefaultItemMeshRef
+  href: Vintagestory.API.Client.ITesselatorManager.html#Vintagestory_API_Client_ITesselatorManager_GetDefaultItemMeshRef_Vintagestory_API_Common_Item_
+  name: GetDefaultItemMeshRef
+  nameWithType: ITesselatorManager.GetDefaultItemMeshRef
+  fullName: Vintagestory.API.Client.ITesselatorManager.GetDefaultItemMeshRef
+- uid: Vintagestory.API.Common.Item
+  commentId: T:Vintagestory.API.Common.Item
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Item.html
+  name: Item
+  nameWithType: Item
+  fullName: Vintagestory.API.Common.Item
+- uid: Vintagestory.API.Client.ITesselatorManager.GetCachedShape*
+  commentId: Overload:Vintagestory.API.Client.ITesselatorManager.GetCachedShape
+  href: Vintagestory.API.Client.ITesselatorManager.html#Vintagestory_API_Client_ITesselatorManager_GetCachedShape_Vintagestory_API_Common_AssetLocation_
+  name: GetCachedShape
+  nameWithType: ITesselatorManager.GetCachedShape
+  fullName: Vintagestory.API.Client.ITesselatorManager.GetCachedShape
+- uid: Vintagestory.API.Common.AssetLocation
+  commentId: T:Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: AssetLocation
+  nameWithType: AssetLocation
+  fullName: Vintagestory.API.Common.AssetLocation
+- uid: Vintagestory.API.Common.Shape
+  commentId: T:Vintagestory.API.Common.Shape
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Shape.html
+  name: Shape
+  nameWithType: Shape
+  fullName: Vintagestory.API.Common.Shape
+- uid: Vintagestory.API.Client.ITesselatorManager.ThreadDispose*
+  commentId: Overload:Vintagestory.API.Client.ITesselatorManager.ThreadDispose
+  href: Vintagestory.API.Client.ITesselatorManager.html#Vintagestory_API_Client_ITesselatorManager_ThreadDispose
+  name: ThreadDispose
+  nameWithType: ITesselatorManager.ThreadDispose
+  fullName: Vintagestory.API.Client.ITesselatorManager.ThreadDispose

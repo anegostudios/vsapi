@@ -229,6 +229,11 @@ namespace Vintagestory.API.Common
             return path.StartsWithFast(partialPath, offset) && (domain == null || domain.Equals(Domain));
         }
 
+        public bool PathStartsWith(string partialPath)
+        {
+            return path.StartsWithOrdinal(partialPath);
+        }
+
         public string ToShortString()
         {
             if (domain == null || domain.Equals(GlobalConstants.DefaultDomain))
@@ -313,7 +318,7 @@ namespace Vintagestory.API.Common
 
         public AssetLocation WithoutPathAppendix(string appendix)
         {
-            if (path.EndsWith(appendix))
+            if (path.EndsWithOrdinal(appendix))
             {
                 path = path.Substring(0, path.Length - appendix.Length);
             }
@@ -322,7 +327,7 @@ namespace Vintagestory.API.Common
 
         public AssetLocation WithPathAppendixOnce(string appendix)
         {
-            if (!path.EndsWith(appendix))
+            if (!path.EndsWithOrdinal(appendix))
             {
                 path += appendix;
             }
@@ -358,7 +363,7 @@ namespace Vintagestory.API.Common
 
         public string PathOmittingPrefixAndSuffix(string prefix, string suffix)
         {
-            int endpoint = path.EndsWith(suffix) ? path.Length - suffix.Length : path.Length;
+            int endpoint = path.EndsWithOrdinal(suffix) ? path.Length - suffix.Length : path.Length;
             return path[prefix.Length..endpoint];
         }
 
@@ -408,11 +413,11 @@ namespace Vintagestory.API.Common
         {
             if (path.StartsWithFast(prefix))
             {
-                return new AssetLocation(this.domain, path.EndsWith(appendix) ? path : path + appendix);
+                return new AssetLocation(this.domain, path.EndsWithOrdinal(appendix) ? path : path + appendix);
             }
             else
             {
-                return new AssetLocation(this.domain, path.EndsWith(appendix) ? prefix + path : prefix + path + appendix);
+                return new AssetLocation(this.domain, path.EndsWithOrdinal(appendix) ? prefix + path : prefix + path + appendix);
             }
         }
 
@@ -480,7 +485,7 @@ namespace Vintagestory.API.Common
 
         public int CompareTo(AssetLocation other)
         {
-            return ToString().CompareTo(other.ToString());
+            return ToString().CompareOrdinal(other.ToString());
         }
 
         internal bool WildCardMatch(AssetLocation other, string pathAsRegex)

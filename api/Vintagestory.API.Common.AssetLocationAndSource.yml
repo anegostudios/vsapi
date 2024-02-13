@@ -1,0 +1,1957 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.AssetLocationAndSource
+  commentId: T:Vintagestory.API.Common.AssetLocationAndSource
+  id: AssetLocationAndSource
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String)
+  - Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,System.String)
+  - Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,System.String,System.String,System.String,System.Int32)
+  - Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,Vintagestory.API.Common.SourceStringComponents)
+  - Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,System.String)
+  - Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,System.String,Vintagestory.API.Common.AssetLocation,System.Int32)
+  - Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.SourceStringComponents)
+  - Vintagestory.API.Common.AssetLocationAndSource.AddToAllAtlasses
+  - Vintagestory.API.Common.AssetLocationAndSource.Source
+  - Vintagestory.API.Common.AssetLocationAndSource.loadedAlready
+  langs:
+  - csharp
+  - vb
+  name: AssetLocationAndSource
+  nameWithType: AssetLocationAndSource
+  fullName: Vintagestory.API.Common.AssetLocationAndSource
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/Assets/AssetLocation.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AssetLocationAndSource
+    path: Common/Assets/AssetLocation.cs
+    startLine: 53
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Defines a complete path to an assets, including it's domain. Includes an extra Source field for debugging.
+  example: []
+  syntax:
+    content: >-
+      [TypeConverter(typeof(StringAssetLocationConverter))]
+
+      public class AssetLocationAndSource : AssetLocation, IComparable<AssetLocation>, IEquatable<AssetLocation>
+    content.vb: >-
+      <TypeConverter(GetType(StringAssetLocationConverter))>
+
+      Public Class AssetLocationAndSource Inherits AssetLocation Implements IComparable(Of AssetLocation), IEquatable(Of AssetLocation)
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Common.AssetLocation
+  implements:
+  - System.IComparable{Vintagestory.API.Common.AssetLocation}
+  - System.IEquatable{Vintagestory.API.Common.AssetLocation}
+  inheritedMembers:
+  - Vintagestory.API.Common.AssetLocation.LocationSeparator
+  - Vintagestory.API.Common.AssetLocation.Domain
+  - Vintagestory.API.Common.AssetLocation.Path
+  - Vintagestory.API.Common.AssetLocation.IsWildCard
+  - Vintagestory.API.Common.AssetLocation.EndsWithWildCard
+  - Vintagestory.API.Common.AssetLocation.Create(System.String,System.String)
+  - Vintagestory.API.Common.AssetLocation.Valid
+  - Vintagestory.API.Common.AssetLocation.IsChild(Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Common.AssetLocation.BeginsWith(System.String,System.String)
+  - Vintagestory.API.Common.AssetLocation.PathStartsWith(System.String)
+  - Vintagestory.API.Common.AssetLocation.ToShortString
+  - Vintagestory.API.Common.AssetLocation.ShortDomain
+  - Vintagestory.API.Common.AssetLocation.FirstPathPart(System.Int32)
+  - Vintagestory.API.Common.AssetLocation.FirstCodePart
+  - Vintagestory.API.Common.AssetLocation.SecondCodePart
+  - Vintagestory.API.Common.AssetLocation.CodePartsAfterSecond
+  - Vintagestory.API.Common.AssetLocation.Category
+  - Vintagestory.API.Common.AssetLocation.WithPathPrefix(System.String)
+  - Vintagestory.API.Common.AssetLocation.WithPathPrefixOnce(System.String)
+  - Vintagestory.API.Common.AssetLocation.WithLocationPrefixOnce(Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Common.AssetLocation.WithPathAppendix(System.String)
+  - Vintagestory.API.Common.AssetLocation.WithoutPathAppendix(System.String)
+  - Vintagestory.API.Common.AssetLocation.WithPathAppendixOnce(System.String)
+  - Vintagestory.API.Common.AssetLocation.HasDomain
+  - Vintagestory.API.Common.AssetLocation.GetName
+  - Vintagestory.API.Common.AssetLocation.RemoveEnding
+  - Vintagestory.API.Common.AssetLocation.PathOmittingPrefixAndSuffix(System.String,System.String)
+  - Vintagestory.API.Common.AssetLocation.EndVariant
+  - Vintagestory.API.Common.AssetLocation.Clone
+  - Vintagestory.API.Common.AssetLocation.CloneWithoutPrefixAndEnding(System.Int32)
+  - Vintagestory.API.Common.AssetLocation.CopyWithPath(System.String)
+  - Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendix(System.String,System.String)
+  - Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendixOnce(System.String,System.String)
+  - Vintagestory.API.Common.AssetLocation.WithPath(System.String)
+  - Vintagestory.API.Common.AssetLocation.toLocations(System.String[])
+  - Vintagestory.API.Common.AssetLocation.GetHashCode
+  - Vintagestory.API.Common.AssetLocation.Equals(Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Common.AssetLocation.Equals(System.Object)
+  - Vintagestory.API.Common.AssetLocation.ToString
+  - Vintagestory.API.Common.AssetLocation.CompareTo(Vintagestory.API.Common.AssetLocation)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - Vintagestory.API.Common.AssetLocation.Vintagestory.API.Util.WildcardUtil.WildCardReplace(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+- uid: Vintagestory.API.Common.AssetLocationAndSource.AddToAllAtlasses
+  commentId: F:Vintagestory.API.Common.AssetLocationAndSource.AddToAllAtlasses
+  id: AddToAllAtlasses
+  parent: Vintagestory.API.Common.AssetLocationAndSource
+  langs:
+  - csharp
+  - vb
+  name: AddToAllAtlasses
+  nameWithType: AssetLocationAndSource.AddToAllAtlasses
+  fullName: Vintagestory.API.Common.AssetLocationAndSource.AddToAllAtlasses
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Assets/AssetLocation.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AddToAllAtlasses
+    path: Common/Assets/AssetLocation.cs
+    startLine: 56
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public bool AddToAllAtlasses
+    return:
+      type: System.Boolean
+    content.vb: Public AddToAllAtlasses As Boolean
+- uid: Vintagestory.API.Common.AssetLocationAndSource.Source
+  commentId: F:Vintagestory.API.Common.AssetLocationAndSource.Source
+  id: Source
+  parent: Vintagestory.API.Common.AssetLocationAndSource
+  langs:
+  - csharp
+  - vb
+  name: Source
+  nameWithType: AssetLocationAndSource.Source
+  fullName: Vintagestory.API.Common.AssetLocationAndSource.Source
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Assets/AssetLocation.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Source
+    path: Common/Assets/AssetLocation.cs
+    startLine: 61
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The source of a given asset.
+  example: []
+  syntax:
+    content: public SourceStringComponents Source
+    return:
+      type: Vintagestory.API.Common.SourceStringComponents
+    content.vb: Public Source As SourceStringComponents
+- uid: Vintagestory.API.Common.AssetLocationAndSource.loadedAlready
+  commentId: F:Vintagestory.API.Common.AssetLocationAndSource.loadedAlready
+  id: loadedAlready
+  parent: Vintagestory.API.Common.AssetLocationAndSource
+  langs:
+  - csharp
+  - vb
+  name: loadedAlready
+  nameWithType: AssetLocationAndSource.loadedAlready
+  fullName: Vintagestory.API.Common.AssetLocationAndSource.loadedAlready
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Assets/AssetLocation.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: loadedAlready
+    path: Common/Assets/AssetLocation.cs
+    startLine: 65
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Used to avoid duplication when loading colormaps and shapes
+  example: []
+  syntax:
+    content: public volatile int loadedAlready
+    return:
+      type: System.Int32
+    content.vb: Public loadedAlready As Integer
+- uid: Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: Vintagestory.API.Common.AssetLocationAndSource
+  langs:
+  - csharp
+  - vb
+  name: AssetLocationAndSource(string)
+  nameWithType: AssetLocationAndSource.AssetLocationAndSource(string)
+  fullName: Vintagestory.API.Common.AssetLocationAndSource.AssetLocationAndSource(string)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Assets/AssetLocation.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Assets/AssetLocation.cs
+    startLine: 67
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AssetLocationAndSource(string location)
+    parameters:
+    - id: location
+      type: System.String
+    content.vb: Public Sub New(location As String)
+  overload: Vintagestory.API.Common.AssetLocationAndSource.#ctor*
+  nameWithType.vb: AssetLocationAndSource.New(String)
+  fullName.vb: Vintagestory.API.Common.AssetLocationAndSource.New(String)
+  name.vb: New(String)
+- uid: Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation)
+  id: '#ctor(Vintagestory.API.Common.AssetLocation)'
+  parent: Vintagestory.API.Common.AssetLocationAndSource
+  langs:
+  - csharp
+  - vb
+  name: AssetLocationAndSource(AssetLocation)
+  nameWithType: AssetLocationAndSource.AssetLocationAndSource(AssetLocation)
+  fullName: Vintagestory.API.Common.AssetLocationAndSource.AssetLocationAndSource(Vintagestory.API.Common.AssetLocation)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Assets/AssetLocation.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Assets/AssetLocation.cs
+    startLine: 71
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AssetLocationAndSource(AssetLocation loc)
+    parameters:
+    - id: loc
+      type: Vintagestory.API.Common.AssetLocation
+    content.vb: Public Sub New(loc As AssetLocation)
+  overload: Vintagestory.API.Common.AssetLocationAndSource.#ctor*
+  nameWithType.vb: AssetLocationAndSource.New(AssetLocation)
+  fullName.vb: Vintagestory.API.Common.AssetLocationAndSource.New(Vintagestory.API.Common.AssetLocation)
+  name.vb: New(AssetLocation)
+- uid: Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,System.String,Vintagestory.API.Common.AssetLocation,System.Int32)
+  commentId: M:Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,System.String,Vintagestory.API.Common.AssetLocation,System.Int32)
+  id: '#ctor(Vintagestory.API.Common.AssetLocation,System.String,Vintagestory.API.Common.AssetLocation,System.Int32)'
+  parent: Vintagestory.API.Common.AssetLocationAndSource
+  langs:
+  - csharp
+  - vb
+  name: AssetLocationAndSource(AssetLocation, string, AssetLocation, int)
+  nameWithType: AssetLocationAndSource.AssetLocationAndSource(AssetLocation, string, AssetLocation, int)
+  fullName: Vintagestory.API.Common.AssetLocationAndSource.AssetLocationAndSource(Vintagestory.API.Common.AssetLocation, string, Vintagestory.API.Common.AssetLocation, int)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Assets/AssetLocation.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Assets/AssetLocation.cs
+    startLine: 75
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AssetLocationAndSource(AssetLocation loc, string message, AssetLocation sourceLoc, int alternateNo = -1)
+    parameters:
+    - id: loc
+      type: Vintagestory.API.Common.AssetLocation
+    - id: message
+      type: System.String
+    - id: sourceLoc
+      type: Vintagestory.API.Common.AssetLocation
+    - id: alternateNo
+      type: System.Int32
+    content.vb: Public Sub New(loc As AssetLocation, message As String, sourceLoc As AssetLocation, alternateNo As Integer = -1)
+  overload: Vintagestory.API.Common.AssetLocationAndSource.#ctor*
+  nameWithType.vb: AssetLocationAndSource.New(AssetLocation, String, AssetLocation, Integer)
+  fullName.vb: Vintagestory.API.Common.AssetLocationAndSource.New(Vintagestory.API.Common.AssetLocation, String, Vintagestory.API.Common.AssetLocation, Integer)
+  name.vb: New(AssetLocation, String, AssetLocation, Integer)
+- uid: Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,System.String,System.String,System.String,System.Int32)
+  commentId: M:Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,System.String,System.String,System.String,System.Int32)
+  id: '#ctor(System.String,System.String,System.String,System.String,System.String,System.Int32)'
+  parent: Vintagestory.API.Common.AssetLocationAndSource
+  langs:
+  - csharp
+  - vb
+  name: AssetLocationAndSource(string, string, string, string, string, int)
+  nameWithType: AssetLocationAndSource.AssetLocationAndSource(string, string, string, string, string, int)
+  fullName: Vintagestory.API.Common.AssetLocationAndSource.AssetLocationAndSource(string, string, string, string, string, int)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Assets/AssetLocation.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Assets/AssetLocation.cs
+    startLine: 80
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AssetLocationAndSource(string domain, string path, string message, string sourceDomain, string sourcePath, int alternateNo = -1)
+    parameters:
+    - id: domain
+      type: System.String
+    - id: path
+      type: System.String
+    - id: message
+      type: System.String
+    - id: sourceDomain
+      type: System.String
+    - id: sourcePath
+      type: System.String
+    - id: alternateNo
+      type: System.Int32
+    content.vb: Public Sub New(domain As String, path As String, message As String, sourceDomain As String, sourcePath As String, alternateNo As Integer = -1)
+  overload: Vintagestory.API.Common.AssetLocationAndSource.#ctor*
+  nameWithType.vb: AssetLocationAndSource.New(String, String, String, String, String, Integer)
+  fullName.vb: Vintagestory.API.Common.AssetLocationAndSource.New(String, String, String, String, String, Integer)
+  name.vb: New(String, String, String, String, String, Integer)
+- uid: Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.SourceStringComponents)
+  commentId: M:Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.SourceStringComponents)
+  id: '#ctor(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.SourceStringComponents)'
+  parent: Vintagestory.API.Common.AssetLocationAndSource
+  langs:
+  - csharp
+  - vb
+  name: AssetLocationAndSource(AssetLocation, SourceStringComponents)
+  nameWithType: AssetLocationAndSource.AssetLocationAndSource(AssetLocation, SourceStringComponents)
+  fullName: Vintagestory.API.Common.AssetLocationAndSource.AssetLocationAndSource(Vintagestory.API.Common.AssetLocation, Vintagestory.API.Common.SourceStringComponents)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Assets/AssetLocation.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Assets/AssetLocation.cs
+    startLine: 85
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AssetLocationAndSource(AssetLocation loc, SourceStringComponents source)
+    parameters:
+    - id: loc
+      type: Vintagestory.API.Common.AssetLocation
+    - id: source
+      type: Vintagestory.API.Common.SourceStringComponents
+    content.vb: Public Sub New(loc As AssetLocation, source As SourceStringComponents)
+  overload: Vintagestory.API.Common.AssetLocationAndSource.#ctor*
+  nameWithType.vb: AssetLocationAndSource.New(AssetLocation, SourceStringComponents)
+  fullName.vb: Vintagestory.API.Common.AssetLocationAndSource.New(Vintagestory.API.Common.AssetLocation, Vintagestory.API.Common.SourceStringComponents)
+  name.vb: New(AssetLocation, SourceStringComponents)
+- uid: Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,Vintagestory.API.Common.SourceStringComponents)
+  commentId: M:Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,Vintagestory.API.Common.SourceStringComponents)
+  id: '#ctor(System.String,System.String,Vintagestory.API.Common.SourceStringComponents)'
+  parent: Vintagestory.API.Common.AssetLocationAndSource
+  langs:
+  - csharp
+  - vb
+  name: AssetLocationAndSource(string, string, SourceStringComponents)
+  nameWithType: AssetLocationAndSource.AssetLocationAndSource(string, string, SourceStringComponents)
+  fullName: Vintagestory.API.Common.AssetLocationAndSource.AssetLocationAndSource(string, string, Vintagestory.API.Common.SourceStringComponents)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Assets/AssetLocation.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Assets/AssetLocation.cs
+    startLine: 90
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AssetLocationAndSource(string domain, string path, SourceStringComponents source)
+    parameters:
+    - id: domain
+      type: System.String
+    - id: path
+      type: System.String
+    - id: source
+      type: Vintagestory.API.Common.SourceStringComponents
+    content.vb: Public Sub New(domain As String, path As String, source As SourceStringComponents)
+  overload: Vintagestory.API.Common.AssetLocationAndSource.#ctor*
+  nameWithType.vb: AssetLocationAndSource.New(String, String, SourceStringComponents)
+  fullName.vb: Vintagestory.API.Common.AssetLocationAndSource.New(String, String, Vintagestory.API.Common.SourceStringComponents)
+  name.vb: New(String, String, SourceStringComponents)
+- uid: Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,System.String)
+  id: '#ctor(Vintagestory.API.Common.AssetLocation,System.String)'
+  parent: Vintagestory.API.Common.AssetLocationAndSource
+  langs:
+  - csharp
+  - vb
+  name: AssetLocationAndSource(AssetLocation, string)
+  nameWithType: AssetLocationAndSource.AssetLocationAndSource(AssetLocation, string)
+  fullName: Vintagestory.API.Common.AssetLocationAndSource.AssetLocationAndSource(Vintagestory.API.Common.AssetLocation, string)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Assets/AssetLocation.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Assets/AssetLocation.cs
+    startLine: 95
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [Obsolete("For reduced RAM usage please use newer overloads e.g. AssetLocationAndSource(loc, message, sourceAssetLoc)", false)]
+
+      public AssetLocationAndSource(AssetLocation loc, string oldStyleSource)
+    parameters:
+    - id: loc
+      type: Vintagestory.API.Common.AssetLocation
+    - id: oldStyleSource
+      type: System.String
+    content.vb: >-
+      <Obsolete("For reduced RAM usage please use newer overloads e.g. AssetLocationAndSource(loc, message, sourceAssetLoc)", False)>
+
+      Public Sub New(loc As AssetLocation, oldStyleSource As String)
+  overload: Vintagestory.API.Common.AssetLocationAndSource.#ctor*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String,System.Boolean)
+    arguments:
+    - type: System.String
+      value: For reduced RAM usage please use newer overloads e.g. AssetLocationAndSource(loc, message, sourceAssetLoc)
+    - type: System.Boolean
+      value: false
+  nameWithType.vb: AssetLocationAndSource.New(AssetLocation, String)
+  fullName.vb: Vintagestory.API.Common.AssetLocationAndSource.New(Vintagestory.API.Common.AssetLocation, String)
+  name.vb: New(AssetLocation, String)
+- uid: Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,System.String)
+  id: '#ctor(System.String,System.String,System.String)'
+  parent: Vintagestory.API.Common.AssetLocationAndSource
+  langs:
+  - csharp
+  - vb
+  name: AssetLocationAndSource(string, string, string)
+  nameWithType: AssetLocationAndSource.AssetLocationAndSource(string, string, string)
+  fullName: Vintagestory.API.Common.AssetLocationAndSource.AssetLocationAndSource(string, string, string)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Assets/AssetLocation.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Assets/AssetLocation.cs
+    startLine: 101
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [Obsolete("For reduced RAM usage please use newer overloads e.g. AssetLocationAndSource(domain, path, message, sourceDomain, sourcePath)", false)]
+
+      public AssetLocationAndSource(string domain, string path, string oldStyleSource)
+    parameters:
+    - id: domain
+      type: System.String
+    - id: path
+      type: System.String
+    - id: oldStyleSource
+      type: System.String
+    content.vb: >-
+      <Obsolete("For reduced RAM usage please use newer overloads e.g. AssetLocationAndSource(domain, path, message, sourceDomain, sourcePath)", False)>
+
+      Public Sub New(domain As String, path As String, oldStyleSource As String)
+  overload: Vintagestory.API.Common.AssetLocationAndSource.#ctor*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String,System.Boolean)
+    arguments:
+    - type: System.String
+      value: For reduced RAM usage please use newer overloads e.g. AssetLocationAndSource(domain, path, message, sourceDomain, sourcePath)
+    - type: System.Boolean
+      value: false
+  nameWithType.vb: AssetLocationAndSource.New(String, String, String)
+  fullName.vb: Vintagestory.API.Common.AssetLocationAndSource.New(String, String, String)
+  name.vb: New(String, String, String)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.AssetLocation
+  commentId: T:Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: AssetLocation
+  nameWithType: AssetLocation
+  fullName: Vintagestory.API.Common.AssetLocation
+- uid: System.IComparable{Vintagestory.API.Common.AssetLocation}
+  commentId: T:System.IComparable{Vintagestory.API.Common.AssetLocation}
+  parent: System
+  definition: System.IComparable`1
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  name: IComparable<AssetLocation>
+  nameWithType: IComparable<AssetLocation>
+  fullName: System.IComparable<Vintagestory.API.Common.AssetLocation>
+  nameWithType.vb: IComparable(Of AssetLocation)
+  fullName.vb: System.IComparable(Of Vintagestory.API.Common.AssetLocation)
+  name.vb: IComparable(Of AssetLocation)
+  spec.csharp:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: <
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: System.IEquatable{Vintagestory.API.Common.AssetLocation}
+  commentId: T:System.IEquatable{Vintagestory.API.Common.AssetLocation}
+  parent: System
+  definition: System.IEquatable`1
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<AssetLocation>
+  nameWithType: IEquatable<AssetLocation>
+  fullName: System.IEquatable<Vintagestory.API.Common.AssetLocation>
+  nameWithType.vb: IEquatable(Of AssetLocation)
+  fullName.vb: System.IEquatable(Of Vintagestory.API.Common.AssetLocation)
+  name.vb: IEquatable(Of AssetLocation)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.LocationSeparator
+  commentId: F:Vintagestory.API.Common.AssetLocation.LocationSeparator
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_LocationSeparator
+  name: LocationSeparator
+  nameWithType: AssetLocation.LocationSeparator
+  fullName: Vintagestory.API.Common.AssetLocation.LocationSeparator
+- uid: Vintagestory.API.Common.AssetLocation.Domain
+  commentId: P:Vintagestory.API.Common.AssetLocation.Domain
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Domain
+  name: Domain
+  nameWithType: AssetLocation.Domain
+  fullName: Vintagestory.API.Common.AssetLocation.Domain
+- uid: Vintagestory.API.Common.AssetLocation.Path
+  commentId: P:Vintagestory.API.Common.AssetLocation.Path
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Path
+  name: Path
+  nameWithType: AssetLocation.Path
+  fullName: Vintagestory.API.Common.AssetLocation.Path
+- uid: Vintagestory.API.Common.AssetLocation.IsWildCard
+  commentId: P:Vintagestory.API.Common.AssetLocation.IsWildCard
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_IsWildCard
+  name: IsWildCard
+  nameWithType: AssetLocation.IsWildCard
+  fullName: Vintagestory.API.Common.AssetLocation.IsWildCard
+- uid: Vintagestory.API.Common.AssetLocation.EndsWithWildCard
+  commentId: P:Vintagestory.API.Common.AssetLocation.EndsWithWildCard
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_EndsWithWildCard
+  name: EndsWithWildCard
+  nameWithType: AssetLocation.EndsWithWildCard
+  fullName: Vintagestory.API.Common.AssetLocation.EndsWithWildCard
+- uid: Vintagestory.API.Common.AssetLocation.Create(System.String,System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.Create(System.String,System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Create_System_String_System_String_
+  name: Create(string, string)
+  nameWithType: AssetLocation.Create(string, string)
+  fullName: Vintagestory.API.Common.AssetLocation.Create(string, string)
+  nameWithType.vb: AssetLocation.Create(String, String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.Create(String, String)
+  name.vb: Create(String, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.Create(System.String,System.String)
+    name: Create
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Create_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.Create(System.String,System.String)
+    name: Create
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Create_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.Valid
+  commentId: P:Vintagestory.API.Common.AssetLocation.Valid
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Valid
+  name: Valid
+  nameWithType: AssetLocation.Valid
+  fullName: Vintagestory.API.Common.AssetLocation.Valid
+- uid: Vintagestory.API.Common.AssetLocation.IsChild(Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Common.AssetLocation.IsChild(Vintagestory.API.Common.AssetLocation)
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_IsChild_Vintagestory_API_Common_AssetLocation_
+  name: IsChild(AssetLocation)
+  nameWithType: AssetLocation.IsChild(AssetLocation)
+  fullName: Vintagestory.API.Common.AssetLocation.IsChild(Vintagestory.API.Common.AssetLocation)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.IsChild(Vintagestory.API.Common.AssetLocation)
+    name: IsChild
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_IsChild_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.IsChild(Vintagestory.API.Common.AssetLocation)
+    name: IsChild
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_IsChild_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.BeginsWith(System.String,System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.BeginsWith(System.String,System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_BeginsWith_System_String_System_String_
+  name: BeginsWith(string, string)
+  nameWithType: AssetLocation.BeginsWith(string, string)
+  fullName: Vintagestory.API.Common.AssetLocation.BeginsWith(string, string)
+  nameWithType.vb: AssetLocation.BeginsWith(String, String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.BeginsWith(String, String)
+  name.vb: BeginsWith(String, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.BeginsWith(System.String,System.String)
+    name: BeginsWith
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_BeginsWith_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.BeginsWith(System.String,System.String)
+    name: BeginsWith
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_BeginsWith_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.PathStartsWith(System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.PathStartsWith(System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_PathStartsWith_System_String_
+  name: PathStartsWith(string)
+  nameWithType: AssetLocation.PathStartsWith(string)
+  fullName: Vintagestory.API.Common.AssetLocation.PathStartsWith(string)
+  nameWithType.vb: AssetLocation.PathStartsWith(String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.PathStartsWith(String)
+  name.vb: PathStartsWith(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.PathStartsWith(System.String)
+    name: PathStartsWith
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_PathStartsWith_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.PathStartsWith(System.String)
+    name: PathStartsWith
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_PathStartsWith_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.ToShortString
+  commentId: M:Vintagestory.API.Common.AssetLocation.ToShortString
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_ToShortString
+  name: ToShortString()
+  nameWithType: AssetLocation.ToShortString()
+  fullName: Vintagestory.API.Common.AssetLocation.ToShortString()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.ToShortString
+    name: ToShortString
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_ToShortString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.ToShortString
+    name: ToShortString
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_ToShortString
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.ShortDomain
+  commentId: M:Vintagestory.API.Common.AssetLocation.ShortDomain
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_ShortDomain
+  name: ShortDomain()
+  nameWithType: AssetLocation.ShortDomain()
+  fullName: Vintagestory.API.Common.AssetLocation.ShortDomain()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.ShortDomain
+    name: ShortDomain
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_ShortDomain
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.ShortDomain
+    name: ShortDomain
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_ShortDomain
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.FirstPathPart(System.Int32)
+  commentId: M:Vintagestory.API.Common.AssetLocation.FirstPathPart(System.Int32)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_FirstPathPart_System_Int32_
+  name: FirstPathPart(int)
+  nameWithType: AssetLocation.FirstPathPart(int)
+  fullName: Vintagestory.API.Common.AssetLocation.FirstPathPart(int)
+  nameWithType.vb: AssetLocation.FirstPathPart(Integer)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.FirstPathPart(Integer)
+  name.vb: FirstPathPart(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.FirstPathPart(System.Int32)
+    name: FirstPathPart
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_FirstPathPart_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.FirstPathPart(System.Int32)
+    name: FirstPathPart
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_FirstPathPart_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.FirstCodePart
+  commentId: M:Vintagestory.API.Common.AssetLocation.FirstCodePart
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_FirstCodePart
+  name: FirstCodePart()
+  nameWithType: AssetLocation.FirstCodePart()
+  fullName: Vintagestory.API.Common.AssetLocation.FirstCodePart()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.FirstCodePart
+    name: FirstCodePart
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_FirstCodePart
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.FirstCodePart
+    name: FirstCodePart
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_FirstCodePart
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.SecondCodePart
+  commentId: M:Vintagestory.API.Common.AssetLocation.SecondCodePart
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_SecondCodePart
+  name: SecondCodePart()
+  nameWithType: AssetLocation.SecondCodePart()
+  fullName: Vintagestory.API.Common.AssetLocation.SecondCodePart()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.SecondCodePart
+    name: SecondCodePart
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_SecondCodePart
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.SecondCodePart
+    name: SecondCodePart
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_SecondCodePart
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.CodePartsAfterSecond
+  commentId: M:Vintagestory.API.Common.AssetLocation.CodePartsAfterSecond
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CodePartsAfterSecond
+  name: CodePartsAfterSecond()
+  nameWithType: AssetLocation.CodePartsAfterSecond()
+  fullName: Vintagestory.API.Common.AssetLocation.CodePartsAfterSecond()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.CodePartsAfterSecond
+    name: CodePartsAfterSecond
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CodePartsAfterSecond
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.CodePartsAfterSecond
+    name: CodePartsAfterSecond
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CodePartsAfterSecond
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.Category
+  commentId: P:Vintagestory.API.Common.AssetLocation.Category
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Category
+  name: Category
+  nameWithType: AssetLocation.Category
+  fullName: Vintagestory.API.Common.AssetLocation.Category
+- uid: Vintagestory.API.Common.AssetLocation.WithPathPrefix(System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.WithPathPrefix(System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathPrefix_System_String_
+  name: WithPathPrefix(string)
+  nameWithType: AssetLocation.WithPathPrefix(string)
+  fullName: Vintagestory.API.Common.AssetLocation.WithPathPrefix(string)
+  nameWithType.vb: AssetLocation.WithPathPrefix(String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.WithPathPrefix(String)
+  name.vb: WithPathPrefix(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.WithPathPrefix(System.String)
+    name: WithPathPrefix
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathPrefix_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.WithPathPrefix(System.String)
+    name: WithPathPrefix
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathPrefix_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.WithPathPrefixOnce(System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.WithPathPrefixOnce(System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathPrefixOnce_System_String_
+  name: WithPathPrefixOnce(string)
+  nameWithType: AssetLocation.WithPathPrefixOnce(string)
+  fullName: Vintagestory.API.Common.AssetLocation.WithPathPrefixOnce(string)
+  nameWithType.vb: AssetLocation.WithPathPrefixOnce(String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.WithPathPrefixOnce(String)
+  name.vb: WithPathPrefixOnce(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.WithPathPrefixOnce(System.String)
+    name: WithPathPrefixOnce
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathPrefixOnce_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.WithPathPrefixOnce(System.String)
+    name: WithPathPrefixOnce
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathPrefixOnce_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.WithLocationPrefixOnce(Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Common.AssetLocation.WithLocationPrefixOnce(Vintagestory.API.Common.AssetLocation)
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithLocationPrefixOnce_Vintagestory_API_Common_AssetLocation_
+  name: WithLocationPrefixOnce(AssetLocation)
+  nameWithType: AssetLocation.WithLocationPrefixOnce(AssetLocation)
+  fullName: Vintagestory.API.Common.AssetLocation.WithLocationPrefixOnce(Vintagestory.API.Common.AssetLocation)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.WithLocationPrefixOnce(Vintagestory.API.Common.AssetLocation)
+    name: WithLocationPrefixOnce
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithLocationPrefixOnce_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.WithLocationPrefixOnce(Vintagestory.API.Common.AssetLocation)
+    name: WithLocationPrefixOnce
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithLocationPrefixOnce_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.WithPathAppendix(System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.WithPathAppendix(System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathAppendix_System_String_
+  name: WithPathAppendix(string)
+  nameWithType: AssetLocation.WithPathAppendix(string)
+  fullName: Vintagestory.API.Common.AssetLocation.WithPathAppendix(string)
+  nameWithType.vb: AssetLocation.WithPathAppendix(String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.WithPathAppendix(String)
+  name.vb: WithPathAppendix(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.WithPathAppendix(System.String)
+    name: WithPathAppendix
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathAppendix_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.WithPathAppendix(System.String)
+    name: WithPathAppendix
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathAppendix_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.WithoutPathAppendix(System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.WithoutPathAppendix(System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithoutPathAppendix_System_String_
+  name: WithoutPathAppendix(string)
+  nameWithType: AssetLocation.WithoutPathAppendix(string)
+  fullName: Vintagestory.API.Common.AssetLocation.WithoutPathAppendix(string)
+  nameWithType.vb: AssetLocation.WithoutPathAppendix(String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.WithoutPathAppendix(String)
+  name.vb: WithoutPathAppendix(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.WithoutPathAppendix(System.String)
+    name: WithoutPathAppendix
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithoutPathAppendix_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.WithoutPathAppendix(System.String)
+    name: WithoutPathAppendix
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithoutPathAppendix_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.WithPathAppendixOnce(System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.WithPathAppendixOnce(System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathAppendixOnce_System_String_
+  name: WithPathAppendixOnce(string)
+  nameWithType: AssetLocation.WithPathAppendixOnce(string)
+  fullName: Vintagestory.API.Common.AssetLocation.WithPathAppendixOnce(string)
+  nameWithType.vb: AssetLocation.WithPathAppendixOnce(String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.WithPathAppendixOnce(String)
+  name.vb: WithPathAppendixOnce(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.WithPathAppendixOnce(System.String)
+    name: WithPathAppendixOnce
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathAppendixOnce_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.WithPathAppendixOnce(System.String)
+    name: WithPathAppendixOnce
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathAppendixOnce_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.HasDomain
+  commentId: M:Vintagestory.API.Common.AssetLocation.HasDomain
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_HasDomain
+  name: HasDomain()
+  nameWithType: AssetLocation.HasDomain()
+  fullName: Vintagestory.API.Common.AssetLocation.HasDomain()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.HasDomain
+    name: HasDomain
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_HasDomain
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.HasDomain
+    name: HasDomain
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_HasDomain
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.GetName
+  commentId: M:Vintagestory.API.Common.AssetLocation.GetName
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_GetName
+  name: GetName()
+  nameWithType: AssetLocation.GetName()
+  fullName: Vintagestory.API.Common.AssetLocation.GetName()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.GetName
+    name: GetName
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_GetName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.GetName
+    name: GetName
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_GetName
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.RemoveEnding
+  commentId: M:Vintagestory.API.Common.AssetLocation.RemoveEnding
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_RemoveEnding
+  name: RemoveEnding()
+  nameWithType: AssetLocation.RemoveEnding()
+  fullName: Vintagestory.API.Common.AssetLocation.RemoveEnding()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.RemoveEnding
+    name: RemoveEnding
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_RemoveEnding
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.RemoveEnding
+    name: RemoveEnding
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_RemoveEnding
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.PathOmittingPrefixAndSuffix(System.String,System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.PathOmittingPrefixAndSuffix(System.String,System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_PathOmittingPrefixAndSuffix_System_String_System_String_
+  name: PathOmittingPrefixAndSuffix(string, string)
+  nameWithType: AssetLocation.PathOmittingPrefixAndSuffix(string, string)
+  fullName: Vintagestory.API.Common.AssetLocation.PathOmittingPrefixAndSuffix(string, string)
+  nameWithType.vb: AssetLocation.PathOmittingPrefixAndSuffix(String, String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.PathOmittingPrefixAndSuffix(String, String)
+  name.vb: PathOmittingPrefixAndSuffix(String, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.PathOmittingPrefixAndSuffix(System.String,System.String)
+    name: PathOmittingPrefixAndSuffix
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_PathOmittingPrefixAndSuffix_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.PathOmittingPrefixAndSuffix(System.String,System.String)
+    name: PathOmittingPrefixAndSuffix
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_PathOmittingPrefixAndSuffix_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.EndVariant
+  commentId: M:Vintagestory.API.Common.AssetLocation.EndVariant
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_EndVariant
+  name: EndVariant()
+  nameWithType: AssetLocation.EndVariant()
+  fullName: Vintagestory.API.Common.AssetLocation.EndVariant()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.EndVariant
+    name: EndVariant
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_EndVariant
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.EndVariant
+    name: EndVariant
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_EndVariant
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.Clone
+  commentId: M:Vintagestory.API.Common.AssetLocation.Clone
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Clone
+  name: Clone()
+  nameWithType: AssetLocation.Clone()
+  fullName: Vintagestory.API.Common.AssetLocation.Clone()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.Clone
+    name: Clone
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Clone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.Clone
+    name: Clone
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Clone
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.CloneWithoutPrefixAndEnding(System.Int32)
+  commentId: M:Vintagestory.API.Common.AssetLocation.CloneWithoutPrefixAndEnding(System.Int32)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CloneWithoutPrefixAndEnding_System_Int32_
+  name: CloneWithoutPrefixAndEnding(int)
+  nameWithType: AssetLocation.CloneWithoutPrefixAndEnding(int)
+  fullName: Vintagestory.API.Common.AssetLocation.CloneWithoutPrefixAndEnding(int)
+  nameWithType.vb: AssetLocation.CloneWithoutPrefixAndEnding(Integer)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.CloneWithoutPrefixAndEnding(Integer)
+  name.vb: CloneWithoutPrefixAndEnding(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.CloneWithoutPrefixAndEnding(System.Int32)
+    name: CloneWithoutPrefixAndEnding
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CloneWithoutPrefixAndEnding_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.CloneWithoutPrefixAndEnding(System.Int32)
+    name: CloneWithoutPrefixAndEnding
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CloneWithoutPrefixAndEnding_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.CopyWithPath(System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.CopyWithPath(System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPath_System_String_
+  name: CopyWithPath(string)
+  nameWithType: AssetLocation.CopyWithPath(string)
+  fullName: Vintagestory.API.Common.AssetLocation.CopyWithPath(string)
+  nameWithType.vb: AssetLocation.CopyWithPath(String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.CopyWithPath(String)
+  name.vb: CopyWithPath(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.CopyWithPath(System.String)
+    name: CopyWithPath
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPath_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.CopyWithPath(System.String)
+    name: CopyWithPath
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPath_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendix(System.String,System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendix(System.String,System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPathPrefixAndAppendix_System_String_System_String_
+  name: CopyWithPathPrefixAndAppendix(string, string)
+  nameWithType: AssetLocation.CopyWithPathPrefixAndAppendix(string, string)
+  fullName: Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendix(string, string)
+  nameWithType.vb: AssetLocation.CopyWithPathPrefixAndAppendix(String, String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendix(String, String)
+  name.vb: CopyWithPathPrefixAndAppendix(String, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendix(System.String,System.String)
+    name: CopyWithPathPrefixAndAppendix
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPathPrefixAndAppendix_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendix(System.String,System.String)
+    name: CopyWithPathPrefixAndAppendix
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPathPrefixAndAppendix_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendixOnce(System.String,System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendixOnce(System.String,System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPathPrefixAndAppendixOnce_System_String_System_String_
+  name: CopyWithPathPrefixAndAppendixOnce(string, string)
+  nameWithType: AssetLocation.CopyWithPathPrefixAndAppendixOnce(string, string)
+  fullName: Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendixOnce(string, string)
+  nameWithType.vb: AssetLocation.CopyWithPathPrefixAndAppendixOnce(String, String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendixOnce(String, String)
+  name.vb: CopyWithPathPrefixAndAppendixOnce(String, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendixOnce(System.String,System.String)
+    name: CopyWithPathPrefixAndAppendixOnce
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPathPrefixAndAppendixOnce_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.CopyWithPathPrefixAndAppendixOnce(System.String,System.String)
+    name: CopyWithPathPrefixAndAppendixOnce
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPathPrefixAndAppendixOnce_System_String_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.WithPath(System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.WithPath(System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPath_System_String_
+  name: WithPath(string)
+  nameWithType: AssetLocation.WithPath(string)
+  fullName: Vintagestory.API.Common.AssetLocation.WithPath(string)
+  nameWithType.vb: AssetLocation.WithPath(String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.WithPath(String)
+  name.vb: WithPath(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.WithPath(System.String)
+    name: WithPath
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPath_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.WithPath(System.String)
+    name: WithPath
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPath_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.toLocations(System.String[])
+  commentId: M:Vintagestory.API.Common.AssetLocation.toLocations(System.String[])
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_toLocations_System_String___
+  name: toLocations(string[])
+  nameWithType: AssetLocation.toLocations(string[])
+  fullName: Vintagestory.API.Common.AssetLocation.toLocations(string[])
+  nameWithType.vb: AssetLocation.toLocations(String())
+  fullName.vb: Vintagestory.API.Common.AssetLocation.toLocations(String())
+  name.vb: toLocations(String())
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.toLocations(System.String[])
+    name: toLocations
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_toLocations_System_String___
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.toLocations(System.String[])
+    name: toLocations
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_toLocations_System_String___
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.GetHashCode
+  commentId: M:Vintagestory.API.Common.AssetLocation.GetHashCode
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_GetHashCode
+  name: GetHashCode()
+  nameWithType: AssetLocation.GetHashCode()
+  fullName: Vintagestory.API.Common.AssetLocation.GetHashCode()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.GetHashCode
+    name: GetHashCode
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_GetHashCode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.GetHashCode
+    name: GetHashCode
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_GetHashCode
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.Equals(Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Common.AssetLocation.Equals(Vintagestory.API.Common.AssetLocation)
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Equals_Vintagestory_API_Common_AssetLocation_
+  name: Equals(AssetLocation)
+  nameWithType: AssetLocation.Equals(AssetLocation)
+  fullName: Vintagestory.API.Common.AssetLocation.Equals(Vintagestory.API.Common.AssetLocation)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.Equals(Vintagestory.API.Common.AssetLocation)
+    name: Equals
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Equals_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.Equals(Vintagestory.API.Common.AssetLocation)
+    name: Equals
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Equals_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.Equals(System.Object)
+  commentId: M:Vintagestory.API.Common.AssetLocation.Equals(System.Object)
+  parent: Vintagestory.API.Common.AssetLocation
+  isExternal: true
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Equals_System_Object_
+  name: Equals(object)
+  nameWithType: AssetLocation.Equals(object)
+  fullName: Vintagestory.API.Common.AssetLocation.Equals(object)
+  nameWithType.vb: AssetLocation.Equals(Object)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.Equals(System.Object)
+    name: Equals
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.Equals(System.Object)
+    name: Equals
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Equals_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.ToString
+  commentId: M:Vintagestory.API.Common.AssetLocation.ToString
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_ToString
+  name: ToString()
+  nameWithType: AssetLocation.ToString()
+  fullName: Vintagestory.API.Common.AssetLocation.ToString()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.ToString
+    name: ToString
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_ToString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.ToString
+    name: ToString
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_ToString
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.CompareTo(Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Common.AssetLocation.CompareTo(Vintagestory.API.Common.AssetLocation)
+  parent: Vintagestory.API.Common.AssetLocation
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CompareTo_Vintagestory_API_Common_AssetLocation_
+  name: CompareTo(AssetLocation)
+  nameWithType: AssetLocation.CompareTo(AssetLocation)
+  fullName: Vintagestory.API.Common.AssetLocation.CompareTo(Vintagestory.API.Common.AssetLocation)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AssetLocation.CompareTo(Vintagestory.API.Common.AssetLocation)
+    name: CompareTo
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CompareTo_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AssetLocation.CompareTo(Vintagestory.API.Common.AssetLocation)
+    name: CompareTo
+    href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CompareTo_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Common.AssetLocation.Vintagestory.API.Util.WildcardUtil.WildCardReplace(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Util.WildcardUtil.WildCardReplace(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+  parent: Vintagestory.API.Util.WildcardUtil
+  definition: Vintagestory.API.Util.WildcardUtil.WildCardReplace(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+  href: Vintagestory.API.Util.WildcardUtil.html#Vintagestory_API_Util_WildcardUtil_WildCardReplace_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_
+  name: WildCardReplace(AssetLocation, AssetLocation, AssetLocation)
+  nameWithType: WildcardUtil.WildCardReplace(AssetLocation, AssetLocation, AssetLocation)
+  fullName: Vintagestory.API.Util.WildcardUtil.WildCardReplace(Vintagestory.API.Common.AssetLocation, Vintagestory.API.Common.AssetLocation, Vintagestory.API.Common.AssetLocation)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.WildcardUtil.WildCardReplace(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+    name: WildCardReplace
+    href: Vintagestory.API.Util.WildcardUtil.html#Vintagestory_API_Util_WildcardUtil_WildCardReplace_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.WildcardUtil.WildCardReplace(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+    name: WildCardReplace
+    href: Vintagestory.API.Util.WildcardUtil.html#Vintagestory_API_Util_WildcardUtil_WildCardReplace_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IComparable`1
+  commentId: T:System.IComparable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  name: IComparable<T>
+  nameWithType: IComparable<T>
+  fullName: System.IComparable<T>
+  nameWithType.vb: IComparable(Of T)
+  fullName.vb: System.IComparable(Of T)
+  name.vb: IComparable(Of T)
+  spec.csharp:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.IEquatable`1
+  commentId: T:System.IEquatable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  name: IEquatable<T>
+  nameWithType: IEquatable<T>
+  fullName: System.IEquatable<T>
+  nameWithType.vb: IEquatable(Of T)
+  fullName.vb: System.IEquatable(Of T)
+  name.vb: IEquatable(Of T)
+  spec.csharp:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IEquatable`1
+    name: IEquatable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.iequatable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Util.WildcardUtil.WildCardReplace(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Util.WildcardUtil.WildCardReplace(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+  href: Vintagestory.API.Util.WildcardUtil.html#Vintagestory_API_Util_WildcardUtil_WildCardReplace_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_
+  name: WildCardReplace(AssetLocation, AssetLocation, AssetLocation)
+  nameWithType: WildcardUtil.WildCardReplace(AssetLocation, AssetLocation, AssetLocation)
+  fullName: Vintagestory.API.Util.WildcardUtil.WildCardReplace(Vintagestory.API.Common.AssetLocation, Vintagestory.API.Common.AssetLocation, Vintagestory.API.Common.AssetLocation)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.WildcardUtil.WildCardReplace(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+    name: WildCardReplace
+    href: Vintagestory.API.Util.WildcardUtil.html#Vintagestory_API_Util_WildcardUtil_WildCardReplace_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.WildcardUtil.WildCardReplace(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+    name: WildCardReplace
+    href: Vintagestory.API.Util.WildcardUtil.html#Vintagestory_API_Util_WildcardUtil_WildCardReplace_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: Vintagestory.API.Util.WildcardUtil
+  commentId: T:Vintagestory.API.Util.WildcardUtil
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.WildcardUtil.html
+  name: WildcardUtil
+  nameWithType: WildcardUtil
+  fullName: Vintagestory.API.Util.WildcardUtil
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.SourceStringComponents
+  commentId: T:Vintagestory.API.Common.SourceStringComponents
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.SourceStringComponents.html
+  name: SourceStringComponents
+  nameWithType: SourceStringComponents
+  fullName: Vintagestory.API.Common.SourceStringComponents
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.AssetLocationAndSource.#ctor*
+  commentId: Overload:Vintagestory.API.Common.AssetLocationAndSource.#ctor
+  href: Vintagestory.API.Common.AssetLocationAndSource.html#Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_
+  name: AssetLocationAndSource
+  nameWithType: AssetLocationAndSource.AssetLocationAndSource
+  fullName: Vintagestory.API.Common.AssetLocationAndSource.AssetLocationAndSource
+  nameWithType.vb: AssetLocationAndSource.New
+  fullName.vb: Vintagestory.API.Common.AssetLocationAndSource.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

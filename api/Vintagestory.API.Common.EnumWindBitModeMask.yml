@@ -1,0 +1,585 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EnumWindBitModeMask
+  commentId: T:Vintagestory.API.Common.EnumWindBitModeMask
+  id: EnumWindBitModeMask
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.EnumWindBitModeMask.Bend
+  - Vintagestory.API.Common.EnumWindBitModeMask.ExtraWeakWind
+  - Vintagestory.API.Common.EnumWindBitModeMask.Fruit
+  - Vintagestory.API.Common.EnumWindBitModeMask.Leaves
+  - Vintagestory.API.Common.EnumWindBitModeMask.NormalWind
+  - Vintagestory.API.Common.EnumWindBitModeMask.TallBend
+  - Vintagestory.API.Common.EnumWindBitModeMask.Water
+  - Vintagestory.API.Common.EnumWindBitModeMask.WeakWind
+  - Vintagestory.API.Common.EnumWindBitModeMask.WeakWindNoBend
+  langs:
+  - csharp
+  - vb
+  name: EnumWindBitModeMask
+  nameWithType: EnumWindBitModeMask
+  fullName: Vintagestory.API.Common.EnumWindBitModeMask
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/VertexFlags.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnumWindBitModeMask
+    path: Common/Collectible/Block/VertexFlags.cs
+    startLine: 76
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Windmode flags, which can be ORed with existing vertex data to add the specified wind mode (assuming it was 0 previously!)
+  example: []
+  syntax:
+    content: public static class EnumWindBitModeMask
+    content.vb: Public Module EnumWindBitModeMask
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Common.EnumWindBitModeMask.WeakWind
+  commentId: F:Vintagestory.API.Common.EnumWindBitModeMask.WeakWind
+  id: WeakWind
+  parent: Vintagestory.API.Common.EnumWindBitModeMask
+  langs:
+  - csharp
+  - vb
+  name: WeakWind
+  nameWithType: EnumWindBitModeMask.WeakWind
+  fullName: Vintagestory.API.Common.EnumWindBitModeMask.WeakWind
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/VertexFlags.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WeakWind
+    path: Common/Collectible/Block/VertexFlags.cs
+    startLine: 81
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Slightly affected by wind. Wiggle + Height bend based on ground distance.<br />
+  example: []
+  syntax:
+    content: public const int WeakWind = 33554432
+    return:
+      type: System.Int32
+    content.vb: Public Const WeakWind As Integer = 33554432
+- uid: Vintagestory.API.Common.EnumWindBitModeMask.NormalWind
+  commentId: F:Vintagestory.API.Common.EnumWindBitModeMask.NormalWind
+  id: NormalWind
+  parent: Vintagestory.API.Common.EnumWindBitModeMask
+  langs:
+  - csharp
+  - vb
+  name: NormalWind
+  nameWithType: EnumWindBitModeMask.NormalWind
+  fullName: Vintagestory.API.Common.EnumWindBitModeMask.NormalWind
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/VertexFlags.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NormalWind
+    path: Common/Collectible/Block/VertexFlags.cs
+    startLine: 85
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Normally affected by wind. Wiggle + Height bend based on ground distance.
+  example: []
+  syntax:
+    content: public const int NormalWind = 67108864
+    return:
+      type: System.Int32
+    content.vb: Public Const NormalWind As Integer = 67108864
+- uid: Vintagestory.API.Common.EnumWindBitModeMask.Leaves
+  commentId: F:Vintagestory.API.Common.EnumWindBitModeMask.Leaves
+  id: Leaves
+  parent: Vintagestory.API.Common.EnumWindBitModeMask
+  langs:
+  - csharp
+  - vb
+  name: Leaves
+  nameWithType: EnumWindBitModeMask.Leaves
+  fullName: Vintagestory.API.Common.EnumWindBitModeMask.Leaves
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/VertexFlags.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Leaves
+    path: Common/Collectible/Block/VertexFlags.cs
+    startLine: 89
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Same as normal wind, but with some special behavior for leaves. Wiggle + Height bend based on ground distance.
+  example: []
+  syntax:
+    content: public const int Leaves = 100663296
+    return:
+      type: System.Int32
+    content.vb: Public Const Leaves As Integer = 100663296
+- uid: Vintagestory.API.Common.EnumWindBitModeMask.Bend
+  commentId: F:Vintagestory.API.Common.EnumWindBitModeMask.Bend
+  id: Bend
+  parent: Vintagestory.API.Common.EnumWindBitModeMask
+  langs:
+  - csharp
+  - vb
+  name: Bend
+  nameWithType: EnumWindBitModeMask.Bend
+  fullName: Vintagestory.API.Common.EnumWindBitModeMask.Bend
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/VertexFlags.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Bend
+    path: Common/Collectible/Block/VertexFlags.cs
+    startLine: 93
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Same as weak wind, but no wiggle. Height bend based on ground distance.
+  example: []
+  syntax:
+    content: public const int Bend = 134217728
+    return:
+      type: System.Int32
+    content.vb: Public Const Bend As Integer = 134217728
+- uid: Vintagestory.API.Common.EnumWindBitModeMask.TallBend
+  commentId: F:Vintagestory.API.Common.EnumWindBitModeMask.TallBend
+  id: TallBend
+  parent: Vintagestory.API.Common.EnumWindBitModeMask
+  langs:
+  - csharp
+  - vb
+  name: TallBend
+  nameWithType: EnumWindBitModeMask.TallBend
+  fullName: Vintagestory.API.Common.EnumWindBitModeMask.TallBend
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/VertexFlags.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TallBend
+    path: Common/Collectible/Block/VertexFlags.cs
+    startLine: 97
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Bend behavior for tall plants
+  example: []
+  syntax:
+    content: public const int TallBend = 167772160
+    return:
+      type: System.Int32
+    content.vb: Public Const TallBend As Integer = 167772160
+- uid: Vintagestory.API.Common.EnumWindBitModeMask.Water
+  commentId: F:Vintagestory.API.Common.EnumWindBitModeMask.Water
+  id: Water
+  parent: Vintagestory.API.Common.EnumWindBitModeMask
+  langs:
+  - csharp
+  - vb
+  name: Water
+  nameWithType: EnumWindBitModeMask.Water
+  fullName: Vintagestory.API.Common.EnumWindBitModeMask.Water
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/VertexFlags.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Water
+    path: Common/Collectible/Block/VertexFlags.cs
+    startLine: 101
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Vertical wiggle
+  example: []
+  syntax:
+    content: public const int Water = 201326592
+    return:
+      type: System.Int32
+    content.vb: Public Const Water As Integer = 201326592
+- uid: Vintagestory.API.Common.EnumWindBitModeMask.ExtraWeakWind
+  commentId: F:Vintagestory.API.Common.EnumWindBitModeMask.ExtraWeakWind
+  id: ExtraWeakWind
+  parent: Vintagestory.API.Common.EnumWindBitModeMask
+  langs:
+  - csharp
+  - vb
+  name: ExtraWeakWind
+  nameWithType: EnumWindBitModeMask.ExtraWeakWind
+  fullName: Vintagestory.API.Common.EnumWindBitModeMask.ExtraWeakWind
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/VertexFlags.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ExtraWeakWind
+    path: Common/Collectible/Block/VertexFlags.cs
+    startLine: 105
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Vertical wiggle
+  example: []
+  syntax:
+    content: public const int ExtraWeakWind = 234881024
+    return:
+      type: System.Int32
+    content.vb: Public Const ExtraWeakWind As Integer = 234881024
+- uid: Vintagestory.API.Common.EnumWindBitModeMask.Fruit
+  commentId: F:Vintagestory.API.Common.EnumWindBitModeMask.Fruit
+  id: Fruit
+  parent: Vintagestory.API.Common.EnumWindBitModeMask
+  langs:
+  - csharp
+  - vb
+  name: Fruit
+  nameWithType: EnumWindBitModeMask.Fruit
+  fullName: Vintagestory.API.Common.EnumWindBitModeMask.Fruit
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/VertexFlags.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Fruit
+    path: Common/Collectible/Block/VertexFlags.cs
+    startLine: 107
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public const int Fruit = 268435456
+    return:
+      type: System.Int32
+    content.vb: Public Const Fruit As Integer = 268435456
+- uid: Vintagestory.API.Common.EnumWindBitModeMask.WeakWindNoBend
+  commentId: F:Vintagestory.API.Common.EnumWindBitModeMask.WeakWindNoBend
+  id: WeakWindNoBend
+  parent: Vintagestory.API.Common.EnumWindBitModeMask
+  langs:
+  - csharp
+  - vb
+  name: WeakWindNoBend
+  nameWithType: EnumWindBitModeMask.WeakWindNoBend
+  fullName: Vintagestory.API.Common.EnumWindBitModeMask.WeakWindNoBend
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/VertexFlags.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WeakWindNoBend
+    path: Common/Collectible/Block/VertexFlags.cs
+    startLine: 109
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public const int WeakWindNoBend = 301989888
+    return:
+      type: System.Int32
+    content.vb: Public Const WeakWindNoBend As Integer = 301989888
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

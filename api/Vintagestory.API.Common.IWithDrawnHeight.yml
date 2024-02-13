@@ -1,0 +1,117 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IWithDrawnHeight
+  commentId: T:Vintagestory.API.Common.IWithDrawnHeight
+  id: IWithDrawnHeight
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IWithDrawnHeight.drawnHeight
+  langs:
+  - csharp
+  - vb
+  name: IWithDrawnHeight
+  nameWithType: IWithDrawnHeight
+  fullName: Vintagestory.API.Common.IWithDrawnHeight
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/IWithDrawnHeight.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IWithDrawnHeight
+    path: Common/Collectible/Block/IWithDrawnHeight.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Used for blocks (e.g. tallgrass and flowers) where the drawnHeight is set in attributes
+  example: []
+  syntax:
+    content: public interface IWithDrawnHeight
+    content.vb: Public Interface IWithDrawnHeight
+- uid: Vintagestory.API.Common.IWithDrawnHeight.drawnHeight
+  commentId: P:Vintagestory.API.Common.IWithDrawnHeight.drawnHeight
+  id: drawnHeight
+  parent: Vintagestory.API.Common.IWithDrawnHeight
+  langs:
+  - csharp
+  - vb
+  name: drawnHeight
+  nameWithType: IWithDrawnHeight.drawnHeight
+  fullName: Vintagestory.API.Common.IWithDrawnHeight.drawnHeight
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/IWithDrawnHeight.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: drawnHeight
+    path: Common/Collectible/Block/IWithDrawnHeight.cs
+    startLine: 10
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Measured in texture pixels based on our standard pixel density for 32x32 textures.  So a value of 32 would be one block high; the typical value of 48 is the full height of tallgrass or a flowerTall because those use 48x48 pixel textures
+  example: []
+  syntax:
+    content: int drawnHeight { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property drawnHeight As Integer
+  overload: Vintagestory.API.Common.IWithDrawnHeight.drawnHeight*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IWithDrawnHeight.drawnHeight*
+  commentId: Overload:Vintagestory.API.Common.IWithDrawnHeight.drawnHeight
+  href: Vintagestory.API.Common.IWithDrawnHeight.html#Vintagestory_API_Common_IWithDrawnHeight_drawnHeight
+  name: drawnHeight
+  nameWithType: IWithDrawnHeight.drawnHeight
+  fullName: Vintagestory.API.Common.IWithDrawnHeight.drawnHeight
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

@@ -1,5 +1,6 @@
 ﻿using System;
 using Cairo;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Client
 {
@@ -205,7 +206,7 @@ namespace Vintagestory.API.Client
 
         public void HandleLink()
         {
-            if (Href.StartsWith("hotkey://"))
+            if (Href.StartsWithOrdinal("hotkey://"))
             {
                 api.Input.GetHotKeyByCode(Href.Substring("hotkey://".Length))?.Handler?.Invoke(null);
             }
@@ -220,7 +221,7 @@ namespace Vintagestory.API.Client
 
                 if (parts.Length > 0)
                 {
-                    if (parts[0].StartsWith("http") || parts[0].StartsWith("https"))
+                    if (parts[0].StartsWithOrdinal("http"))   // No need to check for https because "https" starts with "http"
                     {
                         api.Gui.OpenLink(Href);
                     }

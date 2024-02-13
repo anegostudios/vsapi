@@ -1,0 +1,183 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IByteSerializable
+  commentId: T:Vintagestory.API.Common.IByteSerializable
+  id: IByteSerializable
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IByteSerializable.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.IByteSerializable.ToBytes(System.IO.BinaryWriter)
+  langs:
+  - csharp
+  - vb
+  name: IByteSerializable
+  nameWithType: IByteSerializable
+  fullName: Vintagestory.API.Common.IByteSerializable
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/ByteSerializable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IByteSerializable
+    path: Common/ByteSerializable.cs
+    startLine: 4
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public interface IByteSerializable
+    content.vb: Public Interface IByteSerializable
+- uid: Vintagestory.API.Common.IByteSerializable.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Common.IByteSerializable.ToBytes(System.IO.BinaryWriter)
+  id: ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Common.IByteSerializable
+  langs:
+  - csharp
+  - vb
+  name: ToBytes(BinaryWriter)
+  nameWithType: IByteSerializable.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Common.IByteSerializable.ToBytes(System.IO.BinaryWriter)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/ByteSerializable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToBytes
+    path: Common/ByteSerializable.cs
+    startLine: 6
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: void ToBytes(BinaryWriter writer)
+    parameters:
+    - id: writer
+      type: System.IO.BinaryWriter
+    content.vb: Sub ToBytes(writer As BinaryWriter)
+  overload: Vintagestory.API.Common.IByteSerializable.ToBytes*
+- uid: Vintagestory.API.Common.IByteSerializable.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  commentId: M:Vintagestory.API.Common.IByteSerializable.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  id: FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)
+  parent: Vintagestory.API.Common.IByteSerializable
+  langs:
+  - csharp
+  - vb
+  name: FromBytes(BinaryReader, IWorldAccessor)
+  nameWithType: IByteSerializable.FromBytes(BinaryReader, IWorldAccessor)
+  fullName: Vintagestory.API.Common.IByteSerializable.FromBytes(System.IO.BinaryReader, Vintagestory.API.Common.IWorldAccessor)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/ByteSerializable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FromBytes
+    path: Common/ByteSerializable.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: void FromBytes(BinaryReader reader, IWorldAccessor resolver)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+    - id: resolver
+      type: Vintagestory.API.Common.IWorldAccessor
+    content.vb: Sub FromBytes(reader As BinaryReader, resolver As IWorldAccessor)
+  overload: Vintagestory.API.Common.IByteSerializable.FromBytes*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IByteSerializable.ToBytes*
+  commentId: Overload:Vintagestory.API.Common.IByteSerializable.ToBytes
+  href: Vintagestory.API.Common.IByteSerializable.html#Vintagestory_API_Common_IByteSerializable_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes
+  nameWithType: IByteSerializable.ToBytes
+  fullName: Vintagestory.API.Common.IByteSerializable.ToBytes
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: Vintagestory.API.Common.IByteSerializable.FromBytes*
+  commentId: Overload:Vintagestory.API.Common.IByteSerializable.FromBytes
+  href: Vintagestory.API.Common.IByteSerializable.html#Vintagestory_API_Common_IByteSerializable_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_
+  name: FromBytes
+  nameWithType: IByteSerializable.FromBytes
+  fullName: Vintagestory.API.Common.IByteSerializable.FromBytes
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+- uid: Vintagestory.API.Common.IWorldAccessor
+  commentId: T:Vintagestory.API.Common.IWorldAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldAccessor.html
+  name: IWorldAccessor
+  nameWithType: IWorldAccessor
+  fullName: Vintagestory.API.Common.IWorldAccessor

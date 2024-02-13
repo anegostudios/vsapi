@@ -1,0 +1,2271 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Server.ICoreServerAPI
+  commentId: T:Vintagestory.API.Server.ICoreServerAPI
+  id: ICoreServerAPI
+  parent: Vintagestory.API.Server
+  children:
+  - Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups(System.String,Vintagestory.API.Common.EnumChatType,System.String)
+  - Vintagestory.API.Server.ICoreServerAPI.Event
+  - Vintagestory.API.Server.ICoreServerAPI.Groups
+  - Vintagestory.API.Server.ICoreServerAPI.HandleCommand(Vintagestory.API.Server.IServerPlayer,System.String)
+  - Vintagestory.API.Server.ICoreServerAPI.InjectConsole(System.String)
+  - Vintagestory.API.Server.ICoreServerAPI.Network
+  - Vintagestory.API.Server.ICoreServerAPI.Permissions
+  - Vintagestory.API.Server.ICoreServerAPI.PlayerData
+  - Vintagestory.API.Server.ICoreServerAPI.RegisterBlock(Vintagestory.API.Common.Block)
+  - Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(System.String,System.String,System.String,Vintagestory.API.Common.ServerChatCommandDelegate,System.String)
+  - Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(Vintagestory.API.Common.ServerChatCommand)
+  - Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe(Vintagestory.API.Common.GridRecipe)
+  - Vintagestory.API.Server.ICoreServerAPI.RegisterItem(Vintagestory.API.Common.Item)
+  - Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.GrowTreeDelegate)
+  - Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.ITreeGenerator)
+  - Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery(Vintagestory.API.Server.IServerPlayer,System.String,System.String,System.Object[])
+  - Vintagestory.API.Server.ICoreServerAPI.SendIngameError(Vintagestory.API.Server.IServerPlayer,System.String,System.String,System.Object[])
+  - Vintagestory.API.Server.ICoreServerAPI.SendMessage(Vintagestory.API.Common.IPlayer,System.Int32,System.String,Vintagestory.API.Common.EnumChatType,System.String)
+  - Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup(System.Int32,System.String,Vintagestory.API.Common.EnumChatType,System.String)
+  - Vintagestory.API.Server.ICoreServerAPI.Server
+  - Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded
+  - Vintagestory.API.Server.ICoreServerAPI.World
+  - Vintagestory.API.Server.ICoreServerAPI.WorldManager
+  langs:
+  - csharp
+  - vb
+  name: ICoreServerAPI
+  nameWithType: ICoreServerAPI
+  fullName: Vintagestory.API.Server.ICoreServerAPI
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ICoreServerAPI
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: The core api implemented by the server. The main interface for accessing the server. Contains all sub components and some miscellaneous methods.
+  example: []
+  syntax:
+    content: 'public interface ICoreServerAPI : ICoreAPI, ICoreAPICommon'
+    content.vb: Public Interface ICoreServerAPI Inherits ICoreAPI, ICoreAPICommon
+  inheritedMembers:
+  - Vintagestory.API.Common.ICoreAPI.Logger
+  - Vintagestory.API.Common.ICoreAPI.CmdlArguments
+  - Vintagestory.API.Common.ICoreAPI.ChatCommands
+  - Vintagestory.API.Common.ICoreAPI.Side
+  - Vintagestory.API.Common.ICoreAPI.ClassRegistry
+  - Vintagestory.API.Common.ICoreAPI.Assets
+  - Vintagestory.API.Common.ICoreAPI.ModLoader
+  - Vintagestory.API.Common.ICoreAPI.RegisterEntityClass(System.String,Vintagestory.API.Common.Entities.EntityProperties)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry``1(System.String)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap(Vintagestory.API.Common.ColorMap)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterEntity(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass(System.String,System.Type)
+  - Vintagestory.API.Common.ICoreAPICommon.RegisterMountable(System.String,Vintagestory.API.Common.GetMountableDelegate)
+  - Vintagestory.API.Common.ICoreAPICommon.ObjectCache
+  - Vintagestory.API.Common.ICoreAPICommon.DataBasePath
+  - Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath(System.String)
+  - Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1({T},System.String)
+  - Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Vintagestory.API.Datastructures.JsonObject,System.String)
+  - Vintagestory.API.Common.ICoreAPICommon.LoadModConfig``1(System.String)
+  - Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(System.String)
+  extensionMethods:
+  - Vintagestory.API.Common.ICoreAPI.Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(System.String,Vintagestory.API.Common.Tag2RichTextDelegate)
+- uid: Vintagestory.API.Server.ICoreServerAPI.Event
+  commentId: P:Vintagestory.API.Server.ICoreServerAPI.Event
+  id: Event
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: Event
+  nameWithType: ICoreServerAPI.Event
+  fullName: Vintagestory.API.Server.ICoreServerAPI.Event
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Event
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 13
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: API Component for registering to various Events
+  example: []
+  syntax:
+    content: IServerEventAPI Event { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Server.IServerEventAPI
+    content.vb: ReadOnly Property [Event] As IServerEventAPI
+  overload: Vintagestory.API.Server.ICoreServerAPI.Event*
+- uid: Vintagestory.API.Server.ICoreServerAPI.WorldManager
+  commentId: P:Vintagestory.API.Server.ICoreServerAPI.WorldManager
+  id: WorldManager
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: WorldManager
+  nameWithType: ICoreServerAPI.WorldManager
+  fullName: Vintagestory.API.Server.ICoreServerAPI.WorldManager
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WorldManager
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 18
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: API Component for access/modify everything game world related
+  example: []
+  syntax:
+    content: IWorldManagerAPI WorldManager { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Server.IWorldManagerAPI
+    content.vb: ReadOnly Property WorldManager As IWorldManagerAPI
+  overload: Vintagestory.API.Server.ICoreServerAPI.WorldManager*
+- uid: Vintagestory.API.Server.ICoreServerAPI.Server
+  commentId: P:Vintagestory.API.Server.ICoreServerAPI.Server
+  id: Server
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: Server
+  nameWithType: ICoreServerAPI.Server
+  fullName: Vintagestory.API.Server.ICoreServerAPI.Server
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Server
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 24
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: API Component for accessing server related functionality
+  example: []
+  syntax:
+    content: IServerAPI Server { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Server.IServerAPI
+    content.vb: ReadOnly Property Server As IServerAPI
+  overload: Vintagestory.API.Server.ICoreServerAPI.Server*
+- uid: Vintagestory.API.Server.ICoreServerAPI.Permissions
+  commentId: P:Vintagestory.API.Server.ICoreServerAPI.Permissions
+  id: Permissions
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: Permissions
+  nameWithType: ICoreServerAPI.Permissions
+  fullName: Vintagestory.API.Server.ICoreServerAPI.Permissions
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Permissions
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 30
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Everything related to roles and privileges
+  example: []
+  syntax:
+    content: IPermissionManager Permissions { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Server.IPermissionManager
+    content.vb: ReadOnly Property Permissions As IPermissionManager
+  overload: Vintagestory.API.Server.ICoreServerAPI.Permissions*
+- uid: Vintagestory.API.Server.ICoreServerAPI.Groups
+  commentId: P:Vintagestory.API.Server.ICoreServerAPI.Groups
+  id: Groups
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: Groups
+  nameWithType: ICoreServerAPI.Groups
+  fullName: Vintagestory.API.Server.ICoreServerAPI.Groups
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Groups
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 35
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Everything related to player groups
+  example: []
+  syntax:
+    content: IGroupManager Groups { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Server.IGroupManager
+    content.vb: ReadOnly Property Groups As IGroupManager
+  overload: Vintagestory.API.Server.ICoreServerAPI.Groups*
+- uid: Vintagestory.API.Server.ICoreServerAPI.PlayerData
+  commentId: P:Vintagestory.API.Server.ICoreServerAPI.PlayerData
+  id: PlayerData
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: PlayerData
+  nameWithType: ICoreServerAPI.PlayerData
+  fullName: Vintagestory.API.Server.ICoreServerAPI.PlayerData
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PlayerData
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 40
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: World-agnostic player data. You can query this information even when the player is offline
+  example: []
+  syntax:
+    content: IPlayerDataManager PlayerData { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Server.IPlayerDataManager
+    content.vb: ReadOnly Property PlayerData As IPlayerDataManager
+  overload: Vintagestory.API.Server.ICoreServerAPI.PlayerData*
+- uid: Vintagestory.API.Server.ICoreServerAPI.Network
+  commentId: P:Vintagestory.API.Server.ICoreServerAPI.Network
+  id: Network
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: Network
+  nameWithType: ICoreServerAPI.Network
+  fullName: Vintagestory.API.Server.ICoreServerAPI.Network
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Network
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 45
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: API for sending/receiving network packets
+  example: []
+  syntax:
+    content: IServerNetworkAPI Network { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Server.IServerNetworkAPI
+    content.vb: ReadOnly Property Network As IServerNetworkAPI
+  overload: Vintagestory.API.Server.ICoreServerAPI.Network*
+- uid: Vintagestory.API.Server.ICoreServerAPI.World
+  commentId: P:Vintagestory.API.Server.ICoreServerAPI.World
+  id: World
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: World
+  nameWithType: ICoreServerAPI.World
+  fullName: Vintagestory.API.Server.ICoreServerAPI.World
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: World
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 51
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: API for accessing anything in the game world
+  example: []
+  syntax:
+    content: IServerWorldAccessor World { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Server.IServerWorldAccessor
+    content.vb: ReadOnly Property World As IServerWorldAccessor
+  overload: Vintagestory.API.Server.ICoreServerAPI.World*
+- uid: Vintagestory.API.Server.ICoreServerAPI.SendIngameError(Vintagestory.API.Server.IServerPlayer,System.String,System.String,System.Object[])
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.SendIngameError(Vintagestory.API.Server.IServerPlayer,System.String,System.String,System.Object[])
+  id: SendIngameError(Vintagestory.API.Server.IServerPlayer,System.String,System.String,System.Object[])
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: SendIngameError(IServerPlayer, string, string, params object[])
+  nameWithType: ICoreServerAPI.SendIngameError(IServerPlayer, string, string, params object[])
+  fullName: Vintagestory.API.Server.ICoreServerAPI.SendIngameError(Vintagestory.API.Server.IServerPlayer, string, string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendIngameError
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 62
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Shows a vibrating red text in the players screen. If text is null the client will try to find a language entry using supplied code prefixed with 'ingameerror-' (which is recommended so that the errors are translated to the users local language)
+  example: []
+  syntax:
+    content: void SendIngameError(IServerPlayer player, string errorCode, string text = null, params object[] langparams)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Server.IServerPlayer
+      description: ''
+    - id: errorCode
+      type: System.String
+      description: ''
+    - id: text
+      type: System.String
+      description: ''
+    - id: langparams
+      type: System.Object[]
+      description: If text is null, these are the arguments passed into the Language translation tool
+    content.vb: Sub SendIngameError(player As IServerPlayer, errorCode As String, text As String = Nothing, ParamArray langparams As Object())
+  overload: Vintagestory.API.Server.ICoreServerAPI.SendIngameError*
+  nameWithType.vb: ICoreServerAPI.SendIngameError(IServerPlayer, String, String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Server.ICoreServerAPI.SendIngameError(Vintagestory.API.Server.IServerPlayer, String, String, ParamArray Object())
+  name.vb: SendIngameError(IServerPlayer, String, String, ParamArray Object())
+- uid: Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery(Vintagestory.API.Server.IServerPlayer,System.String,System.String,System.Object[])
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery(Vintagestory.API.Server.IServerPlayer,System.String,System.String,System.Object[])
+  id: SendIngameDiscovery(Vintagestory.API.Server.IServerPlayer,System.String,System.String,System.Object[])
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: SendIngameDiscovery(IServerPlayer, string, string, params object[])
+  nameWithType: ICoreServerAPI.SendIngameDiscovery(IServerPlayer, string, string, params object[])
+  fullName: Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery(Vintagestory.API.Server.IServerPlayer, string, string, params object[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendIngameDiscovery
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 73
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Shows a discovery text on the players screen. If text is null the client will try to find a language entry using supplied code prefixed with 'ingamediscovery-' (which is recommended so that the errors are translated to the users local language)
+  example: []
+  syntax:
+    content: void SendIngameDiscovery(IServerPlayer player, string discoveryCode, string text = null, params object[] langparams)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Server.IServerPlayer
+      description: ''
+    - id: discoveryCode
+      type: System.String
+      description: ''
+    - id: text
+      type: System.String
+      description: ''
+    - id: langparams
+      type: System.Object[]
+      description: If text is null, these are the arguments passed into the Language translation tool
+    content.vb: Sub SendIngameDiscovery(player As IServerPlayer, discoveryCode As String, text As String = Nothing, ParamArray langparams As Object())
+  overload: Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery*
+  nameWithType.vb: ICoreServerAPI.SendIngameDiscovery(IServerPlayer, String, String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery(Vintagestory.API.Server.IServerPlayer, String, String, ParamArray Object())
+  name.vb: SendIngameDiscovery(IServerPlayer, String, String, ParamArray Object())
+- uid: Vintagestory.API.Server.ICoreServerAPI.SendMessage(Vintagestory.API.Common.IPlayer,System.Int32,System.String,Vintagestory.API.Common.EnumChatType,System.String)
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.SendMessage(Vintagestory.API.Common.IPlayer,System.Int32,System.String,Vintagestory.API.Common.EnumChatType,System.String)
+  id: SendMessage(Vintagestory.API.Common.IPlayer,System.Int32,System.String,Vintagestory.API.Common.EnumChatType,System.String)
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: SendMessage(IPlayer, int, string, EnumChatType, string)
+  nameWithType: ICoreServerAPI.SendMessage(IPlayer, int, string, EnumChatType, string)
+  fullName: Vintagestory.API.Server.ICoreServerAPI.SendMessage(Vintagestory.API.Common.IPlayer, int, string, Vintagestory.API.Common.EnumChatType, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendMessage
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 84
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Sends a chat message only to given player in given groupId
+  example: []
+  syntax:
+    content: void SendMessage(IPlayer player, int groupId, string message, EnumChatType chatType, string data = null)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+      description: ''
+    - id: groupId
+      type: System.Int32
+      description: ''
+    - id: message
+      type: System.String
+      description: ''
+    - id: chatType
+      type: Vintagestory.API.Common.EnumChatType
+      description: ''
+    - id: data
+      type: System.String
+      description: Custom data to a message to be received by the client
+    content.vb: Sub SendMessage(player As IPlayer, groupId As Integer, message As String, chatType As EnumChatType, data As String = Nothing)
+  overload: Vintagestory.API.Server.ICoreServerAPI.SendMessage*
+  nameWithType.vb: ICoreServerAPI.SendMessage(IPlayer, Integer, String, EnumChatType, String)
+  fullName.vb: Vintagestory.API.Server.ICoreServerAPI.SendMessage(Vintagestory.API.Common.IPlayer, Integer, String, Vintagestory.API.Common.EnumChatType, String)
+  name.vb: SendMessage(IPlayer, Integer, String, EnumChatType, String)
+- uid: Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup(System.Int32,System.String,Vintagestory.API.Common.EnumChatType,System.String)
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup(System.Int32,System.String,Vintagestory.API.Common.EnumChatType,System.String)
+  id: SendMessageToGroup(System.Int32,System.String,Vintagestory.API.Common.EnumChatType,System.String)
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: SendMessageToGroup(int, string, EnumChatType, string)
+  nameWithType: ICoreServerAPI.SendMessageToGroup(int, string, EnumChatType, string)
+  fullName: Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup(int, string, Vintagestory.API.Common.EnumChatType, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SendMessageToGroup
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 94
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Sends a chat message to all online players in given player group
+  example: []
+  syntax:
+    content: void SendMessageToGroup(int groupid, string message, EnumChatType chatType, string data = null)
+    parameters:
+    - id: groupid
+      type: System.Int32
+      description: ''
+    - id: message
+      type: System.String
+      description: ''
+    - id: chatType
+      type: Vintagestory.API.Common.EnumChatType
+      description: ''
+    - id: data
+      type: System.String
+      description: Custom data to a message to be received by the client
+    content.vb: Sub SendMessageToGroup(groupid As Integer, message As String, chatType As EnumChatType, data As String = Nothing)
+  overload: Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup*
+  nameWithType.vb: ICoreServerAPI.SendMessageToGroup(Integer, String, EnumChatType, String)
+  fullName.vb: Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup(Integer, String, Vintagestory.API.Common.EnumChatType, String)
+  name.vb: SendMessageToGroup(Integer, String, EnumChatType, String)
+- uid: Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups(System.String,Vintagestory.API.Common.EnumChatType,System.String)
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups(System.String,Vintagestory.API.Common.EnumChatType,System.String)
+  id: BroadcastMessageToAllGroups(System.String,Vintagestory.API.Common.EnumChatType,System.String)
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: BroadcastMessageToAllGroups(string, EnumChatType, string)
+  nameWithType: ICoreServerAPI.BroadcastMessageToAllGroups(string, EnumChatType, string)
+  fullName: Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups(string, Vintagestory.API.Common.EnumChatType, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BroadcastMessageToAllGroups
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 102
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Sends a chat message to all online players in all of their channels
+  example: []
+  syntax:
+    content: void BroadcastMessageToAllGroups(string message, EnumChatType chatType, string data = null)
+    parameters:
+    - id: message
+      type: System.String
+      description: ''
+    - id: chatType
+      type: Vintagestory.API.Common.EnumChatType
+      description: ''
+    - id: data
+      type: System.String
+      description: Custom data to a message to be received by the client
+    content.vb: Sub BroadcastMessageToAllGroups(message As String, chatType As EnumChatType, data As String = Nothing)
+  overload: Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups*
+  nameWithType.vb: ICoreServerAPI.BroadcastMessageToAllGroups(String, EnumChatType, String)
+  fullName.vb: Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups(String, Vintagestory.API.Common.EnumChatType, String)
+  name.vb: BroadcastMessageToAllGroups(String, EnumChatType, String)
+- uid: Vintagestory.API.Server.ICoreServerAPI.InjectConsole(System.String)
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.InjectConsole(System.String)
+  id: InjectConsole(System.String)
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: InjectConsole(string)
+  nameWithType: ICoreServerAPI.InjectConsole(string)
+  fullName: Vintagestory.API.Server.ICoreServerAPI.InjectConsole(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InjectConsole
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 108
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Injects a message or command into the server console input processing system. This lets you run commands or chat as Admin.
+  example: []
+  syntax:
+    content: void InjectConsole(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: ''
+    content.vb: Sub InjectConsole(message As String)
+  overload: Vintagestory.API.Server.ICoreServerAPI.InjectConsole*
+  nameWithType.vb: ICoreServerAPI.InjectConsole(String)
+  fullName.vb: Vintagestory.API.Server.ICoreServerAPI.InjectConsole(String)
+  name.vb: InjectConsole(String)
+- uid: Vintagestory.API.Server.ICoreServerAPI.HandleCommand(Vintagestory.API.Server.IServerPlayer,System.String)
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.HandleCommand(Vintagestory.API.Server.IServerPlayer,System.String)
+  id: HandleCommand(Vintagestory.API.Server.IServerPlayer,System.String)
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: HandleCommand(IServerPlayer, string)
+  nameWithType: ICoreServerAPI.HandleCommand(IServerPlayer, string)
+  fullName: Vintagestory.API.Server.ICoreServerAPI.HandleCommand(Vintagestory.API.Server.IServerPlayer, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: HandleCommand
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 115
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Calls a command as if given player called it
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use ChatCommand subapi instead")]
+
+      void HandleCommand(IServerPlayer player, string message)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Server.IServerPlayer
+      description: ''
+    - id: message
+      type: System.String
+      description: ''
+    content.vb: >-
+      <Obsolete("Use ChatCommand subapi instead")>
+
+      Sub HandleCommand(player As IServerPlayer, message As String)
+  overload: Vintagestory.API.Server.ICoreServerAPI.HandleCommand*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use ChatCommand subapi instead
+  nameWithType.vb: ICoreServerAPI.HandleCommand(IServerPlayer, String)
+  fullName.vb: Vintagestory.API.Server.ICoreServerAPI.HandleCommand(Vintagestory.API.Server.IServerPlayer, String)
+  name.vb: HandleCommand(IServerPlayer, String)
+- uid: Vintagestory.API.Server.ICoreServerAPI.RegisterItem(Vintagestory.API.Common.Item)
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.RegisterItem(Vintagestory.API.Common.Item)
+  id: RegisterItem(Vintagestory.API.Common.Item)
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterItem(Item)
+  nameWithType: ICoreServerAPI.RegisterItem(Item)
+  fullName: Vintagestory.API.Server.ICoreServerAPI.RegisterItem(Vintagestory.API.Common.Item)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterItem
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 124
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Register a new item type
+  example: []
+  syntax:
+    content: void RegisterItem(Item item)
+    parameters:
+    - id: item
+      type: Vintagestory.API.Common.Item
+      description: ''
+    content.vb: Sub RegisterItem(item As Item)
+  overload: Vintagestory.API.Server.ICoreServerAPI.RegisterItem*
+- uid: Vintagestory.API.Server.ICoreServerAPI.RegisterBlock(Vintagestory.API.Common.Block)
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.RegisterBlock(Vintagestory.API.Common.Block)
+  id: RegisterBlock(Vintagestory.API.Common.Block)
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterBlock(Block)
+  nameWithType: ICoreServerAPI.RegisterBlock(Block)
+  fullName: Vintagestory.API.Server.ICoreServerAPI.RegisterBlock(Vintagestory.API.Common.Block)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterBlock
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 130
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Register a new Block. Must happen before server runphase LoadGame. These are sent to the client during connect, so only need to register them on the server side.
+  example: []
+  syntax:
+    content: void RegisterBlock(Block block)
+    parameters:
+    - id: block
+      type: Vintagestory.API.Common.Block
+      description: BlockType to register. The Server assigns a block id and sets block.blockId
+    content.vb: Sub RegisterBlock(block As Block)
+  overload: Vintagestory.API.Server.ICoreServerAPI.RegisterBlock*
+- uid: Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe(Vintagestory.API.Common.GridRecipe)
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe(Vintagestory.API.Common.GridRecipe)
+  id: RegisterCraftingRecipe(Vintagestory.API.Common.GridRecipe)
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterCraftingRecipe(GridRecipe)
+  nameWithType: ICoreServerAPI.RegisterCraftingRecipe(GridRecipe)
+  fullName: Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe(Vintagestory.API.Common.GridRecipe)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterCraftingRecipe
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 136
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Registers a new crafting recipe. These are sent to the client during connect, so only need to register them on the server side.
+  example: []
+  syntax:
+    content: void RegisterCraftingRecipe(GridRecipe recipe)
+    parameters:
+    - id: recipe
+      type: Vintagestory.API.Common.GridRecipe
+      description: ''
+    content.vb: Sub RegisterCraftingRecipe(recipe As GridRecipe)
+  overload: Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe*
+- uid: Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.ITreeGenerator)
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.ITreeGenerator)
+  id: RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.ITreeGenerator)
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterTreeGenerator(AssetLocation, ITreeGenerator)
+  nameWithType: ICoreServerAPI.RegisterTreeGenerator(AssetLocation, ITreeGenerator)
+  fullName: Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation, Vintagestory.API.Server.ITreeGenerator)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterTreeGenerator
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 144
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Registers a new tree generator
+  example: []
+  syntax:
+    content: void RegisterTreeGenerator(AssetLocation generatorCode, ITreeGenerator gen)
+    parameters:
+    - id: generatorCode
+      type: Vintagestory.API.Common.AssetLocation
+      description: ''
+    - id: gen
+      type: Vintagestory.API.Server.ITreeGenerator
+      description: ''
+    content.vb: Sub RegisterTreeGenerator(generatorCode As AssetLocation, gen As ITreeGenerator)
+  overload: Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator*
+- uid: Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.GrowTreeDelegate)
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.GrowTreeDelegate)
+  id: RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.GrowTreeDelegate)
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterTreeGenerator(AssetLocation, GrowTreeDelegate)
+  nameWithType: ICoreServerAPI.RegisterTreeGenerator(AssetLocation, GrowTreeDelegate)
+  fullName: Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation, Vintagestory.API.Server.GrowTreeDelegate)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterTreeGenerator
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 151
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Registers a new tree generator
+  example: []
+  syntax:
+    content: void RegisterTreeGenerator(AssetLocation generatorCode, GrowTreeDelegate genhandler)
+    parameters:
+    - id: generatorCode
+      type: Vintagestory.API.Common.AssetLocation
+      description: ''
+    - id: genhandler
+      type: Vintagestory.API.Server.GrowTreeDelegate
+      description: ''
+    content.vb: Sub RegisterTreeGenerator(generatorCode As AssetLocation, genhandler As GrowTreeDelegate)
+  overload: Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator*
+- uid: Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(Vintagestory.API.Common.ServerChatCommand)
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(Vintagestory.API.Common.ServerChatCommand)
+  id: RegisterCommand(Vintagestory.API.Common.ServerChatCommand)
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterCommand(ServerChatCommand)
+  nameWithType: ICoreServerAPI.RegisterCommand(ServerChatCommand)
+  fullName: Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(Vintagestory.API.Common.ServerChatCommand)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterCommand
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 159
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Registers a chat command. When registered on the client you access the command by prefixing a dot (.), on the server it's a slash (/)
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use ChatCommand subapi instead")]
+
+      bool RegisterCommand(ServerChatCommand chatcommand)
+    parameters:
+    - id: chatcommand
+      type: Vintagestory.API.Common.ServerChatCommand
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: >-
+      <Obsolete("Use ChatCommand subapi instead")>
+
+      Function RegisterCommand(chatcommand As ServerChatCommand) As Boolean
+  overload: Vintagestory.API.Server.ICoreServerAPI.RegisterCommand*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use ChatCommand subapi instead
+- uid: Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(System.String,System.String,System.String,Vintagestory.API.Common.ServerChatCommandDelegate,System.String)
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(System.String,System.String,System.String,Vintagestory.API.Common.ServerChatCommandDelegate,System.String)
+  id: RegisterCommand(System.String,System.String,System.String,Vintagestory.API.Common.ServerChatCommandDelegate,System.String)
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterCommand(string, string, string, ServerChatCommandDelegate, string)
+  nameWithType: ICoreServerAPI.RegisterCommand(string, string, string, ServerChatCommandDelegate, string)
+  fullName: Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(string, string, string, Vintagestory.API.Common.ServerChatCommandDelegate, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterCommand
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 171
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Registers a chat command. When registered on the client you access the command by prefixing a dot (.), on the server it's a slash (/)
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use ChatCommand subapi instead")]
+
+      bool RegisterCommand(string command, string descriptionMsg, string syntaxMsg, ServerChatCommandDelegate handler, string requiredPrivilege = null)
+    parameters:
+    - id: command
+      type: System.String
+      description: ''
+    - id: descriptionMsg
+      type: System.String
+      description: ''
+    - id: syntaxMsg
+      type: System.String
+      description: ''
+    - id: handler
+      type: Vintagestory.API.Common.ServerChatCommandDelegate
+      description: ''
+    - id: requiredPrivilege
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: >-
+      <Obsolete("Use ChatCommand subapi instead")>
+
+      Function RegisterCommand(command As String, descriptionMsg As String, syntaxMsg As String, handler As ServerChatCommandDelegate, requiredPrivilege As String = Nothing) As Boolean
+  overload: Vintagestory.API.Server.ICoreServerAPI.RegisterCommand*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use ChatCommand subapi instead
+  nameWithType.vb: ICoreServerAPI.RegisterCommand(String, String, String, ServerChatCommandDelegate, String)
+  fullName.vb: Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(String, String, String, Vintagestory.API.Common.ServerChatCommandDelegate, String)
+  name.vb: RegisterCommand(String, String, String, ServerChatCommandDelegate, String)
+- uid: Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded
+  commentId: M:Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded
+  id: TriggerOnAssetsFirstLoaded
+  parent: Vintagestory.API.Server.ICoreServerAPI
+  langs:
+  - csharp
+  - vb
+  name: TriggerOnAssetsFirstLoaded()
+  nameWithType: ICoreServerAPI.TriggerOnAssetsFirstLoaded()
+  fullName: Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/ICoreServerAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TriggerOnAssetsFirstLoaded
+    path: Server/API/ICoreServerAPI.cs
+    startLine: 177
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: 'For internal use: used to remap block and item Ids, as soon as assets are loaded from disk, before recipes etc. are loaded or anything else which may occur in modsystem AssetsLoaded() methods'
+  example: []
+  syntax:
+    content: void TriggerOnAssetsFirstLoaded()
+    content.vb: Sub TriggerOnAssetsFirstLoaded()
+  overload: Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded*
+references:
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: Vintagestory.API.Common.ICoreAPI.Logger
+  commentId: P:Vintagestory.API.Common.ICoreAPI.Logger
+  parent: Vintagestory.API.Common.ICoreAPI
+  href: Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_Logger
+  name: Logger
+  nameWithType: ICoreAPI.Logger
+  fullName: Vintagestory.API.Common.ICoreAPI.Logger
+- uid: Vintagestory.API.Common.ICoreAPI.CmdlArguments
+  commentId: P:Vintagestory.API.Common.ICoreAPI.CmdlArguments
+  parent: Vintagestory.API.Common.ICoreAPI
+  href: Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_CmdlArguments
+  name: CmdlArguments
+  nameWithType: ICoreAPI.CmdlArguments
+  fullName: Vintagestory.API.Common.ICoreAPI.CmdlArguments
+- uid: Vintagestory.API.Common.ICoreAPI.ChatCommands
+  commentId: P:Vintagestory.API.Common.ICoreAPI.ChatCommands
+  parent: Vintagestory.API.Common.ICoreAPI
+  href: Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_ChatCommands
+  name: ChatCommands
+  nameWithType: ICoreAPI.ChatCommands
+  fullName: Vintagestory.API.Common.ICoreAPI.ChatCommands
+- uid: Vintagestory.API.Common.ICoreAPI.Side
+  commentId: P:Vintagestory.API.Common.ICoreAPI.Side
+  parent: Vintagestory.API.Common.ICoreAPI
+  href: Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_Side
+  name: Side
+  nameWithType: ICoreAPI.Side
+  fullName: Vintagestory.API.Common.ICoreAPI.Side
+- uid: Vintagestory.API.Common.ICoreAPI.ClassRegistry
+  commentId: P:Vintagestory.API.Common.ICoreAPI.ClassRegistry
+  parent: Vintagestory.API.Common.ICoreAPI
+  href: Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_ClassRegistry
+  name: ClassRegistry
+  nameWithType: ICoreAPI.ClassRegistry
+  fullName: Vintagestory.API.Common.ICoreAPI.ClassRegistry
+- uid: Vintagestory.API.Common.ICoreAPI.Assets
+  commentId: P:Vintagestory.API.Common.ICoreAPI.Assets
+  parent: Vintagestory.API.Common.ICoreAPI
+  href: Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_Assets
+  name: Assets
+  nameWithType: ICoreAPI.Assets
+  fullName: Vintagestory.API.Common.ICoreAPI.Assets
+- uid: Vintagestory.API.Common.ICoreAPI.ModLoader
+  commentId: P:Vintagestory.API.Common.ICoreAPI.ModLoader
+  parent: Vintagestory.API.Common.ICoreAPI
+  href: Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_ModLoader
+  name: ModLoader
+  nameWithType: ICoreAPI.ModLoader
+  fullName: Vintagestory.API.Common.ICoreAPI.ModLoader
+- uid: Vintagestory.API.Common.ICoreAPI.RegisterEntityClass(System.String,Vintagestory.API.Common.Entities.EntityProperties)
+  commentId: M:Vintagestory.API.Common.ICoreAPI.RegisterEntityClass(System.String,Vintagestory.API.Common.Entities.EntityProperties)
+  parent: Vintagestory.API.Common.ICoreAPI
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_RegisterEntityClass_System_String_Vintagestory_API_Common_Entities_EntityProperties_
+  name: RegisterEntityClass(string, EntityProperties)
+  nameWithType: ICoreAPI.RegisterEntityClass(string, EntityProperties)
+  fullName: Vintagestory.API.Common.ICoreAPI.RegisterEntityClass(string, Vintagestory.API.Common.Entities.EntityProperties)
+  nameWithType.vb: ICoreAPI.RegisterEntityClass(String, EntityProperties)
+  fullName.vb: Vintagestory.API.Common.ICoreAPI.RegisterEntityClass(String, Vintagestory.API.Common.Entities.EntityProperties)
+  name.vb: RegisterEntityClass(String, EntityProperties)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPI.RegisterEntityClass(System.String,Vintagestory.API.Common.Entities.EntityProperties)
+    name: RegisterEntityClass
+    href: Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_RegisterEntityClass_System_String_Vintagestory_API_Common_Entities_EntityProperties_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.EntityProperties
+    name: EntityProperties
+    href: Vintagestory.API.Common.Entities.EntityProperties.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPI.RegisterEntityClass(System.String,Vintagestory.API.Common.Entities.EntityProperties)
+    name: RegisterEntityClass
+    href: Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_RegisterEntityClass_System_String_Vintagestory_API_Common_Entities_EntityProperties_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.EntityProperties
+    name: EntityProperties
+    href: Vintagestory.API.Common.Entities.EntityProperties.html
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry``1(System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry``1(System.String)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterRecipeRegistry__1_System_String_
+  name: RegisterRecipeRegistry<T>(string)
+  nameWithType: ICoreAPICommon.RegisterRecipeRegistry<T>(string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry<T>(string)
+  nameWithType.vb: ICoreAPICommon.RegisterRecipeRegistry(Of T)(String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry(Of T)(String)
+  name.vb: RegisterRecipeRegistry(Of T)(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry``1(System.String)
+    name: RegisterRecipeRegistry
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterRecipeRegistry__1_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterRecipeRegistry``1(System.String)
+    name: RegisterRecipeRegistry
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterRecipeRegistry__1_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap(Vintagestory.API.Common.ColorMap)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap(Vintagestory.API.Common.ColorMap)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterColorMap_Vintagestory_API_Common_ColorMap_
+  name: RegisterColorMap(ColorMap)
+  nameWithType: ICoreAPICommon.RegisterColorMap(ColorMap)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap(Vintagestory.API.Common.ColorMap)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap(Vintagestory.API.Common.ColorMap)
+    name: RegisterColorMap
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterColorMap_Vintagestory_API_Common_ColorMap_
+  - name: (
+  - uid: Vintagestory.API.Common.ColorMap
+    name: ColorMap
+    href: Vintagestory.API.Common.ColorMap.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterColorMap(Vintagestory.API.Common.ColorMap)
+    name: RegisterColorMap
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterColorMap_Vintagestory_API_Common_ColorMap_
+  - name: (
+  - uid: Vintagestory.API.Common.ColorMap
+    name: ColorMap
+    href: Vintagestory.API.Common.ColorMap.html
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterEntity(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterEntity(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntity_System_String_System_Type_
+  name: RegisterEntity(string, Type)
+  nameWithType: ICoreAPICommon.RegisterEntity(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterEntity(string, System.Type)
+  nameWithType.vb: ICoreAPICommon.RegisterEntity(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterEntity(String, System.Type)
+  name.vb: RegisterEntity(String, Type)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterEntity(System.String,System.Type)
+    name: RegisterEntity
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntity_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterEntity(System.String,System.Type)
+    name: RegisterEntity
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntity_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntityBehaviorClass_System_String_System_Type_
+  name: RegisterEntityBehaviorClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterEntityBehaviorClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass(string, System.Type)
+  nameWithType.vb: ICoreAPICommon.RegisterEntityBehaviorClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass(String, System.Type)
+  name.vb: RegisterEntityBehaviorClass(String, Type)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass(System.String,System.Type)
+    name: RegisterEntityBehaviorClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntityBehaviorClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterEntityBehaviorClass(System.String,System.Type)
+    name: RegisterEntityBehaviorClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntityBehaviorClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockClass_System_String_System_Type_
+  name: RegisterBlockClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterBlockClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass(string, System.Type)
+  nameWithType.vb: ICoreAPICommon.RegisterBlockClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass(String, System.Type)
+  name.vb: RegisterBlockClass(String, Type)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass(System.String,System.Type)
+    name: RegisterBlockClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockClass(System.String,System.Type)
+    name: RegisterBlockClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCropBehavior_System_String_System_Type_
+  name: RegisterCropBehavior(string, Type)
+  nameWithType: ICoreAPICommon.RegisterCropBehavior(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior(string, System.Type)
+  nameWithType.vb: ICoreAPICommon.RegisterCropBehavior(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior(String, System.Type)
+  name.vb: RegisterCropBehavior(String, Type)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior(System.String,System.Type)
+    name: RegisterCropBehavior
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCropBehavior_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterCropBehavior(System.String,System.Type)
+    name: RegisterCropBehavior
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCropBehavior_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityClass_System_String_System_Type_
+  name: RegisterBlockEntityClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterBlockEntityClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass(string, System.Type)
+  nameWithType.vb: ICoreAPICommon.RegisterBlockEntityClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass(String, System.Type)
+  name.vb: RegisterBlockEntityClass(String, Type)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass(System.String,System.Type)
+    name: RegisterBlockEntityClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityClass(System.String,System.Type)
+    name: RegisterBlockEntityClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterItemClass_System_String_System_Type_
+  name: RegisterItemClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterItemClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass(string, System.Type)
+  nameWithType.vb: ICoreAPICommon.RegisterItemClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass(String, System.Type)
+  name.vb: RegisterItemClass(String, Type)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass(System.String,System.Type)
+    name: RegisterItemClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterItemClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterItemClass(System.String,System.Type)
+    name: RegisterItemClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterItemClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCollectibleBehaviorClass_System_String_System_Type_
+  name: RegisterCollectibleBehaviorClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterCollectibleBehaviorClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass(string, System.Type)
+  nameWithType.vb: ICoreAPICommon.RegisterCollectibleBehaviorClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass(String, System.Type)
+  name.vb: RegisterCollectibleBehaviorClass(String, Type)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass(System.String,System.Type)
+    name: RegisterCollectibleBehaviorClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCollectibleBehaviorClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterCollectibleBehaviorClass(System.String,System.Type)
+    name: RegisterCollectibleBehaviorClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCollectibleBehaviorClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockBehaviorClass_System_String_System_Type_
+  name: RegisterBlockBehaviorClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterBlockBehaviorClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass(string, System.Type)
+  nameWithType.vb: ICoreAPICommon.RegisterBlockBehaviorClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass(String, System.Type)
+  name.vb: RegisterBlockBehaviorClass(String, Type)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass(System.String,System.Type)
+    name: RegisterBlockBehaviorClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockBehaviorClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockBehaviorClass(System.String,System.Type)
+    name: RegisterBlockBehaviorClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockBehaviorClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass(System.String,System.Type)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass(System.String,System.Type)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityBehaviorClass_System_String_System_Type_
+  name: RegisterBlockEntityBehaviorClass(string, Type)
+  nameWithType: ICoreAPICommon.RegisterBlockEntityBehaviorClass(string, Type)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass(string, System.Type)
+  nameWithType.vb: ICoreAPICommon.RegisterBlockEntityBehaviorClass(String, Type)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass(String, System.Type)
+  name.vb: RegisterBlockEntityBehaviorClass(String, Type)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass(System.String,System.Type)
+    name: RegisterBlockEntityBehaviorClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityBehaviorClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterBlockEntityBehaviorClass(System.String,System.Type)
+    name: RegisterBlockEntityBehaviorClass
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityBehaviorClass_System_String_System_Type_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Type
+    name: Type
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.type
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.RegisterMountable(System.String,Vintagestory.API.Common.GetMountableDelegate)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.RegisterMountable(System.String,Vintagestory.API.Common.GetMountableDelegate)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterMountable_System_String_Vintagestory_API_Common_GetMountableDelegate_
+  name: RegisterMountable(string, GetMountableDelegate)
+  nameWithType: ICoreAPICommon.RegisterMountable(string, GetMountableDelegate)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.RegisterMountable(string, Vintagestory.API.Common.GetMountableDelegate)
+  nameWithType.vb: ICoreAPICommon.RegisterMountable(String, GetMountableDelegate)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.RegisterMountable(String, Vintagestory.API.Common.GetMountableDelegate)
+  name.vb: RegisterMountable(String, GetMountableDelegate)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterMountable(System.String,Vintagestory.API.Common.GetMountableDelegate)
+    name: RegisterMountable
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterMountable_System_String_Vintagestory_API_Common_GetMountableDelegate_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.GetMountableDelegate
+    name: GetMountableDelegate
+    href: Vintagestory.API.Common.GetMountableDelegate.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.RegisterMountable(System.String,Vintagestory.API.Common.GetMountableDelegate)
+    name: RegisterMountable
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterMountable_System_String_Vintagestory_API_Common_GetMountableDelegate_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.GetMountableDelegate
+    name: GetMountableDelegate
+    href: Vintagestory.API.Common.GetMountableDelegate.html
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.ObjectCache
+  commentId: P:Vintagestory.API.Common.ICoreAPICommon.ObjectCache
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_ObjectCache
+  name: ObjectCache
+  nameWithType: ICoreAPICommon.ObjectCache
+  fullName: Vintagestory.API.Common.ICoreAPICommon.ObjectCache
+- uid: Vintagestory.API.Common.ICoreAPICommon.DataBasePath
+  commentId: P:Vintagestory.API.Common.ICoreAPICommon.DataBasePath
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_DataBasePath
+  name: DataBasePath
+  nameWithType: ICoreAPICommon.DataBasePath
+  fullName: Vintagestory.API.Common.ICoreAPICommon.DataBasePath
+- uid: Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath(System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath(System.String)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_GetOrCreateDataPath_System_String_
+  name: GetOrCreateDataPath(string)
+  nameWithType: ICoreAPICommon.GetOrCreateDataPath(string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath(string)
+  nameWithType.vb: ICoreAPICommon.GetOrCreateDataPath(String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath(String)
+  name.vb: GetOrCreateDataPath(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath(System.String)
+    name: GetOrCreateDataPath
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_GetOrCreateDataPath_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.GetOrCreateDataPath(System.String)
+    name: GetOrCreateDataPath
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_GetOrCreateDataPath_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1({T},System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1(``0,System.String)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  definition: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1(``0,System.String)
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig__1___0_System_String_
+  name: StoreModConfig<T>(T, string)
+  nameWithType: ICoreAPICommon.StoreModConfig<T>(T, string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig<T>(T, string)
+  nameWithType.vb: ICoreAPICommon.StoreModConfig(Of T)(T, String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Of T)(T, String)
+  name.vb: StoreModConfig(Of T)(T, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1(``0,System.String)
+    name: StoreModConfig
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig__1___0_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1(``0,System.String)
+    name: StoreModConfig
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Vintagestory.API.Datastructures.JsonObject,System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Vintagestory.API.Datastructures.JsonObject,System.String)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig_Vintagestory_API_Datastructures_JsonObject_System_String_
+  name: StoreModConfig(JsonObject, string)
+  nameWithType: ICoreAPICommon.StoreModConfig(JsonObject, string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Vintagestory.API.Datastructures.JsonObject, string)
+  nameWithType.vb: ICoreAPICommon.StoreModConfig(JsonObject, String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Vintagestory.API.Datastructures.JsonObject, String)
+  name.vb: StoreModConfig(JsonObject, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Vintagestory.API.Datastructures.JsonObject,System.String)
+    name: StoreModConfig
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig_Vintagestory_API_Datastructures_JsonObject_System_String_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Vintagestory.API.Datastructures.JsonObject,System.String)
+    name: StoreModConfig
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig_Vintagestory_API_Datastructures_JsonObject_System_String_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig``1(System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.LoadModConfig``1(System.String)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig__1_System_String_
+  name: LoadModConfig<T>(string)
+  nameWithType: ICoreAPICommon.LoadModConfig<T>(string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig<T>(string)
+  nameWithType.vb: ICoreAPICommon.LoadModConfig(Of T)(String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(Of T)(String)
+  name.vb: LoadModConfig(Of T)(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig``1(System.String)
+    name: LoadModConfig
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig__1_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig``1(System.String)
+    name: LoadModConfig
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig__1_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(System.String)
+  parent: Vintagestory.API.Common.ICoreAPICommon
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig_System_String_
+  name: LoadModConfig(string)
+  nameWithType: ICoreAPICommon.LoadModConfig(string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(string)
+  nameWithType.vb: ICoreAPICommon.LoadModConfig(String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(String)
+  name.vb: LoadModConfig(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(System.String)
+    name: LoadModConfig
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.LoadModConfig(System.String)
+    name: LoadModConfig
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPI.Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(System.String,Vintagestory.API.Common.Tag2RichTextDelegate)
+  commentId: M:Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Tag2RichTextDelegate)
+  parent: Vintagestory.API.Common.VtmlUtilApiAdditions
+  definition: Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Tag2RichTextDelegate)
+  href: Vintagestory.API.Common.VtmlUtilApiAdditions.html#Vintagestory_API_Common_VtmlUtilApiAdditions_RegisterVtmlTagConverter_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Tag2RichTextDelegate_
+  name: RegisterVtmlTagConverter(ICoreAPI, string, Tag2RichTextDelegate)
+  nameWithType: VtmlUtilApiAdditions.RegisterVtmlTagConverter(ICoreAPI, string, Tag2RichTextDelegate)
+  fullName: Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(Vintagestory.API.Common.ICoreAPI, string, Vintagestory.API.Common.Tag2RichTextDelegate)
+  nameWithType.vb: VtmlUtilApiAdditions.RegisterVtmlTagConverter(ICoreAPI, String, Tag2RichTextDelegate)
+  fullName.vb: Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(Vintagestory.API.Common.ICoreAPI, String, Vintagestory.API.Common.Tag2RichTextDelegate)
+  name.vb: RegisterVtmlTagConverter(ICoreAPI, String, Tag2RichTextDelegate)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Tag2RichTextDelegate)
+    name: RegisterVtmlTagConverter
+    href: Vintagestory.API.Common.VtmlUtilApiAdditions.html#Vintagestory_API_Common_VtmlUtilApiAdditions_RegisterVtmlTagConverter_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Tag2RichTextDelegate_
+  - name: (
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Tag2RichTextDelegate
+    name: Tag2RichTextDelegate
+    href: Vintagestory.API.Common.Tag2RichTextDelegate.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Tag2RichTextDelegate)
+    name: RegisterVtmlTagConverter
+    href: Vintagestory.API.Common.VtmlUtilApiAdditions.html#Vintagestory_API_Common_VtmlUtilApiAdditions_RegisterVtmlTagConverter_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Tag2RichTextDelegate_
+  - name: (
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Tag2RichTextDelegate
+    name: Tag2RichTextDelegate
+    href: Vintagestory.API.Common.Tag2RichTextDelegate.html
+  - name: )
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
+- uid: Vintagestory.API.Common.ICoreAPICommon
+  commentId: T:Vintagestory.API.Common.ICoreAPICommon
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPICommon.html
+  name: ICoreAPICommon
+  nameWithType: ICoreAPICommon
+  fullName: Vintagestory.API.Common.ICoreAPICommon
+- uid: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1(``0,System.String)
+  commentId: M:Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1(``0,System.String)
+  isExternal: true
+  href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig__1___0_System_String_
+  name: StoreModConfig<T>(T, string)
+  nameWithType: ICoreAPICommon.StoreModConfig<T>(T, string)
+  fullName: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig<T>(T, string)
+  nameWithType.vb: ICoreAPICommon.StoreModConfig(Of T)(T, String)
+  fullName.vb: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig(Of T)(T, String)
+  name.vb: StoreModConfig(Of T)(T, String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1(``0,System.String)
+    name: StoreModConfig
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig__1___0_System_String_
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ICoreAPICommon.StoreModConfig``1(``0,System.String)
+    name: StoreModConfig
+    href: Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig__1___0_System_String_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Tag2RichTextDelegate)
+  commentId: M:Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Tag2RichTextDelegate)
+  isExternal: true
+  href: Vintagestory.API.Common.VtmlUtilApiAdditions.html#Vintagestory_API_Common_VtmlUtilApiAdditions_RegisterVtmlTagConverter_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Tag2RichTextDelegate_
+  name: RegisterVtmlTagConverter(ICoreAPI, string, Tag2RichTextDelegate)
+  nameWithType: VtmlUtilApiAdditions.RegisterVtmlTagConverter(ICoreAPI, string, Tag2RichTextDelegate)
+  fullName: Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(Vintagestory.API.Common.ICoreAPI, string, Vintagestory.API.Common.Tag2RichTextDelegate)
+  nameWithType.vb: VtmlUtilApiAdditions.RegisterVtmlTagConverter(ICoreAPI, String, Tag2RichTextDelegate)
+  fullName.vb: Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(Vintagestory.API.Common.ICoreAPI, String, Vintagestory.API.Common.Tag2RichTextDelegate)
+  name.vb: RegisterVtmlTagConverter(ICoreAPI, String, Tag2RichTextDelegate)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Tag2RichTextDelegate)
+    name: RegisterVtmlTagConverter
+    href: Vintagestory.API.Common.VtmlUtilApiAdditions.html#Vintagestory_API_Common_VtmlUtilApiAdditions_RegisterVtmlTagConverter_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Tag2RichTextDelegate_
+  - name: (
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Tag2RichTextDelegate
+    name: Tag2RichTextDelegate
+    href: Vintagestory.API.Common.Tag2RichTextDelegate.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.VtmlUtilApiAdditions.RegisterVtmlTagConverter(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Tag2RichTextDelegate)
+    name: RegisterVtmlTagConverter
+    href: Vintagestory.API.Common.VtmlUtilApiAdditions.html#Vintagestory_API_Common_VtmlUtilApiAdditions_RegisterVtmlTagConverter_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Tag2RichTextDelegate_
+  - name: (
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Tag2RichTextDelegate
+    name: Tag2RichTextDelegate
+    href: Vintagestory.API.Common.Tag2RichTextDelegate.html
+  - name: )
+- uid: Vintagestory.API.Common.VtmlUtilApiAdditions
+  commentId: T:Vintagestory.API.Common.VtmlUtilApiAdditions
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.VtmlUtilApiAdditions.html
+  name: VtmlUtilApiAdditions
+  nameWithType: VtmlUtilApiAdditions
+  fullName: Vintagestory.API.Common.VtmlUtilApiAdditions
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Server.ICoreServerAPI.Event*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.Event
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_Event
+  name: Event
+  nameWithType: ICoreServerAPI.Event
+  fullName: Vintagestory.API.Server.ICoreServerAPI.Event
+- uid: Vintagestory.API.Server.IServerEventAPI
+  commentId: T:Vintagestory.API.Server.IServerEventAPI
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IServerEventAPI.html
+  name: IServerEventAPI
+  nameWithType: IServerEventAPI
+  fullName: Vintagestory.API.Server.IServerEventAPI
+- uid: Vintagestory.API.Server.ICoreServerAPI.WorldManager*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.WorldManager
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_WorldManager
+  name: WorldManager
+  nameWithType: ICoreServerAPI.WorldManager
+  fullName: Vintagestory.API.Server.ICoreServerAPI.WorldManager
+- uid: Vintagestory.API.Server.IWorldManagerAPI
+  commentId: T:Vintagestory.API.Server.IWorldManagerAPI
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IWorldManagerAPI.html
+  name: IWorldManagerAPI
+  nameWithType: IWorldManagerAPI
+  fullName: Vintagestory.API.Server.IWorldManagerAPI
+- uid: Vintagestory.API.Server.ICoreServerAPI.Server*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.Server
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_Server
+  name: Server
+  nameWithType: ICoreServerAPI.Server
+  fullName: Vintagestory.API.Server.ICoreServerAPI.Server
+- uid: Vintagestory.API.Server.IServerAPI
+  commentId: T:Vintagestory.API.Server.IServerAPI
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IServerAPI.html
+  name: IServerAPI
+  nameWithType: IServerAPI
+  fullName: Vintagestory.API.Server.IServerAPI
+- uid: Vintagestory.API.Server.ICoreServerAPI.Permissions*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.Permissions
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_Permissions
+  name: Permissions
+  nameWithType: ICoreServerAPI.Permissions
+  fullName: Vintagestory.API.Server.ICoreServerAPI.Permissions
+- uid: Vintagestory.API.Server.IPermissionManager
+  commentId: T:Vintagestory.API.Server.IPermissionManager
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IPermissionManager.html
+  name: IPermissionManager
+  nameWithType: IPermissionManager
+  fullName: Vintagestory.API.Server.IPermissionManager
+- uid: Vintagestory.API.Server.ICoreServerAPI.Groups*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.Groups
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_Groups
+  name: Groups
+  nameWithType: ICoreServerAPI.Groups
+  fullName: Vintagestory.API.Server.ICoreServerAPI.Groups
+- uid: Vintagestory.API.Server.IGroupManager
+  commentId: T:Vintagestory.API.Server.IGroupManager
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IGroupManager.html
+  name: IGroupManager
+  nameWithType: IGroupManager
+  fullName: Vintagestory.API.Server.IGroupManager
+- uid: Vintagestory.API.Server.ICoreServerAPI.PlayerData*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.PlayerData
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_PlayerData
+  name: PlayerData
+  nameWithType: ICoreServerAPI.PlayerData
+  fullName: Vintagestory.API.Server.ICoreServerAPI.PlayerData
+- uid: Vintagestory.API.Server.IPlayerDataManager
+  commentId: T:Vintagestory.API.Server.IPlayerDataManager
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IPlayerDataManager.html
+  name: IPlayerDataManager
+  nameWithType: IPlayerDataManager
+  fullName: Vintagestory.API.Server.IPlayerDataManager
+- uid: Vintagestory.API.Server.ICoreServerAPI.Network*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.Network
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_Network
+  name: Network
+  nameWithType: ICoreServerAPI.Network
+  fullName: Vintagestory.API.Server.ICoreServerAPI.Network
+- uid: Vintagestory.API.Server.IServerNetworkAPI
+  commentId: T:Vintagestory.API.Server.IServerNetworkAPI
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IServerNetworkAPI.html
+  name: IServerNetworkAPI
+  nameWithType: IServerNetworkAPI
+  fullName: Vintagestory.API.Server.IServerNetworkAPI
+- uid: Vintagestory.API.Server.ICoreServerAPI.World*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.World
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_World
+  name: World
+  nameWithType: ICoreServerAPI.World
+  fullName: Vintagestory.API.Server.ICoreServerAPI.World
+- uid: Vintagestory.API.Server.IServerWorldAccessor
+  commentId: T:Vintagestory.API.Server.IServerWorldAccessor
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IServerWorldAccessor.html
+  name: IServerWorldAccessor
+  nameWithType: IServerWorldAccessor
+  fullName: Vintagestory.API.Server.IServerWorldAccessor
+- uid: Vintagestory.API.Server.ICoreServerAPI.SendIngameError*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.SendIngameError
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_SendIngameError_Vintagestory_API_Server_IServerPlayer_System_String_System_String_System_Object___
+  name: SendIngameError
+  nameWithType: ICoreServerAPI.SendIngameError
+  fullName: Vintagestory.API.Server.ICoreServerAPI.SendIngameError
+- uid: Vintagestory.API.Server.IServerPlayer
+  commentId: T:Vintagestory.API.Server.IServerPlayer
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IServerPlayer.html
+  name: IServerPlayer
+  nameWithType: IServerPlayer
+  fullName: Vintagestory.API.Server.IServerPlayer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Object[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object[]
+  nameWithType: object[]
+  fullName: object[]
+  nameWithType.vb: Object()
+  fullName.vb: Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_SendIngameDiscovery_Vintagestory_API_Server_IServerPlayer_System_String_System_String_System_Object___
+  name: SendIngameDiscovery
+  nameWithType: ICoreServerAPI.SendIngameDiscovery
+  fullName: Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery
+- uid: Vintagestory.API.Server.ICoreServerAPI.SendMessage*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.SendMessage
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_SendMessage_Vintagestory_API_Common_IPlayer_System_Int32_System_String_Vintagestory_API_Common_EnumChatType_System_String_
+  name: SendMessage
+  nameWithType: ICoreServerAPI.SendMessage
+  fullName: Vintagestory.API.Server.ICoreServerAPI.SendMessage
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.EnumChatType
+  commentId: T:Vintagestory.API.Common.EnumChatType
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumChatType.html
+  name: EnumChatType
+  nameWithType: EnumChatType
+  fullName: Vintagestory.API.Common.EnumChatType
+- uid: Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_SendMessageToGroup_System_Int32_System_String_Vintagestory_API_Common_EnumChatType_System_String_
+  name: SendMessageToGroup
+  nameWithType: ICoreServerAPI.SendMessageToGroup
+  fullName: Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup
+- uid: Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_BroadcastMessageToAllGroups_System_String_Vintagestory_API_Common_EnumChatType_System_String_
+  name: BroadcastMessageToAllGroups
+  nameWithType: ICoreServerAPI.BroadcastMessageToAllGroups
+  fullName: Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups
+- uid: Vintagestory.API.Server.ICoreServerAPI.InjectConsole*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.InjectConsole
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_InjectConsole_System_String_
+  name: InjectConsole
+  nameWithType: ICoreServerAPI.InjectConsole
+  fullName: Vintagestory.API.Server.ICoreServerAPI.InjectConsole
+- uid: Vintagestory.API.Server.ICoreServerAPI.HandleCommand*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.HandleCommand
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_HandleCommand_Vintagestory_API_Server_IServerPlayer_System_String_
+  name: HandleCommand
+  nameWithType: ICoreServerAPI.HandleCommand
+  fullName: Vintagestory.API.Server.ICoreServerAPI.HandleCommand
+- uid: Vintagestory.API.Server.ICoreServerAPI.RegisterItem*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.RegisterItem
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_RegisterItem_Vintagestory_API_Common_Item_
+  name: RegisterItem
+  nameWithType: ICoreServerAPI.RegisterItem
+  fullName: Vintagestory.API.Server.ICoreServerAPI.RegisterItem
+- uid: Vintagestory.API.Common.Item
+  commentId: T:Vintagestory.API.Common.Item
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Item.html
+  name: Item
+  nameWithType: Item
+  fullName: Vintagestory.API.Common.Item
+- uid: Vintagestory.API.Server.ICoreServerAPI.RegisterBlock*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.RegisterBlock
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_RegisterBlock_Vintagestory_API_Common_Block_
+  name: RegisterBlock
+  nameWithType: ICoreServerAPI.RegisterBlock
+  fullName: Vintagestory.API.Server.ICoreServerAPI.RegisterBlock
+- uid: Vintagestory.API.Common.Block
+  commentId: T:Vintagestory.API.Common.Block
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Block.html
+  name: Block
+  nameWithType: Block
+  fullName: Vintagestory.API.Common.Block
+- uid: Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_RegisterCraftingRecipe_Vintagestory_API_Common_GridRecipe_
+  name: RegisterCraftingRecipe
+  nameWithType: ICoreServerAPI.RegisterCraftingRecipe
+  fullName: Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe
+- uid: Vintagestory.API.Common.GridRecipe
+  commentId: T:Vintagestory.API.Common.GridRecipe
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.GridRecipe.html
+  name: GridRecipe
+  nameWithType: GridRecipe
+  fullName: Vintagestory.API.Common.GridRecipe
+- uid: Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Server_ITreeGenerator_
+  name: RegisterTreeGenerator
+  nameWithType: ICoreServerAPI.RegisterTreeGenerator
+  fullName: Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator
+- uid: Vintagestory.API.Common.AssetLocation
+  commentId: T:Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: AssetLocation
+  nameWithType: AssetLocation
+  fullName: Vintagestory.API.Common.AssetLocation
+- uid: Vintagestory.API.Server.ITreeGenerator
+  commentId: T:Vintagestory.API.Server.ITreeGenerator
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.ITreeGenerator.html
+  name: ITreeGenerator
+  nameWithType: ITreeGenerator
+  fullName: Vintagestory.API.Server.ITreeGenerator
+- uid: Vintagestory.API.Server.GrowTreeDelegate
+  commentId: T:Vintagestory.API.Server.GrowTreeDelegate
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.GrowTreeDelegate.html
+  name: GrowTreeDelegate
+  nameWithType: GrowTreeDelegate
+  fullName: Vintagestory.API.Server.GrowTreeDelegate
+- uid: Vintagestory.API.Server.ICoreServerAPI.RegisterCommand*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.RegisterCommand
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_Vintagestory_API_Common_ServerChatCommand_
+  name: RegisterCommand
+  nameWithType: ICoreServerAPI.RegisterCommand
+  fullName: Vintagestory.API.Server.ICoreServerAPI.RegisterCommand
+- uid: Vintagestory.API.Common.ServerChatCommand
+  commentId: T:Vintagestory.API.Common.ServerChatCommand
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ServerChatCommand.html
+  name: ServerChatCommand
+  nameWithType: ServerChatCommand
+  fullName: Vintagestory.API.Common.ServerChatCommand
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.ServerChatCommandDelegate
+  commentId: T:Vintagestory.API.Common.ServerChatCommandDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ServerChatCommandDelegate.html
+  name: ServerChatCommandDelegate
+  nameWithType: ServerChatCommandDelegate
+  fullName: Vintagestory.API.Common.ServerChatCommandDelegate
+- uid: Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded*
+  commentId: Overload:Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded
+  href: Vintagestory.API.Server.ICoreServerAPI.html#Vintagestory_API_Server_ICoreServerAPI_TriggerOnAssetsFirstLoaded
+  name: TriggerOnAssetsFirstLoaded
+  nameWithType: ICoreServerAPI.TriggerOnAssetsFirstLoaded
+  fullName: Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded

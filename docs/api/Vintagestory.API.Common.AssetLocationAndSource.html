@@ -1,94 +1,135 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AssetLocationAndSource
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AssetLocationAndSource
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class AssetLocationAndSource | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AssetLocationAndSource | VintageStory API ">
+      
+      <meta name="description" content="Defines a complete path to an assets, including it&#39;s domain. Includes an extra Source field for debugging.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.AssetLocationAndSource">
-  
-  
-  <h1 id="Vintagestory_API_Common_AssetLocationAndSource" data-uid="Vintagestory.API.Common.AssetLocationAndSource" class="text-break">Class AssetLocationAndSource
+
+        <article data-uid="Vintagestory.API.Common.AssetLocationAndSource">
+
+
+
+  <h1 id="Vintagestory_API_Common_AssetLocationAndSource" data-uid="Vintagestory.API.Common.AssetLocationAndSource" class="text-break">
+Class AssetLocationAndSource  
   </h1>
-  <div class="markdown level0 summary"><p>Defines a complete path to an assets, including it&apos;s domain. Includes an extra Source field for debugging.</p>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Defines a complete path to an assets, including it's domain. Includes an extra Source field for debugging.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></div>
-    <div class="level2"><span class="xref">AssetLocationAndSource</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[TypeConverter(typeof(StringAssetLocationConverter))]
+public class AssetLocationAndSource : AssetLocation, IComparable&lt;AssetLocation&gt;, IEquatable&lt;AssetLocation&gt;</code></pre>
   </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><span class="xref">IComparable</span>&lt;<a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</div>
-    <div><span class="xref">IEquatable</span>&lt;<a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></div>
+      <div><span class="xref">AssetLocationAndSource</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.icomparable-1">IComparable</a>&lt;<a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.iequatable-1">IEquatable</a>&lt;<a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_LocationSeparator">AssetLocation.LocationSeparator</a>
     </div>
@@ -105,7 +146,7 @@
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_EndsWithWildCard">AssetLocation.EndsWithWildCard</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Create_System_String_System_String_">AssetLocation.Create(String, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Create_System_String_System_String_">AssetLocation.Create(string, string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Valid">AssetLocation.Valid</a>
@@ -114,7 +155,10 @@
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_IsChild_Vintagestory_API_Common_AssetLocation_">AssetLocation.IsChild(AssetLocation)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_BeginsWith_System_String_System_String_">AssetLocation.BeginsWith(String, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_BeginsWith_System_String_System_String_">AssetLocation.BeginsWith(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_PathStartsWith_System_String_">AssetLocation.PathStartsWith(string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_ToShortString">AssetLocation.ToShortString()</a>
@@ -123,7 +167,7 @@
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_ShortDomain">AssetLocation.ShortDomain()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_FirstPathPart_System_Int32_">AssetLocation.FirstPathPart(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_FirstPathPart_System_Int32_">AssetLocation.FirstPathPart(int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_FirstCodePart">AssetLocation.FirstCodePart()</a>
@@ -138,22 +182,22 @@
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Category">AssetLocation.Category</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathPrefix_System_String_">AssetLocation.WithPathPrefix(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathPrefix_System_String_">AssetLocation.WithPathPrefix(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathPrefixOnce_System_String_">AssetLocation.WithPathPrefixOnce(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathPrefixOnce_System_String_">AssetLocation.WithPathPrefixOnce(string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithLocationPrefixOnce_Vintagestory_API_Common_AssetLocation_">AssetLocation.WithLocationPrefixOnce(AssetLocation)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathAppendix_System_String_">AssetLocation.WithPathAppendix(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathAppendix_System_String_">AssetLocation.WithPathAppendix(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithoutPathAppendix_System_String_">AssetLocation.WithoutPathAppendix(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithoutPathAppendix_System_String_">AssetLocation.WithoutPathAppendix(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathAppendixOnce_System_String_">AssetLocation.WithPathAppendixOnce(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPathAppendixOnce_System_String_">AssetLocation.WithPathAppendixOnce(string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_HasDomain">AssetLocation.HasDomain()</a>
@@ -165,7 +209,7 @@
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_RemoveEnding">AssetLocation.RemoveEnding()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_PathOmittingPrefixAndSuffix_System_String_System_String_">AssetLocation.PathOmittingPrefixAndSuffix(String, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_PathOmittingPrefixAndSuffix_System_String_System_String_">AssetLocation.PathOmittingPrefixAndSuffix(string, string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_EndVariant">AssetLocation.EndVariant()</a>
@@ -174,22 +218,22 @@
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Clone">AssetLocation.Clone()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CloneWithoutPrefixAndEnding_System_Int32_">AssetLocation.CloneWithoutPrefixAndEnding(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CloneWithoutPrefixAndEnding_System_Int32_">AssetLocation.CloneWithoutPrefixAndEnding(int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPath_System_String_">AssetLocation.CopyWithPath(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPath_System_String_">AssetLocation.CopyWithPath(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPathPrefixAndAppendix_System_String_System_String_">AssetLocation.CopyWithPathPrefixAndAppendix(String, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPathPrefixAndAppendix_System_String_System_String_">AssetLocation.CopyWithPathPrefixAndAppendix(string, string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPathPrefixAndAppendixOnce_System_String_System_String_">AssetLocation.CopyWithPathPrefixAndAppendixOnce(String, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CopyWithPathPrefixAndAppendixOnce_System_String_System_String_">AssetLocation.CopyWithPathPrefixAndAppendixOnce(string, string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPath_System_String_">AssetLocation.WithPath(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WithPath_System_String_">AssetLocation.WithPath(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_toLocations_System_String___">AssetLocation.toLocations(String[])</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_toLocations_System_String___">AssetLocation.toLocations(string[])</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_GetHashCode">AssetLocation.GetHashCode()</a>
@@ -198,7 +242,7 @@
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Equals_Vintagestory_API_Common_AssetLocation_">AssetLocation.Equals(AssetLocation)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Equals_System_Object_">AssetLocation.Equals(Object)</a>
+      <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_Equals_System_Object_">AssetLocation.Equals(object)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_ToString">AssetLocation.ToString()</a>
@@ -206,483 +250,432 @@
     <div>
       <a class="xref" href="Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_CompareTo_Vintagestory_API_Common_AssetLocation_">AssetLocation.CompareTo(AssetLocation)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_AssetLocationAndSource_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AssetLocationAndSource : AssetLocation, IComparable&lt;AssetLocation&gt;, IEquatable&lt;AssetLocation&gt;</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AssetLocationAndSource.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Assets/AssetLocation.cs/#L68">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String)">AssetLocationAndSource(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(string location)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">location</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AssetLocationAndSource.%23ctor(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Assets/AssetLocation.cs/#L102">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_System_String_System_String_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,System.String)">AssetLocationAndSource(String, String, String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(string domain, string path, string oldStyleSource)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">domain</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">path</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">oldStyleSource</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_System_String_System_String_System_String_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AssetLocationAndSource.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Assets/AssetLocation.cs/#L81">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_System_String_System_String_System_String_System_String_System_Int32_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,System.String,System.String,System.String,System.Int32)">AssetLocationAndSource(String, String, String, String, String, Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(string domain, string path, string message, string sourceDomain, string sourcePath, int alternateNo = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">domain</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">path</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">sourceDomain</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">sourcePath</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">alternateNo</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_System_String_Vintagestory_API_Common_SourceStringComponents_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AssetLocationAndSource.%23ctor(System.String%2CSystem.String%2CVintagestory.API.Common.SourceStringComponents)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Assets/AssetLocation.cs/#L91">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_System_String_Vintagestory_API_Common_SourceStringComponents_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,Vintagestory.API.Common.SourceStringComponents)">AssetLocationAndSource(String, String, SourceStringComponents)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(string domain, string path, SourceStringComponents source)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">domain</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">path</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.SourceStringComponents.html">SourceStringComponents</a></td>
-        <td><span class="parametername">source</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AssetLocationAndSource__ctor_Vintagestory_API_Common_AssetLocation_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AssetLocationAndSource.%23ctor(Vintagestory.API.Common.AssetLocation)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Assets/AssetLocation.cs/#L72">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation)">AssetLocationAndSource(AssetLocation)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(AssetLocation loc)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
-        <td><span class="parametername">loc</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AssetLocationAndSource__ctor_Vintagestory_API_Common_AssetLocation_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AssetLocationAndSource.%23ctor(Vintagestory.API.Common.AssetLocation%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Assets/AssetLocation.cs/#L96">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_Vintagestory_API_Common_AssetLocation_System_String_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,System.String)">AssetLocationAndSource(AssetLocation, String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(AssetLocation loc, string oldStyleSource)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
-        <td><span class="parametername">loc</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">oldStyleSource</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AssetLocationAndSource__ctor_Vintagestory_API_Common_AssetLocation_System_String_Vintagestory_API_Common_AssetLocation_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AssetLocationAndSource.%23ctor(Vintagestory.API.Common.AssetLocation%2CSystem.String%2CVintagestory.API.Common.AssetLocation%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Assets/AssetLocation.cs/#L76">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_Vintagestory_API_Common_AssetLocation_System_String_Vintagestory_API_Common_AssetLocation_System_Int32_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,System.String,Vintagestory.API.Common.AssetLocation,System.Int32)">AssetLocationAndSource(AssetLocation, String, AssetLocation, Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(AssetLocation loc, string message, AssetLocation sourceLoc, int alternateNo = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
-        <td><span class="parametername">loc</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
-        <td><span class="parametername">sourceLoc</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">alternateNo</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AssetLocationAndSource__ctor_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_SourceStringComponents_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AssetLocationAndSource.%23ctor(Vintagestory.API.Common.AssetLocation%2CVintagestory.API.Common.SourceStringComponents)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Assets/AssetLocation.cs/#L86">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_SourceStringComponents_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.SourceStringComponents)">AssetLocationAndSource(AssetLocation, SourceStringComponents)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(AssetLocation loc, SourceStringComponents source)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
-        <td><span class="parametername">loc</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.SourceStringComponents.html">SourceStringComponents</a></td>
-        <td><span class="parametername">source</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AssetLocationAndSource_AddToAllAtlasses.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AssetLocationAndSource.AddToAllAtlasses%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Assets/AssetLocation.cs/#L57">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AssetLocationAndSource_AddToAllAtlasses" data-uid="Vintagestory.API.Common.AssetLocationAndSource.AddToAllAtlasses">AddToAllAtlasses</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool AddToAllAtlasses</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AssetLocationAndSource_loadedAlready.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AssetLocationAndSource.loadedAlready%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Assets/AssetLocation.cs/#L66">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AssetLocationAndSource_loadedAlready" data-uid="Vintagestory.API.Common.AssetLocationAndSource.loadedAlready">loadedAlready</h4>
-  <div class="markdown level1 summary"><p>Used to avoid duplication when loading colormaps and shapes</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public volatile int loadedAlready</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AssetLocationAndSource_Source.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AssetLocationAndSource.Source%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Assets/AssetLocation.cs/#L62">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AssetLocationAndSource_Source" data-uid="Vintagestory.API.Common.AssetLocationAndSource.Source">Source</h4>
-  <div class="markdown level1 summary"><p>The source of a given asset.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SourceStringComponents Source</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.SourceStringComponents.html">SourceStringComponents</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <span class="xref">IComparable&lt;&gt;</span>
-  </div>
-  <div>
-      <span class="xref">IEquatable&lt;&gt;</span>
-  </div>
-  <h3 id="extensionmethods">Extension Methods</h3>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
   <div>
       <a class="xref" href="Vintagestory.API.Util.WildcardUtil.html#Vintagestory_API_Util_WildcardUtil_WildCardReplace_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_AssetLocation_">WildcardUtil.WildCardReplace(AssetLocation, AssetLocation, AssetLocation)</a>
   </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String)">
+  AssetLocationAndSource(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(string location)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>location</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_System_String_System_String_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,System.String)">
+  AssetLocationAndSource(string, string, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;For reduced RAM usage please use newer overloads e.g. AssetLocationAndSource(domain, path, message, sourceDomain, sourcePath)&quot;, false)]
+public AssetLocationAndSource(string domain, string path, string oldStyleSource)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domain</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>oldStyleSource</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_System_String_System_String_System_String_System_String_System_Int32_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,System.String,System.String,System.String,System.Int32)">
+  AssetLocationAndSource(string, string, string, string, string, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(string domain, string path, string message, string sourceDomain, string sourcePath, int alternateNo = -1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domain</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>sourceDomain</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>sourcePath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>alternateNo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_System_String_System_String_Vintagestory_API_Common_SourceStringComponents_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(System.String,System.String,Vintagestory.API.Common.SourceStringComponents)">
+  AssetLocationAndSource(string, string, SourceStringComponents)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(string domain, string path, SourceStringComponents source)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domain</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>source</code> <a class="xref" href="Vintagestory.API.Common.SourceStringComponents.html">SourceStringComponents</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation)">
+  AssetLocationAndSource(AssetLocation)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(AssetLocation loc)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>loc</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_Vintagestory_API_Common_AssetLocation_System_String_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,System.String)">
+  AssetLocationAndSource(AssetLocation, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;For reduced RAM usage please use newer overloads e.g. AssetLocationAndSource(loc, message, sourceAssetLoc)&quot;, false)]
+public AssetLocationAndSource(AssetLocation loc, string oldStyleSource)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>loc</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+    <dt><code>oldStyleSource</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_Vintagestory_API_Common_AssetLocation_System_String_Vintagestory_API_Common_AssetLocation_System_Int32_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,System.String,Vintagestory.API.Common.AssetLocation,System.Int32)">
+  AssetLocationAndSource(AssetLocation, string, AssetLocation, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(AssetLocation loc, string message, AssetLocation sourceLoc, int alternateNo = -1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>loc</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>sourceLoc</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+    <dt><code>alternateNo</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AssetLocationAndSource__ctor_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_AssetLocationAndSource__ctor_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_SourceStringComponents_" data-uid="Vintagestory.API.Common.AssetLocationAndSource.#ctor(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.SourceStringComponents)">
+  AssetLocationAndSource(AssetLocation, SourceStringComponents)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AssetLocationAndSource(AssetLocation loc, SourceStringComponents source)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>loc</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+    <dt><code>source</code> <a class="xref" href="Vintagestory.API.Common.SourceStringComponents.html">SourceStringComponents</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_AssetLocationAndSource_AddToAllAtlasses" data-uid="Vintagestory.API.Common.AssetLocationAndSource.AddToAllAtlasses">
+  AddToAllAtlasses
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AddToAllAtlasses</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AssetLocationAndSource_Source" data-uid="Vintagestory.API.Common.AssetLocationAndSource.Source">
+  Source
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The source of a given asset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SourceStringComponents Source</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.SourceStringComponents.html">SourceStringComponents</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AssetLocationAndSource_loadedAlready" data-uid="Vintagestory.API.Common.AssetLocationAndSource.loadedAlready">
+  loadedAlready
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Used to avoid duplication when loading colormaps and shapes</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public volatile int loadedAlready</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AssetLocationAndSource.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AssetLocationAndSource%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Assets/AssetLocation.cs/#L54" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

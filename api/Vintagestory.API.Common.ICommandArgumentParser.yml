@@ -1,0 +1,672 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ICommandArgumentParser
+  commentId: T:Vintagestory.API.Common.ICommandArgumentParser
+  id: ICommandArgumentParser
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.ICommandArgumentParser.ArgCount
+  - Vintagestory.API.Common.ICommandArgumentParser.ArgumentName
+  - Vintagestory.API.Common.ICommandArgumentParser.GetSyntax
+  - Vintagestory.API.Common.ICommandArgumentParser.GetSyntaxExplanation(System.String)
+  - Vintagestory.API.Common.ICommandArgumentParser.GetValidRange(Vintagestory.API.Common.CmdArgs)
+  - Vintagestory.API.Common.ICommandArgumentParser.GetValue
+  - Vintagestory.API.Common.ICommandArgumentParser.IsMandatoryArg
+  - Vintagestory.API.Common.ICommandArgumentParser.IsMissing
+  - Vintagestory.API.Common.ICommandArgumentParser.LastErrorMessage
+  - Vintagestory.API.Common.ICommandArgumentParser.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  - Vintagestory.API.Common.ICommandArgumentParser.SetValue(System.Object)
+  - Vintagestory.API.Common.ICommandArgumentParser.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+  langs:
+  - csharp
+  - vb
+  name: ICommandArgumentParser
+  nameWithType: ICommandArgumentParser
+  fullName: Vintagestory.API.Common.ICommandArgumentParser
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ICommandArgumentParser
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 210
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public interface ICommandArgumentParser
+    content.vb: Public Interface ICommandArgumentParser
+- uid: Vintagestory.API.Common.ICommandArgumentParser.ArgCount
+  commentId: P:Vintagestory.API.Common.ICommandArgumentParser.ArgCount
+  id: ArgCount
+  parent: Vintagestory.API.Common.ICommandArgumentParser
+  langs:
+  - csharp
+  - vb
+  name: ArgCount
+  nameWithType: ICommandArgumentParser.ArgCount
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.ArgCount
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ArgCount
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 214
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Return -1 to ignore arg count checking
+  example: []
+  syntax:
+    content: int ArgCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property ArgCount As Integer
+  overload: Vintagestory.API.Common.ICommandArgumentParser.ArgCount*
+- uid: Vintagestory.API.Common.ICommandArgumentParser.LastErrorMessage
+  commentId: P:Vintagestory.API.Common.ICommandArgumentParser.LastErrorMessage
+  id: LastErrorMessage
+  parent: Vintagestory.API.Common.ICommandArgumentParser
+  langs:
+  - csharp
+  - vb
+  name: LastErrorMessage
+  nameWithType: ICommandArgumentParser.LastErrorMessage
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.LastErrorMessage
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LastErrorMessage
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 215
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: string LastErrorMessage { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property LastErrorMessage As String
+  overload: Vintagestory.API.Common.ICommandArgumentParser.LastErrorMessage*
+- uid: Vintagestory.API.Common.ICommandArgumentParser.ArgumentName
+  commentId: P:Vintagestory.API.Common.ICommandArgumentParser.ArgumentName
+  id: ArgumentName
+  parent: Vintagestory.API.Common.ICommandArgumentParser
+  langs:
+  - csharp
+  - vb
+  name: ArgumentName
+  nameWithType: ICommandArgumentParser.ArgumentName
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.ArgumentName
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ArgumentName
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 216
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: string ArgumentName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property ArgumentName As String
+  overload: Vintagestory.API.Common.ICommandArgumentParser.ArgumentName*
+- uid: Vintagestory.API.Common.ICommandArgumentParser.IsMandatoryArg
+  commentId: P:Vintagestory.API.Common.ICommandArgumentParser.IsMandatoryArg
+  id: IsMandatoryArg
+  parent: Vintagestory.API.Common.ICommandArgumentParser
+  langs:
+  - csharp
+  - vb
+  name: IsMandatoryArg
+  nameWithType: ICommandArgumentParser.IsMandatoryArg
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.IsMandatoryArg
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IsMandatoryArg
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 217
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: bool IsMandatoryArg { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsMandatoryArg As Boolean
+  overload: Vintagestory.API.Common.ICommandArgumentParser.IsMandatoryArg*
+- uid: Vintagestory.API.Common.ICommandArgumentParser.IsMissing
+  commentId: P:Vintagestory.API.Common.ICommandArgumentParser.IsMissing
+  id: IsMissing
+  parent: Vintagestory.API.Common.ICommandArgumentParser
+  langs:
+  - csharp
+  - vb
+  name: IsMissing
+  nameWithType: ICommandArgumentParser.IsMissing
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.IsMissing
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IsMissing
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 218
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: bool IsMissing { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property IsMissing As Boolean
+  overload: Vintagestory.API.Common.ICommandArgumentParser.IsMissing*
+- uid: Vintagestory.API.Common.ICommandArgumentParser.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  commentId: M:Vintagestory.API.Common.ICommandArgumentParser.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  id: PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  parent: Vintagestory.API.Common.ICommandArgumentParser
+  langs:
+  - csharp
+  - vb
+  name: PreProcess(TextCommandCallingArgs)
+  nameWithType: ICommandArgumentParser.PreProcess(TextCommandCallingArgs)
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.PreProcess(Vintagestory.API.Common.TextCommandCallingArgs)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PreProcess
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 220
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: void PreProcess(TextCommandCallingArgs args)
+    parameters:
+    - id: args
+      type: Vintagestory.API.Common.TextCommandCallingArgs
+    content.vb: Sub PreProcess(args As TextCommandCallingArgs)
+  overload: Vintagestory.API.Common.ICommandArgumentParser.PreProcess*
+- uid: Vintagestory.API.Common.ICommandArgumentParser.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+  commentId: M:Vintagestory.API.Common.ICommandArgumentParser.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+  id: TryProcess(Vintagestory.API.Common.TextCommandCallingArgs,System.Action{Vintagestory.API.Common.AsyncParseResults})
+  parent: Vintagestory.API.Common.ICommandArgumentParser
+  langs:
+  - csharp
+  - vb
+  name: TryProcess(TextCommandCallingArgs, Action<AsyncParseResults>)
+  nameWithType: ICommandArgumentParser.TryProcess(TextCommandCallingArgs, Action<AsyncParseResults>)
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs, System.Action<Vintagestory.API.Common.AsyncParseResults>)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryProcess
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 228
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Parse the args.
+  example: []
+  syntax:
+    content: EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
+    parameters:
+    - id: args
+      type: Vintagestory.API.Common.TextCommandCallingArgs
+      description: ''
+    - id: onReady
+      type: System.Action{Vintagestory.API.Common.AsyncParseResults}
+      description: Only needs to be called when returning Deferred as parseresult
+    return:
+      type: Vintagestory.API.Common.EnumParseResult
+      description: ''
+    content.vb: Function TryProcess(args As TextCommandCallingArgs, onReady As Action(Of AsyncParseResults) = Nothing) As EnumParseResult
+  overload: Vintagestory.API.Common.ICommandArgumentParser.TryProcess*
+  nameWithType.vb: ICommandArgumentParser.TryProcess(TextCommandCallingArgs, Action(Of AsyncParseResults))
+  fullName.vb: Vintagestory.API.Common.ICommandArgumentParser.TryProcess(Vintagestory.API.Common.TextCommandCallingArgs, System.Action(Of Vintagestory.API.Common.AsyncParseResults))
+  name.vb: TryProcess(TextCommandCallingArgs, Action(Of AsyncParseResults))
+- uid: Vintagestory.API.Common.ICommandArgumentParser.GetValidRange(Vintagestory.API.Common.CmdArgs)
+  commentId: M:Vintagestory.API.Common.ICommandArgumentParser.GetValidRange(Vintagestory.API.Common.CmdArgs)
+  id: GetValidRange(Vintagestory.API.Common.CmdArgs)
+  parent: Vintagestory.API.Common.ICommandArgumentParser
+  langs:
+  - csharp
+  - vb
+  name: GetValidRange(CmdArgs)
+  nameWithType: ICommandArgumentParser.GetValidRange(CmdArgs)
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.GetValidRange(Vintagestory.API.Common.CmdArgs)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetValidRange
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 229
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: string[] GetValidRange(CmdArgs args)
+    parameters:
+    - id: args
+      type: Vintagestory.API.Common.CmdArgs
+    return:
+      type: System.String[]
+    content.vb: Function GetValidRange(args As CmdArgs) As String()
+  overload: Vintagestory.API.Common.ICommandArgumentParser.GetValidRange*
+- uid: Vintagestory.API.Common.ICommandArgumentParser.GetValue
+  commentId: M:Vintagestory.API.Common.ICommandArgumentParser.GetValue
+  id: GetValue
+  parent: Vintagestory.API.Common.ICommandArgumentParser
+  langs:
+  - csharp
+  - vb
+  name: GetValue()
+  nameWithType: ICommandArgumentParser.GetValue()
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.GetValue()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetValue
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 230
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: object GetValue()
+    return:
+      type: System.Object
+    content.vb: Function GetValue() As Object
+  overload: Vintagestory.API.Common.ICommandArgumentParser.GetValue*
+- uid: Vintagestory.API.Common.ICommandArgumentParser.GetSyntax
+  commentId: M:Vintagestory.API.Common.ICommandArgumentParser.GetSyntax
+  id: GetSyntax
+  parent: Vintagestory.API.Common.ICommandArgumentParser
+  langs:
+  - csharp
+  - vb
+  name: GetSyntax()
+  nameWithType: ICommandArgumentParser.GetSyntax()
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.GetSyntax()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetSyntax
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 231
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: string GetSyntax()
+    return:
+      type: System.String
+    content.vb: Function GetSyntax() As String
+  overload: Vintagestory.API.Common.ICommandArgumentParser.GetSyntax*
+- uid: Vintagestory.API.Common.ICommandArgumentParser.GetSyntaxExplanation(System.String)
+  commentId: M:Vintagestory.API.Common.ICommandArgumentParser.GetSyntaxExplanation(System.String)
+  id: GetSyntaxExplanation(System.String)
+  parent: Vintagestory.API.Common.ICommandArgumentParser
+  langs:
+  - csharp
+  - vb
+  name: GetSyntaxExplanation(string)
+  nameWithType: ICommandArgumentParser.GetSyntaxExplanation(string)
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.GetSyntaxExplanation(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetSyntaxExplanation
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 232
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: string GetSyntaxExplanation(string indent)
+    parameters:
+    - id: indent
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Function GetSyntaxExplanation(indent As String) As String
+  overload: Vintagestory.API.Common.ICommandArgumentParser.GetSyntaxExplanation*
+  nameWithType.vb: ICommandArgumentParser.GetSyntaxExplanation(String)
+  fullName.vb: Vintagestory.API.Common.ICommandArgumentParser.GetSyntaxExplanation(String)
+  name.vb: GetSyntaxExplanation(String)
+- uid: Vintagestory.API.Common.ICommandArgumentParser.SetValue(System.Object)
+  commentId: M:Vintagestory.API.Common.ICommandArgumentParser.SetValue(System.Object)
+  id: SetValue(System.Object)
+  parent: Vintagestory.API.Common.ICommandArgumentParser
+  langs:
+  - csharp
+  - vb
+  name: SetValue(object)
+  nameWithType: ICommandArgumentParser.SetValue(object)
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.SetValue(object)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetValue
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 238
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Used by the async system
+  example: []
+  syntax:
+    content: void SetValue(object data)
+    parameters:
+    - id: data
+      type: System.Object
+      description: ''
+    content.vb: Sub SetValue(data As Object)
+  overload: Vintagestory.API.Common.ICommandArgumentParser.SetValue*
+  nameWithType.vb: ICommandArgumentParser.SetValue(Object)
+  fullName.vb: Vintagestory.API.Common.ICommandArgumentParser.SetValue(Object)
+  name.vb: SetValue(Object)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.ICommandArgumentParser.ArgCount*
+  commentId: Overload:Vintagestory.API.Common.ICommandArgumentParser.ArgCount
+  href: Vintagestory.API.Common.ICommandArgumentParser.html#Vintagestory_API_Common_ICommandArgumentParser_ArgCount
+  name: ArgCount
+  nameWithType: ICommandArgumentParser.ArgCount
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.ArgCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.ICommandArgumentParser.LastErrorMessage*
+  commentId: Overload:Vintagestory.API.Common.ICommandArgumentParser.LastErrorMessage
+  href: Vintagestory.API.Common.ICommandArgumentParser.html#Vintagestory_API_Common_ICommandArgumentParser_LastErrorMessage
+  name: LastErrorMessage
+  nameWithType: ICommandArgumentParser.LastErrorMessage
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.LastErrorMessage
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.ICommandArgumentParser.ArgumentName*
+  commentId: Overload:Vintagestory.API.Common.ICommandArgumentParser.ArgumentName
+  href: Vintagestory.API.Common.ICommandArgumentParser.html#Vintagestory_API_Common_ICommandArgumentParser_ArgumentName
+  name: ArgumentName
+  nameWithType: ICommandArgumentParser.ArgumentName
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.ArgumentName
+- uid: Vintagestory.API.Common.ICommandArgumentParser.IsMandatoryArg*
+  commentId: Overload:Vintagestory.API.Common.ICommandArgumentParser.IsMandatoryArg
+  href: Vintagestory.API.Common.ICommandArgumentParser.html#Vintagestory_API_Common_ICommandArgumentParser_IsMandatoryArg
+  name: IsMandatoryArg
+  nameWithType: ICommandArgumentParser.IsMandatoryArg
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.IsMandatoryArg
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.ICommandArgumentParser.IsMissing*
+  commentId: Overload:Vintagestory.API.Common.ICommandArgumentParser.IsMissing
+  href: Vintagestory.API.Common.ICommandArgumentParser.html#Vintagestory_API_Common_ICommandArgumentParser_IsMissing
+  name: IsMissing
+  nameWithType: ICommandArgumentParser.IsMissing
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.IsMissing
+- uid: Vintagestory.API.Common.ICommandArgumentParser.PreProcess*
+  commentId: Overload:Vintagestory.API.Common.ICommandArgumentParser.PreProcess
+  href: Vintagestory.API.Common.ICommandArgumentParser.html#Vintagestory_API_Common_ICommandArgumentParser_PreProcess_Vintagestory_API_Common_TextCommandCallingArgs_
+  name: PreProcess
+  nameWithType: ICommandArgumentParser.PreProcess
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.PreProcess
+- uid: Vintagestory.API.Common.TextCommandCallingArgs
+  commentId: T:Vintagestory.API.Common.TextCommandCallingArgs
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.TextCommandCallingArgs.html
+  name: TextCommandCallingArgs
+  nameWithType: TextCommandCallingArgs
+  fullName: Vintagestory.API.Common.TextCommandCallingArgs
+- uid: Vintagestory.API.Common.ICommandArgumentParser.TryProcess*
+  commentId: Overload:Vintagestory.API.Common.ICommandArgumentParser.TryProcess
+  href: Vintagestory.API.Common.ICommandArgumentParser.html#Vintagestory_API_Common_ICommandArgumentParser_TryProcess_Vintagestory_API_Common_TextCommandCallingArgs_System_Action_Vintagestory_API_Common_AsyncParseResults__
+  name: TryProcess
+  nameWithType: ICommandArgumentParser.TryProcess
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.TryProcess
+- uid: System.Action{Vintagestory.API.Common.AsyncParseResults}
+  commentId: T:System.Action{Vintagestory.API.Common.AsyncParseResults}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<AsyncParseResults>
+  nameWithType: Action<AsyncParseResults>
+  fullName: System.Action<Vintagestory.API.Common.AsyncParseResults>
+  nameWithType.vb: Action(Of AsyncParseResults)
+  fullName.vb: System.Action(Of Vintagestory.API.Common.AsyncParseResults)
+  name.vb: Action(Of AsyncParseResults)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Vintagestory.API.Common.AsyncParseResults
+    name: AsyncParseResults
+    href: Vintagestory.API.Common.AsyncParseResults.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.AsyncParseResults
+    name: AsyncParseResults
+    href: Vintagestory.API.Common.AsyncParseResults.html
+  - name: )
+- uid: Vintagestory.API.Common.EnumParseResult
+  commentId: T:Vintagestory.API.Common.EnumParseResult
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumParseResult.html
+  name: EnumParseResult
+  nameWithType: EnumParseResult
+  fullName: Vintagestory.API.Common.EnumParseResult
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.ICommandArgumentParser.GetValidRange*
+  commentId: Overload:Vintagestory.API.Common.ICommandArgumentParser.GetValidRange
+  href: Vintagestory.API.Common.ICommandArgumentParser.html#Vintagestory_API_Common_ICommandArgumentParser_GetValidRange_Vintagestory_API_Common_CmdArgs_
+  name: GetValidRange
+  nameWithType: ICommandArgumentParser.GetValidRange
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.GetValidRange
+- uid: Vintagestory.API.Common.CmdArgs
+  commentId: T:Vintagestory.API.Common.CmdArgs
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.CmdArgs.html
+  name: CmdArgs
+  nameWithType: CmdArgs
+  fullName: Vintagestory.API.Common.CmdArgs
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ICommandArgumentParser.GetValue*
+  commentId: Overload:Vintagestory.API.Common.ICommandArgumentParser.GetValue
+  href: Vintagestory.API.Common.ICommandArgumentParser.html#Vintagestory_API_Common_ICommandArgumentParser_GetValue
+  name: GetValue
+  nameWithType: ICommandArgumentParser.GetValue
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.GetValue
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.ICommandArgumentParser.GetSyntax*
+  commentId: Overload:Vintagestory.API.Common.ICommandArgumentParser.GetSyntax
+  href: Vintagestory.API.Common.ICommandArgumentParser.html#Vintagestory_API_Common_ICommandArgumentParser_GetSyntax
+  name: GetSyntax
+  nameWithType: ICommandArgumentParser.GetSyntax
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.GetSyntax
+- uid: Vintagestory.API.Common.ICommandArgumentParser.GetSyntaxExplanation*
+  commentId: Overload:Vintagestory.API.Common.ICommandArgumentParser.GetSyntaxExplanation
+  href: Vintagestory.API.Common.ICommandArgumentParser.html#Vintagestory_API_Common_ICommandArgumentParser_GetSyntaxExplanation_System_String_
+  name: GetSyntaxExplanation
+  nameWithType: ICommandArgumentParser.GetSyntaxExplanation
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.GetSyntaxExplanation
+- uid: Vintagestory.API.Common.ICommandArgumentParser.SetValue*
+  commentId: Overload:Vintagestory.API.Common.ICommandArgumentParser.SetValue
+  href: Vintagestory.API.Common.ICommandArgumentParser.html#Vintagestory_API_Common_ICommandArgumentParser_SetValue_System_Object_
+  name: SetValue
+  nameWithType: ICommandArgumentParser.SetValue
+  fullName: Vintagestory.API.Common.ICommandArgumentParser.SetValue

@@ -1,0 +1,209 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.INetworkChannel
+  commentId: T:Vintagestory.API.Client.INetworkChannel
+  id: INetworkChannel
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.INetworkChannel.ChannelName
+  - Vintagestory.API.Client.INetworkChannel.RegisterMessageType(System.Type)
+  - Vintagestory.API.Client.INetworkChannel.RegisterMessageType``1
+  langs:
+  - csharp
+  - vb
+  name: INetworkChannel
+  nameWithType: INetworkChannel
+  fullName: Vintagestory.API.Client.INetworkChannel
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkChannel.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: INetworkChannel
+    path: Client/API/IClientNetworkChannel.cs
+    startLine: 4
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public interface INetworkChannel
+    content.vb: Public Interface INetworkChannel
+- uid: Vintagestory.API.Client.INetworkChannel.ChannelName
+  commentId: P:Vintagestory.API.Client.INetworkChannel.ChannelName
+  id: ChannelName
+  parent: Vintagestory.API.Client.INetworkChannel
+  langs:
+  - csharp
+  - vb
+  name: ChannelName
+  nameWithType: INetworkChannel.ChannelName
+  fullName: Vintagestory.API.Client.INetworkChannel.ChannelName
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkChannel.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ChannelName
+    path: Client/API/IClientNetworkChannel.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The channel name this channel was registered with
+  example: []
+  syntax:
+    content: string ChannelName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property ChannelName As String
+  overload: Vintagestory.API.Client.INetworkChannel.ChannelName*
+- uid: Vintagestory.API.Client.INetworkChannel.RegisterMessageType(System.Type)
+  commentId: M:Vintagestory.API.Client.INetworkChannel.RegisterMessageType(System.Type)
+  id: RegisterMessageType(System.Type)
+  parent: Vintagestory.API.Client.INetworkChannel
+  langs:
+  - csharp
+  - vb
+  name: RegisterMessageType(Type)
+  nameWithType: INetworkChannel.RegisterMessageType(Type)
+  fullName: Vintagestory.API.Client.INetworkChannel.RegisterMessageType(System.Type)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkChannel.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterMessageType
+    path: Client/API/IClientNetworkChannel.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Registers a handler for when you send a packet with given messageId
+  example: []
+  syntax:
+    content: INetworkChannel RegisterMessageType(Type type)
+    parameters:
+    - id: type
+      type: System.Type
+      description: ''
+    return:
+      type: Vintagestory.API.Client.INetworkChannel
+    content.vb: Function RegisterMessageType(type As Type) As INetworkChannel
+  overload: Vintagestory.API.Client.INetworkChannel.RegisterMessageType*
+- uid: Vintagestory.API.Client.INetworkChannel.RegisterMessageType``1
+  commentId: M:Vintagestory.API.Client.INetworkChannel.RegisterMessageType``1
+  id: RegisterMessageType``1
+  parent: Vintagestory.API.Client.INetworkChannel
+  langs:
+  - csharp
+  - vb
+  name: RegisterMessageType<T>()
+  nameWithType: INetworkChannel.RegisterMessageType<T>()
+  fullName: Vintagestory.API.Client.INetworkChannel.RegisterMessageType<T>()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientNetworkChannel.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterMessageType
+    path: Client/API/IClientNetworkChannel.cs
+    startLine: 22
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Registers a handler for when you send a packet with given messageId
+  example: []
+  syntax:
+    content: INetworkChannel RegisterMessageType<T>()
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: Vintagestory.API.Client.INetworkChannel
+      description: ''
+    content.vb: Function RegisterMessageType(Of T)() As INetworkChannel
+  overload: Vintagestory.API.Client.INetworkChannel.RegisterMessageType*
+  nameWithType.vb: INetworkChannel.RegisterMessageType(Of T)()
+  fullName.vb: Vintagestory.API.Client.INetworkChannel.RegisterMessageType(Of T)()
+  name.vb: RegisterMessageType(Of T)()
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.INetworkChannel.ChannelName*
+  commentId: Overload:Vintagestory.API.Client.INetworkChannel.ChannelName
+  href: Vintagestory.API.Client.INetworkChannel.html#Vintagestory_API_Client_INetworkChannel_ChannelName
+  name: ChannelName
+  nameWithType: INetworkChannel.ChannelName
+  fullName: Vintagestory.API.Client.INetworkChannel.ChannelName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.INetworkChannel.RegisterMessageType*
+  commentId: Overload:Vintagestory.API.Client.INetworkChannel.RegisterMessageType
+  href: Vintagestory.API.Client.INetworkChannel.html#Vintagestory_API_Client_INetworkChannel_RegisterMessageType_System_Type_
+  name: RegisterMessageType
+  nameWithType: INetworkChannel.RegisterMessageType
+  fullName: Vintagestory.API.Client.INetworkChannel.RegisterMessageType
+- uid: System.Type
+  commentId: T:System.Type
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.type
+  name: Type
+  nameWithType: Type
+  fullName: System.Type
+- uid: Vintagestory.API.Client.INetworkChannel
+  commentId: T:Vintagestory.API.Client.INetworkChannel
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.INetworkChannel.html
+  name: INetworkChannel
+  nameWithType: INetworkChannel
+  fullName: Vintagestory.API.Client.INetworkChannel

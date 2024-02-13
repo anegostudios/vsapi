@@ -1,0 +1,467 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.MathTools.ColorUtil.LightUtil
+  commentId: T:Vintagestory.API.MathTools.ColorUtil.LightUtil
+  id: ColorUtil.LightUtil
+  parent: Vintagestory.API.MathTools
+  children:
+  - Vintagestory.API.MathTools.ColorUtil.LightUtil.#ctor(System.Single[],System.Single[],System.Byte[],System.Byte[])
+  - Vintagestory.API.MathTools.ColorUtil.LightUtil.ToRgba(System.UInt32,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: ColorUtil.LightUtil
+  nameWithType: ColorUtil.LightUtil
+  fullName: Vintagestory.API.MathTools.ColorUtil.LightUtil
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LightUtil
+    path: Math/ColorUtil.cs
+    startLine: 1000
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Converts HSV (extracted from light and lightSat) to RGBA
+  example: []
+  syntax:
+    content: public class ColorUtil.LightUtil
+    content.vb: Public Class ColorUtil.LightUtil
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.MathTools.ColorUtil.LightUtil.#ctor(System.Single[],System.Single[],System.Byte[],System.Byte[])
+  commentId: M:Vintagestory.API.MathTools.ColorUtil.LightUtil.#ctor(System.Single[],System.Single[],System.Byte[],System.Byte[])
+  id: '#ctor(System.Single[],System.Single[],System.Byte[],System.Byte[])'
+  parent: Vintagestory.API.MathTools.ColorUtil.LightUtil
+  langs:
+  - csharp
+  - vb
+  name: LightUtil(float[], float[], byte[], byte[])
+  nameWithType: ColorUtil.LightUtil.LightUtil(float[], float[], byte[], byte[])
+  fullName: Vintagestory.API.MathTools.ColorUtil.LightUtil.LightUtil(float[], float[], byte[], byte[])
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Math/ColorUtil.cs
+    startLine: 1010
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public LightUtil(float[] blockLights, float[] sunLights, byte[] hues, byte[] sats)
+    parameters:
+    - id: blockLights
+      type: System.Single[]
+    - id: sunLights
+      type: System.Single[]
+    - id: hues
+      type: System.Byte[]
+    - id: sats
+      type: System.Byte[]
+    content.vb: Public Sub New(blockLights As Single(), sunLights As Single(), hues As Byte(), sats As Byte())
+  overload: Vintagestory.API.MathTools.ColorUtil.LightUtil.#ctor*
+  nameWithType.vb: ColorUtil.LightUtil.New(Single(), Single(), Byte(), Byte())
+  fullName.vb: Vintagestory.API.MathTools.ColorUtil.LightUtil.New(Single(), Single(), Byte(), Byte())
+  name.vb: New(Single(), Single(), Byte(), Byte())
+- uid: Vintagestory.API.MathTools.ColorUtil.LightUtil.ToRgba(System.UInt32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.ColorUtil.LightUtil.ToRgba(System.UInt32,System.Int32)
+  id: ToRgba(System.UInt32,System.Int32)
+  parent: Vintagestory.API.MathTools.ColorUtil.LightUtil
+  langs:
+  - csharp
+  - vb
+  name: ToRgba(uint, int)
+  nameWithType: ColorUtil.LightUtil.ToRgba(uint, int)
+  fullName: Vintagestory.API.MathTools.ColorUtil.LightUtil.ToRgba(uint, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/ColorUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToRgba
+    path: Math/ColorUtil.cs
+    startLine: 1030
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public int ToRgba(uint light, int lightSat)
+    parameters:
+    - id: light
+      type: System.UInt32
+    - id: lightSat
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Function ToRgba(light As UInteger, lightSat As Integer) As Integer
+  overload: Vintagestory.API.MathTools.ColorUtil.LightUtil.ToRgba*
+  nameWithType.vb: ColorUtil.LightUtil.ToRgba(UInteger, Integer)
+  fullName.vb: Vintagestory.API.MathTools.ColorUtil.LightUtil.ToRgba(UInteger, Integer)
+  name.vb: ToRgba(UInteger, Integer)
+references:
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.MathTools.ColorUtil.LightUtil.#ctor*
+  commentId: Overload:Vintagestory.API.MathTools.ColorUtil.LightUtil.#ctor
+  href: Vintagestory.API.MathTools.ColorUtil.LightUtil.html#Vintagestory_API_MathTools_ColorUtil_LightUtil__ctor_System_Single___System_Single___System_Byte___System_Byte___
+  name: LightUtil
+  nameWithType: ColorUtil.LightUtil.LightUtil
+  fullName: Vintagestory.API.MathTools.ColorUtil.LightUtil.LightUtil
+  nameWithType.vb: ColorUtil.LightUtil.New
+  fullName.vb: Vintagestory.API.MathTools.ColorUtil.LightUtil.New
+  name.vb: New
+- uid: System.Single[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Vintagestory.API.MathTools.ColorUtil.LightUtil.ToRgba*
+  commentId: Overload:Vintagestory.API.MathTools.ColorUtil.LightUtil.ToRgba
+  href: Vintagestory.API.MathTools.ColorUtil.LightUtil.html#Vintagestory_API_MathTools_ColorUtil_LightUtil_ToRgba_System_UInt32_System_Int32_
+  name: ToRgba
+  nameWithType: ColorUtil.LightUtil.ToRgba
+  fullName: Vintagestory.API.MathTools.ColorUtil.LightUtil.ToRgba
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

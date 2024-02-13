@@ -1,0 +1,154 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IDrawYAdjustable
+  commentId: T:Vintagestory.API.Common.IDrawYAdjustable
+  id: IDrawYAdjustable
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IDrawYAdjustable.AdjustYPosition(Vintagestory.API.Common.Block[],System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: IDrawYAdjustable
+  nameWithType: IDrawYAdjustable
+  fullName: Vintagestory.API.Common.IDrawYAdjustable
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/IDrawYAdjustable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IDrawYAdjustable
+    path: Common/Collectible/Block/IDrawYAdjustable.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Used for blocks (e.g. crops and dead crops) where the y-position might need to be adjusted at the time of tesselating an individual block
+  example: []
+  syntax:
+    content: public interface IDrawYAdjustable
+    content.vb: Public Interface IDrawYAdjustable
+- uid: Vintagestory.API.Common.IDrawYAdjustable.AdjustYPosition(Vintagestory.API.Common.Block[],System.Int32)
+  commentId: M:Vintagestory.API.Common.IDrawYAdjustable.AdjustYPosition(Vintagestory.API.Common.Block[],System.Int32)
+  id: AdjustYPosition(Vintagestory.API.Common.Block[],System.Int32)
+  parent: Vintagestory.API.Common.IDrawYAdjustable
+  langs:
+  - csharp
+  - vb
+  name: AdjustYPosition(Block[], int)
+  nameWithType: IDrawYAdjustable.AdjustYPosition(Block[], int)
+  fullName: Vintagestory.API.Common.IDrawYAdjustable.AdjustYPosition(Vintagestory.API.Common.Block[], int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/IDrawYAdjustable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AdjustYPosition
+    path: Common/Collectible/Block/IDrawYAdjustable.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: float AdjustYPosition(Block[] chunkExtBlocks, int extIndex3d)
+    parameters:
+    - id: chunkExtBlocks
+      type: Vintagestory.API.Common.Block[]
+    - id: extIndex3d
+      type: System.Int32
+    return:
+      type: System.Single
+    content.vb: Function AdjustYPosition(chunkExtBlocks As Block(), extIndex3d As Integer) As Single
+  overload: Vintagestory.API.Common.IDrawYAdjustable.AdjustYPosition*
+  nameWithType.vb: IDrawYAdjustable.AdjustYPosition(Block(), Integer)
+  fullName.vb: Vintagestory.API.Common.IDrawYAdjustable.AdjustYPosition(Vintagestory.API.Common.Block(), Integer)
+  name.vb: AdjustYPosition(Block(), Integer)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IDrawYAdjustable.AdjustYPosition*
+  commentId: Overload:Vintagestory.API.Common.IDrawYAdjustable.AdjustYPosition
+  href: Vintagestory.API.Common.IDrawYAdjustable.html#Vintagestory_API_Common_IDrawYAdjustable_AdjustYPosition_Vintagestory_API_Common_Block___System_Int32_
+  name: AdjustYPosition
+  nameWithType: IDrawYAdjustable.AdjustYPosition
+  fullName: Vintagestory.API.Common.IDrawYAdjustable.AdjustYPosition
+- uid: Vintagestory.API.Common.Block[]
+  isExternal: true
+  href: Vintagestory.API.Common.Block.html
+  name: Block[]
+  nameWithType: Block[]
+  fullName: Vintagestory.API.Common.Block[]
+  nameWithType.vb: Block()
+  fullName.vb: Vintagestory.API.Common.Block()
+  name.vb: Block()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Block
+    name: Block
+    href: Vintagestory.API.Common.Block.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.Block
+    name: Block
+    href: Vintagestory.API.Common.Block.html
+  - name: (
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

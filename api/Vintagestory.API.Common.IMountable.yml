@@ -1,0 +1,656 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IMountable
+  commentId: T:Vintagestory.API.Common.IMountable
+  id: IMountable
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IMountable.AngleMode
+  - Vintagestory.API.Common.IMountable.CanControl
+  - Vintagestory.API.Common.IMountable.Controls
+  - Vintagestory.API.Common.IMountable.DidMount(Vintagestory.API.Common.EntityAgent)
+  - Vintagestory.API.Common.IMountable.DidUnmount(Vintagestory.API.Common.EntityAgent)
+  - Vintagestory.API.Common.IMountable.LocalEyePos
+  - Vintagestory.API.Common.IMountable.MountPosition
+  - Vintagestory.API.Common.IMountable.MountSupplier
+  - Vintagestory.API.Common.IMountable.MountableToTreeAttributes(Vintagestory.API.Datastructures.TreeAttribute)
+  - Vintagestory.API.Common.IMountable.MountedBy
+  - Vintagestory.API.Common.IMountable.SuggestedAnimation
+  langs:
+  - csharp
+  - vb
+  name: IMountable
+  nameWithType: IMountable
+  fullName: Vintagestory.API.Common.IMountable
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/IMountable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IMountable
+    path: Common/IMountable.cs
+    startLine: 39
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public interface IMountable
+    content.vb: Public Interface IMountable
+- uid: Vintagestory.API.Common.IMountable.CanControl
+  commentId: P:Vintagestory.API.Common.IMountable.CanControl
+  id: CanControl
+  parent: Vintagestory.API.Common.IMountable
+  langs:
+  - csharp
+  - vb
+  name: CanControl
+  nameWithType: IMountable.CanControl
+  fullName: Vintagestory.API.Common.IMountable.CanControl
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/IMountable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CanControl
+    path: Common/IMountable.cs
+    startLine: 44
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If this "mountable seat" is the one that controls the mountable entity/block
+  example: []
+  syntax:
+    content: bool CanControl { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property CanControl As Boolean
+  overload: Vintagestory.API.Common.IMountable.CanControl*
+- uid: Vintagestory.API.Common.IMountable.MountedBy
+  commentId: P:Vintagestory.API.Common.IMountable.MountedBy
+  id: MountedBy
+  parent: Vintagestory.API.Common.IMountable
+  langs:
+  - csharp
+  - vb
+  name: MountedBy
+  nameWithType: IMountable.MountedBy
+  fullName: Vintagestory.API.Common.IMountable.MountedBy
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/IMountable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MountedBy
+    path: Common/IMountable.cs
+    startLine: 46
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Entity MountedBy { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.Entities.Entity
+    content.vb: ReadOnly Property MountedBy As Entity
+  overload: Vintagestory.API.Common.IMountable.MountedBy*
+- uid: Vintagestory.API.Common.IMountable.MountSupplier
+  commentId: P:Vintagestory.API.Common.IMountable.MountSupplier
+  id: MountSupplier
+  parent: Vintagestory.API.Common.IMountable
+  langs:
+  - csharp
+  - vb
+  name: MountSupplier
+  nameWithType: IMountable.MountSupplier
+  fullName: Vintagestory.API.Common.IMountable.MountSupplier
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/IMountable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MountSupplier
+    path: Common/IMountable.cs
+    startLine: 51
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Return null if you don't have a mountable supplier implementation
+  example: []
+  syntax:
+    content: IMountableSupplier MountSupplier { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.IMountableSupplier
+    content.vb: ReadOnly Property MountSupplier As IMountableSupplier
+  overload: Vintagestory.API.Common.IMountable.MountSupplier*
+- uid: Vintagestory.API.Common.IMountable.MountPosition
+  commentId: P:Vintagestory.API.Common.IMountable.MountPosition
+  id: MountPosition
+  parent: Vintagestory.API.Common.IMountable
+  langs:
+  - csharp
+  - vb
+  name: MountPosition
+  nameWithType: IMountable.MountPosition
+  fullName: Vintagestory.API.Common.IMountable.MountPosition
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/IMountable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MountPosition
+    path: Common/IMountable.cs
+    startLine: 53
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: EntityPos MountPosition { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.Entities.EntityPos
+    content.vb: ReadOnly Property MountPosition As EntityPos
+  overload: Vintagestory.API.Common.IMountable.MountPosition*
+- uid: Vintagestory.API.Common.IMountable.AngleMode
+  commentId: P:Vintagestory.API.Common.IMountable.AngleMode
+  id: AngleMode
+  parent: Vintagestory.API.Common.IMountable
+  langs:
+  - csharp
+  - vb
+  name: AngleMode
+  nameWithType: IMountable.AngleMode
+  fullName: Vintagestory.API.Common.IMountable.AngleMode
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/IMountable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AngleMode
+    path: Common/IMountable.cs
+    startLine: 55
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: EnumMountAngleMode AngleMode { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.EnumMountAngleMode
+    content.vb: ReadOnly Property AngleMode As EnumMountAngleMode
+  overload: Vintagestory.API.Common.IMountable.AngleMode*
+- uid: Vintagestory.API.Common.IMountable.SuggestedAnimation
+  commentId: P:Vintagestory.API.Common.IMountable.SuggestedAnimation
+  id: SuggestedAnimation
+  parent: Vintagestory.API.Common.IMountable
+  langs:
+  - csharp
+  - vb
+  name: SuggestedAnimation
+  nameWithType: IMountable.SuggestedAnimation
+  fullName: Vintagestory.API.Common.IMountable.SuggestedAnimation
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/IMountable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SuggestedAnimation
+    path: Common/IMountable.cs
+    startLine: 57
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: string SuggestedAnimation { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property SuggestedAnimation As String
+  overload: Vintagestory.API.Common.IMountable.SuggestedAnimation*
+- uid: Vintagestory.API.Common.IMountable.LocalEyePos
+  commentId: P:Vintagestory.API.Common.IMountable.LocalEyePos
+  id: LocalEyePos
+  parent: Vintagestory.API.Common.IMountable
+  langs:
+  - csharp
+  - vb
+  name: LocalEyePos
+  nameWithType: IMountable.LocalEyePos
+  fullName: Vintagestory.API.Common.IMountable.LocalEyePos
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/IMountable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LocalEyePos
+    path: Common/IMountable.cs
+    startLine: 59
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Vec3f LocalEyePos { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: ReadOnly Property LocalEyePos As Vec3f
+  overload: Vintagestory.API.Common.IMountable.LocalEyePos*
+- uid: Vintagestory.API.Common.IMountable.Controls
+  commentId: P:Vintagestory.API.Common.IMountable.Controls
+  id: Controls
+  parent: Vintagestory.API.Common.IMountable
+  langs:
+  - csharp
+  - vb
+  name: Controls
+  nameWithType: IMountable.Controls
+  fullName: Vintagestory.API.Common.IMountable.Controls
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/IMountable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Controls
+    path: Common/IMountable.cs
+    startLine: 61
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: EntityControls Controls { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.EntityControls
+    content.vb: ReadOnly Property Controls As EntityControls
+  overload: Vintagestory.API.Common.IMountable.Controls*
+- uid: Vintagestory.API.Common.IMountable.MountableToTreeAttributes(Vintagestory.API.Datastructures.TreeAttribute)
+  commentId: M:Vintagestory.API.Common.IMountable.MountableToTreeAttributes(Vintagestory.API.Datastructures.TreeAttribute)
+  id: MountableToTreeAttributes(Vintagestory.API.Datastructures.TreeAttribute)
+  parent: Vintagestory.API.Common.IMountable
+  langs:
+  - csharp
+  - vb
+  name: MountableToTreeAttributes(TreeAttribute)
+  nameWithType: IMountable.MountableToTreeAttributes(TreeAttribute)
+  fullName: Vintagestory.API.Common.IMountable.MountableToTreeAttributes(Vintagestory.API.Datastructures.TreeAttribute)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/IMountable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MountableToTreeAttributes
+    path: Common/IMountable.cs
+    startLine: 70
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    When the entity unloads you should write whatever you need in here to reconstruct the IMountable after it's loaded again
+
+    Reconstruct it by registering a mountable instancer through api.RegisterMountable(string className, GetMountableDelegate mountableInstancer)
+
+    You must also set a string with key className, that is the same string that you used for RegisterMountable()
+  example: []
+  syntax:
+    content: void MountableToTreeAttributes(TreeAttribute tree)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.TreeAttribute
+      description: ''
+    content.vb: Sub MountableToTreeAttributes(tree As TreeAttribute)
+  overload: Vintagestory.API.Common.IMountable.MountableToTreeAttributes*
+- uid: Vintagestory.API.Common.IMountable.DidUnmount(Vintagestory.API.Common.EntityAgent)
+  commentId: M:Vintagestory.API.Common.IMountable.DidUnmount(Vintagestory.API.Common.EntityAgent)
+  id: DidUnmount(Vintagestory.API.Common.EntityAgent)
+  parent: Vintagestory.API.Common.IMountable
+  langs:
+  - csharp
+  - vb
+  name: DidUnmount(EntityAgent)
+  nameWithType: IMountable.DidUnmount(EntityAgent)
+  fullName: Vintagestory.API.Common.IMountable.DidUnmount(Vintagestory.API.Common.EntityAgent)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/IMountable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DidUnmount
+    path: Common/IMountable.cs
+    startLine: 76
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called when the entity unmounted himself
+  example: []
+  syntax:
+    content: void DidUnmount(EntityAgent entityAgent)
+    parameters:
+    - id: entityAgent
+      type: Vintagestory.API.Common.EntityAgent
+      description: ''
+    content.vb: Sub DidUnmount(entityAgent As EntityAgent)
+  overload: Vintagestory.API.Common.IMountable.DidUnmount*
+- uid: Vintagestory.API.Common.IMountable.DidMount(Vintagestory.API.Common.EntityAgent)
+  commentId: M:Vintagestory.API.Common.IMountable.DidMount(Vintagestory.API.Common.EntityAgent)
+  id: DidMount(Vintagestory.API.Common.EntityAgent)
+  parent: Vintagestory.API.Common.IMountable
+  langs:
+  - csharp
+  - vb
+  name: DidMount(EntityAgent)
+  nameWithType: IMountable.DidMount(EntityAgent)
+  fullName: Vintagestory.API.Common.IMountable.DidMount(Vintagestory.API.Common.EntityAgent)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/IMountable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DidMount
+    path: Common/IMountable.cs
+    startLine: 82
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called when the entity mounted himself
+  example: []
+  syntax:
+    content: void DidMount(EntityAgent entityAgent)
+    parameters:
+    - id: entityAgent
+      type: Vintagestory.API.Common.EntityAgent
+      description: ''
+    content.vb: Sub DidMount(entityAgent As EntityAgent)
+  overload: Vintagestory.API.Common.IMountable.DidMount*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IMountable.CanControl*
+  commentId: Overload:Vintagestory.API.Common.IMountable.CanControl
+  href: Vintagestory.API.Common.IMountable.html#Vintagestory_API_Common_IMountable_CanControl
+  name: CanControl
+  nameWithType: IMountable.CanControl
+  fullName: Vintagestory.API.Common.IMountable.CanControl
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IMountable.MountedBy*
+  commentId: Overload:Vintagestory.API.Common.IMountable.MountedBy
+  href: Vintagestory.API.Common.IMountable.html#Vintagestory_API_Common_IMountable_MountedBy
+  name: MountedBy
+  nameWithType: IMountable.MountedBy
+  fullName: Vintagestory.API.Common.IMountable.MountedBy
+- uid: Vintagestory.API.Common.Entities.Entity
+  commentId: T:Vintagestory.API.Common.Entities.Entity
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Vintagestory.API.Common.Entities.Entity
+- uid: Vintagestory.API.Common.Entities
+  commentId: N:Vintagestory.API.Common.Entities
+  href: Vintagestory.html
+  name: Vintagestory.API.Common.Entities
+  nameWithType: Vintagestory.API.Common.Entities
+  fullName: Vintagestory.API.Common.Entities
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+- uid: Vintagestory.API.Common.IMountable.MountSupplier*
+  commentId: Overload:Vintagestory.API.Common.IMountable.MountSupplier
+  href: Vintagestory.API.Common.IMountable.html#Vintagestory_API_Common_IMountable_MountSupplier
+  name: MountSupplier
+  nameWithType: IMountable.MountSupplier
+  fullName: Vintagestory.API.Common.IMountable.MountSupplier
+- uid: Vintagestory.API.Common.IMountableSupplier
+  commentId: T:Vintagestory.API.Common.IMountableSupplier
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IMountableSupplier.html
+  name: IMountableSupplier
+  nameWithType: IMountableSupplier
+  fullName: Vintagestory.API.Common.IMountableSupplier
+- uid: Vintagestory.API.Common.IMountable.MountPosition*
+  commentId: Overload:Vintagestory.API.Common.IMountable.MountPosition
+  href: Vintagestory.API.Common.IMountable.html#Vintagestory_API_Common_IMountable_MountPosition
+  name: MountPosition
+  nameWithType: IMountable.MountPosition
+  fullName: Vintagestory.API.Common.IMountable.MountPosition
+- uid: Vintagestory.API.Common.Entities.EntityPos
+  commentId: T:Vintagestory.API.Common.Entities.EntityPos
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.EntityPos.html
+  name: EntityPos
+  nameWithType: EntityPos
+  fullName: Vintagestory.API.Common.Entities.EntityPos
+- uid: Vintagestory.API.Common.IMountable.AngleMode*
+  commentId: Overload:Vintagestory.API.Common.IMountable.AngleMode
+  href: Vintagestory.API.Common.IMountable.html#Vintagestory_API_Common_IMountable_AngleMode
+  name: AngleMode
+  nameWithType: IMountable.AngleMode
+  fullName: Vintagestory.API.Common.IMountable.AngleMode
+- uid: Vintagestory.API.Common.EnumMountAngleMode
+  commentId: T:Vintagestory.API.Common.EnumMountAngleMode
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumMountAngleMode.html
+  name: EnumMountAngleMode
+  nameWithType: EnumMountAngleMode
+  fullName: Vintagestory.API.Common.EnumMountAngleMode
+- uid: Vintagestory.API.Common.IMountable.SuggestedAnimation*
+  commentId: Overload:Vintagestory.API.Common.IMountable.SuggestedAnimation
+  href: Vintagestory.API.Common.IMountable.html#Vintagestory_API_Common_IMountable_SuggestedAnimation
+  name: SuggestedAnimation
+  nameWithType: IMountable.SuggestedAnimation
+  fullName: Vintagestory.API.Common.IMountable.SuggestedAnimation
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.IMountable.LocalEyePos*
+  commentId: Overload:Vintagestory.API.Common.IMountable.LocalEyePos
+  href: Vintagestory.API.Common.IMountable.html#Vintagestory_API_Common_IMountable_LocalEyePos
+  name: LocalEyePos
+  nameWithType: IMountable.LocalEyePos
+  fullName: Vintagestory.API.Common.IMountable.LocalEyePos
+- uid: Vintagestory.API.MathTools.Vec3f
+  commentId: T:Vintagestory.API.MathTools.Vec3f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3f.html
+  name: Vec3f
+  nameWithType: Vec3f
+  fullName: Vintagestory.API.MathTools.Vec3f
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.IMountable.Controls*
+  commentId: Overload:Vintagestory.API.Common.IMountable.Controls
+  href: Vintagestory.API.Common.IMountable.html#Vintagestory_API_Common_IMountable_Controls
+  name: Controls
+  nameWithType: IMountable.Controls
+  fullName: Vintagestory.API.Common.IMountable.Controls
+- uid: Vintagestory.API.Common.EntityControls
+  commentId: T:Vintagestory.API.Common.EntityControls
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntityControls.html
+  name: EntityControls
+  nameWithType: EntityControls
+  fullName: Vintagestory.API.Common.EntityControls
+- uid: Vintagestory.API.Common.IMountable.MountableToTreeAttributes*
+  commentId: Overload:Vintagestory.API.Common.IMountable.MountableToTreeAttributes
+  href: Vintagestory.API.Common.IMountable.html#Vintagestory_API_Common_IMountable_MountableToTreeAttributes_Vintagestory_API_Datastructures_TreeAttribute_
+  name: MountableToTreeAttributes
+  nameWithType: IMountable.MountableToTreeAttributes
+  fullName: Vintagestory.API.Common.IMountable.MountableToTreeAttributes
+- uid: Vintagestory.API.Datastructures.TreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.TreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.TreeAttribute.html
+  name: TreeAttribute
+  nameWithType: TreeAttribute
+  fullName: Vintagestory.API.Datastructures.TreeAttribute
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Common.IMountable.DidUnmount*
+  commentId: Overload:Vintagestory.API.Common.IMountable.DidUnmount
+  href: Vintagestory.API.Common.IMountable.html#Vintagestory_API_Common_IMountable_DidUnmount_Vintagestory_API_Common_EntityAgent_
+  name: DidUnmount
+  nameWithType: IMountable.DidUnmount
+  fullName: Vintagestory.API.Common.IMountable.DidUnmount
+- uid: Vintagestory.API.Common.EntityAgent
+  commentId: T:Vintagestory.API.Common.EntityAgent
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntityAgent.html
+  name: EntityAgent
+  nameWithType: EntityAgent
+  fullName: Vintagestory.API.Common.EntityAgent
+- uid: Vintagestory.API.Common.IMountable.DidMount*
+  commentId: Overload:Vintagestory.API.Common.IMountable.DidMount
+  href: Vintagestory.API.Common.IMountable.html#Vintagestory_API_Common_IMountable_DidMount_Vintagestory_API_Common_EntityAgent_
+  name: DidMount
+  nameWithType: IMountable.DidMount
+  fullName: Vintagestory.API.Common.IMountable.DidMount

@@ -1,0 +1,919 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  id: IPlayer
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IPlayer.ClientId
+  - Vintagestory.API.Common.IPlayer.CurrentBlockSelection
+  - Vintagestory.API.Common.IPlayer.CurrentEntitySelection
+  - Vintagestory.API.Common.IPlayer.Entitlements
+  - Vintagestory.API.Common.IPlayer.Entity
+  - Vintagestory.API.Common.IPlayer.GetGroup(System.Int32)
+  - Vintagestory.API.Common.IPlayer.GetGroups
+  - Vintagestory.API.Common.IPlayer.Groups
+  - Vintagestory.API.Common.IPlayer.HasPrivilege(System.String)
+  - Vintagestory.API.Common.IPlayer.ImmersiveFpMode
+  - Vintagestory.API.Common.IPlayer.InventoryManager
+  - Vintagestory.API.Common.IPlayer.PlayerName
+  - Vintagestory.API.Common.IPlayer.PlayerUID
+  - Vintagestory.API.Common.IPlayer.Privileges
+  - Vintagestory.API.Common.IPlayer.Role
+  - Vintagestory.API.Common.IPlayer.WorldData
+  langs:
+  - csharp
+  - vb
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IPlayer
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 13
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Represents a player
+  example: []
+  syntax:
+    content: public interface IPlayer
+    content.vb: Public Interface IPlayer
+- uid: Vintagestory.API.Common.IPlayer.Role
+  commentId: P:Vintagestory.API.Common.IPlayer.Role
+  id: Role
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: Role
+  nameWithType: IPlayer.Role
+  fullName: Vintagestory.API.Common.IPlayer.Role
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Role
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 20
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the players privilege role
+  example: []
+  syntax:
+    content: IPlayerRole Role { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.IPlayerRole
+      description: ''
+    content.vb: Property Role As IPlayerRole
+  overload: Vintagestory.API.Common.IPlayer.Role*
+- uid: Vintagestory.API.Common.IPlayer.Groups
+  commentId: P:Vintagestory.API.Common.IPlayer.Groups
+  id: Groups
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: Groups
+  nameWithType: IPlayer.Groups
+  fullName: Vintagestory.API.Common.IPlayer.Groups
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Groups
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 25
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The players player group memberships
+  example: []
+  syntax:
+    content: PlayerGroupMembership[] Groups { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.PlayerGroupMembership[]
+    content.vb: ReadOnly Property Groups As PlayerGroupMembership()
+  overload: Vintagestory.API.Common.IPlayer.Groups*
+- uid: Vintagestory.API.Common.IPlayer.GetGroups
+  commentId: M:Vintagestory.API.Common.IPlayer.GetGroups
+  id: GetGroups
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: GetGroups()
+  nameWithType: IPlayer.GetGroups()
+  fullName: Vintagestory.API.Common.IPlayer.GetGroups()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetGroups
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 31
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Load the players group that he is a member of
+  example: []
+  syntax:
+    content: PlayerGroupMembership[] GetGroups()
+    return:
+      type: Vintagestory.API.Common.PlayerGroupMembership[]
+      description: ''
+    content.vb: Function GetGroups() As PlayerGroupMembership()
+  overload: Vintagestory.API.Common.IPlayer.GetGroups*
+- uid: Vintagestory.API.Common.IPlayer.GetGroup(System.Int32)
+  commentId: M:Vintagestory.API.Common.IPlayer.GetGroup(System.Int32)
+  id: GetGroup(System.Int32)
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: GetGroup(int)
+  nameWithType: IPlayer.GetGroup(int)
+  fullName: Vintagestory.API.Common.IPlayer.GetGroup(int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetGroup
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 38
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the membership data if player is part of this group, otherwise null
+  example: []
+  syntax:
+    content: PlayerGroupMembership GetGroup(int groupId)
+    parameters:
+    - id: groupId
+      type: System.Int32
+      description: ''
+    return:
+      type: Vintagestory.API.Common.PlayerGroupMembership
+      description: ''
+    content.vb: Function GetGroup(groupId As Integer) As PlayerGroupMembership
+  overload: Vintagestory.API.Common.IPlayer.GetGroup*
+  nameWithType.vb: IPlayer.GetGroup(Integer)
+  fullName.vb: Vintagestory.API.Common.IPlayer.GetGroup(Integer)
+  name.vb: GetGroup(Integer)
+- uid: Vintagestory.API.Common.IPlayer.Entitlements
+  commentId: P:Vintagestory.API.Common.IPlayer.Entitlements
+  id: Entitlements
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: Entitlements
+  nameWithType: IPlayer.Entitlements
+  fullName: Vintagestory.API.Common.IPlayer.Entitlements
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Entitlements
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 43
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: List of the users entitlements, vanilla servers will list VIV and/or VS Team member entitlements
+  example: []
+  syntax:
+    content: List<Entitlement> Entitlements { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.Common.Entitlement}
+    content.vb: ReadOnly Property Entitlements As List(Of Entitlement)
+  overload: Vintagestory.API.Common.IPlayer.Entitlements*
+- uid: Vintagestory.API.Common.IPlayer.CurrentBlockSelection
+  commentId: P:Vintagestory.API.Common.IPlayer.CurrentBlockSelection
+  id: CurrentBlockSelection
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: CurrentBlockSelection
+  nameWithType: IPlayer.CurrentBlockSelection
+  fullName: Vintagestory.API.Common.IPlayer.CurrentBlockSelection
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CurrentBlockSelection
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 48
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The block the player is currently aiming at
+  example: []
+  syntax:
+    content: BlockSelection CurrentBlockSelection { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.BlockSelection
+    content.vb: ReadOnly Property CurrentBlockSelection As BlockSelection
+  overload: Vintagestory.API.Common.IPlayer.CurrentBlockSelection*
+- uid: Vintagestory.API.Common.IPlayer.CurrentEntitySelection
+  commentId: P:Vintagestory.API.Common.IPlayer.CurrentEntitySelection
+  id: CurrentEntitySelection
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: CurrentEntitySelection
+  nameWithType: IPlayer.CurrentEntitySelection
+  fullName: Vintagestory.API.Common.IPlayer.CurrentEntitySelection
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CurrentEntitySelection
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 53
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The entity the player is currently aiming at
+  example: []
+  syntax:
+    content: EntitySelection CurrentEntitySelection { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.EntitySelection
+    content.vb: ReadOnly Property CurrentEntitySelection As EntitySelection
+  overload: Vintagestory.API.Common.IPlayer.CurrentEntitySelection*
+- uid: Vintagestory.API.Common.IPlayer.PlayerName
+  commentId: P:Vintagestory.API.Common.IPlayer.PlayerName
+  id: PlayerName
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: PlayerName
+  nameWithType: IPlayer.PlayerName
+  fullName: Vintagestory.API.Common.IPlayer.PlayerName
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PlayerName
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 59
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Get the players character name. The character name can be changed every 60 days in the account manager, so don't consider the players name as a unique identifier for a player. Use PlayerUID instead
+  example: []
+  syntax:
+    content: string PlayerName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property PlayerName As String
+  overload: Vintagestory.API.Common.IPlayer.PlayerName*
+- uid: Vintagestory.API.Common.IPlayer.PlayerUID
+  commentId: P:Vintagestory.API.Common.IPlayer.PlayerUID
+  id: PlayerUID
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: PlayerUID
+  nameWithType: IPlayer.PlayerUID
+  fullName: Vintagestory.API.Common.IPlayer.PlayerUID
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PlayerUID
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 64
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the players identifier that is unique across all registered players and will never change. Use this to uniquely identify a player for all eternity. Shorthand for WorldData.PlayerUID
+  example: []
+  syntax:
+    content: string PlayerUID { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property PlayerUID As String
+  overload: Vintagestory.API.Common.IPlayer.PlayerUID*
+- uid: Vintagestory.API.Common.IPlayer.ClientId
+  commentId: P:Vintagestory.API.Common.IPlayer.ClientId
+  id: ClientId
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: ClientId
+  nameWithType: IPlayer.ClientId
+  fullName: Vintagestory.API.Common.IPlayer.ClientId
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ClientId
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 69
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The players current client id, 0 if not connected. This is the number thats assigned by the server for any connecting player. You probably don't need this number.
+  example: []
+  syntax:
+    content: int ClientId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property ClientId As Integer
+  overload: Vintagestory.API.Common.IPlayer.ClientId*
+- uid: Vintagestory.API.Common.IPlayer.Entity
+  commentId: P:Vintagestory.API.Common.IPlayer.Entity
+  id: Entity
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: Entity
+  nameWithType: IPlayer.Entity
+  fullName: Vintagestory.API.Common.IPlayer.Entity
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Entity
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 74
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The entity the player currently controls
+  example: []
+  syntax:
+    content: EntityPlayer Entity { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.EntityPlayer
+    content.vb: ReadOnly Property Entity As EntityPlayer
+  overload: Vintagestory.API.Common.IPlayer.Entity*
+- uid: Vintagestory.API.Common.IPlayer.WorldData
+  commentId: P:Vintagestory.API.Common.IPlayer.WorldData
+  id: WorldData
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: WorldData
+  nameWithType: IPlayer.WorldData
+  fullName: Vintagestory.API.Common.IPlayer.WorldData
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WorldData
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 80
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Some world-specific information about the player. This object is stored with the save game.
+
+    If you modify it server side, be sure to call player.BroadcastPlayerData() to send it to affected clients.
+  example: []
+  syntax:
+    content: IWorldPlayerData WorldData { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.IWorldPlayerData
+    content.vb: ReadOnly Property WorldData As IWorldPlayerData
+  overload: Vintagestory.API.Common.IPlayer.WorldData*
+- uid: Vintagestory.API.Common.IPlayer.InventoryManager
+  commentId: P:Vintagestory.API.Common.IPlayer.InventoryManager
+  id: InventoryManager
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: InventoryManager
+  nameWithType: IPlayer.InventoryManager
+  fullName: Vintagestory.API.Common.IPlayer.InventoryManager
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InventoryManager
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 85
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the given players inventory manager that let's you do various interesting things with the players inventory.
+  example: []
+  syntax:
+    content: IPlayerInventoryManager InventoryManager { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.IPlayerInventoryManager
+    content.vb: ReadOnly Property InventoryManager As IPlayerInventoryManager
+  overload: Vintagestory.API.Common.IPlayer.InventoryManager*
+- uid: Vintagestory.API.Common.IPlayer.Privileges
+  commentId: P:Vintagestory.API.Common.IPlayer.Privileges
+  id: Privileges
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: Privileges
+  nameWithType: IPlayer.Privileges
+  fullName: Vintagestory.API.Common.IPlayer.Privileges
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Privileges
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 92
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    The list of privileges the player currently has access to (by role or direct assignment)
+
+    This list is available for the playing player on the client, but not for other players.
+  example: []
+  syntax:
+    content: string[] Privileges { get; }
+    parameters: []
+    return:
+      type: System.String[]
+    content.vb: ReadOnly Property Privileges As String()
+  overload: Vintagestory.API.Common.IPlayer.Privileges*
+- uid: Vintagestory.API.Common.IPlayer.ImmersiveFpMode
+  commentId: P:Vintagestory.API.Common.IPlayer.ImmersiveFpMode
+  id: ImmersiveFpMode
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: ImmersiveFpMode
+  nameWithType: IPlayer.ImmersiveFpMode
+  fullName: Vintagestory.API.Common.IPlayer.ImmersiveFpMode
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ImmersiveFpMode
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 94
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: bool ImmersiveFpMode { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property ImmersiveFpMode As Boolean
+  overload: Vintagestory.API.Common.IPlayer.ImmersiveFpMode*
+- uid: Vintagestory.API.Common.IPlayer.HasPrivilege(System.String)
+  commentId: M:Vintagestory.API.Common.IPlayer.HasPrivilege(System.String)
+  id: HasPrivilege(System.String)
+  parent: Vintagestory.API.Common.IPlayer
+  langs:
+  - csharp
+  - vb
+  name: HasPrivilege(string)
+  nameWithType: IPlayer.HasPrivilege(string)
+  fullName: Vintagestory.API.Common.IPlayer.HasPrivilege(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: HasPrivilege
+    path: Common/Entity/Player/IPlayer.cs
+    startLine: 101
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Check if a player has the given privilege
+  example: []
+  syntax:
+    content: bool HasPrivilege(string privilegeCode)
+    parameters:
+    - id: privilegeCode
+      type: System.String
+      description: The privilege to check
+    return:
+      type: System.Boolean
+      description: true if the player has the given privilege, false otherwise
+    content.vb: Function HasPrivilege(privilegeCode As String) As Boolean
+  overload: Vintagestory.API.Common.IPlayer.HasPrivilege*
+  nameWithType.vb: IPlayer.HasPrivilege(String)
+  fullName.vb: Vintagestory.API.Common.IPlayer.HasPrivilege(String)
+  name.vb: HasPrivilege(String)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IPlayer.Role*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.Role
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_Role
+  name: Role
+  nameWithType: IPlayer.Role
+  fullName: Vintagestory.API.Common.IPlayer.Role
+- uid: Vintagestory.API.Common.IPlayerRole
+  commentId: T:Vintagestory.API.Common.IPlayerRole
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayerRole.html
+  name: IPlayerRole
+  nameWithType: IPlayerRole
+  fullName: Vintagestory.API.Common.IPlayerRole
+- uid: Vintagestory.API.Common.IPlayer.Groups*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.Groups
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_Groups
+  name: Groups
+  nameWithType: IPlayer.Groups
+  fullName: Vintagestory.API.Common.IPlayer.Groups
+- uid: Vintagestory.API.Common.PlayerGroupMembership[]
+  isExternal: true
+  href: Vintagestory.API.Common.PlayerGroupMembership.html
+  name: PlayerGroupMembership[]
+  nameWithType: PlayerGroupMembership[]
+  fullName: Vintagestory.API.Common.PlayerGroupMembership[]
+  nameWithType.vb: PlayerGroupMembership()
+  fullName.vb: Vintagestory.API.Common.PlayerGroupMembership()
+  name.vb: PlayerGroupMembership()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.PlayerGroupMembership
+    name: PlayerGroupMembership
+    href: Vintagestory.API.Common.PlayerGroupMembership.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.PlayerGroupMembership
+    name: PlayerGroupMembership
+    href: Vintagestory.API.Common.PlayerGroupMembership.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IPlayer.GetGroups*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.GetGroups
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_GetGroups
+  name: GetGroups
+  nameWithType: IPlayer.GetGroups
+  fullName: Vintagestory.API.Common.IPlayer.GetGroups
+- uid: Vintagestory.API.Common.IPlayer.GetGroup*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.GetGroup
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_GetGroup_System_Int32_
+  name: GetGroup
+  nameWithType: IPlayer.GetGroup
+  fullName: Vintagestory.API.Common.IPlayer.GetGroup
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.PlayerGroupMembership
+  commentId: T:Vintagestory.API.Common.PlayerGroupMembership
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.PlayerGroupMembership.html
+  name: PlayerGroupMembership
+  nameWithType: PlayerGroupMembership
+  fullName: Vintagestory.API.Common.PlayerGroupMembership
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IPlayer.Entitlements*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.Entitlements
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_Entitlements
+  name: Entitlements
+  nameWithType: IPlayer.Entitlements
+  fullName: Vintagestory.API.Common.IPlayer.Entitlements
+- uid: System.Collections.Generic.List{Vintagestory.API.Common.Entitlement}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.Entitlement}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Entitlement>
+  nameWithType: List<Entitlement>
+  fullName: System.Collections.Generic.List<Vintagestory.API.Common.Entitlement>
+  nameWithType.vb: List(Of Entitlement)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Common.Entitlement)
+  name.vb: List(Of Entitlement)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Common.Entitlement
+    name: Entitlement
+    href: Vintagestory.API.Common.Entitlement.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.Entitlement
+    name: Entitlement
+    href: Vintagestory.API.Common.Entitlement.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.IPlayer.CurrentBlockSelection*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.CurrentBlockSelection
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_CurrentBlockSelection
+  name: CurrentBlockSelection
+  nameWithType: IPlayer.CurrentBlockSelection
+  fullName: Vintagestory.API.Common.IPlayer.CurrentBlockSelection
+- uid: Vintagestory.API.Common.BlockSelection
+  commentId: T:Vintagestory.API.Common.BlockSelection
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockSelection.html
+  name: BlockSelection
+  nameWithType: BlockSelection
+  fullName: Vintagestory.API.Common.BlockSelection
+- uid: Vintagestory.API.Common.IPlayer.CurrentEntitySelection*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.CurrentEntitySelection
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_CurrentEntitySelection
+  name: CurrentEntitySelection
+  nameWithType: IPlayer.CurrentEntitySelection
+  fullName: Vintagestory.API.Common.IPlayer.CurrentEntitySelection
+- uid: Vintagestory.API.Common.EntitySelection
+  commentId: T:Vintagestory.API.Common.EntitySelection
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntitySelection.html
+  name: EntitySelection
+  nameWithType: EntitySelection
+  fullName: Vintagestory.API.Common.EntitySelection
+- uid: Vintagestory.API.Common.IPlayer.PlayerName*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.PlayerName
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_PlayerName
+  name: PlayerName
+  nameWithType: IPlayer.PlayerName
+  fullName: Vintagestory.API.Common.IPlayer.PlayerName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.IPlayer.PlayerUID*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.PlayerUID
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_PlayerUID
+  name: PlayerUID
+  nameWithType: IPlayer.PlayerUID
+  fullName: Vintagestory.API.Common.IPlayer.PlayerUID
+- uid: Vintagestory.API.Common.IPlayer.ClientId*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.ClientId
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_ClientId
+  name: ClientId
+  nameWithType: IPlayer.ClientId
+  fullName: Vintagestory.API.Common.IPlayer.ClientId
+- uid: Vintagestory.API.Common.IPlayer.Entity*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.Entity
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_Entity
+  name: Entity
+  nameWithType: IPlayer.Entity
+  fullName: Vintagestory.API.Common.IPlayer.Entity
+- uid: Vintagestory.API.Common.EntityPlayer
+  commentId: T:Vintagestory.API.Common.EntityPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntityPlayer.html
+  name: EntityPlayer
+  nameWithType: EntityPlayer
+  fullName: Vintagestory.API.Common.EntityPlayer
+- uid: Vintagestory.API.Common.IPlayer.WorldData*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.WorldData
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_WorldData
+  name: WorldData
+  nameWithType: IPlayer.WorldData
+  fullName: Vintagestory.API.Common.IPlayer.WorldData
+- uid: Vintagestory.API.Common.IWorldPlayerData
+  commentId: T:Vintagestory.API.Common.IWorldPlayerData
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldPlayerData.html
+  name: IWorldPlayerData
+  nameWithType: IWorldPlayerData
+  fullName: Vintagestory.API.Common.IWorldPlayerData
+- uid: Vintagestory.API.Common.IPlayer.InventoryManager*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.InventoryManager
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_InventoryManager
+  name: InventoryManager
+  nameWithType: IPlayer.InventoryManager
+  fullName: Vintagestory.API.Common.IPlayer.InventoryManager
+- uid: Vintagestory.API.Common.IPlayerInventoryManager
+  commentId: T:Vintagestory.API.Common.IPlayerInventoryManager
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html
+  name: IPlayerInventoryManager
+  nameWithType: IPlayerInventoryManager
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager
+- uid: Vintagestory.API.Common.IPlayer.Privileges*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.Privileges
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_Privileges
+  name: Privileges
+  nameWithType: IPlayer.Privileges
+  fullName: Vintagestory.API.Common.IPlayer.Privileges
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IPlayer.ImmersiveFpMode*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.ImmersiveFpMode
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_ImmersiveFpMode
+  name: ImmersiveFpMode
+  nameWithType: IPlayer.ImmersiveFpMode
+  fullName: Vintagestory.API.Common.IPlayer.ImmersiveFpMode
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.IPlayer.HasPrivilege*
+  commentId: Overload:Vintagestory.API.Common.IPlayer.HasPrivilege
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_HasPrivilege_System_String_
+  name: HasPrivilege
+  nameWithType: IPlayer.HasPrivilege
+  fullName: Vintagestory.API.Common.IPlayer.HasPrivilege

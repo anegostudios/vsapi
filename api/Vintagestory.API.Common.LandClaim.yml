@@ -1,0 +1,1674 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.LandClaim
+  commentId: T:Vintagestory.API.Common.LandClaim
+  id: LandClaim
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.LandClaim.AddArea(Vintagestory.API.MathTools.Cuboidi)
+  - Vintagestory.API.Common.LandClaim.AllowUseEveryone
+  - Vintagestory.API.Common.LandClaim.Areas
+  - Vintagestory.API.Common.LandClaim.Center
+  - Vintagestory.API.Common.LandClaim.Clone
+  - Vintagestory.API.Common.LandClaim.CreateClaim(System.String,System.Int32)
+  - Vintagestory.API.Common.LandClaim.CreateClaim(Vintagestory.API.Common.EntityAgent,System.Int32)
+  - Vintagestory.API.Common.LandClaim.CreateClaim(Vintagestory.API.Common.IPlayer,System.Int32)
+  - Vintagestory.API.Common.LandClaim.Description
+  - Vintagestory.API.Common.LandClaim.Intersects(Vintagestory.API.MathTools.Cuboidi)
+  - Vintagestory.API.Common.LandClaim.Intersects2d(Vintagestory.API.MathTools.HorRectanglei)
+  - Vintagestory.API.Common.LandClaim.LastKnownOwnerName
+  - Vintagestory.API.Common.LandClaim.OwnedByEntityId
+  - Vintagestory.API.Common.LandClaim.OwnedByPlayerGroupUid
+  - Vintagestory.API.Common.LandClaim.OwnedByPlayerUid
+  - Vintagestory.API.Common.LandClaim.PermittedPlayerGroupIds
+  - Vintagestory.API.Common.LandClaim.PermittedPlayerLastKnownPlayerName
+  - Vintagestory.API.Common.LandClaim.PermittedPlayerUids
+  - Vintagestory.API.Common.LandClaim.PositionInside(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.LandClaim.PositionInside(Vintagestory.API.MathTools.Vec3d)
+  - Vintagestory.API.Common.LandClaim.ProtectionLevel
+  - Vintagestory.API.Common.LandClaim.SizeXYZ
+  - Vintagestory.API.Common.LandClaim.SizeXZ
+  - Vintagestory.API.Common.LandClaim.TestPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumBlockAccessFlags)
+  langs:
+  - csharp
+  - vb
+  name: LandClaim
+  nameWithType: LandClaim
+  fullName: Vintagestory.API.Common.LandClaim
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LandClaim
+    path: Common/LandClaim.cs
+    startLine: 33
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [ProtoContract]
+
+      public class LandClaim
+    content.vb: >-
+      <ProtoContract>
+
+      Public Class LandClaim
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: ProtoBuf.ProtoContractAttribute
+    ctor: ProtoBuf.ProtoContractAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.LandClaim.Areas
+  commentId: F:Vintagestory.API.Common.LandClaim.Areas
+  id: Areas
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: Areas
+  nameWithType: LandClaim.Areas
+  fullName: Vintagestory.API.Common.LandClaim.Areas
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Areas
+    path: Common/LandClaim.cs
+    startLine: 37
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [ProtoMember(1)]
+
+      public List<Cuboidi> Areas
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.MathTools.Cuboidi}
+    content.vb: >-
+      <ProtoMember(1)>
+
+      Public Areas As List(Of Cuboidi)
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1
+- uid: Vintagestory.API.Common.LandClaim.ProtectionLevel
+  commentId: F:Vintagestory.API.Common.LandClaim.ProtectionLevel
+  id: ProtectionLevel
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: ProtectionLevel
+  nameWithType: LandClaim.ProtectionLevel
+  fullName: Vintagestory.API.Common.LandClaim.ProtectionLevel
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ProtectionLevel
+    path: Common/LandClaim.cs
+    startLine: 39
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [ProtoMember(2)]
+
+      public int ProtectionLevel
+    return:
+      type: System.Int32
+    content.vb: >-
+      <ProtoMember(2)>
+
+      Public ProtectionLevel As Integer
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 2
+- uid: Vintagestory.API.Common.LandClaim.OwnedByEntityId
+  commentId: F:Vintagestory.API.Common.LandClaim.OwnedByEntityId
+  id: OwnedByEntityId
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: OwnedByEntityId
+  nameWithType: LandClaim.OwnedByEntityId
+  fullName: Vintagestory.API.Common.LandClaim.OwnedByEntityId
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OwnedByEntityId
+    path: Common/LandClaim.cs
+    startLine: 41
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [ProtoMember(3)]
+
+      public long OwnedByEntityId
+    return:
+      type: System.Int64
+    content.vb: >-
+      <ProtoMember(3)>
+
+      Public OwnedByEntityId As Long
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 3
+- uid: Vintagestory.API.Common.LandClaim.OwnedByPlayerUid
+  commentId: F:Vintagestory.API.Common.LandClaim.OwnedByPlayerUid
+  id: OwnedByPlayerUid
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: OwnedByPlayerUid
+  nameWithType: LandClaim.OwnedByPlayerUid
+  fullName: Vintagestory.API.Common.LandClaim.OwnedByPlayerUid
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OwnedByPlayerUid
+    path: Common/LandClaim.cs
+    startLine: 43
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [ProtoMember(4)]
+
+      public string OwnedByPlayerUid
+    return:
+      type: System.String
+    content.vb: >-
+      <ProtoMember(4)>
+
+      Public OwnedByPlayerUid As String
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4
+- uid: Vintagestory.API.Common.LandClaim.OwnedByPlayerGroupUid
+  commentId: F:Vintagestory.API.Common.LandClaim.OwnedByPlayerGroupUid
+  id: OwnedByPlayerGroupUid
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: OwnedByPlayerGroupUid
+  nameWithType: LandClaim.OwnedByPlayerGroupUid
+  fullName: Vintagestory.API.Common.LandClaim.OwnedByPlayerGroupUid
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OwnedByPlayerGroupUid
+    path: Common/LandClaim.cs
+    startLine: 45
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [ProtoMember(5)]
+
+      public uint OwnedByPlayerGroupUid
+    return:
+      type: System.UInt32
+    content.vb: >-
+      <ProtoMember(5)>
+
+      Public OwnedByPlayerGroupUid As UInteger
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 5
+- uid: Vintagestory.API.Common.LandClaim.LastKnownOwnerName
+  commentId: F:Vintagestory.API.Common.LandClaim.LastKnownOwnerName
+  id: LastKnownOwnerName
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: LastKnownOwnerName
+  nameWithType: LandClaim.LastKnownOwnerName
+  fullName: Vintagestory.API.Common.LandClaim.LastKnownOwnerName
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LastKnownOwnerName
+    path: Common/LandClaim.cs
+    startLine: 47
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [ProtoMember(6)]
+
+      public string LastKnownOwnerName
+    return:
+      type: System.String
+    content.vb: >-
+      <ProtoMember(6)>
+
+      Public LastKnownOwnerName As String
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 6
+- uid: Vintagestory.API.Common.LandClaim.Description
+  commentId: F:Vintagestory.API.Common.LandClaim.Description
+  id: Description
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: LandClaim.Description
+  fullName: Vintagestory.API.Common.LandClaim.Description
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Description
+    path: Common/LandClaim.cs
+    startLine: 49
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [ProtoMember(7)]
+
+      public string Description
+    return:
+      type: System.String
+    content.vb: >-
+      <ProtoMember(7)>
+
+      Public Description As String
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 7
+- uid: Vintagestory.API.Common.LandClaim.PermittedPlayerGroupIds
+  commentId: F:Vintagestory.API.Common.LandClaim.PermittedPlayerGroupIds
+  id: PermittedPlayerGroupIds
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: PermittedPlayerGroupIds
+  nameWithType: LandClaim.PermittedPlayerGroupIds
+  fullName: Vintagestory.API.Common.LandClaim.PermittedPlayerGroupIds
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PermittedPlayerGroupIds
+    path: Common/LandClaim.cs
+    startLine: 54
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Other groups allowed to use this land
+  example: []
+  syntax:
+    content: >-
+      [ProtoMember(8)]
+
+      public Dictionary<int, EnumBlockAccessFlags> PermittedPlayerGroupIds
+    return:
+      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.EnumBlockAccessFlags}
+    content.vb: >-
+      <ProtoMember(8)>
+
+      Public PermittedPlayerGroupIds As Dictionary(Of Integer, EnumBlockAccessFlags)
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 8
+- uid: Vintagestory.API.Common.LandClaim.PermittedPlayerUids
+  commentId: F:Vintagestory.API.Common.LandClaim.PermittedPlayerUids
+  id: PermittedPlayerUids
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: PermittedPlayerUids
+  nameWithType: LandClaim.PermittedPlayerUids
+  fullName: Vintagestory.API.Common.LandClaim.PermittedPlayerUids
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PermittedPlayerUids
+    path: Common/LandClaim.cs
+    startLine: 59
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Other players allowed to use this land
+  example: []
+  syntax:
+    content: >-
+      [ProtoMember(9)]
+
+      public Dictionary<string, EnumBlockAccessFlags> PermittedPlayerUids
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.EnumBlockAccessFlags}
+    content.vb: >-
+      <ProtoMember(9)>
+
+      Public PermittedPlayerUids As Dictionary(Of String, EnumBlockAccessFlags)
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 9
+- uid: Vintagestory.API.Common.LandClaim.PermittedPlayerLastKnownPlayerName
+  commentId: F:Vintagestory.API.Common.LandClaim.PermittedPlayerLastKnownPlayerName
+  id: PermittedPlayerLastKnownPlayerName
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: PermittedPlayerLastKnownPlayerName
+  nameWithType: LandClaim.PermittedPlayerLastKnownPlayerName
+  fullName: Vintagestory.API.Common.LandClaim.PermittedPlayerLastKnownPlayerName
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PermittedPlayerLastKnownPlayerName
+    path: Common/LandClaim.cs
+    startLine: 64
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Other players allowed to use this land, name of the player at the time the privilege was granted
+  example: []
+  syntax:
+    content: >-
+      [ProtoMember(10)]
+
+      public Dictionary<string, string> PermittedPlayerLastKnownPlayerName
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.String}
+    content.vb: >-
+      <ProtoMember(10)>
+
+      Public PermittedPlayerLastKnownPlayerName As Dictionary(Of String, String)
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 10
+- uid: Vintagestory.API.Common.LandClaim.AllowUseEveryone
+  commentId: F:Vintagestory.API.Common.LandClaim.AllowUseEveryone
+  id: AllowUseEveryone
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: AllowUseEveryone
+  nameWithType: LandClaim.AllowUseEveryone
+  fullName: Vintagestory.API.Common.LandClaim.AllowUseEveryone
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AllowUseEveryone
+    path: Common/LandClaim.cs
+    startLine: 66
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [ProtoMember(11)]
+
+      public bool AllowUseEveryone
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <ProtoMember(11)>
+
+      Public AllowUseEveryone As Boolean
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 11
+- uid: Vintagestory.API.Common.LandClaim.Center
+  commentId: P:Vintagestory.API.Common.LandClaim.Center
+  id: Center
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: Center
+  nameWithType: LandClaim.Center
+  fullName: Vintagestory.API.Common.LandClaim.Center
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Center
+    path: Common/LandClaim.cs
+    startLine: 68
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BlockPos Center { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: Public ReadOnly Property Center As BlockPos
+  overload: Vintagestory.API.Common.LandClaim.Center*
+- uid: Vintagestory.API.Common.LandClaim.SizeXZ
+  commentId: P:Vintagestory.API.Common.LandClaim.SizeXZ
+  id: SizeXZ
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: SizeXZ
+  nameWithType: LandClaim.SizeXZ
+  fullName: Vintagestory.API.Common.LandClaim.SizeXZ
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SizeXZ
+    path: Common/LandClaim.cs
+    startLine: 100
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public int SizeXZ { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SizeXZ As Integer
+  overload: Vintagestory.API.Common.LandClaim.SizeXZ*
+- uid: Vintagestory.API.Common.LandClaim.SizeXYZ
+  commentId: P:Vintagestory.API.Common.LandClaim.SizeXYZ
+  id: SizeXYZ
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: SizeXYZ
+  nameWithType: LandClaim.SizeXYZ
+  fullName: Vintagestory.API.Common.LandClaim.SizeXYZ
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SizeXYZ
+    path: Common/LandClaim.cs
+    startLine: 115
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public int SizeXYZ { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property SizeXYZ As Integer
+  overload: Vintagestory.API.Common.LandClaim.SizeXYZ*
+- uid: Vintagestory.API.Common.LandClaim.CreateClaim(Vintagestory.API.Common.IPlayer,System.Int32)
+  commentId: M:Vintagestory.API.Common.LandClaim.CreateClaim(Vintagestory.API.Common.IPlayer,System.Int32)
+  id: CreateClaim(Vintagestory.API.Common.IPlayer,System.Int32)
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: CreateClaim(IPlayer, int)
+  nameWithType: LandClaim.CreateClaim(IPlayer, int)
+  fullName: Vintagestory.API.Common.LandClaim.CreateClaim(Vintagestory.API.Common.IPlayer, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CreateClaim
+    path: Common/LandClaim.cs
+    startLine: 130
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static LandClaim CreateClaim(IPlayer player, int protectionLevel = 1)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+    - id: protectionLevel
+      type: System.Int32
+    return:
+      type: Vintagestory.API.Common.LandClaim
+    content.vb: Public Shared Function CreateClaim(player As IPlayer, protectionLevel As Integer = 1) As LandClaim
+  overload: Vintagestory.API.Common.LandClaim.CreateClaim*
+  nameWithType.vb: LandClaim.CreateClaim(IPlayer, Integer)
+  fullName.vb: Vintagestory.API.Common.LandClaim.CreateClaim(Vintagestory.API.Common.IPlayer, Integer)
+  name.vb: CreateClaim(IPlayer, Integer)
+- uid: Vintagestory.API.Common.LandClaim.CreateClaim(Vintagestory.API.Common.EntityAgent,System.Int32)
+  commentId: M:Vintagestory.API.Common.LandClaim.CreateClaim(Vintagestory.API.Common.EntityAgent,System.Int32)
+  id: CreateClaim(Vintagestory.API.Common.EntityAgent,System.Int32)
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: CreateClaim(EntityAgent, int)
+  nameWithType: LandClaim.CreateClaim(EntityAgent, int)
+  fullName: Vintagestory.API.Common.LandClaim.CreateClaim(Vintagestory.API.Common.EntityAgent, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CreateClaim
+    path: Common/LandClaim.cs
+    startLine: 140
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static LandClaim CreateClaim(EntityAgent entity, int protectionLevel = 1)
+    parameters:
+    - id: entity
+      type: Vintagestory.API.Common.EntityAgent
+    - id: protectionLevel
+      type: System.Int32
+    return:
+      type: Vintagestory.API.Common.LandClaim
+    content.vb: Public Shared Function CreateClaim(entity As EntityAgent, protectionLevel As Integer = 1) As LandClaim
+  overload: Vintagestory.API.Common.LandClaim.CreateClaim*
+  nameWithType.vb: LandClaim.CreateClaim(EntityAgent, Integer)
+  fullName.vb: Vintagestory.API.Common.LandClaim.CreateClaim(Vintagestory.API.Common.EntityAgent, Integer)
+  name.vb: CreateClaim(EntityAgent, Integer)
+- uid: Vintagestory.API.Common.LandClaim.CreateClaim(System.String,System.Int32)
+  commentId: M:Vintagestory.API.Common.LandClaim.CreateClaim(System.String,System.Int32)
+  id: CreateClaim(System.String,System.Int32)
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: CreateClaim(string, int)
+  nameWithType: LandClaim.CreateClaim(string, int)
+  fullName: Vintagestory.API.Common.LandClaim.CreateClaim(string, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CreateClaim
+    path: Common/LandClaim.cs
+    startLine: 153
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static LandClaim CreateClaim(string ownerName, int protectionLevel = 1)
+    parameters:
+    - id: ownerName
+      type: System.String
+    - id: protectionLevel
+      type: System.Int32
+    return:
+      type: Vintagestory.API.Common.LandClaim
+    content.vb: Public Shared Function CreateClaim(ownerName As String, protectionLevel As Integer = 1) As LandClaim
+  overload: Vintagestory.API.Common.LandClaim.CreateClaim*
+  nameWithType.vb: LandClaim.CreateClaim(String, Integer)
+  fullName.vb: Vintagestory.API.Common.LandClaim.CreateClaim(String, Integer)
+  name.vb: CreateClaim(String, Integer)
+- uid: Vintagestory.API.Common.LandClaim.TestPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumBlockAccessFlags)
+  commentId: M:Vintagestory.API.Common.LandClaim.TestPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumBlockAccessFlags)
+  id: TestPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumBlockAccessFlags)
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: TestPlayerAccess(IPlayer, EnumBlockAccessFlags)
+  nameWithType: LandClaim.TestPlayerAccess(IPlayer, EnumBlockAccessFlags)
+  fullName: Vintagestory.API.Common.LandClaim.TestPlayerAccess(Vintagestory.API.Common.IPlayer, Vintagestory.API.Common.EnumBlockAccessFlags)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TestPlayerAccess
+    path: Common/LandClaim.cs
+    startLine: 162
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public EnumPlayerAccessResult TestPlayerAccess(IPlayer player, EnumBlockAccessFlags claimFlag)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+    - id: claimFlag
+      type: Vintagestory.API.Common.EnumBlockAccessFlags
+    return:
+      type: Vintagestory.API.Common.EnumPlayerAccessResult
+    content.vb: Public Function TestPlayerAccess(player As IPlayer, claimFlag As EnumBlockAccessFlags) As EnumPlayerAccessResult
+  overload: Vintagestory.API.Common.LandClaim.TestPlayerAccess*
+- uid: Vintagestory.API.Common.LandClaim.PositionInside(Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.Common.LandClaim.PositionInside(Vintagestory.API.MathTools.Vec3d)
+  id: PositionInside(Vintagestory.API.MathTools.Vec3d)
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: PositionInside(Vec3d)
+  nameWithType: LandClaim.PositionInside(Vec3d)
+  fullName: Vintagestory.API.Common.LandClaim.PositionInside(Vintagestory.API.MathTools.Vec3d)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PositionInside
+    path: Common/LandClaim.cs
+    startLine: 199
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public bool PositionInside(Vec3d position)
+    parameters:
+    - id: position
+      type: Vintagestory.API.MathTools.Vec3d
+    return:
+      type: System.Boolean
+    content.vb: Public Function PositionInside(position As Vec3d) As Boolean
+  overload: Vintagestory.API.Common.LandClaim.PositionInside*
+- uid: Vintagestory.API.Common.LandClaim.PositionInside(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.LandClaim.PositionInside(Vintagestory.API.MathTools.BlockPos)
+  id: PositionInside(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: PositionInside(BlockPos)
+  nameWithType: LandClaim.PositionInside(BlockPos)
+  fullName: Vintagestory.API.Common.LandClaim.PositionInside(Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PositionInside
+    path: Common/LandClaim.cs
+    startLine: 209
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public bool PositionInside(BlockPos position)
+    parameters:
+    - id: position
+      type: Vintagestory.API.MathTools.BlockPos
+    return:
+      type: System.Boolean
+    content.vb: Public Function PositionInside(position As BlockPos) As Boolean
+  overload: Vintagestory.API.Common.LandClaim.PositionInside*
+- uid: Vintagestory.API.Common.LandClaim.AddArea(Vintagestory.API.MathTools.Cuboidi)
+  commentId: M:Vintagestory.API.Common.LandClaim.AddArea(Vintagestory.API.MathTools.Cuboidi)
+  id: AddArea(Vintagestory.API.MathTools.Cuboidi)
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: AddArea(Cuboidi)
+  nameWithType: LandClaim.AddArea(Cuboidi)
+  fullName: Vintagestory.API.Common.LandClaim.AddArea(Vintagestory.API.MathTools.Cuboidi)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AddArea
+    path: Common/LandClaim.cs
+    startLine: 219
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public EnumClaimError AddArea(Cuboidi cuboidi)
+    parameters:
+    - id: cuboidi
+      type: Vintagestory.API.MathTools.Cuboidi
+    return:
+      type: Vintagestory.API.Common.EnumClaimError
+    content.vb: Public Function AddArea(cuboidi As Cuboidi) As EnumClaimError
+  overload: Vintagestory.API.Common.LandClaim.AddArea*
+- uid: Vintagestory.API.Common.LandClaim.Intersects(Vintagestory.API.MathTools.Cuboidi)
+  commentId: M:Vintagestory.API.Common.LandClaim.Intersects(Vintagestory.API.MathTools.Cuboidi)
+  id: Intersects(Vintagestory.API.MathTools.Cuboidi)
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: Intersects(Cuboidi)
+  nameWithType: LandClaim.Intersects(Cuboidi)
+  fullName: Vintagestory.API.Common.LandClaim.Intersects(Vintagestory.API.MathTools.Cuboidi)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Intersects
+    path: Common/LandClaim.cs
+    startLine: 250
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public bool Intersects(Cuboidi cuboidi)
+    parameters:
+    - id: cuboidi
+      type: Vintagestory.API.MathTools.Cuboidi
+    return:
+      type: System.Boolean
+    content.vb: Public Function Intersects(cuboidi As Cuboidi) As Boolean
+  overload: Vintagestory.API.Common.LandClaim.Intersects*
+- uid: Vintagestory.API.Common.LandClaim.Intersects2d(Vintagestory.API.MathTools.HorRectanglei)
+  commentId: M:Vintagestory.API.Common.LandClaim.Intersects2d(Vintagestory.API.MathTools.HorRectanglei)
+  id: Intersects2d(Vintagestory.API.MathTools.HorRectanglei)
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: Intersects2d(HorRectanglei)
+  nameWithType: LandClaim.Intersects2d(HorRectanglei)
+  fullName: Vintagestory.API.Common.LandClaim.Intersects2d(Vintagestory.API.MathTools.HorRectanglei)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Intersects2d
+    path: Common/LandClaim.cs
+    startLine: 267
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Ignores y-values
+  example: []
+  syntax:
+    content: public bool Intersects2d(HorRectanglei rec)
+    parameters:
+    - id: rec
+      type: Vintagestory.API.MathTools.HorRectanglei
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function Intersects2d(rec As HorRectanglei) As Boolean
+  overload: Vintagestory.API.Common.LandClaim.Intersects2d*
+- uid: Vintagestory.API.Common.LandClaim.Clone
+  commentId: M:Vintagestory.API.Common.LandClaim.Clone
+  id: Clone
+  parent: Vintagestory.API.Common.LandClaim
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: LandClaim.Clone()
+  fullName: Vintagestory.API.Common.LandClaim.Clone()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/LandClaim.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Clone
+    path: Common/LandClaim.cs
+    startLine: 280
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public LandClaim Clone()
+    return:
+      type: Vintagestory.API.Common.LandClaim
+    content.vb: Public Function Clone() As LandClaim
+  overload: Vintagestory.API.Common.LandClaim.Clone*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.List{Vintagestory.API.MathTools.Cuboidi}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.MathTools.Cuboidi}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Cuboidi>
+  nameWithType: List<Cuboidi>
+  fullName: System.Collections.Generic.List<Vintagestory.API.MathTools.Cuboidi>
+  nameWithType.vb: List(Of Cuboidi)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.MathTools.Cuboidi)
+  name.vb: List(Of Cuboidi)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.MathTools.Cuboidi
+    name: Cuboidi
+    href: Vintagestory.API.MathTools.Cuboidi.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Cuboidi
+    name: Cuboidi
+    href: Vintagestory.API.MathTools.Cuboidi.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.EnumBlockAccessFlags}
+  commentId: T:System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.EnumBlockAccessFlags}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<int, EnumBlockAccessFlags>
+  nameWithType: Dictionary<int, EnumBlockAccessFlags>
+  fullName: System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.EnumBlockAccessFlags>
+  nameWithType.vb: Dictionary(Of Integer, EnumBlockAccessFlags)
+  fullName.vb: System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.EnumBlockAccessFlags)
+  name.vb: Dictionary(Of Integer, EnumBlockAccessFlags)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumBlockAccessFlags
+    name: EnumBlockAccessFlags
+    href: Vintagestory.API.Common.EnumBlockAccessFlags.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumBlockAccessFlags
+    name: EnumBlockAccessFlags
+    href: Vintagestory.API.Common.EnumBlockAccessFlags.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.EnumBlockAccessFlags}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.EnumBlockAccessFlags}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, EnumBlockAccessFlags>
+  nameWithType: Dictionary<string, EnumBlockAccessFlags>
+  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.EnumBlockAccessFlags>
+  nameWithType.vb: Dictionary(Of String, EnumBlockAccessFlags)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.EnumBlockAccessFlags)
+  name.vb: Dictionary(Of String, EnumBlockAccessFlags)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumBlockAccessFlags
+    name: EnumBlockAccessFlags
+    href: Vintagestory.API.Common.EnumBlockAccessFlags.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumBlockAccessFlags
+    name: EnumBlockAccessFlags
+    href: Vintagestory.API.Common.EnumBlockAccessFlags.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary{System.String,System.String}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, string>
+  nameWithType: Dictionary<string, string>
+  fullName: System.Collections.Generic.Dictionary<string, string>
+  nameWithType.vb: Dictionary(Of String, String)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, String)
+  name.vb: Dictionary(Of String, String)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.LandClaim.Center*
+  commentId: Overload:Vintagestory.API.Common.LandClaim.Center
+  href: Vintagestory.API.Common.LandClaim.html#Vintagestory_API_Common_LandClaim_Center
+  name: Center
+  nameWithType: LandClaim.Center
+  fullName: Vintagestory.API.Common.LandClaim.Center
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.LandClaim.SizeXZ*
+  commentId: Overload:Vintagestory.API.Common.LandClaim.SizeXZ
+  href: Vintagestory.API.Common.LandClaim.html#Vintagestory_API_Common_LandClaim_SizeXZ
+  name: SizeXZ
+  nameWithType: LandClaim.SizeXZ
+  fullName: Vintagestory.API.Common.LandClaim.SizeXZ
+- uid: Vintagestory.API.Common.LandClaim.SizeXYZ*
+  commentId: Overload:Vintagestory.API.Common.LandClaim.SizeXYZ
+  href: Vintagestory.API.Common.LandClaim.html#Vintagestory_API_Common_LandClaim_SizeXYZ
+  name: SizeXYZ
+  nameWithType: LandClaim.SizeXYZ
+  fullName: Vintagestory.API.Common.LandClaim.SizeXYZ
+- uid: Vintagestory.API.Common.LandClaim.CreateClaim*
+  commentId: Overload:Vintagestory.API.Common.LandClaim.CreateClaim
+  href: Vintagestory.API.Common.LandClaim.html#Vintagestory_API_Common_LandClaim_CreateClaim_Vintagestory_API_Common_IPlayer_System_Int32_
+  name: CreateClaim
+  nameWithType: LandClaim.CreateClaim
+  fullName: Vintagestory.API.Common.LandClaim.CreateClaim
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: Vintagestory.API.Common.LandClaim
+  commentId: T:Vintagestory.API.Common.LandClaim
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.LandClaim.html
+  name: LandClaim
+  nameWithType: LandClaim
+  fullName: Vintagestory.API.Common.LandClaim
+- uid: Vintagestory.API.Common.EntityAgent
+  commentId: T:Vintagestory.API.Common.EntityAgent
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntityAgent.html
+  name: EntityAgent
+  nameWithType: EntityAgent
+  fullName: Vintagestory.API.Common.EntityAgent
+- uid: Vintagestory.API.Common.LandClaim.TestPlayerAccess*
+  commentId: Overload:Vintagestory.API.Common.LandClaim.TestPlayerAccess
+  href: Vintagestory.API.Common.LandClaim.html#Vintagestory_API_Common_LandClaim_TestPlayerAccess_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumBlockAccessFlags_
+  name: TestPlayerAccess
+  nameWithType: LandClaim.TestPlayerAccess
+  fullName: Vintagestory.API.Common.LandClaim.TestPlayerAccess
+- uid: Vintagestory.API.Common.EnumBlockAccessFlags
+  commentId: T:Vintagestory.API.Common.EnumBlockAccessFlags
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumBlockAccessFlags.html
+  name: EnumBlockAccessFlags
+  nameWithType: EnumBlockAccessFlags
+  fullName: Vintagestory.API.Common.EnumBlockAccessFlags
+- uid: Vintagestory.API.Common.EnumPlayerAccessResult
+  commentId: T:Vintagestory.API.Common.EnumPlayerAccessResult
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumPlayerAccessResult.html
+  name: EnumPlayerAccessResult
+  nameWithType: EnumPlayerAccessResult
+  fullName: Vintagestory.API.Common.EnumPlayerAccessResult
+- uid: Vintagestory.API.Common.LandClaim.PositionInside*
+  commentId: Overload:Vintagestory.API.Common.LandClaim.PositionInside
+  href: Vintagestory.API.Common.LandClaim.html#Vintagestory_API_Common_LandClaim_PositionInside_Vintagestory_API_MathTools_Vec3d_
+  name: PositionInside
+  nameWithType: LandClaim.PositionInside
+  fullName: Vintagestory.API.Common.LandClaim.PositionInside
+- uid: Vintagestory.API.MathTools.Vec3d
+  commentId: T:Vintagestory.API.MathTools.Vec3d
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3d.html
+  name: Vec3d
+  nameWithType: Vec3d
+  fullName: Vintagestory.API.MathTools.Vec3d
+- uid: Vintagestory.API.Common.LandClaim.AddArea*
+  commentId: Overload:Vintagestory.API.Common.LandClaim.AddArea
+  href: Vintagestory.API.Common.LandClaim.html#Vintagestory_API_Common_LandClaim_AddArea_Vintagestory_API_MathTools_Cuboidi_
+  name: AddArea
+  nameWithType: LandClaim.AddArea
+  fullName: Vintagestory.API.Common.LandClaim.AddArea
+- uid: Vintagestory.API.MathTools.Cuboidi
+  commentId: T:Vintagestory.API.MathTools.Cuboidi
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Cuboidi.html
+  name: Cuboidi
+  nameWithType: Cuboidi
+  fullName: Vintagestory.API.MathTools.Cuboidi
+- uid: Vintagestory.API.Common.EnumClaimError
+  commentId: T:Vintagestory.API.Common.EnumClaimError
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumClaimError.html
+  name: EnumClaimError
+  nameWithType: EnumClaimError
+  fullName: Vintagestory.API.Common.EnumClaimError
+- uid: Vintagestory.API.Common.LandClaim.Intersects*
+  commentId: Overload:Vintagestory.API.Common.LandClaim.Intersects
+  href: Vintagestory.API.Common.LandClaim.html#Vintagestory_API_Common_LandClaim_Intersects_Vintagestory_API_MathTools_Cuboidi_
+  name: Intersects
+  nameWithType: LandClaim.Intersects
+  fullName: Vintagestory.API.Common.LandClaim.Intersects
+- uid: Vintagestory.API.Common.LandClaim.Intersects2d*
+  commentId: Overload:Vintagestory.API.Common.LandClaim.Intersects2d
+  href: Vintagestory.API.Common.LandClaim.html#Vintagestory_API_Common_LandClaim_Intersects2d_Vintagestory_API_MathTools_HorRectanglei_
+  name: Intersects2d
+  nameWithType: LandClaim.Intersects2d
+  fullName: Vintagestory.API.Common.LandClaim.Intersects2d
+- uid: Vintagestory.API.MathTools.HorRectanglei
+  commentId: T:Vintagestory.API.MathTools.HorRectanglei
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.HorRectanglei.html
+  name: HorRectanglei
+  nameWithType: HorRectanglei
+  fullName: Vintagestory.API.MathTools.HorRectanglei
+- uid: Vintagestory.API.Common.LandClaim.Clone*
+  commentId: Overload:Vintagestory.API.Common.LandClaim.Clone
+  href: Vintagestory.API.Common.LandClaim.html#Vintagestory_API_Common_LandClaim_Clone
+  name: Clone
+  nameWithType: LandClaim.Clone
+  fullName: Vintagestory.API.Common.LandClaim.Clone

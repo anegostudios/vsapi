@@ -1,0 +1,207 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EnumCommandStatus
+  commentId: T:Vintagestory.API.Common.EnumCommandStatus
+  id: EnumCommandStatus
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.EnumCommandStatus.Deferred
+  - Vintagestory.API.Common.EnumCommandStatus.Error
+  - Vintagestory.API.Common.EnumCommandStatus.NoSuchCommand
+  - Vintagestory.API.Common.EnumCommandStatus.Success
+  - Vintagestory.API.Common.EnumCommandStatus.UnknownLegacy
+  langs:
+  - csharp
+  - vb
+  name: EnumCommandStatus
+  nameWithType: EnumCommandStatus
+  fullName: Vintagestory.API.Common.EnumCommandStatus
+  type: Enum
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnumCommandStatus
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 151
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public enum EnumCommandStatus
+    content.vb: Public Enum EnumCommandStatus
+- uid: Vintagestory.API.Common.EnumCommandStatus.NoSuchCommand
+  commentId: F:Vintagestory.API.Common.EnumCommandStatus.NoSuchCommand
+  id: NoSuchCommand
+  parent: Vintagestory.API.Common.EnumCommandStatus
+  langs:
+  - csharp
+  - vb
+  name: NoSuchCommand
+  nameWithType: EnumCommandStatus.NoSuchCommand
+  fullName: Vintagestory.API.Common.EnumCommandStatus.NoSuchCommand
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NoSuchCommand
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 153
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: NoSuchCommand = 0
+    return:
+      type: Vintagestory.API.Common.EnumCommandStatus
+- uid: Vintagestory.API.Common.EnumCommandStatus.Success
+  commentId: F:Vintagestory.API.Common.EnumCommandStatus.Success
+  id: Success
+  parent: Vintagestory.API.Common.EnumCommandStatus
+  langs:
+  - csharp
+  - vb
+  name: Success
+  nameWithType: EnumCommandStatus.Success
+  fullName: Vintagestory.API.Common.EnumCommandStatus.Success
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Success
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 154
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Success = 1
+    return:
+      type: Vintagestory.API.Common.EnumCommandStatus
+- uid: Vintagestory.API.Common.EnumCommandStatus.Deferred
+  commentId: F:Vintagestory.API.Common.EnumCommandStatus.Deferred
+  id: Deferred
+  parent: Vintagestory.API.Common.EnumCommandStatus
+  langs:
+  - csharp
+  - vb
+  name: Deferred
+  nameWithType: EnumCommandStatus.Deferred
+  fullName: Vintagestory.API.Common.EnumCommandStatus.Deferred
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Deferred
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 158
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Command cannot execute at this point, likely doing an async call. Prints no output.
+  example: []
+  syntax:
+    content: Deferred = 2
+    return:
+      type: Vintagestory.API.Common.EnumCommandStatus
+- uid: Vintagestory.API.Common.EnumCommandStatus.Error
+  commentId: F:Vintagestory.API.Common.EnumCommandStatus.Error
+  id: Error
+  parent: Vintagestory.API.Common.EnumCommandStatus
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: EnumCommandStatus.Error
+  fullName: Vintagestory.API.Common.EnumCommandStatus.Error
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Error
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 162
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The command encountered an issue
+  example: []
+  syntax:
+    content: Error = 3
+    return:
+      type: Vintagestory.API.Common.EnumCommandStatus
+- uid: Vintagestory.API.Common.EnumCommandStatus.UnknownLegacy
+  commentId: F:Vintagestory.API.Common.EnumCommandStatus.UnknownLegacy
+  id: UnknownLegacy
+  parent: Vintagestory.API.Common.EnumCommandStatus
+  langs:
+  - csharp
+  - vb
+  name: UnknownLegacy
+  nameWithType: EnumCommandStatus.UnknownLegacy
+  fullName: Vintagestory.API.Common.EnumCommandStatus.UnknownLegacy
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ChatCommand/IChatCommandApi.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: UnknownLegacy
+    path: Common/API/ChatCommand/IChatCommandApi.cs
+    startLine: 166
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Command status is unknown because this is a legacy command using the old method of registering commands
+  example: []
+  syntax:
+    content: UnknownLegacy = 4
+    return:
+      type: Vintagestory.API.Common.EnumCommandStatus
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.EnumCommandStatus
+  commentId: T:Vintagestory.API.Common.EnumCommandStatus
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumCommandStatus.html
+  name: EnumCommandStatus
+  nameWithType: EnumCommandStatus
+  fullName: Vintagestory.API.Common.EnumCommandStatus

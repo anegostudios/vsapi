@@ -1,1276 +1,1123 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CmdArgs
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CmdArgs
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class CmdArgs | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CmdArgs | VintageStory API ">
+      
+      <meta name="description" content="The arguments from a client or sever command">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.CmdArgs">
-  
-  
-  <h1 id="Vintagestory_API_Common_CmdArgs" data-uid="Vintagestory.API.Common.CmdArgs" class="text-break">Class CmdArgs
-  </h1>
-  <div class="markdown level0 summary"><p>The arguments from a client or sever command</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">CmdArgs</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_CmdArgs_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CmdArgs : object</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs__ctor.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L21">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs__ctor_" data-uid="Vintagestory.API.Common.CmdArgs.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs__ctor" data-uid="Vintagestory.API.Common.CmdArgs.#ctor">CmdArgs()</h4>
-  <div class="markdown level1 summary"><p>Creates a new instance of the CmdArgs util with no arguments</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CmdArgs()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs__ctor_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L29">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs__ctor_" data-uid="Vintagestory.API.Common.CmdArgs.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs__ctor_System_String_" data-uid="Vintagestory.API.Common.CmdArgs.#ctor(System.String)">CmdArgs(String)</h4>
-  <div class="markdown level1 summary"><p>Creates a new instance of the CmdArgs util</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CmdArgs(string joinedargs)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">joinedargs</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs__ctor_System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.%23ctor(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L52">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs__ctor_" data-uid="Vintagestory.API.Common.CmdArgs.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs__ctor_System_String___" data-uid="Vintagestory.API.Common.CmdArgs.#ctor(System.String[])">CmdArgs(String[])</h4>
-  <div class="markdown level1 summary"><p>Creates a new instance of the CmdArgs util</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CmdArgs(string[] args)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_Item_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.Item(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L62">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_Item_" data-uid="Vintagestory.API.Common.CmdArgs.Item*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_Item_System_Int32_" data-uid="Vintagestory.API.Common.CmdArgs.Item(System.Int32)">Item[Int32]</h4>
-  <div class="markdown level1 summary"><p>Returns the n-th arugment</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string this[int index] { get; set; }</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">index</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_Length.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.Length%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L71">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_Length_" data-uid="Vintagestory.API.Common.CmdArgs.Length*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_Length" data-uid="Vintagestory.API.Common.CmdArgs.Length">Length</h4>
-  <div class="markdown level1 summary"><p>Amount of arguments passed</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Length { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_AppendSingle_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.AppendSingle(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L211">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_AppendSingle_" data-uid="Vintagestory.API.Common.CmdArgs.AppendSingle*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_AppendSingle_System_String_" data-uid="Vintagestory.API.Common.CmdArgs.AppendSingle(System.String)">AppendSingle(String)</h4>
-  <div class="markdown level1 summary"><p>Adds an arg to the end</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AppendSingle(string arg)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">arg</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_Clone.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.Clone%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L468">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_Clone_" data-uid="Vintagestory.API.Common.CmdArgs.Clone*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_Clone" data-uid="Vintagestory.API.Common.CmdArgs.Clone">Clone()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CmdArgs Clone()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.CmdArgs.html">CmdArgs</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PeekChar_System_Nullable_System_Char__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PeekChar(System.Nullable%7BSystem.Char%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L95">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PeekChar_" data-uid="Vintagestory.API.Common.CmdArgs.PeekChar*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PeekChar_System_Nullable_System_Char__" data-uid="Vintagestory.API.Common.CmdArgs.PeekChar(System.Nullable{System.Char})">PeekChar(Nullable&lt;Char&gt;)</h4>
-  <div class="markdown level1 summary"><p>Returns the first char of the first argument</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public char? PeekChar(char? defaultValue = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Char</span>&gt;</td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Char</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PeekWord_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PeekWord(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L135">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PeekWord_" data-uid="Vintagestory.API.Common.CmdArgs.PeekWord*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PeekWord_System_String_" data-uid="Vintagestory.API.Common.CmdArgs.PeekWord(System.String)">PeekWord(String)</h4>
-  <div class="markdown level1 summary"><p>Removes the first argument and returns it</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PeekWord(string defaultValue = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopAll.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopAll%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L82">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopAll_" data-uid="Vintagestory.API.Common.CmdArgs.PopAll*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopAll" data-uid="Vintagestory.API.Common.CmdArgs.PopAll">PopAll()</h4>
-  <div class="markdown level1 summary"><p>Returns all remaining arguments as single merged string, concatenated with spaces</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PopAll()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopBool_System_Nullable_System_Boolean__System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopBool(System.Nullable%7BSystem.Boolean%7D%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L286">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopBool_" data-uid="Vintagestory.API.Common.CmdArgs.PopBool*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopBool_System_Nullable_System_Boolean__System_String_" data-uid="Vintagestory.API.Common.CmdArgs.PopBool(System.Nullable{System.Boolean},System.String)">PopBool(Nullable&lt;Boolean&gt;, String)</h4>
-  <div class="markdown level1 summary"><p>Tries to retrieve arg at given index as boolean, or null if not enough arguments or not an integer
-<br>&apos;true&apos;, &apos;yes&apos; and &apos;1&apos; will all be interpreted as true.  Parameter trueAlias (with default value &apos;on&apos;) allows one additional word to be used to signify true.  Anything else will return false.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool? PopBool(bool? defaultValue = null, string trueAlias = &quot;on&quot;)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">trueAlias</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopChar_System_Nullable_System_Char__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopChar(System.Nullable%7BSystem.Char%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L108">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopChar_" data-uid="Vintagestory.API.Common.CmdArgs.PopChar*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopChar_System_Nullable_System_Char__" data-uid="Vintagestory.API.Common.CmdArgs.PopChar(System.Nullable{System.Char})">PopChar(Nullable&lt;Char&gt;)</h4>
-  <div class="markdown level1 summary"><p>Remove the first character from the first argument and returns it</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public char? PopChar(char? defaultValue = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Char</span>&gt;</td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Char</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopCodeBlock_System_Char_System_Char_System_String__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopCodeBlock(System.Char%2CSystem.Char%2CSystem.String%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L158">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopCodeBlock_" data-uid="Vintagestory.API.Common.CmdArgs.PopCodeBlock*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopCodeBlock_System_Char_System_Char_System_String__" data-uid="Vintagestory.API.Common.CmdArgs.PopCodeBlock(System.Char,System.Char,System.String@)">PopCodeBlock(Char, Char, out String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PopCodeBlock(char blockOpenChar, char blockCloseChar, out string parseErrorMsg)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Char</span></td>
-        <td><span class="parametername">blockOpenChar</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Char</span></td>
-        <td><span class="parametername">blockCloseChar</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">parseErrorMsg</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopDouble_System_Nullable_System_Double__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopDouble(System.Nullable%7BSystem.Double%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L300">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopDouble_" data-uid="Vintagestory.API.Common.CmdArgs.PopDouble*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopDouble_System_Nullable_System_Double__" data-uid="Vintagestory.API.Common.CmdArgs.PopDouble(System.Nullable{System.Double})">PopDouble(Nullable&lt;Double&gt;)</h4>
-  <div class="markdown level1 summary"><p>Tries to retrieve arg at given index as int, or null if not enough arguments or not an integer</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double? PopDouble(double? defaultValue = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Double</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopEnum__1___0_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopEnum%60%601(%60%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L222">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopEnum_" data-uid="Vintagestory.API.Common.CmdArgs.PopEnum*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopEnum__1___0_" data-uid="Vintagestory.API.Common.CmdArgs.PopEnum``1(``0)">PopEnum&lt;T&gt;(T)</h4>
-  <div class="markdown level1 summary"><p>Tries to retrieve arg at given index as enum value or default if not enough arguments or not part of the enum</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public T PopEnum&lt;T&gt;(T defaultValue = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopFlexiblePos_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopFlexiblePos(Vintagestory.API.MathTools.Vec3d%2CVintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L360">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopFlexiblePos_" data-uid="Vintagestory.API.Common.CmdArgs.PopFlexiblePos*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopFlexiblePos_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.CmdArgs.PopFlexiblePos(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)">PopFlexiblePos(Vec3d, Vec3d)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a player position with following syntax:
-[coord] [coord] [coord]
-whereas 
-[coord] may be ~[decimal]  or =[decimal] or [decimal]
-~ denotes a position relative to the player
-= denotes an absolute position
-no prefix denots a position relative to the map middle</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3d PopFlexiblePos(Vec3d playerPos, Vec3d mapMiddle)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">playerPos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">mapMiddle</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopFlexiblePos2D_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopFlexiblePos2D(Vintagestory.API.MathTools.Vec3d%2CVintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L419">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopFlexiblePos2D_" data-uid="Vintagestory.API.Common.CmdArgs.PopFlexiblePos2D*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopFlexiblePos2D_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.CmdArgs.PopFlexiblePos2D(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)">PopFlexiblePos2D(Vec3d, Vec3d)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a player position with following syntax:
-[coord] [coord] [coord]
-whereas 
-[coord] may be ~[decimal]  or =[decimal] or [decimal]
-~ denotes a position relative to the player
-= denotes an absolute position
-no prefix denots a position relative to the map middle</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec2i PopFlexiblePos2D(Vec3d playerPos, Vec3d mapMiddle)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">playerPos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">mapMiddle</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopFloat_System_Nullable_System_Single__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopFloat(System.Nullable%7BSystem.Single%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L313">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopFloat_" data-uid="Vintagestory.API.Common.CmdArgs.PopFloat*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopFloat_System_Nullable_System_Single__" data-uid="Vintagestory.API.Common.CmdArgs.PopFloat(System.Nullable{System.Single})">PopFloat(Nullable&lt;Single&gt;)</h4>
-  <div class="markdown level1 summary"><p>Tries to retrieve arg at given index as float, or null if not enough arguments or not a float</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float? PopFloat(float? defaultValue = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopInt_System_Nullable_System_Int32__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopInt(System.Nullable%7BSystem.Int32%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L244">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopInt_" data-uid="Vintagestory.API.Common.CmdArgs.PopInt*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopInt_System_Nullable_System_Int32__" data-uid="Vintagestory.API.Common.CmdArgs.PopInt(System.Nullable{System.Int32})">PopInt(Nullable&lt;Int32&gt;)</h4>
-  <div class="markdown level1 summary"><p>Tries to retrieve arg at given index as int, or null if not enough arguments or not an integer</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int? PopInt(int? defaultValue = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopLong_System_Nullable_System_Int64__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopLong(System.Nullable%7BSystem.Int64%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L263">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopLong_" data-uid="Vintagestory.API.Common.CmdArgs.PopLong*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopLong_System_Nullable_System_Int64__" data-uid="Vintagestory.API.Common.CmdArgs.PopLong(System.Nullable{System.Int64})">PopLong(Nullable&lt;Int64&gt;)</h4>
-  <div class="markdown level1 summary"><p>Tries to retrieve arg at given index as long, or null if not enough arguments or not a long</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public long? PopLong(long? defaultValue = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int64</span>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopUntil_System_Char_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopUntil(System.Char)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L144">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopUntil_" data-uid="Vintagestory.API.Common.CmdArgs.PopUntil*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopUntil_System_Char_" data-uid="Vintagestory.API.Common.CmdArgs.PopUntil(System.Char)">PopUntil(Char)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PopUntil(char endChar)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Char</span></td>
-        <td><span class="parametername">endChar</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopVec3d_Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopVec3d(Vintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L337">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopVec3d_" data-uid="Vintagestory.API.Common.CmdArgs.PopVec3d*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopVec3d_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.CmdArgs.PopVec3d(Vintagestory.API.MathTools.Vec3d)">PopVec3d(Vec3d)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3d PopVec3d(Vec3d defaultValue = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopVec3i_Vintagestory_API_MathTools_Vec3i_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopVec3i(Vintagestory.API.MathTools.Vec3i)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L326">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopVec3i_" data-uid="Vintagestory.API.Common.CmdArgs.PopVec3i*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopVec3i_Vintagestory_API_MathTools_Vec3i_" data-uid="Vintagestory.API.Common.CmdArgs.PopVec3i(Vintagestory.API.MathTools.Vec3i)">PopVec3i(Vec3i)</h4>
-  <div class="markdown level1 summary"><p>Tries to retrieve 3 int coordinates from the next 3 arguments</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3i PopVec3i(Vec3i defaultValue = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PopWord_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PopWord(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L121">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PopWord_" data-uid="Vintagestory.API.Common.CmdArgs.PopWord*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PopWord_System_String_" data-uid="Vintagestory.API.Common.CmdArgs.PopWord(System.String)">PopWord(String)</h4>
-  <div class="markdown level1 summary"><p>Removes the first argument and returns it, scans until it encounters a white space</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PopWord(string defaultValue = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_Push_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.Push(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L35">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_Push_" data-uid="Vintagestory.API.Common.CmdArgs.Push*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_Push_System_String_" data-uid="Vintagestory.API.Common.CmdArgs.Push(System.String)">Push(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Push(string joinedargs)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">joinedargs</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs_PushSingle_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs.PushSingle(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L202">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CmdArgs_PushSingle_" data-uid="Vintagestory.API.Common.CmdArgs.PushSingle*"></a>
-  <h4 id="Vintagestory_API_Common_CmdArgs_PushSingle_System_String_" data-uid="Vintagestory.API.Common.CmdArgs.PushSingle(System.String)">PushSingle(String)</h4>
-  <div class="markdown level1 summary"><p>Adds an arg to the beginning</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void PushSingle(string arg)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">arg</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CmdArgs.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CmdArgs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CmdArgs.cs/#L14" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="Vintagestory.API.Common.CmdArgs">
+
+
+
+  <h1 id="Vintagestory_API_Common_CmdArgs" data-uid="Vintagestory.API.Common.CmdArgs" class="text-break">
+Class CmdArgs  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The arguments from a client or sever command</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CmdArgs</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">CmdArgs</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_Common_CmdArgs__ctor_" data-uid="Vintagestory.API.Common.CmdArgs.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs__ctor" data-uid="Vintagestory.API.Common.CmdArgs.#ctor">
+  CmdArgs()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new instance of the CmdArgs util with no arguments</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CmdArgs()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs__ctor_" data-uid="Vintagestory.API.Common.CmdArgs.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs__ctor_System_String_" data-uid="Vintagestory.API.Common.CmdArgs.#ctor(System.String)">
+  CmdArgs(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new instance of the CmdArgs util</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CmdArgs(string joinedargs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>joinedargs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs__ctor_" data-uid="Vintagestory.API.Common.CmdArgs.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs__ctor_System_String___" data-uid="Vintagestory.API.Common.CmdArgs.#ctor(System.String[])">
+  CmdArgs(string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new instance of the CmdArgs util</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CmdArgs(string[] args)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_Item_" data-uid="Vintagestory.API.Common.CmdArgs.Item*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_Item_System_Int32_" data-uid="Vintagestory.API.Common.CmdArgs.Item(System.Int32)">
+  this[int]
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the n-th arugment</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string this[int index] { get; set; }</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_Length_" data-uid="Vintagestory.API.Common.CmdArgs.Length*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_Length" data-uid="Vintagestory.API.Common.CmdArgs.Length">
+  Length
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Amount of arguments passed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Length { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_AppendSingle_" data-uid="Vintagestory.API.Common.CmdArgs.AppendSingle*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_AppendSingle_System_String_" data-uid="Vintagestory.API.Common.CmdArgs.AppendSingle(System.String)">
+  AppendSingle(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds an arg to the end</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AppendSingle(string arg)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>arg</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_Clone_" data-uid="Vintagestory.API.Common.CmdArgs.Clone*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_Clone" data-uid="Vintagestory.API.Common.CmdArgs.Clone">
+  Clone()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CmdArgs Clone()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CmdArgs.html">CmdArgs</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PeekChar_" data-uid="Vintagestory.API.Common.CmdArgs.PeekChar*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PeekChar_System_Nullable_System_Char__" data-uid="Vintagestory.API.Common.CmdArgs.PeekChar(System.Nullable{System.Char})">
+  PeekChar(char?)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the first char of the first argument</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public char? PeekChar(char? defaultValue = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>?</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PeekWord_" data-uid="Vintagestory.API.Common.CmdArgs.PeekWord*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PeekWord_System_String_" data-uid="Vintagestory.API.Common.CmdArgs.PeekWord(System.String)">
+  PeekWord(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes the first argument and returns it</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PeekWord(string defaultValue = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopAll_" data-uid="Vintagestory.API.Common.CmdArgs.PopAll*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopAll" data-uid="Vintagestory.API.Common.CmdArgs.PopAll">
+  PopAll()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns all remaining arguments as single merged string, concatenated with spaces</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PopAll()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopBool_" data-uid="Vintagestory.API.Common.CmdArgs.PopBool*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopBool_System_Nullable_System_Boolean__System_String_" data-uid="Vintagestory.API.Common.CmdArgs.PopBool(System.Nullable{System.Boolean},System.String)">
+  PopBool(bool?, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tries to retrieve arg at given index as boolean, or null if not enough arguments or not an integer
+<br>'true', 'yes' and '1' will all be interpreted as true.  Parameter trueAlias (with default value 'on') allows one additional word to be used to signify true.  Anything else will return false.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? PopBool(bool? defaultValue = null, string trueAlias = &quot;on&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+    <dt><code>trueAlias</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopChar_" data-uid="Vintagestory.API.Common.CmdArgs.PopChar*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopChar_System_Nullable_System_Char__" data-uid="Vintagestory.API.Common.CmdArgs.PopChar(System.Nullable{System.Char})">
+  PopChar(char?)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Remove the first character from the first argument and returns it</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public char? PopChar(char? defaultValue = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>?</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopCodeBlock_" data-uid="Vintagestory.API.Common.CmdArgs.PopCodeBlock*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopCodeBlock_System_Char_System_Char_System_String__" data-uid="Vintagestory.API.Common.CmdArgs.PopCodeBlock(System.Char,System.Char,System.String@)">
+  PopCodeBlock(char, char, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PopCodeBlock(char blockOpenChar, char blockCloseChar, out string parseErrorMsg)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockOpenChar</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+    <dt><code>blockCloseChar</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+    <dt><code>parseErrorMsg</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopDouble_" data-uid="Vintagestory.API.Common.CmdArgs.PopDouble*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopDouble_System_Nullable_System_Double__" data-uid="Vintagestory.API.Common.CmdArgs.PopDouble(System.Nullable{System.Double})">
+  PopDouble(double?)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tries to retrieve arg at given index as int, or null if not enough arguments or not an integer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double? PopDouble(double? defaultValue = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopEnum_" data-uid="Vintagestory.API.Common.CmdArgs.PopEnum*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopEnum__1___0_" data-uid="Vintagestory.API.Common.CmdArgs.PopEnum``1(``0)">
+  PopEnum&lt;T&gt;(T)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tries to retrieve arg at given index as enum value or default if not enough arguments or not part of the enum</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T PopEnum&lt;T&gt;(T defaultValue = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopFlexiblePos_" data-uid="Vintagestory.API.Common.CmdArgs.PopFlexiblePos*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopFlexiblePos_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.CmdArgs.PopFlexiblePos(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)">
+  PopFlexiblePos(Vec3d, Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a player position with following syntax:
+[coord] [coord] [coord]
+whereas
+[coord] may be ~[decimal]  or =[decimal] or [decimal]
+~ denotes a position relative to the player
+= denotes an absolute position
+no prefix denots a position relative to the map middle</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d PopFlexiblePos(Vec3d playerPos, Vec3d mapMiddle)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerPos</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+    <dt><code>mapMiddle</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopFlexiblePos2D_" data-uid="Vintagestory.API.Common.CmdArgs.PopFlexiblePos2D*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopFlexiblePos2D_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.CmdArgs.PopFlexiblePos2D(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)">
+  PopFlexiblePos2D(Vec3d, Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a player position with following syntax:
+[coord] [coord] [coord]
+whereas
+[coord] may be ~[decimal]  or =[decimal] or [decimal]
+~ denotes a position relative to the player
+= denotes an absolute position
+no prefix denots a position relative to the map middle</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec2i PopFlexiblePos2D(Vec3d playerPos, Vec3d mapMiddle)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>playerPos</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+    <dt><code>mapMiddle</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec2i.html">Vec2i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopFloat_" data-uid="Vintagestory.API.Common.CmdArgs.PopFloat*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopFloat_System_Nullable_System_Single__" data-uid="Vintagestory.API.Common.CmdArgs.PopFloat(System.Nullable{System.Single})">
+  PopFloat(float?)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tries to retrieve arg at given index as float, or null if not enough arguments or not a float</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? PopFloat(float? defaultValue = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopInt_" data-uid="Vintagestory.API.Common.CmdArgs.PopInt*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopInt_System_Nullable_System_Int32__" data-uid="Vintagestory.API.Common.CmdArgs.PopInt(System.Nullable{System.Int32})">
+  PopInt(int?)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tries to retrieve arg at given index as int, or null if not enough arguments or not an integer</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int? PopInt(int? defaultValue = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopLong_" data-uid="Vintagestory.API.Common.CmdArgs.PopLong*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopLong_System_Nullable_System_Int64__" data-uid="Vintagestory.API.Common.CmdArgs.PopLong(System.Nullable{System.Int64})">
+  PopLong(long?)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tries to retrieve arg at given index as long, or null if not enough arguments or not a long</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long? PopLong(long? defaultValue = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopUntil_" data-uid="Vintagestory.API.Common.CmdArgs.PopUntil*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopUntil_System_Char_" data-uid="Vintagestory.API.Common.CmdArgs.PopUntil(System.Char)">
+  PopUntil(char)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PopUntil(char endChar)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>endChar</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopVec3d_" data-uid="Vintagestory.API.Common.CmdArgs.PopVec3d*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopVec3d_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.CmdArgs.PopVec3d(Vintagestory.API.MathTools.Vec3d)">
+  PopVec3d(Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d PopVec3d(Vec3d defaultValue = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopVec3i_" data-uid="Vintagestory.API.Common.CmdArgs.PopVec3i*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopVec3i_Vintagestory_API_MathTools_Vec3i_" data-uid="Vintagestory.API.Common.CmdArgs.PopVec3i(Vintagestory.API.MathTools.Vec3i)">
+  PopVec3i(Vec3i)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Tries to retrieve 3 int coordinates from the next 3 arguments</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3i PopVec3i(Vec3i defaultValue = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PopWord_" data-uid="Vintagestory.API.Common.CmdArgs.PopWord*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PopWord_System_String_" data-uid="Vintagestory.API.Common.CmdArgs.PopWord(System.String)">
+  PopWord(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes the first argument and returns it, scans until it encounters a white space</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string PopWord(string defaultValue = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_Push_" data-uid="Vintagestory.API.Common.CmdArgs.Push*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_Push_System_String_" data-uid="Vintagestory.API.Common.CmdArgs.Push(System.String)">
+  Push(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Push(string joinedargs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>joinedargs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CmdArgs_PushSingle_" data-uid="Vintagestory.API.Common.CmdArgs.PushSingle*"></a>
+
+  <h3 id="Vintagestory_API_Common_CmdArgs_PushSingle_System_String_" data-uid="Vintagestory.API.Common.CmdArgs.PushSingle(System.String)">
+  PushSingle(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds an arg to the beginning</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PushSingle(string arg)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>arg</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

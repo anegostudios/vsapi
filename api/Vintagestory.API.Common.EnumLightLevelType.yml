@@ -1,0 +1,213 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EnumLightLevelType
+  commentId: T:Vintagestory.API.Common.EnumLightLevelType
+  id: EnumLightLevelType
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.EnumLightLevelType.MaxLight
+  - Vintagestory.API.Common.EnumLightLevelType.MaxTimeOfDayLight
+  - Vintagestory.API.Common.EnumLightLevelType.OnlyBlockLight
+  - Vintagestory.API.Common.EnumLightLevelType.OnlySunLight
+  - Vintagestory.API.Common.EnumLightLevelType.TimeOfDaySunLight
+  langs:
+  - csharp
+  - vb
+  name: EnumLightLevelType
+  nameWithType: EnumLightLevelType
+  fullName: Vintagestory.API.Common.EnumLightLevelType
+  type: Enum
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnumLightLevelType
+    path: Common/API/IBlockAccessor.cs
+    startLine: 118
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Used in blockAccessor.GetLightLevel() to determine what kind of light level you want
+  example: []
+  syntax:
+    content: public enum EnumLightLevelType
+    content.vb: Public Enum EnumLightLevelType
+- uid: Vintagestory.API.Common.EnumLightLevelType.OnlyBlockLight
+  commentId: F:Vintagestory.API.Common.EnumLightLevelType.OnlyBlockLight
+  id: OnlyBlockLight
+  parent: Vintagestory.API.Common.EnumLightLevelType
+  langs:
+  - csharp
+  - vb
+  name: OnlyBlockLight
+  nameWithType: EnumLightLevelType.OnlyBlockLight
+  fullName: Vintagestory.API.Common.EnumLightLevelType.OnlyBlockLight
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnlyBlockLight
+    path: Common/API/IBlockAccessor.cs
+    startLine: 123
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Will get you just the block light
+  example: []
+  syntax:
+    content: OnlyBlockLight = 0
+    return:
+      type: Vintagestory.API.Common.EnumLightLevelType
+- uid: Vintagestory.API.Common.EnumLightLevelType.OnlySunLight
+  commentId: F:Vintagestory.API.Common.EnumLightLevelType.OnlySunLight
+  id: OnlySunLight
+  parent: Vintagestory.API.Common.EnumLightLevelType
+  langs:
+  - csharp
+  - vb
+  name: OnlySunLight
+  nameWithType: EnumLightLevelType.OnlySunLight
+  fullName: Vintagestory.API.Common.EnumLightLevelType.OnlySunLight
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnlySunLight
+    path: Common/API/IBlockAccessor.cs
+    startLine: 127
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Will get you just the sun light unaffected by the day/night cycle
+  example: []
+  syntax:
+    content: OnlySunLight = 1
+    return:
+      type: Vintagestory.API.Common.EnumLightLevelType
+- uid: Vintagestory.API.Common.EnumLightLevelType.MaxLight
+  commentId: F:Vintagestory.API.Common.EnumLightLevelType.MaxLight
+  id: MaxLight
+  parent: Vintagestory.API.Common.EnumLightLevelType
+  langs:
+  - csharp
+  - vb
+  name: MaxLight
+  nameWithType: EnumLightLevelType.MaxLight
+  fullName: Vintagestory.API.Common.EnumLightLevelType.MaxLight
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MaxLight
+    path: Common/API/IBlockAccessor.cs
+    startLine: 131
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Will get you max(onlysunlight, onlyblocklight)
+  example: []
+  syntax:
+    content: MaxLight = 2
+    return:
+      type: Vintagestory.API.Common.EnumLightLevelType
+- uid: Vintagestory.API.Common.EnumLightLevelType.MaxTimeOfDayLight
+  commentId: F:Vintagestory.API.Common.EnumLightLevelType.MaxTimeOfDayLight
+  id: MaxTimeOfDayLight
+  parent: Vintagestory.API.Common.EnumLightLevelType
+  langs:
+  - csharp
+  - vb
+  name: MaxTimeOfDayLight
+  nameWithType: EnumLightLevelType.MaxTimeOfDayLight
+  fullName: Vintagestory.API.Common.EnumLightLevelType.MaxTimeOfDayLight
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MaxTimeOfDayLight
+    path: Common/API/IBlockAccessor.cs
+    startLine: 135
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Will get you max(sunlight * sunbrightness, blocklight)
+  example: []
+  syntax:
+    content: MaxTimeOfDayLight = 3
+    return:
+      type: Vintagestory.API.Common.EnumLightLevelType
+- uid: Vintagestory.API.Common.EnumLightLevelType.TimeOfDaySunLight
+  commentId: F:Vintagestory.API.Common.EnumLightLevelType.TimeOfDaySunLight
+  id: TimeOfDaySunLight
+  parent: Vintagestory.API.Common.EnumLightLevelType
+  langs:
+  - csharp
+  - vb
+  name: TimeOfDaySunLight
+  nameWithType: EnumLightLevelType.TimeOfDaySunLight
+  fullName: Vintagestory.API.Common.EnumLightLevelType.TimeOfDaySunLight
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IBlockAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TimeOfDaySunLight
+    path: Common/API/IBlockAccessor.cs
+    startLine: 139
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Will get you sunlight * sunbrightness
+  example: []
+  syntax:
+    content: TimeOfDaySunLight = 4
+    return:
+      type: Vintagestory.API.Common.EnumLightLevelType
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.EnumLightLevelType
+  commentId: T:Vintagestory.API.Common.EnumLightLevelType
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumLightLevelType.html
+  name: EnumLightLevelType
+  nameWithType: EnumLightLevelType
+  fullName: Vintagestory.API.Common.EnumLightLevelType

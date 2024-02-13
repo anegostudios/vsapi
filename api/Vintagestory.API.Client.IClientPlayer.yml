@@ -1,0 +1,559 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.IClientPlayer
+  commentId: T:Vintagestory.API.Client.IClientPlayer
+  id: IClientPlayer
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.IClientPlayer.CameraMode
+  - Vintagestory.API.Client.IClientPlayer.CameraPitch
+  - Vintagestory.API.Client.IClientPlayer.CameraRoll
+  - Vintagestory.API.Client.IClientPlayer.CameraYaw
+  - Vintagestory.API.Client.IClientPlayer.ShowChatNotification(System.String)
+  - Vintagestory.API.Client.IClientPlayer.TriggerFpAnimation(Vintagestory.API.Common.EnumHandInteract)
+  langs:
+  - csharp
+  - vb
+  name: IClientPlayer
+  nameWithType: IClientPlayer
+  fullName: Vintagestory.API.Client.IClientPlayer
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IClientPlayer
+    path: Client/API/IClientPlayer.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: A client side player
+  example: []
+  syntax:
+    content: 'public interface IClientPlayer : IPlayer'
+    content.vb: Public Interface IClientPlayer Inherits IPlayer
+  inheritedMembers:
+  - Vintagestory.API.Common.IPlayer.Role
+  - Vintagestory.API.Common.IPlayer.Groups
+  - Vintagestory.API.Common.IPlayer.GetGroups
+  - Vintagestory.API.Common.IPlayer.GetGroup(System.Int32)
+  - Vintagestory.API.Common.IPlayer.Entitlements
+  - Vintagestory.API.Common.IPlayer.CurrentBlockSelection
+  - Vintagestory.API.Common.IPlayer.CurrentEntitySelection
+  - Vintagestory.API.Common.IPlayer.PlayerName
+  - Vintagestory.API.Common.IPlayer.PlayerUID
+  - Vintagestory.API.Common.IPlayer.ClientId
+  - Vintagestory.API.Common.IPlayer.Entity
+  - Vintagestory.API.Common.IPlayer.WorldData
+  - Vintagestory.API.Common.IPlayer.InventoryManager
+  - Vintagestory.API.Common.IPlayer.Privileges
+  - Vintagestory.API.Common.IPlayer.ImmersiveFpMode
+  - Vintagestory.API.Common.IPlayer.HasPrivilege(System.String)
+- uid: Vintagestory.API.Client.IClientPlayer.CameraPitch
+  commentId: P:Vintagestory.API.Client.IClientPlayer.CameraPitch
+  id: CameraPitch
+  parent: Vintagestory.API.Client.IClientPlayer
+  langs:
+  - csharp
+  - vb
+  name: CameraPitch
+  nameWithType: IClientPlayer.CameraPitch
+  fullName: Vintagestory.API.Client.IClientPlayer.CameraPitch
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CameraPitch
+    path: Client/API/IClientPlayer.cs
+    startLine: 13
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The cameras current pitch
+  example: []
+  syntax:
+    content: float CameraPitch { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property CameraPitch As Single
+  overload: Vintagestory.API.Client.IClientPlayer.CameraPitch*
+- uid: Vintagestory.API.Client.IClientPlayer.CameraRoll
+  commentId: P:Vintagestory.API.Client.IClientPlayer.CameraRoll
+  id: CameraRoll
+  parent: Vintagestory.API.Client.IClientPlayer
+  langs:
+  - csharp
+  - vb
+  name: CameraRoll
+  nameWithType: IClientPlayer.CameraRoll
+  fullName: Vintagestory.API.Client.IClientPlayer.CameraRoll
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CameraRoll
+    path: Client/API/IClientPlayer.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: float CameraRoll { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property CameraRoll As Single
+  overload: Vintagestory.API.Client.IClientPlayer.CameraRoll*
+- uid: Vintagestory.API.Client.IClientPlayer.CameraYaw
+  commentId: P:Vintagestory.API.Client.IClientPlayer.CameraYaw
+  id: CameraYaw
+  parent: Vintagestory.API.Client.IClientPlayer
+  langs:
+  - csharp
+  - vb
+  name: CameraYaw
+  nameWithType: IClientPlayer.CameraYaw
+  fullName: Vintagestory.API.Client.IClientPlayer.CameraYaw
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CameraYaw
+    path: Client/API/IClientPlayer.cs
+    startLine: 17
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: float CameraYaw { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property CameraYaw As Single
+  overload: Vintagestory.API.Client.IClientPlayer.CameraYaw*
+- uid: Vintagestory.API.Client.IClientPlayer.CameraMode
+  commentId: P:Vintagestory.API.Client.IClientPlayer.CameraMode
+  id: CameraMode
+  parent: Vintagestory.API.Client.IClientPlayer
+  langs:
+  - csharp
+  - vb
+  name: CameraMode
+  nameWithType: IClientPlayer.CameraMode
+  fullName: Vintagestory.API.Client.IClientPlayer.CameraMode
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CameraMode
+    path: Client/API/IClientPlayer.cs
+    startLine: 24
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The players current camera mode
+  example: []
+  syntax:
+    content: EnumCameraMode CameraMode { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.EnumCameraMode
+    content.vb: ReadOnly Property CameraMode As EnumCameraMode
+  overload: Vintagestory.API.Client.IClientPlayer.CameraMode*
+- uid: Vintagestory.API.Client.IClientPlayer.ShowChatNotification(System.String)
+  commentId: M:Vintagestory.API.Client.IClientPlayer.ShowChatNotification(System.String)
+  id: ShowChatNotification(System.String)
+  parent: Vintagestory.API.Client.IClientPlayer
+  langs:
+  - csharp
+  - vb
+  name: ShowChatNotification(string)
+  nameWithType: IClientPlayer.ShowChatNotification(string)
+  fullName: Vintagestory.API.Client.IClientPlayer.ShowChatNotification(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ShowChatNotification
+    path: Client/API/IClientPlayer.cs
+    startLine: 30
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Writes given message to the players current chat group but doesn't send it to the server
+  example: []
+  syntax:
+    content: void ShowChatNotification(string message)
+    parameters:
+    - id: message
+      type: System.String
+      description: ''
+    content.vb: Sub ShowChatNotification(message As String)
+  overload: Vintagestory.API.Client.IClientPlayer.ShowChatNotification*
+  nameWithType.vb: IClientPlayer.ShowChatNotification(String)
+  fullName.vb: Vintagestory.API.Client.IClientPlayer.ShowChatNotification(String)
+  name.vb: ShowChatNotification(String)
+- uid: Vintagestory.API.Client.IClientPlayer.TriggerFpAnimation(Vintagestory.API.Common.EnumHandInteract)
+  commentId: M:Vintagestory.API.Client.IClientPlayer.TriggerFpAnimation(Vintagestory.API.Common.EnumHandInteract)
+  id: TriggerFpAnimation(Vintagestory.API.Common.EnumHandInteract)
+  parent: Vintagestory.API.Client.IClientPlayer
+  langs:
+  - csharp
+  - vb
+  name: TriggerFpAnimation(EnumHandInteract)
+  nameWithType: IClientPlayer.TriggerFpAnimation(EnumHandInteract)
+  fullName: Vintagestory.API.Client.IClientPlayer.TriggerFpAnimation(Vintagestory.API.Common.EnumHandInteract)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientPlayer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TriggerFpAnimation
+    path: Client/API/IClientPlayer.cs
+    startLine: 36
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Tells the engine to run a first person animtion
+  example: []
+  syntax:
+    content: void TriggerFpAnimation(EnumHandInteract anim)
+    parameters:
+    - id: anim
+      type: Vintagestory.API.Common.EnumHandInteract
+      description: ''
+    content.vb: Sub TriggerFpAnimation(anim As EnumHandInteract)
+  overload: Vintagestory.API.Client.IClientPlayer.TriggerFpAnimation*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Common.IPlayer.Role
+  commentId: P:Vintagestory.API.Common.IPlayer.Role
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_Role
+  name: Role
+  nameWithType: IPlayer.Role
+  fullName: Vintagestory.API.Common.IPlayer.Role
+- uid: Vintagestory.API.Common.IPlayer.Groups
+  commentId: P:Vintagestory.API.Common.IPlayer.Groups
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_Groups
+  name: Groups
+  nameWithType: IPlayer.Groups
+  fullName: Vintagestory.API.Common.IPlayer.Groups
+- uid: Vintagestory.API.Common.IPlayer.GetGroups
+  commentId: M:Vintagestory.API.Common.IPlayer.GetGroups
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_GetGroups
+  name: GetGroups()
+  nameWithType: IPlayer.GetGroups()
+  fullName: Vintagestory.API.Common.IPlayer.GetGroups()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IPlayer.GetGroups
+    name: GetGroups
+    href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_GetGroups
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IPlayer.GetGroups
+    name: GetGroups
+    href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_GetGroups
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IPlayer.GetGroup(System.Int32)
+  commentId: M:Vintagestory.API.Common.IPlayer.GetGroup(System.Int32)
+  parent: Vintagestory.API.Common.IPlayer
+  isExternal: true
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_GetGroup_System_Int32_
+  name: GetGroup(int)
+  nameWithType: IPlayer.GetGroup(int)
+  fullName: Vintagestory.API.Common.IPlayer.GetGroup(int)
+  nameWithType.vb: IPlayer.GetGroup(Integer)
+  fullName.vb: Vintagestory.API.Common.IPlayer.GetGroup(Integer)
+  name.vb: GetGroup(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IPlayer.GetGroup(System.Int32)
+    name: GetGroup
+    href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_GetGroup_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IPlayer.GetGroup(System.Int32)
+    name: GetGroup
+    href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_GetGroup_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IPlayer.Entitlements
+  commentId: P:Vintagestory.API.Common.IPlayer.Entitlements
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_Entitlements
+  name: Entitlements
+  nameWithType: IPlayer.Entitlements
+  fullName: Vintagestory.API.Common.IPlayer.Entitlements
+- uid: Vintagestory.API.Common.IPlayer.CurrentBlockSelection
+  commentId: P:Vintagestory.API.Common.IPlayer.CurrentBlockSelection
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_CurrentBlockSelection
+  name: CurrentBlockSelection
+  nameWithType: IPlayer.CurrentBlockSelection
+  fullName: Vintagestory.API.Common.IPlayer.CurrentBlockSelection
+- uid: Vintagestory.API.Common.IPlayer.CurrentEntitySelection
+  commentId: P:Vintagestory.API.Common.IPlayer.CurrentEntitySelection
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_CurrentEntitySelection
+  name: CurrentEntitySelection
+  nameWithType: IPlayer.CurrentEntitySelection
+  fullName: Vintagestory.API.Common.IPlayer.CurrentEntitySelection
+- uid: Vintagestory.API.Common.IPlayer.PlayerName
+  commentId: P:Vintagestory.API.Common.IPlayer.PlayerName
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_PlayerName
+  name: PlayerName
+  nameWithType: IPlayer.PlayerName
+  fullName: Vintagestory.API.Common.IPlayer.PlayerName
+- uid: Vintagestory.API.Common.IPlayer.PlayerUID
+  commentId: P:Vintagestory.API.Common.IPlayer.PlayerUID
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_PlayerUID
+  name: PlayerUID
+  nameWithType: IPlayer.PlayerUID
+  fullName: Vintagestory.API.Common.IPlayer.PlayerUID
+- uid: Vintagestory.API.Common.IPlayer.ClientId
+  commentId: P:Vintagestory.API.Common.IPlayer.ClientId
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_ClientId
+  name: ClientId
+  nameWithType: IPlayer.ClientId
+  fullName: Vintagestory.API.Common.IPlayer.ClientId
+- uid: Vintagestory.API.Common.IPlayer.Entity
+  commentId: P:Vintagestory.API.Common.IPlayer.Entity
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_Entity
+  name: Entity
+  nameWithType: IPlayer.Entity
+  fullName: Vintagestory.API.Common.IPlayer.Entity
+- uid: Vintagestory.API.Common.IPlayer.WorldData
+  commentId: P:Vintagestory.API.Common.IPlayer.WorldData
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_WorldData
+  name: WorldData
+  nameWithType: IPlayer.WorldData
+  fullName: Vintagestory.API.Common.IPlayer.WorldData
+- uid: Vintagestory.API.Common.IPlayer.InventoryManager
+  commentId: P:Vintagestory.API.Common.IPlayer.InventoryManager
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_InventoryManager
+  name: InventoryManager
+  nameWithType: IPlayer.InventoryManager
+  fullName: Vintagestory.API.Common.IPlayer.InventoryManager
+- uid: Vintagestory.API.Common.IPlayer.Privileges
+  commentId: P:Vintagestory.API.Common.IPlayer.Privileges
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_Privileges
+  name: Privileges
+  nameWithType: IPlayer.Privileges
+  fullName: Vintagestory.API.Common.IPlayer.Privileges
+- uid: Vintagestory.API.Common.IPlayer.ImmersiveFpMode
+  commentId: P:Vintagestory.API.Common.IPlayer.ImmersiveFpMode
+  parent: Vintagestory.API.Common.IPlayer
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_ImmersiveFpMode
+  name: ImmersiveFpMode
+  nameWithType: IPlayer.ImmersiveFpMode
+  fullName: Vintagestory.API.Common.IPlayer.ImmersiveFpMode
+- uid: Vintagestory.API.Common.IPlayer.HasPrivilege(System.String)
+  commentId: M:Vintagestory.API.Common.IPlayer.HasPrivilege(System.String)
+  parent: Vintagestory.API.Common.IPlayer
+  isExternal: true
+  href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_HasPrivilege_System_String_
+  name: HasPrivilege(string)
+  nameWithType: IPlayer.HasPrivilege(string)
+  fullName: Vintagestory.API.Common.IPlayer.HasPrivilege(string)
+  nameWithType.vb: IPlayer.HasPrivilege(String)
+  fullName.vb: Vintagestory.API.Common.IPlayer.HasPrivilege(String)
+  name.vb: HasPrivilege(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IPlayer.HasPrivilege(System.String)
+    name: HasPrivilege
+    href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_HasPrivilege_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IPlayer.HasPrivilege(System.String)
+    name: HasPrivilege
+    href: Vintagestory.API.Common.IPlayer.html#Vintagestory_API_Common_IPlayer_HasPrivilege_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Client.IClientPlayer.CameraPitch*
+  commentId: Overload:Vintagestory.API.Client.IClientPlayer.CameraPitch
+  href: Vintagestory.API.Client.IClientPlayer.html#Vintagestory_API_Client_IClientPlayer_CameraPitch
+  name: CameraPitch
+  nameWithType: IClientPlayer.CameraPitch
+  fullName: Vintagestory.API.Client.IClientPlayer.CameraPitch
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.IClientPlayer.CameraRoll*
+  commentId: Overload:Vintagestory.API.Client.IClientPlayer.CameraRoll
+  href: Vintagestory.API.Client.IClientPlayer.html#Vintagestory_API_Client_IClientPlayer_CameraRoll
+  name: CameraRoll
+  nameWithType: IClientPlayer.CameraRoll
+  fullName: Vintagestory.API.Client.IClientPlayer.CameraRoll
+- uid: Vintagestory.API.Client.IClientPlayer.CameraYaw*
+  commentId: Overload:Vintagestory.API.Client.IClientPlayer.CameraYaw
+  href: Vintagestory.API.Client.IClientPlayer.html#Vintagestory_API_Client_IClientPlayer_CameraYaw
+  name: CameraYaw
+  nameWithType: IClientPlayer.CameraYaw
+  fullName: Vintagestory.API.Client.IClientPlayer.CameraYaw
+- uid: Vintagestory.API.Client.IClientPlayer.CameraMode*
+  commentId: Overload:Vintagestory.API.Client.IClientPlayer.CameraMode
+  href: Vintagestory.API.Client.IClientPlayer.html#Vintagestory_API_Client_IClientPlayer_CameraMode
+  name: CameraMode
+  nameWithType: IClientPlayer.CameraMode
+  fullName: Vintagestory.API.Client.IClientPlayer.CameraMode
+- uid: Vintagestory.API.Client.EnumCameraMode
+  commentId: T:Vintagestory.API.Client.EnumCameraMode
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumCameraMode.html
+  name: EnumCameraMode
+  nameWithType: EnumCameraMode
+  fullName: Vintagestory.API.Client.EnumCameraMode
+- uid: Vintagestory.API.Client.IClientPlayer.ShowChatNotification*
+  commentId: Overload:Vintagestory.API.Client.IClientPlayer.ShowChatNotification
+  href: Vintagestory.API.Client.IClientPlayer.html#Vintagestory_API_Client_IClientPlayer_ShowChatNotification_System_String_
+  name: ShowChatNotification
+  nameWithType: IClientPlayer.ShowChatNotification
+  fullName: Vintagestory.API.Client.IClientPlayer.ShowChatNotification
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Client.IClientPlayer.TriggerFpAnimation*
+  commentId: Overload:Vintagestory.API.Client.IClientPlayer.TriggerFpAnimation
+  href: Vintagestory.API.Client.IClientPlayer.html#Vintagestory_API_Client_IClientPlayer_TriggerFpAnimation_Vintagestory_API_Common_EnumHandInteract_
+  name: TriggerFpAnimation
+  nameWithType: IClientPlayer.TriggerFpAnimation
+  fullName: Vintagestory.API.Client.IClientPlayer.TriggerFpAnimation
+- uid: Vintagestory.API.Common.EnumHandInteract
+  commentId: T:Vintagestory.API.Common.EnumHandInteract
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumHandInteract.html
+  name: EnumHandInteract
+  nameWithType: EnumHandInteract
+  fullName: Vintagestory.API.Common.EnumHandInteract

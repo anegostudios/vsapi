@@ -1,0 +1,286 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ICollectibleOnDisplayInteractable
+  commentId: T:Vintagestory.API.Common.ICollectibleOnDisplayInteractable
+  id: ICollectibleOnDisplayInteractable
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractCancel(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumItemUseCancelReason)
+  - Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStart(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  - Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStep(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  - Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStop(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  langs:
+  - csharp
+  - vb
+  name: ICollectibleOnDisplayInteractable
+  nameWithType: ICollectibleOnDisplayInteractable
+  fullName: Vintagestory.API.Common.ICollectibleOnDisplayInteractable
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ICollectibleDisplayable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ICollectibleOnDisplayInteractable
+    path: Common/Collectible/ICollectibleDisplayable.cs
+    startLine: 29
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: A collectible object that can be placed on the ground or on shelves or in display cases, but also can still accept interactions from the player
+  example: []
+  syntax:
+    content: public interface ICollectibleOnDisplayInteractable
+    content.vb: Public Interface ICollectibleOnDisplayInteractable
+- uid: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStart(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStart(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  id: OnInteractStart(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.ICollectibleOnDisplayInteractable
+  langs:
+  - csharp
+  - vb
+  name: OnInteractStart(ItemSlot, IPlayer)
+  nameWithType: ICollectibleOnDisplayInteractable.OnInteractStart(ItemSlot, IPlayer)
+  fullName: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStart(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.IPlayer)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ICollectibleDisplayable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnInteractStart
+    path: Common/Collectible/ICollectibleDisplayable.cs
+    startLine: 31
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: bool OnInteractStart(ItemSlot inSlot, IPlayer byPlayer)
+    parameters:
+    - id: inSlot
+      type: Vintagestory.API.Common.ItemSlot
+    - id: byPlayer
+      type: Vintagestory.API.Common.IPlayer
+    return:
+      type: System.Boolean
+    content.vb: Function OnInteractStart(inSlot As ItemSlot, byPlayer As IPlayer) As Boolean
+  overload: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStart*
+- uid: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStep(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStep(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  id: OnInteractStep(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.ICollectibleOnDisplayInteractable
+  langs:
+  - csharp
+  - vb
+  name: OnInteractStep(float, ItemSlot, IPlayer)
+  nameWithType: ICollectibleOnDisplayInteractable.OnInteractStep(float, ItemSlot, IPlayer)
+  fullName: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStep(float, Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.IPlayer)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ICollectibleDisplayable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnInteractStep
+    path: Common/Collectible/ICollectibleDisplayable.cs
+    startLine: 33
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: bool OnInteractStep(float secondsUsed, ItemSlot inSlot, IPlayer byPlayer)
+    parameters:
+    - id: secondsUsed
+      type: System.Single
+    - id: inSlot
+      type: Vintagestory.API.Common.ItemSlot
+    - id: byPlayer
+      type: Vintagestory.API.Common.IPlayer
+    return:
+      type: System.Boolean
+    content.vb: Function OnInteractStep(secondsUsed As Single, inSlot As ItemSlot, byPlayer As IPlayer) As Boolean
+  overload: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStep*
+  nameWithType.vb: ICollectibleOnDisplayInteractable.OnInteractStep(Single, ItemSlot, IPlayer)
+  fullName.vb: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStep(Single, Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.IPlayer)
+  name.vb: OnInteractStep(Single, ItemSlot, IPlayer)
+- uid: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStop(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStop(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  id: OnInteractStop(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.ICollectibleOnDisplayInteractable
+  langs:
+  - csharp
+  - vb
+  name: OnInteractStop(float, ItemSlot, IPlayer)
+  nameWithType: ICollectibleOnDisplayInteractable.OnInteractStop(float, ItemSlot, IPlayer)
+  fullName: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStop(float, Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.IPlayer)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ICollectibleDisplayable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnInteractStop
+    path: Common/Collectible/ICollectibleDisplayable.cs
+    startLine: 35
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: void OnInteractStop(float secondsUsed, ItemSlot inSlot, IPlayer byPlayer)
+    parameters:
+    - id: secondsUsed
+      type: System.Single
+    - id: inSlot
+      type: Vintagestory.API.Common.ItemSlot
+    - id: byPlayer
+      type: Vintagestory.API.Common.IPlayer
+    content.vb: Sub OnInteractStop(secondsUsed As Single, inSlot As ItemSlot, byPlayer As IPlayer)
+  overload: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStop*
+  nameWithType.vb: ICollectibleOnDisplayInteractable.OnInteractStop(Single, ItemSlot, IPlayer)
+  fullName.vb: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStop(Single, Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.IPlayer)
+  name.vb: OnInteractStop(Single, ItemSlot, IPlayer)
+- uid: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractCancel(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumItemUseCancelReason)
+  commentId: M:Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractCancel(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumItemUseCancelReason)
+  id: OnInteractCancel(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumItemUseCancelReason)
+  parent: Vintagestory.API.Common.ICollectibleOnDisplayInteractable
+  langs:
+  - csharp
+  - vb
+  name: OnInteractCancel(float, ItemSlot, IPlayer, EnumItemUseCancelReason)
+  nameWithType: ICollectibleOnDisplayInteractable.OnInteractCancel(float, ItemSlot, IPlayer, EnumItemUseCancelReason)
+  fullName: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractCancel(float, Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.IPlayer, Vintagestory.API.Common.EnumItemUseCancelReason)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ICollectibleDisplayable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnInteractCancel
+    path: Common/Collectible/ICollectibleDisplayable.cs
+    startLine: 37
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: bool OnInteractCancel(float secondsUsed, ItemSlot inSlot, IPlayer byPlayer, EnumItemUseCancelReason cancelReason)
+    parameters:
+    - id: secondsUsed
+      type: System.Single
+    - id: inSlot
+      type: Vintagestory.API.Common.ItemSlot
+    - id: byPlayer
+      type: Vintagestory.API.Common.IPlayer
+    - id: cancelReason
+      type: Vintagestory.API.Common.EnumItemUseCancelReason
+    return:
+      type: System.Boolean
+    content.vb: Function OnInteractCancel(secondsUsed As Single, inSlot As ItemSlot, byPlayer As IPlayer, cancelReason As EnumItemUseCancelReason) As Boolean
+  overload: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractCancel*
+  nameWithType.vb: ICollectibleOnDisplayInteractable.OnInteractCancel(Single, ItemSlot, IPlayer, EnumItemUseCancelReason)
+  fullName.vb: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractCancel(Single, Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.IPlayer, Vintagestory.API.Common.EnumItemUseCancelReason)
+  name.vb: OnInteractCancel(Single, ItemSlot, IPlayer, EnumItemUseCancelReason)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStart*
+  commentId: Overload:Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStart
+  href: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.html#Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_
+  name: OnInteractStart
+  nameWithType: ICollectibleOnDisplayInteractable.OnInteractStart
+  fullName: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStart
+- uid: Vintagestory.API.Common.ItemSlot
+  commentId: T:Vintagestory.API.Common.ItemSlot
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemSlot.html
+  name: ItemSlot
+  nameWithType: ItemSlot
+  fullName: Vintagestory.API.Common.ItemSlot
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStep*
+  commentId: Overload:Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStep
+  href: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.html#Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_
+  name: OnInteractStep
+  nameWithType: ICollectibleOnDisplayInteractable.OnInteractStep
+  fullName: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStep
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStop*
+  commentId: Overload:Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStop
+  href: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.html#Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_
+  name: OnInteractStop
+  nameWithType: ICollectibleOnDisplayInteractable.OnInteractStop
+  fullName: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractStop
+- uid: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractCancel*
+  commentId: Overload:Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractCancel
+  href: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.html#Vintagestory_API_Common_ICollectibleOnDisplayInteractable_OnInteractCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_EnumItemUseCancelReason_
+  name: OnInteractCancel
+  nameWithType: ICollectibleOnDisplayInteractable.OnInteractCancel
+  fullName: Vintagestory.API.Common.ICollectibleOnDisplayInteractable.OnInteractCancel
+- uid: Vintagestory.API.Common.EnumItemUseCancelReason
+  commentId: T:Vintagestory.API.Common.EnumItemUseCancelReason
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumItemUseCancelReason.html
+  name: EnumItemUseCancelReason
+  nameWithType: EnumItemUseCancelReason
+  fullName: Vintagestory.API.Common.EnumItemUseCancelReason

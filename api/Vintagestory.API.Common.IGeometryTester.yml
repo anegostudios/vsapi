@@ -1,0 +1,212 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IGeometryTester
+  commentId: T:Vintagestory.API.Common.IGeometryTester
+  id: IGeometryTester
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide(Vintagestory.API.MathTools.BlockFacing)
+  - Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide(VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags)
+  langs:
+  - csharp
+  - vb
+  name: IGeometryTester
+  nameWithType: IGeometryTester
+  fullName: Vintagestory.API.Common.IGeometryTester
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/IGeometryTester.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IGeometryTester
+    path: Common/Collectible/Block/IGeometryTester.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: 'Used for blocks (e.g. chiselled blocks) where the basic block geometry: AO shading, side opaque etc - depends on the individual block or blockEntity'
+  example: []
+  syntax:
+    content: public interface IGeometryTester
+    content.vb: Public Interface IGeometryTester
+- uid: Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide(Vintagestory.API.MathTools.BlockFacing)
+  commentId: M:Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide(Vintagestory.API.MathTools.BlockFacing)
+  id: GetCurrentBlockEntityOnSide(Vintagestory.API.MathTools.BlockFacing)
+  parent: Vintagestory.API.Common.IGeometryTester
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentBlockEntityOnSide(BlockFacing)
+  nameWithType: IGeometryTester.GetCurrentBlockEntityOnSide(BlockFacing)
+  fullName: Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide(Vintagestory.API.MathTools.BlockFacing)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/IGeometryTester.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetCurrentBlockEntityOnSide
+    path: Common/Collectible/Block/IGeometryTester.cs
+    startLine: 10
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: BlockEntity GetCurrentBlockEntityOnSide(BlockFacing side)
+    parameters:
+    - id: side
+      type: Vintagestory.API.MathTools.BlockFacing
+    return:
+      type: Vintagestory.API.Common.BlockEntity
+    content.vb: Function GetCurrentBlockEntityOnSide(side As BlockFacing) As BlockEntity
+  overload: Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide*
+- uid: Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide(VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags)
+  commentId: M:Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide(VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags)
+  id: GetCurrentBlockEntityOnSide(VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags)
+  parent: Vintagestory.API.Common.IGeometryTester
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentBlockEntityOnSide(Vec3iAndFacingFlags)
+  nameWithType: IGeometryTester.GetCurrentBlockEntityOnSide(Vec3iAndFacingFlags)
+  fullName: Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide(VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/IGeometryTester.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetCurrentBlockEntityOnSide
+    path: Common/Collectible/Block/IGeometryTester.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: BlockEntity GetCurrentBlockEntityOnSide(Vec3iAndFacingFlags vec)
+    parameters:
+    - id: vec
+      type: VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags
+    return:
+      type: Vintagestory.API.Common.BlockEntity
+    content.vb: Function GetCurrentBlockEntityOnSide(vec As Vec3iAndFacingFlags) As BlockEntity
+  overload: Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide*
+  commentId: Overload:Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide
+  href: Vintagestory.API.Common.IGeometryTester.html#Vintagestory_API_Common_IGeometryTester_GetCurrentBlockEntityOnSide_Vintagestory_API_MathTools_BlockFacing_
+  name: GetCurrentBlockEntityOnSide
+  nameWithType: IGeometryTester.GetCurrentBlockEntityOnSide
+  fullName: Vintagestory.API.Common.IGeometryTester.GetCurrentBlockEntityOnSide
+- uid: Vintagestory.API.MathTools.BlockFacing
+  commentId: T:Vintagestory.API.MathTools.BlockFacing
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockFacing.html
+  name: BlockFacing
+  nameWithType: BlockFacing
+  fullName: Vintagestory.API.MathTools.BlockFacing
+- uid: Vintagestory.API.Common.BlockEntity
+  commentId: T:Vintagestory.API.Common.BlockEntity
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockEntity.html
+  name: BlockEntity
+  nameWithType: BlockEntity
+  fullName: Vintagestory.API.Common.BlockEntity
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags
+  commentId: T:VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags
+  parent: VintagestoryAPI.Math.Vector
+  href: VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags.html
+  name: Vec3iAndFacingFlags
+  nameWithType: Vec3iAndFacingFlags
+  fullName: VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags
+- uid: VintagestoryAPI.Math.Vector
+  commentId: N:VintagestoryAPI.Math.Vector
+  href: VintagestoryAPI.html
+  name: VintagestoryAPI.Math.Vector
+  nameWithType: VintagestoryAPI.Math.Vector
+  fullName: VintagestoryAPI.Math.Vector
+  spec.csharp:
+  - uid: VintagestoryAPI
+    name: VintagestoryAPI
+    href: VintagestoryAPI.html
+  - name: .
+  - uid: VintagestoryAPI.Math
+    name: Math
+    href: VintagestoryAPI.Math.html
+  - name: .
+  - uid: VintagestoryAPI.Math.Vector
+    name: Vector
+    href: VintagestoryAPI.Math.Vector.html
+  spec.vb:
+  - uid: VintagestoryAPI
+    name: VintagestoryAPI
+    href: VintagestoryAPI.html
+  - name: .
+  - uid: VintagestoryAPI.Math
+    name: Math
+    href: VintagestoryAPI.Math.html
+  - name: .
+  - uid: VintagestoryAPI.Math.Vector
+    name: Vector
+    href: VintagestoryAPI.Math.Vector.html

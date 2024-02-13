@@ -1,0 +1,796 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Datastructures.QueueOfInt
+  commentId: T:Vintagestory.API.Datastructures.QueueOfInt
+  id: QueueOfInt
+  parent: Vintagestory.API.Datastructures
+  children:
+  - Vintagestory.API.Datastructures.QueueOfInt.#ctor
+  - Vintagestory.API.Datastructures.QueueOfInt.Clear
+  - Vintagestory.API.Datastructures.QueueOfInt.Count
+  - Vintagestory.API.Datastructures.QueueOfInt.Dequeue
+  - Vintagestory.API.Datastructures.QueueOfInt.DequeueLIFO
+  - Vintagestory.API.Datastructures.QueueOfInt.Enqueue(System.Int32)
+  - Vintagestory.API.Datastructures.QueueOfInt.Enqueue(System.Int32,System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger(System.Int32)
+  - Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger(System.Int32,System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Datastructures.QueueOfInt.array
+  - Vintagestory.API.Datastructures.QueueOfInt.head
+  - Vintagestory.API.Datastructures.QueueOfInt.maxSize
+  - Vintagestory.API.Datastructures.QueueOfInt.tail
+  langs:
+  - csharp
+  - vb
+  name: QueueOfInt
+  nameWithType: QueueOfInt
+  fullName: Vintagestory.API.Datastructures.QueueOfInt
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: QueueOfInt
+    path: Datastructures/QueueOfInt.cs
+    startLine: 4
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public class QueueOfInt
+    content.vb: Public Class QueueOfInt
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Datastructures.QueueOfInt.Count
+  commentId: F:Vintagestory.API.Datastructures.QueueOfInt.Count
+  id: Count
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: QueueOfInt.Count
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.Count
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Count
+    path: Datastructures/QueueOfInt.cs
+    startLine: 6
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public int Count
+    return:
+      type: System.Int32
+    content.vb: Public Count As Integer
+- uid: Vintagestory.API.Datastructures.QueueOfInt.maxSize
+  commentId: F:Vintagestory.API.Datastructures.QueueOfInt.maxSize
+  id: maxSize
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: maxSize
+  nameWithType: QueueOfInt.maxSize
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.maxSize
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: maxSize
+    path: Datastructures/QueueOfInt.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public int maxSize
+    return:
+      type: System.Int32
+    content.vb: Public maxSize As Integer
+- uid: Vintagestory.API.Datastructures.QueueOfInt.tail
+  commentId: F:Vintagestory.API.Datastructures.QueueOfInt.tail
+  id: tail
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: tail
+  nameWithType: QueueOfInt.tail
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.tail
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: tail
+    path: Datastructures/QueueOfInt.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: protected int tail
+    return:
+      type: System.Int32
+    content.vb: Protected tail As Integer
+- uid: Vintagestory.API.Datastructures.QueueOfInt.head
+  commentId: F:Vintagestory.API.Datastructures.QueueOfInt.head
+  id: head
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: head
+  nameWithType: QueueOfInt.head
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.head
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: head
+    path: Datastructures/QueueOfInt.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: protected int head
+    return:
+      type: System.Int32
+    content.vb: Protected head As Integer
+- uid: Vintagestory.API.Datastructures.QueueOfInt.array
+  commentId: F:Vintagestory.API.Datastructures.QueueOfInt.array
+  id: array
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: array
+  nameWithType: QueueOfInt.array
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.array
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: array
+    path: Datastructures/QueueOfInt.cs
+    startLine: 10
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: protected int[] array
+    return:
+      type: System.Int32[]
+    content.vb: Protected array As Integer()
+- uid: Vintagestory.API.Datastructures.QueueOfInt.#ctor
+  commentId: M:Vintagestory.API.Datastructures.QueueOfInt.#ctor
+  id: '#ctor'
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: QueueOfInt()
+  nameWithType: QueueOfInt.QueueOfInt()
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.QueueOfInt()
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Datastructures/QueueOfInt.cs
+    startLine: 12
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public QueueOfInt()
+    content.vb: Public Sub New()
+  overload: Vintagestory.API.Datastructures.QueueOfInt.#ctor*
+  nameWithType.vb: QueueOfInt.New()
+  fullName.vb: Vintagestory.API.Datastructures.QueueOfInt.New()
+  name.vb: New()
+- uid: Vintagestory.API.Datastructures.QueueOfInt.Clear
+  commentId: M:Vintagestory.API.Datastructures.QueueOfInt.Clear
+  id: Clear
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: QueueOfInt.Clear()
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.Clear()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Clear
+    path: Datastructures/QueueOfInt.cs
+    startLine: 17
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: Vintagestory.API.Datastructures.QueueOfInt.Clear*
+- uid: Vintagestory.API.Datastructures.QueueOfInt.Enqueue(System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Datastructures.QueueOfInt.Enqueue(System.Int32,System.Int32,System.Int32,System.Int32)
+  id: Enqueue(System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: Enqueue(int, int, int, int)
+  nameWithType: QueueOfInt.Enqueue(int, int, int, int)
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.Enqueue(int, int, int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Enqueue
+    path: Datastructures/QueueOfInt.cs
+    startLine: 32
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Enqueue a single value with four separate components, assumed to be signed int in the range -128 to +127
+  example: []
+  syntax:
+    content: public void Enqueue(int a, int b, int c, int d)
+    parameters:
+    - id: a
+      type: System.Int32
+      description: ''
+    - id: b
+      type: System.Int32
+      description: ''
+    - id: c
+      type: System.Int32
+      description: ''
+    - id: d
+      type: System.Int32
+      description: ''
+    content.vb: Public Sub Enqueue(a As Integer, b As Integer, c As Integer, d As Integer)
+  overload: Vintagestory.API.Datastructures.QueueOfInt.Enqueue*
+  nameWithType.vb: QueueOfInt.Enqueue(Integer, Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Datastructures.QueueOfInt.Enqueue(Integer, Integer, Integer, Integer)
+  name.vb: Enqueue(Integer, Integer, Integer, Integer)
+- uid: Vintagestory.API.Datastructures.QueueOfInt.Enqueue(System.Int32)
+  commentId: M:Vintagestory.API.Datastructures.QueueOfInt.Enqueue(System.Int32)
+  id: Enqueue(System.Int32)
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: Enqueue(int)
+  nameWithType: QueueOfInt.Enqueue(int)
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.Enqueue(int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Enqueue
+    path: Datastructures/QueueOfInt.cs
+    startLine: 37
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public void Enqueue(int v)
+    parameters:
+    - id: v
+      type: System.Int32
+    content.vb: Public Sub Enqueue(v As Integer)
+  overload: Vintagestory.API.Datastructures.QueueOfInt.Enqueue*
+  nameWithType.vb: QueueOfInt.Enqueue(Integer)
+  fullName.vb: Vintagestory.API.Datastructures.QueueOfInt.Enqueue(Integer)
+  name.vb: Enqueue(Integer)
+- uid: Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger(System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger(System.Int32,System.Int32,System.Int32,System.Int32)
+  id: EnqueueIfLarger(System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: EnqueueIfLarger(int, int, int, int)
+  nameWithType: QueueOfInt.EnqueueIfLarger(int, int, int, int)
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger(int, int, int, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnqueueIfLarger
+    path: Datastructures/QueueOfInt.cs
+    startLine: 56
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Special method for ChunkIlluminator, if already present does not enqueue, but replaces only if value d (lowest 5 bits representing the spreadlight value) is larger
+  example: []
+  syntax:
+    content: public void EnqueueIfLarger(int a, int b, int c, int d)
+    parameters:
+    - id: a
+      type: System.Int32
+      description: ''
+    - id: b
+      type: System.Int32
+      description: ''
+    - id: c
+      type: System.Int32
+      description: ''
+    - id: d
+      type: System.Int32
+      description: ''
+    content.vb: Public Sub EnqueueIfLarger(a As Integer, b As Integer, c As Integer, d As Integer)
+  overload: Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger*
+  nameWithType.vb: QueueOfInt.EnqueueIfLarger(Integer, Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger(Integer, Integer, Integer, Integer)
+  name.vb: EnqueueIfLarger(Integer, Integer, Integer, Integer)
+- uid: Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger(System.Int32)
+  commentId: M:Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger(System.Int32)
+  id: EnqueueIfLarger(System.Int32)
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: EnqueueIfLarger(int)
+  nameWithType: QueueOfInt.EnqueueIfLarger(int)
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger(int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnqueueIfLarger
+    path: Datastructures/QueueOfInt.cs
+    startLine: 61
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public void EnqueueIfLarger(int v)
+    parameters:
+    - id: v
+      type: System.Int32
+    content.vb: Public Sub EnqueueIfLarger(v As Integer)
+  overload: Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger*
+  nameWithType.vb: QueueOfInt.EnqueueIfLarger(Integer)
+  fullName.vb: Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger(Integer)
+  name.vb: EnqueueIfLarger(Integer)
+- uid: Vintagestory.API.Datastructures.QueueOfInt.Dequeue
+  commentId: M:Vintagestory.API.Datastructures.QueueOfInt.Dequeue
+  id: Dequeue
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: Dequeue()
+  nameWithType: QueueOfInt.Dequeue()
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.Dequeue()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Dequeue
+    path: Datastructures/QueueOfInt.cs
+    startLine: 111
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: 'Will return invalid data if called when Count &lt;= 0: it is the responsibility of the calling code to check Count &gt; 0'
+  example: []
+  syntax:
+    content: public int Dequeue()
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Public Function Dequeue() As Integer
+  overload: Vintagestory.API.Datastructures.QueueOfInt.Dequeue*
+- uid: Vintagestory.API.Datastructures.QueueOfInt.DequeueLIFO
+  commentId: M:Vintagestory.API.Datastructures.QueueOfInt.DequeueLIFO
+  id: DequeueLIFO
+  parent: Vintagestory.API.Datastructures.QueueOfInt
+  langs:
+  - csharp
+  - vb
+  name: DequeueLIFO()
+  nameWithType: QueueOfInt.DequeueLIFO()
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.DequeueLIFO()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/QueueOfInt.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DequeueLIFO
+    path: Datastructures/QueueOfInt.cs
+    startLine: 121
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: 'Will return invalid data if called when Count &lt;= 0: it is the responsibility of the calling code to check Count &gt; 0'
+  example: []
+  syntax:
+    content: public int DequeueLIFO()
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Public Function DequeueLIFO() As Integer
+  overload: Vintagestory.API.Datastructures.QueueOfInt.DequeueLIFO*
+references:
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Int32[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.QueueOfInt.#ctor*
+  commentId: Overload:Vintagestory.API.Datastructures.QueueOfInt.#ctor
+  href: Vintagestory.API.Datastructures.QueueOfInt.html#Vintagestory_API_Datastructures_QueueOfInt__ctor
+  name: QueueOfInt
+  nameWithType: QueueOfInt.QueueOfInt
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.QueueOfInt
+  nameWithType.vb: QueueOfInt.New
+  fullName.vb: Vintagestory.API.Datastructures.QueueOfInt.New
+  name.vb: New
+- uid: Vintagestory.API.Datastructures.QueueOfInt.Clear*
+  commentId: Overload:Vintagestory.API.Datastructures.QueueOfInt.Clear
+  href: Vintagestory.API.Datastructures.QueueOfInt.html#Vintagestory_API_Datastructures_QueueOfInt_Clear
+  name: Clear
+  nameWithType: QueueOfInt.Clear
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.Clear
+- uid: Vintagestory.API.Datastructures.QueueOfInt.Enqueue*
+  commentId: Overload:Vintagestory.API.Datastructures.QueueOfInt.Enqueue
+  href: Vintagestory.API.Datastructures.QueueOfInt.html#Vintagestory_API_Datastructures_QueueOfInt_Enqueue_System_Int32_System_Int32_System_Int32_System_Int32_
+  name: Enqueue
+  nameWithType: QueueOfInt.Enqueue
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.Enqueue
+- uid: Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger*
+  commentId: Overload:Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger
+  href: Vintagestory.API.Datastructures.QueueOfInt.html#Vintagestory_API_Datastructures_QueueOfInt_EnqueueIfLarger_System_Int32_System_Int32_System_Int32_System_Int32_
+  name: EnqueueIfLarger
+  nameWithType: QueueOfInt.EnqueueIfLarger
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.EnqueueIfLarger
+- uid: Vintagestory.API.Datastructures.QueueOfInt.Dequeue*
+  commentId: Overload:Vintagestory.API.Datastructures.QueueOfInt.Dequeue
+  href: Vintagestory.API.Datastructures.QueueOfInt.html#Vintagestory_API_Datastructures_QueueOfInt_Dequeue
+  name: Dequeue
+  nameWithType: QueueOfInt.Dequeue
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.Dequeue
+- uid: Vintagestory.API.Datastructures.QueueOfInt.DequeueLIFO*
+  commentId: Overload:Vintagestory.API.Datastructures.QueueOfInt.DequeueLIFO
+  href: Vintagestory.API.Datastructures.QueueOfInt.html#Vintagestory_API_Datastructures_QueueOfInt_DequeueLIFO
+  name: DequeueLIFO
+  nameWithType: QueueOfInt.DequeueLIFO
+  fullName: Vintagestory.API.Datastructures.QueueOfInt.DequeueLIFO

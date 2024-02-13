@@ -1,0 +1,2563 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.SurfaceMusicTrack
+  commentId: T:Vintagestory.API.Client.SurfaceMusicTrack
+  id: SurfaceMusicTrack
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.SurfaceMusicTrack.BeginPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  - Vintagestory.API.Client.SurfaceMusicTrack.BeginSort
+  - Vintagestory.API.Client.SurfaceMusicTrack.Chance
+  - Vintagestory.API.Client.SurfaceMusicTrack.ContinuePlay(System.Single,Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  - Vintagestory.API.Client.SurfaceMusicTrack.DistanceToSpawnPoint
+  - Vintagestory.API.Client.SurfaceMusicTrack.FadeOut(System.Single,System.Action)
+  - Vintagestory.API.Client.SurfaceMusicTrack.FastForward(System.Single)
+  - Vintagestory.API.Client.SurfaceMusicTrack.FrequencyChanged(System.Int32,Vintagestory.API.Client.ICoreClientAPI)
+  - Vintagestory.API.Client.SurfaceMusicTrack.Initialize(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.IMusicEngine)
+  - Vintagestory.API.Client.SurfaceMusicTrack.IsActive
+  - Vintagestory.API.Client.SurfaceMusicTrack.Location
+  - Vintagestory.API.Client.SurfaceMusicTrack.MaxHour
+  - Vintagestory.API.Client.SurfaceMusicTrack.MaxLatitude
+  - Vintagestory.API.Client.SurfaceMusicTrack.MaxSeason
+  - Vintagestory.API.Client.SurfaceMusicTrack.MaxTemperature
+  - Vintagestory.API.Client.SurfaceMusicTrack.MinHour
+  - Vintagestory.API.Client.SurfaceMusicTrack.MinLatitude
+  - Vintagestory.API.Client.SurfaceMusicTrack.MinRainFall
+  - Vintagestory.API.Client.SurfaceMusicTrack.MinSeason
+  - Vintagestory.API.Client.SurfaceMusicTrack.MinSunlight
+  - Vintagestory.API.Client.SurfaceMusicTrack.MusicFrequency
+  - Vintagestory.API.Client.SurfaceMusicTrack.Name
+  - Vintagestory.API.Client.SurfaceMusicTrack.OnPlayList
+  - Vintagestory.API.Client.SurfaceMusicTrack.OnPlayLists
+  - Vintagestory.API.Client.SurfaceMusicTrack.PositionString
+  - Vintagestory.API.Client.SurfaceMusicTrack.Priority
+  - Vintagestory.API.Client.SurfaceMusicTrack.SetCooldown(System.Single)
+  - Vintagestory.API.Client.SurfaceMusicTrack.ShouldPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties,Vintagestory.API.Common.ClimateCondition,Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Client.SurfaceMusicTrack.ShouldPlayMusic
+  - Vintagestory.API.Client.SurfaceMusicTrack.Sound
+  - Vintagestory.API.Client.SurfaceMusicTrack.StartPriority
+  - Vintagestory.API.Client.SurfaceMusicTrack.StartPriorityRnd
+  - Vintagestory.API.Client.SurfaceMusicTrack.UpdateVolume
+  - Vintagestory.API.Client.SurfaceMusicTrack.capi
+  - Vintagestory.API.Client.SurfaceMusicTrack.globalCooldownUntilMs
+  - Vintagestory.API.Client.SurfaceMusicTrack.musicEngine
+  - Vintagestory.API.Client.SurfaceMusicTrack.nowMaxHour
+  - Vintagestory.API.Client.SurfaceMusicTrack.nowMinHour
+  - Vintagestory.API.Client.SurfaceMusicTrack.prevFrequency
+  - Vintagestory.API.Client.SurfaceMusicTrack.selectMinMaxHour
+  - Vintagestory.API.Client.SurfaceMusicTrack.tracksCooldownUntilMs
+  langs:
+  - csharp
+  - vb
+  name: SurfaceMusicTrack
+  nameWithType: SurfaceMusicTrack
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SurfaceMusicTrack
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Adds a basic music track.
+  example: []
+  syntax:
+    content: >-
+      [JsonObject(MemberSerialization.OptIn)]
+
+      public class SurfaceMusicTrack : IMusicTrack
+    content.vb: >-
+      <JsonObject(MemberSerialization.OptIn)>
+
+      Public Class SurfaceMusicTrack Implements IMusicTrack
+  inheritance:
+  - System.Object
+  derivedClasses:
+  - Vintagestory.API.Client.EventMusicTrack
+  implements:
+  - Vintagestory.API.Client.IMusicTrack
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: Newtonsoft.Json.JsonObjectAttribute
+    ctor: Newtonsoft.Json.JsonObjectAttribute.#ctor(Newtonsoft.Json.MemberSerialization)
+    arguments:
+    - type: Newtonsoft.Json.MemberSerialization
+      value: 1
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.Location
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.Location
+  id: Location
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: Location
+  nameWithType: SurfaceMusicTrack.Location
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.Location
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Location
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 21
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The location of the track.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty("File")]
+
+      public AssetLocation Location
+    return:
+      type: Vintagestory.API.Common.AssetLocation
+    content.vb: >-
+      <JsonProperty("File")>
+
+      Public Location As AssetLocation
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: File
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.OnPlayList
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.OnPlayList
+  id: OnPlayList
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: OnPlayList
+  nameWithType: SurfaceMusicTrack.OnPlayList
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.OnPlayList
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnPlayList
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 27
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The current play style of the track
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public string OnPlayList
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty>
+
+      Public OnPlayList As String
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.OnPlayLists
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.OnPlayLists
+  id: OnPlayLists
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: OnPlayLists
+  nameWithType: SurfaceMusicTrack.OnPlayLists
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.OnPlayLists
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnPlayLists
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 29
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public string[] OnPlayLists
+    return:
+      type: System.String[]
+    content.vb: Public OnPlayLists As String()
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.MinSunlight
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.MinSunlight
+  id: MinSunlight
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: MinSunlight
+  nameWithType: SurfaceMusicTrack.MinSunlight
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.MinSunlight
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MinSunlight
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 35
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Minimum sunlight to play the track.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public int MinSunlight
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonProperty>
+
+      Public MinSunlight As Integer
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.MinHour
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.MinHour
+  id: MinHour
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: MinHour
+  nameWithType: SurfaceMusicTrack.MinHour
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.MinHour
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MinHour
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 41
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Earliest to play the track.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float MinHour
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public MinHour As Single
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.MaxHour
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.MaxHour
+  id: MaxHour
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: MaxHour
+  nameWithType: SurfaceMusicTrack.MaxHour
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.MaxHour
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MaxHour
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 47
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Latest to play the track.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float MaxHour
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public MaxHour As Single
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.Chance
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.Chance
+  id: Chance
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: Chance
+  nameWithType: SurfaceMusicTrack.Chance
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.Chance
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Chance
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 50
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float Chance
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public Chance As Single
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.MaxTemperature
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.MaxTemperature
+  id: MaxTemperature
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: MaxTemperature
+  nameWithType: SurfaceMusicTrack.MaxTemperature
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.MaxTemperature
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MaxTemperature
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 53
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float MaxTemperature
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public MaxTemperature As Single
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.MinRainFall
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.MinRainFall
+  id: MinRainFall
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: MinRainFall
+  nameWithType: SurfaceMusicTrack.MinRainFall
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.MinRainFall
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MinRainFall
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 56
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float MinRainFall
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public MinRainFall As Single
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.MinSeason
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.MinSeason
+  id: MinSeason
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: MinSeason
+  nameWithType: SurfaceMusicTrack.MinSeason
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.MinSeason
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MinSeason
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 59
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float MinSeason
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public MinSeason As Single
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.MaxSeason
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.MaxSeason
+  id: MaxSeason
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: MaxSeason
+  nameWithType: SurfaceMusicTrack.MaxSeason
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.MaxSeason
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MaxSeason
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 62
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float MaxSeason
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public MaxSeason As Single
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.MinLatitude
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.MinLatitude
+  id: MinLatitude
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: MinLatitude
+  nameWithType: SurfaceMusicTrack.MinLatitude
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.MinLatitude
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MinLatitude
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 65
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float MinLatitude
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public MinLatitude As Single
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.MaxLatitude
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.MaxLatitude
+  id: MaxLatitude
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: MaxLatitude
+  nameWithType: SurfaceMusicTrack.MaxLatitude
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.MaxLatitude
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MaxLatitude
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 68
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float MaxLatitude
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public MaxLatitude As Single
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.DistanceToSpawnPoint
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.DistanceToSpawnPoint
+  id: DistanceToSpawnPoint
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: DistanceToSpawnPoint
+  nameWithType: SurfaceMusicTrack.DistanceToSpawnPoint
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.DistanceToSpawnPoint
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DistanceToSpawnPoint
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 71
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float DistanceToSpawnPoint
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public DistanceToSpawnPoint As Single
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.Priority
+  commentId: P:Vintagestory.API.Client.SurfaceMusicTrack.Priority
+  id: Priority
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: Priority
+  nameWithType: SurfaceMusicTrack.Priority
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.Priority
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Priority
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 76
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The current song's priority. If higher than 1, will stop other tracks and start this one
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public float Priority { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property Priority As Single
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.Priority*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.Priority
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.StartPriorityRnd
+  commentId: P:Vintagestory.API.Client.SurfaceMusicTrack.StartPriorityRnd
+  id: StartPriorityRnd
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: StartPriorityRnd
+  nameWithType: SurfaceMusicTrack.StartPriorityRnd
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.StartPriorityRnd
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: StartPriorityRnd
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 83
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The songs starting priority. If higher than 1, then it will be started first. But does not interrupt already running tracks. When reading a songs start priority the maximum of start priority and priority is used
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty("StartPriority")]
+
+      public NatFloat StartPriorityRnd { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.NatFloat
+    content.vb: >-
+      <JsonProperty("StartPriority")>
+
+      Public Property StartPriorityRnd As NatFloat
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.StartPriorityRnd*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: StartPriority
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.StartPriority
+  commentId: P:Vintagestory.API.Client.SurfaceMusicTrack.StartPriority
+  id: StartPriority
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: StartPriority
+  nameWithType: SurfaceMusicTrack.StartPriority
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.StartPriority
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: StartPriority
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 86
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The start priority of the track. A higher priority will leave active tracks playing.
+  example: []
+  syntax:
+    content: public float StartPriority { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property StartPriority As Single
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.StartPriority*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.StartPriority
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.Sound
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.Sound
+  id: Sound
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: Sound
+  nameWithType: SurfaceMusicTrack.Sound
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.Sound
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Sound
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 96
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Get the current sound file.
+  example: []
+  syntax:
+    content: public ILoadedSound Sound
+    return:
+      type: Vintagestory.API.Client.ILoadedSound
+    content.vb: Public Sound As ILoadedSound
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.IsActive
+  commentId: P:Vintagestory.API.Client.SurfaceMusicTrack.IsActive
+  id: IsActive
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: IsActive
+  nameWithType: SurfaceMusicTrack.IsActive
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.IsActive
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IsActive
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 101
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Is the current song actively playing or is it loading? (False if neither action.
+  example: []
+  syntax:
+    content: public bool IsActive { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsActive As Boolean
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.IsActive*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.IsActive
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.Name
+  commentId: P:Vintagestory.API.Client.SurfaceMusicTrack.Name
+  id: Name
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: SurfaceMusicTrack.Name
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.Name
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Name
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 111
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The name of the track.
+  example: []
+  syntax:
+    content: public string Name { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Name As String
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.Name*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.Name
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.ShouldPlayMusic
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.ShouldPlayMusic
+  id: ShouldPlayMusic
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: ShouldPlayMusic
+  nameWithType: SurfaceMusicTrack.ShouldPlayMusic
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.ShouldPlayMusic
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ShouldPlayMusic
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 147
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public static bool ShouldPlayMusic
+    return:
+      type: System.Boolean
+    content.vb: Public Shared ShouldPlayMusic As Boolean
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.globalCooldownUntilMs
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.globalCooldownUntilMs
+  id: globalCooldownUntilMs
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: globalCooldownUntilMs
+  nameWithType: SurfaceMusicTrack.globalCooldownUntilMs
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.globalCooldownUntilMs
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: globalCooldownUntilMs
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 157
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Global cooldown until next track
+  example: []
+  syntax:
+    content: public static long globalCooldownUntilMs
+    return:
+      type: System.Int64
+    content.vb: Public Shared globalCooldownUntilMs As Long
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.tracksCooldownUntilMs
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.tracksCooldownUntilMs
+  id: tracksCooldownUntilMs
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: tracksCooldownUntilMs
+  nameWithType: SurfaceMusicTrack.tracksCooldownUntilMs
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.tracksCooldownUntilMs
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: tracksCooldownUntilMs
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 162
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Cooldown for each track by name.
+  example: []
+  syntax:
+    content: public static Dictionary<string, long> tracksCooldownUntilMs
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Int64}
+    content.vb: Public Shared tracksCooldownUntilMs As Dictionary(Of String, Long)
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.capi
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.capi
+  id: capi
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: capi
+  nameWithType: SurfaceMusicTrack.capi
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.capi
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: capi
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 167
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Core client API.
+  example: []
+  syntax:
+    content: protected ICoreClientAPI capi
+    return:
+      type: Vintagestory.API.Client.ICoreClientAPI
+    content.vb: Protected capi As ICoreClientAPI
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.musicEngine
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.musicEngine
+  id: musicEngine
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: musicEngine
+  nameWithType: SurfaceMusicTrack.musicEngine
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.musicEngine
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: musicEngine
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 168
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: protected IMusicEngine musicEngine
+    return:
+      type: Vintagestory.API.Client.IMusicEngine
+    content.vb: Protected musicEngine As IMusicEngine
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.nowMinHour
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.nowMinHour
+  id: nowMinHour
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: nowMinHour
+  nameWithType: SurfaceMusicTrack.nowMinHour
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.nowMinHour
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: nowMinHour
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 170
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: protected float nowMinHour
+    return:
+      type: System.Single
+    content.vb: Protected nowMinHour As Single
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.nowMaxHour
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.nowMaxHour
+  id: nowMaxHour
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: nowMaxHour
+  nameWithType: SurfaceMusicTrack.nowMaxHour
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.nowMaxHour
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: nowMaxHour
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 171
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: protected float nowMaxHour
+    return:
+      type: System.Single
+    content.vb: Protected nowMaxHour As Single
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.prevFrequency
+  commentId: F:Vintagestory.API.Client.SurfaceMusicTrack.prevFrequency
+  id: prevFrequency
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: prevFrequency
+  nameWithType: SurfaceMusicTrack.prevFrequency
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.prevFrequency
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: prevFrequency
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 177
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Gets the previous frequency setting.
+  example: []
+  syntax:
+    content: protected static int prevFrequency
+    return:
+      type: System.Int32
+    content.vb: Protected Shared prevFrequency As Integer
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.MusicFrequency
+  commentId: P:Vintagestory.API.Client.SurfaceMusicTrack.MusicFrequency
+  id: MusicFrequency
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: MusicFrequency
+  nameWithType: SurfaceMusicTrack.MusicFrequency
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.MusicFrequency
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MusicFrequency
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 182
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Gets the current Music Frequency setting.
+  example: []
+  syntax:
+    content: public int MusicFrequency { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property MusicFrequency As Integer
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.MusicFrequency*
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.Initialize(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.IMusicEngine)
+  commentId: M:Vintagestory.API.Client.SurfaceMusicTrack.Initialize(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.IMusicEngine)
+  id: Initialize(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.IMusicEngine)
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: Initialize(IAssetManager, ICoreClientAPI, IMusicEngine)
+  nameWithType: SurfaceMusicTrack.Initialize(IAssetManager, ICoreClientAPI, IMusicEngine)
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.Initialize(Vintagestory.API.Common.IAssetManager, Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.IMusicEngine)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Initialize
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 195
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Initialize the track.
+  example: []
+  syntax:
+    content: public virtual void Initialize(IAssetManager assetManager, ICoreClientAPI capi, IMusicEngine musicEngine)
+    parameters:
+    - id: assetManager
+      type: Vintagestory.API.Common.IAssetManager
+      description: the global Asset Manager
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+      description: The Core Client API
+    - id: musicEngine
+      type: Vintagestory.API.Client.IMusicEngine
+      description: ''
+    content.vb: Public Overridable Sub Initialize(assetManager As IAssetManager, capi As ICoreClientAPI, musicEngine As IMusicEngine)
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.Initialize*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.Initialize(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.IMusicEngine)
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.BeginSort
+  commentId: M:Vintagestory.API.Client.SurfaceMusicTrack.BeginSort
+  id: BeginSort
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: BeginSort()
+  nameWithType: SurfaceMusicTrack.BeginSort()
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.BeginSort()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BeginSort
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 219
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Called before sorting by start priority happens
+  example: []
+  syntax:
+    content: public virtual void BeginSort()
+    content.vb: Public Overridable Sub BeginSort()
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.BeginSort*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.BeginSort
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.selectMinMaxHour
+  commentId: M:Vintagestory.API.Client.SurfaceMusicTrack.selectMinMaxHour
+  id: selectMinMaxHour
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: selectMinMaxHour()
+  nameWithType: SurfaceMusicTrack.selectMinMaxHour()
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.selectMinMaxHour()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: selectMinMaxHour
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 224
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: protected virtual void selectMinMaxHour()
+    content.vb: Protected Overridable Sub selectMinMaxHour()
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.selectMinMaxHour*
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.FrequencyChanged(System.Int32,Vintagestory.API.Client.ICoreClientAPI)
+  commentId: M:Vintagestory.API.Client.SurfaceMusicTrack.FrequencyChanged(System.Int32,Vintagestory.API.Client.ICoreClientAPI)
+  id: FrequencyChanged(System.Int32,Vintagestory.API.Client.ICoreClientAPI)
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: FrequencyChanged(int, ICoreClientAPI)
+  nameWithType: SurfaceMusicTrack.FrequencyChanged(int, ICoreClientAPI)
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.FrequencyChanged(int, Vintagestory.API.Client.ICoreClientAPI)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FrequencyChanged
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 239
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The Frequency change in the static system.
+  example: []
+  syntax:
+    content: protected static void FrequencyChanged(int newFreq, ICoreClientAPI capi)
+    parameters:
+    - id: newFreq
+      type: System.Int32
+      description: The new frequency
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+      description: the core client API
+    content.vb: Protected Shared Sub FrequencyChanged(newFreq As Integer, capi As ICoreClientAPI)
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.FrequencyChanged*
+  nameWithType.vb: SurfaceMusicTrack.FrequencyChanged(Integer, ICoreClientAPI)
+  fullName.vb: Vintagestory.API.Client.SurfaceMusicTrack.FrequencyChanged(Integer, Vintagestory.API.Client.ICoreClientAPI)
+  name.vb: FrequencyChanged(Integer, ICoreClientAPI)
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.ShouldPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties,Vintagestory.API.Common.ClimateCondition,Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Client.SurfaceMusicTrack.ShouldPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties,Vintagestory.API.Common.ClimateCondition,Vintagestory.API.MathTools.BlockPos)
+  id: ShouldPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties,Vintagestory.API.Common.ClimateCondition,Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: ShouldPlay(TrackedPlayerProperties, ClimateCondition, BlockPos)
+  nameWithType: SurfaceMusicTrack.ShouldPlay(TrackedPlayerProperties, ClimateCondition, BlockPos)
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.ShouldPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties, Vintagestory.API.Common.ClimateCondition, Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ShouldPlay
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 260
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Should this current track play?
+  example: []
+  syntax:
+    content: public virtual bool ShouldPlay(TrackedPlayerProperties props, ClimateCondition conds, BlockPos pos)
+    parameters:
+    - id: props
+      type: Vintagestory.API.Common.Entities.TrackedPlayerProperties
+      description: Player Properties
+    - id: conds
+      type: Vintagestory.API.Common.ClimateCondition
+      description: ''
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    return:
+      type: System.Boolean
+      description: Should we play the current track?
+    content.vb: Public Overridable Function ShouldPlay(props As TrackedPlayerProperties, conds As ClimateCondition, pos As BlockPos) As Boolean
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.ShouldPlay*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.ShouldPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties,Vintagestory.API.Common.ClimateCondition,Vintagestory.API.MathTools.BlockPos)
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.BeginPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  commentId: M:Vintagestory.API.Client.SurfaceMusicTrack.BeginPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  id: BeginPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: BeginPlay(TrackedPlayerProperties)
+  nameWithType: SurfaceMusicTrack.BeginPlay(TrackedPlayerProperties)
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.BeginPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BeginPlay
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 313
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Begins playing the Music track.
+  example: []
+  syntax:
+    content: public virtual void BeginPlay(TrackedPlayerProperties props)
+    parameters:
+    - id: props
+      type: Vintagestory.API.Common.Entities.TrackedPlayerProperties
+      description: Player Properties
+    content.vb: Public Overridable Sub BeginPlay(props As TrackedPlayerProperties)
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.BeginPlay*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.BeginPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.ContinuePlay(System.Single,Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  commentId: M:Vintagestory.API.Client.SurfaceMusicTrack.ContinuePlay(System.Single,Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  id: ContinuePlay(System.Single,Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: ContinuePlay(float, TrackedPlayerProperties)
+  nameWithType: SurfaceMusicTrack.ContinuePlay(float, TrackedPlayerProperties)
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.ContinuePlay(float, Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ContinuePlay
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 337
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Is it cool for the current track to continue playing?
+  example: []
+  syntax:
+    content: public virtual bool ContinuePlay(float dt, TrackedPlayerProperties props)
+    parameters:
+    - id: dt
+      type: System.Single
+      description: Delta Time/Change in time.
+    - id: props
+      type: Vintagestory.API.Common.Entities.TrackedPlayerProperties
+      description: Track properties.
+    return:
+      type: System.Boolean
+      description: Cool or not cool?
+    content.vb: Public Overridable Function ContinuePlay(dt As Single, props As TrackedPlayerProperties) As Boolean
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.ContinuePlay*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.ContinuePlay(System.Single,Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  nameWithType.vb: SurfaceMusicTrack.ContinuePlay(Single, TrackedPlayerProperties)
+  fullName.vb: Vintagestory.API.Client.SurfaceMusicTrack.ContinuePlay(Single, Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  name.vb: ContinuePlay(Single, TrackedPlayerProperties)
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.FadeOut(System.Single,System.Action)
+  commentId: M:Vintagestory.API.Client.SurfaceMusicTrack.FadeOut(System.Single,System.Action)
+  id: FadeOut(System.Single,System.Action)
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: FadeOut(float, Action)
+  nameWithType: SurfaceMusicTrack.FadeOut(float, Action)
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.FadeOut(float, System.Action)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FadeOut
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 360
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Fades out the current track.
+  example: []
+  syntax:
+    content: public virtual void FadeOut(float seconds, Action onFadedOut = null)
+    parameters:
+    - id: seconds
+      type: System.Single
+      description: The duration of the fade out in seconds.
+    - id: onFadedOut
+      type: System.Action
+      description: What to have happen after the track has faded out.
+    content.vb: Public Overridable Sub FadeOut(seconds As Single, onFadedOut As Action = Nothing)
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.FadeOut*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.FadeOut(System.Single,System.Action)
+  nameWithType.vb: SurfaceMusicTrack.FadeOut(Single, Action)
+  fullName.vb: Vintagestory.API.Client.SurfaceMusicTrack.FadeOut(Single, System.Action)
+  name.vb: FadeOut(Single, Action)
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.SetCooldown(System.Single)
+  commentId: M:Vintagestory.API.Client.SurfaceMusicTrack.SetCooldown(System.Single)
+  id: SetCooldown(System.Single)
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: SetCooldown(float)
+  nameWithType: SurfaceMusicTrack.SetCooldown(float)
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.SetCooldown(float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetCooldown
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 385
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sets the cooldown of the current track.
+  example: []
+  syntax:
+    content: public virtual void SetCooldown(float multiplier)
+    parameters:
+    - id: multiplier
+      type: System.Single
+      description: The multiplier for the cooldown.
+    content.vb: Public Overridable Sub SetCooldown(multiplier As Single)
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.SetCooldown*
+  nameWithType.vb: SurfaceMusicTrack.SetCooldown(Single)
+  fullName.vb: Vintagestory.API.Client.SurfaceMusicTrack.SetCooldown(Single)
+  name.vb: SetCooldown(Single)
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.UpdateVolume
+  commentId: M:Vintagestory.API.Client.SurfaceMusicTrack.UpdateVolume
+  id: UpdateVolume
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: UpdateVolume()
+  nameWithType: SurfaceMusicTrack.UpdateVolume()
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.UpdateVolume()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: UpdateVolume
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 396
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Updates the volume of the current track provided Sound is not null. (effectively calls Sound.SetVolume)
+  example: []
+  syntax:
+    content: public virtual void UpdateVolume()
+    content.vb: Public Overridable Sub UpdateVolume()
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.UpdateVolume*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.UpdateVolume
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.FastForward(System.Single)
+  commentId: M:Vintagestory.API.Client.SurfaceMusicTrack.FastForward(System.Single)
+  id: FastForward(System.Single)
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: FastForward(float)
+  nameWithType: SurfaceMusicTrack.FastForward(float)
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.FastForward(float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FastForward
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 404
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  example: []
+  syntax:
+    content: public virtual void FastForward(float seconds)
+    parameters:
+    - id: seconds
+      type: System.Single
+    content.vb: Public Overridable Sub FastForward(seconds As Single)
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.FastForward*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.FastForward(System.Single)
+  nameWithType.vb: SurfaceMusicTrack.FastForward(Single)
+  fullName.vb: Vintagestory.API.Client.SurfaceMusicTrack.FastForward(Single)
+  name.vb: FastForward(Single)
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.PositionString
+  commentId: P:Vintagestory.API.Client.SurfaceMusicTrack.PositionString
+  id: PositionString
+  parent: Vintagestory.API.Client.SurfaceMusicTrack
+  langs:
+  - csharp
+  - vb
+  name: PositionString
+  nameWithType: SurfaceMusicTrack.PositionString
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.PositionString
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Audio/SurfaceMusicTrack.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PositionString
+    path: Client/Audio/SurfaceMusicTrack.cs
+    startLine: 414
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  example: []
+  syntax:
+    content: public string PositionString { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property PositionString As String
+  overload: Vintagestory.API.Client.SurfaceMusicTrack.PositionString*
+  implements:
+  - Vintagestory.API.Client.IMusicTrack.PositionString
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Client.IMusicTrack
+  commentId: T:Vintagestory.API.Client.IMusicTrack
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IMusicTrack.html
+  name: IMusicTrack
+  nameWithType: IMusicTrack
+  fullName: Vintagestory.API.Client.IMusicTrack
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.AssetLocation
+  commentId: T:Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: AssetLocation
+  nameWithType: AssetLocation
+  fullName: Vintagestory.API.Common.AssetLocation
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.Priority*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.Priority
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_Priority
+  name: Priority
+  nameWithType: SurfaceMusicTrack.Priority
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.Priority
+- uid: Vintagestory.API.Client.IMusicTrack.Priority
+  commentId: P:Vintagestory.API.Client.IMusicTrack.Priority
+  parent: Vintagestory.API.Client.IMusicTrack
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_Priority
+  name: Priority
+  nameWithType: IMusicTrack.Priority
+  fullName: Vintagestory.API.Client.IMusicTrack.Priority
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.StartPriorityRnd*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.StartPriorityRnd
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_StartPriorityRnd
+  name: StartPriorityRnd
+  nameWithType: SurfaceMusicTrack.StartPriorityRnd
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.StartPriorityRnd
+- uid: Vintagestory.API.MathTools.NatFloat
+  commentId: T:Vintagestory.API.MathTools.NatFloat
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.NatFloat.html
+  name: NatFloat
+  nameWithType: NatFloat
+  fullName: Vintagestory.API.MathTools.NatFloat
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.StartPriority*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.StartPriority
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_StartPriority
+  name: StartPriority
+  nameWithType: SurfaceMusicTrack.StartPriority
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.StartPriority
+- uid: Vintagestory.API.Client.IMusicTrack.StartPriority
+  commentId: P:Vintagestory.API.Client.IMusicTrack.StartPriority
+  parent: Vintagestory.API.Client.IMusicTrack
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_StartPriority
+  name: StartPriority
+  nameWithType: IMusicTrack.StartPriority
+  fullName: Vintagestory.API.Client.IMusicTrack.StartPriority
+- uid: Vintagestory.API.Client.ILoadedSound
+  commentId: T:Vintagestory.API.Client.ILoadedSound
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ILoadedSound.html
+  name: ILoadedSound
+  nameWithType: ILoadedSound
+  fullName: Vintagestory.API.Client.ILoadedSound
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.IsActive*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.IsActive
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_IsActive
+  name: IsActive
+  nameWithType: SurfaceMusicTrack.IsActive
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.IsActive
+- uid: Vintagestory.API.Client.IMusicTrack.IsActive
+  commentId: P:Vintagestory.API.Client.IMusicTrack.IsActive
+  parent: Vintagestory.API.Client.IMusicTrack
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_IsActive
+  name: IsActive
+  nameWithType: IMusicTrack.IsActive
+  fullName: Vintagestory.API.Client.IMusicTrack.IsActive
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.Name*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.Name
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_Name
+  name: Name
+  nameWithType: SurfaceMusicTrack.Name
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.Name
+- uid: Vintagestory.API.Client.IMusicTrack.Name
+  commentId: P:Vintagestory.API.Client.IMusicTrack.Name
+  parent: Vintagestory.API.Client.IMusicTrack
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_Name
+  name: Name
+  nameWithType: IMusicTrack.Name
+  fullName: Vintagestory.API.Client.IMusicTrack.Name
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.Collections.Generic.Dictionary{System.String,System.Int64}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Int64}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, long>
+  nameWithType: Dictionary<string, long>
+  fullName: System.Collections.Generic.Dictionary<string, long>
+  nameWithType.vb: Dictionary(Of String, Long)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Long)
+  name.vb: Dictionary(Of String, Long)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Client.ICoreClientAPI
+  commentId: T:Vintagestory.API.Client.ICoreClientAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ICoreClientAPI.html
+  name: ICoreClientAPI
+  nameWithType: ICoreClientAPI
+  fullName: Vintagestory.API.Client.ICoreClientAPI
+- uid: Vintagestory.API.Client.IMusicEngine
+  commentId: T:Vintagestory.API.Client.IMusicEngine
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IMusicEngine.html
+  name: IMusicEngine
+  nameWithType: IMusicEngine
+  fullName: Vintagestory.API.Client.IMusicEngine
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.MusicFrequency*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.MusicFrequency
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_MusicFrequency
+  name: MusicFrequency
+  nameWithType: SurfaceMusicTrack.MusicFrequency
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.MusicFrequency
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.Initialize*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.Initialize
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_Initialize_Vintagestory_API_Common_IAssetManager_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_IMusicEngine_
+  name: Initialize
+  nameWithType: SurfaceMusicTrack.Initialize
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.Initialize
+- uid: Vintagestory.API.Client.IMusicTrack.Initialize(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.IMusicEngine)
+  commentId: M:Vintagestory.API.Client.IMusicTrack.Initialize(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.IMusicEngine)
+  parent: Vintagestory.API.Client.IMusicTrack
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_Initialize_Vintagestory_API_Common_IAssetManager_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_IMusicEngine_
+  name: Initialize(IAssetManager, ICoreClientAPI, IMusicEngine)
+  nameWithType: IMusicTrack.Initialize(IAssetManager, ICoreClientAPI, IMusicEngine)
+  fullName: Vintagestory.API.Client.IMusicTrack.Initialize(Vintagestory.API.Common.IAssetManager, Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.IMusicEngine)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IMusicTrack.Initialize(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.IMusicEngine)
+    name: Initialize
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_Initialize_Vintagestory_API_Common_IAssetManager_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_IMusicEngine_
+  - name: (
+  - uid: Vintagestory.API.Common.IAssetManager
+    name: IAssetManager
+    href: Vintagestory.API.Common.IAssetManager.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.IMusicEngine
+    name: IMusicEngine
+    href: Vintagestory.API.Client.IMusicEngine.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IMusicTrack.Initialize(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.IMusicEngine)
+    name: Initialize
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_Initialize_Vintagestory_API_Common_IAssetManager_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_IMusicEngine_
+  - name: (
+  - uid: Vintagestory.API.Common.IAssetManager
+    name: IAssetManager
+    href: Vintagestory.API.Common.IAssetManager.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.ICoreClientAPI
+    name: ICoreClientAPI
+    href: Vintagestory.API.Client.ICoreClientAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.IMusicEngine
+    name: IMusicEngine
+    href: Vintagestory.API.Client.IMusicEngine.html
+  - name: )
+- uid: Vintagestory.API.Common.IAssetManager
+  commentId: T:Vintagestory.API.Common.IAssetManager
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IAssetManager.html
+  name: IAssetManager
+  nameWithType: IAssetManager
+  fullName: Vintagestory.API.Common.IAssetManager
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.BeginSort*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.BeginSort
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_BeginSort
+  name: BeginSort
+  nameWithType: SurfaceMusicTrack.BeginSort
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.BeginSort
+- uid: Vintagestory.API.Client.IMusicTrack.BeginSort
+  commentId: M:Vintagestory.API.Client.IMusicTrack.BeginSort
+  parent: Vintagestory.API.Client.IMusicTrack
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_BeginSort
+  name: BeginSort()
+  nameWithType: IMusicTrack.BeginSort()
+  fullName: Vintagestory.API.Client.IMusicTrack.BeginSort()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IMusicTrack.BeginSort
+    name: BeginSort
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_BeginSort
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IMusicTrack.BeginSort
+    name: BeginSort
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_BeginSort
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.selectMinMaxHour*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.selectMinMaxHour
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_selectMinMaxHour
+  name: selectMinMaxHour
+  nameWithType: SurfaceMusicTrack.selectMinMaxHour
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.selectMinMaxHour
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.FrequencyChanged*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.FrequencyChanged
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_FrequencyChanged_System_Int32_Vintagestory_API_Client_ICoreClientAPI_
+  name: FrequencyChanged
+  nameWithType: SurfaceMusicTrack.FrequencyChanged
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.FrequencyChanged
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.ShouldPlay*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.ShouldPlay
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_ShouldPlay_Vintagestory_API_Common_Entities_TrackedPlayerProperties_Vintagestory_API_Common_ClimateCondition_Vintagestory_API_MathTools_BlockPos_
+  name: ShouldPlay
+  nameWithType: SurfaceMusicTrack.ShouldPlay
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.ShouldPlay
+- uid: Vintagestory.API.Client.IMusicTrack.ShouldPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties,Vintagestory.API.Common.ClimateCondition,Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Client.IMusicTrack.ShouldPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties,Vintagestory.API.Common.ClimateCondition,Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Client.IMusicTrack
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_ShouldPlay_Vintagestory_API_Common_Entities_TrackedPlayerProperties_Vintagestory_API_Common_ClimateCondition_Vintagestory_API_MathTools_BlockPos_
+  name: ShouldPlay(TrackedPlayerProperties, ClimateCondition, BlockPos)
+  nameWithType: IMusicTrack.ShouldPlay(TrackedPlayerProperties, ClimateCondition, BlockPos)
+  fullName: Vintagestory.API.Client.IMusicTrack.ShouldPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties, Vintagestory.API.Common.ClimateCondition, Vintagestory.API.MathTools.BlockPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IMusicTrack.ShouldPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties,Vintagestory.API.Common.ClimateCondition,Vintagestory.API.MathTools.BlockPos)
+    name: ShouldPlay
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_ShouldPlay_Vintagestory_API_Common_Entities_TrackedPlayerProperties_Vintagestory_API_Common_ClimateCondition_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.TrackedPlayerProperties
+    name: TrackedPlayerProperties
+    href: Vintagestory.API.Common.Entities.TrackedPlayerProperties.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ClimateCondition
+    name: ClimateCondition
+    href: Vintagestory.API.Common.ClimateCondition.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IMusicTrack.ShouldPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties,Vintagestory.API.Common.ClimateCondition,Vintagestory.API.MathTools.BlockPos)
+    name: ShouldPlay
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_ShouldPlay_Vintagestory_API_Common_Entities_TrackedPlayerProperties_Vintagestory_API_Common_ClimateCondition_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.TrackedPlayerProperties
+    name: TrackedPlayerProperties
+    href: Vintagestory.API.Common.Entities.TrackedPlayerProperties.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ClimateCondition
+    name: ClimateCondition
+    href: Vintagestory.API.Common.ClimateCondition.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Common.Entities.TrackedPlayerProperties
+  commentId: T:Vintagestory.API.Common.Entities.TrackedPlayerProperties
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.TrackedPlayerProperties.html
+  name: TrackedPlayerProperties
+  nameWithType: TrackedPlayerProperties
+  fullName: Vintagestory.API.Common.Entities.TrackedPlayerProperties
+- uid: Vintagestory.API.Common.ClimateCondition
+  commentId: T:Vintagestory.API.Common.ClimateCondition
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ClimateCondition.html
+  name: ClimateCondition
+  nameWithType: ClimateCondition
+  fullName: Vintagestory.API.Common.ClimateCondition
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.Common.Entities
+  commentId: N:Vintagestory.API.Common.Entities
+  href: Vintagestory.html
+  name: Vintagestory.API.Common.Entities
+  nameWithType: Vintagestory.API.Common.Entities
+  fullName: Vintagestory.API.Common.Entities
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.BeginPlay*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.BeginPlay
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_BeginPlay_Vintagestory_API_Common_Entities_TrackedPlayerProperties_
+  name: BeginPlay
+  nameWithType: SurfaceMusicTrack.BeginPlay
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.BeginPlay
+- uid: Vintagestory.API.Client.IMusicTrack.BeginPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  commentId: M:Vintagestory.API.Client.IMusicTrack.BeginPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  parent: Vintagestory.API.Client.IMusicTrack
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_BeginPlay_Vintagestory_API_Common_Entities_TrackedPlayerProperties_
+  name: BeginPlay(TrackedPlayerProperties)
+  nameWithType: IMusicTrack.BeginPlay(TrackedPlayerProperties)
+  fullName: Vintagestory.API.Client.IMusicTrack.BeginPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IMusicTrack.BeginPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+    name: BeginPlay
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_BeginPlay_Vintagestory_API_Common_Entities_TrackedPlayerProperties_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.TrackedPlayerProperties
+    name: TrackedPlayerProperties
+    href: Vintagestory.API.Common.Entities.TrackedPlayerProperties.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IMusicTrack.BeginPlay(Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+    name: BeginPlay
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_BeginPlay_Vintagestory_API_Common_Entities_TrackedPlayerProperties_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.TrackedPlayerProperties
+    name: TrackedPlayerProperties
+    href: Vintagestory.API.Common.Entities.TrackedPlayerProperties.html
+  - name: )
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.ContinuePlay*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.ContinuePlay
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_ContinuePlay_System_Single_Vintagestory_API_Common_Entities_TrackedPlayerProperties_
+  name: ContinuePlay
+  nameWithType: SurfaceMusicTrack.ContinuePlay
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.ContinuePlay
+- uid: Vintagestory.API.Client.IMusicTrack.ContinuePlay(System.Single,Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  commentId: M:Vintagestory.API.Client.IMusicTrack.ContinuePlay(System.Single,Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  parent: Vintagestory.API.Client.IMusicTrack
+  isExternal: true
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_ContinuePlay_System_Single_Vintagestory_API_Common_Entities_TrackedPlayerProperties_
+  name: ContinuePlay(float, TrackedPlayerProperties)
+  nameWithType: IMusicTrack.ContinuePlay(float, TrackedPlayerProperties)
+  fullName: Vintagestory.API.Client.IMusicTrack.ContinuePlay(float, Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  nameWithType.vb: IMusicTrack.ContinuePlay(Single, TrackedPlayerProperties)
+  fullName.vb: Vintagestory.API.Client.IMusicTrack.ContinuePlay(Single, Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+  name.vb: ContinuePlay(Single, TrackedPlayerProperties)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IMusicTrack.ContinuePlay(System.Single,Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+    name: ContinuePlay
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_ContinuePlay_System_Single_Vintagestory_API_Common_Entities_TrackedPlayerProperties_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.TrackedPlayerProperties
+    name: TrackedPlayerProperties
+    href: Vintagestory.API.Common.Entities.TrackedPlayerProperties.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IMusicTrack.ContinuePlay(System.Single,Vintagestory.API.Common.Entities.TrackedPlayerProperties)
+    name: ContinuePlay
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_ContinuePlay_System_Single_Vintagestory_API_Common_Entities_TrackedPlayerProperties_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.TrackedPlayerProperties
+    name: TrackedPlayerProperties
+    href: Vintagestory.API.Common.Entities.TrackedPlayerProperties.html
+  - name: )
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.FadeOut*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.FadeOut
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_FadeOut_System_Single_System_Action_
+  name: FadeOut
+  nameWithType: SurfaceMusicTrack.FadeOut
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.FadeOut
+- uid: Vintagestory.API.Client.IMusicTrack.FadeOut(System.Single,System.Action)
+  commentId: M:Vintagestory.API.Client.IMusicTrack.FadeOut(System.Single,System.Action)
+  parent: Vintagestory.API.Client.IMusicTrack
+  isExternal: true
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_FadeOut_System_Single_System_Action_
+  name: FadeOut(float, Action)
+  nameWithType: IMusicTrack.FadeOut(float, Action)
+  fullName: Vintagestory.API.Client.IMusicTrack.FadeOut(float, System.Action)
+  nameWithType.vb: IMusicTrack.FadeOut(Single, Action)
+  fullName.vb: Vintagestory.API.Client.IMusicTrack.FadeOut(Single, System.Action)
+  name.vb: FadeOut(Single, Action)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IMusicTrack.FadeOut(System.Single,System.Action)
+    name: FadeOut
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_FadeOut_System_Single_System_Action_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Action
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IMusicTrack.FadeOut(System.Single,System.Action)
+    name: FadeOut
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_FadeOut_System_Single_System_Action_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Action
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action
+  - name: )
+- uid: System.Action
+  commentId: T:System.Action
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action
+  name: Action
+  nameWithType: Action
+  fullName: System.Action
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.SetCooldown*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.SetCooldown
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_SetCooldown_System_Single_
+  name: SetCooldown
+  nameWithType: SurfaceMusicTrack.SetCooldown
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.SetCooldown
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.UpdateVolume*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.UpdateVolume
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_UpdateVolume
+  name: UpdateVolume
+  nameWithType: SurfaceMusicTrack.UpdateVolume
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.UpdateVolume
+- uid: Vintagestory.API.Client.IMusicTrack.UpdateVolume
+  commentId: M:Vintagestory.API.Client.IMusicTrack.UpdateVolume
+  parent: Vintagestory.API.Client.IMusicTrack
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_UpdateVolume
+  name: UpdateVolume()
+  nameWithType: IMusicTrack.UpdateVolume()
+  fullName: Vintagestory.API.Client.IMusicTrack.UpdateVolume()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IMusicTrack.UpdateVolume
+    name: UpdateVolume
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_UpdateVolume
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IMusicTrack.UpdateVolume
+    name: UpdateVolume
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_UpdateVolume
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.FastForward*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.FastForward
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_FastForward_System_Single_
+  name: FastForward
+  nameWithType: SurfaceMusicTrack.FastForward
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.FastForward
+- uid: Vintagestory.API.Client.IMusicTrack.FastForward(System.Single)
+  commentId: M:Vintagestory.API.Client.IMusicTrack.FastForward(System.Single)
+  parent: Vintagestory.API.Client.IMusicTrack
+  isExternal: true
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_FastForward_System_Single_
+  name: FastForward(float)
+  nameWithType: IMusicTrack.FastForward(float)
+  fullName: Vintagestory.API.Client.IMusicTrack.FastForward(float)
+  nameWithType.vb: IMusicTrack.FastForward(Single)
+  fullName.vb: Vintagestory.API.Client.IMusicTrack.FastForward(Single)
+  name.vb: FastForward(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IMusicTrack.FastForward(System.Single)
+    name: FastForward
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_FastForward_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IMusicTrack.FastForward(System.Single)
+    name: FastForward
+    href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_FastForward_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.SurfaceMusicTrack.PositionString*
+  commentId: Overload:Vintagestory.API.Client.SurfaceMusicTrack.PositionString
+  href: Vintagestory.API.Client.SurfaceMusicTrack.html#Vintagestory_API_Client_SurfaceMusicTrack_PositionString
+  name: PositionString
+  nameWithType: SurfaceMusicTrack.PositionString
+  fullName: Vintagestory.API.Client.SurfaceMusicTrack.PositionString
+- uid: Vintagestory.API.Client.IMusicTrack.PositionString
+  commentId: P:Vintagestory.API.Client.IMusicTrack.PositionString
+  parent: Vintagestory.API.Client.IMusicTrack
+  href: Vintagestory.API.Client.IMusicTrack.html#Vintagestory_API_Client_IMusicTrack_PositionString
+  name: PositionString
+  nameWithType: IMusicTrack.PositionString
+  fullName: Vintagestory.API.Client.IMusicTrack.PositionString

@@ -1,96 +1,132 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace Vintagestory.API.Common
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace Vintagestory.API.Common
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Namespace Vintagestory.API.Common | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace Vintagestory.API.Common | VintageStory API ">
+      
+      
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common">
-  
-  <h1 id="Vintagestory_API_Common" data-uid="Vintagestory.API.Common" class="text-break">Namespace Vintagestory.API.Common
-  </h1>
+
+        <article data-uid="Vintagestory.API.Common">
+
+  <h1 id="Vintagestory_API_Common" data-uid="Vintagestory.API.Common" class="text-break">Namespace Vintagestory.API.Common</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
-  </h3>
-      <h4><a class="xref" href="Vintagestory.API.Common.ActiveSlotChangeEventArgs.html">ActiveSlotChangeEventArgs</a></h4>
-      <section><p>This contains data about an event that fires when a player changes which
-slot they&apos;re actively using. Such as the currently selected hotbar slot.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AirBubbleParticles.html">AirBubbleParticles</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AmbientModifier.html">AmbientModifier</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimatableRenderer.html">AnimatableRenderer</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Animation.html">Animation</a></h4>
-      <section><p>Represents a shape animation and can calculate the transformation matrices for each frame to be sent to the shader
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ActiveSlotChangeEventArgs.html">ActiveSlotChangeEventArgs</a></dt>
+      <dd><p>This contains data about an event that fires when a player changes which
+slot they're actively using. Such as the currently selected hotbar slot.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AirBubbleParticles.html">AirBubbleParticles</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AmbientModifier.html">AmbientModifier</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimCacheEntry.html">AnimCacheEntry</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimFrameCallback.html">AnimFrameCallback</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimatableRenderer.html">AnimatableRenderer</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Animation.html">Animation</a></dt>
+      <dd><p>Represents a shape animation and can calculate the transformation matrices for each frame to be sent to the shader
 Process</p>
 <ol>
 <li><p>For each frame, for each root element, calculate the transformation matrix. Curent model matrix is identy mat.
@@ -100,476 +136,856 @@ Process</p>
 1.3.1. Multiply local transformation matrix with the animation matrix. This matrix is now the curent model matrix. Go to 1 with child elements as root elems</p>
 </li>
 <li><p>For each frame, for each joint
-2.1. Calculate the inverse model matrix 
+2.1. Calculate the inverse model matrix
 2.2. Multiply stored animationmatrix with the inverse model matrix</p>
 </li>
 <li><p>done</p>
 </li>
 </ol>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimationCache.html">AnimationCache</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimationFrame.html">AnimationFrame</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimationJoint.html">AnimationJoint</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimationKeyFrame.html">AnimationKeyFrame</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimationKeyFrameElement.html">AnimationKeyFrameElement</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimationManager.html">AnimationManager</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimationTrigger.html">AnimationTrigger</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimationUtil.html">AnimationUtil</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimatorBase.html">AnimatorBase</a></h4>
-      <section><p>Syncs every frame with entity.ActiveAnimationsByAnimCode, starts, progresses and stops animations when necessary </p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimCacheEntry.html">AnimCacheEntry</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AnimFrameCallback.html">AnimFrameCallback</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ArgumentParserBase.html">ArgumentParserBase</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AssetCategory.html">AssetCategory</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></h4>
-      <section><p>Defines a complete path to an assets, including it&apos;s domain</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AssetLocationAndSource.html">AssetLocationAndSource</a></h4>
-      <section><p>Defines a complete path to an assets, including it&apos;s domain. Includes an extra Source field for debugging.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AssetLocationJsonParser.html">AssetLocationJsonParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AsyncParseResults.html">AsyncParseResults</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AttachmentPoint.html">AttachmentPoint</a></h4>
-      <section><p>This is a spot on the shape that connects to another shape.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.AttachmentPointAndPose.html">AttachmentPointAndPose</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BakedBitmap.html">BakedBitmap</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BakingProperties.html">BakingProperties</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BitmapExternal.html">BitmapExternal</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BitmapRef.html">BitmapRef</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></h4>
-      <section><p>Basic class for a placeable block</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockBehavior.html">BlockBehavior</a></h4>
-      <section><p>Allows for definitions of behaviors of a block that can be applied to any block</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockBreakingParticleProps.html">BlockBreakingParticleProps</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockBrokenParticleProps.html">BlockBrokenParticleProps</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockCropProperties.html">BlockCropProperties</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockCubeParticles.html">BlockCubeParticles</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockDamage.html">BlockDamage</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockDropItemStack.html">BlockDropItemStack</a></h4>
-      <section><p>Represents an itemstack that is dropped by chance when breaking a block</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockEntity.html">BlockEntity</a></h4>
-      <section><p>Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it&apos;s contents</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockEntityBehavior.html">BlockEntityBehavior</a></h4>
-      <section><p>Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it&apos;s contents</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockEntityBehaviorType.html">BlockEntityBehaviorType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockGeneric.html">BlockGeneric</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockLayersAccess.html">BlockLayersAccess</a></h4>
-      <section><p>Constants used for GetBlock or GetBlockId calls throughout the engine, to guide whether the block should be read from the solid blocks layer, the fluids layer, or perhaps both.
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimationCache.html">AnimationCache</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimationFrame.html">AnimationFrame</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimationJoint.html">AnimationJoint</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimationKeyFrame.html">AnimationKeyFrame</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimationKeyFrameElement.html">AnimationKeyFrameElement</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimationManager.html">AnimationManager</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimationTrigger.html">AnimationTrigger</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimationUtil.html">AnimationUtil</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimatorBase.html">AnimatorBase</a></dt>
+      <dd><p>Syncs every frame with entity.ActiveAnimationsByAnimCode, starts, progresses and stops animations when necessary</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ArgumentParserBase.html">ArgumentParserBase</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AssetCategory.html">AssetCategory</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+      <dd><p>Defines a complete path to an assets, including it's domain</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AssetLocationAndSource.html">AssetLocationAndSource</a></dt>
+      <dd><p>Defines a complete path to an assets, including it's domain. Includes an extra Source field for debugging.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AssetLocationJsonParser.html">AssetLocationJsonParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AsyncParseResults.html">AsyncParseResults</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AttachmentPoint.html">AttachmentPoint</a></dt>
+      <dd><p>This is a spot on the shape that connects to another shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AttachmentPointAndPose.html">AttachmentPointAndPose</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BakedBitmap.html">BakedBitmap</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BakingProperties.html">BakingProperties</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BitmapExternal.html">BitmapExternal</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BitmapRef.html">BitmapRef</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+      <dd><p>Basic class for a placeable block</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockBehavior.html">BlockBehavior</a></dt>
+      <dd><p>Allows for definitions of behaviors of a block that can be applied to any block</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockBreakingParticleProps.html">BlockBreakingParticleProps</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockBrokenParticleProps.html">BlockBrokenParticleProps</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockCropProperties.html">BlockCropProperties</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockCubeParticles.html">BlockCubeParticles</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockDamage.html">BlockDamage</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockDropItemStack.html">BlockDropItemStack</a></dt>
+      <dd><p>Represents an itemstack that is dropped by chance when breaking a block</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockEntity.html">BlockEntity</a></dt>
+      <dd><p>Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it's contents</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockEntityBehavior.html">BlockEntityBehavior</a></dt>
+      <dd><p>Basic class for block entities - a data structures to hold custom information for blocks, e.g. for chests to hold it's contents</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockEntityBehaviorType.html">BlockEntityBehaviorType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockGeneric.html">BlockGeneric</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockLayersAccess.html">BlockLayersAccess</a></dt>
+      <dd><p>Constants used for GetBlock or GetBlockId calls throughout the engine, to guide whether the block should be read from the solid blocks layer, the fluids layer, or perhaps both.
 <br>The game engine supports different block layers in 1.17+.  Currently there is a solid blocks layer (e.g. terrain, loose stones, plants, reeds) and a fluid layer (e.g. still water, flowing water, lava, lake ice). Both layers can contain a block at the same position.
 <br>Use the .Default value for getting blocks in the general case, use the .Solid/.Fluid value to read from the solid blocks or fluid layer specifically</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockMaterialUtil.html">BlockMaterialUtil</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockOffsetAndNumber.html">BlockOffsetAndNumber</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockSchematic.html">BlockSchematic</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></h4>
-      <section><p>Contains all the information for a players block selection event</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockSounds.html">BlockSounds</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockUpdate.html">BlockUpdate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BoolArgParser.html">BoolArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Caller.html">Caller</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ChatCommand.html">ChatCommand</a></h4>
-      <section><p>A base class for all chat commands.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ChatCommandComparer.html">ChatCommandComparer</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ChatLine.html">ChatLine</a></h4>
-      <section><p>an internal control containing the properties of a chat message.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ClientAnimator.html">ClientAnimator</a></h4>
-      <section><p>Syncs every frame with entity.ActiveAnimationsByAnimCode, starts and stops animations when necessary 
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockMaterialUtil.html">BlockMaterialUtil</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockOffsetAndNumber.html">BlockOffsetAndNumber</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockSchematic.html">BlockSchematic</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+      <dd><p>Contains all the information for a players block selection event</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockSounds.html">BlockSounds</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockUpdate.html">BlockUpdate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BoolArgParser.html">BoolArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Caller.html">Caller</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ChatCommand.html">ChatCommand</a></dt>
+      <dd><p>A base class for all chat commands.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ChatCommandComparer.html">ChatCommandComparer</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ChatLine.html">ChatLine</a></dt>
+      <dd><p>an internal control containing the properties of a chat message.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ClientAnimator.html">ClientAnimator</a></dt>
+      <dd><p>Syncs every frame with entity.ActiveAnimationsByAnimCode, starts and stops animations when necessary
 and does recursive interpolation on the rotation, position and scale value for each frame, for each element and for each active element
 this produces always correctly blended animations but is significantly more costly for the cpu when compared to the technique used by the <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html">AnimatorBase</a>.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ClientChatCommand.html">ClientChatCommand</a></h4>
-      <section><p>A handle for creating client commands.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ClimateCondition.html">ClimateCondition</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CmdArgs.html">CmdArgs</a></h4>
-      <section><p>The arguments from a client or sever command</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CollectibleArgParser.html">CollectibleArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html">CollectibleBehavior</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CollectibleObject.html">CollectibleObject</a></h4>
-      <section><p>Contains all properties shared by Blocks and Items</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CollectibleParticleProperties.html">CollectibleParticleProperties</a></h4>
-      <section><p>Abstract class used for BlockVoxelParticles and ItemVoxelParticles</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ColorArgParser.html">ColorArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ColorMap.html">ColorMap</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html">CombustibleProperties</a></h4>
-      <section><p>Used for an items combustible value</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CommandArgumentParsers.html">CommandArgumentParsers</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html">CraftingRecipeIngredient</a></h4>
-      <section><p>A crafting recipe ingredient</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CreativeInventoryTab.html">CreativeInventoryTab</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CreativeTabAndStackList.html">CreativeTabAndStackList</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CropBehavior.html">CropBehavior</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CrushingProperties.html">CrushingProperties</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.DamageSource.html">DamageSource</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.DatetimeArgParser.html">DatetimeArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.DecorFlags.html">DecorFlags</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.DecorUpdate.html">DecorUpdate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.DirectionArgParser-1.html">DirectionArgParser&lt;T&gt;</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.DoubleArgParser.html">DoubleArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.DummyInventory.html">DummyInventory</a></h4>
-      <section><p>A place holder inventory, useful, e.g., for when you want to render an itemstack and not have it spoil</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.DummyLoggerException.html">DummyLoggerException</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.DummySlot.html">DummySlot</a></h4>
-      <section><p>A single slot not attached to a given inventory.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></h4>
-      <section><p>The position of an element.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntitiesArgParser.html">EntitiesArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Entitlement.html">Entitlement</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityAgent.html">EntityAgent</a></h4>
-      <section><p>A goal-directed entity which observes and acts upon an environment</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityBehaviorNameTag.html">EntityBehaviorNameTag</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityBehaviorPassivePhysics.html">EntityBehaviorPassivePhysics</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityChunky.html">EntityChunky</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityControls.html">EntityControls</a></h4>
-      <section><p>The available controls to move around a character in a game world</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityCubeParticles.html">EntityCubeParticles</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityFloatStats.html">EntityFloatStats</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityHeadController.html">EntityHeadController</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityHumanoid.html">EntityHumanoid</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityItem.html">EntityItem</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityItemSlot.html">EntityItemSlot</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityPlayer.html">EntityPlayer</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntitySelection.html">EntitySelection</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityStat-1.html">EntityStat&lt;T&gt;</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityStats.html">EntityStats</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityTypeArgParser.html">EntityTypeArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityUpdate.html">EntityUpdate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumAppSideExtensions.html">EnumAppSideExtensions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumWindBitModeMask.html">EnumWindBitModeMask</a></h4>
-      <section><p>Windmode flags, which can be ORed with existing vertex data to add the specified wind mode (assuming it was 0 previously!)</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ExplosionParticles.html">ExplosionParticles</a></h4>
-      <section><p>A subclass of ExplosionSmokeParticles.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ExplosionSmokeParticles.html">ExplosionSmokeParticles</a></h4>
-      <section><p>Handles the smoke particles of where the explosion was.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ExtraHandbookSection.html">ExtraHandbookSection</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.FertilizerProps.html">FertilizerProps</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.FloatArgParser.html">FloatArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.FloatingSedimentParticles.html">FloatingSedimentParticles</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.FoodNutritionProperties.html">FoodNutritionProperties</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.FrameProfilerUtil.html">FrameProfilerUtil</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.GeneratedStructure.html">GeneratedStructure</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.GridRecipe.html">GridRecipe</a></h4>
-      <section><p>Represents a crafting recipe</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.GridRecipeIngredient.html">GridRecipeIngredient</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.GrindingProperties.html">GrindingProperties</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.HeldSounds.html">HeldSounds</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.HistoryState.html">HistoryState</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IntArgParser.html">IntArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.InventoryBase.html">InventoryBase</a></h4>
-      <section><p>Basic class representing an item inventory</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.InventoryBasePlayer.html">InventoryBasePlayer</a></h4>
-      <section><p>Abstract class used for all inventories that are &quot;on&quot; the player. Any inventory not inheriting from this class will not be stored to the savegame as part of the players inventory.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.InventoryDisplayed.html">InventoryDisplayed</a></h4>
-      <section><p>A general purpose inventory which sends update packets to nearby players (used for rendering Display Case, Pulveriser, etc)</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.InventoryGeneric.html">InventoryGeneric</a></h4>
-      <section><p>A general purpose inventory</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Item.html">Item</a></h4>
-      <section><p>Represents an in game Item of Vintage Story</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ItemClassMethods.html">ItemClassMethods</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></h4>
-      <section><p>The default item slot to item stacks</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ItemSlotBackpack.html">ItemSlotBackpack</a></h4>
-      <section><p>A slot that can hold mobile containers</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ItemSlotCharacter.html">ItemSlotCharacter</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ItemSlotCreative.html">ItemSlotCreative</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ItemSlotOffhand.html">ItemSlotOffhand</a></h4>
-      <section><p>A slot that only accepts collectibles designated for the off-hand slot</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ItemSlotOutput.html">ItemSlotOutput</a></h4>
-      <section><p>A slot from which the player can only take stuff out of, but not place anything in it</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ItemSlotSurvival.html">ItemSlotSurvival</a></h4>
-      <section><p>Standard survival mode slot that can hold everything except full backpacks</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ItemSlotUniversal.html">ItemSlotUniversal</a></h4>
-      <section><p>A universal item slot type that can hold anything.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ItemStackMergeOperation.html">ItemStackMergeOperation</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ItemStackMoveOperation.html">ItemStackMoveOperation</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.JsonAttributesConverter.html">JsonAttributesConverter</a></h4>
-      <section><p>Implementation of JsonConverter that converts objects to an instance of a JsonObject</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.JsonItemStack.html">JsonItemStack</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.JsonUtil.html">JsonUtil</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.LandClaim.html">LandClaim</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.LayeredVoxelRecipe-1.html">LayeredVoxelRecipe&lt;T&gt;</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.LoggerBase.html">LoggerBase</a></h4>
-      <section><p>Base implementation for <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a> which implements all
-methods besides a new abstract method <a class="xref" href="Vintagestory.API.Common.LoggerBase.html#Vintagestory_API_Common_LoggerBase_LogImpl_Vintagestory_API_Common_EnumLogType_System_String_System_Object___">LogImpl(EnumLogType, String, Object[])</a>.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.LongArgParser.html">LongArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.MetalProperty.html">MetalProperty</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.MetalPropertyVariant.html">MetalPropertyVariant</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Mod.html">Mod</a></h4>
-      <section><p>Represents a mod in the mod manager. May contain zero to multiple
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ClientChatCommand.html">ClientChatCommand</a></dt>
+      <dd><p>A handle for creating client commands.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ClimateCondition.html">ClimateCondition</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CmdArgs.html">CmdArgs</a></dt>
+      <dd><p>The arguments from a client or sever command</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CollectibleArgParser.html">CollectibleArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CollectibleBehavior.html">CollectibleBehavior</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CollectibleObject.html">CollectibleObject</a></dt>
+      <dd><p>Contains all properties shared by Blocks and Items</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CollectibleParticleProperties.html">CollectibleParticleProperties</a></dt>
+      <dd><p>Abstract class used for BlockVoxelParticles and ItemVoxelParticles</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ColorArgParser.html">ColorArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ColorMap.html">ColorMap</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html">CombustibleProperties</a></dt>
+      <dd><p>Used for an items combustible value</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CommandArgumentParsers.html">CommandArgumentParsers</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CraftingRecipeIngredient.html">CraftingRecipeIngredient</a></dt>
+      <dd><p>A crafting recipe ingredient</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CreativeInventoryTab.html">CreativeInventoryTab</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CreativeTabAndStackList.html">CreativeTabAndStackList</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CropBehavior.html">CropBehavior</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CrushingProperties.html">CrushingProperties</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.DamageSource.html">DamageSource</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.DatetimeArgParser.html">DatetimeArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.DecorFlags.html">DecorFlags</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.DecorUpdate.html">DecorUpdate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.DirectionArgParser-1.html">DirectionArgParser&lt;T&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.DoubleArgParser.html">DoubleArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.DummyInventory.html">DummyInventory</a></dt>
+      <dd><p>A place holder inventory, useful, e.g., for when you want to render an itemstack and not have it spoil</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.DummyLoggerException.html">DummyLoggerException</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.DummySlot.html">DummySlot</a></dt>
+      <dd><p>A single slot not attached to a given inventory.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a></dt>
+      <dd><p>The position of an element.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntitiesArgParser.html">EntitiesArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entitlement.html">Entitlement</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityAgent.html">EntityAgent</a></dt>
+      <dd><p>A goal-directed entity which observes and acts upon an environment</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityBehaviorNameTag.html">EntityBehaviorNameTag</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityBehaviorPassivePhysics.html">EntityBehaviorPassivePhysics</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityChunky.html">EntityChunky</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityControls.html">EntityControls</a></dt>
+      <dd><p>The available controls to move around a character in a game world</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityCubeParticles.html">EntityCubeParticles</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityFloatStats.html">EntityFloatStats</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityHeadController.html">EntityHeadController</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityHumanoid.html">EntityHumanoid</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityItem.html">EntityItem</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityItemSlot.html">EntityItemSlot</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityPlayer.html">EntityPlayer</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntitySelection.html">EntitySelection</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityStat-1.html">EntityStat&lt;T&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityStats.html">EntityStats</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityTypeArgParser.html">EntityTypeArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityUpdate.html">EntityUpdate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumAppSideExtensions.html">EnumAppSideExtensions</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumWindBitModeMask.html">EnumWindBitModeMask</a></dt>
+      <dd><p>Windmode flags, which can be ORed with existing vertex data to add the specified wind mode (assuming it was 0 previously!)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ExplosionParticles.html">ExplosionParticles</a></dt>
+      <dd><p>A subclass of ExplosionSmokeParticles.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ExplosionSmokeParticles.html">ExplosionSmokeParticles</a></dt>
+      <dd><p>Handles the smoke particles of where the explosion was.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ExtraHandbookSection.html">ExtraHandbookSection</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.FertilizerProps.html">FertilizerProps</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.FloatArgParser.html">FloatArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.FloatingSedimentParticles.html">FloatingSedimentParticles</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.FoodNutritionProperties.html">FoodNutritionProperties</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.FrameProfilerUtil.html">FrameProfilerUtil</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.GeneratedStructure.html">GeneratedStructure</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.GridRecipe.html">GridRecipe</a></dt>
+      <dd><p>Represents a crafting recipe</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.GridRecipeIngredient.html">GridRecipeIngredient</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.GrindingProperties.html">GrindingProperties</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.HeldSounds.html">HeldSounds</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.HistoryState.html">HistoryState</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IntArgParser.html">IntArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.InventoryBase.html">InventoryBase</a></dt>
+      <dd><p>Basic class representing an item inventory</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.InventoryBasePlayer.html">InventoryBasePlayer</a></dt>
+      <dd><p>Abstract class used for all inventories that are &quot;on&quot; the player. Any inventory not inheriting from this class will not be stored to the savegame as part of the players inventory.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.InventoryDisplayed.html">InventoryDisplayed</a></dt>
+      <dd><p>A general purpose inventory which sends update packets to nearby players (used for rendering Display Case, Pulveriser, etc)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.InventoryGeneric.html">InventoryGeneric</a></dt>
+      <dd><p>A general purpose inventory</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Item.html">Item</a></dt>
+      <dd><p>Represents an in game Item of Vintage Story</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemClassMethods.html">ItemClassMethods</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
+      <dd><p>The default item slot to item stacks</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemSlotBackpack.html">ItemSlotBackpack</a></dt>
+      <dd><p>A slot that can hold mobile containers</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemSlotCharacter.html">ItemSlotCharacter</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemSlotCreative.html">ItemSlotCreative</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemSlotOffhand.html">ItemSlotOffhand</a></dt>
+      <dd><p>A slot that only accepts collectibles designated for the off-hand slot</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemSlotOutput.html">ItemSlotOutput</a></dt>
+      <dd><p>A slot from which the player can only take stuff out of, but not place anything in it</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemSlotSurvival.html">ItemSlotSurvival</a></dt>
+      <dd><p>Standard survival mode slot that can hold everything except full backpacks</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemSlotUniversal.html">ItemSlotUniversal</a></dt>
+      <dd><p>A universal item slot type that can hold anything.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemStackMergeOperation.html">ItemStackMergeOperation</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemStackMoveOperation.html">ItemStackMoveOperation</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.JsonAttributesConverter.html">JsonAttributesConverter</a></dt>
+      <dd><p>Implementation of JsonConverter that converts objects to an instance of a JsonObject</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.JsonItemStack.html">JsonItemStack</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.JsonUtil.html">JsonUtil</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.LandClaim.html">LandClaim</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.LayeredVoxelRecipe-1.html">LayeredVoxelRecipe&lt;T&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.LoggerBase.html">LoggerBase</a></dt>
+      <dd><p>Base implementation for <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a> which implements all
+methods besides a new abstract method <a class="xref" href="Vintagestory.API.Common.LoggerBase.html#Vintagestory_API_Common_LoggerBase_LogImpl_Vintagestory_API_Common_EnumLogType_System_String_System_Object___">LogImpl(EnumLogType, string, params object[])</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.LongArgParser.html">LongArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.MetalProperty.html">MetalProperty</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.MetalPropertyVariant.html">MetalPropertyVariant</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Mod.html">Mod</a></dt>
+      <dd><p>Represents a mod in the mod manager. May contain zero to multiple
 <a class="xref" href="Vintagestory.API.Common.ModSystem.html">ModSystem</a> instances within it.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ModDependency.html">ModDependency</a></h4>
-      <section><p>Represents a mod dependency requirement of one mod for another.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ModDependencyAttribute.html">ModDependencyAttribute</a></h4>
-      <section><p>Applied to a mod assembly multiple times for each required dependency.
-Superseded by this mod&apos;s &quot;modinfo.json&quot; file, if available.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></h4>
-      <section><p>Used for transformations applied to a block or item model</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ModelTransformKeyFrame.html">ModelTransformKeyFrame</a></h4>
-      <section><p>A keyframe for model transformation.  </p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ModelTransformNoDefaults.html">ModelTransformNoDefaults</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ModInfo.html">ModInfo</a></h4>
-      <section><p>Meta data for a specific mod folder, archive, source file or assembly.
-Either loaded from a &quot;modinfo.json&quot; or from the assembly&apos;s
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ModDependency.html">ModDependency</a></dt>
+      <dd><p>Represents a mod dependency requirement of one mod for another.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ModDependencyAttribute.html">ModDependencyAttribute</a></dt>
+      <dd><p>Applied to a mod assembly multiple times for each required dependency.
+Superseded by this mod's &quot;modinfo.json&quot; file, if available.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ModInfo.html">ModInfo</a></dt>
+      <dd><p>Meta data for a specific mod folder, archive, source file or assembly.
+Either loaded from a &quot;modinfo.json&quot; or from the assembly's
 <a class="xref" href="Vintagestory.API.Common.ModInfoAttribute.html">ModInfoAttribute</a>.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ModInfoAttribute.html">ModInfoAttribute</a></h4>
-      <section><p>Applied to a mod assembly to provide additional meta data information
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ModInfoAttribute.html">ModInfoAttribute</a></dt>
+      <dd><p>Applied to a mod assembly to provide additional meta data information
 about a code mod. Superseded by &quot;modinfo.json&quot; file, if available.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ModSystem.html">ModSystem</a></h4>
-      <section><p>Base of a system, which is part of a code mod. Takes care of setting up,
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ModSystem.html">ModSystem</a></dt>
+      <dd><p>Base of a system, which is part of a code mod. Takes care of setting up,
 registering and handling all sorts of things. You may choose to split up
 a mod into multiple distinct systems if you so choose, but there may
 also be just one.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ModWorldConfiguration.html">ModWorldConfiguration</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.MouseButtonConverter.html">MouseButtonConverter</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.MultiblockStructure.html">MultiblockStructure</a></h4>
-      <section><p>You can export one of these by making a selection with worldedit, looking at the center block (which should be your controller/master) then typing /we mgencode. Please note, air blocks are not exported</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.NoAnimationManager.html">NoAnimationManager</a></h4>
-      <section><p>A No-Animation Manager built off of <a class="xref" href="Vintagestory.API.Common.IAnimationManager.html">IAnimationManager</a>.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.NoAnimator.html">NoAnimator</a></h4>
-      <section><p>A NoAnimator built off of <a class="xref" href="Vintagestory.API.Common.IAnimator.html">IAnimator</a></p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.OnlinePlayerArgParser.html">OnlinePlayerArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ParticleBase.html">ParticleBase</a></h4>
-      <section><p>Represents a particle that has been spawned</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html">ParticlesProviderBase</a></h4>
-      <section><p>A base class for all particle providers.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PermaFertilityBoost.html">PermaFertilityBoost</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PlayerAnimationManager.html">PlayerAnimationManager</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PlayerGroupMembership.html">PlayerGroupMembership</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PlayerHeadController.html">PlayerHeadController</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PlayerRoleArgParser.html">PlayerRoleArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PlayersArgParser.html">PlayersArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PlayerSpawnPos.html">PlayerSpawnPos</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PlayerUidName.html">PlayerUidName</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PlayStyle.html">PlayStyle</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PositionArgumentParserBase.html">PositionArgumentParserBase</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PrivilegeArgParser.html">PrivilegeArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ProfileEntry.html">ProfileEntry</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ProfileEntryRange.html">ProfileEntryRange</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.RecipeBase-1.html">RecipeBase&lt;T&gt;</a></h4>
-      <section><p>Creates a new base recipe type.  </p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.RecipeRegistryBase.html">RecipeRegistryBase</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.RecipeRegistryGeneric-1.html">RecipeRegistryGeneric&lt;T&gt;</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.RegistryObject.html">RegistryObject</a></h4>
-      <section><p>A registerable object with variants, i.e. an item, a block or an entity</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.RunningAnimation.html">RunningAnimation</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ServerAnimator.html">ServerAnimator</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ServerChatCommand.html">ServerChatCommand</a></h4>
-      <section><p>A handler for creating server commands.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></h4>
-      <section><p>The base shape for all json objects.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a></h4>
-      <section><p>A shape element built from JSON data within the model.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ShapeElementFace.html">ShapeElementFace</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ShapeElementWeights.html">ShapeElementWeights</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.SimpleParticleProperties.html">SimpleParticleProperties</a></h4>
-      <section><p>A configurable implementation of IParticlePropertiesProvider</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.SQLiteDBConnection.html">SQLiteDBConnection</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.StackCubeParticles.html">StackCubeParticles</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.StandardWorldProperty.html">StandardWorldProperty</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.StringArgParser.html">StringArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.StrongBlockBehavior.html">StrongBlockBehavior</a></h4>
-      <section><p>Same as block behavior but allows even more control over a block, such as the blocks collision boxes and world gen behavior. These are not part of default block behaviors for performance reasons. Requires the block to use the GenericBlock block class (or inherit from it)</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.SurfaceDrawImage.html">SurfaceDrawImage</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.TextCommandCallingArgs.html">TextCommandCallingArgs</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.TextCommandResult.html">TextCommandResult</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.TransitionableProperties.html">TransitionableProperties</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.TransitionState.html">TransitionState</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.TyronThreadPool.html">TyronThreadPool</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.UnparsedArg.html">UnparsedArg</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Vec3iArgParser.html">Vec3iArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.VertexFlags.html">VertexFlags</a></h4>
-      <section><p>Special class to handle the vertex flagging in a very nicely compressed space.<br>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ModWorldConfiguration.html">ModWorldConfiguration</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+      <dd><p>Used for transformations applied to a block or item model</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ModelTransformKeyFrame.html">ModelTransformKeyFrame</a></dt>
+      <dd><p>A keyframe for model transformation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ModelTransformNoDefaults.html">ModelTransformNoDefaults</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.MouseButtonConverter.html">MouseButtonConverter</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.MultiblockStructure.html">MultiblockStructure</a></dt>
+      <dd><p>You can export one of these by making a selection with worldedit, looking at the center block (which should be your controller/master) then typing /we mgencode. Please note, air blocks are not exported</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.NoAnimationManager.html">NoAnimationManager</a></dt>
+      <dd><p>A No-Animation Manager built off of <a class="xref" href="Vintagestory.API.Common.IAnimationManager.html">IAnimationManager</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.NoAnimator.html">NoAnimator</a></dt>
+      <dd><p>A NoAnimator built off of <a class="xref" href="Vintagestory.API.Common.IAnimator.html">IAnimator</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.OnlinePlayerArgParser.html">OnlinePlayerArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ParticleBase.html">ParticleBase</a></dt>
+      <dd><p>Represents a particle that has been spawned</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ParticlesProviderBase.html">ParticlesProviderBase</a></dt>
+      <dd><p>A base class for all particle providers.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PermaFertilityBoost.html">PermaFertilityBoost</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PlayStyle.html">PlayStyle</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PlayerAnimationManager.html">PlayerAnimationManager</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PlayerGroupMembership.html">PlayerGroupMembership</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PlayerHeadController.html">PlayerHeadController</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PlayerRoleArgParser.html">PlayerRoleArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PlayerSpawnPos.html">PlayerSpawnPos</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PlayerUidName.html">PlayerUidName</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PlayersArgParser.html">PlayersArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PositionArgumentParserBase.html">PositionArgumentParserBase</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PrivilegeArgParser.html">PrivilegeArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ProfileEntry.html">ProfileEntry</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ProfileEntryRange.html">ProfileEntryRange</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.RecipeBase-1.html">RecipeBase&lt;T&gt;</a></dt>
+      <dd><p>Creates a new base recipe type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.RecipeRegistryBase.html">RecipeRegistryBase</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.RecipeRegistryGeneric-1.html">RecipeRegistryGeneric&lt;T&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.RegistryObject.html">RegistryObject</a></dt>
+      <dd><p>A registerable object with variants, i.e. an item, a block or an entity</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.RunningAnimation.html">RunningAnimation</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.SQLiteDBConnection.html">SQLiteDBConnection</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ServerAnimator.html">ServerAnimator</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ServerChatCommand.html">ServerChatCommand</a></dt>
+      <dd><p>A handler for creating server commands.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
+      <dd><p>The base shape for all json objects.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a></dt>
+      <dd><p>A shape element built from JSON data within the model.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ShapeElementFace.html">ShapeElementFace</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ShapeElementWeights.html">ShapeElementWeights</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.SimpleParticleProperties.html">SimpleParticleProperties</a></dt>
+      <dd><p>A configurable implementation of IParticlePropertiesProvider</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.StackCubeParticles.html">StackCubeParticles</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.StandardWorldProperty.html">StandardWorldProperty</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.StringArgParser.html">StringArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.StrongBlockBehavior.html">StrongBlockBehavior</a></dt>
+      <dd><p>Same as block behavior but allows even more control over a block, such as the blocks collision boxes and world gen behavior. These are not part of default block behaviors for performance reasons. Requires the block to use the GenericBlock block class (or inherit from it)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.SurfaceDrawImage.html">SurfaceDrawImage</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.TextCommandCallingArgs.html">TextCommandCallingArgs</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.TextCommandResult.html">TextCommandResult</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.TransitionState.html">TransitionState</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.TransitionableProperties.html">TransitionableProperties</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.TyronThreadPool.html">TyronThreadPool</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.UnparsedArg.html">UnparsedArg</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Vec3iArgParser.html">Vec3iArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.VertexFlags.html">VertexFlags</a></dt>
+      <dd><p>Special class to handle the vertex flagging in a very nicely compressed space.<br>
 Bit 0-7: Glow level<br>
 Bit 8-10: Z-Offset<br>
 Bit 11: Reflective bit<br>
@@ -577,595 +993,1057 @@ Bit 12: Lod 0 Bit<br>
 Bit 13-24: X/Y/Z Normals<br>
 Bit 25, 26, 27, 28: Wind mode<br>
 Bit 29, 30, 31: Wind data  (also sometimes used for other data, e.g. reflection mode if Reflective bit is set, or additional water surface data if this is a water block)<br></p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.VtmlParser.html">VtmlParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.VtmlTagToken.html">VtmlTagToken</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.VtmlTextToken.html">VtmlTextToken</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.VtmlToken.html">VtmlToken</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.VtmlUtil.html">VtmlUtil</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.VtmlUtilApiAdditions.html">VtmlUtilApiAdditions</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WaterSplashParticles.html">WaterSplashParticles</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WeightedSlot.html">WeightedSlot</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WordArgParser.html">WordArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WordRangeArgParser.html">WordRangeArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WorldConfigurationAttribute.html">WorldConfigurationAttribute</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WorldConfigurationValue.html">WorldConfigurationValue</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WorldPosition2DArgParser.html">WorldPosition2DArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WorldPositionArgParser.html">WorldPositionArgParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WorldProperty-1.html">WorldProperty&lt;T&gt;</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WorldPropertyVariant.html">WorldPropertyVariant</a></h4>
-      <section></section>
-    <h3 id="structs">Structs
-  </h3>
-      <h4><a class="xref" href="Vintagestory.API.Common.SolarSphericalCoords.html">SolarSphericalCoords</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.SourceStringComponents.html">SourceStringComponents</a></h4>
-      <section><p>For performance, don&apos;t build and store new concatenated strings for every block variant, item and entity, when these will only be used (if ever) for error logging</p>
-</section>
-    <h3 id="interfaces">Interfaces
-  </h3>
-      <h4><a class="xref" href="Vintagestory.API.Common.IAmbientManager.html">IAmbientManager</a></h4>
-      <section><p>This is the system that manages the worlds ambient settings, such as fog color/density and clouds.
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.VtmlParser.html">VtmlParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.VtmlTagToken.html">VtmlTagToken</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.VtmlTextToken.html">VtmlTextToken</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.VtmlToken.html">VtmlToken</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.VtmlUtil.html">VtmlUtil</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.VtmlUtilApiAdditions.html">VtmlUtilApiAdditions</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WaterSplashParticles.html">WaterSplashParticles</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WeightedSlot.html">WeightedSlot</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WordArgParser.html">WordArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WordRangeArgParser.html">WordRangeArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WorldConfigurationAttribute.html">WorldConfigurationAttribute</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WorldConfigurationValue.html">WorldConfigurationValue</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WorldPosition2DArgParser.html">WorldPosition2DArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WorldPositionArgParser.html">WorldPositionArgParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WorldPropertyVariant.html">WorldPropertyVariant</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WorldProperty-1.html">WorldProperty&lt;T&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <h3 id="structs">
+Structs
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.SolarSphericalCoords.html">SolarSphericalCoords</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.SourceStringComponents.html">SourceStringComponents</a></dt>
+      <dd><p>For performance, don't build and store new concatenated strings for every block variant, item and entity, when these will only be used (if ever) for error logging</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IAmbientManager.html">IAmbientManager</a></dt>
+      <dd><p>This is the system that manages the worlds ambient settings, such as fog color/density and clouds.
 The ambient manager basically blends ambientmodifiers on top of each other to generate the final ambient values.
 Blending is in order how the modifiers are held in CurrentModifiers in the likes of
 float weight = modifier.FogMin.Weight;
 BlendedFogMin = w * modifier.FogMin.Value + (1 - w) * BlendedFogMin;</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IAnimationManager.html">IAnimationManager</a></h4>
-      <section><p>Everything needed for allowing animations the <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a> class holds a reference to an IAnimator. 
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IAnimationManager.html">IAnimationManager</a></dt>
+      <dd><p>Everything needed for allowing animations the <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a> class holds a reference to an IAnimator.
 Currently implemented by <a class="xref" href="Vintagestory.API.Common.ServerAnimator.html">ServerAnimator</a></p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IAnimator.html">IAnimator</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IAsset.html">IAsset</a></h4>
-      <section><p>Represents a loaded asset from the assets folder</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a></h4>
-      <section><p>Takes care loading, reloading and managing all files inside the assets folder. All asset names and paths are always converted to lower case.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IAssetOrigin.html">IAssetOrigin</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IBitmap.html">IBitmap</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></h4>
-      <section><p>Provides read/write access to the blocks of a world</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IBlockAccessorPrefetch.html">IBlockAccessorPrefetch</a></h4>
-      <section><p>Useful for when you have to scan multiple times over the same set of blocks</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IBlockAccessorRevertable.html">IBlockAccessorRevertable</a></h4>
-      <section><p>Provides read/write access to the blocks of a world. </p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IBlockEntityContainer.html">IBlockEntityContainer</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IBlockFlowing.html">IBlockFlowing</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IBlockShapeSupplier.html">IBlockShapeSupplier</a></h4>
-      <section><p>Adds a tesselator to your block
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IAnimator.html">IAnimator</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IAsset.html">IAsset</a></dt>
+      <dd><p>Represents a loaded asset from the assets folder</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IAssetManager.html">IAssetManager</a></dt>
+      <dd><p>Takes care loading, reloading and managing all files inside the assets folder. All asset names and paths are always converted to lower case.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IAssetOrigin.html">IAssetOrigin</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IBitmap.html">IBitmap</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
+      <dd><p>Provides read/write access to the blocks of a world</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IBlockAccessorPrefetch.html">IBlockAccessorPrefetch</a></dt>
+      <dd><p>Useful for when you have to scan multiple times over the same set of blocks</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IBlockAccessorRevertable.html">IBlockAccessorRevertable</a></dt>
+      <dd><p>Provides read/write access to the blocks of a world.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IBlockEntityContainer.html">IBlockEntityContainer</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IBlockFlowing.html">IBlockFlowing</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IBlockShapeSupplier.html">IBlockShapeSupplier</a></dt>
+      <dd><p>Adds a tesselator to your block
 WARNING: please make sure whatever functions and fields you use with the OnTesselation event are THREAD SAFE!</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IBulkBlockAccessor.html">IBulkBlockAccessor</a></h4>
-      <section><p>Useful for setting many blocks at once efficiently</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IByteSerializable.html">IByteSerializable</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ICachingBlockAccessor.html">ICachingBlockAccessor</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IChatCommandApi.html">IChatCommandApi</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IChunkBlocks.html">IChunkBlocks</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IChunkLight.html">IChunkLight</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IClassRegistryAPI.html">IClassRegistryAPI</a></h4>
-      <section><p>Interface for creating instances</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IClientChunk.html">IClientChunk</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IClientGameCalendar.html">IClientGameCalendar</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ICollectibleDisplayable.html">ICollectibleDisplayable</a></h4>
-      <section><p>A collectible object that can be placed on the ground or on shelves or in display cases, but require custom code or rendering for it</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ICollectibleOnDisplayInteractable.html">ICollectibleOnDisplayInteractable</a></h4>
-      <section><p>A collectible object that can be placed on the ground or on shelves or in display cases, but also can still accept interactions from the player</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ICombustible.html">ICombustible</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ICommandArgumentParser.html">ICommandArgumentParser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></h4>
-      <section><p>Common API Components that are available on the server and the client. Cast to ICoreServerAPI or ICoreClientAPI to access side specific features.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html">ICoreAPICommon</a></h4>
-      <section><p>API Methods common to the server and client</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IDrawYAdjustable.html">IDrawYAdjustable</a></h4>
-      <section><p>Used for blocks (e.g. crops and dead crops) where the y-position might need to be adjusted at the time of tesselating an individual block</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IEntityPartitioning.html">IEntityPartitioning</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IEventAPI.html">IEventAPI</a></h4>
-      <section><p>Events that are available on the server and the client</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IFarmlandBlockEntity.html">IFarmlandBlockEntity</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IGameCalendar.html">IGameCalendar</a></h4>
-      <section><p>Main API for retrieving anything calender or astronomy related</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IGeometryTester.html">IGeometryTester</a></h4>
-      <section><p>Used for blocks (e.g. chiselled blocks) where the basic block geometry: AO shading, side opaque etc - depends on the individual block or blockEntity</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></h4>
-      <section><p>Basic interface representing an item inventory</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IInventoryNetworkUtil.html">IInventoryNetworkUtil</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IItemStack.html">IItemStack</a></h4>
-      <section><p>Represents a stack of items or blocks</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ILandClaimAPI.html">ILandClaimAPI</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></h4>
-      <section><p>Interface to the client&apos;s and server&apos;s event, debug and error logging utilty.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IMapChunk.html">IMapChunk</a></h4>
-      <section><p>Holds 2 dimensional data for one chunk column</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IMapRegion.html">IMapRegion</a></h4>
-      <section><p>2D Map data for a 16x16 area of chunk columns. Holds a few maps for the chunk generation.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IMaterialExchangeable.html">IMaterialExchangeable</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IMiniDimension.html">IMiniDimension</a></h4>
-      <section><p>Provides read/write access to the blocks of a movable mini-dimension. </p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IModLoader.html">IModLoader</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IMountable.html">IMountable</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IMountableSupplier.html">IMountableSupplier</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.INetworkAPI.html">INetworkAPI</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a></h4>
-      <section><p>Represents a provider of particle properties to be used when generating a particle</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></h4>
-      <section><p>Represents a player</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IPlayerInventoryManager.html">IPlayerInventoryManager</a></h4>
-      <section><p>Let&apos;s you do various interesting things with the players inventory.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IPlayerRole.html">IPlayerRole</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IRecipeBase-1.html">IRecipeBase&lt;T&gt;</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IRecipeOutput.html">IRecipeOutput</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IResolvableCollectible.html">IResolvableCollectible</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IRotatable.html">IRotatable</a></h4>
-      <section><p>Implement this interface if schematics containing this block entity needs to modify it&apos;s tree attribute data. Beware, this method is called without
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IBulkBlockAccessor.html">IBulkBlockAccessor</a></dt>
+      <dd><p>Useful for setting many blocks at once efficiently</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IByteSerializable.html">IByteSerializable</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ICachingBlockAccessor.html">ICachingBlockAccessor</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IChatCommand.html">IChatCommand</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IChatCommandApi.html">IChatCommandApi</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IChunkBlocks.html">IChunkBlocks</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IChunkLight.html">IChunkLight</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IClassRegistryAPI.html">IClassRegistryAPI</a></dt>
+      <dd><p>Interface for creating instances</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IClientChunk.html">IClientChunk</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IClientGameCalendar.html">IClientGameCalendar</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ICollectibleDisplayable.html">ICollectibleDisplayable</a></dt>
+      <dd><p>A collectible object that can be placed on the ground or on shelves or in display cases, but require custom code or rendering for it</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ICollectibleOnDisplayInteractable.html">ICollectibleOnDisplayInteractable</a></dt>
+      <dd><p>A collectible object that can be placed on the ground or on shelves or in display cases, but also can still accept interactions from the player</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ICombustible.html">ICombustible</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ICommandArgumentParser.html">ICommandArgumentParser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+      <dd><p>Common API Components that are available on the server and the client. Cast to ICoreServerAPI or ICoreClientAPI to access side specific features.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html">ICoreAPICommon</a></dt>
+      <dd><p>API Methods common to the server and client</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IDrawYAdjustable.html">IDrawYAdjustable</a></dt>
+      <dd><p>Used for blocks (e.g. crops and dead crops) where the y-position might need to be adjusted at the time of tesselating an individual block</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IEntityPartitioning.html">IEntityPartitioning</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IEventAPI.html">IEventAPI</a></dt>
+      <dd><p>Events that are available on the server and the client</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IFarmlandBlockEntity.html">IFarmlandBlockEntity</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IGameCalendar.html">IGameCalendar</a></dt>
+      <dd><p>Main API for retrieving anything calender or astronomy related</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IGeometryTester.html">IGeometryTester</a></dt>
+      <dd><p>Used for blocks (e.g. chiselled blocks) where the basic block geometry: AO shading, side opaque etc - depends on the individual block or blockEntity</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></dt>
+      <dd><p>Basic interface representing an item inventory</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IInventoryNetworkUtil.html">IInventoryNetworkUtil</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IItemStack.html">IItemStack</a></dt>
+      <dd><p>Represents a stack of items or blocks</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ILandClaimAPI.html">ILandClaimAPI</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
+      <dd><p>Interface to the client's and server's event, debug and error logging utilty.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IMapChunk.html">IMapChunk</a></dt>
+      <dd><p>Holds 2 dimensional data for one chunk column</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IMapRegion.html">IMapRegion</a></dt>
+      <dd><p>2D Map data for a 16x16 area of chunk columns. Holds a few maps for the chunk generation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IMaterialExchangeable.html">IMaterialExchangeable</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IMiniDimension.html">IMiniDimension</a></dt>
+      <dd><p>Provides read/write access to the blocks of a movable mini-dimension.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IModLoader.html">IModLoader</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IMountable.html">IMountable</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IMountableSupplier.html">IMountableSupplier</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.INetworkAPI.html">INetworkAPI</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a></dt>
+      <dd><p>Represents a provider of particle properties to be used when generating a particle</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+      <dd><p>Represents a player</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IPlayerInventoryManager.html">IPlayerInventoryManager</a></dt>
+      <dd><p>Let's you do various interesting things with the players inventory.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IPlayerRole.html">IPlayerRole</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IRecipeBase-1.html">IRecipeBase&lt;T&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IRecipeIngredient.html">IRecipeIngredient</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IRecipeOutput.html">IRecipeOutput</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IResolvableCollectible.html">IResolvableCollectible</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IRotatable.html">IRotatable</a></dt>
+      <dd><p>Implement this interface if schematics containing this block entity needs to modify it's tree attribute data. Beware, this method is called without
 the block entity existing in the world (yet). The modified tree will then be used to actually create the block</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IServerMapChunk.html">IServerMapChunk</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ISlotProvider.html">ISlotProvider</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ITextureLocationDictionary.html">ITextureLocationDictionary</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ITimedDespawn.html">ITimedDespawn</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IWearableShapeSupplier.html">IWearableShapeSupplier</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IWithDrawnHeight.html">IWithDrawnHeight</a></h4>
-      <section><p>Used for blocks (e.g. tallgrass and flowers) where the drawnHeight is set in attributes</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></h4>
-      <section><p>Important interface to access the game world.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IWorldChunk.html">IWorldChunk</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IWorldPlayerData.html">IWorldPlayerData</a></h4>
-      <section><p>Some world-specific information about a connected player. If you want modify any value, also broadcast the playerdata to all connected clients.
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IServerMapChunk.html">IServerMapChunk</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ISlotProvider.html">ISlotProvider</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ITextureLocationDictionary.html">ITextureLocationDictionary</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ITimedDespawn.html">ITimedDespawn</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IWearableShapeSupplier.html">IWearableShapeSupplier</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IWithDrawnHeight.html">IWithDrawnHeight</a></dt>
+      <dd><p>Used for blocks (e.g. tallgrass and flowers) where the drawnHeight is set in attributes</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+      <dd><p>Important interface to access the game world.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IWorldChunk.html">IWorldChunk</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IWorldPlayerData.html">IWorldPlayerData</a></dt>
+      <dd><p>Some world-specific information about a connected player. If you want modify any value, also broadcast the playerdata to all connected clients.
 This is the object that stored and loaded with the save game</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.IXPlatformInterface.html">IXPlatformInterface</a></h4>
-      <section><p>The platform interface for various controls.  Used by the game to handle various properties.</p>
-</section>
-    <h3 id="enums">Enums
-  </h3>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityAgent.EntityClientPacketId.html">EntityAgent.EntityClientPacketId</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityAgent.EntityServerPacketId.html">EntityAgent.EntityServerPacketId</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumAnimationBlendMode.html">EnumAnimationBlendMode</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumAppSide.html">EnumAppSide</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumBlastType.html">EnumBlastType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumBlockAccessFlags.html">EnumBlockAccessFlags</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumBlockMaterial.html">EnumBlockMaterial</a></h4>
-      <section><p>Material of which a block my be made of
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IXPlatformInterface.html">IXPlatformInterface</a></dt>
+      <dd><p>The platform interface for various controls.  Used by the game to handle various properties.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityAgent.EntityClientPacketId.html">EntityAgent.EntityClientPacketId</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityAgent.EntityServerPacketId.html">EntityAgent.EntityServerPacketId</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumAnimationBlendMode.html">EnumAnimationBlendMode</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumAppSide.html">EnumAppSide</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumBlastType.html">EnumBlastType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumBlockAccessFlags.html">EnumBlockAccessFlags</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumBlockMaterial.html">EnumBlockMaterial</a></dt>
+      <dd><p>Material of which a block my be made of
 Currently only used for mining speed for tools</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumCallerType.html">EnumCallerType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumCharacterDressType.html">EnumCharacterDressType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumChatType.html">EnumChatType</a></h4>
-      <section><p>A definition for the types of chat that could occur.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumChunkDirtyReason.html">EnumChunkDirtyReason</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumClaimError.html">EnumClaimError</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumCommandStatus.html">EnumCommandStatus</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumDamageSource.html">EnumDamageSource</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumDamageType.html">EnumDamageType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumDataType.html">EnumDataType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumDeathCause.html">EnumDeathCause</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumDespawnReason.html">EnumDespawnReason</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumEntityAction.html">EnumEntityAction</a></h4>
-      <section><p>A players in-world action</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumEntityActivityStoppedHandling.html">EnumEntityActivityStoppedHandling</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumEntityAnimationEndHandling.html">EnumEntityAnimationEndHandling</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumEntityState.html">EnumEntityState</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumFoodCategory.html">EnumFoodCategory</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumFreeMovAxisLock.html">EnumFreeMovAxisLock</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumGameMode.html">EnumGameMode</a></h4>
-      <section><p>A players game mode</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumGetClimateMode.html">EnumGetClimateMode</a></h4>
-      <section><p>The type of climate values you wish to receive</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumHabitat.html">EnumHabitat</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumHand.html">EnumHand</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumHandHandling.html">EnumHandHandling</a></h4>
-      <section><p>How the engine should handle attacking with an item in hands</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumHandInteract.html">EnumHandInteract</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></h4>
-      <section><p>Tells the engine how to handle default or subsequent similar behaviors</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumHemisphere.html">EnumHemisphere</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumHighlightShape.html">EnumHighlightShape</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumHighlightSlot.html">EnumHighlightSlot</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumInteractMode.html">EnumInteractMode</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumItemClass.html">EnumItemClass</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumItemDamageSource.html">EnumItemDamageSource</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumItemStorageFlags.html">EnumItemStorageFlags</a></h4>
-      <section><p>Determines the kinds of storage types the item can be put into</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumItemUseCancelReason.html">EnumItemUseCancelReason</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumLightLevelType.html">EnumLightLevelType</a></h4>
-      <section><p>Used in blockAccessor.GetLightLevel() to determine what kind of light level you want</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumLogType.html">EnumLogType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumMatterState.html">EnumMatterState</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumMergePriority.html">EnumMergePriority</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumModifierKey.html">EnumModifierKey</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumModSourceType.html">EnumModSourceType</a></h4>
-      <section><p>Represents the origin file type of the mod.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumModType.html">EnumModType</a></h4>
-      <section><p>Describes the type of a mod. Allows easy recognition and limiting of
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumCallerType.html">EnumCallerType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumCharacterDressType.html">EnumCharacterDressType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumChatType.html">EnumChatType</a></dt>
+      <dd><p>A definition for the types of chat that could occur.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumChunkDirtyReason.html">EnumChunkDirtyReason</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumClaimError.html">EnumClaimError</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumCommandStatus.html">EnumCommandStatus</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumDamageSource.html">EnumDamageSource</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumDamageType.html">EnumDamageType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumDataType.html">EnumDataType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumDeathCause.html">EnumDeathCause</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumDespawnReason.html">EnumDespawnReason</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumEntityAction.html">EnumEntityAction</a></dt>
+      <dd><p>A players in-world action</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumEntityActivityStoppedHandling.html">EnumEntityActivityStoppedHandling</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumEntityAnimationEndHandling.html">EnumEntityAnimationEndHandling</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumEntityState.html">EnumEntityState</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumFoodCategory.html">EnumFoodCategory</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumFreeMovAxisLock.html">EnumFreeMovAxisLock</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumGameMode.html">EnumGameMode</a></dt>
+      <dd><p>A players game mode</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumGetClimateMode.html">EnumGetClimateMode</a></dt>
+      <dd><p>The type of climate values you wish to receive</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumHabitat.html">EnumHabitat</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumHand.html">EnumHand</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumHandHandling.html">EnumHandHandling</a></dt>
+      <dd><p>How the engine should handle attacking with an item in hands</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumHandInteract.html">EnumHandInteract</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+      <dd><p>Tells the engine how to handle default or subsequent similar behaviors</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumHemisphere.html">EnumHemisphere</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumHighlightShape.html">EnumHighlightShape</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumHighlightSlot.html">EnumHighlightSlot</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumInteractMode.html">EnumInteractMode</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumItemClass.html">EnumItemClass</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumItemDamageSource.html">EnumItemDamageSource</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumItemStorageFlags.html">EnumItemStorageFlags</a></dt>
+      <dd><p>Determines the kinds of storage types the item can be put into</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumItemUseCancelReason.html">EnumItemUseCancelReason</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumLightLevelType.html">EnumLightLevelType</a></dt>
+      <dd><p>Used in blockAccessor.GetLightLevel() to determine what kind of light level you want</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumLogType.html">EnumLogType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumMatterState.html">EnumMatterState</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumMergePriority.html">EnumMergePriority</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumModSourceType.html">EnumModSourceType</a></dt>
+      <dd><p>Represents the origin file type of the mod.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumModType.html">EnumModType</a></dt>
+      <dd><p>Describes the type of a mod. Allows easy recognition and limiting of
 what any particular mod can do.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumMonth.html">EnumMonth</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumMoonPhase.html">EnumMoonPhase</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumMountAngleMode.html">EnumMountAngleMode</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumMouseButton.html">EnumMouseButton</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumOrigin.html">EnumOrigin</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumOwnerType.html">EnumOwnerType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumParseResult.html">EnumParseResult</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumParseResultStatus.html">EnumParseResultStatus</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumParticleModel.html">EnumParticleModel</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumPlayerAccessResult.html">EnumPlayerAccessResult</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumPlayerGroupMemberShip.html">EnumPlayerGroupMemberShip</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumPlayerJoinBehavior.html">EnumPlayerJoinBehavior</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumRandomizeAxes.html">EnumRandomizeAxes</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumReflectiveMode.html">EnumReflectiveMode</a></h4>
-      <section><p>On the graphics card we have only one reflective bit, but we can store the mode in the wind data bits</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumReplaceMode.html">EnumReplaceMode</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumRetentionType.html">EnumRetentionType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumSeason.html">EnumSeason</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumShapeFormat.html">EnumShapeFormat</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumSmeltType.html">EnumSmeltType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumSoilNutrient.html">EnumSoilNutrient</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumSpecialKey.html">EnumSpecialKey</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumStatBlendType.html">EnumStatBlendType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumTokenType.html">EnumTokenType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumTool.html">EnumTool</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumTransitionType.html">EnumTransitionType</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumWindBitMode.html">EnumWindBitMode</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EnumWorldAccessResponse.html">EnumWorldAccessResponse</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.VtmlParser.ParseState.html">VtmlParser.ParseState</a></h4>
-      <section></section>
-    <h3 id="delegates">Delegates
-  </h3>
-      <h4><a class="xref" href="Vintagestory.API.Common.ActionBoolReturn.html">ActionBoolReturn</a></h4>
-      <section><p>Return true if the action/event was successfull</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ActionBoolReturn-1.html">ActionBoolReturn&lt;T&gt;</a></h4>
-      <section><p>Returns true if the action/event was successfull.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ActionBoolReturn-2.html">ActionBoolReturn&lt;T1, T2&gt;</a></h4>
-      <section><p>Returns true if the action/event was successfull.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ActionBoolReturn-3.html">ActionBoolReturn&lt;T1, T2, T3&gt;</a></h4>
-      <section><p>Returns true if the action/event was successfull.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ActionConsumable.html">ActionConsumable</a></h4>
-      <section><p>Return true if the action/event should be &quot;consumed&quot; (e.g. mark a mouse click as handled)</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ActionConsumable-1.html">ActionConsumable&lt;T&gt;</a></h4>
-      <section><p>Return true if the action/event should be &quot;consumed&quot; (e.g. mark a mouse click as handled)</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ActionConsumable-2.html">ActionConsumable&lt;T1, T2&gt;</a></h4>
-      <section><p>Return true if the action/event should be &quot;consumed&quot; (e.g. mark a mouse click as handled)</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockBehaviorDelegate.html">BlockBehaviorDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockBreakDelegate.html">BlockBreakDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockBrokenDelegate.html">BlockBrokenDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockPlacedDelegate.html">BlockPlacedDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.BlockUsedDelegate.html">BlockUsedDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CanPlaceOrBreakDelegate.html">CanPlaceOrBreakDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CanSpawnNearbyDelegate.html">CanSpawnNearbyDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CanUseDelegate.html">CanUseDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ChunkColumnBeginLoadChunkThread.html">ChunkColumnBeginLoadChunkThread</a></h4>
-      <section><p>Triggered immediately when the server loads a chunk column from disk or generates a new one, in the SupplyChunks thread (not the main thread)</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ChunkColumnGenerationDelegate.html">ChunkColumnGenerationDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ChunkColumnLoadedDelegate.html">ChunkColumnLoadedDelegate</a></h4>
-      <section><p>Triggered when the server loaded a chunk column from disk or generated a new one</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ChunkColumnUnloadDelegate.html">ChunkColumnUnloadDelegate</a></h4>
-      <section><p>Triggered just before a chunk column gets unloaded</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ChunkDirtyDelegate.html">ChunkDirtyDelegate</a></h4>
-      <section><p>For handling dirty chunks</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ClientChatCommandDelegate.html">ClientChatCommandDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CollectibleBehaviorDelegate.html">CollectibleBehaviorDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CommandPreconditionDelegate.html">CommandPreconditionDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.CustomGetTransitionSpeedMulDelegate.html">CustomGetTransitionSpeedMulDelegate</a></h4>
-      <section><p>Custom transition speed handler</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.DialogClickDelegate.html">DialogClickDelegate</a></h4>
-      <section><p>The delegate for a dialogue click.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityDeathDelegate.html">EntityDeathDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityDelegate.html">EntityDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EntityDespawnDelegate.html">EntityDespawnDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.EventBusListenerDelegate.html">EventBusListenerDelegate</a></h4>
-      <section><p>For handling events on the event bus</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Func-2.html">Func&lt;T1, TResult&gt;</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Func-3.html">Func&lt;T1, T2, TResult&gt;</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Func-4.html">Func&lt;T1, T2, T3, TResult&gt;</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Func-5.html">Func&lt;T1, T2, T3, T4, TResult&gt;</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Func-8.html">Func&lt;T1, T2, T3, T4, T5, T6, T7, TResult&gt;</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.GetAutoPullFromSlotDelegate.html">GetAutoPullFromSlotDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.GetAutoPushIntoSlotDelegate.html">GetAutoPushIntoSlotDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.GetLatitudeDelegate.html">GetLatitudeDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.GetMountableDelegate.html">GetMountableDelegate</a></h4>
-      <section><p>This method needs to find your mountable based on the tree attribute data, which you can write to in IMountable.MountableToTreeAttributes()
-For example if its an entity, you will want to store the entity id, then this method can simply contain <pre><code>return world.GetEntityById(tree.GetLong(&quot;entityId&quot;));</code></pre></p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.GetSuitabilityDelegate.html">GetSuitabilityDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.HemisphereDelegate.html">HemisphereDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.HitEntityDelegate.html">HitEntityDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.LogEntryDelegate.html">LogEntryDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.MapChunkGeneratorDelegate.html">MapChunkGeneratorDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.MapRegionGeneratorDelegate.html">MapRegionGeneratorDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.MapRegionLoadedDelegate.html">MapRegionLoadedDelegate</a></h4>
-      <section><p>Triggered when the server loaded a map region from disk or generated a new one</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.MapRegionUnloadDelegate.html">MapRegionUnloadDelegate</a></h4>
-      <section><p>Triggered just before a map region gets unloaded</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.MatchGridRecipeDelegate.html">MatchGridRecipeDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.NewSlotDelegate.html">NewSlotDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.OnCommandDelegate.html">OnCommandDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.OnEntityAction.html">OnEntityAction</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.OnGetClimateDelegate.html">OnGetClimateDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.OnGetWindSpeedDelegate.html">OnGetWindSpeedDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.OnInteractDelegate.html">OnInteractDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.OnInventoryClosedDelegate.html">OnInventoryClosedDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.OnInventoryOpenedDelegate.html">OnInventoryOpenedDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.OnInventorySlot.html">OnInventorySlot</a></h4>
-      <section><p>Return false to stop walking the inventory</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PlaceBlockDelegate.html">PlaceBlockDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PlayerChatDelegate.html">PlayerChatDelegate</a></h4>
-      <section><p>When the player wrote a chat message. Set consumed.value to true to prevent further processing of this chat message</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PlayerDeathDelegate.html">PlayerDeathDelegate</a></h4>
-      <section><p>When the player died, this delegate will fire.</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PlayerDelegate.html">PlayerDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PositionMismatchDelegate.html">PositionMismatchDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.PositionProviderDelegate.html">PositionProviderDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ResumeServerDelegate.html">ResumeServerDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.SelectedHotbarSlotDelegate.html">SelectedHotbarSlotDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.ServerChatCommandDelegate.html">ServerChatCommandDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.SolarSphericalCoordsDelegate.html">SolarSphericalCoordsDelegate</a></h4>
-      <section><p>Should return sin(solar altitude angle). i.e. -1 for 90 degrees far below horizon, 0 for horizon and 1 for vertical</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.SuspendServerDelegate.html">SuspendServerDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.Tag2RichTextDelegate.html">Tag2RichTextDelegate</a></h4>
-      <section><p>A tag parser</p>
-</section>
-      <h4><a class="xref" href="Vintagestory.API.Common.TestBlockAccessDelegate.html">TestBlockAccessDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.TrySpawnEntityDelegate.html">TrySpawnEntityDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.UpdateEntityDelegate.html">UpdateEntityDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.UseEntityDelegate.html">UseEntityDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WalkSpeedSupplierDelegate.html">WalkSpeedSupplierDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WorldGenHookDelegate.html">WorldGenHookDelegate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Vintagestory.API.Common.WorldGenThreadDelegate.html">WorldGenThreadDelegate</a></h4>
-      <section></section>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumModifierKey.html">EnumModifierKey</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumMonth.html">EnumMonth</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumMoonPhase.html">EnumMoonPhase</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumMountAngleMode.html">EnumMountAngleMode</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumMouseButton.html">EnumMouseButton</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumOrigin.html">EnumOrigin</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumOwnerType.html">EnumOwnerType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumParseResult.html">EnumParseResult</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumParseResultStatus.html">EnumParseResultStatus</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumParticleModel.html">EnumParticleModel</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumPlayerAccessResult.html">EnumPlayerAccessResult</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumPlayerGroupMemberShip.html">EnumPlayerGroupMemberShip</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumPlayerJoinBehavior.html">EnumPlayerJoinBehavior</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumRandomizeAxes.html">EnumRandomizeAxes</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumReflectiveMode.html">EnumReflectiveMode</a></dt>
+      <dd><p>On the graphics card we have only one reflective bit, but we can store the mode in the wind data bits</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumReplaceMode.html">EnumReplaceMode</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumRetentionType.html">EnumRetentionType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumSeason.html">EnumSeason</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumShapeFormat.html">EnumShapeFormat</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumSmeltType.html">EnumSmeltType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumSoilNutrient.html">EnumSoilNutrient</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumSpecialKey.html">EnumSpecialKey</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumStatBlendType.html">EnumStatBlendType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumTokenType.html">EnumTokenType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumTool.html">EnumTool</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumTransitionType.html">EnumTransitionType</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumWindBitMode.html">EnumWindBitMode</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EnumWorldAccessResponse.html">EnumWorldAccessResponse</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.VtmlParser.ParseState.html">VtmlParser.ParseState</a></dt>
+      <dd></dd>
+    </dl>
+    <h3 id="delegates">
+Delegates
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ActionBoolReturn.html">ActionBoolReturn</a></dt>
+      <dd><p>Return true if the action/event was successfull</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ActionBoolReturn-1.html">ActionBoolReturn&lt;T&gt;</a></dt>
+      <dd><p>Returns true if the action/event was successfull.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ActionBoolReturn-2.html">ActionBoolReturn&lt;T1, T2&gt;</a></dt>
+      <dd><p>Returns true if the action/event was successfull.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ActionBoolReturn-3.html">ActionBoolReturn&lt;T1, T2, T3&gt;</a></dt>
+      <dd><p>Returns true if the action/event was successfull.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ActionConsumable.html">ActionConsumable</a></dt>
+      <dd><p>Return true if the action/event should be &quot;consumed&quot; (e.g. mark a mouse click as handled)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ActionConsumable-1.html">ActionConsumable&lt;T&gt;</a></dt>
+      <dd><p>Return true if the action/event should be &quot;consumed&quot; (e.g. mark a mouse click as handled)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ActionConsumable-2.html">ActionConsumable&lt;T1, T2&gt;</a></dt>
+      <dd><p>Return true if the action/event should be &quot;consumed&quot; (e.g. mark a mouse click as handled)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockBehaviorDelegate.html">BlockBehaviorDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockBreakDelegate.html">BlockBreakDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockBrokenDelegate.html">BlockBrokenDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockPlacedDelegate.html">BlockPlacedDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockUsedDelegate.html">BlockUsedDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CanPlaceOrBreakDelegate.html">CanPlaceOrBreakDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CanSpawnNearbyDelegate.html">CanSpawnNearbyDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CanUseDelegate.html">CanUseDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ChunkColumnBeginLoadChunkThread.html">ChunkColumnBeginLoadChunkThread</a></dt>
+      <dd><p>Triggered immediately when the server loads a chunk column from disk or generates a new one, in the SupplyChunks thread (not the main thread)</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ChunkColumnGenerationDelegate.html">ChunkColumnGenerationDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ChunkColumnLoadedDelegate.html">ChunkColumnLoadedDelegate</a></dt>
+      <dd><p>Triggered when the server loaded a chunk column from disk or generated a new one</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ChunkColumnUnloadDelegate.html">ChunkColumnUnloadDelegate</a></dt>
+      <dd><p>Triggered just before a chunk column gets unloaded</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ChunkDirtyDelegate.html">ChunkDirtyDelegate</a></dt>
+      <dd><p>For handling dirty chunks</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ClientChatCommandDelegate.html">ClientChatCommandDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CollectibleBehaviorDelegate.html">CollectibleBehaviorDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CommandPreconditionDelegate.html">CommandPreconditionDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CustomGetTransitionSpeedMulDelegate.html">CustomGetTransitionSpeedMulDelegate</a></dt>
+      <dd><p>Custom transition speed handler</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.DialogClickDelegate.html">DialogClickDelegate</a></dt>
+      <dd><p>The delegate for a dialogue click.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityDeathDelegate.html">EntityDeathDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityDelegate.html">EntityDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EntityDespawnDelegate.html">EntityDespawnDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.EventBusListenerDelegate.html">EventBusListenerDelegate</a></dt>
+      <dd><p>For handling events on the event bus</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Func-2.html">Func&lt;T1, TResult&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Func-3.html">Func&lt;T1, T2, TResult&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Func-4.html">Func&lt;T1, T2, T3, TResult&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Func-5.html">Func&lt;T1, T2, T3, T4, TResult&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Func-8.html">Func&lt;T1, T2, T3, T4, T5, T6, T7, TResult&gt;</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.GetAutoPullFromSlotDelegate.html">GetAutoPullFromSlotDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.GetAutoPushIntoSlotDelegate.html">GetAutoPushIntoSlotDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.GetLatitudeDelegate.html">GetLatitudeDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.GetMountableDelegate.html">GetMountableDelegate</a></dt>
+      <dd><p>This method needs to find your mountable based on the tree attribute data, which you can write to in IMountable.MountableToTreeAttributes()
+For example if its an entity, you will want to store the entity id, then this method can simply contain <pre><code class="lang-csharp">return world.GetEntityById(tree.GetLong(&quot;entityId&quot;));</code></pre>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.GetSuitabilityDelegate.html">GetSuitabilityDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.HemisphereDelegate.html">HemisphereDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.HitEntityDelegate.html">HitEntityDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.LogEntryDelegate.html">LogEntryDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.MapChunkGeneratorDelegate.html">MapChunkGeneratorDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.MapRegionGeneratorDelegate.html">MapRegionGeneratorDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.MapRegionLoadedDelegate.html">MapRegionLoadedDelegate</a></dt>
+      <dd><p>Triggered when the server loaded a map region from disk or generated a new one</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.MapRegionUnloadDelegate.html">MapRegionUnloadDelegate</a></dt>
+      <dd><p>Triggered just before a map region gets unloaded</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.MatchGridRecipeDelegate.html">MatchGridRecipeDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.NewSlotDelegate.html">NewSlotDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.OnCommandDelegate.html">OnCommandDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.OnEntityAction.html">OnEntityAction</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.OnGetClimateDelegate.html">OnGetClimateDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.OnGetWindSpeedDelegate.html">OnGetWindSpeedDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.OnInteractDelegate.html">OnInteractDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.OnInventoryClosedDelegate.html">OnInventoryClosedDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.OnInventoryOpenedDelegate.html">OnInventoryOpenedDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.OnInventorySlot.html">OnInventorySlot</a></dt>
+      <dd><p>Return false to stop walking the inventory</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PlaceBlockDelegate.html">PlaceBlockDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PlayerChatDelegate.html">PlayerChatDelegate</a></dt>
+      <dd><p>When the player wrote a chat message. Set consumed.value to true to prevent further processing of this chat message</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PlayerDeathDelegate.html">PlayerDeathDelegate</a></dt>
+      <dd><p>When the player died, this delegate will fire.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PlayerDelegate.html">PlayerDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PositionMismatchDelegate.html">PositionMismatchDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.PositionProviderDelegate.html">PositionProviderDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ResumeServerDelegate.html">ResumeServerDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.SelectedHotbarSlotDelegate.html">SelectedHotbarSlotDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ServerChatCommandDelegate.html">ServerChatCommandDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.SolarSphericalCoordsDelegate.html">SolarSphericalCoordsDelegate</a></dt>
+      <dd><p>Should return sin(solar altitude angle). i.e. -1 for 90 degrees far below horizon, 0 for horizon and 1 for vertical</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.SuspendServerDelegate.html">SuspendServerDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Tag2RichTextDelegate.html">Tag2RichTextDelegate</a></dt>
+      <dd><p>A tag parser</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.TestBlockAccessDelegate.html">TestBlockAccessDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.TrySpawnEntityDelegate.html">TrySpawnEntityDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.UpdateEntityDelegate.html">UpdateEntityDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.UseEntityDelegate.html">UseEntityDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WalkSpeedSupplierDelegate.html">WalkSpeedSupplierDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WorldGenHookDelegate.html">WorldGenHookDelegate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.WorldGenThreadDelegate.html">WorldGenThreadDelegate</a></dt>
+      <dd></dd>
+    </dl>
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

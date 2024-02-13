@@ -1,0 +1,787 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Server.PathfinderTask
+  commentId: T:Vintagestory.API.Server.PathfinderTask
+  id: PathfinderTask
+  parent: Vintagestory.API.Server
+  children:
+  - Vintagestory.API.Server.PathfinderTask.#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32)
+  - Vintagestory.API.Server.PathfinderTask.Finished
+  - Vintagestory.API.Server.PathfinderTask.collisionBox
+  - Vintagestory.API.Server.PathfinderTask.maxFallHeight
+  - Vintagestory.API.Server.PathfinderTask.mhdistanceTolerance
+  - Vintagestory.API.Server.PathfinderTask.searchDepth
+  - Vintagestory.API.Server.PathfinderTask.startBlockPos
+  - Vintagestory.API.Server.PathfinderTask.stepHeight
+  - Vintagestory.API.Server.PathfinderTask.targetBlockPos
+  - Vintagestory.API.Server.PathfinderTask.waypoints
+  langs:
+  - csharp
+  - vb
+  name: PathfinderTask
+  nameWithType: PathfinderTask
+  fullName: Vintagestory.API.Server.PathfinderTask
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Server/PathfinderTask.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PathfinderTask
+    path: Server/PathfinderTask.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public class PathfinderTask
+    content.vb: Public Class PathfinderTask
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Server.PathfinderTask.startBlockPos
+  commentId: F:Vintagestory.API.Server.PathfinderTask.startBlockPos
+  id: startBlockPos
+  parent: Vintagestory.API.Server.PathfinderTask
+  langs:
+  - csharp
+  - vb
+  name: startBlockPos
+  nameWithType: PathfinderTask.startBlockPos
+  fullName: Vintagestory.API.Server.PathfinderTask.startBlockPos
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/PathfinderTask.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: startBlockPos
+    path: Server/PathfinderTask.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public BlockPos startBlockPos
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: Public startBlockPos As BlockPos
+- uid: Vintagestory.API.Server.PathfinderTask.targetBlockPos
+  commentId: F:Vintagestory.API.Server.PathfinderTask.targetBlockPos
+  id: targetBlockPos
+  parent: Vintagestory.API.Server.PathfinderTask
+  langs:
+  - csharp
+  - vb
+  name: targetBlockPos
+  nameWithType: PathfinderTask.targetBlockPos
+  fullName: Vintagestory.API.Server.PathfinderTask.targetBlockPos
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/PathfinderTask.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: targetBlockPos
+    path: Server/PathfinderTask.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public BlockPos targetBlockPos
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: Public targetBlockPos As BlockPos
+- uid: Vintagestory.API.Server.PathfinderTask.maxFallHeight
+  commentId: F:Vintagestory.API.Server.PathfinderTask.maxFallHeight
+  id: maxFallHeight
+  parent: Vintagestory.API.Server.PathfinderTask
+  langs:
+  - csharp
+  - vb
+  name: maxFallHeight
+  nameWithType: PathfinderTask.maxFallHeight
+  fullName: Vintagestory.API.Server.PathfinderTask.maxFallHeight
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/PathfinderTask.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: maxFallHeight
+    path: Server/PathfinderTask.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public int maxFallHeight
+    return:
+      type: System.Int32
+    content.vb: Public maxFallHeight As Integer
+- uid: Vintagestory.API.Server.PathfinderTask.stepHeight
+  commentId: F:Vintagestory.API.Server.PathfinderTask.stepHeight
+  id: stepHeight
+  parent: Vintagestory.API.Server.PathfinderTask
+  langs:
+  - csharp
+  - vb
+  name: stepHeight
+  nameWithType: PathfinderTask.stepHeight
+  fullName: Vintagestory.API.Server.PathfinderTask.stepHeight
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/PathfinderTask.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: stepHeight
+    path: Server/PathfinderTask.cs
+    startLine: 10
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public float stepHeight
+    return:
+      type: System.Single
+    content.vb: Public stepHeight As Single
+- uid: Vintagestory.API.Server.PathfinderTask.collisionBox
+  commentId: F:Vintagestory.API.Server.PathfinderTask.collisionBox
+  id: collisionBox
+  parent: Vintagestory.API.Server.PathfinderTask
+  langs:
+  - csharp
+  - vb
+  name: collisionBox
+  nameWithType: PathfinderTask.collisionBox
+  fullName: Vintagestory.API.Server.PathfinderTask.collisionBox
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/PathfinderTask.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: collisionBox
+    path: Server/PathfinderTask.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public Cuboidf collisionBox
+    return:
+      type: Vintagestory.API.MathTools.Cuboidf
+    content.vb: Public collisionBox As Cuboidf
+- uid: Vintagestory.API.Server.PathfinderTask.searchDepth
+  commentId: F:Vintagestory.API.Server.PathfinderTask.searchDepth
+  id: searchDepth
+  parent: Vintagestory.API.Server.PathfinderTask
+  langs:
+  - csharp
+  - vb
+  name: searchDepth
+  nameWithType: PathfinderTask.searchDepth
+  fullName: Vintagestory.API.Server.PathfinderTask.searchDepth
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/PathfinderTask.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: searchDepth
+    path: Server/PathfinderTask.cs
+    startLine: 12
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public int searchDepth
+    return:
+      type: System.Int32
+    content.vb: Public searchDepth As Integer
+- uid: Vintagestory.API.Server.PathfinderTask.mhdistanceTolerance
+  commentId: F:Vintagestory.API.Server.PathfinderTask.mhdistanceTolerance
+  id: mhdistanceTolerance
+  parent: Vintagestory.API.Server.PathfinderTask
+  langs:
+  - csharp
+  - vb
+  name: mhdistanceTolerance
+  nameWithType: PathfinderTask.mhdistanceTolerance
+  fullName: Vintagestory.API.Server.PathfinderTask.mhdistanceTolerance
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/PathfinderTask.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: mhdistanceTolerance
+    path: Server/PathfinderTask.cs
+    startLine: 13
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public int mhdistanceTolerance
+    return:
+      type: System.Int32
+    content.vb: Public mhdistanceTolerance As Integer
+- uid: Vintagestory.API.Server.PathfinderTask.waypoints
+  commentId: F:Vintagestory.API.Server.PathfinderTask.waypoints
+  id: waypoints
+  parent: Vintagestory.API.Server.PathfinderTask
+  langs:
+  - csharp
+  - vb
+  name: waypoints
+  nameWithType: PathfinderTask.waypoints
+  fullName: Vintagestory.API.Server.PathfinderTask.waypoints
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/PathfinderTask.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: waypoints
+    path: Server/PathfinderTask.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public List<Vec3d> waypoints
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.MathTools.Vec3d}
+    content.vb: Public waypoints As List(Of Vec3d)
+- uid: Vintagestory.API.Server.PathfinderTask.Finished
+  commentId: F:Vintagestory.API.Server.PathfinderTask.Finished
+  id: Finished
+  parent: Vintagestory.API.Server.PathfinderTask
+  langs:
+  - csharp
+  - vb
+  name: Finished
+  nameWithType: PathfinderTask.Finished
+  fullName: Vintagestory.API.Server.PathfinderTask.Finished
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/PathfinderTask.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Finished
+    path: Server/PathfinderTask.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public bool Finished
+    return:
+      type: System.Boolean
+    content.vb: Public Finished As Boolean
+- uid: Vintagestory.API.Server.PathfinderTask.#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Server.PathfinderTask.#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32)
+  id: '#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32)'
+  parent: Vintagestory.API.Server.PathfinderTask
+  langs:
+  - csharp
+  - vb
+  name: PathfinderTask(BlockPos, BlockPos, int, float, Cuboidf, int, int)
+  nameWithType: PathfinderTask.PathfinderTask(BlockPos, BlockPos, int, float, Cuboidf, int, int)
+  fullName: Vintagestory.API.Server.PathfinderTask.PathfinderTask(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, int, float, Vintagestory.API.MathTools.Cuboidf, int, int)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Server/PathfinderTask.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Server/PathfinderTask.cs
+    startLine: 18
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public PathfinderTask(BlockPos startBlockPos, BlockPos targetBlockPos, int maxFallHeight, float stepHeight, Cuboidf collisionBox, int searchDepth, int mhdistanceTolerance = 0)
+    parameters:
+    - id: startBlockPos
+      type: Vintagestory.API.MathTools.BlockPos
+    - id: targetBlockPos
+      type: Vintagestory.API.MathTools.BlockPos
+    - id: maxFallHeight
+      type: System.Int32
+    - id: stepHeight
+      type: System.Single
+    - id: collisionBox
+      type: Vintagestory.API.MathTools.Cuboidf
+    - id: searchDepth
+      type: System.Int32
+    - id: mhdistanceTolerance
+      type: System.Int32
+    content.vb: Public Sub New(startBlockPos As BlockPos, targetBlockPos As BlockPos, maxFallHeight As Integer, stepHeight As Single, collisionBox As Cuboidf, searchDepth As Integer, mhdistanceTolerance As Integer = 0)
+  overload: Vintagestory.API.Server.PathfinderTask.#ctor*
+  nameWithType.vb: PathfinderTask.New(BlockPos, BlockPos, Integer, Single, Cuboidf, Integer, Integer)
+  fullName.vb: Vintagestory.API.Server.PathfinderTask.New(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, Integer, Single, Vintagestory.API.MathTools.Cuboidf, Integer, Integer)
+  name.vb: New(BlockPos, BlockPos, Integer, Single, Cuboidf, Integer, Integer)
+references:
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.MathTools.Cuboidf
+  commentId: T:Vintagestory.API.MathTools.Cuboidf
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Cuboidf.html
+  name: Cuboidf
+  nameWithType: Cuboidf
+  fullName: Vintagestory.API.MathTools.Cuboidf
+- uid: System.Collections.Generic.List{Vintagestory.API.MathTools.Vec3d}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.MathTools.Vec3d}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Vec3d>
+  nameWithType: List<Vec3d>
+  fullName: System.Collections.Generic.List<Vintagestory.API.MathTools.Vec3d>
+  nameWithType.vb: List(Of Vec3d)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.MathTools.Vec3d)
+  name.vb: List(Of Vec3d)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Server.PathfinderTask.#ctor*
+  commentId: Overload:Vintagestory.API.Server.PathfinderTask.#ctor
+  href: Vintagestory.API.Server.PathfinderTask.html#Vintagestory_API_Server_PathfinderTask__ctor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Single_Vintagestory_API_MathTools_Cuboidf_System_Int32_System_Int32_
+  name: PathfinderTask
+  nameWithType: PathfinderTask.PathfinderTask
+  fullName: Vintagestory.API.Server.PathfinderTask.PathfinderTask
+  nameWithType.vb: PathfinderTask.New
+  fullName.vb: Vintagestory.API.Server.PathfinderTask.New
+  name.vb: New

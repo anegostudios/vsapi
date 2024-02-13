@@ -1,0 +1,2117 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.GuiDialogBlockEntityInventory
+  commentId: T:Vintagestory.API.Client.GuiDialogBlockEntityInventory
+  id: GuiDialogBlockEntityInventory
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.GuiDialogBlockEntityInventory.#ctor(System.String,Vintagestory.API.Common.InventoryBase,Vintagestory.API.MathTools.BlockPos,System.Int32,Vintagestory.API.Client.ICoreClientAPI)
+  - Vintagestory.API.Client.GuiDialogBlockEntityInventory.DrawOrder
+  - Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiClosed
+  - Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiOpened
+  langs:
+  - csharp
+  - vb
+  name: GuiDialogBlockEntityInventory
+  nameWithType: GuiDialogBlockEntityInventory
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntityInventory
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Dialog/GuiDialogBlockEntityInventory.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GuiDialogBlockEntityInventory
+    path: Client/UI/Dialog/GuiDialogBlockEntityInventory.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: A block entity inventory system for things like a campfire, or other things like that.
+  example: []
+  syntax:
+    content: 'public class GuiDialogBlockEntityInventory : GuiDialogBlockEntity, IDisposable'
+    content.vb: Public Class GuiDialogBlockEntityInventory Inherits GuiDialogBlockEntity Implements IDisposable
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Client.GuiDialog
+  - Vintagestory.API.Client.GuiDialogGeneric
+  - Vintagestory.API.Client.GuiDialogBlockEntity
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Vintagestory.API.Client.GuiDialogBlockEntity.IsDuplicate
+  - Vintagestory.API.Client.GuiDialogBlockEntity.Inventory
+  - Vintagestory.API.Client.GuiDialogBlockEntity.BlockEntityPosition
+  - Vintagestory.API.Client.GuiDialogBlockEntity.OpenSound
+  - Vintagestory.API.Client.GuiDialogBlockEntity.CloseSound
+  - Vintagestory.API.Client.GuiDialogBlockEntity.FloatyDialogPosition
+  - Vintagestory.API.Client.GuiDialogBlockEntity.FloatyDialogAlign
+  - Vintagestory.API.Client.GuiDialogBlockEntity.OnFinalizeFrame(System.Single)
+  - Vintagestory.API.Client.GuiDialogBlockEntity.OnRenderGUI(System.Single)
+  - Vintagestory.API.Client.GuiDialogBlockEntity.DoSendPacket(System.Object)
+  - Vintagestory.API.Client.GuiDialogBlockEntity.OnNewScrollbarvalue(System.Single)
+  - Vintagestory.API.Client.GuiDialogBlockEntity.CloseIconPressed
+  - Vintagestory.API.Client.GuiDialogBlockEntity.TryOpen
+  - Vintagestory.API.Client.GuiDialogBlockEntity.PrefersUngrabbedMouse
+  - Vintagestory.API.Client.GuiDialogBlockEntity.ReloadValues
+  - Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos(System.String)
+  - Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  - Vintagestory.API.Client.GuiDialogBlockEntity.FreePos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  - Vintagestory.API.Client.GuiDialogBlockEntity.IsRight(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  - Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  - Vintagestory.API.Client.GuiDialogGeneric.DialogTitle
+  - Vintagestory.API.Client.GuiDialogGeneric.UnregisterOnClose
+  - Vintagestory.API.Client.GuiDialogGeneric.Attributes
+  - Vintagestory.API.Client.GuiDialogGeneric.ToggleKeyCombinationCode
+  - Vintagestory.API.Client.GuiDialogGeneric.Recompose
+  - Vintagestory.API.Client.GuiDialogGeneric.UnfocusElements
+  - Vintagestory.API.Client.GuiDialogGeneric.FocusElement(System.Int32)
+  - Vintagestory.API.Client.GuiDialogGeneric.IsInRangeOfBlock(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Client.GuiDialog.Composers
+  - Vintagestory.API.Client.GuiDialog.SingleComposer
+  - Vintagestory.API.Client.GuiDialog.DebugName
+  - Vintagestory.API.Client.GuiDialog.ZSize
+  - Vintagestory.API.Client.GuiDialog.ignoreNextKeyPress
+  - Vintagestory.API.Client.GuiDialog.opened
+  - Vintagestory.API.Client.GuiDialog.focused
+  - Vintagestory.API.Client.GuiDialog.Focused
+  - Vintagestory.API.Client.GuiDialog.Focusable
+  - Vintagestory.API.Client.GuiDialog.DialogType
+  - Vintagestory.API.Client.GuiDialog.OnOpened
+  - Vintagestory.API.Client.GuiDialog.OnClosed
+  - Vintagestory.API.Client.GuiDialog.capi
+  - Vintagestory.API.Client.GuiDialog.OnFocusChanged(System.Boolean)
+  - Vintagestory.API.Client.GuiDialog.OnBlockTexturesLoaded
+  - Vintagestory.API.Client.GuiDialog.OnLevelFinalize
+  - Vintagestory.API.Client.GuiDialog.OnOwnPlayerDataReceived
+  - Vintagestory.API.Client.GuiDialog.InputOrder
+  - Vintagestory.API.Client.GuiDialog.TryOpen(System.Boolean)
+  - Vintagestory.API.Client.GuiDialog.TryClose
+  - Vintagestory.API.Client.GuiDialog.UnFocus
+  - Vintagestory.API.Client.GuiDialog.Focus
+  - Vintagestory.API.Client.GuiDialog.Toggle
+  - Vintagestory.API.Client.GuiDialog.IsOpened
+  - Vintagestory.API.Client.GuiDialog.IsOpened(System.String)
+  - Vintagestory.API.Client.GuiDialog.OnBeforeRenderFrame3D(System.Single)
+  - Vintagestory.API.Client.GuiDialog.MouseOverCursor
+  - Vintagestory.API.Client.GuiDialog.OnKeyDown(Vintagestory.API.Client.KeyEvent)
+  - Vintagestory.API.Client.GuiDialog.OnKeyPress(Vintagestory.API.Client.KeyEvent)
+  - Vintagestory.API.Client.GuiDialog.OnKeyUp(Vintagestory.API.Client.KeyEvent)
+  - Vintagestory.API.Client.GuiDialog.OnEscapePressed
+  - Vintagestory.API.Client.GuiDialog.OnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Client.GuiDialog.OnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Client.GuiDialog.OnMouseClickSlot(Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Client.GuiDialog.OnMouseDown(Vintagestory.API.Client.MouseEvent)
+  - Vintagestory.API.Client.GuiDialog.OnMouseUp(Vintagestory.API.Client.MouseEvent)
+  - Vintagestory.API.Client.GuiDialog.OnMouseMove(Vintagestory.API.Client.MouseEvent)
+  - Vintagestory.API.Client.GuiDialog.OnMouseWheel(Vintagestory.API.Client.MouseWheelEventArgs)
+  - Vintagestory.API.Client.GuiDialog.ShouldReceiveRenderEvents
+  - Vintagestory.API.Client.GuiDialog.ShouldReceiveKeyboardEvents
+  - Vintagestory.API.Client.GuiDialog.ShouldReceiveMouseEvents
+  - Vintagestory.API.Client.GuiDialog.RequiresUngrabbedMouse
+  - Vintagestory.API.Client.GuiDialog.DisableMouseGrab
+  - Vintagestory.API.Client.GuiDialog.CaptureAllInputs
+  - Vintagestory.API.Client.GuiDialog.CaptureRawMouse
+  - Vintagestory.API.Client.GuiDialog.Dispose
+  - Vintagestory.API.Client.GuiDialog.ClearComposers
+  - Vintagestory.API.Client.GuiDialog.IsInRangeOf(Vintagestory.API.MathTools.Vec3d)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Client.GuiDialogBlockEntityInventory.DrawOrder
+  commentId: P:Vintagestory.API.Client.GuiDialogBlockEntityInventory.DrawOrder
+  id: DrawOrder
+  parent: Vintagestory.API.Client.GuiDialogBlockEntityInventory
+  langs:
+  - csharp
+  - vb
+  name: DrawOrder
+  nameWithType: GuiDialogBlockEntityInventory.DrawOrder
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntityInventory.DrawOrder
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Dialog/GuiDialogBlockEntityInventory.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DrawOrder
+    path: Client/UI/Dialog/GuiDialogBlockEntityInventory.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: >-
+    0 = draw first, 1 = draw last. Used to enforce tooltips and held itemstack always drawn last to be visible.<br />
+
+    Vanilla dialogs draw order:<br />
+
+    Name tags: -0.1<br />
+
+    Chat dialog: 0<br />
+
+    Block Interaction help: 0.05<br />
+
+    Worldmap HUD: 0.07<br />
+
+    Default value for most other dialogs: 0.1<br />
+
+    Worldmap Dialog: 0.11<br />
+
+    Player and Chest inventories: 0.2<br />
+
+    Various config/edit dialogs: 0.2<br />
+
+    Handbook: 0.2<br />
+
+    Escape menu: 0.89
+  example: []
+  syntax:
+    content: public override double DrawOrder { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Overrides ReadOnly Property DrawOrder As Double
+  overridden: Vintagestory.API.Client.GuiDialog.DrawOrder
+  overload: Vintagestory.API.Client.GuiDialogBlockEntityInventory.DrawOrder*
+- uid: Vintagestory.API.Client.GuiDialogBlockEntityInventory.#ctor(System.String,Vintagestory.API.Common.InventoryBase,Vintagestory.API.MathTools.BlockPos,System.Int32,Vintagestory.API.Client.ICoreClientAPI)
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntityInventory.#ctor(System.String,Vintagestory.API.Common.InventoryBase,Vintagestory.API.MathTools.BlockPos,System.Int32,Vintagestory.API.Client.ICoreClientAPI)
+  id: '#ctor(System.String,Vintagestory.API.Common.InventoryBase,Vintagestory.API.MathTools.BlockPos,System.Int32,Vintagestory.API.Client.ICoreClientAPI)'
+  parent: Vintagestory.API.Client.GuiDialogBlockEntityInventory
+  langs:
+  - csharp
+  - vb
+  name: GuiDialogBlockEntityInventory(string, InventoryBase, BlockPos, int, ICoreClientAPI)
+  nameWithType: GuiDialogBlockEntityInventory.GuiDialogBlockEntityInventory(string, InventoryBase, BlockPos, int, ICoreClientAPI)
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntityInventory.GuiDialogBlockEntityInventory(string, Vintagestory.API.Common.InventoryBase, Vintagestory.API.MathTools.BlockPos, int, Vintagestory.API.Client.ICoreClientAPI)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Dialog/GuiDialogBlockEntityInventory.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Client/UI/Dialog/GuiDialogBlockEntityInventory.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public GuiDialogBlockEntityInventory(string dialogTitle, InventoryBase inventory, BlockPos blockEntityPos, int cols, ICoreClientAPI capi)
+    parameters:
+    - id: dialogTitle
+      type: System.String
+    - id: inventory
+      type: Vintagestory.API.Common.InventoryBase
+    - id: blockEntityPos
+      type: Vintagestory.API.MathTools.BlockPos
+    - id: cols
+      type: System.Int32
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+    content.vb: Public Sub New(dialogTitle As String, inventory As InventoryBase, blockEntityPos As BlockPos, cols As Integer, capi As ICoreClientAPI)
+  overload: Vintagestory.API.Client.GuiDialogBlockEntityInventory.#ctor*
+  nameWithType.vb: GuiDialogBlockEntityInventory.New(String, InventoryBase, BlockPos, Integer, ICoreClientAPI)
+  fullName.vb: Vintagestory.API.Client.GuiDialogBlockEntityInventory.New(String, Vintagestory.API.Common.InventoryBase, Vintagestory.API.MathTools.BlockPos, Integer, Vintagestory.API.Client.ICoreClientAPI)
+  name.vb: New(String, InventoryBase, BlockPos, Integer, ICoreClientAPI)
+- uid: Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiClosed
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiClosed
+  id: OnGuiClosed
+  parent: Vintagestory.API.Client.GuiDialogBlockEntityInventory
+  langs:
+  - csharp
+  - vb
+  name: OnGuiClosed()
+  nameWithType: GuiDialogBlockEntityInventory.OnGuiClosed()
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiClosed()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Dialog/GuiDialogBlockEntityInventory.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnGuiClosed
+    path: Client/UI/Dialog/GuiDialogBlockEntityInventory.cs
+    startLine: 104
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Called when the GUI is closed.
+  example: []
+  syntax:
+    content: public override void OnGuiClosed()
+    content.vb: Public Overrides Sub OnGuiClosed()
+  overridden: Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiClosed
+  overload: Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiClosed*
+- uid: Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiOpened
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiOpened
+  id: OnGuiOpened
+  parent: Vintagestory.API.Client.GuiDialogBlockEntityInventory
+  langs:
+  - csharp
+  - vb
+  name: OnGuiOpened()
+  nameWithType: GuiDialogBlockEntityInventory.OnGuiOpened()
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiOpened()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/Dialog/GuiDialogBlockEntityInventory.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnGuiOpened
+    path: Client/UI/Dialog/GuiDialogBlockEntityInventory.cs
+    startLine: 110
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Called whenver the GUI is opened.
+  example: []
+  syntax:
+    content: public override void OnGuiOpened()
+    content.vb: Public Overrides Sub OnGuiOpened()
+  overridden: Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiOpened
+  overload: Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiOpened*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Client.GuiDialog
+  commentId: T:Vintagestory.API.Client.GuiDialog
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.GuiDialog.html
+  name: GuiDialog
+  nameWithType: GuiDialog
+  fullName: Vintagestory.API.Client.GuiDialog
+- uid: Vintagestory.API.Client.GuiDialogGeneric
+  commentId: T:Vintagestory.API.Client.GuiDialogGeneric
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.GuiDialogGeneric.html
+  name: GuiDialogGeneric
+  nameWithType: GuiDialogGeneric
+  fullName: Vintagestory.API.Client.GuiDialogGeneric
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity
+  commentId: T:Vintagestory.API.Client.GuiDialogBlockEntity
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html
+  name: GuiDialogBlockEntity
+  nameWithType: GuiDialogBlockEntity
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.IsDuplicate
+  commentId: P:Vintagestory.API.Client.GuiDialogBlockEntity.IsDuplicate
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_IsDuplicate
+  name: IsDuplicate
+  nameWithType: GuiDialogBlockEntity.IsDuplicate
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.IsDuplicate
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.Inventory
+  commentId: P:Vintagestory.API.Client.GuiDialogBlockEntity.Inventory
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_Inventory
+  name: Inventory
+  nameWithType: GuiDialogBlockEntity.Inventory
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.Inventory
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.BlockEntityPosition
+  commentId: P:Vintagestory.API.Client.GuiDialogBlockEntity.BlockEntityPosition
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_BlockEntityPosition
+  name: BlockEntityPosition
+  nameWithType: GuiDialogBlockEntity.BlockEntityPosition
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.BlockEntityPosition
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.OpenSound
+  commentId: P:Vintagestory.API.Client.GuiDialogBlockEntity.OpenSound
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OpenSound
+  name: OpenSound
+  nameWithType: GuiDialogBlockEntity.OpenSound
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.OpenSound
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.CloseSound
+  commentId: P:Vintagestory.API.Client.GuiDialogBlockEntity.CloseSound
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_CloseSound
+  name: CloseSound
+  nameWithType: GuiDialogBlockEntity.CloseSound
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.CloseSound
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.FloatyDialogPosition
+  commentId: P:Vintagestory.API.Client.GuiDialogBlockEntity.FloatyDialogPosition
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_FloatyDialogPosition
+  name: FloatyDialogPosition
+  nameWithType: GuiDialogBlockEntity.FloatyDialogPosition
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.FloatyDialogPosition
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.FloatyDialogAlign
+  commentId: P:Vintagestory.API.Client.GuiDialogBlockEntity.FloatyDialogAlign
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_FloatyDialogAlign
+  name: FloatyDialogAlign
+  nameWithType: GuiDialogBlockEntity.FloatyDialogAlign
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.FloatyDialogAlign
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnFinalizeFrame(System.Single)
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.OnFinalizeFrame(System.Single)
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnFinalizeFrame_System_Single_
+  name: OnFinalizeFrame(float)
+  nameWithType: GuiDialogBlockEntity.OnFinalizeFrame(float)
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.OnFinalizeFrame(float)
+  nameWithType.vb: GuiDialogBlockEntity.OnFinalizeFrame(Single)
+  fullName.vb: Vintagestory.API.Client.GuiDialogBlockEntity.OnFinalizeFrame(Single)
+  name.vb: OnFinalizeFrame(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnFinalizeFrame(System.Single)
+    name: OnFinalizeFrame
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnFinalizeFrame_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnFinalizeFrame(System.Single)
+    name: OnFinalizeFrame
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnFinalizeFrame_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnRenderGUI(System.Single)
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.OnRenderGUI(System.Single)
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnRenderGUI_System_Single_
+  name: OnRenderGUI(float)
+  nameWithType: GuiDialogBlockEntity.OnRenderGUI(float)
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.OnRenderGUI(float)
+  nameWithType.vb: GuiDialogBlockEntity.OnRenderGUI(Single)
+  fullName.vb: Vintagestory.API.Client.GuiDialogBlockEntity.OnRenderGUI(Single)
+  name.vb: OnRenderGUI(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnRenderGUI(System.Single)
+    name: OnRenderGUI
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnRenderGUI_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnRenderGUI(System.Single)
+    name: OnRenderGUI
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnRenderGUI_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.DoSendPacket(System.Object)
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.DoSendPacket(System.Object)
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_DoSendPacket_System_Object_
+  name: DoSendPacket(object)
+  nameWithType: GuiDialogBlockEntity.DoSendPacket(object)
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.DoSendPacket(object)
+  nameWithType.vb: GuiDialogBlockEntity.DoSendPacket(Object)
+  fullName.vb: Vintagestory.API.Client.GuiDialogBlockEntity.DoSendPacket(Object)
+  name.vb: DoSendPacket(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.DoSendPacket(System.Object)
+    name: DoSendPacket
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_DoSendPacket_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.DoSendPacket(System.Object)
+    name: DoSendPacket
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_DoSendPacket_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnNewScrollbarvalue(System.Single)
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.OnNewScrollbarvalue(System.Single)
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnNewScrollbarvalue_System_Single_
+  name: OnNewScrollbarvalue(float)
+  nameWithType: GuiDialogBlockEntity.OnNewScrollbarvalue(float)
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.OnNewScrollbarvalue(float)
+  nameWithType.vb: GuiDialogBlockEntity.OnNewScrollbarvalue(Single)
+  fullName.vb: Vintagestory.API.Client.GuiDialogBlockEntity.OnNewScrollbarvalue(Single)
+  name.vb: OnNewScrollbarvalue(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnNewScrollbarvalue(System.Single)
+    name: OnNewScrollbarvalue
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnNewScrollbarvalue_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnNewScrollbarvalue(System.Single)
+    name: OnNewScrollbarvalue
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnNewScrollbarvalue_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.CloseIconPressed
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.CloseIconPressed
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_CloseIconPressed
+  name: CloseIconPressed()
+  nameWithType: GuiDialogBlockEntity.CloseIconPressed()
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.CloseIconPressed()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.CloseIconPressed
+    name: CloseIconPressed
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_CloseIconPressed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.CloseIconPressed
+    name: CloseIconPressed
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_CloseIconPressed
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.TryOpen
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.TryOpen
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_TryOpen
+  name: TryOpen()
+  nameWithType: GuiDialogBlockEntity.TryOpen()
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.TryOpen()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.TryOpen
+    name: TryOpen
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_TryOpen
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.TryOpen
+    name: TryOpen
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_TryOpen
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.PrefersUngrabbedMouse
+  commentId: P:Vintagestory.API.Client.GuiDialogBlockEntity.PrefersUngrabbedMouse
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_PrefersUngrabbedMouse
+  name: PrefersUngrabbedMouse
+  nameWithType: GuiDialogBlockEntity.PrefersUngrabbedMouse
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.PrefersUngrabbedMouse
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.ReloadValues
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.ReloadValues
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_ReloadValues
+  name: ReloadValues()
+  nameWithType: GuiDialogBlockEntity.ReloadValues()
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.ReloadValues()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.ReloadValues
+    name: ReloadValues
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_ReloadValues
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.ReloadValues
+    name: ReloadValues
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_ReloadValues
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos(System.String)
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos(System.String)
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_GetFreePos_System_String_
+  name: GetFreePos(string)
+  nameWithType: GuiDialogBlockEntity.GetFreePos(string)
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos(string)
+  nameWithType.vb: GuiDialogBlockEntity.GetFreePos(String)
+  fullName.vb: Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos(String)
+  name.vb: GetFreePos(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos(System.String)
+    name: GetFreePos
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_GetFreePos_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos(System.String)
+    name: GetFreePos
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_GetFreePos_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OccupyPos_System_String_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
+  name: OccupyPos(string, EnumPosFlag)
+  nameWithType: GuiDialogBlockEntity.OccupyPos(string, GuiDialogBlockEntity.EnumPosFlag)
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos(string, Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  nameWithType.vb: GuiDialogBlockEntity.OccupyPos(String, GuiDialogBlockEntity.EnumPosFlag)
+  fullName.vb: Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos(String, Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  name.vb: OccupyPos(String, EnumPosFlag)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+    name: OccupyPos
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OccupyPos_System_String_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+    name: OccupyPos
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OccupyPos_System_String_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.FreePos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.FreePos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_FreePos_System_String_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
+  name: FreePos(string, EnumPosFlag)
+  nameWithType: GuiDialogBlockEntity.FreePos(string, GuiDialogBlockEntity.EnumPosFlag)
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.FreePos(string, Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  nameWithType.vb: GuiDialogBlockEntity.FreePos(String, GuiDialogBlockEntity.EnumPosFlag)
+  fullName.vb: Vintagestory.API.Client.GuiDialogBlockEntity.FreePos(String, Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  name.vb: FreePos(String, EnumPosFlag)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.FreePos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+    name: FreePos
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_FreePos_System_String_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.FreePos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+    name: FreePos
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_FreePos_System_String_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.IsRight(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.IsRight(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_IsRight_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
+  name: IsRight(EnumPosFlag)
+  nameWithType: GuiDialogBlockEntity.IsRight(GuiDialogBlockEntity.EnumPosFlag)
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.IsRight(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.IsRight(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+    name: IsRight
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_IsRight_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
+  - name: (
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.IsRight(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+    name: IsRight
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_IsRight_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
+  - name: (
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_YOffsetMul_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
+  name: YOffsetMul(EnumPosFlag)
+  nameWithType: GuiDialogBlockEntity.YOffsetMul(GuiDialogBlockEntity.EnumPosFlag)
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+    name: YOffsetMul
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_YOffsetMul_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
+  - name: (
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
+    name: YOffsetMul
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_YOffsetMul_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
+  - name: (
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogGeneric.DialogTitle
+  commentId: F:Vintagestory.API.Client.GuiDialogGeneric.DialogTitle
+  parent: Vintagestory.API.Client.GuiDialogGeneric
+  href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_DialogTitle
+  name: DialogTitle
+  nameWithType: GuiDialogGeneric.DialogTitle
+  fullName: Vintagestory.API.Client.GuiDialogGeneric.DialogTitle
+- uid: Vintagestory.API.Client.GuiDialogGeneric.UnregisterOnClose
+  commentId: P:Vintagestory.API.Client.GuiDialogGeneric.UnregisterOnClose
+  parent: Vintagestory.API.Client.GuiDialogGeneric
+  href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_UnregisterOnClose
+  name: UnregisterOnClose
+  nameWithType: GuiDialogGeneric.UnregisterOnClose
+  fullName: Vintagestory.API.Client.GuiDialogGeneric.UnregisterOnClose
+- uid: Vintagestory.API.Client.GuiDialogGeneric.Attributes
+  commentId: P:Vintagestory.API.Client.GuiDialogGeneric.Attributes
+  parent: Vintagestory.API.Client.GuiDialogGeneric
+  href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_Attributes
+  name: Attributes
+  nameWithType: GuiDialogGeneric.Attributes
+  fullName: Vintagestory.API.Client.GuiDialogGeneric.Attributes
+- uid: Vintagestory.API.Client.GuiDialogGeneric.ToggleKeyCombinationCode
+  commentId: P:Vintagestory.API.Client.GuiDialogGeneric.ToggleKeyCombinationCode
+  parent: Vintagestory.API.Client.GuiDialogGeneric
+  href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_ToggleKeyCombinationCode
+  name: ToggleKeyCombinationCode
+  nameWithType: GuiDialogGeneric.ToggleKeyCombinationCode
+  fullName: Vintagestory.API.Client.GuiDialogGeneric.ToggleKeyCombinationCode
+- uid: Vintagestory.API.Client.GuiDialogGeneric.Recompose
+  commentId: M:Vintagestory.API.Client.GuiDialogGeneric.Recompose
+  parent: Vintagestory.API.Client.GuiDialogGeneric
+  href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_Recompose
+  name: Recompose()
+  nameWithType: GuiDialogGeneric.Recompose()
+  fullName: Vintagestory.API.Client.GuiDialogGeneric.Recompose()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogGeneric.Recompose
+    name: Recompose
+    href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_Recompose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogGeneric.Recompose
+    name: Recompose
+    href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_Recompose
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogGeneric.UnfocusElements
+  commentId: M:Vintagestory.API.Client.GuiDialogGeneric.UnfocusElements
+  parent: Vintagestory.API.Client.GuiDialogGeneric
+  href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_UnfocusElements
+  name: UnfocusElements()
+  nameWithType: GuiDialogGeneric.UnfocusElements()
+  fullName: Vintagestory.API.Client.GuiDialogGeneric.UnfocusElements()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogGeneric.UnfocusElements
+    name: UnfocusElements
+    href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_UnfocusElements
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogGeneric.UnfocusElements
+    name: UnfocusElements
+    href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_UnfocusElements
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogGeneric.FocusElement(System.Int32)
+  commentId: M:Vintagestory.API.Client.GuiDialogGeneric.FocusElement(System.Int32)
+  parent: Vintagestory.API.Client.GuiDialogGeneric
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_FocusElement_System_Int32_
+  name: FocusElement(int)
+  nameWithType: GuiDialogGeneric.FocusElement(int)
+  fullName: Vintagestory.API.Client.GuiDialogGeneric.FocusElement(int)
+  nameWithType.vb: GuiDialogGeneric.FocusElement(Integer)
+  fullName.vb: Vintagestory.API.Client.GuiDialogGeneric.FocusElement(Integer)
+  name.vb: FocusElement(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogGeneric.FocusElement(System.Int32)
+    name: FocusElement
+    href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_FocusElement_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogGeneric.FocusElement(System.Int32)
+    name: FocusElement
+    href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_FocusElement_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogGeneric.IsInRangeOfBlock(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Client.GuiDialogGeneric.IsInRangeOfBlock(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Client.GuiDialogGeneric
+  href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_IsInRangeOfBlock_Vintagestory_API_MathTools_BlockPos_
+  name: IsInRangeOfBlock(BlockPos)
+  nameWithType: GuiDialogGeneric.IsInRangeOfBlock(BlockPos)
+  fullName: Vintagestory.API.Client.GuiDialogGeneric.IsInRangeOfBlock(Vintagestory.API.MathTools.BlockPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogGeneric.IsInRangeOfBlock(Vintagestory.API.MathTools.BlockPos)
+    name: IsInRangeOfBlock
+    href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_IsInRangeOfBlock_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogGeneric.IsInRangeOfBlock(Vintagestory.API.MathTools.BlockPos)
+    name: IsInRangeOfBlock
+    href: Vintagestory.API.Client.GuiDialogGeneric.html#Vintagestory_API_Client_GuiDialogGeneric_IsInRangeOfBlock_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.Composers
+  commentId: F:Vintagestory.API.Client.GuiDialog.Composers
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Composers
+  name: Composers
+  nameWithType: GuiDialog.Composers
+  fullName: Vintagestory.API.Client.GuiDialog.Composers
+- uid: Vintagestory.API.Client.GuiDialog.SingleComposer
+  commentId: P:Vintagestory.API.Client.GuiDialog.SingleComposer
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_SingleComposer
+  name: SingleComposer
+  nameWithType: GuiDialog.SingleComposer
+  fullName: Vintagestory.API.Client.GuiDialog.SingleComposer
+- uid: Vintagestory.API.Client.GuiDialog.DebugName
+  commentId: P:Vintagestory.API.Client.GuiDialog.DebugName
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_DebugName
+  name: DebugName
+  nameWithType: GuiDialog.DebugName
+  fullName: Vintagestory.API.Client.GuiDialog.DebugName
+- uid: Vintagestory.API.Client.GuiDialog.ZSize
+  commentId: P:Vintagestory.API.Client.GuiDialog.ZSize
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ZSize
+  name: ZSize
+  nameWithType: GuiDialog.ZSize
+  fullName: Vintagestory.API.Client.GuiDialog.ZSize
+- uid: Vintagestory.API.Client.GuiDialog.ignoreNextKeyPress
+  commentId: F:Vintagestory.API.Client.GuiDialog.ignoreNextKeyPress
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ignoreNextKeyPress
+  name: ignoreNextKeyPress
+  nameWithType: GuiDialog.ignoreNextKeyPress
+  fullName: Vintagestory.API.Client.GuiDialog.ignoreNextKeyPress
+- uid: Vintagestory.API.Client.GuiDialog.opened
+  commentId: F:Vintagestory.API.Client.GuiDialog.opened
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_opened
+  name: opened
+  nameWithType: GuiDialog.opened
+  fullName: Vintagestory.API.Client.GuiDialog.opened
+- uid: Vintagestory.API.Client.GuiDialog.focused
+  commentId: F:Vintagestory.API.Client.GuiDialog.focused
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_focused
+  name: focused
+  nameWithType: GuiDialog.focused
+  fullName: Vintagestory.API.Client.GuiDialog.focused
+- uid: Vintagestory.API.Client.GuiDialog.Focused
+  commentId: P:Vintagestory.API.Client.GuiDialog.Focused
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Focused
+  name: Focused
+  nameWithType: GuiDialog.Focused
+  fullName: Vintagestory.API.Client.GuiDialog.Focused
+- uid: Vintagestory.API.Client.GuiDialog.Focusable
+  commentId: P:Vintagestory.API.Client.GuiDialog.Focusable
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Focusable
+  name: Focusable
+  nameWithType: GuiDialog.Focusable
+  fullName: Vintagestory.API.Client.GuiDialog.Focusable
+- uid: Vintagestory.API.Client.GuiDialog.DialogType
+  commentId: P:Vintagestory.API.Client.GuiDialog.DialogType
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_DialogType
+  name: DialogType
+  nameWithType: GuiDialog.DialogType
+  fullName: Vintagestory.API.Client.GuiDialog.DialogType
+- uid: Vintagestory.API.Client.GuiDialog.OnOpened
+  commentId: E:Vintagestory.API.Client.GuiDialog.OnOpened
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnOpened
+  name: OnOpened
+  nameWithType: GuiDialog.OnOpened
+  fullName: Vintagestory.API.Client.GuiDialog.OnOpened
+- uid: Vintagestory.API.Client.GuiDialog.OnClosed
+  commentId: E:Vintagestory.API.Client.GuiDialog.OnClosed
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnClosed
+  name: OnClosed
+  nameWithType: GuiDialog.OnClosed
+  fullName: Vintagestory.API.Client.GuiDialog.OnClosed
+- uid: Vintagestory.API.Client.GuiDialog.capi
+  commentId: F:Vintagestory.API.Client.GuiDialog.capi
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_capi
+  name: capi
+  nameWithType: GuiDialog.capi
+  fullName: Vintagestory.API.Client.GuiDialog.capi
+- uid: Vintagestory.API.Client.GuiDialog.OnFocusChanged(System.Boolean)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnFocusChanged(System.Boolean)
+  parent: Vintagestory.API.Client.GuiDialog
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnFocusChanged_System_Boolean_
+  name: OnFocusChanged(bool)
+  nameWithType: GuiDialog.OnFocusChanged(bool)
+  fullName: Vintagestory.API.Client.GuiDialog.OnFocusChanged(bool)
+  nameWithType.vb: GuiDialog.OnFocusChanged(Boolean)
+  fullName.vb: Vintagestory.API.Client.GuiDialog.OnFocusChanged(Boolean)
+  name.vb: OnFocusChanged(Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnFocusChanged(System.Boolean)
+    name: OnFocusChanged
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnFocusChanged_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnFocusChanged(System.Boolean)
+    name: OnFocusChanged
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnFocusChanged_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnBlockTexturesLoaded
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnBlockTexturesLoaded
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnBlockTexturesLoaded
+  name: OnBlockTexturesLoaded()
+  nameWithType: GuiDialog.OnBlockTexturesLoaded()
+  fullName: Vintagestory.API.Client.GuiDialog.OnBlockTexturesLoaded()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnBlockTexturesLoaded
+    name: OnBlockTexturesLoaded
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnBlockTexturesLoaded
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnBlockTexturesLoaded
+    name: OnBlockTexturesLoaded
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnBlockTexturesLoaded
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnLevelFinalize
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnLevelFinalize
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnLevelFinalize
+  name: OnLevelFinalize()
+  nameWithType: GuiDialog.OnLevelFinalize()
+  fullName: Vintagestory.API.Client.GuiDialog.OnLevelFinalize()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnLevelFinalize
+    name: OnLevelFinalize
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnLevelFinalize
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnLevelFinalize
+    name: OnLevelFinalize
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnLevelFinalize
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnOwnPlayerDataReceived
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnOwnPlayerDataReceived
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnOwnPlayerDataReceived
+  name: OnOwnPlayerDataReceived()
+  nameWithType: GuiDialog.OnOwnPlayerDataReceived()
+  fullName: Vintagestory.API.Client.GuiDialog.OnOwnPlayerDataReceived()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnOwnPlayerDataReceived
+    name: OnOwnPlayerDataReceived
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnOwnPlayerDataReceived
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnOwnPlayerDataReceived
+    name: OnOwnPlayerDataReceived
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnOwnPlayerDataReceived
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.InputOrder
+  commentId: P:Vintagestory.API.Client.GuiDialog.InputOrder
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_InputOrder
+  name: InputOrder
+  nameWithType: GuiDialog.InputOrder
+  fullName: Vintagestory.API.Client.GuiDialog.InputOrder
+- uid: Vintagestory.API.Client.GuiDialog.TryOpen(System.Boolean)
+  commentId: M:Vintagestory.API.Client.GuiDialog.TryOpen(System.Boolean)
+  parent: Vintagestory.API.Client.GuiDialog
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_TryOpen_System_Boolean_
+  name: TryOpen(bool)
+  nameWithType: GuiDialog.TryOpen(bool)
+  fullName: Vintagestory.API.Client.GuiDialog.TryOpen(bool)
+  nameWithType.vb: GuiDialog.TryOpen(Boolean)
+  fullName.vb: Vintagestory.API.Client.GuiDialog.TryOpen(Boolean)
+  name.vb: TryOpen(Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.TryOpen(System.Boolean)
+    name: TryOpen
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_TryOpen_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.TryOpen(System.Boolean)
+    name: TryOpen
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_TryOpen_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.TryClose
+  commentId: M:Vintagestory.API.Client.GuiDialog.TryClose
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_TryClose
+  name: TryClose()
+  nameWithType: GuiDialog.TryClose()
+  fullName: Vintagestory.API.Client.GuiDialog.TryClose()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.TryClose
+    name: TryClose
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_TryClose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.TryClose
+    name: TryClose
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_TryClose
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.UnFocus
+  commentId: M:Vintagestory.API.Client.GuiDialog.UnFocus
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_UnFocus
+  name: UnFocus()
+  nameWithType: GuiDialog.UnFocus()
+  fullName: Vintagestory.API.Client.GuiDialog.UnFocus()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.UnFocus
+    name: UnFocus
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_UnFocus
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.UnFocus
+    name: UnFocus
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_UnFocus
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.Focus
+  commentId: M:Vintagestory.API.Client.GuiDialog.Focus
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Focus
+  name: Focus()
+  nameWithType: GuiDialog.Focus()
+  fullName: Vintagestory.API.Client.GuiDialog.Focus()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.Focus
+    name: Focus
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Focus
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.Focus
+    name: Focus
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Focus
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.Toggle
+  commentId: M:Vintagestory.API.Client.GuiDialog.Toggle
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Toggle
+  name: Toggle()
+  nameWithType: GuiDialog.Toggle()
+  fullName: Vintagestory.API.Client.GuiDialog.Toggle()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.Toggle
+    name: Toggle
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Toggle
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.Toggle
+    name: Toggle
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Toggle
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.IsOpened
+  commentId: M:Vintagestory.API.Client.GuiDialog.IsOpened
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsOpened
+  name: IsOpened()
+  nameWithType: GuiDialog.IsOpened()
+  fullName: Vintagestory.API.Client.GuiDialog.IsOpened()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.IsOpened
+    name: IsOpened
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsOpened
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.IsOpened
+    name: IsOpened
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsOpened
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.IsOpened(System.String)
+  commentId: M:Vintagestory.API.Client.GuiDialog.IsOpened(System.String)
+  parent: Vintagestory.API.Client.GuiDialog
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsOpened_System_String_
+  name: IsOpened(string)
+  nameWithType: GuiDialog.IsOpened(string)
+  fullName: Vintagestory.API.Client.GuiDialog.IsOpened(string)
+  nameWithType.vb: GuiDialog.IsOpened(String)
+  fullName.vb: Vintagestory.API.Client.GuiDialog.IsOpened(String)
+  name.vb: IsOpened(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.IsOpened(System.String)
+    name: IsOpened
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsOpened_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.IsOpened(System.String)
+    name: IsOpened
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsOpened_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnBeforeRenderFrame3D(System.Single)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnBeforeRenderFrame3D(System.Single)
+  parent: Vintagestory.API.Client.GuiDialog
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnBeforeRenderFrame3D_System_Single_
+  name: OnBeforeRenderFrame3D(float)
+  nameWithType: GuiDialog.OnBeforeRenderFrame3D(float)
+  fullName: Vintagestory.API.Client.GuiDialog.OnBeforeRenderFrame3D(float)
+  nameWithType.vb: GuiDialog.OnBeforeRenderFrame3D(Single)
+  fullName.vb: Vintagestory.API.Client.GuiDialog.OnBeforeRenderFrame3D(Single)
+  name.vb: OnBeforeRenderFrame3D(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnBeforeRenderFrame3D(System.Single)
+    name: OnBeforeRenderFrame3D
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnBeforeRenderFrame3D_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnBeforeRenderFrame3D(System.Single)
+    name: OnBeforeRenderFrame3D
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnBeforeRenderFrame3D_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.MouseOverCursor
+  commentId: F:Vintagestory.API.Client.GuiDialog.MouseOverCursor
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_MouseOverCursor
+  name: MouseOverCursor
+  nameWithType: GuiDialog.MouseOverCursor
+  fullName: Vintagestory.API.Client.GuiDialog.MouseOverCursor
+- uid: Vintagestory.API.Client.GuiDialog.OnKeyDown(Vintagestory.API.Client.KeyEvent)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnKeyDown(Vintagestory.API.Client.KeyEvent)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyDown_Vintagestory_API_Client_KeyEvent_
+  name: OnKeyDown(KeyEvent)
+  nameWithType: GuiDialog.OnKeyDown(KeyEvent)
+  fullName: Vintagestory.API.Client.GuiDialog.OnKeyDown(Vintagestory.API.Client.KeyEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnKeyDown(Vintagestory.API.Client.KeyEvent)
+    name: OnKeyDown
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyDown_Vintagestory_API_Client_KeyEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.KeyEvent
+    name: KeyEvent
+    href: Vintagestory.API.Client.KeyEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnKeyDown(Vintagestory.API.Client.KeyEvent)
+    name: OnKeyDown
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyDown_Vintagestory_API_Client_KeyEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.KeyEvent
+    name: KeyEvent
+    href: Vintagestory.API.Client.KeyEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnKeyPress(Vintagestory.API.Client.KeyEvent)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnKeyPress(Vintagestory.API.Client.KeyEvent)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyPress_Vintagestory_API_Client_KeyEvent_
+  name: OnKeyPress(KeyEvent)
+  nameWithType: GuiDialog.OnKeyPress(KeyEvent)
+  fullName: Vintagestory.API.Client.GuiDialog.OnKeyPress(Vintagestory.API.Client.KeyEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnKeyPress(Vintagestory.API.Client.KeyEvent)
+    name: OnKeyPress
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyPress_Vintagestory_API_Client_KeyEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.KeyEvent
+    name: KeyEvent
+    href: Vintagestory.API.Client.KeyEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnKeyPress(Vintagestory.API.Client.KeyEvent)
+    name: OnKeyPress
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyPress_Vintagestory_API_Client_KeyEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.KeyEvent
+    name: KeyEvent
+    href: Vintagestory.API.Client.KeyEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnKeyUp(Vintagestory.API.Client.KeyEvent)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnKeyUp(Vintagestory.API.Client.KeyEvent)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyUp_Vintagestory_API_Client_KeyEvent_
+  name: OnKeyUp(KeyEvent)
+  nameWithType: GuiDialog.OnKeyUp(KeyEvent)
+  fullName: Vintagestory.API.Client.GuiDialog.OnKeyUp(Vintagestory.API.Client.KeyEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnKeyUp(Vintagestory.API.Client.KeyEvent)
+    name: OnKeyUp
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyUp_Vintagestory_API_Client_KeyEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.KeyEvent
+    name: KeyEvent
+    href: Vintagestory.API.Client.KeyEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnKeyUp(Vintagestory.API.Client.KeyEvent)
+    name: OnKeyUp
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnKeyUp_Vintagestory_API_Client_KeyEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.KeyEvent
+    name: KeyEvent
+    href: Vintagestory.API.Client.KeyEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnEscapePressed
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnEscapePressed
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnEscapePressed
+  name: OnEscapePressed()
+  nameWithType: GuiDialog.OnEscapePressed()
+  fullName: Vintagestory.API.Client.GuiDialog.OnEscapePressed()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnEscapePressed
+    name: OnEscapePressed
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnEscapePressed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnEscapePressed
+    name: OnEscapePressed
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnEscapePressed
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseEnterSlot_Vintagestory_API_Common_ItemSlot_
+  name: OnMouseEnterSlot(ItemSlot)
+  nameWithType: GuiDialog.OnMouseEnterSlot(ItemSlot)
+  fullName: Vintagestory.API.Client.GuiDialog.OnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)
+    name: OnMouseEnterSlot
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseEnterSlot_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)
+    name: OnMouseEnterSlot
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseEnterSlot_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseLeaveSlot_Vintagestory_API_Common_ItemSlot_
+  name: OnMouseLeaveSlot(ItemSlot)
+  nameWithType: GuiDialog.OnMouseLeaveSlot(ItemSlot)
+  fullName: Vintagestory.API.Client.GuiDialog.OnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)
+    name: OnMouseLeaveSlot
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseLeaveSlot_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)
+    name: OnMouseLeaveSlot
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseLeaveSlot_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnMouseClickSlot(Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnMouseClickSlot(Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseClickSlot_Vintagestory_API_Common_ItemSlot_
+  name: OnMouseClickSlot(ItemSlot)
+  nameWithType: GuiDialog.OnMouseClickSlot(ItemSlot)
+  fullName: Vintagestory.API.Client.GuiDialog.OnMouseClickSlot(Vintagestory.API.Common.ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseClickSlot(Vintagestory.API.Common.ItemSlot)
+    name: OnMouseClickSlot
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseClickSlot_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseClickSlot(Vintagestory.API.Common.ItemSlot)
+    name: OnMouseClickSlot
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseClickSlot_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnMouseDown(Vintagestory.API.Client.MouseEvent)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnMouseDown(Vintagestory.API.Client.MouseEvent)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseDown_Vintagestory_API_Client_MouseEvent_
+  name: OnMouseDown(MouseEvent)
+  nameWithType: GuiDialog.OnMouseDown(MouseEvent)
+  fullName: Vintagestory.API.Client.GuiDialog.OnMouseDown(Vintagestory.API.Client.MouseEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseDown(Vintagestory.API.Client.MouseEvent)
+    name: OnMouseDown
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseDown_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseDown(Vintagestory.API.Client.MouseEvent)
+    name: OnMouseDown
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseDown_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnMouseUp(Vintagestory.API.Client.MouseEvent)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnMouseUp(Vintagestory.API.Client.MouseEvent)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseUp_Vintagestory_API_Client_MouseEvent_
+  name: OnMouseUp(MouseEvent)
+  nameWithType: GuiDialog.OnMouseUp(MouseEvent)
+  fullName: Vintagestory.API.Client.GuiDialog.OnMouseUp(Vintagestory.API.Client.MouseEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseUp(Vintagestory.API.Client.MouseEvent)
+    name: OnMouseUp
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseUp_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseUp(Vintagestory.API.Client.MouseEvent)
+    name: OnMouseUp
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseUp_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnMouseMove(Vintagestory.API.Client.MouseEvent)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnMouseMove(Vintagestory.API.Client.MouseEvent)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseMove_Vintagestory_API_Client_MouseEvent_
+  name: OnMouseMove(MouseEvent)
+  nameWithType: GuiDialog.OnMouseMove(MouseEvent)
+  fullName: Vintagestory.API.Client.GuiDialog.OnMouseMove(Vintagestory.API.Client.MouseEvent)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseMove(Vintagestory.API.Client.MouseEvent)
+    name: OnMouseMove
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseMove_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseMove(Vintagestory.API.Client.MouseEvent)
+    name: OnMouseMove
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseMove_Vintagestory_API_Client_MouseEvent_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseEvent
+    name: MouseEvent
+    href: Vintagestory.API.Client.MouseEvent.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OnMouseWheel(Vintagestory.API.Client.MouseWheelEventArgs)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OnMouseWheel(Vintagestory.API.Client.MouseWheelEventArgs)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseWheel_Vintagestory_API_Client_MouseWheelEventArgs_
+  name: OnMouseWheel(MouseWheelEventArgs)
+  nameWithType: GuiDialog.OnMouseWheel(MouseWheelEventArgs)
+  fullName: Vintagestory.API.Client.GuiDialog.OnMouseWheel(Vintagestory.API.Client.MouseWheelEventArgs)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseWheel(Vintagestory.API.Client.MouseWheelEventArgs)
+    name: OnMouseWheel
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseWheel_Vintagestory_API_Client_MouseWheelEventArgs_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseWheelEventArgs
+    name: MouseWheelEventArgs
+    href: Vintagestory.API.Client.MouseWheelEventArgs.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OnMouseWheel(Vintagestory.API.Client.MouseWheelEventArgs)
+    name: OnMouseWheel
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OnMouseWheel_Vintagestory_API_Client_MouseWheelEventArgs_
+  - name: (
+  - uid: Vintagestory.API.Client.MouseWheelEventArgs
+    name: MouseWheelEventArgs
+    href: Vintagestory.API.Client.MouseWheelEventArgs.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.ShouldReceiveRenderEvents
+  commentId: M:Vintagestory.API.Client.GuiDialog.ShouldReceiveRenderEvents
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveRenderEvents
+  name: ShouldReceiveRenderEvents()
+  nameWithType: GuiDialog.ShouldReceiveRenderEvents()
+  fullName: Vintagestory.API.Client.GuiDialog.ShouldReceiveRenderEvents()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.ShouldReceiveRenderEvents
+    name: ShouldReceiveRenderEvents
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveRenderEvents
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.ShouldReceiveRenderEvents
+    name: ShouldReceiveRenderEvents
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveRenderEvents
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.ShouldReceiveKeyboardEvents
+  commentId: M:Vintagestory.API.Client.GuiDialog.ShouldReceiveKeyboardEvents
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveKeyboardEvents
+  name: ShouldReceiveKeyboardEvents()
+  nameWithType: GuiDialog.ShouldReceiveKeyboardEvents()
+  fullName: Vintagestory.API.Client.GuiDialog.ShouldReceiveKeyboardEvents()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.ShouldReceiveKeyboardEvents
+    name: ShouldReceiveKeyboardEvents
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveKeyboardEvents
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.ShouldReceiveKeyboardEvents
+    name: ShouldReceiveKeyboardEvents
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveKeyboardEvents
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.ShouldReceiveMouseEvents
+  commentId: M:Vintagestory.API.Client.GuiDialog.ShouldReceiveMouseEvents
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveMouseEvents
+  name: ShouldReceiveMouseEvents()
+  nameWithType: GuiDialog.ShouldReceiveMouseEvents()
+  fullName: Vintagestory.API.Client.GuiDialog.ShouldReceiveMouseEvents()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.ShouldReceiveMouseEvents
+    name: ShouldReceiveMouseEvents
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveMouseEvents
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.ShouldReceiveMouseEvents
+    name: ShouldReceiveMouseEvents
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ShouldReceiveMouseEvents
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.RequiresUngrabbedMouse
+  commentId: M:Vintagestory.API.Client.GuiDialog.RequiresUngrabbedMouse
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_RequiresUngrabbedMouse
+  name: RequiresUngrabbedMouse()
+  nameWithType: GuiDialog.RequiresUngrabbedMouse()
+  fullName: Vintagestory.API.Client.GuiDialog.RequiresUngrabbedMouse()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.RequiresUngrabbedMouse
+    name: RequiresUngrabbedMouse
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_RequiresUngrabbedMouse
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.RequiresUngrabbedMouse
+    name: RequiresUngrabbedMouse
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_RequiresUngrabbedMouse
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.DisableMouseGrab
+  commentId: P:Vintagestory.API.Client.GuiDialog.DisableMouseGrab
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_DisableMouseGrab
+  name: DisableMouseGrab
+  nameWithType: GuiDialog.DisableMouseGrab
+  fullName: Vintagestory.API.Client.GuiDialog.DisableMouseGrab
+- uid: Vintagestory.API.Client.GuiDialog.CaptureAllInputs
+  commentId: M:Vintagestory.API.Client.GuiDialog.CaptureAllInputs
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_CaptureAllInputs
+  name: CaptureAllInputs()
+  nameWithType: GuiDialog.CaptureAllInputs()
+  fullName: Vintagestory.API.Client.GuiDialog.CaptureAllInputs()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.CaptureAllInputs
+    name: CaptureAllInputs
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_CaptureAllInputs
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.CaptureAllInputs
+    name: CaptureAllInputs
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_CaptureAllInputs
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.CaptureRawMouse
+  commentId: M:Vintagestory.API.Client.GuiDialog.CaptureRawMouse
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_CaptureRawMouse
+  name: CaptureRawMouse()
+  nameWithType: GuiDialog.CaptureRawMouse()
+  fullName: Vintagestory.API.Client.GuiDialog.CaptureRawMouse()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.CaptureRawMouse
+    name: CaptureRawMouse
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_CaptureRawMouse
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.CaptureRawMouse
+    name: CaptureRawMouse
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_CaptureRawMouse
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.Dispose
+  commentId: M:Vintagestory.API.Client.GuiDialog.Dispose
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Dispose
+  name: Dispose()
+  nameWithType: GuiDialog.Dispose()
+  fullName: Vintagestory.API.Client.GuiDialog.Dispose()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.Dispose
+    name: Dispose
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.Dispose
+    name: Dispose
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_Dispose
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.ClearComposers
+  commentId: M:Vintagestory.API.Client.GuiDialog.ClearComposers
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ClearComposers
+  name: ClearComposers()
+  nameWithType: GuiDialog.ClearComposers()
+  fullName: Vintagestory.API.Client.GuiDialog.ClearComposers()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.ClearComposers
+    name: ClearComposers
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ClearComposers
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.ClearComposers
+    name: ClearComposers
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_ClearComposers
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.IsInRangeOf(Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.Client.GuiDialog.IsInRangeOf(Vintagestory.API.MathTools.Vec3d)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsInRangeOf_Vintagestory_API_MathTools_Vec3d_
+  name: IsInRangeOf(Vec3d)
+  nameWithType: GuiDialog.IsInRangeOf(Vec3d)
+  fullName: Vintagestory.API.Client.GuiDialog.IsInRangeOf(Vintagestory.API.MathTools.Vec3d)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.IsInRangeOf(Vintagestory.API.MathTools.Vec3d)
+    name: IsInRangeOf
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsInRangeOf_Vintagestory_API_MathTools_Vec3d_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.IsInRangeOf(Vintagestory.API.MathTools.Vec3d)
+    name: IsInRangeOf
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsInRangeOf_Vintagestory_API_MathTools_Vec3d_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.GuiDialog.DrawOrder
+  commentId: P:Vintagestory.API.Client.GuiDialog.DrawOrder
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_DrawOrder
+  name: DrawOrder
+  nameWithType: GuiDialog.DrawOrder
+  fullName: Vintagestory.API.Client.GuiDialog.DrawOrder
+- uid: Vintagestory.API.Client.GuiDialogBlockEntityInventory.DrawOrder*
+  commentId: Overload:Vintagestory.API.Client.GuiDialogBlockEntityInventory.DrawOrder
+  href: Vintagestory.API.Client.GuiDialogBlockEntityInventory.html#Vintagestory_API_Client_GuiDialogBlockEntityInventory_DrawOrder
+  name: DrawOrder
+  nameWithType: GuiDialogBlockEntityInventory.DrawOrder
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntityInventory.DrawOrder
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.Client.GuiDialogBlockEntityInventory.#ctor*
+  commentId: Overload:Vintagestory.API.Client.GuiDialogBlockEntityInventory.#ctor
+  href: Vintagestory.API.Client.GuiDialogBlockEntityInventory.html#Vintagestory_API_Client_GuiDialogBlockEntityInventory__ctor_System_String_Vintagestory_API_Common_InventoryBase_Vintagestory_API_MathTools_BlockPos_System_Int32_Vintagestory_API_Client_ICoreClientAPI_
+  name: GuiDialogBlockEntityInventory
+  nameWithType: GuiDialogBlockEntityInventory.GuiDialogBlockEntityInventory
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntityInventory.GuiDialogBlockEntityInventory
+  nameWithType.vb: GuiDialogBlockEntityInventory.New
+  fullName.vb: Vintagestory.API.Client.GuiDialogBlockEntityInventory.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.InventoryBase
+  commentId: T:Vintagestory.API.Common.InventoryBase
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.InventoryBase.html
+  name: InventoryBase
+  nameWithType: InventoryBase
+  fullName: Vintagestory.API.Common.InventoryBase
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Client.ICoreClientAPI
+  commentId: T:Vintagestory.API.Client.ICoreClientAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ICoreClientAPI.html
+  name: ICoreClientAPI
+  nameWithType: ICoreClientAPI
+  fullName: Vintagestory.API.Client.ICoreClientAPI
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiClosed
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiClosed
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnGuiClosed
+  name: OnGuiClosed()
+  nameWithType: GuiDialogBlockEntity.OnGuiClosed()
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiClosed()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiClosed
+    name: OnGuiClosed
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnGuiClosed
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiClosed
+    name: OnGuiClosed
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnGuiClosed
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiClosed*
+  commentId: Overload:Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiClosed
+  href: Vintagestory.API.Client.GuiDialogBlockEntityInventory.html#Vintagestory_API_Client_GuiDialogBlockEntityInventory_OnGuiClosed
+  name: OnGuiClosed
+  nameWithType: GuiDialogBlockEntityInventory.OnGuiClosed
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiClosed
+- uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiOpened
+  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiOpened
+  parent: Vintagestory.API.Client.GuiDialogBlockEntity
+  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnGuiOpened
+  name: OnGuiOpened()
+  nameWithType: GuiDialogBlockEntity.OnGuiOpened()
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiOpened()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiOpened
+    name: OnGuiOpened
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnGuiOpened
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiOpened
+    name: OnGuiOpened
+    href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OnGuiOpened
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiOpened*
+  commentId: Overload:Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiOpened
+  href: Vintagestory.API.Client.GuiDialogBlockEntityInventory.html#Vintagestory_API_Client_GuiDialogBlockEntityInventory_OnGuiOpened
+  name: OnGuiOpened
+  nameWithType: GuiDialogBlockEntityInventory.OnGuiOpened
+  fullName: Vintagestory.API.Client.GuiDialogBlockEntityInventory.OnGuiOpened

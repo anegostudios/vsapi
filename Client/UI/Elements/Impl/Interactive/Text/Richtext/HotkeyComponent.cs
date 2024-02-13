@@ -48,8 +48,8 @@ namespace Vintagestory.API.Client
                 if (hotkey.CurrentMapping.Ctrl) parts.Add("Ctrl");
                 if (hotkey.CurrentMapping.Alt) parts.Add("Alt");
                 if (hotkey.CurrentMapping.Shift) parts.Add("Shift");
-                parts.Add(GlKeyNames.ToString((GlKeys)hotkey.CurrentMapping.KeyCode));
-                if (hotkey.CurrentMapping.SecondKeyCode != null) parts.Add(GlKeyNames.ToString((GlKeys)hotkey.CurrentMapping.SecondKeyCode));
+                parts.Add(hotkey.CurrentMapping.PrimaryAsString());
+                if (hotkey.CurrentMapping.SecondKeyCode != null) parts.Add(hotkey.CurrentMapping.SecondaryAsString());
             } else
             {
                 parts.Add("?");
@@ -60,18 +60,18 @@ namespace Vintagestory.API.Client
             double textWidth = 0;
             double pluswdith = Font.GetTextExtents("+").Width;
             double symbolspacing = 3;
-            double leftRightPad = 3;
+            double leftRightPad = 4;
             foreach (var part in parts)
             {
                 var w = Font.GetTextExtents(part).Width + GuiElement.scaled(symbolspacing + 2 * leftRightPad);
-                if (textWidth > 0) w += GuiElement.scaled(symbolspacing) + pluswdith;
+                if (textWidth > 0) w += GuiElement.scaled(symbolspacing) + pluswdith;  // i.e. if not the first!
                 textWidth += w;
             }
            
-            double textHeight = Font.GetFontExtents().Height;
-            int lineheight = (int)textHeight;
+            double textHeight = Font.GetFontExtents().Height + 2;
+            int lineheight = (int)textHeight + 2;
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, (int)textWidth + 1, lineheight + 5);
+            ImageSurface surface = new ImageSurface(Format.Argb32, (int)textWidth + 3, lineheight + 5);
             Context ctx = new Context(surface);
             Font.SetupContext(ctx);
             
@@ -79,7 +79,7 @@ namespace Vintagestory.API.Client
             double y = 0;
             foreach (string part in parts)
             {
-                hx = DrawHotkey(api, part, hx, y, ctx, Font, lineheight, textHeight, pluswdith, symbolspacing, leftRightPad, Font.Color);
+                hx = DrawHotkey(api, part, hx, y, ctx, Font, lineheight - 4, textHeight, pluswdith, symbolspacing, leftRightPad, Font.Color);
             }
 
             api.Gui.LoadOrUpdateCairoTexture(surface, true, ref hotkeyTexture);

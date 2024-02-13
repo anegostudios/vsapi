@@ -483,10 +483,19 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Does the side APPEAR fully solid?  Called for example when deciding to render water edges at a position, or not
+        /// Note: Worldgen code uses the blockAccessor-aware overload of this method
         /// </summary>
         public virtual bool SideIsSolid(BlockPos pos, int faceIndex)
         {
             return SideSolid[faceIndex];
+        }
+
+        /// <summary>
+        /// Is the side solid or almost fully solid (in the case of chiselled blocks)?  Called for example when deciding to place loose stones or boulders above this during worldgen
+        /// </summary>
+        public virtual bool SideIsSolid(IBlockAccessor blockAccess, BlockPos pos, int faceIndex)
+        {
+            return SideIsSolid(pos, faceIndex);
         }
 
         /// <summary>

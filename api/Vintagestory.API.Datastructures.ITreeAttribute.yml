@@ -1,0 +1,3956 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Datastructures.ITreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.ITreeAttribute
+  id: ITreeAttribute
+  parent: Vintagestory.API.Datastructures
+  children:
+  - Vintagestory.API.Datastructures.ITreeAttribute.Clone
+  - Vintagestory.API.Datastructures.ITreeAttribute.Count
+  - Vintagestory.API.Datastructures.ITreeAttribute.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute,System.String[])
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetAsBool(System.String,System.Boolean)
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetAsInt(System.String,System.Int32)
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetAsString(System.String,System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetBool(System.String,System.Boolean)
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetBytes(System.String,System.Byte[])
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(System.String,System.Double)
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetDouble(System.String,System.Double)
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetFloat(System.String,System.Single)
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetHashCode(System.String[])
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetInt(System.String,System.Int32)
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetItemstack(System.String,Vintagestory.API.Common.ItemStack)
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetLong(System.String,System.Int64)
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetOrAddTreeAttribute(System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetString(System.String,System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.GetTreeAttribute(System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.HasAttribute(System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.IsSubSetOf(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  - Vintagestory.API.Datastructures.ITreeAttribute.Item(System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.MergeTree(Vintagestory.API.Datastructures.ITreeAttribute)
+  - Vintagestory.API.Datastructures.ITreeAttribute.RemoveAttribute(System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.SetBool(System.String,System.Boolean)
+  - Vintagestory.API.Datastructures.ITreeAttribute.SetBytes(System.String,System.Byte[])
+  - Vintagestory.API.Datastructures.ITreeAttribute.SetDouble(System.String,System.Double)
+  - Vintagestory.API.Datastructures.ITreeAttribute.SetFloat(System.String,System.Single)
+  - Vintagestory.API.Datastructures.ITreeAttribute.SetInt(System.String,System.Int32)
+  - Vintagestory.API.Datastructures.ITreeAttribute.SetItemstack(System.String,Vintagestory.API.Common.ItemStack)
+  - Vintagestory.API.Datastructures.ITreeAttribute.SetLong(System.String,System.Int64)
+  - Vintagestory.API.Datastructures.ITreeAttribute.SetString(System.String,System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.SortedCopy(System.Boolean)
+  - Vintagestory.API.Datastructures.ITreeAttribute.TryGetBool(System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.TryGetDouble(System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.TryGetFloat(System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.TryGetInt(System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.TryGetLong(System.String)
+  - Vintagestory.API.Datastructures.ITreeAttribute.Values
+  langs:
+  - csharp
+  - vb
+  name: ITreeAttribute
+  nameWithType: ITreeAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ITreeAttribute
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Represents a List of nestable Attributes
+  example: []
+  syntax:
+    content: 'public interface ITreeAttribute : IAttribute, IEnumerable<KeyValuePair<string, IAttribute>>, IEnumerable'
+    content.vb: Public Interface ITreeAttribute Inherits IAttribute, IEnumerable(Of KeyValuePair(Of String, IAttribute)), IEnumerable
+  inheritedMembers:
+  - Vintagestory.API.Datastructures.IAttribute.ToBytes(System.IO.BinaryWriter)
+  - Vintagestory.API.Datastructures.IAttribute.FromBytes(System.IO.BinaryReader)
+  - Vintagestory.API.Datastructures.IAttribute.GetAttributeId
+  - Vintagestory.API.Datastructures.IAttribute.GetType
+  - Vintagestory.API.Datastructures.IAttribute.GetValue
+  - Vintagestory.API.Datastructures.IAttribute.ToJsonToken
+  - Vintagestory.API.Datastructures.IAttribute.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}.GetEnumerator
+  - System.Collections.IEnumerable.GetEnumerator
+  extensionMethods:
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}.Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Action{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}})
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}.Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute},System.Double})
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}.Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute},System.Double})
+  - Vintagestory.API.Datastructures.ITreeAttribute.Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(System.String,Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Datastructures.ITreeAttribute.Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(System.String,Vintagestory.API.MathTools.Vec3i)
+  - Vintagestory.API.Datastructures.ITreeAttribute.Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(System.String,Vintagestory.API.MathTools.Vec3i[])
+  - Vintagestory.API.Datastructures.ITreeAttribute.Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(System.String,Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Datastructures.ITreeAttribute.Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(System.String,Vintagestory.API.MathTools.Vec3i)
+  - Vintagestory.API.Datastructures.ITreeAttribute.Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(System.String,Vintagestory.API.MathTools.Vec3i[])
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Item(System.String)
+  commentId: P:Vintagestory.API.Datastructures.ITreeAttribute.Item(System.String)
+  id: Item(System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: this[string]
+  nameWithType: ITreeAttribute.this[string]
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.this[string]
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: this[]
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Will return null if given attribute does not exist
+  example: []
+  syntax:
+    content: IAttribute this[string key] { get; set; }
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Datastructures.IAttribute
+      description: ''
+    content.vb: Default Property this[](key As String) As IAttribute
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.Item*
+  nameWithType.vb: ITreeAttribute.this[](String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.this[](String)
+  name.vb: this[](String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Count
+  commentId: P:Vintagestory.API.Datastructures.ITreeAttribute.Count
+  id: Count
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: ITreeAttribute.Count
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.Count
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Count
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 21
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Amount of elements in this Tree attribute
+  example: []
+  syntax:
+    content: int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Count As Integer
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.Count*
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Values
+  commentId: P:Vintagestory.API.Datastructures.ITreeAttribute.Values
+  id: Values
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: Values
+  nameWithType: ITreeAttribute.Values
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.Values
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Values
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 26
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Returns all values inside this tree attributes
+  example: []
+  syntax:
+    content: IAttribute[] Values { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.IAttribute[]
+    content.vb: ReadOnly Property Values As IAttribute()
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.Values*
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.HasAttribute(System.String)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.HasAttribute(System.String)
+  id: HasAttribute(System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: HasAttribute(string)
+  nameWithType: ITreeAttribute.HasAttribute(string)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.HasAttribute(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: HasAttribute
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 33
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: True if this attribute exists
+  example: []
+  syntax:
+    content: bool HasAttribute(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function HasAttribute(key As String) As Boolean
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.HasAttribute*
+  nameWithType.vb: ITreeAttribute.HasAttribute(String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.HasAttribute(String)
+  name.vb: HasAttribute(String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.RemoveAttribute(System.String)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.RemoveAttribute(System.String)
+  id: RemoveAttribute(System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: RemoveAttribute(string)
+  nameWithType: ITreeAttribute.RemoveAttribute(string)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.RemoveAttribute(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RemoveAttribute
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 40
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Removes an attribute
+  example: []
+  syntax:
+    content: void RemoveAttribute(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    content.vb: Sub RemoveAttribute(key As String)
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.RemoveAttribute*
+  nameWithType.vb: ITreeAttribute.RemoveAttribute(String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.RemoveAttribute(String)
+  name.vb: RemoveAttribute(String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetBool(System.String,System.Boolean)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.SetBool(System.String,System.Boolean)
+  id: SetBool(System.String,System.Boolean)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: SetBool(string, bool)
+  nameWithType: ITreeAttribute.SetBool(string, bool)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetBool(string, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetBool
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 47
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Creates a bool attribute with given key and value
+  example: []
+  syntax:
+    content: void SetBool(string key, bool value)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: value
+      type: System.Boolean
+      description: ''
+    content.vb: Sub SetBool(key As String, value As Boolean)
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.SetBool*
+  nameWithType.vb: ITreeAttribute.SetBool(String, Boolean)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.SetBool(String, Boolean)
+  name.vb: SetBool(String, Boolean)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetInt(System.String,System.Int32)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.SetInt(System.String,System.Int32)
+  id: SetInt(System.String,System.Int32)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: SetInt(string, int)
+  nameWithType: ITreeAttribute.SetInt(string, int)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetInt(string, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetInt
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 54
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Creates an int attribute with given key and value
+  example: []
+  syntax:
+    content: void SetInt(string key, int value)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: value
+      type: System.Int32
+      description: ''
+    content.vb: Sub SetInt(key As String, value As Integer)
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.SetInt*
+  nameWithType.vb: ITreeAttribute.SetInt(String, Integer)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.SetInt(String, Integer)
+  name.vb: SetInt(String, Integer)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetLong(System.String,System.Int64)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.SetLong(System.String,System.Int64)
+  id: SetLong(System.String,System.Int64)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: SetLong(string, long)
+  nameWithType: ITreeAttribute.SetLong(string, long)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetLong(string, long)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetLong
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 61
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Creates a long attribute with given key and value
+  example: []
+  syntax:
+    content: void SetLong(string key, long value)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: value
+      type: System.Int64
+      description: ''
+    content.vb: Sub SetLong(key As String, value As Long)
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.SetLong*
+  nameWithType.vb: ITreeAttribute.SetLong(String, Long)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.SetLong(String, Long)
+  name.vb: SetLong(String, Long)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetDouble(System.String,System.Double)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.SetDouble(System.String,System.Double)
+  id: SetDouble(System.String,System.Double)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: SetDouble(string, double)
+  nameWithType: ITreeAttribute.SetDouble(string, double)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetDouble(string, double)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetDouble
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 68
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Creates a double attribute with given key and value
+  example: []
+  syntax:
+    content: void SetDouble(string key, double value)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: value
+      type: System.Double
+      description: ''
+    content.vb: Sub SetDouble(key As String, value As Double)
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.SetDouble*
+  nameWithType.vb: ITreeAttribute.SetDouble(String, Double)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.SetDouble(String, Double)
+  name.vb: SetDouble(String, Double)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetFloat(System.String,System.Single)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.SetFloat(System.String,System.Single)
+  id: SetFloat(System.String,System.Single)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: SetFloat(string, float)
+  nameWithType: ITreeAttribute.SetFloat(string, float)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetFloat(string, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetFloat
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 76
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Creates a float attribute with given key and value
+  example: []
+  syntax:
+    content: void SetFloat(string key, float value)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: value
+      type: System.Single
+      description: ''
+    content.vb: Sub SetFloat(key As String, value As Single)
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.SetFloat*
+  nameWithType.vb: ITreeAttribute.SetFloat(String, Single)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.SetFloat(String, Single)
+  name.vb: SetFloat(String, Single)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetString(System.String,System.String)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.SetString(System.String,System.String)
+  id: SetString(System.String,System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: SetString(string, string)
+  nameWithType: ITreeAttribute.SetString(string, string)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetString(string, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetString
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 83
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Creates a string attribute with given key and value
+  example: []
+  syntax:
+    content: void SetString(string key, string value)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: value
+      type: System.String
+      description: ''
+    content.vb: Sub SetString(key As String, value As String)
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.SetString*
+  nameWithType.vb: ITreeAttribute.SetString(String, String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.SetString(String, String)
+  name.vb: SetString(String, String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetBytes(System.String,System.Byte[])
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.SetBytes(System.String,System.Byte[])
+  id: SetBytes(System.String,System.Byte[])
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: SetBytes(string, byte[])
+  nameWithType: ITreeAttribute.SetBytes(string, byte[])
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetBytes(string, byte[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetBytes
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 90
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Creates a byte[] attribute with given key and value
+  example: []
+  syntax:
+    content: void SetBytes(string key, byte[] value)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: value
+      type: System.Byte[]
+      description: ''
+    content.vb: Sub SetBytes(key As String, value As Byte())
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.SetBytes*
+  nameWithType.vb: ITreeAttribute.SetBytes(String, Byte())
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.SetBytes(String, Byte())
+  name.vb: SetBytes(String, Byte())
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetItemstack(System.String,Vintagestory.API.Common.ItemStack)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.SetItemstack(System.String,Vintagestory.API.Common.ItemStack)
+  id: SetItemstack(System.String,Vintagestory.API.Common.ItemStack)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: SetItemstack(string, ItemStack)
+  nameWithType: ITreeAttribute.SetItemstack(string, ItemStack)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetItemstack(string, Vintagestory.API.Common.ItemStack)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetItemstack
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 97
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Sets given item stack with given key
+  example: []
+  syntax:
+    content: void SetItemstack(string key, ItemStack itemstack)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: itemstack
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    content.vb: Sub SetItemstack(key As String, itemstack As ItemStack)
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.SetItemstack*
+  nameWithType.vb: ITreeAttribute.SetItemstack(String, ItemStack)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.SetItemstack(String, Vintagestory.API.Common.ItemStack)
+  name.vb: SetItemstack(String, ItemStack)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.TryGetBool(System.String)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.TryGetBool(System.String)
+  id: TryGetBool(System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: TryGetBool(string)
+  nameWithType: ITreeAttribute.TryGetBool(string)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.TryGetBool(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryGetBool
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 104
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves a bool or null if the key is not found
+  example: []
+  syntax:
+    content: bool? TryGetBool(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: System.Nullable{System.Boolean}
+      description: ''
+    content.vb: Function TryGetBool(key As String) As Boolean?
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.TryGetBool*
+  nameWithType.vb: ITreeAttribute.TryGetBool(String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.TryGetBool(String)
+  name.vb: TryGetBool(String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetBool(System.String,System.Boolean)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetBool(System.String,System.Boolean)
+  id: GetBool(System.String,System.Boolean)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetBool(string, bool)
+  nameWithType: ITreeAttribute.GetBool(string, bool)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetBool(string, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetBool
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 112
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves a bool or default value if key is not found
+  example: []
+  syntax:
+    content: bool GetBool(string key, bool defaultValue = false)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: System.Boolean
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function GetBool(key As String, defaultValue As Boolean = False) As Boolean
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetBool*
+  nameWithType.vb: ITreeAttribute.GetBool(String, Boolean)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetBool(String, Boolean)
+  name.vb: GetBool(String, Boolean)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.TryGetInt(System.String)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.TryGetInt(System.String)
+  id: TryGetInt(System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: TryGetInt(string)
+  nameWithType: ITreeAttribute.TryGetInt(string)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.TryGetInt(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryGetInt
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 119
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves an int or null if the key is not found
+  example: []
+  syntax:
+    content: int? TryGetInt(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: System.Nullable{System.Int32}
+      description: ''
+    content.vb: Function TryGetInt(key As String) As Integer?
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.TryGetInt*
+  nameWithType.vb: ITreeAttribute.TryGetInt(String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.TryGetInt(String)
+  name.vb: TryGetInt(String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetInt(System.String,System.Int32)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetInt(System.String,System.Int32)
+  id: GetInt(System.String,System.Int32)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetInt(string, int)
+  nameWithType: ITreeAttribute.GetInt(string, int)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetInt(string, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetInt
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 127
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves an int or default value if key is not found
+  example: []
+  syntax:
+    content: int GetInt(string key, int defaultValue = 0)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Function GetInt(key As String, defaultValue As Integer = 0) As Integer
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetInt*
+  nameWithType.vb: ITreeAttribute.GetInt(String, Integer)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetInt(String, Integer)
+  name.vb: GetInt(String, Integer)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetAsInt(System.String,System.Int32)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetAsInt(System.String,System.Int32)
+  id: GetAsInt(System.String,System.Int32)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetAsInt(string, int)
+  nameWithType: ITreeAttribute.GetAsInt(string, int)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetAsInt(string, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetAsInt
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 135
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Same as (int)<xref href="Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(System.String%2cSystem.Double)" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: int GetAsInt(string key, int defaultValue = 0)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Function GetAsInt(key As String, defaultValue As Integer = 0) As Integer
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetAsInt*
+  nameWithType.vb: ITreeAttribute.GetAsInt(String, Integer)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetAsInt(String, Integer)
+  name.vb: GetAsInt(String, Integer)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetAsBool(System.String,System.Boolean)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetAsBool(System.String,System.Boolean)
+  id: GetAsBool(System.String,System.Boolean)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetAsBool(string, bool)
+  nameWithType: ITreeAttribute.GetAsBool(string, bool)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetAsBool(string, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetAsBool
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 143
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Returns true/false, for whatever type of attribute is found for given key
+  example: []
+  syntax:
+    content: bool GetAsBool(string key, bool defaultValue = false)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: System.Boolean
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function GetAsBool(key As String, defaultValue As Boolean = False) As Boolean
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetAsBool*
+  nameWithType.vb: ITreeAttribute.GetAsBool(String, Boolean)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetAsBool(String, Boolean)
+  name.vb: GetAsBool(String, Boolean)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(System.String,System.Double)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(System.String,System.Double)
+  id: GetDecimal(System.String,System.Double)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetDecimal(string, double)
+  nameWithType: ITreeAttribute.GetDecimal(string, double)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(string, double)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetDecimal
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 151
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves an int, float, long or double value. Whatever attribute is found for given key
+  example: []
+  syntax:
+    content: double GetDecimal(string key, double defaultValue = 0)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: System.Double
+      description: ''
+    return:
+      type: System.Double
+      description: ''
+    content.vb: Function GetDecimal(key As String, defaultValue As Double = 0) As Double
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal*
+  nameWithType.vb: ITreeAttribute.GetDecimal(String, Double)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(String, Double)
+  name.vb: GetDecimal(String, Double)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetAsString(System.String,System.String)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetAsString(System.String,System.String)
+  id: GetAsString(System.String,System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetAsString(string, string)
+  nameWithType: ITreeAttribute.GetAsString(string, string)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetAsString(string, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetAsString
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 159
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves the value of given attribute, independent of attribute type
+  example: []
+  syntax:
+    content: string GetAsString(string key, string defaultValue = null)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: System.String
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Function GetAsString(key As String, defaultValue As String = Nothing) As String
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetAsString*
+  nameWithType.vb: ITreeAttribute.GetAsString(String, String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetAsString(String, String)
+  name.vb: GetAsString(String, String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.TryGetLong(System.String)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.TryGetLong(System.String)
+  id: TryGetLong(System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: TryGetLong(string)
+  nameWithType: ITreeAttribute.TryGetLong(string)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.TryGetLong(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryGetLong
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 166
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves a long or null value if key is not found
+  example: []
+  syntax:
+    content: long? TryGetLong(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: System.Nullable{System.Int64}
+      description: ''
+    content.vb: Function TryGetLong(key As String) As Long?
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.TryGetLong*
+  nameWithType.vb: ITreeAttribute.TryGetLong(String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.TryGetLong(String)
+  name.vb: TryGetLong(String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetLong(System.String,System.Int64)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetLong(System.String,System.Int64)
+  id: GetLong(System.String,System.Int64)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetLong(string, long)
+  nameWithType: ITreeAttribute.GetLong(string, long)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetLong(string, long)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetLong
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 174
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves a long or default value if key is not found
+  example: []
+  syntax:
+    content: long GetLong(string key, long defaultValue = 0)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: System.Int64
+      description: ''
+    return:
+      type: System.Int64
+      description: ''
+    content.vb: Function GetLong(key As String, defaultValue As Long = 0) As Long
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetLong*
+  nameWithType.vb: ITreeAttribute.GetLong(String, Long)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetLong(String, Long)
+  name.vb: GetLong(String, Long)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.TryGetFloat(System.String)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.TryGetFloat(System.String)
+  id: TryGetFloat(System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: TryGetFloat(string)
+  nameWithType: ITreeAttribute.TryGetFloat(string)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.TryGetFloat(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryGetFloat
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 181
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves a float or null if the key is not found
+  example: []
+  syntax:
+    content: float? TryGetFloat(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: System.Nullable{System.Single}
+      description: ''
+    content.vb: Function TryGetFloat(key As String) As Single?
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.TryGetFloat*
+  nameWithType.vb: ITreeAttribute.TryGetFloat(String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.TryGetFloat(String)
+  name.vb: TryGetFloat(String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetFloat(System.String,System.Single)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetFloat(System.String,System.Single)
+  id: GetFloat(System.String,System.Single)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetFloat(string, float)
+  nameWithType: ITreeAttribute.GetFloat(string, float)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetFloat(string, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetFloat
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 189
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves a float or defaultvalue if key is not found
+  example: []
+  syntax:
+    content: float GetFloat(string key, float defaultValue = 0)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: System.Single
+      description: ''
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Function GetFloat(key As String, defaultValue As Single = 0) As Single
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetFloat*
+  nameWithType.vb: ITreeAttribute.GetFloat(String, Single)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetFloat(String, Single)
+  name.vb: GetFloat(String, Single)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.TryGetDouble(System.String)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.TryGetDouble(System.String)
+  id: TryGetDouble(System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: TryGetDouble(string)
+  nameWithType: ITreeAttribute.TryGetDouble(string)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.TryGetDouble(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryGetDouble
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 196
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves a double or null if key is not found
+  example: []
+  syntax:
+    content: double? TryGetDouble(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: System.Nullable{System.Double}
+      description: ''
+    content.vb: Function TryGetDouble(key As String) As Double?
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.TryGetDouble*
+  nameWithType.vb: ITreeAttribute.TryGetDouble(String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.TryGetDouble(String)
+  name.vb: TryGetDouble(String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetDouble(System.String,System.Double)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetDouble(System.String,System.Double)
+  id: GetDouble(System.String,System.Double)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetDouble(string, double)
+  nameWithType: ITreeAttribute.GetDouble(string, double)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetDouble(string, double)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetDouble
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 204
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves a double or defaultValue if key is not found
+  example: []
+  syntax:
+    content: double GetDouble(string key, double defaultValue = 0)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: System.Double
+      description: ''
+    return:
+      type: System.Double
+      description: ''
+    content.vb: Function GetDouble(key As String, defaultValue As Double = 0) As Double
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetDouble*
+  nameWithType.vb: ITreeAttribute.GetDouble(String, Double)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetDouble(String, Double)
+  name.vb: GetDouble(String, Double)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetString(System.String,System.String)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetString(System.String,System.String)
+  id: GetString(System.String,System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetString(string, string)
+  nameWithType: ITreeAttribute.GetString(string, string)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetString(string, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetString
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 212
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves a string or defaultValue if key is not found
+  example: []
+  syntax:
+    content: string GetString(string key, string defaultValue = null)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: System.String
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Function GetString(key As String, defaultValue As String = Nothing) As String
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetString*
+  nameWithType.vb: ITreeAttribute.GetString(String, String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetString(String, String)
+  name.vb: GetString(String, String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetBytes(System.String,System.Byte[])
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetBytes(System.String,System.Byte[])
+  id: GetBytes(System.String,System.Byte[])
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetBytes(string, byte[])
+  nameWithType: ITreeAttribute.GetBytes(string, byte[])
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetBytes(string, byte[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetBytes
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 220
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves a byte array or defaultValue if key is not found
+  example: []
+  syntax:
+    content: byte[] GetBytes(string key, byte[] defaultValue = null)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: System.Byte[]
+      description: ''
+    return:
+      type: System.Byte[]
+      description: ''
+    content.vb: Function GetBytes(key As String, defaultValue As Byte() = Nothing) As Byte()
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetBytes*
+  nameWithType.vb: ITreeAttribute.GetBytes(String, Byte())
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetBytes(String, Byte())
+  name.vb: GetBytes(String, Byte())
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetItemstack(System.String,Vintagestory.API.Common.ItemStack)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetItemstack(System.String,Vintagestory.API.Common.ItemStack)
+  id: GetItemstack(System.String,Vintagestory.API.Common.ItemStack)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetItemstack(string, ItemStack)
+  nameWithType: ITreeAttribute.GetItemstack(string, ItemStack)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetItemstack(string, Vintagestory.API.Common.ItemStack)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetItemstack
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 228
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves an itemstack or defaultValue if key is not found. Be sure to call stack.ResolveBlockOrItem() after retrieving it.
+  example: []
+  syntax:
+    content: ItemStack GetItemstack(string key, ItemStack defaultValue = null)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    - id: defaultValue
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    return:
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    content.vb: Function GetItemstack(key As String, defaultValue As ItemStack = Nothing) As ItemStack
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetItemstack*
+  nameWithType.vb: ITreeAttribute.GetItemstack(String, ItemStack)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetItemstack(String, Vintagestory.API.Common.ItemStack)
+  name.vb: GetItemstack(String, ItemStack)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetTreeAttribute(System.String)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetTreeAttribute(System.String)
+  id: GetTreeAttribute(System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetTreeAttribute(string)
+  nameWithType: ITreeAttribute.GetTreeAttribute(string)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetTreeAttribute(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetTreeAttribute
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 235
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Retrieves an attribute tree or null if key is not found
+  example: []
+  syntax:
+    content: ITreeAttribute GetTreeAttribute(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+      description: ''
+    content.vb: Function GetTreeAttribute(key As String) As ITreeAttribute
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetTreeAttribute*
+  nameWithType.vb: ITreeAttribute.GetTreeAttribute(String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetTreeAttribute(String)
+  name.vb: GetTreeAttribute(String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetOrAddTreeAttribute(System.String)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetOrAddTreeAttribute(System.String)
+  id: GetOrAddTreeAttribute(System.String)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetOrAddTreeAttribute(string)
+  nameWithType: ITreeAttribute.GetOrAddTreeAttribute(string)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetOrAddTreeAttribute(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetOrAddTreeAttribute
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 243
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: >-
+    Retrieves an attribute tree or adds it if key is not found.
+
+    Throws an exception if the key does exist but is not a tree.
+  example: []
+  syntax:
+    content: ITreeAttribute GetOrAddTreeAttribute(string key)
+    parameters:
+    - id: key
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+      description: ''
+    content.vb: Function GetOrAddTreeAttribute(key As String) As ITreeAttribute
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetOrAddTreeAttribute*
+  nameWithType.vb: ITreeAttribute.GetOrAddTreeAttribute(String)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetOrAddTreeAttribute(String)
+  name.vb: GetOrAddTreeAttribute(String)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Clone
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.Clone
+  id: Clone
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: ITreeAttribute.Clone()
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.Clone()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Clone
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 249
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Creates a deep copy of the attribute tree
+  example: []
+  syntax:
+    content: ITreeAttribute Clone()
+    return:
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+      description: ''
+    content.vb: Function Clone() As ITreeAttribute
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.Clone*
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.MergeTree(Vintagestory.API.Datastructures.ITreeAttribute)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.MergeTree(Vintagestory.API.Datastructures.ITreeAttribute)
+  id: MergeTree(Vintagestory.API.Datastructures.ITreeAttribute)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: MergeTree(ITreeAttribute)
+  nameWithType: ITreeAttribute.MergeTree(ITreeAttribute)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.MergeTree(Vintagestory.API.Datastructures.ITreeAttribute)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MergeTree
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 255
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Merges trees (it will overwrite existing values)
+  example: []
+  syntax:
+    content: void MergeTree(ITreeAttribute tree)
+    parameters:
+    - id: tree
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+      description: ''
+    content.vb: Sub MergeTree(tree As ITreeAttribute)
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.MergeTree*
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SortedCopy(System.Boolean)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.SortedCopy(System.Boolean)
+  id: SortedCopy(System.Boolean)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: SortedCopy(bool)
+  nameWithType: ITreeAttribute.SortedCopy(bool)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SortedCopy(bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SortedCopy
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 262
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Returns a ITreeAttribute sorted alphabetically by key. Does not modify the existing ITreeAttribute
+  example: []
+  syntax:
+    content: ITreeAttribute SortedCopy(bool recursive = false)
+    parameters:
+    - id: recursive
+      type: System.Boolean
+      description: ''
+    return:
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+      description: ''
+    content.vb: Function SortedCopy(recursive As Boolean = False) As ITreeAttribute
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.SortedCopy*
+  nameWithType.vb: ITreeAttribute.SortedCopy(Boolean)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.SortedCopy(Boolean)
+  name.vb: SortedCopy(Boolean)
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute,System.String[])
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute,System.String[])
+  id: Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute,System.String[])
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: Equals(IWorldAccessor, IAttribute, params string[])
+  nameWithType: ITreeAttribute.Equals(IWorldAccessor, IAttribute, params string[])
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Datastructures.IAttribute, params string[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Equals
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 264
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: bool Equals(IWorldAccessor worldForResolve, IAttribute attr, params string[] ignoreSubTrees)
+    parameters:
+    - id: worldForResolve
+      type: Vintagestory.API.Common.IWorldAccessor
+    - id: attr
+      type: Vintagestory.API.Datastructures.IAttribute
+    - id: ignoreSubTrees
+      type: System.String[]
+    return:
+      type: System.Boolean
+    content.vb: Function Equals(worldForResolve As IWorldAccessor, attr As IAttribute, ParamArray ignoreSubTrees As String()) As Boolean
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.Equals*
+  nameWithType.vb: ITreeAttribute.Equals(IWorldAccessor, IAttribute, ParamArray String())
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Datastructures.IAttribute, ParamArray String())
+  name.vb: Equals(IWorldAccessor, IAttribute, ParamArray String())
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.IsSubSetOf(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.IsSubSetOf(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  id: IsSubSetOf(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: IsSubSetOf(IWorldAccessor, IAttribute)
+  nameWithType: ITreeAttribute.IsSubSetOf(IWorldAccessor, IAttribute)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.IsSubSetOf(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Datastructures.IAttribute)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IsSubSetOf
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 265
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: bool IsSubSetOf(IWorldAccessor worldForResolve, IAttribute other)
+    parameters:
+    - id: worldForResolve
+      type: Vintagestory.API.Common.IWorldAccessor
+    - id: other
+      type: Vintagestory.API.Datastructures.IAttribute
+    return:
+      type: System.Boolean
+    content.vb: Function IsSubSetOf(worldForResolve As IWorldAccessor, other As IAttribute) As Boolean
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.IsSubSetOf*
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetHashCode(System.String[])
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetHashCode(System.String[])
+  id: GetHashCode(System.String[])
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode(string[])
+  nameWithType: ITreeAttribute.GetHashCode(string[])
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetHashCode(string[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Datastructures/AttributeTree/ITreeAttribute.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetHashCode
+    path: Datastructures/AttributeTree/ITreeAttribute.cs
+    startLine: 267
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: int GetHashCode(string[] ignoredAttributes)
+    parameters:
+    - id: ignoredAttributes
+      type: System.String[]
+    return:
+      type: System.Int32
+    content.vb: Function GetHashCode(ignoredAttributes As String()) As Integer
+  overload: Vintagestory.API.Datastructures.ITreeAttribute.GetHashCode*
+  nameWithType.vb: ITreeAttribute.GetHashCode(String())
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetHashCode(String())
+  name.vb: GetHashCode(String())
+references:
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Datastructures.IAttribute.ToBytes(System.IO.BinaryWriter)
+  commentId: M:Vintagestory.API.Datastructures.IAttribute.ToBytes(System.IO.BinaryWriter)
+  parent: Vintagestory.API.Datastructures.IAttribute
+  isExternal: true
+  href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToBytes_System_IO_BinaryWriter_
+  name: ToBytes(BinaryWriter)
+  nameWithType: IAttribute.ToBytes(BinaryWriter)
+  fullName: Vintagestory.API.Datastructures.IAttribute.ToBytes(System.IO.BinaryWriter)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute.ToBytes(System.IO.BinaryWriter)
+    name: ToBytes
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToBytes_System_IO_BinaryWriter_
+  - name: (
+  - uid: System.IO.BinaryWriter
+    name: BinaryWriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute.ToBytes(System.IO.BinaryWriter)
+    name: ToBytes
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToBytes_System_IO_BinaryWriter_
+  - name: (
+  - uid: System.IO.BinaryWriter
+    name: BinaryWriter
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  - name: )
+- uid: Vintagestory.API.Datastructures.IAttribute.FromBytes(System.IO.BinaryReader)
+  commentId: M:Vintagestory.API.Datastructures.IAttribute.FromBytes(System.IO.BinaryReader)
+  parent: Vintagestory.API.Datastructures.IAttribute
+  isExternal: true
+  href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_FromBytes_System_IO_BinaryReader_
+  name: FromBytes(BinaryReader)
+  nameWithType: IAttribute.FromBytes(BinaryReader)
+  fullName: Vintagestory.API.Datastructures.IAttribute.FromBytes(System.IO.BinaryReader)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute.FromBytes(System.IO.BinaryReader)
+    name: FromBytes
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_FromBytes_System_IO_BinaryReader_
+  - name: (
+  - uid: System.IO.BinaryReader
+    name: BinaryReader
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute.FromBytes(System.IO.BinaryReader)
+    name: FromBytes
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_FromBytes_System_IO_BinaryReader_
+  - name: (
+  - uid: System.IO.BinaryReader
+    name: BinaryReader
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  - name: )
+- uid: Vintagestory.API.Datastructures.IAttribute.GetAttributeId
+  commentId: M:Vintagestory.API.Datastructures.IAttribute.GetAttributeId
+  parent: Vintagestory.API.Datastructures.IAttribute
+  href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetAttributeId
+  name: GetAttributeId()
+  nameWithType: IAttribute.GetAttributeId()
+  fullName: Vintagestory.API.Datastructures.IAttribute.GetAttributeId()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute.GetAttributeId
+    name: GetAttributeId
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetAttributeId
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute.GetAttributeId
+    name: GetAttributeId
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetAttributeId
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.IAttribute.GetType
+  commentId: M:Vintagestory.API.Datastructures.IAttribute.GetType
+  parent: Vintagestory.API.Datastructures.IAttribute
+  href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetType
+  name: GetType()
+  nameWithType: IAttribute.GetType()
+  fullName: Vintagestory.API.Datastructures.IAttribute.GetType()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute.GetType
+    name: GetType
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetType
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute.GetType
+    name: GetType
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetType
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.IAttribute.GetValue
+  commentId: M:Vintagestory.API.Datastructures.IAttribute.GetValue
+  parent: Vintagestory.API.Datastructures.IAttribute
+  href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetValue
+  name: GetValue()
+  nameWithType: IAttribute.GetValue()
+  fullName: Vintagestory.API.Datastructures.IAttribute.GetValue()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute.GetValue
+    name: GetValue
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetValue
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute.GetValue
+    name: GetValue
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetValue
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.IAttribute.ToJsonToken
+  commentId: M:Vintagestory.API.Datastructures.IAttribute.ToJsonToken
+  parent: Vintagestory.API.Datastructures.IAttribute
+  href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToJsonToken
+  name: ToJsonToken()
+  nameWithType: IAttribute.ToJsonToken()
+  fullName: Vintagestory.API.Datastructures.IAttribute.ToJsonToken()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute.ToJsonToken
+    name: ToJsonToken
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToJsonToken
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute.ToJsonToken
+    name: ToJsonToken
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_ToJsonToken
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.IAttribute.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  commentId: M:Vintagestory.API.Datastructures.IAttribute.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+  parent: Vintagestory.API.Datastructures.IAttribute
+  href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_
+  name: Equals(IWorldAccessor, IAttribute)
+  nameWithType: IAttribute.Equals(IWorldAccessor, IAttribute)
+  fullName: Vintagestory.API.Datastructures.IAttribute.Equals(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Datastructures.IAttribute)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+    name: Equals
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
+    name: Equals
+    href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<KeyValuePair<string, IAttribute>>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Datastructures.IAttribute>>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of String, IAttribute)).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Datastructures.IAttribute)).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.IEnumerable.GetEnumerator
+  commentId: M:System.Collections.IEnumerable.GetEnumerator
+  parent: System.Collections.IEnumerable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable.GetEnumerator()
+  fullName: System.Collections.IEnumerable.GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.IEnumerable.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.IEnumerable.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}.Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Action{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  name: Foreach<KeyValuePair<string, IAttribute>>(IEnumerable<KeyValuePair<string, IAttribute>>, Action<KeyValuePair<string, IAttribute>>)
+  nameWithType: EnumerableExtensions.Foreach<KeyValuePair<string, IAttribute>>(IEnumerable<KeyValuePair<string, IAttribute>>, Action<KeyValuePair<string, IAttribute>>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Foreach<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Datastructures.IAttribute>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Datastructures.IAttribute>>, System.Action<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Datastructures.IAttribute>>)
+  nameWithType.vb: EnumerableExtensions.Foreach(Of KeyValuePair(Of String, IAttribute))(IEnumerable(Of KeyValuePair(Of String, IAttribute)), Action(Of KeyValuePair(Of String, IAttribute)))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Foreach(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Datastructures.IAttribute))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Datastructures.IAttribute)), System.Action(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Datastructures.IAttribute)))
+  name.vb: Foreach(Of KeyValuePair(Of String, IAttribute))(IEnumerable(Of KeyValuePair(Of String, IAttribute)), Action(Of KeyValuePair(Of String, IAttribute)))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}},System.Action{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: '>'
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}},System.Action{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}.Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute},System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: NearestDistance<KeyValuePair<string, IAttribute>>(IEnumerable<KeyValuePair<string, IAttribute>>, Func<KeyValuePair<string, IAttribute>, double>)
+  nameWithType: EnumerableExtensions.NearestDistance<KeyValuePair<string, IAttribute>>(IEnumerable<KeyValuePair<string, IAttribute>>, Func<KeyValuePair<string, IAttribute>, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.NearestDistance<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Datastructures.IAttribute>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Datastructures.IAttribute>>, System.Func<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Datastructures.IAttribute>, double>)
+  nameWithType.vb: EnumerableExtensions.NearestDistance(Of KeyValuePair(Of String, IAttribute))(IEnumerable(Of KeyValuePair(Of String, IAttribute)), Func(Of KeyValuePair(Of String, IAttribute), Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.NearestDistance(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Datastructures.IAttribute))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Datastructures.IAttribute)), System.Func(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Datastructures.IAttribute), Double))
+  name.vb: NearestDistance(Of KeyValuePair(Of String, IAttribute))(IEnumerable(Of KeyValuePair(Of String, IAttribute)), Func(Of KeyValuePair(Of String, IAttribute), Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}},System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute},System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}},System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute},System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}.Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute},System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: Nearest<KeyValuePair<string, IAttribute>>(IEnumerable<KeyValuePair<string, IAttribute>>, Func<KeyValuePair<string, IAttribute>, double>)
+  nameWithType: EnumerableExtensions.Nearest<KeyValuePair<string, IAttribute>>(IEnumerable<KeyValuePair<string, IAttribute>>, Func<KeyValuePair<string, IAttribute>, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Nearest<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Datastructures.IAttribute>>(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Datastructures.IAttribute>>, System.Func<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Datastructures.IAttribute>, double>)
+  nameWithType.vb: EnumerableExtensions.Nearest(Of KeyValuePair(Of String, IAttribute))(IEnumerable(Of KeyValuePair(Of String, IAttribute)), Func(Of KeyValuePair(Of String, IAttribute), Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Nearest(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Datastructures.IAttribute))(System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Datastructures.IAttribute)), System.Func(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Datastructures.IAttribute), Double))
+  name.vb: Nearest(Of KeyValuePair(Of String, IAttribute))(IEnumerable(Of KeyValuePair(Of String, IAttribute)), Func(Of KeyValuePair(Of String, IAttribute), Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}},System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute},System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: '>'
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: '>'
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}},System.Func{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute},System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(System.String,Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Datastructures.TreeAttributeUtil
+  definition: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  name: GetBlockPos(ITreeAttribute, string, BlockPos)
+  nameWithType: TreeAttributeUtil.GetBlockPos(ITreeAttribute, string, BlockPos)
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.BlockPos)
+  nameWithType.vb: TreeAttributeUtil.GetBlockPos(ITreeAttribute, String, BlockPos)
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.BlockPos)
+  name.vb: GetBlockPos(ITreeAttribute, String, BlockPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+    name: GetBlockPos
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+    name: GetBlockPos
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(System.String,Vintagestory.API.MathTools.Vec3i)
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  parent: Vintagestory.API.Datastructures.TreeAttributeUtil
+  definition: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  name: GetVec3i(ITreeAttribute, string, Vec3i)
+  nameWithType: TreeAttributeUtil.GetVec3i(ITreeAttribute, string, Vec3i)
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.Vec3i)
+  nameWithType.vb: TreeAttributeUtil.GetVec3i(ITreeAttribute, String, Vec3i)
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.Vec3i)
+  name.vb: GetVec3i(ITreeAttribute, String, Vec3i)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+    name: GetVec3i
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+    name: GetVec3i
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(System.String,Vintagestory.API.MathTools.Vec3i[])
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  parent: Vintagestory.API.Datastructures.TreeAttributeUtil
+  definition: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  name: GetVec3is(ITreeAttribute, string, Vec3i[])
+  nameWithType: TreeAttributeUtil.GetVec3is(ITreeAttribute, string, Vec3i[])
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.Vec3i[])
+  nameWithType.vb: TreeAttributeUtil.GetVec3is(ITreeAttribute, String, Vec3i())
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.Vec3i())
+  name.vb: GetVec3is(ITreeAttribute, String, Vec3i())
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+    name: GetVec3is
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+    name: GetVec3is
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(System.String,Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Datastructures.TreeAttributeUtil
+  definition: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  name: SetBlockPos(ITreeAttribute, string, BlockPos)
+  nameWithType: TreeAttributeUtil.SetBlockPos(ITreeAttribute, string, BlockPos)
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.BlockPos)
+  nameWithType.vb: TreeAttributeUtil.SetBlockPos(ITreeAttribute, String, BlockPos)
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.BlockPos)
+  name.vb: SetBlockPos(ITreeAttribute, String, BlockPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+    name: SetBlockPos
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+    name: SetBlockPos
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(System.String,Vintagestory.API.MathTools.Vec3i)
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  parent: Vintagestory.API.Datastructures.TreeAttributeUtil
+  definition: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  name: SetVec3i(ITreeAttribute, string, Vec3i)
+  nameWithType: TreeAttributeUtil.SetVec3i(ITreeAttribute, string, Vec3i)
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.Vec3i)
+  nameWithType.vb: TreeAttributeUtil.SetVec3i(ITreeAttribute, String, Vec3i)
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.Vec3i)
+  name.vb: SetVec3i(ITreeAttribute, String, Vec3i)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+    name: SetVec3i
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+    name: SetVec3i
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(System.String,Vintagestory.API.MathTools.Vec3i[])
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  parent: Vintagestory.API.Datastructures.TreeAttributeUtil
+  definition: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  name: SetVec3is(ITreeAttribute, string, Vec3i[])
+  nameWithType: TreeAttributeUtil.SetVec3is(ITreeAttribute, string, Vec3i[])
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.Vec3i[])
+  nameWithType.vb: TreeAttributeUtil.SetVec3is(ITreeAttribute, String, Vec3i())
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.Vec3i())
+  name.vb: SetVec3is(ITreeAttribute, String, Vec3i())
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+    name: SetVec3is
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+    name: SetVec3is
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Datastructures.IAttribute
+  commentId: T:Vintagestory.API.Datastructures.IAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.IAttribute.html
+  name: IAttribute
+  nameWithType: IAttribute
+  fullName: Vintagestory.API.Datastructures.IAttribute
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,Vintagestory.API.Datastructures.IAttribute}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<KeyValuePair<string, IAttribute>>
+  nameWithType: IEnumerable<KeyValuePair<string, IAttribute>>
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, Vintagestory.API.Datastructures.IAttribute>>
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of String, IAttribute))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Vintagestory.API.Datastructures.IAttribute))
+  name.vb: IEnumerable(Of KeyValuePair(Of String, IAttribute))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: )
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  name: Foreach<T>(IEnumerable<T>, Action<T>)
+  nameWithType: EnumerableExtensions.Foreach<T>(IEnumerable<T>, Action<T>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Foreach<T>(System.Collections.Generic.IEnumerable<T>, System.Action<T>)
+  nameWithType.vb: EnumerableExtensions.Foreach(Of T)(IEnumerable(Of T), Action(Of T))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Foreach(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Action(Of T))
+  name.vb: Foreach(Of T)(IEnumerable(Of T), Action(Of T))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions
+  commentId: T:Vintagestory.API.Util.EnumerableExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Vintagestory.API.Util.EnumerableExtensions
+- uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: NearestDistance<T>(IEnumerable<T>, Func<T, double>)
+  nameWithType: EnumerableExtensions.NearestDistance<T>(IEnumerable<T>, Func<T, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.NearestDistance<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, double>)
+  nameWithType.vb: EnumerableExtensions.NearestDistance(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.NearestDistance(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, Double))
+  name.vb: NearestDistance(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: Nearest<T>(IEnumerable<T>, Func<T, double>)
+  nameWithType: EnumerableExtensions.Nearest<T>(IEnumerable<T>, Func<T, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Nearest<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, double>)
+  nameWithType.vb: EnumerableExtensions.Nearest(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Nearest(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, Double))
+  name.vb: Nearest(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  isExternal: true
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  name: GetBlockPos(ITreeAttribute, string, BlockPos)
+  nameWithType: TreeAttributeUtil.GetBlockPos(ITreeAttribute, string, BlockPos)
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.BlockPos)
+  nameWithType.vb: TreeAttributeUtil.GetBlockPos(ITreeAttribute, String, BlockPos)
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.BlockPos)
+  name.vb: GetBlockPos(ITreeAttribute, String, BlockPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+    name: GetBlockPos
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+    name: GetBlockPos
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil
+  commentId: T:Vintagestory.API.Datastructures.TreeAttributeUtil
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html
+  name: TreeAttributeUtil
+  nameWithType: TreeAttributeUtil
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  isExternal: true
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  name: GetVec3i(ITreeAttribute, string, Vec3i)
+  nameWithType: TreeAttributeUtil.GetVec3i(ITreeAttribute, string, Vec3i)
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.Vec3i)
+  nameWithType.vb: TreeAttributeUtil.GetVec3i(ITreeAttribute, String, Vec3i)
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.Vec3i)
+  name.vb: GetVec3i(ITreeAttribute, String, Vec3i)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+    name: GetVec3i
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+    name: GetVec3i
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  isExternal: true
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  name: GetVec3is(ITreeAttribute, string, Vec3i[])
+  nameWithType: TreeAttributeUtil.GetVec3is(ITreeAttribute, string, Vec3i[])
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.Vec3i[])
+  nameWithType.vb: TreeAttributeUtil.GetVec3is(ITreeAttribute, String, Vec3i())
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.Vec3i())
+  name.vb: GetVec3is(ITreeAttribute, String, Vec3i())
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+    name: GetVec3is
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.GetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+    name: GetVec3is
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_GetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+  isExternal: true
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  name: SetBlockPos(ITreeAttribute, string, BlockPos)
+  nameWithType: TreeAttributeUtil.SetBlockPos(ITreeAttribute, string, BlockPos)
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.BlockPos)
+  nameWithType.vb: TreeAttributeUtil.SetBlockPos(ITreeAttribute, String, BlockPos)
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.BlockPos)
+  name.vb: SetBlockPos(ITreeAttribute, String, BlockPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+    name: SetBlockPos
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetBlockPos(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.BlockPos)
+    name: SetBlockPos
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetBlockPos_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+  isExternal: true
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  name: SetVec3i(ITreeAttribute, string, Vec3i)
+  nameWithType: TreeAttributeUtil.SetVec3i(ITreeAttribute, string, Vec3i)
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.Vec3i)
+  nameWithType.vb: TreeAttributeUtil.SetVec3i(ITreeAttribute, String, Vec3i)
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.Vec3i)
+  name.vb: SetVec3i(ITreeAttribute, String, Vec3i)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+    name: SetVec3i
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3i(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i)
+    name: SetVec3i
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3i_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  commentId: M:Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+  isExternal: true
+  href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  name: SetVec3is(ITreeAttribute, string, Vec3i[])
+  nameWithType: TreeAttributeUtil.SetVec3is(ITreeAttribute, string, Vec3i[])
+  fullName: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute, string, Vintagestory.API.MathTools.Vec3i[])
+  nameWithType.vb: TreeAttributeUtil.SetVec3is(ITreeAttribute, String, Vec3i())
+  fullName.vb: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute, String, Vintagestory.API.MathTools.Vec3i())
+  name.vb: SetVec3is(ITreeAttribute, String, Vec3i())
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+    name: SetVec3is
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.TreeAttributeUtil.SetVec3is(Vintagestory.API.Datastructures.ITreeAttribute,System.String,Vintagestory.API.MathTools.Vec3i[])
+    name: SetVec3is
+    href: Vintagestory.API.Datastructures.TreeAttributeUtil.html#Vintagestory_API_Datastructures_TreeAttributeUtil_SetVec3is_Vintagestory_API_Datastructures_ITreeAttribute_System_String_Vintagestory_API_MathTools_Vec3i___
+  - name: (
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute
+    name: ITreeAttribute
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3i
+    name: Vec3i
+    href: Vintagestory.API.MathTools.Vec3i.html
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Item*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.Item
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_Item_System_String_
+  name: this
+  nameWithType: ITreeAttribute.this
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.this
+  nameWithType.vb: ITreeAttribute.this[]
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.this[]
+  name.vb: this[]
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Count*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.Count
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_Count
+  name: Count
+  nameWithType: ITreeAttribute.Count
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.Count
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Values*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.Values
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_Values
+  name: Values
+  nameWithType: ITreeAttribute.Values
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.Values
+- uid: Vintagestory.API.Datastructures.IAttribute[]
+  isExternal: true
+  href: Vintagestory.API.Datastructures.IAttribute.html
+  name: IAttribute[]
+  nameWithType: IAttribute[]
+  fullName: Vintagestory.API.Datastructures.IAttribute[]
+  nameWithType.vb: IAttribute()
+  fullName.vb: Vintagestory.API.Datastructures.IAttribute()
+  name.vb: IAttribute()
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.IAttribute
+    name: IAttribute
+    href: Vintagestory.API.Datastructures.IAttribute.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.HasAttribute*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.HasAttribute
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_HasAttribute_System_String_
+  name: HasAttribute
+  nameWithType: ITreeAttribute.HasAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.HasAttribute
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.RemoveAttribute*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.RemoveAttribute
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_RemoveAttribute_System_String_
+  name: RemoveAttribute
+  nameWithType: ITreeAttribute.RemoveAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.RemoveAttribute
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetBool*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.SetBool
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_SetBool_System_String_System_Boolean_
+  name: SetBool
+  nameWithType: ITreeAttribute.SetBool
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetBool
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetInt*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.SetInt
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_SetInt_System_String_System_Int32_
+  name: SetInt
+  nameWithType: ITreeAttribute.SetInt
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetInt
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetLong*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.SetLong
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_SetLong_System_String_System_Int64_
+  name: SetLong
+  nameWithType: ITreeAttribute.SetLong
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetLong
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetDouble*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.SetDouble
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_SetDouble_System_String_System_Double_
+  name: SetDouble
+  nameWithType: ITreeAttribute.SetDouble
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetDouble
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetFloat*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.SetFloat
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_SetFloat_System_String_System_Single_
+  name: SetFloat
+  nameWithType: ITreeAttribute.SetFloat
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetFloat
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetString*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.SetString
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_SetString_System_String_System_String_
+  name: SetString
+  nameWithType: ITreeAttribute.SetString
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetString
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetBytes*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.SetBytes
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_SetBytes_System_String_System_Byte___
+  name: SetBytes
+  nameWithType: ITreeAttribute.SetBytes
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetBytes
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SetItemstack*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.SetItemstack
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_SetItemstack_System_String_Vintagestory_API_Common_ItemStack_
+  name: SetItemstack
+  nameWithType: ITreeAttribute.SetItemstack
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SetItemstack
+- uid: Vintagestory.API.Common.ItemStack
+  commentId: T:Vintagestory.API.Common.ItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemStack.html
+  name: ItemStack
+  nameWithType: ItemStack
+  fullName: Vintagestory.API.Common.ItemStack
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.TryGetBool*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.TryGetBool
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_TryGetBool_System_String_
+  name: TryGetBool
+  nameWithType: ITreeAttribute.TryGetBool
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.TryGetBool
+- uid: System.Nullable{System.Boolean}
+  commentId: T:System.Nullable{System.Boolean}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool?
+  nameWithType: bool?
+  fullName: bool?
+  nameWithType.vb: Boolean?
+  fullName.vb: Boolean?
+  name.vb: Boolean?
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetBool*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetBool
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetBool_System_String_System_Boolean_
+  name: GetBool
+  nameWithType: ITreeAttribute.GetBool
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetBool
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.TryGetInt*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.TryGetInt
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_TryGetInt_System_String_
+  name: TryGetInt
+  nameWithType: ITreeAttribute.TryGetInt
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.TryGetInt
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetInt*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetInt
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetInt_System_String_System_Int32_
+  name: GetInt
+  nameWithType: ITreeAttribute.GetInt
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetInt
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(System.String,System.Double)
+  commentId: M:Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(System.String,System.Double)
+  parent: Vintagestory.API.Datastructures.ITreeAttribute
+  isExternal: true
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetDecimal_System_String_System_Double_
+  name: GetDecimal(string, double)
+  nameWithType: ITreeAttribute.GetDecimal(string, double)
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(string, double)
+  nameWithType.vb: ITreeAttribute.GetDecimal(String, Double)
+  fullName.vb: Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(String, Double)
+  name.vb: GetDecimal(String, Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(System.String,System.Double)
+    name: GetDecimal
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetDecimal_System_String_System_Double_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal(System.String,System.Double)
+    name: GetDecimal
+    href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetDecimal_System_String_System_Double_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetAsInt*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetAsInt
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetAsInt_System_String_System_Int32_
+  name: GetAsInt
+  nameWithType: ITreeAttribute.GetAsInt
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetAsInt
+- uid: Vintagestory.API.Datastructures.ITreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.ITreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  name: ITreeAttribute
+  nameWithType: ITreeAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetAsBool*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetAsBool
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetAsBool_System_String_System_Boolean_
+  name: GetAsBool
+  nameWithType: ITreeAttribute.GetAsBool
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetAsBool
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetDecimal_System_String_System_Double_
+  name: GetDecimal
+  nameWithType: ITreeAttribute.GetDecimal
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetDecimal
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetAsString*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetAsString
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetAsString_System_String_System_String_
+  name: GetAsString
+  nameWithType: ITreeAttribute.GetAsString
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetAsString
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.TryGetLong*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.TryGetLong
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_TryGetLong_System_String_
+  name: TryGetLong
+  nameWithType: ITreeAttribute.TryGetLong
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.TryGetLong
+- uid: System.Nullable{System.Int64}
+  commentId: T:System.Nullable{System.Int64}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long?
+  nameWithType: long?
+  fullName: long?
+  nameWithType.vb: Long?
+  fullName.vb: Long?
+  name.vb: Long?
+  spec.csharp:
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+  spec.vb:
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '?'
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetLong*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetLong
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetLong_System_String_System_Int64_
+  name: GetLong
+  nameWithType: ITreeAttribute.GetLong
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetLong
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.TryGetFloat*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.TryGetFloat
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_TryGetFloat_System_String_
+  name: TryGetFloat
+  nameWithType: ITreeAttribute.TryGetFloat
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.TryGetFloat
+- uid: System.Nullable{System.Single}
+  commentId: T:System.Nullable{System.Single}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float?
+  nameWithType: float?
+  fullName: float?
+  nameWithType.vb: Single?
+  fullName.vb: Single?
+  name.vb: Single?
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetFloat*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetFloat
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetFloat_System_String_System_Single_
+  name: GetFloat
+  nameWithType: ITreeAttribute.GetFloat
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetFloat
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.TryGetDouble*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.TryGetDouble
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_TryGetDouble_System_String_
+  name: TryGetDouble
+  nameWithType: ITreeAttribute.TryGetDouble
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.TryGetDouble
+- uid: System.Nullable{System.Double}
+  commentId: T:System.Nullable{System.Double}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double?
+  nameWithType: double?
+  fullName: double?
+  nameWithType.vb: Double?
+  fullName.vb: Double?
+  name.vb: Double?
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '?'
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetDouble*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetDouble
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetDouble_System_String_System_Double_
+  name: GetDouble
+  nameWithType: ITreeAttribute.GetDouble
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetDouble
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetString*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetString
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetString_System_String_System_String_
+  name: GetString
+  nameWithType: ITreeAttribute.GetString
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetString
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetBytes*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetBytes
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetBytes_System_String_System_Byte___
+  name: GetBytes
+  nameWithType: ITreeAttribute.GetBytes
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetBytes
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetItemstack*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetItemstack
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetItemstack_System_String_Vintagestory_API_Common_ItemStack_
+  name: GetItemstack
+  nameWithType: ITreeAttribute.GetItemstack
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetItemstack
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetTreeAttribute*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetTreeAttribute
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetTreeAttribute_System_String_
+  name: GetTreeAttribute
+  nameWithType: ITreeAttribute.GetTreeAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetTreeAttribute
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetOrAddTreeAttribute*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetOrAddTreeAttribute
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetOrAddTreeAttribute_System_String_
+  name: GetOrAddTreeAttribute
+  nameWithType: ITreeAttribute.GetOrAddTreeAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetOrAddTreeAttribute
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Clone*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.Clone
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_Clone
+  name: Clone
+  nameWithType: ITreeAttribute.Clone
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.Clone
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.MergeTree*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.MergeTree
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_MergeTree_Vintagestory_API_Datastructures_ITreeAttribute_
+  name: MergeTree
+  nameWithType: ITreeAttribute.MergeTree
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.MergeTree
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.SortedCopy*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.SortedCopy
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_SortedCopy_System_Boolean_
+  name: SortedCopy
+  nameWithType: ITreeAttribute.SortedCopy
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.SortedCopy
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.Equals*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.Equals
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_Equals_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_System_String___
+  name: Equals
+  nameWithType: ITreeAttribute.Equals
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.Equals
+- uid: Vintagestory.API.Common.IWorldAccessor
+  commentId: T:Vintagestory.API.Common.IWorldAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldAccessor.html
+  name: IWorldAccessor
+  nameWithType: IWorldAccessor
+  fullName: Vintagestory.API.Common.IWorldAccessor
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.IsSubSetOf*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.IsSubSetOf
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_IsSubSetOf_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Datastructures_IAttribute_
+  name: IsSubSetOf
+  nameWithType: ITreeAttribute.IsSubSetOf
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.IsSubSetOf
+- uid: Vintagestory.API.Datastructures.ITreeAttribute.GetHashCode*
+  commentId: Overload:Vintagestory.API.Datastructures.ITreeAttribute.GetHashCode
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html#Vintagestory_API_Datastructures_ITreeAttribute_GetHashCode_System_String___
+  name: GetHashCode
+  nameWithType: ITreeAttribute.GetHashCode
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute.GetHashCode

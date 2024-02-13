@@ -1,0 +1,1697 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.AnimationUtil
+  commentId: T:Vintagestory.API.Common.AnimationUtil
+  id: AnimationUtil
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.AnimationUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.MathTools.Vec3d)
+  - Vintagestory.API.Common.AnimationUtil.AnimationTickServer(System.Single)
+  - Vintagestory.API.Common.AnimationUtil.CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])
+  - Vintagestory.API.Common.AnimationUtil.Dispose
+  - Vintagestory.API.Common.AnimationUtil.GetAnimator(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Shape)
+  - Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MeshData,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)
+  - Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MeshRef,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)
+  - Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer(System.String,Vintagestory.API.Common.Shape)
+  - Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator(System.String,Vintagestory.API.Common.Shape,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.MeshData@)
+  - Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange(System.Boolean)
+  - Vintagestory.API.Common.AnimationUtil.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
+  - Vintagestory.API.Common.AnimationUtil.RenderOrder
+  - Vintagestory.API.Common.AnimationUtil.RenderRange
+  - Vintagestory.API.Common.AnimationUtil.RenderTextureId
+  - Vintagestory.API.Common.AnimationUtil.StartAnimation(Vintagestory.API.Common.AnimationMetaData)
+  - Vintagestory.API.Common.AnimationUtil.StopAnimation(System.String)
+  - Vintagestory.API.Common.AnimationUtil.activeAnimationsByAnimCode
+  - Vintagestory.API.Common.AnimationUtil.animator
+  - Vintagestory.API.Common.AnimationUtil.api
+  - Vintagestory.API.Common.AnimationUtil.capi
+  - Vintagestory.API.Common.AnimationUtil.position
+  - Vintagestory.API.Common.AnimationUtil.renderer
+  - Vintagestory.API.Common.AnimationUtil.stopRenderTriggered
+  langs:
+  - csharp
+  - vb
+  name: AnimationUtil
+  nameWithType: AnimationUtil
+  fullName: Vintagestory.API.Common.AnimationUtil
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AnimationUtil
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: 'public class AnimationUtil : IRenderer, IDisposable'
+    content.vb: Public Class AnimationUtil Implements IRenderer, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - Vintagestory.API.Client.IRenderer
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Common.AnimationUtil.animator
+  commentId: F:Vintagestory.API.Common.AnimationUtil.animator
+  id: animator
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: animator
+  nameWithType: AnimationUtil.animator
+  fullName: Vintagestory.API.Common.AnimationUtil.animator
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: animator
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 10
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AnimatorBase animator
+    return:
+      type: Vintagestory.API.Common.AnimatorBase
+    content.vb: Public animator As AnimatorBase
+- uid: Vintagestory.API.Common.AnimationUtil.renderer
+  commentId: F:Vintagestory.API.Common.AnimationUtil.renderer
+  id: renderer
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: renderer
+  nameWithType: AnimationUtil.renderer
+  fullName: Vintagestory.API.Common.AnimationUtil.renderer
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: renderer
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AnimatableRenderer renderer
+    return:
+      type: Vintagestory.API.Common.AnimatableRenderer
+    content.vb: Public renderer As AnimatableRenderer
+- uid: Vintagestory.API.Common.AnimationUtil.activeAnimationsByAnimCode
+  commentId: F:Vintagestory.API.Common.AnimationUtil.activeAnimationsByAnimCode
+  id: activeAnimationsByAnimCode
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: activeAnimationsByAnimCode
+  nameWithType: AnimationUtil.activeAnimationsByAnimCode
+  fullName: Vintagestory.API.Common.AnimationUtil.activeAnimationsByAnimCode
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: activeAnimationsByAnimCode
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 12
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData}
+    content.vb: Public activeAnimationsByAnimCode As Dictionary(Of String, AnimationMetaData)
+- uid: Vintagestory.API.Common.AnimationUtil.api
+  commentId: F:Vintagestory.API.Common.AnimationUtil.api
+  id: api
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: api
+  nameWithType: AnimationUtil.api
+  fullName: Vintagestory.API.Common.AnimationUtil.api
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: api
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 13
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected ICoreAPI api
+    return:
+      type: Vintagestory.API.Common.ICoreAPI
+    content.vb: Protected api As ICoreAPI
+- uid: Vintagestory.API.Common.AnimationUtil.stopRenderTriggered
+  commentId: F:Vintagestory.API.Common.AnimationUtil.stopRenderTriggered
+  id: stopRenderTriggered
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: stopRenderTriggered
+  nameWithType: AnimationUtil.stopRenderTriggered
+  fullName: Vintagestory.API.Common.AnimationUtil.stopRenderTriggered
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: stopRenderTriggered
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected bool stopRenderTriggered
+    return:
+      type: System.Boolean
+    content.vb: Protected stopRenderTriggered As Boolean
+- uid: Vintagestory.API.Common.AnimationUtil.capi
+  commentId: F:Vintagestory.API.Common.AnimationUtil.capi
+  id: capi
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: capi
+  nameWithType: AnimationUtil.capi
+  fullName: Vintagestory.API.Common.AnimationUtil.capi
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: capi
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected ICoreClientAPI capi
+    return:
+      type: Vintagestory.API.Client.ICoreClientAPI
+    content.vb: Protected capi As ICoreClientAPI
+- uid: Vintagestory.API.Common.AnimationUtil.position
+  commentId: F:Vintagestory.API.Common.AnimationUtil.position
+  id: position
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: position
+  nameWithType: AnimationUtil.position
+  fullName: Vintagestory.API.Common.AnimationUtil.position
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: position
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected Vec3d position
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Protected position As Vec3d
+- uid: Vintagestory.API.Common.AnimationUtil.RenderTextureId
+  commentId: P:Vintagestory.API.Common.AnimationUtil.RenderTextureId
+  id: RenderTextureId
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: RenderTextureId
+  nameWithType: AnimationUtil.RenderTextureId
+  fullName: Vintagestory.API.Common.AnimationUtil.RenderTextureId
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RenderTextureId
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 17
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected virtual int RenderTextureId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Protected Overridable ReadOnly Property RenderTextureId As Integer
+  overload: Vintagestory.API.Common.AnimationUtil.RenderTextureId*
+- uid: Vintagestory.API.Common.AnimationUtil.RenderOrder
+  commentId: P:Vintagestory.API.Common.AnimationUtil.RenderOrder
+  id: RenderOrder
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: RenderOrder
+  nameWithType: AnimationUtil.RenderOrder
+  fullName: Vintagestory.API.Common.AnimationUtil.RenderOrder
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RenderOrder
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 19
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    0 = drawn first, 1 = drawn last<br />
+
+    Default render orders by render stage:<br />
+
+    Before:<br />
+
+    0 = Ambient Manager<br />
+
+    0 = Camera<br /><br />
+
+    Opaque:<br />
+
+    0.1 = Blue sky (Icosahedron)<br />
+
+    0.2 = Night skybox<br />
+
+    0.3 = Sun and moon<br />
+
+    0.37 = Terrain opaque<br />
+
+    0.4 = Enitities<br />
+
+    0.5 = Decals<br />
+
+    0.5 = Debug wireframe<br />
+
+    0.6 = particles<br />
+
+    0.7 = Cinematic camera line preview<br />
+
+    0.8 = fp held item<br />
+
+    0.9 = held item opaque custom renderer<br /><br />
+
+    OIT:<br />
+
+    0.2 = Frame buffer debug screen<br />
+
+    0.35 = Clouds<br />
+
+    0.37 = Terrain oit<br />
+
+    0.4 = Enitities<br />
+
+    0.6 = particles<br />
+
+    0.9 = held item oit custom renderer<br /><br />
+
+    Shadow far:<br />
+
+    0 = shadow map init<br />
+
+    0.37 = Terrain shadow far<br />
+
+    0.4 = Enitities<br /><br />
+
+    Shadow far done:<br />
+
+    1 = shadow map finish<br /><br />
+
+    Shadow near:<br />
+
+    0 = shadow map init<br />
+
+    0.37 = Terrain shadow near<br />
+
+    0.4 = Enitities<br /><br />
+
+    Shadow near done:<br />
+
+    1 = shadow map finish<br />
+
+    Ortho:<br />
+
+    0.2 = Frame buffer debug screen<br />
+
+    0.4 = Enitities<br />
+
+    0.9 = held item ortho custom renderer<br />
+
+    0.95 = sleeping overlay<br />
+
+    0.98 = bow/spear aiming reticle<br />
+
+    1 = Gui manager<br />
+
+    1.02 = crosshair and mouse cursor<br /><br />
+
+    AfterFinalComposition:<br />
+
+    2 = screenshot<br /><br />
+
+    Done:<br />
+
+    0.1 = gui manager<br />
+
+    2 = screenshot<br /><br />
+
+    0.98 = Cinematic camera camera advancing and frame capture when recording<br />
+
+    0.99 = Chunk Tesselator Manager (uploads new/modified chunk meshes)<br />
+
+    0.999 = Compress chunks scan<br />
+
+    1 = video recorder<br />
+  example: []
+  syntax:
+    content: public double RenderOrder { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public ReadOnly Property RenderOrder As Double
+  overload: Vintagestory.API.Common.AnimationUtil.RenderOrder*
+  implements:
+  - Vintagestory.API.Client.IRenderer.RenderOrder
+- uid: Vintagestory.API.Common.AnimationUtil.RenderRange
+  commentId: P:Vintagestory.API.Common.AnimationUtil.RenderRange
+  id: RenderRange
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: RenderRange
+  nameWithType: AnimationUtil.RenderRange
+  fullName: Vintagestory.API.Common.AnimationUtil.RenderRange
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RenderRange
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 20
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Within what range to the player OnRenderFrame() should be called (currently not used!)
+  example: []
+  syntax:
+    content: public int RenderRange { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property RenderRange As Integer
+  overload: Vintagestory.API.Common.AnimationUtil.RenderRange*
+  implements:
+  - Vintagestory.API.Client.IRenderer.RenderRange
+- uid: Vintagestory.API.Common.AnimationUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.Common.AnimationUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.MathTools.Vec3d)
+  id: '#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.MathTools.Vec3d)'
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: AnimationUtil(ICoreAPI, Vec3d)
+  nameWithType: AnimationUtil.AnimationUtil(ICoreAPI, Vec3d)
+  fullName: Vintagestory.API.Common.AnimationUtil.AnimationUtil(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.MathTools.Vec3d)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 22
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AnimationUtil(ICoreAPI api, Vec3d position)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+    - id: position
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Public Sub New(api As ICoreAPI, position As Vec3d)
+  overload: Vintagestory.API.Common.AnimationUtil.#ctor*
+  nameWithType.vb: AnimationUtil.New(ICoreAPI, Vec3d)
+  fullName.vb: Vintagestory.API.Common.AnimationUtil.New(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.MathTools.Vec3d)
+  name.vb: New(ICoreAPI, Vec3d)
+- uid: Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator(System.String,Vintagestory.API.Common.Shape,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.MeshData@)
+  commentId: M:Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator(System.String,Vintagestory.API.Common.Shape,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.MeshData@)
+  id: InitializeShapeAndAnimator(System.String,Vintagestory.API.Common.Shape,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.MeshData@)
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: InitializeShapeAndAnimator(string, Shape, ITexPositionSource, Vec3f, out MeshData)
+  nameWithType: AnimationUtil.InitializeShapeAndAnimator(string, Shape, ITexPositionSource, Vec3f, out MeshData)
+  fullName: Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator(string, Vintagestory.API.Common.Shape, Vintagestory.API.Client.ITexPositionSource, Vintagestory.API.MathTools.Vec3f, out Vintagestory.API.Client.MeshData)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InitializeShapeAndAnimator
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 30
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual void InitializeShapeAndAnimator(string cacheDictKey, Shape shape, ITexPositionSource texSource, Vec3f rotation, out MeshData meshdata)
+    parameters:
+    - id: cacheDictKey
+      type: System.String
+    - id: shape
+      type: Vintagestory.API.Common.Shape
+    - id: texSource
+      type: Vintagestory.API.Client.ITexPositionSource
+    - id: rotation
+      type: Vintagestory.API.MathTools.Vec3f
+    - id: meshdata
+      type: Vintagestory.API.Client.MeshData
+    content.vb: Public Overridable Sub InitializeShapeAndAnimator(cacheDictKey As String, shape As Shape, texSource As ITexPositionSource, rotation As Vec3f, meshdata As MeshData)
+  overload: Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator*
+  nameWithType.vb: AnimationUtil.InitializeShapeAndAnimator(String, Shape, ITexPositionSource, Vec3f, MeshData)
+  fullName.vb: Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator(String, Vintagestory.API.Common.Shape, Vintagestory.API.Client.ITexPositionSource, Vintagestory.API.MathTools.Vec3f, Vintagestory.API.Client.MeshData)
+  name.vb: InitializeShapeAndAnimator(String, Shape, ITexPositionSource, Vec3f, MeshData)
+- uid: Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MeshData,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)
+  commentId: M:Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MeshData,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)
+  id: InitializeAnimator(System.String,Vintagestory.API.Client.MeshData,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: InitializeAnimator(string, MeshData, Shape, Vec3f, EnumRenderStage)
+  nameWithType: AnimationUtil.InitializeAnimator(string, MeshData, Shape, Vec3f, EnumRenderStage)
+  fullName: Vintagestory.API.Common.AnimationUtil.InitializeAnimator(string, Vintagestory.API.Client.MeshData, Vintagestory.API.Common.Shape, Vintagestory.API.MathTools.Vec3f, Vintagestory.API.Client.EnumRenderStage)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InitializeAnimator
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 53
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual void InitializeAnimator(string cacheDictKey, MeshData meshdata, Shape shape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque)
+    parameters:
+    - id: cacheDictKey
+      type: System.String
+    - id: meshdata
+      type: Vintagestory.API.Client.MeshData
+    - id: shape
+      type: Vintagestory.API.Common.Shape
+    - id: rotation
+      type: Vintagestory.API.MathTools.Vec3f
+    - id: renderStage
+      type: Vintagestory.API.Client.EnumRenderStage
+    content.vb: Public Overridable Sub InitializeAnimator(cacheDictKey As String, meshdata As MeshData, shape As Shape, rotation As Vec3f, renderStage As EnumRenderStage = EnumRenderStage.Opaque)
+  overload: Vintagestory.API.Common.AnimationUtil.InitializeAnimator*
+  nameWithType.vb: AnimationUtil.InitializeAnimator(String, MeshData, Shape, Vec3f, EnumRenderStage)
+  fullName.vb: Vintagestory.API.Common.AnimationUtil.InitializeAnimator(String, Vintagestory.API.Client.MeshData, Vintagestory.API.Common.Shape, Vintagestory.API.MathTools.Vec3f, Vintagestory.API.Client.EnumRenderStage)
+  name.vb: InitializeAnimator(String, MeshData, Shape, Vec3f, EnumRenderStage)
+- uid: Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MeshRef,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)
+  commentId: M:Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MeshRef,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)
+  id: InitializeAnimator(System.String,Vintagestory.API.Client.MeshRef,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: InitializeAnimator(string, MeshRef, Shape, Vec3f, EnumRenderStage)
+  nameWithType: AnimationUtil.InitializeAnimator(string, MeshRef, Shape, Vec3f, EnumRenderStage)
+  fullName: Vintagestory.API.Common.AnimationUtil.InitializeAnimator(string, Vintagestory.API.Client.MeshRef, Vintagestory.API.Common.Shape, Vintagestory.API.MathTools.Vec3f, Vintagestory.API.Client.EnumRenderStage)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InitializeAnimator
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 76
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual void InitializeAnimator(string cacheDictKey, MeshRef meshref, Shape blockShape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque)
+    parameters:
+    - id: cacheDictKey
+      type: System.String
+    - id: meshref
+      type: Vintagestory.API.Client.MeshRef
+    - id: blockShape
+      type: Vintagestory.API.Common.Shape
+    - id: rotation
+      type: Vintagestory.API.MathTools.Vec3f
+    - id: renderStage
+      type: Vintagestory.API.Client.EnumRenderStage
+    content.vb: Public Overridable Sub InitializeAnimator(cacheDictKey As String, meshref As MeshRef, blockShape As Shape, rotation As Vec3f, renderStage As EnumRenderStage = EnumRenderStage.Opaque)
+  overload: Vintagestory.API.Common.AnimationUtil.InitializeAnimator*
+  nameWithType.vb: AnimationUtil.InitializeAnimator(String, MeshRef, Shape, Vec3f, EnumRenderStage)
+  fullName.vb: Vintagestory.API.Common.AnimationUtil.InitializeAnimator(String, Vintagestory.API.Client.MeshRef, Vintagestory.API.Common.Shape, Vintagestory.API.MathTools.Vec3f, Vintagestory.API.Client.EnumRenderStage)
+  name.vb: InitializeAnimator(String, MeshRef, Shape, Vec3f, EnumRenderStage)
+- uid: Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer(System.String,Vintagestory.API.Common.Shape)
+  commentId: M:Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer(System.String,Vintagestory.API.Common.Shape)
+  id: InitializeAnimatorServer(System.String,Vintagestory.API.Common.Shape)
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: InitializeAnimatorServer(string, Shape)
+  nameWithType: AnimationUtil.InitializeAnimatorServer(string, Shape)
+  fullName: Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer(string, Vintagestory.API.Common.Shape)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InitializeAnimatorServer
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 84
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual void InitializeAnimatorServer(string cacheDictKey, Shape blockShape)
+    parameters:
+    - id: cacheDictKey
+      type: System.String
+    - id: blockShape
+      type: Vintagestory.API.Common.Shape
+    content.vb: Public Overridable Sub InitializeAnimatorServer(cacheDictKey As String, blockShape As Shape)
+  overload: Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer*
+  nameWithType.vb: AnimationUtil.InitializeAnimatorServer(String, Shape)
+  fullName.vb: Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer(String, Vintagestory.API.Common.Shape)
+  name.vb: InitializeAnimatorServer(String, Shape)
+- uid: Vintagestory.API.Common.AnimationUtil.AnimationTickServer(System.Single)
+  commentId: M:Vintagestory.API.Common.AnimationUtil.AnimationTickServer(System.Single)
+  id: AnimationTickServer(System.Single)
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: AnimationTickServer(float)
+  nameWithType: AnimationUtil.AnimationTickServer(float)
+  fullName: Vintagestory.API.Common.AnimationUtil.AnimationTickServer(float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AnimationTickServer
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 92
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void AnimationTickServer(float deltaTime)
+    parameters:
+    - id: deltaTime
+      type: System.Single
+    content.vb: Public Sub AnimationTickServer(deltaTime As Single)
+  overload: Vintagestory.API.Common.AnimationUtil.AnimationTickServer*
+  nameWithType.vb: AnimationUtil.AnimationTickServer(Single)
+  fullName.vb: Vintagestory.API.Common.AnimationUtil.AnimationTickServer(Single)
+  name.vb: AnimationTickServer(Single)
+- uid: Vintagestory.API.Common.AnimationUtil.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
+  commentId: M:Vintagestory.API.Common.AnimationUtil.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
+  id: OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: OnRenderFrame(float, EnumRenderStage)
+  nameWithType: AnimationUtil.OnRenderFrame(float, EnumRenderStage)
+  fullName: Vintagestory.API.Common.AnimationUtil.OnRenderFrame(float, Vintagestory.API.Client.EnumRenderStage)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnRenderFrame
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 102
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called every frame for rendering whatever you need to render
+  example: []
+  syntax:
+    content: public void OnRenderFrame(float deltaTime, EnumRenderStage stage)
+    parameters:
+    - id: deltaTime
+      type: System.Single
+      description: ''
+    - id: stage
+      type: Vintagestory.API.Client.EnumRenderStage
+      description: ''
+    content.vb: Public Sub OnRenderFrame(deltaTime As Single, stage As EnumRenderStage)
+  overload: Vintagestory.API.Common.AnimationUtil.OnRenderFrame*
+  implements:
+  - Vintagestory.API.Client.IRenderer.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
+  nameWithType.vb: AnimationUtil.OnRenderFrame(Single, EnumRenderStage)
+  fullName.vb: Vintagestory.API.Common.AnimationUtil.OnRenderFrame(Single, Vintagestory.API.Client.EnumRenderStage)
+  name.vb: OnRenderFrame(Single, EnumRenderStage)
+- uid: Vintagestory.API.Common.AnimationUtil.StartAnimation(Vintagestory.API.Common.AnimationMetaData)
+  commentId: M:Vintagestory.API.Common.AnimationUtil.StartAnimation(Vintagestory.API.Common.AnimationMetaData)
+  id: StartAnimation(Vintagestory.API.Common.AnimationMetaData)
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: StartAnimation(AnimationMetaData)
+  nameWithType: AnimationUtil.StartAnimation(AnimationMetaData)
+  fullName: Vintagestory.API.Common.AnimationUtil.StartAnimation(Vintagestory.API.Common.AnimationMetaData)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: StartAnimation
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 118
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual bool StartAnimation(AnimationMetaData meta)
+    parameters:
+    - id: meta
+      type: Vintagestory.API.Common.AnimationMetaData
+    return:
+      type: System.Boolean
+    content.vb: Public Overridable Function StartAnimation(meta As AnimationMetaData) As Boolean
+  overload: Vintagestory.API.Common.AnimationUtil.StartAnimation*
+- uid: Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange(System.Boolean)
+  commentId: M:Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange(System.Boolean)
+  id: OnAnimationsStateChange(System.Boolean)
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: OnAnimationsStateChange(bool)
+  nameWithType: AnimationUtil.OnAnimationsStateChange(bool)
+  fullName: Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange(bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnAnimationsStateChange
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 131
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected virtual void OnAnimationsStateChange(bool animsNowActive)
+    parameters:
+    - id: animsNowActive
+      type: System.Boolean
+    content.vb: Protected Overridable Sub OnAnimationsStateChange(animsNowActive As Boolean)
+  overload: Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange*
+  nameWithType.vb: AnimationUtil.OnAnimationsStateChange(Boolean)
+  fullName.vb: Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange(Boolean)
+  name.vb: OnAnimationsStateChange(Boolean)
+- uid: Vintagestory.API.Common.AnimationUtil.StopAnimation(System.String)
+  commentId: M:Vintagestory.API.Common.AnimationUtil.StopAnimation(System.String)
+  id: StopAnimation(System.String)
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: StopAnimation(string)
+  nameWithType: AnimationUtil.StopAnimation(string)
+  fullName: Vintagestory.API.Common.AnimationUtil.StopAnimation(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: StopAnimation
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 137
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void StopAnimation(string code)
+    parameters:
+    - id: code
+      type: System.String
+    content.vb: Public Sub StopAnimation(code As String)
+  overload: Vintagestory.API.Common.AnimationUtil.StopAnimation*
+  nameWithType.vb: AnimationUtil.StopAnimation(String)
+  fullName.vb: Vintagestory.API.Common.AnimationUtil.StopAnimation(String)
+  name.vb: StopAnimation(String)
+- uid: Vintagestory.API.Common.AnimationUtil.GetAnimator(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Shape)
+  commentId: M:Vintagestory.API.Common.AnimationUtil.GetAnimator(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Shape)
+  id: GetAnimator(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Shape)
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: GetAnimator(ICoreAPI, string, Shape)
+  nameWithType: AnimationUtil.GetAnimator(ICoreAPI, string, Shape)
+  fullName: Vintagestory.API.Common.AnimationUtil.GetAnimator(Vintagestory.API.Common.ICoreAPI, string, Vintagestory.API.Common.Shape)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetAnimator
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 143
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static AnimatorBase GetAnimator(ICoreAPI api, string cacheDictKey, Shape shape)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+    - id: cacheDictKey
+      type: System.String
+    - id: shape
+      type: Vintagestory.API.Common.Shape
+    return:
+      type: Vintagestory.API.Common.AnimatorBase
+    content.vb: Public Shared Function GetAnimator(api As ICoreAPI, cacheDictKey As String, shape As Shape) As AnimatorBase
+  overload: Vintagestory.API.Common.AnimationUtil.GetAnimator*
+  nameWithType.vb: AnimationUtil.GetAnimator(ICoreAPI, String, Shape)
+  fullName.vb: Vintagestory.API.Common.AnimationUtil.GetAnimator(Vintagestory.API.Common.ICoreAPI, String, Vintagestory.API.Common.Shape)
+  name.vb: GetAnimator(ICoreAPI, String, Shape)
+- uid: Vintagestory.API.Common.AnimationUtil.CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])
+  commentId: M:Vintagestory.API.Common.AnimationUtil.CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])
+  id: CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: CacheInvTransforms(ShapeElement[])
+  nameWithType: AnimationUtil.CacheInvTransforms(ShapeElement[])
+  fullName: Vintagestory.API.Common.AnimationUtil.CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CacheInvTransforms
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 196
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static void CacheInvTransforms(ShapeElement[] elements)
+    parameters:
+    - id: elements
+      type: Vintagestory.API.Common.ShapeElement[]
+    content.vb: Public Shared Sub CacheInvTransforms(elements As ShapeElement())
+  overload: Vintagestory.API.Common.AnimationUtil.CacheInvTransforms*
+  nameWithType.vb: AnimationUtil.CacheInvTransforms(ShapeElement())
+  fullName.vb: Vintagestory.API.Common.AnimationUtil.CacheInvTransforms(Vintagestory.API.Common.ShapeElement())
+  name.vb: CacheInvTransforms(ShapeElement())
+- uid: Vintagestory.API.Common.AnimationUtil.Dispose
+  commentId: M:Vintagestory.API.Common.AnimationUtil.Dispose
+  id: Dispose
+  parent: Vintagestory.API.Common.AnimationUtil
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: AnimationUtil.Dispose()
+  fullName: Vintagestory.API.Common.AnimationUtil.Dispose()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimationUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Dispose
+    path: Common/Model/Animation/AnimationUtil.cs
+    startLine: 207
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Vintagestory.API.Common.AnimationUtil.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Client.IRenderer
+  commentId: T:Vintagestory.API.Client.IRenderer
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IRenderer.html
+  name: IRenderer
+  nameWithType: IRenderer
+  fullName: Vintagestory.API.Client.IRenderer
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Common.AnimatorBase
+  commentId: T:Vintagestory.API.Common.AnimatorBase
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AnimatorBase.html
+  name: AnimatorBase
+  nameWithType: AnimatorBase
+  fullName: Vintagestory.API.Common.AnimatorBase
+- uid: Vintagestory.API.Common.AnimatableRenderer
+  commentId: T:Vintagestory.API.Common.AnimatableRenderer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AnimatableRenderer.html
+  name: AnimatableRenderer
+  nameWithType: AnimatableRenderer
+  fullName: Vintagestory.API.Common.AnimatableRenderer
+- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, AnimationMetaData>
+  nameWithType: Dictionary<string, AnimationMetaData>
+  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.AnimationMetaData>
+  nameWithType.vb: Dictionary(Of String, AnimationMetaData)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.AnimationMetaData)
+  name.vb: Dictionary(Of String, AnimationMetaData)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AnimationMetaData
+    name: AnimationMetaData
+    href: Vintagestory.API.Common.AnimationMetaData.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AnimationMetaData
+    name: AnimationMetaData
+    href: Vintagestory.API.Common.AnimationMetaData.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Client.ICoreClientAPI
+  commentId: T:Vintagestory.API.Client.ICoreClientAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ICoreClientAPI.html
+  name: ICoreClientAPI
+  nameWithType: ICoreClientAPI
+  fullName: Vintagestory.API.Client.ICoreClientAPI
+- uid: Vintagestory.API.MathTools.Vec3d
+  commentId: T:Vintagestory.API.MathTools.Vec3d
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3d.html
+  name: Vec3d
+  nameWithType: Vec3d
+  fullName: Vintagestory.API.MathTools.Vec3d
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.AnimationUtil.RenderTextureId*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.RenderTextureId
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_RenderTextureId
+  name: RenderTextureId
+  nameWithType: AnimationUtil.RenderTextureId
+  fullName: Vintagestory.API.Common.AnimationUtil.RenderTextureId
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.AnimationUtil.RenderOrder*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.RenderOrder
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_RenderOrder
+  name: RenderOrder
+  nameWithType: AnimationUtil.RenderOrder
+  fullName: Vintagestory.API.Common.AnimationUtil.RenderOrder
+- uid: Vintagestory.API.Client.IRenderer.RenderOrder
+  commentId: P:Vintagestory.API.Client.IRenderer.RenderOrder
+  parent: Vintagestory.API.Client.IRenderer
+  href: Vintagestory.API.Client.IRenderer.html#Vintagestory_API_Client_IRenderer_RenderOrder
+  name: RenderOrder
+  nameWithType: IRenderer.RenderOrder
+  fullName: Vintagestory.API.Client.IRenderer.RenderOrder
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.Common.AnimationUtil.RenderRange*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.RenderRange
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_RenderRange
+  name: RenderRange
+  nameWithType: AnimationUtil.RenderRange
+  fullName: Vintagestory.API.Common.AnimationUtil.RenderRange
+- uid: Vintagestory.API.Client.IRenderer.RenderRange
+  commentId: P:Vintagestory.API.Client.IRenderer.RenderRange
+  parent: Vintagestory.API.Client.IRenderer
+  href: Vintagestory.API.Client.IRenderer.html#Vintagestory_API_Client_IRenderer_RenderRange
+  name: RenderRange
+  nameWithType: IRenderer.RenderRange
+  fullName: Vintagestory.API.Client.IRenderer.RenderRange
+- uid: Vintagestory.API.Common.AnimationUtil.#ctor*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.#ctor
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil__ctor_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_MathTools_Vec3d_
+  name: AnimationUtil
+  nameWithType: AnimationUtil.AnimationUtil
+  fullName: Vintagestory.API.Common.AnimationUtil.AnimationUtil
+  nameWithType.vb: AnimationUtil.New
+  fullName.vb: Vintagestory.API.Common.AnimationUtil.New
+  name.vb: New
+- uid: Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_InitializeShapeAndAnimator_System_String_Vintagestory_API_Common_Shape_Vintagestory_API_Client_ITexPositionSource_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_MeshData__
+  name: InitializeShapeAndAnimator
+  nameWithType: AnimationUtil.InitializeShapeAndAnimator
+  fullName: Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.Shape
+  commentId: T:Vintagestory.API.Common.Shape
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Shape.html
+  name: Shape
+  nameWithType: Shape
+  fullName: Vintagestory.API.Common.Shape
+- uid: Vintagestory.API.Client.ITexPositionSource
+  commentId: T:Vintagestory.API.Client.ITexPositionSource
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ITexPositionSource.html
+  name: ITexPositionSource
+  nameWithType: ITexPositionSource
+  fullName: Vintagestory.API.Client.ITexPositionSource
+- uid: Vintagestory.API.MathTools.Vec3f
+  commentId: T:Vintagestory.API.MathTools.Vec3f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3f.html
+  name: Vec3f
+  nameWithType: Vec3f
+  fullName: Vintagestory.API.MathTools.Vec3f
+- uid: Vintagestory.API.Client.MeshData
+  commentId: T:Vintagestory.API.Client.MeshData
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MeshData.html
+  name: MeshData
+  nameWithType: MeshData
+  fullName: Vintagestory.API.Client.MeshData
+- uid: Vintagestory.API.Common.AnimationUtil.InitializeAnimator*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.InitializeAnimator
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_InitializeAnimator_System_String_Vintagestory_API_Client_MeshData_Vintagestory_API_Common_Shape_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_EnumRenderStage_
+  name: InitializeAnimator
+  nameWithType: AnimationUtil.InitializeAnimator
+  fullName: Vintagestory.API.Common.AnimationUtil.InitializeAnimator
+- uid: Vintagestory.API.Client.EnumRenderStage
+  commentId: T:Vintagestory.API.Client.EnumRenderStage
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumRenderStage.html
+  name: EnumRenderStage
+  nameWithType: EnumRenderStage
+  fullName: Vintagestory.API.Client.EnumRenderStage
+- uid: Vintagestory.API.Client.MeshRef
+  commentId: T:Vintagestory.API.Client.MeshRef
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MeshRef.html
+  name: MeshRef
+  nameWithType: MeshRef
+  fullName: Vintagestory.API.Client.MeshRef
+- uid: Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_InitializeAnimatorServer_System_String_Vintagestory_API_Common_Shape_
+  name: InitializeAnimatorServer
+  nameWithType: AnimationUtil.InitializeAnimatorServer
+  fullName: Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer
+- uid: Vintagestory.API.Common.AnimationUtil.AnimationTickServer*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.AnimationTickServer
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_AnimationTickServer_System_Single_
+  name: AnimationTickServer
+  nameWithType: AnimationUtil.AnimationTickServer
+  fullName: Vintagestory.API.Common.AnimationUtil.AnimationTickServer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.AnimationUtil.OnRenderFrame*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.OnRenderFrame
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_OnRenderFrame_System_Single_Vintagestory_API_Client_EnumRenderStage_
+  name: OnRenderFrame
+  nameWithType: AnimationUtil.OnRenderFrame
+  fullName: Vintagestory.API.Common.AnimationUtil.OnRenderFrame
+- uid: Vintagestory.API.Client.IRenderer.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
+  commentId: M:Vintagestory.API.Client.IRenderer.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
+  parent: Vintagestory.API.Client.IRenderer
+  isExternal: true
+  href: Vintagestory.API.Client.IRenderer.html#Vintagestory_API_Client_IRenderer_OnRenderFrame_System_Single_Vintagestory_API_Client_EnumRenderStage_
+  name: OnRenderFrame(float, EnumRenderStage)
+  nameWithType: IRenderer.OnRenderFrame(float, EnumRenderStage)
+  fullName: Vintagestory.API.Client.IRenderer.OnRenderFrame(float, Vintagestory.API.Client.EnumRenderStage)
+  nameWithType.vb: IRenderer.OnRenderFrame(Single, EnumRenderStage)
+  fullName.vb: Vintagestory.API.Client.IRenderer.OnRenderFrame(Single, Vintagestory.API.Client.EnumRenderStage)
+  name.vb: OnRenderFrame(Single, EnumRenderStage)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.IRenderer.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
+    name: OnRenderFrame
+    href: Vintagestory.API.Client.IRenderer.html#Vintagestory_API_Client_IRenderer_OnRenderFrame_System_Single_Vintagestory_API_Client_EnumRenderStage_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.EnumRenderStage
+    name: EnumRenderStage
+    href: Vintagestory.API.Client.EnumRenderStage.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.IRenderer.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
+    name: OnRenderFrame
+    href: Vintagestory.API.Client.IRenderer.html#Vintagestory_API_Client_IRenderer_OnRenderFrame_System_Single_Vintagestory_API_Client_EnumRenderStage_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.EnumRenderStage
+    name: EnumRenderStage
+    href: Vintagestory.API.Client.EnumRenderStage.html
+  - name: )
+- uid: Vintagestory.API.Common.AnimationUtil.StartAnimation*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.StartAnimation
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_StartAnimation_Vintagestory_API_Common_AnimationMetaData_
+  name: StartAnimation
+  nameWithType: AnimationUtil.StartAnimation
+  fullName: Vintagestory.API.Common.AnimationUtil.StartAnimation
+- uid: Vintagestory.API.Common.AnimationMetaData
+  commentId: T:Vintagestory.API.Common.AnimationMetaData
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AnimationMetaData.html
+  name: AnimationMetaData
+  nameWithType: AnimationMetaData
+  fullName: Vintagestory.API.Common.AnimationMetaData
+- uid: Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_OnAnimationsStateChange_System_Boolean_
+  name: OnAnimationsStateChange
+  nameWithType: AnimationUtil.OnAnimationsStateChange
+  fullName: Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange
+- uid: Vintagestory.API.Common.AnimationUtil.StopAnimation*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.StopAnimation
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_StopAnimation_System_String_
+  name: StopAnimation
+  nameWithType: AnimationUtil.StopAnimation
+  fullName: Vintagestory.API.Common.AnimationUtil.StopAnimation
+- uid: Vintagestory.API.Common.AnimationUtil.GetAnimator*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.GetAnimator
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_GetAnimator_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Shape_
+  name: GetAnimator
+  nameWithType: AnimationUtil.GetAnimator
+  fullName: Vintagestory.API.Common.AnimationUtil.GetAnimator
+- uid: Vintagestory.API.Common.AnimationUtil.CacheInvTransforms*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.CacheInvTransforms
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_CacheInvTransforms_Vintagestory_API_Common_ShapeElement___
+  name: CacheInvTransforms
+  nameWithType: AnimationUtil.CacheInvTransforms
+  fullName: Vintagestory.API.Common.AnimationUtil.CacheInvTransforms
+- uid: Vintagestory.API.Common.ShapeElement[]
+  isExternal: true
+  href: Vintagestory.API.Common.ShapeElement.html
+  name: ShapeElement[]
+  nameWithType: ShapeElement[]
+  fullName: Vintagestory.API.Common.ShapeElement[]
+  nameWithType.vb: ShapeElement()
+  fullName.vb: Vintagestory.API.Common.ShapeElement()
+  name.vb: ShapeElement()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ShapeElement
+    name: ShapeElement
+    href: Vintagestory.API.Common.ShapeElement.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.ShapeElement
+    name: ShapeElement
+    href: Vintagestory.API.Common.ShapeElement.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.AnimationUtil.Dispose*
+  commentId: Overload:Vintagestory.API.Common.AnimationUtil.Dispose
+  href: Vintagestory.API.Common.AnimationUtil.html#Vintagestory_API_Common_AnimationUtil_Dispose
+  name: Dispose
+  nameWithType: AnimationUtil.Dispose
+  fullName: Vintagestory.API.Common.AnimationUtil.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

@@ -1,0 +1,235 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IBlockEntityContainer
+  commentId: T:Vintagestory.API.Common.IBlockEntityContainer
+  id: IBlockEntityContainer
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IBlockEntityContainer.DropContents(Vintagestory.API.MathTools.Vec3d)
+  - Vintagestory.API.Common.IBlockEntityContainer.Inventory
+  - Vintagestory.API.Common.IBlockEntityContainer.InventoryClassName
+  langs:
+  - csharp
+  - vb
+  name: IBlockEntityContainer
+  nameWithType: IBlockEntityContainer
+  fullName: Vintagestory.API.Common.IBlockEntityContainer
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IBlockEntityContainer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IBlockEntityContainer
+    path: Common/Collectible/IBlockEntityContainer.cs
+    startLine: 4
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public interface IBlockEntityContainer
+    content.vb: Public Interface IBlockEntityContainer
+- uid: Vintagestory.API.Common.IBlockEntityContainer.Inventory
+  commentId: P:Vintagestory.API.Common.IBlockEntityContainer.Inventory
+  id: Inventory
+  parent: Vintagestory.API.Common.IBlockEntityContainer
+  langs:
+  - csharp
+  - vb
+  name: Inventory
+  nameWithType: IBlockEntityContainer.Inventory
+  fullName: Vintagestory.API.Common.IBlockEntityContainer.Inventory
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IBlockEntityContainer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Inventory
+    path: Common/Collectible/IBlockEntityContainer.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The inventory attached to this block entity container
+  example: []
+  syntax:
+    content: IInventory Inventory { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.IInventory
+    content.vb: ReadOnly Property Inventory As IInventory
+  overload: Vintagestory.API.Common.IBlockEntityContainer.Inventory*
+- uid: Vintagestory.API.Common.IBlockEntityContainer.InventoryClassName
+  commentId: P:Vintagestory.API.Common.IBlockEntityContainer.InventoryClassName
+  id: InventoryClassName
+  parent: Vintagestory.API.Common.IBlockEntityContainer
+  langs:
+  - csharp
+  - vb
+  name: InventoryClassName
+  nameWithType: IBlockEntityContainer.InventoryClassName
+  fullName: Vintagestory.API.Common.IBlockEntityContainer.InventoryClassName
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IBlockEntityContainer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InventoryClassName
+    path: Common/Collectible/IBlockEntityContainer.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The class name for the inventory.
+  example: []
+  syntax:
+    content: string InventoryClassName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property InventoryClassName As String
+  overload: Vintagestory.API.Common.IBlockEntityContainer.InventoryClassName*
+- uid: Vintagestory.API.Common.IBlockEntityContainer.DropContents(Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.Common.IBlockEntityContainer.DropContents(Vintagestory.API.MathTools.Vec3d)
+  id: DropContents(Vintagestory.API.MathTools.Vec3d)
+  parent: Vintagestory.API.Common.IBlockEntityContainer
+  langs:
+  - csharp
+  - vb
+  name: DropContents(Vec3d)
+  nameWithType: IBlockEntityContainer.DropContents(Vec3d)
+  fullName: Vintagestory.API.Common.IBlockEntityContainer.DropContents(Vintagestory.API.MathTools.Vec3d)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/IBlockEntityContainer.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DropContents
+    path: Common/Collectible/IBlockEntityContainer.cs
+    startLine: 19
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called by EntityBlockFalling if required
+  example: []
+  syntax:
+    content: void DropContents(Vec3d atPos)
+    parameters:
+    - id: atPos
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Sub DropContents(atPos As Vec3d)
+  overload: Vintagestory.API.Common.IBlockEntityContainer.DropContents*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IBlockEntityContainer.Inventory*
+  commentId: Overload:Vintagestory.API.Common.IBlockEntityContainer.Inventory
+  href: Vintagestory.API.Common.IBlockEntityContainer.html#Vintagestory_API_Common_IBlockEntityContainer_Inventory
+  name: Inventory
+  nameWithType: IBlockEntityContainer.Inventory
+  fullName: Vintagestory.API.Common.IBlockEntityContainer.Inventory
+- uid: Vintagestory.API.Common.IInventory
+  commentId: T:Vintagestory.API.Common.IInventory
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IInventory.html
+  name: IInventory
+  nameWithType: IInventory
+  fullName: Vintagestory.API.Common.IInventory
+- uid: Vintagestory.API.Common.IBlockEntityContainer.InventoryClassName*
+  commentId: Overload:Vintagestory.API.Common.IBlockEntityContainer.InventoryClassName
+  href: Vintagestory.API.Common.IBlockEntityContainer.html#Vintagestory_API_Common_IBlockEntityContainer_InventoryClassName
+  name: InventoryClassName
+  nameWithType: IBlockEntityContainer.InventoryClassName
+  fullName: Vintagestory.API.Common.IBlockEntityContainer.InventoryClassName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IBlockEntityContainer.DropContents*
+  commentId: Overload:Vintagestory.API.Common.IBlockEntityContainer.DropContents
+  href: Vintagestory.API.Common.IBlockEntityContainer.html#Vintagestory_API_Common_IBlockEntityContainer_DropContents_Vintagestory_API_MathTools_Vec3d_
+  name: DropContents
+  nameWithType: IBlockEntityContainer.DropContents
+  fullName: Vintagestory.API.Common.IBlockEntityContainer.DropContents
+- uid: Vintagestory.API.MathTools.Vec3d
+  commentId: T:Vintagestory.API.MathTools.Vec3d
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3d.html
+  name: Vec3d
+  nameWithType: Vec3d
+  fullName: Vintagestory.API.MathTools.Vec3d
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html

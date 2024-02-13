@@ -1,0 +1,2061 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.Shape
+  commentId: T:Vintagestory.API.Common.Shape
+  id: Shape
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.Shape.Animations
+  - Vintagestory.API.Common.Shape.AnimationsByCrc32
+  - Vintagestory.API.Common.Shape.AttachmentPointsByCode
+  - Vintagestory.API.Common.Shape.Clone
+  - Vintagestory.API.Common.Shape.CloneAnimations
+  - Vintagestory.API.Common.Shape.CloneElements
+  - Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
+  - Vintagestory.API.Common.Shape.Elements
+  - Vintagestory.API.Common.Shape.GetElementByName(System.String,System.StringComparison)
+  - Vintagestory.API.Common.Shape.JointsById
+  - Vintagestory.API.Common.Shape.RemoveElementByName(System.String,System.StringComparison)
+  - Vintagestory.API.Common.Shape.ResolveAndFindJoints(Vintagestory.API.Common.ILogger,System.String,System.String[])
+  - Vintagestory.API.Common.Shape.ResolveAndLoadJoints(System.String[])
+  - Vintagestory.API.Common.Shape.ResolveReferences(Vintagestory.API.Common.ILogger,System.String)
+  - Vintagestory.API.Common.Shape.StepParentShape(Vintagestory.API.Common.Shape,System.String,System.String,System.String,Vintagestory.API.Common.ILogger,System.Action{System.String,Vintagestory.API.Common.AssetLocation},System.Single)
+  - Vintagestory.API.Common.Shape.StepParentShape(Vintagestory.API.Common.Shape,System.String,System.String,Vintagestory.API.Common.ILogger,System.Action{System.String,Vintagestory.API.Common.AssetLocation})
+  - Vintagestory.API.Common.Shape.SubclassForStepParenting(System.String,System.Single)
+  - Vintagestory.API.Common.Shape.TextureHeight
+  - Vintagestory.API.Common.Shape.TextureSizes
+  - Vintagestory.API.Common.Shape.TextureWidth
+  - Vintagestory.API.Common.Shape.Textures
+  - Vintagestory.API.Common.Shape.TrimTextureNamesAndResolveFaces(System.Runtime.Serialization.StreamingContext)
+  - Vintagestory.API.Common.Shape.TryGet(Vintagestory.API.Common.ICoreAPI,System.String)
+  - Vintagestory.API.Common.Shape.TryGet(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Common.Shape.WalkElements(System.String,System.Action{Vintagestory.API.Common.ShapeElement})
+  langs:
+  - csharp
+  - vb
+  name: Shape
+  nameWithType: Shape
+  fullName: Vintagestory.API.Common.Shape
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Shape
+    path: Common/Model/Shape/Shape.cs
+    startLine: 13
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The base shape for all json objects.
+  example: []
+  syntax:
+    content: >-
+      [JsonObject(MemberSerialization.OptIn)]
+
+      public class Shape
+    content.vb: >-
+      <JsonObject(MemberSerialization.OptIn)>
+
+      Public Class Shape
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: Newtonsoft.Json.JsonObjectAttribute
+    ctor: Newtonsoft.Json.JsonObjectAttribute.#ctor(Newtonsoft.Json.MemberSerialization)
+    arguments:
+    - type: Newtonsoft.Json.MemberSerialization
+      value: 1
+- uid: Vintagestory.API.Common.Shape.Textures
+  commentId: F:Vintagestory.API.Common.Shape.Textures
+  id: Textures
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: Textures
+  nameWithType: Shape.Textures
+  fullName: Vintagestory.API.Common.Shape.Textures
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Textures
+    path: Common/Model/Shape/Shape.cs
+    startLine: 20
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The collection of textures in the shape.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public Dictionary<string, AssetLocation> Textures
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AssetLocation}
+    content.vb: >-
+      <JsonProperty>
+
+      Public Textures As Dictionary(Of String, AssetLocation)
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.Shape.Elements
+  commentId: F:Vintagestory.API.Common.Shape.Elements
+  id: Elements
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: Elements
+  nameWithType: Shape.Elements
+  fullName: Vintagestory.API.Common.Shape.Elements
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Elements
+    path: Common/Model/Shape/Shape.cs
+    startLine: 26
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The elements of the shape.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public ShapeElement[] Elements
+    return:
+      type: Vintagestory.API.Common.ShapeElement[]
+    content.vb: >-
+      <JsonProperty>
+
+      Public Elements As ShapeElement()
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.Shape.Animations
+  commentId: F:Vintagestory.API.Common.Shape.Animations
+  id: Animations
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: Animations
+  nameWithType: Shape.Animations
+  fullName: Vintagestory.API.Common.Shape.Animations
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Animations
+    path: Common/Model/Shape/Shape.cs
+    startLine: 32
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The animations for the shape.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public Animation[] Animations
+    return:
+      type: Vintagestory.API.Common.Animation[]
+    content.vb: >-
+      <JsonProperty>
+
+      Public Animations As Animation()
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.Shape.AnimationsByCrc32
+  commentId: F:Vintagestory.API.Common.Shape.AnimationsByCrc32
+  id: AnimationsByCrc32
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: AnimationsByCrc32
+  nameWithType: Shape.AnimationsByCrc32
+  fullName: Vintagestory.API.Common.Shape.AnimationsByCrc32
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AnimationsByCrc32
+    path: Common/Model/Shape/Shape.cs
+    startLine: 34
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public Dictionary<uint, Animation> AnimationsByCrc32
+    return:
+      type: System.Collections.Generic.Dictionary{System.UInt32,Vintagestory.API.Common.Animation}
+    content.vb: Public AnimationsByCrc32 As Dictionary(Of UInteger, Animation)
+- uid: Vintagestory.API.Common.Shape.TextureWidth
+  commentId: F:Vintagestory.API.Common.Shape.TextureWidth
+  id: TextureWidth
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: TextureWidth
+  nameWithType: Shape.TextureWidth
+  fullName: Vintagestory.API.Common.Shape.TextureWidth
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TextureWidth
+    path: Common/Model/Shape/Shape.cs
+    startLine: 40
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: 'The width of the texture. (default: 16)'
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public int TextureWidth
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonProperty>
+
+      Public TextureWidth As Integer
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.Shape.TextureHeight
+  commentId: F:Vintagestory.API.Common.Shape.TextureHeight
+  id: TextureHeight
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: TextureHeight
+  nameWithType: Shape.TextureHeight
+  fullName: Vintagestory.API.Common.Shape.TextureHeight
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TextureHeight
+    path: Common/Model/Shape/Shape.cs
+    startLine: 46
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: 'The height of the texture (default: 16)'
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public int TextureHeight
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonProperty>
+
+      Public TextureHeight As Integer
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.Shape.TextureSizes
+  commentId: F:Vintagestory.API.Common.Shape.TextureSizes
+  id: TextureSizes
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: TextureSizes
+  nameWithType: Shape.TextureSizes
+  fullName: Vintagestory.API.Common.Shape.TextureSizes
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TextureSizes
+    path: Common/Model/Shape/Shape.cs
+    startLine: 49
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public Dictionary<string, int[]> TextureSizes
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,System.Int32[]}
+    content.vb: >-
+      <JsonProperty>
+
+      Public TextureSizes As Dictionary(Of String, Integer())
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.Shape.JointsById
+  commentId: F:Vintagestory.API.Common.Shape.JointsById
+  id: JointsById
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: JointsById
+  nameWithType: Shape.JointsById
+  fullName: Vintagestory.API.Common.Shape.JointsById
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: JointsById
+    path: Common/Model/Shape/Shape.cs
+    startLine: 52
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public Dictionary<int, AnimationJoint> JointsById
+    return:
+      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint}
+    content.vb: Public JointsById As Dictionary(Of Integer, AnimationJoint)
+- uid: Vintagestory.API.Common.Shape.AttachmentPointsByCode
+  commentId: F:Vintagestory.API.Common.Shape.AttachmentPointsByCode
+  id: AttachmentPointsByCode
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: AttachmentPointsByCode
+  nameWithType: Shape.AttachmentPointsByCode
+  fullName: Vintagestory.API.Common.Shape.AttachmentPointsByCode
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AttachmentPointsByCode
+    path: Common/Model/Shape/Shape.cs
+    startLine: 53
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public Dictionary<string, AttachmentPoint> AttachmentPointsByCode
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AttachmentPoint}
+    content.vb: Public AttachmentPointsByCode As Dictionary(Of String, AttachmentPoint)
+- uid: Vintagestory.API.Common.Shape.TrimTextureNamesAndResolveFaces(System.Runtime.Serialization.StreamingContext)
+  commentId: M:Vintagestory.API.Common.Shape.TrimTextureNamesAndResolveFaces(System.Runtime.Serialization.StreamingContext)
+  id: TrimTextureNamesAndResolveFaces(System.Runtime.Serialization.StreamingContext)
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: TrimTextureNamesAndResolveFaces(StreamingContext)
+  nameWithType: Shape.TrimTextureNamesAndResolveFaces(StreamingContext)
+  fullName: Vintagestory.API.Common.Shape.TrimTextureNamesAndResolveFaces(System.Runtime.Serialization.StreamingContext)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TrimTextureNamesAndResolveFaces
+    path: Common/Model/Shape/Shape.cs
+    startLine: 56
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [OnDeserialized]
+
+      public void TrimTextureNamesAndResolveFaces(StreamingContext context)
+    parameters:
+    - id: context
+      type: System.Runtime.Serialization.StreamingContext
+    content.vb: >-
+      <OnDeserialized>
+
+      Public Sub TrimTextureNamesAndResolveFaces(context As StreamingContext)
+  overload: Vintagestory.API.Common.Shape.TrimTextureNamesAndResolveFaces*
+  attributes:
+  - type: System.Runtime.Serialization.OnDeserializedAttribute
+    ctor: System.Runtime.Serialization.OnDeserializedAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.Shape.ResolveReferences(Vintagestory.API.Common.ILogger,System.String)
+  commentId: M:Vintagestory.API.Common.Shape.ResolveReferences(Vintagestory.API.Common.ILogger,System.String)
+  id: ResolveReferences(Vintagestory.API.Common.ILogger,System.String)
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: ResolveReferences(ILogger, string)
+  nameWithType: Shape.ResolveReferences(ILogger, string)
+  fullName: Vintagestory.API.Common.Shape.ResolveReferences(Vintagestory.API.Common.ILogger, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ResolveReferences
+    path: Common/Model/Shape/Shape.cs
+    startLine: 67
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Attempts to resolve all references within the shape. Logs missing references them to the errorLogger
+  example: []
+  syntax:
+    content: public void ResolveReferences(ILogger errorLogger, string shapeNameForLogging)
+    parameters:
+    - id: errorLogger
+      type: Vintagestory.API.Common.ILogger
+      description: ''
+    - id: shapeNameForLogging
+      type: System.String
+      description: ''
+    content.vb: Public Sub ResolveReferences(errorLogger As ILogger, shapeNameForLogging As String)
+  overload: Vintagestory.API.Common.Shape.ResolveReferences*
+  nameWithType.vb: Shape.ResolveReferences(ILogger, String)
+  fullName.vb: Vintagestory.API.Common.Shape.ResolveReferences(Vintagestory.API.Common.ILogger, String)
+  name.vb: ResolveReferences(ILogger, String)
+- uid: Vintagestory.API.Common.Shape.SubclassForStepParenting(System.String,System.Single)
+  commentId: M:Vintagestory.API.Common.Shape.SubclassForStepParenting(System.String,System.Single)
+  id: SubclassForStepParenting(System.String,System.Single)
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: SubclassForStepParenting(string, float)
+  nameWithType: Shape.SubclassForStepParenting(string, float)
+  fullName: Vintagestory.API.Common.Shape.SubclassForStepParenting(string, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SubclassForStepParenting
+    path: Common/Model/Shape/Shape.cs
+    startLine: 111
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Prefixes texturePrefixCode to all textures in this shape. Required pre-step for stepparenting. The long arguments StepParentShape() calls this method.
+  example: []
+  syntax:
+    content: public bool SubclassForStepParenting(string texturePrefixCode, float damageEffect = 0)
+    parameters:
+    - id: texturePrefixCode
+      type: System.String
+      description: ''
+    - id: damageEffect
+      type: System.Single
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function SubclassForStepParenting(texturePrefixCode As String, damageEffect As Single = 0) As Boolean
+  overload: Vintagestory.API.Common.Shape.SubclassForStepParenting*
+  nameWithType.vb: Shape.SubclassForStepParenting(String, Single)
+  fullName.vb: Vintagestory.API.Common.Shape.SubclassForStepParenting(String, Single)
+  name.vb: SubclassForStepParenting(String, Single)
+- uid: Vintagestory.API.Common.Shape.StepParentShape(Vintagestory.API.Common.Shape,System.String,System.String,System.String,Vintagestory.API.Common.ILogger,System.Action{System.String,Vintagestory.API.Common.AssetLocation},System.Single)
+  commentId: M:Vintagestory.API.Common.Shape.StepParentShape(Vintagestory.API.Common.Shape,System.String,System.String,System.String,Vintagestory.API.Common.ILogger,System.Action{System.String,Vintagestory.API.Common.AssetLocation},System.Single)
+  id: StepParentShape(Vintagestory.API.Common.Shape,System.String,System.String,System.String,Vintagestory.API.Common.ILogger,System.Action{System.String,Vintagestory.API.Common.AssetLocation},System.Single)
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: StepParentShape(Shape, string, string, string, ILogger, Action<string, AssetLocation>, float)
+  nameWithType: Shape.StepParentShape(Shape, string, string, string, ILogger, Action<string, AssetLocation>, float)
+  fullName: Vintagestory.API.Common.Shape.StepParentShape(Vintagestory.API.Common.Shape, string, string, string, Vintagestory.API.Common.ILogger, System.Action<string, Vintagestory.API.Common.AssetLocation>, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: StepParentShape
+    path: Common/Model/Shape/Shape.cs
+    startLine: 162
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a step parented shape to this shape. If you plan to cache the childShape use the shorter argument method and call SubclassForStepParenting() only once on it
+  example: []
+  syntax:
+    content: public bool StepParentShape(Shape childShape, string texturePrefixCode, string childLocationForLogging, string parentLocationForLogging, ILogger logger, Action<string, AssetLocation> onTexture, float damageEffect = 0)
+    parameters:
+    - id: childShape
+      type: Vintagestory.API.Common.Shape
+      description: ''
+    - id: texturePrefixCode
+      type: System.String
+      description: ''
+    - id: childLocationForLogging
+      type: System.String
+      description: ''
+    - id: parentLocationForLogging
+      type: System.String
+      description: ''
+    - id: logger
+      type: Vintagestory.API.Common.ILogger
+      description: ''
+    - id: onTexture
+      type: System.Action{System.String,Vintagestory.API.Common.AssetLocation}
+      description: ''
+    - id: damageEffect
+      type: System.Single
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function StepParentShape(childShape As Shape, texturePrefixCode As String, childLocationForLogging As String, parentLocationForLogging As String, logger As ILogger, onTexture As Action(Of String, AssetLocation), damageEffect As Single = 0) As Boolean
+  overload: Vintagestory.API.Common.Shape.StepParentShape*
+  nameWithType.vb: Shape.StepParentShape(Shape, String, String, String, ILogger, Action(Of String, AssetLocation), Single)
+  fullName.vb: Vintagestory.API.Common.Shape.StepParentShape(Vintagestory.API.Common.Shape, String, String, String, Vintagestory.API.Common.ILogger, System.Action(Of String, Vintagestory.API.Common.AssetLocation), Single)
+  name.vb: StepParentShape(Shape, String, String, String, ILogger, Action(Of String, AssetLocation), Single)
+- uid: Vintagestory.API.Common.Shape.StepParentShape(Vintagestory.API.Common.Shape,System.String,System.String,Vintagestory.API.Common.ILogger,System.Action{System.String,Vintagestory.API.Common.AssetLocation})
+  commentId: M:Vintagestory.API.Common.Shape.StepParentShape(Vintagestory.API.Common.Shape,System.String,System.String,Vintagestory.API.Common.ILogger,System.Action{System.String,Vintagestory.API.Common.AssetLocation})
+  id: StepParentShape(Vintagestory.API.Common.Shape,System.String,System.String,Vintagestory.API.Common.ILogger,System.Action{System.String,Vintagestory.API.Common.AssetLocation})
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: StepParentShape(Shape, string, string, ILogger, Action<string, AssetLocation>)
+  nameWithType: Shape.StepParentShape(Shape, string, string, ILogger, Action<string, AssetLocation>)
+  fullName: Vintagestory.API.Common.Shape.StepParentShape(Vintagestory.API.Common.Shape, string, string, Vintagestory.API.Common.ILogger, System.Action<string, Vintagestory.API.Common.AssetLocation>)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: StepParentShape
+    path: Common/Model/Shape/Shape.cs
+    startLine: 177
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds a step parented shape to this shape, does not call the required pre-step SubclassForStepParenting()
+  example: []
+  syntax:
+    content: public bool StepParentShape(Shape childShape, string childLocationForLogging, string parentLocationForLogging, ILogger logger, Action<string, AssetLocation> onTexture)
+    parameters:
+    - id: childShape
+      type: Vintagestory.API.Common.Shape
+      description: ''
+    - id: childLocationForLogging
+      type: System.String
+      description: ''
+    - id: parentLocationForLogging
+      type: System.String
+      description: ''
+    - id: logger
+      type: Vintagestory.API.Common.ILogger
+      description: ''
+    - id: onTexture
+      type: System.Action{System.String,Vintagestory.API.Common.AssetLocation}
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function StepParentShape(childShape As Shape, childLocationForLogging As String, parentLocationForLogging As String, logger As ILogger, onTexture As Action(Of String, AssetLocation)) As Boolean
+  overload: Vintagestory.API.Common.Shape.StepParentShape*
+  nameWithType.vb: Shape.StepParentShape(Shape, String, String, ILogger, Action(Of String, AssetLocation))
+  fullName.vb: Vintagestory.API.Common.Shape.StepParentShape(Vintagestory.API.Common.Shape, String, String, Vintagestory.API.Common.ILogger, System.Action(Of String, Vintagestory.API.Common.AssetLocation))
+  name.vb: StepParentShape(Shape, String, String, ILogger, Action(Of String, AssetLocation))
+- uid: Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
+  commentId: M:Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
+  id: CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: CollectElements(ShapeElement[], Dictionary<string, ShapeElement>)
+  nameWithType: Shape.CollectElements(ShapeElement[], Dictionary<string, ShapeElement>)
+  fullName: Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[], System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.ShapeElement>)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CollectElements
+    path: Common/Model/Shape/Shape.cs
+    startLine: 307
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Collects all the elements in the shape recursively.
+  example: []
+  syntax:
+    content: public void CollectElements(ShapeElement[] elements, Dictionary<string, ShapeElement> elementsByName)
+    parameters:
+    - id: elements
+      type: Vintagestory.API.Common.ShapeElement[]
+      description: ''
+    - id: elementsByName
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement}
+      description: ''
+    content.vb: Public Sub CollectElements(elements As ShapeElement(), elementsByName As Dictionary(Of String, ShapeElement))
+  overload: Vintagestory.API.Common.Shape.CollectElements*
+  nameWithType.vb: Shape.CollectElements(ShapeElement(), Dictionary(Of String, ShapeElement))
+  fullName.vb: Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement(), System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.ShapeElement))
+  name.vb: CollectElements(ShapeElement(), Dictionary(Of String, ShapeElement))
+- uid: Vintagestory.API.Common.Shape.ResolveAndLoadJoints(System.String[])
+  commentId: M:Vintagestory.API.Common.Shape.ResolveAndLoadJoints(System.String[])
+  id: ResolveAndLoadJoints(System.String[])
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: ResolveAndLoadJoints(params string[])
+  nameWithType: Shape.ResolveAndLoadJoints(params string[])
+  fullName: Vintagestory.API.Common.Shape.ResolveAndLoadJoints(params string[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ResolveAndLoadJoints
+    path: Common/Model/Shape/Shape.cs
+    startLine: 321
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [Obsolete("Must call ResolveAndFindJoints(errorLogger, shapeName, joints) instead")]
+
+      public void ResolveAndLoadJoints(params string[] requireJointsForElements)
+    parameters:
+    - id: requireJointsForElements
+      type: System.String[]
+    content.vb: >-
+      <Obsolete("Must call ResolveAndFindJoints(errorLogger, shapeName, joints) instead")>
+
+      Public Sub ResolveAndLoadJoints(ParamArray requireJointsForElements As String())
+  overload: Vintagestory.API.Common.Shape.ResolveAndLoadJoints*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Must call ResolveAndFindJoints(errorLogger, shapeName, joints) instead
+  nameWithType.vb: Shape.ResolveAndLoadJoints(ParamArray String())
+  fullName.vb: Vintagestory.API.Common.Shape.ResolveAndLoadJoints(ParamArray String())
+  name.vb: ResolveAndLoadJoints(ParamArray String())
+- uid: Vintagestory.API.Common.Shape.ResolveAndFindJoints(Vintagestory.API.Common.ILogger,System.String,System.String[])
+  commentId: M:Vintagestory.API.Common.Shape.ResolveAndFindJoints(Vintagestory.API.Common.ILogger,System.String,System.String[])
+  id: ResolveAndFindJoints(Vintagestory.API.Common.ILogger,System.String,System.String[])
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: ResolveAndFindJoints(ILogger, string, params string[])
+  nameWithType: Shape.ResolveAndFindJoints(ILogger, string, params string[])
+  fullName: Vintagestory.API.Common.Shape.ResolveAndFindJoints(Vintagestory.API.Common.ILogger, string, params string[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ResolveAndFindJoints
+    path: Common/Model/Shape/Shape.cs
+    startLine: 333
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Resolves all joints and loads them.
+  example: []
+  syntax:
+    content: public void ResolveAndFindJoints(ILogger errorLogger, string shapeName, params string[] requireJointsForElements)
+    parameters:
+    - id: errorLogger
+      type: Vintagestory.API.Common.ILogger
+      description: ''
+    - id: shapeName
+      type: System.String
+      description: ''
+    - id: requireJointsForElements
+      type: System.String[]
+      description: ''
+    content.vb: Public Sub ResolveAndFindJoints(errorLogger As ILogger, shapeName As String, ParamArray requireJointsForElements As String())
+  overload: Vintagestory.API.Common.Shape.ResolveAndFindJoints*
+  nameWithType.vb: Shape.ResolveAndFindJoints(ILogger, String, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.Shape.ResolveAndFindJoints(Vintagestory.API.Common.ILogger, String, ParamArray String())
+  name.vb: ResolveAndFindJoints(ILogger, String, ParamArray String())
+- uid: Vintagestory.API.Common.Shape.TryGet(Vintagestory.API.Common.ICoreAPI,System.String)
+  commentId: M:Vintagestory.API.Common.Shape.TryGet(Vintagestory.API.Common.ICoreAPI,System.String)
+  id: TryGet(Vintagestory.API.Common.ICoreAPI,System.String)
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: TryGet(ICoreAPI, string)
+  nameWithType: Shape.TryGet(ICoreAPI, string)
+  fullName: Vintagestory.API.Common.Shape.TryGet(Vintagestory.API.Common.ICoreAPI, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryGet
+    path: Common/Model/Shape/Shape.cs
+    startLine: 432
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Tries to load the shape from the specified JSON file, with error logging
+
+    <br />Returns null if the file could not be found, or if there was an error
+  example: []
+  syntax:
+    content: public static Shape TryGet(ICoreAPI api, string shapePath)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+      description: ''
+    - id: shapePath
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.Shape
+      description: ''
+    content.vb: Public Shared Function TryGet(api As ICoreAPI, shapePath As String) As Shape
+  overload: Vintagestory.API.Common.Shape.TryGet*
+  nameWithType.vb: Shape.TryGet(ICoreAPI, String)
+  fullName.vb: Vintagestory.API.Common.Shape.TryGet(Vintagestory.API.Common.ICoreAPI, String)
+  name.vb: TryGet(ICoreAPI, String)
+- uid: Vintagestory.API.Common.Shape.TryGet(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.AssetLocation)
+  commentId: M:Vintagestory.API.Common.Shape.TryGet(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.AssetLocation)
+  id: TryGet(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.AssetLocation)
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: TryGet(ICoreAPI, AssetLocation)
+  nameWithType: Shape.TryGet(ICoreAPI, AssetLocation)
+  fullName: Vintagestory.API.Common.Shape.TryGet(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.AssetLocation)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryGet
+    path: Common/Model/Shape/Shape.cs
+    startLine: 454
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Tries to load the shape from the specified JSON file, with error logging
+
+    <br />Returns null if the file could not be found, or if there was an error
+  example: []
+  syntax:
+    content: public static Shape TryGet(ICoreAPI api, AssetLocation shapePath)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+      description: ''
+    - id: shapePath
+      type: Vintagestory.API.Common.AssetLocation
+      description: ''
+    return:
+      type: Vintagestory.API.Common.Shape
+      description: ''
+    content.vb: Public Shared Function TryGet(api As ICoreAPI, shapePath As AssetLocation) As Shape
+  overload: Vintagestory.API.Common.Shape.TryGet*
+- uid: Vintagestory.API.Common.Shape.WalkElements(System.String,System.Action{Vintagestory.API.Common.ShapeElement})
+  commentId: M:Vintagestory.API.Common.Shape.WalkElements(System.String,System.Action{Vintagestory.API.Common.ShapeElement})
+  id: WalkElements(System.String,System.Action{Vintagestory.API.Common.ShapeElement})
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: WalkElements(string, Action<ShapeElement>)
+  nameWithType: Shape.WalkElements(string, Action<ShapeElement>)
+  fullName: Vintagestory.API.Common.Shape.WalkElements(string, System.Action<Vintagestory.API.Common.ShapeElement>)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WalkElements
+    path: Common/Model/Shape/Shape.cs
+    startLine: 468
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void WalkElements(string wildcardpath, Action<ShapeElement> onElement)
+    parameters:
+    - id: wildcardpath
+      type: System.String
+    - id: onElement
+      type: System.Action{Vintagestory.API.Common.ShapeElement}
+    content.vb: Public Sub WalkElements(wildcardpath As String, onElement As Action(Of ShapeElement))
+  overload: Vintagestory.API.Common.Shape.WalkElements*
+  nameWithType.vb: Shape.WalkElements(String, Action(Of ShapeElement))
+  fullName.vb: Vintagestory.API.Common.Shape.WalkElements(String, System.Action(Of Vintagestory.API.Common.ShapeElement))
+  name.vb: WalkElements(String, Action(Of ShapeElement))
+- uid: Vintagestory.API.Common.Shape.GetElementByName(System.String,System.StringComparison)
+  commentId: M:Vintagestory.API.Common.Shape.GetElementByName(System.String,System.StringComparison)
+  id: GetElementByName(System.String,System.StringComparison)
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: GetElementByName(string, StringComparison)
+  nameWithType: Shape.GetElementByName(string, StringComparison)
+  fullName: Vintagestory.API.Common.Shape.GetElementByName(string, System.StringComparison)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetElementByName
+    path: Common/Model/Shape/Shape.cs
+    startLine: 510
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Recursively searches the element by name from the shape.
+  example: []
+  syntax:
+    content: public ShapeElement GetElementByName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+    parameters:
+    - id: name
+      type: System.String
+      description: The name of the element to get.
+    - id: stringComparison
+      type: System.StringComparison
+      description: ''
+    return:
+      type: Vintagestory.API.Common.ShapeElement
+      description: The shape element or null if none was found
+    content.vb: Public Function GetElementByName(name As String, stringComparison As StringComparison = StringComparison.InvariantCultureIgnoreCase) As ShapeElement
+  overload: Vintagestory.API.Common.Shape.GetElementByName*
+  nameWithType.vb: Shape.GetElementByName(String, StringComparison)
+  fullName.vb: Vintagestory.API.Common.Shape.GetElementByName(String, System.StringComparison)
+  name.vb: GetElementByName(String, StringComparison)
+- uid: Vintagestory.API.Common.Shape.RemoveElementByName(System.String,System.StringComparison)
+  commentId: M:Vintagestory.API.Common.Shape.RemoveElementByName(System.String,System.StringComparison)
+  id: RemoveElementByName(System.String,System.StringComparison)
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: RemoveElementByName(string, StringComparison)
+  nameWithType: Shape.RemoveElementByName(string, StringComparison)
+  fullName: Vintagestory.API.Common.Shape.RemoveElementByName(string, System.StringComparison)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RemoveElementByName
+    path: Common/Model/Shape/Shape.cs
+    startLine: 538
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Removes *all* elements with given name
+  example: []
+  syntax:
+    content: public bool RemoveElementByName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    - id: stringComparison
+      type: System.StringComparison
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Function RemoveElementByName(name As String, stringComparison As StringComparison = StringComparison.InvariantCultureIgnoreCase) As Boolean
+  overload: Vintagestory.API.Common.Shape.RemoveElementByName*
+  nameWithType.vb: Shape.RemoveElementByName(String, StringComparison)
+  fullName.vb: Vintagestory.API.Common.Shape.RemoveElementByName(String, System.StringComparison)
+  name.vb: RemoveElementByName(String, StringComparison)
+- uid: Vintagestory.API.Common.Shape.CloneElements
+  commentId: M:Vintagestory.API.Common.Shape.CloneElements
+  id: CloneElements
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: CloneElements()
+  nameWithType: Shape.CloneElements()
+  fullName: Vintagestory.API.Common.Shape.CloneElements()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CloneElements
+    path: Common/Model/Shape/Shape.cs
+    startLine: 572
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public ShapeElement[] CloneElements()
+    return:
+      type: Vintagestory.API.Common.ShapeElement[]
+    content.vb: Public Function CloneElements() As ShapeElement()
+  overload: Vintagestory.API.Common.Shape.CloneElements*
+- uid: Vintagestory.API.Common.Shape.CloneAnimations
+  commentId: M:Vintagestory.API.Common.Shape.CloneAnimations
+  id: CloneAnimations
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: CloneAnimations()
+  nameWithType: Shape.CloneAnimations()
+  fullName: Vintagestory.API.Common.Shape.CloneAnimations()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CloneAnimations
+    path: Common/Model/Shape/Shape.cs
+    startLine: 586
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public Animation[] CloneAnimations()
+    return:
+      type: Vintagestory.API.Common.Animation[]
+    content.vb: Public Function CloneAnimations() As Animation()
+  overload: Vintagestory.API.Common.Shape.CloneAnimations*
+- uid: Vintagestory.API.Common.Shape.Clone
+  commentId: M:Vintagestory.API.Common.Shape.Clone
+  id: Clone
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: Shape.Clone()
+  fullName: Vintagestory.API.Common.Shape.Clone()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/Shape.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Clone
+    path: Common/Model/Shape/Shape.cs
+    startLine: 605
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Creates a deep copy of the shape
+  example: []
+  syntax:
+    content: public Shape Clone()
+    return:
+      type: Vintagestory.API.Common.Shape
+      description: ''
+    content.vb: Public Function Clone() As Shape
+  overload: Vintagestory.API.Common.Shape.Clone*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AssetLocation}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AssetLocation}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, AssetLocation>
+  nameWithType: Dictionary<string, AssetLocation>
+  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.AssetLocation>
+  nameWithType.vb: Dictionary(Of String, AssetLocation)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.AssetLocation)
+  name.vb: Dictionary(Of String, AssetLocation)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.ShapeElement[]
+  isExternal: true
+  href: Vintagestory.API.Common.ShapeElement.html
+  name: ShapeElement[]
+  nameWithType: ShapeElement[]
+  fullName: Vintagestory.API.Common.ShapeElement[]
+  nameWithType.vb: ShapeElement()
+  fullName.vb: Vintagestory.API.Common.ShapeElement()
+  name.vb: ShapeElement()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ShapeElement
+    name: ShapeElement
+    href: Vintagestory.API.Common.ShapeElement.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.ShapeElement
+    name: ShapeElement
+    href: Vintagestory.API.Common.ShapeElement.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.Animation[]
+  isExternal: true
+  href: Vintagestory.API.Common.Animation.html
+  name: Animation[]
+  nameWithType: Animation[]
+  fullName: Vintagestory.API.Common.Animation[]
+  nameWithType.vb: Animation()
+  fullName.vb: Vintagestory.API.Common.Animation()
+  name.vb: Animation()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Animation
+    name: Animation
+    href: Vintagestory.API.Common.Animation.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.Animation
+    name: Animation
+    href: Vintagestory.API.Common.Animation.html
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.Dictionary{System.UInt32,Vintagestory.API.Common.Animation}
+  commentId: T:System.Collections.Generic.Dictionary{System.UInt32,Vintagestory.API.Common.Animation}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<uint, Animation>
+  nameWithType: Dictionary<uint, Animation>
+  fullName: System.Collections.Generic.Dictionary<uint, Vintagestory.API.Common.Animation>
+  nameWithType.vb: Dictionary(Of UInteger, Animation)
+  fullName.vb: System.Collections.Generic.Dictionary(Of UInteger, Vintagestory.API.Common.Animation)
+  name.vb: Dictionary(Of UInteger, Animation)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Animation
+    name: Animation
+    href: Vintagestory.API.Common.Animation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Animation
+    name: Animation
+    href: Vintagestory.API.Common.Animation.html
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.Dictionary{System.String,System.Int32[]}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Int32[]}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, int[]>
+  nameWithType: Dictionary<string, int[]>
+  fullName: System.Collections.Generic.Dictionary<string, int[]>
+  nameWithType.vb: Dictionary(Of String, Integer())
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Integer())
+  name.vb: Dictionary(Of String, Integer())
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint}
+  commentId: T:System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<int, AnimationJoint>
+  nameWithType: Dictionary<int, AnimationJoint>
+  fullName: System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AnimationJoint>
+  nameWithType.vb: Dictionary(Of Integer, AnimationJoint)
+  fullName.vb: System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AnimationJoint)
+  name.vb: Dictionary(Of Integer, AnimationJoint)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AnimationJoint
+    name: AnimationJoint
+    href: Vintagestory.API.Common.AnimationJoint.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AnimationJoint
+    name: AnimationJoint
+    href: Vintagestory.API.Common.AnimationJoint.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AttachmentPoint}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AttachmentPoint}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, AttachmentPoint>
+  nameWithType: Dictionary<string, AttachmentPoint>
+  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.AttachmentPoint>
+  nameWithType.vb: Dictionary(Of String, AttachmentPoint)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.AttachmentPoint)
+  name.vb: Dictionary(Of String, AttachmentPoint)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AttachmentPoint
+    name: AttachmentPoint
+    href: Vintagestory.API.Common.AttachmentPoint.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AttachmentPoint
+    name: AttachmentPoint
+    href: Vintagestory.API.Common.AttachmentPoint.html
+  - name: )
+- uid: Vintagestory.API.Common.Shape.TrimTextureNamesAndResolveFaces*
+  commentId: Overload:Vintagestory.API.Common.Shape.TrimTextureNamesAndResolveFaces
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_TrimTextureNamesAndResolveFaces_System_Runtime_Serialization_StreamingContext_
+  name: TrimTextureNamesAndResolveFaces
+  nameWithType: Shape.TrimTextureNamesAndResolveFaces
+  fullName: Vintagestory.API.Common.Shape.TrimTextureNamesAndResolveFaces
+- uid: System.Runtime.Serialization.StreamingContext
+  commentId: T:System.Runtime.Serialization.StreamingContext
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  name: StreamingContext
+  nameWithType: StreamingContext
+  fullName: System.Runtime.Serialization.StreamingContext
+- uid: System.Runtime.Serialization
+  commentId: N:System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Runtime.Serialization
+  nameWithType: System.Runtime.Serialization
+  fullName: System.Runtime.Serialization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+- uid: Vintagestory.API.Common.Shape.ResolveReferences*
+  commentId: Overload:Vintagestory.API.Common.Shape.ResolveReferences
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_ResolveReferences_Vintagestory_API_Common_ILogger_System_String_
+  name: ResolveReferences
+  nameWithType: Shape.ResolveReferences
+  fullName: Vintagestory.API.Common.Shape.ResolveReferences
+- uid: Vintagestory.API.Common.ILogger
+  commentId: T:Vintagestory.API.Common.ILogger
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ILogger.html
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Vintagestory.API.Common.ILogger
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.Shape.SubclassForStepParenting*
+  commentId: Overload:Vintagestory.API.Common.Shape.SubclassForStepParenting
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_SubclassForStepParenting_System_String_System_Single_
+  name: SubclassForStepParenting
+  nameWithType: Shape.SubclassForStepParenting
+  fullName: Vintagestory.API.Common.Shape.SubclassForStepParenting
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.Shape.StepParentShape*
+  commentId: Overload:Vintagestory.API.Common.Shape.StepParentShape
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_StepParentShape_Vintagestory_API_Common_Shape_System_String_System_String_System_String_Vintagestory_API_Common_ILogger_System_Action_System_String_Vintagestory_API_Common_AssetLocation__System_Single_
+  name: StepParentShape
+  nameWithType: Shape.StepParentShape
+  fullName: Vintagestory.API.Common.Shape.StepParentShape
+- uid: Vintagestory.API.Common.Shape
+  commentId: T:Vintagestory.API.Common.Shape
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Shape.html
+  name: Shape
+  nameWithType: Shape
+  fullName: Vintagestory.API.Common.Shape
+- uid: System.Action{System.String,Vintagestory.API.Common.AssetLocation}
+  commentId: T:System.Action{System.String,Vintagestory.API.Common.AssetLocation}
+  parent: System
+  definition: System.Action`2
+  href: https://learn.microsoft.com/dotnet/api/system.action-2
+  name: Action<string, AssetLocation>
+  nameWithType: Action<string, AssetLocation>
+  fullName: System.Action<string, Vintagestory.API.Common.AssetLocation>
+  nameWithType.vb: Action(Of String, AssetLocation)
+  fullName.vb: System.Action(Of String, Vintagestory.API.Common.AssetLocation)
+  name.vb: Action(Of String, AssetLocation)
+  spec.csharp:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: )
+- uid: System.Action`2
+  commentId: T:System.Action`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-2
+  name: Action<T1, T2>
+  nameWithType: Action<T1, T2>
+  fullName: System.Action<T1, T2>
+  nameWithType.vb: Action(Of T1, T2)
+  fullName.vb: System.Action(Of T1, T2)
+  name.vb: Action(Of T1, T2)
+  spec.csharp:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: <
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`2
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: )
+- uid: Vintagestory.API.Common.Shape.CollectElements*
+  commentId: Overload:Vintagestory.API.Common.Shape.CollectElements
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_CollectElements_Vintagestory_API_Common_ShapeElement___System_Collections_Generic_Dictionary_System_String_Vintagestory_API_Common_ShapeElement__
+  name: CollectElements
+  nameWithType: Shape.CollectElements
+  fullName: Vintagestory.API.Common.Shape.CollectElements
+- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, ShapeElement>
+  nameWithType: Dictionary<string, ShapeElement>
+  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.ShapeElement>
+  nameWithType.vb: Dictionary(Of String, ShapeElement)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.ShapeElement)
+  name.vb: Dictionary(Of String, ShapeElement)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ShapeElement
+    name: ShapeElement
+    href: Vintagestory.API.Common.ShapeElement.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ShapeElement
+    name: ShapeElement
+    href: Vintagestory.API.Common.ShapeElement.html
+  - name: )
+- uid: Vintagestory.API.Common.Shape.ResolveAndLoadJoints*
+  commentId: Overload:Vintagestory.API.Common.Shape.ResolveAndLoadJoints
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_ResolveAndLoadJoints_System_String___
+  name: ResolveAndLoadJoints
+  nameWithType: Shape.ResolveAndLoadJoints
+  fullName: Vintagestory.API.Common.Shape.ResolveAndLoadJoints
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.Shape.ResolveAndFindJoints*
+  commentId: Overload:Vintagestory.API.Common.Shape.ResolveAndFindJoints
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_ResolveAndFindJoints_Vintagestory_API_Common_ILogger_System_String_System_String___
+  name: ResolveAndFindJoints
+  nameWithType: Shape.ResolveAndFindJoints
+  fullName: Vintagestory.API.Common.Shape.ResolveAndFindJoints
+- uid: Vintagestory.API.Common.Shape.TryGet*
+  commentId: Overload:Vintagestory.API.Common.Shape.TryGet
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_TryGet_Vintagestory_API_Common_ICoreAPI_System_String_
+  name: TryGet
+  nameWithType: Shape.TryGet
+  fullName: Vintagestory.API.Common.Shape.TryGet
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
+- uid: Vintagestory.API.Common.AssetLocation
+  commentId: T:Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: AssetLocation
+  nameWithType: AssetLocation
+  fullName: Vintagestory.API.Common.AssetLocation
+- uid: Vintagestory.API.Common.Shape.WalkElements*
+  commentId: Overload:Vintagestory.API.Common.Shape.WalkElements
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_WalkElements_System_String_System_Action_Vintagestory_API_Common_ShapeElement__
+  name: WalkElements
+  nameWithType: Shape.WalkElements
+  fullName: Vintagestory.API.Common.Shape.WalkElements
+- uid: System.Action{Vintagestory.API.Common.ShapeElement}
+  commentId: T:System.Action{Vintagestory.API.Common.ShapeElement}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<ShapeElement>
+  nameWithType: Action<ShapeElement>
+  fullName: System.Action<Vintagestory.API.Common.ShapeElement>
+  nameWithType.vb: Action(Of ShapeElement)
+  fullName.vb: System.Action(Of Vintagestory.API.Common.ShapeElement)
+  name.vb: Action(Of ShapeElement)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Vintagestory.API.Common.ShapeElement
+    name: ShapeElement
+    href: Vintagestory.API.Common.ShapeElement.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ShapeElement
+    name: ShapeElement
+    href: Vintagestory.API.Common.ShapeElement.html
+  - name: )
+- uid: System.Action`1
+  commentId: T:System.Action`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<T>
+  nameWithType: Action<T>
+  fullName: System.Action<T>
+  nameWithType.vb: Action(Of T)
+  fullName.vb: System.Action(Of T)
+  name.vb: Action(Of T)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.Shape.GetElementByName*
+  commentId: Overload:Vintagestory.API.Common.Shape.GetElementByName
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_GetElementByName_System_String_System_StringComparison_
+  name: GetElementByName
+  nameWithType: Shape.GetElementByName
+  fullName: Vintagestory.API.Common.Shape.GetElementByName
+- uid: System.StringComparison
+  commentId: T:System.StringComparison
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.stringcomparison
+  name: StringComparison
+  nameWithType: StringComparison
+  fullName: System.StringComparison
+- uid: Vintagestory.API.Common.ShapeElement
+  commentId: T:Vintagestory.API.Common.ShapeElement
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ShapeElement.html
+  name: ShapeElement
+  nameWithType: ShapeElement
+  fullName: Vintagestory.API.Common.ShapeElement
+- uid: Vintagestory.API.Common.Shape.RemoveElementByName*
+  commentId: Overload:Vintagestory.API.Common.Shape.RemoveElementByName
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_RemoveElementByName_System_String_System_StringComparison_
+  name: RemoveElementByName
+  nameWithType: Shape.RemoveElementByName
+  fullName: Vintagestory.API.Common.Shape.RemoveElementByName
+- uid: Vintagestory.API.Common.Shape.CloneElements*
+  commentId: Overload:Vintagestory.API.Common.Shape.CloneElements
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_CloneElements
+  name: CloneElements
+  nameWithType: Shape.CloneElements
+  fullName: Vintagestory.API.Common.Shape.CloneElements
+- uid: Vintagestory.API.Common.Shape.CloneAnimations*
+  commentId: Overload:Vintagestory.API.Common.Shape.CloneAnimations
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_CloneAnimations
+  name: CloneAnimations
+  nameWithType: Shape.CloneAnimations
+  fullName: Vintagestory.API.Common.Shape.CloneAnimations
+- uid: Vintagestory.API.Common.Shape.Clone*
+  commentId: Overload:Vintagestory.API.Common.Shape.Clone
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_Clone
+  name: Clone
+  nameWithType: Shape.Clone
+  fullName: Vintagestory.API.Common.Shape.Clone

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common.Entities
 {
@@ -303,7 +304,7 @@ namespace Vintagestory.API.Common.Entities
 
             for (int i = 0; i < InsideBlockCodesBeginsWith.Length; i++)
             {
-                if (testPath.StartsWith(InsideBlockCodesBeginsWith[i])) return true;
+                if (testPath.StartsWithOrdinal(InsideBlockCodesBeginsWith[i])) return true;
             }
 
             return false;
@@ -341,7 +342,7 @@ namespace Vintagestory.API.Common.Entities
                 for (int i = 0; i < codes.Length; i++)
                 {
                     string code = codes[i].Path;
-                    if (code.EndsWith("*"))
+                    if (code.EndsWith('*'))
                     {
                         beginswith.Add(code.Substring(0, code.Length - 1));
                     }

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
@@ -276,6 +277,26 @@ namespace Vintagestory.API.Common
         {
             handled = EnumHandling.PassThrough;
             return remainingResistance;
+        }
+
+        public virtual string GetHeldTpHitAnimation(ItemSlot slot, Entity byEntity, ref EnumHandling bhHandling)
+        {
+            return null;
+        }
+
+        public virtual string GetHeldReadyAnimation(ItemSlot activeHotbarSlot, Entity forEntity, EnumHand hand, ref EnumHandling bhHandling)
+        {
+            return null;
+        }
+
+        public virtual string GetHeldTpIdleAnimation(ItemSlot activeHotbarSlot, Entity forEntity, EnumHand hand, ref EnumHandling bhHandling)
+        {
+            return null;
+        }
+
+        public virtual string GetHeldTpUseAnimation(ItemSlot activeHotbarSlot, Entity forEntity, ref EnumHandling bhHandling)
+        {
+            return null;
         }
     }
 }

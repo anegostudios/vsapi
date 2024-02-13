@@ -72,6 +72,16 @@ namespace Vintagestory.API.Datastructures
         {
             return new FastListEnum<TElem>(this);
         }
+
+        public bool Contains(TElem needle)
+        {
+            for (int i = 0; i < elements.Length; i++)
+            {
+                if (i >= Count) return false;
+                if (needle.Equals(elements[i])) return true;
+            }
+            return false;
+        }
     }
 
     public class FastListEnum<TElem> : IEnumerator

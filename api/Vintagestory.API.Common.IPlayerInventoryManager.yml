@@ -1,0 +1,1935 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IPlayerInventoryManager
+  commentId: T:Vintagestory.API.Common.IPlayerInventoryManager
+  id: IPlayerInventoryManager
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlot
+  - Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlotNumber
+  - Vintagestory.API.Common.IPlayerInventoryManager.ActiveTool
+  - Vintagestory.API.Common.IPlayerInventoryManager.BroadcastHotbarSlot
+  - Vintagestory.API.Common.IPlayerInventoryManager.CloseInventory(Vintagestory.API.Common.IInventory)
+  - Vintagestory.API.Common.IPlayerInventoryManager.CurrentHoveredSlot
+  - Vintagestory.API.Common.IPlayerInventoryManager.DiscardAll
+  - Vintagestory.API.Common.IPlayerInventoryManager.DropAllInventoryItems(Vintagestory.API.Common.IInventory)
+  - Vintagestory.API.Common.IPlayerInventoryManager.DropItem(Vintagestory.API.Common.ItemSlot,System.Boolean)
+  - Vintagestory.API.Common.IPlayerInventoryManager.DropMouseSlotItems(System.Boolean)
+  - Vintagestory.API.Common.IPlayerInventoryManager.Find(System.Func{Vintagestory.API.Common.ItemSlot,System.Boolean})
+  - Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,System.Boolean,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  - Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  - Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarInventory
+  - Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarItemstack(System.Int32)
+  - Vintagestory.API.Common.IPlayerInventoryManager.GetInventory(System.String)
+  - Vintagestory.API.Common.IPlayerInventoryManager.GetInventory(System.String,Vintagestory.API.Common.InventoryBase@)
+  - Vintagestory.API.Common.IPlayerInventoryManager.GetInventoryName(System.String)
+  - Vintagestory.API.Common.IPlayerInventoryManager.GetOwnInventory(System.String)
+  - Vintagestory.API.Common.IPlayerInventoryManager.HasInventory(Vintagestory.API.Common.IInventory)
+  - Vintagestory.API.Common.IPlayerInventoryManager.Inventories
+  - Vintagestory.API.Common.IPlayerInventoryManager.InventoriesOrdered
+  - Vintagestory.API.Common.IPlayerInventoryManager.MouseItemSlot
+  - Vintagestory.API.Common.IPlayerInventoryManager.NotifySlot(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Common.IPlayerInventoryManager.OnDeath
+  - Vintagestory.API.Common.IPlayerInventoryManager.OpenInventory(Vintagestory.API.Common.IInventory)
+  - Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories
+  - Vintagestory.API.Common.IPlayerInventoryManager.TryGiveItemstack(Vintagestory.API.Common.ItemStack,System.Boolean)
+  - Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@,System.Boolean,System.Boolean)
+  - Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@,System.Boolean,System.Text.StringBuilder,System.Boolean)
+  - Vintagestory.API.Common.IPlayerInventoryManager.TryTransferTo(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  langs:
+  - csharp
+  - vb
+  name: IPlayerInventoryManager
+  nameWithType: IPlayerInventoryManager
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IPlayerInventoryManager
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Let's you do various interesting things with the players inventory.
+  example: []
+  syntax:
+    content: public interface IPlayerInventoryManager
+    content.vb: Public Interface IPlayerInventoryManager
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.ActiveTool
+  commentId: P:Vintagestory.API.Common.IPlayerInventoryManager.ActiveTool
+  id: ActiveTool
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: ActiveTool
+  nameWithType: IPlayerInventoryManager.ActiveTool
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.ActiveTool
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ActiveTool
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If the player currently holds a tool in his hands, this value will be set
+  example: []
+  syntax:
+    content: EnumTool? ActiveTool { get; }
+    parameters: []
+    return:
+      type: System.Nullable{Vintagestory.API.Common.EnumTool}
+    content.vb: ReadOnly Property ActiveTool As EnumTool?
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.ActiveTool*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlotNumber
+  commentId: P:Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlotNumber
+  id: ActiveHotbarSlotNumber
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: ActiveHotbarSlotNumber
+  nameWithType: IPlayerInventoryManager.ActiveHotbarSlotNumber
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlotNumber
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ActiveHotbarSlotNumber
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 19
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The players currently active hot bar slot
+  example: []
+  syntax:
+    content: int ActiveHotbarSlotNumber { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Property ActiveHotbarSlotNumber As Integer
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlotNumber*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlot
+  commentId: P:Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlot
+  id: ActiveHotbarSlot
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: ActiveHotbarSlot
+  nameWithType: IPlayerInventoryManager.ActiveHotbarSlot
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlot
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ActiveHotbarSlot
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 25
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the currently selected hotbar slot. Might return null if there is no hotbar!
+  example: []
+  syntax:
+    content: ItemSlot ActiveHotbarSlot { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    content.vb: ReadOnly Property ActiveHotbarSlot As ItemSlot
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlot*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.Inventories
+  commentId: P:Vintagestory.API.Common.IPlayerInventoryManager.Inventories
+  id: Inventories
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: Inventories
+  nameWithType: IPlayerInventoryManager.Inventories
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.Inventories
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Inventories
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 31
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Dictionary of all inventories currently available to the player (some may however not be opened)
+
+    <br />Note: for iterating through these, Inventories.Values will not be ordered.  Instead use InventoriesOrdered if you want consistent ordering on server and client e.g. for shift-click operations
+  example: []
+  syntax:
+    content: Dictionary<string, IInventory> Inventories { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.IInventory}
+    content.vb: ReadOnly Property Inventories As Dictionary(Of String, IInventory)
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.Inventories*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.InventoriesOrdered
+  commentId: P:Vintagestory.API.Common.IPlayerInventoryManager.InventoriesOrdered
+  id: InventoriesOrdered
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: InventoriesOrdered
+  nameWithType: IPlayerInventoryManager.InventoriesOrdered
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.InventoriesOrdered
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InventoriesOrdered
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 36
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: An iterable collection of all inventories currently available to the player, arranged in the same order (by creation order) on both server and client to prevent syncing / ghosting issues
+  example: []
+  syntax:
+    content: IEnumerable<InventoryBase> InventoriesOrdered { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{Vintagestory.API.Common.InventoryBase}
+    content.vb: ReadOnly Property InventoriesOrdered As IEnumerable(Of InventoryBase)
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.InventoriesOrdered*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories
+  commentId: P:Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories
+  id: OpenedInventories
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: OpenedInventories
+  nameWithType: IPlayerInventoryManager.OpenedInventories
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OpenedInventories
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 41
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: List of inventories currently opened by the player
+  example: []
+  syntax:
+    content: List<IInventory> OpenedInventories { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.Common.IInventory}
+    content.vb: ReadOnly Property OpenedInventories As List(Of IInventory)
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.MouseItemSlot
+  commentId: P:Vintagestory.API.Common.IPlayerInventoryManager.MouseItemSlot
+  id: MouseItemSlot
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: MouseItemSlot
+  nameWithType: IPlayerInventoryManager.MouseItemSlot
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.MouseItemSlot
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MouseItemSlot
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 49
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the slot that holds the currently dragged itemstack
+  example: []
+  syntax:
+    content: ItemSlot MouseItemSlot { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    content.vb: ReadOnly Property MouseItemSlot As ItemSlot
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.MouseItemSlot*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.CurrentHoveredSlot
+  commentId: P:Vintagestory.API.Common.IPlayerInventoryManager.CurrentHoveredSlot
+  id: CurrentHoveredSlot
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: CurrentHoveredSlot
+  nameWithType: IPlayerInventoryManager.CurrentHoveredSlot
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.CurrentHoveredSlot
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CurrentHoveredSlot
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 54
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The slot the player currently hovers over with his mouse cursor
+  example: []
+  syntax:
+    content: ItemSlot CurrentHoveredSlot { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.ItemSlot
+    content.vb: Property CurrentHoveredSlot As ItemSlot
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.CurrentHoveredSlot*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.DropMouseSlotItems(System.Boolean)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.DropMouseSlotItems(System.Boolean)
+  id: DropMouseSlotItems(System.Boolean)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: DropMouseSlotItems(bool)
+  nameWithType: IPlayerInventoryManager.DropMouseSlotItems(bool)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.DropMouseSlotItems(bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DropMouseSlotItems
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 62
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Drops the current contents of the mouse slot onto the ground
+  example: []
+  syntax:
+    content: bool DropMouseSlotItems(bool dropAll)
+    parameters:
+    - id: dropAll
+      type: System.Boolean
+      description: If false, will only drop 1
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function DropMouseSlotItems(dropAll As Boolean) As Boolean
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.DropMouseSlotItems*
+  nameWithType.vb: IPlayerInventoryManager.DropMouseSlotItems(Boolean)
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.DropMouseSlotItems(Boolean)
+  name.vb: DropMouseSlotItems(Boolean)
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.DropItem(Vintagestory.API.Common.ItemSlot,System.Boolean)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.DropItem(Vintagestory.API.Common.ItemSlot,System.Boolean)
+  id: DropItem(Vintagestory.API.Common.ItemSlot,System.Boolean)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: DropItem(ItemSlot, bool)
+  nameWithType: IPlayerInventoryManager.DropItem(ItemSlot, bool)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.DropItem(Vintagestory.API.Common.ItemSlot, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DropItem
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 70
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Drops the current contents of given slot onto the ground
+  example: []
+  syntax:
+    content: bool DropItem(ItemSlot slot, bool fullStack)
+    parameters:
+    - id: slot
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    - id: fullStack
+      type: System.Boolean
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function DropItem(slot As ItemSlot, fullStack As Boolean) As Boolean
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.DropItem*
+  nameWithType.vb: IPlayerInventoryManager.DropItem(ItemSlot, Boolean)
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.DropItem(Vintagestory.API.Common.ItemSlot, Boolean)
+  name.vb: DropItem(ItemSlot, Boolean)
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.NotifySlot(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.NotifySlot(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemSlot)
+  id: NotifySlot(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: NotifySlot(IPlayer, ItemSlot)
+  nameWithType: IPlayerInventoryManager.NotifySlot(IPlayer, ItemSlot)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.NotifySlot(Vintagestory.API.Common.IPlayer, Vintagestory.API.Common.ItemSlot)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NotifySlot
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 78
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Produces a visual cue on given slot, if it's currently part of an inventory and visible to the player
+
+    If called on server side, the server will send a network packet to notify the client.
+  example: []
+  syntax:
+    content: void NotifySlot(IPlayer player, ItemSlot slot)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+      description: ''
+    - id: slot
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    content.vb: Sub NotifySlot(player As IPlayer, slot As ItemSlot)
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.NotifySlot*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetInventoryName(System.String)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.GetInventoryName(System.String)
+  id: GetInventoryName(System.String)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: GetInventoryName(string)
+  nameWithType: IPlayerInventoryManager.GetInventoryName(string)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetInventoryName(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetInventoryName
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 85
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the full inventory id for given inventory class name, e.g. GlobalConstants.creativeInvClassName
+  example: []
+  syntax:
+    content: string GetInventoryName(string inventoryClassName)
+    parameters:
+    - id: inventoryClassName
+      type: System.String
+      description: ''
+    return:
+      type: System.String
+      description: ''
+    content.vb: Function GetInventoryName(inventoryClassName As String) As String
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.GetInventoryName*
+  nameWithType.vb: IPlayerInventoryManager.GetInventoryName(String)
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.GetInventoryName(String)
+  name.vb: GetInventoryName(String)
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetOwnInventory(System.String)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.GetOwnInventory(System.String)
+  id: GetOwnInventory(System.String)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: GetOwnInventory(string)
+  nameWithType: IPlayerInventoryManager.GetOwnInventory(string)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetOwnInventory(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetOwnInventory
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 93
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Same as GetInventory() with playeruid appended to the inventoryClassName. Returns null if not found. You can use GlobalConstants.*ClassName to get the vanilla player inventories.
+  example: []
+  syntax:
+    content: IInventory GetOwnInventory(string inventoryClassName)
+    parameters:
+    - id: inventoryClassName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.IInventory
+      description: ''
+    content.vb: Function GetOwnInventory(inventoryClassName As String) As IInventory
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.GetOwnInventory*
+  nameWithType.vb: IPlayerInventoryManager.GetOwnInventory(String)
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.GetOwnInventory(String)
+  name.vb: GetOwnInventory(String)
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetInventory(System.String)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.GetInventory(System.String)
+  id: GetInventory(System.String)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: GetInventory(string)
+  nameWithType: IPlayerInventoryManager.GetInventory(string)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetInventory(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetInventory
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 100
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Retrieve a players inventory. Returns null if not found.
+  example: []
+  syntax:
+    content: IInventory GetInventory(string inventoryId)
+    parameters:
+    - id: inventoryId
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Common.IInventory
+      description: ''
+    content.vb: Function GetInventory(inventoryId As String) As IInventory
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.GetInventory*
+  nameWithType.vb: IPlayerInventoryManager.GetInventory(String)
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.GetInventory(String)
+  name.vb: GetInventory(String)
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarItemstack(System.Int32)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarItemstack(System.Int32)
+  id: GetHotbarItemstack(System.Int32)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: GetHotbarItemstack(int)
+  nameWithType: IPlayerInventoryManager.GetHotbarItemstack(int)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarItemstack(int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetHotbarItemstack
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 108
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Gets the itemstack that in the given slot number of the players hotbar
+  example: []
+  syntax:
+    content: ItemStack GetHotbarItemstack(int slotId)
+    parameters:
+    - id: slotId
+      type: System.Int32
+      description: ''
+    return:
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    content.vb: Function GetHotbarItemstack(slotId As Integer) As ItemStack
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarItemstack*
+  nameWithType.vb: IPlayerInventoryManager.GetHotbarItemstack(Integer)
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarItemstack(Integer)
+  name.vb: GetHotbarItemstack(Integer)
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarInventory
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarInventory
+  id: GetHotbarInventory
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: GetHotbarInventory()
+  nameWithType: IPlayerInventoryManager.GetHotbarInventory()
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarInventory()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetHotbarInventory
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 114
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the hotbar inventory object. Obvious comment is being obvious.
+  example: []
+  syntax:
+    content: IInventory GetHotbarInventory()
+    return:
+      type: Vintagestory.API.Common.IInventory
+      description: ''
+    content.vb: Function GetHotbarInventory() As IInventory
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarInventory*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetInventory(System.String,Vintagestory.API.Common.InventoryBase@)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.GetInventory(System.String,Vintagestory.API.Common.InventoryBase@)
+  id: GetInventory(System.String,Vintagestory.API.Common.InventoryBase@)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: GetInventory(string, out InventoryBase)
+  nameWithType: IPlayerInventoryManager.GetInventory(string, out InventoryBase)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetInventory(string, out Vintagestory.API.Common.InventoryBase)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetInventory
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 122
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns true if the invID is found, and the found IInventory value is in invFound; similar to Dictionary.TryGetValue, invFound is undefined if the result is false
+  example: []
+  syntax:
+    content: bool GetInventory(string invID, out InventoryBase invFound)
+    parameters:
+    - id: invID
+      type: System.String
+      description: ''
+    - id: invFound
+      type: Vintagestory.API.Common.InventoryBase
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function GetInventory(invID As String, invFound As InventoryBase) As Boolean
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.GetInventory*
+  nameWithType.vb: IPlayerInventoryManager.GetInventory(String, InventoryBase)
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.GetInventory(String, Vintagestory.API.Common.InventoryBase)
+  name.vb: GetInventory(String, InventoryBase)
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,System.Boolean,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,System.Boolean,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  id: GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,System.Boolean,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: GetBestSuitedSlot(ItemSlot, bool, ItemStackMoveOperation, List<ItemSlot>)
+  nameWithType: IPlayerInventoryManager.GetBestSuitedSlot(ItemSlot, bool, ItemStackMoveOperation, List<ItemSlot>)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot, bool, Vintagestory.API.Common.ItemStackMoveOperation, System.Collections.Generic.List<Vintagestory.API.Common.ItemSlot>)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetBestSuitedSlot
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 133
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a slot that would best fit the contents of the source slot. This checks all inventories currently opened by the player.
+  example: []
+  syntax:
+    content: ItemSlot GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, ItemStackMoveOperation op = null, List<ItemSlot> skipSlots = null)
+    parameters:
+    - id: sourceSlot
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    - id: onlyPlayerInventory
+      type: System.Boolean
+      description: ''
+    - id: op
+      type: Vintagestory.API.Common.ItemStackMoveOperation
+      description: ''
+    - id: skipSlots
+      type: System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot}
+      description: ''
+    return:
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    content.vb: Function GetBestSuitedSlot(sourceSlot As ItemSlot, onlyPlayerInventory As Boolean, op As ItemStackMoveOperation = Nothing, skipSlots As List(Of ItemSlot) = Nothing) As ItemSlot
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot*
+  nameWithType.vb: IPlayerInventoryManager.GetBestSuitedSlot(ItemSlot, Boolean, ItemStackMoveOperation, List(Of ItemSlot))
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot, Boolean, Vintagestory.API.Common.ItemStackMoveOperation, System.Collections.Generic.List(Of Vintagestory.API.Common.ItemSlot))
+  name.vb: GetBestSuitedSlot(ItemSlot, Boolean, ItemStackMoveOperation, List(Of ItemSlot))
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  id: GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation,System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot})
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: GetBestSuitedSlot(ItemSlot, ItemStackMoveOperation, List<ItemSlot>)
+  nameWithType: IPlayerInventoryManager.GetBestSuitedSlot(ItemSlot, ItemStackMoveOperation, List<ItemSlot>)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation, System.Collections.Generic.List<Vintagestory.API.Common.ItemSlot>)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetBestSuitedSlot
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 134
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [Obsolete("Use GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, ItemStackMoveOperation op, List<ItemSlot> skipSlots = null) instead")]
+
+      ItemSlot GetBestSuitedSlot(ItemSlot sourceSlot, ItemStackMoveOperation op, List<ItemSlot> skipSlots)
+    parameters:
+    - id: sourceSlot
+      type: Vintagestory.API.Common.ItemSlot
+    - id: op
+      type: Vintagestory.API.Common.ItemStackMoveOperation
+    - id: skipSlots
+      type: System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot}
+    return:
+      type: Vintagestory.API.Common.ItemSlot
+    content.vb: >-
+      <Obsolete("Use GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, ItemStackMoveOperation op, List<ItemSlot> skipSlots = null) instead")>
+
+      Function GetBestSuitedSlot(sourceSlot As ItemSlot, op As ItemStackMoveOperation, skipSlots As List(Of ItemSlot)) As ItemSlot
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use GetBestSuitedSlot(ItemSlot sourceSlot, bool onlyPlayerInventory, ItemStackMoveOperation op, List<ItemSlot> skipSlots = null) instead
+  nameWithType.vb: IPlayerInventoryManager.GetBestSuitedSlot(ItemSlot, ItemStackMoveOperation, List(Of ItemSlot))
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation, System.Collections.Generic.List(Of Vintagestory.API.Common.ItemSlot))
+  name.vb: GetBestSuitedSlot(ItemSlot, ItemStackMoveOperation, List(Of ItemSlot))
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@,System.Boolean,System.Boolean)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@,System.Boolean,System.Boolean)
+  id: TryTransferAway(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@,System.Boolean,System.Boolean)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: TryTransferAway(ItemSlot, ref ItemStackMoveOperation, bool, bool)
+  nameWithType: IPlayerInventoryManager.TryTransferAway(ItemSlot, ref ItemStackMoveOperation, bool, bool)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot, ref Vintagestory.API.Common.ItemStackMoveOperation, bool, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryTransferAway
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 145
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Tries to move away items from the source slot into any other slot of another inventory
+  example: []
+  syntax:
+    content: object[] TryTransferAway(ItemSlot sourceSlot, ref ItemStackMoveOperation op, bool onlyPlayerInventory, bool slotNotifyEffect = false)
+    parameters:
+    - id: sourceSlot
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    - id: op
+      type: Vintagestory.API.Common.ItemStackMoveOperation
+      description: ''
+    - id: onlyPlayerInventory
+      type: System.Boolean
+      description: Forces to place the item only into the players personal inventory
+    - id: slotNotifyEffect
+      type: System.Boolean
+      description: ''
+    return:
+      type: System.Object[]
+      description: One or more client packets that may be sent to the server for synchronisation
+    content.vb: Function TryTransferAway(sourceSlot As ItemSlot, op As ItemStackMoveOperation, onlyPlayerInventory As Boolean, slotNotifyEffect As Boolean = False) As Object()
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway*
+  nameWithType.vb: IPlayerInventoryManager.TryTransferAway(ItemSlot, ItemStackMoveOperation, Boolean, Boolean)
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation, Boolean, Boolean)
+  name.vb: TryTransferAway(ItemSlot, ItemStackMoveOperation, Boolean, Boolean)
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@,System.Boolean,System.Text.StringBuilder,System.Boolean)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@,System.Boolean,System.Text.StringBuilder,System.Boolean)
+  id: TryTransferAway(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@,System.Boolean,System.Text.StringBuilder,System.Boolean)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: TryTransferAway(ItemSlot, ref ItemStackMoveOperation, bool, StringBuilder, bool)
+  nameWithType: IPlayerInventoryManager.TryTransferAway(ItemSlot, ref ItemStackMoveOperation, bool, StringBuilder, bool)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot, ref Vintagestory.API.Common.ItemStackMoveOperation, bool, System.Text.StringBuilder, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryTransferAway
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 147
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: object[] TryTransferAway(ItemSlot sourceSlot, ref ItemStackMoveOperation op, bool onlyPlayerInventory, StringBuilder shiftClickDebugText, bool slotNotifyEffect = false)
+    parameters:
+    - id: sourceSlot
+      type: Vintagestory.API.Common.ItemSlot
+    - id: op
+      type: Vintagestory.API.Common.ItemStackMoveOperation
+    - id: onlyPlayerInventory
+      type: System.Boolean
+    - id: shiftClickDebugText
+      type: System.Text.StringBuilder
+    - id: slotNotifyEffect
+      type: System.Boolean
+    return:
+      type: System.Object[]
+    content.vb: Function TryTransferAway(sourceSlot As ItemSlot, op As ItemStackMoveOperation, onlyPlayerInventory As Boolean, shiftClickDebugText As StringBuilder, slotNotifyEffect As Boolean = False) As Object()
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway*
+  nameWithType.vb: IPlayerInventoryManager.TryTransferAway(ItemSlot, ItemStackMoveOperation, Boolean, StringBuilder, Boolean)
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation, Boolean, System.Text.StringBuilder, Boolean)
+  name.vb: TryTransferAway(ItemSlot, ItemStackMoveOperation, Boolean, StringBuilder, Boolean)
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferTo(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.TryTransferTo(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  id: TryTransferTo(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: TryTransferTo(ItemSlot, ItemSlot, ref ItemStackMoveOperation)
+  nameWithType: IPlayerInventoryManager.TryTransferTo(ItemSlot, ItemSlot, ref ItemStackMoveOperation)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferTo(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemSlot, ref Vintagestory.API.Common.ItemStackMoveOperation)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryTransferTo
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 156
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Tries to move items from source slot to target slot (useful for client side inventory utilities)
+  example: []
+  syntax:
+    content: object TryTransferTo(ItemSlot sourceSlot, ItemSlot targetSlot, ref ItemStackMoveOperation op)
+    parameters:
+    - id: sourceSlot
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    - id: targetSlot
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    - id: op
+      type: Vintagestory.API.Common.ItemStackMoveOperation
+      description: If successfull, a client packet that may be sent to the server for synchronisation
+    return:
+      type: System.Object
+      description: ''
+    content.vb: Function TryTransferTo(sourceSlot As ItemSlot, targetSlot As ItemSlot, op As ItemStackMoveOperation) As Object
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferTo*
+  nameWithType.vb: IPlayerInventoryManager.TryTransferTo(ItemSlot, ItemSlot, ItemStackMoveOperation)
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferTo(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation)
+  name.vb: TryTransferTo(ItemSlot, ItemSlot, ItemStackMoveOperation)
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.TryGiveItemstack(Vintagestory.API.Common.ItemStack,System.Boolean)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.TryGiveItemstack(Vintagestory.API.Common.ItemStack,System.Boolean)
+  id: TryGiveItemstack(Vintagestory.API.Common.ItemStack,System.Boolean)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: TryGiveItemstack(ItemStack, bool)
+  nameWithType: IPlayerInventoryManager.TryGiveItemstack(ItemStack, bool)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.TryGiveItemstack(Vintagestory.API.Common.ItemStack, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TryGiveItemstack
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 164
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Tries to add given itemstack to the players inventory
+  example: []
+  syntax:
+    content: bool TryGiveItemstack(ItemStack itemstack, bool slotNotifyEffect = false)
+    parameters:
+    - id: itemstack
+      type: Vintagestory.API.Common.ItemStack
+      description: ''
+    - id: slotNotifyEffect
+      type: System.Boolean
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function TryGiveItemstack(itemstack As ItemStack, slotNotifyEffect As Boolean = False) As Boolean
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.TryGiveItemstack*
+  nameWithType.vb: IPlayerInventoryManager.TryGiveItemstack(ItemStack, Boolean)
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.TryGiveItemstack(Vintagestory.API.Common.ItemStack, Boolean)
+  name.vb: TryGiveItemstack(ItemStack, Boolean)
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.OpenInventory(Vintagestory.API.Common.IInventory)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.OpenInventory(Vintagestory.API.Common.IInventory)
+  id: OpenInventory(Vintagestory.API.Common.IInventory)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: OpenInventory(IInventory)
+  nameWithType: IPlayerInventoryManager.OpenInventory(IInventory)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.OpenInventory(Vintagestory.API.Common.IInventory)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OpenInventory
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 172
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Notifies the inventory manager that the player has opened an inventory. Should always be called on both sides (client and server).
+
+    Only then interaction with other inventories becomes possible
+  example: []
+  syntax:
+    content: object OpenInventory(IInventory inventory)
+    parameters:
+    - id: inventory
+      type: Vintagestory.API.Common.IInventory
+      description: ''
+    return:
+      type: System.Object
+    content.vb: Function OpenInventory(inventory As IInventory) As Object
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.OpenInventory*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.CloseInventory(Vintagestory.API.Common.IInventory)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.CloseInventory(Vintagestory.API.Common.IInventory)
+  id: CloseInventory(Vintagestory.API.Common.IInventory)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: CloseInventory(IInventory)
+  nameWithType: IPlayerInventoryManager.CloseInventory(IInventory)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.CloseInventory(Vintagestory.API.Common.IInventory)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CloseInventory
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 178
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Notifies the inventory manager that the player has closed an inventory. Should always be called on both sides (client and server). After closing interaction with given inventory becomes no longer possible until reopened
+  example: []
+  syntax:
+    content: object CloseInventory(IInventory inventory)
+    parameters:
+    - id: inventory
+      type: Vintagestory.API.Common.IInventory
+      description: ''
+    return:
+      type: System.Object
+    content.vb: Function CloseInventory(inventory As IInventory) As Object
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.CloseInventory*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.Find(System.Func{Vintagestory.API.Common.ItemSlot,System.Boolean})
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.Find(System.Func{Vintagestory.API.Common.ItemSlot,System.Boolean})
+  id: Find(System.Func{Vintagestory.API.Common.ItemSlot,System.Boolean})
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: Find(Func<ItemSlot, bool>)
+  nameWithType: IPlayerInventoryManager.Find(Func<ItemSlot, bool>)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.Find(System.Func<Vintagestory.API.Common.ItemSlot, bool>)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Find
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 185
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Iterates over all inventory slots, returns true if your matcher returns true
+  example: []
+  syntax:
+    content: bool Find(Func<ItemSlot, bool> matcher)
+    parameters:
+    - id: matcher
+      type: System.Func{Vintagestory.API.Common.ItemSlot,System.Boolean}
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function Find(matcher As Func(Of ItemSlot, Boolean)) As Boolean
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.Find*
+  nameWithType.vb: IPlayerInventoryManager.Find(Func(Of ItemSlot, Boolean))
+  fullName.vb: Vintagestory.API.Common.IPlayerInventoryManager.Find(System.Func(Of Vintagestory.API.Common.ItemSlot, Boolean))
+  name.vb: Find(Func(Of ItemSlot, Boolean))
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.HasInventory(Vintagestory.API.Common.IInventory)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.HasInventory(Vintagestory.API.Common.IInventory)
+  id: HasInventory(Vintagestory.API.Common.IInventory)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: HasInventory(IInventory)
+  nameWithType: IPlayerInventoryManager.HasInventory(IInventory)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.HasInventory(Vintagestory.API.Common.IInventory)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: HasInventory
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 192
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Shorthand for Inventories.ContainsValue(inventory)
+  example: []
+  syntax:
+    content: bool HasInventory(IInventory inventory)
+    parameters:
+    - id: inventory
+      type: Vintagestory.API.Common.IInventory
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function HasInventory(inventory As IInventory) As Boolean
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.HasInventory*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.DiscardAll
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.DiscardAll
+  id: DiscardAll
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: DiscardAll()
+  nameWithType: IPlayerInventoryManager.DiscardAll()
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.DiscardAll()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DiscardAll
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 197
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Will discard all of the players inventory contents
+  example: []
+  syntax:
+    content: void DiscardAll()
+    content.vb: Sub DiscardAll()
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.DiscardAll*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.OnDeath
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.OnDeath
+  id: OnDeath
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: OnDeath()
+  nameWithType: IPlayerInventoryManager.OnDeath()
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.OnDeath()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnDeath
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 202
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Will drop all of the players inventory contents
+  example: []
+  syntax:
+    content: void OnDeath()
+    content.vb: Sub OnDeath()
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.OnDeath*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.DropAllInventoryItems(Vintagestory.API.Common.IInventory)
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.DropAllInventoryItems(Vintagestory.API.Common.IInventory)
+  id: DropAllInventoryItems(Vintagestory.API.Common.IInventory)
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: DropAllInventoryItems(IInventory)
+  nameWithType: IPlayerInventoryManager.DropAllInventoryItems(IInventory)
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.DropAllInventoryItems(Vintagestory.API.Common.IInventory)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DropAllInventoryItems
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 208
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Drops the contents of given inventory
+  example: []
+  syntax:
+    content: void DropAllInventoryItems(IInventory inv)
+    parameters:
+    - id: inv
+      type: Vintagestory.API.Common.IInventory
+      description: ''
+    content.vb: Sub DropAllInventoryItems(inv As IInventory)
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.DropAllInventoryItems*
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.BroadcastHotbarSlot
+  commentId: M:Vintagestory.API.Common.IPlayerInventoryManager.BroadcastHotbarSlot
+  id: BroadcastHotbarSlot
+  parent: Vintagestory.API.Common.IPlayerInventoryManager
+  langs:
+  - csharp
+  - vb
+  name: BroadcastHotbarSlot()
+  nameWithType: IPlayerInventoryManager.BroadcastHotbarSlot()
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.BroadcastHotbarSlot()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/Player/IPlayerInventoryManager.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BroadcastHotbarSlot
+    path: Common/Entity/Player/IPlayerInventoryManager.cs
+    startLine: 214
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Server Side: Resends the hotbar slot contents to all other clients to make sure they render the correct held item
+
+    Client side: No effect
+  example: []
+  syntax:
+    content: void BroadcastHotbarSlot()
+    content.vb: Sub BroadcastHotbarSlot()
+  overload: Vintagestory.API.Common.IPlayerInventoryManager.BroadcastHotbarSlot*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.ActiveTool*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.ActiveTool
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_ActiveTool
+  name: ActiveTool
+  nameWithType: IPlayerInventoryManager.ActiveTool
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.ActiveTool
+- uid: System.Nullable{Vintagestory.API.Common.EnumTool}
+  commentId: T:System.Nullable{Vintagestory.API.Common.EnumTool}
+  parent: System
+  definition: System.Nullable`1
+  href: Vintagestory.API.Common.EnumTool.html
+  name: EnumTool?
+  nameWithType: EnumTool?
+  fullName: Vintagestory.API.Common.EnumTool?
+  spec.csharp:
+  - uid: Vintagestory.API.Common.EnumTool
+    name: EnumTool
+    href: Vintagestory.API.Common.EnumTool.html
+  - name: '?'
+  spec.vb:
+  - uid: Vintagestory.API.Common.EnumTool
+    name: EnumTool
+    href: Vintagestory.API.Common.EnumTool.html
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlotNumber*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlotNumber
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_ActiveHotbarSlotNumber
+  name: ActiveHotbarSlotNumber
+  nameWithType: IPlayerInventoryManager.ActiveHotbarSlotNumber
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlotNumber
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlot*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlot
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_ActiveHotbarSlot
+  name: ActiveHotbarSlot
+  nameWithType: IPlayerInventoryManager.ActiveHotbarSlot
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.ActiveHotbarSlot
+- uid: Vintagestory.API.Common.ItemSlot
+  commentId: T:Vintagestory.API.Common.ItemSlot
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemSlot.html
+  name: ItemSlot
+  nameWithType: ItemSlot
+  fullName: Vintagestory.API.Common.ItemSlot
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.Inventories*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.Inventories
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_Inventories
+  name: Inventories
+  nameWithType: IPlayerInventoryManager.Inventories
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.Inventories
+- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.IInventory}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.IInventory}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, IInventory>
+  nameWithType: Dictionary<string, IInventory>
+  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.IInventory>
+  nameWithType.vb: Dictionary(Of String, IInventory)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.IInventory)
+  name.vb: Dictionary(Of String, IInventory)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IInventory
+    name: IInventory
+    href: Vintagestory.API.Common.IInventory.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IInventory
+    name: IInventory
+    href: Vintagestory.API.Common.IInventory.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.InventoriesOrdered*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.InventoriesOrdered
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_InventoriesOrdered
+  name: InventoriesOrdered
+  nameWithType: IPlayerInventoryManager.InventoriesOrdered
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.InventoriesOrdered
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Common.InventoryBase}
+  commentId: T:System.Collections.Generic.IEnumerable{Vintagestory.API.Common.InventoryBase}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<InventoryBase>
+  nameWithType: IEnumerable<InventoryBase>
+  fullName: System.Collections.Generic.IEnumerable<Vintagestory.API.Common.InventoryBase>
+  nameWithType.vb: IEnumerable(Of InventoryBase)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Vintagestory.API.Common.InventoryBase)
+  name.vb: IEnumerable(Of InventoryBase)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vintagestory.API.Common.InventoryBase
+    name: InventoryBase
+    href: Vintagestory.API.Common.InventoryBase.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.InventoryBase
+    name: InventoryBase
+    href: Vintagestory.API.Common.InventoryBase.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_OpenedInventories
+  name: OpenedInventories
+  nameWithType: IPlayerInventoryManager.OpenedInventories
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.OpenedInventories
+- uid: System.Collections.Generic.List{Vintagestory.API.Common.IInventory}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.IInventory}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<IInventory>
+  nameWithType: List<IInventory>
+  fullName: System.Collections.Generic.List<Vintagestory.API.Common.IInventory>
+  nameWithType.vb: List(Of IInventory)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Common.IInventory)
+  name.vb: List(Of IInventory)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Common.IInventory
+    name: IInventory
+    href: Vintagestory.API.Common.IInventory.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.IInventory
+    name: IInventory
+    href: Vintagestory.API.Common.IInventory.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.MouseItemSlot*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.MouseItemSlot
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_MouseItemSlot
+  name: MouseItemSlot
+  nameWithType: IPlayerInventoryManager.MouseItemSlot
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.MouseItemSlot
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.CurrentHoveredSlot*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.CurrentHoveredSlot
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_CurrentHoveredSlot
+  name: CurrentHoveredSlot
+  nameWithType: IPlayerInventoryManager.CurrentHoveredSlot
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.CurrentHoveredSlot
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.DropMouseSlotItems*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.DropMouseSlotItems
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_DropMouseSlotItems_System_Boolean_
+  name: DropMouseSlotItems
+  nameWithType: IPlayerInventoryManager.DropMouseSlotItems
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.DropMouseSlotItems
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.DropItem*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.DropItem
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_DropItem_Vintagestory_API_Common_ItemSlot_System_Boolean_
+  name: DropItem
+  nameWithType: IPlayerInventoryManager.DropItem
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.DropItem
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.NotifySlot*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.NotifySlot
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_NotifySlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot_
+  name: NotifySlot
+  nameWithType: IPlayerInventoryManager.NotifySlot
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.NotifySlot
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetInventoryName*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.GetInventoryName
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_GetInventoryName_System_String_
+  name: GetInventoryName
+  nameWithType: IPlayerInventoryManager.GetInventoryName
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetInventoryName
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetOwnInventory*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.GetOwnInventory
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_GetOwnInventory_System_String_
+  name: GetOwnInventory
+  nameWithType: IPlayerInventoryManager.GetOwnInventory
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetOwnInventory
+- uid: Vintagestory.API.Common.IInventory
+  commentId: T:Vintagestory.API.Common.IInventory
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IInventory.html
+  name: IInventory
+  nameWithType: IInventory
+  fullName: Vintagestory.API.Common.IInventory
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetInventory*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.GetInventory
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_GetInventory_System_String_
+  name: GetInventory
+  nameWithType: IPlayerInventoryManager.GetInventory
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetInventory
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarItemstack*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarItemstack
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_GetHotbarItemstack_System_Int32_
+  name: GetHotbarItemstack
+  nameWithType: IPlayerInventoryManager.GetHotbarItemstack
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarItemstack
+- uid: Vintagestory.API.Common.ItemStack
+  commentId: T:Vintagestory.API.Common.ItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemStack.html
+  name: ItemStack
+  nameWithType: ItemStack
+  fullName: Vintagestory.API.Common.ItemStack
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarInventory*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarInventory
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_GetHotbarInventory
+  name: GetHotbarInventory
+  nameWithType: IPlayerInventoryManager.GetHotbarInventory
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetHotbarInventory
+- uid: Vintagestory.API.Common.InventoryBase
+  commentId: T:Vintagestory.API.Common.InventoryBase
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.InventoryBase.html
+  name: InventoryBase
+  nameWithType: InventoryBase
+  fullName: Vintagestory.API.Common.InventoryBase
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_GetBestSuitedSlot_Vintagestory_API_Common_ItemSlot_System_Boolean_Vintagestory_API_Common_ItemStackMoveOperation_System_Collections_Generic_List_Vintagestory_API_Common_ItemSlot__
+  name: GetBestSuitedSlot
+  nameWithType: IPlayerInventoryManager.GetBestSuitedSlot
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.GetBestSuitedSlot
+- uid: Vintagestory.API.Common.ItemStackMoveOperation
+  commentId: T:Vintagestory.API.Common.ItemStackMoveOperation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  name: ItemStackMoveOperation
+  nameWithType: ItemStackMoveOperation
+  fullName: Vintagestory.API.Common.ItemStackMoveOperation
+- uid: System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.ItemSlot}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<ItemSlot>
+  nameWithType: List<ItemSlot>
+  fullName: System.Collections.Generic.List<Vintagestory.API.Common.ItemSlot>
+  nameWithType.vb: List(Of ItemSlot)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Common.ItemSlot)
+  name.vb: List(Of ItemSlot)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_TryTransferAway_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__System_Boolean_System_Boolean_
+  name: TryTransferAway
+  nameWithType: IPlayerInventoryManager.TryTransferAway
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferAway
+- uid: System.Object[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object[]
+  nameWithType: object[]
+  fullName: object[]
+  nameWithType.vb: Object()
+  fullName.vb: Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
+- uid: System.Text.StringBuilder
+  commentId: T:System.Text.StringBuilder
+  parent: System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
+  name: StringBuilder
+  nameWithType: StringBuilder
+  fullName: System.Text.StringBuilder
+- uid: System.Text
+  commentId: N:System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text
+  nameWithType: System.Text
+  fullName: System.Text
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferTo*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.TryTransferTo
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_TryTransferTo_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  name: TryTransferTo
+  nameWithType: IPlayerInventoryManager.TryTransferTo
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.TryTransferTo
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.TryGiveItemstack*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.TryGiveItemstack
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_TryGiveItemstack_Vintagestory_API_Common_ItemStack_System_Boolean_
+  name: TryGiveItemstack
+  nameWithType: IPlayerInventoryManager.TryGiveItemstack
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.TryGiveItemstack
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.OpenInventory*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.OpenInventory
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_OpenInventory_Vintagestory_API_Common_IInventory_
+  name: OpenInventory
+  nameWithType: IPlayerInventoryManager.OpenInventory
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.OpenInventory
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.CloseInventory*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.CloseInventory
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_CloseInventory_Vintagestory_API_Common_IInventory_
+  name: CloseInventory
+  nameWithType: IPlayerInventoryManager.CloseInventory
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.CloseInventory
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.Find*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.Find
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_Find_System_Func_Vintagestory_API_Common_ItemSlot_System_Boolean__
+  name: Find
+  nameWithType: IPlayerInventoryManager.Find
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.Find
+- uid: System.Func{Vintagestory.API.Common.ItemSlot,System.Boolean}
+  commentId: T:System.Func{Vintagestory.API.Common.ItemSlot,System.Boolean}
+  parent: System
+  definition: System.Func`2
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<ItemSlot, bool>
+  nameWithType: Func<ItemSlot, bool>
+  fullName: System.Func<Vintagestory.API.Common.ItemSlot, bool>
+  nameWithType.vb: Func(Of ItemSlot, Boolean)
+  fullName.vb: System.Func(Of Vintagestory.API.Common.ItemSlot, Boolean)
+  name.vb: Func(Of ItemSlot, Boolean)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Func`2
+  commentId: T:System.Func`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.func-2
+  name: Func<T, TResult>
+  nameWithType: Func<T, TResult>
+  fullName: System.Func<T, TResult>
+  nameWithType.vb: Func(Of T, TResult)
+  fullName.vb: System.Func(Of T, TResult)
+  name.vb: Func(Of T, TResult)
+  spec.csharp:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.HasInventory*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.HasInventory
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_HasInventory_Vintagestory_API_Common_IInventory_
+  name: HasInventory
+  nameWithType: IPlayerInventoryManager.HasInventory
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.HasInventory
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.DiscardAll*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.DiscardAll
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_DiscardAll
+  name: DiscardAll
+  nameWithType: IPlayerInventoryManager.DiscardAll
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.DiscardAll
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.OnDeath*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.OnDeath
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_OnDeath
+  name: OnDeath
+  nameWithType: IPlayerInventoryManager.OnDeath
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.OnDeath
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.DropAllInventoryItems*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.DropAllInventoryItems
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_DropAllInventoryItems_Vintagestory_API_Common_IInventory_
+  name: DropAllInventoryItems
+  nameWithType: IPlayerInventoryManager.DropAllInventoryItems
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.DropAllInventoryItems
+- uid: Vintagestory.API.Common.IPlayerInventoryManager.BroadcastHotbarSlot*
+  commentId: Overload:Vintagestory.API.Common.IPlayerInventoryManager.BroadcastHotbarSlot
+  href: Vintagestory.API.Common.IPlayerInventoryManager.html#Vintagestory_API_Common_IPlayerInventoryManager_BroadcastHotbarSlot
+  name: BroadcastHotbarSlot
+  nameWithType: IPlayerInventoryManager.BroadcastHotbarSlot
+  fullName: Vintagestory.API.Common.IPlayerInventoryManager.BroadcastHotbarSlot

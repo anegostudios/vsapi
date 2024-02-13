@@ -1,0 +1,1078 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ItemSlotUniversal
+  commentId: T:Vintagestory.API.Common.ItemSlotUniversal
+  id: ItemSlotUniversal
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.ItemSlotUniversal.#ctor(Vintagestory.API.Common.InventoryBase)
+  - Vintagestory.API.Common.ItemSlotUniversal.StorageType
+  langs:
+  - csharp
+  - vb
+  name: ItemSlotUniversal
+  nameWithType: ItemSlotUniversal
+  fullName: Vintagestory.API.Common.ItemSlotUniversal
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/ItemSlotUniversal.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ItemSlotUniversal
+    path: Common/Inventory/ItemSlotUniversal.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: A universal item slot type that can hold anything.
+  example: []
+  syntax:
+    content: 'public class ItemSlotUniversal : ItemSlot'
+    content.vb: Public Class ItemSlotUniversal Inherits ItemSlot
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Common.ItemSlot
+  inheritedMembers:
+  - Vintagestory.API.Common.ItemSlot.MarkedDirty
+  - Vintagestory.API.Common.ItemSlot.MaxSlotStackSize
+  - Vintagestory.API.Common.ItemSlot.itemstack
+  - Vintagestory.API.Common.ItemSlot.inventory
+  - Vintagestory.API.Common.ItemSlot.Inventory
+  - Vintagestory.API.Common.ItemSlot.BackgroundIcon
+  - Vintagestory.API.Common.ItemSlot.DrawUnavailable
+  - Vintagestory.API.Common.ItemSlot.HexBackgroundColor
+  - Vintagestory.API.Common.ItemSlot.Itemstack
+  - Vintagestory.API.Common.ItemSlot.StackSize
+  - Vintagestory.API.Common.ItemSlot.Empty
+  - Vintagestory.API.Common.ItemSlot.GetRemainingSlotSpace(Vintagestory.API.Common.ItemStack)
+  - Vintagestory.API.Common.ItemSlot.CanTakeFrom(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EnumMergePriority)
+  - Vintagestory.API.Common.ItemSlot.CanHold(Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Common.ItemSlot.CanTake
+  - Vintagestory.API.Common.ItemSlot.TakeOutWhole
+  - Vintagestory.API.Common.ItemSlot.TakeOut(System.Int32)
+  - Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Int32)
+  - Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  - Vintagestory.API.Common.ItemSlot.TryFlipWith(Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Common.ItemSlot.FlipWith(Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Common.ItemSlot.ActivateSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  - Vintagestory.API.Common.ItemSlot.ActivateSlotLeftClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  - Vintagestory.API.Common.ItemSlot.ActivateSlotMiddleClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  - Vintagestory.API.Common.ItemSlot.ActivateSlotRightClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  - Vintagestory.API.Common.ItemSlot.OnItemSlotModified(Vintagestory.API.Common.ItemStack)
+  - Vintagestory.API.Common.ItemSlot.MarkDirty
+  - Vintagestory.API.Common.ItemSlot.GetStackName
+  - Vintagestory.API.Common.ItemSlot.GetStackDescription(Vintagestory.API.Client.IClientWorldAccessor,System.Boolean)
+  - Vintagestory.API.Common.ItemSlot.ToString
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Vintagestory.API.Common.ItemSlotUniversal.#ctor(Vintagestory.API.Common.InventoryBase)
+  commentId: M:Vintagestory.API.Common.ItemSlotUniversal.#ctor(Vintagestory.API.Common.InventoryBase)
+  id: '#ctor(Vintagestory.API.Common.InventoryBase)'
+  parent: Vintagestory.API.Common.ItemSlotUniversal
+  langs:
+  - csharp
+  - vb
+  name: ItemSlotUniversal(InventoryBase)
+  nameWithType: ItemSlotUniversal.ItemSlotUniversal(InventoryBase)
+  fullName: Vintagestory.API.Common.ItemSlotUniversal.ItemSlotUniversal(Vintagestory.API.Common.InventoryBase)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/ItemSlotUniversal.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Inventory/ItemSlotUniversal.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public ItemSlotUniversal(InventoryBase inventory)
+    parameters:
+    - id: inventory
+      type: Vintagestory.API.Common.InventoryBase
+    content.vb: Public Sub New(inventory As InventoryBase)
+  overload: Vintagestory.API.Common.ItemSlotUniversal.#ctor*
+  nameWithType.vb: ItemSlotUniversal.New(InventoryBase)
+  fullName.vb: Vintagestory.API.Common.ItemSlotUniversal.New(Vintagestory.API.Common.InventoryBase)
+  name.vb: New(InventoryBase)
+- uid: Vintagestory.API.Common.ItemSlotUniversal.StorageType
+  commentId: P:Vintagestory.API.Common.ItemSlotUniversal.StorageType
+  id: StorageType
+  parent: Vintagestory.API.Common.ItemSlotUniversal
+  langs:
+  - csharp
+  - vb
+  name: StorageType
+  nameWithType: ItemSlotUniversal.StorageType
+  fullName: Vintagestory.API.Common.ItemSlotUniversal.StorageType
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/ItemSlotUniversal.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: StorageType
+    path: Common/Inventory/ItemSlotUniversal.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The storage type of this slot.
+  example: []
+  syntax:
+    content: public override EnumItemStorageFlags StorageType { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.EnumItemStorageFlags
+    content.vb: Public Overrides Property StorageType As EnumItemStorageFlags
+  overridden: Vintagestory.API.Common.ItemSlot.StorageType
+  overload: Vintagestory.API.Common.ItemSlotUniversal.StorageType*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.ItemSlot
+  commentId: T:Vintagestory.API.Common.ItemSlot
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemSlot.html
+  name: ItemSlot
+  nameWithType: ItemSlot
+  fullName: Vintagestory.API.Common.ItemSlot
+- uid: Vintagestory.API.Common.ItemSlot.MarkedDirty
+  commentId: E:Vintagestory.API.Common.ItemSlot.MarkedDirty
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_MarkedDirty
+  name: MarkedDirty
+  nameWithType: ItemSlot.MarkedDirty
+  fullName: Vintagestory.API.Common.ItemSlot.MarkedDirty
+- uid: Vintagestory.API.Common.ItemSlot.MaxSlotStackSize
+  commentId: P:Vintagestory.API.Common.ItemSlot.MaxSlotStackSize
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_MaxSlotStackSize
+  name: MaxSlotStackSize
+  nameWithType: ItemSlot.MaxSlotStackSize
+  fullName: Vintagestory.API.Common.ItemSlot.MaxSlotStackSize
+- uid: Vintagestory.API.Common.ItemSlot.itemstack
+  commentId: F:Vintagestory.API.Common.ItemSlot.itemstack
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_itemstack
+  name: itemstack
+  nameWithType: ItemSlot.itemstack
+  fullName: Vintagestory.API.Common.ItemSlot.itemstack
+- uid: Vintagestory.API.Common.ItemSlot.inventory
+  commentId: F:Vintagestory.API.Common.ItemSlot.inventory
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_inventory
+  name: inventory
+  nameWithType: ItemSlot.inventory
+  fullName: Vintagestory.API.Common.ItemSlot.inventory
+- uid: Vintagestory.API.Common.ItemSlot.Inventory
+  commentId: P:Vintagestory.API.Common.ItemSlot.Inventory
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_Inventory
+  name: Inventory
+  nameWithType: ItemSlot.Inventory
+  fullName: Vintagestory.API.Common.ItemSlot.Inventory
+- uid: Vintagestory.API.Common.ItemSlot.BackgroundIcon
+  commentId: F:Vintagestory.API.Common.ItemSlot.BackgroundIcon
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_BackgroundIcon
+  name: BackgroundIcon
+  nameWithType: ItemSlot.BackgroundIcon
+  fullName: Vintagestory.API.Common.ItemSlot.BackgroundIcon
+- uid: Vintagestory.API.Common.ItemSlot.DrawUnavailable
+  commentId: P:Vintagestory.API.Common.ItemSlot.DrawUnavailable
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_DrawUnavailable
+  name: DrawUnavailable
+  nameWithType: ItemSlot.DrawUnavailable
+  fullName: Vintagestory.API.Common.ItemSlot.DrawUnavailable
+- uid: Vintagestory.API.Common.ItemSlot.HexBackgroundColor
+  commentId: F:Vintagestory.API.Common.ItemSlot.HexBackgroundColor
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_HexBackgroundColor
+  name: HexBackgroundColor
+  nameWithType: ItemSlot.HexBackgroundColor
+  fullName: Vintagestory.API.Common.ItemSlot.HexBackgroundColor
+- uid: Vintagestory.API.Common.ItemSlot.Itemstack
+  commentId: P:Vintagestory.API.Common.ItemSlot.Itemstack
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_Itemstack
+  name: Itemstack
+  nameWithType: ItemSlot.Itemstack
+  fullName: Vintagestory.API.Common.ItemSlot.Itemstack
+- uid: Vintagestory.API.Common.ItemSlot.StackSize
+  commentId: P:Vintagestory.API.Common.ItemSlot.StackSize
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_StackSize
+  name: StackSize
+  nameWithType: ItemSlot.StackSize
+  fullName: Vintagestory.API.Common.ItemSlot.StackSize
+- uid: Vintagestory.API.Common.ItemSlot.Empty
+  commentId: P:Vintagestory.API.Common.ItemSlot.Empty
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_Empty
+  name: Empty
+  nameWithType: ItemSlot.Empty
+  fullName: Vintagestory.API.Common.ItemSlot.Empty
+- uid: Vintagestory.API.Common.ItemSlot.GetRemainingSlotSpace(Vintagestory.API.Common.ItemStack)
+  commentId: M:Vintagestory.API.Common.ItemSlot.GetRemainingSlotSpace(Vintagestory.API.Common.ItemStack)
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_GetRemainingSlotSpace_Vintagestory_API_Common_ItemStack_
+  name: GetRemainingSlotSpace(ItemStack)
+  nameWithType: ItemSlot.GetRemainingSlotSpace(ItemStack)
+  fullName: Vintagestory.API.Common.ItemSlot.GetRemainingSlotSpace(Vintagestory.API.Common.ItemStack)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.GetRemainingSlotSpace(Vintagestory.API.Common.ItemStack)
+    name: GetRemainingSlotSpace
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_GetRemainingSlotSpace_Vintagestory_API_Common_ItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.GetRemainingSlotSpace(Vintagestory.API.Common.ItemStack)
+    name: GetRemainingSlotSpace
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_GetRemainingSlotSpace_Vintagestory_API_Common_ItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.CanTakeFrom(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EnumMergePriority)
+  commentId: M:Vintagestory.API.Common.ItemSlot.CanTakeFrom(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EnumMergePriority)
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_CanTakeFrom_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EnumMergePriority_
+  name: CanTakeFrom(ItemSlot, EnumMergePriority)
+  nameWithType: ItemSlot.CanTakeFrom(ItemSlot, EnumMergePriority)
+  fullName: Vintagestory.API.Common.ItemSlot.CanTakeFrom(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.EnumMergePriority)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.CanTakeFrom(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EnumMergePriority)
+    name: CanTakeFrom
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_CanTakeFrom_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EnumMergePriority_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumMergePriority
+    name: EnumMergePriority
+    href: Vintagestory.API.Common.EnumMergePriority.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.CanTakeFrom(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EnumMergePriority)
+    name: CanTakeFrom
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_CanTakeFrom_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EnumMergePriority_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumMergePriority
+    name: EnumMergePriority
+    href: Vintagestory.API.Common.EnumMergePriority.html
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.CanHold(Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Common.ItemSlot.CanHold(Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_CanHold_Vintagestory_API_Common_ItemSlot_
+  name: CanHold(ItemSlot)
+  nameWithType: ItemSlot.CanHold(ItemSlot)
+  fullName: Vintagestory.API.Common.ItemSlot.CanHold(Vintagestory.API.Common.ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.CanHold(Vintagestory.API.Common.ItemSlot)
+    name: CanHold
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_CanHold_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.CanHold(Vintagestory.API.Common.ItemSlot)
+    name: CanHold
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_CanHold_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.CanTake
+  commentId: M:Vintagestory.API.Common.ItemSlot.CanTake
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_CanTake
+  name: CanTake()
+  nameWithType: ItemSlot.CanTake()
+  fullName: Vintagestory.API.Common.ItemSlot.CanTake()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.CanTake
+    name: CanTake
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_CanTake
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.CanTake
+    name: CanTake
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_CanTake
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.TakeOutWhole
+  commentId: M:Vintagestory.API.Common.ItemSlot.TakeOutWhole
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TakeOutWhole
+  name: TakeOutWhole()
+  nameWithType: ItemSlot.TakeOutWhole()
+  fullName: Vintagestory.API.Common.ItemSlot.TakeOutWhole()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.TakeOutWhole
+    name: TakeOutWhole
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TakeOutWhole
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.TakeOutWhole
+    name: TakeOutWhole
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TakeOutWhole
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.TakeOut(System.Int32)
+  commentId: M:Vintagestory.API.Common.ItemSlot.TakeOut(System.Int32)
+  parent: Vintagestory.API.Common.ItemSlot
+  isExternal: true
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TakeOut_System_Int32_
+  name: TakeOut(int)
+  nameWithType: ItemSlot.TakeOut(int)
+  fullName: Vintagestory.API.Common.ItemSlot.TakeOut(int)
+  nameWithType.vb: ItemSlot.TakeOut(Integer)
+  fullName.vb: Vintagestory.API.Common.ItemSlot.TakeOut(Integer)
+  name.vb: TakeOut(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.TakeOut(System.Int32)
+    name: TakeOut
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TakeOut_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.TakeOut(System.Int32)
+    name: TakeOut
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TakeOut_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Int32)
+  commentId: M:Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Int32)
+  parent: Vintagestory.API.Common.ItemSlot
+  isExternal: true
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TryPutInto_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_System_Int32_
+  name: TryPutInto(IWorldAccessor, ItemSlot, int)
+  nameWithType: ItemSlot.TryPutInto(IWorldAccessor, ItemSlot, int)
+  fullName: Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemSlot, int)
+  nameWithType.vb: ItemSlot.TryPutInto(IWorldAccessor, ItemSlot, Integer)
+  fullName.vb: Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemSlot, Integer)
+  name.vb: TryPutInto(IWorldAccessor, ItemSlot, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Int32)
+    name: TryPutInto
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TryPutInto_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Int32)
+    name: TryPutInto
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TryPutInto_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  commentId: M:Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TryPutInto_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  name: TryPutInto(ItemSlot, ref ItemStackMoveOperation)
+  nameWithType: ItemSlot.TryPutInto(ItemSlot, ref ItemStackMoveOperation)
+  fullName: Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.ItemSlot, ref Vintagestory.API.Common.ItemStackMoveOperation)
+  nameWithType.vb: ItemSlot.TryPutInto(ItemSlot, ItemStackMoveOperation)
+  fullName.vb: Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation)
+  name.vb: TryPutInto(ItemSlot, ItemStackMoveOperation)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: TryPutInto
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TryPutInto_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.TryPutInto(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: TryPutInto
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TryPutInto_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.TryFlipWith(Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Common.ItemSlot.TryFlipWith(Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TryFlipWith_Vintagestory_API_Common_ItemSlot_
+  name: TryFlipWith(ItemSlot)
+  nameWithType: ItemSlot.TryFlipWith(ItemSlot)
+  fullName: Vintagestory.API.Common.ItemSlot.TryFlipWith(Vintagestory.API.Common.ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.TryFlipWith(Vintagestory.API.Common.ItemSlot)
+    name: TryFlipWith
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TryFlipWith_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.TryFlipWith(Vintagestory.API.Common.ItemSlot)
+    name: TryFlipWith
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_TryFlipWith_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.FlipWith(Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Common.ItemSlot.FlipWith(Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_FlipWith_Vintagestory_API_Common_ItemSlot_
+  name: FlipWith(ItemSlot)
+  nameWithType: ItemSlot.FlipWith(ItemSlot)
+  fullName: Vintagestory.API.Common.ItemSlot.FlipWith(Vintagestory.API.Common.ItemSlot)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.FlipWith(Vintagestory.API.Common.ItemSlot)
+    name: FlipWith
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_FlipWith_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.FlipWith(Vintagestory.API.Common.ItemSlot)
+    name: FlipWith
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_FlipWith_Vintagestory_API_Common_ItemSlot_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.ActivateSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  commentId: M:Vintagestory.API.Common.ItemSlot.ActivateSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ActivateSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  name: ActivateSlot(ItemSlot, ref ItemStackMoveOperation)
+  nameWithType: ItemSlot.ActivateSlot(ItemSlot, ref ItemStackMoveOperation)
+  fullName: Vintagestory.API.Common.ItemSlot.ActivateSlot(Vintagestory.API.Common.ItemSlot, ref Vintagestory.API.Common.ItemStackMoveOperation)
+  nameWithType.vb: ItemSlot.ActivateSlot(ItemSlot, ItemStackMoveOperation)
+  fullName.vb: Vintagestory.API.Common.ItemSlot.ActivateSlot(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation)
+  name.vb: ActivateSlot(ItemSlot, ItemStackMoveOperation)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.ActivateSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: ActivateSlot
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ActivateSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.ActivateSlot(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: ActivateSlot
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ActivateSlot_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.ActivateSlotLeftClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  commentId: M:Vintagestory.API.Common.ItemSlot.ActivateSlotLeftClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ActivateSlotLeftClick_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  name: ActivateSlotLeftClick(ItemSlot, ref ItemStackMoveOperation)
+  nameWithType: ItemSlot.ActivateSlotLeftClick(ItemSlot, ref ItemStackMoveOperation)
+  fullName: Vintagestory.API.Common.ItemSlot.ActivateSlotLeftClick(Vintagestory.API.Common.ItemSlot, ref Vintagestory.API.Common.ItemStackMoveOperation)
+  nameWithType.vb: ItemSlot.ActivateSlotLeftClick(ItemSlot, ItemStackMoveOperation)
+  fullName.vb: Vintagestory.API.Common.ItemSlot.ActivateSlotLeftClick(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation)
+  name.vb: ActivateSlotLeftClick(ItemSlot, ItemStackMoveOperation)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.ActivateSlotLeftClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: ActivateSlotLeftClick
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ActivateSlotLeftClick_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.ActivateSlotLeftClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: ActivateSlotLeftClick
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ActivateSlotLeftClick_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.ActivateSlotMiddleClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  commentId: M:Vintagestory.API.Common.ItemSlot.ActivateSlotMiddleClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ActivateSlotMiddleClick_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  name: ActivateSlotMiddleClick(ItemSlot, ref ItemStackMoveOperation)
+  nameWithType: ItemSlot.ActivateSlotMiddleClick(ItemSlot, ref ItemStackMoveOperation)
+  fullName: Vintagestory.API.Common.ItemSlot.ActivateSlotMiddleClick(Vintagestory.API.Common.ItemSlot, ref Vintagestory.API.Common.ItemStackMoveOperation)
+  nameWithType.vb: ItemSlot.ActivateSlotMiddleClick(ItemSlot, ItemStackMoveOperation)
+  fullName.vb: Vintagestory.API.Common.ItemSlot.ActivateSlotMiddleClick(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation)
+  name.vb: ActivateSlotMiddleClick(ItemSlot, ItemStackMoveOperation)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.ActivateSlotMiddleClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: ActivateSlotMiddleClick
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ActivateSlotMiddleClick_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.ActivateSlotMiddleClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: ActivateSlotMiddleClick
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ActivateSlotMiddleClick_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.ActivateSlotRightClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  commentId: M:Vintagestory.API.Common.ItemSlot.ActivateSlotRightClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ActivateSlotRightClick_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  name: ActivateSlotRightClick(ItemSlot, ref ItemStackMoveOperation)
+  nameWithType: ItemSlot.ActivateSlotRightClick(ItemSlot, ref ItemStackMoveOperation)
+  fullName: Vintagestory.API.Common.ItemSlot.ActivateSlotRightClick(Vintagestory.API.Common.ItemSlot, ref Vintagestory.API.Common.ItemStackMoveOperation)
+  nameWithType.vb: ItemSlot.ActivateSlotRightClick(ItemSlot, ItemStackMoveOperation)
+  fullName.vb: Vintagestory.API.Common.ItemSlot.ActivateSlotRightClick(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.ItemStackMoveOperation)
+  name.vb: ActivateSlotRightClick(ItemSlot, ItemStackMoveOperation)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.ActivateSlotRightClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: ActivateSlotRightClick
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ActivateSlotRightClick_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.ActivateSlotRightClick(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
+    name: ActivateSlotRightClick
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ActivateSlotRightClick_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStackMoveOperation__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStackMoveOperation
+    name: ItemStackMoveOperation
+    href: Vintagestory.API.Common.ItemStackMoveOperation.html
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.OnItemSlotModified(Vintagestory.API.Common.ItemStack)
+  commentId: M:Vintagestory.API.Common.ItemSlot.OnItemSlotModified(Vintagestory.API.Common.ItemStack)
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_OnItemSlotModified_Vintagestory_API_Common_ItemStack_
+  name: OnItemSlotModified(ItemStack)
+  nameWithType: ItemSlot.OnItemSlotModified(ItemStack)
+  fullName: Vintagestory.API.Common.ItemSlot.OnItemSlotModified(Vintagestory.API.Common.ItemStack)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.OnItemSlotModified(Vintagestory.API.Common.ItemStack)
+    name: OnItemSlotModified
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_OnItemSlotModified_Vintagestory_API_Common_ItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.OnItemSlotModified(Vintagestory.API.Common.ItemStack)
+    name: OnItemSlotModified
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_OnItemSlotModified_Vintagestory_API_Common_ItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.MarkDirty
+  commentId: M:Vintagestory.API.Common.ItemSlot.MarkDirty
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_MarkDirty
+  name: MarkDirty()
+  nameWithType: ItemSlot.MarkDirty()
+  fullName: Vintagestory.API.Common.ItemSlot.MarkDirty()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.MarkDirty
+    name: MarkDirty
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_MarkDirty
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.MarkDirty
+    name: MarkDirty
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_MarkDirty
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.GetStackName
+  commentId: M:Vintagestory.API.Common.ItemSlot.GetStackName
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_GetStackName
+  name: GetStackName()
+  nameWithType: ItemSlot.GetStackName()
+  fullName: Vintagestory.API.Common.ItemSlot.GetStackName()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.GetStackName
+    name: GetStackName
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_GetStackName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.GetStackName
+    name: GetStackName
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_GetStackName
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.GetStackDescription(Vintagestory.API.Client.IClientWorldAccessor,System.Boolean)
+  commentId: M:Vintagestory.API.Common.ItemSlot.GetStackDescription(Vintagestory.API.Client.IClientWorldAccessor,System.Boolean)
+  parent: Vintagestory.API.Common.ItemSlot
+  isExternal: true
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_GetStackDescription_Vintagestory_API_Client_IClientWorldAccessor_System_Boolean_
+  name: GetStackDescription(IClientWorldAccessor, bool)
+  nameWithType: ItemSlot.GetStackDescription(IClientWorldAccessor, bool)
+  fullName: Vintagestory.API.Common.ItemSlot.GetStackDescription(Vintagestory.API.Client.IClientWorldAccessor, bool)
+  nameWithType.vb: ItemSlot.GetStackDescription(IClientWorldAccessor, Boolean)
+  fullName.vb: Vintagestory.API.Common.ItemSlot.GetStackDescription(Vintagestory.API.Client.IClientWorldAccessor, Boolean)
+  name.vb: GetStackDescription(IClientWorldAccessor, Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.GetStackDescription(Vintagestory.API.Client.IClientWorldAccessor,System.Boolean)
+    name: GetStackDescription
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_GetStackDescription_Vintagestory_API_Client_IClientWorldAccessor_System_Boolean_
+  - name: (
+  - uid: Vintagestory.API.Client.IClientWorldAccessor
+    name: IClientWorldAccessor
+    href: Vintagestory.API.Client.IClientWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.GetStackDescription(Vintagestory.API.Client.IClientWorldAccessor,System.Boolean)
+    name: GetStackDescription
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_GetStackDescription_Vintagestory_API_Client_IClientWorldAccessor_System_Boolean_
+  - name: (
+  - uid: Vintagestory.API.Client.IClientWorldAccessor
+    name: IClientWorldAccessor
+    href: Vintagestory.API.Client.IClientWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Vintagestory.API.Common.ItemSlot.ToString
+  commentId: M:Vintagestory.API.Common.ItemSlot.ToString
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ToString
+  name: ToString()
+  nameWithType: ItemSlot.ToString()
+  fullName: Vintagestory.API.Common.ItemSlot.ToString()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot.ToString
+    name: ToString
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ToString
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot.ToString
+    name: ToString
+    href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_ToString
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.ItemSlotUniversal.#ctor*
+  commentId: Overload:Vintagestory.API.Common.ItemSlotUniversal.#ctor
+  href: Vintagestory.API.Common.ItemSlotUniversal.html#Vintagestory_API_Common_ItemSlotUniversal__ctor_Vintagestory_API_Common_InventoryBase_
+  name: ItemSlotUniversal
+  nameWithType: ItemSlotUniversal.ItemSlotUniversal
+  fullName: Vintagestory.API.Common.ItemSlotUniversal.ItemSlotUniversal
+  nameWithType.vb: ItemSlotUniversal.New
+  fullName.vb: Vintagestory.API.Common.ItemSlotUniversal.New
+  name.vb: New
+- uid: Vintagestory.API.Common.InventoryBase
+  commentId: T:Vintagestory.API.Common.InventoryBase
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.InventoryBase.html
+  name: InventoryBase
+  nameWithType: InventoryBase
+  fullName: Vintagestory.API.Common.InventoryBase
+- uid: Vintagestory.API.Common.ItemSlot.StorageType
+  commentId: P:Vintagestory.API.Common.ItemSlot.StorageType
+  parent: Vintagestory.API.Common.ItemSlot
+  href: Vintagestory.API.Common.ItemSlot.html#Vintagestory_API_Common_ItemSlot_StorageType
+  name: StorageType
+  nameWithType: ItemSlot.StorageType
+  fullName: Vintagestory.API.Common.ItemSlot.StorageType
+- uid: Vintagestory.API.Common.ItemSlotUniversal.StorageType*
+  commentId: Overload:Vintagestory.API.Common.ItemSlotUniversal.StorageType
+  href: Vintagestory.API.Common.ItemSlotUniversal.html#Vintagestory_API_Common_ItemSlotUniversal_StorageType
+  name: StorageType
+  nameWithType: ItemSlotUniversal.StorageType
+  fullName: Vintagestory.API.Common.ItemSlotUniversal.StorageType
+- uid: Vintagestory.API.Common.EnumItemStorageFlags
+  commentId: T:Vintagestory.API.Common.EnumItemStorageFlags
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumItemStorageFlags.html
+  name: EnumItemStorageFlags
+  nameWithType: EnumItemStorageFlags
+  fullName: Vintagestory.API.Common.EnumItemStorageFlags

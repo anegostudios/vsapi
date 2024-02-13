@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Vintagestory.API.Common;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
@@ -680,7 +681,7 @@ namespace Vintagestory.API.Client
 
         // If true and gui element is opened then all keystrokes (except escape) are only received by this gui element
         /// <summary>
-        /// Should this dialogue capture all the keyboard events (IE: textbox) except for escape.
+        /// Should this dialog (e.g. textbox) capture all the keyboard events except for escape.
         /// </summary>
         /// <returns></returns>
         public virtual bool CaptureAllInputs()
@@ -689,7 +690,16 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// Disposes the Dialogue.
+        /// Should this dialog capture the raw mouse button clicks - useful for example for the settings menu itself (in case the user has unset them or set them to something crazy)
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool CaptureRawMouse()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Disposes the Dialog.
         /// </summary>
         public virtual void Dispose() {
             Composers?.Dispose();
@@ -708,5 +718,17 @@ namespace Vintagestory.API.Client
         /// </summary>
         public abstract string ToggleKeyCombinationCode { get; }
 
+        /// <summary>
+        /// Checks if the player is in range (pickingrange) of the given position eg. for Trader to auto close the dialog.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns>In range or no?</returns>
+        public virtual bool IsInRangeOf(Vec3d pos)
+        {
+            var playerEye = capi.World.Player.Entity.Pos.XYZ.Add(capi.World.Player.Entity.LocalEyePos);
+            double dist = pos.DistanceTo(playerEye);
+
+            return dist <= capi.World.Player.WorldData.PickingRange + 0.5;
+        }
     }
 }

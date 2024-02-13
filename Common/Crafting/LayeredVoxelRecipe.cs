@@ -168,8 +168,8 @@ namespace Vintagestory.API.Common
             Dictionary<string, string[]> mappings = new Dictionary<string, string[]>();
 
             if (Ingredient.Name == null || Ingredient.Name.Length == 0) return mappings;
-            if (!Ingredient.Code.Path.Contains("*")) return mappings;
-            int wildcardStartLen = Ingredient.Code.Path.IndexOf("*");
+            if (!Ingredient.Code.Path.Contains('*')) return mappings;
+            int wildcardStartLen = Ingredient.Code.Path.IndexOf('*');
             int wildcardEndLen = Ingredient.Code.Path.Length - wildcardStartLen - 1;
 
             List<string> codes = new List<string>();

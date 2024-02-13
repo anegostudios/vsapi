@@ -1,2238 +1,1772 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CommandArgumentParsers
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CommandArgumentParsers
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class CommandArgumentParsers | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CommandArgumentParsers | VintageStory API ">
+      
+      
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.CommandArgumentParsers">
-  
-  
-  <h1 id="Vintagestory_API_Common_CommandArgumentParsers" data-uid="Vintagestory.API.Common.CommandArgumentParsers" class="text-break">Class CommandArgumentParsers
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">CommandArgumentParsers</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_CommandArgumentParsers_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CommandArgumentParsers : object</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers__ctor_Vintagestory_API_Common_ICoreAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.%23ctor(Vintagestory.API.Common.ICoreAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L22">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers__ctor_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers__ctor_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.#ctor(Vintagestory.API.Common.ICoreAPI)">CommandArgumentParsers(ICoreAPI)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CommandArgumentParsers(ICoreAPI api)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_All_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.All(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L132">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_All_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.All*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_All_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.All(System.String)">All(String)</h4>
-  <div class="markdown level1 summary"><p>All remaining arguments together</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public StringArgParser All(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.StringArgParser.html">StringArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Block_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Block(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L150">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Block_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Block*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Block_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Block(System.String)">Block(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CollectibleArgParser Block(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.CollectibleArgParser.html">CollectibleArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Bool_System_String_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Bool(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L52">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Bool_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Bool*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Bool_System_String_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Bool(System.String,System.String)">Bool(String, String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BoolArgParser Bool(string argName, string trueAlias = &quot;on&quot;)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">trueAlias</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BoolArgParser.html">BoolArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Color_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Color(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L118">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Color_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Color*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Color_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Color(System.String)">Color(String)</h4>
-  <div class="markdown level1 summary"><p>Parses a string which is either a color name or a hex value as a <see cref="!:System.Drawing.Color"></see></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ColorArgParser Color(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ColorArgParser.html">ColorArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_DateTime_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.DateTime(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L164">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_DateTime_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.DateTime*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_DateTime_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.DateTime(System.String)">DateTime(String)</h4>
-  <div class="markdown level1 summary"><p>Currently only supports time spans (i.e. now + time)</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DatetimeArgParser DateTime(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.DatetimeArgParser.html">DatetimeArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Double_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Double(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L62">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Double_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Double*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Double_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Double(System.String)">Double(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DoubleArgParser Double(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.DoubleArgParser.html">DoubleArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_DoubleRange_System_String_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.DoubleRange(System.String%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L63">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_DoubleRange_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.DoubleRange*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_DoubleRange_System_String_System_Double_System_Double_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.DoubleRange(System.String,System.Double,System.Double)">DoubleRange(String, Double, Double)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DoubleArgParser DoubleRange(string argName, double min, double max)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">min</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">max</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.DoubleArgParser.html">DoubleArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Entities_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Entities(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L31">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Entities_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Entities*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Entities_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Entities(System.String)">Entities(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntitiesArgParser Entities(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EntitiesArgParser.html">EntitiesArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_EntityType_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.EntityType(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L40">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_EntityType_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.EntityType*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_EntityType_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.EntityType(System.String)">EntityType(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntityTypeArgParser EntityType(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EntityTypeArgParser.html">EntityTypeArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Float_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Float(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L58">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Float_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Float*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Float_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Float(System.String)">Float(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FloatArgParser Float(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.FloatArgParser.html">FloatArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Int_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Int(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L47">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Int_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Int*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Int_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Int(System.String)">Int(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IntArgParser Int(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IntArgParser.html">IntArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_IntDirection_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.IntDirection(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L29">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_IntDirection_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.IntDirection*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_IntDirection_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.IntDirection(System.String)">IntDirection(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DirectionArgParser&lt;Vec3i&gt; IntDirection(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.DirectionArgParser-1.html">DirectionArgParser</a>&lt;<a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_IntRange_System_String_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.IntRange(System.String%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L42">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_IntRange_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.IntRange*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_IntRange_System_String_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.IntRange(System.String,System.Int32,System.Int32)">IntRange(String, Int32, Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IntArgParser IntRange(string argName, int min, int max)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">min</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">max</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IntArgParser.html">IntArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Item_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Item(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L149">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Item_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Item*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Item_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Item(System.String)">Item(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CollectibleArgParser Item(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.CollectibleArgParser.html">CollectibleArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Long_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Long(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L50">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Long_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Long*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Long_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Long(System.String)">Long(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LongArgParser Long(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.LongArgParser.html">LongArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OnlinePlayer_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L70">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OnlinePlayer_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OnlinePlayer_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer(System.String)">OnlinePlayer(String)</h4>
-  <div class="markdown level1 summary"><p>A currently online player</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public OnlinePlayerArgParser OnlinePlayer(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.OnlinePlayerArgParser.html">OnlinePlayerArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalAll_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalAll(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L139">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalAll_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalAll*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalAll_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalAll(System.String)">OptionalAll(String)</h4>
-  <div class="markdown level1 summary"><p>All remaining arguments together</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public StringArgParser OptionalAll(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.StringArgParser.html">StringArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalBool_System_String_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalBool(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L54">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalBool_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalBool*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalBool_System_String_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalBool(System.String,System.String)">OptionalBool(String, String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BoolArgParser OptionalBool(string argName, string trueAlias = &quot;on&quot;)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">trueAlias</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.BoolArgParser.html">BoolArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalColor_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalColor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L125">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalColor_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalColor*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalColor_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalColor(System.String)">OptionalColor(String)</h4>
-  <div class="markdown level1 summary"><p>Parses a string which is either a color name or a hex value as a <see cref="!:System.Drawing.Color"></see></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ColorArgParser OptionalColor(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ColorArgParser.html">ColorArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalDouble_System_String_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble(System.String%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L56">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalDouble_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalDouble_System_String_System_Double_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble(System.String,System.Double)">OptionalDouble(String, Double)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DoubleArgParser OptionalDouble(string argName, double defaultvalue = 0)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">defaultvalue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.DoubleArgParser.html">DoubleArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalEntities_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L38">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalEntities_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalEntities_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities(System.String)">OptionalEntities(String)</h4>
-  <div class="markdown level1 summary"><p>Defaults to caller entity</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntitiesArgParser OptionalEntities(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EntitiesArgParser.html">EntitiesArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalFloat_System_String_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat(System.String%2CSystem.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L60">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalFloat_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalFloat_System_String_System_Single_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat(System.String,System.Single)">OptionalFloat(String, Single)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public FloatArgParser OptionalFloat(string argName, float defaultvalue = 0F)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">defaultvalue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.FloatArgParser.html">FloatArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalInt_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalInt(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L46">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalInt_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalInt*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalInt_System_String_System_Int32_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalInt(System.String,System.Int32)">OptionalInt(String, Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IntArgParser OptionalInt(string argName, int defaultValue = 0)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IntArgParser.html">IntArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalIntRange_System_String_System_Int32_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange(System.String%2CSystem.Int32%2CSystem.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L44">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalIntRange_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalIntRange_System_String_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange(System.String,System.Int32,System.Int32,System.Int32)">OptionalIntRange(String, Int32, Int32, Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IntArgParser OptionalIntRange(string argName, int min, int max, int defaultValue = 0)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">min</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">max</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IntArgParser.html">IntArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalLong_System_String_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalLong(System.String%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L49">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalLong_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalLong*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalLong_System_String_System_Int32_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalLong(System.String,System.Int32)">OptionalLong(String, Int32)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LongArgParser OptionalLong(string argName, int defaultValue = 0)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">defaultValue</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.LongArgParser.html">LongArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalPlayerRole_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L97">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalPlayerRole_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalPlayerRole_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole(System.String)">OptionalPlayerRole(String)</h4>
-  <div class="markdown level1 summary"><p>Parses IPlayerRole, only works on Serverside since it needs the Serverconfig</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerRoleArgParser OptionalPlayerRole(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.PlayerRoleArgParser.html">PlayerRoleArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalPlayerUids_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L83">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalPlayerUids_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalPlayerUids_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids(System.String)">OptionalPlayerUids(String)</h4>
-  <div class="markdown level1 summary"><p>All selected players</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayersArgParser OptionalPlayerUids(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.PlayersArgParser.html">PlayersArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalPrivilege_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L102">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalPrivilege_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalPrivilege_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege(System.String)">OptionalPrivilege(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PrivilegeArgParser OptionalPrivilege(string privilege)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">privilege</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.PrivilegeArgParser.html">PrivilegeArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalVec3i_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L147">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalVec3i_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalVec3i_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i(System.String)">OptionalVec3i(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3iArgParser OptionalVec3i(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Vec3iArgParser.html">Vec3iArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalWord_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalWord(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L107">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalWord_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalWord*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalWord_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalWord(System.String)">OptionalWord(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WordArgParser OptionalWord(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.WordArgParser.html">WordArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalWordRange_System_String_System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L109">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalWordRange_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalWordRange_System_String_System_String___" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange(System.String,System.String[])">OptionalWordRange(String, String[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WordRangeArgParser OptionalWordRange(string argName, params string[] words)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">words</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.WordRangeArgParser.html">WordRangeArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_OptionalWorldPosition_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L157">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalWorldPosition_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalWorldPosition_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition(System.String)">OptionalWorldPosition(String)</h4>
-  <div class="markdown level1 summary"><p>Defaults to caller position</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WorldPositionArgParser OptionalWorldPosition(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.WorldPositionArgParser.html">WorldPositionArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_PlayerRole_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.PlayerRole(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L90">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_PlayerRole_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.PlayerRole*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_PlayerRole_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.PlayerRole(System.String)">PlayerRole(String)</h4>
-  <div class="markdown level1 summary"><p>Parses IPlayerRole, only works on Serverside since it needs the Serverconfig</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayerRoleArgParser PlayerRole(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.PlayerRoleArgParser.html">PlayerRoleArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_PlayerUids_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.PlayerUids(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L76">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_PlayerUids_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.PlayerUids*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_PlayerUids_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.PlayerUids(System.String)">PlayerUids(String)</h4>
-  <div class="markdown level1 summary"><p>All selected players</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PlayersArgParser PlayerUids(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.PlayersArgParser.html">PlayersArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Privilege_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Privilege(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L99">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Privilege_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Privilege*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Privilege_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Privilege(System.String)">Privilege(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PrivilegeArgParser Privilege(string privilege)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">privilege</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.PrivilegeArgParser.html">PrivilegeArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Unparsed_System_String_System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Unparsed(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L27">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Unparsed_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Unparsed*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Unparsed_System_String_System_String___" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Unparsed(System.String,System.String[])">Unparsed(String, String[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UnparsedArg Unparsed(string argname, params string[] validRange)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argname</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">validRange</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.UnparsedArg.html">UnparsedArg</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Vec3i_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Vec3i(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L145">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Vec3i_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Vec3i*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Vec3i_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Vec3i(System.String)">Vec3i(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3iArgParser Vec3i(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Vec3iArgParser.html">Vec3iArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Word_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Word(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L105">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Word_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Word*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Word_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Word(System.String)">Word(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WordArgParser Word(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.WordArgParser.html">WordArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_Word_System_String_System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.Word(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L111">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_Word_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Word*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_Word_System_String_System_String___" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Word(System.String,System.String[])">Word(String, String[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WordArgParser Word(string argName, string[] wordSuggestions)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">wordSuggestions</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.WordArgParser.html">WordArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_WordRange_System_String_System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.WordRange(System.String%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L141">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_WordRange_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.WordRange*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_WordRange_System_String_System_String___" data-uid="Vintagestory.API.Common.CommandArgumentParsers.WordRange(System.String,System.String[])">WordRange(String, String[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WordRangeArgParser WordRange(string argName, params string[] words)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">words</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.WordRangeArgParser.html">WordRangeArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_WorldPosition_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.WorldPosition(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L142">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_WorldPosition_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.WorldPosition*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_WorldPosition_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.WorldPosition(System.String)">WorldPosition(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WorldPositionArgParser WorldPosition(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.WorldPositionArgParser.html">WorldPositionArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers_WorldPosition2D_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L143">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_CommandArgumentParsers_WorldPosition2D_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D*"></a>
-  <h4 id="Vintagestory_API_Common_CommandArgumentParsers_WorldPosition2D_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D(System.String)">WorldPosition2D(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WorldPosition2DArgParser WorldPosition2D(string argName)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">argName</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.WorldPosition2DArgParser.html">WorldPosition2DArgParser</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_CommandArgumentParsers.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.CommandArgumentParsers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ChatCommand/CommandArgumentParsers.cs/#L19" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="Vintagestory.API.Common.CommandArgumentParsers">
+
+
+
+  <h1 id="Vintagestory_API_Common_CommandArgumentParsers" data-uid="Vintagestory.API.Common.CommandArgumentParsers" class="text-break">
+Class CommandArgumentParsers  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class CommandArgumentParsers</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">CommandArgumentParsers</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers__ctor_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers__ctor_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.#ctor(Vintagestory.API.Common.ICoreAPI)">
+  CommandArgumentParsers(ICoreAPI)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CommandArgumentParsers(ICoreAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_All_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.All*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_All_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.All(System.String)">
+  All(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>All remaining arguments together</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StringArgParser All(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.StringArgParser.html">StringArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Block_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Block*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Block_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Block(System.String)">
+  Block(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CollectibleArgParser Block(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CollectibleArgParser.html">CollectibleArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Bool_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Bool*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Bool_System_String_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Bool(System.String,System.String)">
+  Bool(string, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BoolArgParser Bool(string argName, string trueAlias = &quot;on&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>trueAlias</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.BoolArgParser.html">BoolArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Color_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Color*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Color_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Color(System.String)">
+  Color(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parses a string which is either a color name or a hex value as a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.drawing.color">Color</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ColorArgParser Color(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ColorArgParser.html">ColorArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_DateTime_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.DateTime*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_DateTime_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.DateTime(System.String)">
+  DateTime(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Currently only supports time spans (i.e. now + time)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DatetimeArgParser DateTime(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.DatetimeArgParser.html">DatetimeArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Double_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Double*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Double_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Double(System.String)">
+  Double(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DoubleArgParser Double(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.DoubleArgParser.html">DoubleArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_DoubleRange_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.DoubleRange*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_DoubleRange_System_String_System_Double_System_Double_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.DoubleRange(System.String,System.Double,System.Double)">
+  DoubleRange(string, double, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DoubleArgParser DoubleRange(string argName, double min, double max)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.DoubleArgParser.html">DoubleArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Entities_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Entities*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Entities_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Entities(System.String)">
+  Entities(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntitiesArgParser Entities(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EntitiesArgParser.html">EntitiesArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_EntityType_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.EntityType*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_EntityType_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.EntityType(System.String)">
+  EntityType(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntityTypeArgParser EntityType(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EntityTypeArgParser.html">EntityTypeArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Float_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Float*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Float_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Float(System.String)">
+  Float(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FloatArgParser Float(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.FloatArgParser.html">FloatArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Int_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Int*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Int_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Int(System.String)">
+  Int(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntArgParser Int(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IntArgParser.html">IntArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_IntDirection_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.IntDirection*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_IntDirection_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.IntDirection(System.String)">
+  IntDirection(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DirectionArgParser&lt;Vec3i&gt; IntDirection(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.DirectionArgParser-1.html">DirectionArgParser</a>&lt;<a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_IntRange_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.IntRange*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_IntRange_System_String_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.IntRange(System.String,System.Int32,System.Int32)">
+  IntRange(string, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntArgParser IntRange(string argName, int min, int max)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IntArgParser.html">IntArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Item_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Item*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Item_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Item(System.String)">
+  Item(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CollectibleArgParser Item(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CollectibleArgParser.html">CollectibleArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Long_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Long*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Long_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Long(System.String)">
+  Long(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LongArgParser Long(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.LongArgParser.html">LongArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OnlinePlayer_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OnlinePlayer_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OnlinePlayer(System.String)">
+  OnlinePlayer(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A currently online player</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OnlinePlayerArgParser OnlinePlayer(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.OnlinePlayerArgParser.html">OnlinePlayerArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalAll_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalAll*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalAll_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalAll(System.String)">
+  OptionalAll(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>All remaining arguments together</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StringArgParser OptionalAll(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.StringArgParser.html">StringArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalBool_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalBool*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalBool_System_String_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalBool(System.String,System.String)">
+  OptionalBool(string, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BoolArgParser OptionalBool(string argName, string trueAlias = &quot;on&quot;)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>trueAlias</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.BoolArgParser.html">BoolArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalColor_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalColor*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalColor_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalColor(System.String)">
+  OptionalColor(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parses a string which is either a color name or a hex value as a <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.drawing.color">Color</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ColorArgParser OptionalColor(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ColorArgParser.html">ColorArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalDouble_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalDouble_System_String_System_Double_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalDouble(System.String,System.Double)">
+  OptionalDouble(string, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DoubleArgParser OptionalDouble(string argName, double defaultvalue = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>defaultvalue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.DoubleArgParser.html">DoubleArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalEntities_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalEntities_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalEntities(System.String)">
+  OptionalEntities(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Defaults to caller entity</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EntitiesArgParser OptionalEntities(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EntitiesArgParser.html">EntitiesArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalFloat_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalFloat_System_String_System_Single_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalFloat(System.String,System.Single)">
+  OptionalFloat(string, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FloatArgParser OptionalFloat(string argName, float defaultvalue = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>defaultvalue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.FloatArgParser.html">FloatArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalInt_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalInt*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalInt_System_String_System_Int32_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalInt(System.String,System.Int32)">
+  OptionalInt(string, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntArgParser OptionalInt(string argName, int defaultValue = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IntArgParser.html">IntArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalIntRange_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalIntRange_System_String_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalIntRange(System.String,System.Int32,System.Int32,System.Int32)">
+  OptionalIntRange(string, int, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IntArgParser OptionalIntRange(string argName, int min, int max, int defaultValue = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IntArgParser.html">IntArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalLong_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalLong*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalLong_System_String_System_Int32_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalLong(System.String,System.Int32)">
+  OptionalLong(string, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LongArgParser OptionalLong(string argName, int defaultValue = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>defaultValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.LongArgParser.html">LongArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalPlayerRole_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalPlayerRole_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerRole(System.String)">
+  OptionalPlayerRole(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parses IPlayerRole, only works on Serverside since it needs the Serverconfig</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PlayerRoleArgParser OptionalPlayerRole(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.PlayerRoleArgParser.html">PlayerRoleArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalPlayerUids_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalPlayerUids_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalPlayerUids(System.String)">
+  OptionalPlayerUids(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>All selected players</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PlayersArgParser OptionalPlayerUids(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.PlayersArgParser.html">PlayersArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalPrivilege_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalPrivilege_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalPrivilege(System.String)">
+  OptionalPrivilege(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PrivilegeArgParser OptionalPrivilege(string privilege)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>privilege</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.PrivilegeArgParser.html">PrivilegeArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalVec3i_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalVec3i_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalVec3i(System.String)">
+  OptionalVec3i(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3iArgParser OptionalVec3i(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Vec3iArgParser.html">Vec3iArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalWord_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalWord*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalWord_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalWord(System.String)">
+  OptionalWord(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WordArgParser OptionalWord(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.WordArgParser.html">WordArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalWordRange_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalWordRange_System_String_System_String___" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalWordRange(System.String,System.String[])">
+  OptionalWordRange(string, params string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WordRangeArgParser OptionalWordRange(string argName, params string[] words)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>words</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.WordRangeArgParser.html">WordRangeArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_OptionalWorldPosition_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_OptionalWorldPosition_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.OptionalWorldPosition(System.String)">
+  OptionalWorldPosition(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Defaults to caller position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WorldPositionArgParser OptionalWorldPosition(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.WorldPositionArgParser.html">WorldPositionArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_PlayerRole_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.PlayerRole*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_PlayerRole_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.PlayerRole(System.String)">
+  PlayerRole(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parses IPlayerRole, only works on Serverside since it needs the Serverconfig</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PlayerRoleArgParser PlayerRole(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.PlayerRoleArgParser.html">PlayerRoleArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_PlayerUids_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.PlayerUids*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_PlayerUids_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.PlayerUids(System.String)">
+  PlayerUids(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>All selected players</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PlayersArgParser PlayerUids(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.PlayersArgParser.html">PlayersArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Privilege_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Privilege*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Privilege_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Privilege(System.String)">
+  Privilege(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PrivilegeArgParser Privilege(string privilege)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>privilege</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.PrivilegeArgParser.html">PrivilegeArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Unparsed_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Unparsed*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Unparsed_System_String_System_String___" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Unparsed(System.String,System.String[])">
+  Unparsed(string, params string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public UnparsedArg Unparsed(string argname, params string[] validRange)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argname</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>validRange</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.UnparsedArg.html">UnparsedArg</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Vec3i_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Vec3i*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Vec3i_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Vec3i(System.String)">
+  Vec3i(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3iArgParser Vec3i(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Vec3iArgParser.html">Vec3iArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Word_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Word*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Word_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Word(System.String)">
+  Word(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WordArgParser Word(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.WordArgParser.html">WordArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_Word_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Word*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_Word_System_String_System_String___" data-uid="Vintagestory.API.Common.CommandArgumentParsers.Word(System.String,System.String[])">
+  Word(string, string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WordArgParser Word(string argName, string[] wordSuggestions)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>wordSuggestions</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.WordArgParser.html">WordArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_WordRange_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.WordRange*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_WordRange_System_String_System_String___" data-uid="Vintagestory.API.Common.CommandArgumentParsers.WordRange(System.String,System.String[])">
+  WordRange(string, params string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WordRangeArgParser WordRange(string argName, params string[] words)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>words</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.WordRangeArgParser.html">WordRangeArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_WorldPosition_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.WorldPosition*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_WorldPosition_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.WorldPosition(System.String)">
+  WorldPosition(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WorldPositionArgParser WorldPosition(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.WorldPositionArgParser.html">WorldPositionArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CommandArgumentParsers_WorldPosition2D_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D*"></a>
+
+  <h3 id="Vintagestory_API_Common_CommandArgumentParsers_WorldPosition2D_System_String_" data-uid="Vintagestory.API.Common.CommandArgumentParsers.WorldPosition2D(System.String)">
+  WorldPosition2D(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WorldPosition2DArgParser WorldPosition2D(string argName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>argName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.WorldPosition2DArgParser.html">WorldPosition2DArgParser</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

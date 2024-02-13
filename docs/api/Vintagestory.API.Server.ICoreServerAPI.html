@@ -1,83 +1,119 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ICoreServerAPI
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ICoreServerAPI
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Interface ICoreServerAPI | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface ICoreServerAPI | VintageStory API ">
+      
+      <meta name="description" content="The core api implemented by the server. The main interface for accessing the server. Contains all sub components and some miscellaneous methods.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Server.ICoreServerAPI">
-  
-  
-  <h1 id="Vintagestory_API_Server_ICoreServerAPI" data-uid="Vintagestory.API.Server.ICoreServerAPI" class="text-break">Interface ICoreServerAPI
+
+        <article data-uid="Vintagestory.API.Server.ICoreServerAPI">
+
+
+
+  <h1 id="Vintagestory_API_Server_ICoreServerAPI" data-uid="Vintagestory.API.Server.ICoreServerAPI" class="text-break">
+Interface ICoreServerAPI  
   </h1>
-  <div class="markdown level0 summary"><p>The core api implemented by the server. The main interface for accessing the server. Contains all sub components and some miscellaneous methods.</p>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Server.html">Server</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The core api implemented by the server. The main interface for accessing the server. Contains all sub components and some miscellaneous methods.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ICoreServerAPI : ICoreAPI, ICoreAPICommon</code></pre>
+  </div>
+
+
+
+
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_Logger">ICoreAPI.Logger</a>
     </div>
@@ -100,43 +136,43 @@
       <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_ModLoader">ICoreAPI.ModLoader</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_RegisterEntityClass_System_String_Vintagestory_API_Common_Entities_EntityProperties_">ICoreAPI.RegisterEntityClass(String, EntityProperties)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html#Vintagestory_API_Common_ICoreAPI_RegisterEntityClass_System_String_Vintagestory_API_Common_Entities_EntityProperties_">ICoreAPI.RegisterEntityClass(string, EntityProperties)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterRecipeRegistry__1_System_String_">ICoreAPICommon.RegisterRecipeRegistry&lt;T&gt;(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterRecipeRegistry__1_System_String_">ICoreAPICommon.RegisterRecipeRegistry&lt;T&gt;(string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterColorMap_Vintagestory_API_Common_ColorMap_">ICoreAPICommon.RegisterColorMap(ColorMap)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntity_System_String_Type_">ICoreAPICommon.RegisterEntity(String, Type)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntity_System_String_System_Type_">ICoreAPICommon.RegisterEntity(string, Type)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntityBehaviorClass_System_String_Type_">ICoreAPICommon.RegisterEntityBehaviorClass(String, Type)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterEntityBehaviorClass_System_String_System_Type_">ICoreAPICommon.RegisterEntityBehaviorClass(string, Type)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockClass_System_String_Type_">ICoreAPICommon.RegisterBlockClass(String, Type)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockClass_System_String_System_Type_">ICoreAPICommon.RegisterBlockClass(string, Type)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCropBehavior_System_String_Type_">ICoreAPICommon.RegisterCropBehavior(String, Type)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCropBehavior_System_String_System_Type_">ICoreAPICommon.RegisterCropBehavior(string, Type)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityClass_System_String_Type_">ICoreAPICommon.RegisterBlockEntityClass(String, Type)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityClass_System_String_System_Type_">ICoreAPICommon.RegisterBlockEntityClass(string, Type)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterItemClass_System_String_Type_">ICoreAPICommon.RegisterItemClass(String, Type)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterItemClass_System_String_System_Type_">ICoreAPICommon.RegisterItemClass(string, Type)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCollectibleBehaviorClass_System_String_Type_">ICoreAPICommon.RegisterCollectibleBehaviorClass(String, Type)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterCollectibleBehaviorClass_System_String_System_Type_">ICoreAPICommon.RegisterCollectibleBehaviorClass(string, Type)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockBehaviorClass_System_String_Type_">ICoreAPICommon.RegisterBlockBehaviorClass(String, Type)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockBehaviorClass_System_String_System_Type_">ICoreAPICommon.RegisterBlockBehaviorClass(string, Type)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityBehaviorClass_System_String_Type_">ICoreAPICommon.RegisterBlockEntityBehaviorClass(String, Type)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterBlockEntityBehaviorClass_System_String_System_Type_">ICoreAPICommon.RegisterBlockEntityBehaviorClass(string, Type)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterMountable_System_String_Vintagestory_API_Common_GetMountableDelegate_">ICoreAPICommon.RegisterMountable(String, GetMountableDelegate)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_RegisterMountable_System_String_Vintagestory_API_Common_GetMountableDelegate_">ICoreAPICommon.RegisterMountable(string, GetMountableDelegate)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_ObjectCache">ICoreAPICommon.ObjectCache</a>
@@ -145,947 +181,858 @@
       <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_DataBasePath">ICoreAPICommon.DataBasePath</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_GetOrCreateDataPath_System_String_">ICoreAPICommon.GetOrCreateDataPath(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_GetOrCreateDataPath_System_String_">ICoreAPICommon.GetOrCreateDataPath(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig__1___0_System_String_">ICoreAPICommon.StoreModConfig&lt;T&gt;(T, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig__1___0_System_String_">ICoreAPICommon.StoreModConfig&lt;T&gt;(T, string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig_Vintagestory_API_Datastructures_JsonObject_System_String_">ICoreAPICommon.StoreModConfig(JsonObject, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_StoreModConfig_Vintagestory_API_Datastructures_JsonObject_System_String_">ICoreAPICommon.StoreModConfig(JsonObject, string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig__1_System_String_">ICoreAPICommon.LoadModConfig&lt;T&gt;(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig__1_System_String_">ICoreAPICommon.LoadModConfig&lt;T&gt;(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig_System_String_">ICoreAPICommon.LoadModConfig(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.ICoreAPICommon.html#Vintagestory_API_Common_ICoreAPICommon_LoadModConfig_System_String_">ICoreAPICommon.LoadModConfig(string)</a>
     </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Common.VtmlUtilApiAdditions.html#Vintagestory_API_Common_VtmlUtilApiAdditions_RegisterVtmlTagConverter_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Tag2RichTextDelegate_">VtmlUtilApiAdditions.RegisterVtmlTagConverter(ICoreAPI, string, Tag2RichTextDelegate)</a>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Server.html">Vintagestory.API.Server</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Server_ICoreServerAPI_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface ICoreServerAPI : ICoreAPI, ICoreAPICommon</code></pre>
-  </div>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_Event.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.Event%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L14">View Source</a>
-  </span>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_Event_" data-uid="Vintagestory.API.Server.ICoreServerAPI.Event*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_Event" data-uid="Vintagestory.API.Server.ICoreServerAPI.Event">Event</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_Event" data-uid="Vintagestory.API.Server.ICoreServerAPI.Event">
+  Event
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>API Component for registering to various Events</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IServerEventAPI Event { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IServerEventAPI.html">IServerEventAPI</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_Groups.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.Groups%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L36">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.IServerEventAPI.html">IServerEventAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_Groups_" data-uid="Vintagestory.API.Server.ICoreServerAPI.Groups*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_Groups" data-uid="Vintagestory.API.Server.ICoreServerAPI.Groups">Groups</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_Groups" data-uid="Vintagestory.API.Server.ICoreServerAPI.Groups">
+  Groups
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Everything related to player groups</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IGroupManager Groups { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IGroupManager.html">IGroupManager</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_Network.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.Network%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L46">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.IGroupManager.html">IGroupManager</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_Network_" data-uid="Vintagestory.API.Server.ICoreServerAPI.Network*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_Network" data-uid="Vintagestory.API.Server.ICoreServerAPI.Network">Network</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_Network" data-uid="Vintagestory.API.Server.ICoreServerAPI.Network">
+  Network
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>API for sending/receiving network packets</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IServerNetworkAPI Network { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IServerNetworkAPI.html">IServerNetworkAPI</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_Permissions.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.Permissions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L31">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.IServerNetworkAPI.html">IServerNetworkAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_Permissions_" data-uid="Vintagestory.API.Server.ICoreServerAPI.Permissions*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_Permissions" data-uid="Vintagestory.API.Server.ICoreServerAPI.Permissions">Permissions</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_Permissions" data-uid="Vintagestory.API.Server.ICoreServerAPI.Permissions">
+  Permissions
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Everything related to roles and privileges</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IPermissionManager Permissions { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IPermissionManager.html">IPermissionManager</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_PlayerData.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.PlayerData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L41">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.IPermissionManager.html">IPermissionManager</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_PlayerData_" data-uid="Vintagestory.API.Server.ICoreServerAPI.PlayerData*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_PlayerData" data-uid="Vintagestory.API.Server.ICoreServerAPI.PlayerData">PlayerData</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_PlayerData" data-uid="Vintagestory.API.Server.ICoreServerAPI.PlayerData">
+  PlayerData
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>World-agnostic player data. You can query this information even when the player is offline</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IPlayerDataManager PlayerData { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IPlayerDataManager.html">IPlayerDataManager</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_Server.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.Server%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L25">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.IPlayerDataManager.html">IPlayerDataManager</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_Server_" data-uid="Vintagestory.API.Server.ICoreServerAPI.Server*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_Server" data-uid="Vintagestory.API.Server.ICoreServerAPI.Server">Server</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_Server" data-uid="Vintagestory.API.Server.ICoreServerAPI.Server">
+  Server
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>API Component for accessing server related functionality</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IServerAPI Server { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IServerAPI.html">IServerAPI</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_World.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.World%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L52">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.IServerAPI.html">IServerAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_World_" data-uid="Vintagestory.API.Server.ICoreServerAPI.World*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_World" data-uid="Vintagestory.API.Server.ICoreServerAPI.World">World</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_World" data-uid="Vintagestory.API.Server.ICoreServerAPI.World">
+  World
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>API for accessing anything in the game world</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IServerWorldAccessor World { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IServerWorldAccessor.html">IServerWorldAccessor</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_WorldManager.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.WorldManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L19">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.IServerWorldAccessor.html">IServerWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_WorldManager_" data-uid="Vintagestory.API.Server.ICoreServerAPI.WorldManager*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_WorldManager" data-uid="Vintagestory.API.Server.ICoreServerAPI.WorldManager">WorldManager</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_WorldManager" data-uid="Vintagestory.API.Server.ICoreServerAPI.WorldManager">
+  WorldManager
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>API Component for access/modify everything game world related</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IWorldManagerAPI WorldManager { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IWorldManagerAPI.html">IWorldManagerAPI</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_BroadcastMessageToAllGroups_System_String_Vintagestory_API_Common_EnumChatType_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups(System.String%2CVintagestory.API.Common.EnumChatType%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L103">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.IWorldManagerAPI.html">IWorldManagerAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_BroadcastMessageToAllGroups_" data-uid="Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_BroadcastMessageToAllGroups_System_String_Vintagestory_API_Common_EnumChatType_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups(System.String,Vintagestory.API.Common.EnumChatType,System.String)">BroadcastMessageToAllGroups(String, EnumChatType, String)</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_BroadcastMessageToAllGroups_System_String_Vintagestory_API_Common_EnumChatType_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.BroadcastMessageToAllGroups(System.String,Vintagestory.API.Common.EnumChatType,System.String)">
+  BroadcastMessageToAllGroups(string, EnumChatType, string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Sends a chat message to all online players in all of their channels</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void BroadcastMessageToAllGroups(string message, EnumChatType chatType, string data = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumChatType.html">EnumChatType</a></td>
-        <td><span class="parametername">chatType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">data</span></td>
-        <td><p>Custom data to a message to be received by the client</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_HandleCommand_Vintagestory_API_Server_IServerPlayer_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.HandleCommand(Vintagestory.API.Server.IServerPlayer%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L116">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>chatType</code> <a class="xref" href="Vintagestory.API.Common.EnumChatType.html">EnumChatType</a></dt>
+    <dd></dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Custom data to a message to be received by the client</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_HandleCommand_" data-uid="Vintagestory.API.Server.ICoreServerAPI.HandleCommand*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_HandleCommand_Vintagestory_API_Server_IServerPlayer_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.HandleCommand(Vintagestory.API.Server.IServerPlayer,System.String)">HandleCommand(IServerPlayer, String)</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_HandleCommand_Vintagestory_API_Server_IServerPlayer_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.HandleCommand(Vintagestory.API.Server.IServerPlayer,System.String)">
+  HandleCommand(IServerPlayer, string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Calls a command as if given player called it</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void HandleCommand(IServerPlayer player, string message)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use ChatCommand subapi instead&quot;)]
+void HandleCommand(IServerPlayer player, string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a></td>
-        <td><span class="parametername">player</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_InjectConsole_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.InjectConsole(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L109">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>player</code> <a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a></dt>
+    <dd></dd>
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_InjectConsole_" data-uid="Vintagestory.API.Server.ICoreServerAPI.InjectConsole*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_InjectConsole_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.InjectConsole(System.String)">InjectConsole(String)</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_InjectConsole_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.InjectConsole(System.String)">
+  InjectConsole(string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Injects a message or command into the server console input processing system. This lets you run commands or chat as Admin.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void InjectConsole(string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterBlock_Vintagestory_API_Common_Block_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterBlock(Vintagestory.API.Common.Block)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L131">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterBlock_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterBlock*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterBlock_Vintagestory_API_Common_Block_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterBlock(Vintagestory.API.Common.Block)">RegisterBlock(Block)</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_RegisterBlock_Vintagestory_API_Common_Block_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterBlock(Vintagestory.API.Common.Block)">
+  RegisterBlock(Block)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Register a new Block. Must happen before server runphase LoadGame. These are sent to the client during connect, so only need to register them on the server side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RegisterBlock(Block block)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></td>
-        <td><span class="parametername">block</span></td>
-        <td><p>BlockType to register. The Server assigns a block id and sets block.blockId</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_System_String_System_String_System_String_Vintagestory_API_Common_ServerChatCommandDelegate_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(System.String%2CSystem.String%2CSystem.String%2CVintagestory.API.Common.ServerChatCommandDelegate%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L172">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>block</code> <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd><p>BlockType to register. The Server assigns a block id and sets block.blockId</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_System_String_System_String_System_String_Vintagestory_API_Common_ServerChatCommandDelegate_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(System.String,System.String,System.String,Vintagestory.API.Common.ServerChatCommandDelegate,System.String)">RegisterCommand(String, String, String, ServerChatCommandDelegate, String)</h4>
-  <div class="markdown level1 summary"><p>Registers a chat command. When registered on the client you access the command by prefixing a dot (.), on the server it&apos;s a slash (/)</p>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_System_String_System_String_System_String_Vintagestory_API_Common_ServerChatCommandDelegate_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(System.String,System.String,System.String,Vintagestory.API.Common.ServerChatCommandDelegate,System.String)">
+  RegisterCommand(string, string, string, ServerChatCommandDelegate, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers a chat command. When registered on the client you access the command by prefixing a dot (.), on the server it's a slash (/)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool RegisterCommand(string command, string descriptionMsg, string syntaxMsg, ServerChatCommandDelegate handler, string requiredPrivilege = null)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use ChatCommand subapi instead&quot;)]
+bool RegisterCommand(string command, string descriptionMsg, string syntaxMsg, ServerChatCommandDelegate handler, string requiredPrivilege = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">command</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">descriptionMsg</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">syntaxMsg</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ServerChatCommandDelegate.html">ServerChatCommandDelegate</a></td>
-        <td><span class="parametername">handler</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">requiredPrivilege</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_Vintagestory_API_Common_ServerChatCommand_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(Vintagestory.API.Common.ServerChatCommand)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L160">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>command</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>descriptionMsg</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>syntaxMsg</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>handler</code> <a class="xref" href="Vintagestory.API.Common.ServerChatCommandDelegate.html">ServerChatCommandDelegate</a></dt>
+    <dd></dd>
+    <dt><code>requiredPrivilege</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_Vintagestory_API_Common_ServerChatCommand_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(Vintagestory.API.Common.ServerChatCommand)">RegisterCommand(ServerChatCommand)</h4>
-  <div class="markdown level1 summary"><p>Registers a chat command. When registered on the client you access the command by prefixing a dot (.), on the server it&apos;s a slash (/)</p>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_RegisterCommand_Vintagestory_API_Common_ServerChatCommand_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCommand(Vintagestory.API.Common.ServerChatCommand)">
+  RegisterCommand(ServerChatCommand)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers a chat command. When registered on the client you access the command by prefixing a dot (.), on the server it's a slash (/)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool RegisterCommand(ServerChatCommand chatcommand)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use ChatCommand subapi instead&quot;)]
+bool RegisterCommand(ServerChatCommand chatcommand)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ServerChatCommand.html">ServerChatCommand</a></td>
-        <td><span class="parametername">chatcommand</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterCraftingRecipe_Vintagestory_API_Common_GridRecipe_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe(Vintagestory.API.Common.GridRecipe)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L137">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>chatcommand</code> <a class="xref" href="Vintagestory.API.Common.ServerChatCommand.html">ServerChatCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterCraftingRecipe_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterCraftingRecipe_Vintagestory_API_Common_GridRecipe_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe(Vintagestory.API.Common.GridRecipe)">RegisterCraftingRecipe(GridRecipe)</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_RegisterCraftingRecipe_Vintagestory_API_Common_GridRecipe_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterCraftingRecipe(Vintagestory.API.Common.GridRecipe)">
+  RegisterCraftingRecipe(GridRecipe)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Registers a new crafting recipe. These are sent to the client during connect, so only need to register them on the server side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RegisterCraftingRecipe(GridRecipe recipe)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.GridRecipe.html">GridRecipe</a></td>
-        <td><span class="parametername">recipe</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterItem_Vintagestory_API_Common_Item_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterItem(Vintagestory.API.Common.Item)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L125">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>recipe</code> <a class="xref" href="Vintagestory.API.Common.GridRecipe.html">GridRecipe</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterItem_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterItem*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterItem_Vintagestory_API_Common_Item_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterItem(Vintagestory.API.Common.Item)">RegisterItem(Item)</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_RegisterItem_Vintagestory_API_Common_Item_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterItem(Vintagestory.API.Common.Item)">
+  RegisterItem(Item)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Register a new item type</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RegisterItem(Item item)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Item.html">Item</a></td>
-        <td><span class="parametername">item</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Server_GrowTreeDelegate_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation%2CVintagestory.API.Server.GrowTreeDelegate)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L152">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="Vintagestory.API.Common.Item.html">Item</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Server_GrowTreeDelegate_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.GrowTreeDelegate)">RegisterTreeGenerator(AssetLocation, GrowTreeDelegate)</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Server_GrowTreeDelegate_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.GrowTreeDelegate)">
+  RegisterTreeGenerator(AssetLocation, GrowTreeDelegate)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Registers a new tree generator</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RegisterTreeGenerator(AssetLocation generatorCode, GrowTreeDelegate genhandler)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
-        <td><span class="parametername">generatorCode</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.GrowTreeDelegate.html">GrowTreeDelegate</a></td>
-        <td><span class="parametername">genhandler</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Server_ITreeGenerator_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation%2CVintagestory.API.Server.ITreeGenerator)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L145">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>generatorCode</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+    <dt><code>genhandler</code> <a class="xref" href="Vintagestory.API.Server.GrowTreeDelegate.html">GrowTreeDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Server_ITreeGenerator_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.ITreeGenerator)">RegisterTreeGenerator(AssetLocation, ITreeGenerator)</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_RegisterTreeGenerator_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Server_ITreeGenerator_" data-uid="Vintagestory.API.Server.ICoreServerAPI.RegisterTreeGenerator(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Server.ITreeGenerator)">
+  RegisterTreeGenerator(AssetLocation, ITreeGenerator)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Registers a new tree generator</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void RegisterTreeGenerator(AssetLocation generatorCode, ITreeGenerator gen)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></td>
-        <td><span class="parametername">generatorCode</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.ITreeGenerator.html">ITreeGenerator</a></td>
-        <td><span class="parametername">gen</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_SendIngameDiscovery_Vintagestory_API_Server_IServerPlayer_System_String_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery(Vintagestory.API.Server.IServerPlayer%2CSystem.String%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L74">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>generatorCode</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+    <dt><code>gen</code> <a class="xref" href="Vintagestory.API.Server.ITreeGenerator.html">ITreeGenerator</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_SendIngameDiscovery_" data-uid="Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_SendIngameDiscovery_Vintagestory_API_Server_IServerPlayer_System_String_System_String_System_Object___" data-uid="Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery(Vintagestory.API.Server.IServerPlayer,System.String,System.String,System.Object[])">SendIngameDiscovery(IServerPlayer, String, String, Object[])</h4>
-  <div class="markdown level1 summary"><p>Shows a discovery text on the players screen. If text is null the client will try to find a language entry using supplied code prefixed with &apos;ingamediscovery-&apos; (which is recommended so that the errors are translated to the users local language)</p>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_SendIngameDiscovery_Vintagestory_API_Server_IServerPlayer_System_String_System_String_System_Object___" data-uid="Vintagestory.API.Server.ICoreServerAPI.SendIngameDiscovery(Vintagestory.API.Server.IServerPlayer,System.String,System.String,System.Object[])">
+  SendIngameDiscovery(IServerPlayer, string, string, params object[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Shows a discovery text on the players screen. If text is null the client will try to find a language entry using supplied code prefixed with 'ingamediscovery-' (which is recommended so that the errors are translated to the users local language)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void SendIngameDiscovery(IServerPlayer player, string discoveryCode, string text = null, params object[] langparams)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a></td>
-        <td><span class="parametername">player</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">discoveryCode</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">text</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">langparams</span></td>
-        <td><p>If text is null, these are the arguments passed into the Language translation tool</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_SendIngameError_Vintagestory_API_Server_IServerPlayer_System_String_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.SendIngameError(Vintagestory.API.Server.IServerPlayer%2CSystem.String%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L63">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>player</code> <a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a></dt>
+    <dd></dd>
+    <dt><code>discoveryCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>langparams</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>If text is null, these are the arguments passed into the Language translation tool</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_SendIngameError_" data-uid="Vintagestory.API.Server.ICoreServerAPI.SendIngameError*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_SendIngameError_Vintagestory_API_Server_IServerPlayer_System_String_System_String_System_Object___" data-uid="Vintagestory.API.Server.ICoreServerAPI.SendIngameError(Vintagestory.API.Server.IServerPlayer,System.String,System.String,System.Object[])">SendIngameError(IServerPlayer, String, String, Object[])</h4>
-  <div class="markdown level1 summary"><p>Shows a vibrating red text in the players screen. If text is null the client will try to find a language entry using supplied code prefixed with &apos;ingameerror-&apos; (which is recommended so that the errors are translated to the users local language)</p>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_SendIngameError_Vintagestory_API_Server_IServerPlayer_System_String_System_String_System_Object___" data-uid="Vintagestory.API.Server.ICoreServerAPI.SendIngameError(Vintagestory.API.Server.IServerPlayer,System.String,System.String,System.Object[])">
+  SendIngameError(IServerPlayer, string, string, params object[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Shows a vibrating red text in the players screen. If text is null the client will try to find a language entry using supplied code prefixed with 'ingameerror-' (which is recommended so that the errors are translated to the users local language)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void SendIngameError(IServerPlayer player, string errorCode, string text = null, params object[] langparams)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a></td>
-        <td><span class="parametername">player</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">errorCode</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">text</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">langparams</span></td>
-        <td><p>If text is null, these are the arguments passed into the Language translation tool</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_SendMessage_Vintagestory_API_Common_IPlayer_System_Int32_System_String_Vintagestory_API_Common_EnumChatType_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.SendMessage(Vintagestory.API.Common.IPlayer%2CSystem.Int32%2CSystem.String%2CVintagestory.API.Common.EnumChatType%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L85">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>player</code> <a class="xref" href="Vintagestory.API.Server.IServerPlayer.html">IServerPlayer</a></dt>
+    <dd></dd>
+    <dt><code>errorCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>text</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>langparams</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd><p>If text is null, these are the arguments passed into the Language translation tool</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_SendMessage_" data-uid="Vintagestory.API.Server.ICoreServerAPI.SendMessage*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_SendMessage_Vintagestory_API_Common_IPlayer_System_Int32_System_String_Vintagestory_API_Common_EnumChatType_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.SendMessage(Vintagestory.API.Common.IPlayer,System.Int32,System.String,Vintagestory.API.Common.EnumChatType,System.String)">SendMessage(IPlayer, Int32, String, EnumChatType, String)</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_SendMessage_Vintagestory_API_Common_IPlayer_System_Int32_System_String_Vintagestory_API_Common_EnumChatType_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.SendMessage(Vintagestory.API.Common.IPlayer,System.Int32,System.String,Vintagestory.API.Common.EnumChatType,System.String)">
+  SendMessage(IPlayer, int, string, EnumChatType, string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Sends a chat message only to given player in given groupId</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void SendMessage(IPlayer player, int groupId, string message, EnumChatType chatType, string data = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></td>
-        <td><span class="parametername">player</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">groupId</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumChatType.html">EnumChatType</a></td>
-        <td><span class="parametername">chatType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">data</span></td>
-        <td><p>Custom data to a message to be received by the client</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_SendMessageToGroup_System_Int32_System_String_Vintagestory_API_Common_EnumChatType_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup(System.Int32%2CSystem.String%2CVintagestory.API.Common.EnumChatType%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L95">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>player</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd></dd>
+    <dt><code>groupId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>chatType</code> <a class="xref" href="Vintagestory.API.Common.EnumChatType.html">EnumChatType</a></dt>
+    <dd></dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Custom data to a message to be received by the client</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_SendMessageToGroup_" data-uid="Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_SendMessageToGroup_System_Int32_System_String_Vintagestory_API_Common_EnumChatType_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup(System.Int32,System.String,Vintagestory.API.Common.EnumChatType,System.String)">SendMessageToGroup(Int32, String, EnumChatType, String)</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_SendMessageToGroup_System_Int32_System_String_Vintagestory_API_Common_EnumChatType_System_String_" data-uid="Vintagestory.API.Server.ICoreServerAPI.SendMessageToGroup(System.Int32,System.String,Vintagestory.API.Common.EnumChatType,System.String)">
+  SendMessageToGroup(int, string, EnumChatType, string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Sends a chat message to all online players in given player group</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void SendMessageToGroup(int groupid, string message, EnumChatType chatType, string data = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">groupid</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumChatType.html">EnumChatType</a></td>
-        <td><span class="parametername">chatType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">data</span></td>
-        <td><p>Custom data to a message to be received by the client</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI_TriggerOnAssetsFirstLoaded.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L178">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupid</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>chatType</code> <a class="xref" href="Vintagestory.API.Common.EnumChatType.html">EnumChatType</a></dt>
+    <dd></dd>
+    <dt><code>data</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Custom data to a message to be received by the client</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_ICoreServerAPI_TriggerOnAssetsFirstLoaded_" data-uid="Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded*"></a>
-  <h4 id="Vintagestory_API_Server_ICoreServerAPI_TriggerOnAssetsFirstLoaded" data-uid="Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded">TriggerOnAssetsFirstLoaded()</h4>
+
+  <h3 id="Vintagestory_API_Server_ICoreServerAPI_TriggerOnAssetsFirstLoaded" data-uid="Vintagestory.API.Server.ICoreServerAPI.TriggerOnAssetsFirstLoaded">
+  TriggerOnAssetsFirstLoaded()
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>For internal use: used to remap block and item Ids, as soon as assets are loaded from disk, before recipes etc. are loaded or anything else which may occur in modsystem AssetsLoaded() methods</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void TriggerOnAssetsFirstLoaded()</code></pre>
   </div>
-  <h3 id="extensionmethods">Extension Methods</h3>
-  <div>
-      <a class="xref" href="Vintagestory.API.Common.VtmlUtilApiAdditions.html#Vintagestory_API_Common_VtmlUtilApiAdditions_RegisterVtmlTagConverter_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Tag2RichTextDelegate_">VtmlUtilApiAdditions.RegisterVtmlTagConverter(ICoreAPI, String, Tag2RichTextDelegate)</a>
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Server_ICoreServerAPI.md&amp;value=---%0Auid%3A%20Vintagestory.API.Server.ICoreServerAPI%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Server/API/ICoreServerAPI.cs/#L9" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

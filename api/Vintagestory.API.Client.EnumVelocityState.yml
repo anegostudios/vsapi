@@ -1,0 +1,153 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.EnumVelocityState
+  commentId: T:Vintagestory.API.Client.EnumVelocityState
+  id: EnumVelocityState
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.EnumVelocityState.Collided
+  - Vintagestory.API.Client.EnumVelocityState.Moving
+  - Vintagestory.API.Client.EnumVelocityState.OutsideWorld
+  langs:
+  - csharp
+  - vb
+  name: EnumVelocityState
+  nameWithType: EnumVelocityState
+  fullName: Vintagestory.API.Client.EnumVelocityState
+  type: Enum
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnumVelocityState
+    path: Client/ParticlePhysics.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public enum EnumVelocityState
+    content.vb: Public Enum EnumVelocityState
+- uid: Vintagestory.API.Client.EnumVelocityState.Moving
+  commentId: F:Vintagestory.API.Client.EnumVelocityState.Moving
+  id: Moving
+  parent: Vintagestory.API.Client.EnumVelocityState
+  langs:
+  - csharp
+  - vb
+  name: Moving
+  nameWithType: EnumVelocityState.Moving
+  fullName: Vintagestory.API.Client.EnumVelocityState.Moving
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Moving
+    path: Client/ParticlePhysics.cs
+    startLine: 12
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Currently falling
+  example: []
+  syntax:
+    content: Moving = 0
+    return:
+      type: Vintagestory.API.Client.EnumVelocityState
+- uid: Vintagestory.API.Client.EnumVelocityState.OutsideWorld
+  commentId: F:Vintagestory.API.Client.EnumVelocityState.OutsideWorld
+  id: OutsideWorld
+  parent: Vintagestory.API.Client.EnumVelocityState
+  langs:
+  - csharp
+  - vb
+  name: OutsideWorld
+  nameWithType: EnumVelocityState.OutsideWorld
+  fullName: Vintagestory.API.Client.EnumVelocityState.OutsideWorld
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OutsideWorld
+    path: Client/ParticlePhysics.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Is now outside the world (x/y/z below -30 or x/z above mapsize + 30)
+  example: []
+  syntax:
+    content: OutsideWorld = 1
+    return:
+      type: Vintagestory.API.Client.EnumVelocityState
+- uid: Vintagestory.API.Client.EnumVelocityState.Collided
+  commentId: F:Vintagestory.API.Client.EnumVelocityState.Collided
+  id: Collided
+  parent: Vintagestory.API.Client.EnumVelocityState
+  langs:
+  - csharp
+  - vb
+  name: Collided
+  nameWithType: EnumVelocityState.Collided
+  fullName: Vintagestory.API.Client.EnumVelocityState.Collided
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Collided
+    path: Client/ParticlePhysics.cs
+    startLine: 20
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Was falling and has now collided with the terrain
+  example: []
+  syntax:
+    content: Collided = 2
+    return:
+      type: Vintagestory.API.Client.EnumVelocityState
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.EnumVelocityState
+  commentId: T:Vintagestory.API.Client.EnumVelocityState
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumVelocityState.html
+  name: EnumVelocityState
+  nameWithType: EnumVelocityState
+  fullName: Vintagestory.API.Client.EnumVelocityState

@@ -1,0 +1,782 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.ParticlePhysics
+  commentId: T:Vintagestory.API.Client.ParticlePhysics
+  id: ParticlePhysics
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.ParticlePhysics.#ctor(Vintagestory.API.Common.IBlockAccessor)
+  - Vintagestory.API.Client.ParticlePhysics.AsyncSpawnTime
+  - Vintagestory.API.Client.ParticlePhysics.BlockAccess
+  - Vintagestory.API.Client.ParticlePhysics.CollisionBoxList
+  - Vintagestory.API.Client.ParticlePhysics.CollisionStrength(Vintagestory.API.MathTools.Vec3f,Vintagestory.API.MathTools.Vec3f,System.Single,System.Single)
+  - Vintagestory.API.Client.ParticlePhysics.HandleBoyancy(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,System.Boolean,System.Single,System.Single,System.Single)
+  - Vintagestory.API.Client.ParticlePhysics.MotionCap
+  - Vintagestory.API.Client.ParticlePhysics.PhysicsTickTime
+  - Vintagestory.API.Client.ParticlePhysics.UpdateMotion(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,System.Single)
+  langs:
+  - csharp
+  - vb
+  name: ParticlePhysics
+  nameWithType: ParticlePhysics
+  fullName: Vintagestory.API.Client.ParticlePhysics
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ParticlePhysics
+    path: Client/ParticlePhysics.cs
+    startLine: 31
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public class ParticlePhysics
+    content.vb: Public Class ParticlePhysics
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Client.ParticlePhysics.BlockAccess
+  commentId: F:Vintagestory.API.Client.ParticlePhysics.BlockAccess
+  id: BlockAccess
+  parent: Vintagestory.API.Client.ParticlePhysics
+  langs:
+  - csharp
+  - vb
+  name: BlockAccess
+  nameWithType: ParticlePhysics.BlockAccess
+  fullName: Vintagestory.API.Client.ParticlePhysics.BlockAccess
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BlockAccess
+    path: Client/ParticlePhysics.cs
+    startLine: 33
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public IBlockAccessor BlockAccess
+    return:
+      type: Vintagestory.API.Common.IBlockAccessor
+    content.vb: Public BlockAccess As IBlockAccessor
+- uid: Vintagestory.API.Client.ParticlePhysics.PhysicsTickTime
+  commentId: F:Vintagestory.API.Client.ParticlePhysics.PhysicsTickTime
+  id: PhysicsTickTime
+  parent: Vintagestory.API.Client.ParticlePhysics
+  langs:
+  - csharp
+  - vb
+  name: PhysicsTickTime
+  nameWithType: ParticlePhysics.PhysicsTickTime
+  fullName: Vintagestory.API.Client.ParticlePhysics.PhysicsTickTime
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PhysicsTickTime
+    path: Client/ParticlePhysics.cs
+    startLine: 37
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public float PhysicsTickTime
+    return:
+      type: System.Single
+    content.vb: Public PhysicsTickTime As Single
+- uid: Vintagestory.API.Client.ParticlePhysics.AsyncSpawnTime
+  commentId: F:Vintagestory.API.Client.ParticlePhysics.AsyncSpawnTime
+  id: AsyncSpawnTime
+  parent: Vintagestory.API.Client.ParticlePhysics
+  langs:
+  - csharp
+  - vb
+  name: AsyncSpawnTime
+  nameWithType: ParticlePhysics.AsyncSpawnTime
+  fullName: Vintagestory.API.Client.ParticlePhysics.AsyncSpawnTime
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AsyncSpawnTime
+    path: Client/ParticlePhysics.cs
+    startLine: 38
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public const float AsyncSpawnTime = 0.033
+    return:
+      type: System.Single
+    content.vb: Public Const AsyncSpawnTime As Single = 0.033
+- uid: Vintagestory.API.Client.ParticlePhysics.#ctor(Vintagestory.API.Common.IBlockAccessor)
+  commentId: M:Vintagestory.API.Client.ParticlePhysics.#ctor(Vintagestory.API.Common.IBlockAccessor)
+  id: '#ctor(Vintagestory.API.Common.IBlockAccessor)'
+  parent: Vintagestory.API.Client.ParticlePhysics
+  langs:
+  - csharp
+  - vb
+  name: ParticlePhysics(IBlockAccessor)
+  nameWithType: ParticlePhysics.ParticlePhysics(IBlockAccessor)
+  fullName: Vintagestory.API.Client.ParticlePhysics.ParticlePhysics(Vintagestory.API.Common.IBlockAccessor)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Client/ParticlePhysics.cs
+    startLine: 44
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public ParticlePhysics(IBlockAccessor blockAccess)
+    parameters:
+    - id: blockAccess
+      type: Vintagestory.API.Common.IBlockAccessor
+    content.vb: Public Sub New(blockAccess As IBlockAccessor)
+  overload: Vintagestory.API.Client.ParticlePhysics.#ctor*
+  nameWithType.vb: ParticlePhysics.New(IBlockAccessor)
+  fullName.vb: Vintagestory.API.Client.ParticlePhysics.New(Vintagestory.API.Common.IBlockAccessor)
+  name.vb: New(IBlockAccessor)
+- uid: Vintagestory.API.Client.ParticlePhysics.CollisionStrength(Vintagestory.API.MathTools.Vec3f,Vintagestory.API.MathTools.Vec3f,System.Single,System.Single)
+  commentId: M:Vintagestory.API.Client.ParticlePhysics.CollisionStrength(Vintagestory.API.MathTools.Vec3f,Vintagestory.API.MathTools.Vec3f,System.Single,System.Single)
+  id: CollisionStrength(Vintagestory.API.MathTools.Vec3f,Vintagestory.API.MathTools.Vec3f,System.Single,System.Single)
+  parent: Vintagestory.API.Client.ParticlePhysics
+  langs:
+  - csharp
+  - vb
+  name: CollisionStrength(Vec3f, Vec3f, float, float)
+  nameWithType: ParticlePhysics.CollisionStrength(Vec3f, Vec3f, float, float)
+  fullName: Vintagestory.API.Client.ParticlePhysics.CollisionStrength(Vintagestory.API.MathTools.Vec3f, Vintagestory.API.MathTools.Vec3f, float, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CollisionStrength
+    path: Client/ParticlePhysics.cs
+    startLine: 49
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public Vec3f CollisionStrength(Vec3f velocitybefore, Vec3f velocitynow, float gravityStrength, float deltatime)
+    parameters:
+    - id: velocitybefore
+      type: Vintagestory.API.MathTools.Vec3f
+    - id: velocitynow
+      type: Vintagestory.API.MathTools.Vec3f
+    - id: gravityStrength
+      type: System.Single
+    - id: deltatime
+      type: System.Single
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: Public Function CollisionStrength(velocitybefore As Vec3f, velocitynow As Vec3f, gravityStrength As Single, deltatime As Single) As Vec3f
+  overload: Vintagestory.API.Client.ParticlePhysics.CollisionStrength*
+  nameWithType.vb: ParticlePhysics.CollisionStrength(Vec3f, Vec3f, Single, Single)
+  fullName.vb: Vintagestory.API.Client.ParticlePhysics.CollisionStrength(Vintagestory.API.MathTools.Vec3f, Vintagestory.API.MathTools.Vec3f, Single, Single)
+  name.vb: CollisionStrength(Vec3f, Vec3f, Single, Single)
+- uid: Vintagestory.API.Client.ParticlePhysics.CollisionBoxList
+  commentId: F:Vintagestory.API.Client.ParticlePhysics.CollisionBoxList
+  id: CollisionBoxList
+  parent: Vintagestory.API.Client.ParticlePhysics
+  langs:
+  - csharp
+  - vb
+  name: CollisionBoxList
+  nameWithType: ParticlePhysics.CollisionBoxList
+  fullName: Vintagestory.API.Client.ParticlePhysics.CollisionBoxList
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CollisionBoxList
+    path: Client/ParticlePhysics.cs
+    startLine: 60
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public CachedCuboidList CollisionBoxList
+    return:
+      type: Vintagestory.API.Datastructures.CachedCuboidList
+    content.vb: Public CollisionBoxList As CachedCuboidList
+- uid: Vintagestory.API.Client.ParticlePhysics.HandleBoyancy(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,System.Boolean,System.Single,System.Single,System.Single)
+  commentId: M:Vintagestory.API.Client.ParticlePhysics.HandleBoyancy(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,System.Boolean,System.Single,System.Single,System.Single)
+  id: HandleBoyancy(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,System.Boolean,System.Single,System.Single,System.Single)
+  parent: Vintagestory.API.Client.ParticlePhysics
+  langs:
+  - csharp
+  - vb
+  name: HandleBoyancy(Vec3d, Vec3f, bool, float, float, float)
+  nameWithType: ParticlePhysics.HandleBoyancy(Vec3d, Vec3f, bool, float, float, float)
+  fullName: Vintagestory.API.Client.ParticlePhysics.HandleBoyancy(Vintagestory.API.MathTools.Vec3d, Vintagestory.API.MathTools.Vec3f, bool, float, float, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: HandleBoyancy
+    path: Client/ParticlePhysics.cs
+    startLine: 62
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public void HandleBoyancy(Vec3d pos, Vec3f velocity, bool boyant, float gravityStrength, float deltatime, float height)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec3d
+    - id: velocity
+      type: Vintagestory.API.MathTools.Vec3f
+    - id: boyant
+      type: System.Boolean
+    - id: gravityStrength
+      type: System.Single
+    - id: deltatime
+      type: System.Single
+    - id: height
+      type: System.Single
+    content.vb: Public Sub HandleBoyancy(pos As Vec3d, velocity As Vec3f, boyant As Boolean, gravityStrength As Single, deltatime As Single, height As Single)
+  overload: Vintagestory.API.Client.ParticlePhysics.HandleBoyancy*
+  nameWithType.vb: ParticlePhysics.HandleBoyancy(Vec3d, Vec3f, Boolean, Single, Single, Single)
+  fullName.vb: Vintagestory.API.Client.ParticlePhysics.HandleBoyancy(Vintagestory.API.MathTools.Vec3d, Vintagestory.API.MathTools.Vec3f, Boolean, Single, Single, Single)
+  name.vb: HandleBoyancy(Vec3d, Vec3f, Boolean, Single, Single, Single)
+- uid: Vintagestory.API.Client.ParticlePhysics.MotionCap
+  commentId: F:Vintagestory.API.Client.ParticlePhysics.MotionCap
+  id: MotionCap
+  parent: Vintagestory.API.Client.ParticlePhysics
+  langs:
+  - csharp
+  - vb
+  name: MotionCap
+  nameWithType: ParticlePhysics.MotionCap
+  fullName: Vintagestory.API.Client.ParticlePhysics.MotionCap
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MotionCap
+    path: Client/ParticlePhysics.cs
+    startLine: 121
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public float MotionCap
+    return:
+      type: System.Single
+    content.vb: Public MotionCap As Single
+- uid: Vintagestory.API.Client.ParticlePhysics.UpdateMotion(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,System.Single)
+  commentId: M:Vintagestory.API.Client.ParticlePhysics.UpdateMotion(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,System.Single)
+  id: UpdateMotion(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,System.Single)
+  parent: Vintagestory.API.Client.ParticlePhysics
+  langs:
+  - csharp
+  - vb
+  name: UpdateMotion(Vec3d, Vec3f, float)
+  nameWithType: ParticlePhysics.UpdateMotion(Vec3d, Vec3f, float)
+  fullName: Vintagestory.API.Client.ParticlePhysics.UpdateMotion(Vintagestory.API.MathTools.Vec3d, Vintagestory.API.MathTools.Vec3f, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/ParticlePhysics.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: UpdateMotion
+    path: Client/ParticlePhysics.cs
+    startLine: 132
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Updates the velocity vector according to the amount of passed time, gravity and terrain collision.
+  example: []
+  syntax:
+    content: public EnumCollideFlags UpdateMotion(Vec3d pos, Vec3f motion, float size)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec3d
+      description: ''
+    - id: motion
+      type: Vintagestory.API.MathTools.Vec3f
+      description: ''
+    - id: size
+      type: System.Single
+      description: ''
+    return:
+      type: Vintagestory.API.Client.EnumCollideFlags
+      description: ''
+    content.vb: Public Function UpdateMotion(pos As Vec3d, motion As Vec3f, size As Single) As EnumCollideFlags
+  overload: Vintagestory.API.Client.ParticlePhysics.UpdateMotion*
+  nameWithType.vb: ParticlePhysics.UpdateMotion(Vec3d, Vec3f, Single)
+  fullName.vb: Vintagestory.API.Client.ParticlePhysics.UpdateMotion(Vintagestory.API.MathTools.Vec3d, Vintagestory.API.MathTools.Vec3f, Single)
+  name.vb: UpdateMotion(Vec3d, Vec3f, Single)
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IBlockAccessor
+  commentId: T:Vintagestory.API.Common.IBlockAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IBlockAccessor.html
+  name: IBlockAccessor
+  nameWithType: IBlockAccessor
+  fullName: Vintagestory.API.Common.IBlockAccessor
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Client.ParticlePhysics.#ctor*
+  commentId: Overload:Vintagestory.API.Client.ParticlePhysics.#ctor
+  href: Vintagestory.API.Client.ParticlePhysics.html#Vintagestory_API_Client_ParticlePhysics__ctor_Vintagestory_API_Common_IBlockAccessor_
+  name: ParticlePhysics
+  nameWithType: ParticlePhysics.ParticlePhysics
+  fullName: Vintagestory.API.Client.ParticlePhysics.ParticlePhysics
+  nameWithType.vb: ParticlePhysics.New
+  fullName.vb: Vintagestory.API.Client.ParticlePhysics.New
+  name.vb: New
+- uid: Vintagestory.API.Client.ParticlePhysics.CollisionStrength*
+  commentId: Overload:Vintagestory.API.Client.ParticlePhysics.CollisionStrength
+  href: Vintagestory.API.Client.ParticlePhysics.html#Vintagestory_API_Client_ParticlePhysics_CollisionStrength_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_MathTools_Vec3f_System_Single_System_Single_
+  name: CollisionStrength
+  nameWithType: ParticlePhysics.CollisionStrength
+  fullName: Vintagestory.API.Client.ParticlePhysics.CollisionStrength
+- uid: Vintagestory.API.MathTools.Vec3f
+  commentId: T:Vintagestory.API.MathTools.Vec3f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3f.html
+  name: Vec3f
+  nameWithType: Vec3f
+  fullName: Vintagestory.API.MathTools.Vec3f
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Datastructures.CachedCuboidList
+  commentId: T:Vintagestory.API.Datastructures.CachedCuboidList
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.CachedCuboidList.html
+  name: CachedCuboidList
+  nameWithType: CachedCuboidList
+  fullName: Vintagestory.API.Datastructures.CachedCuboidList
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Client.ParticlePhysics.HandleBoyancy*
+  commentId: Overload:Vintagestory.API.Client.ParticlePhysics.HandleBoyancy
+  href: Vintagestory.API.Client.ParticlePhysics.html#Vintagestory_API_Client_ParticlePhysics_HandleBoyancy_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3f_System_Boolean_System_Single_System_Single_System_Single_
+  name: HandleBoyancy
+  nameWithType: ParticlePhysics.HandleBoyancy
+  fullName: Vintagestory.API.Client.ParticlePhysics.HandleBoyancy
+- uid: Vintagestory.API.MathTools.Vec3d
+  commentId: T:Vintagestory.API.MathTools.Vec3d
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3d.html
+  name: Vec3d
+  nameWithType: Vec3d
+  fullName: Vintagestory.API.MathTools.Vec3d
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Client.ParticlePhysics.UpdateMotion*
+  commentId: Overload:Vintagestory.API.Client.ParticlePhysics.UpdateMotion
+  href: Vintagestory.API.Client.ParticlePhysics.html#Vintagestory_API_Client_ParticlePhysics_UpdateMotion_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3f_System_Single_
+  name: UpdateMotion
+  nameWithType: ParticlePhysics.UpdateMotion
+  fullName: Vintagestory.API.Client.ParticlePhysics.UpdateMotion
+- uid: Vintagestory.API.Client.EnumCollideFlags
+  commentId: T:Vintagestory.API.Client.EnumCollideFlags
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumCollideFlags.html
+  name: EnumCollideFlags
+  nameWithType: EnumCollideFlags
+  fullName: Vintagestory.API.Client.EnumCollideFlags

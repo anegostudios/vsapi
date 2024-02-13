@@ -1,0 +1,476 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.IShaderAPI
+  commentId: T:Vintagestory.API.Client.IShaderAPI
+  id: IShaderAPI
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.IShaderAPI.GetProgram(System.Int32)
+  - Vintagestory.API.Client.IShaderAPI.GetProgramByName(System.String)
+  - Vintagestory.API.Client.IShaderAPI.IsGLSLVersionSupported(System.String)
+  - Vintagestory.API.Client.IShaderAPI.NewShader(Vintagestory.API.Client.EnumShaderType)
+  - Vintagestory.API.Client.IShaderAPI.NewShaderProgram
+  - Vintagestory.API.Client.IShaderAPI.RegisterFileShaderProgram(System.String,Vintagestory.API.Client.IShaderProgram)
+  - Vintagestory.API.Client.IShaderAPI.RegisterMemoryShaderProgram(System.String,Vintagestory.API.Client.IShaderProgram)
+  - Vintagestory.API.Client.IShaderAPI.ReloadShaders
+  langs:
+  - csharp
+  - vb
+  name: IShaderAPI
+  nameWithType: IShaderAPI
+  fullName: Vintagestory.API.Client.IShaderAPI
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IShaderAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IShaderAPI
+    path: Client/API/IShaderAPI.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: API for configuring and loading GLSL Shaders
+  example: []
+  syntax:
+    content: public interface IShaderAPI
+    content.vb: Public Interface IShaderAPI
+- uid: Vintagestory.API.Client.IShaderAPI.NewShaderProgram
+  commentId: M:Vintagestory.API.Client.IShaderAPI.NewShaderProgram
+  id: NewShaderProgram
+  parent: Vintagestory.API.Client.IShaderAPI
+  langs:
+  - csharp
+  - vb
+  name: NewShaderProgram()
+  nameWithType: IShaderAPI.NewShaderProgram()
+  fullName: Vintagestory.API.Client.IShaderAPI.NewShaderProgram()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IShaderAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NewShaderProgram
+    path: Client/API/IShaderAPI.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns an empty instance of an IShaderProgram for you to configure. Once configured, call RegisterShaderProgram
+  example: []
+  syntax:
+    content: IShaderProgram NewShaderProgram()
+    return:
+      type: Vintagestory.API.Client.IShaderProgram
+      description: ''
+    content.vb: Function NewShaderProgram() As IShaderProgram
+  overload: Vintagestory.API.Client.IShaderAPI.NewShaderProgram*
+- uid: Vintagestory.API.Client.IShaderAPI.NewShader(Vintagestory.API.Client.EnumShaderType)
+  commentId: M:Vintagestory.API.Client.IShaderAPI.NewShader(Vintagestory.API.Client.EnumShaderType)
+  id: NewShader(Vintagestory.API.Client.EnumShaderType)
+  parent: Vintagestory.API.Client.IShaderAPI
+  langs:
+  - csharp
+  - vb
+  name: NewShader(EnumShaderType)
+  nameWithType: IShaderAPI.NewShader(EnumShaderType)
+  fullName: Vintagestory.API.Client.IShaderAPI.NewShader(Vintagestory.API.Client.EnumShaderType)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IShaderAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NewShader
+    path: Client/API/IShaderAPI.cs
+    startLine: 17
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns an empty instance of an IShader for you to configure as vertex, fragment or geometry shader
+  example: []
+  syntax:
+    content: IShader NewShader(EnumShaderType shaderType)
+    parameters:
+    - id: shaderType
+      type: Vintagestory.API.Client.EnumShaderType
+    return:
+      type: Vintagestory.API.Client.IShader
+      description: ''
+    content.vb: Function NewShader(shaderType As EnumShaderType) As IShader
+  overload: Vintagestory.API.Client.IShaderAPI.NewShader*
+- uid: Vintagestory.API.Client.IShaderAPI.RegisterFileShaderProgram(System.String,Vintagestory.API.Client.IShaderProgram)
+  commentId: M:Vintagestory.API.Client.IShaderAPI.RegisterFileShaderProgram(System.String,Vintagestory.API.Client.IShaderProgram)
+  id: RegisterFileShaderProgram(System.String,Vintagestory.API.Client.IShaderProgram)
+  parent: Vintagestory.API.Client.IShaderAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterFileShaderProgram(string, IShaderProgram)
+  nameWithType: IShaderAPI.RegisterFileShaderProgram(string, IShaderProgram)
+  fullName: Vintagestory.API.Client.IShaderAPI.RegisterFileShaderProgram(string, Vintagestory.API.Client.IShaderProgram)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IShaderAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterFileShaderProgram
+    path: Client/API/IShaderAPI.cs
+    startLine: 26
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: >-
+    Registers a configured IShaderProgram. The name must correspond to the .vsh and .fsh filenames (without ending).
+
+    Returns a program number to be used in UseShaderProgram()
+  example: []
+  syntax:
+    content: int RegisterFileShaderProgram(string name, IShaderProgram program)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    - id: program
+      type: Vintagestory.API.Client.IShaderProgram
+      description: ''
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Function RegisterFileShaderProgram(name As String, program As IShaderProgram) As Integer
+  overload: Vintagestory.API.Client.IShaderAPI.RegisterFileShaderProgram*
+  nameWithType.vb: IShaderAPI.RegisterFileShaderProgram(String, IShaderProgram)
+  fullName.vb: Vintagestory.API.Client.IShaderAPI.RegisterFileShaderProgram(String, Vintagestory.API.Client.IShaderProgram)
+  name.vb: RegisterFileShaderProgram(String, IShaderProgram)
+- uid: Vintagestory.API.Client.IShaderAPI.RegisterMemoryShaderProgram(System.String,Vintagestory.API.Client.IShaderProgram)
+  commentId: M:Vintagestory.API.Client.IShaderAPI.RegisterMemoryShaderProgram(System.String,Vintagestory.API.Client.IShaderProgram)
+  id: RegisterMemoryShaderProgram(System.String,Vintagestory.API.Client.IShaderProgram)
+  parent: Vintagestory.API.Client.IShaderAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterMemoryShaderProgram(string, IShaderProgram)
+  nameWithType: IShaderAPI.RegisterMemoryShaderProgram(string, IShaderProgram)
+  fullName: Vintagestory.API.Client.IShaderAPI.RegisterMemoryShaderProgram(string, Vintagestory.API.Client.IShaderProgram)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IShaderAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterMemoryShaderProgram
+    path: Client/API/IShaderAPI.cs
+    startLine: 35
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: >-
+    Registers a configured IShaderProgram. Will not load anything from the shaders folder.
+
+    Returns a program number to be used in UseShaderProgram()
+  example: []
+  syntax:
+    content: int RegisterMemoryShaderProgram(string name, IShaderProgram program)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    - id: program
+      type: Vintagestory.API.Client.IShaderProgram
+      description: ''
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Function RegisterMemoryShaderProgram(name As String, program As IShaderProgram) As Integer
+  overload: Vintagestory.API.Client.IShaderAPI.RegisterMemoryShaderProgram*
+  nameWithType.vb: IShaderAPI.RegisterMemoryShaderProgram(String, IShaderProgram)
+  fullName.vb: Vintagestory.API.Client.IShaderAPI.RegisterMemoryShaderProgram(String, Vintagestory.API.Client.IShaderProgram)
+  name.vb: RegisterMemoryShaderProgram(String, IShaderProgram)
+- uid: Vintagestory.API.Client.IShaderAPI.GetProgram(System.Int32)
+  commentId: M:Vintagestory.API.Client.IShaderAPI.GetProgram(System.Int32)
+  id: GetProgram(System.Int32)
+  parent: Vintagestory.API.Client.IShaderAPI
+  langs:
+  - csharp
+  - vb
+  name: GetProgram(int)
+  nameWithType: IShaderAPI.GetProgram(int)
+  fullName: Vintagestory.API.Client.IShaderAPI.GetProgram(int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IShaderAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetProgram
+    path: Client/API/IShaderAPI.cs
+    startLine: 42
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns the loaded shader for use in rendering
+  example: []
+  syntax:
+    content: IShaderProgram GetProgram(int renderPass)
+    parameters:
+    - id: renderPass
+      type: System.Int32
+      description: ''
+    return:
+      type: Vintagestory.API.Client.IShaderProgram
+      description: ''
+    content.vb: Function GetProgram(renderPass As Integer) As IShaderProgram
+  overload: Vintagestory.API.Client.IShaderAPI.GetProgram*
+  nameWithType.vb: IShaderAPI.GetProgram(Integer)
+  fullName.vb: Vintagestory.API.Client.IShaderAPI.GetProgram(Integer)
+  name.vb: GetProgram(Integer)
+- uid: Vintagestory.API.Client.IShaderAPI.GetProgramByName(System.String)
+  commentId: M:Vintagestory.API.Client.IShaderAPI.GetProgramByName(System.String)
+  id: GetProgramByName(System.String)
+  parent: Vintagestory.API.Client.IShaderAPI
+  langs:
+  - csharp
+  - vb
+  name: GetProgramByName(string)
+  nameWithType: IShaderAPI.GetProgramByName(string)
+  fullName: Vintagestory.API.Client.IShaderAPI.GetProgramByName(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IShaderAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetProgramByName
+    path: Client/API/IShaderAPI.cs
+    startLine: 49
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns the loaded shader for use in rendering
+  example: []
+  syntax:
+    content: IShaderProgram GetProgramByName(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Client.IShaderProgram
+      description: ''
+    content.vb: Function GetProgramByName(name As String) As IShaderProgram
+  overload: Vintagestory.API.Client.IShaderAPI.GetProgramByName*
+  nameWithType.vb: IShaderAPI.GetProgramByName(String)
+  fullName.vb: Vintagestory.API.Client.IShaderAPI.GetProgramByName(String)
+  name.vb: GetProgramByName(String)
+- uid: Vintagestory.API.Client.IShaderAPI.ReloadShaders
+  commentId: M:Vintagestory.API.Client.IShaderAPI.ReloadShaders
+  id: ReloadShaders
+  parent: Vintagestory.API.Client.IShaderAPI
+  langs:
+  - csharp
+  - vb
+  name: ReloadShaders()
+  nameWithType: IShaderAPI.ReloadShaders()
+  fullName: Vintagestory.API.Client.IShaderAPI.ReloadShaders()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IShaderAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ReloadShaders
+    path: Client/API/IShaderAPI.cs
+    startLine: 55
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Discards all currently compiled shaders and recompiles them. Returns true if all shaders compiled without errors.
+  example: []
+  syntax:
+    content: bool ReloadShaders()
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function ReloadShaders() As Boolean
+  overload: Vintagestory.API.Client.IShaderAPI.ReloadShaders*
+- uid: Vintagestory.API.Client.IShaderAPI.IsGLSLVersionSupported(System.String)
+  commentId: M:Vintagestory.API.Client.IShaderAPI.IsGLSLVersionSupported(System.String)
+  id: IsGLSLVersionSupported(System.String)
+  parent: Vintagestory.API.Client.IShaderAPI
+  langs:
+  - csharp
+  - vb
+  name: IsGLSLVersionSupported(string)
+  nameWithType: IShaderAPI.IsGLSLVersionSupported(string)
+  fullName: Vintagestory.API.Client.IShaderAPI.IsGLSLVersionSupported(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IShaderAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IsGLSLVersionSupported
+    path: Client/API/IShaderAPI.cs
+    startLine: 62
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns true if given GLSL Version is available on this machine
+  example: []
+  syntax:
+    content: bool IsGLSLVersionSupported(string minVersion)
+    parameters:
+    - id: minVersion
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function IsGLSLVersionSupported(minVersion As String) As Boolean
+  overload: Vintagestory.API.Client.IShaderAPI.IsGLSLVersionSupported*
+  nameWithType.vb: IShaderAPI.IsGLSLVersionSupported(String)
+  fullName.vb: Vintagestory.API.Client.IShaderAPI.IsGLSLVersionSupported(String)
+  name.vb: IsGLSLVersionSupported(String)
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.IShaderAPI.NewShaderProgram*
+  commentId: Overload:Vintagestory.API.Client.IShaderAPI.NewShaderProgram
+  href: Vintagestory.API.Client.IShaderAPI.html#Vintagestory_API_Client_IShaderAPI_NewShaderProgram
+  name: NewShaderProgram
+  nameWithType: IShaderAPI.NewShaderProgram
+  fullName: Vintagestory.API.Client.IShaderAPI.NewShaderProgram
+- uid: Vintagestory.API.Client.IShaderProgram
+  commentId: T:Vintagestory.API.Client.IShaderProgram
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IShaderProgram.html
+  name: IShaderProgram
+  nameWithType: IShaderProgram
+  fullName: Vintagestory.API.Client.IShaderProgram
+- uid: Vintagestory.API.Client.IShaderAPI.NewShader*
+  commentId: Overload:Vintagestory.API.Client.IShaderAPI.NewShader
+  href: Vintagestory.API.Client.IShaderAPI.html#Vintagestory_API_Client_IShaderAPI_NewShader_Vintagestory_API_Client_EnumShaderType_
+  name: NewShader
+  nameWithType: IShaderAPI.NewShader
+  fullName: Vintagestory.API.Client.IShaderAPI.NewShader
+- uid: Vintagestory.API.Client.EnumShaderType
+  commentId: T:Vintagestory.API.Client.EnumShaderType
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumShaderType.html
+  name: EnumShaderType
+  nameWithType: EnumShaderType
+  fullName: Vintagestory.API.Client.EnumShaderType
+- uid: Vintagestory.API.Client.IShader
+  commentId: T:Vintagestory.API.Client.IShader
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IShader.html
+  name: IShader
+  nameWithType: IShader
+  fullName: Vintagestory.API.Client.IShader
+- uid: Vintagestory.API.Client.IShaderAPI.RegisterFileShaderProgram*
+  commentId: Overload:Vintagestory.API.Client.IShaderAPI.RegisterFileShaderProgram
+  href: Vintagestory.API.Client.IShaderAPI.html#Vintagestory_API_Client_IShaderAPI_RegisterFileShaderProgram_System_String_Vintagestory_API_Client_IShaderProgram_
+  name: RegisterFileShaderProgram
+  nameWithType: IShaderAPI.RegisterFileShaderProgram
+  fullName: Vintagestory.API.Client.IShaderAPI.RegisterFileShaderProgram
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.IShaderAPI.RegisterMemoryShaderProgram*
+  commentId: Overload:Vintagestory.API.Client.IShaderAPI.RegisterMemoryShaderProgram
+  href: Vintagestory.API.Client.IShaderAPI.html#Vintagestory_API_Client_IShaderAPI_RegisterMemoryShaderProgram_System_String_Vintagestory_API_Client_IShaderProgram_
+  name: RegisterMemoryShaderProgram
+  nameWithType: IShaderAPI.RegisterMemoryShaderProgram
+  fullName: Vintagestory.API.Client.IShaderAPI.RegisterMemoryShaderProgram
+- uid: Vintagestory.API.Client.IShaderAPI.GetProgram*
+  commentId: Overload:Vintagestory.API.Client.IShaderAPI.GetProgram
+  href: Vintagestory.API.Client.IShaderAPI.html#Vintagestory_API_Client_IShaderAPI_GetProgram_System_Int32_
+  name: GetProgram
+  nameWithType: IShaderAPI.GetProgram
+  fullName: Vintagestory.API.Client.IShaderAPI.GetProgram
+- uid: Vintagestory.API.Client.IShaderAPI.GetProgramByName*
+  commentId: Overload:Vintagestory.API.Client.IShaderAPI.GetProgramByName
+  href: Vintagestory.API.Client.IShaderAPI.html#Vintagestory_API_Client_IShaderAPI_GetProgramByName_System_String_
+  name: GetProgramByName
+  nameWithType: IShaderAPI.GetProgramByName
+  fullName: Vintagestory.API.Client.IShaderAPI.GetProgramByName
+- uid: Vintagestory.API.Client.IShaderAPI.ReloadShaders*
+  commentId: Overload:Vintagestory.API.Client.IShaderAPI.ReloadShaders
+  href: Vintagestory.API.Client.IShaderAPI.html#Vintagestory_API_Client_IShaderAPI_ReloadShaders
+  name: ReloadShaders
+  nameWithType: IShaderAPI.ReloadShaders
+  fullName: Vintagestory.API.Client.IShaderAPI.ReloadShaders
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Client.IShaderAPI.IsGLSLVersionSupported*
+  commentId: Overload:Vintagestory.API.Client.IShaderAPI.IsGLSLVersionSupported
+  href: Vintagestory.API.Client.IShaderAPI.html#Vintagestory_API_Client_IShaderAPI_IsGLSLVersionSupported_System_String_
+  name: IsGLSLVersionSupported
+  nameWithType: IShaderAPI.IsGLSLVersionSupported
+  fullName: Vintagestory.API.Client.IShaderAPI.IsGLSLVersionSupported

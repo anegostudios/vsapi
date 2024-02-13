@@ -75,7 +75,7 @@ namespace Vintagestory.API.Util
             if (wildCard.Equals(inCode)) return true;
 
             int wildCardIndex;
-            if (inCode == null || (wildCard.Domain != "*" && !wildCard.Domain.Equals(inCode.Domain)) || ((wildCardIndex = wildCard.Path.IndexOf("*")) == -1 && wildCard.Path.IndexOf("(") == -1)) return false;
+            if (inCode == null || (wildCard.Domain != "*" && !wildCard.Domain.Equals(inCode.Domain)) || ((wildCardIndex = wildCard.Path.IndexOf('*')) == -1 && wildCard.Path.IndexOf('(') == -1)) return false;
             
 
             // Some faster/pre checks before doing a regex, because regexes are so, sooooo sloooooow
@@ -100,7 +100,7 @@ namespace Vintagestory.API.Util
 
         public static bool MatchesVariants(AssetLocation wildCard, AssetLocation inCode, string[] allowedVariants)
         {
-            int wildcardStartLen = wildCard.Path.IndexOf("*");
+            int wildcardStartLen = wildCard.Path.IndexOf('*');
             int wildcardEndLen = wildCard.Path.Length - wildcardStartLen - 1;
             if (inCode.Path.Length <= wildcardStartLen) return false;
 
@@ -121,7 +121,7 @@ namespace Vintagestory.API.Util
         public static string GetWildcardValue(AssetLocation wildCard, AssetLocation inCode)
         {
             if (inCode == null || (wildCard.Domain != "*" && !wildCard.Domain.Equals(inCode.Domain))) return null;
-            if (!wildCard.Path.Contains("*")) return null;
+            if (!wildCard.Path.Contains('*')) return null;
 
             string pattern = Regex.Escape(wildCard.Path).Replace(@"\*", @"(.*)");
 

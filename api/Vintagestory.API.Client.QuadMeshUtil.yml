@@ -1,0 +1,645 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.QuadMeshUtil
+  commentId: T:Vintagestory.API.Client.QuadMeshUtil
+  id: QuadMeshUtil
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.QuadMeshUtil.GetCustomQuad(System.Single,System.Single,System.Single,System.Single,System.Single,System.Byte,System.Byte,System.Byte,System.Byte)
+  - Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadHorizontal(System.Single,System.Single,System.Single,System.Single,System.Single,System.Byte,System.Byte,System.Byte,System.Byte)
+  - Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData(System.Single,System.Single,System.Single,System.Single,System.Single)
+  - Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Byte,System.Byte,System.Byte,System.Byte)
+  - Vintagestory.API.Client.QuadMeshUtil.GetQuad
+  langs:
+  - csharp
+  - vb
+  name: QuadMeshUtil
+  nameWithType: QuadMeshUtil
+  fullName: Vintagestory.API.Client.QuadMeshUtil
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/QuadMeshUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: QuadMeshUtil
+    path: Client/Model/Mesh/QuadMeshUtil.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Utility class for simple quad meshes
+  example: []
+  syntax:
+    content: public class QuadMeshUtil
+    content.vb: Public Class QuadMeshUtil
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Client.QuadMeshUtil.GetQuad
+  commentId: M:Vintagestory.API.Client.QuadMeshUtil.GetQuad
+  id: GetQuad
+  parent: Vintagestory.API.Client.QuadMeshUtil
+  langs:
+  - csharp
+  - vb
+  name: GetQuad()
+  nameWithType: QuadMeshUtil.GetQuad()
+  fullName: Vintagestory.API.Client.QuadMeshUtil.GetQuad()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/QuadMeshUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetQuad
+    path: Client/Model/Mesh/QuadMeshUtil.cs
+    startLine: 31
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: >-
+    Returns a single vertical quad mesh of with vertices going from -1/-1 to 1/1
+
+    With UV, without RGBA
+  example: []
+  syntax:
+    content: public static MeshData GetQuad()
+    return:
+      type: Vintagestory.API.Client.MeshData
+      description: ''
+    content.vb: Public Shared Function GetQuad() As MeshData
+  overload: Vintagestory.API.Client.QuadMeshUtil.GetQuad*
+- uid: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData(System.Single,System.Single,System.Single,System.Single,System.Single)
+  commentId: M:Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData(System.Single,System.Single,System.Single,System.Single,System.Single)
+  id: GetCustomQuadModelData(System.Single,System.Single,System.Single,System.Single,System.Single)
+  parent: Vintagestory.API.Client.QuadMeshUtil
+  langs:
+  - csharp
+  - vb
+  name: GetCustomQuadModelData(float, float, float, float, float)
+  nameWithType: QuadMeshUtil.GetCustomQuadModelData(float, float, float, float, float)
+  fullName: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData(float, float, float, float, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/QuadMeshUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetCustomQuadModelData
+    path: Client/Model/Mesh/QuadMeshUtil.cs
+    startLine: 65
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Quad without rgba, with uv
+  example: []
+  syntax:
+    content: public static MeshData GetCustomQuadModelData(float x, float y, float z, float dw, float dh)
+    parameters:
+    - id: x
+      type: System.Single
+      description: ''
+    - id: y
+      type: System.Single
+      description: ''
+    - id: z
+      type: System.Single
+      description: ''
+    - id: dw
+      type: System.Single
+      description: ''
+    - id: dh
+      type: System.Single
+      description: ''
+    return:
+      type: Vintagestory.API.Client.MeshData
+      description: ''
+    content.vb: Public Shared Function GetCustomQuadModelData(x As Single, y As Single, z As Single, dw As Single, dh As Single) As MeshData
+  overload: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData*
+  nameWithType.vb: QuadMeshUtil.GetCustomQuadModelData(Single, Single, Single, Single, Single)
+  fullName.vb: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData(Single, Single, Single, Single, Single)
+  name.vb: GetCustomQuadModelData(Single, Single, Single, Single, Single)
+- uid: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuad(System.Single,System.Single,System.Single,System.Single,System.Single,System.Byte,System.Byte,System.Byte,System.Byte)
+  commentId: M:Vintagestory.API.Client.QuadMeshUtil.GetCustomQuad(System.Single,System.Single,System.Single,System.Single,System.Single,System.Byte,System.Byte,System.Byte,System.Byte)
+  id: GetCustomQuad(System.Single,System.Single,System.Single,System.Single,System.Single,System.Byte,System.Byte,System.Byte,System.Byte)
+  parent: Vintagestory.API.Client.QuadMeshUtil
+  langs:
+  - csharp
+  - vb
+  name: GetCustomQuad(float, float, float, float, float, byte, byte, byte, byte)
+  nameWithType: QuadMeshUtil.GetCustomQuad(float, float, float, float, float, byte, byte, byte, byte)
+  fullName: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuad(float, float, float, float, float, byte, byte, byte, byte)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/QuadMeshUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetCustomQuad
+    path: Client/Model/Mesh/QuadMeshUtil.cs
+    startLine: 102
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns a single vertical  quad mesh at given position, size and color
+  example: []
+  syntax:
+    content: public static MeshData GetCustomQuad(float x, float y, float z, float width, float height, byte r, byte g, byte b, byte a)
+    parameters:
+    - id: x
+      type: System.Single
+      description: ''
+    - id: y
+      type: System.Single
+      description: ''
+    - id: z
+      type: System.Single
+      description: ''
+    - id: width
+      type: System.Single
+      description: ''
+    - id: height
+      type: System.Single
+      description: ''
+    - id: r
+      type: System.Byte
+      description: ''
+    - id: g
+      type: System.Byte
+      description: ''
+    - id: b
+      type: System.Byte
+      description: ''
+    - id: a
+      type: System.Byte
+      description: ''
+    return:
+      type: Vintagestory.API.Client.MeshData
+      description: ''
+    content.vb: Public Shared Function GetCustomQuad(x As Single, y As Single, z As Single, width As Single, height As Single, r As Byte, g As Byte, b As Byte, a As Byte) As MeshData
+  overload: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuad*
+  nameWithType.vb: QuadMeshUtil.GetCustomQuad(Single, Single, Single, Single, Single, Byte, Byte, Byte, Byte)
+  fullName.vb: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuad(Single, Single, Single, Single, Single, Byte, Byte, Byte, Byte)
+  name.vb: GetCustomQuad(Single, Single, Single, Single, Single, Byte, Byte, Byte, Byte)
+- uid: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadHorizontal(System.Single,System.Single,System.Single,System.Single,System.Single,System.Byte,System.Byte,System.Byte,System.Byte)
+  commentId: M:Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadHorizontal(System.Single,System.Single,System.Single,System.Single,System.Single,System.Byte,System.Byte,System.Byte,System.Byte)
+  id: GetCustomQuadHorizontal(System.Single,System.Single,System.Single,System.Single,System.Single,System.Byte,System.Byte,System.Byte,System.Byte)
+  parent: Vintagestory.API.Client.QuadMeshUtil
+  langs:
+  - csharp
+  - vb
+  name: GetCustomQuadHorizontal(float, float, float, float, float, byte, byte, byte, byte)
+  nameWithType: QuadMeshUtil.GetCustomQuadHorizontal(float, float, float, float, float, byte, byte, byte, byte)
+  fullName: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadHorizontal(float, float, float, float, float, byte, byte, byte, byte)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/QuadMeshUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetCustomQuadHorizontal
+    path: Client/Model/Mesh/QuadMeshUtil.cs
+    startLine: 167
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns a single horziontal quad mesh with given params
+  example: []
+  syntax:
+    content: public static MeshData GetCustomQuadHorizontal(float x, float y, float z, float width, float length, byte r, byte g, byte b, byte a)
+    parameters:
+    - id: x
+      type: System.Single
+      description: ''
+    - id: y
+      type: System.Single
+      description: ''
+    - id: z
+      type: System.Single
+      description: ''
+    - id: width
+      type: System.Single
+      description: ''
+    - id: length
+      type: System.Single
+      description: ''
+    - id: r
+      type: System.Byte
+      description: ''
+    - id: g
+      type: System.Byte
+      description: ''
+    - id: b
+      type: System.Byte
+      description: ''
+    - id: a
+      type: System.Byte
+      description: ''
+    return:
+      type: Vintagestory.API.Client.MeshData
+      description: ''
+    content.vb: Public Shared Function GetCustomQuadHorizontal(x As Single, y As Single, z As Single, width As Single, length As Single, r As Byte, g As Byte, b As Byte, a As Byte) As MeshData
+  overload: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadHorizontal*
+  nameWithType.vb: QuadMeshUtil.GetCustomQuadHorizontal(Single, Single, Single, Single, Single, Byte, Byte, Byte, Byte)
+  fullName.vb: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadHorizontal(Single, Single, Single, Single, Single, Byte, Byte, Byte, Byte)
+  name.vb: GetCustomQuadHorizontal(Single, Single, Single, Single, Single, Byte, Byte, Byte, Byte)
+- uid: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Byte,System.Byte,System.Byte,System.Byte)
+  commentId: M:Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Byte,System.Byte,System.Byte,System.Byte)
+  id: GetCustomQuadModelData(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Byte,System.Byte,System.Byte,System.Byte)
+  parent: Vintagestory.API.Client.QuadMeshUtil
+  langs:
+  - csharp
+  - vb
+  name: GetCustomQuadModelData(float, float, float, float, float, float, float, float, byte, byte, byte, byte)
+  nameWithType: QuadMeshUtil.GetCustomQuadModelData(float, float, float, float, float, float, float, float, byte, byte, byte, byte)
+  fullName: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData(float, float, float, float, float, float, float, float, byte, byte, byte, byte)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/QuadMeshUtil.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetCustomQuadModelData
+    path: Client/Model/Mesh/QuadMeshUtil.cs
+    startLine: 231
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns a custom quad mesh with the given params.
+  example: []
+  syntax:
+    content: public static MeshData GetCustomQuadModelData(float u, float v, float u2, float v2, float dx, float dy, float dw, float dh, byte r, byte g, byte b, byte a)
+    parameters:
+    - id: u
+      type: System.Single
+      description: ''
+    - id: v
+      type: System.Single
+      description: ''
+    - id: u2
+      type: System.Single
+      description: ''
+    - id: v2
+      type: System.Single
+      description: ''
+    - id: dx
+      type: System.Single
+      description: ''
+    - id: dy
+      type: System.Single
+      description: ''
+    - id: dw
+      type: System.Single
+      description: ''
+    - id: dh
+      type: System.Single
+      description: ''
+    - id: r
+      type: System.Byte
+      description: ''
+    - id: g
+      type: System.Byte
+      description: ''
+    - id: b
+      type: System.Byte
+      description: ''
+    - id: a
+      type: System.Byte
+      description: ''
+    return:
+      type: Vintagestory.API.Client.MeshData
+      description: ''
+    content.vb: Public Shared Function GetCustomQuadModelData(u As Single, v As Single, u2 As Single, v2 As Single, dx As Single, dy As Single, dw As Single, dh As Single, r As Byte, g As Byte, b As Byte, a As Byte) As MeshData
+  overload: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData*
+  nameWithType.vb: QuadMeshUtil.GetCustomQuadModelData(Single, Single, Single, Single, Single, Single, Single, Single, Byte, Byte, Byte, Byte)
+  fullName.vb: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData(Single, Single, Single, Single, Single, Single, Single, Single, Byte, Byte, Byte, Byte)
+  name.vb: GetCustomQuadModelData(Single, Single, Single, Single, Single, Single, Single, Single, Byte, Byte, Byte, Byte)
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.QuadMeshUtil.GetQuad*
+  commentId: Overload:Vintagestory.API.Client.QuadMeshUtil.GetQuad
+  href: Vintagestory.API.Client.QuadMeshUtil.html#Vintagestory_API_Client_QuadMeshUtil_GetQuad
+  name: GetQuad
+  nameWithType: QuadMeshUtil.GetQuad
+  fullName: Vintagestory.API.Client.QuadMeshUtil.GetQuad
+- uid: Vintagestory.API.Client.MeshData
+  commentId: T:Vintagestory.API.Client.MeshData
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MeshData.html
+  name: MeshData
+  nameWithType: MeshData
+  fullName: Vintagestory.API.Client.MeshData
+- uid: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData*
+  commentId: Overload:Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData
+  href: Vintagestory.API.Client.QuadMeshUtil.html#Vintagestory_API_Client_QuadMeshUtil_GetCustomQuadModelData_System_Single_System_Single_System_Single_System_Single_System_Single_
+  name: GetCustomQuadModelData
+  nameWithType: QuadMeshUtil.GetCustomQuadModelData
+  fullName: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadModelData
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuad*
+  commentId: Overload:Vintagestory.API.Client.QuadMeshUtil.GetCustomQuad
+  href: Vintagestory.API.Client.QuadMeshUtil.html#Vintagestory_API_Client_QuadMeshUtil_GetCustomQuad_System_Single_System_Single_System_Single_System_Single_System_Single_System_Byte_System_Byte_System_Byte_System_Byte_
+  name: GetCustomQuad
+  nameWithType: QuadMeshUtil.GetCustomQuad
+  fullName: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuad
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadHorizontal*
+  commentId: Overload:Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadHorizontal
+  href: Vintagestory.API.Client.QuadMeshUtil.html#Vintagestory_API_Client_QuadMeshUtil_GetCustomQuadHorizontal_System_Single_System_Single_System_Single_System_Single_System_Single_System_Byte_System_Byte_System_Byte_System_Byte_
+  name: GetCustomQuadHorizontal
+  nameWithType: QuadMeshUtil.GetCustomQuadHorizontal
+  fullName: Vintagestory.API.Client.QuadMeshUtil.GetCustomQuadHorizontal

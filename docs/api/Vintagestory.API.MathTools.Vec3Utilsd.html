@@ -1,1567 +1,1222 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Vec3Utilsd
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class Vec3Utilsd
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class Vec3Utilsd | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Vec3Utilsd | VintageStory API ">
+      
+      <meta name="description" content="Don&#39;t use this class unless you need it to interoperate with Mat4d">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.MathTools.Vec3Utilsd">
-  
-  
-  <h1 id="Vintagestory_API_MathTools_Vec3Utilsd" data-uid="Vintagestory.API.MathTools.Vec3Utilsd" class="text-break">Class Vec3Utilsd
-  </h1>
-  <div class="markdown level0 summary"><p>Don&apos;t use this class unless you need it to interoperate with Mat4d</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">Vec3Utilsd</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.MathTools.html">Vintagestory.API.MathTools</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_MathTools_Vec3Utilsd_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Vec3Utilsd : object</code></pre>
-  </div>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Add_System_Double___System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Add(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1106">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Add_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Add*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Add_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Add(System.Double[],System.Double[],System.Double[])">Add(Double[], Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Adds two vec3&apos;s. returns {vec3} out</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Add(double[] output, double[] a, double[] b)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_CloneIt_System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.CloneIt(System.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1044">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_CloneIt_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.CloneIt*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_CloneIt_System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.CloneIt(System.Double[])">CloneIt(Double[])</h4>
-  <div class="markdown level1 summary"><p>Creates a new vec3 initialized with values from an existing vector. Returns {vec3} a new 3D vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] CloneIt(double[] a)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td><p>vector to clone</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Copy_System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Copy(System.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1075">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Copy_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Copy*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Copy_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Copy(System.Double[],System.Double[])">Copy(Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Copy the values from one vec3 to another. Returns {vec3} out</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Copy(double[] output, double[] a)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td><p>the receiving vector</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td><p>the source vector</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Create.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Create%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1030">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Create_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Create*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Create" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Create">Create()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Create()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Cross_System_Double___System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Cross(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1345">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Cross_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Cross*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Cross_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Cross(System.Double[],System.Double[],System.Double[])">Cross(Double[], Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Computes the cross product of two vec3&apos;s</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Cross(double[] output, double[] a, double[] b)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Distance_System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Distance(System.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1229">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Distance_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Distance*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Distance_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Distance(System.Double[],System.Double[])">Distance(Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Calculates the euclidian distance between two vec3&apos;s. Returns {Number} distance between a and b</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double Distance(double[] a, double[] b)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Divide_System_Double___System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Divide(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1153">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Divide_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Divide*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Divide_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Divide(System.Double[],System.Double[],System.Double[])">Divide(Double[], Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Divides two vec3&apos;s</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Divide(double[] output, double[] a, double[] b)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Dot_System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Dot(System.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1333">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Dot_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Dot*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Dot_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Dot(System.Double[],System.Double[])">Dot(Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Calculates the dot product of two vec3&apos;s. Returns {Number} dot product of a and b</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double Dot(double[] a, double[] b)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_FromValues_System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.FromValues(System.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1060">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_FromValues_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.FromValues*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_FromValues_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.FromValues(System.Double,System.Double,System.Double)">FromValues(Double, Double, Double)</h4>
-  <div class="markdown level1 summary"><p>Creates a new vec3 initialized with the given values. Returns {vec3} a new 3D vector</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] FromValues(double x, double y, double z)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">x</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">y</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">z</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Length__System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Length_(System.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1258">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Length__" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Length_*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Length__System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Length_(System.Double[])">Length_(Double[])</h4>
-  <div class="markdown level1 summary"><p>Calculates the length of a vec3</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double Length_(double[] a)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Lerp_System_Double___System_Double___System_Double___System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Lerp(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1369">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Lerp_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Lerp*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Lerp_System_Double___System_Double___System_Double___System_Double_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Lerp(System.Double[],System.Double[],System.Double[],System.Double)">Lerp(Double[], Double[], Double[], Double)</h4>
-  <div class="markdown level1 summary"><p>Performs a linear interpolation between two vec3&apos;s</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Lerp(double[] output, double[] a, double[] b, double t)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">t</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Max_System_Double___System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Max(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1184">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Max_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Max*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Max_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Max(System.Double[],System.Double[],System.Double[])">Max(Double[], Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Returns the maximum of two vec3&apos;s</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Max(double[] output, double[] a, double[] b)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Min_System_Double___System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Min(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1169">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Min_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Min*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Min_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Min(System.Double[],System.Double[],System.Double[])">Min(Double[], Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Returns the minimum of two vec3&apos;s</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Min(double[] output, double[] a, double[] b)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Multiply_System_Double___System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Multiply(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1137">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Multiply_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Multiply*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Multiply_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Multiply(System.Double[],System.Double[],System.Double[])">Multiply(Double[], Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Multiplies two vec3&apos;s</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Multiply(double[] output, double[] a, double[] b)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Negate_System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Negate(System.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1296">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Negate_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Negate*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Negate_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Negate(System.Double[],System.Double[])">Negate(Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Negates the components of a vec3</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Negate(double[] output, double[] a)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Normalize_System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Normalize(System.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1310">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Normalize_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Normalize*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Normalize_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Normalize(System.Double[],System.Double[])">Normalize(Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Normalize a vec3</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Normalize(double[] output, double[] a)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Scale_System_Double___System_Double___System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Scale(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1199">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Scale_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Scale*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Scale_System_Double___System_Double___System_Double_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Scale(System.Double[],System.Double[],System.Double)">Scale(Double[], Double[], Double)</h4>
-  <div class="markdown level1 summary"><p>Scales a vec3 by a scalar number</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Scale(double[] output, double[] a, double b)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_ScaleAndAdd_System_Double___System_Double___System_Double___System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.ScaleAndAdd(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1215">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_ScaleAndAdd_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.ScaleAndAdd*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_ScaleAndAdd_System_Double___System_Double___System_Double___System_Double_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.ScaleAndAdd(System.Double[],System.Double[],System.Double[],System.Double)">ScaleAndAdd(Double[], Double[], Double[], Double)</h4>
-  <div class="markdown level1 summary"><p>Adds two vec3&apos;s after scaling the second operand by a scalar value</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] ScaleAndAdd(double[] output, double[] a, double[] b, double scale)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">scale</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Set_System_Double___System_Double_System_Double_System_Double_.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Set(System.Double%5B%5D%2CSystem.Double%2CSystem.Double%2CSystem.Double)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1091">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Set_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Set*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Set_System_Double___System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Set(System.Double[],System.Double,System.Double,System.Double)">Set(Double[], Double, Double, Double)</h4>
-  <div class="markdown level1 summary"><p>Set the components of a vec3 to the given values. Returns {vec3} out</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Set(double[] output, double x, double y, double z)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td><p>the receiving vector</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">x</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">y</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td><span class="parametername">z</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_SqrLen_System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.SqrLen(System.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1285">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_SqrLen_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.SqrLen*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_SqrLen_System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.SqrLen(System.Double[])">SqrLen(Double[])</h4>
-  <div class="markdown level1 summary"><p>SquaredLength()</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double SqrLen(double[] a)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_SquaredDistance_System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.SquaredDistance(System.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1244">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_SquaredDistance_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.SquaredDistance*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_SquaredDistance_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.SquaredDistance(System.Double[],System.Double[])">SquaredDistance(Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Calculates the squared euclidian distance between two vec3&apos;s. Returns {Number} squared distance between a and b</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double SquaredDistance(double[] a, double[] b)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">b</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_SquaredLength_System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.SquaredLength(System.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1272">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_SquaredLength_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.SquaredLength*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_SquaredLength_System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.SquaredLength(System.Double[])">SquaredLength(Double[])</h4>
-  <div class="markdown level1 summary"><p>Calculates the squared length of a vec3. Returns {Number} squared length of a</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double SquaredLength(double[] a)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_Substract_System_Double___System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.Substract(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1121">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Substract_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Substract*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_Substract_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Substract(System.Double[],System.Double[],System.Double[])">Substract(Double[], Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Subtracts vector b from vector a. Returns {vec3} out</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] Substract(double[] output, double[] a, double[] b)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td><p>the first operand</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">b</span></td>
-        <td><p>the second operand</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_TransformMat3_System_Double___System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.TransformMat3(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1406">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_TransformMat3_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.TransformMat3*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_TransformMat3_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.TransformMat3(System.Double[],System.Double[],System.Double[])">TransformMat3(Double[], Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Transforms the vec3 with a mat3.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] TransformMat3(double[] output, double[] a, double[] m)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td><p>the vector to transform</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">m</span></td>
-        <td><p>the 3x3 matrix to transform with</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_TransformMat4_System_Double___System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.TransformMat4(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1388">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_TransformMat4_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.TransformMat4*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_TransformMat4_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.TransformMat4(System.Double[],System.Double[],System.Double[])">TransformMat4(Double[], Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Transforms the vec3 with a mat4. 4th vector component is implicitly &apos;1&apos;</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] TransformMat4(double[] output, double[] a, double[] m)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">m</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd_TransformQuat_System_Double___System_Double___System_Double___.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd.TransformQuat(System.Double%5B%5D%2CSystem.Double%5B%5D%2CSystem.Double%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1424">View Source</a>
-  </span>
-  <a id="Vintagestory_API_MathTools_Vec3Utilsd_TransformQuat_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.TransformQuat*"></a>
-  <h4 id="Vintagestory_API_MathTools_Vec3Utilsd_TransformQuat_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.TransformQuat(System.Double[],System.Double[],System.Double[])">TransformQuat(Double[], Double[], Double[])</h4>
-  <div class="markdown level1 summary"><p>Transforms the vec3 with a quat</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static double[] TransformQuat(double[] output, double[] a, double[] q)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">output</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">a</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td><span class="parametername">q</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_MathTools_Vec3Utilsd.md&amp;value=---%0Auid%3A%20Vintagestory.API.MathTools.Vec3Utilsd%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Math/Matrix/Quaterniond.cs/#L1026" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="Vintagestory.API.MathTools.Vec3Utilsd">
+
+
+
+  <h1 id="Vintagestory_API_MathTools_Vec3Utilsd" data-uid="Vintagestory.API.MathTools.Vec3Utilsd" class="text-break">
+Class Vec3Utilsd  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.MathTools.html">MathTools</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Don't use this class unless you need it to interoperate with Mat4d</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Vec3Utilsd</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Vec3Utilsd</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Add_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Add*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Add_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Add(System.Double[],System.Double[],System.Double[])">
+  Add(double[], double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds two vec3's. returns {vec3} out</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Add(double[] output, double[] a, double[] b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_CloneIt_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.CloneIt*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_CloneIt_System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.CloneIt(System.Double[])">
+  CloneIt(double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new vec3 initialized with values from an existing vector. Returns {vec3} a new 3D vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] CloneIt(double[] a)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>vector to clone</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Copy_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Copy*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Copy_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Copy(System.Double[],System.Double[])">
+  Copy(double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Copy the values from one vec3 to another. Returns {vec3} out</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Copy(double[] output, double[] a)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>the receiving vector</p>
+</dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>the source vector</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Create_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Create*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Create" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Create">
+  Create()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Create()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Cross_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Cross*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Cross_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Cross(System.Double[],System.Double[],System.Double[])">
+  Cross(double[], double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Computes the cross product of two vec3's</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Cross(double[] output, double[] a, double[] b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Distance_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Distance*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Distance_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Distance(System.Double[],System.Double[])">
+  Distance(double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calculates the euclidian distance between two vec3's. Returns {Number} distance between a and b</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double Distance(double[] a, double[] b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Divide_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Divide*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Divide_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Divide(System.Double[],System.Double[],System.Double[])">
+  Divide(double[], double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Divides two vec3's</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Divide(double[] output, double[] a, double[] b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Dot_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Dot*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Dot_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Dot(System.Double[],System.Double[])">
+  Dot(double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calculates the dot product of two vec3's. Returns {Number} dot product of a and b</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double Dot(double[] a, double[] b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_FromValues_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.FromValues*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_FromValues_System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.FromValues(System.Double,System.Double,System.Double)">
+  FromValues(double, double, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new vec3 initialized with the given values. Returns {vec3} a new 3D vector</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] FromValues(double x, double y, double z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Length__" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Length_*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Length__System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Length_(System.Double[])">
+  Length_(double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calculates the length of a vec3</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double Length_(double[] a)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Lerp_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Lerp*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Lerp_System_Double___System_Double___System_Double___System_Double_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Lerp(System.Double[],System.Double[],System.Double[],System.Double)">
+  Lerp(double[], double[], double[], double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs a linear interpolation between two vec3's</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Lerp(double[] output, double[] a, double[] b, double t)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>t</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Max_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Max*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Max_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Max(System.Double[],System.Double[],System.Double[])">
+  Max(double[], double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the maximum of two vec3's</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Max(double[] output, double[] a, double[] b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Min_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Min*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Min_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Min(System.Double[],System.Double[],System.Double[])">
+  Min(double[], double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the minimum of two vec3's</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Min(double[] output, double[] a, double[] b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Multiply_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Multiply*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Multiply_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Multiply(System.Double[],System.Double[],System.Double[])">
+  Multiply(double[], double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multiplies two vec3's</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Multiply(double[] output, double[] a, double[] b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Negate_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Negate*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Negate_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Negate(System.Double[],System.Double[])">
+  Negate(double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Negates the components of a vec3</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Negate(double[] output, double[] a)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Normalize_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Normalize*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Normalize_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Normalize(System.Double[],System.Double[])">
+  Normalize(double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Normalize a vec3</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Normalize(double[] output, double[] a)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Scale_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Scale*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Scale_System_Double___System_Double___System_Double_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Scale(System.Double[],System.Double[],System.Double)">
+  Scale(double[], double[], double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Scales a vec3 by a scalar number</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Scale(double[] output, double[] a, double b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_ScaleAndAdd_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.ScaleAndAdd*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_ScaleAndAdd_System_Double___System_Double___System_Double___System_Double_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.ScaleAndAdd(System.Double[],System.Double[],System.Double[],System.Double)">
+  ScaleAndAdd(double[], double[], double[], double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds two vec3's after scaling the second operand by a scalar value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] ScaleAndAdd(double[] output, double[] a, double[] b, double scale)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>scale</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Set_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Set*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Set_System_Double___System_Double_System_Double_System_Double_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Set(System.Double[],System.Double,System.Double,System.Double)">
+  Set(double[], double, double, double)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Set the components of a vec3 to the given values. Returns {vec3} out</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Set(double[] output, double x, double y, double z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>the receiving vector</p>
+</dd>
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_SqrLen_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.SqrLen*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_SqrLen_System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.SqrLen(System.Double[])">
+  SqrLen(double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>SquaredLength()</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double SqrLen(double[] a)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_SquaredDistance_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.SquaredDistance*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_SquaredDistance_System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.SquaredDistance(System.Double[],System.Double[])">
+  SquaredDistance(double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calculates the squared euclidian distance between two vec3's. Returns {Number} squared distance between a and b</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double SquaredDistance(double[] a, double[] b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_SquaredLength_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.SquaredLength*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_SquaredLength_System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.SquaredLength(System.Double[])">
+  SquaredLength(double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calculates the squared length of a vec3. Returns {Number} squared length of a</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double SquaredLength(double[] a)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_Substract_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Substract*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_Substract_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.Substract(System.Double[],System.Double[],System.Double[])">
+  Substract(double[], double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Subtracts vector b from vector a. Returns {vec3} out</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] Substract(double[] output, double[] a, double[] b)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>the first operand</p>
+</dd>
+    <dt><code>b</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>the second operand</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_TransformMat3_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.TransformMat3*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_TransformMat3_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.TransformMat3(System.Double[],System.Double[],System.Double[])">
+  TransformMat3(double[], double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Transforms the vec3 with a mat3.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] TransformMat3(double[] output, double[] a, double[] m)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>the vector to transform</p>
+</dd>
+    <dt><code>m</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>the 3x3 matrix to transform with</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_TransformMat4_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.TransformMat4*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_TransformMat4_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.TransformMat4(System.Double[],System.Double[],System.Double[])">
+  TransformMat4(double[], double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Transforms the vec3 with a mat4. 4th vector component is implicitly '1'</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] TransformMat4(double[] output, double[] a, double[] m)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>m</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Vec3Utilsd_TransformQuat_" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.TransformQuat*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Vec3Utilsd_TransformQuat_System_Double___System_Double___System_Double___" data-uid="Vintagestory.API.MathTools.Vec3Utilsd.TransformQuat(System.Double[],System.Double[],System.Double[])">
+  TransformQuat(double[], double[], double[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Transforms the vec3 with a quat</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] TransformQuat(double[] output, double[] a, double[] q)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>a</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+    <dt><code>q</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

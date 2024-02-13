@@ -1,0 +1,98 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.OnEntityAction
+  commentId: T:Vintagestory.API.Common.OnEntityAction
+  id: OnEntityAction
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: OnEntityAction
+  nameWithType: OnEntityAction
+  fullName: Vintagestory.API.Common.OnEntityAction
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/Entity/EntityControls.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnEntityAction
+    path: Common/Entity/EntityControls.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public delegate void OnEntityAction(EnumEntityAction action, bool on, ref EnumHandling handled)
+    parameters:
+    - id: action
+      type: Vintagestory.API.Common.EnumEntityAction
+    - id: on
+      type: System.Boolean
+    - id: handled
+      type: Vintagestory.API.Common.EnumHandling
+    content.vb: Public Delegate Sub OnEntityAction(action As EnumEntityAction, [on] As Boolean, handled As EnumHandling)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.EnumEntityAction
+  commentId: T:Vintagestory.API.Common.EnumEntityAction
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumEntityAction.html
+  name: EnumEntityAction
+  nameWithType: EnumEntityAction
+  fullName: Vintagestory.API.Common.EnumEntityAction
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.EnumHandling
+  commentId: T:Vintagestory.API.Common.EnumHandling
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumHandling.html
+  name: EnumHandling
+  nameWithType: EnumHandling
+  fullName: Vintagestory.API.Common.EnumHandling
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

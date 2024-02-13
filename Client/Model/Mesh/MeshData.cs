@@ -1585,6 +1585,7 @@ namespace Vintagestory.API.Client
 
             unchecked
             {
+                dest.SetVerticesCount(VerticesCount);
                 dest.xyz = xyz.FastCopy(XyzCount);
 
                 if (Normals != null)
@@ -1639,7 +1640,6 @@ namespace Vintagestory.API.Client
                 }
 
                 dest.Indices = Indices.FastCopy(IndicesCount);
-                dest.SetVerticesCount(GetVerticesCount());
                 dest.SetIndicesCount(GetIndicesCount());
 
                 if (CustomFloats != null)

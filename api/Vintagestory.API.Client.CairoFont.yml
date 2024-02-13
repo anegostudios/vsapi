@@ -1,0 +1,1788 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.CairoFont
+  commentId: T:Vintagestory.API.Client.CairoFont
+  id: CairoFont
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.CairoFont.#ctor
+  - Vintagestory.API.Client.CairoFont.#ctor(System.Double,System.String)
+  - Vintagestory.API.Client.CairoFont.#ctor(System.Double,System.String,System.Double[],System.Double[])
+  - Vintagestory.API.Client.CairoFont.#ctor(Vintagestory.API.Client.FontConfig)
+  - Vintagestory.API.Client.CairoFont.AutoBoxSize(System.String,Vintagestory.API.Client.ElementBounds,System.Boolean)
+  - Vintagestory.API.Client.CairoFont.AutoFontSize(System.String,Vintagestory.API.Client.ElementBounds,System.Boolean)
+  - Vintagestory.API.Client.CairoFont.ButtonPressedText
+  - Vintagestory.API.Client.CairoFont.ButtonText
+  - Vintagestory.API.Client.CairoFont.Clone
+  - Vintagestory.API.Client.CairoFont.Dispose
+  - Vintagestory.API.Client.CairoFont.FontMeasuringContext
+  - Vintagestory.API.Client.CairoFont.GetFontExtents
+  - Vintagestory.API.Client.CairoFont.GetTextExtents(System.String)
+  - Vintagestory.API.Client.CairoFont.LineHeightMultiplier
+  - Vintagestory.API.Client.CairoFont.Orientation
+  - Vintagestory.API.Client.CairoFont.RenderTwice
+  - Vintagestory.API.Client.CairoFont.SetupContext(Cairo.Context)
+  - Vintagestory.API.Client.CairoFont.Slant
+  - Vintagestory.API.Client.CairoFont.SmallTextInput
+  - Vintagestory.API.Client.CairoFont.TextInput
+  - Vintagestory.API.Client.CairoFont.WhiteDetailText
+  - Vintagestory.API.Client.CairoFont.WhiteMediumText
+  - Vintagestory.API.Client.CairoFont.WhiteSmallText
+  - Vintagestory.API.Client.CairoFont.WhiteSmallishText
+  - Vintagestory.API.Client.CairoFont.WithColor(System.Double[])
+  - Vintagestory.API.Client.CairoFont.WithFont(System.String)
+  - Vintagestory.API.Client.CairoFont.WithFontSize(System.Single)
+  - Vintagestory.API.Client.CairoFont.WithLineHeightMultiplier(System.Double)
+  - Vintagestory.API.Client.CairoFont.WithOrientation(Vintagestory.API.Client.EnumTextOrientation)
+  - Vintagestory.API.Client.CairoFont.WithRenderTwice
+  - Vintagestory.API.Client.CairoFont.WithSlant(Cairo.FontSlant)
+  - Vintagestory.API.Client.CairoFont.WithStroke(System.Double[],System.Double)
+  - Vintagestory.API.Client.CairoFont.WithWeight(Cairo.FontWeight)
+  langs:
+  - csharp
+  - vb
+  name: CairoFont
+  nameWithType: CairoFont
+  fullName: Vintagestory.API.Client.CairoFont
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CairoFont
+    path: Client/UI/CairoFont.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Represent a font with sizing and styling for use in rendering text
+  example: []
+  syntax:
+    content: 'public class CairoFont : FontConfig, IDisposable'
+    content.vb: Public Class CairoFont Inherits FontConfig Implements IDisposable
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Client.FontConfig
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - Vintagestory.API.Client.FontConfig.UnscaledFontsize
+  - Vintagestory.API.Client.FontConfig.Fontname
+  - Vintagestory.API.Client.FontConfig.FontWeight
+  - Vintagestory.API.Client.FontConfig.Color
+  - Vintagestory.API.Client.FontConfig.StrokeColor
+  - Vintagestory.API.Client.FontConfig.StrokeWidth
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Client.CairoFont.FontMeasuringContext
+  commentId: F:Vintagestory.API.Client.CairoFont.FontMeasuringContext
+  id: FontMeasuringContext
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: FontMeasuringContext
+  nameWithType: CairoFont.FontMeasuringContext
+  fullName: Vintagestory.API.Client.CairoFont.FontMeasuringContext
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FontMeasuringContext
+    path: Client/UI/CairoFont.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The static Context for all Cairo Fonts.
+  example: []
+  syntax:
+    content: public static Context FontMeasuringContext
+    return:
+      type: Cairo.Context
+    content.vb: Public Shared FontMeasuringContext As Context
+- uid: Vintagestory.API.Client.CairoFont.RenderTwice
+  commentId: F:Vintagestory.API.Client.CairoFont.RenderTwice
+  id: RenderTwice
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: RenderTwice
+  nameWithType: CairoFont.RenderTwice
+  fullName: Vintagestory.API.Client.CairoFont.RenderTwice
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RenderTwice
+    path: Client/UI/CairoFont.cs
+    startLine: 20
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Whether or not the font is rendered twice.
+  example: []
+  syntax:
+    content: public bool RenderTwice
+    return:
+      type: System.Boolean
+    content.vb: Public RenderTwice As Boolean
+- uid: Vintagestory.API.Client.CairoFont.LineHeightMultiplier
+  commentId: F:Vintagestory.API.Client.CairoFont.LineHeightMultiplier
+  id: LineHeightMultiplier
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: LineHeightMultiplier
+  nameWithType: CairoFont.LineHeightMultiplier
+  fullName: Vintagestory.API.Client.CairoFont.LineHeightMultiplier
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LineHeightMultiplier
+    path: Client/UI/CairoFont.cs
+    startLine: 22
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public double LineHeightMultiplier
+    return:
+      type: System.Double
+    content.vb: Public LineHeightMultiplier As Double
+- uid: Vintagestory.API.Client.CairoFont.Slant
+  commentId: F:Vintagestory.API.Client.CairoFont.Slant
+  id: Slant
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: Slant
+  nameWithType: CairoFont.Slant
+  fullName: Vintagestory.API.Client.CairoFont.Slant
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Slant
+    path: Client/UI/CairoFont.cs
+    startLine: 26
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public FontSlant Slant
+    return:
+      type: Cairo.FontSlant
+    content.vb: Public Slant As FontSlant
+- uid: Vintagestory.API.Client.CairoFont.Orientation
+  commentId: F:Vintagestory.API.Client.CairoFont.Orientation
+  id: Orientation
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: Orientation
+  nameWithType: CairoFont.Orientation
+  fullName: Vintagestory.API.Client.CairoFont.Orientation
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Orientation
+    path: Client/UI/CairoFont.cs
+    startLine: 28
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public EnumTextOrientation Orientation
+    return:
+      type: Vintagestory.API.Client.EnumTextOrientation
+    content.vb: Public Orientation As EnumTextOrientation
+- uid: Vintagestory.API.Client.CairoFont.#ctor
+  commentId: M:Vintagestory.API.Client.CairoFont.#ctor
+  id: '#ctor'
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: CairoFont()
+  nameWithType: CairoFont.CairoFont()
+  fullName: Vintagestory.API.Client.CairoFont.CairoFont()
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Client/UI/CairoFont.cs
+    startLine: 39
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates an empty CairoFont instance.
+  example: []
+  syntax:
+    content: public CairoFont()
+    content.vb: Public Sub New()
+  overload: Vintagestory.API.Client.CairoFont.#ctor*
+  nameWithType.vb: CairoFont.New()
+  fullName.vb: Vintagestory.API.Client.CairoFont.New()
+  name.vb: New()
+- uid: Vintagestory.API.Client.CairoFont.#ctor(Vintagestory.API.Client.FontConfig)
+  commentId: M:Vintagestory.API.Client.CairoFont.#ctor(Vintagestory.API.Client.FontConfig)
+  id: '#ctor(Vintagestory.API.Client.FontConfig)'
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: CairoFont(FontConfig)
+  nameWithType: CairoFont.CairoFont(FontConfig)
+  fullName: Vintagestory.API.Client.CairoFont.CairoFont(Vintagestory.API.Client.FontConfig)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Client/UI/CairoFont.cs
+    startLine: 47
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a pre-populated CairoFont instance.
+  example: []
+  syntax:
+    content: public CairoFont(FontConfig config)
+    parameters:
+    - id: config
+      type: Vintagestory.API.Client.FontConfig
+      description: The configuration for the CairoFont
+    content.vb: Public Sub New(config As FontConfig)
+  overload: Vintagestory.API.Client.CairoFont.#ctor*
+  nameWithType.vb: CairoFont.New(FontConfig)
+  fullName.vb: Vintagestory.API.Client.CairoFont.New(Vintagestory.API.Client.FontConfig)
+  name.vb: New(FontConfig)
+- uid: Vintagestory.API.Client.CairoFont.#ctor(System.Double,System.String)
+  commentId: M:Vintagestory.API.Client.CairoFont.#ctor(System.Double,System.String)
+  id: '#ctor(System.Double,System.String)'
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: CairoFont(double, string)
+  nameWithType: CairoFont.CairoFont(double, string)
+  fullName: Vintagestory.API.Client.CairoFont.CairoFont(double, string)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Client/UI/CairoFont.cs
+    startLine: 62
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a CairoFont object.
+  example: []
+  syntax:
+    content: public CairoFont(double unscaledFontSize, string fontName)
+    parameters:
+    - id: unscaledFontSize
+      type: System.Double
+      description: The size of the font before scaling is applied.
+    - id: fontName
+      type: System.String
+      description: The name of the font.
+    content.vb: Public Sub New(unscaledFontSize As Double, fontName As String)
+  overload: Vintagestory.API.Client.CairoFont.#ctor*
+  nameWithType.vb: CairoFont.New(Double, String)
+  fullName.vb: Vintagestory.API.Client.CairoFont.New(Double, String)
+  name.vb: New(Double, String)
+- uid: Vintagestory.API.Client.CairoFont.WithLineHeightMultiplier(System.Double)
+  commentId: M:Vintagestory.API.Client.CairoFont.WithLineHeightMultiplier(System.Double)
+  id: WithLineHeightMultiplier(System.Double)
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WithLineHeightMultiplier(double)
+  nameWithType: CairoFont.WithLineHeightMultiplier(double)
+  fullName: Vintagestory.API.Client.CairoFont.WithLineHeightMultiplier(double)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WithLineHeightMultiplier
+    path: Client/UI/CairoFont.cs
+    startLine: 68
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public CairoFont WithLineHeightMultiplier(double lineHeightMul)
+    parameters:
+    - id: lineHeightMul
+      type: System.Double
+    return:
+      type: Vintagestory.API.Client.CairoFont
+    content.vb: Public Function WithLineHeightMultiplier(lineHeightMul As Double) As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WithLineHeightMultiplier*
+  nameWithType.vb: CairoFont.WithLineHeightMultiplier(Double)
+  fullName.vb: Vintagestory.API.Client.CairoFont.WithLineHeightMultiplier(Double)
+  name.vb: WithLineHeightMultiplier(Double)
+- uid: Vintagestory.API.Client.CairoFont.WithStroke(System.Double[],System.Double)
+  commentId: M:Vintagestory.API.Client.CairoFont.WithStroke(System.Double[],System.Double)
+  id: WithStroke(System.Double[],System.Double)
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WithStroke(double[], double)
+  nameWithType: CairoFont.WithStroke(double[], double)
+  fullName: Vintagestory.API.Client.CairoFont.WithStroke(double[], double)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WithStroke
+    path: Client/UI/CairoFont.cs
+    startLine: 74
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public CairoFont WithStroke(double[] color, double width)
+    parameters:
+    - id: color
+      type: System.Double[]
+    - id: width
+      type: System.Double
+    return:
+      type: Vintagestory.API.Client.CairoFont
+    content.vb: Public Function WithStroke(color As Double(), width As Double) As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WithStroke*
+  nameWithType.vb: CairoFont.WithStroke(Double(), Double)
+  fullName.vb: Vintagestory.API.Client.CairoFont.WithStroke(Double(), Double)
+  name.vb: WithStroke(Double(), Double)
+- uid: Vintagestory.API.Client.CairoFont.#ctor(System.Double,System.String,System.Double[],System.Double[])
+  commentId: M:Vintagestory.API.Client.CairoFont.#ctor(System.Double,System.String,System.Double[],System.Double[])
+  id: '#ctor(System.Double,System.String,System.Double[],System.Double[])'
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: CairoFont(double, string, double[], double[])
+  nameWithType: CairoFont.CairoFont(double, string, double[], double[])
+  fullName: Vintagestory.API.Client.CairoFont.CairoFont(double, string, double[], double[])
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Client/UI/CairoFont.cs
+    startLine: 88
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a CairoFont object
+  example: []
+  syntax:
+    content: public CairoFont(double unscaledFontSize, string fontName, double[] color, double[] strokeColor = null)
+    parameters:
+    - id: unscaledFontSize
+      type: System.Double
+      description: The size of the font before scaling is applied.
+    - id: fontName
+      type: System.String
+      description: The name of the font.
+    - id: color
+      type: System.Double[]
+      description: The color of the font.
+    - id: strokeColor
+      type: System.Double[]
+      description: 'The color for the stroke of the font. (Default: Null)'
+    content.vb: Public Sub New(unscaledFontSize As Double, fontName As String, color As Double(), strokeColor As Double() = Nothing)
+  overload: Vintagestory.API.Client.CairoFont.#ctor*
+  nameWithType.vb: CairoFont.New(Double, String, Double(), Double())
+  fullName.vb: Vintagestory.API.Client.CairoFont.New(Double, String, Double(), Double())
+  name.vb: New(Double, String, Double(), Double())
+- uid: Vintagestory.API.Client.CairoFont.AutoFontSize(System.String,Vintagestory.API.Client.ElementBounds,System.Boolean)
+  commentId: M:Vintagestory.API.Client.CairoFont.AutoFontSize(System.String,Vintagestory.API.Client.ElementBounds,System.Boolean)
+  id: AutoFontSize(System.String,Vintagestory.API.Client.ElementBounds,System.Boolean)
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: AutoFontSize(string, ElementBounds, bool)
+  nameWithType: CairoFont.AutoFontSize(string, ElementBounds, bool)
+  fullName: Vintagestory.API.Client.CairoFont.AutoFontSize(string, Vintagestory.API.Client.ElementBounds, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AutoFontSize
+    path: Client/UI/CairoFont.cs
+    startLine: 103
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Adjust font size so that it fits given bounds
+  example: []
+  syntax:
+    content: public void AutoFontSize(string text, ElementBounds bounds, bool onlyShrink = true)
+    parameters:
+    - id: text
+      type: System.String
+      description: The text of the object.
+    - id: bounds
+      type: Vintagestory.API.Client.ElementBounds
+      description: The bounds of the element where the font is displayed.
+    - id: onlyShrink
+      type: System.Boolean
+      description: ''
+    content.vb: Public Sub AutoFontSize(text As String, bounds As ElementBounds, onlyShrink As Boolean = True)
+  overload: Vintagestory.API.Client.CairoFont.AutoFontSize*
+  nameWithType.vb: CairoFont.AutoFontSize(String, ElementBounds, Boolean)
+  fullName.vb: Vintagestory.API.Client.CairoFont.AutoFontSize(String, Vintagestory.API.Client.ElementBounds, Boolean)
+  name.vb: AutoFontSize(String, ElementBounds, Boolean)
+- uid: Vintagestory.API.Client.CairoFont.AutoBoxSize(System.String,Vintagestory.API.Client.ElementBounds,System.Boolean)
+  commentId: M:Vintagestory.API.Client.CairoFont.AutoBoxSize(System.String,Vintagestory.API.Client.ElementBounds,System.Boolean)
+  id: AutoBoxSize(System.String,Vintagestory.API.Client.ElementBounds,System.Boolean)
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: AutoBoxSize(string, ElementBounds, bool)
+  nameWithType: CairoFont.AutoBoxSize(string, ElementBounds, bool)
+  fullName: Vintagestory.API.Client.CairoFont.AutoBoxSize(string, Vintagestory.API.Client.ElementBounds, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AutoBoxSize
+    path: Client/UI/CairoFont.cs
+    startLine: 120
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Adjust the bounds so that it fits given text in one line
+  example: []
+  syntax:
+    content: public void AutoBoxSize(string text, ElementBounds bounds, bool onlyGrow = false)
+    parameters:
+    - id: text
+      type: System.String
+      description: The text to adjust
+    - id: bounds
+      type: Vintagestory.API.Client.ElementBounds
+      description: The bounds to adjust the text to.
+    - id: onlyGrow
+      type: System.Boolean
+      description: If true, the box will not be made smaller
+    content.vb: Public Sub AutoBoxSize(text As String, bounds As ElementBounds, onlyGrow As Boolean = False)
+  overload: Vintagestory.API.Client.CairoFont.AutoBoxSize*
+  nameWithType.vb: CairoFont.AutoBoxSize(String, ElementBounds, Boolean)
+  fullName.vb: Vintagestory.API.Client.CairoFont.AutoBoxSize(String, Vintagestory.API.Client.ElementBounds, Boolean)
+  name.vb: AutoBoxSize(String, ElementBounds, Boolean)
+- uid: Vintagestory.API.Client.CairoFont.WithColor(System.Double[])
+  commentId: M:Vintagestory.API.Client.CairoFont.WithColor(System.Double[])
+  id: WithColor(System.Double[])
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WithColor(double[])
+  nameWithType: CairoFont.WithColor(double[])
+  fullName: Vintagestory.API.Client.CairoFont.WithColor(double[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WithColor
+    path: Client/UI/CairoFont.cs
+    startLine: 172
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sets the color of the CairoFont.
+  example: []
+  syntax:
+    content: public CairoFont WithColor(double[] color)
+    parameters:
+    - id: color
+      type: System.Double[]
+      description: The color to set.
+    return:
+      type: Vintagestory.API.Client.CairoFont
+    content.vb: Public Function WithColor(color As Double()) As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WithColor*
+  nameWithType.vb: CairoFont.WithColor(Double())
+  fullName.vb: Vintagestory.API.Client.CairoFont.WithColor(Double())
+  name.vb: WithColor(Double())
+- uid: Vintagestory.API.Client.CairoFont.WithWeight(Cairo.FontWeight)
+  commentId: M:Vintagestory.API.Client.CairoFont.WithWeight(Cairo.FontWeight)
+  id: WithWeight(Cairo.FontWeight)
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WithWeight(FontWeight)
+  nameWithType: CairoFont.WithWeight(FontWeight)
+  fullName: Vintagestory.API.Client.CairoFont.WithWeight(Cairo.FontWeight)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WithWeight
+    path: Client/UI/CairoFont.cs
+    startLine: 182
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Adds a weight to the font.
+  example: []
+  syntax:
+    content: public CairoFont WithWeight(FontWeight weight)
+    parameters:
+    - id: weight
+      type: Cairo.FontWeight
+      description: The weight of the font.
+    return:
+      type: Vintagestory.API.Client.CairoFont
+    content.vb: Public Function WithWeight(weight As FontWeight) As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WithWeight*
+- uid: Vintagestory.API.Client.CairoFont.WithRenderTwice
+  commentId: M:Vintagestory.API.Client.CairoFont.WithRenderTwice
+  id: WithRenderTwice
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WithRenderTwice()
+  nameWithType: CairoFont.WithRenderTwice()
+  fullName: Vintagestory.API.Client.CairoFont.WithRenderTwice()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WithRenderTwice
+    path: Client/UI/CairoFont.cs
+    startLine: 191
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sets the font to render twice.
+  example: []
+  syntax:
+    content: public CairoFont WithRenderTwice()
+    return:
+      type: Vintagestory.API.Client.CairoFont
+    content.vb: Public Function WithRenderTwice() As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WithRenderTwice*
+- uid: Vintagestory.API.Client.CairoFont.WithSlant(Cairo.FontSlant)
+  commentId: M:Vintagestory.API.Client.CairoFont.WithSlant(Cairo.FontSlant)
+  id: WithSlant(Cairo.FontSlant)
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WithSlant(FontSlant)
+  nameWithType: CairoFont.WithSlant(FontSlant)
+  fullName: Vintagestory.API.Client.CairoFont.WithSlant(Cairo.FontSlant)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WithSlant
+    path: Client/UI/CairoFont.cs
+    startLine: 197
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public CairoFont WithSlant(FontSlant slant)
+    parameters:
+    - id: slant
+      type: Cairo.FontSlant
+    return:
+      type: Vintagestory.API.Client.CairoFont
+    content.vb: Public Function WithSlant(slant As FontSlant) As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WithSlant*
+- uid: Vintagestory.API.Client.CairoFont.WithFont(System.String)
+  commentId: M:Vintagestory.API.Client.CairoFont.WithFont(System.String)
+  id: WithFont(System.String)
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WithFont(string)
+  nameWithType: CairoFont.WithFont(string)
+  fullName: Vintagestory.API.Client.CairoFont.WithFont(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WithFont
+    path: Client/UI/CairoFont.cs
+    startLine: 203
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public CairoFont WithFont(string fontname)
+    parameters:
+    - id: fontname
+      type: System.String
+    return:
+      type: Vintagestory.API.Client.CairoFont
+    content.vb: Public Function WithFont(fontname As String) As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WithFont*
+  nameWithType.vb: CairoFont.WithFont(String)
+  fullName.vb: Vintagestory.API.Client.CairoFont.WithFont(String)
+  name.vb: WithFont(String)
+- uid: Vintagestory.API.Client.CairoFont.SetupContext(Cairo.Context)
+  commentId: M:Vintagestory.API.Client.CairoFont.SetupContext(Cairo.Context)
+  id: SetupContext(Cairo.Context)
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: SetupContext(Context)
+  nameWithType: CairoFont.SetupContext(Context)
+  fullName: Vintagestory.API.Client.CairoFont.SetupContext(Cairo.Context)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetupContext
+    path: Client/UI/CairoFont.cs
+    startLine: 213
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sets up the context. Must be executed in the main thread, as it is not thread safe.
+  example: []
+  syntax:
+    content: public void SetupContext(Context ctx)
+    parameters:
+    - id: ctx
+      type: Cairo.Context
+      description: The context to set up the CairoFont with.
+    content.vb: Public Sub SetupContext(ctx As Context)
+  overload: Vintagestory.API.Client.CairoFont.SetupContext*
+- uid: Vintagestory.API.Client.CairoFont.GetFontExtents
+  commentId: M:Vintagestory.API.Client.CairoFont.GetFontExtents
+  id: GetFontExtents
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: GetFontExtents()
+  nameWithType: CairoFont.GetFontExtents()
+  fullName: Vintagestory.API.Client.CairoFont.GetFontExtents()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetFontExtents
+    path: Client/UI/CairoFont.cs
+    startLine: 240
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Gets the font's extents.
+  example: []
+  syntax:
+    content: public FontExtents GetFontExtents()
+    return:
+      type: Cairo.FontExtents
+      description: The FontExtents for this particular font.
+    content.vb: Public Function GetFontExtents() As FontExtents
+  overload: Vintagestory.API.Client.CairoFont.GetFontExtents*
+- uid: Vintagestory.API.Client.CairoFont.GetTextExtents(System.String)
+  commentId: M:Vintagestory.API.Client.CairoFont.GetTextExtents(System.String)
+  id: GetTextExtents(System.String)
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: GetTextExtents(string)
+  nameWithType: CairoFont.GetTextExtents(string)
+  fullName: Vintagestory.API.Client.CairoFont.GetTextExtents(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetTextExtents
+    path: Client/UI/CairoFont.cs
+    startLine: 251
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Gets the extents of the text.
+  example: []
+  syntax:
+    content: public TextExtents GetTextExtents(string text)
+    parameters:
+    - id: text
+      type: System.String
+      description: The text to extend.
+    return:
+      type: Cairo.TextExtents
+      description: The Text extends for this font with this text.
+    content.vb: Public Function GetTextExtents(text As String) As TextExtents
+  overload: Vintagestory.API.Client.CairoFont.GetTextExtents*
+  nameWithType.vb: CairoFont.GetTextExtents(String)
+  fullName.vb: Vintagestory.API.Client.CairoFont.GetTextExtents(String)
+  name.vb: GetTextExtents(String)
+- uid: Vintagestory.API.Client.CairoFont.Clone
+  commentId: M:Vintagestory.API.Client.CairoFont.Clone
+  id: Clone
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: Clone()
+  nameWithType: CairoFont.Clone()
+  fullName: Vintagestory.API.Client.CairoFont.Clone()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Clone
+    path: Client/UI/CairoFont.cs
+    startLine: 261
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Clone function.  Creates a duplicate of this Cairofont.
+  example: []
+  syntax:
+    content: public CairoFont Clone()
+    return:
+      type: Vintagestory.API.Client.CairoFont
+      description: The duplicate font.
+    content.vb: Public Function Clone() As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.Clone*
+- uid: Vintagestory.API.Client.CairoFont.WithFontSize(System.Single)
+  commentId: M:Vintagestory.API.Client.CairoFont.WithFontSize(System.Single)
+  id: WithFontSize(System.Single)
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WithFontSize(float)
+  nameWithType: CairoFont.WithFontSize(float)
+  fullName: Vintagestory.API.Client.CairoFont.WithFontSize(float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WithFontSize
+    path: Client/UI/CairoFont.cs
+    startLine: 276
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sets the base size of the CairoFont.
+  example: []
+  syntax:
+    content: public CairoFont WithFontSize(float fontSize)
+    parameters:
+    - id: fontSize
+      type: System.Single
+      description: The new font size
+    return:
+      type: Vintagestory.API.Client.CairoFont
+    content.vb: Public Function WithFontSize(fontSize As Single) As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WithFontSize*
+  nameWithType.vb: CairoFont.WithFontSize(Single)
+  fullName.vb: Vintagestory.API.Client.CairoFont.WithFontSize(Single)
+  name.vb: WithFontSize(Single)
+- uid: Vintagestory.API.Client.CairoFont.ButtonText
+  commentId: M:Vintagestory.API.Client.CairoFont.ButtonText
+  id: ButtonText
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: ButtonText()
+  nameWithType: CairoFont.ButtonText()
+  fullName: Vintagestory.API.Client.CairoFont.ButtonText()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ButtonText
+    path: Client/UI/CairoFont.cs
+    startLine: 286
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a Button Text preset.
+  example: []
+  syntax:
+    content: public static CairoFont ButtonText()
+    return:
+      type: Vintagestory.API.Client.CairoFont
+      description: The button text preset.
+    content.vb: Public Shared Function ButtonText() As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.ButtonText*
+- uid: Vintagestory.API.Client.CairoFont.ButtonPressedText
+  commentId: M:Vintagestory.API.Client.CairoFont.ButtonPressedText
+  id: ButtonPressedText
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: ButtonPressedText()
+  nameWithType: CairoFont.ButtonPressedText()
+  fullName: Vintagestory.API.Client.CairoFont.ButtonPressedText()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ButtonPressedText
+    path: Client/UI/CairoFont.cs
+    startLine: 302
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a text preset for when the button is pressed.
+  example: []
+  syntax:
+    content: public static CairoFont ButtonPressedText()
+    return:
+      type: Vintagestory.API.Client.CairoFont
+      description: The text preset for a pressed button.
+    content.vb: Public Shared Function ButtonPressedText() As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.ButtonPressedText*
+- uid: Vintagestory.API.Client.CairoFont.WithOrientation(Vintagestory.API.Client.EnumTextOrientation)
+  commentId: M:Vintagestory.API.Client.CairoFont.WithOrientation(Vintagestory.API.Client.EnumTextOrientation)
+  id: WithOrientation(Vintagestory.API.Client.EnumTextOrientation)
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WithOrientation(EnumTextOrientation)
+  nameWithType: CairoFont.WithOrientation(EnumTextOrientation)
+  fullName: Vintagestory.API.Client.CairoFont.WithOrientation(Vintagestory.API.Client.EnumTextOrientation)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WithOrientation
+    path: Client/UI/CairoFont.cs
+    startLine: 314
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public CairoFont WithOrientation(EnumTextOrientation orientation)
+    parameters:
+    - id: orientation
+      type: Vintagestory.API.Client.EnumTextOrientation
+    return:
+      type: Vintagestory.API.Client.CairoFont
+    content.vb: Public Function WithOrientation(orientation As EnumTextOrientation) As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WithOrientation*
+- uid: Vintagestory.API.Client.CairoFont.TextInput
+  commentId: M:Vintagestory.API.Client.CairoFont.TextInput
+  id: TextInput
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: TextInput()
+  nameWithType: CairoFont.TextInput()
+  fullName: Vintagestory.API.Client.CairoFont.TextInput()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TextInput
+    path: Client/UI/CairoFont.cs
+    startLine: 324
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a text preset for text input fields.
+  example: []
+  syntax:
+    content: public static CairoFont TextInput()
+    return:
+      type: Vintagestory.API.Client.CairoFont
+      description: The text field input preset.
+    content.vb: Public Shared Function TextInput() As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.TextInput*
+- uid: Vintagestory.API.Client.CairoFont.SmallTextInput
+  commentId: M:Vintagestory.API.Client.CairoFont.SmallTextInput
+  id: SmallTextInput
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: SmallTextInput()
+  nameWithType: CairoFont.SmallTextInput()
+  fullName: Vintagestory.API.Client.CairoFont.SmallTextInput()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SmallTextInput
+    path: Client/UI/CairoFont.cs
+    startLine: 338
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a text oreset for smaller text input fields.
+  example: []
+  syntax:
+    content: public static CairoFont SmallTextInput()
+    return:
+      type: Vintagestory.API.Client.CairoFont
+      description: The smaller text input preset.
+    content.vb: Public Shared Function SmallTextInput() As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.SmallTextInput*
+- uid: Vintagestory.API.Client.CairoFont.WhiteMediumText
+  commentId: M:Vintagestory.API.Client.CairoFont.WhiteMediumText
+  id: WhiteMediumText
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WhiteMediumText()
+  nameWithType: CairoFont.WhiteMediumText()
+  fullName: Vintagestory.API.Client.CairoFont.WhiteMediumText()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WhiteMediumText
+    path: Client/UI/CairoFont.cs
+    startLine: 354
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a white text for medium dialog.
+  example: []
+  syntax:
+    content: public static CairoFont WhiteMediumText()
+    return:
+      type: Vintagestory.API.Client.CairoFont
+      description: The white text for medium dialog.
+    content.vb: Public Shared Function WhiteMediumText() As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WhiteMediumText*
+- uid: Vintagestory.API.Client.CairoFont.WhiteSmallishText
+  commentId: M:Vintagestory.API.Client.CairoFont.WhiteSmallishText
+  id: WhiteSmallishText
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WhiteSmallishText()
+  nameWithType: CairoFont.WhiteSmallishText()
+  fullName: Vintagestory.API.Client.CairoFont.WhiteSmallishText()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WhiteSmallishText
+    path: Client/UI/CairoFont.cs
+    startLine: 368
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a white text for smallish dialogs.
+  example: []
+  syntax:
+    content: public static CairoFont WhiteSmallishText()
+    return:
+      type: Vintagestory.API.Client.CairoFont
+      description: The white text for small dialogs.
+    content.vb: Public Shared Function WhiteSmallishText() As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WhiteSmallishText*
+- uid: Vintagestory.API.Client.CairoFont.WhiteSmallText
+  commentId: M:Vintagestory.API.Client.CairoFont.WhiteSmallText
+  id: WhiteSmallText
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WhiteSmallText()
+  nameWithType: CairoFont.WhiteSmallText()
+  fullName: Vintagestory.API.Client.CairoFont.WhiteSmallText()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WhiteSmallText
+    path: Client/UI/CairoFont.cs
+    startLine: 382
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a white text for small dialogs.
+  example: []
+  syntax:
+    content: public static CairoFont WhiteSmallText()
+    return:
+      type: Vintagestory.API.Client.CairoFont
+      description: The white text for small dialogs
+    content.vb: Public Shared Function WhiteSmallText() As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WhiteSmallText*
+- uid: Vintagestory.API.Client.CairoFont.WhiteDetailText
+  commentId: M:Vintagestory.API.Client.CairoFont.WhiteDetailText
+  id: WhiteDetailText
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: WhiteDetailText()
+  nameWithType: CairoFont.WhiteDetailText()
+  fullName: Vintagestory.API.Client.CairoFont.WhiteDetailText()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WhiteDetailText
+    path: Client/UI/CairoFont.cs
+    startLine: 397
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Creates a white text for details.
+  example: []
+  syntax:
+    content: public static CairoFont WhiteDetailText()
+    return:
+      type: Vintagestory.API.Client.CairoFont
+      description: A white text for details.
+    content.vb: Public Shared Function WhiteDetailText() As CairoFont
+  overload: Vintagestory.API.Client.CairoFont.WhiteDetailText*
+- uid: Vintagestory.API.Client.CairoFont.Dispose
+  commentId: M:Vintagestory.API.Client.CairoFont.Dispose
+  id: Dispose
+  parent: Vintagestory.API.Client.CairoFont
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: CairoFont.Dispose()
+  fullName: Vintagestory.API.Client.CairoFont.Dispose()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/UI/CairoFont.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Dispose
+    path: Client/UI/CairoFont.cs
+    startLine: 408
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Vintagestory.API.Client.CairoFont.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Client.FontConfig
+  commentId: T:Vintagestory.API.Client.FontConfig
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.FontConfig.html
+  name: FontConfig
+  nameWithType: FontConfig
+  fullName: Vintagestory.API.Client.FontConfig
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: Vintagestory.API.Client.FontConfig.UnscaledFontsize
+  commentId: F:Vintagestory.API.Client.FontConfig.UnscaledFontsize
+  parent: Vintagestory.API.Client.FontConfig
+  href: Vintagestory.API.Client.FontConfig.html#Vintagestory_API_Client_FontConfig_UnscaledFontsize
+  name: UnscaledFontsize
+  nameWithType: FontConfig.UnscaledFontsize
+  fullName: Vintagestory.API.Client.FontConfig.UnscaledFontsize
+- uid: Vintagestory.API.Client.FontConfig.Fontname
+  commentId: F:Vintagestory.API.Client.FontConfig.Fontname
+  parent: Vintagestory.API.Client.FontConfig
+  href: Vintagestory.API.Client.FontConfig.html#Vintagestory_API_Client_FontConfig_Fontname
+  name: Fontname
+  nameWithType: FontConfig.Fontname
+  fullName: Vintagestory.API.Client.FontConfig.Fontname
+- uid: Vintagestory.API.Client.FontConfig.FontWeight
+  commentId: F:Vintagestory.API.Client.FontConfig.FontWeight
+  parent: Vintagestory.API.Client.FontConfig
+  href: Vintagestory.API.Client.FontConfig.html#Vintagestory_API_Client_FontConfig_FontWeight
+  name: FontWeight
+  nameWithType: FontConfig.FontWeight
+  fullName: Vintagestory.API.Client.FontConfig.FontWeight
+- uid: Vintagestory.API.Client.FontConfig.Color
+  commentId: F:Vintagestory.API.Client.FontConfig.Color
+  parent: Vintagestory.API.Client.FontConfig
+  href: Vintagestory.API.Client.FontConfig.html#Vintagestory_API_Client_FontConfig_Color
+  name: Color
+  nameWithType: FontConfig.Color
+  fullName: Vintagestory.API.Client.FontConfig.Color
+- uid: Vintagestory.API.Client.FontConfig.StrokeColor
+  commentId: F:Vintagestory.API.Client.FontConfig.StrokeColor
+  parent: Vintagestory.API.Client.FontConfig
+  href: Vintagestory.API.Client.FontConfig.html#Vintagestory_API_Client_FontConfig_StrokeColor
+  name: StrokeColor
+  nameWithType: FontConfig.StrokeColor
+  fullName: Vintagestory.API.Client.FontConfig.StrokeColor
+- uid: Vintagestory.API.Client.FontConfig.StrokeWidth
+  commentId: F:Vintagestory.API.Client.FontConfig.StrokeWidth
+  parent: Vintagestory.API.Client.FontConfig
+  href: Vintagestory.API.Client.FontConfig.html#Vintagestory_API_Client_FontConfig_StrokeWidth
+  name: StrokeWidth
+  nameWithType: FontConfig.StrokeWidth
+  fullName: Vintagestory.API.Client.FontConfig.StrokeWidth
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Cairo.Context
+  commentId: T:Cairo.Context
+  parent: Cairo
+  name: Context
+  nameWithType: Context
+  fullName: Cairo.Context
+- uid: Cairo
+  commentId: N:Cairo
+  name: Cairo
+  nameWithType: Cairo
+  fullName: Cairo
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Cairo.FontSlant
+  commentId: T:Cairo.FontSlant
+  parent: Cairo
+  name: FontSlant
+  nameWithType: FontSlant
+  fullName: Cairo.FontSlant
+- uid: Vintagestory.API.Client.EnumTextOrientation
+  commentId: T:Vintagestory.API.Client.EnumTextOrientation
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumTextOrientation.html
+  name: EnumTextOrientation
+  nameWithType: EnumTextOrientation
+  fullName: Vintagestory.API.Client.EnumTextOrientation
+- uid: Vintagestory.API.Client.CairoFont.#ctor*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.#ctor
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont__ctor
+  name: CairoFont
+  nameWithType: CairoFont.CairoFont
+  fullName: Vintagestory.API.Client.CairoFont.CairoFont
+  nameWithType.vb: CairoFont.New
+  fullName.vb: Vintagestory.API.Client.CairoFont.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Client.CairoFont.WithLineHeightMultiplier*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WithLineHeightMultiplier
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WithLineHeightMultiplier_System_Double_
+  name: WithLineHeightMultiplier
+  nameWithType: CairoFont.WithLineHeightMultiplier
+  fullName: Vintagestory.API.Client.CairoFont.WithLineHeightMultiplier
+- uid: Vintagestory.API.Client.CairoFont
+  commentId: T:Vintagestory.API.Client.CairoFont
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.CairoFont.html
+  name: CairoFont
+  nameWithType: CairoFont
+  fullName: Vintagestory.API.Client.CairoFont
+- uid: Vintagestory.API.Client.CairoFont.WithStroke*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WithStroke
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WithStroke_System_Double___System_Double_
+  name: WithStroke
+  nameWithType: CairoFont.WithStroke
+  fullName: Vintagestory.API.Client.CairoFont.WithStroke
+- uid: System.Double[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double[]
+  nameWithType: double[]
+  fullName: double[]
+  nameWithType.vb: Double()
+  fullName.vb: Double()
+  name.vb: Double()
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.CairoFont.AutoFontSize*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.AutoFontSize
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_AutoFontSize_System_String_Vintagestory_API_Client_ElementBounds_System_Boolean_
+  name: AutoFontSize
+  nameWithType: CairoFont.AutoFontSize
+  fullName: Vintagestory.API.Client.CairoFont.AutoFontSize
+- uid: Vintagestory.API.Client.ElementBounds
+  commentId: T:Vintagestory.API.Client.ElementBounds
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ElementBounds.html
+  name: ElementBounds
+  nameWithType: ElementBounds
+  fullName: Vintagestory.API.Client.ElementBounds
+- uid: Vintagestory.API.Client.CairoFont.AutoBoxSize*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.AutoBoxSize
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_AutoBoxSize_System_String_Vintagestory_API_Client_ElementBounds_System_Boolean_
+  name: AutoBoxSize
+  nameWithType: CairoFont.AutoBoxSize
+  fullName: Vintagestory.API.Client.CairoFont.AutoBoxSize
+- uid: Vintagestory.API.Client.CairoFont.WithColor*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WithColor
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WithColor_System_Double___
+  name: WithColor
+  nameWithType: CairoFont.WithColor
+  fullName: Vintagestory.API.Client.CairoFont.WithColor
+- uid: Vintagestory.API.Client.CairoFont.WithWeight*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WithWeight
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WithWeight_Cairo_FontWeight_
+  name: WithWeight
+  nameWithType: CairoFont.WithWeight
+  fullName: Vintagestory.API.Client.CairoFont.WithWeight
+- uid: Cairo.FontWeight
+  commentId: T:Cairo.FontWeight
+  parent: Cairo
+  name: FontWeight
+  nameWithType: FontWeight
+  fullName: Cairo.FontWeight
+- uid: Vintagestory.API.Client.CairoFont.WithRenderTwice*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WithRenderTwice
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WithRenderTwice
+  name: WithRenderTwice
+  nameWithType: CairoFont.WithRenderTwice
+  fullName: Vintagestory.API.Client.CairoFont.WithRenderTwice
+- uid: Vintagestory.API.Client.CairoFont.WithSlant*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WithSlant
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WithSlant_Cairo_FontSlant_
+  name: WithSlant
+  nameWithType: CairoFont.WithSlant
+  fullName: Vintagestory.API.Client.CairoFont.WithSlant
+- uid: Vintagestory.API.Client.CairoFont.WithFont*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WithFont
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WithFont_System_String_
+  name: WithFont
+  nameWithType: CairoFont.WithFont
+  fullName: Vintagestory.API.Client.CairoFont.WithFont
+- uid: Vintagestory.API.Client.CairoFont.SetupContext*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.SetupContext
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_SetupContext_Cairo_Context_
+  name: SetupContext
+  nameWithType: CairoFont.SetupContext
+  fullName: Vintagestory.API.Client.CairoFont.SetupContext
+- uid: Vintagestory.API.Client.CairoFont.GetFontExtents*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.GetFontExtents
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_GetFontExtents
+  name: GetFontExtents
+  nameWithType: CairoFont.GetFontExtents
+  fullName: Vintagestory.API.Client.CairoFont.GetFontExtents
+- uid: Cairo.FontExtents
+  commentId: T:Cairo.FontExtents
+  parent: Cairo
+  name: FontExtents
+  nameWithType: FontExtents
+  fullName: Cairo.FontExtents
+- uid: Vintagestory.API.Client.CairoFont.GetTextExtents*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.GetTextExtents
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_GetTextExtents_System_String_
+  name: GetTextExtents
+  nameWithType: CairoFont.GetTextExtents
+  fullName: Vintagestory.API.Client.CairoFont.GetTextExtents
+- uid: Cairo.TextExtents
+  commentId: T:Cairo.TextExtents
+  parent: Cairo
+  name: TextExtents
+  nameWithType: TextExtents
+  fullName: Cairo.TextExtents
+- uid: Vintagestory.API.Client.CairoFont.Clone*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.Clone
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_Clone
+  name: Clone
+  nameWithType: CairoFont.Clone
+  fullName: Vintagestory.API.Client.CairoFont.Clone
+- uid: Vintagestory.API.Client.CairoFont.WithFontSize*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WithFontSize
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WithFontSize_System_Single_
+  name: WithFontSize
+  nameWithType: CairoFont.WithFontSize
+  fullName: Vintagestory.API.Client.CairoFont.WithFontSize
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Client.CairoFont.ButtonText*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.ButtonText
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_ButtonText
+  name: ButtonText
+  nameWithType: CairoFont.ButtonText
+  fullName: Vintagestory.API.Client.CairoFont.ButtonText
+- uid: Vintagestory.API.Client.CairoFont.ButtonPressedText*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.ButtonPressedText
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_ButtonPressedText
+  name: ButtonPressedText
+  nameWithType: CairoFont.ButtonPressedText
+  fullName: Vintagestory.API.Client.CairoFont.ButtonPressedText
+- uid: Vintagestory.API.Client.CairoFont.WithOrientation*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WithOrientation
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WithOrientation_Vintagestory_API_Client_EnumTextOrientation_
+  name: WithOrientation
+  nameWithType: CairoFont.WithOrientation
+  fullName: Vintagestory.API.Client.CairoFont.WithOrientation
+- uid: Vintagestory.API.Client.CairoFont.TextInput*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.TextInput
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_TextInput
+  name: TextInput
+  nameWithType: CairoFont.TextInput
+  fullName: Vintagestory.API.Client.CairoFont.TextInput
+- uid: Vintagestory.API.Client.CairoFont.SmallTextInput*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.SmallTextInput
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_SmallTextInput
+  name: SmallTextInput
+  nameWithType: CairoFont.SmallTextInput
+  fullName: Vintagestory.API.Client.CairoFont.SmallTextInput
+- uid: Vintagestory.API.Client.CairoFont.WhiteMediumText*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WhiteMediumText
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WhiteMediumText
+  name: WhiteMediumText
+  nameWithType: CairoFont.WhiteMediumText
+  fullName: Vintagestory.API.Client.CairoFont.WhiteMediumText
+- uid: Vintagestory.API.Client.CairoFont.WhiteSmallishText*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WhiteSmallishText
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WhiteSmallishText
+  name: WhiteSmallishText
+  nameWithType: CairoFont.WhiteSmallishText
+  fullName: Vintagestory.API.Client.CairoFont.WhiteSmallishText
+- uid: Vintagestory.API.Client.CairoFont.WhiteSmallText*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WhiteSmallText
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WhiteSmallText
+  name: WhiteSmallText
+  nameWithType: CairoFont.WhiteSmallText
+  fullName: Vintagestory.API.Client.CairoFont.WhiteSmallText
+- uid: Vintagestory.API.Client.CairoFont.WhiteDetailText*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.WhiteDetailText
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_WhiteDetailText
+  name: WhiteDetailText
+  nameWithType: CairoFont.WhiteDetailText
+  fullName: Vintagestory.API.Client.CairoFont.WhiteDetailText
+- uid: Vintagestory.API.Client.CairoFont.Dispose*
+  commentId: Overload:Vintagestory.API.Client.CairoFont.Dispose
+  href: Vintagestory.API.Client.CairoFont.html#Vintagestory_API_Client_CairoFont_Dispose
+  name: Dispose
+  nameWithType: CairoFont.Dispose
+  fullName: Vintagestory.API.Client.CairoFont.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

@@ -1,0 +1,220 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ICollectibleDisplayable
+  commentId: T:Vintagestory.API.Common.ICollectibleDisplayable
+  id: ICollectibleDisplayable
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.ICollectibleDisplayable.GetMeshDataForDisplay(Vintagestory.API.Common.ItemSlot,System.String)
+  - Vintagestory.API.Common.ICollectibleDisplayable.NowOnDisplay(Vintagestory.API.Common.BlockEntity,Vintagestory.API.Common.ItemSlot)
+  langs:
+  - csharp
+  - vb
+  name: ICollectibleDisplayable
+  nameWithType: ICollectibleDisplayable
+  fullName: Vintagestory.API.Common.ICollectibleDisplayable
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ICollectibleDisplayable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ICollectibleDisplayable
+    path: Common/Collectible/ICollectibleDisplayable.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: A collectible object that can be placed on the ground or on shelves or in display cases, but require custom code or rendering for it
+  example: []
+  syntax:
+    content: public interface ICollectibleDisplayable
+    content.vb: Public Interface ICollectibleDisplayable
+- uid: Vintagestory.API.Common.ICollectibleDisplayable.GetMeshDataForDisplay(Vintagestory.API.Common.ItemSlot,System.String)
+  commentId: M:Vintagestory.API.Common.ICollectibleDisplayable.GetMeshDataForDisplay(Vintagestory.API.Common.ItemSlot,System.String)
+  id: GetMeshDataForDisplay(Vintagestory.API.Common.ItemSlot,System.String)
+  parent: Vintagestory.API.Common.ICollectibleDisplayable
+  langs:
+  - csharp
+  - vb
+  name: GetMeshDataForDisplay(ItemSlot, string)
+  nameWithType: ICollectibleDisplayable.GetMeshDataForDisplay(ItemSlot, string)
+  fullName: Vintagestory.API.Common.ICollectibleDisplayable.GetMeshDataForDisplay(Vintagestory.API.Common.ItemSlot, string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ICollectibleDisplayable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetMeshDataForDisplay
+    path: Common/Collectible/ICollectibleDisplayable.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Return a custom mesh to be used for the collectible. Return null to use default item/block mesh. It is recommended to cache the returned mesh in the ObjectCache for efficieny.
+  example: []
+  syntax:
+    content: MeshData GetMeshDataForDisplay(ItemSlot inSlot, string displayType)
+    parameters:
+    - id: inSlot
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    - id: displayType
+      type: System.String
+      description: e.g. "shelf" or "ground" or "displaycase"
+    return:
+      type: Vintagestory.API.Client.MeshData
+      description: ''
+    content.vb: Function GetMeshDataForDisplay(inSlot As ItemSlot, displayType As String) As MeshData
+  overload: Vintagestory.API.Common.ICollectibleDisplayable.GetMeshDataForDisplay*
+  nameWithType.vb: ICollectibleDisplayable.GetMeshDataForDisplay(ItemSlot, String)
+  fullName.vb: Vintagestory.API.Common.ICollectibleDisplayable.GetMeshDataForDisplay(Vintagestory.API.Common.ItemSlot, String)
+  name.vb: GetMeshDataForDisplay(ItemSlot, String)
+- uid: Vintagestory.API.Common.ICollectibleDisplayable.NowOnDisplay(Vintagestory.API.Common.BlockEntity,Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Common.ICollectibleDisplayable.NowOnDisplay(Vintagestory.API.Common.BlockEntity,Vintagestory.API.Common.ItemSlot)
+  id: NowOnDisplay(Vintagestory.API.Common.BlockEntity,Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Common.ICollectibleDisplayable
+  langs:
+  - csharp
+  - vb
+  name: NowOnDisplay(BlockEntity, ItemSlot)
+  nameWithType: ICollectibleDisplayable.NowOnDisplay(BlockEntity, ItemSlot)
+  fullName: Vintagestory.API.Common.ICollectibleDisplayable.NowOnDisplay(Vintagestory.API.Common.BlockEntity, Vintagestory.API.Common.ItemSlot)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/ICollectibleDisplayable.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NowOnDisplay
+    path: Common/Collectible/ICollectibleDisplayable.cs
+    startLine: 23
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: This collectible was placed in-world and the chunk is about to get re-tesselated.
+  example: []
+  syntax:
+    content: void NowOnDisplay(BlockEntity byBlockEntity, ItemSlot inSlot)
+    parameters:
+    - id: byBlockEntity
+      type: Vintagestory.API.Common.BlockEntity
+      description: ''
+    - id: inSlot
+      type: Vintagestory.API.Common.ItemSlot
+      description: ''
+    content.vb: Sub NowOnDisplay(byBlockEntity As BlockEntity, inSlot As ItemSlot)
+  overload: Vintagestory.API.Common.ICollectibleDisplayable.NowOnDisplay*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.ICollectibleDisplayable.GetMeshDataForDisplay*
+  commentId: Overload:Vintagestory.API.Common.ICollectibleDisplayable.GetMeshDataForDisplay
+  href: Vintagestory.API.Common.ICollectibleDisplayable.html#Vintagestory_API_Common_ICollectibleDisplayable_GetMeshDataForDisplay_Vintagestory_API_Common_ItemSlot_System_String_
+  name: GetMeshDataForDisplay
+  nameWithType: ICollectibleDisplayable.GetMeshDataForDisplay
+  fullName: Vintagestory.API.Common.ICollectibleDisplayable.GetMeshDataForDisplay
+- uid: Vintagestory.API.Common.ItemSlot
+  commentId: T:Vintagestory.API.Common.ItemSlot
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemSlot.html
+  name: ItemSlot
+  nameWithType: ItemSlot
+  fullName: Vintagestory.API.Common.ItemSlot
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Client.MeshData
+  commentId: T:Vintagestory.API.Client.MeshData
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MeshData.html
+  name: MeshData
+  nameWithType: MeshData
+  fullName: Vintagestory.API.Client.MeshData
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Common.ICollectibleDisplayable.NowOnDisplay*
+  commentId: Overload:Vintagestory.API.Common.ICollectibleDisplayable.NowOnDisplay
+  href: Vintagestory.API.Common.ICollectibleDisplayable.html#Vintagestory_API_Common_ICollectibleDisplayable_NowOnDisplay_Vintagestory_API_Common_BlockEntity_Vintagestory_API_Common_ItemSlot_
+  name: NowOnDisplay
+  nameWithType: ICollectibleDisplayable.NowOnDisplay
+  fullName: Vintagestory.API.Common.ICollectibleDisplayable.NowOnDisplay
+- uid: Vintagestory.API.Common.BlockEntity
+  commentId: T:Vintagestory.API.Common.BlockEntity
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockEntity.html
+  name: BlockEntity
+  nameWithType: BlockEntity
+  fullName: Vintagestory.API.Common.BlockEntity

@@ -1,0 +1,538 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Server.EnumServerRunPhase
+  commentId: T:Vintagestory.API.Server.EnumServerRunPhase
+  id: EnumServerRunPhase
+  parent: Vintagestory.API.Server
+  children:
+  - Vintagestory.API.Server.EnumServerRunPhase.AssetsFinalize
+  - Vintagestory.API.Server.EnumServerRunPhase.AssetsReady
+  - Vintagestory.API.Server.EnumServerRunPhase.Configuration
+  - Vintagestory.API.Server.EnumServerRunPhase.Exit
+  - Vintagestory.API.Server.EnumServerRunPhase.GameReady
+  - Vintagestory.API.Server.EnumServerRunPhase.Initialization
+  - Vintagestory.API.Server.EnumServerRunPhase.LoadAssets
+  - Vintagestory.API.Server.EnumServerRunPhase.LoadGame
+  - Vintagestory.API.Server.EnumServerRunPhase.LoadGamePre
+  - Vintagestory.API.Server.EnumServerRunPhase.ModsAndConfigReady
+  - Vintagestory.API.Server.EnumServerRunPhase.RunGame
+  - Vintagestory.API.Server.EnumServerRunPhase.Shutdown
+  - Vintagestory.API.Server.EnumServerRunPhase.Standby
+  - Vintagestory.API.Server.EnumServerRunPhase.Start
+  - Vintagestory.API.Server.EnumServerRunPhase.WorldReady
+  langs:
+  - csharp
+  - vb
+  name: EnumServerRunPhase
+  nameWithType: EnumServerRunPhase
+  fullName: Vintagestory.API.Server.EnumServerRunPhase
+  type: Enum
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: EnumServerRunPhase
+    path: Server/EnumServerRunPhase.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: These are the stages the server goes through during launch
+  example: []
+  syntax:
+    content: public enum EnumServerRunPhase
+    content.vb: Public Enum EnumServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase.Standby
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.Standby
+  id: Standby
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: Standby
+  nameWithType: EnumServerRunPhase.Standby
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.Standby
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Standby
+    path: Server/EnumServerRunPhase.cs
+    startLine: 12
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Server is listening to sockets but nothing has been launched yet
+  example: []
+  syntax:
+    content: Standby = -1
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase.Start
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.Start
+  id: Start
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: Start
+  nameWithType: EnumServerRunPhase.Start
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.Start
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Start
+    path: Server/EnumServerRunPhase.cs
+    startLine: 17
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Before anything has been initialized (you cannot receive any events at this point)
+  example: []
+  syntax:
+    content: Start = 0
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase.Initialization
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.Initialization
+  id: Initialization
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: Initialization
+  nameWithType: EnumServerRunPhase.Initialization
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.Initialization
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Initialization
+    path: Server/EnumServerRunPhase.cs
+    startLine: 22
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Server only stuff initialized, Serversystems instantatied, now initializing ServerSystems then Mods. Serversystem receive events at this point.
+  example: []
+  syntax:
+    content: Initialization = 1
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase.Configuration
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.Configuration
+  id: Configuration
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: Configuration
+  nameWithType: EnumServerRunPhase.Configuration
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.Configuration
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Configuration
+    path: Server/EnumServerRunPhase.cs
+    startLine: 27
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Everything initialized, now loading config
+  example: []
+  syntax:
+    content: Configuration = 2
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase.LoadAssets
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.LoadAssets
+  id: LoadAssets
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: LoadAssets
+  nameWithType: EnumServerRunPhase.LoadAssets
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.LoadAssets
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LoadAssets
+    path: Server/EnumServerRunPhase.cs
+    startLine: 32
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Mods will be compiled and started, AssetManager will init all origins and cache assets. Mods are initialized at this point (PreStart/Start method)
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use AssetsReady")]
+
+      LoadAssets = 3
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+    content.vb: >-
+      <Obsolete("Use AssetsReady")>
+
+      LoadAssets = 3
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use AssetsReady
+- uid: Vintagestory.API.Server.EnumServerRunPhase.AssetsReady
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.AssetsReady
+  id: AssetsReady
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: AssetsReady
+  nameWithType: EnumServerRunPhase.AssetsReady
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.AssetsReady
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AssetsReady
+    path: Server/EnumServerRunPhase.cs
+    startLine: 34
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: AssetsReady = 3
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase.AssetsFinalize
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.AssetsFinalize
+  id: AssetsFinalize
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: AssetsFinalize
+  nameWithType: EnumServerRunPhase.AssetsFinalize
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.AssetsFinalize
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AssetsFinalize
+    path: Server/EnumServerRunPhase.cs
+    startLine: 39
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Final touches for loaded assets. Mods receive AssetsFinalize() call
+  example: []
+  syntax:
+    content: AssetsFinalize = 4
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase.LoadGamePre
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.LoadGamePre
+  id: LoadGamePre
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: LoadGamePre
+  nameWithType: EnumServerRunPhase.LoadGamePre
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.LoadGamePre
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LoadGamePre
+    path: Server/EnumServerRunPhase.cs
+    startLine: 44
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: All configs loaded, game world loaded by server. Mods receive StartClient/ServerSide and events at this point.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use ModsAndConfigReady")]
+
+      LoadGamePre = 5
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+    content.vb: >-
+      <Obsolete("Use ModsAndConfigReady")>
+
+      LoadGamePre = 5
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use ModsAndConfigReady
+- uid: Vintagestory.API.Server.EnumServerRunPhase.ModsAndConfigReady
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.ModsAndConfigReady
+  id: ModsAndConfigReady
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: ModsAndConfigReady
+  nameWithType: EnumServerRunPhase.ModsAndConfigReady
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.ModsAndConfigReady
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ModsAndConfigReady
+    path: Server/EnumServerRunPhase.cs
+    startLine: 46
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: ModsAndConfigReady = 5
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase.GameReady
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.GameReady
+  id: GameReady
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: GameReady
+  nameWithType: EnumServerRunPhase.GameReady
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.GameReady
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GameReady
+    path: Server/EnumServerRunPhase.cs
+    startLine: 51
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: All configs loaded, game world loaded by server. All blocks are loaded.
+  example: []
+  syntax:
+    content: GameReady = 6
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase.LoadGame
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.LoadGame
+  id: LoadGame
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: LoadGame
+  nameWithType: EnumServerRunPhase.LoadGame
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.LoadGame
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: LoadGame
+    path: Server/EnumServerRunPhase.cs
+    startLine: 56
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: All configs loaded, spawn chunks loaded, game world loaded by server. All blocks are loaded.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Use GameReady")]
+
+      LoadGame = 6
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+    content.vb: >-
+      <Obsolete("Use GameReady")>
+
+      LoadGame = 6
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use GameReady
+- uid: Vintagestory.API.Server.EnumServerRunPhase.WorldReady
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.WorldReady
+  id: WorldReady
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: WorldReady
+  nameWithType: EnumServerRunPhase.WorldReady
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.WorldReady
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: WorldReady
+    path: Server/EnumServerRunPhase.cs
+    startLine: 62
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Notifies mods that the world is ready, after all other loading steps. Following this, worldgen will start and spawn chunks loaded (no separate RunPhase in 1.19)
+  example: []
+  syntax:
+    content: WorldReady = 7
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase.RunGame
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.RunGame
+  id: RunGame
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: RunGame
+  nameWithType: EnumServerRunPhase.RunGame
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.RunGame
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RunGame
+    path: Server/EnumServerRunPhase.cs
+    startLine: 67
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: About to run first game world tick.
+  example: []
+  syntax:
+    content: RunGame = 8
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase.Shutdown
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.Shutdown
+  id: Shutdown
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: Shutdown
+  nameWithType: EnumServerRunPhase.Shutdown
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.Shutdown
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Shutdown
+    path: Server/EnumServerRunPhase.cs
+    startLine: 72
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Shutdown has begun
+  example: []
+  syntax:
+    content: Shutdown = 9
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+- uid: Vintagestory.API.Server.EnumServerRunPhase.Exit
+  commentId: F:Vintagestory.API.Server.EnumServerRunPhase.Exit
+  id: Exit
+  parent: Vintagestory.API.Server.EnumServerRunPhase
+  langs:
+  - csharp
+  - vb
+  name: Exit
+  nameWithType: EnumServerRunPhase.Exit
+  fullName: Vintagestory.API.Server.EnumServerRunPhase.Exit
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Server/EnumServerRunPhase.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Exit
+    path: Server/EnumServerRunPhase.cs
+    startLine: 77
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Shutdown complete
+  example: []
+  syntax:
+    content: Exit = 10
+    return:
+      type: Vintagestory.API.Server.EnumServerRunPhase
+references:
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: Vintagestory.API.Server.EnumServerRunPhase
+  commentId: T:Vintagestory.API.Server.EnumServerRunPhase
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.EnumServerRunPhase.html
+  name: EnumServerRunPhase
+  nameWithType: EnumServerRunPhase
+  fullName: Vintagestory.API.Server.EnumServerRunPhase

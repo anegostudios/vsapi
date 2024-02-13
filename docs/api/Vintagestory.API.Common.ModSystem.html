@@ -1,225 +1,299 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ModSystem
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ModSystem
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class ModSystem | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ModSystem | VintageStory API ">
+      
+      <meta name="description" content="Base of a system, which is part of a code mod. Takes care of setting up, registering and handling all sorts of things. You may choose to split up a mod into multiple distinct systems if you so choose, but there may also be just one.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.ModSystem">
-  
-  
-  <h1 id="Vintagestory_API_Common_ModSystem" data-uid="Vintagestory.API.Common.ModSystem" class="text-break">Class ModSystem
+
+        <article data-uid="Vintagestory.API.Common.ModSystem">
+
+
+
+  <h1 id="Vintagestory_API_Common_ModSystem" data-uid="Vintagestory.API.Common.ModSystem" class="text-break">
+Class ModSystem  
   </h1>
-  <div class="markdown level0 summary"><p>Base of a system, which is part of a code mod. Takes care of setting up,
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Base of a system, which is part of a code mod. Takes care of setting up,
 registering and handling all sorts of things. You may choose to split up
 a mod into multiple distinct systems if you so choose, but there may
 also be just one.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">ModSystem</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_ModSystem_syntax">Syntax</h5>
+  <div class="markdown conceptual"></div>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class ModSystem : object</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class ModSystem</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModSystem_Mod.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModSystem.Mod%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModSystem.cs/#L17">View Source</a>
-  </span>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ModSystem</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Vintagestory_API_Common_ModSystem_Mod_" data-uid="Vintagestory.API.Common.ModSystem.Mod*"></a>
-  <h4 id="Vintagestory_API_Common_ModSystem_Mod" data-uid="Vintagestory.API.Common.ModSystem.Mod">Mod</h4>
+
+  <h3 id="Vintagestory_API_Common_ModSystem_Mod" data-uid="Vintagestory.API.Common.ModSystem.Mod">
+  Mod
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Vintagestory.API.Common.Mod.html">Mod</a> this mod system is part of.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Mod Mod { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Mod.html">Mod</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModSystem_AssetsFinalize_Vintagestory_API_Common_ICoreAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModSystem.AssetsFinalize(Vintagestory.API.Common.ICoreAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModSystem.cs/#L86">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Mod.html">Mod</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Vintagestory_API_Common_ModSystem_AssetsFinalize_" data-uid="Vintagestory.API.Common.ModSystem.AssetsFinalize*"></a>
-  <h4 id="Vintagestory_API_Common_ModSystem_AssetsFinalize_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.ModSystem.AssetsFinalize(Vintagestory.API.Common.ICoreAPI)">AssetsFinalize(ICoreAPI)</h4>
+
+  <h3 id="Vintagestory_API_Common_ModSystem_AssetsFinalize_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.ModSystem.AssetsFinalize(Vintagestory.API.Common.ICoreAPI)">
+  AssetsFinalize(ICoreAPI)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>When called on a server, all Block.OnLoaded() methods etc. have already been called, this is for any final asset set-up steps to be done after that.  See VSSurvivalMod system BlockReinforcement.cs for an example.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void AssetsFinalize(ICoreAPI api)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModSystem_AssetsLoaded_Vintagestory_API_Common_ICoreAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModSystem.AssetsLoaded(Vintagestory.API.Common.ICoreAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModSystem.cs/#L77">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ModSystem_AssetsLoaded_" data-uid="Vintagestory.API.Common.ModSystem.AssetsLoaded*"></a>
-  <h4 id="Vintagestory_API_Common_ModSystem_AssetsLoaded_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.ModSystem.AssetsLoaded(Vintagestory.API.Common.ICoreAPI)">AssetsLoaded(ICoreAPI)</h4>
+
+  <h3 id="Vintagestory_API_Common_ModSystem_AssetsLoaded_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.ModSystem.AssetsLoaded(Vintagestory.API.Common.ICoreAPI)">
+  AssetsLoaded(ICoreAPI)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Called on the server or the client; implementing code may need to check which side it is.
 <br>On a server, called only after all mods have received Start(), and after asset JSONs have been read from disk and patched, but before runphase ModsAndConfigReady.
 <br>Asset files are now available to load using api.Assets.TryGet() calls or similar. If your execute order is below 0.2, blocks and items are not yet registered at this point, if below 0.6 recipes are not yet registered.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void AssetsLoaded(ICoreAPI api)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModSystem_Dispose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModSystem.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModSystem.cs/#L117">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ModSystem_Dispose_" data-uid="Vintagestory.API.Common.ModSystem.Dispose*"></a>
-  <h4 id="Vintagestory_API_Common_ModSystem_Dispose" data-uid="Vintagestory.API.Common.ModSystem.Dispose">Dispose()</h4>
+
+  <h3 id="Vintagestory_API_Common_ModSystem_Dispose" data-uid="Vintagestory.API.Common.ModSystem.Dispose">
+  Dispose()
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>If this mod allows runtime reloading, you must implement this method to unregister any listeners / handlers</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void Dispose()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModSystem_ExecuteOrder.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModSystem.ExecuteOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModSystem.cs/#L44">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ModSystem_ExecuteOrder_" data-uid="Vintagestory.API.Common.ModSystem.ExecuteOrder*"></a>
-  <h4 id="Vintagestory_API_Common_ModSystem_ExecuteOrder" data-uid="Vintagestory.API.Common.ModSystem.ExecuteOrder">ExecuteOrder()</h4>
+
+  <h3 id="Vintagestory_API_Common_ModSystem_ExecuteOrder" data-uid="Vintagestory.API.Common.ModSystem.ExecuteOrder">
+  ExecuteOrder()
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>If you need mods to be executed in a certain order, adjust this methods return value.<br>
-The server will call each Mods StartPre() and Start() methods in ascending order of each mods execute order value. And thus, as long as every mod registers it&apos;s event handlers in the Start() method, all event handlers will be called in the same execution order.<br>
+The server will call each Mods StartPre() and Start() methods in ascending order of each mods execute order value. And thus, as long as every mod registers it's event handlers in the Start() method, all event handlers will be called in the same execution order.<br>
 Default execute order of some survival mod parts<br>
 Worldgen:<br></p>
 <ul>
@@ -236,252 +310,222 @@ AssetsLoaded event<br></li>
 </ul>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual double ExecuteOrder()</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModSystem_ShouldLoad_Vintagestory_API_Common_EnumAppSide_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModSystem.ShouldLoad(Vintagestory.API.Common.EnumAppSide)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModSystem.cs/#L22">View Source</a>
-  </span>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ModSystem_ShouldLoad_" data-uid="Vintagestory.API.Common.ModSystem.ShouldLoad*"></a>
-  <h4 id="Vintagestory_API_Common_ModSystem_ShouldLoad_Vintagestory_API_Common_EnumAppSide_" data-uid="Vintagestory.API.Common.ModSystem.ShouldLoad(Vintagestory.API.Common.EnumAppSide)">ShouldLoad(EnumAppSide)</h4>
+
+  <h3 id="Vintagestory_API_Common_ModSystem_ShouldLoad_Vintagestory_API_Common_EnumAppSide_" data-uid="Vintagestory.API.Common.ModSystem.ShouldLoad(Vintagestory.API.Common.EnumAppSide)">
+  ShouldLoad(EnumAppSide)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns if this mod should be loaded for the given app side.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual bool ShouldLoad(EnumAppSide forSide)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumAppSide.html">EnumAppSide</a></td>
-        <td><span class="parametername">forSide</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModSystem_Start_Vintagestory_API_Common_ICoreAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModSystem.Start(Vintagestory.API.Common.ICoreAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModSystem.cs/#L65">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>forSide</code> <a class="xref" href="Vintagestory.API.Common.EnumAppSide.html">EnumAppSide</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ModSystem_Start_" data-uid="Vintagestory.API.Common.ModSystem.Start*"></a>
-  <h4 id="Vintagestory_API_Common_ModSystem_Start_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.ModSystem.Start(Vintagestory.API.Common.ICoreAPI)">Start(ICoreAPI)</h4>
+
+  <h3 id="Vintagestory_API_Common_ModSystem_Start_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.ModSystem.Start(Vintagestory.API.Common.ICoreAPI)">
+  Start(ICoreAPI)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Start method, called on both server and client after all mods already received a call to StartPre(), but before Blocks/Items/Entities/Recipes etc are loaded and some time before StartServerSide / StartClientSide.
 <br>Typically used to register for events and network packets etc
-<br>Typically also used in a mod&apos;s core to register the classes for your blocks, items, entities, blockentities, behaviors etc, prior to loading assets
+<br>Typically also used in a mod's core to register the classes for your blocks, items, entities, blockentities, behaviors etc, prior to loading assets
 <br><br>Do not make calls to api.Assets at this stage, the assets may not be found, resulting in errors (even if the json file exists on disk). Use AssetsLoaded() stage instead.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void Start(ICoreAPI api)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModSystem_StartClientSide_Vintagestory_API_Client_ICoreClientAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModSystem.StartClientSide(Vintagestory.API.Client.ICoreClientAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModSystem.cs/#L98">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ModSystem_StartClientSide_" data-uid="Vintagestory.API.Common.ModSystem.StartClientSide*"></a>
-  <h4 id="Vintagestory_API_Common_ModSystem_StartClientSide_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Common.ModSystem.StartClientSide(Vintagestory.API.Client.ICoreClientAPI)">StartClientSide(ICoreClientAPI)</h4>
+
+  <h3 id="Vintagestory_API_Common_ModSystem_StartClientSide_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Common.ModSystem.StartClientSide(Vintagestory.API.Client.ICoreClientAPI)">
+  StartClientSide(ICoreClientAPI)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Full start to the mod on the client side.
 <br>Note, in multiplayer games, the server assets (blocks, items, entities, recipes) have not yet been received and so no blocks etc. are yet registered
 <br>For code that must run only after we have blocks, items, entities and recipes all registered and loaded, add your method to event BlockTexturesLoaded</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void StartClientSide(ICoreClientAPI api)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModSystem_StartPre_Vintagestory_API_Common_ICoreAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModSystem.StartPre(Vintagestory.API.Common.ICoreAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModSystem.cs/#L53">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ModSystem_StartPre_" data-uid="Vintagestory.API.Common.ModSystem.StartPre*"></a>
-  <h4 id="Vintagestory_API_Common_ModSystem_StartPre_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.ModSystem.StartPre(Vintagestory.API.Common.ICoreAPI)">StartPre(ICoreAPI)</h4>
+
+  <h3 id="Vintagestory_API_Common_ModSystem_StartPre_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.ModSystem.StartPre(Vintagestory.API.Common.ICoreAPI)">
+  StartPre(ICoreAPI)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Called during intial mod loading, called before any mod receives the call to Start()</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void StartPre(ICoreAPI api)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModSystem_StartServerSide_Vintagestory_API_Server_ICoreServerAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModSystem.StartServerSide(Vintagestory.API.Server.ICoreServerAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModSystem.cs/#L109">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ModSystem_StartServerSide_" data-uid="Vintagestory.API.Common.ModSystem.StartServerSide*"></a>
-  <h4 id="Vintagestory_API_Common_ModSystem_StartServerSide_Vintagestory_API_Server_ICoreServerAPI_" data-uid="Vintagestory.API.Common.ModSystem.StartServerSide(Vintagestory.API.Server.ICoreServerAPI)">StartServerSide(ICoreServerAPI)</h4>
+
+  <h3 id="Vintagestory_API_Common_ModSystem_StartServerSide_Vintagestory_API_Server_ICoreServerAPI_" data-uid="Vintagestory.API.Common.ModSystem.StartServerSide(Vintagestory.API.Server.ICoreServerAPI)">
+  StartServerSide(ICoreServerAPI)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Full start to the mod on the server side
 <br><br>Note: preferably, your code which adds or updates behaviors or attributes or other fixed properties of any block, item or entity, should have been run before now.
 For example, code which needs to do that could be placed in an overridden AssetsFinalize() method. See VSSurvivalMod system BlockReinforcement.cs for an example.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual void StartServerSide(ICoreServerAPI api)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Server.ICoreServerAPI.html">ICoreServerAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Server.ICoreServerAPI.html">ICoreServerAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ModSystem.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ModSystem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ModSystem.cs/#L12" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

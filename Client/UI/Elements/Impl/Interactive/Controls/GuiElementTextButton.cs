@@ -312,7 +312,7 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseUpOnElement(ICoreClientAPI api, MouseEvent args)
         {
-            if (enabled && currentlyMouseDownOnElement && Bounds.PointInside(args.X, args.Y) && args.Button == EnumMouseButton.Left)
+            if (enabled && currentlyMouseDownOnElement && Bounds.PointInside(args.X, args.Y) && (args.Button == EnumMouseButton.Left || args.Button == EnumMouseButton.Right))
             {
                 args.Handled = onClick();
             }

@@ -1,0 +1,724 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.DamagedPerceptionEffect
+  commentId: T:Vintagestory.API.Client.DamagedPerceptionEffect
+  id: DamagedPerceptionEffect
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.DamagedPerceptionEffect.#ctor(Vintagestory.API.Client.ICoreClientAPI)
+  - Vintagestory.API.Client.DamagedPerceptionEffect.OnBeforeGameRender(System.Single)
+  - Vintagestory.API.Client.DamagedPerceptionEffect.OnOwnPlayerDataReceived(Vintagestory.API.Common.EntityPlayer)
+  langs:
+  - csharp
+  - vb
+  name: DamagedPerceptionEffect
+  nameWithType: DamagedPerceptionEffect
+  fullName: Vintagestory.API.Client.DamagedPerceptionEffect
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/PerceptionEffects/DamagedPerceptionEffect.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DamagedPerceptionEffect
+    path: Client/Render/PerceptionEffects/DamagedPerceptionEffect.cs
+    startLine: 6
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: 'public class DamagedPerceptionEffect : PerceptionEffect'
+    content.vb: Public Class DamagedPerceptionEffect Inherits PerceptionEffect
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Client.PerceptionEffect
+  inheritedMembers:
+  - Vintagestory.API.Client.PerceptionEffect.Code
+  - Vintagestory.API.Client.PerceptionEffect.PerceptionEffectId
+  - Vintagestory.API.Client.PerceptionEffect.Intensity
+  - Vintagestory.API.Client.PerceptionEffect.DurationHours
+  - Vintagestory.API.Client.PerceptionEffect.capi
+  - Vintagestory.API.Client.PerceptionEffect.ApplyToFpHand(Vintagestory.API.Client.Matrixf)
+  - Vintagestory.API.Client.PerceptionEffect.ApplyToTpPlayer(Vintagestory.API.Common.EntityPlayer,System.Single[],System.Nullable{System.Single})
+  - Vintagestory.API.Client.PerceptionEffect.NowDisabled
+  - Vintagestory.API.Client.PerceptionEffect.NowActive(System.Single)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Client.DamagedPerceptionEffect.#ctor(Vintagestory.API.Client.ICoreClientAPI)
+  commentId: M:Vintagestory.API.Client.DamagedPerceptionEffect.#ctor(Vintagestory.API.Client.ICoreClientAPI)
+  id: '#ctor(Vintagestory.API.Client.ICoreClientAPI)'
+  parent: Vintagestory.API.Client.DamagedPerceptionEffect
+  langs:
+  - csharp
+  - vb
+  name: DamagedPerceptionEffect(ICoreClientAPI)
+  nameWithType: DamagedPerceptionEffect.DamagedPerceptionEffect(ICoreClientAPI)
+  fullName: Vintagestory.API.Client.DamagedPerceptionEffect.DamagedPerceptionEffect(Vintagestory.API.Client.ICoreClientAPI)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/PerceptionEffects/DamagedPerceptionEffect.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Client/Render/PerceptionEffects/DamagedPerceptionEffect.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public DamagedPerceptionEffect(ICoreClientAPI capi)
+    parameters:
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+    content.vb: Public Sub New(capi As ICoreClientAPI)
+  overload: Vintagestory.API.Client.DamagedPerceptionEffect.#ctor*
+  nameWithType.vb: DamagedPerceptionEffect.New(ICoreClientAPI)
+  fullName.vb: Vintagestory.API.Client.DamagedPerceptionEffect.New(Vintagestory.API.Client.ICoreClientAPI)
+  name.vb: New(ICoreClientAPI)
+- uid: Vintagestory.API.Client.DamagedPerceptionEffect.OnOwnPlayerDataReceived(Vintagestory.API.Common.EntityPlayer)
+  commentId: M:Vintagestory.API.Client.DamagedPerceptionEffect.OnOwnPlayerDataReceived(Vintagestory.API.Common.EntityPlayer)
+  id: OnOwnPlayerDataReceived(Vintagestory.API.Common.EntityPlayer)
+  parent: Vintagestory.API.Client.DamagedPerceptionEffect
+  langs:
+  - csharp
+  - vb
+  name: OnOwnPlayerDataReceived(EntityPlayer)
+  nameWithType: DamagedPerceptionEffect.OnOwnPlayerDataReceived(EntityPlayer)
+  fullName: Vintagestory.API.Client.DamagedPerceptionEffect.OnOwnPlayerDataReceived(Vintagestory.API.Common.EntityPlayer)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/PerceptionEffects/DamagedPerceptionEffect.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnOwnPlayerDataReceived
+    path: Client/Render/PerceptionEffects/DamagedPerceptionEffect.cs
+    startLine: 19
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  example: []
+  syntax:
+    content: public override void OnOwnPlayerDataReceived(EntityPlayer player)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.EntityPlayer
+    content.vb: Public Overrides Sub OnOwnPlayerDataReceived(player As EntityPlayer)
+  overridden: Vintagestory.API.Client.PerceptionEffect.OnOwnPlayerDataReceived(Vintagestory.API.Common.EntityPlayer)
+  overload: Vintagestory.API.Client.DamagedPerceptionEffect.OnOwnPlayerDataReceived*
+- uid: Vintagestory.API.Client.DamagedPerceptionEffect.OnBeforeGameRender(System.Single)
+  commentId: M:Vintagestory.API.Client.DamagedPerceptionEffect.OnBeforeGameRender(System.Single)
+  id: OnBeforeGameRender(System.Single)
+  parent: Vintagestory.API.Client.DamagedPerceptionEffect
+  langs:
+  - csharp
+  - vb
+  name: OnBeforeGameRender(float)
+  nameWithType: DamagedPerceptionEffect.OnBeforeGameRender(float)
+  fullName: Vintagestory.API.Client.DamagedPerceptionEffect.OnBeforeGameRender(float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Render/PerceptionEffects/DamagedPerceptionEffect.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnBeforeGameRender
+    path: Client/Render/PerceptionEffects/DamagedPerceptionEffect.cs
+    startLine: 46
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  example: []
+  syntax:
+    content: public override void OnBeforeGameRender(float dt)
+    parameters:
+    - id: dt
+      type: System.Single
+    content.vb: Public Overrides Sub OnBeforeGameRender(dt As Single)
+  overridden: Vintagestory.API.Client.PerceptionEffect.OnBeforeGameRender(System.Single)
+  overload: Vintagestory.API.Client.DamagedPerceptionEffect.OnBeforeGameRender*
+  nameWithType.vb: DamagedPerceptionEffect.OnBeforeGameRender(Single)
+  fullName.vb: Vintagestory.API.Client.DamagedPerceptionEffect.OnBeforeGameRender(Single)
+  name.vb: OnBeforeGameRender(Single)
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Client.PerceptionEffect
+  commentId: T:Vintagestory.API.Client.PerceptionEffect
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.PerceptionEffect.html
+  name: PerceptionEffect
+  nameWithType: PerceptionEffect
+  fullName: Vintagestory.API.Client.PerceptionEffect
+- uid: Vintagestory.API.Client.PerceptionEffect.Code
+  commentId: F:Vintagestory.API.Client.PerceptionEffect.Code
+  parent: Vintagestory.API.Client.PerceptionEffect
+  href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_Code
+  name: Code
+  nameWithType: PerceptionEffect.Code
+  fullName: Vintagestory.API.Client.PerceptionEffect.Code
+- uid: Vintagestory.API.Client.PerceptionEffect.PerceptionEffectId
+  commentId: F:Vintagestory.API.Client.PerceptionEffect.PerceptionEffectId
+  parent: Vintagestory.API.Client.PerceptionEffect
+  href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_PerceptionEffectId
+  name: PerceptionEffectId
+  nameWithType: PerceptionEffect.PerceptionEffectId
+  fullName: Vintagestory.API.Client.PerceptionEffect.PerceptionEffectId
+- uid: Vintagestory.API.Client.PerceptionEffect.Intensity
+  commentId: F:Vintagestory.API.Client.PerceptionEffect.Intensity
+  parent: Vintagestory.API.Client.PerceptionEffect
+  href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_Intensity
+  name: Intensity
+  nameWithType: PerceptionEffect.Intensity
+  fullName: Vintagestory.API.Client.PerceptionEffect.Intensity
+- uid: Vintagestory.API.Client.PerceptionEffect.DurationHours
+  commentId: F:Vintagestory.API.Client.PerceptionEffect.DurationHours
+  parent: Vintagestory.API.Client.PerceptionEffect
+  href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_DurationHours
+  name: DurationHours
+  nameWithType: PerceptionEffect.DurationHours
+  fullName: Vintagestory.API.Client.PerceptionEffect.DurationHours
+- uid: Vintagestory.API.Client.PerceptionEffect.capi
+  commentId: F:Vintagestory.API.Client.PerceptionEffect.capi
+  parent: Vintagestory.API.Client.PerceptionEffect
+  href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_capi
+  name: capi
+  nameWithType: PerceptionEffect.capi
+  fullName: Vintagestory.API.Client.PerceptionEffect.capi
+- uid: Vintagestory.API.Client.PerceptionEffect.ApplyToFpHand(Vintagestory.API.Client.Matrixf)
+  commentId: M:Vintagestory.API.Client.PerceptionEffect.ApplyToFpHand(Vintagestory.API.Client.Matrixf)
+  parent: Vintagestory.API.Client.PerceptionEffect
+  href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_ApplyToFpHand_Vintagestory_API_Client_Matrixf_
+  name: ApplyToFpHand(Matrixf)
+  nameWithType: PerceptionEffect.ApplyToFpHand(Matrixf)
+  fullName: Vintagestory.API.Client.PerceptionEffect.ApplyToFpHand(Vintagestory.API.Client.Matrixf)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.PerceptionEffect.ApplyToFpHand(Vintagestory.API.Client.Matrixf)
+    name: ApplyToFpHand
+    href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_ApplyToFpHand_Vintagestory_API_Client_Matrixf_
+  - name: (
+  - uid: Vintagestory.API.Client.Matrixf
+    name: Matrixf
+    href: Vintagestory.API.Client.Matrixf.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.PerceptionEffect.ApplyToFpHand(Vintagestory.API.Client.Matrixf)
+    name: ApplyToFpHand
+    href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_ApplyToFpHand_Vintagestory_API_Client_Matrixf_
+  - name: (
+  - uid: Vintagestory.API.Client.Matrixf
+    name: Matrixf
+    href: Vintagestory.API.Client.Matrixf.html
+  - name: )
+- uid: Vintagestory.API.Client.PerceptionEffect.ApplyToTpPlayer(Vintagestory.API.Common.EntityPlayer,System.Single[],System.Nullable{System.Single})
+  commentId: M:Vintagestory.API.Client.PerceptionEffect.ApplyToTpPlayer(Vintagestory.API.Common.EntityPlayer,System.Single[],System.Nullable{System.Single})
+  parent: Vintagestory.API.Client.PerceptionEffect
+  isExternal: true
+  href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_ApplyToTpPlayer_Vintagestory_API_Common_EntityPlayer_System_Single___System_Nullable_System_Single__
+  name: ApplyToTpPlayer(EntityPlayer, float[], float?)
+  nameWithType: PerceptionEffect.ApplyToTpPlayer(EntityPlayer, float[], float?)
+  fullName: Vintagestory.API.Client.PerceptionEffect.ApplyToTpPlayer(Vintagestory.API.Common.EntityPlayer, float[], float?)
+  nameWithType.vb: PerceptionEffect.ApplyToTpPlayer(EntityPlayer, Single(), Single?)
+  fullName.vb: Vintagestory.API.Client.PerceptionEffect.ApplyToTpPlayer(Vintagestory.API.Common.EntityPlayer, Single(), Single?)
+  name.vb: ApplyToTpPlayer(EntityPlayer, Single(), Single?)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.PerceptionEffect.ApplyToTpPlayer(Vintagestory.API.Common.EntityPlayer,System.Single[],System.Nullable{System.Single})
+    name: ApplyToTpPlayer
+    href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_ApplyToTpPlayer_Vintagestory_API_Common_EntityPlayer_System_Single___System_Nullable_System_Single__
+  - name: (
+  - uid: Vintagestory.API.Common.EntityPlayer
+    name: EntityPlayer
+    href: Vintagestory.API.Common.EntityPlayer.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.PerceptionEffect.ApplyToTpPlayer(Vintagestory.API.Common.EntityPlayer,System.Single[],System.Nullable{System.Single})
+    name: ApplyToTpPlayer
+    href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_ApplyToTpPlayer_Vintagestory_API_Common_EntityPlayer_System_Single___System_Nullable_System_Single__
+  - name: (
+  - uid: Vintagestory.API.Common.EntityPlayer
+    name: EntityPlayer
+    href: Vintagestory.API.Common.EntityPlayer.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: )
+- uid: Vintagestory.API.Client.PerceptionEffect.NowDisabled
+  commentId: M:Vintagestory.API.Client.PerceptionEffect.NowDisabled
+  parent: Vintagestory.API.Client.PerceptionEffect
+  href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_NowDisabled
+  name: NowDisabled()
+  nameWithType: PerceptionEffect.NowDisabled()
+  fullName: Vintagestory.API.Client.PerceptionEffect.NowDisabled()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.PerceptionEffect.NowDisabled
+    name: NowDisabled
+    href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_NowDisabled
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.PerceptionEffect.NowDisabled
+    name: NowDisabled
+    href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_NowDisabled
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.PerceptionEffect.NowActive(System.Single)
+  commentId: M:Vintagestory.API.Client.PerceptionEffect.NowActive(System.Single)
+  parent: Vintagestory.API.Client.PerceptionEffect
+  isExternal: true
+  href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_NowActive_System_Single_
+  name: NowActive(float)
+  nameWithType: PerceptionEffect.NowActive(float)
+  fullName: Vintagestory.API.Client.PerceptionEffect.NowActive(float)
+  nameWithType.vb: PerceptionEffect.NowActive(Single)
+  fullName.vb: Vintagestory.API.Client.PerceptionEffect.NowActive(Single)
+  name.vb: NowActive(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.PerceptionEffect.NowActive(System.Single)
+    name: NowActive
+    href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_NowActive_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.PerceptionEffect.NowActive(System.Single)
+    name: NowActive
+    href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_NowActive_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.DamagedPerceptionEffect.#ctor*
+  commentId: Overload:Vintagestory.API.Client.DamagedPerceptionEffect.#ctor
+  href: Vintagestory.API.Client.DamagedPerceptionEffect.html#Vintagestory_API_Client_DamagedPerceptionEffect__ctor_Vintagestory_API_Client_ICoreClientAPI_
+  name: DamagedPerceptionEffect
+  nameWithType: DamagedPerceptionEffect.DamagedPerceptionEffect
+  fullName: Vintagestory.API.Client.DamagedPerceptionEffect.DamagedPerceptionEffect
+  nameWithType.vb: DamagedPerceptionEffect.New
+  fullName.vb: Vintagestory.API.Client.DamagedPerceptionEffect.New
+  name.vb: New
+- uid: Vintagestory.API.Client.ICoreClientAPI
+  commentId: T:Vintagestory.API.Client.ICoreClientAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ICoreClientAPI.html
+  name: ICoreClientAPI
+  nameWithType: ICoreClientAPI
+  fullName: Vintagestory.API.Client.ICoreClientAPI
+- uid: Vintagestory.API.Client.PerceptionEffect.OnOwnPlayerDataReceived(Vintagestory.API.Common.EntityPlayer)
+  commentId: M:Vintagestory.API.Client.PerceptionEffect.OnOwnPlayerDataReceived(Vintagestory.API.Common.EntityPlayer)
+  parent: Vintagestory.API.Client.PerceptionEffect
+  href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_OnOwnPlayerDataReceived_Vintagestory_API_Common_EntityPlayer_
+  name: OnOwnPlayerDataReceived(EntityPlayer)
+  nameWithType: PerceptionEffect.OnOwnPlayerDataReceived(EntityPlayer)
+  fullName: Vintagestory.API.Client.PerceptionEffect.OnOwnPlayerDataReceived(Vintagestory.API.Common.EntityPlayer)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.PerceptionEffect.OnOwnPlayerDataReceived(Vintagestory.API.Common.EntityPlayer)
+    name: OnOwnPlayerDataReceived
+    href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_OnOwnPlayerDataReceived_Vintagestory_API_Common_EntityPlayer_
+  - name: (
+  - uid: Vintagestory.API.Common.EntityPlayer
+    name: EntityPlayer
+    href: Vintagestory.API.Common.EntityPlayer.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.PerceptionEffect.OnOwnPlayerDataReceived(Vintagestory.API.Common.EntityPlayer)
+    name: OnOwnPlayerDataReceived
+    href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_OnOwnPlayerDataReceived_Vintagestory_API_Common_EntityPlayer_
+  - name: (
+  - uid: Vintagestory.API.Common.EntityPlayer
+    name: EntityPlayer
+    href: Vintagestory.API.Common.EntityPlayer.html
+  - name: )
+- uid: Vintagestory.API.Client.DamagedPerceptionEffect.OnOwnPlayerDataReceived*
+  commentId: Overload:Vintagestory.API.Client.DamagedPerceptionEffect.OnOwnPlayerDataReceived
+  href: Vintagestory.API.Client.DamagedPerceptionEffect.html#Vintagestory_API_Client_DamagedPerceptionEffect_OnOwnPlayerDataReceived_Vintagestory_API_Common_EntityPlayer_
+  name: OnOwnPlayerDataReceived
+  nameWithType: DamagedPerceptionEffect.OnOwnPlayerDataReceived
+  fullName: Vintagestory.API.Client.DamagedPerceptionEffect.OnOwnPlayerDataReceived
+- uid: Vintagestory.API.Common.EntityPlayer
+  commentId: T:Vintagestory.API.Common.EntityPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntityPlayer.html
+  name: EntityPlayer
+  nameWithType: EntityPlayer
+  fullName: Vintagestory.API.Common.EntityPlayer
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Client.PerceptionEffect.OnBeforeGameRender(System.Single)
+  commentId: M:Vintagestory.API.Client.PerceptionEffect.OnBeforeGameRender(System.Single)
+  parent: Vintagestory.API.Client.PerceptionEffect
+  isExternal: true
+  href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_OnBeforeGameRender_System_Single_
+  name: OnBeforeGameRender(float)
+  nameWithType: PerceptionEffect.OnBeforeGameRender(float)
+  fullName: Vintagestory.API.Client.PerceptionEffect.OnBeforeGameRender(float)
+  nameWithType.vb: PerceptionEffect.OnBeforeGameRender(Single)
+  fullName.vb: Vintagestory.API.Client.PerceptionEffect.OnBeforeGameRender(Single)
+  name.vb: OnBeforeGameRender(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.PerceptionEffect.OnBeforeGameRender(System.Single)
+    name: OnBeforeGameRender
+    href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_OnBeforeGameRender_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.PerceptionEffect.OnBeforeGameRender(System.Single)
+    name: OnBeforeGameRender
+    href: Vintagestory.API.Client.PerceptionEffect.html#Vintagestory_API_Client_PerceptionEffect_OnBeforeGameRender_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Client.DamagedPerceptionEffect.OnBeforeGameRender*
+  commentId: Overload:Vintagestory.API.Client.DamagedPerceptionEffect.OnBeforeGameRender
+  href: Vintagestory.API.Client.DamagedPerceptionEffect.html#Vintagestory_API_Client_DamagedPerceptionEffect_OnBeforeGameRender_System_Single_
+  name: OnBeforeGameRender
+  nameWithType: DamagedPerceptionEffect.OnBeforeGameRender
+  fullName: Vintagestory.API.Client.DamagedPerceptionEffect.OnBeforeGameRender
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single

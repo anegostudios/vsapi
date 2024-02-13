@@ -1,90 +1,128 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BlockGeneric
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BlockGeneric
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class BlockGeneric | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BlockGeneric | VintageStory API ">
+      
+      
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.BlockGeneric">
-  
-  
-  <h1 id="Vintagestory_API_Common_BlockGeneric" data-uid="Vintagestory.API.Common.BlockGeneric" class="text-break">Class BlockGeneric
+
+        <article data-uid="Vintagestory.API.Common.BlockGeneric">
+
+
+
+  <h1 id="Vintagestory_API_Common_BlockGeneric" data-uid="Vintagestory.API.Common.BlockGeneric" class="text-break">
+Class BlockGeneric  
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Vintagestory.API.Common.RegistryObject.html">RegistryObject</a></div>
-    <div class="level2"><a class="xref" href="Vintagestory.API.Common.CollectibleObject.html">CollectibleObject</a></div>
-    <div class="level3"><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></div>
-    <div class="level4"><span class="xref">BlockGeneric</span></div>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class BlockGeneric : Block</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.RegistryObject.html">RegistryObject</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.CollectibleObject.html">CollectibleObject</a></div>
+      <div><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></div>
+      <div><span class="xref">BlockGeneric</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_Id">Block.Id</a>
     </div>
@@ -353,10 +391,13 @@
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DisplacesLiquids_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_">Block.DisplacesLiquids(IBlockAccessor, BlockPos)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_SideIsSolid_Vintagestory_API_MathTools_BlockPos_System_Int32_">Block.SideIsSolid(BlockPos, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_SideIsSolid_Vintagestory_API_MathTools_BlockPos_System_Int32_">Block.SideIsSolid(BlockPos, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_ShouldMergeFace_System_Int32_Vintagestory_API_Common_Block_System_Int32_">Block.ShouldMergeFace(Int32, Block, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_SideIsSolid_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_">Block.SideIsSolid(IBlockAccessor, BlockPos, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_ShouldMergeFace_System_Int32_Vintagestory_API_Common_Block_System_Int32_">Block.ShouldMergeFace(int, Block, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetBlockMaterial_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ItemStack_">Block.GetBlockMaterial(IBlockAccessor, BlockPos, ItemStack)</a>
@@ -371,7 +412,7 @@
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DoEmitSideAo_Vintagestory_API_Common_IGeometryTester_Vintagestory_API_MathTools_BlockFacing_">Block.DoEmitSideAo(IGeometryTester, BlockFacing)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DoEmitSideAoByFlag_Vintagestory_API_Common_IGeometryTester_VintagestoryAPI_Math_Vector_Vec3iAndFacingFlags_System_Int32_">Block.DoEmitSideAoByFlag(IGeometryTester, Vec3iAndFacingFlags, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DoEmitSideAoByFlag_Vintagestory_API_Common_IGeometryTester_VintagestoryAPI_Math_Vector_Vec3iAndFacingFlags_System_Int32_">Block.DoEmitSideAoByFlag(IGeometryTester, Vec3iAndFacingFlags, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetLightAbsorption_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_">Block.GetLightAbsorption(IBlockAccessor, BlockPos)</a>
@@ -389,25 +430,25 @@
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_CanCreatureSpawnOn_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Common_Entities_BaseSpawnConditions_">Block.CanCreatureSpawnOn(IBlockAccessor, BlockPos, EntityProperties, BaseSpawnConditions)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_TryPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_BlockSelection_System_String__">Block.TryPlaceBlock(IWorldAccessor, IPlayer, ItemStack, BlockSelection, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_TryPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_BlockSelection_System_String__">Block.TryPlaceBlock(IWorldAccessor, IPlayer, ItemStack, BlockSelection, ref string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_CanPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_System_String__">Block.CanPlaceBlock(IWorldAccessor, IPlayer, BlockSelection, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_CanPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_System_String__">Block.CanPlaceBlock(IWorldAccessor, IPlayer, BlockSelection, ref string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DoPlaceBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemStack_">Block.DoPlaceBlock(IWorldAccessor, IPlayer, BlockSelection, ItemStack)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnBeingLookedAt_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_System_Boolean_">Block.OnBeingLookedAt(IPlayer, BlockSelection, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnBeingLookedAt_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_System_Boolean_">Block.OnBeingLookedAt(IPlayer, BlockSelection, bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnGettingBroken_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemSlot_System_Single_System_Single_System_Int32_">Block.OnGettingBroken(IPlayer, BlockSelection, ItemSlot, Single, Single, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnGettingBroken_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemSlot_System_Single_System_Single_System_Int32_">Block.OnGettingBroken(IPlayer, BlockSelection, ItemSlot, float, float, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_RandomSoundPitch_Vintagestory_API_Common_IWorldAccessor_">Block.RandomSoundPitch(IWorldAccessor)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnBlockBroken_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_System_Single_">Block.OnBlockBroken(IWorldAccessor, BlockPos, IPlayer, Single)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnBlockBroken_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_System_Single_">Block.OnBlockBroken(IWorldAccessor, BlockPos, IPlayer, float)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_SpawnBlockBrokenParticles_Vintagestory_API_MathTools_BlockPos_">Block.SpawnBlockBrokenParticles(BlockPos)</a>
@@ -425,7 +466,7 @@
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetHandbookDropsFromBreakDrops_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_IPlayer_">Block.GetHandbookDropsFromBreakDrops(ItemStack, IPlayer)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetDrops_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_System_Single_">Block.GetDrops(IWorldAccessor, BlockPos, IPlayer, Single)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetDrops_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_System_Single_">Block.GetDrops(IWorldAccessor, BlockPos, IPlayer, float)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnPickBlock_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_">Block.OnPickBlock(IWorldAccessor, BlockPos)</a>
@@ -446,46 +487,46 @@
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_Activate_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Caller_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Datastructures_ITreeAttribute_">Block.Activate(IWorldAccessor, Caller, BlockSelection, ITreeAttribute)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnBlockInteractStep_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_">Block.OnBlockInteractStep(Single, IWorldAccessor, IPlayer, BlockSelection)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnBlockInteractStep_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_">Block.OnBlockInteractStep(float, IWorldAccessor, IPlayer, BlockSelection)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnBlockInteractStop_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_">Block.OnBlockInteractStop(Single, IWorldAccessor, IPlayer, BlockSelection)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnBlockInteractStop_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_">Block.OnBlockInteractStop(float, IWorldAccessor, IPlayer, BlockSelection)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnBlockInteractCancel_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumItemUseCancelReason_">Block.OnBlockInteractCancel(Single, IWorldAccessor, IPlayer, BlockSelection, EnumItemUseCancelReason)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnBlockInteractCancel_System_Single_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EnumItemUseCancelReason_">Block.OnBlockInteractCancel(float, IWorldAccessor, IPlayer, BlockSelection, EnumItemUseCancelReason)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnEntityInside_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_MathTools_BlockPos_">Block.OnEntityInside(IWorldAccessor, Entity, BlockPos)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnEntityCollide_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_Vec3d_System_Boolean_">Block.OnEntityCollide(IWorldAccessor, Entity, BlockPos, BlockFacing, Vec3d, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnEntityCollide_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_Vec3d_System_Boolean_">Block.OnEntityCollide(IWorldAccessor, Entity, BlockPos, BlockFacing, Vec3d, bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnFallOnto_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block_Vintagestory_API_Datastructures_TreeAttribute_">Block.OnFallOnto(IWorldAccessor, BlockPos, Block, TreeAttribute)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_ShouldReceiveClientParticleTicks_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_BlockPos_System_Boolean__">Block.ShouldReceiveClientParticleTicks(IWorldAccessor, IPlayer, BlockPos, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_ShouldReceiveClientParticleTicks_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_MathTools_BlockPos_System_Boolean__">Block.ShouldReceiveClientParticleTicks(IWorldAccessor, IPlayer, BlockPos, out bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_ShouldPlayAmbientSound_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_">Block.ShouldPlayAmbientSound(IWorldAccessor, BlockPos)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnAsyncClientParticleTick_Vintagestory_API_Client_IAsyncParticleManager_Vintagestory_API_MathTools_BlockPos_System_Single_System_Single_">Block.OnAsyncClientParticleTick(IAsyncParticleManager, BlockPos, Single, Single)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnAsyncClientParticleTick_Vintagestory_API_Client_IAsyncParticleManager_Vintagestory_API_MathTools_BlockPos_System_Single_System_Single_">Block.OnAsyncClientParticleTick(IAsyncParticleManager, BlockPos, float, float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_ShouldReceiveServerGameTicks_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Random_System_Object__">Block.ShouldReceiveServerGameTicks(IWorldAccessor, BlockPos, Random, Object)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_ShouldReceiveServerGameTicks_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Random_System_Object__">Block.ShouldReceiveServerGameTicks(IWorldAccessor, BlockPos, Random, out object)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnServerGameTick_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Object_">Block.OnServerGameTick(IWorldAccessor, BlockPos, Object)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnServerGameTick_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Object_">Block.OnServerGameTick(IWorldAccessor, BlockPos, object)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_waveFlagMinY">Block.waveFlagMinY</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnJsonTesselation_Vintagestory_API_Client_MeshData__System_Int32____Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block___System_Int32_">Block.OnJsonTesselation(MeshData, Int32[], BlockPos, Block[], Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnJsonTesselation_Vintagestory_API_Client_MeshData__System_Int32____Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block___System_Int32_">Block.OnJsonTesselation(ref MeshData, ref int[], BlockPos, Block[], int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnInstancedTesselation_System_Int32_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block___System_Int32_System_Int32__">Block.OnInstancedTesselation(Int32, BlockPos, Block[], Int32, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnInstancedTesselation_System_Int32_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block___System_Int32_System_Int32__">Block.OnInstancedTesselation(int, BlockPos, Block[], int, out int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DetermineTopMiddlePos">Block.DetermineTopMiddlePos()</a>
@@ -497,10 +538,10 @@
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_SuggestedHVOrientation_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_">Block.SuggestedHVOrientation(IPlayer, BlockSelection)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_PerformSnowLevelUpdate_Vintagestory_API_Common_IBulkBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block_System_Single_">Block.PerformSnowLevelUpdate(IBulkBlockAccessor, BlockPos, Block, Single)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_PerformSnowLevelUpdate_Vintagestory_API_Common_IBulkBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block_System_Single_">Block.PerformSnowLevelUpdate(IBulkBlockAccessor, BlockPos, Block, float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetSnowCoveredVariant_Vintagestory_API_MathTools_BlockPos_System_Single_">Block.GetSnowCoveredVariant(BlockPos, Single)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetSnowCoveredVariant_Vintagestory_API_MathTools_BlockPos_System_Single_">Block.GetSnowCoveredVariant(BlockPos, float)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetSnowLevel_Vintagestory_API_MathTools_BlockPos_">Block.GetSnowLevel(BlockPos)</a>
@@ -515,7 +556,7 @@
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_IsClimbable_Vintagestory_API_MathTools_BlockPos_">Block.IsClimbable(BlockPos)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetRotatedBlockCode_System_Int32_">Block.GetRotatedBlockCode(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetRotatedBlockCode_System_Int32_">Block.GetRotatedBlockCode(int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetVerticallyFlippedBlockCode">Block.GetVerticallyFlippedBlockCode()</a>
@@ -524,7 +565,7 @@
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetHorizontallyFlippedBlockCode_Vintagestory_API_MathTools_EnumAxis_">Block.GetHorizontallyFlippedBlockCode(EnumAxis)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetBehavior_Type_System_Boolean_">Block.GetBehavior(Type, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetBehavior_System_Type_System_Boolean_">Block.GetBehavior(Type, bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetPlacedBlockInteractionHelp_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_IPlayer_">Block.GetPlacedBlockInteractionHelp(IWorldAccessor, BlockSelection, IPlayer)</a>
@@ -536,10 +577,10 @@
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetPlacedBlockInfo_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_">Block.GetPlacedBlockInfo(IWorldAccessor, BlockPos, IPlayer)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetHeldItemInfo_Vintagestory_API_Common_ItemSlot_StringBuilder_Vintagestory_API_Common_IWorldAccessor_System_Boolean_">Block.GetHeldItemInfo(ItemSlot, StringBuilder, IWorldAccessor, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetHeldItemInfo_Vintagestory_API_Common_ItemSlot_System_Text_StringBuilder_Vintagestory_API_Common_IWorldAccessor_System_Boolean_">Block.GetHeldItemInfo(ItemSlot, StringBuilder, IWorldAccessor, bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_AddExtraHeldItemInfoPostMaterial_Vintagestory_API_Common_ItemSlot_StringBuilder_Vintagestory_API_Common_IWorldAccessor_">Block.AddExtraHeldItemInfoPostMaterial(ItemSlot, StringBuilder, IWorldAccessor)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_AddExtraHeldItemInfoPostMaterial_Vintagestory_API_Common_ItemSlot_System_Text_StringBuilder_Vintagestory_API_Common_IWorldAccessor_">Block.AddExtraHeldItemInfoPostMaterial(ItemSlot, StringBuilder, IWorldAccessor)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetSelectionColor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_MathTools_BlockPos_">Block.GetSelectionColor(ICoreClientAPI, BlockPos)</a>
@@ -557,7 +598,7 @@
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnBlockExploded_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumBlastType_">Block.OnBlockExploded(IWorldAccessor, BlockPos, BlockPos, EnumBlastType)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetRandomColor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_">Block.GetRandomColor(ICoreClientAPI, BlockPos, BlockFacing, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetRandomColor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_">Block.GetRandomColor(ICoreClientAPI, BlockPos, BlockFacing, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetRandomColor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemStack_">Block.GetRandomColor(ICoreClientAPI, ItemStack)</a>
@@ -587,16 +628,16 @@
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_Clone">Block.Clone()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_HasBlockBehavior__1_System_Boolean_">Block.HasBlockBehavior&lt;T&gt;(Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_HasBlockBehavior__1_System_Boolean_">Block.HasBlockBehavior&lt;T&gt;(bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_HasBehavior__1_System_Boolean_">Block.HasBehavior&lt;T&gt;(Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_HasBehavior__1_System_Boolean_">Block.HasBehavior&lt;T&gt;(bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_HasBehavior_System_String_Vintagestory_API_Common_IClassRegistryAPI_">Block.HasBehavior(String, IClassRegistryAPI)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_HasBehavior_System_String_Vintagestory_API_Common_IClassRegistryAPI_">Block.HasBehavior(string, IClassRegistryAPI)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_HasBehavior_Type_System_Boolean_">Block.HasBehavior(Type, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_HasBehavior_System_Type_System_Boolean_">Block.HasBehavior(Type, bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetLiquidBarrierHeightOnSide_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_BlockPos_">Block.GetLiquidBarrierHeightOnSide(BlockFacing, BlockPos)</a>
@@ -761,7 +802,7 @@
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_ShouldDisplayItemDamage_Vintagestory_API_Common_ItemStack_">CollectibleObject.ShouldDisplayItemDamage(ItemStack)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnBeforeRender_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemStack_Vintagestory_API_Client_EnumItemRenderTarget_Vintagestory_API_Client_ItemRenderInfo__">CollectibleObject.OnBeforeRender(ICoreClientAPI, ItemStack, EnumItemRenderTarget, ItemRenderInfo)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnBeforeRender_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_ItemStack_Vintagestory_API_Client_EnumItemRenderTarget_Vintagestory_API_Client_ItemRenderInfo__">CollectibleObject.OnBeforeRender(ICoreClientAPI, ItemStack, EnumItemRenderTarget, ref ItemRenderInfo)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetDurability_Vintagestory_API_Common_IItemStack_">CollectibleObject.GetDurability(IItemStack)</a>
@@ -779,13 +820,13 @@
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetAttackRange_Vintagestory_API_Common_IItemStack_">CollectibleObject.GetAttackRange(IItemStack)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnBlockBreaking_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemSlot_System_Single_System_Single_System_Int32_">CollectibleObject.OnBlockBreaking(IPlayer, BlockSelection, ItemSlot, Single, Single, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnBlockBreaking_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemSlot_System_Single_System_Single_System_Int32_">CollectibleObject.OnBlockBreaking(IPlayer, BlockSelection, ItemSlot, float, float, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnModifiedInInventorySlot_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_ItemStack_">CollectibleObject.OnModifiedInInventorySlot(IWorldAccessor, ItemSlot, ItemStack)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnBlockBrokenWith_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_BlockSelection_System_Single_">CollectibleObject.OnBlockBrokenWith(IWorldAccessor, Entity, ItemSlot, BlockSelection, Single)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnBlockBrokenWith_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_BlockSelection_System_Single_">CollectibleObject.OnBlockBrokenWith(IWorldAccessor, Entity, ItemSlot, BlockSelection, float)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetMiningSpeed_Vintagestory_API_Common_IItemStack_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_Block_Vintagestory_API_Common_IPlayer_">CollectibleObject.GetMiningSpeed(IItemStack, BlockSelection, Block, IPlayer)</a>
@@ -812,13 +853,13 @@
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_MatchesForCrafting_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_CraftingRecipeIngredient_">CollectibleObject.MatchesForCrafting(ItemStack, GridRecipe, CraftingRecipeIngredient)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnConsumedByCrafting_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_CraftingRecipeIngredient_Vintagestory_API_Common_IPlayer_System_Int32_">CollectibleObject.OnConsumedByCrafting(ItemSlot[], ItemSlot, GridRecipe, CraftingRecipeIngredient, IPlayer, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnConsumedByCrafting_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_CraftingRecipeIngredient_Vintagestory_API_Common_IPlayer_System_Int32_">CollectibleObject.OnConsumedByCrafting(ItemSlot[], ItemSlot, GridRecipe, CraftingRecipeIngredient, IPlayer, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_ConsumeCraftingIngredients_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_GridRecipe_">CollectibleObject.ConsumeCraftingIngredients(ItemSlot[], ItemSlot, GridRecipe)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_DamageItem_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemSlot_System_Int32_">CollectibleObject.DamageItem(IWorldAccessor, Entity, ItemSlot, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_DamageItem_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemSlot_System_Int32_">CollectibleObject.DamageItem(IWorldAccessor, Entity, ItemSlot, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_RefillSlotIfEmpty_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_ItemStack__">CollectibleObject.RefillSlotIfEmpty(ItemSlot, EntityAgent, ActionConsumable&lt;ItemStack&gt;)</a>
@@ -830,7 +871,7 @@
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetToolMode_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_">CollectibleObject.GetToolMode(ItemSlot, IPlayer, BlockSelection)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetToolMode_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_System_Int32_">CollectibleObject.SetToolMode(ItemSlot, IPlayer, BlockSelection, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetToolMode_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_BlockSelection_System_Int32_">CollectibleObject.SetToolMode(ItemSlot, IPlayer, BlockSelection, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldRenderOpaque_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Client_IClientPlayer_">CollectibleObject.OnHeldRenderOpaque(ItemSlot, IClientPlayer)</a>
@@ -854,70 +895,73 @@
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnCollected_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_Entities_Entity_">CollectibleObject.OnCollected(ItemStack, Entity)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldUseStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandInteract_System_Boolean_Vintagestory_API_Common_EnumHandHandling__">CollectibleObject.OnHeldUseStart(ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumHandInteract, Boolean, EnumHandHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldUseStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandInteract_System_Boolean_Vintagestory_API_Common_EnumHandHandling__">CollectibleObject.OnHeldUseStart(ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumHandInteract, bool, ref EnumHandHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldUseCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumItemUseCancelReason_">CollectibleObject.OnHeldUseCancel(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumItemUseCancelReason)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldUseCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumItemUseCancelReason_">CollectibleObject.OnHeldUseCancel(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumItemUseCancelReason)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldUseStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_">CollectibleObject.OnHeldUseStep(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldUseStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_">CollectibleObject.OnHeldUseStep(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldUseStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandInteract_">CollectibleObject.OnHeldUseStop(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumHandInteract)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldUseStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandInteract_">CollectibleObject.OnHeldUseStop(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumHandInteract)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldAttackStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandHandling__">CollectibleObject.OnHeldAttackStart(ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumHandHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldAttackStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumHandHandling__">CollectibleObject.OnHeldAttackStart(ItemSlot, EntityAgent, BlockSelection, EntitySelection, ref EnumHandHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldAttackCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumItemUseCancelReason_">CollectibleObject.OnHeldAttackCancel(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumItemUseCancelReason)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldAttackCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumItemUseCancelReason_">CollectibleObject.OnHeldAttackCancel(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumItemUseCancelReason)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldAttackStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_">CollectibleObject.OnHeldAttackStep(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldAttackStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_">CollectibleObject.OnHeldAttackStep(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldAttackStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_">CollectibleObject.OnHeldAttackStop(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldAttackStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_">CollectibleObject.OnHeldAttackStop(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldInteractStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_System_Boolean_Vintagestory_API_Common_EnumHandHandling__">CollectibleObject.OnHeldInteractStart(ItemSlot, EntityAgent, BlockSelection, EntitySelection, Boolean, EnumHandHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldInteractStart_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_System_Boolean_Vintagestory_API_Common_EnumHandHandling__">CollectibleObject.OnHeldInteractStart(ItemSlot, EntityAgent, BlockSelection, EntitySelection, bool, ref EnumHandHandling)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldInteractStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_">CollectibleObject.OnHeldInteractStep(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldInteractStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_">CollectibleObject.OnHeldInteractStep(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldInteractStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_">CollectibleObject.OnHeldInteractStop(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldInteractStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_">CollectibleObject.OnHeldInteractStop(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldInteractCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumItemUseCancelReason_">CollectibleObject.OnHeldInteractCancel(Single, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumItemUseCancelReason)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldInteractCancel_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_EntitySelection_Vintagestory_API_Common_EnumItemUseCancelReason_">CollectibleObject.OnHeldInteractCancel(float, ItemSlot, EntityAgent, BlockSelection, EntitySelection, EnumItemUseCancelReason)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_tryEatBegin_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_EnumHandHandling__System_String_System_Int32_">CollectibleObject.tryEatBegin(ItemSlot, EntityAgent, EnumHandHandling, String, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_tryEatBegin_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_EnumHandHandling__System_String_System_Int32_">CollectibleObject.tryEatBegin(ItemSlot, EntityAgent, ref EnumHandHandling, string, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_playEatSound_Vintagestory_API_Common_EntityAgent_System_String_System_Int32_">CollectibleObject.playEatSound(EntityAgent, String, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_playEatSound_Vintagestory_API_Common_EntityAgent_System_String_System_Int32_">CollectibleObject.playEatSound(EntityAgent, string, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_tryEatStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_ItemStack_">CollectibleObject.tryEatStep(Single, ItemSlot, EntityAgent, ItemStack)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_tryEatStep_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_ItemStack_">CollectibleObject.tryEatStep(float, ItemSlot, EntityAgent, ItemStack)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_tryEatStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_">CollectibleObject.tryEatStop(Single, ItemSlot, EntityAgent)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_tryEatStop_System_Single_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EntityAgent_">CollectibleObject.tryEatStop(float, ItemSlot, EntityAgent)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldDropped_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot_System_Int32_Vintagestory_API_Common_EnumHandling__">CollectibleObject.OnHeldDropped(IWorldAccessor, IPlayer, ItemSlot, Int32, EnumHandling)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHeldDropped_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_IPlayer_Vintagestory_API_Common_ItemSlot_System_Int32_Vintagestory_API_Common_EnumHandling__">CollectibleObject.OnHeldDropped(IWorldAccessor, IPlayer, ItemSlot, int, ref EnumHandling)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetHeldItemName_Vintagestory_API_Common_ItemStack_">CollectibleObject.GetHeldItemName(ItemStack)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetItemDescText">CollectibleObject.GetItemDescText()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetHeldInteractionHelp_Vintagestory_API_Common_ItemSlot_">CollectibleObject.GetHeldInteractionHelp(ItemSlot)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_AppendPerishableInfoText_Vintagestory_API_Common_ItemSlot_StringBuilder_Vintagestory_API_Common_IWorldAccessor_">CollectibleObject.AppendPerishableInfoText(ItemSlot, StringBuilder, IWorldAccessor)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_AppendPerishableInfoText_Vintagestory_API_Common_ItemSlot_System_Text_StringBuilder_Vintagestory_API_Common_IWorldAccessor_">CollectibleObject.AppendPerishableInfoText(ItemSlot, StringBuilder, IWorldAccessor)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_AppendPerishableInfoText_Vintagestory_API_Common_ItemSlot_StringBuilder_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_TransitionState_System_Boolean_">CollectibleObject.AppendPerishableInfoText(ItemSlot, StringBuilder, IWorldAccessor, TransitionState, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_AppendPerishableInfoText_Vintagestory_API_Common_ItemSlot_System_Text_StringBuilder_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_TransitionState_System_Boolean_">CollectibleObject.AppendPerishableInfoText(ItemSlot, StringBuilder, IWorldAccessor, TransitionState, bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHandbookRecipeRender_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_ItemSlot_System_Double_System_Double_System_Double_System_Double_">CollectibleObject.OnHandbookRecipeRender(ICoreClientAPI, GridRecipe, ItemSlot, Double, Double, Double, Double)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnHandbookRecipeRender_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_GridRecipe_Vintagestory_API_Common_ItemSlot_System_Double_System_Double_System_Double_System_Double_">CollectibleObject.OnHandbookRecipeRender(ICoreClientAPI, GridRecipe, ItemSlot, double, double, double, double)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetHandBookStacks_Vintagestory_API_Client_ICoreClientAPI_">CollectibleObject.GetHandBookStacks(ICoreClientAPI)</a>
@@ -950,7 +994,7 @@
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_UpdateAndGetTransitionState_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EnumTransitionType_">CollectibleObject.UpdateAndGetTransitionState(IWorldAccessor, ItemSlot, EnumTransitionType)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetTransitionState_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumTransitionType_System_Single_">CollectibleObject.SetTransitionState(ItemStack, EnumTransitionType, Single)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetTransitionState_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumTransitionType_System_Single_">CollectibleObject.SetTransitionState(ItemStack, EnumTransitionType, float)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetTransitionRateMul_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EnumTransitionType_">CollectibleObject.GetTransitionRateMul(IWorldAccessor, ItemSlot, EnumTransitionType)</a>
@@ -980,7 +1024,7 @@
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_">CollectibleObject.GetTemperature(IWorldAccessor, ItemStack)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_Single_System_Boolean_">CollectibleObject.SetTemperature(IWorldAccessor, ItemStack, Single, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_Single_System_Boolean_">CollectibleObject.SetTemperature(IWorldAccessor, ItemStack, float, bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_">CollectibleObject.IsEmptyBackPack(IItemStack)</a>
@@ -992,37 +1036,40 @@
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_">CollectibleObject.QuantityBackPackSlots(IItemStack)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_Equals_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_ItemStack_System_String___">CollectibleObject.Equals(ItemStack, ItemStack, String[])</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_Equals_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_ItemStack_System_String___">CollectibleObject.Equals(ItemStack, ItemStack, params string[])</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_Satisfies_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_ItemStack_">CollectibleObject.Satisfies(ItemStack, ItemStack)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnStoreCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__">CollectibleObject.OnStoreCollectibleMappings(IWorldAccessor, ItemSlot, Dictionary&lt;Int32, AssetLocation&gt;, Dictionary&lt;Int32, AssetLocation&gt;)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnStoreCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__">CollectibleObject.OnStoreCollectibleMappings(IWorldAccessor, ItemSlot, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__">CollectibleObject.OnLoadCollectibleMappings(IWorldAccessor, ItemSlot, Dictionary&lt;Int32, AssetLocation&gt;, Dictionary&lt;Int32, AssetLocation&gt;)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__">CollectibleObject.OnLoadCollectibleMappings(IWorldAccessor, ItemSlot, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Boolean_">CollectibleObject.OnLoadCollectibleMappings(IWorldAccessor, ItemSlot, Dictionary&lt;Int32, AssetLocation&gt;, Dictionary&lt;Int32, AssetLocation&gt;, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemSlot_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Boolean_">CollectibleObject.OnLoadCollectibleMappings(IWorldAccessor, ItemSlot, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsLiquid">CollectibleObject.IsLiquid()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetCollectibleBehavior_Type_System_Boolean_">CollectibleObject.GetCollectibleBehavior(Type, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetCollectibleBehavior_System_Type_System_Boolean_">CollectibleObject.GetCollectibleBehavior(Type, bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetCollectibleBehavior__1_System_Boolean_">CollectibleObject.GetCollectibleBehavior&lt;T&gt;(Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetCollectibleBehavior__1_System_Boolean_">CollectibleObject.GetCollectibleBehavior&lt;T&gt;(bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetBehavior_Vintagestory_API_Common_CollectibleBehavior___Type_System_Boolean_">CollectibleObject.GetBehavior(CollectibleBehavior[], Type, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetBehavior_Vintagestory_API_Common_CollectibleBehavior___System_Type_System_Boolean_">CollectibleObject.GetBehavior(CollectibleBehavior[], Type, bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetBehavior_Type_">CollectibleObject.GetBehavior(Type)</a>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetBehavior_System_Type_">CollectibleObject.GetBehavior(Type)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetBehavior__1">CollectibleObject.GetBehavior&lt;T&gt;()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnSmeltAttempt_Vintagestory_API_Common_InventoryBase_">CollectibleObject.OnSmeltAttempt(InventoryBase)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_Code">RegistryObject.Code</a>
@@ -1037,37 +1084,37 @@
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_Class">RegistryObject.Class</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithPath_System_String_">RegistryObject.CodeWithPath(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithPath_System_String_">RegistryObject.CodeWithPath(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithoutParts_System_Int32_">RegistryObject.CodeWithoutParts(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithoutParts_System_Int32_">RegistryObject.CodeWithoutParts(int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeEndWithoutParts_System_Int32_">RegistryObject.CodeEndWithoutParts(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeEndWithoutParts_System_Int32_">RegistryObject.CodeEndWithoutParts(int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithParts_System_String___">RegistryObject.CodeWithParts(String[])</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithParts_System_String___">RegistryObject.CodeWithParts(params string[])</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithParts_System_String_">RegistryObject.CodeWithParts(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithParts_System_String_">RegistryObject.CodeWithParts(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithVariant_System_String_System_String_">RegistryObject.CodeWithVariant(String, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithVariant_System_String_System_String_">RegistryObject.CodeWithVariant(string, string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithVariants_Dictionary_System_String_System_String__">RegistryObject.CodeWithVariants(Dictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithVariants_System_Collections_Generic_Dictionary_System_String_System_String__">RegistryObject.CodeWithVariants(Dictionary&lt;string, string&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithVariants_System_String___System_String___">RegistryObject.CodeWithVariants(String[], String[])</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithVariants_System_String___System_String___">RegistryObject.CodeWithVariants(string[], string[])</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithPart_System_String_System_Int32_">RegistryObject.CodeWithPart(String, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_CodeWithPart_System_String_System_Int32_">RegistryObject.CodeWithPart(string, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_LastCodePart_System_Int32_">RegistryObject.LastCodePart(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_LastCodePart_System_Int32_">RegistryObject.LastCodePart(int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FirstCodePart_System_Int32_">RegistryObject.FirstCodePart(Int32)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FirstCodePart_System_Int32_">RegistryObject.FirstCodePart(int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_Vintagestory_API_Common_AssetLocation___">RegistryObject.WildCardMatch(AssetLocation[])</a>
@@ -1076,506 +1123,385 @@
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_Vintagestory_API_Common_AssetLocation_">RegistryObject.WildCardMatch(AssetLocation)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_System_String___">RegistryObject.WildCardMatch(String[])</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_System_String___">RegistryObject.WildCardMatch(string[])</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_System_String_">RegistryObject.WildCardMatch(String)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_WildCardMatch_System_String_">RegistryObject.WildCardMatch(string)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Datastructures_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(AssetLocation, OrderedDictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Datastructures_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(AssetLocation, OrderedDictionary&lt;string, string&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_System_String_Vintagestory_API_Datastructures_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(String, OrderedDictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_System_String_Vintagestory_API_Datastructures_OrderedDictionary_System_String_System_String__">RegistryObject.FillPlaceHolder(string, OrderedDictionary&lt;string, string&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_System_String_System_String_System_String_">RegistryObject.FillPlaceHolder(String, String, String)</a>
+      <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_FillPlaceHolder_System_String_System_String_System_String_">RegistryObject.FillPlaceHolder(string, string, string)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_BlockGeneric_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class BlockGeneric : Block</code></pre>
-  </div>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockGeneric_DoParticalSelection_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockGeneric.DoParticalSelection(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockGeneric.cs/#L193">View Source</a>
-  </span>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Vintagestory_API_Common_BlockGeneric_DoParticalSelection_" data-uid="Vintagestory.API.Common.BlockGeneric.DoParticalSelection*"></a>
-  <h4 id="Vintagestory_API_Common_BlockGeneric_DoParticalSelection_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockGeneric.DoParticalSelection(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)">DoParticalSelection(IWorldAccessor, BlockPos)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_BlockGeneric_DoParticalSelection_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockGeneric.DoParticalSelection(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)">
+  DoParticalSelection(IWorldAccessor, BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, the player can select invdividual selection boxes of this block</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool DoParticalSelection(IWorldAccessor world, BlockPos pos)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DoParticalSelection_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_">Block.DoParticalSelection(IWorldAccessor, BlockPos)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockGeneric_GetCollisionBoxes_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockGeneric.GetCollisionBoxes(Vintagestory.API.Common.IBlockAccessor%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockGeneric.cs/#L107">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockGeneric_GetCollisionBoxes_" data-uid="Vintagestory.API.Common.BlockGeneric.GetCollisionBoxes*"></a>
-  <h4 id="Vintagestory_API_Common_BlockGeneric_GetCollisionBoxes_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockGeneric.GetCollisionBoxes(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)">GetCollisionBoxes(IBlockAccessor, BlockPos)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_BlockGeneric_GetCollisionBoxes_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockGeneric.GetCollisionBoxes(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)">
+  GetCollisionBoxes(IBlockAccessor, BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the blocks collision box. Warning: This method may get called by different threads, so it has to be thread safe.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override Cuboidf[] GetCollisionBoxes(IBlockAccessor blockAccessor, BlockPos pos)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
-        <td><span class="parametername">blockAccessor</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetCollisionBoxes_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_">Block.GetCollisionBoxes(IBlockAccessor, BlockPos)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockGeneric_GetDecal_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Client_ITexPositionSource_Vintagestory_API_Client_MeshData__Vintagestory_API_Client_MeshData__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockGeneric.GetDecal(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.Client.ITexPositionSource%2CVintagestory.API.Client.MeshData%40%2CVintagestory.API.Client.MeshData%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockGeneric.cs/#L9">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockAccessor</code> <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockGeneric_GetDecal_" data-uid="Vintagestory.API.Common.BlockGeneric.GetDecal*"></a>
-  <h4 id="Vintagestory_API_Common_BlockGeneric_GetDecal_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Client_ITexPositionSource_Vintagestory_API_Client_MeshData__Vintagestory_API_Client_MeshData__" data-uid="Vintagestory.API.Common.BlockGeneric.GetDecal(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.Client.MeshData@,Vintagestory.API.Client.MeshData@)">GetDecal(IWorldAccessor, BlockPos, ITexPositionSource, ref MeshData, ref MeshData)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_BlockGeneric_GetDecal_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Client_ITexPositionSource_Vintagestory_API_Client_MeshData__Vintagestory_API_Client_MeshData__" data-uid="Vintagestory.API.Common.BlockGeneric.GetDecal(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.Client.MeshData@,Vintagestory.API.Client.MeshData@)">
+  GetDecal(IWorldAccessor, BlockPos, ITexPositionSource, ref MeshData, ref MeshData)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called before a decal is created.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void GetDecal(IWorldAccessor world, BlockPos pos, ITexPositionSource decalTexSource, ref MeshData decalModelData, ref MeshData blockModelData)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ITexPositionSource.html">ITexPositionSource</a></td>
-        <td><span class="parametername">decalTexSource</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></td>
-        <td><span class="parametername">decalModelData</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></td>
-        <td><span class="parametername">blockModelData</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetDecal_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Client_ITexPositionSource_Vintagestory_API_Client_MeshData__Vintagestory_API_Client_MeshData__">Block.GetDecal(IWorldAccessor, BlockPos, ITexPositionSource, ref MeshData, ref MeshData)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockGeneric_GetParticleBreakBox_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockGeneric.GetParticleBreakBox(Vintagestory.API.Common.IBlockAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockFacing)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockGeneric.cs/#L55">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>decalTexSource</code> <a class="xref" href="Vintagestory.API.Client.ITexPositionSource.html">ITexPositionSource</a></dt>
+    <dd></dd>
+    <dt><code>decalModelData</code> <a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
+    <dd><p>The block model which need UV values for the decal texture</p>
+</dd>
+    <dt><code>blockModelData</code> <a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
+    <dd><p>The original block model</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockGeneric_GetParticleBreakBox_" data-uid="Vintagestory.API.Common.BlockGeneric.GetParticleBreakBox*"></a>
-  <h4 id="Vintagestory_API_Common_BlockGeneric_GetParticleBreakBox_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_" data-uid="Vintagestory.API.Common.BlockGeneric.GetParticleBreakBox(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing)">GetParticleBreakBox(IBlockAccessor, BlockPos, BlockFacing)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_BlockGeneric_GetParticleBreakBox_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_" data-uid="Vintagestory.API.Common.BlockGeneric.GetParticleBreakBox(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing)">
+  GetParticleBreakBox(IBlockAccessor, BlockPos, BlockFacing)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The cuboid used to determine where to spawn particles when breaking the block</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override Cuboidf GetParticleBreakBox(IBlockAccessor blockAccess, BlockPos pos, BlockFacing facing)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
-        <td><span class="parametername">blockAccess</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
-        <td><span class="parametername">facing</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetParticleBreakBox_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_">Block.GetParticleBreakBox(IBlockAccessor, BlockPos, BlockFacing)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockGeneric_GetParticleCollisionBoxes_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockGeneric.GetParticleCollisionBoxes(Vintagestory.API.Common.IBlockAccessor%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockGeneric.cs/#L77">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockAccess</code> <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>facing</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockGeneric_GetParticleCollisionBoxes_" data-uid="Vintagestory.API.Common.BlockGeneric.GetParticleCollisionBoxes*"></a>
-  <h4 id="Vintagestory_API_Common_BlockGeneric_GetParticleCollisionBoxes_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockGeneric.GetParticleCollisionBoxes(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)">GetParticleCollisionBoxes(IBlockAccessor, BlockPos)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_BlockGeneric_GetParticleCollisionBoxes_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockGeneric.GetParticleCollisionBoxes(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)">
+  GetParticleCollisionBoxes(IBlockAccessor, BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the blocks particle collision box. Warning: This method may get called by different threads, so it has to be thread safe.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override Cuboidf[] GetParticleCollisionBoxes(IBlockAccessor blockAccessor, BlockPos pos)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
-        <td><span class="parametername">blockAccessor</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetParticleCollisionBoxes_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_">Block.GetParticleCollisionBoxes(IBlockAccessor, BlockPos)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockGeneric_GetSelectionBoxes_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockGeneric.GetSelectionBoxes(Vintagestory.API.Common.IBlockAccessor%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockGeneric.cs/#L136">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockAccessor</code> <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockGeneric_GetSelectionBoxes_" data-uid="Vintagestory.API.Common.BlockGeneric.GetSelectionBoxes*"></a>
-  <h4 id="Vintagestory_API_Common_BlockGeneric_GetSelectionBoxes_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockGeneric.GetSelectionBoxes(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)">GetSelectionBoxes(IBlockAccessor, BlockPos)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_BlockGeneric_GetSelectionBoxes_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockGeneric.GetSelectionBoxes(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)">
+  GetSelectionBoxes(IBlockAccessor, BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the blocks selection boxes at this position in the world.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override Cuboidf[] GetSelectionBoxes(IBlockAccessor blockAccessor, BlockPos pos)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
-        <td><span class="parametername">blockAccessor</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetSelectionBoxes_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_">Block.GetSelectionBoxes(IBlockAccessor, BlockPos)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockGeneric_OnDecalTesselation_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Client_MeshData_Vintagestory_API_MathTools_BlockPos_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockGeneric.OnDecalTesselation(Vintagestory.API.Common.IWorldAccessor%2CVintagestory.API.Client.MeshData%2CVintagestory.API.MathTools.BlockPos)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockGeneric.cs/#L32">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockAccessor</code> <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Cuboidf.html">Cuboidf</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockGeneric_OnDecalTesselation_" data-uid="Vintagestory.API.Common.BlockGeneric.OnDecalTesselation*"></a>
-  <h4 id="Vintagestory_API_Common_BlockGeneric_OnDecalTesselation_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Client_MeshData_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockGeneric.OnDecalTesselation(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Client.MeshData,Vintagestory.API.MathTools.BlockPos)">OnDecalTesselation(IWorldAccessor, MeshData, BlockPos)</h4>
+
+  <h3 id="Vintagestory_API_Common_BlockGeneric_OnDecalTesselation_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Client_MeshData_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.BlockGeneric.OnDecalTesselation(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Client.MeshData,Vintagestory.API.MathTools.BlockPos)">
+  OnDecalTesselation(IWorldAccessor, MeshData, BlockPos)
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnDecalTesselation(IWorldAccessor world, MeshData decalMesh, BlockPos pos)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">world</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></td>
-        <td><span class="parametername">decalMesh</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnDecalTesselation_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Client_MeshData_Vintagestory_API_MathTools_BlockPos_">Block.OnDecalTesselation(IWorldAccessor, MeshData, BlockPos)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockGeneric_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_LCGRandom_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor%2CVintagestory.API.MathTools.BlockPos%2CVintagestory.API.MathTools.BlockFacing%2CVintagestory.API.MathTools.LCGRandom)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockGeneric.cs/#L166">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>decalMesh</code> <a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_BlockGeneric_TryPlaceBlockForWorldGen_" data-uid="Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen*"></a>
-  <h4 id="Vintagestory_API_Common_BlockGeneric_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_LCGRandom_" data-uid="Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.LCGRandom)">TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, LCGRandom)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Common_BlockGeneric_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_LCGRandom_" data-uid="Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.LCGRandom)">
+  TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, LCGRandom)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Currently used for wildvines and saguaro cactus</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, LCGRandom worldgenRandom)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></td>
-        <td><span class="parametername">blockAccessor</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></td>
-        <td><span class="parametername">onBlockFace</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.LCGRandom.html">LCGRandom</a></td>
-        <td><span class="parametername">worldgenRandom</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_LCGRandom_">Block.TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, LCGRandom)</a></div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockAccessor</code> <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>onBlockFace</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></dt>
+    <dd></dd>
+    <dt><code>worldgenRandom</code> <a class="xref" href="Vintagestory.API.MathTools.LCGRandom.html">LCGRandom</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_BlockGeneric.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.BlockGeneric%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Collectible/Block/BlockGeneric.cs/#L7" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

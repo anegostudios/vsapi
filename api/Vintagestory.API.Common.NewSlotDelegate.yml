@@ -1,0 +1,98 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.NewSlotDelegate
+  commentId: T:Vintagestory.API.Common.NewSlotDelegate
+  id: NewSlotDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: NewSlotDelegate
+  nameWithType: NewSlotDelegate
+  fullName: Vintagestory.API.Common.NewSlotDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/Inventory/InventoryGeneric.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NewSlotDelegate
+    path: Common/Inventory/InventoryGeneric.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public delegate ItemSlot NewSlotDelegate(int slotId, InventoryGeneric self)
+    parameters:
+    - id: slotId
+      type: System.Int32
+    - id: self
+      type: Vintagestory.API.Common.InventoryGeneric
+    return:
+      type: Vintagestory.API.Common.ItemSlot
+    content.vb: Public Delegate Function NewSlotDelegate(slotId As Integer, self As InventoryGeneric) As ItemSlot
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.InventoryGeneric
+  commentId: T:Vintagestory.API.Common.InventoryGeneric
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.InventoryGeneric.html
+  name: InventoryGeneric
+  nameWithType: InventoryGeneric
+  fullName: Vintagestory.API.Common.InventoryGeneric
+- uid: Vintagestory.API.Common.ItemSlot
+  commentId: T:Vintagestory.API.Common.ItemSlot
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemSlot.html
+  name: ItemSlot
+  nameWithType: ItemSlot
+  fullName: Vintagestory.API.Common.ItemSlot
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

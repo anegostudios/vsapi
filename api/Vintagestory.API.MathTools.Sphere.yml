@@ -1,0 +1,598 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.MathTools.Sphere
+  commentId: T:Vintagestory.API.MathTools.Sphere
+  id: Sphere
+  parent: Vintagestory.API.MathTools
+  children:
+  - Vintagestory.API.MathTools.Sphere.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  - Vintagestory.API.MathTools.Sphere.BoundingSphereForCube(System.Single,System.Single,System.Single,System.Single)
+  - Vintagestory.API.MathTools.Sphere.radius
+  - Vintagestory.API.MathTools.Sphere.radiusY
+  - Vintagestory.API.MathTools.Sphere.radiusZ
+  - Vintagestory.API.MathTools.Sphere.sqrt3half
+  - Vintagestory.API.MathTools.Sphere.x
+  - Vintagestory.API.MathTools.Sphere.y
+  - Vintagestory.API.MathTools.Sphere.z
+  langs:
+  - csharp
+  - vb
+  name: Sphere
+  nameWithType: Sphere
+  fullName: Vintagestory.API.MathTools.Sphere
+  type: Struct
+  source:
+    remote:
+      path: VintagestoryApi/Math/Sphere.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Sphere
+    path: Math/Sphere.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Not really a sphere, actually now an AABB centred on x,y,z, but we keep the name for API consistency
+  example: []
+  syntax:
+    content: public struct Sphere
+    content.vb: Public Structure Sphere
+  inheritedMembers:
+  - System.ValueType.Equals(System.Object)
+  - System.ValueType.GetHashCode
+  - System.ValueType.ToString
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: Vintagestory.API.MathTools.Sphere.x
+  commentId: F:Vintagestory.API.MathTools.Sphere.x
+  id: x
+  parent: Vintagestory.API.MathTools.Sphere
+  langs:
+  - csharp
+  - vb
+  name: x
+  nameWithType: Sphere.x
+  fullName: Vintagestory.API.MathTools.Sphere.x
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/Sphere.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: x
+    path: Math/Sphere.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public float x
+    return:
+      type: System.Single
+    content.vb: Public x As Single
+- uid: Vintagestory.API.MathTools.Sphere.y
+  commentId: F:Vintagestory.API.MathTools.Sphere.y
+  id: y
+  parent: Vintagestory.API.MathTools.Sphere
+  langs:
+  - csharp
+  - vb
+  name: y
+  nameWithType: Sphere.y
+  fullName: Vintagestory.API.MathTools.Sphere.y
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/Sphere.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: y
+    path: Math/Sphere.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public float y
+    return:
+      type: System.Single
+    content.vb: Public y As Single
+- uid: Vintagestory.API.MathTools.Sphere.z
+  commentId: F:Vintagestory.API.MathTools.Sphere.z
+  id: z
+  parent: Vintagestory.API.MathTools.Sphere
+  langs:
+  - csharp
+  - vb
+  name: z
+  nameWithType: Sphere.z
+  fullName: Vintagestory.API.MathTools.Sphere.z
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/Sphere.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: z
+    path: Math/Sphere.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public float z
+    return:
+      type: System.Single
+    content.vb: Public z As Single
+- uid: Vintagestory.API.MathTools.Sphere.radius
+  commentId: F:Vintagestory.API.MathTools.Sphere.radius
+  id: radius
+  parent: Vintagestory.API.MathTools.Sphere
+  langs:
+  - csharp
+  - vb
+  name: radius
+  nameWithType: Sphere.radius
+  fullName: Vintagestory.API.MathTools.Sphere.radius
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/Sphere.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: radius
+    path: Math/Sphere.cs
+    startLine: 10
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public float radius
+    return:
+      type: System.Single
+    content.vb: Public radius As Single
+- uid: Vintagestory.API.MathTools.Sphere.radiusY
+  commentId: F:Vintagestory.API.MathTools.Sphere.radiusY
+  id: radiusY
+  parent: Vintagestory.API.MathTools.Sphere
+  langs:
+  - csharp
+  - vb
+  name: radiusY
+  nameWithType: Sphere.radiusY
+  fullName: Vintagestory.API.MathTools.Sphere.radiusY
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/Sphere.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: radiusY
+    path: Math/Sphere.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public float radiusY
+    return:
+      type: System.Single
+    content.vb: Public radiusY As Single
+- uid: Vintagestory.API.MathTools.Sphere.radiusZ
+  commentId: F:Vintagestory.API.MathTools.Sphere.radiusZ
+  id: radiusZ
+  parent: Vintagestory.API.MathTools.Sphere
+  langs:
+  - csharp
+  - vb
+  name: radiusZ
+  nameWithType: Sphere.radiusZ
+  fullName: Vintagestory.API.MathTools.Sphere.radiusZ
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/Sphere.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: radiusZ
+    path: Math/Sphere.cs
+    startLine: 12
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public float radiusZ
+    return:
+      type: System.Single
+    content.vb: Public radiusZ As Single
+- uid: Vintagestory.API.MathTools.Sphere.sqrt3half
+  commentId: F:Vintagestory.API.MathTools.Sphere.sqrt3half
+  id: sqrt3half
+  parent: Vintagestory.API.MathTools.Sphere
+  langs:
+  - csharp
+  - vb
+  name: sqrt3half
+  nameWithType: Sphere.sqrt3half
+  fullName: Vintagestory.API.MathTools.Sphere.sqrt3half
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Math/Sphere.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: sqrt3half
+    path: Math/Sphere.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public const float sqrt3half = 0.8660254
+    return:
+      type: System.Single
+    content.vb: Public Const sqrt3half As Single = 0.8660254
+- uid: Vintagestory.API.MathTools.Sphere.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  commentId: M:Vintagestory.API.MathTools.Sphere.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
+  id: '#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)'
+  parent: Vintagestory.API.MathTools.Sphere
+  langs:
+  - csharp
+  - vb
+  name: Sphere(float, float, float, float, float, float)
+  nameWithType: Sphere.Sphere(float, float, float, float, float, float)
+  fullName: Vintagestory.API.MathTools.Sphere.Sphere(float, float, float, float, float, float)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Math/Sphere.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Math/Sphere.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public Sphere(float x1, float y1, float z1, float dx, float dy, float dz)
+    parameters:
+    - id: x1
+      type: System.Single
+    - id: y1
+      type: System.Single
+    - id: z1
+      type: System.Single
+    - id: dx
+      type: System.Single
+    - id: dy
+      type: System.Single
+    - id: dz
+      type: System.Single
+    content.vb: Public Sub New(x1 As Single, y1 As Single, z1 As Single, dx As Single, dy As Single, dz As Single)
+  overload: Vintagestory.API.MathTools.Sphere.#ctor*
+  nameWithType.vb: Sphere.New(Single, Single, Single, Single, Single, Single)
+  fullName.vb: Vintagestory.API.MathTools.Sphere.New(Single, Single, Single, Single, Single, Single)
+  name.vb: New(Single, Single, Single, Single, Single, Single)
+- uid: Vintagestory.API.MathTools.Sphere.BoundingSphereForCube(System.Single,System.Single,System.Single,System.Single)
+  commentId: M:Vintagestory.API.MathTools.Sphere.BoundingSphereForCube(System.Single,System.Single,System.Single,System.Single)
+  id: BoundingSphereForCube(System.Single,System.Single,System.Single,System.Single)
+  parent: Vintagestory.API.MathTools.Sphere
+  langs:
+  - csharp
+  - vb
+  name: BoundingSphereForCube(float, float, float, float)
+  nameWithType: Sphere.BoundingSphereForCube(float, float, float, float)
+  fullName: Vintagestory.API.MathTools.Sphere.BoundingSphereForCube(float, float, float, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/Sphere.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: BoundingSphereForCube
+    path: Math/Sphere.cs
+    startLine: 26
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static Sphere BoundingSphereForCube(float x, float y, float z, float size)
+    parameters:
+    - id: x
+      type: System.Single
+    - id: y
+      type: System.Single
+    - id: z
+      type: System.Single
+    - id: size
+      type: System.Single
+    return:
+      type: Vintagestory.API.MathTools.Sphere
+    content.vb: Public Shared Function BoundingSphereForCube(x As Single, y As Single, z As Single, size As Single) As Sphere
+  overload: Vintagestory.API.MathTools.Sphere.BoundingSphereForCube*
+  nameWithType.vb: Sphere.BoundingSphereForCube(Single, Single, Single, Single)
+  fullName.vb: Vintagestory.API.MathTools.Sphere.BoundingSphereForCube(Single, Single, Single, Single)
+  name.vb: BoundingSphereForCube(Single, Single, Single, Single)
+references:
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: System.ValueType.Equals(System.Object)
+  commentId: M:System.ValueType.Equals(System.Object)
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  name: Equals(object)
+  nameWithType: ValueType.Equals(object)
+  fullName: System.ValueType.Equals(object)
+  nameWithType.vb: ValueType.Equals(Object)
+  fullName.vb: System.ValueType.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.equals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType.GetHashCode
+  commentId: M:System.ValueType.GetHashCode
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  name: GetHashCode()
+  nameWithType: ValueType.GetHashCode()
+  fullName: System.ValueType.GetHashCode()
+  spec.csharp:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.gethashcode
+  - name: (
+  - name: )
+- uid: System.ValueType.ToString
+  commentId: M:System.ValueType.ToString
+  parent: System.ValueType
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  name: ToString()
+  nameWithType: ValueType.ToString()
+  fullName: System.ValueType.ToString()
+  spec.csharp:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.ValueType.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.valuetype.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.ValueType
+  commentId: T:System.ValueType
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.valuetype
+  name: ValueType
+  nameWithType: ValueType
+  fullName: System.ValueType
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.MathTools.Sphere.#ctor*
+  commentId: Overload:Vintagestory.API.MathTools.Sphere.#ctor
+  href: Vintagestory.API.MathTools.Sphere.html#Vintagestory_API_MathTools_Sphere__ctor_System_Single_System_Single_System_Single_System_Single_System_Single_System_Single_
+  name: Sphere
+  nameWithType: Sphere.Sphere
+  fullName: Vintagestory.API.MathTools.Sphere.Sphere
+  nameWithType.vb: Sphere.New
+  fullName.vb: Vintagestory.API.MathTools.Sphere.New
+  name.vb: New
+- uid: Vintagestory.API.MathTools.Sphere.BoundingSphereForCube*
+  commentId: Overload:Vintagestory.API.MathTools.Sphere.BoundingSphereForCube
+  href: Vintagestory.API.MathTools.Sphere.html#Vintagestory_API_MathTools_Sphere_BoundingSphereForCube_System_Single_System_Single_System_Single_System_Single_
+  name: BoundingSphereForCube
+  nameWithType: Sphere.BoundingSphereForCube
+  fullName: Vintagestory.API.MathTools.Sphere.BoundingSphereForCube
+- uid: Vintagestory.API.MathTools.Sphere
+  commentId: T:Vintagestory.API.MathTools.Sphere
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Sphere.html
+  name: Sphere
+  nameWithType: Sphere
+  fullName: Vintagestory.API.MathTools.Sphere

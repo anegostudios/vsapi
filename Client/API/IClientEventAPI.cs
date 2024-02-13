@@ -178,6 +178,11 @@ namespace Vintagestory.API.Client
         event IngameDiscoveryDelegate InGameDiscovery;
 
         /// <summary>
+        /// Fired when the GuiColorsPreset client setting is changed, since meshes may need to be redrawn
+        /// </summary>
+        event Action ColorsPresetChanged;
+
+        /// <summary>
         /// Registers a rendering handler to be called during every render frame
         /// </summary>
         /// <param name="renderer"></param>

@@ -1,0 +1,90 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Server.NetworkClientMessageHandler`1
+  commentId: T:Vintagestory.API.Server.NetworkClientMessageHandler`1
+  id: NetworkClientMessageHandler`1
+  parent: Vintagestory.API.Server
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: NetworkClientMessageHandler<T>
+  nameWithType: NetworkClientMessageHandler<T>
+  fullName: Vintagestory.API.Server.NetworkClientMessageHandler<T>
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/IServerNetworkChannel.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NetworkClientMessageHandler
+    path: Server/API/IServerNetworkChannel.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Handler for processing a message
+  example: []
+  syntax:
+    content: public delegate void NetworkClientMessageHandler<T>(IServerPlayer fromPlayer, T packet)
+    parameters:
+    - id: fromPlayer
+      type: Vintagestory.API.Server.IServerPlayer
+      description: ''
+    - id: packet
+      type: '{T}'
+      description: ''
+    typeParameters:
+    - id: T
+    content.vb: Public Delegate Sub NetworkClientMessageHandler(Of T)(fromPlayer As IServerPlayer, packet As T)
+  nameWithType.vb: NetworkClientMessageHandler(Of T)
+  fullName.vb: Vintagestory.API.Server.NetworkClientMessageHandler(Of T)
+  name.vb: NetworkClientMessageHandler(Of T)
+references:
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: Vintagestory.API.Server.IServerPlayer
+  commentId: T:Vintagestory.API.Server.IServerPlayer
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IServerPlayer.html
+  name: IServerPlayer
+  nameWithType: IServerPlayer
+  fullName: Vintagestory.API.Server.IServerPlayer
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

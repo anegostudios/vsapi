@@ -222,8 +222,12 @@ namespace Vintagestory.API.Client
                         {
                             foreach (var val in comp.BoundsPerLine) val.Y = Math.Ceiling(val.Y + ascentHeight/2 - comp.BoundsPerLine[0].AscentOrHeight / 2);
                         }
+                        if (comp.VerticalAlign == EnumVerticalAlign.FixedOffset)
+                        {
+                            foreach (var val in comp.BoundsPerLine) val.Y = Math.Ceiling(val.Y + comp.UnscaledMarginTop);
+                        }
                     }
-                    
+
                     currentLine.Clear();
                     currentLine.Add(i);
 
@@ -297,9 +301,13 @@ namespace Vintagestory.API.Client
                 {
                     lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lineComp.BoundsPerLine[lineComp.BoundsPerLine.Length - 1].AscentOrHeight);
                 }
-                if (lineComp.VerticalAlign == EnumVerticalAlign.Middle)
+                else if (lineComp.VerticalAlign == EnumVerticalAlign.Middle)
                 {
                     lastLineBounds.Y += (maxHeight - lastLineBounds.Height) / 2f;
+                }
+                else if (lineComp.VerticalAlign == EnumVerticalAlign.FixedOffset)
+                {
+                    lastLineBounds.Y += lineComp.UnscaledMarginTop;
                 }
             }
 
@@ -326,9 +334,13 @@ namespace Vintagestory.API.Client
                 {
                     lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight - lastLineBounds.AscentOrHeight);
                 }
-                if (lineComp.VerticalAlign == EnumVerticalAlign.Middle)
+                else if (lineComp.VerticalAlign == EnumVerticalAlign.Middle)
                 {
                     lastLineBounds.Y = Math.Ceiling(lastLineBounds.Y + ascentHeight / 2 - lastLineBounds.AscentOrHeight / 2);
+                }
+                else if (lineComp.VerticalAlign == EnumVerticalAlign.FixedOffset)
+                {
+                    lastLineBounds.Y += lineComp.UnscaledMarginTop;
                 }
             }
         }
@@ -495,7 +507,7 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseMove(ICoreClientAPI api, MouseEvent args)
         {
-            MouseEvent relArgs = new MouseEvent((int)(args.X - Bounds.absX), (int)(args.Y - Bounds.absY), args.Button);
+            MouseEvent relArgs = new MouseEvent((int)(args.X - Bounds.absX), (int)(args.Y - Bounds.absY), args.Button, 0);
 
             for (int i = 0; i < Components.Length; i++)
             {
@@ -508,7 +520,7 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseDownOnElement(ICoreClientAPI api, MouseEvent args)
         {
-            MouseEvent relArgs = new MouseEvent((int)(args.X - Bounds.absX), (int)(args.Y - Bounds.absY), args.Button);
+            MouseEvent relArgs = new MouseEvent((int)(args.X - Bounds.absX), (int)(args.Y - Bounds.absY), args.Button, 0);
 
             for (int i = 0; i < Components.Length; i++)
             {
@@ -521,7 +533,7 @@ namespace Vintagestory.API.Client
 
         public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)
         {
-            MouseEvent relArgs = new MouseEvent((int)(args.X - Bounds.absX), (int)(args.Y - Bounds.absY), args.Button);
+            MouseEvent relArgs = new MouseEvent((int)(args.X - Bounds.absX), (int)(args.Y - Bounds.absY), args.Button, 0);
 
             for (int i = 0; i < Components.Length; i++)
             {

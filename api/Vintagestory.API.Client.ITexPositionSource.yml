@@ -1,0 +1,205 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.ITexPositionSource
+  commentId: T:Vintagestory.API.Client.ITexPositionSource
+  id: ITexPositionSource
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.ITexPositionSource.AtlasSize
+  - Vintagestory.API.Client.ITexPositionSource.Item(System.String)
+  langs:
+  - csharp
+  - vb
+  name: ITexPositionSource
+  nameWithType: ITexPositionSource
+  fullName: Vintagestory.API.Client.ITexPositionSource
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Client/Texture/ITextureSource.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ITexPositionSource
+    path: Client/Texture/ITextureSource.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: An interface that can supply texture atlas positions
+  example: []
+  syntax:
+    content: public interface ITexPositionSource
+    content.vb: Public Interface ITexPositionSource
+- uid: Vintagestory.API.Client.ITexPositionSource.Item(System.String)
+  commentId: P:Vintagestory.API.Client.ITexPositionSource.Item(System.String)
+  id: Item(System.String)
+  parent: Vintagestory.API.Client.ITexPositionSource
+  langs:
+  - csharp
+  - vb
+  name: this[string]
+  nameWithType: ITexPositionSource.this[string]
+  fullName: Vintagestory.API.Client.ITexPositionSource.this[string]
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Texture/ITextureSource.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: this[]
+    path: Client/Texture/ITextureSource.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: TextureAtlasPosition this[string textureCode] { get; }
+    parameters:
+    - id: textureCode
+      type: System.String
+    return:
+      type: Vintagestory.API.Client.TextureAtlasPosition
+    content.vb: ReadOnly Default Property this[](textureCode As String) As TextureAtlasPosition
+  overload: Vintagestory.API.Client.ITexPositionSource.Item*
+  nameWithType.vb: ITexPositionSource.this[](String)
+  fullName.vb: Vintagestory.API.Client.ITexPositionSource.this[](String)
+  name.vb: this[](String)
+- uid: Vintagestory.API.Client.ITexPositionSource.AtlasSize
+  commentId: P:Vintagestory.API.Client.ITexPositionSource.AtlasSize
+  id: AtlasSize
+  parent: Vintagestory.API.Client.ITexPositionSource
+  langs:
+  - csharp
+  - vb
+  name: AtlasSize
+  nameWithType: ITexPositionSource.AtlasSize
+  fullName: Vintagestory.API.Client.ITexPositionSource.AtlasSize
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/Texture/ITextureSource.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AtlasSize
+    path: Client/Texture/ITextureSource.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: This returns the size of the atlas this texture resides in.
+  example: []
+  syntax:
+    content: Size2i AtlasSize { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Size2i
+    content.vb: ReadOnly Property AtlasSize As Size2i
+  overload: Vintagestory.API.Client.ITexPositionSource.AtlasSize*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.ITexPositionSource.Item*
+  commentId: Overload:Vintagestory.API.Client.ITexPositionSource.Item
+  href: Vintagestory.API.Client.ITexPositionSource.html#Vintagestory_API_Client_ITexPositionSource_Item_System_String_
+  name: this
+  nameWithType: ITexPositionSource.this
+  fullName: Vintagestory.API.Client.ITexPositionSource.this
+  nameWithType.vb: ITexPositionSource.this[]
+  fullName.vb: Vintagestory.API.Client.ITexPositionSource.this[]
+  name.vb: this[]
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Client.TextureAtlasPosition
+  commentId: T:Vintagestory.API.Client.TextureAtlasPosition
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.TextureAtlasPosition.html
+  name: TextureAtlasPosition
+  nameWithType: TextureAtlasPosition
+  fullName: Vintagestory.API.Client.TextureAtlasPosition
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Client.ITexPositionSource.AtlasSize*
+  commentId: Overload:Vintagestory.API.Client.ITexPositionSource.AtlasSize
+  href: Vintagestory.API.Client.ITexPositionSource.html#Vintagestory_API_Client_ITexPositionSource_AtlasSize
+  name: AtlasSize
+  nameWithType: ITexPositionSource.AtlasSize
+  fullName: Vintagestory.API.Client.ITexPositionSource.AtlasSize
+- uid: Vintagestory.API.MathTools.Size2i
+  commentId: T:Vintagestory.API.MathTools.Size2i
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Size2i.html
+  name: Size2i
+  nameWithType: Size2i
+  fullName: Vintagestory.API.MathTools.Size2i
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html

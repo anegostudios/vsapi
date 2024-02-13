@@ -1,0 +1,112 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.MapRegionUnloadDelegate
+  commentId: T:Vintagestory.API.Common.MapRegionUnloadDelegate
+  id: MapRegionUnloadDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: MapRegionUnloadDelegate
+  nameWithType: MapRegionUnloadDelegate
+  fullName: Vintagestory.API.Common.MapRegionUnloadDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IEventAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MapRegionUnloadDelegate
+    path: Common/API/IEventAPI.cs
+    startLine: 66
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Triggered just before a map region gets unloaded
+  example: []
+  syntax:
+    content: public delegate void MapRegionUnloadDelegate(Vec2i mapCoord, IMapRegion region)
+    parameters:
+    - id: mapCoord
+      type: Vintagestory.API.MathTools.Vec2i
+      description: regionX and regionZ (multiply with region size to get block position)
+    - id: region
+      type: Vintagestory.API.Common.IMapRegion
+      description: ''
+    content.vb: Public Delegate Sub MapRegionUnloadDelegate(mapCoord As Vec2i, region As IMapRegion)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.MathTools.Vec2i
+  commentId: T:Vintagestory.API.MathTools.Vec2i
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec2i.html
+  name: Vec2i
+  nameWithType: Vec2i
+  fullName: Vintagestory.API.MathTools.Vec2i
+- uid: Vintagestory.API.Common.IMapRegion
+  commentId: T:Vintagestory.API.Common.IMapRegion
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IMapRegion.html
+  name: IMapRegion
+  nameWithType: IMapRegion
+  fullName: Vintagestory.API.Common.IMapRegion
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html

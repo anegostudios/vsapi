@@ -1,4 +1,5 @@
-﻿using Vintagestory.API.Common;
+﻿using System;
+using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Client
 {
@@ -45,6 +46,11 @@ namespace Vintagestory.API.Client
         public ActionConsumable<KeyCombination> Handler;
 
         /// <summary>
+        /// If true, the handler will be called twice, once on the key or button down event, and once on the up event
+        /// </summary>
+        public bool TriggerOnUpAlso;
+
+        /// <summary>
         /// Was this hotkey pressed?
         /// </summary>
         /// <param name="keyEventargs">Event arguments for the given key.</param>
@@ -56,12 +62,24 @@ namespace Vintagestory.API.Client
         {
             return
                 keyEventargs.KeyCode == CurrentMapping.KeyCode &&
-                keyEventargs.AltPressed == CurrentMapping.Alt &&
-                keyEventargs.CtrlPressed == CurrentMapping.Ctrl &&
-                keyEventargs.ShiftPressed == CurrentMapping.Shift &&
+                (MouseControlsIgnoreModifiers() || (keyEventargs.AltPressed == CurrentMapping.Alt && keyEventargs.CtrlPressed == CurrentMapping.Ctrl && keyEventargs.ShiftPressed == CurrentMapping.Shift)) &&
                 (KeyCombinationType != HotkeyType.CharacterControls && KeyCombinationType != HotkeyType.MovementControls || allowCharacterControls) &&
                 (keyEventargs.KeyCode2 == CurrentMapping.SecondKeyCode || CurrentMapping.SecondKeyCode == null || CurrentMapping.SecondKeyCode == 0)
             ;
+        }
+
+        /// <summary>
+        /// If this hotkey is a mouse control (primary or secondary mouse click), and this hotkey does not specifically require modifiers, then let's ignore modifiers when matching, because Shift+click or Ctrl+click is common; Alt+click might be used if Alt is being held
+        /// </summary>
+        /// <returns></returns>
+        private bool MouseControlsIgnoreModifiers()
+        {
+            if (CurrentMapping.IsMouseButton(CurrentMapping.KeyCode))
+            {
+                bool haveModifier = CurrentMapping.Alt || CurrentMapping.Ctrl || CurrentMapping.Shift;
+                return !haveModifier;
+            }
+            return false;
         }
 
         /// <summary>

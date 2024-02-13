@@ -1,91 +1,135 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class GuiElementDropDown
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class GuiElementDropDown
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class GuiElementDropDown | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class GuiElementDropDown | VintageStory API ">
+      
+      <meta name="description" content="Creates a drop-down list of items.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Client.GuiElementDropDown">
-  
-  
-  <h1 id="Vintagestory_API_Client_GuiElementDropDown" data-uid="Vintagestory.API.Client.GuiElementDropDown" class="text-break">Class GuiElementDropDown
+
+        <article data-uid="Vintagestory.API.Client.GuiElementDropDown">
+
+
+
+  <h1 id="Vintagestory_API_Client_GuiElementDropDown" data-uid="Vintagestory.API.Client.GuiElementDropDown" class="text-break">
+Class GuiElementDropDown  
   </h1>
-  <div class="markdown level0 summary"><p>Creates a drop-down list of items.</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></div>
-    <div class="level2"><a class="xref" href="Vintagestory.API.Client.GuiElementControl.html">GuiElementControl</a></div>
-    <div class="level3"><a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html">GuiElementTextBase</a></div>
-    <div class="level4"><span class="xref">GuiElementDropDown</span></div>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Client.html">Client</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"><p>Creates a drop-down list of items.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class GuiElementDropDown : GuiElementTextBase, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></div>
+      <div><a class="xref" href="Vintagestory.API.Client.GuiElementControl.html">GuiElementControl</a></div>
+      <div><a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html">GuiElementTextBase</a></div>
+      <div><span class="xref">GuiElementDropDown</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_textUtil">GuiElementTextBase.textUtil</a>
     </div>
@@ -102,16 +146,16 @@
       <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_Font">GuiElementTextBase.Font</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_ComposeTextElements_Context_ImageSurface_">GuiElementTextBase.ComposeTextElements(Context, ImageSurface)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_ComposeTextElements_Cairo_Context_Cairo_ImageSurface_">GuiElementTextBase.ComposeTextElements(Context, ImageSurface)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_GetMultilineTextHeight">GuiElementTextBase.GetMultilineTextHeight()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_DrawMultilineTextAt_Context_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_">GuiElementTextBase.DrawMultilineTextAt(Context, Double, Double, EnumTextOrientation)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_DrawMultilineTextAt_Cairo_Context_System_Double_System_Double_Vintagestory_API_Client_EnumTextOrientation_">GuiElementTextBase.DrawMultilineTextAt(Context, double, double, EnumTextOrientation)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_DrawTextLineAt_Context_System_String_System_Double_System_Double_System_Boolean_">GuiElementTextBase.DrawTextLineAt(Context, String, Double, Double, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_DrawTextLineAt_Cairo_Context_System_String_System_Double_System_Double_System_Boolean_">GuiElementTextBase.DrawTextLineAt(Context, string, double, double, bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_GetText">GuiElementTextBase.GetText()</a>
@@ -162,91 +206,91 @@
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnFocusGained">GuiElement.OnFocusGained()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_PostRenderInteractiveElements_System_Single_">GuiElement.PostRenderInteractiveElements(Single)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_PostRenderInteractiveElements_System_Single_">GuiElement.PostRenderInteractiveElements(float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderFocusOverlay_System_Single_">GuiElement.RenderFocusOverlay(Single)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderFocusOverlay_System_Single_">GuiElement.RenderFocusOverlay(float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_generateTexture_ImageSurface_System_Int32__System_Boolean_">GuiElement.generateTexture(ImageSurface, Int32, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_generateTexture_Cairo_ImageSurface_System_Int32__System_Boolean_">GuiElement.generateTexture(ImageSurface, ref int, bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_generateTexture_ImageSurface_Vintagestory_API_Client_LoadedTexture__System_Boolean_">GuiElement.generateTexture(ImageSurface, LoadedTexture, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_generateTexture_Cairo_ImageSurface_Vintagestory_API_Client_LoadedTexture__System_Boolean_">GuiElement.generateTexture(ImageSurface, ref LoadedTexture, bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_scaled_System_Double_">GuiElement.scaled(Double)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_scaled_System_Double_">GuiElement.scaled(double)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_scaledi_System_Double_">GuiElement.scaledi(Double)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_scaledi_System_Double_">GuiElement.scaledi(double)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_genContext_ImageSurface_">GuiElement.genContext(ImageSurface)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_genContext_Cairo_ImageSurface_">GuiElement.genContext(ImageSurface)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_SKBitmap_">GuiElement.getPattern(SKBitmap)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_SkiaSharp_SKBitmap_">GuiElement.getPattern(SKBitmap)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Vintagestory_API_Common_BitmapExternal_">GuiElement.getPattern(BitmapExternal)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_SKBitmap_">GuiElement.getImageSurfaceFromAsset(SKBitmap)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_SkiaSharp_SKBitmap_">GuiElement.getImageSurfaceFromAsset(SKBitmap)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Common_BitmapExternal_">GuiElement.getImageSurfaceFromAsset(BitmapExternal)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_SKBitmap_System_Int32_System_Int32_">GuiElement.getImageSurfaceFromAsset(SKBitmap, Int32, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_SkiaSharp_SKBitmap_System_Int32_System_Int32_">GuiElement.getImageSurfaceFromAsset(SKBitmap, int, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Common_BitmapExternal_System_Int32_System_Int32_">GuiElement.getImageSurfaceFromAsset(BitmapExternal, Int32, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Common_BitmapExternal_System_Int32_System_Int32_">GuiElement.getImageSurfaceFromAsset(BitmapExternal, int, int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_BeforeCalcBounds">GuiElement.BeforeCalcBounds()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Int32_System_Single_">GuiElement.getPattern(ICoreClientAPI, AssetLocation, Boolean, Int32, Single)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getPattern_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Int32_System_Single_">GuiElement.getPattern(ICoreClientAPI, AssetLocation, bool, int, float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Int32_">GuiElement.getImageSurfaceFromAsset(ICoreClientAPI, AssetLocation, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_getImageSurfaceFromAsset_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Common_AssetLocation_System_Int32_">GuiElement.getImageSurfaceFromAsset(ICoreClientAPI, AssetLocation, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_fillWithPattern_Vintagestory_API_Client_ICoreClientAPI_Context_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Boolean_System_Int32_System_Single_">GuiElement.fillWithPattern(ICoreClientAPI, Context, AssetLocation, Boolean, Boolean, Int32, Single)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_fillWithPattern_Vintagestory_API_Client_ICoreClientAPI_Cairo_Context_Vintagestory_API_Common_AssetLocation_System_Boolean_System_Boolean_System_Int32_System_Single_">GuiElement.fillWithPattern(ICoreClientAPI, Context, AssetLocation, bool, bool, int, float)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DiscardPattern_Vintagestory_API_Common_AssetLocation_">GuiElement.DiscardPattern(AssetLocation)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Lamp_Context_System_Double_System_Double_System_Single___">GuiElement.Lamp(Context, Double, Double, Single[])</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Lamp_Cairo_Context_System_Double_System_Double_System_Single___">GuiElement.Lamp(Context, double, double, float[])</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Rectangle_Context_Vintagestory_API_Client_ElementBounds_">GuiElement.Rectangle(Context, ElementBounds)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Rectangle_Cairo_Context_Vintagestory_API_Client_ElementBounds_">GuiElement.Rectangle(Context, ElementBounds)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Rectangle_Context_System_Double_System_Double_System_Double_System_Double_">GuiElement.Rectangle(Context, Double, Double, Double, Double)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Rectangle_Cairo_Context_System_Double_System_Double_System_Double_System_Double_">GuiElement.Rectangle(Context, double, double, double, double)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DialogRoundRectangle_Context_Vintagestory_API_Client_ElementBounds_">GuiElement.DialogRoundRectangle(Context, ElementBounds)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DialogRoundRectangle_Cairo_Context_Vintagestory_API_Client_ElementBounds_">GuiElement.DialogRoundRectangle(Context, ElementBounds)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ElementRoundRectangle_Context_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Double_">GuiElement.ElementRoundRectangle(Context, ElementBounds, Boolean, Double)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ElementRoundRectangle_Cairo_Context_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Double_">GuiElement.ElementRoundRectangle(Context, ElementBounds, bool, double)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RoundRectangle_Context_System_Double_System_Double_System_Double_System_Double_System_Double_">GuiElement.RoundRectangle(Context, Double, Double, Double, Double, Double)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RoundRectangle_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Double_">GuiElement.RoundRectangle(Context, double, double, double, double, double)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ShadePath_Context_System_Double_">GuiElement.ShadePath(Context, Double)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_ShadePath_Cairo_Context_System_Double_">GuiElement.ShadePath(Context, double)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleDialog_Context_System_Double_System_Double_System_Double_System_Double_System_Boolean_">GuiElement.EmbossRoundRectangleDialog(Context, Double, Double, Double, Double, Boolean)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleDialog_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Boolean_">GuiElement.EmbossRoundRectangleDialog(Context, double, double, double, double, bool)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleElement_Context_System_Double_System_Double_System_Double_System_Double_System_Boolean_System_Int32_System_Int32_">GuiElement.EmbossRoundRectangleElement(Context, Double, Double, Double, Double, Boolean, Int32, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleElement_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Boolean_System_Int32_System_Int32_">GuiElement.EmbossRoundRectangleElement(Context, double, double, double, double, bool, int, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleElement_Context_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Int32_System_Int32_">GuiElement.EmbossRoundRectangleElement(Context, ElementBounds, Boolean, Int32, Int32)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangleElement_Cairo_Context_Vintagestory_API_Client_ElementBounds_System_Boolean_System_Int32_System_Int32_">GuiElement.EmbossRoundRectangleElement(Context, ElementBounds, bool, int, int)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangle_Context_System_Double_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Single_System_Single_System_Boolean_System_Single_">GuiElement.EmbossRoundRectangle(Context, Double, Double, Double, Double, Double, Int32, Single, Single, Boolean, Single)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_EmbossRoundRectangle_Cairo_Context_System_Double_System_Double_System_Double_System_Double_System_Double_System_Int32_System_Single_System_Single_System_Boolean_System_Single_">GuiElement.EmbossRoundRectangle(Context, double, double, double, double, double, int, float, float, bool, float)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderBoundsDebug">GuiElement.RenderBoundsDebug()</a>
@@ -276,1181 +320,1158 @@
       <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OutlineColor">GuiElement.OutlineColor()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_System_Single_System_Single_System_Single_System_Single_System_Single_Vintagestory_API_MathTools_Vec4f_">GuiElement.Render2DTexture(Int32, Single, Single, Single, Single, Single, Vec4f)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_System_Single_System_Single_System_Single_System_Single_System_Single_Vintagestory_API_MathTools_Vec4f_">GuiElement.Render2DTexture(int, float, float, float, float, float, Vec4f)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_System_Double_System_Double_System_Double_System_Double_System_Single_Vintagestory_API_MathTools_Vec4f_">GuiElement.Render2DTexture(Int32, Double, Double, Double, Double, Single, Vec4f)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_System_Double_System_Double_System_Double_System_Double_System_Single_Vintagestory_API_MathTools_Vec4f_">GuiElement.Render2DTexture(int, double, double, double, double, float, Vec4f)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_Vintagestory_API_Client_ElementBounds_System_Single_Vintagestory_API_MathTools_Vec4f_">GuiElement.Render2DTexture(Int32, ElementBounds, Single, Vec4f)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Render2DTexture_System_Int32_Vintagestory_API_Client_ElementBounds_System_Single_Vintagestory_API_MathTools_Vec4f_">GuiElement.Render2DTexture(int, ElementBounds, float, Vec4f)</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Client_GuiElementDropDown_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class GuiElementDropDown : GuiElementTextBase</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown__ctor_Vintagestory_API_Client_ICoreClientAPI_System_String___System_String___System_Int32_Vintagestory_API_Client_SelectionChangedDelegate_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_CairoFont_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.%23ctor(Vintagestory.API.Client.ICoreClientAPI%2CSystem.String%5B%5D%2CSystem.String%5B%5D%2CSystem.Int32%2CVintagestory.API.Client.SelectionChangedDelegate%2CVintagestory.API.Client.ElementBounds%2CVintagestory.API.Client.CairoFont%2CSystem.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L106">View Source</a>
-  </span>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown__ctor_" data-uid="Vintagestory.API.Client.GuiElementDropDown.#ctor*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown__ctor_Vintagestory_API_Client_ICoreClientAPI_System_String___System_String___System_Int32_Vintagestory_API_Client_SelectionChangedDelegate_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_CairoFont_System_Boolean_" data-uid="Vintagestory.API.Client.GuiElementDropDown.#ctor(Vintagestory.API.Client.ICoreClientAPI,System.String[],System.String[],System.Int32,Vintagestory.API.Client.SelectionChangedDelegate,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.CairoFont,System.Boolean)">GuiElementDropDown(ICoreClientAPI, String[], String[], Int32, SelectionChangedDelegate, ElementBounds, CairoFont, Boolean)</h4>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown__ctor_Vintagestory_API_Client_ICoreClientAPI_System_String___System_String___System_Int32_Vintagestory_API_Client_SelectionChangedDelegate_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_CairoFont_System_Boolean_" data-uid="Vintagestory.API.Client.GuiElementDropDown.#ctor(Vintagestory.API.Client.ICoreClientAPI,System.String[],System.String[],System.Int32,Vintagestory.API.Client.SelectionChangedDelegate,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.CairoFont,System.Boolean)">
+  GuiElementDropDown(ICoreClientAPI, string[], string[], int, SelectionChangedDelegate, ElementBounds, CairoFont, bool)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Constructor.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public GuiElementDropDown(ICoreClientAPI capi, string[] values, string[] names, int selectedIndex, SelectionChangedDelegate onSelectionChanged, ElementBounds bounds, CairoFont font, bool multiSelect)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
-        <td><span class="parametername">capi</span></td>
-        <td><p>The client API</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">values</span></td>
-        <td><p>The values of the strings.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">names</span></td>
-        <td><p>The names of the strings.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">selectedIndex</span></td>
-        <td><p>The default selected index.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.SelectionChangedDelegate.html">SelectionChangedDelegate</a></td>
-        <td><span class="parametername">onSelectionChanged</span></td>
-        <td><p>The event that occurs when the selection is changed.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ElementBounds.html">ElementBounds</a></td>
-        <td><span class="parametername">bounds</span></td>
-        <td><p>The bounds of the drop down.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.CairoFont.html">CairoFont</a></td>
-        <td><span class="parametername">font</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">multiSelect</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>capi</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd><p>The client API</p>
+</dd>
+    <dt><code>values</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The values of the strings.</p>
+</dd>
+    <dt><code>names</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The names of the strings.</p>
+</dd>
+    <dt><code>selectedIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The default selected index.</p>
+</dd>
+    <dt><code>onSelectionChanged</code> <a class="xref" href="Vintagestory.API.Client.SelectionChangedDelegate.html">SelectionChangedDelegate</a></dt>
+    <dd><p>The event that occurs when the selection is changed.</p>
+</dd>
+    <dt><code>bounds</code> <a class="xref" href="Vintagestory.API.Client.ElementBounds.html">ElementBounds</a></dt>
+    <dd><p>The bounds of the drop down.</p>
+</dd>
+    <dt><code>font</code> <a class="xref" href="Vintagestory.API.Client.CairoFont.html">CairoFont</a></dt>
+    <dd></dd>
+    <dt><code>multiSelect</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_PluralMoreNameCode" data-uid="Vintagestory.API.Client.GuiElementDropDown.PluralMoreNameCode">
+  PluralMoreNameCode
+  
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_arrowDownButtonPressed.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.arrowDownButtonPressed%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L27">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_arrowDownButtonPressed" data-uid="Vintagestory.API.Client.GuiElementDropDown.arrowDownButtonPressed">arrowDownButtonPressed</h4>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected LoadedTexture arrowDownButtonPressed</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.LoadedTexture.html">LoadedTexture</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_arrowDownButtonReleased.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.arrowDownButtonReleased%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L26">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_arrowDownButtonReleased" data-uid="Vintagestory.API.Client.GuiElementDropDown.arrowDownButtonReleased">arrowDownButtonReleased</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected LoadedTexture arrowDownButtonReleased</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.LoadedTexture.html">LoadedTexture</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_currentValueTexture.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.currentValueTexture%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L24">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_currentValueTexture" data-uid="Vintagestory.API.Client.GuiElementDropDown.currentValueTexture">currentValueTexture</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected LoadedTexture currentValueTexture</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.LoadedTexture.html">LoadedTexture</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_highlightBounds.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.highlightBounds%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L29">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_highlightBounds" data-uid="Vintagestory.API.Client.GuiElementDropDown.highlightBounds">highlightBounds</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ElementBounds highlightBounds</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ElementBounds.html">ElementBounds</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_highlightTexture.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.highlightTexture%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L23">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_highlightTexture" data-uid="Vintagestory.API.Client.GuiElementDropDown.highlightTexture">highlightTexture</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected LoadedTexture highlightTexture</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.LoadedTexture.html">LoadedTexture</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_listMenu.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.listMenu%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L20">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_listMenu" data-uid="Vintagestory.API.Client.GuiElementDropDown.listMenu">listMenu</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GuiElementListMenu listMenu</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.GuiElementListMenu.html">GuiElementListMenu</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_onSelectionChanged.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.onSelectionChanged%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L30">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_onSelectionChanged" data-uid="Vintagestory.API.Client.GuiElementDropDown.onSelectionChanged">onSelectionChanged</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected SelectionChangedDelegate onSelectionChanged</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.SelectionChangedDelegate.html">SelectionChangedDelegate</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_PluralMoreNameCode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.PluralMoreNameCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L17">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_PluralMoreNameCode" data-uid="Vintagestory.API.Client.GuiElementDropDown.PluralMoreNameCode">PluralMoreNameCode</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string PluralMoreNameCode</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_PluralNameCode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.PluralNameCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L16">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_PluralNameCode" data-uid="Vintagestory.API.Client.GuiElementDropDown.PluralNameCode">PluralNameCode</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_PluralNameCode" data-uid="Vintagestory.API.Client.GuiElementDropDown.PluralNameCode">
+  PluralNameCode
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string PluralNameCode</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_richTextElem.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.richTextElem%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L21">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_richTextElem" data-uid="Vintagestory.API.Client.GuiElementDropDown.richTextElem">richTextElem</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_SingularMoreNameCode" data-uid="Vintagestory.API.Client.GuiElementDropDown.SingularMoreNameCode">
+  SingularMoreNameCode
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GuiElementRichtext richTextElem</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.GuiElementRichtext.html">GuiElementRichtext</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_SingularMoreNameCode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.SingularMoreNameCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L18">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_SingularMoreNameCode" data-uid="Vintagestory.API.Client.GuiElementDropDown.SingularMoreNameCode">SingularMoreNameCode</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string SingularMoreNameCode</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_SingularNameCode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.SingularNameCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L15">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_SingularNameCode" data-uid="Vintagestory.API.Client.GuiElementDropDown.SingularNameCode">SingularNameCode</h4>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_SingularNameCode" data-uid="Vintagestory.API.Client.GuiElementDropDown.SingularNameCode">
+  SingularNameCode
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string SingularNameCode</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_arrowDownButtonPressed" data-uid="Vintagestory.API.Client.GuiElementDropDown.arrowDownButtonPressed">
+  arrowDownButtonPressed
+  
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_DrawOrder.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.DrawOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L38">View Source</a>
-  </span>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected LoadedTexture arrowDownButtonPressed</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.LoadedTexture.html">LoadedTexture</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_arrowDownButtonReleased" data-uid="Vintagestory.API.Client.GuiElementDropDown.arrowDownButtonReleased">
+  arrowDownButtonReleased
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected LoadedTexture arrowDownButtonReleased</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.LoadedTexture.html">LoadedTexture</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_currentValueTexture" data-uid="Vintagestory.API.Client.GuiElementDropDown.currentValueTexture">
+  currentValueTexture
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected LoadedTexture currentValueTexture</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.LoadedTexture.html">LoadedTexture</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_highlightBounds" data-uid="Vintagestory.API.Client.GuiElementDropDown.highlightBounds">
+  highlightBounds
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ElementBounds highlightBounds</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.ElementBounds.html">ElementBounds</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_highlightTexture" data-uid="Vintagestory.API.Client.GuiElementDropDown.highlightTexture">
+  highlightTexture
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected LoadedTexture highlightTexture</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.LoadedTexture.html">LoadedTexture</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_listMenu" data-uid="Vintagestory.API.Client.GuiElementDropDown.listMenu">
+  listMenu
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiElementListMenu listMenu</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.GuiElementListMenu.html">GuiElementListMenu</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_onSelectionChanged" data-uid="Vintagestory.API.Client.GuiElementDropDown.onSelectionChanged">
+  onSelectionChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected SelectionChangedDelegate onSelectionChanged</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.SelectionChangedDelegate.html">SelectionChangedDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_richTextElem" data-uid="Vintagestory.API.Client.GuiElementDropDown.richTextElem">
+  richTextElem
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuiElementRichtext richTextElem</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.GuiElementRichtext.html">GuiElementRichtext</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_DrawOrder_" data-uid="Vintagestory.API.Client.GuiElementDropDown.DrawOrder*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_DrawOrder" data-uid="Vintagestory.API.Client.GuiElementDropDown.DrawOrder">DrawOrder</h4>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_DrawOrder" data-uid="Vintagestory.API.Client.GuiElementDropDown.DrawOrder">
+  DrawOrder
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>The draw order of this GUI Element.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override double DrawOrder { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_DrawOrder">GuiElement.DrawOrder</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_Enabled.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.Enabled%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L82">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_Enabled_" data-uid="Vintagestory.API.Client.GuiElementDropDown.Enabled*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_Enabled" data-uid="Vintagestory.API.Client.GuiElementDropDown.Enabled">Enabled</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_Enabled" data-uid="Vintagestory.API.Client.GuiElementDropDown.Enabled">
+  Enabled
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Enables/disables the given element (default is enabled)</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool Enabled { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElementControl.html#Vintagestory_API_Client_GuiElementControl_Enabled">GuiElementControl.Enabled</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_Focusable.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.Focusable%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L46">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_Focusable_" data-uid="Vintagestory.API.Client.GuiElementDropDown.Focusable*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_Focusable" data-uid="Vintagestory.API.Client.GuiElementDropDown.Focusable">Focusable</h4>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_Focusable" data-uid="Vintagestory.API.Client.GuiElementDropDown.Focusable">
+  Focusable
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Can this element be put into focus?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool Focusable { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Focusable">GuiElement.Focusable</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_Scale.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.Scale%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L54">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_Scale_" data-uid="Vintagestory.API.Client.GuiElementDropDown.Scale*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_Scale" data-uid="Vintagestory.API.Client.GuiElementDropDown.Scale">Scale</h4>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_Scale" data-uid="Vintagestory.API.Client.GuiElementDropDown.Scale">
+  Scale
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>The scale of this GUI element.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override double Scale { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Scale">GuiElement.Scale</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_SelectedIndices.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.SelectedIndices%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L78">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_SelectedIndices_" data-uid="Vintagestory.API.Client.GuiElementDropDown.SelectedIndices*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_SelectedIndices" data-uid="Vintagestory.API.Client.GuiElementDropDown.SelectedIndices">SelectedIndices</h4>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_SelectedIndices" data-uid="Vintagestory.API.Client.GuiElementDropDown.SelectedIndices">
+  SelectedIndices
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public int[] SelectedIndices { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_SelectedValue.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.SelectedValue%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L69">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_SelectedValue_" data-uid="Vintagestory.API.Client.GuiElementDropDown.SelectedValue*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_SelectedValue" data-uid="Vintagestory.API.Client.GuiElementDropDown.SelectedValue">SelectedValue</h4>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_SelectedValue" data-uid="Vintagestory.API.Client.GuiElementDropDown.SelectedValue">
+  SelectedValue
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string SelectedValue { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_SelectedValues.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.SelectedValues%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L79">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_SelectedValues_" data-uid="Vintagestory.API.Client.GuiElementDropDown.SelectedValues*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_SelectedValues" data-uid="Vintagestory.API.Client.GuiElementDropDown.SelectedValues">SelectedValues</h4>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_SelectedValues" data-uid="Vintagestory.API.Client.GuiElementDropDown.SelectedValues">
+  SelectedValues
+  
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string[] SelectedValues { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_ComposeElements_Context_ImageSurface_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.ComposeElements(Context%2CImageSurface)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L136">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_ComposeElements_" data-uid="Vintagestory.API.Client.GuiElementDropDown.ComposeElements*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_ComposeElements_Context_ImageSurface_" data-uid="Vintagestory.API.Client.GuiElementDropDown.ComposeElements(Context,ImageSurface)">ComposeElements(Context, ImageSurface)</h4>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_ComposeElements_Cairo_Context_Cairo_ImageSurface_" data-uid="Vintagestory.API.Client.GuiElementDropDown.ComposeElements(Cairo.Context,Cairo.ImageSurface)">
+  ComposeElements(Context, ImageSurface)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Composes the element based on the context.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void ComposeElements(Context ctx, ImageSurface surface)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Context</span></td>
-        <td><span class="parametername">ctx</span></td>
-        <td><p>The context of the element.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">ImageSurface</span></td>
-        <td><span class="parametername">surface</span></td>
-        <td><p>The surface of the image. (Not used)</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElementTextBase.html#Vintagestory_API_Client_GuiElementTextBase_ComposeElements_Context_ImageSurface_">GuiElementTextBase.ComposeElements(Context, ImageSurface)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_Dispose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L444">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ctx</code> <span class="xref">Context</span></dt>
+    <dd><p>The context of the element.</p>
+</dd>
+    <dt><code>surface</code> <span class="xref">ImageSurface</span></dt>
+    <dd><p>The surface of the image. (Not used)</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_Dispose_" data-uid="Vintagestory.API.Client.GuiElementDropDown.Dispose*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_Dispose" data-uid="Vintagestory.API.Client.GuiElementDropDown.Dispose">Dispose()</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_Dispose" data-uid="Vintagestory.API.Client.GuiElementDropDown.Dispose">
+  Dispose()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void Dispose()</code></pre>
   </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_Dispose">GuiElement.Dispose()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_IsPositionInside_System_Int32_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.IsPositionInside(System.Int32%2CSystem.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L387">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_IsPositionInside_" data-uid="Vintagestory.API.Client.GuiElementDropDown.IsPositionInside*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_IsPositionInside_System_Int32_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementDropDown.IsPositionInside(System.Int32,System.Int32)">IsPositionInside(Int32, Int32)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_IsPositionInside_System_Int32_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementDropDown.IsPositionInside(System.Int32,System.Int32)">
+  IsPositionInside(int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the point on screen is inside the Element's area.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override bool IsPositionInside(int posX, int posY)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">posX</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">posY</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_IsPositionInside_System_Int32_System_Int32_">GuiElement.IsPositionInside(Int32, Int32)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_OnFocusLost.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.OnFocusLost%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L408">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>posX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The X Position of the point.</p>
+</dd>
+    <dt><code>posY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The Y Position of the point.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_OnFocusLost_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnFocusLost*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_OnFocusLost" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnFocusLost">OnFocusLost()</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_OnFocusLost" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnFocusLost">
+  OnFocusLost()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired when the element looses focus.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnFocusLost()</code></pre>
   </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnFocusLost">GuiElement.OnFocusLost()</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI%2CVintagestory.API.Client.KeyEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L350">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_OnKeyDown_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnKeyDown*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)">OnKeyDown(ICoreClientAPI, KeyEvent)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)">
+  OnKeyDown(ICoreClientAPI, KeyEvent)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired when a key is held down.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnKeyDown(ICoreClientAPI api, KeyEvent args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnKeyDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_KeyEvent_">GuiElement.OnKeyDown(ICoreClientAPI, KeyEvent)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_OnMouseDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.OnMouseDown(Vintagestory.API.Client.ICoreClientAPI%2CVintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L392">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd><p>The client API</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="Vintagestory.API.Client.KeyEvent.html">KeyEvent</a></dt>
+    <dd><p>The key event arguments.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_OnMouseDown_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnMouseDown*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_OnMouseDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnMouseDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)">OnMouseDown(ICoreClientAPI, MouseEvent)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_OnMouseDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnMouseDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)">
+  OnMouseDown(ICoreClientAPI, MouseEvent)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired when the mouse is down the element is around.  Fires before OnMouseDownOnElement, however OnMouseDownOnElement is called within the base function.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnMouseDown(ICoreClientAPI api, MouseEvent args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.MouseEvent.html">MouseEvent</a></td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseDown_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_">GuiElement.OnMouseDown(ICoreClientAPI, MouseEvent)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_OnMouseMove_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.OnMouseMove(Vintagestory.API.Client.ICoreClientAPI%2CVintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L356">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd><p>The Client API</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="Vintagestory.API.Client.MouseEvent.html">MouseEvent</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_OnMouseMove_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnMouseMove*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_OnMouseMove_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnMouseMove(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)">OnMouseMove(ICoreClientAPI, MouseEvent)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_OnMouseMove_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnMouseMove(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)">
+  OnMouseMove(ICoreClientAPI, MouseEvent)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired when the mouse is moved.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnMouseMove(ICoreClientAPI api, MouseEvent args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.MouseEvent.html">MouseEvent</a></td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseMove_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_">GuiElement.OnMouseMove(ICoreClientAPI, MouseEvent)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_OnMouseUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.OnMouseUp(Vintagestory.API.Client.ICoreClientAPI%2CVintagestory.API.Client.MouseEvent)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L379">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd><p>The Client API.</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="Vintagestory.API.Client.MouseEvent.html">MouseEvent</a></dt>
+    <dd><p>The mouse event arguments.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_OnMouseUp_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnMouseUp*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_OnMouseUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnMouseUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)">OnMouseUp(ICoreClientAPI, MouseEvent)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_OnMouseUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnMouseUp(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)">
+  OnMouseUp(ICoreClientAPI, MouseEvent)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired when the mouse is released.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnMouseUp(ICoreClientAPI api, MouseEvent args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.MouseEvent.html">MouseEvent</a></td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseUp_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseEvent_">GuiElement.OnMouseUp(ICoreClientAPI, MouseEvent)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_OnMouseWheel_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseWheelEventArgs_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.OnMouseWheel(Vintagestory.API.Client.ICoreClientAPI%2CVintagestory.API.Client.MouseWheelEventArgs)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L361">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd><p>The Client API.</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="Vintagestory.API.Client.MouseEvent.html">MouseEvent</a></dt>
+    <dd><p>The arguments for the mouse event.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_OnMouseWheel_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnMouseWheel*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_OnMouseWheel_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseWheelEventArgs_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnMouseWheel(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseWheelEventArgs)">OnMouseWheel(ICoreClientAPI, MouseWheelEventArgs)</h4>
-  <div class="markdown level1 summary"></div>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_OnMouseWheel_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseWheelEventArgs_" data-uid="Vintagestory.API.Client.GuiElementDropDown.OnMouseWheel(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseWheelEventArgs)">
+  OnMouseWheel(ICoreClientAPI, MouseWheelEventArgs)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired when the mouse wheel is scrolled.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void OnMouseWheel(ICoreClientAPI api, MouseWheelEventArgs args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.MouseWheelEventArgs.html">MouseWheelEventArgs</a></td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_OnMouseWheel_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_MouseWheelEventArgs_">GuiElement.OnMouseWheel(ICoreClientAPI, MouseWheelEventArgs)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_RenderInteractiveElements_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.RenderInteractiveElements(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L318">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd><p>The Client API</p>
+</dd>
+    <dt><code>args</code> <a class="xref" href="Vintagestory.API.Client.MouseWheelEventArgs.html">MouseWheelEventArgs</a></dt>
+    <dd><p>The mouse wheel arguments.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_RenderInteractiveElements_" data-uid="Vintagestory.API.Client.GuiElementDropDown.RenderInteractiveElements*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_RenderInteractiveElements_System_Single_" data-uid="Vintagestory.API.Client.GuiElementDropDown.RenderInteractiveElements(System.Single)">RenderInteractiveElements(Single)</h4>
-  <div class="markdown level1 summary"><p>Renders the dropdown&apos;s interactive elements.</p>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_RenderInteractiveElements_System_Single_" data-uid="Vintagestory.API.Client.GuiElementDropDown.RenderInteractiveElements(System.Single)">
+  RenderInteractiveElements(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Renders the dropdown's interactive elements.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public override void RenderInteractiveElements(float deltaTime)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">deltaTime</span></td>
-        <td><p>The change in time.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Vintagestory.API.Client.GuiElement.html#Vintagestory_API_Client_GuiElement_RenderInteractiveElements_System_Single_">GuiElement.RenderInteractiveElements(Single)</a></div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_SetList_System_String___System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.SetList(System.String%5B%5D%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L439">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>deltaTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The change in time.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_SetList_" data-uid="Vintagestory.API.Client.GuiElementDropDown.SetList*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_SetList_System_String___System_String___" data-uid="Vintagestory.API.Client.GuiElementDropDown.SetList(System.String[],System.String[])">SetList(String[], String[])</h4>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_SetList_System_String___System_String___" data-uid="Vintagestory.API.Client.GuiElementDropDown.SetList(System.String[],System.String[])">
+  SetList(string[], string[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Sets the values of the list with their corresponding names.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void SetList(string[] values, string[] names)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">values</span></td>
-        <td><p>The values of the list.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">names</span></td>
-        <td><p>The names of the list.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_SetSelectedIndex_System_Int32_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.SetSelectedIndex(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L418">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>values</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The values of the list.</p>
+</dd>
+    <dt><code>names</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>The names of the list.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_SetSelectedIndex_" data-uid="Vintagestory.API.Client.GuiElementDropDown.SetSelectedIndex*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_SetSelectedIndex_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementDropDown.SetSelectedIndex(System.Int32)">SetSelectedIndex(Int32)</h4>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_SetSelectedIndex_System_Int32_" data-uid="Vintagestory.API.Client.GuiElementDropDown.SetSelectedIndex(System.Int32)">
+  SetSelectedIndex(int)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Sets the current index to a newly selected index.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void SetSelectedIndex(int selectedIndex)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><span class="parametername">selectedIndex</span></td>
-        <td><p>the index that is to be selected.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown_SetSelectedValue_System_String___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown.SetSelectedValue(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L428">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>selectedIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>the index that is to be selected.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_GuiElementDropDown_SetSelectedValue_" data-uid="Vintagestory.API.Client.GuiElementDropDown.SetSelectedValue*"></a>
-  <h4 id="Vintagestory_API_Client_GuiElementDropDown_SetSelectedValue_System_String___" data-uid="Vintagestory.API.Client.GuiElementDropDown.SetSelectedValue(System.String[])">SetSelectedValue(String[])</h4>
+
+  <h3 id="Vintagestory_API_Client_GuiElementDropDown_SetSelectedValue_System_String___" data-uid="Vintagestory.API.Client.GuiElementDropDown.SetSelectedValue(System.String[])">
+  SetSelectedValue(params string[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Sets the current index to the value of the selected string.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void SetSelectedValue(params string[] value)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">value</span></td>
-        <td><p>the string contained in the drop down.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd><p>the string contained in the drop down.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GuiElementDropDown.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GuiElementDropDown%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/UI/Elements/Impl/Interactive/Controls/GuiElementDropDown.cs/#L13" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

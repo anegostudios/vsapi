@@ -1,0 +1,126 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ChunkColumnLoadedDelegate
+  commentId: T:Vintagestory.API.Common.ChunkColumnLoadedDelegate
+  id: ChunkColumnLoadedDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: ChunkColumnLoadedDelegate
+  nameWithType: ChunkColumnLoadedDelegate
+  fullName: Vintagestory.API.Common.ChunkColumnLoadedDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IEventAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ChunkColumnLoadedDelegate
+    path: Common/API/IEventAPI.cs
+    startLine: 44
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Triggered when the server loaded a chunk column from disk or generated a new one
+  example: []
+  syntax:
+    content: public delegate void ChunkColumnLoadedDelegate(Vec2i chunkCoord, IWorldChunk[] chunks)
+    parameters:
+    - id: chunkCoord
+      type: Vintagestory.API.MathTools.Vec2i
+      description: ''
+    - id: chunks
+      type: Vintagestory.API.Common.IWorldChunk[]
+      description: ''
+    content.vb: Public Delegate Sub ChunkColumnLoadedDelegate(chunkCoord As Vec2i, chunks As IWorldChunk())
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.MathTools.Vec2i
+  commentId: T:Vintagestory.API.MathTools.Vec2i
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec2i.html
+  name: Vec2i
+  nameWithType: Vec2i
+  fullName: Vintagestory.API.MathTools.Vec2i
+- uid: Vintagestory.API.Common.IWorldChunk[]
+  isExternal: true
+  href: Vintagestory.API.Common.IWorldChunk.html
+  name: IWorldChunk[]
+  nameWithType: IWorldChunk[]
+  fullName: Vintagestory.API.Common.IWorldChunk[]
+  nameWithType.vb: IWorldChunk()
+  fullName.vb: Vintagestory.API.Common.IWorldChunk()
+  name.vb: IWorldChunk()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IWorldChunk
+    name: IWorldChunk
+    href: Vintagestory.API.Common.IWorldChunk.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.IWorldChunk
+    name: IWorldChunk
+    href: Vintagestory.API.Common.IWorldChunk.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html

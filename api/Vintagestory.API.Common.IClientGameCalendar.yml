@@ -1,0 +1,1037 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IClientGameCalendar
+  commentId: T:Vintagestory.API.Common.IClientGameCalendar
+  id: IClientGameCalendar
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IClientGameCalendar.DayLightStrength
+  - Vintagestory.API.Common.IClientGameCalendar.Dusk
+  - Vintagestory.API.Common.IClientGameCalendar.MoonLightStrength
+  - Vintagestory.API.Common.IClientGameCalendar.MoonPosition
+  - Vintagestory.API.Common.IClientGameCalendar.ReflectColor
+  - Vintagestory.API.Common.IClientGameCalendar.SunColor
+  - Vintagestory.API.Common.IClientGameCalendar.SunLightStrength
+  - Vintagestory.API.Common.IClientGameCalendar.SunPosition
+  - Vintagestory.API.Common.IClientGameCalendar.SunPositionNormalized
+  - Vintagestory.API.Common.IClientGameCalendar.SunsetMod
+  langs:
+  - csharp
+  - vb
+  name: IClientGameCalendar
+  nameWithType: IClientGameCalendar
+  fullName: Vintagestory.API.Common.IClientGameCalendar
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IClientGameCalendar
+    path: Common/API/IGameCalendar.cs
+    startLine: 48
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: 'public interface IClientGameCalendar : IGameCalendar'
+    content.vb: Public Interface IClientGameCalendar Inherits IGameCalendar
+  inheritedMembers:
+  - Vintagestory.API.Common.IGameCalendar.OnGetHemisphere
+  - Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords
+  - Vintagestory.API.Common.IGameCalendar.OnGetLatitude
+  - Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(System.Double,System.Double)
+  - Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.IGameCalendar.PrettyDate
+  - Vintagestory.API.Common.IGameCalendar.SpeedOfTime
+  - Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(System.String,System.Single)
+  - Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(System.String)
+  - Vintagestory.API.Common.IGameCalendar.ElapsedSeconds
+  - Vintagestory.API.Common.IGameCalendar.ElapsedHours
+  - Vintagestory.API.Common.IGameCalendar.ElapsedDays
+  - Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul
+  - Vintagestory.API.Common.IGameCalendar.HoursPerDay
+  - Vintagestory.API.Common.IGameCalendar.DaysPerYear
+  - Vintagestory.API.Common.IGameCalendar.DaysPerMonth
+  - Vintagestory.API.Common.IGameCalendar.Month
+  - Vintagestory.API.Common.IGameCalendar.MonthName
+  - Vintagestory.API.Common.IGameCalendar.FullHourOfDay
+  - Vintagestory.API.Common.IGameCalendar.HourOfDay
+  - Vintagestory.API.Common.IGameCalendar.TotalHours
+  - Vintagestory.API.Common.IGameCalendar.TotalDays
+  - Vintagestory.API.Common.IGameCalendar.DayOfYear
+  - Vintagestory.API.Common.IGameCalendar.DayOfYearf
+  - Vintagestory.API.Common.IGameCalendar.Year
+  - Vintagestory.API.Common.IGameCalendar.GetSeason(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.IGameCalendar.GetSeasonRel(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.IGameCalendar.GetHemisphere(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.IGameCalendar.YearRel
+  - Vintagestory.API.Common.IGameCalendar.Add(System.Single)
+  - Vintagestory.API.Common.IGameCalendar.MoonPhase
+  - Vintagestory.API.Common.IGameCalendar.MoonPhaseExact
+  - Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness
+  - Vintagestory.API.Common.IGameCalendar.MoonSize
+  - Vintagestory.API.Common.IGameCalendar.SeasonOverride
+  - Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(System.Nullable{System.Single})
+  - Vintagestory.API.Common.IGameCalendar.Timelapse
+- uid: Vintagestory.API.Common.IClientGameCalendar.SunPositionNormalized
+  commentId: P:Vintagestory.API.Common.IClientGameCalendar.SunPositionNormalized
+  id: SunPositionNormalized
+  parent: Vintagestory.API.Common.IClientGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: SunPositionNormalized
+  nameWithType: IClientGameCalendar.SunPositionNormalized
+  fullName: Vintagestory.API.Common.IClientGameCalendar.SunPositionNormalized
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SunPositionNormalized
+    path: Common/API/IGameCalendar.cs
+    startLine: 53
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a normalized vector of the sun position at the players current location
+  example: []
+  syntax:
+    content: Vec3f SunPositionNormalized { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: ReadOnly Property SunPositionNormalized As Vec3f
+  overload: Vintagestory.API.Common.IClientGameCalendar.SunPositionNormalized*
+- uid: Vintagestory.API.Common.IClientGameCalendar.SunPosition
+  commentId: P:Vintagestory.API.Common.IClientGameCalendar.SunPosition
+  id: SunPosition
+  parent: Vintagestory.API.Common.IClientGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: SunPosition
+  nameWithType: IClientGameCalendar.SunPosition
+  fullName: Vintagestory.API.Common.IClientGameCalendar.SunPosition
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SunPosition
+    path: Common/API/IGameCalendar.cs
+    startLine: 58
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a vector of the sun position at the players current location
+  example: []
+  syntax:
+    content: Vec3f SunPosition { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: ReadOnly Property SunPosition As Vec3f
+  overload: Vintagestory.API.Common.IClientGameCalendar.SunPosition*
+- uid: Vintagestory.API.Common.IClientGameCalendar.MoonPosition
+  commentId: P:Vintagestory.API.Common.IClientGameCalendar.MoonPosition
+  id: MoonPosition
+  parent: Vintagestory.API.Common.IClientGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: MoonPosition
+  nameWithType: IClientGameCalendar.MoonPosition
+  fullName: Vintagestory.API.Common.IClientGameCalendar.MoonPosition
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MoonPosition
+    path: Common/API/IGameCalendar.cs
+    startLine: 63
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a vector of the moon position at the players current location
+  example: []
+  syntax:
+    content: Vec3f MoonPosition { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: ReadOnly Property MoonPosition As Vec3f
+  overload: Vintagestory.API.Common.IClientGameCalendar.MoonPosition*
+- uid: Vintagestory.API.Common.IClientGameCalendar.SunColor
+  commentId: P:Vintagestory.API.Common.IClientGameCalendar.SunColor
+  id: SunColor
+  parent: Vintagestory.API.Common.IClientGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: SunColor
+  nameWithType: IClientGameCalendar.SunColor
+  fullName: Vintagestory.API.Common.IClientGameCalendar.SunColor
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SunColor
+    path: Common/API/IGameCalendar.cs
+    startLine: 68
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a normalized color of the sun at the players current location
+  example: []
+  syntax:
+    content: Vec3f SunColor { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: ReadOnly Property SunColor As Vec3f
+  overload: Vintagestory.API.Common.IClientGameCalendar.SunColor*
+- uid: Vintagestory.API.Common.IClientGameCalendar.ReflectColor
+  commentId: P:Vintagestory.API.Common.IClientGameCalendar.ReflectColor
+  id: ReflectColor
+  parent: Vintagestory.API.Common.IClientGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: ReflectColor
+  nameWithType: IClientGameCalendar.ReflectColor
+  fullName: Vintagestory.API.Common.IClientGameCalendar.ReflectColor
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ReflectColor
+    path: Common/API/IGameCalendar.cs
+    startLine: 70
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Vec3f ReflectColor { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: ReadOnly Property ReflectColor As Vec3f
+  overload: Vintagestory.API.Common.IClientGameCalendar.ReflectColor*
+- uid: Vintagestory.API.Common.IClientGameCalendar.SunsetMod
+  commentId: P:Vintagestory.API.Common.IClientGameCalendar.SunsetMod
+  id: SunsetMod
+  parent: Vintagestory.API.Common.IClientGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: SunsetMod
+  nameWithType: IClientGameCalendar.SunsetMod
+  fullName: Vintagestory.API.Common.IClientGameCalendar.SunsetMod
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SunsetMod
+    path: Common/API/IGameCalendar.cs
+    startLine: 75
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: A horizontal offset that is applied when reading the sky glow color at the players current location. Creates a greater variety of sunsets. Changes to a different value once per day (during midnight)
+  example: []
+  syntax:
+    content: float SunsetMod { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property SunsetMod As Single
+  overload: Vintagestory.API.Common.IClientGameCalendar.SunsetMod*
+- uid: Vintagestory.API.Common.IClientGameCalendar.DayLightStrength
+  commentId: P:Vintagestory.API.Common.IClientGameCalendar.DayLightStrength
+  id: DayLightStrength
+  parent: Vintagestory.API.Common.IClientGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: DayLightStrength
+  nameWithType: IClientGameCalendar.DayLightStrength
+  fullName: Vintagestory.API.Common.IClientGameCalendar.DayLightStrength
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DayLightStrength
+    path: Common/API/IGameCalendar.cs
+    startLine: 81
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a value between 0 (no sunlight) and 1 (full sunlight) at the players current location
+  example: []
+  syntax:
+    content: float DayLightStrength { get; }
+    parameters: []
+    return:
+      type: System.Single
+      description: ''
+    content.vb: ReadOnly Property DayLightStrength As Single
+  overload: Vintagestory.API.Common.IClientGameCalendar.DayLightStrength*
+- uid: Vintagestory.API.Common.IClientGameCalendar.MoonLightStrength
+  commentId: P:Vintagestory.API.Common.IClientGameCalendar.MoonLightStrength
+  id: MoonLightStrength
+  parent: Vintagestory.API.Common.IClientGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: MoonLightStrength
+  nameWithType: IClientGameCalendar.MoonLightStrength
+  fullName: Vintagestory.API.Common.IClientGameCalendar.MoonLightStrength
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MoonLightStrength
+    path: Common/API/IGameCalendar.cs
+    startLine: 87
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a value between 0 (no sunlight) and 1 (full sunlight) at the players current location
+  example: []
+  syntax:
+    content: float MoonLightStrength { get; }
+    parameters: []
+    return:
+      type: System.Single
+      description: ''
+    content.vb: ReadOnly Property MoonLightStrength As Single
+  overload: Vintagestory.API.Common.IClientGameCalendar.MoonLightStrength*
+- uid: Vintagestory.API.Common.IClientGameCalendar.SunLightStrength
+  commentId: P:Vintagestory.API.Common.IClientGameCalendar.SunLightStrength
+  id: SunLightStrength
+  parent: Vintagestory.API.Common.IClientGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: SunLightStrength
+  nameWithType: IClientGameCalendar.SunLightStrength
+  fullName: Vintagestory.API.Common.IClientGameCalendar.SunLightStrength
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SunLightStrength
+    path: Common/API/IGameCalendar.cs
+    startLine: 89
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: float SunLightStrength { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property SunLightStrength As Single
+  overload: Vintagestory.API.Common.IClientGameCalendar.SunLightStrength*
+- uid: Vintagestory.API.Common.IClientGameCalendar.Dusk
+  commentId: P:Vintagestory.API.Common.IClientGameCalendar.Dusk
+  id: Dusk
+  parent: Vintagestory.API.Common.IClientGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: Dusk
+  nameWithType: IClientGameCalendar.Dusk
+  fullName: Vintagestory.API.Common.IClientGameCalendar.Dusk
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Dusk
+    path: Common/API/IGameCalendar.cs
+    startLine: 94
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If true, its currently dusk at the players current location
+  example: []
+  syntax:
+    content: bool Dusk { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property Dusk As Boolean
+  overload: Vintagestory.API.Common.IClientGameCalendar.Dusk*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IGameCalendar.OnGetHemisphere
+  commentId: P:Vintagestory.API.Common.IGameCalendar.OnGetHemisphere
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_OnGetHemisphere
+  name: OnGetHemisphere
+  nameWithType: IGameCalendar.OnGetHemisphere
+  fullName: Vintagestory.API.Common.IGameCalendar.OnGetHemisphere
+- uid: Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords
+  commentId: P:Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_OnGetSolarSphericalCoords
+  name: OnGetSolarSphericalCoords
+  nameWithType: IGameCalendar.OnGetSolarSphericalCoords
+  fullName: Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords
+- uid: Vintagestory.API.Common.IGameCalendar.OnGetLatitude
+  commentId: P:Vintagestory.API.Common.IGameCalendar.OnGetLatitude
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_OnGetLatitude
+  name: OnGetLatitude
+  nameWithType: IGameCalendar.OnGetLatitude
+  fullName: Vintagestory.API.Common.IGameCalendar.OnGetLatitude
+- uid: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(System.Double,System.Double)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(System.Double,System.Double)
+  parent: Vintagestory.API.Common.IGameCalendar
+  isExternal: true
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_System_Double_System_Double_
+  name: GetDayLightStrength(double, double)
+  nameWithType: IGameCalendar.GetDayLightStrength(double, double)
+  fullName: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(double, double)
+  nameWithType.vb: IGameCalendar.GetDayLightStrength(Double, Double)
+  fullName.vb: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Double, Double)
+  name.vb: GetDayLightStrength(Double, Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(System.Double,System.Double)
+    name: GetDayLightStrength
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_System_Double_System_Double_
+  - name: (
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(System.Double,System.Double)
+    name: GetDayLightStrength
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_System_Double_System_Double_
+  - name: (
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_Vintagestory_API_MathTools_BlockPos_
+  name: GetDayLightStrength(BlockPos)
+  nameWithType: IGameCalendar.GetDayLightStrength(BlockPos)
+  fullName: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)
+    name: GetDayLightStrength
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)
+    name: GetDayLightStrength
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.PrettyDate
+  commentId: M:Vintagestory.API.Common.IGameCalendar.PrettyDate
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_PrettyDate
+  name: PrettyDate()
+  nameWithType: IGameCalendar.PrettyDate()
+  fullName: Vintagestory.API.Common.IGameCalendar.PrettyDate()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IGameCalendar.PrettyDate
+    name: PrettyDate
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_PrettyDate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IGameCalendar.PrettyDate
+    name: PrettyDate
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_PrettyDate
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.SpeedOfTime
+  commentId: P:Vintagestory.API.Common.IGameCalendar.SpeedOfTime
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_SpeedOfTime
+  name: SpeedOfTime
+  nameWithType: IGameCalendar.SpeedOfTime
+  fullName: Vintagestory.API.Common.IGameCalendar.SpeedOfTime
+- uid: Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(System.String,System.Single)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(System.String,System.Single)
+  parent: Vintagestory.API.Common.IGameCalendar
+  isExternal: true
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_SetTimeSpeedModifier_System_String_System_Single_
+  name: SetTimeSpeedModifier(string, float)
+  nameWithType: IGameCalendar.SetTimeSpeedModifier(string, float)
+  fullName: Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(string, float)
+  nameWithType.vb: IGameCalendar.SetTimeSpeedModifier(String, Single)
+  fullName.vb: Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(String, Single)
+  name.vb: SetTimeSpeedModifier(String, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(System.String,System.Single)
+    name: SetTimeSpeedModifier
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_SetTimeSpeedModifier_System_String_System_Single_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(System.String,System.Single)
+    name: SetTimeSpeedModifier
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_SetTimeSpeedModifier_System_String_System_Single_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(System.String)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(System.String)
+  parent: Vintagestory.API.Common.IGameCalendar
+  isExternal: true
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_RemoveTimeSpeedModifier_System_String_
+  name: RemoveTimeSpeedModifier(string)
+  nameWithType: IGameCalendar.RemoveTimeSpeedModifier(string)
+  fullName: Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(string)
+  nameWithType.vb: IGameCalendar.RemoveTimeSpeedModifier(String)
+  fullName.vb: Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(String)
+  name.vb: RemoveTimeSpeedModifier(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(System.String)
+    name: RemoveTimeSpeedModifier
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_RemoveTimeSpeedModifier_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(System.String)
+    name: RemoveTimeSpeedModifier
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_RemoveTimeSpeedModifier_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.ElapsedSeconds
+  commentId: P:Vintagestory.API.Common.IGameCalendar.ElapsedSeconds
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_ElapsedSeconds
+  name: ElapsedSeconds
+  nameWithType: IGameCalendar.ElapsedSeconds
+  fullName: Vintagestory.API.Common.IGameCalendar.ElapsedSeconds
+- uid: Vintagestory.API.Common.IGameCalendar.ElapsedHours
+  commentId: P:Vintagestory.API.Common.IGameCalendar.ElapsedHours
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_ElapsedHours
+  name: ElapsedHours
+  nameWithType: IGameCalendar.ElapsedHours
+  fullName: Vintagestory.API.Common.IGameCalendar.ElapsedHours
+- uid: Vintagestory.API.Common.IGameCalendar.ElapsedDays
+  commentId: P:Vintagestory.API.Common.IGameCalendar.ElapsedDays
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_ElapsedDays
+  name: ElapsedDays
+  nameWithType: IGameCalendar.ElapsedDays
+  fullName: Vintagestory.API.Common.IGameCalendar.ElapsedDays
+- uid: Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul
+  commentId: P:Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_CalendarSpeedMul
+  name: CalendarSpeedMul
+  nameWithType: IGameCalendar.CalendarSpeedMul
+  fullName: Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul
+- uid: Vintagestory.API.Common.IGameCalendar.HoursPerDay
+  commentId: P:Vintagestory.API.Common.IGameCalendar.HoursPerDay
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_HoursPerDay
+  name: HoursPerDay
+  nameWithType: IGameCalendar.HoursPerDay
+  fullName: Vintagestory.API.Common.IGameCalendar.HoursPerDay
+- uid: Vintagestory.API.Common.IGameCalendar.DaysPerYear
+  commentId: P:Vintagestory.API.Common.IGameCalendar.DaysPerYear
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_DaysPerYear
+  name: DaysPerYear
+  nameWithType: IGameCalendar.DaysPerYear
+  fullName: Vintagestory.API.Common.IGameCalendar.DaysPerYear
+- uid: Vintagestory.API.Common.IGameCalendar.DaysPerMonth
+  commentId: P:Vintagestory.API.Common.IGameCalendar.DaysPerMonth
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_DaysPerMonth
+  name: DaysPerMonth
+  nameWithType: IGameCalendar.DaysPerMonth
+  fullName: Vintagestory.API.Common.IGameCalendar.DaysPerMonth
+- uid: Vintagestory.API.Common.IGameCalendar.Month
+  commentId: P:Vintagestory.API.Common.IGameCalendar.Month
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_Month
+  name: Month
+  nameWithType: IGameCalendar.Month
+  fullName: Vintagestory.API.Common.IGameCalendar.Month
+- uid: Vintagestory.API.Common.IGameCalendar.MonthName
+  commentId: P:Vintagestory.API.Common.IGameCalendar.MonthName
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_MonthName
+  name: MonthName
+  nameWithType: IGameCalendar.MonthName
+  fullName: Vintagestory.API.Common.IGameCalendar.MonthName
+- uid: Vintagestory.API.Common.IGameCalendar.FullHourOfDay
+  commentId: P:Vintagestory.API.Common.IGameCalendar.FullHourOfDay
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_FullHourOfDay
+  name: FullHourOfDay
+  nameWithType: IGameCalendar.FullHourOfDay
+  fullName: Vintagestory.API.Common.IGameCalendar.FullHourOfDay
+- uid: Vintagestory.API.Common.IGameCalendar.HourOfDay
+  commentId: P:Vintagestory.API.Common.IGameCalendar.HourOfDay
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_HourOfDay
+  name: HourOfDay
+  nameWithType: IGameCalendar.HourOfDay
+  fullName: Vintagestory.API.Common.IGameCalendar.HourOfDay
+- uid: Vintagestory.API.Common.IGameCalendar.TotalHours
+  commentId: P:Vintagestory.API.Common.IGameCalendar.TotalHours
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_TotalHours
+  name: TotalHours
+  nameWithType: IGameCalendar.TotalHours
+  fullName: Vintagestory.API.Common.IGameCalendar.TotalHours
+- uid: Vintagestory.API.Common.IGameCalendar.TotalDays
+  commentId: P:Vintagestory.API.Common.IGameCalendar.TotalDays
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_TotalDays
+  name: TotalDays
+  nameWithType: IGameCalendar.TotalDays
+  fullName: Vintagestory.API.Common.IGameCalendar.TotalDays
+- uid: Vintagestory.API.Common.IGameCalendar.DayOfYear
+  commentId: P:Vintagestory.API.Common.IGameCalendar.DayOfYear
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_DayOfYear
+  name: DayOfYear
+  nameWithType: IGameCalendar.DayOfYear
+  fullName: Vintagestory.API.Common.IGameCalendar.DayOfYear
+- uid: Vintagestory.API.Common.IGameCalendar.DayOfYearf
+  commentId: P:Vintagestory.API.Common.IGameCalendar.DayOfYearf
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_DayOfYearf
+  name: DayOfYearf
+  nameWithType: IGameCalendar.DayOfYearf
+  fullName: Vintagestory.API.Common.IGameCalendar.DayOfYearf
+- uid: Vintagestory.API.Common.IGameCalendar.Year
+  commentId: P:Vintagestory.API.Common.IGameCalendar.Year
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_Year
+  name: Year
+  nameWithType: IGameCalendar.Year
+  fullName: Vintagestory.API.Common.IGameCalendar.Year
+- uid: Vintagestory.API.Common.IGameCalendar.GetSeason(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.GetSeason(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetSeason_Vintagestory_API_MathTools_BlockPos_
+  name: GetSeason(BlockPos)
+  nameWithType: IGameCalendar.GetSeason(BlockPos)
+  fullName: Vintagestory.API.Common.IGameCalendar.GetSeason(Vintagestory.API.MathTools.BlockPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetSeason(Vintagestory.API.MathTools.BlockPos)
+    name: GetSeason
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetSeason_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetSeason(Vintagestory.API.MathTools.BlockPos)
+    name: GetSeason
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetSeason_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.GetSeasonRel(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.GetSeasonRel(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetSeasonRel_Vintagestory_API_MathTools_BlockPos_
+  name: GetSeasonRel(BlockPos)
+  nameWithType: IGameCalendar.GetSeasonRel(BlockPos)
+  fullName: Vintagestory.API.Common.IGameCalendar.GetSeasonRel(Vintagestory.API.MathTools.BlockPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetSeasonRel(Vintagestory.API.MathTools.BlockPos)
+    name: GetSeasonRel
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetSeasonRel_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetSeasonRel(Vintagestory.API.MathTools.BlockPos)
+    name: GetSeasonRel
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetSeasonRel_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.GetHemisphere(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.GetHemisphere(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetHemisphere_Vintagestory_API_MathTools_BlockPos_
+  name: GetHemisphere(BlockPos)
+  nameWithType: IGameCalendar.GetHemisphere(BlockPos)
+  fullName: Vintagestory.API.Common.IGameCalendar.GetHemisphere(Vintagestory.API.MathTools.BlockPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetHemisphere(Vintagestory.API.MathTools.BlockPos)
+    name: GetHemisphere
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetHemisphere_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetHemisphere(Vintagestory.API.MathTools.BlockPos)
+    name: GetHemisphere
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetHemisphere_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.YearRel
+  commentId: P:Vintagestory.API.Common.IGameCalendar.YearRel
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_YearRel
+  name: YearRel
+  nameWithType: IGameCalendar.YearRel
+  fullName: Vintagestory.API.Common.IGameCalendar.YearRel
+- uid: Vintagestory.API.Common.IGameCalendar.Add(System.Single)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.Add(System.Single)
+  parent: Vintagestory.API.Common.IGameCalendar
+  isExternal: true
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_Add_System_Single_
+  name: Add(float)
+  nameWithType: IGameCalendar.Add(float)
+  fullName: Vintagestory.API.Common.IGameCalendar.Add(float)
+  nameWithType.vb: IGameCalendar.Add(Single)
+  fullName.vb: Vintagestory.API.Common.IGameCalendar.Add(Single)
+  name.vb: Add(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IGameCalendar.Add(System.Single)
+    name: Add
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_Add_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IGameCalendar.Add(System.Single)
+    name: Add
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_Add_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.MoonPhase
+  commentId: P:Vintagestory.API.Common.IGameCalendar.MoonPhase
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_MoonPhase
+  name: MoonPhase
+  nameWithType: IGameCalendar.MoonPhase
+  fullName: Vintagestory.API.Common.IGameCalendar.MoonPhase
+- uid: Vintagestory.API.Common.IGameCalendar.MoonPhaseExact
+  commentId: P:Vintagestory.API.Common.IGameCalendar.MoonPhaseExact
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_MoonPhaseExact
+  name: MoonPhaseExact
+  nameWithType: IGameCalendar.MoonPhaseExact
+  fullName: Vintagestory.API.Common.IGameCalendar.MoonPhaseExact
+- uid: Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness
+  commentId: P:Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_MoonPhaseBrightness
+  name: MoonPhaseBrightness
+  nameWithType: IGameCalendar.MoonPhaseBrightness
+  fullName: Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness
+- uid: Vintagestory.API.Common.IGameCalendar.MoonSize
+  commentId: P:Vintagestory.API.Common.IGameCalendar.MoonSize
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_MoonSize
+  name: MoonSize
+  nameWithType: IGameCalendar.MoonSize
+  fullName: Vintagestory.API.Common.IGameCalendar.MoonSize
+- uid: Vintagestory.API.Common.IGameCalendar.SeasonOverride
+  commentId: P:Vintagestory.API.Common.IGameCalendar.SeasonOverride
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_SeasonOverride
+  name: SeasonOverride
+  nameWithType: IGameCalendar.SeasonOverride
+  fullName: Vintagestory.API.Common.IGameCalendar.SeasonOverride
+- uid: Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(System.Nullable{System.Single})
+  commentId: M:Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(System.Nullable{System.Single})
+  parent: Vintagestory.API.Common.IGameCalendar
+  isExternal: true
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_SetSeasonOverride_System_Nullable_System_Single__
+  name: SetSeasonOverride(float?)
+  nameWithType: IGameCalendar.SetSeasonOverride(float?)
+  fullName: Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(float?)
+  nameWithType.vb: IGameCalendar.SetSeasonOverride(Single?)
+  fullName.vb: Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(Single?)
+  name.vb: SetSeasonOverride(Single?)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(System.Nullable{System.Single})
+    name: SetSeasonOverride
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_SetSeasonOverride_System_Nullable_System_Single__
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(System.Nullable{System.Single})
+    name: SetSeasonOverride
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_SetSeasonOverride_System_Nullable_System_Single__
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.Timelapse
+  commentId: P:Vintagestory.API.Common.IGameCalendar.Timelapse
+  parent: Vintagestory.API.Common.IGameCalendar
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_Timelapse
+  name: Timelapse
+  nameWithType: IGameCalendar.Timelapse
+  fullName: Vintagestory.API.Common.IGameCalendar.Timelapse
+- uid: Vintagestory.API.Common.IGameCalendar
+  commentId: T:Vintagestory.API.Common.IGameCalendar
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IGameCalendar.html
+  name: IGameCalendar
+  nameWithType: IGameCalendar
+  fullName: Vintagestory.API.Common.IGameCalendar
+- uid: Vintagestory.API.Common.IClientGameCalendar.SunPositionNormalized*
+  commentId: Overload:Vintagestory.API.Common.IClientGameCalendar.SunPositionNormalized
+  href: Vintagestory.API.Common.IClientGameCalendar.html#Vintagestory_API_Common_IClientGameCalendar_SunPositionNormalized
+  name: SunPositionNormalized
+  nameWithType: IClientGameCalendar.SunPositionNormalized
+  fullName: Vintagestory.API.Common.IClientGameCalendar.SunPositionNormalized
+- uid: Vintagestory.API.MathTools.Vec3f
+  commentId: T:Vintagestory.API.MathTools.Vec3f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3f.html
+  name: Vec3f
+  nameWithType: Vec3f
+  fullName: Vintagestory.API.MathTools.Vec3f
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.IClientGameCalendar.SunPosition*
+  commentId: Overload:Vintagestory.API.Common.IClientGameCalendar.SunPosition
+  href: Vintagestory.API.Common.IClientGameCalendar.html#Vintagestory_API_Common_IClientGameCalendar_SunPosition
+  name: SunPosition
+  nameWithType: IClientGameCalendar.SunPosition
+  fullName: Vintagestory.API.Common.IClientGameCalendar.SunPosition
+- uid: Vintagestory.API.Common.IClientGameCalendar.MoonPosition*
+  commentId: Overload:Vintagestory.API.Common.IClientGameCalendar.MoonPosition
+  href: Vintagestory.API.Common.IClientGameCalendar.html#Vintagestory_API_Common_IClientGameCalendar_MoonPosition
+  name: MoonPosition
+  nameWithType: IClientGameCalendar.MoonPosition
+  fullName: Vintagestory.API.Common.IClientGameCalendar.MoonPosition
+- uid: Vintagestory.API.Common.IClientGameCalendar.SunColor*
+  commentId: Overload:Vintagestory.API.Common.IClientGameCalendar.SunColor
+  href: Vintagestory.API.Common.IClientGameCalendar.html#Vintagestory_API_Common_IClientGameCalendar_SunColor
+  name: SunColor
+  nameWithType: IClientGameCalendar.SunColor
+  fullName: Vintagestory.API.Common.IClientGameCalendar.SunColor
+- uid: Vintagestory.API.Common.IClientGameCalendar.ReflectColor*
+  commentId: Overload:Vintagestory.API.Common.IClientGameCalendar.ReflectColor
+  href: Vintagestory.API.Common.IClientGameCalendar.html#Vintagestory_API_Common_IClientGameCalendar_ReflectColor
+  name: ReflectColor
+  nameWithType: IClientGameCalendar.ReflectColor
+  fullName: Vintagestory.API.Common.IClientGameCalendar.ReflectColor
+- uid: Vintagestory.API.Common.IClientGameCalendar.SunsetMod*
+  commentId: Overload:Vintagestory.API.Common.IClientGameCalendar.SunsetMod
+  href: Vintagestory.API.Common.IClientGameCalendar.html#Vintagestory_API_Common_IClientGameCalendar_SunsetMod
+  name: SunsetMod
+  nameWithType: IClientGameCalendar.SunsetMod
+  fullName: Vintagestory.API.Common.IClientGameCalendar.SunsetMod
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IClientGameCalendar.DayLightStrength*
+  commentId: Overload:Vintagestory.API.Common.IClientGameCalendar.DayLightStrength
+  href: Vintagestory.API.Common.IClientGameCalendar.html#Vintagestory_API_Common_IClientGameCalendar_DayLightStrength
+  name: DayLightStrength
+  nameWithType: IClientGameCalendar.DayLightStrength
+  fullName: Vintagestory.API.Common.IClientGameCalendar.DayLightStrength
+- uid: Vintagestory.API.Common.IClientGameCalendar.MoonLightStrength*
+  commentId: Overload:Vintagestory.API.Common.IClientGameCalendar.MoonLightStrength
+  href: Vintagestory.API.Common.IClientGameCalendar.html#Vintagestory_API_Common_IClientGameCalendar_MoonLightStrength
+  name: MoonLightStrength
+  nameWithType: IClientGameCalendar.MoonLightStrength
+  fullName: Vintagestory.API.Common.IClientGameCalendar.MoonLightStrength
+- uid: Vintagestory.API.Common.IClientGameCalendar.SunLightStrength*
+  commentId: Overload:Vintagestory.API.Common.IClientGameCalendar.SunLightStrength
+  href: Vintagestory.API.Common.IClientGameCalendar.html#Vintagestory_API_Common_IClientGameCalendar_SunLightStrength
+  name: SunLightStrength
+  nameWithType: IClientGameCalendar.SunLightStrength
+  fullName: Vintagestory.API.Common.IClientGameCalendar.SunLightStrength
+- uid: Vintagestory.API.Common.IClientGameCalendar.Dusk*
+  commentId: Overload:Vintagestory.API.Common.IClientGameCalendar.Dusk
+  href: Vintagestory.API.Common.IClientGameCalendar.html#Vintagestory_API_Common_IClientGameCalendar_Dusk
+  name: Dusk
+  nameWithType: IClientGameCalendar.Dusk
+  fullName: Vintagestory.API.Common.IClientGameCalendar.Dusk
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean

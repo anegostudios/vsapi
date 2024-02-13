@@ -1,0 +1,76 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IBlockShapeSupplier
+  commentId: T:Vintagestory.API.Common.IBlockShapeSupplier
+  id: IBlockShapeSupplier
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: IBlockShapeSupplier
+  nameWithType: IBlockShapeSupplier
+  fullName: Vintagestory.API.Common.IBlockShapeSupplier
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Shape/IBlockShapeSupplier.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IBlockShapeSupplier
+    path: Common/Model/Shape/IBlockShapeSupplier.cs
+    startLine: 8
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Adds a tesselator to your block
+
+    WARNING: please make sure whatever functions and fields you use with the OnTesselation event are THREAD SAFE!
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("No longer needed. All block entities by default will have the OnTesselation method executed")]
+
+      public interface IBlockShapeSupplier
+    content.vb: >-
+      <Obsolete("No longer needed. All block entities by default will have the OnTesselation method executed")>
+
+      Public Interface IBlockShapeSupplier
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: No longer needed. All block entities by default will have the OnTesselation method executed
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html

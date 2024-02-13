@@ -1,0 +1,1230 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.IInputAPI
+  commentId: T:Vintagestory.API.Client.IInputAPI
+  id: IInputAPI
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.IInputAPI.AddHotkeyListener(Vintagestory.API.Client.OnHotKeyDelegate)
+  - Vintagestory.API.Client.IInputAPI.ClipboardText
+  - Vintagestory.API.Client.IInputAPI.GetHotKeyByCode(System.String)
+  - Vintagestory.API.Client.IInputAPI.HotKeys
+  - Vintagestory.API.Client.IInputAPI.InWorldAction
+  - Vintagestory.API.Client.IInputAPI.InWorldMouseButton
+  - Vintagestory.API.Client.IInputAPI.KeyboardKeyState
+  - Vintagestory.API.Client.IInputAPI.KeyboardKeyStateRaw
+  - Vintagestory.API.Client.IInputAPI.MouseButton
+  - Vintagestory.API.Client.IInputAPI.MouseGrabbed
+  - Vintagestory.API.Client.IInputAPI.MousePitch
+  - Vintagestory.API.Client.IInputAPI.MouseWorldInteractAnyway
+  - Vintagestory.API.Client.IInputAPI.MouseX
+  - Vintagestory.API.Client.IInputAPI.MouseY
+  - Vintagestory.API.Client.IInputAPI.MouseYaw
+  - Vintagestory.API.Client.IInputAPI.RegisterHotKey(System.String,System.String,Vintagestory.API.Client.GlKeys,Vintagestory.API.Client.HotkeyType,System.Boolean,System.Boolean,System.Boolean)
+  - Vintagestory.API.Client.IInputAPI.RegisterHotKeyFirst(System.String,System.String,Vintagestory.API.Client.GlKeys,Vintagestory.API.Client.HotkeyType,System.Boolean,System.Boolean,System.Boolean)
+  - Vintagestory.API.Client.IInputAPI.SetHotKeyHandler(System.String,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Client.KeyCombination})
+  - Vintagestory.API.Client.IInputAPI.TriggerOnMouseClickSlot(Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Client.IInputAPI.TriggerOnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)
+  - Vintagestory.API.Client.IInputAPI.TriggerOnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)
+  langs:
+  - csharp
+  - vb
+  name: IInputAPI
+  nameWithType: IInputAPI
+  fullName: Vintagestory.API.Client.IInputAPI
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IInputAPI
+    path: Client/API/IInputAPI.cs
+    startLine: 24
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: This interface manages the inputs of the player and is used mostly on the client side.
+  example: []
+  syntax:
+    content: public interface IInputAPI
+    content.vb: Public Interface IInputAPI
+- uid: Vintagestory.API.Client.IInputAPI.ClipboardText
+  commentId: P:Vintagestory.API.Client.IInputAPI.ClipboardText
+  id: ClipboardText
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: ClipboardText
+  nameWithType: IInputAPI.ClipboardText
+  fullName: Vintagestory.API.Client.IInputAPI.ClipboardText
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ClipboardText
+    path: Client/API/IInputAPI.cs
+    startLine: 29
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Get set clipboard text
+  example: []
+  syntax:
+    content: string ClipboardText { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Property ClipboardText As String
+  overload: Vintagestory.API.Client.IInputAPI.ClipboardText*
+- uid: Vintagestory.API.Client.IInputAPI.InWorldAction
+  commentId: E:Vintagestory.API.Client.IInputAPI.InWorldAction
+  id: InWorldAction
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: InWorldAction
+  nameWithType: IInputAPI.InWorldAction
+  fullName: Vintagestory.API.Client.IInputAPI.InWorldAction
+  type: Event
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InWorldAction
+    path: Client/API/IInputAPI.cs
+    startLine: 34
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Triggered when the player attempts to trigger an action, such as walking forward or sprinting
+  example: []
+  syntax:
+    content: event OnEntityAction InWorldAction
+    return:
+      type: Vintagestory.API.Common.OnEntityAction
+    content.vb: Event InWorldAction As OnEntityAction
+- uid: Vintagestory.API.Client.IInputAPI.KeyboardKeyStateRaw
+  commentId: P:Vintagestory.API.Client.IInputAPI.KeyboardKeyStateRaw
+  id: KeyboardKeyStateRaw
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: KeyboardKeyStateRaw
+  nameWithType: IInputAPI.KeyboardKeyStateRaw
+  fullName: Vintagestory.API.Client.IInputAPI.KeyboardKeyStateRaw
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: KeyboardKeyStateRaw
+    path: Client/API/IInputAPI.cs
+    startLine: 39
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The current keyboard key states, use the <xref href="Vintagestory.API.Client.GlKeys" data-throw-if-not-resolved="false"></xref> enum to get the index of an array key.
+  example: []
+  syntax:
+    content: bool[] KeyboardKeyStateRaw { get; }
+    parameters: []
+    return:
+      type: System.Boolean[]
+    content.vb: ReadOnly Property KeyboardKeyStateRaw As Boolean()
+  overload: Vintagestory.API.Client.IInputAPI.KeyboardKeyStateRaw*
+- uid: Vintagestory.API.Client.IInputAPI.KeyboardKeyState
+  commentId: P:Vintagestory.API.Client.IInputAPI.KeyboardKeyState
+  id: KeyboardKeyState
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: KeyboardKeyState
+  nameWithType: IInputAPI.KeyboardKeyState
+  fullName: Vintagestory.API.Client.IInputAPI.KeyboardKeyState
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: KeyboardKeyState
+    path: Client/API/IInputAPI.cs
+    startLine: 44
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: 'The current keyboard key states that were not handled by a dialog or other client systems (exception: hotkeys), use the <xref href="Vintagestory.API.Client.GlKeys" data-throw-if-not-resolved="false"></xref> enum to get the array index of a key.'
+  example: []
+  syntax:
+    content: bool[] KeyboardKeyState { get; }
+    parameters: []
+    return:
+      type: System.Boolean[]
+    content.vb: ReadOnly Property KeyboardKeyState As Boolean()
+  overload: Vintagestory.API.Client.IInputAPI.KeyboardKeyState*
+- uid: Vintagestory.API.Client.IInputAPI.MouseButton
+  commentId: P:Vintagestory.API.Client.IInputAPI.MouseButton
+  id: MouseButton
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: MouseButton
+  nameWithType: IInputAPI.MouseButton
+  fullName: Vintagestory.API.Client.IInputAPI.MouseButton
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MouseButton
+    path: Client/API/IInputAPI.cs
+    startLine: 49
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The current mouse button state
+  example: []
+  syntax:
+    content: MouseButtonState MouseButton { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.MouseButtonState
+    content.vb: ReadOnly Property MouseButton As MouseButtonState
+  overload: Vintagestory.API.Client.IInputAPI.MouseButton*
+- uid: Vintagestory.API.Client.IInputAPI.InWorldMouseButton
+  commentId: P:Vintagestory.API.Client.IInputAPI.InWorldMouseButton
+  id: InWorldMouseButton
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: InWorldMouseButton
+  nameWithType: IInputAPI.InWorldMouseButton
+  fullName: Vintagestory.API.Client.IInputAPI.InWorldMouseButton
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InWorldMouseButton
+    path: Client/API/IInputAPI.cs
+    startLine: 54
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The current mouse button state outside of dialogs / clicked inside the game world
+  example: []
+  syntax:
+    content: MouseButtonState InWorldMouseButton { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.MouseButtonState
+    content.vb: ReadOnly Property InWorldMouseButton As MouseButtonState
+  overload: Vintagestory.API.Client.IInputAPI.InWorldMouseButton*
+- uid: Vintagestory.API.Client.IInputAPI.MouseX
+  commentId: P:Vintagestory.API.Client.IInputAPI.MouseX
+  id: MouseX
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: MouseX
+  nameWithType: IInputAPI.MouseX
+  fullName: Vintagestory.API.Client.IInputAPI.MouseX
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MouseX
+    path: Client/API/IInputAPI.cs
+    startLine: 59
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The current x-position of the mouse, relative to the upper left corner of the game window
+  example: []
+  syntax:
+    content: int MouseX { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property MouseX As Integer
+  overload: Vintagestory.API.Client.IInputAPI.MouseX*
+- uid: Vintagestory.API.Client.IInputAPI.MouseY
+  commentId: P:Vintagestory.API.Client.IInputAPI.MouseY
+  id: MouseY
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: MouseY
+  nameWithType: IInputAPI.MouseY
+  fullName: Vintagestory.API.Client.IInputAPI.MouseY
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MouseY
+    path: Client/API/IInputAPI.cs
+    startLine: 64
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The current y-position of the mouse, relative to the upper left corner of the game window
+  example: []
+  syntax:
+    content: int MouseY { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property MouseY As Integer
+  overload: Vintagestory.API.Client.IInputAPI.MouseY*
+- uid: Vintagestory.API.Client.IInputAPI.MouseYaw
+  commentId: P:Vintagestory.API.Client.IInputAPI.MouseYaw
+  id: MouseYaw
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: MouseYaw
+  nameWithType: IInputAPI.MouseYaw
+  fullName: Vintagestory.API.Client.IInputAPI.MouseYaw
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MouseYaw
+    path: Client/API/IInputAPI.cs
+    startLine: 69
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: When controlling the camera, this is the camera yaw determined by the game engine
+  example: []
+  syntax:
+    content: float MouseYaw { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property MouseYaw As Single
+  overload: Vintagestory.API.Client.IInputAPI.MouseYaw*
+- uid: Vintagestory.API.Client.IInputAPI.MousePitch
+  commentId: P:Vintagestory.API.Client.IInputAPI.MousePitch
+  id: MousePitch
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: MousePitch
+  nameWithType: IInputAPI.MousePitch
+  fullName: Vintagestory.API.Client.IInputAPI.MousePitch
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MousePitch
+    path: Client/API/IInputAPI.cs
+    startLine: 73
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: When controlling the camera, this is the camera pitch determined by the game engine
+  example: []
+  syntax:
+    content: float MousePitch { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property MousePitch As Single
+  overload: Vintagestory.API.Client.IInputAPI.MousePitch*
+- uid: Vintagestory.API.Client.IInputAPI.TriggerOnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Client.IInputAPI.TriggerOnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)
+  id: TriggerOnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: TriggerOnMouseEnterSlot(ItemSlot)
+  nameWithType: IInputAPI.TriggerOnMouseEnterSlot(ItemSlot)
+  fullName: Vintagestory.API.Client.IInputAPI.TriggerOnMouseEnterSlot(Vintagestory.API.Common.ItemSlot)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TriggerOnMouseEnterSlot
+    path: Client/API/IInputAPI.cs
+    startLine: 81
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Handles the event when the mouse enters the bounding box of the given item slot.
+  remarks: Part of a group of things that will be moved to an event bus at some point.
+  example: []
+  syntax:
+    content: void TriggerOnMouseEnterSlot(ItemSlot slot)
+    parameters:
+    - id: slot
+      type: Vintagestory.API.Common.ItemSlot
+      description: The slot of the item.
+    content.vb: Sub TriggerOnMouseEnterSlot(slot As ItemSlot)
+  overload: Vintagestory.API.Client.IInputAPI.TriggerOnMouseEnterSlot*
+- uid: Vintagestory.API.Client.IInputAPI.TriggerOnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Client.IInputAPI.TriggerOnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)
+  id: TriggerOnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: TriggerOnMouseLeaveSlot(ItemSlot)
+  nameWithType: IInputAPI.TriggerOnMouseLeaveSlot(ItemSlot)
+  fullName: Vintagestory.API.Client.IInputAPI.TriggerOnMouseLeaveSlot(Vintagestory.API.Common.ItemSlot)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TriggerOnMouseLeaveSlot
+    path: Client/API/IInputAPI.cs
+    startLine: 88
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Handles the event when the mouse leaves the bounding box of the given item slot.
+  remarks: Part of a group of things that will be moved to an event bus at some point.
+  example: []
+  syntax:
+    content: void TriggerOnMouseLeaveSlot(ItemSlot itemSlot)
+    parameters:
+    - id: itemSlot
+      type: Vintagestory.API.Common.ItemSlot
+      description: The slot of the item
+    content.vb: Sub TriggerOnMouseLeaveSlot(itemSlot As ItemSlot)
+  overload: Vintagestory.API.Client.IInputAPI.TriggerOnMouseLeaveSlot*
+- uid: Vintagestory.API.Client.IInputAPI.TriggerOnMouseClickSlot(Vintagestory.API.Common.ItemSlot)
+  commentId: M:Vintagestory.API.Client.IInputAPI.TriggerOnMouseClickSlot(Vintagestory.API.Common.ItemSlot)
+  id: TriggerOnMouseClickSlot(Vintagestory.API.Common.ItemSlot)
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: TriggerOnMouseClickSlot(ItemSlot)
+  nameWithType: IInputAPI.TriggerOnMouseClickSlot(ItemSlot)
+  fullName: Vintagestory.API.Client.IInputAPI.TriggerOnMouseClickSlot(Vintagestory.API.Common.ItemSlot)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TriggerOnMouseClickSlot
+    path: Client/API/IInputAPI.cs
+    startLine: 95
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Handles the event when the mouse clicks on a given item slot.
+  remarks: Part of a group of things that will be moved to an event bus at some point.
+  example: []
+  syntax:
+    content: void TriggerOnMouseClickSlot(ItemSlot itemSlot)
+    parameters:
+    - id: itemSlot
+      type: Vintagestory.API.Common.ItemSlot
+      description: The slot of the item
+    content.vb: Sub TriggerOnMouseClickSlot(itemSlot As ItemSlot)
+  overload: Vintagestory.API.Client.IInputAPI.TriggerOnMouseClickSlot*
+- uid: Vintagestory.API.Client.IInputAPI.MouseWorldInteractAnyway
+  commentId: P:Vintagestory.API.Client.IInputAPI.MouseWorldInteractAnyway
+  id: MouseWorldInteractAnyway
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: MouseWorldInteractAnyway
+  nameWithType: IInputAPI.MouseWorldInteractAnyway
+  fullName: Vintagestory.API.Client.IInputAPI.MouseWorldInteractAnyway
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MouseWorldInteractAnyway
+    path: Client/API/IInputAPI.cs
+    startLine: 102
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Gives the player the ability to still interact with the world even if a gui dialog is opened
+  example: []
+  syntax:
+    content: bool MouseWorldInteractAnyway { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property MouseWorldInteractAnyway As Boolean
+  overload: Vintagestory.API.Client.IInputAPI.MouseWorldInteractAnyway*
+- uid: Vintagestory.API.Client.IInputAPI.MouseGrabbed
+  commentId: P:Vintagestory.API.Client.IInputAPI.MouseGrabbed
+  id: MouseGrabbed
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: MouseGrabbed
+  nameWithType: IInputAPI.MouseGrabbed
+  fullName: Vintagestory.API.Client.IInputAPI.MouseGrabbed
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MouseGrabbed
+    path: Client/API/IInputAPI.cs
+    startLine: 108
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: >-
+    True if the mouse cursor is currently grabbed and not visible.
+
+    (Such as while controlling the character's view in first person.)
+  example: []
+  syntax:
+    content: bool MouseGrabbed { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property MouseGrabbed As Boolean
+  overload: Vintagestory.API.Client.IInputAPI.MouseGrabbed*
+- uid: Vintagestory.API.Client.IInputAPI.RegisterHotKey(System.String,System.String,Vintagestory.API.Client.GlKeys,Vintagestory.API.Client.HotkeyType,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:Vintagestory.API.Client.IInputAPI.RegisterHotKey(System.String,System.String,Vintagestory.API.Client.GlKeys,Vintagestory.API.Client.HotkeyType,System.Boolean,System.Boolean,System.Boolean)
+  id: RegisterHotKey(System.String,System.String,Vintagestory.API.Client.GlKeys,Vintagestory.API.Client.HotkeyType,System.Boolean,System.Boolean,System.Boolean)
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterHotKey(string, string, GlKeys, HotkeyType, bool, bool, bool)
+  nameWithType: IInputAPI.RegisterHotKey(string, string, GlKeys, HotkeyType, bool, bool, bool)
+  fullName: Vintagestory.API.Client.IInputAPI.RegisterHotKey(string, string, Vintagestory.API.Client.GlKeys, Vintagestory.API.Client.HotkeyType, bool, bool, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterHotKey
+    path: Client/API/IInputAPI.cs
+    startLine: 120
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Registers a hot key with given default key combination, the player will be able change these in the controls. Supplied hotkeyCode can than be used to register a hotkey handler.
+  example: []
+  syntax:
+    content: void RegisterHotKey(string hotkeyCode, string name, GlKeys key, HotkeyType type = HotkeyType.CharacterControls, bool altPressed = false, bool ctrlPressed = false, bool shiftPressed = false)
+    parameters:
+    - id: hotkeyCode
+      type: System.String
+      description: ''
+    - id: name
+      type: System.String
+      description: ''
+    - id: key
+      type: Vintagestory.API.Client.GlKeys
+      description: ''
+    - id: type
+      type: Vintagestory.API.Client.HotkeyType
+      description: ''
+    - id: altPressed
+      type: System.Boolean
+      description: ''
+    - id: ctrlPressed
+      type: System.Boolean
+      description: ''
+    - id: shiftPressed
+      type: System.Boolean
+      description: ''
+    content.vb: Sub RegisterHotKey(hotkeyCode As String, name As String, key As GlKeys, type As HotkeyType = HotkeyType.CharacterControls, altPressed As Boolean = False, ctrlPressed As Boolean = False, shiftPressed As Boolean = False)
+  overload: Vintagestory.API.Client.IInputAPI.RegisterHotKey*
+  nameWithType.vb: IInputAPI.RegisterHotKey(String, String, GlKeys, HotkeyType, Boolean, Boolean, Boolean)
+  fullName.vb: Vintagestory.API.Client.IInputAPI.RegisterHotKey(String, String, Vintagestory.API.Client.GlKeys, Vintagestory.API.Client.HotkeyType, Boolean, Boolean, Boolean)
+  name.vb: RegisterHotKey(String, String, GlKeys, HotkeyType, Boolean, Boolean, Boolean)
+- uid: Vintagestory.API.Client.IInputAPI.RegisterHotKeyFirst(System.String,System.String,Vintagestory.API.Client.GlKeys,Vintagestory.API.Client.HotkeyType,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:Vintagestory.API.Client.IInputAPI.RegisterHotKeyFirst(System.String,System.String,Vintagestory.API.Client.GlKeys,Vintagestory.API.Client.HotkeyType,System.Boolean,System.Boolean,System.Boolean)
+  id: RegisterHotKeyFirst(System.String,System.String,Vintagestory.API.Client.GlKeys,Vintagestory.API.Client.HotkeyType,System.Boolean,System.Boolean,System.Boolean)
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterHotKeyFirst(string, string, GlKeys, HotkeyType, bool, bool, bool)
+  nameWithType: IInputAPI.RegisterHotKeyFirst(string, string, GlKeys, HotkeyType, bool, bool, bool)
+  fullName: Vintagestory.API.Client.IInputAPI.RegisterHotKeyFirst(string, string, Vintagestory.API.Client.GlKeys, Vintagestory.API.Client.HotkeyType, bool, bool, bool)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RegisterHotKeyFirst
+    path: Client/API/IInputAPI.cs
+    startLine: 131
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Same as RegisterHotKey except it inserts it at the start of the list
+  example: []
+  syntax:
+    content: void RegisterHotKeyFirst(string hotkeyCode, string name, GlKeys key, HotkeyType type = HotkeyType.CharacterControls, bool altPressed = false, bool ctrlPressed = false, bool shiftPressed = false)
+    parameters:
+    - id: hotkeyCode
+      type: System.String
+      description: ''
+    - id: name
+      type: System.String
+      description: ''
+    - id: key
+      type: Vintagestory.API.Client.GlKeys
+      description: ''
+    - id: type
+      type: Vintagestory.API.Client.HotkeyType
+      description: ''
+    - id: altPressed
+      type: System.Boolean
+      description: ''
+    - id: ctrlPressed
+      type: System.Boolean
+      description: ''
+    - id: shiftPressed
+      type: System.Boolean
+      description: ''
+    content.vb: Sub RegisterHotKeyFirst(hotkeyCode As String, name As String, key As GlKeys, type As HotkeyType = HotkeyType.CharacterControls, altPressed As Boolean = False, ctrlPressed As Boolean = False, shiftPressed As Boolean = False)
+  overload: Vintagestory.API.Client.IInputAPI.RegisterHotKeyFirst*
+  nameWithType.vb: IInputAPI.RegisterHotKeyFirst(String, String, GlKeys, HotkeyType, Boolean, Boolean, Boolean)
+  fullName.vb: Vintagestory.API.Client.IInputAPI.RegisterHotKeyFirst(String, String, Vintagestory.API.Client.GlKeys, Vintagestory.API.Client.HotkeyType, Boolean, Boolean, Boolean)
+  name.vb: RegisterHotKeyFirst(String, String, GlKeys, HotkeyType, Boolean, Boolean, Boolean)
+- uid: Vintagestory.API.Client.IInputAPI.SetHotKeyHandler(System.String,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Client.KeyCombination})
+  commentId: M:Vintagestory.API.Client.IInputAPI.SetHotKeyHandler(System.String,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Client.KeyCombination})
+  id: SetHotKeyHandler(System.String,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Client.KeyCombination})
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: SetHotKeyHandler(string, ActionConsumable<KeyCombination>)
+  nameWithType: IInputAPI.SetHotKeyHandler(string, ActionConsumable<KeyCombination>)
+  fullName: Vintagestory.API.Client.IInputAPI.SetHotKeyHandler(string, Vintagestory.API.Common.ActionConsumable<Vintagestory.API.Client.KeyCombination>)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetHotKeyHandler
+    path: Client/API/IInputAPI.cs
+    startLine: 139
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Will call the handler if given hotkey has been pressed. Removes the previously assigned handler.
+  example: []
+  syntax:
+    content: void SetHotKeyHandler(string hotkeyCode, ActionConsumable<KeyCombination> handler)
+    parameters:
+    - id: hotkeyCode
+      type: System.String
+      description: ''
+    - id: handler
+      type: Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Client.KeyCombination}
+      description: ''
+    content.vb: Sub SetHotKeyHandler(hotkeyCode As String, handler As ActionConsumable(Of KeyCombination))
+  overload: Vintagestory.API.Client.IInputAPI.SetHotKeyHandler*
+  nameWithType.vb: IInputAPI.SetHotKeyHandler(String, ActionConsumable(Of KeyCombination))
+  fullName.vb: Vintagestory.API.Client.IInputAPI.SetHotKeyHandler(String, Vintagestory.API.Common.ActionConsumable(Of Vintagestory.API.Client.KeyCombination))
+  name.vb: SetHotKeyHandler(String, ActionConsumable(Of KeyCombination))
+- uid: Vintagestory.API.Client.IInputAPI.AddHotkeyListener(Vintagestory.API.Client.OnHotKeyDelegate)
+  commentId: M:Vintagestory.API.Client.IInputAPI.AddHotkeyListener(Vintagestory.API.Client.OnHotKeyDelegate)
+  id: AddHotkeyListener(Vintagestory.API.Client.OnHotKeyDelegate)
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: AddHotkeyListener(OnHotKeyDelegate)
+  nameWithType: IInputAPI.AddHotkeyListener(OnHotKeyDelegate)
+  fullName: Vintagestory.API.Client.IInputAPI.AddHotkeyListener(Vintagestory.API.Client.OnHotKeyDelegate)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: AddHotkeyListener
+    path: Client/API/IInputAPI.cs
+    startLine: 141
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void AddHotkeyListener(OnHotKeyDelegate handler)
+    parameters:
+    - id: handler
+      type: Vintagestory.API.Client.OnHotKeyDelegate
+    content.vb: Sub AddHotkeyListener(handler As OnHotKeyDelegate)
+  overload: Vintagestory.API.Client.IInputAPI.AddHotkeyListener*
+- uid: Vintagestory.API.Client.IInputAPI.HotKeys
+  commentId: P:Vintagestory.API.Client.IInputAPI.HotKeys
+  id: HotKeys
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: HotKeys
+  nameWithType: IInputAPI.HotKeys
+  fullName: Vintagestory.API.Client.IInputAPI.HotKeys
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: HotKeys
+    path: Client/API/IInputAPI.cs
+    startLine: 146
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns a list of all currently registered hotkeys.
+  example: []
+  syntax:
+    content: OrderedDictionary<string, HotKey> HotKeys { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.OrderedDictionary{System.String,Vintagestory.API.Client.HotKey}
+    content.vb: ReadOnly Property HotKeys As OrderedDictionary(Of String, HotKey)
+  overload: Vintagestory.API.Client.IInputAPI.HotKeys*
+- uid: Vintagestory.API.Client.IInputAPI.GetHotKeyByCode(System.String)
+  commentId: M:Vintagestory.API.Client.IInputAPI.GetHotKeyByCode(System.String)
+  id: GetHotKeyByCode(System.String)
+  parent: Vintagestory.API.Client.IInputAPI
+  langs:
+  - csharp
+  - vb
+  name: GetHotKeyByCode(string)
+  nameWithType: IInputAPI.GetHotKeyByCode(string)
+  fullName: Vintagestory.API.Client.IInputAPI.GetHotKeyByCode(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IInputAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetHotKeyByCode
+    path: Client/API/IInputAPI.cs
+    startLine: 153
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Gets the hotkey by the given hotkey code.
+  example: []
+  syntax:
+    content: HotKey GetHotKeyByCode(string toggleKeyCombinationCode)
+    parameters:
+    - id: toggleKeyCombinationCode
+      type: System.String
+      description: the key combination code.
+    return:
+      type: Vintagestory.API.Client.HotKey
+      description: The registered hotkey.
+    content.vb: Function GetHotKeyByCode(toggleKeyCombinationCode As String) As HotKey
+  overload: Vintagestory.API.Client.IInputAPI.GetHotKeyByCode*
+  nameWithType.vb: IInputAPI.GetHotKeyByCode(String)
+  fullName.vb: Vintagestory.API.Client.IInputAPI.GetHotKeyByCode(String)
+  name.vb: GetHotKeyByCode(String)
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.IInputAPI.ClipboardText*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.ClipboardText
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_ClipboardText
+  name: ClipboardText
+  nameWithType: IInputAPI.ClipboardText
+  fullName: Vintagestory.API.Client.IInputAPI.ClipboardText
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.OnEntityAction
+  commentId: T:Vintagestory.API.Common.OnEntityAction
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.OnEntityAction.html
+  name: OnEntityAction
+  nameWithType: OnEntityAction
+  fullName: Vintagestory.API.Common.OnEntityAction
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Client.GlKeys
+  commentId: T:Vintagestory.API.Client.GlKeys
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.GlKeys.html
+  name: GlKeys
+  nameWithType: GlKeys
+  fullName: Vintagestory.API.Client.GlKeys
+- uid: Vintagestory.API.Client.IInputAPI.KeyboardKeyStateRaw*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.KeyboardKeyStateRaw
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_KeyboardKeyStateRaw
+  name: KeyboardKeyStateRaw
+  nameWithType: IInputAPI.KeyboardKeyStateRaw
+  fullName: Vintagestory.API.Client.IInputAPI.KeyboardKeyStateRaw
+- uid: System.Boolean[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool[]
+  nameWithType: bool[]
+  fullName: bool[]
+  nameWithType.vb: Boolean()
+  fullName.vb: Boolean()
+  name.vb: Boolean()
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.IInputAPI.KeyboardKeyState*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.KeyboardKeyState
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_KeyboardKeyState
+  name: KeyboardKeyState
+  nameWithType: IInputAPI.KeyboardKeyState
+  fullName: Vintagestory.API.Client.IInputAPI.KeyboardKeyState
+- uid: Vintagestory.API.Client.IInputAPI.MouseButton*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.MouseButton
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_MouseButton
+  name: MouseButton
+  nameWithType: IInputAPI.MouseButton
+  fullName: Vintagestory.API.Client.IInputAPI.MouseButton
+- uid: Vintagestory.API.Client.MouseButtonState
+  commentId: T:Vintagestory.API.Client.MouseButtonState
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MouseButtonState.html
+  name: MouseButtonState
+  nameWithType: MouseButtonState
+  fullName: Vintagestory.API.Client.MouseButtonState
+- uid: Vintagestory.API.Client.IInputAPI.InWorldMouseButton*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.InWorldMouseButton
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_InWorldMouseButton
+  name: InWorldMouseButton
+  nameWithType: IInputAPI.InWorldMouseButton
+  fullName: Vintagestory.API.Client.IInputAPI.InWorldMouseButton
+- uid: Vintagestory.API.Client.IInputAPI.MouseX*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.MouseX
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_MouseX
+  name: MouseX
+  nameWithType: IInputAPI.MouseX
+  fullName: Vintagestory.API.Client.IInputAPI.MouseX
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Client.IInputAPI.MouseY*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.MouseY
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_MouseY
+  name: MouseY
+  nameWithType: IInputAPI.MouseY
+  fullName: Vintagestory.API.Client.IInputAPI.MouseY
+- uid: Vintagestory.API.Client.IInputAPI.MouseYaw*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.MouseYaw
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_MouseYaw
+  name: MouseYaw
+  nameWithType: IInputAPI.MouseYaw
+  fullName: Vintagestory.API.Client.IInputAPI.MouseYaw
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Client.IInputAPI.MousePitch*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.MousePitch
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_MousePitch
+  name: MousePitch
+  nameWithType: IInputAPI.MousePitch
+  fullName: Vintagestory.API.Client.IInputAPI.MousePitch
+- uid: Vintagestory.API.Client.IInputAPI.TriggerOnMouseEnterSlot*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.TriggerOnMouseEnterSlot
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_TriggerOnMouseEnterSlot_Vintagestory_API_Common_ItemSlot_
+  name: TriggerOnMouseEnterSlot
+  nameWithType: IInputAPI.TriggerOnMouseEnterSlot
+  fullName: Vintagestory.API.Client.IInputAPI.TriggerOnMouseEnterSlot
+- uid: Vintagestory.API.Common.ItemSlot
+  commentId: T:Vintagestory.API.Common.ItemSlot
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemSlot.html
+  name: ItemSlot
+  nameWithType: ItemSlot
+  fullName: Vintagestory.API.Common.ItemSlot
+- uid: Vintagestory.API.Client.IInputAPI.TriggerOnMouseLeaveSlot*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.TriggerOnMouseLeaveSlot
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_TriggerOnMouseLeaveSlot_Vintagestory_API_Common_ItemSlot_
+  name: TriggerOnMouseLeaveSlot
+  nameWithType: IInputAPI.TriggerOnMouseLeaveSlot
+  fullName: Vintagestory.API.Client.IInputAPI.TriggerOnMouseLeaveSlot
+- uid: Vintagestory.API.Client.IInputAPI.TriggerOnMouseClickSlot*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.TriggerOnMouseClickSlot
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_TriggerOnMouseClickSlot_Vintagestory_API_Common_ItemSlot_
+  name: TriggerOnMouseClickSlot
+  nameWithType: IInputAPI.TriggerOnMouseClickSlot
+  fullName: Vintagestory.API.Client.IInputAPI.TriggerOnMouseClickSlot
+- uid: Vintagestory.API.Client.IInputAPI.MouseWorldInteractAnyway*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.MouseWorldInteractAnyway
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_MouseWorldInteractAnyway
+  name: MouseWorldInteractAnyway
+  nameWithType: IInputAPI.MouseWorldInteractAnyway
+  fullName: Vintagestory.API.Client.IInputAPI.MouseWorldInteractAnyway
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Client.IInputAPI.MouseGrabbed*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.MouseGrabbed
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_MouseGrabbed
+  name: MouseGrabbed
+  nameWithType: IInputAPI.MouseGrabbed
+  fullName: Vintagestory.API.Client.IInputAPI.MouseGrabbed
+- uid: Vintagestory.API.Client.IInputAPI.RegisterHotKey*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.RegisterHotKey
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_RegisterHotKey_System_String_System_String_Vintagestory_API_Client_GlKeys_Vintagestory_API_Client_HotkeyType_System_Boolean_System_Boolean_System_Boolean_
+  name: RegisterHotKey
+  nameWithType: IInputAPI.RegisterHotKey
+  fullName: Vintagestory.API.Client.IInputAPI.RegisterHotKey
+- uid: Vintagestory.API.Client.HotkeyType
+  commentId: T:Vintagestory.API.Client.HotkeyType
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.HotkeyType.html
+  name: HotkeyType
+  nameWithType: HotkeyType
+  fullName: Vintagestory.API.Client.HotkeyType
+- uid: Vintagestory.API.Client.IInputAPI.RegisterHotKeyFirst*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.RegisterHotKeyFirst
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_RegisterHotKeyFirst_System_String_System_String_Vintagestory_API_Client_GlKeys_Vintagestory_API_Client_HotkeyType_System_Boolean_System_Boolean_System_Boolean_
+  name: RegisterHotKeyFirst
+  nameWithType: IInputAPI.RegisterHotKeyFirst
+  fullName: Vintagestory.API.Client.IInputAPI.RegisterHotKeyFirst
+- uid: Vintagestory.API.Client.IInputAPI.SetHotKeyHandler*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.SetHotKeyHandler
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_SetHotKeyHandler_System_String_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Client_KeyCombination__
+  name: SetHotKeyHandler
+  nameWithType: IInputAPI.SetHotKeyHandler
+  fullName: Vintagestory.API.Client.IInputAPI.SetHotKeyHandler
+- uid: Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Client.KeyCombination}
+  commentId: T:Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Client.KeyCombination}
+  parent: Vintagestory.API.Common
+  definition: Vintagestory.API.Common.ActionConsumable`1
+  href: Vintagestory.API.Common.ActionConsumable-1.html
+  name: ActionConsumable<KeyCombination>
+  nameWithType: ActionConsumable<KeyCombination>
+  fullName: Vintagestory.API.Common.ActionConsumable<Vintagestory.API.Client.KeyCombination>
+  nameWithType.vb: ActionConsumable(Of KeyCombination)
+  fullName.vb: Vintagestory.API.Common.ActionConsumable(Of Vintagestory.API.Client.KeyCombination)
+  name.vb: ActionConsumable(Of KeyCombination)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ActionConsumable`1
+    name: ActionConsumable
+    href: Vintagestory.API.Common.ActionConsumable-1.html
+  - name: <
+  - uid: Vintagestory.API.Client.KeyCombination
+    name: KeyCombination
+    href: Vintagestory.API.Client.KeyCombination.html
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Common.ActionConsumable`1
+    name: ActionConsumable
+    href: Vintagestory.API.Common.ActionConsumable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Client.KeyCombination
+    name: KeyCombination
+    href: Vintagestory.API.Client.KeyCombination.html
+  - name: )
+- uid: Vintagestory.API.Common.ActionConsumable`1
+  commentId: T:Vintagestory.API.Common.ActionConsumable`1
+  href: Vintagestory.API.Common.ActionConsumable-1.html
+  name: ActionConsumable<T>
+  nameWithType: ActionConsumable<T>
+  fullName: Vintagestory.API.Common.ActionConsumable<T>
+  nameWithType.vb: ActionConsumable(Of T)
+  fullName.vb: Vintagestory.API.Common.ActionConsumable(Of T)
+  name.vb: ActionConsumable(Of T)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ActionConsumable`1
+    name: ActionConsumable
+    href: Vintagestory.API.Common.ActionConsumable-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Common.ActionConsumable`1
+    name: ActionConsumable
+    href: Vintagestory.API.Common.ActionConsumable-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Client.IInputAPI.AddHotkeyListener*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.AddHotkeyListener
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_AddHotkeyListener_Vintagestory_API_Client_OnHotKeyDelegate_
+  name: AddHotkeyListener
+  nameWithType: IInputAPI.AddHotkeyListener
+  fullName: Vintagestory.API.Client.IInputAPI.AddHotkeyListener
+- uid: Vintagestory.API.Client.OnHotKeyDelegate
+  commentId: T:Vintagestory.API.Client.OnHotKeyDelegate
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.OnHotKeyDelegate.html
+  name: OnHotKeyDelegate
+  nameWithType: OnHotKeyDelegate
+  fullName: Vintagestory.API.Client.OnHotKeyDelegate
+- uid: Vintagestory.API.Client.IInputAPI.HotKeys*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.HotKeys
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_HotKeys
+  name: HotKeys
+  nameWithType: IInputAPI.HotKeys
+  fullName: Vintagestory.API.Client.IInputAPI.HotKeys
+- uid: Vintagestory.API.Datastructures.OrderedDictionary{System.String,Vintagestory.API.Client.HotKey}
+  commentId: T:Vintagestory.API.Datastructures.OrderedDictionary{System.String,Vintagestory.API.Client.HotKey}
+  parent: Vintagestory.API.Datastructures
+  definition: Vintagestory.API.Datastructures.OrderedDictionary`2
+  href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  name: OrderedDictionary<string, HotKey>
+  nameWithType: OrderedDictionary<string, HotKey>
+  fullName: Vintagestory.API.Datastructures.OrderedDictionary<string, Vintagestory.API.Client.HotKey>
+  nameWithType.vb: OrderedDictionary(Of String, HotKey)
+  fullName.vb: Vintagestory.API.Datastructures.OrderedDictionary(Of String, Vintagestory.API.Client.HotKey)
+  name.vb: OrderedDictionary(Of String, HotKey)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+    name: OrderedDictionary
+    href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.HotKey
+    name: HotKey
+    href: Vintagestory.API.Client.HotKey.html
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+    name: OrderedDictionary
+    href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.HotKey
+    name: HotKey
+    href: Vintagestory.API.Client.HotKey.html
+  - name: )
+- uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+  commentId: T:Vintagestory.API.Datastructures.OrderedDictionary`2
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  name: OrderedDictionary<TKey, TValue>
+  nameWithType: OrderedDictionary<TKey, TValue>
+  fullName: Vintagestory.API.Datastructures.OrderedDictionary<TKey, TValue>
+  nameWithType.vb: OrderedDictionary(Of TKey, TValue)
+  fullName.vb: Vintagestory.API.Datastructures.OrderedDictionary(Of TKey, TValue)
+  name.vb: OrderedDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+    name: OrderedDictionary
+    href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.OrderedDictionary`2
+    name: OrderedDictionary
+    href: Vintagestory.API.Datastructures.OrderedDictionary-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Client.IInputAPI.GetHotKeyByCode*
+  commentId: Overload:Vintagestory.API.Client.IInputAPI.GetHotKeyByCode
+  href: Vintagestory.API.Client.IInputAPI.html#Vintagestory_API_Client_IInputAPI_GetHotKeyByCode_System_String_
+  name: GetHotKeyByCode
+  nameWithType: IInputAPI.GetHotKeyByCode
+  fullName: Vintagestory.API.Client.IInputAPI.GetHotKeyByCode
+- uid: Vintagestory.API.Client.HotKey
+  commentId: T:Vintagestory.API.Client.HotKey
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.HotKey.html
+  name: HotKey
+  nameWithType: HotKey
+  fullName: Vintagestory.API.Client.HotKey

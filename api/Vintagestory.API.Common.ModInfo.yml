@@ -1,0 +1,1662 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.ModInfo
+  commentId: T:Vintagestory.API.Common.ModInfo
+  id: ModInfo
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.ModInfo.#ctor
+  - Vintagestory.API.Common.ModInfo.#ctor(Vintagestory.API.Common.EnumModType,System.String,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String,Vintagestory.API.Common.EnumAppSide,System.Boolean,System.Boolean,System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ModDependency})
+  - Vintagestory.API.Common.ModInfo.Authors
+  - Vintagestory.API.Common.ModInfo.CompareTo(Vintagestory.API.Common.ModInfo)
+  - Vintagestory.API.Common.ModInfo.Contributors
+  - Vintagestory.API.Common.ModInfo.CoreMod
+  - Vintagestory.API.Common.ModInfo.Dependencies
+  - Vintagestory.API.Common.ModInfo.Description
+  - Vintagestory.API.Common.ModInfo.Init
+  - Vintagestory.API.Common.ModInfo.IsValidModID(System.String)
+  - Vintagestory.API.Common.ModInfo.ModID
+  - Vintagestory.API.Common.ModInfo.Name
+  - Vintagestory.API.Common.ModInfo.NetworkVersion
+  - Vintagestory.API.Common.ModInfo.RequiredOnClient
+  - Vintagestory.API.Common.ModInfo.RequiredOnServer
+  - Vintagestory.API.Common.ModInfo.Side
+  - Vintagestory.API.Common.ModInfo.TextureSize
+  - Vintagestory.API.Common.ModInfo.ToModID(System.String)
+  - Vintagestory.API.Common.ModInfo.Type
+  - Vintagestory.API.Common.ModInfo.Version
+  - Vintagestory.API.Common.ModInfo.Website
+  langs:
+  - csharp
+  - vb
+  name: ModInfo
+  nameWithType: ModInfo
+  fullName: Vintagestory.API.Common.ModInfo
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ModInfo
+    path: Common/API/ModInfo.cs
+    startLine: 41
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Meta data for a specific mod folder, archive, source file or assembly.
+
+    Either loaded from a "modinfo.json" or from the assembly's
+
+    <xref href="Vintagestory.API.Common.ModInfoAttribute" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: 'public class ModInfo : IComparable<ModInfo>'
+    content.vb: Public Class ModInfo Implements IComparable(Of ModInfo)
+  inheritance:
+  - System.Object
+  implements:
+  - System.IComparable{Vintagestory.API.Common.ModInfo}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Common.ModInfo.Type
+  commentId: F:Vintagestory.API.Common.ModInfo.Type
+  id: Type
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: ModInfo.Type
+  fullName: Vintagestory.API.Common.ModInfo.Type
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Type
+    path: Common/API/ModInfo.cs
+    startLine: 48
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The type of this mod. Can be "Theme", "Content" or "Code".
+  example: []
+  syntax:
+    content: >-
+      [JsonRequired]
+
+      public EnumModType Type
+    return:
+      type: Vintagestory.API.Common.EnumModType
+    content.vb: >-
+      <JsonRequired>
+
+      Public Type As EnumModType
+  attributes:
+  - type: Newtonsoft.Json.JsonRequiredAttribute
+    ctor: Newtonsoft.Json.JsonRequiredAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.TextureSize
+  commentId: F:Vintagestory.API.Common.ModInfo.TextureSize
+  id: TextureSize
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: TextureSize
+  nameWithType: ModInfo.TextureSize
+  fullName: Vintagestory.API.Common.ModInfo.TextureSize
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TextureSize
+    path: Common/API/ModInfo.cs
+    startLine: 54
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If the mod is a texture pack that changes topsoil grass textures, define the texture size here
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public int TextureSize
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonProperty>
+
+      Public TextureSize As Integer
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.Name
+  commentId: F:Vintagestory.API.Common.ModInfo.Name
+  id: Name
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: ModInfo.Name
+  fullName: Vintagestory.API.Common.ModInfo.Name
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Name
+    path: Common/API/ModInfo.cs
+    startLine: 58
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The name of this mod. For example "My Example Mod".
+  example: []
+  syntax:
+    content: >-
+      [JsonRequired]
+
+      public string Name
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonRequired>
+
+      Public Name As String
+  attributes:
+  - type: Newtonsoft.Json.JsonRequiredAttribute
+    ctor: Newtonsoft.Json.JsonRequiredAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.ModID
+  commentId: P:Vintagestory.API.Common.ModInfo.ModID
+  id: ModID
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: ModID
+  nameWithType: ModInfo.ModID
+  fullName: Vintagestory.API.Common.ModInfo.ModID
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ModID
+    path: Common/API/ModInfo.cs
+    startLine: 65
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    The mod id (domain) of this mod. For example "myexamplemod".
+
+    (Optional. Uses mod name (converted to lowercase, stripped of
+
+    whitespace and special characters) if missing.)
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public string ModID { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property ModID As String
+  overload: Vintagestory.API.Common.ModInfo.ModID*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.Version
+  commentId: F:Vintagestory.API.Common.ModInfo.Version
+  id: Version
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: Version
+  nameWithType: ModInfo.Version
+  fullName: Vintagestory.API.Common.ModInfo.Version
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Version
+    path: Common/API/ModInfo.cs
+    startLine: 70
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The version of this mod. For example "2.10.4". (optional)
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public string Version
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty>
+
+      Public Version As String
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.NetworkVersion
+  commentId: F:Vintagestory.API.Common.ModInfo.NetworkVersion
+  id: NetworkVersion
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: NetworkVersion
+  nameWithType: ModInfo.NetworkVersion
+  fullName: Vintagestory.API.Common.ModInfo.NetworkVersion
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: NetworkVersion
+    path: Common/API/ModInfo.cs
+    startLine: 76
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The network version of this mod. Change this number when a user that has an older version of your mod should not be allowed to connected to server with a newer version. If not set, the version value is used.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public string NetworkVersion
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty>
+
+      Public NetworkVersion As String
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.Description
+  commentId: F:Vintagestory.API.Common.ModInfo.Description
+  id: Description
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: ModInfo.Description
+  fullName: Vintagestory.API.Common.ModInfo.Description
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Description
+    path: Common/API/ModInfo.cs
+    startLine: 80
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: A short description of what this mod does. (optional)
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public string Description
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty>
+
+      Public Description As String
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.Website
+  commentId: F:Vintagestory.API.Common.ModInfo.Website
+  id: Website
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: Website
+  nameWithType: ModInfo.Website
+  fullName: Vintagestory.API.Common.ModInfo.Website
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Website
+    path: Common/API/ModInfo.cs
+    startLine: 84
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Location of the website or project site of this mod. (optional)
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public string Website
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty>
+
+      Public Website As String
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.Authors
+  commentId: P:Vintagestory.API.Common.ModInfo.Authors
+  id: Authors
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: Authors
+  nameWithType: ModInfo.Authors
+  fullName: Vintagestory.API.Common.ModInfo.Authors
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Authors
+    path: Common/API/ModInfo.cs
+    startLine: 87
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Names of people working on this mod. (optional)
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public IReadOnlyList<string> Authors { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property Authors As IReadOnlyList(Of String)
+  overload: Vintagestory.API.Common.ModInfo.Authors*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.Contributors
+  commentId: P:Vintagestory.API.Common.ModInfo.Contributors
+  id: Contributors
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: Contributors
+  nameWithType: ModInfo.Contributors
+  fullName: Vintagestory.API.Common.ModInfo.Contributors
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Contributors
+    path: Common/API/ModInfo.cs
+    startLine: 97
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Names of people contributing to this mod. (optional)
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public IReadOnlyList<string> Contributors { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{System.String}
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property Contributors As IReadOnlyList(Of String)
+  overload: Vintagestory.API.Common.ModInfo.Contributors*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.Side
+  commentId: P:Vintagestory.API.Common.ModInfo.Side
+  id: Side
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: Side
+  nameWithType: ModInfo.Side
+  fullName: Vintagestory.API.Common.ModInfo.Side
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Side
+    path: Common/API/ModInfo.cs
+    startLine: 106
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Which side(s) this mod runs on. Can be "Server", "Client" or "Universal".
+
+    (Optional. Universal (both server and client) by default.)
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      [JsonConverter(typeof(StringEnumConverter))]
+
+      public EnumAppSide Side { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.EnumAppSide
+    content.vb: >-
+      <JsonProperty>
+
+      <JsonConverter(GetType(StringEnumConverter))>
+
+      Public Property Side As EnumAppSide
+  overload: Vintagestory.API.Common.ModInfo.Side*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+  - type: Newtonsoft.Json.JsonConverterAttribute
+    ctor: Newtonsoft.Json.JsonConverterAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: Newtonsoft.Json.Converters.StringEnumConverter
+- uid: Vintagestory.API.Common.ModInfo.RequiredOnClient
+  commentId: P:Vintagestory.API.Common.ModInfo.RequiredOnClient
+  id: RequiredOnClient
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: RequiredOnClient
+  nameWithType: ModInfo.RequiredOnClient
+  fullName: Vintagestory.API.Common.ModInfo.RequiredOnClient
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RequiredOnClient
+    path: Common/API/ModInfo.cs
+    startLine: 113
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    If set to false and the mod is universal, clients don't need the mod
+
+    to join. (Optional. True by default.)
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public bool RequiredOnClient { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property RequiredOnClient As Boolean
+  overload: Vintagestory.API.Common.ModInfo.RequiredOnClient*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.RequiredOnServer
+  commentId: P:Vintagestory.API.Common.ModInfo.RequiredOnServer
+  id: RequiredOnServer
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: RequiredOnServer
+  nameWithType: ModInfo.RequiredOnServer
+  fullName: Vintagestory.API.Common.ModInfo.RequiredOnServer
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RequiredOnServer
+    path: Common/API/ModInfo.cs
+    startLine: 120
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    If set to false and the mod is universal, the mod is not disabled
+
+    if it's not present on the server. (Optional. True by default.)
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public bool RequiredOnServer { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonProperty>
+
+      Public Property RequiredOnServer As Boolean
+  overload: Vintagestory.API.Common.ModInfo.RequiredOnServer*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.Dependencies
+  commentId: P:Vintagestory.API.Common.ModInfo.Dependencies
+  id: Dependencies
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: Dependencies
+  nameWithType: ModInfo.Dependencies
+  fullName: Vintagestory.API.Common.ModInfo.Dependencies
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Dependencies
+    path: Common/API/ModInfo.cs
+    startLine: 124
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: List of mods (and versions) this mod depends on.
+  example: []
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      [JsonConverter(typeof(ModInfo.DependenciesConverter))]
+
+      public IReadOnlyList<ModDependency> Dependencies { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IReadOnlyList{Vintagestory.API.Common.ModDependency}
+    content.vb: >-
+      <JsonProperty>
+
+      <JsonConverter(GetType(ModInfo.DependenciesConverter))>
+
+      Public Property Dependencies As IReadOnlyList(Of ModDependency)
+  overload: Vintagestory.API.Common.ModInfo.Dependencies*
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.ModInfo.CoreMod
+  commentId: F:Vintagestory.API.Common.ModInfo.CoreMod
+  id: CoreMod
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: CoreMod
+  nameWithType: ModInfo.CoreMod
+  fullName: Vintagestory.API.Common.ModInfo.CoreMod
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CoreMod
+    path: Common/API/ModInfo.cs
+    startLine: 129
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Not exposed as a JsonProperty, only coded mods can set this to true
+  example: []
+  syntax:
+    content: public bool CoreMod
+    return:
+      type: System.Boolean
+    content.vb: Public CoreMod As Boolean
+- uid: Vintagestory.API.Common.ModInfo.#ctor
+  commentId: M:Vintagestory.API.Common.ModInfo.#ctor
+  id: '#ctor'
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: ModInfo()
+  nameWithType: ModInfo.ModInfo()
+  fullName: Vintagestory.API.Common.ModInfo.ModInfo()
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/API/ModInfo.cs
+    startLine: 132
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public ModInfo()
+    content.vb: Public Sub New()
+  overload: Vintagestory.API.Common.ModInfo.#ctor*
+  nameWithType.vb: ModInfo.New()
+  fullName.vb: Vintagestory.API.Common.ModInfo.New()
+  name.vb: New()
+- uid: Vintagestory.API.Common.ModInfo.#ctor(Vintagestory.API.Common.EnumModType,System.String,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String,Vintagestory.API.Common.EnumAppSide,System.Boolean,System.Boolean,System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ModDependency})
+  commentId: M:Vintagestory.API.Common.ModInfo.#ctor(Vintagestory.API.Common.EnumModType,System.String,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String,Vintagestory.API.Common.EnumAppSide,System.Boolean,System.Boolean,System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ModDependency})
+  id: '#ctor(Vintagestory.API.Common.EnumModType,System.String,System.String,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String},System.String,Vintagestory.API.Common.EnumAppSide,System.Boolean,System.Boolean,System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ModDependency})'
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: ModInfo(EnumModType, string, string, string, string, IEnumerable<string>, IEnumerable<string>, string, EnumAppSide, bool, bool, IEnumerable<ModDependency>)
+  nameWithType: ModInfo.ModInfo(EnumModType, string, string, string, string, IEnumerable<string>, IEnumerable<string>, string, EnumAppSide, bool, bool, IEnumerable<ModDependency>)
+  fullName: Vintagestory.API.Common.ModInfo.ModInfo(Vintagestory.API.Common.EnumModType, string, string, string, string, System.Collections.Generic.IEnumerable<string>, System.Collections.Generic.IEnumerable<string>, string, Vintagestory.API.Common.EnumAppSide, bool, bool, System.Collections.Generic.IEnumerable<Vintagestory.API.Common.ModDependency>)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/API/ModInfo.cs
+    startLine: 134
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public ModInfo(EnumModType type, string name, string modID, string version, string description, IEnumerable<string> authors, IEnumerable<string> contributors, string website, EnumAppSide side, bool requiredOnClient, bool requiredOnServer, IEnumerable<ModDependency> dependencies)
+    parameters:
+    - id: type
+      type: Vintagestory.API.Common.EnumModType
+    - id: name
+      type: System.String
+    - id: modID
+      type: System.String
+    - id: version
+      type: System.String
+    - id: description
+      type: System.String
+    - id: authors
+      type: System.Collections.Generic.IEnumerable{System.String}
+    - id: contributors
+      type: System.Collections.Generic.IEnumerable{System.String}
+    - id: website
+      type: System.String
+    - id: side
+      type: Vintagestory.API.Common.EnumAppSide
+    - id: requiredOnClient
+      type: System.Boolean
+    - id: requiredOnServer
+      type: System.Boolean
+    - id: dependencies
+      type: System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ModDependency}
+    content.vb: Public Sub New(type As EnumModType, name As String, modID As String, version As String, description As String, authors As IEnumerable(Of String), contributors As IEnumerable(Of String), website As String, side As EnumAppSide, requiredOnClient As Boolean, requiredOnServer As Boolean, dependencies As IEnumerable(Of ModDependency))
+  overload: Vintagestory.API.Common.ModInfo.#ctor*
+  nameWithType.vb: ModInfo.New(EnumModType, String, String, String, String, IEnumerable(Of String), IEnumerable(Of String), String, EnumAppSide, Boolean, Boolean, IEnumerable(Of ModDependency))
+  fullName.vb: Vintagestory.API.Common.ModInfo.New(Vintagestory.API.Common.EnumModType, String, String, String, String, System.Collections.Generic.IEnumerable(Of String), System.Collections.Generic.IEnumerable(Of String), String, Vintagestory.API.Common.EnumAppSide, Boolean, Boolean, System.Collections.Generic.IEnumerable(Of Vintagestory.API.Common.ModDependency))
+  name.vb: New(EnumModType, String, String, String, String, IEnumerable(Of String), IEnumerable(Of String), String, EnumAppSide, Boolean, Boolean, IEnumerable(Of ModDependency))
+- uid: Vintagestory.API.Common.ModInfo.Init
+  commentId: M:Vintagestory.API.Common.ModInfo.Init
+  id: Init
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: Init()
+  nameWithType: ModInfo.Init()
+  fullName: Vintagestory.API.Common.ModInfo.Init()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Init
+    path: Common/API/ModInfo.cs
+    startLine: 168
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void Init()
+    content.vb: Public Sub Init()
+  overload: Vintagestory.API.Common.ModInfo.Init*
+- uid: Vintagestory.API.Common.ModInfo.ToModID(System.String)
+  commentId: M:Vintagestory.API.Common.ModInfo.ToModID(System.String)
+  id: ToModID(System.String)
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: ToModID(string)
+  nameWithType: ModInfo.ToModID(string)
+  fullName: Vintagestory.API.Common.ModInfo.ToModID(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ToModID
+    path: Common/API/ModInfo.cs
+    startLine: 180
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Attempts to convert the specified mod name to a mod ID, stripping any
+
+    non-alphanumerical (including spaces and dashes) and lowercasing letters.
+  example: []
+  syntax:
+    content: public static string ToModID(string name)
+    parameters:
+    - id: name
+      type: System.String
+    return:
+      type: System.String
+    content.vb: Public Shared Function ToModID(name As String) As String
+  overload: Vintagestory.API.Common.ModInfo.ToModID*
+  nameWithType.vb: ModInfo.ToModID(String)
+  fullName.vb: Vintagestory.API.Common.ModInfo.ToModID(String)
+  name.vb: ToModID(String)
+- uid: Vintagestory.API.Common.ModInfo.IsValidModID(System.String)
+  commentId: M:Vintagestory.API.Common.ModInfo.IsValidModID(System.String)
+  id: IsValidModID(System.String)
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: IsValidModID(string)
+  nameWithType: ModInfo.IsValidModID(string)
+  fullName: Vintagestory.API.Common.ModInfo.IsValidModID(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IsValidModID
+    path: Common/API/ModInfo.cs
+    startLine: 209
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Returns whether the specified domain is valid.
+
+
+    Tests if the string is non-null, has a length of at least 1, starts with
+
+    a basic lowercase letter and contains only lowercase letters and numbers.
+  example: []
+  syntax:
+    content: public static bool IsValidModID(string str)
+    parameters:
+    - id: str
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function IsValidModID(str As String) As Boolean
+  overload: Vintagestory.API.Common.ModInfo.IsValidModID*
+  nameWithType.vb: ModInfo.IsValidModID(String)
+  fullName.vb: Vintagestory.API.Common.ModInfo.IsValidModID(String)
+  name.vb: IsValidModID(String)
+- uid: Vintagestory.API.Common.ModInfo.CompareTo(Vintagestory.API.Common.ModInfo)
+  commentId: M:Vintagestory.API.Common.ModInfo.CompareTo(Vintagestory.API.Common.ModInfo)
+  id: CompareTo(Vintagestory.API.Common.ModInfo)
+  parent: Vintagestory.API.Common.ModInfo
+  langs:
+  - csharp
+  - vb
+  name: CompareTo(ModInfo)
+  nameWithType: ModInfo.CompareTo(ModInfo)
+  fullName: Vintagestory.API.Common.ModInfo.CompareTo(Vintagestory.API.Common.ModInfo)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ModInfo.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CompareTo
+    path: Common/API/ModInfo.cs
+    startLine: 223
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
+  example: []
+  syntax:
+    content: public int CompareTo(ModInfo other)
+    parameters:
+    - id: other
+      type: Vintagestory.API.Common.ModInfo
+      description: An object to compare with this instance.
+    return:
+      type: System.Int32
+      description: >-
+        A value that indicates the relative order of the objects being compared. The return value has these meanings:  
+
+         <table><thead><tr><th class="term"> Value</th><th class="description"> Meaning</th></tr></thead><tbody><tr><td class="term"> Less than zero</td><td class="description"> This instance precedes <code class="paramref">other</code> in the sort order.</td></tr><tr><td class="term"> Zero</td><td class="description"> This instance occurs in the same position in the sort order as <code class="paramref">other</code>.</td></tr><tr><td class="term"> Greater than zero</td><td class="description"> This instance follows <code class="paramref">other</code> in the sort order.</td></tr></tbody></table>
+    content.vb: Public Function CompareTo(other As ModInfo) As Integer
+  overload: Vintagestory.API.Common.ModInfo.CompareTo*
+  implements:
+  - System.IComparable{Vintagestory.API.Common.ModInfo}.CompareTo(Vintagestory.API.Common.ModInfo)
+references:
+- uid: Vintagestory.API.Common.ModInfoAttribute
+  commentId: T:Vintagestory.API.Common.ModInfoAttribute
+  href: Vintagestory.API.Common.ModInfoAttribute.html
+  name: ModInfoAttribute
+  nameWithType: ModInfoAttribute
+  fullName: Vintagestory.API.Common.ModInfoAttribute
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IComparable{Vintagestory.API.Common.ModInfo}
+  commentId: T:System.IComparable{Vintagestory.API.Common.ModInfo}
+  parent: System
+  definition: System.IComparable`1
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  name: IComparable<ModInfo>
+  nameWithType: IComparable<ModInfo>
+  fullName: System.IComparable<Vintagestory.API.Common.ModInfo>
+  nameWithType.vb: IComparable(Of ModInfo)
+  fullName.vb: System.IComparable(Of Vintagestory.API.Common.ModInfo)
+  name.vb: IComparable(Of ModInfo)
+  spec.csharp:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: <
+  - uid: Vintagestory.API.Common.ModInfo
+    name: ModInfo
+    href: Vintagestory.API.Common.ModInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ModInfo
+    name: ModInfo
+    href: Vintagestory.API.Common.ModInfo.html
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IComparable`1
+  commentId: T:System.IComparable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  name: IComparable<T>
+  nameWithType: IComparable<T>
+  fullName: System.IComparable<T>
+  nameWithType.vb: IComparable(Of T)
+  fullName.vb: System.IComparable(Of T)
+  name.vb: IComparable(Of T)
+  spec.csharp:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.EnumModType
+  commentId: T:Vintagestory.API.Common.EnumModType
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumModType.html
+  name: EnumModType
+  nameWithType: EnumModType
+  fullName: Vintagestory.API.Common.EnumModType
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.ModInfo.ModID*
+  commentId: Overload:Vintagestory.API.Common.ModInfo.ModID
+  href: Vintagestory.API.Common.ModInfo.html#Vintagestory_API_Common_ModInfo_ModID
+  name: ModID
+  nameWithType: ModInfo.ModID
+  fullName: Vintagestory.API.Common.ModInfo.ModID
+- uid: Vintagestory.API.Common.ModInfo.Authors*
+  commentId: Overload:Vintagestory.API.Common.ModInfo.Authors
+  href: Vintagestory.API.Common.ModInfo.html#Vintagestory_API_Common_ModInfo_Authors
+  name: Authors
+  nameWithType: ModInfo.Authors
+  fullName: Vintagestory.API.Common.ModInfo.Authors
+- uid: System.Collections.Generic.IReadOnlyList{System.String}
+  commentId: T:System.Collections.Generic.IReadOnlyList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<string>
+  nameWithType: IReadOnlyList<string>
+  fullName: System.Collections.Generic.IReadOnlyList<string>
+  nameWithType.vb: IReadOnlyList(Of String)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of String)
+  name.vb: IReadOnlyList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyList`1
+  commentId: T:System.Collections.Generic.IReadOnlyList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<T>
+  nameWithType: IReadOnlyList<T>
+  fullName: System.Collections.Generic.IReadOnlyList<T>
+  nameWithType.vb: IReadOnlyList(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of T)
+  name.vb: IReadOnlyList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.ModInfo.Contributors*
+  commentId: Overload:Vintagestory.API.Common.ModInfo.Contributors
+  href: Vintagestory.API.Common.ModInfo.html#Vintagestory_API_Common_ModInfo_Contributors
+  name: Contributors
+  nameWithType: ModInfo.Contributors
+  fullName: Vintagestory.API.Common.ModInfo.Contributors
+- uid: Vintagestory.API.Common.ModInfo.Side*
+  commentId: Overload:Vintagestory.API.Common.ModInfo.Side
+  href: Vintagestory.API.Common.ModInfo.html#Vintagestory_API_Common_ModInfo_Side
+  name: Side
+  nameWithType: ModInfo.Side
+  fullName: Vintagestory.API.Common.ModInfo.Side
+- uid: Vintagestory.API.Common.EnumAppSide
+  commentId: T:Vintagestory.API.Common.EnumAppSide
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumAppSide.html
+  name: EnumAppSide
+  nameWithType: EnumAppSide
+  fullName: Vintagestory.API.Common.EnumAppSide
+- uid: Vintagestory.API.Common.ModInfo.RequiredOnClient*
+  commentId: Overload:Vintagestory.API.Common.ModInfo.RequiredOnClient
+  href: Vintagestory.API.Common.ModInfo.html#Vintagestory_API_Common_ModInfo_RequiredOnClient
+  name: RequiredOnClient
+  nameWithType: ModInfo.RequiredOnClient
+  fullName: Vintagestory.API.Common.ModInfo.RequiredOnClient
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.ModInfo.RequiredOnServer*
+  commentId: Overload:Vintagestory.API.Common.ModInfo.RequiredOnServer
+  href: Vintagestory.API.Common.ModInfo.html#Vintagestory_API_Common_ModInfo_RequiredOnServer
+  name: RequiredOnServer
+  nameWithType: ModInfo.RequiredOnServer
+  fullName: Vintagestory.API.Common.ModInfo.RequiredOnServer
+- uid: Vintagestory.API.Common.ModInfo.Dependencies*
+  commentId: Overload:Vintagestory.API.Common.ModInfo.Dependencies
+  href: Vintagestory.API.Common.ModInfo.html#Vintagestory_API_Common_ModInfo_Dependencies
+  name: Dependencies
+  nameWithType: ModInfo.Dependencies
+  fullName: Vintagestory.API.Common.ModInfo.Dependencies
+- uid: System.Collections.Generic.IReadOnlyList{Vintagestory.API.Common.ModDependency}
+  commentId: T:System.Collections.Generic.IReadOnlyList{Vintagestory.API.Common.ModDependency}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  name: IReadOnlyList<ModDependency>
+  nameWithType: IReadOnlyList<ModDependency>
+  fullName: System.Collections.Generic.IReadOnlyList<Vintagestory.API.Common.ModDependency>
+  nameWithType.vb: IReadOnlyList(Of ModDependency)
+  fullName.vb: System.Collections.Generic.IReadOnlyList(Of Vintagestory.API.Common.ModDependency)
+  name.vb: IReadOnlyList(Of ModDependency)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: <
+  - uid: Vintagestory.API.Common.ModDependency
+    name: ModDependency
+    href: Vintagestory.API.Common.ModDependency.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyList`1
+    name: IReadOnlyList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ModDependency
+    name: ModDependency
+    href: Vintagestory.API.Common.ModDependency.html
+  - name: )
+- uid: Vintagestory.API.Common.ModInfo.#ctor*
+  commentId: Overload:Vintagestory.API.Common.ModInfo.#ctor
+  href: Vintagestory.API.Common.ModInfo.html#Vintagestory_API_Common_ModInfo__ctor
+  name: ModInfo
+  nameWithType: ModInfo.ModInfo
+  fullName: Vintagestory.API.Common.ModInfo.ModInfo
+  nameWithType.vb: ModInfo.New
+  fullName.vb: Vintagestory.API.Common.ModInfo.New
+  name.vb: New
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ModDependency}
+  commentId: T:System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ModDependency}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<ModDependency>
+  nameWithType: IEnumerable<ModDependency>
+  fullName: System.Collections.Generic.IEnumerable<Vintagestory.API.Common.ModDependency>
+  nameWithType.vb: IEnumerable(Of ModDependency)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Vintagestory.API.Common.ModDependency)
+  name.vb: IEnumerable(Of ModDependency)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vintagestory.API.Common.ModDependency
+    name: ModDependency
+    href: Vintagestory.API.Common.ModDependency.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ModDependency
+    name: ModDependency
+    href: Vintagestory.API.Common.ModDependency.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.ModInfo.Init*
+  commentId: Overload:Vintagestory.API.Common.ModInfo.Init
+  href: Vintagestory.API.Common.ModInfo.html#Vintagestory_API_Common_ModInfo_Init
+  name: Init
+  nameWithType: ModInfo.Init
+  fullName: Vintagestory.API.Common.ModInfo.Init
+- uid: Vintagestory.API.Common.ModInfo.ToModID*
+  commentId: Overload:Vintagestory.API.Common.ModInfo.ToModID
+  href: Vintagestory.API.Common.ModInfo.html#Vintagestory_API_Common_ModInfo_ToModID_System_String_
+  name: ToModID
+  nameWithType: ModInfo.ToModID
+  fullName: Vintagestory.API.Common.ModInfo.ToModID
+- uid: Vintagestory.API.Common.ModInfo.IsValidModID*
+  commentId: Overload:Vintagestory.API.Common.ModInfo.IsValidModID
+  href: Vintagestory.API.Common.ModInfo.html#Vintagestory_API_Common_ModInfo_IsValidModID_System_String_
+  name: IsValidModID
+  nameWithType: ModInfo.IsValidModID
+  fullName: Vintagestory.API.Common.ModInfo.IsValidModID
+- uid: Vintagestory.API.Common.ModInfo.CompareTo*
+  commentId: Overload:Vintagestory.API.Common.ModInfo.CompareTo
+  href: Vintagestory.API.Common.ModInfo.html#Vintagestory_API_Common_ModInfo_CompareTo_Vintagestory_API_Common_ModInfo_
+  name: CompareTo
+  nameWithType: ModInfo.CompareTo
+  fullName: Vintagestory.API.Common.ModInfo.CompareTo
+- uid: System.IComparable{Vintagestory.API.Common.ModInfo}.CompareTo(Vintagestory.API.Common.ModInfo)
+  commentId: M:System.IComparable{Vintagestory.API.Common.ModInfo}.CompareTo(Vintagestory.API.Common.ModInfo)
+  parent: System.IComparable{Vintagestory.API.Common.ModInfo}
+  definition: System.IComparable`1.CompareTo(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  name: CompareTo(ModInfo)
+  nameWithType: IComparable<ModInfo>.CompareTo(ModInfo)
+  fullName: System.IComparable<Vintagestory.API.Common.ModInfo>.CompareTo(Vintagestory.API.Common.ModInfo)
+  nameWithType.vb: IComparable(Of ModInfo).CompareTo(ModInfo)
+  fullName.vb: System.IComparable(Of Vintagestory.API.Common.ModInfo).CompareTo(Vintagestory.API.Common.ModInfo)
+  spec.csharp:
+  - uid: System.IComparable{Vintagestory.API.Common.ModInfo}.CompareTo(Vintagestory.API.Common.ModInfo)
+    name: CompareTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  - name: (
+  - uid: Vintagestory.API.Common.ModInfo
+    name: ModInfo
+    href: Vintagestory.API.Common.ModInfo.html
+  - name: )
+  spec.vb:
+  - uid: System.IComparable{Vintagestory.API.Common.ModInfo}.CompareTo(Vintagestory.API.Common.ModInfo)
+    name: CompareTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  - name: (
+  - uid: Vintagestory.API.Common.ModInfo
+    name: ModInfo
+    href: Vintagestory.API.Common.ModInfo.html
+  - name: )
+- uid: Vintagestory.API.Common.ModInfo
+  commentId: T:Vintagestory.API.Common.ModInfo
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ModInfo.html
+  name: ModInfo
+  nameWithType: ModInfo
+  fullName: Vintagestory.API.Common.ModInfo
+- uid: System.IComparable`1.CompareTo(`0)
+  commentId: M:System.IComparable`1.CompareTo(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  name: CompareTo(T)
+  nameWithType: IComparable<T>.CompareTo(T)
+  fullName: System.IComparable<T>.CompareTo(T)
+  nameWithType.vb: IComparable(Of T).CompareTo(T)
+  fullName.vb: System.IComparable(Of T).CompareTo(T)
+  spec.csharp:
+  - uid: System.IComparable`1.CompareTo(`0)
+    name: CompareTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IComparable`1.CompareTo(`0)
+    name: CompareTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  - name: (
+  - name: T
+  - name: )

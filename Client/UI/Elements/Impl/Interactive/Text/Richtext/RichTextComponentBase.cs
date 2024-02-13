@@ -15,7 +15,8 @@ namespace Vintagestory.API.Client
     {
         Top,
         Middle,
-        Bottom
+        Bottom,
+        FixedOffset
     }
 
     public enum EnumCalcBoundsResult
@@ -51,7 +52,7 @@ namespace Vintagestory.API.Client
         public virtual LineRectangled[] BoundsPerLine { get; protected set; }
 
         /// <summary>
-        /// This will be the Y-Advance into the next line. Unscaled value.
+        /// This will be the Y-Advance into the next line. Unscaled value. Also used as the offset with EnumVerticalAlign.FixedOffset
         /// </summary>
         public virtual double UnscaledMarginTop { get; set; } = 0;
 

@@ -1,0 +1,1703 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IGameCalendar
+  commentId: T:Vintagestory.API.Common.IGameCalendar
+  id: IGameCalendar
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IGameCalendar.Add(System.Single)
+  - Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul
+  - Vintagestory.API.Common.IGameCalendar.DayOfYear
+  - Vintagestory.API.Common.IGameCalendar.DayOfYearf
+  - Vintagestory.API.Common.IGameCalendar.DaysPerMonth
+  - Vintagestory.API.Common.IGameCalendar.DaysPerYear
+  - Vintagestory.API.Common.IGameCalendar.ElapsedDays
+  - Vintagestory.API.Common.IGameCalendar.ElapsedHours
+  - Vintagestory.API.Common.IGameCalendar.ElapsedSeconds
+  - Vintagestory.API.Common.IGameCalendar.FullHourOfDay
+  - Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(System.Double,System.Double)
+  - Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.IGameCalendar.GetHemisphere(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.IGameCalendar.GetSeason(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.IGameCalendar.GetSeasonRel(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.IGameCalendar.HourOfDay
+  - Vintagestory.API.Common.IGameCalendar.HoursPerDay
+  - Vintagestory.API.Common.IGameCalendar.Month
+  - Vintagestory.API.Common.IGameCalendar.MonthName
+  - Vintagestory.API.Common.IGameCalendar.MoonPhase
+  - Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness
+  - Vintagestory.API.Common.IGameCalendar.MoonPhaseExact
+  - Vintagestory.API.Common.IGameCalendar.MoonSize
+  - Vintagestory.API.Common.IGameCalendar.OnGetHemisphere
+  - Vintagestory.API.Common.IGameCalendar.OnGetLatitude
+  - Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords
+  - Vintagestory.API.Common.IGameCalendar.PrettyDate
+  - Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(System.String)
+  - Vintagestory.API.Common.IGameCalendar.SeasonOverride
+  - Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(System.Nullable{System.Single})
+  - Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(System.String,System.Single)
+  - Vintagestory.API.Common.IGameCalendar.SpeedOfTime
+  - Vintagestory.API.Common.IGameCalendar.Timelapse
+  - Vintagestory.API.Common.IGameCalendar.TotalDays
+  - Vintagestory.API.Common.IGameCalendar.TotalHours
+  - Vintagestory.API.Common.IGameCalendar.Year
+  - Vintagestory.API.Common.IGameCalendar.YearRel
+  langs:
+  - csharp
+  - vb
+  name: IGameCalendar
+  nameWithType: IGameCalendar
+  fullName: Vintagestory.API.Common.IGameCalendar
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IGameCalendar
+    path: Common/API/IGameCalendar.cs
+    startLine: 124
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Main API for retrieving anything calender or astronomy related
+  example: []
+  syntax:
+    content: public interface IGameCalendar
+    content.vb: Public Interface IGameCalendar
+- uid: Vintagestory.API.Common.IGameCalendar.OnGetHemisphere
+  commentId: P:Vintagestory.API.Common.IGameCalendar.OnGetHemisphere
+  id: OnGetHemisphere
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: OnGetHemisphere
+  nameWithType: IGameCalendar.OnGetHemisphere
+  fullName: Vintagestory.API.Common.IGameCalendar.OnGetHemisphere
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnGetHemisphere
+    path: Common/API/IGameCalendar.cs
+    startLine: 129
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Assigned by the survival mod. Must return the hemisphere at give location
+  example: []
+  syntax:
+    content: HemisphereDelegate OnGetHemisphere { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.HemisphereDelegate
+    content.vb: Property OnGetHemisphere As HemisphereDelegate
+  overload: Vintagestory.API.Common.IGameCalendar.OnGetHemisphere*
+- uid: Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords
+  commentId: P:Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords
+  id: OnGetSolarSphericalCoords
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: OnGetSolarSphericalCoords
+  nameWithType: IGameCalendar.OnGetSolarSphericalCoords
+  fullName: Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnGetSolarSphericalCoords
+    path: Common/API/IGameCalendar.cs
+    startLine: 134
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Assigned by the survival mod. The calendar uses this method to determine the solar altitude at given location and time. If not set, the calendar uses a default value of about 0.75
+  example: []
+  syntax:
+    content: SolarSphericalCoordsDelegate OnGetSolarSphericalCoords { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.SolarSphericalCoordsDelegate
+    content.vb: Property OnGetSolarSphericalCoords As SolarSphericalCoordsDelegate
+  overload: Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords*
+- uid: Vintagestory.API.Common.IGameCalendar.OnGetLatitude
+  commentId: P:Vintagestory.API.Common.IGameCalendar.OnGetLatitude
+  id: OnGetLatitude
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: OnGetLatitude
+  nameWithType: IGameCalendar.OnGetLatitude
+  fullName: Vintagestory.API.Common.IGameCalendar.OnGetLatitude
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnGetLatitude
+    path: Common/API/IGameCalendar.cs
+    startLine: 140
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Assigned by the survival mod. Must return the latitude for given position. If not set, the calendar uses a default value of 0.5<br />
+
+    -1 for south pole, 0 for equater, 1 for north pole
+  example: []
+  syntax:
+    content: GetLatitudeDelegate OnGetLatitude { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.GetLatitudeDelegate
+    content.vb: Property OnGetLatitude As GetLatitudeDelegate
+  overload: Vintagestory.API.Common.IGameCalendar.OnGetLatitude*
+- uid: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(System.Double,System.Double)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(System.Double,System.Double)
+  id: GetDayLightStrength(System.Double,System.Double)
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetDayLightStrength(double, double)
+  nameWithType: IGameCalendar.GetDayLightStrength(double, double)
+  fullName: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(double, double)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetDayLightStrength
+    path: Common/API/IGameCalendar.cs
+    startLine: 150
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Retrieve the current daylight strength at given coordinates, the values are roughly beween 0 and 1.2f
+  example: []
+  syntax:
+    content: float GetDayLightStrength(double x, double z)
+    parameters:
+    - id: x
+      type: System.Double
+      description: ''
+    - id: z
+      type: System.Double
+      description: ''
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Function GetDayLightStrength(x As Double, z As Double) As Single
+  overload: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength*
+  nameWithType.vb: IGameCalendar.GetDayLightStrength(Double, Double)
+  fullName.vb: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Double, Double)
+  name.vb: GetDayLightStrength(Double, Double)
+- uid: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)
+  id: GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetDayLightStrength(BlockPos)
+  nameWithType: IGameCalendar.GetDayLightStrength(BlockPos)
+  fullName: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetDayLightStrength
+    path: Common/API/IGameCalendar.cs
+    startLine: 157
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Retrieve the current daylight strength at given coordinates. The Y-Component is ignored
+  example: []
+  syntax:
+    content: float GetDayLightStrength(BlockPos pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Function GetDayLightStrength(pos As BlockPos) As Single
+  overload: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength*
+- uid: Vintagestory.API.Common.IGameCalendar.PrettyDate
+  commentId: M:Vintagestory.API.Common.IGameCalendar.PrettyDate
+  id: PrettyDate
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: PrettyDate()
+  nameWithType: IGameCalendar.PrettyDate()
+  fullName: Vintagestory.API.Common.IGameCalendar.PrettyDate()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: PrettyDate
+    path: Common/API/IGameCalendar.cs
+    startLine: 164
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The worlds current date, nicely formatted
+  example: []
+  syntax:
+    content: string PrettyDate()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Function PrettyDate() As String
+  overload: Vintagestory.API.Common.IGameCalendar.PrettyDate*
+- uid: Vintagestory.API.Common.IGameCalendar.SpeedOfTime
+  commentId: P:Vintagestory.API.Common.IGameCalendar.SpeedOfTime
+  id: SpeedOfTime
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: SpeedOfTime
+  nameWithType: IGameCalendar.SpeedOfTime
+  fullName: Vintagestory.API.Common.IGameCalendar.SpeedOfTime
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SpeedOfTime
+    path: Common/API/IGameCalendar.cs
+    startLine: 170
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    This acts as a multiplier on how much faster an ingame second passes by compared to a real life second. Affects physics, like the motion speed of waving grass. The default is 60, hence per default a day lasts 24 minutes, but it's also multiplied by CalendarSpeedMul which is 0.5 by default so the end result is 48 minutes per day
+
+    This is the sum of all modifiers
+  example: []
+  syntax:
+    content: float SpeedOfTime { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property SpeedOfTime As Single
+  overload: Vintagestory.API.Common.IGameCalendar.SpeedOfTime*
+- uid: Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(System.String,System.Single)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(System.String,System.Single)
+  id: SetTimeSpeedModifier(System.String,System.Single)
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: SetTimeSpeedModifier(string, float)
+  nameWithType: IGameCalendar.SetTimeSpeedModifier(string, float)
+  fullName: Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(string, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetTimeSpeedModifier
+    path: Common/API/IGameCalendar.cs
+    startLine: 175
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If you want to modify the time speed, set a value here
+  example: []
+  syntax:
+    content: void SetTimeSpeedModifier(string name, float speed)
+    parameters:
+    - id: name
+      type: System.String
+    - id: speed
+      type: System.Single
+    content.vb: Sub SetTimeSpeedModifier(name As String, speed As Single)
+  overload: Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier*
+  nameWithType.vb: IGameCalendar.SetTimeSpeedModifier(String, Single)
+  fullName.vb: Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(String, Single)
+  name.vb: SetTimeSpeedModifier(String, Single)
+- uid: Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(System.String)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(System.String)
+  id: RemoveTimeSpeedModifier(System.String)
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: RemoveTimeSpeedModifier(string)
+  nameWithType: IGameCalendar.RemoveTimeSpeedModifier(string)
+  fullName: Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(string)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: RemoveTimeSpeedModifier
+    path: Common/API/IGameCalendar.cs
+    startLine: 181
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: To remove a previously added time speed modifier
+  example: []
+  syntax:
+    content: void RemoveTimeSpeedModifier(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: ''
+    content.vb: Sub RemoveTimeSpeedModifier(name As String)
+  overload: Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier*
+  nameWithType.vb: IGameCalendar.RemoveTimeSpeedModifier(String)
+  fullName.vb: Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier(String)
+  name.vb: RemoveTimeSpeedModifier(String)
+- uid: Vintagestory.API.Common.IGameCalendar.ElapsedSeconds
+  commentId: P:Vintagestory.API.Common.IGameCalendar.ElapsedSeconds
+  id: ElapsedSeconds
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: ElapsedSeconds
+  nameWithType: IGameCalendar.ElapsedSeconds
+  fullName: Vintagestory.API.Common.IGameCalendar.ElapsedSeconds
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ElapsedSeconds
+    path: Common/API/IGameCalendar.cs
+    startLine: 186
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Amount of in-game seconds that have passed since the game started
+  example: []
+  syntax:
+    content: long ElapsedSeconds { get; }
+    parameters: []
+    return:
+      type: System.Int64
+    content.vb: ReadOnly Property ElapsedSeconds As Long
+  overload: Vintagestory.API.Common.IGameCalendar.ElapsedSeconds*
+- uid: Vintagestory.API.Common.IGameCalendar.ElapsedHours
+  commentId: P:Vintagestory.API.Common.IGameCalendar.ElapsedHours
+  id: ElapsedHours
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: ElapsedHours
+  nameWithType: IGameCalendar.ElapsedHours
+  fullName: Vintagestory.API.Common.IGameCalendar.ElapsedHours
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ElapsedHours
+    path: Common/API/IGameCalendar.cs
+    startLine: 191
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Amount of in-game hours that have passed since the game started
+  example: []
+  syntax:
+    content: double ElapsedHours { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: ReadOnly Property ElapsedHours As Double
+  overload: Vintagestory.API.Common.IGameCalendar.ElapsedHours*
+- uid: Vintagestory.API.Common.IGameCalendar.ElapsedDays
+  commentId: P:Vintagestory.API.Common.IGameCalendar.ElapsedDays
+  id: ElapsedDays
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: ElapsedDays
+  nameWithType: IGameCalendar.ElapsedDays
+  fullName: Vintagestory.API.Common.IGameCalendar.ElapsedDays
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ElapsedDays
+    path: Common/API/IGameCalendar.cs
+    startLine: 196
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Amount of in-game days that have passed since the game started
+  example: []
+  syntax:
+    content: double ElapsedDays { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: ReadOnly Property ElapsedDays As Double
+  overload: Vintagestory.API.Common.IGameCalendar.ElapsedDays*
+- uid: Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul
+  commentId: P:Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul
+  id: CalendarSpeedMul
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: CalendarSpeedMul
+  nameWithType: IGameCalendar.CalendarSpeedMul
+  fullName: Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CalendarSpeedMul
+    path: Common/API/IGameCalendar.cs
+    startLine: 202
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: A multiplier thats applied to the progression of the calendar. Set this to 0.1 and a day will last 10 times longer, does not affect physics.
+  example: []
+  syntax:
+    content: float CalendarSpeedMul { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property CalendarSpeedMul As Single
+  overload: Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul*
+- uid: Vintagestory.API.Common.IGameCalendar.HoursPerDay
+  commentId: P:Vintagestory.API.Common.IGameCalendar.HoursPerDay
+  id: HoursPerDay
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: HoursPerDay
+  nameWithType: IGameCalendar.HoursPerDay
+  fullName: Vintagestory.API.Common.IGameCalendar.HoursPerDay
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: HoursPerDay
+    path: Common/API/IGameCalendar.cs
+    startLine: 207
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Amount of hours per day
+  example: []
+  syntax:
+    content: float HoursPerDay { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property HoursPerDay As Single
+  overload: Vintagestory.API.Common.IGameCalendar.HoursPerDay*
+- uid: Vintagestory.API.Common.IGameCalendar.DaysPerYear
+  commentId: P:Vintagestory.API.Common.IGameCalendar.DaysPerYear
+  id: DaysPerYear
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: DaysPerYear
+  nameWithType: IGameCalendar.DaysPerYear
+  fullName: Vintagestory.API.Common.IGameCalendar.DaysPerYear
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DaysPerYear
+    path: Common/API/IGameCalendar.cs
+    startLine: 212
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Amount of days per year
+  example: []
+  syntax:
+    content: int DaysPerYear { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property DaysPerYear As Integer
+  overload: Vintagestory.API.Common.IGameCalendar.DaysPerYear*
+- uid: Vintagestory.API.Common.IGameCalendar.DaysPerMonth
+  commentId: P:Vintagestory.API.Common.IGameCalendar.DaysPerMonth
+  id: DaysPerMonth
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: DaysPerMonth
+  nameWithType: IGameCalendar.DaysPerMonth
+  fullName: Vintagestory.API.Common.IGameCalendar.DaysPerMonth
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DaysPerMonth
+    path: Common/API/IGameCalendar.cs
+    startLine: 217
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Amount of days per month
+  example: []
+  syntax:
+    content: int DaysPerMonth { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property DaysPerMonth As Integer
+  overload: Vintagestory.API.Common.IGameCalendar.DaysPerMonth*
+- uid: Vintagestory.API.Common.IGameCalendar.Month
+  commentId: P:Vintagestory.API.Common.IGameCalendar.Month
+  id: Month
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: Month
+  nameWithType: IGameCalendar.Month
+  fullName: Vintagestory.API.Common.IGameCalendar.Month
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Month
+    path: Common/API/IGameCalendar.cs
+    startLine: 220
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: int Month { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Month As Integer
+  overload: Vintagestory.API.Common.IGameCalendar.Month*
+- uid: Vintagestory.API.Common.IGameCalendar.MonthName
+  commentId: P:Vintagestory.API.Common.IGameCalendar.MonthName
+  id: MonthName
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: MonthName
+  nameWithType: IGameCalendar.MonthName
+  fullName: Vintagestory.API.Common.IGameCalendar.MonthName
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MonthName
+    path: Common/API/IGameCalendar.cs
+    startLine: 221
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: EnumMonth MonthName { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.EnumMonth
+    content.vb: ReadOnly Property MonthName As EnumMonth
+  overload: Vintagestory.API.Common.IGameCalendar.MonthName*
+- uid: Vintagestory.API.Common.IGameCalendar.FullHourOfDay
+  commentId: P:Vintagestory.API.Common.IGameCalendar.FullHourOfDay
+  id: FullHourOfDay
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: FullHourOfDay
+  nameWithType: IGameCalendar.FullHourOfDay
+  fullName: Vintagestory.API.Common.IGameCalendar.FullHourOfDay
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: FullHourOfDay
+    path: Common/API/IGameCalendar.cs
+    startLine: 226
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The current hour of the day as integer
+  example: []
+  syntax:
+    content: int FullHourOfDay { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property FullHourOfDay As Integer
+  overload: Vintagestory.API.Common.IGameCalendar.FullHourOfDay*
+- uid: Vintagestory.API.Common.IGameCalendar.HourOfDay
+  commentId: P:Vintagestory.API.Common.IGameCalendar.HourOfDay
+  id: HourOfDay
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: HourOfDay
+  nameWithType: IGameCalendar.HourOfDay
+  fullName: Vintagestory.API.Common.IGameCalendar.HourOfDay
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: HourOfDay
+    path: Common/API/IGameCalendar.cs
+    startLine: 231
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The current hour of the day as decimal
+  example: []
+  syntax:
+    content: float HourOfDay { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property HourOfDay As Single
+  overload: Vintagestory.API.Common.IGameCalendar.HourOfDay*
+- uid: Vintagestory.API.Common.IGameCalendar.TotalHours
+  commentId: P:Vintagestory.API.Common.IGameCalendar.TotalHours
+  id: TotalHours
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: TotalHours
+  nameWithType: IGameCalendar.TotalHours
+  fullName: Vintagestory.API.Common.IGameCalendar.TotalHours
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TotalHours
+    path: Common/API/IGameCalendar.cs
+    startLine: 236
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Total passed hours since the game has started
+  example: []
+  syntax:
+    content: double TotalHours { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: ReadOnly Property TotalHours As Double
+  overload: Vintagestory.API.Common.IGameCalendar.TotalHours*
+- uid: Vintagestory.API.Common.IGameCalendar.TotalDays
+  commentId: P:Vintagestory.API.Common.IGameCalendar.TotalDays
+  id: TotalDays
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: TotalDays
+  nameWithType: IGameCalendar.TotalDays
+  fullName: Vintagestory.API.Common.IGameCalendar.TotalDays
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TotalDays
+    path: Common/API/IGameCalendar.cs
+    startLine: 241
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Total passed days since the game has started
+  example: []
+  syntax:
+    content: double TotalDays { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: ReadOnly Property TotalDays As Double
+  overload: Vintagestory.API.Common.IGameCalendar.TotalDays*
+- uid: Vintagestory.API.Common.IGameCalendar.DayOfYear
+  commentId: P:Vintagestory.API.Common.IGameCalendar.DayOfYear
+  id: DayOfYear
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: DayOfYear
+  nameWithType: IGameCalendar.DayOfYear
+  fullName: Vintagestory.API.Common.IGameCalendar.DayOfYear
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DayOfYear
+    path: Common/API/IGameCalendar.cs
+    startLine: 246
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The current day of the year (goes from 0 to DaysPerYear)
+  example: []
+  syntax:
+    content: int DayOfYear { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property DayOfYear As Integer
+  overload: Vintagestory.API.Common.IGameCalendar.DayOfYear*
+- uid: Vintagestory.API.Common.IGameCalendar.DayOfYearf
+  commentId: P:Vintagestory.API.Common.IGameCalendar.DayOfYearf
+  id: DayOfYearf
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: DayOfYearf
+  nameWithType: IGameCalendar.DayOfYearf
+  fullName: Vintagestory.API.Common.IGameCalendar.DayOfYearf
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: DayOfYearf
+    path: Common/API/IGameCalendar.cs
+    startLine: 251
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The current day of the year (goes from 0 to DaysPerYear)
+  example: []
+  syntax:
+    content: float DayOfYearf { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property DayOfYearf As Single
+  overload: Vintagestory.API.Common.IGameCalendar.DayOfYearf*
+- uid: Vintagestory.API.Common.IGameCalendar.Year
+  commentId: P:Vintagestory.API.Common.IGameCalendar.Year
+  id: Year
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: Year
+  nameWithType: IGameCalendar.Year
+  fullName: Vintagestory.API.Common.IGameCalendar.Year
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Year
+    path: Common/API/IGameCalendar.cs
+    startLine: 257
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the year. Every game begins with 1386
+  example: []
+  syntax:
+    content: int Year { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property Year As Integer
+  overload: Vintagestory.API.Common.IGameCalendar.Year*
+- uid: Vintagestory.API.Common.IGameCalendar.GetSeason(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.GetSeason(Vintagestory.API.MathTools.BlockPos)
+  id: GetSeason(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetSeason(BlockPos)
+  nameWithType: IGameCalendar.GetSeason(BlockPos)
+  fullName: Vintagestory.API.Common.IGameCalendar.GetSeason(Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetSeason
+    path: Common/API/IGameCalendar.cs
+    startLine: 264
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the season at given position
+  example: []
+  syntax:
+    content: EnumSeason GetSeason(BlockPos pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    return:
+      type: Vintagestory.API.Common.EnumSeason
+      description: ''
+    content.vb: Function GetSeason(pos As BlockPos) As EnumSeason
+  overload: Vintagestory.API.Common.IGameCalendar.GetSeason*
+- uid: Vintagestory.API.Common.IGameCalendar.GetSeasonRel(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.GetSeasonRel(Vintagestory.API.MathTools.BlockPos)
+  id: GetSeasonRel(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetSeasonRel(BlockPos)
+  nameWithType: IGameCalendar.GetSeasonRel(BlockPos)
+  fullName: Vintagestory.API.Common.IGameCalendar.GetSeasonRel(Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetSeasonRel
+    path: Common/API/IGameCalendar.cs
+    startLine: 271
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the season at given position between 0..1, respects hemisphere
+  example: []
+  syntax:
+    content: float GetSeasonRel(BlockPos pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Function GetSeasonRel(pos As BlockPos) As Single
+  overload: Vintagestory.API.Common.IGameCalendar.GetSeasonRel*
+- uid: Vintagestory.API.Common.IGameCalendar.GetHemisphere(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.GetHemisphere(Vintagestory.API.MathTools.BlockPos)
+  id: GetHemisphere(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: GetHemisphere(BlockPos)
+  nameWithType: IGameCalendar.GetHemisphere(BlockPos)
+  fullName: Vintagestory.API.Common.IGameCalendar.GetHemisphere(Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetHemisphere
+    path: Common/API/IGameCalendar.cs
+    startLine: 278
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the hemisphere at given position
+  example: []
+  syntax:
+    content: EnumHemisphere GetHemisphere(BlockPos pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    return:
+      type: Vintagestory.API.Common.EnumHemisphere
+      description: ''
+    content.vb: Function GetHemisphere(pos As BlockPos) As EnumHemisphere
+  overload: Vintagestory.API.Common.IGameCalendar.GetHemisphere*
+- uid: Vintagestory.API.Common.IGameCalendar.YearRel
+  commentId: P:Vintagestory.API.Common.IGameCalendar.YearRel
+  id: YearRel
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: YearRel
+  nameWithType: IGameCalendar.YearRel
+  fullName: Vintagestory.API.Common.IGameCalendar.YearRel
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: YearRel
+    path: Common/API/IGameCalendar.cs
+    startLine: 283
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns the current season in a value of 0 to 1
+  example: []
+  syntax:
+    content: float YearRel { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property YearRel As Single
+  overload: Vintagestory.API.Common.IGameCalendar.YearRel*
+- uid: Vintagestory.API.Common.IGameCalendar.Add(System.Single)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.Add(System.Single)
+  id: Add(System.Single)
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: Add(float)
+  nameWithType: IGameCalendar.Add(float)
+  fullName: Vintagestory.API.Common.IGameCalendar.Add(float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Add
+    path: Common/API/IGameCalendar.cs
+    startLine: 289
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Adds given time to the calendar
+  example: []
+  syntax:
+    content: void Add(float hours)
+    parameters:
+    - id: hours
+      type: System.Single
+      description: ''
+    content.vb: Sub Add(hours As Single)
+  overload: Vintagestory.API.Common.IGameCalendar.Add*
+  nameWithType.vb: IGameCalendar.Add(Single)
+  fullName.vb: Vintagestory.API.Common.IGameCalendar.Add(Single)
+  name.vb: Add(Single)
+- uid: Vintagestory.API.Common.IGameCalendar.MoonPhase
+  commentId: P:Vintagestory.API.Common.IGameCalendar.MoonPhase
+  id: MoonPhase
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: MoonPhase
+  nameWithType: IGameCalendar.MoonPhase
+  fullName: Vintagestory.API.Common.IGameCalendar.MoonPhase
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MoonPhase
+    path: Common/API/IGameCalendar.cs
+    startLine: 294
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The current moonphase
+  example: []
+  syntax:
+    content: EnumMoonPhase MoonPhase { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.EnumMoonPhase
+    content.vb: ReadOnly Property MoonPhase As EnumMoonPhase
+  overload: Vintagestory.API.Common.IGameCalendar.MoonPhase*
+- uid: Vintagestory.API.Common.IGameCalendar.MoonPhaseExact
+  commentId: P:Vintagestory.API.Common.IGameCalendar.MoonPhaseExact
+  id: MoonPhaseExact
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: MoonPhaseExact
+  nameWithType: IGameCalendar.MoonPhaseExact
+  fullName: Vintagestory.API.Common.IGameCalendar.MoonPhaseExact
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MoonPhaseExact
+    path: Common/API/IGameCalendar.cs
+    startLine: 298
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The current moonphase represented by number from 0..8
+  example: []
+  syntax:
+    content: double MoonPhaseExact { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: ReadOnly Property MoonPhaseExact As Double
+  overload: Vintagestory.API.Common.IGameCalendar.MoonPhaseExact*
+- uid: Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness
+  commentId: P:Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness
+  id: MoonPhaseBrightness
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: MoonPhaseBrightness
+  nameWithType: IGameCalendar.MoonPhaseBrightness
+  fullName: Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MoonPhaseBrightness
+    path: Common/API/IGameCalendar.cs
+    startLine: 302
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The moons current brightness (higher during full moon)
+  example: []
+  syntax:
+    content: float MoonPhaseBrightness { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property MoonPhaseBrightness As Single
+  overload: Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness*
+- uid: Vintagestory.API.Common.IGameCalendar.MoonSize
+  commentId: P:Vintagestory.API.Common.IGameCalendar.MoonSize
+  id: MoonSize
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: MoonSize
+  nameWithType: IGameCalendar.MoonSize
+  fullName: Vintagestory.API.Common.IGameCalendar.MoonSize
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MoonSize
+    path: Common/API/IGameCalendar.cs
+    startLine: 306
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The moons current size (larger during full moon)
+  example: []
+  syntax:
+    content: float MoonSize { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property MoonSize As Single
+  overload: Vintagestory.API.Common.IGameCalendar.MoonSize*
+- uid: Vintagestory.API.Common.IGameCalendar.SeasonOverride
+  commentId: P:Vintagestory.API.Common.IGameCalendar.SeasonOverride
+  id: SeasonOverride
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: SeasonOverride
+  nameWithType: IGameCalendar.SeasonOverride
+  fullName: Vintagestory.API.Common.IGameCalendar.SeasonOverride
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SeasonOverride
+    path: Common/API/IGameCalendar.cs
+    startLine: 307
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: float? SeasonOverride { get; set; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Property SeasonOverride As Single?
+  overload: Vintagestory.API.Common.IGameCalendar.SeasonOverride*
+- uid: Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(System.Nullable{System.Single})
+  commentId: M:Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(System.Nullable{System.Single})
+  id: SetSeasonOverride(System.Nullable{System.Single})
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: SetSeasonOverride(float?)
+  nameWithType: IGameCalendar.SetSeasonOverride(float?)
+  fullName: Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(float?)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: SetSeasonOverride
+    path: Common/API/IGameCalendar.cs
+    startLine: 313
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If non-null, will override the value retrieved by GetSeason(). Set to null to have seasons progress normally again.
+  example: []
+  syntax:
+    content: void SetSeasonOverride(float? seasonRel)
+    parameters:
+    - id: seasonRel
+      type: System.Nullable{System.Single}
+      description: ''
+    content.vb: Sub SetSeasonOverride(seasonRel As Single?)
+  overload: Vintagestory.API.Common.IGameCalendar.SetSeasonOverride*
+  nameWithType.vb: IGameCalendar.SetSeasonOverride(Single?)
+  fullName.vb: Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(Single?)
+  name.vb: SetSeasonOverride(Single?)
+- uid: Vintagestory.API.Common.IGameCalendar.Timelapse
+  commentId: P:Vintagestory.API.Common.IGameCalendar.Timelapse
+  id: Timelapse
+  parent: Vintagestory.API.Common.IGameCalendar
+  langs:
+  - csharp
+  - vb
+  name: Timelapse
+  nameWithType: IGameCalendar.Timelapse
+  fullName: Vintagestory.API.Common.IGameCalendar.Timelapse
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IGameCalendar.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Timelapse
+    path: Common/API/IGameCalendar.cs
+    startLine: 318
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Can be used to adjust apparent time of day and season for rendering, e.g. to create a series of timelapse images; restore to 0 when done
+  example: []
+  syntax:
+    content: float Timelapse { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property Timelapse As Single
+  overload: Vintagestory.API.Common.IGameCalendar.Timelapse*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IGameCalendar.OnGetHemisphere*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.OnGetHemisphere
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_OnGetHemisphere
+  name: OnGetHemisphere
+  nameWithType: IGameCalendar.OnGetHemisphere
+  fullName: Vintagestory.API.Common.IGameCalendar.OnGetHemisphere
+- uid: Vintagestory.API.Common.HemisphereDelegate
+  commentId: T:Vintagestory.API.Common.HemisphereDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.HemisphereDelegate.html
+  name: HemisphereDelegate
+  nameWithType: HemisphereDelegate
+  fullName: Vintagestory.API.Common.HemisphereDelegate
+- uid: Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_OnGetSolarSphericalCoords
+  name: OnGetSolarSphericalCoords
+  nameWithType: IGameCalendar.OnGetSolarSphericalCoords
+  fullName: Vintagestory.API.Common.IGameCalendar.OnGetSolarSphericalCoords
+- uid: Vintagestory.API.Common.SolarSphericalCoordsDelegate
+  commentId: T:Vintagestory.API.Common.SolarSphericalCoordsDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.SolarSphericalCoordsDelegate.html
+  name: SolarSphericalCoordsDelegate
+  nameWithType: SolarSphericalCoordsDelegate
+  fullName: Vintagestory.API.Common.SolarSphericalCoordsDelegate
+- uid: Vintagestory.API.Common.IGameCalendar.OnGetLatitude*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.OnGetLatitude
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_OnGetLatitude
+  name: OnGetLatitude
+  nameWithType: IGameCalendar.OnGetLatitude
+  fullName: Vintagestory.API.Common.IGameCalendar.OnGetLatitude
+- uid: Vintagestory.API.Common.GetLatitudeDelegate
+  commentId: T:Vintagestory.API.Common.GetLatitudeDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.GetLatitudeDelegate.html
+  name: GetLatitudeDelegate
+  nameWithType: GetLatitudeDelegate
+  fullName: Vintagestory.API.Common.GetLatitudeDelegate
+- uid: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.GetDayLightStrength
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetDayLightStrength_System_Double_System_Double_
+  name: GetDayLightStrength
+  nameWithType: IGameCalendar.GetDayLightStrength
+  fullName: Vintagestory.API.Common.IGameCalendar.GetDayLightStrength
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.IGameCalendar.PrettyDate*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.PrettyDate
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_PrettyDate
+  name: PrettyDate
+  nameWithType: IGameCalendar.PrettyDate
+  fullName: Vintagestory.API.Common.IGameCalendar.PrettyDate
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: Vintagestory.API.Common.IGameCalendar.SpeedOfTime*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.SpeedOfTime
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_SpeedOfTime
+  name: SpeedOfTime
+  nameWithType: IGameCalendar.SpeedOfTime
+  fullName: Vintagestory.API.Common.IGameCalendar.SpeedOfTime
+- uid: Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_SetTimeSpeedModifier_System_String_System_Single_
+  name: SetTimeSpeedModifier
+  nameWithType: IGameCalendar.SetTimeSpeedModifier
+  fullName: Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier
+- uid: Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_RemoveTimeSpeedModifier_System_String_
+  name: RemoveTimeSpeedModifier
+  nameWithType: IGameCalendar.RemoveTimeSpeedModifier
+  fullName: Vintagestory.API.Common.IGameCalendar.RemoveTimeSpeedModifier
+- uid: Vintagestory.API.Common.IGameCalendar.ElapsedSeconds*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.ElapsedSeconds
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_ElapsedSeconds
+  name: ElapsedSeconds
+  nameWithType: IGameCalendar.ElapsedSeconds
+  fullName: Vintagestory.API.Common.IGameCalendar.ElapsedSeconds
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: Vintagestory.API.Common.IGameCalendar.ElapsedHours*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.ElapsedHours
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_ElapsedHours
+  name: ElapsedHours
+  nameWithType: IGameCalendar.ElapsedHours
+  fullName: Vintagestory.API.Common.IGameCalendar.ElapsedHours
+- uid: Vintagestory.API.Common.IGameCalendar.ElapsedDays*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.ElapsedDays
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_ElapsedDays
+  name: ElapsedDays
+  nameWithType: IGameCalendar.ElapsedDays
+  fullName: Vintagestory.API.Common.IGameCalendar.ElapsedDays
+- uid: Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_CalendarSpeedMul
+  name: CalendarSpeedMul
+  nameWithType: IGameCalendar.CalendarSpeedMul
+  fullName: Vintagestory.API.Common.IGameCalendar.CalendarSpeedMul
+- uid: Vintagestory.API.Common.IGameCalendar.HoursPerDay*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.HoursPerDay
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_HoursPerDay
+  name: HoursPerDay
+  nameWithType: IGameCalendar.HoursPerDay
+  fullName: Vintagestory.API.Common.IGameCalendar.HoursPerDay
+- uid: Vintagestory.API.Common.IGameCalendar.DaysPerYear*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.DaysPerYear
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_DaysPerYear
+  name: DaysPerYear
+  nameWithType: IGameCalendar.DaysPerYear
+  fullName: Vintagestory.API.Common.IGameCalendar.DaysPerYear
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Common.IGameCalendar.DaysPerMonth*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.DaysPerMonth
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_DaysPerMonth
+  name: DaysPerMonth
+  nameWithType: IGameCalendar.DaysPerMonth
+  fullName: Vintagestory.API.Common.IGameCalendar.DaysPerMonth
+- uid: Vintagestory.API.Common.IGameCalendar.Month*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.Month
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_Month
+  name: Month
+  nameWithType: IGameCalendar.Month
+  fullName: Vintagestory.API.Common.IGameCalendar.Month
+- uid: Vintagestory.API.Common.IGameCalendar.MonthName*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.MonthName
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_MonthName
+  name: MonthName
+  nameWithType: IGameCalendar.MonthName
+  fullName: Vintagestory.API.Common.IGameCalendar.MonthName
+- uid: Vintagestory.API.Common.EnumMonth
+  commentId: T:Vintagestory.API.Common.EnumMonth
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumMonth.html
+  name: EnumMonth
+  nameWithType: EnumMonth
+  fullName: Vintagestory.API.Common.EnumMonth
+- uid: Vintagestory.API.Common.IGameCalendar.FullHourOfDay*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.FullHourOfDay
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_FullHourOfDay
+  name: FullHourOfDay
+  nameWithType: IGameCalendar.FullHourOfDay
+  fullName: Vintagestory.API.Common.IGameCalendar.FullHourOfDay
+- uid: Vintagestory.API.Common.IGameCalendar.HourOfDay*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.HourOfDay
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_HourOfDay
+  name: HourOfDay
+  nameWithType: IGameCalendar.HourOfDay
+  fullName: Vintagestory.API.Common.IGameCalendar.HourOfDay
+- uid: Vintagestory.API.Common.IGameCalendar.TotalHours*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.TotalHours
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_TotalHours
+  name: TotalHours
+  nameWithType: IGameCalendar.TotalHours
+  fullName: Vintagestory.API.Common.IGameCalendar.TotalHours
+- uid: Vintagestory.API.Common.IGameCalendar.TotalDays*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.TotalDays
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_TotalDays
+  name: TotalDays
+  nameWithType: IGameCalendar.TotalDays
+  fullName: Vintagestory.API.Common.IGameCalendar.TotalDays
+- uid: Vintagestory.API.Common.IGameCalendar.DayOfYear*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.DayOfYear
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_DayOfYear
+  name: DayOfYear
+  nameWithType: IGameCalendar.DayOfYear
+  fullName: Vintagestory.API.Common.IGameCalendar.DayOfYear
+- uid: Vintagestory.API.Common.IGameCalendar.DayOfYearf*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.DayOfYearf
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_DayOfYearf
+  name: DayOfYearf
+  nameWithType: IGameCalendar.DayOfYearf
+  fullName: Vintagestory.API.Common.IGameCalendar.DayOfYearf
+- uid: Vintagestory.API.Common.IGameCalendar.Year*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.Year
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_Year
+  name: Year
+  nameWithType: IGameCalendar.Year
+  fullName: Vintagestory.API.Common.IGameCalendar.Year
+- uid: Vintagestory.API.Common.IGameCalendar.GetSeason*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.GetSeason
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetSeason_Vintagestory_API_MathTools_BlockPos_
+  name: GetSeason
+  nameWithType: IGameCalendar.GetSeason
+  fullName: Vintagestory.API.Common.IGameCalendar.GetSeason
+- uid: Vintagestory.API.Common.EnumSeason
+  commentId: T:Vintagestory.API.Common.EnumSeason
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumSeason.html
+  name: EnumSeason
+  nameWithType: EnumSeason
+  fullName: Vintagestory.API.Common.EnumSeason
+- uid: Vintagestory.API.Common.IGameCalendar.GetSeasonRel*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.GetSeasonRel
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetSeasonRel_Vintagestory_API_MathTools_BlockPos_
+  name: GetSeasonRel
+  nameWithType: IGameCalendar.GetSeasonRel
+  fullName: Vintagestory.API.Common.IGameCalendar.GetSeasonRel
+- uid: Vintagestory.API.Common.IGameCalendar.GetHemisphere*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.GetHemisphere
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetHemisphere_Vintagestory_API_MathTools_BlockPos_
+  name: GetHemisphere
+  nameWithType: IGameCalendar.GetHemisphere
+  fullName: Vintagestory.API.Common.IGameCalendar.GetHemisphere
+- uid: Vintagestory.API.Common.EnumHemisphere
+  commentId: T:Vintagestory.API.Common.EnumHemisphere
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumHemisphere.html
+  name: EnumHemisphere
+  nameWithType: EnumHemisphere
+  fullName: Vintagestory.API.Common.EnumHemisphere
+- uid: Vintagestory.API.Common.IGameCalendar.YearRel*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.YearRel
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_YearRel
+  name: YearRel
+  nameWithType: IGameCalendar.YearRel
+  fullName: Vintagestory.API.Common.IGameCalendar.YearRel
+- uid: Vintagestory.API.Common.IGameCalendar.Add*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.Add
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_Add_System_Single_
+  name: Add
+  nameWithType: IGameCalendar.Add
+  fullName: Vintagestory.API.Common.IGameCalendar.Add
+- uid: Vintagestory.API.Common.IGameCalendar.MoonPhase*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.MoonPhase
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_MoonPhase
+  name: MoonPhase
+  nameWithType: IGameCalendar.MoonPhase
+  fullName: Vintagestory.API.Common.IGameCalendar.MoonPhase
+- uid: Vintagestory.API.Common.EnumMoonPhase
+  commentId: T:Vintagestory.API.Common.EnumMoonPhase
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumMoonPhase.html
+  name: EnumMoonPhase
+  nameWithType: EnumMoonPhase
+  fullName: Vintagestory.API.Common.EnumMoonPhase
+- uid: Vintagestory.API.Common.IGameCalendar.MoonPhaseExact*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.MoonPhaseExact
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_MoonPhaseExact
+  name: MoonPhaseExact
+  nameWithType: IGameCalendar.MoonPhaseExact
+  fullName: Vintagestory.API.Common.IGameCalendar.MoonPhaseExact
+- uid: Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_MoonPhaseBrightness
+  name: MoonPhaseBrightness
+  nameWithType: IGameCalendar.MoonPhaseBrightness
+  fullName: Vintagestory.API.Common.IGameCalendar.MoonPhaseBrightness
+- uid: Vintagestory.API.Common.IGameCalendar.MoonSize*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.MoonSize
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_MoonSize
+  name: MoonSize
+  nameWithType: IGameCalendar.MoonSize
+  fullName: Vintagestory.API.Common.IGameCalendar.MoonSize
+- uid: Vintagestory.API.Common.IGameCalendar.SeasonOverride*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.SeasonOverride
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_SeasonOverride
+  name: SeasonOverride
+  nameWithType: IGameCalendar.SeasonOverride
+  fullName: Vintagestory.API.Common.IGameCalendar.SeasonOverride
+- uid: System.Nullable{System.Single}
+  commentId: T:System.Nullable{System.Single}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float?
+  nameWithType: float?
+  fullName: float?
+  nameWithType.vb: Single?
+  fullName.vb: Single?
+  name.vb: Single?
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.SetSeasonOverride*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.SetSeasonOverride
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_SetSeasonOverride_System_Nullable_System_Single__
+  name: SetSeasonOverride
+  nameWithType: IGameCalendar.SetSeasonOverride
+  fullName: Vintagestory.API.Common.IGameCalendar.SetSeasonOverride
+- uid: Vintagestory.API.Common.IGameCalendar.Timelapse*
+  commentId: Overload:Vintagestory.API.Common.IGameCalendar.Timelapse
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_Timelapse
+  name: Timelapse
+  nameWithType: IGameCalendar.Timelapse
+  fullName: Vintagestory.API.Common.IGameCalendar.Timelapse

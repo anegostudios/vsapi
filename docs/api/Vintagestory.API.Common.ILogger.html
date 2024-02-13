@@ -1,1172 +1,1139 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface ILogger
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface ILogger
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Interface ILogger | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Interface ILogger | VintageStory API ">
+      
+      <meta name="description" content="Interface to the client&#39;s and server&#39;s event, debug and error logging utilty.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
-          </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.ILogger">
-  
-  
-  <h1 id="Vintagestory_API_Common_ILogger" data-uid="Vintagestory.API.Common.ILogger" class="text-break">Interface ILogger
+
+        <article data-uid="Vintagestory.API.Common.ILogger">
+
+
+
+  <h1 id="Vintagestory_API_Common_ILogger" data-uid="Vintagestory.API.Common.ILogger" class="text-break">
+Interface ILogger  
   </h1>
-  <div class="markdown level0 summary"><p>Interface to the client&apos;s and server&apos;s event, debug and error logging utilty.</p>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Interface to the client's and server's event, debug and error logging utilty.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_ILogger_syntax">Syntax</h5>
+  <div class="markdown conceptual"></div>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface ILogger</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_TraceLog.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.TraceLog%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L14">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Vintagestory_API_Common_ILogger_TraceLog_" data-uid="Vintagestory.API.Common.ILogger.TraceLog*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_TraceLog" data-uid="Vintagestory.API.Common.ILogger.TraceLog">TraceLog</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_TraceLog" data-uid="Vintagestory.API.Common.ILogger.TraceLog">
+  TraceLog
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>If true, will also print to Diagnostics.Debug.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">bool TraceLog { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Audit_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Audit(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L146">View Source</a>
-  </span>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Vintagestory_API_Common_ILogger_Audit_" data-uid="Vintagestory.API.Common.ILogger.Audit*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Audit_System_String_" data-uid="Vintagestory.API.Common.ILogger.Audit(System.String)">Audit(String)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Audit_System_String_" data-uid="Vintagestory.API.Common.ILogger.Audit(System.String)">
+  Audit(string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Audit">Audit</a> log entry with the specified message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Audit(string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Audit_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Audit(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L142">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Audit_" data-uid="Vintagestory.API.Common.ILogger.Audit*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Audit_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Audit(System.String,System.Object[])">Audit(String, Object[])</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Audit_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Audit(System.String,System.Object[])">
+  Audit(string, params object[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Audit">Audit</a> log entry with the specified format string and arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Audit(string format, params object[] args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Build_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Build(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L71">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Build_" data-uid="Vintagestory.API.Common.ILogger.Build*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Build_System_String_" data-uid="Vintagestory.API.Common.ILogger.Build(System.String)">Build(String)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Build_System_String_" data-uid="Vintagestory.API.Common.ILogger.Build(System.String)">
+  Build(string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Build">Build</a> log entry with the specified message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Build(string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Build_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Build(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L67">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Build_" data-uid="Vintagestory.API.Common.ILogger.Build*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Build_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Build(System.String,System.Object[])">Build(String, Object[])</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Build_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Build(System.String,System.Object[])">
+  Build(string, params object[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Build">Build</a> log entry with the specified format string and arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Build(string format, params object[] args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Chat_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Chat(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L44">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Chat_" data-uid="Vintagestory.API.Common.ILogger.Chat*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Chat_System_String_" data-uid="Vintagestory.API.Common.ILogger.Chat(System.String)">Chat(String)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Chat_System_String_" data-uid="Vintagestory.API.Common.ILogger.Chat(System.String)">
+  Chat(string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Chat">Chat</a> log entry with the specified message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Chat(string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Chat_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Chat(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L39">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Chat_" data-uid="Vintagestory.API.Common.ILogger.Chat*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Chat_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Chat(System.String,System.Object[])">Chat(String, Object[])</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Chat_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Chat(System.String,System.Object[])">
+  Chat(string, params object[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Chat">Chat</a> log entry with the specified format string and arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Chat(string format, params object[] args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_ClearWatchers.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.ClearWatchers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L25">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_ClearWatchers_" data-uid="Vintagestory.API.Common.ILogger.ClearWatchers*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_ClearWatchers" data-uid="Vintagestory.API.Common.ILogger.ClearWatchers">ClearWatchers()</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_ClearWatchers" data-uid="Vintagestory.API.Common.ILogger.ClearWatchers">
+  ClearWatchers()
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes any handler that registered to the EntryAdded event.
 This method is called when the client leaves a world or server shuts down.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void ClearWatchers()</code></pre>
   </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Debug_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Debug(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L89">View Source</a>
-  </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Debug_" data-uid="Vintagestory.API.Common.ILogger.Debug*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Debug_System_String_" data-uid="Vintagestory.API.Common.ILogger.Debug(System.String)">Debug(String)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Debug_System_String_" data-uid="Vintagestory.API.Common.ILogger.Debug(System.String)">
+  Debug(string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Debug">Debug</a> log entry with the specified message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Debug(string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Debug_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Debug(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L85">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Debug_" data-uid="Vintagestory.API.Common.ILogger.Debug*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Debug_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Debug(System.String,System.Object[])">Debug(String, Object[])</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Debug_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Debug(System.String,System.Object[])">
+  Debug(string, params object[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Debug">Debug</a> log entry with the specified format string and arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Debug(string format, params object[] args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Error_Exception_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Error(Exception)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L124">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Error_" data-uid="Vintagestory.API.Common.ILogger.Error*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Error_Exception_" data-uid="Vintagestory.API.Common.ILogger.Error(Exception)">Error(Exception)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Error_System_Exception_" data-uid="Vintagestory.API.Common.ILogger.Error(System.Exception)">
+  Error(Exception)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Convenience method for logging exceptions in try/catch blocks</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Error(Exception e)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Exception</span></td>
-        <td><span class="parametername">e</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Error_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Error(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L120">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>e</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Error_" data-uid="Vintagestory.API.Common.ILogger.Error*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Error_System_String_" data-uid="Vintagestory.API.Common.ILogger.Error(System.String)">Error(String)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Error_System_String_" data-uid="Vintagestory.API.Common.ILogger.Error(System.String)">
+  Error(string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Error">Error</a> log entry with the specified message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Error(string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Error_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Error(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L116">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Error_" data-uid="Vintagestory.API.Common.ILogger.Error*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Error_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Error(System.String,System.Object[])">Error(String, Object[])</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Error_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Error(System.String,System.Object[])">
+  Error(string, params object[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Error">Error</a> log entry with the specified format string and arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Error(string format, params object[] args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Event_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Event(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L53">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Event_" data-uid="Vintagestory.API.Common.ILogger.Event*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Event_System_String_" data-uid="Vintagestory.API.Common.ILogger.Event(System.String)">Event(String)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Event_System_String_" data-uid="Vintagestory.API.Common.ILogger.Event(System.String)">
+  Event(string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Event">Event</a> log entry with the specified message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Event(string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Event_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Event(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L49">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Event_" data-uid="Vintagestory.API.Common.ILogger.Event*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Event_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Event(System.String,System.Object[])">Event(String, Object[])</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Event_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Event(System.String,System.Object[])">
+  Event(string, params object[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Event">Event</a> log entry with the specified format string and arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Event(string format, params object[] args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Fatal_Exception_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Fatal(Exception)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L137">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Fatal_" data-uid="Vintagestory.API.Common.ILogger.Fatal*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Fatal_Exception_" data-uid="Vintagestory.API.Common.ILogger.Fatal(Exception)">Fatal(Exception)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Fatal_System_Exception_" data-uid="Vintagestory.API.Common.ILogger.Fatal(System.Exception)">
+  Fatal(Exception)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Convenience method for logging exceptions in try/catch blocks</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Fatal(Exception e)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Exception</span></td>
-        <td><span class="parametername">e</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Fatal_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Fatal(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L133">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>e</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Fatal_" data-uid="Vintagestory.API.Common.ILogger.Fatal*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Fatal_System_String_" data-uid="Vintagestory.API.Common.ILogger.Fatal(System.String)">Fatal(String)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Fatal_System_String_" data-uid="Vintagestory.API.Common.ILogger.Fatal(System.String)">
+  Fatal(string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Fatal">Fatal</a> log entry with the specified message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Fatal(string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Fatal_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Fatal(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L129">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Fatal_" data-uid="Vintagestory.API.Common.ILogger.Fatal*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Fatal_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Fatal(System.String,System.Object[])">Fatal(String, Object[])</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Fatal_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Fatal(System.String,System.Object[])">
+  Fatal(string, params object[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Fatal">Fatal</a> log entry with the specified format string and arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Fatal(string format, params object[] args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Log_Vintagestory_API_Common_EnumLogType_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L34">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Log_" data-uid="Vintagestory.API.Common.ILogger.Log*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Log_Vintagestory_API_Common_EnumLogType_System_String_" data-uid="Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType,System.String)">Log(EnumLogType, String)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Log_Vintagestory_API_Common_EnumLogType_System_String_" data-uid="Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType,System.String)">
+  Log(EnumLogType, string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new log entry with the specified log type and message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Log(EnumLogType logType, string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumLogType.html">EnumLogType</a></td>
-        <td><span class="parametername">logType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Log_Vintagestory_API_Common_EnumLogType_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType%2CSystem.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L30">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logType</code> <a class="xref" href="Vintagestory.API.Common.EnumLogType.html">EnumLogType</a></dt>
+    <dd></dd>
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Log_" data-uid="Vintagestory.API.Common.ILogger.Log*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Log_Vintagestory_API_Common_EnumLogType_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType,System.String,System.Object[])">Log(EnumLogType, String, Object[])</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Log_Vintagestory_API_Common_EnumLogType_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Log(Vintagestory.API.Common.EnumLogType,System.String,System.Object[])">
+  Log(EnumLogType, string, params object[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new log entry with the specified log type, format string and arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Log(EnumLogType logType, string format, params object[] args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumLogType.html">EnumLogType</a></td>
-        <td><span class="parametername">logType</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Notification_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Notification(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L98">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logType</code> <a class="xref" href="Vintagestory.API.Common.EnumLogType.html">EnumLogType</a></dt>
+    <dd></dd>
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Notification_" data-uid="Vintagestory.API.Common.ILogger.Notification*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Notification_System_String_" data-uid="Vintagestory.API.Common.ILogger.Notification(System.String)">Notification(String)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Notification_System_String_" data-uid="Vintagestory.API.Common.ILogger.Notification(System.String)">
+  Notification(string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Notification">Notification</a> log entry with the specified message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Notification(string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Notification_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Notification(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L94">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Notification_" data-uid="Vintagestory.API.Common.ILogger.Notification*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Notification_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Notification(System.String,System.Object[])">Notification(String, Object[])</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Notification_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Notification(System.String,System.Object[])">
+  Notification(string, params object[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Notification">Notification</a> log entry with the specified format string and arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Notification(string format, params object[] args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_StoryEvent_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.StoryEvent(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L62">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_StoryEvent_" data-uid="Vintagestory.API.Common.ILogger.StoryEvent*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_StoryEvent_System_String_" data-uid="Vintagestory.API.Common.ILogger.StoryEvent(System.String)">StoryEvent(String)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_StoryEvent_System_String_" data-uid="Vintagestory.API.Common.ILogger.StoryEvent(System.String)">
+  StoryEvent(string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_StoryEvent">StoryEvent</a> log entry with the specified message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void StoryEvent(string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_StoryEvent_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.StoryEvent(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L58">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_StoryEvent_" data-uid="Vintagestory.API.Common.ILogger.StoryEvent*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_StoryEvent_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.StoryEvent(System.String,System.Object[])">StoryEvent(String, Object[])</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_StoryEvent_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.StoryEvent(System.String,System.Object[])">
+  StoryEvent(string, params object[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_StoryEvent">StoryEvent</a> log entry with the specified format string and arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void StoryEvent(string format, params object[] args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_VerboseDebug_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.VerboseDebug(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L80">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_VerboseDebug_" data-uid="Vintagestory.API.Common.ILogger.VerboseDebug*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_VerboseDebug_System_String_" data-uid="Vintagestory.API.Common.ILogger.VerboseDebug(System.String)">VerboseDebug(String)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_VerboseDebug_System_String_" data-uid="Vintagestory.API.Common.ILogger.VerboseDebug(System.String)">
+  VerboseDebug(string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_VerboseDebug">VerboseDebug</a> log entry with the specified message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void VerboseDebug(string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_VerboseDebug_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.VerboseDebug(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L76">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_VerboseDebug_" data-uid="Vintagestory.API.Common.ILogger.VerboseDebug*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_VerboseDebug_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.VerboseDebug(System.String,System.Object[])">VerboseDebug(String, Object[])</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_VerboseDebug_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.VerboseDebug(System.String,System.Object[])">
+  VerboseDebug(string, params object[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_VerboseDebug">VerboseDebug</a> log entry with the specified format string and arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void VerboseDebug(string format, params object[] args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Warning_Exception_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Warning(Exception)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L111">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Warning_" data-uid="Vintagestory.API.Common.ILogger.Warning*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Warning_Exception_" data-uid="Vintagestory.API.Common.ILogger.Warning(Exception)">Warning(Exception)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Warning_System_Exception_" data-uid="Vintagestory.API.Common.ILogger.Warning(System.Exception)">
+  Warning(Exception)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Convenience method for logging exceptions in try/catch blocks</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Warning(Exception e)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Exception</span></td>
-        <td><span class="parametername">e</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Warning_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Warning(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L107">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>e</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Warning_" data-uid="Vintagestory.API.Common.ILogger.Warning*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Warning_System_String_" data-uid="Vintagestory.API.Common.ILogger.Warning(System.String)">Warning(String)</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Warning_System_String_" data-uid="Vintagestory.API.Common.ILogger.Warning(System.String)">
+  Warning(string)
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Warning">Warning</a> log entry with the specified message.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Warning(string message)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">message</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_Warning_System_String_System_Object___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.Warning(System.String%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L103">View Source</a>
-  </span>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>message</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_ILogger_Warning_" data-uid="Vintagestory.API.Common.ILogger.Warning*"></a>
-  <h4 id="Vintagestory_API_Common_ILogger_Warning_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Warning(System.String,System.Object[])">Warning(String, Object[])</h4>
+
+  <h3 id="Vintagestory_API_Common_ILogger_Warning_System_String_System_Object___" data-uid="Vintagestory.API.Common.ILogger.Warning(System.String,System.Object[])">
+  Warning(string, params object[])
+  
+  </h3>
+
   <div class="markdown level1 summary"><p>Adds a new <a class="xref" href="Vintagestory.API.Common.EnumLogType.html#Vintagestory_API_Common_EnumLogType_Warning">Warning</a> log entry with the specified format string and arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">void Warning(string format, params object[] args)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">format</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Object</span>[]</td>
-        <td><span class="parametername">args</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="events">Events
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>format</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>args</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_ILogger_EntryAdded" data-uid="Vintagestory.API.Common.ILogger.EntryAdded">
+  EntryAdded
+  
   </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger_EntryAdded.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger.EntryAdded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L19">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_ILogger_EntryAdded" data-uid="Vintagestory.API.Common.ILogger.EntryAdded">EntryAdded</h4>
+
   <div class="markdown level1 summary"><p>Fired each time a new log entry has been added.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">event LogEntryDelegate EntryAdded</code></pre>
   </div>
-  <h5 class="eventType">Event Type</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.LogEntryDelegate.html">LogEntryDelegate</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.LogEntryDelegate.html">LogEntryDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_ILogger.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.ILogger%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/API/ILogger.cs/#L9" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>

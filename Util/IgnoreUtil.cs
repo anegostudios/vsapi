@@ -22,11 +22,11 @@ namespace Vintagestory.API.Util
                 if (String.IsNullOrWhiteSpace(line))
                     continue;
 
-                if (line.StartsWith("!"))
+                if (line.StartsWithOrdinal("!"))
                     ignoredFiles.Add(WildCardToRegular(line.Substring(1)));
                 else
                 {
-                    bool folder = line.EndsWith("/");
+                    bool folder = line.EndsWith('/');
                     var path = cleanUpPath(line.Replace('/', Path.DirectorySeparatorChar));
                     if (folder)
                         path += Path.DirectorySeparatorChar + "*";
@@ -79,7 +79,7 @@ namespace Vintagestory.API.Util
             // neither file nor directory exists. guess intention
 
             // if has trailing slash then it's a directory
-            if (new[] { "\\", "/" }.Any(x => path.EndsWith(x)))
+            if (new[] { '\\', '/' }.Any(x => path.EndsWith(x)))
                 return true; // ends with slash
 
             // if has extension then its a file; directory otherwise

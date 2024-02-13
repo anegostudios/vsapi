@@ -1,717 +1,437 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Enum GlKeys
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Enum GlKeys
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Enum GlKeys | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Enum GlKeys | VintageStory API ">
+      
+      <meta name="description" content="Internally the game uses OpenTK and their Keys are by default mapped to US QWERTY Keyboard layout which the GlKeys also do. Upon typing text in a Text input field it will produce the correct characters according to your keyboard layout. If you need to get the character for the current Keyboard layout use">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Client.GlKeys">
-  
-  
-  <h1 id="Vintagestory_API_Client_GlKeys" data-uid="Vintagestory.API.Client.GlKeys" class="text-break">Enum GlKeys
-  </h1>
-  <div class="markdown level0 summary"><p>Internally the game uses OpenTK and their Keys are by default mapped to US QWERTY Keyboard layout which the GlKeys also do.
-Upon typing text in a Text input field it will produce the correct characters according to your keyboard layout.</p>
-<p>If you need to get the character for the current Keyboard layout use <a class="xref" href="Vintagestory.API.Client.GlKeyNames.html#Vintagestory_API_Client_GlKeyNames_GetKeyName_Vintagestory_API_Client_GlKeys_">GetKeyName(GlKeys)</a></p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Client.html">Vintagestory.API.Client</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Client_GlKeys_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public enum GlKeys : int</code></pre>
-  </div>
-  <h3 id="fields">Fields
-  </h3>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    <thead>
-    <tbody>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_A">A</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_AltLeft">AltLeft</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_AltRight">AltRight</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_B">B</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Back">Back</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_BackSlash">BackSlash</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_BackSpace">BackSpace</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_BracketLeft">BracketLeft</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_BracketRight">BracketRight</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_C">C</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_CapsLock">CapsLock</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Clear">Clear</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Comma">Comma</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_ControlLeft">ControlLeft</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_ControlRight">ControlRight</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_D">D</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Delete">Delete</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Down">Down</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_E">E</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_End">End</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Enter">Enter</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Escape">Escape</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F">F</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F1">F1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F10">F10</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F11">F11</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F12">F12</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F13">F13</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F14">F14</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F15">F15</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F16">F16</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F17">F17</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F18">F18</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F19">F19</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F2">F2</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F20">F20</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F21">F21</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F22">F22</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F23">F23</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F24">F24</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F25">F25</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F26">F26</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F27">F27</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F28">F28</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F29">F29</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F3">F3</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F30">F30</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F31">F31</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F32">F32</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F33">F33</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F34">F34</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F35">F35</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F4">F4</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F5">F5</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F6">F6</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F7">F7</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F8">F8</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_F9">F9</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_G">G</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_H">H</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Home">Home</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_I">I</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Insert">Insert</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_J">J</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_K">K</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Keypad0">Keypad0</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Keypad1">Keypad1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Keypad2">Keypad2</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Keypad3">Keypad3</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Keypad4">Keypad4</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Keypad5">Keypad5</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Keypad6">Keypad6</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Keypad7">Keypad7</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Keypad8">Keypad8</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Keypad9">Keypad9</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_KeypadAdd">KeypadAdd</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_KeypadDecimal">KeypadDecimal</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_KeypadDivide">KeypadDivide</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_KeypadEnter">KeypadEnter</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_KeypadMinus">KeypadMinus</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_KeypadMultiply">KeypadMultiply</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_KeypadPlus">KeypadPlus</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_KeypadSubtract">KeypadSubtract</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_L">L</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_LAlt">LAlt</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_LastKey">LastKey</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_LBracket">LBracket</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_LControl">LControl</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Left">Left</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_LShift">LShift</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_LWin">LWin</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_M">M</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Menu">Menu</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Minus">Minus</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_N">N</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Number0">Number0</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Number1">Number1</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Number2">Number2</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Number3">Number3</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Number4">Number4</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Number5">Number5</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Number6">Number6</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Number7">Number7</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Number8">Number8</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Number9">Number9</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_NumLock">NumLock</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_O">O</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_P">P</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_PageDown">PageDown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_PageUp">PageUp</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Pause">Pause</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Period">Period</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Plus">Plus</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_PrintScreen">PrintScreen</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Q">Q</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Quote">Quote</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_R">R</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_RAlt">RAlt</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_RBracket">RBracket</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_RControl">RControl</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Right">Right</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_RShift">RShift</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_RWin">RWin</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_S">S</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_ScrollLock">ScrollLock</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Semicolon">Semicolon</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_ShiftLeft">ShiftLeft</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_ShiftRight">ShiftRight</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Slash">Slash</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Sleep">Sleep</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Space">Space</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_T">T</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Tab">Tab</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Tilde">Tilde</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_U">U</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Unknown">Unknown</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Up">Up</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_V">V</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_W">W</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_WinLeft">WinLeft</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_WinRight">WinRight</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_X">X</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Y">Y</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td id="Vintagestory_API_Client_GlKeys_Z">Z</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </thead></thead></table>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Client_GlKeys.md&amp;value=---%0Auid%3A%20Vintagestory.API.Client.GlKeys%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Client/Input/EnumGlKeys.cs/#L217" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+
+        <article data-uid="Vintagestory.API.Client.GlKeys">
+
+
+
+
+  <h1 id="Vintagestory_API_Client_GlKeys" data-uid="Vintagestory.API.Client.GlKeys" class="text-break">
+Enum GlKeys  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Client.html">Client</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Internally the game uses OpenTK and their Keys are by default mapped to US QWERTY Keyboard layout which the GlKeys also do.
+Upon typing text in a Text input field it will produce the correct characters according to your keyboard layout.</p>
+<p>If you need to get the character for the current Keyboard layout use <a class="xref" href="Vintagestory.API.Client.GlKeyNames.html#Vintagestory_API_Client_GlKeyNames_GetKeyName_Vintagestory_API_Client_GlKeys_">GetKeyName(GlKeys)</a></p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public enum GlKeys</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h2 id="fields">Fields
+</h2>
+  <dl class="parameters">
+    <dt id="Vintagestory_API_Client_GlKeys_A"><code>A = 83</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_AltLeft"><code>AltLeft = 5</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_AltRight"><code>AltRight = 6</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_B"><code>B = 84</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Back"><code>Back = 53</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_BackSlash"><code>BackSlash = 129</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_BackSpace"><code>BackSpace = 53</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_BracketLeft"><code>BracketLeft = 122</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_BracketRight"><code>BracketRight = 123</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_C"><code>C = 85</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_CapsLock"><code>CapsLock = 60</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Clear"><code>Clear = 65</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Comma"><code>Comma = 126</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_ControlLeft"><code>ControlLeft = 3</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_ControlRight"><code>ControlRight = 4</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_D"><code>D = 86</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Delete"><code>Delete = 55</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Down"><code>Down = 46</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_E"><code>E = 87</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_End"><code>End = 59</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Enter"><code>Enter = 49</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Escape"><code>Escape = 50</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F"><code>F = 88</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F1"><code>F1 = 10</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F10"><code>F10 = 19</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F11"><code>F11 = 20</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F12"><code>F12 = 21</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F13"><code>F13 = 22</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F14"><code>F14 = 23</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F15"><code>F15 = 24</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F16"><code>F16 = 25</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F17"><code>F17 = 26</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F18"><code>F18 = 27</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F19"><code>F19 = 28</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F2"><code>F2 = 11</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F20"><code>F20 = 29</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F21"><code>F21 = 30</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F22"><code>F22 = 31</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F23"><code>F23 = 32</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F24"><code>F24 = 33</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F25"><code>F25 = 34</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F26"><code>F26 = 35</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F27"><code>F27 = 36</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F28"><code>F28 = 37</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F29"><code>F29 = 38</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F3"><code>F3 = 12</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F30"><code>F30 = 39</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F31"><code>F31 = 40</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F32"><code>F32 = 41</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F33"><code>F33 = 42</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F34"><code>F34 = 43</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F35"><code>F35 = 44</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F4"><code>F4 = 13</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F5"><code>F5 = 14</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F6"><code>F6 = 15</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F7"><code>F7 = 16</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F8"><code>F8 = 17</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_F9"><code>F9 = 18</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_G"><code>G = 89</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_H"><code>H = 90</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Home"><code>Home = 58</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_I"><code>I = 91</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Insert"><code>Insert = 54</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_J"><code>J = 92</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_K"><code>K = 93</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Keypad0"><code>Keypad0 = 67</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Keypad1"><code>Keypad1 = 68</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Keypad2"><code>Keypad2 = 69</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Keypad3"><code>Keypad3 = 70</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Keypad4"><code>Keypad4 = 71</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Keypad5"><code>Keypad5 = 72</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Keypad6"><code>Keypad6 = 73</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Keypad7"><code>Keypad7 = 74</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Keypad8"><code>Keypad8 = 75</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Keypad9"><code>Keypad9 = 76</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_KeypadAdd"><code>KeypadAdd = 80</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_KeypadDecimal"><code>KeypadDecimal = 81</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_KeypadDivide"><code>KeypadDivide = 77</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_KeypadEnter"><code>KeypadEnter = 82</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_KeypadMinus"><code>KeypadMinus = 79</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_KeypadMultiply"><code>KeypadMultiply = 78</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_KeypadPlus"><code>KeypadPlus = 80</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_KeypadSubtract"><code>KeypadSubtract = 79</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_L"><code>L = 94</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_LAlt"><code>LAlt = 5</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_LBracket"><code>LBracket = 122</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_LControl"><code>LControl = 3</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_LShift"><code>LShift = 1</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_LWin"><code>LWin = 7</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_LastKey"><code>LastKey = 130</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Left"><code>Left = 47</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_M"><code>M = 95</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Menu"><code>Menu = 9</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Minus"><code>Minus = 120</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_N"><code>N = 96</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_NumLock"><code>NumLock = 64</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Number0"><code>Number0 = 109</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Number1"><code>Number1 = 110</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Number2"><code>Number2 = 111</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Number3"><code>Number3 = 112</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Number4"><code>Number4 = 113</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Number5"><code>Number5 = 114</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Number6"><code>Number6 = 115</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Number7"><code>Number7 = 116</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Number8"><code>Number8 = 117</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Number9"><code>Number9 = 118</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_O"><code>O = 97</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_P"><code>P = 98</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_PageDown"><code>PageDown = 57</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_PageUp"><code>PageUp = 56</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Pause"><code>Pause = 63</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Period"><code>Period = 127</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Plus"><code>Plus = 121</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_PrintScreen"><code>PrintScreen = 62</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Q"><code>Q = 99</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Quote"><code>Quote = 125</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_R"><code>R = 100</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_RAlt"><code>RAlt = 6</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_RBracket"><code>RBracket = 123</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_RControl"><code>RControl = 4</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_RShift"><code>RShift = 2</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_RWin"><code>RWin = 8</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Right"><code>Right = 48</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_S"><code>S = 101</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_ScrollLock"><code>ScrollLock = 61</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Semicolon"><code>Semicolon = 124</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_ShiftLeft"><code>ShiftLeft = 1</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_ShiftRight"><code>ShiftRight = 2</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Slash"><code>Slash = 128</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Sleep"><code>Sleep = 66</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Space"><code>Space = 51</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_T"><code>T = 102</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Tab"><code>Tab = 52</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Tilde"><code>Tilde = 119</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_U"><code>U = 103</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Unknown"><code>Unknown = 0</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Up"><code>Up = 45</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_V"><code>V = 104</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_W"><code>W = 105</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_WinLeft"><code>WinLeft = 7</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_WinRight"><code>WinRight = 8</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_X"><code>X = 106</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Y"><code>Y = 107</code></dt>
+    <dd></dd>
+    <dt id="Vintagestory_API_Client_GlKeys_Z"><code>Z = 108</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

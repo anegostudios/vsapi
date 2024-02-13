@@ -1,0 +1,125 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.GetMountableDelegate
+  commentId: T:Vintagestory.API.Common.GetMountableDelegate
+  id: GetMountableDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: GetMountableDelegate
+  nameWithType: GetMountableDelegate
+  fullName: Vintagestory.API.Common.GetMountableDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/ICoreAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: GetMountableDelegate
+    path: Common/API/ICoreAPI.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    This method needs to find your mountable based on the tree attribute data, which you can write to in IMountable.MountableToTreeAttributes()
+
+    For example if its an entity, you will want to store the entity id, then this method can simply contain <pre><code class="lang-csharp">return world.GetEntityById(tree.GetLong("entityId"));</code></pre>
+  example: []
+  syntax:
+    content: public delegate IMountable GetMountableDelegate(IWorldAccessor world, TreeAttribute tree)
+    parameters:
+    - id: world
+      type: Vintagestory.API.Common.IWorldAccessor
+      description: ''
+    - id: tree
+      type: Vintagestory.API.Datastructures.TreeAttribute
+      description: ''
+    return:
+      type: Vintagestory.API.Common.IMountable
+      description: ''
+    content.vb: Public Delegate Function GetMountableDelegate(world As IWorldAccessor, tree As TreeAttribute) As IMountable
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IWorldAccessor
+  commentId: T:Vintagestory.API.Common.IWorldAccessor
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IWorldAccessor.html
+  name: IWorldAccessor
+  nameWithType: IWorldAccessor
+  fullName: Vintagestory.API.Common.IWorldAccessor
+- uid: Vintagestory.API.Datastructures.TreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.TreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.TreeAttribute.html
+  name: TreeAttribute
+  nameWithType: TreeAttribute
+  fullName: Vintagestory.API.Datastructures.TreeAttribute
+- uid: Vintagestory.API.Common.IMountable
+  commentId: T:Vintagestory.API.Common.IMountable
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IMountable.html
+  name: IMountable
+  nameWithType: IMountable
+  fullName: Vintagestory.API.Common.IMountable
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html

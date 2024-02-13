@@ -31,7 +31,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Assembly Info Version number in the format: major.minor.revision
         /// </summary>
-        public const string OverallVersion = "1.19.3";
+        public const string OverallVersion = "1.19.4";
 
         /// <summary>
         /// Whether this is a stable or unstable version
@@ -41,7 +41,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "";
+        public const string ShortGameVersion = OverallVersion + "-rc.1";
 
         public static EnumReleaseType ReleaseType => GetReleaseType(ShortGameVersion);
 
@@ -66,7 +66,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Version of the Network Protocol
         /// </summary>
-        public const string NetworkVersion = "1.19.5";
+        public const string NetworkVersion = "1.19.6";
 
         /// <summary>
         /// Version of the world generator - a change in version will insert a smoothed chunk between old and new version
@@ -92,7 +92,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Copyright notice
         /// </summary>
-        public const string CopyRight = "Copyright © 2016-2023 Anego Studios";
+        public const string CopyRight = "Copyright © 2016-2024 Anego Studios";
 
 
         static string[] separators = new string[] { ".", "-" };
@@ -117,7 +117,7 @@ namespace Vintagestory.API.Config
                 else if (parts[3] == "pre") parts[3] = "1"; // -pre
                 else parts[3] = "0"; // -dev
             }
-            
+
             int[] versions = new int[parts.Length];
             for (int i = 0; i < parts.Length; i++)
             {
@@ -241,7 +241,7 @@ namespace Vintagestory.API.Config
         public static void EnsureEqualVersionOrKillExecutable(ICoreAPI api, string version, string reference, string modName)
         {
             if (version != reference)
-            {              
+            {
                 if (api.Side == EnumAppSide.Server)
                 {
                     Exception e = new Exception(Lang.Get("versionmismatch-server", modName + ".dll"));

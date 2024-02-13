@@ -1,0 +1,560 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity
+  commentId: T:Vintagestory.API.Common.IFarmlandBlockEntity
+  id: IFarmlandBlockEntity
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.IFarmlandBlockEntity.CropAttributes
+  - Vintagestory.API.Common.IFarmlandBlockEntity.IsVisiblyMoist
+  - Vintagestory.API.Common.IFarmlandBlockEntity.MoistureLevel
+  - Vintagestory.API.Common.IFarmlandBlockEntity.Nutrients
+  - Vintagestory.API.Common.IFarmlandBlockEntity.OriginalFertility
+  - Vintagestory.API.Common.IFarmlandBlockEntity.Pos
+  - Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursFertilityCheck
+  - Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursForNextStage
+  - Vintagestory.API.Common.IFarmlandBlockEntity.UpPos
+  langs:
+  - csharp
+  - vb
+  name: IFarmlandBlockEntity
+  nameWithType: IFarmlandBlockEntity
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/Crop/Farmland.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IFarmlandBlockEntity
+    path: Common/Collectible/Block/Crop/Farmland.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public interface IFarmlandBlockEntity
+    content.vb: Public Interface IFarmlandBlockEntity
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursForNextStage
+  commentId: P:Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursForNextStage
+  id: TotalHoursForNextStage
+  parent: Vintagestory.API.Common.IFarmlandBlockEntity
+  langs:
+  - csharp
+  - vb
+  name: TotalHoursForNextStage
+  nameWithType: IFarmlandBlockEntity.TotalHoursForNextStage
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursForNextStage
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/Crop/Farmland.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TotalHoursForNextStage
+    path: Common/Collectible/Block/Crop/Farmland.cs
+    startLine: 10
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Total game hours from where on it can enter the next growth stage
+  example: []
+  syntax:
+    content: double TotalHoursForNextStage { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: ReadOnly Property TotalHoursForNextStage As Double
+  overload: Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursForNextStage*
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursFertilityCheck
+  commentId: P:Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursFertilityCheck
+  id: TotalHoursFertilityCheck
+  parent: Vintagestory.API.Common.IFarmlandBlockEntity
+  langs:
+  - csharp
+  - vb
+  name: TotalHoursFertilityCheck
+  nameWithType: IFarmlandBlockEntity.TotalHoursFertilityCheck
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursFertilityCheck
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/Crop/Farmland.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: TotalHoursFertilityCheck
+    path: Common/Collectible/Block/Crop/Farmland.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The last time fertility increase was checked
+  example: []
+  syntax:
+    content: double TotalHoursFertilityCheck { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: ReadOnly Property TotalHoursFertilityCheck As Double
+  overload: Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursFertilityCheck*
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.Nutrients
+  commentId: P:Vintagestory.API.Common.IFarmlandBlockEntity.Nutrients
+  id: Nutrients
+  parent: Vintagestory.API.Common.IFarmlandBlockEntity
+  langs:
+  - csharp
+  - vb
+  name: Nutrients
+  nameWithType: IFarmlandBlockEntity.Nutrients
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.Nutrients
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/Crop/Farmland.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Nutrients
+    path: Common/Collectible/Block/Crop/Farmland.cs
+    startLine: 21
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Farmland has 3 nutrient levels N, P and K located in this array in that order. 
+
+    Each nutrient level has a range of 0-100.
+  example: []
+  syntax:
+    content: float[] Nutrients { get; }
+    parameters: []
+    return:
+      type: System.Single[]
+    content.vb: ReadOnly Property Nutrients As Single()
+  overload: Vintagestory.API.Common.IFarmlandBlockEntity.Nutrients*
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.MoistureLevel
+  commentId: P:Vintagestory.API.Common.IFarmlandBlockEntity.MoistureLevel
+  id: MoistureLevel
+  parent: Vintagestory.API.Common.IFarmlandBlockEntity
+  langs:
+  - csharp
+  - vb
+  name: MoistureLevel
+  nameWithType: IFarmlandBlockEntity.MoistureLevel
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.MoistureLevel
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/Crop/Farmland.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MoistureLevel
+    path: Common/Collectible/Block/Crop/Farmland.cs
+    startLine: 26
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The farmlands moisture level
+  example: []
+  syntax:
+    content: float MoistureLevel { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property MoistureLevel As Single
+  overload: Vintagestory.API.Common.IFarmlandBlockEntity.MoistureLevel*
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.IsVisiblyMoist
+  commentId: P:Vintagestory.API.Common.IFarmlandBlockEntity.IsVisiblyMoist
+  id: IsVisiblyMoist
+  parent: Vintagestory.API.Common.IFarmlandBlockEntity
+  langs:
+  - csharp
+  - vb
+  name: IsVisiblyMoist
+  nameWithType: IFarmlandBlockEntity.IsVisiblyMoist
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.IsVisiblyMoist
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/Crop/Farmland.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IsVisiblyMoist
+    path: Common/Collectible/Block/Crop/Farmland.cs
+    startLine: 28
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: bool IsVisiblyMoist { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsVisiblyMoist As Boolean
+  overload: Vintagestory.API.Common.IFarmlandBlockEntity.IsVisiblyMoist*
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.OriginalFertility
+  commentId: P:Vintagestory.API.Common.IFarmlandBlockEntity.OriginalFertility
+  id: OriginalFertility
+  parent: Vintagestory.API.Common.IFarmlandBlockEntity
+  langs:
+  - csharp
+  - vb
+  name: OriginalFertility
+  nameWithType: IFarmlandBlockEntity.OriginalFertility
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.OriginalFertility
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/Crop/Farmland.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OriginalFertility
+    path: Common/Collectible/Block/Crop/Farmland.cs
+    startLine: 33
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The fertility the soil will recover to (the soil from which the farmland was made of)
+  example: []
+  syntax:
+    content: int[] OriginalFertility { get; }
+    parameters: []
+    return:
+      type: System.Int32[]
+    content.vb: ReadOnly Property OriginalFertility As Integer()
+  overload: Vintagestory.API.Common.IFarmlandBlockEntity.OriginalFertility*
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.Pos
+  commentId: P:Vintagestory.API.Common.IFarmlandBlockEntity.Pos
+  id: Pos
+  parent: Vintagestory.API.Common.IFarmlandBlockEntity
+  langs:
+  - csharp
+  - vb
+  name: Pos
+  nameWithType: IFarmlandBlockEntity.Pos
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.Pos
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/Crop/Farmland.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: Pos
+    path: Common/Collectible/Block/Crop/Farmland.cs
+    startLine: 38
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The position of the farmland
+  example: []
+  syntax:
+    content: BlockPos Pos { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: ReadOnly Property Pos As BlockPos
+  overload: Vintagestory.API.Common.IFarmlandBlockEntity.Pos*
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.UpPos
+  commentId: P:Vintagestory.API.Common.IFarmlandBlockEntity.UpPos
+  id: UpPos
+  parent: Vintagestory.API.Common.IFarmlandBlockEntity
+  langs:
+  - csharp
+  - vb
+  name: UpPos
+  nameWithType: IFarmlandBlockEntity.UpPos
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.UpPos
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/Crop/Farmland.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: UpPos
+    path: Common/Collectible/Block/Crop/Farmland.cs
+    startLine: 43
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The position directly above the farmland
+  example: []
+  syntax:
+    content: BlockPos UpPos { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: ReadOnly Property UpPos As BlockPos
+  overload: Vintagestory.API.Common.IFarmlandBlockEntity.UpPos*
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.CropAttributes
+  commentId: P:Vintagestory.API.Common.IFarmlandBlockEntity.CropAttributes
+  id: CropAttributes
+  parent: Vintagestory.API.Common.IFarmlandBlockEntity
+  langs:
+  - csharp
+  - vb
+  name: CropAttributes
+  nameWithType: IFarmlandBlockEntity.CropAttributes
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.CropAttributes
+  type: Property
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/Crop/Farmland.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: CropAttributes
+    path: Common/Collectible/Block/Crop/Farmland.cs
+    startLine: 45
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: ITreeAttribute CropAttributes { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Datastructures.ITreeAttribute
+    content.vb: ReadOnly Property CropAttributes As ITreeAttribute
+  overload: Vintagestory.API.Common.IFarmlandBlockEntity.CropAttributes*
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursForNextStage*
+  commentId: Overload:Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursForNextStage
+  href: Vintagestory.API.Common.IFarmlandBlockEntity.html#Vintagestory_API_Common_IFarmlandBlockEntity_TotalHoursForNextStage
+  name: TotalHoursForNextStage
+  nameWithType: IFarmlandBlockEntity.TotalHoursForNextStage
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursForNextStage
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursFertilityCheck*
+  commentId: Overload:Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursFertilityCheck
+  href: Vintagestory.API.Common.IFarmlandBlockEntity.html#Vintagestory_API_Common_IFarmlandBlockEntity_TotalHoursFertilityCheck
+  name: TotalHoursFertilityCheck
+  nameWithType: IFarmlandBlockEntity.TotalHoursFertilityCheck
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.TotalHoursFertilityCheck
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.Nutrients*
+  commentId: Overload:Vintagestory.API.Common.IFarmlandBlockEntity.Nutrients
+  href: Vintagestory.API.Common.IFarmlandBlockEntity.html#Vintagestory_API_Common_IFarmlandBlockEntity_Nutrients
+  name: Nutrients
+  nameWithType: IFarmlandBlockEntity.Nutrients
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.Nutrients
+- uid: System.Single[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.MoistureLevel*
+  commentId: Overload:Vintagestory.API.Common.IFarmlandBlockEntity.MoistureLevel
+  href: Vintagestory.API.Common.IFarmlandBlockEntity.html#Vintagestory_API_Common_IFarmlandBlockEntity_MoistureLevel
+  name: MoistureLevel
+  nameWithType: IFarmlandBlockEntity.MoistureLevel
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.MoistureLevel
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.IsVisiblyMoist*
+  commentId: Overload:Vintagestory.API.Common.IFarmlandBlockEntity.IsVisiblyMoist
+  href: Vintagestory.API.Common.IFarmlandBlockEntity.html#Vintagestory_API_Common_IFarmlandBlockEntity_IsVisiblyMoist
+  name: IsVisiblyMoist
+  nameWithType: IFarmlandBlockEntity.IsVisiblyMoist
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.IsVisiblyMoist
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.OriginalFertility*
+  commentId: Overload:Vintagestory.API.Common.IFarmlandBlockEntity.OriginalFertility
+  href: Vintagestory.API.Common.IFarmlandBlockEntity.html#Vintagestory_API_Common_IFarmlandBlockEntity_OriginalFertility
+  name: OriginalFertility
+  nameWithType: IFarmlandBlockEntity.OriginalFertility
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.OriginalFertility
+- uid: System.Int32[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.Pos*
+  commentId: Overload:Vintagestory.API.Common.IFarmlandBlockEntity.Pos
+  href: Vintagestory.API.Common.IFarmlandBlockEntity.html#Vintagestory_API_Common_IFarmlandBlockEntity_Pos
+  name: Pos
+  nameWithType: IFarmlandBlockEntity.Pos
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.Pos
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.UpPos*
+  commentId: Overload:Vintagestory.API.Common.IFarmlandBlockEntity.UpPos
+  href: Vintagestory.API.Common.IFarmlandBlockEntity.html#Vintagestory_API_Common_IFarmlandBlockEntity_UpPos
+  name: UpPos
+  nameWithType: IFarmlandBlockEntity.UpPos
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.UpPos
+- uid: Vintagestory.API.Common.IFarmlandBlockEntity.CropAttributes*
+  commentId: Overload:Vintagestory.API.Common.IFarmlandBlockEntity.CropAttributes
+  href: Vintagestory.API.Common.IFarmlandBlockEntity.html#Vintagestory_API_Common_IFarmlandBlockEntity_CropAttributes
+  name: CropAttributes
+  nameWithType: IFarmlandBlockEntity.CropAttributes
+  fullName: Vintagestory.API.Common.IFarmlandBlockEntity.CropAttributes
+- uid: Vintagestory.API.Datastructures.ITreeAttribute
+  commentId: T:Vintagestory.API.Datastructures.ITreeAttribute
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.ITreeAttribute.html
+  name: ITreeAttribute
+  nameWithType: ITreeAttribute
+  fullName: Vintagestory.API.Datastructures.ITreeAttribute
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html

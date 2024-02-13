@@ -2,6 +2,7 @@
 using Vintagestory.API.Common;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Client
 {
@@ -74,7 +75,7 @@ namespace Vintagestory.API.Client
         {
             this.musicEngine = musicEngine;
             Location.Path = Location.Path.ToLowerInvariant();
-            if (!Location.Path.StartsWith("sounds")) Location.WithPathPrefixOnce("music/");
+            if (!Location.PathStartsWith("sounds")) Location.WithPathPrefixOnce("music/");
             Location.WithPathAppendixOnce(".ogg");
         }
 

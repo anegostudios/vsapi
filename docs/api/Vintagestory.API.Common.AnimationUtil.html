@@ -1,958 +1,999 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AnimationUtil
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AnimationUtil
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class AnimationUtil | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AnimationUtil | VintageStory API ">
+      
+      
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.AnimationUtil">
-  
-  
-  <h1 id="Vintagestory_API_Common_AnimationUtil" data-uid="Vintagestory.API.Common.AnimationUtil" class="text-break">Class AnimationUtil
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">AnimationUtil</span></div>
-  </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Vintagestory.API.Client.IRenderer.html">IRenderer</a></div>
-    <div><span class="xref">IDisposable</span></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_AnimationUtil_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AnimationUtil : object, IRenderer, IDisposable</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil__ctor_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.%23ctor(Vintagestory.API.Common.ICoreAPI%2CVintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L23">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil__ctor_" data-uid="Vintagestory.API.Common.AnimationUtil.#ctor*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil__ctor_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.AnimationUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.MathTools.Vec3d)">AnimationUtil(ICoreAPI, Vec3d)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AnimationUtil(ICoreAPI api, Vec3d position)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">position</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_activeAnimationsByAnimCode.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.activeAnimationsByAnimCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L13">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_activeAnimationsByAnimCode" data-uid="Vintagestory.API.Common.AnimationUtil.activeAnimationsByAnimCode">activeAnimationsByAnimCode</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, AnimationMetaData&gt; activeAnimationsByAnimCode</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.String</span>, <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_animator.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.animator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L11">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_animator" data-uid="Vintagestory.API.Common.AnimationUtil.animator">animator</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AnimatorBase animator</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AnimatorBase.html">AnimatorBase</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_api.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.api%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L14">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_api" data-uid="Vintagestory.API.Common.AnimationUtil.api">api</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ICoreAPI api</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_capi.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.capi%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L16">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_capi" data-uid="Vintagestory.API.Common.AnimationUtil.capi">capi</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ICoreClientAPI capi</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_position.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.position%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L17">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_position" data-uid="Vintagestory.API.Common.AnimationUtil.position">position</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected Vec3d position</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_renderer.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.renderer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L12">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_renderer" data-uid="Vintagestory.API.Common.AnimationUtil.renderer">renderer</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AnimatableRenderer renderer</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AnimatableRenderer.html">AnimatableRenderer</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_stopRenderTriggered.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.stopRenderTriggered%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L15">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_stopRenderTriggered" data-uid="Vintagestory.API.Common.AnimationUtil.stopRenderTriggered">stopRenderTriggered</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected bool stopRenderTriggered</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_RenderOrder.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.RenderOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L20">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_RenderOrder_" data-uid="Vintagestory.API.Common.AnimationUtil.RenderOrder*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_RenderOrder" data-uid="Vintagestory.API.Common.AnimationUtil.RenderOrder">RenderOrder</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public double RenderOrder { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Double</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_RenderRange.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.RenderRange%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L21">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_RenderRange_" data-uid="Vintagestory.API.Common.AnimationUtil.RenderRange*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_RenderRange" data-uid="Vintagestory.API.Common.AnimationUtil.RenderRange">RenderRange</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int RenderRange { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_RenderTextureId.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.RenderTextureId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L18">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_RenderTextureId_" data-uid="Vintagestory.API.Common.AnimationUtil.RenderTextureId*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_RenderTextureId" data-uid="Vintagestory.API.Common.AnimationUtil.RenderTextureId">RenderTextureId</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual int RenderTextureId { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_AnimationTickServer_System_Single_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.AnimationTickServer(System.Single)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L93">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_AnimationTickServer_" data-uid="Vintagestory.API.Common.AnimationUtil.AnimationTickServer*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_AnimationTickServer_System_Single_" data-uid="Vintagestory.API.Common.AnimationUtil.AnimationTickServer(System.Single)">AnimationTickServer(Single)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AnimationTickServer(float deltaTime)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">deltaTime</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_CacheInvTransforms_Vintagestory_API_Common_ShapeElement___.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.CacheInvTransforms(Vintagestory.API.Common.ShapeElement%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L197">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_CacheInvTransforms_" data-uid="Vintagestory.API.Common.AnimationUtil.CacheInvTransforms*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_CacheInvTransforms_Vintagestory_API_Common_ShapeElement___" data-uid="Vintagestory.API.Common.AnimationUtil.CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])">CacheInvTransforms(ShapeElement[])</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static void CacheInvTransforms(ShapeElement[] elements)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>[]</td>
-        <td><span class="parametername">elements</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_Dispose.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L208">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_Dispose_" data-uid="Vintagestory.API.Common.AnimationUtil.Dispose*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_Dispose" data-uid="Vintagestory.API.Common.AnimationUtil.Dispose">Dispose()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_GetAnimator_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Shape_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.GetAnimator(Vintagestory.API.Common.ICoreAPI%2CSystem.String%2CVintagestory.API.Common.Shape)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L144">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_GetAnimator_" data-uid="Vintagestory.API.Common.AnimationUtil.GetAnimator*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_GetAnimator_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Shape_" data-uid="Vintagestory.API.Common.AnimationUtil.GetAnimator(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Shape)">GetAnimator(ICoreAPI, String, Shape)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static AnimatorBase GetAnimator(ICoreAPI api, string cacheDictKey, Shape shape)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">cacheDictKey</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></td>
-        <td><span class="parametername">shape</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AnimatorBase.html">AnimatorBase</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_InitializeAnimator_System_String_Vintagestory_API_Client_MeshData_Vintagestory_API_Common_Shape_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_EnumRenderStage_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String%2CVintagestory.API.Client.MeshData%2CVintagestory.API.Common.Shape%2CVintagestory.API.MathTools.Vec3f%2CVintagestory.API.Client.EnumRenderStage)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L54">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_System_String_Vintagestory_API_Client_MeshData_Vintagestory_API_Common_Shape_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MeshData,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)">InitializeAnimator(String, MeshData, Shape, Vec3f, EnumRenderStage)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void InitializeAnimator(string cacheDictKey, MeshData meshdata, Shape shape, Vec3f rotation, EnumRenderStage renderStage = default(EnumRenderStage))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">cacheDictKey</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></td>
-        <td><span class="parametername">meshdata</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></td>
-        <td><span class="parametername">shape</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
-        <td><span class="parametername">rotation</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></td>
-        <td><span class="parametername">renderStage</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_InitializeAnimator_System_String_Vintagestory_API_Client_MeshRef_Vintagestory_API_Common_Shape_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_EnumRenderStage_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String%2CVintagestory.API.Client.MeshRef%2CVintagestory.API.Common.Shape%2CVintagestory.API.MathTools.Vec3f%2CVintagestory.API.Client.EnumRenderStage)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L77">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_System_String_Vintagestory_API_Client_MeshRef_Vintagestory_API_Common_Shape_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MeshRef,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)">InitializeAnimator(String, MeshRef, Shape, Vec3f, EnumRenderStage)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void InitializeAnimator(string cacheDictKey, MeshRef meshref, Shape blockShape, Vec3f rotation, EnumRenderStage renderStage = default(EnumRenderStage))</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">cacheDictKey</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.MeshRef.html">MeshRef</a></td>
-        <td><span class="parametername">meshref</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></td>
-        <td><span class="parametername">blockShape</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
-        <td><span class="parametername">rotation</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></td>
-        <td><span class="parametername">renderStage</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_InitializeAnimatorServer_System_String_Vintagestory_API_Common_Shape_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer(System.String%2CVintagestory.API.Common.Shape)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L85">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_InitializeAnimatorServer_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_InitializeAnimatorServer_System_String_Vintagestory_API_Common_Shape_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer(System.String,Vintagestory.API.Common.Shape)">InitializeAnimatorServer(String, Shape)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void InitializeAnimatorServer(string cacheDictKey, Shape blockShape)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">cacheDictKey</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></td>
-        <td><span class="parametername">blockShape</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_InitializeShapeAndAnimator_System_String_Vintagestory_API_Common_Shape_Vintagestory_API_Client_ITexPositionSource_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_MeshData__.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator(System.String%2CVintagestory.API.Common.Shape%2CVintagestory.API.Client.ITexPositionSource%2CVintagestory.API.MathTools.Vec3f%2CVintagestory.API.Client.MeshData%40)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L31">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_InitializeShapeAndAnimator_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_InitializeShapeAndAnimator_System_String_Vintagestory_API_Common_Shape_Vintagestory_API_Client_ITexPositionSource_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_MeshData__" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator(System.String,Vintagestory.API.Common.Shape,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.MeshData@)">InitializeShapeAndAnimator(String, Shape, ITexPositionSource, Vec3f, out MeshData)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void InitializeShapeAndAnimator(string cacheDictKey, Shape shape, ITexPositionSource texSource, Vec3f rotation, out MeshData meshdata)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">cacheDictKey</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></td>
-        <td><span class="parametername">shape</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ITexPositionSource.html">ITexPositionSource</a></td>
-        <td><span class="parametername">texSource</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
-        <td><span class="parametername">rotation</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></td>
-        <td><span class="parametername">meshdata</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_OnAnimationsStateChange_System_Boolean_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L132">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_OnAnimationsStateChange_" data-uid="Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_OnAnimationsStateChange_System_Boolean_" data-uid="Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange(System.Boolean)">OnAnimationsStateChange(Boolean)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void OnAnimationsStateChange(bool animsNowActive)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">animsNowActive</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_OnRenderFrame_System_Single_Vintagestory_API_Client_EnumRenderStage_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.OnRenderFrame(System.Single%2CVintagestory.API.Client.EnumRenderStage)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L103">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_OnRenderFrame_" data-uid="Vintagestory.API.Common.AnimationUtil.OnRenderFrame*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_OnRenderFrame_System_Single_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Common.AnimationUtil.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)">OnRenderFrame(Single, EnumRenderStage)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void OnRenderFrame(float deltaTime, EnumRenderStage stage)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><span class="parametername">deltaTime</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></td>
-        <td><span class="parametername">stage</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_StartAnimation_Vintagestory_API_Common_AnimationMetaData_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.StartAnimation(Vintagestory.API.Common.AnimationMetaData)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L119">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_StartAnimation_" data-uid="Vintagestory.API.Common.AnimationUtil.StartAnimation*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_StartAnimation_Vintagestory_API_Common_AnimationMetaData_" data-uid="Vintagestory.API.Common.AnimationUtil.StartAnimation(Vintagestory.API.Common.AnimationMetaData)">StartAnimation(AnimationMetaData)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool StartAnimation(AnimationMetaData meta)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a></td>
-        <td><span class="parametername">meta</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil_StopAnimation_System_String_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil.StopAnimation(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L138">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AnimationUtil_StopAnimation_" data-uid="Vintagestory.API.Common.AnimationUtil.StopAnimation*"></a>
-  <h4 id="Vintagestory_API_Common_AnimationUtil_StopAnimation_System_String_" data-uid="Vintagestory.API.Common.AnimationUtil.StopAnimation(System.String)">StopAnimation(String)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void StopAnimation(string code)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">code</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Vintagestory.API.Client.IRenderer.html">IRenderer</a>
-  </div>
-  <div>
-      <span class="xref">IDisposable</span>
-  </div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AnimationUtil.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AnimationUtil%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Model/Animation/AnimationUtil.cs/#L9" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="Vintagestory.API.Common.AnimationUtil">
+
+
+
+  <h1 id="Vintagestory_API_Common_AnimationUtil" data-uid="Vintagestory.API.Common.AnimationUtil" class="text-break">
+Class AnimationUtil  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AnimationUtil : IRenderer, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AnimationUtil</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Client.IRenderer.html">IRenderer</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil__ctor_" data-uid="Vintagestory.API.Common.AnimationUtil.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil__ctor_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.AnimationUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.MathTools.Vec3d)">
+  AnimationUtil(ICoreAPI, Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnimationUtil(ICoreAPI api, Vec3d position)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+    <dt><code>position</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_activeAnimationsByAnimCode" data-uid="Vintagestory.API.Common.AnimationUtil.activeAnimationsByAnimCode">
+  activeAnimationsByAnimCode
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, AnimationMetaData&gt; activeAnimationsByAnimCode</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_animator" data-uid="Vintagestory.API.Common.AnimationUtil.animator">
+  animator
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnimatorBase animator</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AnimatorBase.html">AnimatorBase</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_api" data-uid="Vintagestory.API.Common.AnimationUtil.api">
+  api
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ICoreAPI api</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_capi" data-uid="Vintagestory.API.Common.AnimationUtil.capi">
+  capi
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ICoreClientAPI capi</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_position" data-uid="Vintagestory.API.Common.AnimationUtil.position">
+  position
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected Vec3d position</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_renderer" data-uid="Vintagestory.API.Common.AnimationUtil.renderer">
+  renderer
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnimatableRenderer renderer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AnimatableRenderer.html">AnimatableRenderer</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_stopRenderTriggered" data-uid="Vintagestory.API.Common.AnimationUtil.stopRenderTriggered">
+  stopRenderTriggered
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool stopRenderTriggered</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_RenderOrder_" data-uid="Vintagestory.API.Common.AnimationUtil.RenderOrder*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_RenderOrder" data-uid="Vintagestory.API.Common.AnimationUtil.RenderOrder">
+  RenderOrder
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>0 = drawn first, 1 = drawn last<br>
+Default render orders by render stage:<br>
+Before:<br>
+0 = Ambient Manager<br>
+0 = Camera<br><br>
+Opaque:<br>
+0.1 = Blue sky (Icosahedron)<br>
+0.2 = Night skybox<br>
+0.3 = Sun and moon<br>
+0.37 = Terrain opaque<br>
+0.4 = Enitities<br>
+0.5 = Decals<br>
+0.5 = Debug wireframe<br>
+0.6 = particles<br>
+0.7 = Cinematic camera line preview<br>
+0.8 = fp held item<br>
+0.9 = held item opaque custom renderer<br><br>
+OIT:<br>
+0.2 = Frame buffer debug screen<br>
+0.35 = Clouds<br>
+0.37 = Terrain oit<br>
+0.4 = Enitities<br>
+0.6 = particles<br>
+0.9 = held item oit custom renderer<br><br>
+Shadow far:<br>
+0 = shadow map init<br>
+0.37 = Terrain shadow far<br>
+0.4 = Enitities<br><br>
+Shadow far done:<br>
+1 = shadow map finish<br><br>
+Shadow near:<br>
+0 = shadow map init<br>
+0.37 = Terrain shadow near<br>
+0.4 = Enitities<br><br>
+Shadow near done:<br>
+1 = shadow map finish<br>
+Ortho:<br>
+0.2 = Frame buffer debug screen<br>
+0.4 = Enitities<br>
+0.9 = held item ortho custom renderer<br>
+0.95 = sleeping overlay<br>
+0.98 = bow/spear aiming reticle<br>
+1 = Gui manager<br>
+1.02 = crosshair and mouse cursor<br><br>
+AfterFinalComposition:<br>
+2 = screenshot<br><br>
+Done:<br>
+0.1 = gui manager<br>
+2 = screenshot<br><br>
+0.98 = Cinematic camera camera advancing and frame capture when recording<br>
+0.99 = Chunk Tesselator Manager (uploads new/modified chunk meshes)<br>
+0.999 = Compress chunks scan<br>
+1 = video recorder<br></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double RenderOrder { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_RenderRange_" data-uid="Vintagestory.API.Common.AnimationUtil.RenderRange*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_RenderRange" data-uid="Vintagestory.API.Common.AnimationUtil.RenderRange">
+  RenderRange
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Within what range to the player OnRenderFrame() should be called (currently not used!)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RenderRange { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_RenderTextureId_" data-uid="Vintagestory.API.Common.AnimationUtil.RenderTextureId*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_RenderTextureId" data-uid="Vintagestory.API.Common.AnimationUtil.RenderTextureId">
+  RenderTextureId
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual int RenderTextureId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_AnimationTickServer_" data-uid="Vintagestory.API.Common.AnimationUtil.AnimationTickServer*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_AnimationTickServer_System_Single_" data-uid="Vintagestory.API.Common.AnimationUtil.AnimationTickServer(System.Single)">
+  AnimationTickServer(float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AnimationTickServer(float deltaTime)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>deltaTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_CacheInvTransforms_" data-uid="Vintagestory.API.Common.AnimationUtil.CacheInvTransforms*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_CacheInvTransforms_Vintagestory_API_Common_ShapeElement___" data-uid="Vintagestory.API.Common.AnimationUtil.CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])">
+  CacheInvTransforms(ShapeElement[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void CacheInvTransforms(ShapeElement[] elements)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>elements</code> <a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_Dispose_" data-uid="Vintagestory.API.Common.AnimationUtil.Dispose*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_Dispose" data-uid="Vintagestory.API.Common.AnimationUtil.Dispose">
+  Dispose()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_GetAnimator_" data-uid="Vintagestory.API.Common.AnimationUtil.GetAnimator*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_GetAnimator_Vintagestory_API_Common_ICoreAPI_System_String_Vintagestory_API_Common_Shape_" data-uid="Vintagestory.API.Common.AnimationUtil.GetAnimator(Vintagestory.API.Common.ICoreAPI,System.String,Vintagestory.API.Common.Shape)">
+  GetAnimator(ICoreAPI, string, Shape)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static AnimatorBase GetAnimator(ICoreAPI api, string cacheDictKey, Shape shape)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+    <dt><code>cacheDictKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>shape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AnimatorBase.html">AnimatorBase</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_System_String_Vintagestory_API_Client_MeshData_Vintagestory_API_Common_Shape_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MeshData,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)">
+  InitializeAnimator(string, MeshData, Shape, Vec3f, EnumRenderStage)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void InitializeAnimator(string cacheDictKey, MeshData meshdata, Shape shape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cacheDictKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>meshdata</code> <a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
+    <dd></dd>
+    <dt><code>shape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
+    <dd></dd>
+    <dt><code>rotation</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+    <dt><code>renderStage</code> <a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_System_String_Vintagestory_API_Client_MeshRef_Vintagestory_API_Common_Shape_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MeshRef,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)">
+  InitializeAnimator(string, MeshRef, Shape, Vec3f, EnumRenderStage)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void InitializeAnimator(string cacheDictKey, MeshRef meshref, Shape blockShape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cacheDictKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>meshref</code> <a class="xref" href="Vintagestory.API.Client.MeshRef.html">MeshRef</a></dt>
+    <dd></dd>
+    <dt><code>blockShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
+    <dd></dd>
+    <dt><code>rotation</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+    <dt><code>renderStage</code> <a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_InitializeAnimatorServer_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_InitializeAnimatorServer_System_String_Vintagestory_API_Common_Shape_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimatorServer(System.String,Vintagestory.API.Common.Shape)">
+  InitializeAnimatorServer(string, Shape)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void InitializeAnimatorServer(string cacheDictKey, Shape blockShape)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cacheDictKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>blockShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_InitializeShapeAndAnimator_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_InitializeShapeAndAnimator_System_String_Vintagestory_API_Common_Shape_Vintagestory_API_Client_ITexPositionSource_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_MeshData__" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeShapeAndAnimator(System.String,Vintagestory.API.Common.Shape,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.MeshData@)">
+  InitializeShapeAndAnimator(string, Shape, ITexPositionSource, Vec3f, out MeshData)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void InitializeShapeAndAnimator(string cacheDictKey, Shape shape, ITexPositionSource texSource, Vec3f rotation, out MeshData meshdata)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cacheDictKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>shape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
+    <dd></dd>
+    <dt><code>texSource</code> <a class="xref" href="Vintagestory.API.Client.ITexPositionSource.html">ITexPositionSource</a></dt>
+    <dd></dd>
+    <dt><code>rotation</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+    <dt><code>meshdata</code> <a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_OnAnimationsStateChange_" data-uid="Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_OnAnimationsStateChange_System_Boolean_" data-uid="Vintagestory.API.Common.AnimationUtil.OnAnimationsStateChange(System.Boolean)">
+  OnAnimationsStateChange(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnAnimationsStateChange(bool animsNowActive)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>animsNowActive</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_OnRenderFrame_" data-uid="Vintagestory.API.Common.AnimationUtil.OnRenderFrame*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_OnRenderFrame_System_Single_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Common.AnimationUtil.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)">
+  OnRenderFrame(float, EnumRenderStage)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called every frame for rendering whatever you need to render</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void OnRenderFrame(float deltaTime, EnumRenderStage stage)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>deltaTime</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>stage</code> <a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_StartAnimation_" data-uid="Vintagestory.API.Common.AnimationUtil.StartAnimation*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_StartAnimation_Vintagestory_API_Common_AnimationMetaData_" data-uid="Vintagestory.API.Common.AnimationUtil.StartAnimation(Vintagestory.API.Common.AnimationMetaData)">
+  StartAnimation(AnimationMetaData)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool StartAnimation(AnimationMetaData meta)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>meta</code> <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_StopAnimation_" data-uid="Vintagestory.API.Common.AnimationUtil.StopAnimation*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_StopAnimation_System_String_" data-uid="Vintagestory.API.Common.AnimationUtil.StopAnimation(System.String)">
+  StopAnimation(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StopAnimation(string code)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

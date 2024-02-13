@@ -1,0 +1,134 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.MatchGridRecipeDelegate
+  commentId: T:Vintagestory.API.Common.MatchGridRecipeDelegate
+  id: MatchGridRecipeDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: MatchGridRecipeDelegate
+  nameWithType: MatchGridRecipeDelegate
+  fullName: Vintagestory.API.Common.MatchGridRecipeDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/IEventAPI.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: MatchGridRecipeDelegate
+    path: Common/API/IEventAPI.cs
+    startLine: 70
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public delegate bool MatchGridRecipeDelegate(IPlayer player, GridRecipe recipe, ItemSlot[] ingredients, int gridWidth)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+    - id: recipe
+      type: Vintagestory.API.Common.GridRecipe
+    - id: ingredients
+      type: Vintagestory.API.Common.ItemSlot[]
+    - id: gridWidth
+      type: System.Int32
+    return:
+      type: System.Boolean
+    content.vb: Public Delegate Function MatchGridRecipeDelegate(player As IPlayer, recipe As GridRecipe, ingredients As ItemSlot(), gridWidth As Integer) As Boolean
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: Vintagestory.API.Common.GridRecipe
+  commentId: T:Vintagestory.API.Common.GridRecipe
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.GridRecipe.html
+  name: GridRecipe
+  nameWithType: GridRecipe
+  fullName: Vintagestory.API.Common.GridRecipe
+- uid: Vintagestory.API.Common.ItemSlot[]
+  isExternal: true
+  href: Vintagestory.API.Common.ItemSlot.html
+  name: ItemSlot[]
+  nameWithType: ItemSlot[]
+  fullName: Vintagestory.API.Common.ItemSlot[]
+  nameWithType.vb: ItemSlot()
+  fullName.vb: Vintagestory.API.Common.ItemSlot()
+  name.vb: ItemSlot()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: (
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System

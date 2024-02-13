@@ -1,0 +1,180 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Server.IAsyncServerSystem
+  commentId: T:Vintagestory.API.Server.IAsyncServerSystem
+  id: IAsyncServerSystem
+  parent: Vintagestory.API.Server
+  children:
+  - Vintagestory.API.Server.IAsyncServerSystem.OffThreadInterval
+  - Vintagestory.API.Server.IAsyncServerSystem.OnSeparateThreadTick
+  - Vintagestory.API.Server.IAsyncServerSystem.ThreadDispose
+  langs:
+  - csharp
+  - vb
+  name: IAsyncServerSystem
+  nameWithType: IAsyncServerSystem
+  fullName: Vintagestory.API.Server.IAsyncServerSystem
+  type: Interface
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/IAsyncServerSystem.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: IAsyncServerSystem
+    path: Server/API/IAsyncServerSystem.cs
+    startLine: 5
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Mods can create server threads to carry out an asynchronous process, by implementing this interface and calling IServerApi.AddServerThread()
+  example: []
+  syntax:
+    content: public interface IAsyncServerSystem
+    content.vb: Public Interface IAsyncServerSystem
+- uid: Vintagestory.API.Server.IAsyncServerSystem.OffThreadInterval
+  commentId: M:Vintagestory.API.Server.IAsyncServerSystem.OffThreadInterval
+  id: OffThreadInterval
+  parent: Vintagestory.API.Server.IAsyncServerSystem
+  langs:
+  - csharp
+  - vb
+  name: OffThreadInterval()
+  nameWithType: IAsyncServerSystem.OffThreadInterval()
+  fullName: Vintagestory.API.Server.IAsyncServerSystem.OffThreadInterval()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/IAsyncServerSystem.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OffThreadInterval
+    path: Server/API/IAsyncServerSystem.cs
+    startLine: 7
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: int OffThreadInterval()
+    return:
+      type: System.Int32
+    content.vb: Function OffThreadInterval() As Integer
+  overload: Vintagestory.API.Server.IAsyncServerSystem.OffThreadInterval*
+- uid: Vintagestory.API.Server.IAsyncServerSystem.OnSeparateThreadTick
+  commentId: M:Vintagestory.API.Server.IAsyncServerSystem.OnSeparateThreadTick
+  id: OnSeparateThreadTick
+  parent: Vintagestory.API.Server.IAsyncServerSystem
+  langs:
+  - csharp
+  - vb
+  name: OnSeparateThreadTick()
+  nameWithType: IAsyncServerSystem.OnSeparateThreadTick()
+  fullName: Vintagestory.API.Server.IAsyncServerSystem.OnSeparateThreadTick()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/IAsyncServerSystem.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnSeparateThreadTick
+    path: Server/API/IAsyncServerSystem.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: void OnSeparateThreadTick()
+    content.vb: Sub OnSeparateThreadTick()
+  overload: Vintagestory.API.Server.IAsyncServerSystem.OnSeparateThreadTick*
+- uid: Vintagestory.API.Server.IAsyncServerSystem.ThreadDispose
+  commentId: M:Vintagestory.API.Server.IAsyncServerSystem.ThreadDispose
+  id: ThreadDispose
+  parent: Vintagestory.API.Server.IAsyncServerSystem
+  langs:
+  - csharp
+  - vb
+  name: ThreadDispose()
+  nameWithType: IAsyncServerSystem.ThreadDispose()
+  fullName: Vintagestory.API.Server.IAsyncServerSystem.ThreadDispose()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Server/API/IAsyncServerSystem.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: ThreadDispose
+    path: Server/API/IAsyncServerSystem.cs
+    startLine: 11
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: void ThreadDispose()
+    content.vb: Sub ThreadDispose()
+  overload: Vintagestory.API.Server.IAsyncServerSystem.ThreadDispose*
+references:
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+- uid: Vintagestory.API.Server.IAsyncServerSystem.OffThreadInterval*
+  commentId: Overload:Vintagestory.API.Server.IAsyncServerSystem.OffThreadInterval
+  href: Vintagestory.API.Server.IAsyncServerSystem.html#Vintagestory_API_Server_IAsyncServerSystem_OffThreadInterval
+  name: OffThreadInterval
+  nameWithType: IAsyncServerSystem.OffThreadInterval
+  fullName: Vintagestory.API.Server.IAsyncServerSystem.OffThreadInterval
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Server.IAsyncServerSystem.OnSeparateThreadTick*
+  commentId: Overload:Vintagestory.API.Server.IAsyncServerSystem.OnSeparateThreadTick
+  href: Vintagestory.API.Server.IAsyncServerSystem.html#Vintagestory_API_Server_IAsyncServerSystem_OnSeparateThreadTick
+  name: OnSeparateThreadTick
+  nameWithType: IAsyncServerSystem.OnSeparateThreadTick
+  fullName: Vintagestory.API.Server.IAsyncServerSystem.OnSeparateThreadTick
+- uid: Vintagestory.API.Server.IAsyncServerSystem.ThreadDispose*
+  commentId: Overload:Vintagestory.API.Server.IAsyncServerSystem.ThreadDispose
+  href: Vintagestory.API.Server.IAsyncServerSystem.html#Vintagestory_API_Server_IAsyncServerSystem_ThreadDispose
+  name: ThreadDispose
+  nameWithType: IAsyncServerSystem.ThreadDispose
+  fullName: Vintagestory.API.Server.IAsyncServerSystem.ThreadDispose

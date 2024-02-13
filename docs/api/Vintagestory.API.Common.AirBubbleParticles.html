@@ -1,1370 +1,1417 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AirBubbleParticles
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AirBubbleParticles
-   ">
-    <meta name="generator" content="docfx 2.56.7.0">
-    
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class AirBubbleParticles | VintageStory API </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AirBubbleParticles | VintageStory API ">
+      
+      
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
-              </a>
-            </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory API">
+            VintageStory API
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
               </form>
             </div>
           </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
-          </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Vintagestory.API.Common.AirBubbleParticles">
-  
-  
-  <h1 id="Vintagestory_API_Common_AirBubbleParticles" data-uid="Vintagestory.API.Common.AirBubbleParticles" class="text-break">Class AirBubbleParticles
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">AirBubbleParticles</span></div>
-  </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Vintagestory.API.Common.html">Vintagestory.API.Common</a></h6>
-  <h6><strong>Assembly</strong>: VintagestoryAPI.dll</h6>
-  <h5 id="Vintagestory_API_Common_AirBubbleParticles_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AirBubbleParticles : object, IParticlePropertiesProvider</code></pre>
-  </div>
-  <h3 id="fields">Fields
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_AddVelocity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.AddVelocity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L21">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_AddVelocity" data-uid="Vintagestory.API.Common.AirBubbleParticles.AddVelocity">AddVelocity</h4>
-  <div class="markdown level1 summary"><p>The velocity to add to the bubble particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3f AddVelocity</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_BasePos.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.BasePos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L16">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_BasePos" data-uid="Vintagestory.API.Common.AirBubbleParticles.BasePos">BasePos</h4>
-  <div class="markdown level1 summary"><p>The base position of the bubble particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3d BasePos</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_horVelocityMul.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.horVelocityMul%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L87">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_horVelocityMul" data-uid="Vintagestory.API.Common.AirBubbleParticles.horVelocityMul">horVelocityMul</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float horVelocityMul</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_quantity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.quantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L86">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_quantity" data-uid="Vintagestory.API.Common.AirBubbleParticles.quantity">quantity</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float quantity</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_Range.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.Range%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L82">View Source</a>
-  </span>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_Range" data-uid="Vintagestory.API.Common.AirBubbleParticles.Range">Range</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Range</code></pre>
-  </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_Async.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.Async%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L10">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_Async_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Async*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_Async" data-uid="Vintagestory.API.Common.AirBubbleParticles.Async">Async</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Async { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_BlueEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.BlueEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L78">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_BlueEvolve_" data-uid="Vintagestory.API.Common.AirBubbleParticles.BlueEvolve*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_BlueEvolve" data-uid="Vintagestory.API.Common.AirBubbleParticles.BlueEvolve">BlueEvolve</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvolvingNatFloat BlueEvolve { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_Bounciness.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.Bounciness%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L40">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_Bounciness_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Bounciness*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_Bounciness" data-uid="Vintagestory.API.Common.AirBubbleParticles.Bounciness">Bounciness</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Bounciness { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_DeathParticles.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.DeathParticles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L38">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_DeathParticles_" data-uid="Vintagestory.API.Common.AirBubbleParticles.DeathParticles*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_DeathParticles" data-uid="Vintagestory.API.Common.AirBubbleParticles.DeathParticles">DeathParticles</h4>
-  <div class="markdown level1 summary"><p>Gets the death particles.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IParticlePropertiesProvider[] DeathParticles { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a>[]</td>
-        <td><p>There are no death particles for bubbles.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_DieInAir.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.DieInAir%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L46">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_DieInAir_" data-uid="Vintagestory.API.Common.AirBubbleParticles.DieInAir*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_DieInAir" data-uid="Vintagestory.API.Common.AirBubbleParticles.DieInAir">DieInAir</h4>
-  <div class="markdown level1 summary"><p>Whether or not the bubbles die in air.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool DieInAir { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>Yes they die in air.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_DieInLiquid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.DieInLiquid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L51">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_DieInLiquid_" data-uid="Vintagestory.API.Common.AirBubbleParticles.DieInLiquid*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_DieInLiquid" data-uid="Vintagestory.API.Common.AirBubbleParticles.DieInLiquid">DieInLiquid</h4>
-  <div class="markdown level1 summary"><p>Whether or not the bubbles die in liquid.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool DieInLiquid { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>They don&apos;t.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_DieOnRainHeightmap.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L144">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_DieOnRainHeightmap_" data-uid="Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_DieOnRainHeightmap" data-uid="Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap">DieOnRainHeightmap</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool DieOnRainHeightmap { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_GravityEffect.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.GravityEffect%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L67">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_GravityEffect_" data-uid="Vintagestory.API.Common.AirBubbleParticles.GravityEffect*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_GravityEffect" data-uid="Vintagestory.API.Common.AirBubbleParticles.GravityEffect">GravityEffect</h4>
-  <div class="markdown level1 summary"><p>Gets the gravity applied to the particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float GravityEffect { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><p>None.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_GreenEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.GreenEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L78">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_GreenEvolve_" data-uid="Vintagestory.API.Common.AirBubbleParticles.GreenEvolve*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_GreenEvolve" data-uid="Vintagestory.API.Common.AirBubbleParticles.GreenEvolve">GreenEvolve</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvolvingNatFloat GreenEvolve { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_LifeLength.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.LifeLength%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L77">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_LifeLength_" data-uid="Vintagestory.API.Common.AirBubbleParticles.LifeLength*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_LifeLength" data-uid="Vintagestory.API.Common.AirBubbleParticles.LifeLength">LifeLength</h4>
-  <div class="markdown level1 summary"><p>Gets the length of life for the particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float LifeLength { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td><p>0.25f</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_OpacityEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L78">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_OpacityEvolve_" data-uid="Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_OpacityEvolve" data-uid="Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve">OpacityEvolve</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvolvingNatFloat OpacityEvolve { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_ParentVelocity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.ParentVelocity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L150">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_ParentVelocity_" data-uid="Vintagestory.API.Common.AirBubbleParticles.ParentVelocity*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_ParentVelocity" data-uid="Vintagestory.API.Common.AirBubbleParticles.ParentVelocity">ParentVelocity</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3f ParentVelocity { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_ParticleModel.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.ParticleModel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L115">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_ParticleModel_" data-uid="Vintagestory.API.Common.AirBubbleParticles.ParticleModel*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_ParticleModel" data-uid="Vintagestory.API.Common.AirBubbleParticles.ParticleModel">ParticleModel</h4>
-  <div class="markdown level1 summary"><p>The base model of the particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EnumParticleModel ParticleModel { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.EnumParticleModel.html">EnumParticleModel</a></td>
-        <td><p>It&apos;s a cube.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_Pos.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.Pos%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L80">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_Pos_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Pos*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_Pos" data-uid="Vintagestory.API.Common.AirBubbleParticles.Pos">Pos</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3d Pos { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_Quantity.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.Quantity%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L84">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_Quantity_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Quantity*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_Quantity" data-uid="Vintagestory.API.Common.AirBubbleParticles.Quantity">Quantity</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Quantity { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_RandomVelocityChange.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L79">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_RandomVelocityChange_" data-uid="Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_RandomVelocityChange" data-uid="Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange">RandomVelocityChange</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool RandomVelocityChange { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_RedEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.RedEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L78">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_RedEvolve_" data-uid="Vintagestory.API.Common.AirBubbleParticles.RedEvolve*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_RedEvolve" data-uid="Vintagestory.API.Common.AirBubbleParticles.RedEvolve">RedEvolve</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvolvingNatFloat RedEvolve { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_SecondaryParticles.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L33">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_SecondaryParticles_" data-uid="Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_SecondaryParticles" data-uid="Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles">SecondaryParticles</h4>
-  <div class="markdown level1 summary"><p>Gets the secondary particles</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IParticlePropertiesProvider[] SecondaryParticles { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a>[]</td>
-        <td><p>null, the bubble particles don&apos;t have secondary particles.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_SecondarySpawnInterval.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L142">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_SecondarySpawnInterval_" data-uid="Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_SecondarySpawnInterval" data-uid="Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval">SecondarySpawnInterval</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float SecondarySpawnInterval { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_SelfPropelled.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.SelfPropelled%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L121">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_SelfPropelled_" data-uid="Vintagestory.API.Common.AirBubbleParticles.SelfPropelled*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_SelfPropelled" data-uid="Vintagestory.API.Common.AirBubbleParticles.SelfPropelled">SelfPropelled</h4>
-  <div class="markdown level1 summary"><p>This particle is not self propelled.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool SelfPropelled { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_Size.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.Size%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L94">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_Size_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Size*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_Size" data-uid="Vintagestory.API.Common.AirBubbleParticles.Size">Size</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float Size { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_SizeEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.SizeEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L96">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_SizeEvolve_" data-uid="Vintagestory.API.Common.AirBubbleParticles.SizeEvolve*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_SizeEvolve" data-uid="Vintagestory.API.Common.AirBubbleParticles.SizeEvolve">SizeEvolve</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvolvingNatFloat SizeEvolve { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_SwimOnLiquid.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L56">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_SwimOnLiquid_" data-uid="Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_SwimOnLiquid" data-uid="Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid">SwimOnLiquid</h4>
-  <div class="markdown level1 summary"><p>Whether or not the bubbles die in liquid.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool SwimOnLiquid { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p>They don&apos;t.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_TerrainCollision.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.TerrainCollision%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L72">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_TerrainCollision_" data-uid="Vintagestory.API.Common.AirBubbleParticles.TerrainCollision*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_TerrainCollision" data-uid="Vintagestory.API.Common.AirBubbleParticles.TerrainCollision">TerrainCollision</h4>
-  <div class="markdown level1 summary"><p>Whether or not the bubble collides with the terrain.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool TerrainCollision { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_VelocityEvolve.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L109">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_VelocityEvolve_" data-uid="Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_VelocityEvolve" data-uid="Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve">VelocityEvolve</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EvolvingNatFloat[] VelocityEvolve { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_VertexFlags.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.VertexFlags%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L62">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_VertexFlags_" data-uid="Vintagestory.API.Common.AirBubbleParticles.VertexFlags*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_VertexFlags" data-uid="Vintagestory.API.Common.AirBubbleParticles.VertexFlags">VertexFlags</h4>
-  <div class="markdown level1 summary"><p>Gets the glow level of the bubbles.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int VertexFlags { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td><p>No glow.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_BeginParticle.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.BeginParticle%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L140">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_BeginParticle_" data-uid="Vintagestory.API.Common.AirBubbleParticles.BeginParticle*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_BeginParticle" data-uid="Vintagestory.API.Common.AirBubbleParticles.BeginParticle">BeginParticle()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void BeginParticle()</code></pre>
-  </div>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_FromBytes_BinaryReader_Vintagestory_API_Common_IWorldAccessor_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.FromBytes(BinaryReader%2CVintagestory.API.Common.IWorldAccessor)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L136">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_FromBytes_" data-uid="Vintagestory.API.Common.AirBubbleParticles.FromBytes*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_FromBytes_BinaryReader_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.AirBubbleParticles.FromBytes(BinaryReader,Vintagestory.API.Common.IWorldAccessor)">FromBytes(BinaryReader, IWorldAccessor)</h4>
-  <div class="markdown level1 summary"><p>This particle does not load from file.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void FromBytes(BinaryReader reader, IWorldAccessor resolver)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">BinaryReader</span></td>
-        <td><span class="parametername">reader</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></td>
-        <td><span class="parametername">resolver</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L89">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_GetRgbaColor_" data-uid="Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)">GetRgbaColor(ICoreClientAPI)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int GetRgbaColor(ICoreClientAPI capi)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></td>
-        <td><span class="parametername">capi</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_GetVelocity_Vintagestory_API_MathTools_Vec3d_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.GetVelocity(Vintagestory.API.MathTools.Vec3d)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L98">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_GetVelocity_" data-uid="Vintagestory.API.Common.AirBubbleParticles.GetVelocity*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_GetVelocity_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.AirBubbleParticles.GetVelocity(Vintagestory.API.MathTools.Vec3d)">GetVelocity(Vec3d)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec3f GetVelocity(Vec3d pos)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></td>
-        <td><span class="parametername">pos</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_Init_Vintagestory_API_Common_ICoreAPI_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.Init(Vintagestory.API.Common.ICoreAPI)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L27">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_Init_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Init*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_Init_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Init(Vintagestory.API.Common.ICoreAPI)">Init(ICoreAPI)</h4>
-  <div class="markdown level1 summary"><p>Initializes the bubble particle.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Init(ICoreAPI api)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></td>
-        <td><span class="parametername">api</span></td>
-        <td><p>The core API.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L146">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_PrepareForSecondarySpawn_" data-uid="Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_" data-uid="Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)">PrepareForSecondarySpawn(ParticleBase)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void PrepareForSecondarySpawn(ParticleBase particleInstance)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Vintagestory.API.Common.ParticleBase.html">ParticleBase</a></td>
-        <td><span class="parametername">particleInstance</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_ToBytes_BinaryWriter_.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.ToBytes(BinaryWriter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L127">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_ToBytes_" data-uid="Vintagestory.API.Common.AirBubbleParticles.ToBytes*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_ToBytes_BinaryWriter_" data-uid="Vintagestory.API.Common.AirBubbleParticles.ToBytes(BinaryWriter)">ToBytes(BinaryWriter)</h4>
-  <div class="markdown level1 summary"><p>This particle does not save to file.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ToBytes(BinaryWriter writer)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">BinaryWriter</span></td>
-        <td><span class="parametername">writer</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="eii">Explicit Interface Implementations
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles_Vintagestory_API_Common_IParticlePropertiesProvider_ParentVelocityWeight.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles.Vintagestory%23API%23Common%23IParticlePropertiesProvider%23ParentVelocityWeight%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L152">View Source</a>
-  </span>
-  <a id="Vintagestory_API_Common_AirBubbleParticles_Vintagestory_API_Common_IParticlePropertiesProvider_ParentVelocityWeight_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Vintagestory#API#Common#IParticlePropertiesProvider#ParentVelocityWeight*"></a>
-  <h4 id="Vintagestory_API_Common_AirBubbleParticles_Vintagestory_API_Common_IParticlePropertiesProvider_ParentVelocityWeight" data-uid="Vintagestory.API.Common.AirBubbleParticles.Vintagestory#API#Common#IParticlePropertiesProvider#ParentVelocityWeight">IParticlePropertiesProvider.ParentVelocityWeight</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">float IParticlePropertiesProvider.ParentVelocityWeight { get; }</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Single</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a>
-  </div>
-</article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/new/master/apiSpec/new?filename=Vintagestory_API_Common_AirBubbleParticles.md&amp;value=---%0Auid%3A%20Vintagestory.API.Common.AirBubbleParticles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/anegostudios/vsapi/blob/master/Common/Particle/AirBubbleParticles.cs/#L8" class="contribution-link">View Source</a>
-                  </li>
-                </ul>
-              </div>
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
         </div>
-      </footer>
+
+        <article data-uid="Vintagestory.API.Common.AirBubbleParticles">
+
+
+
+  <h1 id="Vintagestory_API_Common_AirBubbleParticles" data-uid="Vintagestory.API.Common.AirBubbleParticles" class="text-break">
+Class AirBubbleParticles  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AirBubbleParticles : IParticlePropertiesProvider</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AirBubbleParticles</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_AddVelocity" data-uid="Vintagestory.API.Common.AirBubbleParticles.AddVelocity">
+  AddVelocity
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The velocity to add to the bubble particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3f AddVelocity</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_BasePos" data-uid="Vintagestory.API.Common.AirBubbleParticles.BasePos">
+  BasePos
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The base position of the bubble particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d BasePos</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_Range" data-uid="Vintagestory.API.Common.AirBubbleParticles.Range">
+  Range
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Range</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_horVelocityMul" data-uid="Vintagestory.API.Common.AirBubbleParticles.horVelocityMul">
+  horVelocityMul
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float horVelocityMul</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_quantity" data-uid="Vintagestory.API.Common.AirBubbleParticles.quantity">
+  quantity
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float quantity</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_Async_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Async*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_Async" data-uid="Vintagestory.API.Common.AirBubbleParticles.Async">
+  Async
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, will be be spawned in the async particle system, which does not affect main game performance, recommended for large quantities of particles, slightly less optimal for particles that spawn very often</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Async { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_BlueEvolve_" data-uid="Vintagestory.API.Common.AirBubbleParticles.BlueEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_BlueEvolve" data-uid="Vintagestory.API.Common.AirBubbleParticles.BlueEvolve">
+  BlueEvolve
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EvolvingNatFloat BlueEvolve { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_Bounciness_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Bounciness*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_Bounciness" data-uid="Vintagestory.API.Common.AirBubbleParticles.Bounciness">
+  Bounciness
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Bounciness { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_DeathParticles_" data-uid="Vintagestory.API.Common.AirBubbleParticles.DeathParticles*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_DeathParticles" data-uid="Vintagestory.API.Common.AirBubbleParticles.DeathParticles">
+  DeathParticles
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the death particles.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IParticlePropertiesProvider[] DeathParticles { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a>[]</dt>
+    <dd><p>There are no death particles for bubbles.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_DieInAir_" data-uid="Vintagestory.API.Common.AirBubbleParticles.DieInAir*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_DieInAir" data-uid="Vintagestory.API.Common.AirBubbleParticles.DieInAir">
+  DieInAir
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the bubbles die in air.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DieInAir { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Yes they die in air.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_DieInLiquid_" data-uid="Vintagestory.API.Common.AirBubbleParticles.DieInLiquid*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_DieInLiquid" data-uid="Vintagestory.API.Common.AirBubbleParticles.DieInLiquid">
+  DieInLiquid
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the bubbles die in liquid.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DieInLiquid { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>They don't.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_DieOnRainHeightmap_" data-uid="Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_DieOnRainHeightmap" data-uid="Vintagestory.API.Common.AirBubbleParticles.DieOnRainHeightmap">
+  DieOnRainHeightmap
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, particle dies if it falls below the rain height at its given location</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DieOnRainHeightmap { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_GravityEffect_" data-uid="Vintagestory.API.Common.AirBubbleParticles.GravityEffect*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_GravityEffect" data-uid="Vintagestory.API.Common.AirBubbleParticles.GravityEffect">
+  GravityEffect
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the gravity applied to the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float GravityEffect { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>None.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_GreenEvolve_" data-uid="Vintagestory.API.Common.AirBubbleParticles.GreenEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_GreenEvolve" data-uid="Vintagestory.API.Common.AirBubbleParticles.GreenEvolve">
+  GreenEvolve
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EvolvingNatFloat GreenEvolve { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_LifeLength_" data-uid="Vintagestory.API.Common.AirBubbleParticles.LifeLength*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_LifeLength" data-uid="Vintagestory.API.Common.AirBubbleParticles.LifeLength">
+  LifeLength
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the length of life for the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float LifeLength { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>0.25f</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_OpacityEvolve_" data-uid="Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_OpacityEvolve" data-uid="Vintagestory.API.Common.AirBubbleParticles.OpacityEvolve">
+  OpacityEvolve
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EvolvingNatFloat OpacityEvolve { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_ParentVelocity_" data-uid="Vintagestory.API.Common.AirBubbleParticles.ParentVelocity*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_ParentVelocity" data-uid="Vintagestory.API.Common.AirBubbleParticles.ParentVelocity">
+  ParentVelocity
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3f ParentVelocity { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_ParticleModel_" data-uid="Vintagestory.API.Common.AirBubbleParticles.ParticleModel*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_ParticleModel" data-uid="Vintagestory.API.Common.AirBubbleParticles.ParticleModel">
+  ParticleModel
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The base model of the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumParticleModel ParticleModel { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumParticleModel.html">EnumParticleModel</a></dt>
+    <dd><p>It's a cube.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_Pos_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Pos*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_Pos" data-uid="Vintagestory.API.Common.AirBubbleParticles.Pos">
+  Pos
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Position in the world where the particle should spawn</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d Pos { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_Quantity_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Quantity*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_Quantity" data-uid="Vintagestory.API.Common.AirBubbleParticles.Quantity">
+  Quantity
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>How many particles should spawn? For every particle spawned, all of belows methods are called once. E.g. if quantity is 10, GetPos(), GetVelocity(),... is called 10 times.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Quantity { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_RandomVelocityChange_" data-uid="Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_RandomVelocityChange" data-uid="Vintagestory.API.Common.AirBubbleParticles.RandomVelocityChange">
+  RandomVelocityChange
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RandomVelocityChange { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_RedEvolve_" data-uid="Vintagestory.API.Common.AirBubbleParticles.RedEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_RedEvolve" data-uid="Vintagestory.API.Common.AirBubbleParticles.RedEvolve">
+  RedEvolve
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EvolvingNatFloat RedEvolve { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_SecondaryParticles_" data-uid="Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_SecondaryParticles" data-uid="Vintagestory.API.Common.AirBubbleParticles.SecondaryParticles">
+  SecondaryParticles
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the secondary particles</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IParticlePropertiesProvider[] SecondaryParticles { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IParticlePropertiesProvider.html">IParticlePropertiesProvider</a>[]</dt>
+    <dd><p>null, the bubble particles don't have secondary particles.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_SecondarySpawnInterval_" data-uid="Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_SecondarySpawnInterval" data-uid="Vintagestory.API.Common.AirBubbleParticles.SecondarySpawnInterval">
+  SecondarySpawnInterval
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines the interval of time that must elapse during it's parent particle's lifetime before this one will spawn.
+This is only honored if this particle is defined as a secondary particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float SecondarySpawnInterval { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_SelfPropelled_" data-uid="Vintagestory.API.Common.AirBubbleParticles.SelfPropelled*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_SelfPropelled" data-uid="Vintagestory.API.Common.AirBubbleParticles.SelfPropelled">
+  SelfPropelled
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>This particle is not self propelled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SelfPropelled { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_Size_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Size*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_Size" data-uid="Vintagestory.API.Common.AirBubbleParticles.Size">
+  Size
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Size of the particle</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float Size { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_SizeEvolve_" data-uid="Vintagestory.API.Common.AirBubbleParticles.SizeEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_SizeEvolve" data-uid="Vintagestory.API.Common.AirBubbleParticles.SizeEvolve">
+  SizeEvolve
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Size change over time</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EvolvingNatFloat SizeEvolve { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_SwimOnLiquid_" data-uid="Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_SwimOnLiquid" data-uid="Vintagestory.API.Common.AirBubbleParticles.SwimOnLiquid">
+  SwimOnLiquid
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the bubbles die in liquid.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SwimOnLiquid { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>They don't.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_TerrainCollision_" data-uid="Vintagestory.API.Common.AirBubbleParticles.TerrainCollision*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_TerrainCollision" data-uid="Vintagestory.API.Common.AirBubbleParticles.TerrainCollision">
+  TerrainCollision
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not the bubble collides with the terrain.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TerrainCollision { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_VelocityEvolve_" data-uid="Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_VelocityEvolve" data-uid="Vintagestory.API.Common.AirBubbleParticles.VelocityEvolve">
+  VelocityEvolve
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Velocity change over time (acts as a multiplier to the velocity)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EvolvingNatFloat[] VelocityEvolve { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_VertexFlags_" data-uid="Vintagestory.API.Common.AirBubbleParticles.VertexFlags*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_VertexFlags" data-uid="Vintagestory.API.Common.AirBubbleParticles.VertexFlags">
+  VertexFlags
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the glow level of the bubbles.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int VertexFlags { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>No glow.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_BeginParticle_" data-uid="Vintagestory.API.Common.AirBubbleParticles.BeginParticle*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_BeginParticle" data-uid="Vintagestory.API.Common.AirBubbleParticles.BeginParticle">
+  BeginParticle()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called just before a new particle is being created. You can use this to produce e.g. alternating kinds of particles</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void BeginParticle()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_FromBytes_" data-uid="Vintagestory.API.Common.AirBubbleParticles.FromBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_FromBytes_System_IO_BinaryReader_Vintagestory_API_Common_IWorldAccessor_" data-uid="Vintagestory.API.Common.AirBubbleParticles.FromBytes(System.IO.BinaryReader,Vintagestory.API.Common.IWorldAccessor)">
+  FromBytes(BinaryReader, IWorldAccessor)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>This particle does not load from file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void FromBytes(BinaryReader reader, IWorldAccessor resolver)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+    <dt><code>resolver</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_GetRgbaColor_" data-uid="Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_" data-uid="Vintagestory.API.Common.AirBubbleParticles.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)">
+  GetRgbaColor(ICoreClientAPI)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The particles Rgba Color</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetRgbaColor(ICoreClientAPI capi)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>capi</code> <a class="xref" href="Vintagestory.API.Client.ICoreClientAPI.html">ICoreClientAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_GetVelocity_" data-uid="Vintagestory.API.Common.AirBubbleParticles.GetVelocity*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_GetVelocity_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.AirBubbleParticles.GetVelocity(Vintagestory.API.MathTools.Vec3d)">
+  GetVelocity(Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>In what direction should the particle fly/fall</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3f GetVelocity(Vec3d pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_Init_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Init*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_Init_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.AirBubbleParticles.Init(Vintagestory.API.Common.ICoreAPI)">
+  Init(ICoreAPI)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes the bubble particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Init(ICoreAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd><p>The core API.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_PrepareForSecondarySpawn_" data-uid="Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_PrepareForSecondarySpawn_Vintagestory_API_Common_ParticleBase_" data-uid="Vintagestory.API.Common.AirBubbleParticles.PrepareForSecondarySpawn(Vintagestory.API.Common.ParticleBase)">
+  PrepareForSecondarySpawn(ParticleBase)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates instance related state for secondary particles based on the given parent particle instance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void PrepareForSecondarySpawn(ParticleBase particleInstance)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>particleInstance</code> <a class="xref" href="Vintagestory.API.Common.ParticleBase.html">ParticleBase</a></dt>
+    <dd><p>The parent IParticleInstance from which this secondary particle is being spawned</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AirBubbleParticles_ToBytes_" data-uid="Vintagestory.API.Common.AirBubbleParticles.ToBytes*"></a>
+
+  <h3 id="Vintagestory_API_Common_AirBubbleParticles_ToBytes_System_IO_BinaryWriter_" data-uid="Vintagestory.API.Common.AirBubbleParticles.ToBytes(System.IO.BinaryWriter)">
+  ToBytes(BinaryWriter)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>This particle does not save to file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ToBytes(BinaryWriter writer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

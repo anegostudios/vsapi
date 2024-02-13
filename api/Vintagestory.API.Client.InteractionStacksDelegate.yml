@@ -1,0 +1,140 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.InteractionStacksDelegate
+  commentId: T:Vintagestory.API.Client.InteractionStacksDelegate
+  id: InteractionStacksDelegate
+  parent: Vintagestory.API.Client
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: InteractionStacksDelegate
+  nameWithType: InteractionStacksDelegate
+  fullName: Vintagestory.API.Client.InteractionStacksDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Client/API/IClientWorldAccessor.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: InteractionStacksDelegate
+    path: Client/API/IClientWorldAccessor.cs
+    startLine: 9
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public delegate ItemStack[] InteractionStacksDelegate(WorldInteraction wi, BlockSelection blockSelection, EntitySelection entitySelection)
+    parameters:
+    - id: wi
+      type: Vintagestory.API.Client.WorldInteraction
+    - id: blockSelection
+      type: Vintagestory.API.Common.BlockSelection
+    - id: entitySelection
+      type: Vintagestory.API.Common.EntitySelection
+    return:
+      type: Vintagestory.API.Common.ItemStack[]
+    content.vb: Public Delegate Function InteractionStacksDelegate(wi As WorldInteraction, blockSelection As BlockSelection, entitySelection As EntitySelection) As ItemStack()
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.WorldInteraction
+  commentId: T:Vintagestory.API.Client.WorldInteraction
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.WorldInteraction.html
+  name: WorldInteraction
+  nameWithType: WorldInteraction
+  fullName: Vintagestory.API.Client.WorldInteraction
+- uid: Vintagestory.API.Common.BlockSelection
+  commentId: T:Vintagestory.API.Common.BlockSelection
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockSelection.html
+  name: BlockSelection
+  nameWithType: BlockSelection
+  fullName: Vintagestory.API.Common.BlockSelection
+- uid: Vintagestory.API.Common.EntitySelection
+  commentId: T:Vintagestory.API.Common.EntitySelection
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntitySelection.html
+  name: EntitySelection
+  nameWithType: EntitySelection
+  fullName: Vintagestory.API.Common.EntitySelection
+- uid: Vintagestory.API.Common.ItemStack[]
+  isExternal: true
+  href: Vintagestory.API.Common.ItemStack.html
+  name: ItemStack[]
+  nameWithType: ItemStack[]
+  fullName: Vintagestory.API.Common.ItemStack[]
+  nameWithType.vb: ItemStack()
+  fullName.vb: Vintagestory.API.Common.ItemStack()
+  name.vb: ItemStack()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html

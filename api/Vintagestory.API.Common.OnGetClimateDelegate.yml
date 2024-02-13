@@ -1,0 +1,137 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.OnGetClimateDelegate
+  commentId: T:Vintagestory.API.Common.OnGetClimateDelegate
+  id: OnGetClimateDelegate
+  parent: Vintagestory.API.Common
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: OnGetClimateDelegate
+  nameWithType: OnGetClimateDelegate
+  fullName: Vintagestory.API.Common.OnGetClimateDelegate
+  type: Delegate
+  source:
+    remote:
+      path: VintagestoryApi/Common/API/Delegates.cs
+      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
+      repo: https://gitlab-ci-token:64_D58x_GN-sPxSZFSqtvGu@git.striver.net/vintagecraft/game.git
+    id: OnGetClimateDelegate
+    path: Common/API/Delegates.cs
+    startLine: 150
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public delegate void OnGetClimateDelegate(ref ClimateCondition climate, BlockPos pos, EnumGetClimateMode mode = EnumGetClimateMode.WorldGenValues, double totalDays = 0)
+    parameters:
+    - id: climate
+      type: Vintagestory.API.Common.ClimateCondition
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+    - id: mode
+      type: Vintagestory.API.Common.EnumGetClimateMode
+    - id: totalDays
+      type: System.Double
+    content.vb: Public Delegate Sub OnGetClimateDelegate(climate As ClimateCondition, pos As BlockPos, mode As EnumGetClimateMode = EnumGetClimateMode.WorldGenValues, totalDays As Double = 0)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.ClimateCondition
+  commentId: T:Vintagestory.API.Common.ClimateCondition
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ClimateCondition.html
+  name: ClimateCondition
+  nameWithType: ClimateCondition
+  fullName: Vintagestory.API.Common.ClimateCondition
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.Common.EnumGetClimateMode
+  commentId: T:Vintagestory.API.Common.EnumGetClimateMode
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumGetClimateMode.html
+  name: EnumGetClimateMode
+  nameWithType: EnumGetClimateMode
+  fullName: Vintagestory.API.Common.EnumGetClimateMode
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
