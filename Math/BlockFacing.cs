@@ -1,6 +1,7 @@
 using System;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.MathTools
 {
@@ -343,8 +344,10 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Successive calls to this when looping through the standard six BlockFacings will set pos to the relevant facing offset from the original position<br/>
-        /// NOTE: this modifies the fields of the pos parameter
+        /// NOTE: this modifies the fields of the pos parameter, which is better for heap usage than creating a new BlockPos object for each iteration
+        /// <br/>If necessary to restore the original blockPos value, call FinishIteratingAllFaces(pos)
         /// </summary>
+        /// <param name="pos"></param>
         public void IterateThruFacingOffsets(BlockPos pos)
         {
             switch (this.index)
@@ -374,7 +377,15 @@ namespace Vintagestory.API.MathTools
             }
         }
 
-
+        /// <summary>
+        /// Restores the original value of pos, if we are certain we looped through ALLFACES using IterateThruFacingOffsets
+        /// Note: if for any reason control might have exited the loop early, this cannot sensibly be used
+        /// </summary>
+        /// <param name="pos"></param>
+        public static void FinishIteratingAllFaces(BlockPos pos)
+        {
+            pos.Y++;
+        }
 
 
         /// <summary>

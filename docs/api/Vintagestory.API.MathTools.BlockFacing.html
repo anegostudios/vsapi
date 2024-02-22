@@ -1494,6 +1494,39 @@ bit 5: sign bit</p>
 
 
 
+  <a id="Vintagestory_API_MathTools_BlockFacing_FinishIteratingAllFaces_" data-uid="Vintagestory.API.MathTools.BlockFacing.FinishIteratingAllFaces*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_BlockFacing_FinishIteratingAllFaces_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.MathTools.BlockFacing.FinishIteratingAllFaces(Vintagestory.API.MathTools.BlockPos)">
+  FinishIteratingAllFaces(BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Restores the original value of pos, if we are certain we looped through ALLFACES using IterateThruFacingOffsets
+Note: if for any reason control might have exited the loop early, this cannot sensibly be used</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void FinishIteratingAllFaces(BlockPos pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_BlockFacing_FlagContains_" data-uid="Vintagestory.API.MathTools.BlockFacing.FlagContains*"></a>
 
   <h3 id="Vintagestory_API_MathTools_BlockFacing_FlagContains_System_Byte_Vintagestory_API_MathTools_BlockFacing_" data-uid="Vintagestory.API.MathTools.BlockFacing.FlagContains(System.Byte,Vintagestory.API.MathTools.BlockFacing)">
@@ -2127,7 +2160,8 @@ public BlockFacing GetOpposite()</code></pre>
   </h3>
 
   <div class="markdown level1 summary"><p>Successive calls to this when looping through the standard six BlockFacings will set pos to the relevant facing offset from the original position<br>
-NOTE: this modifies the fields of the pos parameter</p>
+NOTE: this modifies the fields of the pos parameter, which is better for heap usage than creating a new BlockPos object for each iteration
+<br>If necessary to restore the original blockPos value, call FinishIteratingAllFaces(pos)</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

@@ -493,6 +493,15 @@ namespace Vintagestory.API.MathTools
             return output;
         }
 
+        public static void SimpleScaleMatrix(Span<float> matrix, float x, float y, float z)
+        {
+            matrix.Clear();
+            matrix[0] = x;
+            matrix[5] = y;
+            matrix[10] = z;
+            matrix[15] = 1f;
+        }
+
 
         /// <summary>
         /// Scales the mat4 by the dimensions in the given vec3
@@ -722,6 +731,43 @@ namespace Vintagestory.API.MathTools
             output[6] = a12 * c - a02 * s;
             output[7] = a13 * c - a03 * s;
             return output;
+        }
+
+
+        /// <summary>
+        /// Provides a composite rotation matrix, equivalent to RotateX followed by RotateY followed by RotateZ
+        /// <br/>Here we work on a Span (which may be on the stack) for higher performance
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <param name="radX"></param>
+        /// <param name="radY"></param>
+        /// <param name="radZ"></param>
+        public static void RotateXYZ(Span<float> matrix, float radX, float radY, float radZ)
+        {
+            float sx = GameMath.Sin(radX);
+            float cx = GameMath.Cos(radX);
+            float sy = GameMath.Sin(radY);
+            float cy = GameMath.Cos(radY);
+            float sz = GameMath.Sin(radZ);
+            float cz = GameMath.Cos(radZ);
+            float a01 = sx * sy;
+            float a02 = - cx * sy;
+            matrix[0] = cy * cz;
+            matrix[1] = a01 * cz + cx * sz;
+            matrix[2] = a02 * cz + sx * sz;
+            matrix[3] = 0f;
+            matrix[4] = -cy * sz;
+            matrix[5] = cx * cz - a01 * sz;
+            matrix[6] = sx * cz - a02 * sz;
+            matrix[7] = 0f;
+            matrix[8] = sy;
+            matrix[9] = - sx * cy;
+            matrix[10] = cx * cy;
+            matrix[11] = 0f;
+            matrix[12] = 0f;
+            matrix[13] = 0f;
+            matrix[14] = 0f;
+            matrix[15] = 1f;
         }
 
         /// <summary>
@@ -1059,6 +1105,11 @@ namespace Vintagestory.API.MathTools
 
         public static void MulWithVec4(float[] matrix, float[] vec, float[] output)
         {
+            MulWithVec4((Span<float>)matrix, vec, output);
+        }
+
+        public static void MulWithVec4(Span<float> matrix, float[] vec, float[] output)
+        {
             float vx = vec[0];
             float vy = vec[1];
             float vz = vec[2];
@@ -1075,6 +1126,14 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public static void MulWithVec3(float[] matrix, float[] vec, float[] output)
         {
+            MulWithVec3((Span<float>)matrix, vec, output);
+        }
+
+        /// <summary>
+        /// Used for vec3 representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have *no* effect
+        /// </summary>
+        public static void MulWithVec3(Span<float> matrix, float[] vec, float[] output)
+        {
             float x = vec[0];
             float y = vec[1];
             float z = vec[2];
@@ -1088,6 +1147,11 @@ namespace Vintagestory.API.MathTools
         /// The offset is used to index within the original and output arrays - e.g. in MeshData.xyz
         /// </summary>
         public static void MulWithVec3_Position(float[] matrix, float[] vec, float[] output, int offset)
+        {
+            MulWithVec3_Position((Span<float>)matrix, vec, output, offset);
+        }
+
+        public static void MulWithVec3_Position(Span<float> matrix, float[] vec, float[] output, int offset)
         {
             float x = vec[offset + 0];
             float y = vec[offset + 1];
@@ -1125,6 +1189,11 @@ namespace Vintagestory.API.MathTools
         /// The origin is the origin for the rotation
         /// </summary>
         public static void MulWithVec3_Position_WithOrigin(float[] matrix, float[] vec, float[] output, int offset, Vec3f origin)
+        {
+            MulWithVec3_Position_WithOrigin((Span<float>)matrix, vec, output, offset, origin);
+        }
+
+        public static void MulWithVec3_Position_WithOrigin(Span<float> matrix, float[] vec, float[] output, int offset, Vec3f origin)
         {
             float vx = vec[offset + 0] - origin.X;
             float vy = vec[offset + 1] - origin.Y;
@@ -1170,6 +1239,11 @@ namespace Vintagestory.API.MathTools
 
 
         public static BlockFacing MulWithVec3_BlockFacing(float[] matrix, Vec3f vec)
+        {
+            return MulWithVec3_BlockFacing((Span<float>) matrix, vec);
+        }
+
+        public static BlockFacing MulWithVec3_BlockFacing(Span<float> matrix, Vec3f vec)
         {
             float x = matrix[0] * vec.X + matrix[4] * vec.Y + matrix[8] * vec.Z;
             float y = matrix[1] * vec.X + matrix[5] * vec.Y + matrix[9] * vec.Z;

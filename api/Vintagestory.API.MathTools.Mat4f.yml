@@ -22,12 +22,16 @@ items:
   - Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Single[],System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Single[],System.Single[],System.Single[])
   - Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Single[],Vintagestory.API.MathTools.Vec3f,Vintagestory.API.MathTools.Vec3f)
+  - Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Span{System.Single},System.Single[],System.Single[])
   - Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing(System.Single[],Vintagestory.API.MathTools.Vec3f)
+  - Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing(System.Span{System.Single},Vintagestory.API.MathTools.Vec3f)
   - Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Single[],System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec3f)
   - Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Single[],System.Single[],System.Single[],System.Int32)
+  - Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Span{System.Single},System.Single[],System.Single[],System.Int32)
   - Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_AndScale(System.Single[],System.Single[],System.Single[],System.Int32,System.Single)
   - Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_AndScaleXY(System.Single[],System.Single[],System.Single[],System.Int32,System.Single)
   - Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin(System.Single[],System.Single[],System.Single[],System.Int32,Vintagestory.API.MathTools.Vec3f)
+  - Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin(System.Span{System.Single},System.Single[],System.Single[],System.Int32,Vintagestory.API.MathTools.Vec3f)
   - Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],System.Double[])
   - Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],System.Single,System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],System.Single[])
@@ -35,15 +39,18 @@ items:
   - Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],System.Single[],Vintagestory.API.MathTools.Vec4f)
   - Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],Vintagestory.API.MathTools.Vec4d,Vintagestory.API.MathTools.Vec4d)
   - Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],Vintagestory.API.MathTools.Vec4f,Vintagestory.API.MathTools.Vec4f)
+  - Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Span{System.Single},System.Single[],System.Single[])
   - Vintagestory.API.MathTools.Mat4f.Multiply(System.Single[],System.Single[],System.Single[])
   - Vintagestory.API.MathTools.Mat4f.Ortho(System.Single[],System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.Mat4f.Perspective(System.Single[],System.Single,System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.Mat4f.Rotate(System.Single[],System.Single[],System.Single,System.Single[])
   - Vintagestory.API.MathTools.Mat4f.RotateX(System.Single[],System.Single[],System.Single)
+  - Vintagestory.API.MathTools.Mat4f.RotateXYZ(System.Span{System.Single},System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.Mat4f.RotateY(System.Single[],System.Single[],System.Single)
   - Vintagestory.API.MathTools.Mat4f.RotateZ(System.Single[],System.Single[],System.Single)
   - Vintagestory.API.MathTools.Mat4f.Scale(System.Single[],System.Single[],System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.Mat4f.Scale(System.Single[],System.Single[],System.Single[])
+  - Vintagestory.API.MathTools.Mat4f.SimpleScaleMatrix(System.Span{System.Single},System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.Mat4f.Translate(System.Single[],System.Single[],System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.Mat4f.Translate(System.Single[],System.Single[],System.Single[])
   - Vintagestory.API.MathTools.Mat4f.Transpose(System.Single[],System.Single[])
@@ -57,8 +64,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Mat4f
     path: Math/Matrix/Mat4f.cs
     startLine: 31
@@ -94,8 +101,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Create
     path: Math/Matrix/Mat4f.cs
     startLine: 41
@@ -134,8 +141,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: CloneIt
     path: Math/Matrix/Mat4f.cs
     startLine: 57
@@ -172,8 +179,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Copy
     path: Math/Matrix/Mat4f.cs
     startLine: 85
@@ -213,8 +220,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Identity
     path: Math/Matrix/Mat4f.cs
     startLine: 111
@@ -251,8 +258,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Identity_Scaled
     path: Math/Matrix/Mat4f.cs
     startLine: 139
@@ -292,8 +299,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Transpose
     path: Math/Matrix/Mat4f.cs
     startLine: 167
@@ -333,8 +340,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Invert
     path: Math/Matrix/Mat4f.cs
     startLine: 218
@@ -374,8 +381,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Adjoint
     path: Math/Matrix/Mat4f.cs
     startLine: 274
@@ -415,8 +422,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Determinant
     path: Math/Matrix/Mat4f.cs
     startLine: 305
@@ -453,8 +460,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Multiply
     path: Math/Matrix/Mat4f.cs
     startLine: 337
@@ -497,8 +504,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Mul
     path: Math/Matrix/Mat4f.cs
     startLine: 378
@@ -541,8 +548,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Translate
     path: Math/Matrix/Mat4f.cs
     startLine: 393
@@ -591,8 +598,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Translate
     path: Math/Matrix/Mat4f.cs
     startLine: 432
@@ -635,8 +642,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Scale
     path: Math/Matrix/Mat4f.cs
     startLine: 472
@@ -665,6 +672,44 @@ items:
   nameWithType.vb: Mat4f.Scale(Single(), Single(), Single())
   fullName.vb: Vintagestory.API.MathTools.Mat4f.Scale(Single(), Single(), Single())
   name.vb: Scale(Single(), Single(), Single())
+- uid: Vintagestory.API.MathTools.Mat4f.SimpleScaleMatrix(System.Span{System.Single},System.Single,System.Single,System.Single)
+  commentId: M:Vintagestory.API.MathTools.Mat4f.SimpleScaleMatrix(System.Span{System.Single},System.Single,System.Single,System.Single)
+  id: SimpleScaleMatrix(System.Span{System.Single},System.Single,System.Single,System.Single)
+  parent: Vintagestory.API.MathTools.Mat4f
+  langs:
+  - csharp
+  - vb
+  name: SimpleScaleMatrix(Span<float>, float, float, float)
+  nameWithType: Mat4f.SimpleScaleMatrix(Span<float>, float, float, float)
+  fullName: Vintagestory.API.MathTools.Mat4f.SimpleScaleMatrix(System.Span<float>, float, float, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/Matrix/Mat4f.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: SimpleScaleMatrix
+    path: Math/Matrix/Mat4f.cs
+    startLine: 495
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static void SimpleScaleMatrix(Span<float> matrix, float x, float y, float z)
+    parameters:
+    - id: matrix
+      type: System.Span{System.Single}
+    - id: x
+      type: System.Single
+    - id: y
+      type: System.Single
+    - id: z
+      type: System.Single
+    content.vb: Public Shared Sub SimpleScaleMatrix(matrix As Span(Of Single), x As Single, y As Single, z As Single)
+  overload: Vintagestory.API.MathTools.Mat4f.SimpleScaleMatrix*
+  nameWithType.vb: Mat4f.SimpleScaleMatrix(Span(Of Single), Single, Single, Single)
+  fullName.vb: Vintagestory.API.MathTools.Mat4f.SimpleScaleMatrix(System.Span(Of Single), Single, Single, Single)
+  name.vb: SimpleScaleMatrix(Span(Of Single), Single, Single, Single)
 - uid: Vintagestory.API.MathTools.Mat4f.Scale(System.Single[],System.Single[],System.Single,System.Single,System.Single)
   commentId: M:Vintagestory.API.MathTools.Mat4f.Scale(System.Single[],System.Single[],System.Single,System.Single,System.Single)
   id: Scale(System.Single[],System.Single[],System.Single,System.Single,System.Single)
@@ -679,11 +724,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Scale
     path: Math/Matrix/Mat4f.cs
-    startLine: 505
+    startLine: 514
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -729,11 +774,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Rotate
     path: Math/Matrix/Mat4f.cs
-    startLine: 534
+    startLine: 543
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -776,11 +821,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RotateX
     path: Math/Matrix/Mat4f.cs
-    startLine: 598
+    startLine: 607
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -820,11 +865,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RotateY
     path: Math/Matrix/Mat4f.cs
-    startLine: 643
+    startLine: 652
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -864,11 +909,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RotateZ
     path: Math/Matrix/Mat4f.cs
-    startLine: 688
+    startLine: 697
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -894,6 +939,53 @@ items:
   nameWithType.vb: Mat4f.RotateZ(Single(), Single(), Single)
   fullName.vb: Vintagestory.API.MathTools.Mat4f.RotateZ(Single(), Single(), Single)
   name.vb: RotateZ(Single(), Single(), Single)
+- uid: Vintagestory.API.MathTools.Mat4f.RotateXYZ(System.Span{System.Single},System.Single,System.Single,System.Single)
+  commentId: M:Vintagestory.API.MathTools.Mat4f.RotateXYZ(System.Span{System.Single},System.Single,System.Single,System.Single)
+  id: RotateXYZ(System.Span{System.Single},System.Single,System.Single,System.Single)
+  parent: Vintagestory.API.MathTools.Mat4f
+  langs:
+  - csharp
+  - vb
+  name: RotateXYZ(Span<float>, float, float, float)
+  nameWithType: Mat4f.RotateXYZ(Span<float>, float, float, float)
+  fullName: Vintagestory.API.MathTools.Mat4f.RotateXYZ(System.Span<float>, float, float, float)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/Matrix/Mat4f.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: RotateXYZ
+    path: Math/Matrix/Mat4f.cs
+    startLine: 744
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: >-
+    Provides a composite rotation matrix, equivalent to RotateX followed by RotateY followed by RotateZ
+
+    <br />Here we work on a Span (which may be on the stack) for higher performance
+  example: []
+  syntax:
+    content: public static void RotateXYZ(Span<float> matrix, float radX, float radY, float radZ)
+    parameters:
+    - id: matrix
+      type: System.Span{System.Single}
+      description: ''
+    - id: radX
+      type: System.Single
+      description: ''
+    - id: radY
+      type: System.Single
+      description: ''
+    - id: radZ
+      type: System.Single
+      description: ''
+    content.vb: Public Shared Sub RotateXYZ(matrix As Span(Of Single), radX As Single, radY As Single, radZ As Single)
+  overload: Vintagestory.API.MathTools.Mat4f.RotateXYZ*
+  nameWithType.vb: Mat4f.RotateXYZ(Span(Of Single), Single, Single, Single)
+  fullName.vb: Vintagestory.API.MathTools.Mat4f.RotateXYZ(System.Span(Of Single), Single, Single, Single)
+  name.vb: RotateXYZ(Span(Of Single), Single, Single, Single)
 - uid: Vintagestory.API.MathTools.Mat4f.FromRotationTranslation(System.Single[],System.Single[],System.Single[])
   commentId: M:Vintagestory.API.MathTools.Mat4f.FromRotationTranslation(System.Single[],System.Single[],System.Single[])
   id: FromRotationTranslation(System.Single[],System.Single[],System.Single[])
@@ -908,11 +1000,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: FromRotationTranslation
     path: Math/Matrix/Mat4f.cs
-    startLine: 739
+    startLine: 785
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -960,11 +1052,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: FromQuat
     path: Math/Matrix/Mat4f.cs
-    startLine: 783
+    startLine: 829
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1001,11 +1093,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Frustum
     path: Math/Matrix/Mat4f.cs
-    startLine: 834
+    startLine: 880
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1057,11 +1149,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Perspective
     path: Math/Matrix/Mat4f.cs
-    startLine: 867
+    startLine: 913
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1107,11 +1199,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Ortho
     path: Math/Matrix/Mat4f.cs
-    startLine: 902
+    startLine: 948
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1163,11 +1255,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: LookAt
     path: Math/Matrix/Mat4f.cs
-    startLine: 934
+    startLine: 980
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1210,11 +1302,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec4
     path: Math/Matrix/Mat4f.cs
-    startLine: 1027
+    startLine: 1073
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1254,11 +1346,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec4
     path: Math/Matrix/Mat4f.cs
-    startLine: 1043
+    startLine: 1089
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1296,11 +1388,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec4
     path: Math/Matrix/Mat4f.cs
-    startLine: 1059
+    startLine: 1105
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1318,6 +1410,42 @@ items:
   nameWithType.vb: Mat4f.MulWithVec4(Single(), Single(), Single())
   fullName.vb: Vintagestory.API.MathTools.Mat4f.MulWithVec4(Single(), Single(), Single())
   name.vb: MulWithVec4(Single(), Single(), Single())
+- uid: Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Span{System.Single},System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Span{System.Single},System.Single[],System.Single[])
+  id: MulWithVec4(System.Span{System.Single},System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Mat4f
+  langs:
+  - csharp
+  - vb
+  name: MulWithVec4(Span<float>, float[], float[])
+  nameWithType: Mat4f.MulWithVec4(Span<float>, float[], float[])
+  fullName: Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Span<float>, float[], float[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/Matrix/Mat4f.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: MulWithVec4
+    path: Math/Matrix/Mat4f.cs
+    startLine: 1110
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static void MulWithVec4(Span<float> matrix, float[] vec, float[] output)
+    parameters:
+    - id: matrix
+      type: System.Span{System.Single}
+    - id: vec
+      type: System.Single[]
+    - id: output
+      type: System.Single[]
+    content.vb: Public Shared Sub MulWithVec4(matrix As Span(Of Single), vec As Single(), output As Single())
+  overload: Vintagestory.API.MathTools.Mat4f.MulWithVec4*
+  nameWithType.vb: Mat4f.MulWithVec4(Span(Of Single), Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Span(Of Single), Single(), Single())
+  name.vb: MulWithVec4(Span(Of Single), Single(), Single())
 - uid: Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Single[],System.Single[],System.Single[])
   commentId: M:Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Single[],System.Single[],System.Single[])
   id: MulWithVec3(System.Single[],System.Single[],System.Single[])
@@ -1332,11 +1460,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec3
     path: Math/Matrix/Mat4f.cs
-    startLine: 1075
+    startLine: 1126
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1356,6 +1484,44 @@ items:
   nameWithType.vb: Mat4f.MulWithVec3(Single(), Single(), Single())
   fullName.vb: Vintagestory.API.MathTools.Mat4f.MulWithVec3(Single(), Single(), Single())
   name.vb: MulWithVec3(Single(), Single(), Single())
+- uid: Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Span{System.Single},System.Single[],System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Span{System.Single},System.Single[],System.Single[])
+  id: MulWithVec3(System.Span{System.Single},System.Single[],System.Single[])
+  parent: Vintagestory.API.MathTools.Mat4f
+  langs:
+  - csharp
+  - vb
+  name: MulWithVec3(Span<float>, float[], float[])
+  nameWithType: Mat4f.MulWithVec3(Span<float>, float[], float[])
+  fullName: Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Span<float>, float[], float[])
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/Matrix/Mat4f.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: MulWithVec3
+    path: Math/Matrix/Mat4f.cs
+    startLine: 1134
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Used for vec3 representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have *no* effect
+  example: []
+  syntax:
+    content: public static void MulWithVec3(Span<float> matrix, float[] vec, float[] output)
+    parameters:
+    - id: matrix
+      type: System.Span{System.Single}
+    - id: vec
+      type: System.Single[]
+    - id: output
+      type: System.Single[]
+    content.vb: Public Shared Sub MulWithVec3(matrix As Span(Of Single), vec As Single(), output As Single())
+  overload: Vintagestory.API.MathTools.Mat4f.MulWithVec3*
+  nameWithType.vb: Mat4f.MulWithVec3(Span(Of Single), Single(), Single())
+  fullName.vb: Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Span(Of Single), Single(), Single())
+  name.vb: MulWithVec3(Span(Of Single), Single(), Single())
 - uid: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Single[],System.Single[],System.Single[],System.Int32)
   commentId: M:Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Single[],System.Single[],System.Single[],System.Int32)
   id: MulWithVec3_Position(System.Single[],System.Single[],System.Single[],System.Int32)
@@ -1370,11 +1536,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec3_Position
     path: Math/Matrix/Mat4f.cs
-    startLine: 1089
+    startLine: 1148
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1399,6 +1565,44 @@ items:
   nameWithType.vb: Mat4f.MulWithVec3_Position(Single(), Single(), Single(), Integer)
   fullName.vb: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(Single(), Single(), Single(), Integer)
   name.vb: MulWithVec3_Position(Single(), Single(), Single(), Integer)
+- uid: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Span{System.Single},System.Single[],System.Single[],System.Int32)
+  commentId: M:Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Span{System.Single},System.Single[],System.Single[],System.Int32)
+  id: MulWithVec3_Position(System.Span{System.Single},System.Single[],System.Single[],System.Int32)
+  parent: Vintagestory.API.MathTools.Mat4f
+  langs:
+  - csharp
+  - vb
+  name: MulWithVec3_Position(Span<float>, float[], float[], int)
+  nameWithType: Mat4f.MulWithVec3_Position(Span<float>, float[], float[], int)
+  fullName: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Span<float>, float[], float[], int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/Matrix/Mat4f.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: MulWithVec3_Position
+    path: Math/Matrix/Mat4f.cs
+    startLine: 1153
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static void MulWithVec3_Position(Span<float> matrix, float[] vec, float[] output, int offset)
+    parameters:
+    - id: matrix
+      type: System.Span{System.Single}
+    - id: vec
+      type: System.Single[]
+    - id: output
+      type: System.Single[]
+    - id: offset
+      type: System.Int32
+    content.vb: Public Shared Sub MulWithVec3_Position(matrix As Span(Of Single), vec As Single(), output As Single(), offset As Integer)
+  overload: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position*
+  nameWithType.vb: Mat4f.MulWithVec3_Position(Span(Of Single), Single(), Single(), Integer)
+  fullName.vb: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Span(Of Single), Single(), Single(), Integer)
+  name.vb: MulWithVec3_Position(Span(Of Single), Single(), Single(), Integer)
 - uid: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_AndScale(System.Single[],System.Single[],System.Single[],System.Int32,System.Single)
   commentId: M:Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_AndScale(System.Single[],System.Single[],System.Single[],System.Int32,System.Single)
   id: MulWithVec3_Position_AndScale(System.Single[],System.Single[],System.Single[],System.Int32,System.Single)
@@ -1413,11 +1617,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec3_Position_AndScale
     path: Math/Matrix/Mat4f.cs
-    startLine: 1100
+    startLine: 1164
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1453,11 +1657,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec3_Position_AndScaleXY
     path: Math/Matrix/Mat4f.cs
-    startLine: 1111
+    startLine: 1175
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1493,11 +1697,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec3_Position_WithOrigin
     path: Math/Matrix/Mat4f.cs
-    startLine: 1126
+    startLine: 1190
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1526,6 +1730,46 @@ items:
   nameWithType.vb: Mat4f.MulWithVec3_Position_WithOrigin(Single(), Single(), Single(), Integer, Vec3f)
   fullName.vb: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin(Single(), Single(), Single(), Integer, Vintagestory.API.MathTools.Vec3f)
   name.vb: MulWithVec3_Position_WithOrigin(Single(), Single(), Single(), Integer, Vec3f)
+- uid: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin(System.Span{System.Single},System.Single[],System.Single[],System.Int32,Vintagestory.API.MathTools.Vec3f)
+  commentId: M:Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin(System.Span{System.Single},System.Single[],System.Single[],System.Int32,Vintagestory.API.MathTools.Vec3f)
+  id: MulWithVec3_Position_WithOrigin(System.Span{System.Single},System.Single[],System.Single[],System.Int32,Vintagestory.API.MathTools.Vec3f)
+  parent: Vintagestory.API.MathTools.Mat4f
+  langs:
+  - csharp
+  - vb
+  name: MulWithVec3_Position_WithOrigin(Span<float>, float[], float[], int, Vec3f)
+  nameWithType: Mat4f.MulWithVec3_Position_WithOrigin(Span<float>, float[], float[], int, Vec3f)
+  fullName: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin(System.Span<float>, float[], float[], int, Vintagestory.API.MathTools.Vec3f)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/Matrix/Mat4f.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: MulWithVec3_Position_WithOrigin
+    path: Math/Matrix/Mat4f.cs
+    startLine: 1195
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static void MulWithVec3_Position_WithOrigin(Span<float> matrix, float[] vec, float[] output, int offset, Vec3f origin)
+    parameters:
+    - id: matrix
+      type: System.Span{System.Single}
+    - id: vec
+      type: System.Single[]
+    - id: output
+      type: System.Single[]
+    - id: offset
+      type: System.Int32
+    - id: origin
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: Public Shared Sub MulWithVec3_Position_WithOrigin(matrix As Span(Of Single), vec As Single(), output As Single(), offset As Integer, origin As Vec3f)
+  overload: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin*
+  nameWithType.vb: Mat4f.MulWithVec3_Position_WithOrigin(Span(Of Single), Single(), Single(), Integer, Vec3f)
+  fullName.vb: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin(System.Span(Of Single), Single(), Single(), Integer, Vintagestory.API.MathTools.Vec3f)
+  name.vb: MulWithVec3_Position_WithOrigin(Span(Of Single), Single(), Single(), Integer, Vec3f)
 - uid: Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Single[],System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec3f)
   commentId: M:Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Single[],System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec3f)
   id: MulWithVec3_Position(System.Single[],System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec3f)
@@ -1540,11 +1784,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec3_Position
     path: Math/Matrix/Mat4f.cs
-    startLine: 1140
+    startLine: 1209
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1582,11 +1826,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec3
     path: Math/Matrix/Mat4f.cs
-    startLine: 1151
+    startLine: 1220
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1620,11 +1864,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec3
     path: Math/Matrix/Mat4f.cs
-    startLine: 1162
+    startLine: 1231
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1662,11 +1906,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec3_BlockFacing
     path: Math/Matrix/Mat4f.cs
-    startLine: 1171
+    startLine: 1240
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1684,6 +1928,42 @@ items:
   nameWithType.vb: Mat4f.MulWithVec3_BlockFacing(Single(), Vec3f)
   fullName.vb: Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing(Single(), Vintagestory.API.MathTools.Vec3f)
   name.vb: MulWithVec3_BlockFacing(Single(), Vec3f)
+- uid: Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing(System.Span{System.Single},Vintagestory.API.MathTools.Vec3f)
+  commentId: M:Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing(System.Span{System.Single},Vintagestory.API.MathTools.Vec3f)
+  id: MulWithVec3_BlockFacing(System.Span{System.Single},Vintagestory.API.MathTools.Vec3f)
+  parent: Vintagestory.API.MathTools.Mat4f
+  langs:
+  - csharp
+  - vb
+  name: MulWithVec3_BlockFacing(Span<float>, Vec3f)
+  nameWithType: Mat4f.MulWithVec3_BlockFacing(Span<float>, Vec3f)
+  fullName: Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing(System.Span<float>, Vintagestory.API.MathTools.Vec3f)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Math/Matrix/Mat4f.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: MulWithVec3_BlockFacing
+    path: Math/Matrix/Mat4f.cs
+    startLine: 1245
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static BlockFacing MulWithVec3_BlockFacing(Span<float> matrix, Vec3f vec)
+    parameters:
+    - id: matrix
+      type: System.Span{System.Single}
+    - id: vec
+      type: Vintagestory.API.MathTools.Vec3f
+    return:
+      type: Vintagestory.API.MathTools.BlockFacing
+    content.vb: Public Shared Function MulWithVec3_BlockFacing(matrix As Span(Of Single), vec As Vec3f) As BlockFacing
+  overload: Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing*
+  nameWithType.vb: Mat4f.MulWithVec3_BlockFacing(Span(Of Single), Vec3f)
+  fullName.vb: Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing(System.Span(Of Single), Vintagestory.API.MathTools.Vec3f)
+  name.vb: MulWithVec3_BlockFacing(Span(Of Single), Vec3f)
 - uid: Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],System.Double[])
   commentId: M:Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Single[],System.Double[])
   id: MulWithVec4(System.Single[],System.Double[])
@@ -1698,11 +1978,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec4
     path: Math/Matrix/Mat4f.cs
-    startLine: 1180
+    startLine: 1254
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1734,11 +2014,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec4
     path: Math/Matrix/Mat4f.cs
-    startLine: 1202
+    startLine: 1276
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1775,11 +2055,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec4
     path: Math/Matrix/Mat4f.cs
-    startLine: 1223
+    startLine: 1297
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1816,11 +2096,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MulWithVec4
     path: Math/Matrix/Mat4f.cs
-    startLine: 1245
+    startLine: 1319
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -1857,11 +2137,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Math/Matrix/Mat4f.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ExtractEulerAngles
     path: Math/Matrix/Mat4f.cs
-    startLine: 1258
+    startLine: 1332
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
@@ -2261,6 +2541,75 @@ references:
   name: Scale
   nameWithType: Mat4f.Scale
   fullName: Vintagestory.API.MathTools.Mat4f.Scale
+- uid: Vintagestory.API.MathTools.Mat4f.SimpleScaleMatrix*
+  commentId: Overload:Vintagestory.API.MathTools.Mat4f.SimpleScaleMatrix
+  href: Vintagestory.API.MathTools.Mat4f.html#Vintagestory_API_MathTools_Mat4f_SimpleScaleMatrix_System_Span_System_Single__System_Single_System_Single_System_Single_
+  name: SimpleScaleMatrix
+  nameWithType: Mat4f.SimpleScaleMatrix
+  fullName: Vintagestory.API.MathTools.Mat4f.SimpleScaleMatrix
+- uid: System.Span{System.Single}
+  commentId: T:System.Span{System.Single}
+  parent: System
+  definition: System.Span`1
+  href: https://learn.microsoft.com/dotnet/api/system.span-1
+  name: Span<float>
+  nameWithType: Span<float>
+  fullName: System.Span<float>
+  nameWithType.vb: Span(Of Single)
+  fullName.vb: System.Span(Of Single)
+  name.vb: Span(Of Single)
+  spec.csharp:
+  - uid: System.Span`1
+    name: Span
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.span-1
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  spec.vb:
+  - uid: System.Span`1
+    name: Span
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.span-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.Span`1
+  commentId: T:System.Span`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.span-1
+  name: Span<T>
+  nameWithType: Span<T>
+  fullName: System.Span<T>
+  nameWithType.vb: Span(Of T)
+  fullName.vb: System.Span(Of T)
+  name.vb: Span(Of T)
+  spec.csharp:
+  - uid: System.Span`1
+    name: Span
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.span-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Span`1
+    name: Span
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.span-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: Vintagestory.API.MathTools.Mat4f.Rotate*
   commentId: Overload:Vintagestory.API.MathTools.Mat4f.Rotate
   href: Vintagestory.API.MathTools.Mat4f.html#Vintagestory_API_MathTools_Mat4f_Rotate_System_Single___System_Single___System_Single_System_Single___
@@ -2285,6 +2634,12 @@ references:
   name: RotateZ
   nameWithType: Mat4f.RotateZ
   fullName: Vintagestory.API.MathTools.Mat4f.RotateZ
+- uid: Vintagestory.API.MathTools.Mat4f.RotateXYZ*
+  commentId: Overload:Vintagestory.API.MathTools.Mat4f.RotateXYZ
+  href: Vintagestory.API.MathTools.Mat4f.html#Vintagestory_API_MathTools_Mat4f_RotateXYZ_System_Span_System_Single__System_Single_System_Single_System_Single_
+  name: RotateXYZ
+  nameWithType: Mat4f.RotateXYZ
+  fullName: Vintagestory.API.MathTools.Mat4f.RotateXYZ
 - uid: Vintagestory.API.MathTools.Mat4f.FromRotationTranslation*
   commentId: Overload:Vintagestory.API.MathTools.Mat4f.FromRotationTranslation
   href: Vintagestory.API.MathTools.Mat4f.html#Vintagestory_API_MathTools_Mat4f_FromRotationTranslation_System_Single___System_Single___System_Single___

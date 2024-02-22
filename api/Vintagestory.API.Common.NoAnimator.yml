@@ -7,6 +7,7 @@ items:
   children:
   - Vintagestory.API.Common.NoAnimator.ActiveAnimationCount
   - Vintagestory.API.Common.NoAnimator.CalculateMatrices
+  - Vintagestory.API.Common.NoAnimator.DumpCurrentState
   - Vintagestory.API.Common.NoAnimator.GetAnimationState(System.String)
   - Vintagestory.API.Common.NoAnimator.GetAttachmentPointPose(System.String)
   - Vintagestory.API.Common.NoAnimator.GetPosebyName(System.String,System.StringComparison)
@@ -23,8 +24,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/NoAnimationManager.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: NoAnimator
     path: Common/Model/Animation/NoAnimationManager.cs
     startLine: 10
@@ -62,8 +63,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/NoAnimationManager.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Matrices4x3
     path: Common/Model/Animation/NoAnimationManager.cs
     startLine: 15
@@ -95,8 +96,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/NoAnimationManager.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ActiveAnimationCount
     path: Common/Model/Animation/NoAnimationManager.cs
     startLine: 20
@@ -128,8 +129,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/NoAnimationManager.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: CalculateMatrices
     path: Common/Model/Animation/NoAnimationManager.cs
     startLine: 22
@@ -161,8 +162,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/NoAnimationManager.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RunningAnimations
     path: Common/Model/Animation/NoAnimationManager.cs
     startLine: 24
@@ -180,6 +181,37 @@ items:
   overload: Vintagestory.API.Common.NoAnimator.RunningAnimations*
   implements:
   - Vintagestory.API.Common.IAnimator.RunningAnimations
+- uid: Vintagestory.API.Common.NoAnimator.DumpCurrentState
+  commentId: M:Vintagestory.API.Common.NoAnimator.DumpCurrentState
+  id: DumpCurrentState
+  parent: Vintagestory.API.Common.NoAnimator
+  langs:
+  - csharp
+  - vb
+  name: DumpCurrentState()
+  nameWithType: NoAnimator.DumpCurrentState()
+  fullName: Vintagestory.API.Common.NoAnimator.DumpCurrentState()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/NoAnimationManager.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: DumpCurrentState
+    path: Common/Model/Animation/NoAnimationManager.cs
+    startLine: 26
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public string DumpCurrentState()
+    return:
+      type: System.String
+    content.vb: Public Function DumpCurrentState() As String
+  overload: Vintagestory.API.Common.NoAnimator.DumpCurrentState*
+  implements:
+  - Vintagestory.API.Common.IAnimator.DumpCurrentState
 - uid: Vintagestory.API.Common.NoAnimator.GetAnimationState(System.String)
   commentId: M:Vintagestory.API.Common.NoAnimator.GetAnimationState(System.String)
   id: GetAnimationState(System.String)
@@ -194,11 +226,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/NoAnimationManager.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GetAnimationState
     path: Common/Model/Animation/NoAnimationManager.cs
-    startLine: 26
+    startLine: 31
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -231,11 +263,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/NoAnimationManager.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GetAttachmentPointPose
     path: Common/Model/Animation/NoAnimationManager.cs
-    startLine: 36
+    startLine: 41
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -271,11 +303,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/NoAnimationManager.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GetPosebyName
     path: Common/Model/Animation/NoAnimationManager.cs
-    startLine: 41
+    startLine: 46
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -310,11 +342,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/NoAnimationManager.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: OnFrame
     path: Common/Model/Animation/NoAnimationManager.cs
-    startLine: 51
+    startLine: 56
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -729,6 +761,42 @@ references:
     href: Vintagestory.API.Common.RunningAnimation.html
   - name: (
   - name: )
+- uid: Vintagestory.API.Common.NoAnimator.DumpCurrentState*
+  commentId: Overload:Vintagestory.API.Common.NoAnimator.DumpCurrentState
+  href: Vintagestory.API.Common.NoAnimator.html#Vintagestory_API_Common_NoAnimator_DumpCurrentState
+  name: DumpCurrentState
+  nameWithType: NoAnimator.DumpCurrentState
+  fullName: Vintagestory.API.Common.NoAnimator.DumpCurrentState
+- uid: Vintagestory.API.Common.IAnimator.DumpCurrentState
+  commentId: M:Vintagestory.API.Common.IAnimator.DumpCurrentState
+  parent: Vintagestory.API.Common.IAnimator
+  href: Vintagestory.API.Common.IAnimator.html#Vintagestory_API_Common_IAnimator_DumpCurrentState
+  name: DumpCurrentState()
+  nameWithType: IAnimator.DumpCurrentState()
+  fullName: Vintagestory.API.Common.IAnimator.DumpCurrentState()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IAnimator.DumpCurrentState
+    name: DumpCurrentState
+    href: Vintagestory.API.Common.IAnimator.html#Vintagestory_API_Common_IAnimator_DumpCurrentState
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IAnimator.DumpCurrentState
+    name: DumpCurrentState
+    href: Vintagestory.API.Common.IAnimator.html#Vintagestory_API_Common_IAnimator_DumpCurrentState
+  - name: (
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
 - uid: Vintagestory.API.Common.NoAnimator.GetAnimationState*
   commentId: Overload:Vintagestory.API.Common.NoAnimator.GetAnimationState
   href: Vintagestory.API.Common.NoAnimator.html#Vintagestory_API_Common_NoAnimator_GetAnimationState_System_String_
@@ -766,17 +834,6 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String
 - uid: Vintagestory.API.Common.RunningAnimation
   commentId: T:Vintagestory.API.Common.RunningAnimation
   parent: Vintagestory.API.Common

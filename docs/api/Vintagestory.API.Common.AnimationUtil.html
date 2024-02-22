@@ -740,7 +740,8 @@ Done:<br>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void InitializeAnimator(string cacheDictKey, MeshRef meshref, Shape blockShape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use MultiTextureMeshRef initialize instead, standard MeshRef does not support multiple texture atlasses&quot;)]
+public virtual void InitializeAnimator(string cacheDictKey, MeshRef meshref, Shape blockShape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -748,6 +749,45 @@ Done:<br>
     <dt><code>cacheDictKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
     <dt><code>meshref</code> <a class="xref" href="Vintagestory.API.Client.MeshRef.html">MeshRef</a></dt>
+    <dd></dd>
+    <dt><code>blockShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
+    <dd></dd>
+    <dt><code>rotation</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+    <dt><code>renderStage</code> <a class="xref" href="Vintagestory.API.Client.EnumRenderStage.html">EnumRenderStage</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationUtil_InitializeAnimator_System_String_Vintagestory_API_Client_MultiTextureMeshRef_Vintagestory_API_Common_Shape_Vintagestory_API_MathTools_Vec3f_Vintagestory_API_Client_EnumRenderStage_" data-uid="Vintagestory.API.Common.AnimationUtil.InitializeAnimator(System.String,Vintagestory.API.Client.MultiTextureMeshRef,Vintagestory.API.Common.Shape,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Client.EnumRenderStage)">
+  InitializeAnimator(string, MultiTextureMeshRef, Shape, Vec3f, EnumRenderStage)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void InitializeAnimator(string cacheDictKey, MultiTextureMeshRef meshref, Shape blockShape, Vec3f rotation, EnumRenderStage renderStage = EnumRenderStage.Opaque)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cacheDictKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>meshref</code> <a class="xref" href="Vintagestory.API.Client.MultiTextureMeshRef.html">MultiTextureMeshRef</a></dt>
     <dd></dd>
     <dt><code>blockShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
     <dd></dd>

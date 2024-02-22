@@ -313,6 +313,51 @@ Interface IEventAPI
 
   <a id="Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterGameTickListener*"></a>
 
+  <h3 id="Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__System_Action_System_Exception__System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},System.Action{System.Exception},System.Int32,System.Int32)">
+  RegisterGameTickListener(Action&lt;float&gt;, Action&lt;Exception&gt;, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calls given method after every given interval until unregistered. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
+This overload includes an ErrorHandler callback, triggered if calling onGameTick throws an exception</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long RegisterGameTickListener(Action&lt;float&gt; onGameTick, Action&lt;Exception&gt; errorHandler, int millisecondInterval, int initialDelayOffsetMs = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>onGameTick</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>errorHandler</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>millisecondInterval</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>initialDelayOffsetMs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>listenerId</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterGameTickListener*"></a>
+
   <h3 id="Vintagestory_API_Common_IEventAPI_RegisterGameTickListener_System_Action_System_Single__System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{System.Single},System.Int32,System.Int32)">
   RegisterGameTickListener(Action&lt;float&gt;, int, int)
   

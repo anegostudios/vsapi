@@ -518,6 +518,11 @@ namespace Vintagestory.API.Common
             }
 
             PackedOffset = new FastVec3i(minX - startPos.X, minY - startPos.Y, minZ - startPos.Z);
+            BlocksUnpacked.Clear();
+            FluidsLayerUnpacked.Clear();
+            DecorsUnpacked.Clear();
+            BlockEntitiesUnpacked.Clear();
+            EntitiesUnpacked.Clear();
             return true;
         }
 

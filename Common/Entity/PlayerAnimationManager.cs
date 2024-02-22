@@ -45,17 +45,15 @@ namespace Vintagestory.API.Common
         {
             if (configCode == null) return false;
 
-            if (useFpAnimSet)
+            if (useFpAnimSet) // We are in the first person anim manager - player anim for tp animator, and anim-fp for ourselves
             {
                 plrEntity.TpAnimManager.StartAnimation(configCode);
-            }
 
-            AnimationMetaData animdata;
-
-            if (useFpAnimSet && entity.Properties.Client.AnimationsByMetaCode.TryGetValue(configCode + fpEnding, out animdata))
-            {
-                StartAnimation(animdata);
-                return true;
+                if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(configCode + fpEnding, out var animdata))
+                {
+                    StartAnimation(animdata);
+                    return true;
+                }
             }
 
             return base.StartAnimation(configCode);
@@ -321,7 +319,10 @@ namespace Vintagestory.API.Common
 
         public override void FromAttributes(ITreeAttribute tree, string version)
         {
-            base.FromAttributes(tree, version);
+            if (entity == null || capi?.World.Player.Entity.EntityId != entity.EntityId) // Don't update animations for ourselves, it breaks stuff and is not necessary - client has authority over own player animations. 
+            {
+                base.FromAttributes(tree, version);
+            }
 
             lastActiveHeldUseAnimation = tree.GetString("lrHeldUseAnim");
             lastActiveHeldHitAnimation = tree.GetString("lrHeldHitAnim");

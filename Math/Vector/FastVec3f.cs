@@ -84,7 +84,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public float this[int index]
         {
-            get { return index == 0 ? X : (index == 1 ? Y : Z); }
+            get { return ((2 - index) / 2) * X + (index % 2) * Y + (index / 2) * Z; }   // branch-free code to result in X if index is 0, Y if index is 1, Z if index is 2
             set { if (index == 0) X = value; else if (index == 1) Y = value; else Z = value; }
         }
 

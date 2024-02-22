@@ -6,6 +6,7 @@ items:
   parent: Vintagestory.API.Client
   children:
   - Vintagestory.API.Client.MeshData.#ctor(System.Boolean)
+  - Vintagestory.API.Client.MeshData.#ctor(System.Int32)
   - Vintagestory.API.Client.MeshData.#ctor(System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
   - Vintagestory.API.Client.MeshData.AddColorMapIndex(System.Byte,System.Byte)
   - Vintagestory.API.Client.MeshData.AddIndex(System.Int32)
@@ -24,18 +25,23 @@ items:
   - Vintagestory.API.Client.MeshData.AddVertex(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32)
   - Vintagestory.API.Client.MeshData.AddVertexSkipTex(System.Single,System.Single,System.Single,System.Int32)
   - Vintagestory.API.Client.MeshData.AddVertexWithFlags(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)
+  - Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32)
   - Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)
   - Vintagestory.API.Client.MeshData.AddWithFlagsVertex(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)
   - Vintagestory.API.Client.MeshData.AddXyzFace(System.Byte)
+  - Vintagestory.API.Client.MeshData.BaseSizeInBytes
   - Vintagestory.API.Client.MeshData.Clear
   - Vintagestory.API.Client.MeshData.ClimateColorMapIds
   - Vintagestory.API.Client.MeshData.Clone
+  - Vintagestory.API.Client.MeshData.CloneUsingRecycler
   - Vintagestory.API.Client.MeshData.ColorMapIdsCount
   - Vintagestory.API.Client.MeshData.CompactBuffers
   - Vintagestory.API.Client.MeshData.CustomBytes
   - Vintagestory.API.Client.MeshData.CustomFloats
   - Vintagestory.API.Client.MeshData.CustomInts
   - Vintagestory.API.Client.MeshData.CustomShorts
+  - Vintagestory.API.Client.MeshData.Dispose
+  - Vintagestory.API.Client.MeshData.DisposeBasicData
   - Vintagestory.API.Client.MeshData.EmptyClone
   - Vintagestory.API.Client.MeshData.Flags
   - Vintagestory.API.Client.MeshData.FlagsCount
@@ -66,11 +72,15 @@ items:
   - Vintagestory.API.Client.MeshData.MatrixTransform(System.Double[])
   - Vintagestory.API.Client.MeshData.MatrixTransform(System.Single[])
   - Vintagestory.API.Client.MeshData.MatrixTransform(System.Single[],System.Single[],Vintagestory.API.MathTools.Vec3f)
+  - Vintagestory.API.Client.MeshData.MatrixTransform(System.Span{System.Single},System.Single[],Vintagestory.API.MathTools.Vec3f)
   - Vintagestory.API.Client.MeshData.ModelTransform(Vintagestory.API.Common.ModelTransform)
   - Vintagestory.API.Client.MeshData.NormalSize
   - Vintagestory.API.Client.MeshData.Normals
   - Vintagestory.API.Client.MeshData.NormalsCount
   - Vintagestory.API.Client.MeshData.NormalsOffset
+  - Vintagestory.API.Client.MeshData.Recyclable
+  - Vintagestory.API.Client.MeshData.Recycler
+  - Vintagestory.API.Client.MeshData.RecyclingTime
   - Vintagestory.API.Client.MeshData.RemoveIndex
   - Vintagestory.API.Client.MeshData.RemoveVertex
   - Vintagestory.API.Client.MeshData.RemoveVertices(System.Int32)
@@ -101,6 +111,8 @@ items:
   - Vintagestory.API.Client.MeshData.SetXyz(System.Single[])
   - Vintagestory.API.Client.MeshData.SizeInBytes
   - Vintagestory.API.Client.MeshData.SplitByTextureId
+  - Vintagestory.API.Client.MeshData.StandardIndicesPerFace
+  - Vintagestory.API.Client.MeshData.StandardVerticesPerFace
   - Vintagestory.API.Client.MeshData.TextureIds
   - Vintagestory.API.Client.MeshData.TextureIndices
   - Vintagestory.API.Client.MeshData.TextureIndicesCount
@@ -140,8 +152,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MeshData
     path: Client/Model/Mesh/MeshData.cs
     startLine: 12
@@ -170,6 +182,114 @@ items:
   - Vintagestory.API.Client.MeshData.Vintagestory.API.Client.MeshUtil.ClearWindFlags
   - Vintagestory.API.Client.MeshData.Vintagestory.API.Client.MeshUtil.SetWindFlag(System.Single,System.Int32)
   - Vintagestory.API.Client.MeshData.Vintagestory.API.Client.MeshUtil.ToggleWindModeSetWindData(System.Int32,System.Boolean,System.Int32)
+- uid: Vintagestory.API.Client.MeshData.Recycler
+  commentId: F:Vintagestory.API.Client.MeshData.Recycler
+  id: Recycler
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: Recycler
+  nameWithType: MeshData.Recycler
+  fullName: Vintagestory.API.Client.MeshData.Recycler
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: Recycler
+    path: Client/Model/Mesh/MeshData.cs
+    startLine: 14
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public static MeshDataRecycler Recycler
+    return:
+      type: Vintagestory.API.Client.MeshDataRecycler
+    content.vb: Public Shared Recycler As MeshDataRecycler
+- uid: Vintagestory.API.Client.MeshData.StandardVerticesPerFace
+  commentId: F:Vintagestory.API.Client.MeshData.StandardVerticesPerFace
+  id: StandardVerticesPerFace
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: StandardVerticesPerFace
+  nameWithType: MeshData.StandardVerticesPerFace
+  fullName: Vintagestory.API.Client.MeshData.StandardVerticesPerFace
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: StandardVerticesPerFace
+    path: Client/Model/Mesh/MeshData.cs
+    startLine: 15
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public const int StandardVerticesPerFace = 4
+    return:
+      type: System.Int32
+    content.vb: Public Const StandardVerticesPerFace As Integer = 4
+- uid: Vintagestory.API.Client.MeshData.StandardIndicesPerFace
+  commentId: F:Vintagestory.API.Client.MeshData.StandardIndicesPerFace
+  id: StandardIndicesPerFace
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: StandardIndicesPerFace
+  nameWithType: MeshData.StandardIndicesPerFace
+  fullName: Vintagestory.API.Client.MeshData.StandardIndicesPerFace
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: StandardIndicesPerFace
+    path: Client/Model/Mesh/MeshData.cs
+    startLine: 16
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public const int StandardIndicesPerFace = 6
+    return:
+      type: System.Int32
+    content.vb: Public Const StandardIndicesPerFace As Integer = 6
+- uid: Vintagestory.API.Client.MeshData.BaseSizeInBytes
+  commentId: F:Vintagestory.API.Client.MeshData.BaseSizeInBytes
+  id: BaseSizeInBytes
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: BaseSizeInBytes
+  nameWithType: MeshData.BaseSizeInBytes
+  fullName: Vintagestory.API.Client.MeshData.BaseSizeInBytes
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: BaseSizeInBytes
+    path: Client/Model/Mesh/MeshData.cs
+    startLine: 17
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public const int BaseSizeInBytes = 34
+    return:
+      type: System.Int32
+    content.vb: Public Const BaseSizeInBytes As Integer = 34
 - uid: Vintagestory.API.Client.MeshData.TextureIds
   commentId: F:Vintagestory.API.Client.MeshData.TextureIds
   id: TextureIds
@@ -184,11 +304,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: TextureIds
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 14
+    startLine: 19
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -211,11 +331,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: xyz
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 19
+    startLine: 24
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -240,11 +360,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Flags
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 24
+    startLine: 29
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -269,11 +389,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: HasAnyWindModeSet
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 29
+    startLine: 34
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -298,11 +418,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Normals
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 39
+    startLine: 44
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -338,11 +458,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Uv
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 44
+    startLine: 49
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -367,11 +487,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Rgba
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 49
+    startLine: 54
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -396,11 +516,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Indices
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 54
+    startLine: 59
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -425,11 +545,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: TextureIndices
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 59
+    startLine: 64
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -454,11 +574,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: CustomFloats
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 65
+    startLine: 70
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -483,11 +603,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: CustomInts
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 70
+    startLine: 75
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -512,11 +632,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: CustomShorts
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 75
+    startLine: 80
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -541,11 +661,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: CustomBytes
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 80
+    startLine: 85
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -570,11 +690,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: XyzInstanced
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 85
+    startLine: 90
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -599,11 +719,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: UvInstanced
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 89
+    startLine: 94
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -628,11 +748,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RgbaInstanced
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 93
+    startLine: 98
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -657,11 +777,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Rgba2Instanced
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 97
+    startLine: 102
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -686,11 +806,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: IndicesInstanced
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 101
+    startLine: 106
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -715,11 +835,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: FlagsInstanced
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 105
+    startLine: 110
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -744,11 +864,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: XyzStatic
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 111
+    startLine: 116
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -773,11 +893,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: UvStatic
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 115
+    startLine: 120
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -802,11 +922,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RgbaStatic
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 119
+    startLine: 124
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -831,11 +951,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Rgba2Static
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 123
+    startLine: 128
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -860,11 +980,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: IndicesStatic
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 127
+    startLine: 132
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -889,11 +1009,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: FlagsStatic
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 131
+    startLine: 136
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -918,11 +1038,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: XyzOffset
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 137
+    startLine: 142
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -947,11 +1067,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: UvOffset
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 141
+    startLine: 146
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -976,11 +1096,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RgbaOffset
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 145
+    startLine: 150
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1005,11 +1125,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Rgba2Offset
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 149
+    startLine: 154
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1034,11 +1154,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: FlagsOffset
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 153
+    startLine: 158
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1063,11 +1183,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: NormalsOffset
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 157
+    startLine: 162
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1092,11 +1212,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: IndicesOffset
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 161
+    startLine: 166
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1121,11 +1241,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: mode
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 167
+    startLine: 172
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1150,11 +1270,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: NormalsCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 172
+    startLine: 177
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1179,11 +1299,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: VerticesCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 177
+    startLine: 182
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1208,11 +1328,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: IndicesCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 182
+    startLine: 187
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1237,11 +1357,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: VerticesMax
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 187
+    startLine: 192
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1266,11 +1386,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: IndicesMax
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 192
+    startLine: 197
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1295,11 +1415,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: XyzFaces
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 198
+    startLine: 203
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1324,11 +1444,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: XyzFacesCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 203
+    startLine: 208
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1353,11 +1473,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: TextureIndicesCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 205
+    startLine: 210
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1380,11 +1500,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: IndicesPerFace
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 208
+    startLine: 213
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1407,11 +1527,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: VerticesPerFace
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 209
+    startLine: 214
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1434,11 +1554,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ClimateColorMapIds
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 214
+    startLine: 219
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1463,11 +1583,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: SeasonColorMapIds
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 218
+    startLine: 223
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1492,11 +1612,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RenderPasses
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 221
+    startLine: 226
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1533,11 +1653,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RenderPassesAndExtraBits
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 230
+    startLine: 235
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1568,11 +1688,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ColorMapIdsCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 235
+    startLine: 240
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1597,11 +1717,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RenderPassCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 240
+    startLine: 245
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1612,6 +1732,64 @@ items:
     return:
       type: System.Int32
     content.vb: Public RenderPassCount As Integer
+- uid: Vintagestory.API.Client.MeshData.Recyclable
+  commentId: F:Vintagestory.API.Client.MeshData.Recyclable
+  id: Recyclable
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: Recyclable
+  nameWithType: MeshData.Recyclable
+  fullName: Vintagestory.API.Client.MeshData.Recyclable
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: Recyclable
+    path: Client/Model/Mesh/MeshData.cs
+    startLine: 250
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: If true, this MeshData was constructed from MeshDataRecycler
+  example: []
+  syntax:
+    content: public bool Recyclable
+    return:
+      type: System.Boolean
+    content.vb: Public Recyclable As Boolean
+- uid: Vintagestory.API.Client.MeshData.RecyclingTime
+  commentId: F:Vintagestory.API.Client.MeshData.RecyclingTime
+  id: RecyclingTime
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: RecyclingTime
+  nameWithType: MeshData.RecyclingTime
+  fullName: Vintagestory.API.Client.MeshData.RecyclingTime
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: RecyclingTime
+    path: Client/Model/Mesh/MeshData.cs
+    startLine: 255
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: The time this MeshData most recently entered the recycling system; the oldest may be garbage collected
+  example: []
+  syntax:
+    content: public long RecyclingTime
+    return:
+      type: System.Int64
+    content.vb: Public RecyclingTime As Long
 - uid: Vintagestory.API.Client.MeshData.GetVerticesCount
   commentId: M:Vintagestory.API.Client.MeshData.GetVerticesCount
   id: GetVerticesCount
@@ -1626,11 +1804,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GetVerticesCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 247
+    startLine: 262
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1658,11 +1836,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: SetVerticesCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 254
+    startLine: 269
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1694,11 +1872,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GetIndicesCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 261
+    startLine: 276
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1726,11 +1904,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: SetIndicesCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 267
+    startLine: 282
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1761,11 +1939,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: XyzSize
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 272
+    startLine: 287
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1790,11 +1968,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: NormalSize
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 277
+    startLine: 292
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1819,11 +1997,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RgbaSize
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 282
+    startLine: 297
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1848,11 +2026,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: UvSize
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 287
+    startLine: 302
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1877,11 +2055,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: IndexSize
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 292
+    startLine: 307
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1906,11 +2084,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: FlagsSize
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 297
+    startLine: 312
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1935,11 +2113,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: XyzCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 302
+    startLine: 317
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1966,11 +2144,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RgbaCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 310
+    startLine: 325
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -1997,11 +2175,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Rgba2Count
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 318
+    startLine: 333
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2028,11 +2206,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: FlagsCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 326
+    startLine: 341
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2059,11 +2237,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: UvCount
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 334
+    startLine: 349
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2090,11 +2268,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GetXyz
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 340
+    startLine: 355
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2118,11 +2296,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: SetXyz
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 341
+    startLine: 356
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2150,11 +2328,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GetRgba
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 342
+    startLine: 357
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2178,11 +2356,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: SetRgba
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 343
+    startLine: 358
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2210,11 +2388,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GetUv
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 344
+    startLine: 359
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2238,11 +2416,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: SetUv
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 345
+    startLine: 360
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2270,11 +2448,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GetIndices
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 346
+    startLine: 361
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2298,11 +2476,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: SetIndices
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 347
+    startLine: 362
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2330,11 +2508,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GetMode
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 348
+    startLine: 363
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2358,11 +2536,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: SetMode
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 349
+    startLine: 364
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2387,11 +2565,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Translate
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 356
+    startLine: 371
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2421,11 +2599,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Translate
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 368
+    startLine: 383
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2464,11 +2642,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Rotate
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 386
+    startLine: 401
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2510,11 +2688,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Scale
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 404
+    startLine: 416
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2556,11 +2734,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ModelTransform
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 420
+    startLine: 435
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2590,11 +2768,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MatrixTransform
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 446
+    startLine: 461
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2627,11 +2805,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MatrixTransform
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 457
+    startLine: 472
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2656,6 +2834,44 @@ items:
   nameWithType.vb: MeshData.MatrixTransform(Single(), Single(), Vec3f)
   fullName.vb: Vintagestory.API.Client.MeshData.MatrixTransform(Single(), Single(), Vintagestory.API.MathTools.Vec3f)
   name.vb: MatrixTransform(Single(), Single(), Vec3f)
+- uid: Vintagestory.API.Client.MeshData.MatrixTransform(System.Span{System.Single},System.Single[],Vintagestory.API.MathTools.Vec3f)
+  commentId: M:Vintagestory.API.Client.MeshData.MatrixTransform(System.Span{System.Single},System.Single[],Vintagestory.API.MathTools.Vec3f)
+  id: MatrixTransform(System.Span{System.Single},System.Single[],Vintagestory.API.MathTools.Vec3f)
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: MatrixTransform(Span<float>, float[], Vec3f)
+  nameWithType: MeshData.MatrixTransform(Span<float>, float[], Vec3f)
+  fullName: Vintagestory.API.Client.MeshData.MatrixTransform(System.Span<float>, float[], Vintagestory.API.MathTools.Vec3f)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: MatrixTransform
+    path: Client/Model/Mesh/MeshData.cs
+    startLine: 477
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public MeshData MatrixTransform(Span<float> matrix, float[] vec, Vec3f origin = null)
+    parameters:
+    - id: matrix
+      type: System.Span{System.Single}
+    - id: vec
+      type: System.Single[]
+    - id: origin
+      type: Vintagestory.API.MathTools.Vec3f
+    return:
+      type: Vintagestory.API.Client.MeshData
+    content.vb: Public Function MatrixTransform(matrix As Span(Of Single), vec As Single(), origin As Vec3f = Nothing) As MeshData
+  overload: Vintagestory.API.Client.MeshData.MatrixTransform*
+  nameWithType.vb: MeshData.MatrixTransform(Span(Of Single), Single(), Vec3f)
+  fullName.vb: Vintagestory.API.Client.MeshData.MatrixTransform(System.Span(Of Single), Single(), Vintagestory.API.MathTools.Vec3f)
+  name.vb: MatrixTransform(Span(Of Single), Single(), Vec3f)
 - uid: Vintagestory.API.Client.MeshData.MatrixTransform(System.Double[])
   commentId: M:Vintagestory.API.Client.MeshData.MatrixTransform(System.Double[])
   id: MatrixTransform(System.Double[])
@@ -2670,11 +2886,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: MatrixTransform
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 518
+    startLine: 538
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2707,11 +2923,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: .ctor
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 607
+    startLine: 627
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2741,11 +2957,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: .ctor
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 628
+    startLine: 648
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2780,6 +2996,41 @@ items:
   nameWithType.vb: MeshData.New(Integer, Integer, Boolean, Boolean, Boolean, Boolean)
   fullName.vb: Vintagestory.API.Client.MeshData.New(Integer, Integer, Boolean, Boolean, Boolean, Boolean)
   name.vb: New(Integer, Integer, Boolean, Boolean, Boolean, Boolean)
+- uid: Vintagestory.API.Client.MeshData.#ctor(System.Int32)
+  commentId: M:Vintagestory.API.Client.MeshData.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: MeshData(int)
+  nameWithType: MeshData.MeshData(int)
+  fullName: Vintagestory.API.Client.MeshData.MeshData(int)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Client/Model/Mesh/MeshData.cs
+    startLine: 684
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: This constructor creates a basic MeshData with xyz, Uv, Rgba, Flags and Indices only; Indices to Vertices ratio is the default 6:4
+  example: []
+  syntax:
+    content: public MeshData(int capacity)
+    parameters:
+    - id: capacity
+      type: System.Int32
+      description: ''
+    content.vb: Public Sub New(capacity As Integer)
+  overload: Vintagestory.API.Client.MeshData.#ctor*
+  nameWithType.vb: MeshData.New(Integer)
+  fullName.vb: Vintagestory.API.Client.MeshData.New(Integer)
+  name.vb: New(Integer)
 - uid: Vintagestory.API.Client.MeshData.WithColorMaps
   commentId: M:Vintagestory.API.Client.MeshData.WithColorMaps
   id: WithColorMaps
@@ -2794,11 +3045,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: WithColorMaps
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 664
+    startLine: 701
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2825,11 +3076,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: WithXyzFaces
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 676
+    startLine: 713
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2856,11 +3107,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: WithRenderpasses
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 686
+    startLine: 723
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2887,11 +3138,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: WithNormals
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 697
+    startLine: 734
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2918,11 +3169,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddMeshData
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 711
+    startLine: 748
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2958,11 +3209,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddMeshData
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 722
+    startLine: 759
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -2989,11 +3240,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: getTextureIndex
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 841
+    startLine: 878
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3023,11 +3274,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddMeshData
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 856
+    startLine: 893
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3055,11 +3306,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddMeshData
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 901
+    startLine: 938
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3093,11 +3344,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RemoveIndex
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1014
+    startLine: 1051
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3121,11 +3372,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RemoveVertex
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1022
+    startLine: 1059
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3149,11 +3400,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RemoveVertices
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1031
+    startLine: 1068
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3184,11 +3435,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddVertexSkipTex
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1045
+    startLine: 1082
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3228,11 +3479,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddVertex
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1083
+    startLine: 1120
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3275,11 +3526,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddVertex
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1115
+    startLine: 1152
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3325,11 +3576,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddVertex
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1130
+    startLine: 1167
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3375,11 +3626,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddWithFlagsVertex
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1172
+    startLine: 1209
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3428,11 +3679,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddVertexWithFlags
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1223
+    startLine: 1260
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3467,6 +3718,56 @@ items:
   nameWithType.vb: MeshData.AddVertexWithFlags(Single, Single, Single, Single, Single, Integer, Integer)
   fullName.vb: Vintagestory.API.Client.MeshData.AddVertexWithFlags(Single, Single, Single, Single, Single, Integer, Integer)
   name.vb: AddVertexWithFlags(Single, Single, Single, Single, Single, Integer, Integer)
+- uid: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32)
+  commentId: M:Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32)
+  id: AddVertexWithFlagsSkipColor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32)
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: AddVertexWithFlagsSkipColor(float, float, float, float, float, int)
+  nameWithType: MeshData.AddVertexWithFlagsSkipColor(float, float, float, float, float, int)
+  fullName: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor(float, float, float, float, float, int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: AddVertexWithFlagsSkipColor
+    path: Client/Model/Mesh/MeshData.cs
+    startLine: 1284
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Adds a new vertex to the mesh. Grows the vertex buffer if necessary.
+  example: []
+  syntax:
+    content: public void AddVertexWithFlagsSkipColor(float x, float y, float z, float u, float v, int flags)
+    parameters:
+    - id: x
+      type: System.Single
+      description: ''
+    - id: y
+      type: System.Single
+      description: ''
+    - id: z
+      type: System.Single
+      description: ''
+    - id: u
+      type: System.Single
+      description: ''
+    - id: v
+      type: System.Single
+      description: ''
+    - id: flags
+      type: System.Int32
+      description: ''
+    content.vb: Public Sub AddVertexWithFlagsSkipColor(x As Single, y As Single, z As Single, u As Single, v As Single, flags As Integer)
+  overload: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor*
+  nameWithType.vb: MeshData.AddVertexWithFlagsSkipColor(Single, Single, Single, Single, Single, Integer)
+  fullName.vb: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor(Single, Single, Single, Single, Single, Integer)
+  name.vb: AddVertexWithFlagsSkipColor(Single, Single, Single, Single, Single, Integer)
 - uid: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)
   commentId: M:Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)
   id: AddVertexWithFlagsSkipTexture(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)
@@ -3481,11 +3782,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddVertexWithFlagsSkipTexture
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1262
+    startLine: 1312
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3525,11 +3826,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: SetVertexFlags
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1304
+    startLine: 1354
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3559,11 +3860,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddNormal
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1323
+    startLine: 1373
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3600,11 +3901,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddNormal
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1334
+    startLine: 1384
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3632,11 +3933,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddColorMapIndex
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1341
+    startLine: 1391
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3666,11 +3967,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddRenderPass
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1353
+    startLine: 1403
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3698,11 +3999,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddXyzFace
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1364
+    startLine: 1414
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3730,11 +4031,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddTextureId
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1374
+    startLine: 1424
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3762,11 +4063,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddIndex
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1384
+    startLine: 1434
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3794,29 +4095,37 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddIndices
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1394
+    startLine: 1453
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
+  summary: Add 6 indices
+  example: []
   syntax:
     content: public void AddIndices(int i1, int i2, int i3, int i4, int i5, int i6)
     parameters:
     - id: i1
       type: System.Int32
+      description: ''
     - id: i2
       type: System.Int32
+      description: ''
     - id: i3
       type: System.Int32
+      description: ''
     - id: i4
       type: System.Int32
+      description: ''
     - id: i5
       type: System.Int32
+      description: ''
     - id: i6
       type: System.Int32
+      description: ''
     content.vb: Public Sub AddIndices(i1 As Integer, i2 As Integer, i3 As Integer, i4 As Integer, i5 As Integer, i6 As Integer)
   overload: Vintagestory.API.Client.MeshData.AddIndices*
   nameWithType.vb: MeshData.AddIndices(Integer, Integer, Integer, Integer, Integer, Integer)
@@ -3836,11 +4145,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AddIndices
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1412
+    startLine: 1471
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3868,11 +4177,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GrowIndexBuffer
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1429
+    startLine: 1488
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3894,11 +4203,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GrowIndexBuffer
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1443
+    startLine: 1502
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3926,11 +4235,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GrowNormalsBuffer
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1459
+    startLine: 1518
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3952,11 +4261,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: GrowVertexBuffer
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1477
+    startLine: 1536
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -3980,11 +4289,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: CompactBuffers
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1538
+    startLine: 1597
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -4008,11 +4317,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Clone
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1579
+    startLine: 1638
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -4025,6 +4334,88 @@ items:
       description: ''
     content.vb: Public Function Clone() As MeshData
   overload: Vintagestory.API.Client.MeshData.Clone*
+- uid: Vintagestory.API.Client.MeshData.DisposeBasicData
+  commentId: M:Vintagestory.API.Client.MeshData.DisposeBasicData
+  id: DisposeBasicData
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: DisposeBasicData()
+  nameWithType: MeshData.DisposeBasicData()
+  fullName: Vintagestory.API.Client.MeshData.DisposeBasicData()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: DisposeBasicData
+    path: Client/Model/Mesh/MeshData.cs
+    startLine: 1693
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public void DisposeBasicData()
+    content.vb: Public Sub DisposeBasicData()
+  overload: Vintagestory.API.Client.MeshData.DisposeBasicData*
+- uid: Vintagestory.API.Client.MeshData.CloneUsingRecycler
+  commentId: M:Vintagestory.API.Client.MeshData.CloneUsingRecycler
+  id: CloneUsingRecycler
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: CloneUsingRecycler()
+  nameWithType: MeshData.CloneUsingRecycler()
+  fullName: Vintagestory.API.Client.MeshData.CloneUsingRecycler()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: CloneUsingRecycler
+    path: Client/Model/Mesh/MeshData.cs
+    startLine: 1789
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public MeshData CloneUsingRecycler()
+    return:
+      type: Vintagestory.API.Client.MeshData
+    content.vb: Public Function CloneUsingRecycler() As MeshData
+  overload: Vintagestory.API.Client.MeshData.CloneUsingRecycler*
+- uid: Vintagestory.API.Client.MeshData.Dispose
+  commentId: M:Vintagestory.API.Client.MeshData.Dispose
+  id: Dispose
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MeshData.Dispose()
+  fullName: Vintagestory.API.Client.MeshData.Dispose()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: Dispose
+    path: Client/Model/Mesh/MeshData.cs
+    startLine: 1810
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Allows meshdata object to be returned to the recycler
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Vintagestory.API.Client.MeshData.Dispose*
 - uid: Vintagestory.API.Client.MeshData.EmptyClone
   commentId: M:Vintagestory.API.Client.MeshData.EmptyClone
   id: EmptyClone
@@ -4039,11 +4430,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: EmptyClone
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1681
+    startLine: 1827
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -4070,11 +4461,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Clear
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1770
+    startLine: 1916
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -4100,11 +4491,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: SizeInBytes
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1786
+    startLine: 1932
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -4128,11 +4519,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: WithTexPos
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1810
+    startLine: 1956
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -4161,11 +4552,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: SetTexPos
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1820
+    startLine: 1966
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -4192,11 +4583,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Client/Model/Mesh/MeshData.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: SplitByTextureId
     path: Client/Model/Mesh/MeshData.cs
-    startLine: 1837
+    startLine: 1983
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
@@ -4765,6 +5156,24 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
+- uid: Vintagestory.API.Client.MeshDataRecycler
+  commentId: T:Vintagestory.API.Client.MeshDataRecycler
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MeshDataRecycler.html
+  name: MeshDataRecycler
+  nameWithType: MeshDataRecycler
+  fullName: Vintagestory.API.Client.MeshDataRecycler
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: System.Int32[]
   isExternal: true
   href: https://learn.microsoft.com/dotnet/api/system.int32
@@ -4873,17 +5282,6 @@ references:
   name: CustomMeshDataPartByte
   nameWithType: CustomMeshDataPartByte
   fullName: Vintagestory.API.Client.CustomMeshDataPartByte
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
 - uid: Vintagestory.API.Client.EnumDrawMode
   commentId: T:Vintagestory.API.Client.EnumDrawMode
   parent: Vintagestory.API.Client
@@ -4920,6 +5318,17 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.int16
   - name: (
   - name: )
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
 - uid: Vintagestory.API.Client.MeshData.GetVerticesCount*
   commentId: Overload:Vintagestory.API.Client.MeshData.GetVerticesCount
   href: Vintagestory.API.Client.MeshData.html#Vintagestory_API_Client_MeshData_GetVerticesCount
@@ -5156,6 +5565,69 @@ references:
   name: MatrixTransform
   nameWithType: MeshData.MatrixTransform
   fullName: Vintagestory.API.Client.MeshData.MatrixTransform
+- uid: System.Span{System.Single}
+  commentId: T:System.Span{System.Single}
+  parent: System
+  definition: System.Span`1
+  href: https://learn.microsoft.com/dotnet/api/system.span-1
+  name: Span<float>
+  nameWithType: Span<float>
+  fullName: System.Span<float>
+  nameWithType.vb: Span(Of Single)
+  fullName.vb: System.Span(Of Single)
+  name.vb: Span(Of Single)
+  spec.csharp:
+  - uid: System.Span`1
+    name: Span
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.span-1
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  spec.vb:
+  - uid: System.Span`1
+    name: Span
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.span-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: System.Span`1
+  commentId: T:System.Span`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.span-1
+  name: Span<T>
+  nameWithType: Span<T>
+  fullName: System.Span<T>
+  nameWithType.vb: Span(Of T)
+  fullName.vb: System.Span(Of T)
+  name.vb: Span(Of T)
+  spec.csharp:
+  - uid: System.Span`1
+    name: Span
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.span-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Span`1
+    name: Span
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.span-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: System.Double[]
   isExternal: true
   href: https://learn.microsoft.com/dotnet/api/system.double
@@ -5307,6 +5779,12 @@ references:
   name: AddVertexWithFlags
   nameWithType: MeshData.AddVertexWithFlags
   fullName: Vintagestory.API.Client.MeshData.AddVertexWithFlags
+- uid: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor*
+  commentId: Overload:Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor
+  href: Vintagestory.API.Client.MeshData.html#Vintagestory_API_Client_MeshData_AddVertexWithFlagsSkipColor_System_Single_System_Single_System_Single_System_Single_System_Single_System_Int32_
+  name: AddVertexWithFlagsSkipColor
+  nameWithType: MeshData.AddVertexWithFlagsSkipColor
+  fullName: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor
 - uid: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture*
   commentId: Overload:Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture
   href: Vintagestory.API.Client.MeshData.html#Vintagestory_API_Client_MeshData_AddVertexWithFlagsSkipTexture_System_Single_System_Single_System_Single_System_Single_System_Single_System_Int32_System_Int32_
@@ -5409,6 +5887,24 @@ references:
   name: Clone
   nameWithType: MeshData.Clone
   fullName: Vintagestory.API.Client.MeshData.Clone
+- uid: Vintagestory.API.Client.MeshData.DisposeBasicData*
+  commentId: Overload:Vintagestory.API.Client.MeshData.DisposeBasicData
+  href: Vintagestory.API.Client.MeshData.html#Vintagestory_API_Client_MeshData_DisposeBasicData
+  name: DisposeBasicData
+  nameWithType: MeshData.DisposeBasicData
+  fullName: Vintagestory.API.Client.MeshData.DisposeBasicData
+- uid: Vintagestory.API.Client.MeshData.CloneUsingRecycler*
+  commentId: Overload:Vintagestory.API.Client.MeshData.CloneUsingRecycler
+  href: Vintagestory.API.Client.MeshData.html#Vintagestory_API_Client_MeshData_CloneUsingRecycler
+  name: CloneUsingRecycler
+  nameWithType: MeshData.CloneUsingRecycler
+  fullName: Vintagestory.API.Client.MeshData.CloneUsingRecycler
+- uid: Vintagestory.API.Client.MeshData.Dispose*
+  commentId: Overload:Vintagestory.API.Client.MeshData.Dispose
+  href: Vintagestory.API.Client.MeshData.html#Vintagestory_API_Client_MeshData_Dispose
+  name: Dispose
+  nameWithType: MeshData.Dispose
+  fullName: Vintagestory.API.Client.MeshData.Dispose
 - uid: Vintagestory.API.Client.MeshData.EmptyClone*
   commentId: Overload:Vintagestory.API.Client.MeshData.EmptyClone
   href: Vintagestory.API.Client.MeshData.html#Vintagestory_API_Client_MeshData_EmptyClone

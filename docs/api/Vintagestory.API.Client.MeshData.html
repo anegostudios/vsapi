@@ -201,6 +201,38 @@ Please note, all arrays are used as a buffer. They do not tightly fit the data b
 
   <a id="Vintagestory_API_Client_MeshData__ctor_" data-uid="Vintagestory.API.Client.MeshData.#ctor*"></a>
 
+  <h3 id="Vintagestory_API_Client_MeshData__ctor_System_Int32_" data-uid="Vintagestory.API.Client.MeshData.#ctor(System.Int32)">
+  MeshData(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>This constructor creates a basic MeshData with xyz, Uv, Rgba, Flags and Indices only; Indices to Vertices ratio is the default 6:4</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MeshData(int capacity)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>capacity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_MeshData__ctor_" data-uid="Vintagestory.API.Client.MeshData.#ctor*"></a>
+
   <h3 id="Vintagestory_API_Client_MeshData__ctor_System_Int32_System_Int32_System_Boolean_System_Boolean_System_Boolean_System_Boolean_" data-uid="Vintagestory.API.Client.MeshData.#ctor(System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
   MeshData(int, int, bool, bool, bool, bool)
   
@@ -244,6 +276,36 @@ Any component that is null is ignored by UploadModel/UpdateModel</p>
 
   <h2 class="section" id="fields">Fields
 </h2>
+
+
+
+  <h3 id="Vintagestory_API_Client_MeshData_BaseSizeInBytes" data-uid="Vintagestory.API.Client.MeshData.BaseSizeInBytes">
+  BaseSizeInBytes
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int BaseSizeInBytes = 34</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
 
 
 
@@ -995,6 +1057,98 @@ w: bits 30-31</p>
 
 
 
+  <h3 id="Vintagestory_API_Client_MeshData_Recyclable" data-uid="Vintagestory.API.Client.MeshData.Recyclable">
+  Recyclable
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, this MeshData was constructed from MeshDataRecycler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Recyclable</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_MeshData_Recycler" data-uid="Vintagestory.API.Client.MeshData.Recycler">
+  Recycler
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MeshDataRecycler Recycler</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.MeshDataRecycler.html">MeshDataRecycler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_MeshData_RecyclingTime" data-uid="Vintagestory.API.Client.MeshData.RecyclingTime">
+  RecyclingTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The time this MeshData most recently entered the recycling system; the oldest may be garbage collected</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public long RecyclingTime</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Client_MeshData_RenderPassCount" data-uid="Vintagestory.API.Client.MeshData.RenderPassCount">
   RenderPassCount
   
@@ -1327,6 +1481,66 @@ Bit 10: DisableRandomDrawOffset</p>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_MeshData_StandardIndicesPerFace" data-uid="Vintagestory.API.Client.MeshData.StandardIndicesPerFace">
+  StandardIndicesPerFace
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int StandardIndicesPerFace = 6</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_MeshData_StandardVerticesPerFace" data-uid="Vintagestory.API.Client.MeshData.StandardVerticesPerFace">
+  StandardVerticesPerFace
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const int StandardVerticesPerFace = 4</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 
@@ -2195,7 +2409,8 @@ public short[] RenderPasses { get; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Add 6 indices</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -2734,6 +2949,48 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
 
 
 
+  <a id="Vintagestory_API_Client_MeshData_AddVertexWithFlagsSkipColor_" data-uid="Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor*"></a>
+
+  <h3 id="Vintagestory_API_Client_MeshData_AddVertexWithFlagsSkipColor_System_Single_System_Single_System_Single_System_Single_System_Single_System_Int32_" data-uid="Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32)">
+  AddVertexWithFlagsSkipColor(float, float, float, float, float, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a new vertex to the mesh. Grows the vertex buffer if necessary.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddVertexWithFlagsSkipColor(float x, float y, float z, float u, float v, int flags)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>u</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>v</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>flags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_MeshData_AddVertexWithFlagsSkipTexture_" data-uid="Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture*"></a>
 
   <h3 id="Vintagestory_API_Client_MeshData_AddVertexWithFlagsSkipTexture_System_Single_System_Single_System_Single_System_Single_System_Single_System_Int32_System_Int32_" data-uid="Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)">
@@ -2916,6 +3173,37 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
 
 
 
+  <a id="Vintagestory_API_Client_MeshData_CloneUsingRecycler_" data-uid="Vintagestory.API.Client.MeshData.CloneUsingRecycler*"></a>
+
+  <h3 id="Vintagestory_API_Client_MeshData_CloneUsingRecycler" data-uid="Vintagestory.API.Client.MeshData.CloneUsingRecycler">
+  CloneUsingRecycler()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MeshData CloneUsingRecycler()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Client_MeshData_CompactBuffers_" data-uid="Vintagestory.API.Client.MeshData.CompactBuffers*"></a>
 
   <h3 id="Vintagestory_API_Client_MeshData_CompactBuffers" data-uid="Vintagestory.API.Client.MeshData.CompactBuffers">
@@ -2929,6 +3217,59 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void CompactBuffers()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_MeshData_Dispose_" data-uid="Vintagestory.API.Client.MeshData.Dispose*"></a>
+
+  <h3 id="Vintagestory_API_Client_MeshData_Dispose" data-uid="Vintagestory.API.Client.MeshData.Dispose">
+  Dispose()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows meshdata object to be returned to the recycler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_MeshData_DisposeBasicData_" data-uid="Vintagestory.API.Client.MeshData.DisposeBasicData*"></a>
+
+  <h3 id="Vintagestory_API_Client_MeshData_DisposeBasicData" data-uid="Vintagestory.API.Client.MeshData.DisposeBasicData">
+  DisposeBasicData()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void DisposeBasicData()</code></pre>
   </div>
 
 
@@ -3411,6 +3752,46 @@ A negative render pass value defaults to EnumChunkRenderPass.Opaque</p>
     <dt><code>origin</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
     <dd><p>origin point</p>
 </dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.MeshData.html">MeshData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_MeshData_MatrixTransform_" data-uid="Vintagestory.API.Client.MeshData.MatrixTransform*"></a>
+
+  <h3 id="Vintagestory_API_Client_MeshData_MatrixTransform_System_Span_System_Single__System_Single___Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.Client.MeshData.MatrixTransform(System.Span{System.Single},System.Single[],Vintagestory.API.MathTools.Vec3f)">
+  MatrixTransform(Span&lt;float&gt;, float[], Vec3f)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MeshData MatrixTransform(Span&lt;float&gt; matrix, float[] vec, Vec3f origin = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>vec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>origin</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>

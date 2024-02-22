@@ -69,6 +69,8 @@ namespace Vintagestory.API.Common
         /// <param name="activeAnimationsByAnimCode"></param>
         /// <param name="dt"></param>
         void OnFrame(Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, float dt);
+
+        string DumpCurrentState();
     }
 
     /// <summary>
@@ -167,5 +169,7 @@ namespace Vintagestory.API.Common
         void ResetAnimation(string beginholdAnim);
 
         void RegisterFrameCallback(AnimFrameCallback trigger);
+
+        
     }
 }

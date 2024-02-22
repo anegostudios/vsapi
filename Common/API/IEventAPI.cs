@@ -160,6 +160,18 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Calls given method after every given interval until unregistered. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
+        /// This overload includes an ErrorHandler callback, triggered if calling onGameTick throws an exception
+        /// </summary>
+        /// <param name="onGameTick"></param>
+        /// <param name="errorHandler"></param>
+        /// <param name="millisecondInterval"></param>
+        /// <param name="initialDelayOffsetMs"></param>
+        /// <returns>listenerId</returns>
+        long RegisterGameTickListener(Action<float> onGameTick, Action<Exception> errorHandler, int millisecondInterval, int initialDelayOffsetMs = 0);
+
+
+        /// <summary>
+        /// Calls given method after every given interval until unregistered. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
         /// </summary>
         /// <param name="onGameTick"></param>
         /// <param name="pos"></param>

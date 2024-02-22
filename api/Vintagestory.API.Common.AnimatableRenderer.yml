@@ -6,6 +6,7 @@ items:
   parent: Vintagestory.API.Common
   children:
   - Vintagestory.API.Common.AnimatableRenderer.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Common.AnimatorBase,System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},Vintagestory.API.Client.MeshRef,System.Int32,Vintagestory.API.Client.EnumRenderStage)
+  - Vintagestory.API.Common.AnimatableRenderer.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Common.AnimatorBase,System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},Vintagestory.API.Client.MultiTextureMeshRef,Vintagestory.API.Client.EnumRenderStage)
   - Vintagestory.API.Common.AnimatableRenderer.Dispose
   - Vintagestory.API.Common.AnimatableRenderer.FogAffectedness
   - Vintagestory.API.Common.AnimatableRenderer.LightAffected
@@ -23,6 +24,7 @@ items:
   - Vintagestory.API.Common.AnimatableRenderer.backfaceCulling
   - Vintagestory.API.Common.AnimatableRenderer.capi
   - Vintagestory.API.Common.AnimatableRenderer.meshref
+  - Vintagestory.API.Common.AnimatableRenderer.mtmeshref
   - Vintagestory.API.Common.AnimatableRenderer.pos
   - Vintagestory.API.Common.AnimatableRenderer.renderColor
   - Vintagestory.API.Common.AnimatableRenderer.rotationDeg
@@ -37,11 +39,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: AnimatableRenderer
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 7
+    startLine: 8
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -75,11 +77,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RenderOrder
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 9
+    startLine: 10
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -213,11 +215,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: RenderRange
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 10
+    startLine: 11
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -246,11 +248,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: pos
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 12
+    startLine: 13
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -273,11 +275,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: capi
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 13
+    startLine: 14
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -300,11 +302,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: animator
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 14
+    startLine: 15
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -327,11 +329,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: activeAnimationsByAnimCode
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 15
+    startLine: 16
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -340,6 +342,33 @@ items:
     return:
       type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData}
     content.vb: Protected activeAnimationsByAnimCode As Dictionary(Of String, AnimationMetaData)
+- uid: Vintagestory.API.Common.AnimatableRenderer.mtmeshref
+  commentId: F:Vintagestory.API.Common.AnimatableRenderer.mtmeshref
+  id: mtmeshref
+  parent: Vintagestory.API.Common.AnimatableRenderer
+  langs:
+  - csharp
+  - vb
+  name: mtmeshref
+  nameWithType: AnimatableRenderer.mtmeshref
+  fullName: Vintagestory.API.Common.AnimatableRenderer.mtmeshref
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: mtmeshref
+    path: Common/Model/Animation/AnimatableRenderer.cs
+    startLine: 18
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public MultiTextureMeshRef mtmeshref
+    return:
+      type: Vintagestory.API.Client.MultiTextureMeshRef
+    content.vb: Public mtmeshref As MultiTextureMeshRef
 - uid: Vintagestory.API.Common.AnimatableRenderer.meshref
   commentId: F:Vintagestory.API.Common.AnimatableRenderer.meshref
   id: meshref
@@ -354,11 +383,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: meshref
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 17
+    startLine: 20
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -381,11 +410,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: textureId
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 18
+    startLine: 22
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -408,11 +437,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ModelMat
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 20
+    startLine: 24
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -435,11 +464,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ShouldRender
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 22
+    startLine: 26
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -462,11 +491,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: StabilityAffected
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 23
+    startLine: 27
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -489,11 +518,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: LightAffected
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 24
+    startLine: 28
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -516,11 +545,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: FogAffectedness
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 25
+    startLine: 29
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -543,11 +572,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: rotationDeg
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 26
+    startLine: 30
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -570,11 +599,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ScaleX
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 28
+    startLine: 32
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -597,11 +626,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ScaleY
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 29
+    startLine: 33
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -624,11 +653,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ScaleZ
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 30
+    startLine: 34
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -651,11 +680,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: renderColor
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 32
+    startLine: 36
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -678,11 +707,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: backfaceCulling
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 34
+    startLine: 37
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -705,16 +734,19 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: .ctor
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 36
+    startLine: 39
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, AnimatorBase animator, Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, MeshRef meshref, int textureId, EnumRenderStage renderStage = EnumRenderStage.Opaque)
+    content: >-
+      [Obsolete("Use constructor with MultiTextureMeshRef instead, the standard MeshRef texturing breaks when there is multiple texture atlasses")]
+
+      public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, AnimatorBase animator, Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, MeshRef meshref, int textureId, EnumRenderStage renderStage = EnumRenderStage.Opaque)
     parameters:
     - id: capi
       type: Vintagestory.API.Client.ICoreClientAPI
@@ -732,11 +764,64 @@ items:
       type: System.Int32
     - id: renderStage
       type: Vintagestory.API.Client.EnumRenderStage
-    content.vb: Public Sub New(capi As ICoreClientAPI, pos As Vec3d, rotationDeg As Vec3f, animator As AnimatorBase, activeAnimationsByAnimCode As Dictionary(Of String, AnimationMetaData), meshref As MeshRef, textureId As Integer, renderStage As EnumRenderStage = EnumRenderStage.Opaque)
+    content.vb: >-
+      <Obsolete("Use constructor with MultiTextureMeshRef instead, the standard MeshRef texturing breaks when there is multiple texture atlasses")>
+
+      Public Sub New(capi As ICoreClientAPI, pos As Vec3d, rotationDeg As Vec3f, animator As AnimatorBase, activeAnimationsByAnimCode As Dictionary(Of String, AnimationMetaData), meshref As MeshRef, textureId As Integer, renderStage As EnumRenderStage = EnumRenderStage.Opaque)
   overload: Vintagestory.API.Common.AnimatableRenderer.#ctor*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use constructor with MultiTextureMeshRef instead, the standard MeshRef texturing breaks when there is multiple texture atlasses
   nameWithType.vb: AnimatableRenderer.New(ICoreClientAPI, Vec3d, Vec3f, AnimatorBase, Dictionary(Of String, AnimationMetaData), MeshRef, Integer, EnumRenderStage)
   fullName.vb: Vintagestory.API.Common.AnimatableRenderer.New(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.MathTools.Vec3d, Vintagestory.API.MathTools.Vec3f, Vintagestory.API.Common.AnimatorBase, System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.AnimationMetaData), Vintagestory.API.Client.MeshRef, Integer, Vintagestory.API.Client.EnumRenderStage)
   name.vb: New(ICoreClientAPI, Vec3d, Vec3f, AnimatorBase, Dictionary(Of String, AnimationMetaData), MeshRef, Integer, EnumRenderStage)
+- uid: Vintagestory.API.Common.AnimatableRenderer.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Common.AnimatorBase,System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},Vintagestory.API.Client.MultiTextureMeshRef,Vintagestory.API.Client.EnumRenderStage)
+  commentId: M:Vintagestory.API.Common.AnimatableRenderer.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Common.AnimatorBase,System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},Vintagestory.API.Client.MultiTextureMeshRef,Vintagestory.API.Client.EnumRenderStage)
+  id: '#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3f,Vintagestory.API.Common.AnimatorBase,System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},Vintagestory.API.Client.MultiTextureMeshRef,Vintagestory.API.Client.EnumRenderStage)'
+  parent: Vintagestory.API.Common.AnimatableRenderer
+  langs:
+  - csharp
+  - vb
+  name: AnimatableRenderer(ICoreClientAPI, Vec3d, Vec3f, AnimatorBase, Dictionary<string, AnimationMetaData>, MultiTextureMeshRef, EnumRenderStage)
+  nameWithType: AnimatableRenderer.AnimatableRenderer(ICoreClientAPI, Vec3d, Vec3f, AnimatorBase, Dictionary<string, AnimationMetaData>, MultiTextureMeshRef, EnumRenderStage)
+  fullName: Vintagestory.API.Common.AnimatableRenderer.AnimatableRenderer(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.MathTools.Vec3d, Vintagestory.API.MathTools.Vec3f, Vintagestory.API.Common.AnimatorBase, System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.AnimationMetaData>, Vintagestory.API.Client.MultiTextureMeshRef, Vintagestory.API.Client.EnumRenderStage)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Common/Model/Animation/AnimatableRenderer.cs
+    startLine: 59
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, AnimatorBase animator, Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, MultiTextureMeshRef meshref, EnumRenderStage renderStage = EnumRenderStage.Opaque)
+    parameters:
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec3d
+    - id: rotationDeg
+      type: Vintagestory.API.MathTools.Vec3f
+    - id: animator
+      type: Vintagestory.API.Common.AnimatorBase
+    - id: activeAnimationsByAnimCode
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData}
+    - id: meshref
+      type: Vintagestory.API.Client.MultiTextureMeshRef
+    - id: renderStage
+      type: Vintagestory.API.Client.EnumRenderStage
+    content.vb: Public Sub New(capi As ICoreClientAPI, pos As Vec3d, rotationDeg As Vec3f, animator As AnimatorBase, activeAnimationsByAnimCode As Dictionary(Of String, AnimationMetaData), meshref As MultiTextureMeshRef, renderStage As EnumRenderStage = EnumRenderStage.Opaque)
+  overload: Vintagestory.API.Common.AnimatableRenderer.#ctor*
+  nameWithType.vb: AnimatableRenderer.New(ICoreClientAPI, Vec3d, Vec3f, AnimatorBase, Dictionary(Of String, AnimationMetaData), MultiTextureMeshRef, EnumRenderStage)
+  fullName.vb: Vintagestory.API.Common.AnimatableRenderer.New(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.MathTools.Vec3d, Vintagestory.API.MathTools.Vec3f, Vintagestory.API.Common.AnimatorBase, System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.AnimationMetaData), Vintagestory.API.Client.MultiTextureMeshRef, Vintagestory.API.Client.EnumRenderStage)
+  name.vb: New(ICoreClientAPI, Vec3d, Vec3f, AnimatorBase, Dictionary(Of String, AnimationMetaData), MultiTextureMeshRef, EnumRenderStage)
 - uid: Vintagestory.API.Common.AnimatableRenderer.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
   commentId: M:Vintagestory.API.Common.AnimatableRenderer.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
   id: OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
@@ -751,11 +836,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: OnRenderFrame
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 55
+    startLine: 77
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -790,11 +875,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Model/Animation/AnimatableRenderer.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: Dispose
     path: Common/Model/Animation/AnimatableRenderer.cs
-    startLine: 131
+    startLine: 161
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1334,6 +1419,13 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Client.MultiTextureMeshRef
+  commentId: T:Vintagestory.API.Client.MultiTextureMeshRef
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MultiTextureMeshRef.html
+  name: MultiTextureMeshRef
+  nameWithType: MultiTextureMeshRef
+  fullName: Vintagestory.API.Client.MultiTextureMeshRef
 - uid: Vintagestory.API.Client.MeshRef
   commentId: T:Vintagestory.API.Client.MeshRef
   parent: Vintagestory.API.Client

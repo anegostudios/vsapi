@@ -1,0 +1,585 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Client.MeshDataRecycler
+  commentId: T:Vintagestory.API.Client.MeshDataRecycler
+  id: MeshDataRecycler
+  parent: Vintagestory.API.Client
+  children:
+  - Vintagestory.API.Client.MeshDataRecycler.#ctor(Vintagestory.API.Client.IClientWorldAccessor)
+  - Vintagestory.API.Client.MeshDataRecycler.Dispose
+  - Vintagestory.API.Client.MeshDataRecycler.DoRecycling
+  - Vintagestory.API.Client.MeshDataRecycler.GetOrCreateMesh(System.Int32)
+  - Vintagestory.API.Client.MeshDataRecycler.MinimumSizeForRecycling
+  - Vintagestory.API.Client.MeshDataRecycler.Recycle(Vintagestory.API.Client.MeshData)
+  - Vintagestory.API.Client.MeshDataRecycler.TTL
+  langs:
+  - csharp
+  - vb
+  name: MeshDataRecycler
+  nameWithType: MeshDataRecycler
+  fullName: Vintagestory.API.Client.MeshDataRecycler
+  type: Class
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataRecycler.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: MeshDataRecycler
+    path: Client/MeshPool/MeshDataRecycler.cs
+    startLine: 48
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: 'This is a recycling system for MeshData objects, so that they can be re-used: helps performance by easing memory allocation pressure, at the cost of holding typically around 300-400MB of memory for these recycled objects'
+  example: []
+  syntax:
+    content: public class MeshDataRecycler
+    content.vb: Public Class MeshDataRecycler
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: Vintagestory.API.Client.MeshDataRecycler.MinimumSizeForRecycling
+  commentId: F:Vintagestory.API.Client.MeshDataRecycler.MinimumSizeForRecycling
+  id: MinimumSizeForRecycling
+  parent: Vintagestory.API.Client.MeshDataRecycler
+  langs:
+  - csharp
+  - vb
+  name: MinimumSizeForRecycling
+  nameWithType: MeshDataRecycler.MinimumSizeForRecycling
+  fullName: Vintagestory.API.Client.MeshDataRecycler.MinimumSizeForRecycling
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataRecycler.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: MinimumSizeForRecycling
+    path: Client/MeshPool/MeshDataRecycler.cs
+    startLine: 50
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public const int MinimumSizeForRecycling = 4096
+    return:
+      type: System.Int32
+    content.vb: Public Const MinimumSizeForRecycling As Integer = 4096
+- uid: Vintagestory.API.Client.MeshDataRecycler.TTL
+  commentId: F:Vintagestory.API.Client.MeshDataRecycler.TTL
+  id: TTL
+  parent: Vintagestory.API.Client.MeshDataRecycler
+  langs:
+  - csharp
+  - vb
+  name: TTL
+  nameWithType: MeshDataRecycler.TTL
+  fullName: Vintagestory.API.Client.MeshDataRecycler.TTL
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataRecycler.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: TTL
+    path: Client/MeshPool/MeshDataRecycler.cs
+    startLine: 51
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public const int TTL = 15000
+    return:
+      type: System.Int32
+    content.vb: Public Const TTL As Integer = 15000
+- uid: Vintagestory.API.Client.MeshDataRecycler.#ctor(Vintagestory.API.Client.IClientWorldAccessor)
+  commentId: M:Vintagestory.API.Client.MeshDataRecycler.#ctor(Vintagestory.API.Client.IClientWorldAccessor)
+  id: '#ctor(Vintagestory.API.Client.IClientWorldAccessor)'
+  parent: Vintagestory.API.Client.MeshDataRecycler
+  langs:
+  - csharp
+  - vb
+  name: MeshDataRecycler(IClientWorldAccessor)
+  nameWithType: MeshDataRecycler.MeshDataRecycler(IClientWorldAccessor)
+  fullName: Vintagestory.API.Client.MeshDataRecycler.MeshDataRecycler(Vintagestory.API.Client.IClientWorldAccessor)
+  type: Constructor
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataRecycler.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: .ctor
+    path: Client/MeshPool/MeshDataRecycler.cs
+    startLine: 65
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public MeshDataRecycler(IClientWorldAccessor clientMain)
+    parameters:
+    - id: clientMain
+      type: Vintagestory.API.Client.IClientWorldAccessor
+    content.vb: Public Sub New(clientMain As IClientWorldAccessor)
+  overload: Vintagestory.API.Client.MeshDataRecycler.#ctor*
+  nameWithType.vb: MeshDataRecycler.New(IClientWorldAccessor)
+  fullName.vb: Vintagestory.API.Client.MeshDataRecycler.New(Vintagestory.API.Client.IClientWorldAccessor)
+  name.vb: New(IClientWorldAccessor)
+- uid: Vintagestory.API.Client.MeshDataRecycler.GetOrCreateMesh(System.Int32)
+  commentId: M:Vintagestory.API.Client.MeshDataRecycler.GetOrCreateMesh(System.Int32)
+  id: GetOrCreateMesh(System.Int32)
+  parent: Vintagestory.API.Client.MeshDataRecycler
+  langs:
+  - csharp
+  - vb
+  name: GetOrCreateMesh(int)
+  nameWithType: MeshDataRecycler.GetOrCreateMesh(int)
+  fullName: Vintagestory.API.Client.MeshDataRecycler.GetOrCreateMesh(int)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataRecycler.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: GetOrCreateMesh
+    path: Client/MeshPool/MeshDataRecycler.cs
+    startLine: 81
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Gets or creates a MeshData with basic data fields already allocated (may contain junk data) and capacity (VerticesMax) at least equal to minimumVertices; in MeshData created/recycled using this system, IndicesMax will be fixed equal to VerticesMax * 6 / 4
+  example: []
+  syntax:
+    content: public MeshData GetOrCreateMesh(int minimumVertices)
+    parameters:
+    - id: minimumVertices
+      type: System.Int32
+      description: ''
+    return:
+      type: Vintagestory.API.Client.MeshData
+      description: ''
+    content.vb: Public Function GetOrCreateMesh(minimumVertices As Integer) As MeshData
+  overload: Vintagestory.API.Client.MeshDataRecycler.GetOrCreateMesh*
+  nameWithType.vb: MeshDataRecycler.GetOrCreateMesh(Integer)
+  fullName.vb: Vintagestory.API.Client.MeshDataRecycler.GetOrCreateMesh(Integer)
+  name.vb: GetOrCreateMesh(Integer)
+- uid: Vintagestory.API.Client.MeshDataRecycler.DoRecycling
+  commentId: M:Vintagestory.API.Client.MeshDataRecycler.DoRecycling
+  id: DoRecycling
+  parent: Vintagestory.API.Client.MeshDataRecycler
+  langs:
+  - csharp
+  - vb
+  name: DoRecycling()
+  nameWithType: MeshDataRecycler.DoRecycling()
+  fullName: Vintagestory.API.Client.MeshDataRecycler.DoRecycling()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataRecycler.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: DoRecycling
+    path: Client/MeshPool/MeshDataRecycler.cs
+    startLine: 116
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Call this periodically on the same thread which will call GetOrCreateMesh, this is required to ensure the Recycling system is up to date
+  example: []
+  syntax:
+    content: public void DoRecycling()
+    content.vb: Public Sub DoRecycling()
+  overload: Vintagestory.API.Client.MeshDataRecycler.DoRecycling*
+- uid: Vintagestory.API.Client.MeshDataRecycler.Recycle(Vintagestory.API.Client.MeshData)
+  commentId: M:Vintagestory.API.Client.MeshDataRecycler.Recycle(Vintagestory.API.Client.MeshData)
+  id: Recycle(Vintagestory.API.Client.MeshData)
+  parent: Vintagestory.API.Client.MeshDataRecycler
+  langs:
+  - csharp
+  - vb
+  name: Recycle(MeshData)
+  nameWithType: MeshDataRecycler.Recycle(MeshData)
+  fullName: Vintagestory.API.Client.MeshDataRecycler.Recycle(Vintagestory.API.Client.MeshData)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataRecycler.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: Recycle
+    path: Client/MeshPool/MeshDataRecycler.cs
+    startLine: 147
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: 'Offer this MeshData to the recycling system: it will first be queued for recycling, and later processed to be either recycled or disposed of'
+  example: []
+  syntax:
+    content: public void Recycle(MeshData meshData)
+    parameters:
+    - id: meshData
+      type: Vintagestory.API.Client.MeshData
+      description: ''
+    content.vb: Public Sub Recycle(meshData As MeshData)
+  overload: Vintagestory.API.Client.MeshDataRecycler.Recycle*
+- uid: Vintagestory.API.Client.MeshDataRecycler.Dispose
+  commentId: M:Vintagestory.API.Client.MeshDataRecycler.Dispose
+  id: Dispose
+  parent: Vintagestory.API.Client.MeshDataRecycler
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: MeshDataRecycler.Dispose()
+  fullName: Vintagestory.API.Client.MeshDataRecycler.Dispose()
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Client/MeshPool/MeshDataRecycler.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: Dispose
+    path: Client/MeshPool/MeshDataRecycler.cs
+    startLine: 158
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Dispose of the MeshDataRecycler (normally on game exit, but can also be used to disable further use of it)
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Vintagestory.API.Client.MeshDataRecycler.Dispose*
+references:
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.Client.MeshDataRecycler.#ctor*
+  commentId: Overload:Vintagestory.API.Client.MeshDataRecycler.#ctor
+  href: Vintagestory.API.Client.MeshDataRecycler.html#Vintagestory_API_Client_MeshDataRecycler__ctor_Vintagestory_API_Client_IClientWorldAccessor_
+  name: MeshDataRecycler
+  nameWithType: MeshDataRecycler.MeshDataRecycler
+  fullName: Vintagestory.API.Client.MeshDataRecycler.MeshDataRecycler
+  nameWithType.vb: MeshDataRecycler.New
+  fullName.vb: Vintagestory.API.Client.MeshDataRecycler.New
+  name.vb: New
+- uid: Vintagestory.API.Client.IClientWorldAccessor
+  commentId: T:Vintagestory.API.Client.IClientWorldAccessor
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.IClientWorldAccessor.html
+  name: IClientWorldAccessor
+  nameWithType: IClientWorldAccessor
+  fullName: Vintagestory.API.Client.IClientWorldAccessor
+- uid: Vintagestory.API.Client.MeshDataRecycler.GetOrCreateMesh*
+  commentId: Overload:Vintagestory.API.Client.MeshDataRecycler.GetOrCreateMesh
+  href: Vintagestory.API.Client.MeshDataRecycler.html#Vintagestory_API_Client_MeshDataRecycler_GetOrCreateMesh_System_Int32_
+  name: GetOrCreateMesh
+  nameWithType: MeshDataRecycler.GetOrCreateMesh
+  fullName: Vintagestory.API.Client.MeshDataRecycler.GetOrCreateMesh
+- uid: Vintagestory.API.Client.MeshData
+  commentId: T:Vintagestory.API.Client.MeshData
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.MeshData.html
+  name: MeshData
+  nameWithType: MeshData
+  fullName: Vintagestory.API.Client.MeshData
+- uid: Vintagestory.API.Client.MeshDataRecycler.DoRecycling*
+  commentId: Overload:Vintagestory.API.Client.MeshDataRecycler.DoRecycling
+  href: Vintagestory.API.Client.MeshDataRecycler.html#Vintagestory_API_Client_MeshDataRecycler_DoRecycling
+  name: DoRecycling
+  nameWithType: MeshDataRecycler.DoRecycling
+  fullName: Vintagestory.API.Client.MeshDataRecycler.DoRecycling
+- uid: Vintagestory.API.Client.MeshDataRecycler.Recycle*
+  commentId: Overload:Vintagestory.API.Client.MeshDataRecycler.Recycle
+  href: Vintagestory.API.Client.MeshDataRecycler.html#Vintagestory_API_Client_MeshDataRecycler_Recycle_Vintagestory_API_Client_MeshData_
+  name: Recycle
+  nameWithType: MeshDataRecycler.Recycle
+  fullName: Vintagestory.API.Client.MeshDataRecycler.Recycle
+- uid: Vintagestory.API.Client.MeshDataRecycler.Dispose*
+  commentId: Overload:Vintagestory.API.Client.MeshDataRecycler.Dispose
+  href: Vintagestory.API.Client.MeshDataRecycler.html#Vintagestory_API_Client_MeshDataRecycler_Dispose
+  name: Dispose
+  nameWithType: MeshDataRecycler.Dispose
+  fullName: Vintagestory.API.Client.MeshDataRecycler.Dispose

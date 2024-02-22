@@ -12,6 +12,11 @@ namespace Vintagestory.API.Client
     /// </summary>
     public class MeshData
     {
+        public static MeshDataRecycler Recycler;
+        public const int StandardVerticesPerFace = 4;
+        public const int StandardIndicesPerFace = 6;
+        public const int BaseSizeInBytes = 34;            // 20 for 5 floats (xyzuv) + 4 rgba + 4 flags + 6 on average for indices (1.5 indices per vertex, 4 bytes per index)
+
         public int[] TextureIds = new int[0];
 
         /// <summary>
@@ -206,8 +211,8 @@ namespace Vintagestory.API.Client
         public int TextureIndicesCount;
 
 
-        public int IndicesPerFace = 6;
-        public int VerticesPerFace = 4;
+        public int IndicesPerFace = StandardIndicesPerFace;
+        public int VerticesPerFace = StandardVerticesPerFace;
 
         /// <summary>
         /// BlockShapeTesselator climate colormap ids. Required by TerrainChunkTesselator to determine whether to color a vertex by a color map or not. Should hold VerticesCount / 4 values. Set to 0 for no color mapping, set 1..n for color map 0..n-1
@@ -239,6 +244,16 @@ namespace Vintagestory.API.Client
         /// Amount of assigned render pass values
         /// </summary>
         public int RenderPassCount;
+
+        /// <summary>
+        /// If true, this MeshData was constructed from MeshDataRecycler
+        /// </summary>
+        public bool Recyclable;
+
+        /// <summary>
+        /// The time this MeshData most recently entered the recycling system; the oldest may be garbage collected
+        /// </summary>
+        public long RecyclingTime;
 
         /// <summary>
         /// Gets the number of verticies in the the mesh.
@@ -386,11 +401,8 @@ namespace Vintagestory.API.Client
         /// <param name="radZ"></param>
         public MeshData Rotate(Vec3f origin, float radX, float radY, float radZ)
         {
-            float[] matrix = Mat4f.Create();
-            Mat4f.RotateX(matrix, matrix, radX);
-            Mat4f.RotateY(matrix, matrix, radY);
-            Mat4f.RotateZ(matrix, matrix, radZ);
-
+            Span<float> matrix = stackalloc float[16];
+            Mat4f.RotateXYZ(matrix, radX, radY, radZ);
             return MatrixTransform(matrix, new float[4], origin);
         }
 
@@ -404,12 +416,15 @@ namespace Vintagestory.API.Client
         /// <param name="scaleZ"></param>
         public MeshData Scale(Vec3f origin, float scaleX, float scaleY, float scaleZ)
         {
-            float[] matrix = Mat4f.Create();
-            Mat4f.Scale(matrix, matrix, new float[] { scaleX, scaleY, scaleZ });
-
             for (int i = 0; i < VerticesCount; i++)
             {
-                Mat4f.MulWithVec3_Position_WithOrigin(matrix, xyz, xyz, i * 3, origin);
+                int offset = i * 3;
+                float vx = xyz[offset + 0] - origin.X;
+                float vy = xyz[offset + 1] - origin.Y;
+                float vz = xyz[offset + 2] - origin.Z;
+                xyz[offset + 0] = origin.X + scaleX * vx;
+                xyz[offset + 1] = origin.Y + scaleY * vy;
+                xyz[offset + 2] = origin.Z + scaleZ * vz;
             }
             return this;
         }
@@ -456,6 +471,11 @@ namespace Vintagestory.API.Client
         /// <param name="vec">a re-usable float[4], values unimportant</param>
         /// <param name="origin">origin point</param>
         public MeshData MatrixTransform(float[] matrix, float[] vec, Vec3f origin = null)
+        {
+            return MatrixTransform((Span<float>)matrix, vec, origin);
+        }
+
+        public MeshData MatrixTransform(Span<float> matrix, float[] vec, Vec3f origin = null)
         {
             if (origin == null)
             {
@@ -656,6 +676,23 @@ namespace Vintagestory.API.Client
             Indices = new int[capacityIndices];
             IndicesMax = capacityIndices;
             VerticesMax = capacityVertices;
+        }
+
+        /// <summary>
+        /// This constructor creates a basic MeshData with xyz, Uv, Rgba, Flags and Indices only; Indices to Vertices ratio is the default 6:4
+        /// </summary>
+        /// <param name="capacity"></param>
+        public MeshData(int capacity)
+        {
+            xyz = new float[capacity * 3];
+            Uv = new float[capacity * 2];
+            Rgba = new byte[capacity * 4];
+            Flags = new int[capacity];
+            VerticesMax = capacity;
+
+            int capacityIndices = capacity * MeshData.StandardIndicesPerFace / MeshData.StandardVerticesPerFace;
+            Indices = new int[capacityIndices];
+            IndicesMax = capacityIndices;
         }
 
         /// <summary>
@@ -1223,6 +1260,30 @@ namespace Vintagestory.API.Client
         /// <param name="flags"></param>
         public void AddVertexWithFlags(float x, float y, float z, float u, float v, int color, int flags)
         {
+            AddVertexWithFlagsSkipColor(x, y, z, u, v, flags);
+
+            // Write int color into byte array
+            unsafe
+            {
+                fixed (byte* rgbaByte = Rgba)
+                {
+                    int* rgbaInt = (int*)rgbaByte;
+                    rgbaInt[VerticesCount - 1] = color;  // we use -1 because AddVertexWithFlagsSkipColor incremented VerticesCount already
+                }
+            }
+        }
+
+        /// <summary>
+        /// Adds a new vertex to the mesh. Grows the vertex buffer if necessary.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <param name="u"></param>
+        /// <param name="v"></param>
+        /// <param name="flags"></param>
+        public void AddVertexWithFlagsSkipColor(float x, float y, float z, float u, float v, int flags)
+        {
             int count = VerticesCount;
             if (count >= VerticesMax)
             {
@@ -1246,19 +1307,8 @@ namespace Vintagestory.API.Client
                 this.Flags[count] = flags;
             }
 
-            // Write int color into byte array
-            unsafe
-            {
-                fixed (byte* rgbaByte = Rgba)
-                {
-                    int* rgbaInt = (int*)rgbaByte;
-                    rgbaInt[count] = color;
-                }
-            }
-
             VerticesCount = count + 1;
         }
-
 
         public void AddVertexWithFlagsSkipTexture(float x, float y, float z, float u, float v, int color, int flags)
         {
@@ -1392,12 +1442,21 @@ namespace Vintagestory.API.Client
             Indices[IndicesCount++] = index;
         }
 
+        /// <summary>
+        /// Add 6 indices
+        /// </summary>
+        /// <param name="i1"></param>
+        /// <param name="i2"></param>
+        /// <param name="i3"></param>
+        /// <param name="i4"></param>
+        /// <param name="i5"></param>
+        /// <param name="i6"></param>
         public void AddIndices(int i1, int i2, int i3, int i4, int i5, int i6)
         {
             int count = IndicesCount;
-            if (count + 6 > IndicesMax)
+            if (count + StandardIndicesPerFace > IndicesMax)
             {
-                GrowIndexBuffer(6);
+                GrowIndexBuffer(StandardIndicesPerFace);
             }
             int[] currentIndices = this.Indices;
 
@@ -1579,15 +1638,76 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public MeshData Clone()
         {
+            MeshData newMesh = CloneBasicData();
+            this.CloneExtraData(newMesh);
+            return newMesh;
+        }
+
+        /// <summary>
+        /// Clone the basic xyz, uv, rgba and flags arrays, which are common to every chunk mesh (though not necessarily all used by individual block/item/entity models)
+        /// </summary>
+        /// <returns></returns>
+        private MeshData CloneBasicData()
+        {
             MeshData dest = new MeshData(false);
             dest.VerticesPerFace = VerticesPerFace;
             dest.IndicesPerFace = IndicesPerFace;
 
+            dest.SetVerticesCount(VerticesCount);
+            dest.xyz = xyz.FastCopy(XyzCount);
+
+            if (Uv != null)
+            {
+                dest.Uv = Uv.FastCopy(UvCount);
+            }
+
+            if (Rgba != null)
+            {
+                dest.Rgba = Rgba.FastCopy(RgbaCount);
+            }
+
+            if (Flags != null)
+            {
+                dest.Flags = Flags.FastCopy(FlagsCount);
+            }
+
+            dest.Indices = Indices.FastCopy(IndicesCount);
+            dest.SetIndicesCount(IndicesCount);
+
+            dest.VerticesMax = VerticesCount;
+            dest.IndicesMax = dest.Indices.Length;
+
+            return dest;
+        }
+
+        private void CopyBasicData(MeshData dest)
+        {
+            dest.SetVerticesCount(VerticesCount);
+            dest.SetIndicesCount(IndicesCount);
+            Array.Copy(xyz, dest.xyz, XyzCount);
+            Array.Copy(Uv, dest.Uv, UvCount);
+            Array.Copy(Rgba, dest.Rgba, RgbaCount);
+            Array.Copy(Flags, dest.Flags, FlagsCount);
+            Array.Copy(Indices, dest.Indices, IndicesCount);
+        }
+
+        public void DisposeBasicData()
+        {
+            xyz = null;
+            Uv = null;
+            Rgba = null;
+            Flags = null;
+            Indices = null;
+        }
+
+        /// <summary>
+        /// Clone the extra mesh data fields. Some of these fields are used only by block/item meshes (some only be Microblocks). Some others are not used by all chunk meshes, though may be used by certain meshes in certain renderpasses (e.g. CustomInts). Either way, cannot sensibly be retained within the MeshDataRecycler system, must be cloned every time
+        /// </summary>
+        /// <returns></returns>
+        private void CloneExtraData(MeshData dest)
+        {
             unchecked
             {
-                dest.SetVerticesCount(VerticesCount);
-                dest.xyz = xyz.FastCopy(XyzCount);
-
                 if (Normals != null)
                 {
                     dest.Normals = Normals.FastCopy(NormalsCount);
@@ -1624,24 +1744,6 @@ namespace Vintagestory.API.Client
                     dest.RenderPassCount = RenderPassCount;
                 }
 
-                if (Uv != null)
-                {
-                    dest.Uv = Uv.FastCopy(UvCount);
-                }
-
-                if (Rgba != null)
-                {
-                    dest.Rgba = Rgba.FastCopy(RgbaCount);
-                }
-
-                if (Flags != null)
-                {
-                    dest.Flags = Flags.FastCopy(FlagsCount);
-                }
-
-                dest.Indices = Indices.FastCopy(IndicesCount);
-                dest.SetIndicesCount(GetIndicesCount());
-
                 if (CustomFloats != null)
                 {
                     dest.CustomFloats = CustomFloats.Clone();
@@ -1661,16 +1763,60 @@ namespace Vintagestory.API.Client
                 {
                     dest.CustomInts = CustomInts.Clone();
                 }
-
-                // This is wrong, because we don't copy unused elements
-                //dest.VerticesMax = VerticesMax;
-                //dest.IndicesMax = IndicesMax;
-
-                dest.VerticesMax = XyzCount / 3;
-                dest.IndicesMax = dest.Indices.Length;
             }
+        }
 
-            return dest;
+        private void DisposeExtraData()
+        {
+            // Clear all extra data fields; these will be created again if needed by the CloneExtraData() operation later, after this is retrieved from recycling
+            Normals = null;
+            NormalsCount = 0;
+            XyzFaces = null;
+            XyzFacesCount = 0;
+            TextureIndices = null;
+            TextureIndicesCount = 0;
+            TextureIds = null;
+            ClimateColorMapIds = null;
+            SeasonColorMapIds = null;
+            ColorMapIdsCount = 0;
+            RenderPassesAndExtraBits = null;
+            RenderPassCount = 0;
+            CustomFloats = null;
+            CustomShorts = null;
+            CustomBytes = null;
+            CustomInts = null;
+        }
+
+        public MeshData CloneUsingRecycler()
+        {
+            int recyclableSizeInBytes = VerticesCount * BaseSizeInBytes;
+            if (recyclableSizeInBytes < MeshDataRecycler.MinimumSizeForRecycling ||
+                Uv == null || Rgba == null || Flags == null ||
+                VerticesPerFace != StandardVerticesPerFace ||
+                IndicesPerFace != StandardIndicesPerFace) return Clone();   // non-pooled behavior for small ones or non-standard ones - testing and breakpointing in vanilla, we didn't find any non-standard ones
+
+            int requiredSize = Math.Max(VerticesCount, ((IndicesCount + StandardIndicesPerFace - 1) / StandardIndicesPerFace) * StandardVerticesPerFace);
+            if (requiredSize > VerticesCount * 1.05f || requiredSize * StandardIndicesPerFace / StandardVerticesPerFace > IndicesCount * 1.2f) return Clone();    // more than 5% / 20% mismatch between VerticesCount and IndicesCount, let's not use this system - must be strange shapes in the chunk. In vanilla, there is zero mismatch, every face is a quad with 4 vertices, 6 indices
+
+            MeshData newMesh = Recycler.GetOrCreateMesh(requiredSize);
+            this.CopyBasicData(newMesh);
+            this.CloneExtraData(newMesh);
+
+            return newMesh;
+        }
+
+        /// <summary>
+        /// Allows meshdata object to be returned to the recycler
+        /// </summary>
+        public void Dispose()
+        {
+            DisposeExtraData();
+            if (Recyclable)
+            {
+                Recyclable = false;
+                Recycler.Recycle(this);
+            }
+            else DisposeBasicData();
         }
 
 
@@ -1848,6 +1994,7 @@ namespace Vintagestory.API.Client
 
             return meshes;
         }
+
     }
 
 }

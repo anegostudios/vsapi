@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Common
@@ -22,11 +23,11 @@ namespace Vintagestory.API.Common
         // 1 4 7 10
         // 2 5 8 11
         public static readonly float[] identMat4x3 = new float[] { 
-                1, 0, 0, 
-                0, 1, 0, 
-                0, 0, 1, 
-                0, 0, 0 
-            };
+            1, 0, 0,
+            0, 1, 0,
+            0, 0, 1,
+            0, 0, 0
+        };
 
         public RunningAnimation[] anims;
 
@@ -134,7 +135,7 @@ namespace Vintagestory.API.Common
 
                 // Animation got started
                 if (!wasActive && anim.Active)
-                {   
+                {
                     AnimNowActive(anim, animData);
                 }
 
@@ -200,7 +201,29 @@ namespace Vintagestory.API.Common
         }
 
 
+        public virtual string DumpCurrentState()
+        {
+            StringBuilder sb = new StringBuilder();
 
+            for (int i = 0; i < anims.Length; i++)
+            {
+                RunningAnimation anim = anims[i];
+
+                if (anim.Active && anim.Running) sb.Append("Active&Running: " + anim.Animation.Code);
+                else if (anim.Active) sb.Append("Active: " + anim.Animation.Code);
+                else if (anim.Running) sb.Append("Running: " + anim.Animation.Code);
+                else continue;
+
+                sb.Append(", easing: " + anim.EasingFactor);
+                sb.Append(", currentframe: " + anim.CurrentFrame);
+                sb.Append(", iterations: " + anim.Iterations);
+                sb.Append(", blendedweight: " + anim.BlendedWeight);
+                sb.Append(", animmetacode: " + anim.meta.Code);
+                sb.AppendLine();
+            }
+            
+            return sb.ToString();
+        }
 
         protected virtual void AnimNowActive(RunningAnimation anim, AnimationMetaData animData)
         {

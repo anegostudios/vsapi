@@ -55,7 +55,7 @@ namespace Vintagestory.API.Common
         /// Unique number of the block. Same as <see cref="Id"/>. This number depends on the order in which the blocks are order. The numbering is however always ensured to remain the same on a per world basis.
         /// </summary>
         public int BlockId;
-        
+
         /// <summary>
         /// If not set to JSON it will use an efficient hardcoded model
         /// </summary>
@@ -151,7 +151,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// A way to categorize blocks. Used for getting the mining speed for each tool type, amongst other things. Use GetBlockMaterial() to query if not performance critical.
         /// </summary>
-        public EnumBlockMaterial BlockMaterial = EnumBlockMaterial.Stone;        
+        public EnumBlockMaterial BlockMaterial = EnumBlockMaterial.Stone;
 
         /// <summary>
         /// Random texture selection - whether or not to use the Y axis during randomization (for multiblock plants)
@@ -329,14 +329,14 @@ namespace Vintagestory.API.Common
         /// If true, a blocks drops will be split into stacks of stacksize 1 for more game juice. This field is only used in OnBlockBroken() and OnBlockExploded()
         /// </summary>
         public bool SplitDropStacks = true;
-        
+
         /// <summary>
-        /// Information about the blocks as a crop 
+        /// Information about the blocks as a crop
         /// </summary>
         public BlockCropProperties CropProps = null;
 
         /// <summary>
-        /// If this block has a block entity attached to it, this will store it's code 
+        /// If this block has a block entity attached to it, this will store it's code
         /// </summary>
         public string EntityClass;
 
@@ -450,7 +450,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Sets the whole SideOpaque array to true 
+        /// Sets the whole SideOpaque array to true
         /// </summary>
         public bool AllSidesOpaque
         {
@@ -622,7 +622,7 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            
+
             return Sounds;
         }
 
@@ -669,7 +669,7 @@ namespace Vintagestory.API.Common
         /// <param name="blockModelData">The original block model</param>
         public virtual void GetDecal(IWorldAccessor world, BlockPos pos, ITexPositionSource decalTexSource, ref MeshData decalModelData, ref MeshData blockModelData)
         {
-            
+
         }
 
 
@@ -880,7 +880,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Called by TryPlaceBlock if placement is possible 
+        /// Called by TryPlaceBlock if placement is possible
         /// </summary>
         /// <param name="world"></param>
         /// <param name="byPlayer"></param>
@@ -1013,6 +1013,15 @@ namespace Vintagestory.API.Common
 
             if (preventDefault) return;
 
+            if (EntityClass != null)
+            {
+                BlockEntity entity = world.BlockAccessor.GetBlockEntity(pos);
+                if (entity != null)
+                {
+                    entity.OnBlockBroken(byPlayer);
+                }
+            }
+
             if (world.Side == EnumAppSide.Server && (byPlayer == null || byPlayer.WorldData.CurrentGameMode != EnumGameMode.Creative))
             {
                 ItemStack[] drops = GetDrops(world, pos, byPlayer, dropQuantityMultiplier);
@@ -1033,20 +1042,11 @@ namespace Vintagestory.API.Common
                         {
                             world.SpawnItemEntity(drops[i].Clone(), new Vec3d(pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5), null);
                         }
-                        
+
                     }
                 }
 
                 world.PlaySoundAt(Sounds?.GetBreakSound(byPlayer), pos.X, pos.Y, pos.Z, byPlayer);
-            }
-
-            if (EntityClass != null)
-            {
-                BlockEntity entity = world.BlockAccessor.GetBlockEntity(pos);
-                if (entity != null)
-                {
-                    entity.OnBlockBroken(byPlayer);
-                }
             }
 
             SpawnBlockBrokenParticles(pos);
@@ -1188,7 +1188,7 @@ namespace Vintagestory.API.Common
                     // If the stat does not exist, then GetBlended returns 1 \o/
                     extraMul = byPlayer.Entity.Stats.GetBlended(dstack.DropModbyStat);
                 }
-               
+
                 ItemStack stack = Drops[i].GetNextItemStack(dropQuantityMultiplier * extraMul);
                 if (stack == null) continue;
 
@@ -1208,7 +1208,7 @@ namespace Vintagestory.API.Common
             return todrop.ToArray();
         }
 
-        
+
 
 
         /// <summary>
@@ -1370,12 +1370,12 @@ namespace Vintagestory.API.Common
         /// <param name="activationArgs"></param>
         public virtual void Activate(IWorldAccessor world, Caller caller, BlockSelection blockSel, ITreeAttribute activationArgs = null)
         {
-            
+
             foreach (BlockBehavior behavior in BlockBehaviors)
             {
                 EnumHandling handled = EnumHandling.PassThrough;
                 behavior.Activate(world, caller, blockSel, activationArgs, ref handled);
-                
+
                 if (handled == EnumHandling.PreventSubsequent) return;
             }
         }
@@ -1536,7 +1536,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Everytime the player moves by 8 blocks (or rather leaves the current 8-grid), a scan of all blocks 32x32x32 blocks around the player is initiated<br/>
         /// and this method is called. If the method returns true, the block is registered to a client side game ticking for spawning particles and such.<br/>
-        /// This method will be called everytime the player left his current 8-grid area. 
+        /// This method will be called everytime the player left his current 8-grid area.
         /// </summary>
         /// <param name="world"></param>
         /// <param name="player"></param>
@@ -1572,7 +1572,7 @@ namespace Vintagestory.API.Common
                 return true;
             }
 
-            return false;            
+            return false;
         }
 
         /// <summary>
@@ -1621,7 +1621,7 @@ namespace Vintagestory.API.Common
         /// is called on a separate server thread. This should be considered when deciding how to access blocks.
         /// If true is returned, the server will call OnServerGameTick on the main thread passing the BlockPos
         /// and the 'extra' object if specified. The 'extra' parameter is meant to prevent duplicating lookups
-        /// and other calculations when OnServerGameTick is called. 
+        /// and other calculations when OnServerGameTick is called.
         /// </summary>
         /// <param name="world"></param>
         /// <param name="pos">The position of this block</param>
@@ -1657,7 +1657,7 @@ namespace Vintagestory.API.Common
                 if (this == snowCovered3)
                 {
                     world.BlockAccessor.SetBlock(snowCovered2.Id, pos);
-                } 
+                }
                 else if (this == snowCovered2)
                 {
                     world.BlockAccessor.SetBlock(snowCovered1.Id, pos);
@@ -1691,7 +1691,7 @@ namespace Vintagestory.API.Common
         protected float waveFlagMinY = 9 / 16f;
 
         /// <summary>
-        /// If this block uses drawtype json, this method will be called everytime a chunk containing this block is tesselated. 
+        /// If this block uses drawtype json, this method will be called everytime a chunk containing this block is tesselated.
         /// </summary>
         /// <param name="sourceMesh"></param>
         /// <param name="lightRgbsByCorner">Emitted light from this block</param>
@@ -1722,7 +1722,7 @@ namespace Vintagestory.API.Common
             sideDisableWindwave = 0;
             return 0;
         }
-        
+
 
         /// <summary>
         /// Used as base position for particles.
@@ -1810,7 +1810,7 @@ namespace Vintagestory.API.Common
             float b = (float)Math.Sqrt(dx * dx + dz * dz);
 
             float angleVer = (float)Math.Atan2(a, b);
-            
+
 
             BlockFacing verticalFace = angleVer < -Math.PI / 4 ? BlockFacing.DOWN : (angleVer > Math.PI / 4 ? BlockFacing.UP : null);
             BlockFacing horizontalFace = BlockFacing.HorizontalFromAngle(angleHor);
@@ -1968,7 +1968,7 @@ namespace Vintagestory.API.Common
         public virtual AssetLocation GetVerticallyFlippedBlockCode()
         {
             bool preventDefault = false;
-            
+
             AssetLocation result = Code;
 
             foreach (BlockBehavior behavior in BlockBehaviors)
@@ -2170,8 +2170,8 @@ namespace Vintagestory.API.Common
             }
 
             List<string> decorLangLines = new List<string>();
-            foreach (var langCode in decorLangCodes) 
-            { 
+            foreach (var langCode in decorLangCodes)
+            {
                 string decorBlockName = Lang.GetMatching(langCode);
                 decorLangLines.Add(Lang.Get("block-with-decorname", decorBlockName));
             }
@@ -2256,7 +2256,7 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="capi"></param>
         /// <param name="pos"></param>
@@ -2391,7 +2391,7 @@ namespace Vintagestory.API.Common
             {
                 color = capi.World.ApplyColorMapOnRgba(ClimateColorMapResolved, SeasonColorMapResolved, color, pos.X, pos.Y, pos.Z);
             }
-            
+
             return color;
         }
 

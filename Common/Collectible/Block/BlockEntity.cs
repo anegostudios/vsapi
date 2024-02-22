@@ -105,7 +105,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual long RegisterGameTickListener(Action<float> onGameTick, int millisecondInterval, int initialDelayOffsetMs = 0)
         {
-            long listenerId = Api.Event.RegisterGameTickListener(onGameTick, millisecondInterval, initialDelayOffsetMs);
+            long listenerId = Api.Event.RegisterGameTickListener(onGameTick, TickingExceptionHandler, millisecondInterval, initialDelayOffsetMs);
             if (TickHandlers == null) TickHandlers = new List<long>(1);
             TickHandlers.Add(listenerId);
             return listenerId;
@@ -144,6 +144,14 @@ namespace Vintagestory.API.Common
         {
             Api.Event.UnregisterCallback(listenerId);
             CallbackHandlers?.Remove(listenerId);
+        }
+
+        public virtual void TickingExceptionHandler(Exception e)
+        {
+            if (Api == null) throw new Exception("Api was null while ticking a BlockEntity: " + GetType().FullName);
+
+            Api.Logger.Error("At position " + Pos + " for block " + (Block?.Code.ToShortString() ?? "(missing)") + " a " + GetType().Name + " threw an error when ticked:");
+            Api.Logger.Error(e);
         }
 
         /// <summary>

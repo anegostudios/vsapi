@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Vintagestory.API.Client;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
@@ -15,7 +16,10 @@ namespace Vintagestory.API.Common
         protected AnimatorBase animator;
         protected Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode = new Dictionary<string, AnimationMetaData>();
 
+        public MultiTextureMeshRef mtmeshref;
+
         public MeshRef meshref;
+
         public int textureId;
 
         public float[] ModelMat = Mat4f.Create();
@@ -31,9 +35,9 @@ namespace Vintagestory.API.Common
         public float ScaleZ = 1f;
 
         public Vec4f renderColor = ColorUtil.WhiteArgbVec.Clone();
-
         public bool backfaceCulling = true;
 
+        [Obsolete("Use constructor with MultiTextureMeshRef instead, the standard MeshRef texturing breaks when there is multiple texture atlasses")]
         public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, AnimatorBase animator, Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, MeshRef meshref, int textureId, EnumRenderStage renderStage = EnumRenderStage.Opaque)
         {
             this.pos = pos;
@@ -53,9 +57,27 @@ namespace Vintagestory.API.Common
             }, "registerrenderers");
         }
 
+        public AnimatableRenderer(ICoreClientAPI capi, Vec3d pos, Vec3f rotationDeg, AnimatorBase animator, Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, MultiTextureMeshRef meshref, EnumRenderStage renderStage = EnumRenderStage.Opaque)
+        {
+            this.pos = pos;
+            this.capi = capi;
+            this.animator = animator;
+            this.activeAnimationsByAnimCode = activeAnimationsByAnimCode;
+            this.mtmeshref = meshref;
+            this.rotationDeg = rotationDeg;
+            if (rotationDeg == null) this.rotationDeg = new Vec3f();
+
+            capi.Event.EnqueueMainThreadTask(() =>
+            {
+                capi.Event.RegisterRenderer(this, renderStage, "animatable");
+                capi.Event.RegisterRenderer(this, EnumRenderStage.ShadowFar, "animatable");
+                capi.Event.RegisterRenderer(this, EnumRenderStage.ShadowNear, "animatable");
+            }, "registerrenderers");
+        }
+
         public void OnRenderFrame(float dt, EnumRenderStage stage)
         {
-            if (!ShouldRender || meshref.Disposed || !meshref.Initialized) return;
+            if (!ShouldRender || (mtmeshref != null && (mtmeshref.Disposed || !mtmeshref.Initialized)) || (meshref != null && (meshref.Disposed || !meshref.Initialized))) return;
 
             bool shadowPass = stage != EnumRenderStage.Opaque;
 
@@ -107,7 +129,7 @@ namespace Vintagestory.API.Common
                 prog.UniformMatrix("modelViewMatrix", Mat4f.Mul(new float[16], capi.Render.CurrentModelviewMatrix, ModelMat));
             }
 
-            prog.BindTexture2D("entityTex", textureId, 0);
+            
             prog.UniformMatrix("projectionMatrix", rpi.CurrentProjectionMatrix);
             prog.Uniform("addRenderFlags", 0);
 
@@ -120,7 +142,15 @@ namespace Vintagestory.API.Common
 
             if ((stage == EnumRenderStage.Opaque || stage == EnumRenderStage.ShadowNear) && !backfaceCulling) capi.Render.GlDisableCullFace();
 
-            capi.Render.RenderMesh(meshref);
+            if (meshref != null)
+            {
+                prog.BindTexture2D("entityTex", textureId, 0);
+                capi.Render.RenderMesh(meshref);
+            } else
+            {
+                capi.Render.RenderMultiTextureMesh(mtmeshref, "entityTex");
+            }
+            
 
             if ((stage == EnumRenderStage.Opaque || stage == EnumRenderStage.ShadowNear) && !backfaceCulling) capi.Render.GlEnableCullFace();
 
@@ -134,7 +164,8 @@ namespace Vintagestory.API.Common
             capi.Event.UnregisterRenderer(this, EnumRenderStage.Opaque);
             capi.Event.UnregisterRenderer(this, EnumRenderStage.ShadowFar);
             capi.Event.UnregisterRenderer(this, EnumRenderStage.ShadowNear);
-            meshref?.Dispose();
+            mtmeshref?.Dispose();
+			meshref?.Dispose();
         }
 
     }

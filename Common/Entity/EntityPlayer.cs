@@ -798,7 +798,15 @@ namespace Vintagestory.API.Common
             ;
             bool isRightReadyStack = plrAnimMngr.IsRightHeldReadyActive();
 
-            bool shouldRightIdleStack = nowHeldRightIdleAnim != null && !nowUseStack && !nowHitStack && !shouldRightReadyStack && !isRightReadyStack && !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldHitAnimation) && !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldUseAnimation);
+            bool shouldRightIdleStack =
+                nowHeldRightIdleAnim != null &&
+                !nowUseStack && !nowHitStack &&
+                !shouldRightReadyStack &&
+                /*!isRightReadyStack &&  - why was this here?? It causes endless loops! */
+                !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldHitAnimation) &&
+                !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldUseAnimation)
+            ;
+
             bool isRightIdleStack = plrAnimMngr.IsRightHeldActive();
 
             bool shouldLeftIdleStack = nowHeldLeftIdleAnim != null;

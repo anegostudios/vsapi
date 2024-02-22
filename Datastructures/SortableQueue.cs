@@ -20,6 +20,7 @@ namespace Vintagestory.API.Datastructures
             Count = 0;
             head = 0;
             tail = 0;
+            Array.Clear(array, 0, maxSize);    // may assist garbage collector, not sure but can't hurt
         }
 
         public void Enqueue(T v)
@@ -78,6 +79,7 @@ namespace Vintagestory.API.Datastructures
                 int lengthToCopy = maxSize - head % maxSize;
                 ArrayCopy(array, head % maxSize, newArray, 0, lengthToCopy);  // Begin at head and copy to the end of the array
                 ArrayCopy(array, 0, newArray, lengthToCopy, tail % maxSize);  // Begin at the start of the array and copy to head
+                Array.Clear(array, 0, maxSize);    // may assist garbage collector, not sure but can't hurt
                 array = newArray;
                 head = 0;
                 tail = tail % maxSize + lengthToCopy;

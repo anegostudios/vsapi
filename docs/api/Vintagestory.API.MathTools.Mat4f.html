@@ -865,6 +865,42 @@ mat4.multiply(dest, quatMat);</p>
 
 
 
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_System_Span_System_Single__System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3(System.Span{System.Single},System.Single[],System.Single[])">
+  MulWithVec3(Span&lt;float&gt;, float[], float[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Used for vec3 representing a direction or normal - as a vec4 this would have the 4th element set to 0, so that applying a matrix transform with a translation would have <em>no</em> effect</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec3(Span&lt;float&gt; matrix, float[] vec, float[] output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>vec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_BlockFacing_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing*"></a>
 
   <h3 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_BlockFacing_System_Single___Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing(System.Single[],Vintagestory.API.MathTools.Vec3f)">
@@ -882,6 +918,44 @@ mat4.multiply(dest, quatMat);</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>vec</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_BlockFacing_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_BlockFacing_System_Span_System_Single__Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_BlockFacing(System.Span{System.Single},Vintagestory.API.MathTools.Vec3f)">
+  MulWithVec3_BlockFacing(Span&lt;float&gt;, Vec3f)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static BlockFacing MulWithVec3_BlockFacing(Span&lt;float&gt; matrix, Vec3f vec)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
     <dd></dd>
     <dt><code>vec</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
     <dd></dd>
@@ -962,6 +1036,43 @@ The offset is used to index within the original and output arrays - e.g. in Mesh
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>vec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_System_Span_System_Single__System_Single___System_Single___System_Int32_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position(System.Span{System.Single},System.Single[],System.Single[],System.Int32)">
+  MulWithVec3_Position(Span&lt;float&gt;, float[], float[], int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec3_Position(Span&lt;float&gt; matrix, float[] vec, float[] output, int offset)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
     <dd></dd>
     <dt><code>vec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
     <dd></dd>
@@ -1080,6 +1191,45 @@ The origin is the origin for the rotation</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>vec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>offset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>origin</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_WithOrigin_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Mat4f_MulWithVec3_Position_WithOrigin_System_Span_System_Single__System_Single___System_Single___System_Int32_Vintagestory_API_MathTools_Vec3f_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec3_Position_WithOrigin(System.Span{System.Single},System.Single[],System.Single[],System.Int32,Vintagestory.API.MathTools.Vec3f)">
+  MulWithVec3_Position_WithOrigin(Span&lt;float&gt;, float[], float[], int, Vec3f)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec3_Position_WithOrigin(Span&lt;float&gt; matrix, float[] vec, float[] output, int offset, Vec3f origin)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
     <dd></dd>
     <dt><code>vec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
     <dd></dd>
@@ -1367,6 +1517,41 @@ Returns a new vec4 vector</p>
 
 
 
+  <a id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Mat4f_MulWithVec4_System_Span_System_Single__System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.MulWithVec4(System.Span{System.Single},System.Single[],System.Single[])">
+  MulWithVec4(Span&lt;float&gt;, float[], float[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MulWithVec4(Span&lt;float&gt; matrix, float[] vec, float[] output)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>vec</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+    <dt><code>output</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_Mat4f_Multiply_" data-uid="Vintagestory.API.MathTools.Mat4f.Multiply*"></a>
 
   <h3 id="Vintagestory_API_MathTools_Mat4f_Multiply_System_Single___System_Single___System_Single___" data-uid="Vintagestory.API.MathTools.Mat4f.Multiply(System.Single[],System.Single[],System.Single[])">
@@ -1613,6 +1798,45 @@ Returns a new vec4 vector</p>
 
 
 
+  <a id="Vintagestory_API_MathTools_Mat4f_RotateXYZ_" data-uid="Vintagestory.API.MathTools.Mat4f.RotateXYZ*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Mat4f_RotateXYZ_System_Span_System_Single__System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.RotateXYZ(System.Span{System.Single},System.Single,System.Single,System.Single)">
+  RotateXYZ(Span&lt;float&gt;, float, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Provides a composite rotation matrix, equivalent to RotateX followed by RotateY followed by RotateZ
+<br>Here we work on a Span (which may be on the stack) for higher performance</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void RotateXYZ(Span&lt;float&gt; matrix, float radX, float radY, float radZ)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>radX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>radY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>radZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_Mat4f_RotateY_" data-uid="Vintagestory.API.MathTools.Mat4f.RotateY*"></a>
 
   <h3 id="Vintagestory_API_MathTools_Mat4f_RotateY_System_Single___System_Single___System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.RotateY(System.Single[],System.Single[],System.Single)">
@@ -1785,6 +2009,43 @@ Returns a new vec4 vector</p>
     <dd><p>{mat4} out</p>
 </dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_Mat4f_SimpleScaleMatrix_" data-uid="Vintagestory.API.MathTools.Mat4f.SimpleScaleMatrix*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_Mat4f_SimpleScaleMatrix_System_Span_System_Single__System_Single_System_Single_System_Single_" data-uid="Vintagestory.API.MathTools.Mat4f.SimpleScaleMatrix(System.Span{System.Single},System.Single,System.Single,System.Single)">
+  SimpleScaleMatrix(Span&lt;float&gt;, float, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SimpleScaleMatrix(Span&lt;float&gt; matrix, float x, float y, float z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.span-1">Span</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
 
 
 

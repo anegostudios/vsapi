@@ -24,6 +24,11 @@ namespace Vintagestory.API.Common
 
         public RunningAnimation[] RunningAnimations => new RunningAnimation[0];
 
+        public string DumpCurrentState()
+        {
+            throw new NotImplementedException();
+        }
+
         public RunningAnimation GetAnimationState(string code)
         {
             return null;

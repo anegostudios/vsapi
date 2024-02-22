@@ -5,6 +5,7 @@ items:
   id: ReaderWriterExtensions
   parent: Vintagestory.API.Util
   children:
+  - Vintagestory.API.Util.ReaderWriterExtensions.Clear(System.IO.MemoryStream)
   - Vintagestory.API.Util.ReaderWriterExtensions.ReadIntArray(System.IO.BinaryReader)
   - Vintagestory.API.Util.ReaderWriterExtensions.ReadStringArray(System.IO.BinaryReader)
   - Vintagestory.API.Util.ReaderWriterExtensions.WriteArray(System.IO.BinaryWriter,System.Int32[])
@@ -19,8 +20,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Util/ReaderWriterExtensions.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ReaderWriterExtensions
     path: Util/ReaderWriterExtensions.cs
     startLine: 4
@@ -55,8 +56,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Util/ReaderWriterExtensions.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: WriteArray
     path: Util/ReaderWriterExtensions.cs
     startLine: 7
@@ -90,8 +91,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Util/ReaderWriterExtensions.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ReadStringArray
     path: Util/ReaderWriterExtensions.cs
     startLine: 16
@@ -122,8 +123,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Util/ReaderWriterExtensions.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: WriteArray
     path: Util/ReaderWriterExtensions.cs
     startLine: 30
@@ -157,8 +158,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Util/ReaderWriterExtensions.cs
-      branch: 9a7c32dc33877b81908edebf246419cb0681a69a
-      repo: https://gitlab-ci-token:64_21Ny9stdsEkdXieYEBYX@git.striver.net/vintagecraft/game.git
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
     id: ReadIntArray
     path: Util/ReaderWriterExtensions.cs
     startLine: 39
@@ -174,6 +175,36 @@ items:
       type: System.Int32[]
     content.vb: Public Shared Function ReadIntArray(reader As BinaryReader) As Integer()
   overload: Vintagestory.API.Util.ReaderWriterExtensions.ReadIntArray*
+- uid: Vintagestory.API.Util.ReaderWriterExtensions.Clear(System.IO.MemoryStream)
+  commentId: M:Vintagestory.API.Util.ReaderWriterExtensions.Clear(System.IO.MemoryStream)
+  id: Clear(System.IO.MemoryStream)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.ReaderWriterExtensions
+  langs:
+  - csharp
+  - vb
+  name: Clear(MemoryStream)
+  nameWithType: ReaderWriterExtensions.Clear(MemoryStream)
+  fullName: Vintagestory.API.Util.ReaderWriterExtensions.Clear(System.IO.MemoryStream)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Util/ReaderWriterExtensions.cs
+      branch: b694fee1bf3e4ebb962b650b962504ea17bce166
+      repo: https://gitlab-ci-token:64_nSEkar94LMeYjNTUoKdg@git.striver.net/vintagecraft/game.git
+    id: Clear
+    path: Util/ReaderWriterExtensions.cs
+    startLine: 52
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public static void Clear(this MemoryStream ms)
+    parameters:
+    - id: ms
+      type: System.IO.MemoryStream
+    content.vb: Public Shared Sub Clear(ms As MemoryStream)
+  overload: Vintagestory.API.Util.ReaderWriterExtensions.Clear*
 references:
 - uid: Vintagestory.API.Util
   commentId: N:Vintagestory.API.Util
@@ -549,3 +580,17 @@ references:
   name: ReadIntArray
   nameWithType: ReaderWriterExtensions.ReadIntArray
   fullName: Vintagestory.API.Util.ReaderWriterExtensions.ReadIntArray
+- uid: Vintagestory.API.Util.ReaderWriterExtensions.Clear*
+  commentId: Overload:Vintagestory.API.Util.ReaderWriterExtensions.Clear
+  href: Vintagestory.API.Util.ReaderWriterExtensions.html#Vintagestory_API_Util_ReaderWriterExtensions_Clear_System_IO_MemoryStream_
+  name: Clear
+  nameWithType: ReaderWriterExtensions.Clear
+  fullName: Vintagestory.API.Util.ReaderWriterExtensions.Clear
+- uid: System.IO.MemoryStream
+  commentId: T:System.IO.MemoryStream
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.memorystream
+  name: MemoryStream
+  nameWithType: MemoryStream
+  fullName: System.IO.MemoryStream

@@ -49,5 +49,11 @@ namespace Vintagestory.API.Util
 
             return values;
         }
+
+        public static void Clear(this MemoryStream ms)
+        {
+            ms.Seek(0, System.IO.SeekOrigin.Begin);
+            ms.SetLength(0);
+        }
     }
 }
