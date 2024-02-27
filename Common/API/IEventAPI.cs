@@ -192,6 +192,15 @@ namespace Vintagestory.API.Common
         long RegisterCallback(Action<float> OnTimePassed, int millisecondDelay);
 
         /// <summary>
+        /// Calls given method after supplied amount of milliseconds. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
+        /// This overload can be used to signify callbacks which do no harm if registered while the game is paused (otherwise, registering a callback while paused will produce an error in logs, or an intentional exception in Developer Mode)
+        /// </summary>
+        /// <param name="OnTimePassed"></param>
+        /// <param name="millisecondDelay"></param>
+        /// <returns>listenerId</returns>
+        long RegisterCallback(Action<float> OnTimePassed, int millisecondDelay, bool permittedWhilePaused);
+
+        /// <summary>
         /// Calls given method after supplied amount of milliseconds, lets you supply a block position to be passed to the method. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
         /// </summary>
         /// <param name="OnTimePassed"></param>

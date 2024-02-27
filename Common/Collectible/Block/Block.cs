@@ -626,6 +626,17 @@ namespace Vintagestory.API.Common
             return Sounds;
         }
 
+        /// <summary>
+        /// Position-aware version of Attributes, for example can be used by BlockMultiblock
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public virtual JsonObject GetAttributes(IBlockAccessor blockAccessor, BlockPos pos)
+        {
+            return Attributes;
+        }
+
         public virtual bool DoEmitSideAo(IGeometryTester caller, BlockFacing facing)
         {
             return (EmitSideAo & facing.Flag) != 0;
@@ -2144,7 +2155,15 @@ namespace Vintagestory.API.Common
                 BlockEntity be = world.BlockAccessor.GetBlockEntity(pos);
                 if (be != null)
                 {
-                    be.GetBlockInfo(forPlayer, sb);
+                    try
+                    {
+                        be.GetBlockInfo(forPlayer, sb);
+                    }
+                    catch (Exception e)
+                    {
+                        sb.AppendLine("(error in " + be.GetType().Name + ")");
+                        api.Logger.Error(e);
+                    }
                 }
             }
 

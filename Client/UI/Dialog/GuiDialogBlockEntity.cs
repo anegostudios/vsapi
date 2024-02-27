@@ -177,7 +177,7 @@ namespace Vintagestory.API.Client
             }
 
             capi.Network.SendBlockEntityPacket(BlockEntityPosition.X, BlockEntityPosition.Y, BlockEntityPosition.Z, (int)EnumBlockEntityPacketId.Close);
-            
+
             capi.Gui.PlaySound(CloseSound, true);
         }
 
@@ -188,7 +188,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         public void ReloadValues()
         {
-            
+
         }
 
 
@@ -198,7 +198,7 @@ namespace Vintagestory.API.Client
 
             int flags = 0;
             posFlagDict().TryGetValue(code, out flags);
-            
+
             foreach (EnumPosFlag flag in values)
             {
                 if ((flags & (int)flag) > 0) continue;

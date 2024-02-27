@@ -159,7 +159,8 @@ namespace Vintagestory.API.Common
 
                 if (IsOnFire)
                 {
-                    if (World.BlockAccessor.GetBlock(Pos.AsBlockPos, BlockLayersAccess.Fluid).LiquidCode == "water" || World.ElapsedMilliseconds - OnFireBeginTotalMs > 12000)
+                    Block fluidBlock = World.BlockAccessor.GetBlock(Pos.AsBlockPos, BlockLayersAccess.Fluid);
+                    if (fluidBlock.IsLiquid() && fluidBlock.LiquidCode != "lava" || World.ElapsedMilliseconds - OnFireBeginTotalMs > 12000)
                     {
                         IsOnFire = false;
                     }

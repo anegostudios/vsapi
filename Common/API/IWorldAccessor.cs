@@ -178,6 +178,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         List<GridRecipe> GridRecipes { get; }
 
+        /// <summary>
+        /// Retrieve a previously registered recipe registry
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        RecipeRegistryBase GetRecipeRegistry(string code);
 
         /// <summary>
         /// The range in blocks within a client will receive regular updates for an entity

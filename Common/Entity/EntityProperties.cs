@@ -85,6 +85,11 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public bool FallDamage = true;
 
+        /// <summary>
+        /// If less than one, mitigates fall damage (e.g. could be used for mountainous creatures); if more than one, increases fall damage (e.g fragile creatures?)
+        /// </summary>
+        public float FallDamageMultiplier = 1.0f;
+
         public float ClimbTouchDistance;
 
         /// <summary>
@@ -209,6 +214,7 @@ namespace Vintagestory.API.Common.Entities
                 Weight = Weight,
                 CanClimbAnywhere = CanClimbAnywhere,
                 FallDamage = FallDamage,
+                FallDamageMultiplier = FallDamageMultiplier,
                 ClimbTouchDistance = ClimbTouchDistance,
                 RotateModelOnClimb = RotateModelOnClimb,
                 KnockbackResistance = KnockbackResistance,

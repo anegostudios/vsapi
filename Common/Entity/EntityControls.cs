@@ -167,7 +167,9 @@ namespace Vintagestory.API.Common
         public long UsingBeginMS;
         public ModelTransform LeftUsingHeldItemTransformBefore;
 
+        [Obsolete("Setting this value has no effect anymore. Add an animation to the seraph instead")]
         public ModelTransform UsingHeldItemTransformBefore;
+        [Obsolete("Setting this value has no effect anymore. Add an animation to the seraph instead")]
         public ModelTransform UsingHeldItemTransformAfter;
 
         /// <summary>

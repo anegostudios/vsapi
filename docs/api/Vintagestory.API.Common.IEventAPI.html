@@ -232,6 +232,49 @@ Interface IEventAPI
 
   <a id="Vintagestory_API_Common_IEventAPI_RegisterCallback_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterCallback*"></a>
 
+  <h3 id="Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_System_Single__System_Int32_System_Boolean_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32,System.Boolean)">
+  RegisterCallback(Action&lt;float&gt;, int, bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calls given method after supplied amount of milliseconds. The engine may call your method slightly later since these event are handled only during fixed interval game ticks.
+This overload can be used to signify callbacks which do no harm if registered while the game is paused (otherwise, registering a callback while paused will produce an error in logs, or an intentional exception in Developer Mode)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">long RegisterCallback(Action&lt;float&gt; OnTimePassed, int millisecondDelay, bool permittedWhilePaused)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>OnTimePassed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>millisecondDelay</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>permittedWhilePaused</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>listenerId</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IEventAPI_RegisterCallback_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterCallback*"></a>
+
   <h3 id="Vintagestory_API_Common_IEventAPI_RegisterCallback_System_Action_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Single__Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32)">
   RegisterCallback(Action&lt;IWorldAccessor, BlockPos, float&gt;, BlockPos, int)
   

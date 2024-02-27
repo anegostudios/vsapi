@@ -252,7 +252,7 @@ namespace Vintagestory.API.Config
             StringBuilder sb = new StringBuilder();
             sb.Append(TryFormat(before, args));
             sb.Append(BuildPluralFormat(plural, N));
-            sb.Append(TryFormat(after, args));   // there could be further instances of {p#:...} after this
+            sb.Append(Format(after, args));   // there could be further instances of {p#:...} after this
             return sb.ToString();
         }
 
@@ -262,9 +262,11 @@ namespace Vintagestory.API.Config
             int round = 3;
             if (plurals.Length >= 2)
             {
-                string numberFormatting = GetNumberFormattingFrom(plurals[1], out string _);
-                round = numberFormatting.Length - 1;
-                if (numberFormatting.IndexOf('.') > 0) round--;
+                // Attempt to guess the number of digits best to round to before choosing which plural form to use, by examining the displayed format of the number
+                // If no number formatting found in plurals[1], try the last one instead (which may be the same ...)
+                if (!TryGuessRounding(plurals[1], out round)) TryGuessRounding(plurals[plurals.Length - 1], out round);
+
+                if (round < 0 || round > 15) round = 3;    // Prevent invalid rounding if the above code failed for any reason
             }
 
             int index = (int)Math.Ceiling(Math.Round(n, round));   // this implments a rule: 0 -> 0;  0.5 -> 1;  1 -> 1;  1.5 -> 2  etc.   This may not be appropriate for all languages e.g. French.  A future extension can allow more customisation by specifying math formulae
@@ -285,6 +287,24 @@ namespace Vintagestory.API.Config
             }
             string rawResult = plurals[index];
             return WithNumberFormatting(rawResult, n);
+        }
+
+        private static bool TryGuessRounding(string entry, out int round)
+        {
+            string numberFormatting = GetNumberFormattingFrom(entry, out string _);
+            if (numberFormatting.IndexOf('.') > 0)
+            {
+                round = numberFormatting.Length - numberFormatting.IndexOf('.') - 1;    // Number with decimal places: round to that number of decimal places
+                return true;
+            }
+            else if (numberFormatting.Length > 0)        // Number with no decimal places: round to integer value
+            {
+                round = 0;
+                return true;
+            }
+
+            round = 3;    // Default value
+            return false;
         }
 
         internal static string GetNumberFormattingFrom(string rawResult, out string partB)

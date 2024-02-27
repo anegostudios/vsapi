@@ -71,7 +71,7 @@ namespace Vintagestory.API.Client
                     value.OnFocusChanged = dialog.OnFocusChanged;
                 }
             }
-            
+
 
             IEnumerator IEnumerable.GetEnumerator()
             {
@@ -206,7 +206,7 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public virtual void OnLevelFinalize()
         {
@@ -250,14 +250,14 @@ namespace Vintagestory.API.Client
         /// Fires when the GUI is opened.
         /// </summary>
         public virtual void OnGuiOpened() {
-            
+
         }
 
         /// <summary>
         /// Fires when the GUI is closed.
         /// </summary>
         public virtual void OnGuiClosed() {
-            
+
         }
 
         /// <summary>
@@ -365,7 +365,7 @@ namespace Vintagestory.API.Client
         /// <param name="deltaTime">The time that has elapsed.</param>
         public virtual void OnBeforeRenderFrame3D(float deltaTime)
         {
-            
+
         }
 
         public string MouseOverCursor;
@@ -409,12 +409,12 @@ namespace Vintagestory.API.Client
             {
                 ignoreNextKeyPress = true;
             }*/
-            
+
             return true;
         }
 
         /// <summary>
-        /// Fires when keys are held down.  
+        /// Fires when keys are held down.
         /// </summary>
         /// <param name="args">The key or keys that were held down.</param>
         public virtual void OnKeyDown(KeyEvent args)
@@ -430,7 +430,7 @@ namespace Vintagestory.API.Client
 
             HotKey hotkey = capi.Input.GetHotKeyByCode(ToggleKeyCombinationCode);
             if (hotkey == null) return;
-            
+
 
             bool toggleKeyPressed = hotkey.DidPress(args, capi.World, capi.World.Player, true);
             if (toggleKeyPressed && TryClose())
@@ -460,7 +460,7 @@ namespace Vintagestory.API.Client
                 composer.OnKeyPress(args);
                 if (args.Handled) return;
             }
-            
+
         }
 
         /// <summary>
@@ -596,7 +596,7 @@ namespace Vintagestory.API.Client
                 composer.OnMouseMove(args);
                 if (args.Handled) return;
             }
-            
+
             foreach (GuiComposer composer in Composers.Values)
             {
                 if (composer.Bounds.PointInside(args.X, args.Y))
@@ -719,7 +719,7 @@ namespace Vintagestory.API.Client
         public abstract string ToggleKeyCombinationCode { get; }
 
         /// <summary>
-        /// Checks if the player is in range (pickingrange) of the given position eg. for Trader to auto close the dialog.
+        /// Checks if the player is in range (pickingrange) of the given position
         /// </summary>
         /// <param name="pos"></param>
         /// <returns>In range or no?</returns>
