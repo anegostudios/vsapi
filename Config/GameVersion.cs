@@ -36,12 +36,12 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Whether this is a stable or unstable version
         /// </summary>
-        public const EnumGameBranch Branch = EnumGameBranch.Unstable;
+        public const EnumGameBranch Branch = EnumGameBranch.Stable;
 
         /// <summary>
         /// Version number in the format: major.minor.revision[appendix]
         /// </summary>
-        public const string ShortGameVersion = OverallVersion + "-rc.3";
+        public const string ShortGameVersion = OverallVersion + "";
 
         public static EnumReleaseType ReleaseType => GetReleaseType(ShortGameVersion);
 

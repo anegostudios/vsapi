@@ -103,6 +103,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Set by the RemapperAssistant in OnFinalizeAssets
+        /// <br/>Heads up!:  This is unordered, it will iterate through the different game versions' remaps not necessarily in the order they originally appear in remaps.json config.  If any block remaps over the years have duplicate original block names, behavior for those ones may be unpredictable
         /// </summary>
         public static Dictionary<string, Dictionary<string, string>> BlockRemaps { get; set; }
         
@@ -1042,8 +1043,19 @@ namespace Vintagestory.API.Common
                         Block encodedBlock = worldForCollectibleResolve.GetBlock(new AssetLocation(treeBlockCode));
                         if (encodedBlock != null && encodedBlock.GetType() != be.Block.GetType())   // It should be the same type at least, though it might have been rotated or had some other state change eg. snow to free or vice-versa
                         {
-                            worldForCollectibleResolve.Logger.Warning("Could not import block entity data for schematic at {0}. There is already {1}, expected {2}. Probably overlapping ruins.", curPos, be.Block, treeBlockCode);
-                            continue;
+                            foreach (var map in BlockRemaps)
+                            {
+                                if (map.Value.TryGetValue(treeBlockCode, out var newBlockCode))
+                                {
+                                    encodedBlock = worldForCollectibleResolve.GetBlock(new AssetLocation(newBlockCode));
+                                    break;
+                                }
+                            }
+                            if (encodedBlock != null && encodedBlock.GetType() != be.Block.GetType())   // Sanity check again, after the remapping
+                            {
+                                worldForCollectibleResolve.Logger.Warning("Could not import block entity data for schematic at {0}. There is already {1}, expected {2}. Possibly overlapping ruins, or is this schematic from an old game version?", curPos, be.Block, treeBlockCode);
+                                continue;
+                            }
                         }
                     }
 

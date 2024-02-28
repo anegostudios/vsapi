@@ -20,6 +20,12 @@ namespace Vintagestory.API.Client
             Values = Mat4f.Create();
         }
 
+        public Matrixf(float[] values)
+        {
+            Values = Mat4f.Create();
+            Set(values);
+        }
+
         public static Matrixf Create()
         {
             return new Matrixf();
@@ -176,6 +182,12 @@ namespace Vintagestory.API.Client
         public Matrixf Mul(float[] matrix)
         {
             Mat4f.Mul(Values, Values, matrix);
+            return this;
+        }
+
+        public Matrixf Mul(Matrixf matrix)
+        {
+            Mat4f.Mul(Values, Values, matrix.Values);
             return this;
         }
 
