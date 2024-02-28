@@ -442,6 +442,11 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// If not null multiplies amplitude of view bobbing caused by walking/sprinting
+        /// </summary>
+        public float? ViewBobbingAmplitudeMultiplier { get; set; }
+
         private void updateEyeHeight(float dt)
         {
             IPlayer player = World.PlayerByUid(PlayerUID);
@@ -506,7 +511,7 @@ namespace Vintagestory.API.Common
 
                 double sneakDiv = (controls.Sneak ? 5 : 1.8);
 
-                double amplitude = (FeetInLiquid ? 0.8 : 1 + (controls.Sprint ? 0.07 : 0)) / (3 * sneakDiv);
+                double amplitude = (FeetInLiquid ? 0.8 : 1 + (controls.Sprint ? 0.07 : 0)) / (3 * sneakDiv) * ViewBobbingAmplitudeMultiplier ?? 1.0f;
                 double offset = -0.2 / sneakDiv;
 
                 double stepHeight = -Math.Max(0, Math.Abs(GameMath.Sin(5.5f * walkCounter) * amplitude) + offset);
