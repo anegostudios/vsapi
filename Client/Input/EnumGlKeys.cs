@@ -1,3 +1,4 @@
+using System;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 
 namespace Vintagestory.API.Client
@@ -53,7 +54,7 @@ namespace Vintagestory.API.Client
             }
             return keyName.ToUpperInvariant();
         }
-        
+
         /// <summary>
         /// Returns the printable character for a key. Does return null on none printable keys like <see cref="GlKeys.Enter"/>
         /// </summary>
@@ -61,8 +62,15 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         public static string GetPrintableChar(int key)
         {
-            var keycode = KeyConverter.GlKeysToNew[key];
-            return GLFW.GetKeyName((Keys)keycode, 0);
+            try
+            {
+                var keycode = KeyConverter.GlKeysToNew[key];
+                return GLFW.GetKeyName((Keys)keycode, 0);
+            }
+            catch (IndexOutOfRangeException)
+            {
+                return string.Empty;
+            }
         }
     }
 
@@ -210,11 +218,11 @@ namespace Vintagestory.API.Client
             }
         }
     }
-    
+
     /// <summary>
     /// Internally the game uses OpenTK and their Keys are by default mapped to US QWERTY Keyboard layout which the GlKeys also do.
     /// Upon typing text in a Text input field it will produce the correct characters according to your keyboard layout.
-    /// 
+    ///
     /// If you need to get the character for the current Keyboard layout use <see cref="GlKeyNames.GetKeyName"/>
     /// </summary>
      public enum GlKeys

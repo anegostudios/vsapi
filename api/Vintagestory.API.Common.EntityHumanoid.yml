@@ -15,8 +15,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityHumanoid.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: EntityHumanoid
     path: Common/Entity/EntityHumanoid.cs
     startLine: 2
@@ -70,7 +70,6 @@ items:
   - Vintagestory.API.Common.EntityAgent.SpawnFloatingSediment(Vintagestory.API.Client.IAsyncParticleManager)
   - Vintagestory.API.Common.EntityAgent.onAnimControls(Vintagestory.API.Common.AnimationMetaData,System.Boolean,System.Boolean)
   - Vintagestory.API.Common.EntityAgent.HandleHandAnimations(System.Single)
-  - Vintagestory.API.Common.EntityAgent.StopHandAnims
   - Vintagestory.API.Common.EntityAgent.insideBlock
   - Vintagestory.API.Common.EntityAgent.insidePos
   - Vintagestory.API.Common.EntityAgent.GetWalkSpeedMultiplier(System.Double)
@@ -199,6 +198,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.IsActivityRunning(System.String)
   - Vintagestory.API.Common.Entities.Entity.RemainingActivityTime(System.String)
   - Vintagestory.API.Common.Entities.Entity.SetActivityRunning(System.String,System.Int32)
+  - Vintagestory.API.Common.Entities.Entity.UpdateAnimationDebugAttributes
   - Vintagestory.API.Common.Entities.Entity.FromBytes(System.IO.BinaryReader,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.String})
   - Vintagestory.API.Common.Entities.Entity.Revive
   - Vintagestory.API.Common.Entities.Entity.PlayEntitySound(System.String,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single)
@@ -1100,25 +1100,6 @@ references:
     name: Single
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.single
-  - name: )
-- uid: Vintagestory.API.Common.EntityAgent.StopHandAnims
-  commentId: M:Vintagestory.API.Common.EntityAgent.StopHandAnims
-  parent: Vintagestory.API.Common.EntityAgent
-  href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_StopHandAnims
-  name: StopHandAnims()
-  nameWithType: EntityAgent.StopHandAnims()
-  fullName: Vintagestory.API.Common.EntityAgent.StopHandAnims()
-  spec.csharp:
-  - uid: Vintagestory.API.Common.EntityAgent.StopHandAnims
-    name: StopHandAnims
-    href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_StopHandAnims
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.EntityAgent.StopHandAnims
-    name: StopHandAnims
-    href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_StopHandAnims
-  - name: (
   - name: )
 - uid: Vintagestory.API.Common.EntityAgent.insideBlock
   commentId: F:Vintagestory.API.Common.EntityAgent.insideBlock
@@ -3634,6 +3615,25 @@ references:
     name: Integer
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.Entities.Entity.UpdateAnimationDebugAttributes
+  commentId: M:Vintagestory.API.Common.Entities.Entity.UpdateAnimationDebugAttributes
+  parent: Vintagestory.API.Common.Entities.Entity
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_UpdateAnimationDebugAttributes
+  name: UpdateAnimationDebugAttributes()
+  nameWithType: Entity.UpdateAnimationDebugAttributes()
+  fullName: Vintagestory.API.Common.Entities.Entity.UpdateAnimationDebugAttributes()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.Entity.UpdateAnimationDebugAttributes
+    name: UpdateAnimationDebugAttributes
+    href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_UpdateAnimationDebugAttributes
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.Entity.UpdateAnimationDebugAttributes
+    name: UpdateAnimationDebugAttributes
+    href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_UpdateAnimationDebugAttributes
+  - name: (
   - name: )
 - uid: Vintagestory.API.Common.Entities.Entity.FromBytes(System.IO.BinaryReader,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.String})
   commentId: M:Vintagestory.API.Common.Entities.Entity.FromBytes(System.IO.BinaryReader,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.String})

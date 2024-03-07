@@ -377,6 +377,21 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
+        /// Creates a white text for smallish dialogs, using the specified base font
+        /// </summary>
+        /// <param name="baseFont"></param>
+        /// <returns></returns>
+        public static CairoFont WhiteSmallishText(string baseFont)
+        {
+            return new CairoFont()
+            {
+                Color = (double[])GuiStyle.DialogDefaultTextColor.Clone(),
+                Fontname = baseFont,
+                UnscaledFontsize = GuiStyle.SmallishFontSize
+            };
+        }
+
+        /// <summary>
         /// Creates a white text for small dialogs.
         /// </summary>
         /// <returns>The white text for small dialogs</returns>

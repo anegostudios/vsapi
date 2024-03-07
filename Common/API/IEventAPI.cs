@@ -197,6 +197,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="OnTimePassed"></param>
         /// <param name="millisecondDelay"></param>
+        /// <param name="permittedWhilePaused"></param>
         /// <returns>listenerId</returns>
         long RegisterCallback(Action<float> OnTimePassed, int millisecondDelay, bool permittedWhilePaused);
 

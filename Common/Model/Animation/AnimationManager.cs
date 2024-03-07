@@ -79,8 +79,9 @@ namespace Vintagestory.API.Common
             var state = Animator?.GetAnimationState(animCode);
             if (state != null)
             {
-                state.EasingFactor = 0; 
+                //state.EasingFactor = 0; 
                 state.CurrentFrame = 0;
+                state.Iterations = 0;
             }
         }
 

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Globalization;
+using System.Numerics;
 using System.Text;
 using Vintagestory.API.Config;
 
@@ -8,6 +10,40 @@ namespace Vintagestory.API.Util
 {
     public static class StringUtil
     {
+        // Use this if and only if 'Denial of Service' attacks are not a concern (i.e. never used for free-form user input),
+        // or are otherwise mitigated
+        public static unsafe int GetNonRandomizedHashCode(this string str)
+        {
+            fixed (char* src = str)
+            {
+                Debug.Assert(src[str.Length] == '\0', "src[this.Length] == '\\0'");
+                Debug.Assert(((int)src) % 4 == 0, "Managed string should start at 4 bytes boundary");
+
+                uint hash1 = (5381 << 16) + 5381;
+                uint hash2 = hash1;
+
+                uint* ptr = (uint*)src;
+                int length = str.Length;
+
+                while (length > 2)
+                {
+                    length -= 4;
+                    // Where length is 4n-1 (e.g. 3,7,11,15,19) this additionally consumes the null terminator
+                    hash1 = (BitOperations.RotateLeft(hash1, 5) + hash1) ^ ptr[0];
+                    hash2 = (BitOperations.RotateLeft(hash2, 5) + hash2) ^ ptr[1];
+                    ptr += 2;
+                }
+
+                if (length > 0)
+                {
+                    // Where length is 4n-3 (e.g. 1,5,9,13,17) this additionally consumes the null terminator
+                    hash2 = (BitOperations.RotateLeft(hash2, 5) + hash2) ^ ptr[0];
+                }
+
+                return (int)(hash1 + (hash2 * 1566083941));
+            }
+        }
+
         /// <summary>
         /// IMPORTANT!   This method should be used for every IndexOf operation in our code (except possibly in localised output to the user). This is important in order to avoid any
         /// culture-specific different results even when indexing GLSL shader code or other code strings, etc., or other strings in English, when the current culture is a different language

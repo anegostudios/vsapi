@@ -56,10 +56,16 @@ namespace Vintagestory.API.Client
                 if (texAsset != null)
                 {
                     targetAtlas.GetOrInsertTexture(texturePath, out _, out texpos, () => texAsset.ToBitmap(capi));
+                    if (texpos == null)
+                    {
+                        capi.World.Logger.Error("{0}, require texture {1} which exists, but unable to upload it or allocate space", sourceForErrorLogging, texturePath);
+                        texpos = targetAtlas.UnknownTexturePosition;
+                    }
                 }
                 else
                 {
-                    capi.World.Logger.Warning("{0}, require texture {1}, but no such texture found.", sourceForErrorLogging, texturePath);
+                    capi.World.Logger.Error("{0}, require texture {1}, but no such texture found.", sourceForErrorLogging, texturePath);
+                    texpos = targetAtlas.UnknownTexturePosition;
                 }
             }
 

@@ -653,8 +653,8 @@ Class PlayerAnimationManager
 
   <a id="Vintagestory_API_Common_PlayerAnimationManager_IsAnimationActiveOrRunning_" data-uid="Vintagestory.API.Common.PlayerAnimationManager.IsAnimationActiveOrRunning*"></a>
 
-  <h3 id="Vintagestory_API_Common_PlayerAnimationManager_IsAnimationActiveOrRunning_System_String_" data-uid="Vintagestory.API.Common.PlayerAnimationManager.IsAnimationActiveOrRunning(System.String)">
-  IsAnimationActiveOrRunning(string)
+  <h3 id="Vintagestory_API_Common_PlayerAnimationManager_IsAnimationActiveOrRunning_System_String_System_Single_" data-uid="Vintagestory.API.Common.PlayerAnimationManager.IsAnimationActiveOrRunning(System.String,System.Single)">
+  IsAnimationActiveOrRunning(string, float)
   
   </h3>
 
@@ -662,12 +662,14 @@ Class PlayerAnimationManager
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsAnimationActiveOrRunning(string anim)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsAnimationActiveOrRunning(string anim, float untilProgress = 0.95)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>anim</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>untilProgress</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -689,8 +691,8 @@ Class PlayerAnimationManager
 
   <a id="Vintagestory_API_Common_PlayerAnimationManager_IsAnimationMostlyRunning_" data-uid="Vintagestory.API.Common.PlayerAnimationManager.IsAnimationMostlyRunning*"></a>
 
-  <h3 id="Vintagestory_API_Common_PlayerAnimationManager_IsAnimationMostlyRunning_System_String_" data-uid="Vintagestory.API.Common.PlayerAnimationManager.IsAnimationMostlyRunning(System.String)">
-  IsAnimationMostlyRunning(string)
+  <h3 id="Vintagestory_API_Common_PlayerAnimationManager_IsAnimationMostlyRunning_System_String_System_Single_" data-uid="Vintagestory.API.Common.PlayerAnimationManager.IsAnimationMostlyRunning(System.String,System.Single)">
+  IsAnimationMostlyRunning(string, float)
   
   </h3>
 
@@ -698,12 +700,14 @@ Class PlayerAnimationManager
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected bool IsAnimationMostlyRunning(string anim)</code></pre>
+    <pre><code class="lang-csharp hljs">protected bool IsAnimationMostlyRunning(string anim, float untilProgress = 0.95)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>anim</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>untilProgress</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -725,8 +729,8 @@ Class PlayerAnimationManager
 
   <a id="Vintagestory_API_Common_PlayerAnimationManager_IsHeldHitActive_" data-uid="Vintagestory.API.Common.PlayerAnimationManager.IsHeldHitActive*"></a>
 
-  <h3 id="Vintagestory_API_Common_PlayerAnimationManager_IsHeldHitActive" data-uid="Vintagestory.API.Common.PlayerAnimationManager.IsHeldHitActive">
-  IsHeldHitActive()
+  <h3 id="Vintagestory_API_Common_PlayerAnimationManager_IsHeldHitActive_System_Single_" data-uid="Vintagestory.API.Common.PlayerAnimationManager.IsHeldHitActive(System.Single)">
+  IsHeldHitActive(float)
   
   </h3>
 
@@ -734,9 +738,14 @@ Class PlayerAnimationManager
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsHeldHitActive()</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsHeldHitActive(float untilProgress = 0.95)</code></pre>
   </div>
 
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>untilProgress</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">

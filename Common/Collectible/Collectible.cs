@@ -1671,7 +1671,7 @@ namespace Vintagestory.API.Common
 
 
 
-            if (GrindingProps != null)
+            if (GrindingProps?.GroundStack?.ResolvedItemstack != null)
             {
                 dsc.AppendLine(Lang.Get("When ground: Turns into {0}x {1}", GrindingProps.GroundStack.ResolvedItemstack.StackSize, GrindingProps.GroundStack.ResolvedItemstack.GetName()));
             }

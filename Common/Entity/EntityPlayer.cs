@@ -409,6 +409,7 @@ namespace Vintagestory.API.Common
         public void OnSelfBeforeRender(float dt)
         {
             updateEyeHeight(dt);
+            HandleSeraphHandAnimations(dt);
         }
 
 
@@ -762,7 +763,7 @@ namespace Vintagestory.API.Common
         float strongWindAccum = 0;
         bool haveHandUseOrHit;
 
-        protected override void HandleHandAnimations(float dt)
+        public void HandleSeraphHandAnimations(float dt)
         {
             protectEyesFromWind(dt);
 
@@ -780,8 +781,7 @@ namespace Vintagestory.API.Common
             bool wasUseStack = plrAnimMngr.IsHeldUseActive();
 
             bool nowHitStack = interact == EnumHandInteract.HeldItemAttack || servercontrols.LeftMouseDown;
-            bool wasHitStack = plrAnimMngr.IsHeldHitActive();
-
+            bool wasHitStack = plrAnimMngr.IsHeldHitActive(1f);
 
             string nowHeldRightUseAnim = rightstack?.Collectible.GetHeldTpUseAnimation(RightHandItemSlot, this);
             string nowHeldRightHitAnim = rightstack?.Collectible.GetHeldTpHitAnimation(RightHandItemSlot, this);
@@ -850,10 +850,23 @@ namespace Vintagestory.API.Common
                 bool authorative = plrAnimMngr.IsHeldHitAuthorative();
                 plrAnimMngr.StopHeldAttackAnim();
 
-                if (!authorative && nowHitStack)
+                if (plrAnimMngr.lastRunningHeldHitAnimation != null && authorative)
+                {   
+                    if (servercontrols.LeftMouseDown)
+                    {
+                        plrAnimMngr.ResetAnimation(nowHeldRightHitAnim);
+                        controls.HandUse = EnumHandInteract.None;
+                        plrAnimMngr.StartHeldHitAnim(nowHeldRightHitAnim);
+                        haveHandUseOrHit = true;
+                    }
+
+                } else
                 {
-                    plrAnimMngr.StartHeldHitAnim(nowHeldRightHitAnim);
-                    haveHandUseOrHit = true;
+                    if (!authorative && nowHitStack)
+                    {
+                        plrAnimMngr.StartHeldHitAnim(nowHeldRightHitAnim);
+                        haveHandUseOrHit = true;
+                    }
                 }
             }
 
@@ -990,7 +1003,7 @@ namespace Vintagestory.API.Common
             
             Block frontBelowBlock = bl.GetBlock(frontBelowPos);
             var frontBellowCollBoxes = frontBelowBlock.GetCollisionBoxes(bl, frontBelowPos);
-            if (frontBellowCollBoxes == null) return true;
+            if (frontBellowCollBoxes == null || frontBellowCollBoxes.Length == 0) return true;
 
             double sitHeight = pos.Y - (frontBelowPos.Y + frontBellowCollBoxes.Max(box => box.Y2));
 

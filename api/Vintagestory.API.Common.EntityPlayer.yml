@@ -24,7 +24,7 @@ items:
   - Vintagestory.API.Common.EntityPlayer.GetName
   - Vintagestory.API.Common.EntityPlayer.GetNearestBlockSoundSource(Vintagestory.API.MathTools.BlockPos,System.Double,System.Int32,System.Boolean)
   - Vintagestory.API.Common.EntityPlayer.GetWalkSpeedMultiplier(System.Double)
-  - Vintagestory.API.Common.EntityPlayer.HandleHandAnimations(System.Single)
+  - Vintagestory.API.Common.EntityPlayer.HandleSeraphHandAnimations(System.Single)
   - Vintagestory.API.Common.EntityPlayer.HeadYawLimits
   - Vintagestory.API.Common.EntityPlayer.Ignite
   - Vintagestory.API.Common.EntityPlayer.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Common.ICoreAPI,System.Int64)
@@ -90,8 +90,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: EntityPlayer
     path: Common/Entity/EntityPlayer.cs
     startLine: 19
@@ -132,7 +132,7 @@ items:
   - Vintagestory.API.Common.EntityAgent.ShouldReceiveSaturation(System.Single,Vintagestory.API.Common.EnumFoodCategory,System.Single,System.Single)
   - Vintagestory.API.Common.EntityAgent.SpawnSnowStepParticles
   - Vintagestory.API.Common.EntityAgent.SpawnFloatingSediment(Vintagestory.API.Client.IAsyncParticleManager)
-  - Vintagestory.API.Common.EntityAgent.StopHandAnims
+  - Vintagestory.API.Common.EntityAgent.HandleHandAnimations(System.Single)
   - Vintagestory.API.Common.EntityAgent.insideBlock
   - Vintagestory.API.Common.EntityAgent.insidePos
   - Vintagestory.API.Common.EntityAgent.ToBytes(System.IO.BinaryWriter,System.Boolean)
@@ -240,6 +240,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.IsActivityRunning(System.String)
   - Vintagestory.API.Common.Entities.Entity.RemainingActivityTime(System.String)
   - Vintagestory.API.Common.Entities.Entity.SetActivityRunning(System.String,System.Int32)
+  - Vintagestory.API.Common.Entities.Entity.UpdateAnimationDebugAttributes
   - Vintagestory.API.Common.Entities.Entity.FromBytes(System.IO.BinaryReader,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.String})
   - Vintagestory.API.Common.Entities.Entity.CanCollect(Vintagestory.API.Common.Entities.Entity)
   - Vintagestory.API.Common.Entities.Entity.Notify(System.String,System.Object)
@@ -291,8 +292,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: PreviousBlockSelection
     path: Common/Entity/EntityPlayer.cs
     startLine: 24
@@ -320,8 +321,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: BlockSelection
     path: Common/Entity/EntityPlayer.cs
     startLine: 29
@@ -349,8 +350,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: EntitySelection
     path: Common/Entity/EntityPlayer.cs
     startLine: 34
@@ -378,8 +379,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: DeathReason
     path: Common/Entity/EntityPlayer.cs
     startLine: 39
@@ -407,8 +408,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: CameraPos
     path: Common/Entity/EntityPlayer.cs
     startLine: 44
@@ -436,8 +437,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: WalkYaw
     path: Common/Entity/EntityPlayer.cs
     startLine: 49
@@ -465,8 +466,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: WalkPitch
     path: Common/Entity/EntityPlayer.cs
     startLine: 53
@@ -494,8 +495,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OnFootStep
     path: Common/Entity/EntityPlayer.cs
     startLine: 58
@@ -523,8 +524,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OnImpact
     path: Common/Entity/EntityPlayer.cs
     startLine: 63
@@ -552,8 +553,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OnCanSpawnNearby
     path: Common/Entity/EntityPlayer.cs
     startLine: 68
@@ -581,8 +582,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: talkUtil
     path: Common/Entity/EntityPlayer.cs
     startLine: 70
@@ -608,8 +609,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: BodyYawLimits
     path: Common/Entity/EntityPlayer.cs
     startLine: 71
@@ -635,8 +636,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: HeadYawLimits
     path: Common/Entity/EntityPlayer.cs
     startLine: 72
@@ -662,8 +663,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: entityListForPartitioning
     path: Common/Entity/EntityPlayer.cs
     startLine: 77
@@ -691,8 +692,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: walkSpeed
     path: Common/Entity/EntityPlayer.cs
     startLine: 81
@@ -720,8 +721,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: BodyYaw
     path: Common/Entity/EntityPlayer.cs
     startLine: 86
@@ -752,8 +753,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: LastReviveTotalHours
     path: Common/Entity/EntityPlayer.cs
     startLine: 103
@@ -781,8 +782,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: UpdatePartitioning
     path: Common/Entity/EntityPlayer.cs
     startLine: 120
@@ -807,8 +808,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: StoreWithChunk
     path: Common/Entity/EntityPlayer.cs
     startLine: 126
@@ -839,8 +840,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: PlayerUID
     path: Common/Entity/EntityPlayer.cs
     startLine: 135
@@ -870,8 +871,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: RightHandItemSlot
     path: Common/Entity/EntityPlayer.cs
     startLine: 143
@@ -902,8 +903,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: LeftHandItemSlot
     path: Common/Entity/EntityPlayer.cs
     startLine: 155
@@ -934,8 +935,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: GearInventory
     path: Common/Entity/EntityPlayer.cs
     startLine: 167
@@ -966,8 +967,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: LightHsv
     path: Common/Entity/EntityPlayer.cs
     startLine: 180
@@ -998,8 +999,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: AlwaysActive
     path: Common/Entity/EntityPlayer.cs
     startLine: 230
@@ -1030,8 +1031,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: ShouldDespawn
     path: Common/Entity/EntityPlayer.cs
     startLine: 235
@@ -1062,8 +1063,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: IsInteractable
     path: Common/Entity/EntityPlayer.cs
     startLine: 248
@@ -1094,8 +1095,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: LadderFixDelta
     path: Common/Entity/EntityPlayer.cs
     startLine: 257
@@ -1126,8 +1127,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: Player
     path: Common/Entity/EntityPlayer.cs
     startLine: 262
@@ -1157,8 +1158,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: selfNowShadowPass
     path: Common/Entity/EntityPlayer.cs
     startLine: 273
@@ -1184,8 +1185,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: AnimManager
     path: Common/Entity/EntityPlayer.cs
     startLine: 275
@@ -1219,8 +1220,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OtherAnimManager
     path: Common/Entity/EntityPlayer.cs
     startLine: 290
@@ -1248,8 +1249,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: TpAnimManager
     path: Common/Entity/EntityPlayer.cs
     startLine: 304
@@ -1277,8 +1278,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: .ctor
     path: Common/Entity/EntityPlayer.cs
     startLine: 306
@@ -1306,8 +1307,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: Initialize
     path: Common/Entity/EntityPlayer.cs
     startLine: 345
@@ -1347,8 +1348,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: PrevFrameCanStandUp
     path: Common/Entity/EntityPlayer.cs
     startLine: 378
@@ -1374,8 +1375,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: selfClimateCond
     path: Common/Entity/EntityPlayer.cs
     startLine: 379
@@ -1401,8 +1402,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: GetWalkSpeedMultiplier
     path: Common/Entity/EntityPlayer.cs
     startLine: 382
@@ -1439,8 +1440,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OnSelfBeforeRender
     path: Common/Entity/EntityPlayer.cs
     startLine: 408
@@ -1471,11 +1472,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OnTesselation
     path: Common/Entity/EntityPlayer.cs
-    startLine: 414
+    startLine: 415
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1510,11 +1511,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: GetInsideTorsoBlockSoundSource
     path: Common/Entity/EntityPlayer.cs
-    startLine: 550
+    startLine: 551
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1541,11 +1542,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: GetInsideLegsBlockSoundSource
     path: Common/Entity/EntityPlayer.cs
-    startLine: 556
+    startLine: 557
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1572,11 +1573,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: PlayInsideSound
     path: Common/Entity/EntityPlayer.cs
-    startLine: 562
+    startLine: 563
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1603,11 +1604,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: PlayStepSound
     path: Common/Entity/EntityPlayer.cs
-    startLine: 604
+    startLine: 605
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1637,11 +1638,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OnGameTick
     path: Common/Entity/EntityPlayer.cs
-    startLine: 645
+    startLine: 646
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1673,11 +1674,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OnAsyncParticleTick
     path: Common/Entity/EntityPlayer.cs
-    startLine: 681
+    startLine: 682
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1709,11 +1710,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: sidewaysSwivelAngle
     path: Common/Entity/EntityPlayer.cs
-    startLine: 699
+    startLine: 700
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1722,40 +1723,38 @@ items:
     return:
       type: System.Single
     content.vb: Public sidewaysSwivelAngle As Single
-- uid: Vintagestory.API.Common.EntityPlayer.HandleHandAnimations(System.Single)
-  commentId: M:Vintagestory.API.Common.EntityPlayer.HandleHandAnimations(System.Single)
-  id: HandleHandAnimations(System.Single)
+- uid: Vintagestory.API.Common.EntityPlayer.HandleSeraphHandAnimations(System.Single)
+  commentId: M:Vintagestory.API.Common.EntityPlayer.HandleSeraphHandAnimations(System.Single)
+  id: HandleSeraphHandAnimations(System.Single)
   parent: Vintagestory.API.Common.EntityPlayer
   langs:
   - csharp
   - vb
-  name: HandleHandAnimations(float)
-  nameWithType: EntityPlayer.HandleHandAnimations(float)
-  fullName: Vintagestory.API.Common.EntityPlayer.HandleHandAnimations(float)
+  name: HandleSeraphHandAnimations(float)
+  nameWithType: EntityPlayer.HandleSeraphHandAnimations(float)
+  fullName: Vintagestory.API.Common.EntityPlayer.HandleSeraphHandAnimations(float)
   type: Method
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
-    id: HandleHandAnimations
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+    id: HandleSeraphHandAnimations
     path: Common/Entity/EntityPlayer.cs
-    startLine: 764
+    startLine: 765
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  example: []
   syntax:
-    content: protected override void HandleHandAnimations(float dt)
+    content: public void HandleSeraphHandAnimations(float dt)
     parameters:
     - id: dt
       type: System.Single
-    content.vb: Protected Overrides Sub HandleHandAnimations(dt As Single)
-  overridden: Vintagestory.API.Common.EntityAgent.HandleHandAnimations(System.Single)
-  overload: Vintagestory.API.Common.EntityPlayer.HandleHandAnimations*
-  nameWithType.vb: EntityPlayer.HandleHandAnimations(Single)
-  fullName.vb: Vintagestory.API.Common.EntityPlayer.HandleHandAnimations(Single)
-  name.vb: HandleHandAnimations(Single)
+    content.vb: Public Sub HandleSeraphHandAnimations(dt As Single)
+  overload: Vintagestory.API.Common.EntityPlayer.HandleSeraphHandAnimations*
+  nameWithType.vb: EntityPlayer.HandleSeraphHandAnimations(Single)
+  fullName.vb: Vintagestory.API.Common.EntityPlayer.HandleSeraphHandAnimations(Single)
+  name.vb: HandleSeraphHandAnimations(Single)
 - uid: Vintagestory.API.Common.EntityPlayer.protectEyesFromWind(System.Single)
   commentId: M:Vintagestory.API.Common.EntityPlayer.protectEyesFromWind(System.Single)
   id: protectEyesFromWind(System.Single)
@@ -1770,11 +1769,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: protectEyesFromWind
     path: Common/Entity/EntityPlayer.cs
-    startLine: 880
+    startLine: 893
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1802,11 +1801,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: onAnimControls
     path: Common/Entity/EntityPlayer.cs
-    startLine: 925
+    startLine: 938
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1842,11 +1841,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: canPlayEdgeSitAnim
     path: Common/Entity/EntityPlayer.cs
-    startLine: 980
+    startLine: 993
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1870,11 +1869,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: CanSpawnNearby
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1023
+    startLine: 1036
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1905,11 +1904,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OnFallToGround
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1033
+    startLine: 1046
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1941,11 +1940,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: GetNearestBlockSoundSource
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1069
+    startLine: 1082
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -1988,11 +1987,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: getSoundSourceBlockAt
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1116
+    startLine: 1129
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2028,11 +2027,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: TryGiveItemStack
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1140
+    startLine: 1153
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2064,11 +2063,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: Die
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1148
+    startLine: 1161
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2098,11 +2097,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: TryMount
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1184
+    startLine: 1197
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2134,11 +2133,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: Revive
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1194
+    startLine: 1207
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2163,11 +2162,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: PlayEntitySound
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1204
+    startLine: 1217
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2208,11 +2207,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: talkTypeByAnimation
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1220
+    startLine: 1233
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2235,11 +2234,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OnReceivedServerPacket
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1230
+    startLine: 1243
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2279,11 +2278,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OnReceivedClientPacket
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1270
+    startLine: 1283
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2321,11 +2320,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: ShouldReceiveDamage
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1288
+    startLine: 1301
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2363,11 +2362,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: Ignite
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1296
+    startLine: 1309
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2391,11 +2390,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OnHurt
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1305
+    startLine: 1318
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2429,11 +2428,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: TryStopHandAction
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1343
+    startLine: 1356
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2470,11 +2469,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: WalkInventory
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1366
+    startLine: 1379
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2503,11 +2502,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: SetCurrentlyControlledPlayer
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1386
+    startLine: 1399
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2531,11 +2530,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: OnCollideWithLiquid
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1391
+    startLine: 1404
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2560,11 +2559,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: TeleportToDouble
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1402
+    startLine: 1415
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2605,11 +2604,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: GetName
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1452
+    startLine: 1465
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2637,11 +2636,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: GetInfoText
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1459
+    startLine: 1472
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2669,11 +2668,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: FromBytes
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1482
+    startLine: 1495
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2708,11 +2707,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Entity/EntityPlayer.cs
-      branch: e450abe5fddf2a92d3eff652939a6754393473f6
-      repo: https://gitlab-ci-token:64_PX7i2ftgqxEk4RiTaS8x@git.striver.net/vintagecraft/game.git
+      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
+      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
     id: UpdateDebugAttributes
     path: Common/Entity/EntityPlayer.cs
-    startLine: 1489
+    startLine: 1502
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3289,24 +3288,36 @@ references:
     name: IAsyncParticleManager
     href: Vintagestory.API.Client.IAsyncParticleManager.html
   - name: )
-- uid: Vintagestory.API.Common.EntityAgent.StopHandAnims
-  commentId: M:Vintagestory.API.Common.EntityAgent.StopHandAnims
+- uid: Vintagestory.API.Common.EntityAgent.HandleHandAnimations(System.Single)
+  commentId: M:Vintagestory.API.Common.EntityAgent.HandleHandAnimations(System.Single)
   parent: Vintagestory.API.Common.EntityAgent
-  href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_StopHandAnims
-  name: StopHandAnims()
-  nameWithType: EntityAgent.StopHandAnims()
-  fullName: Vintagestory.API.Common.EntityAgent.StopHandAnims()
+  isExternal: true
+  href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_HandleHandAnimations_System_Single_
+  name: HandleHandAnimations(float)
+  nameWithType: EntityAgent.HandleHandAnimations(float)
+  fullName: Vintagestory.API.Common.EntityAgent.HandleHandAnimations(float)
+  nameWithType.vb: EntityAgent.HandleHandAnimations(Single)
+  fullName.vb: Vintagestory.API.Common.EntityAgent.HandleHandAnimations(Single)
+  name.vb: HandleHandAnimations(Single)
   spec.csharp:
-  - uid: Vintagestory.API.Common.EntityAgent.StopHandAnims
-    name: StopHandAnims
-    href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_StopHandAnims
+  - uid: Vintagestory.API.Common.EntityAgent.HandleHandAnimations(System.Single)
+    name: HandleHandAnimations
+    href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_HandleHandAnimations_System_Single_
   - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
   - name: )
   spec.vb:
-  - uid: Vintagestory.API.Common.EntityAgent.StopHandAnims
-    name: StopHandAnims
-    href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_StopHandAnims
+  - uid: Vintagestory.API.Common.EntityAgent.HandleHandAnimations(System.Single)
+    name: HandleHandAnimations
+    href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_HandleHandAnimations_System_Single_
   - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
   - name: )
 - uid: Vintagestory.API.Common.EntityAgent.insideBlock
   commentId: F:Vintagestory.API.Common.EntityAgent.insideBlock
@@ -5231,6 +5242,25 @@ references:
     name: Integer
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.Entities.Entity.UpdateAnimationDebugAttributes
+  commentId: M:Vintagestory.API.Common.Entities.Entity.UpdateAnimationDebugAttributes
+  parent: Vintagestory.API.Common.Entities.Entity
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_UpdateAnimationDebugAttributes
+  name: UpdateAnimationDebugAttributes()
+  nameWithType: Entity.UpdateAnimationDebugAttributes()
+  fullName: Vintagestory.API.Common.Entities.Entity.UpdateAnimationDebugAttributes()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.Entity.UpdateAnimationDebugAttributes
+    name: UpdateAnimationDebugAttributes
+    href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_UpdateAnimationDebugAttributes
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.Entity.UpdateAnimationDebugAttributes
+    name: UpdateAnimationDebugAttributes
+    href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_UpdateAnimationDebugAttributes
+  - name: (
   - name: )
 - uid: Vintagestory.API.Common.Entities.Entity.FromBytes(System.IO.BinaryReader,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.String})
   commentId: M:Vintagestory.API.Common.Entities.Entity.FromBytes(System.IO.BinaryReader,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.String})
@@ -7535,43 +7565,12 @@ references:
   - uid: Vintagestory.API.Client
     name: Client
     href: Vintagestory.API.Client.html
-- uid: Vintagestory.API.Common.EntityAgent.HandleHandAnimations(System.Single)
-  commentId: M:Vintagestory.API.Common.EntityAgent.HandleHandAnimations(System.Single)
-  parent: Vintagestory.API.Common.EntityAgent
-  isExternal: true
-  href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_HandleHandAnimations_System_Single_
-  name: HandleHandAnimations(float)
-  nameWithType: EntityAgent.HandleHandAnimations(float)
-  fullName: Vintagestory.API.Common.EntityAgent.HandleHandAnimations(float)
-  nameWithType.vb: EntityAgent.HandleHandAnimations(Single)
-  fullName.vb: Vintagestory.API.Common.EntityAgent.HandleHandAnimations(Single)
-  name.vb: HandleHandAnimations(Single)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.EntityAgent.HandleHandAnimations(System.Single)
-    name: HandleHandAnimations
-    href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_HandleHandAnimations_System_Single_
-  - name: (
-  - uid: System.Single
-    name: float
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.single
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.EntityAgent.HandleHandAnimations(System.Single)
-    name: HandleHandAnimations
-    href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_HandleHandAnimations_System_Single_
-  - name: (
-  - uid: System.Single
-    name: Single
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.single
-  - name: )
-- uid: Vintagestory.API.Common.EntityPlayer.HandleHandAnimations*
-  commentId: Overload:Vintagestory.API.Common.EntityPlayer.HandleHandAnimations
-  href: Vintagestory.API.Common.EntityPlayer.html#Vintagestory_API_Common_EntityPlayer_HandleHandAnimations_System_Single_
-  name: HandleHandAnimations
-  nameWithType: EntityPlayer.HandleHandAnimations
-  fullName: Vintagestory.API.Common.EntityPlayer.HandleHandAnimations
+- uid: Vintagestory.API.Common.EntityPlayer.HandleSeraphHandAnimations*
+  commentId: Overload:Vintagestory.API.Common.EntityPlayer.HandleSeraphHandAnimations
+  href: Vintagestory.API.Common.EntityPlayer.html#Vintagestory_API_Common_EntityPlayer_HandleSeraphHandAnimations_System_Single_
+  name: HandleSeraphHandAnimations
+  nameWithType: EntityPlayer.HandleSeraphHandAnimations
+  fullName: Vintagestory.API.Common.EntityPlayer.HandleSeraphHandAnimations
 - uid: Vintagestory.API.Common.EntityPlayer.protectEyesFromWind*
   commentId: Overload:Vintagestory.API.Common.EntityPlayer.protectEyesFromWind
   href: Vintagestory.API.Common.EntityPlayer.html#Vintagestory_API_Common_EntityPlayer_protectEyesFromWind_System_Single_

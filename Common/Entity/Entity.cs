@@ -1467,10 +1467,14 @@ namespace Vintagestory.API.Common.Entities
         {
             if (World.Side != EnumAppSide.Client) return;
 
-            DebugAttributes.SetString("Entity Id", ""+EntityId);
+            DebugAttributes.SetString("Entity Id", "" + EntityId);
             DebugAttributes.SetString("Yaw", string.Format("{0:0.##}", Pos.Yaw));
 
+            if (AnimManager != null) UpdateAnimationDebugAttributes();  // for EntityItem, AnimManager will be null
+        }
 
+        protected virtual void UpdateAnimationDebugAttributes()
+        {
             string anims = "";
             int i = 0;
             foreach (string anim in AnimManager.ActiveAnimationsByAnimCode.Keys)

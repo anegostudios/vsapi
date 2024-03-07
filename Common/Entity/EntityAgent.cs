@@ -603,13 +603,6 @@ namespace Vintagestory.API.Common
 
         }
 
-        public virtual void StopHandAnims()
-        {
-            
-        }
-
-
-
         /// <summary>
         /// updated by GetWalkSpeedMultiplier()
         /// </summary>

@@ -29,7 +29,7 @@ namespace Vintagestory.API.Common
 
         public ShapeElementWeights[] ElementWeights;
 
-        public float AnimProgress => CurrentFrame / Animation.QuantityFrames;
+        public float AnimProgress => CurrentFrame / (Animation.QuantityFrames-1);
 
         public void LoadWeights(ShapeElement[] rootElements)
         {

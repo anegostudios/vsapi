@@ -146,7 +146,19 @@ namespace Vintagestory.API.Common
 
         public override void OnGameTick(float dt)
         {
-            if (World.Side == EnumAppSide.Client) base.OnGameTick(dt);
+            if (World.Side == EnumAppSide.Client)
+            {
+                try
+                {
+                    base.OnGameTick(dt);
+                }
+                catch (Exception e)
+                {
+                    if (World == null) throw new NullReferenceException("'World' was null for EntityItem; entity is " + (alive ? "alive" : "post-lifetime"));
+                    Api.Logger.Error("Erroring EntityItem tick: please report this as a bug!");
+                    Api.Logger.Error(e);
+                }
+            }
             else
             {
                 // simplified server tick

@@ -114,16 +114,16 @@ namespace Vintagestory.API.Common
             return base.IsAnimationActive(anims);
         }
 
-        public bool IsAnimationActiveOrRunning(string anim)
+        public bool IsAnimationActiveOrRunning(string anim, float untilProgress = 0.95f)
         {
             if (anim == null || Animator == null) return false;
-            return IsAnimationMostlyRunning(anim) || IsAnimationMostlyRunning(anim + fpEnding);
+            return IsAnimationMostlyRunning(anim, untilProgress) || IsAnimationMostlyRunning(anim + fpEnding, untilProgress);
         }
 
-        protected bool IsAnimationMostlyRunning(string anim)
+        protected bool IsAnimationMostlyRunning(string anim, float untilProgress = 0.95f)
         {
             var ranim = Animator.GetAnimationState(anim);
-            return ranim != null && ranim.Running && ranim.AnimProgress < 0.95;
+            return ranim != null && ranim.Running && ranim.AnimProgress < untilProgress && ranim.Active /* ranim.Active check makes a short left mouse click with axe in hands look much better */;
         }
 
         protected override void onReceivedServerAnimation(AnimationMetaData animmetadata)
@@ -271,9 +271,9 @@ namespace Vintagestory.API.Common
             return lastActiveHeldUseAnimation != null && IsAnimationActiveOrRunning(lastActiveHeldUseAnimation);
         }
 
-        public bool IsHeldHitActive()
+        public bool IsHeldHitActive(float untilProgress = 0.95f)
         {
-            return lastActiveHeldHitAnimation != null && IsAnimationActiveOrRunning(lastActiveHeldHitAnimation);
+            return lastActiveHeldHitAnimation != null && IsAnimationActiveOrRunning(lastActiveHeldHitAnimation, untilProgress);
         }
 
         public bool IsLeftHeldActive()
