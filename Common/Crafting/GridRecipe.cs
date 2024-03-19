@@ -323,8 +323,7 @@ namespace Vintagestory.API.Common
 
                     if (
                         ingredient.Type == inStack.Class &&
-                        WildcardUtil.Match(ingredient.Code, inStack.Collectible.Code, ingredient.AllowedVariants) &&
-                        inStack.StackSize >= ingredient.Quantity
+                        WildcardUtil.Match(ingredient.Code, inStack.Collectible.Code, ingredient.AllowedVariants)
                     )
                     {
                         int quantity = Math.Min(ingredient.Quantity, inStack.StackSize);

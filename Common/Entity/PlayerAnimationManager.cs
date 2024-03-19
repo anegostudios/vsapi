@@ -250,12 +250,12 @@ namespace Vintagestory.API.Common
         }
 
 
-        public bool IsHeldHitAuthorative()
+        public bool IsHeldHitAuthoritative()
         {
-            return IsAuthorative(lastActiveHeldHitAnimation);
+            return IsAuthoritative(lastActiveHeldHitAnimation);
         }
 
-        private bool IsAuthorative(string anim)
+        public bool IsAuthoritative(string anim)
         {
             if (anim == null) return false;
             if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(anim, out var animData))

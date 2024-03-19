@@ -23,8 +23,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/BlockGeneric.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: BlockGeneric
     path: Common/Collectible/Block/BlockGeneric.cs
     startLine: 6
@@ -120,6 +120,7 @@ items:
   - Vintagestory.API.Common.Block.TextureSubIdForBlockColor
   - Vintagestory.API.Common.Block.ClimateColorMapForMap
   - Vintagestory.API.Common.Block.SeasonColorMapForMap
+  - Vintagestory.API.Common.Block.miningTierNames
   - Vintagestory.API.Common.Block.OnLoaded(Vintagestory.API.Common.ICoreAPI)
   - Vintagestory.API.Common.Block.LoadTextureSubIdForBlockColor
   - Vintagestory.API.Common.Block.notSnowCovered
@@ -192,6 +193,7 @@ items:
   - Vintagestory.API.Common.Block.GetPlacedBlockInteractionHelp(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.IPlayer)
   - Vintagestory.API.Common.Block.GetPlacedBlockName(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.Block.GetPlacedBlockInfo(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer)
+  - Vintagestory.API.Common.Block.AddMiningTierInfo(System.Text.StringBuilder)
   - Vintagestory.API.Common.Block.GetHeldItemInfo(Vintagestory.API.Common.ItemSlot,System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor,System.Boolean)
   - Vintagestory.API.Common.Block.AddExtraHeldItemInfoPostMaterial(Vintagestory.API.Common.ItemSlot,System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor)
   - Vintagestory.API.Common.Block.GetSelectionColor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.MathTools.BlockPos)
@@ -398,8 +400,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/BlockGeneric.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetDecal
     path: Common/Collectible/Block/BlockGeneric.cs
     startLine: 8
@@ -446,8 +448,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/BlockGeneric.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnDecalTesselation
     path: Common/Collectible/Block/BlockGeneric.cs
     startLine: 31
@@ -481,8 +483,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/BlockGeneric.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetParticleBreakBox
     path: Common/Collectible/Block/BlockGeneric.cs
     startLine: 54
@@ -523,8 +525,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/BlockGeneric.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetParticleCollisionBoxes
     path: Common/Collectible/Block/BlockGeneric.cs
     startLine: 76
@@ -562,8 +564,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/BlockGeneric.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetCollisionBoxes
     path: Common/Collectible/Block/BlockGeneric.cs
     startLine: 106
@@ -601,8 +603,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/BlockGeneric.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetSelectionBoxes
     path: Common/Collectible/Block/BlockGeneric.cs
     startLine: 135
@@ -640,8 +642,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/BlockGeneric.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: TryPlaceBlockForWorldGen
     path: Common/Collectible/Block/BlockGeneric.cs
     startLine: 165
@@ -685,8 +687,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/BlockGeneric.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: DoParticalSelection
     path: Common/Collectible/Block/BlockGeneric.cs
     startLine: 192
@@ -1333,6 +1335,13 @@ references:
   name: SeasonColorMapForMap
   nameWithType: Block.SeasonColorMapForMap
   fullName: Vintagestory.API.Common.Block.SeasonColorMapForMap
+- uid: Vintagestory.API.Common.Block.miningTierNames
+  commentId: F:Vintagestory.API.Common.Block.miningTierNames
+  parent: Vintagestory.API.Common.Block
+  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_miningTierNames
+  name: miningTierNames
+  nameWithType: Block.miningTierNames
+  fullName: Vintagestory.API.Common.Block.miningTierNames
 - uid: Vintagestory.API.Common.Block.OnLoaded(Vintagestory.API.Common.ICoreAPI)
   commentId: M:Vintagestory.API.Common.Block.OnLoaded(Vintagestory.API.Common.ICoreAPI)
   parent: Vintagestory.API.Common.Block
@@ -4373,6 +4382,34 @@ references:
   - uid: Vintagestory.API.Common.IPlayer
     name: IPlayer
     href: Vintagestory.API.Common.IPlayer.html
+  - name: )
+- uid: Vintagestory.API.Common.Block.AddMiningTierInfo(System.Text.StringBuilder)
+  commentId: M:Vintagestory.API.Common.Block.AddMiningTierInfo(System.Text.StringBuilder)
+  parent: Vintagestory.API.Common.Block
+  isExternal: true
+  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_AddMiningTierInfo_System_Text_StringBuilder_
+  name: AddMiningTierInfo(StringBuilder)
+  nameWithType: Block.AddMiningTierInfo(StringBuilder)
+  fullName: Vintagestory.API.Common.Block.AddMiningTierInfo(System.Text.StringBuilder)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Block.AddMiningTierInfo(System.Text.StringBuilder)
+    name: AddMiningTierInfo
+    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_AddMiningTierInfo_System_Text_StringBuilder_
+  - name: (
+  - uid: System.Text.StringBuilder
+    name: StringBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Block.AddMiningTierInfo(System.Text.StringBuilder)
+    name: AddMiningTierInfo
+    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_AddMiningTierInfo_System_Text_StringBuilder_
+  - name: (
+  - uid: System.Text.StringBuilder
+    name: StringBuilder
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
   - name: )
 - uid: Vintagestory.API.Common.Block.GetHeldItemInfo(Vintagestory.API.Common.ItemSlot,System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor,System.Boolean)
   commentId: M:Vintagestory.API.Common.Block.GetHeldItemInfo(Vintagestory.API.Common.ItemSlot,System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor,System.Boolean)

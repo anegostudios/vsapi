@@ -652,6 +652,9 @@ namespace Vintagestory.API.Common
             if (World.Side == EnumAppSide.Client)
             {
                 talkUtil.OnGameTick(dt);
+            } else
+            {
+                HandleSeraphHandAnimations(dt);
             }
 
             bool isSelf = (Api as ICoreClientAPI)?.World.Player.PlayerUID == PlayerUID;
@@ -841,16 +844,20 @@ namespace Vintagestory.API.Common
                 {
                     plrAnimMngr.StartHeldUseAnim(nowHeldRightUseAnim);
                     haveHandUseOrHit = true;
-
                 }
             }
 
             if (nowHitStack != wasHitStack || plrAnimMngr.HeldHitAnimChanged(nowHeldRightHitAnim))
             {
-                bool authorative = plrAnimMngr.IsHeldHitAuthorative();
-                plrAnimMngr.StopHeldAttackAnim();
+                bool nowauthoritative = plrAnimMngr.IsAuthoritative(nowHeldRightHitAnim);
+                bool curauthoritative = plrAnimMngr.IsHeldHitAuthoritative();
 
-                if (plrAnimMngr.lastRunningHeldHitAnimation != null && authorative)
+                if (!curauthoritative)
+                {
+                    plrAnimMngr.StopHeldAttackAnim();
+                }
+
+                if (plrAnimMngr.lastRunningHeldHitAnimation != null && curauthoritative)
                 {   
                     if (servercontrols.LeftMouseDown)
                     {
@@ -862,7 +869,8 @@ namespace Vintagestory.API.Common
 
                 } else
                 {
-                    if (!authorative && nowHitStack)
+                    if (nowauthoritative) nowHitStack = servercontrols.LeftMouseDown;
+                    if (!curauthoritative && nowHitStack)
                     {
                         plrAnimMngr.StartHeldHitAnim(nowHeldRightHitAnim);
                         haveHandUseOrHit = true;

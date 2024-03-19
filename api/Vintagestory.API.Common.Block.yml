@@ -8,6 +8,7 @@ items:
   - Vintagestory.API.Common.Block.#ctor
   - Vintagestory.API.Common.Block.Activate(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Caller,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Datastructures.ITreeAttribute)
   - Vintagestory.API.Common.Block.AddExtraHeldItemInfoPostMaterial(Vintagestory.API.Common.ItemSlot,System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.Block.AddMiningTierInfo(System.Text.StringBuilder)
   - Vintagestory.API.Common.Block.AllCreaturesAllowed
   - Vintagestory.API.Common.Block.AllSidesOpaque
   - Vintagestory.API.Common.Block.AllowSnowCoverage(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
@@ -183,6 +184,7 @@ items:
   - Vintagestory.API.Common.Block.alternatingVOffset
   - Vintagestory.API.Common.Block.alternatingVOffsetFaces
   - Vintagestory.API.Common.Block.decorBehaviorFlags
+  - Vintagestory.API.Common.Block.miningTierNames
   - Vintagestory.API.Common.Block.notSnowCovered
   - Vintagestory.API.Common.Block.snowCovered1
   - Vintagestory.API.Common.Block.snowCovered2
@@ -199,8 +201,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Block
     path: Common/Collectible/Block/Block.cs
     startLine: 26
@@ -402,8 +404,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Id
     path: Common/Collectible/Block/Block.cs
     startLine: 31
@@ -434,8 +436,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ItemClass
     path: Common/Collectible/Block/Block.cs
     startLine: 36
@@ -466,8 +468,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ForFluidsLayer
     path: Common/Collectible/Block/Block.cs
     startLine: 41
@@ -497,8 +499,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: RemapToLiquidsLayer
     path: Common/Collectible/Block/Block.cs
     startLine: 46
@@ -528,8 +530,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: DefaultCollisionBox
     path: Common/Collectible/Block/Block.cs
     startLine: 51
@@ -557,8 +559,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: BlockId
     path: Common/Collectible/Block/Block.cs
     startLine: 56
@@ -586,8 +588,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: DrawType
     path: Common/Collectible/Block/Block.cs
     startLine: 61
@@ -615,8 +617,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: RenderPass
     path: Common/Collectible/Block/Block.cs
     startLine: 66
@@ -644,8 +646,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Ambientocclusion
     path: Common/Collectible/Block/Block.cs
     startLine: 71
@@ -673,8 +675,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: WalkSpeedMultiplier
     path: Common/Collectible/Block/Block.cs
     startLine: 76
@@ -702,8 +704,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: DragMultiplier
     path: Common/Collectible/Block/Block.cs
     startLine: 81
@@ -731,8 +733,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: PartialSelection
     path: Common/Collectible/Block/Block.cs
     startLine: 86
@@ -760,8 +762,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Sounds
     path: Common/Collectible/Block/Block.cs
     startLine: 91
@@ -789,8 +791,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: VertexFlags
     path: Common/Collectible/Block/Block.cs
     startLine: 96
@@ -818,8 +820,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Frostable
     path: Common/Collectible/Block/Block.cs
     startLine: 101
@@ -847,8 +849,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: LightAbsorption
     path: Common/Collectible/Block/Block.cs
     startLine: 106
@@ -876,8 +878,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: PlacedPriorityInteract
     path: Common/Collectible/Block/Block.cs
     startLine: 111
@@ -905,8 +907,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: LightTraversable
     path: Common/Collectible/Block/Block.cs
     startLine: 119
@@ -939,8 +941,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Replaceable
     path: Common/Collectible/Block/Block.cs
     startLine: 132
@@ -985,8 +987,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Fertility
     path: Common/Collectible/Block/Block.cs
     startLine: 138
@@ -1014,8 +1016,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: RequiredMiningTier
     path: Common/Collectible/Block/Block.cs
     startLine: 143
@@ -1043,8 +1045,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Resistance
     path: Common/Collectible/Block/Block.cs
     startLine: 148
@@ -1072,8 +1074,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: BlockMaterial
     path: Common/Collectible/Block/Block.cs
     startLine: 153
@@ -1101,8 +1103,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: RandomizeAxes
     path: Common/Collectible/Block/Block.cs
     startLine: 158
@@ -1130,8 +1132,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: RandomDrawOffset
     path: Common/Collectible/Block/Block.cs
     startLine: 163
@@ -1159,8 +1161,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: RandomizeRotations
     path: Common/Collectible/Block/Block.cs
     startLine: 165
@@ -1186,8 +1188,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: RandomSizeAdjust
     path: Common/Collectible/Block/Block.cs
     startLine: 167
@@ -1213,8 +1215,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: alternatingVOffset
     path: Common/Collectible/Block/Block.cs
     startLine: 172
@@ -1242,8 +1244,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: alternatingVOffsetFaces
     path: Common/Collectible/Block/Block.cs
     startLine: 176
@@ -1271,8 +1273,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ShapeInventory
     path: Common/Collectible/Block/Block.cs
     startLine: 181
@@ -1300,8 +1302,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Shape
     path: Common/Collectible/Block/Block.cs
     startLine: 186
@@ -1329,8 +1331,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Lod0Shape
     path: Common/Collectible/Block/Block.cs
     startLine: 188
@@ -1356,8 +1358,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Lod2Shape
     path: Common/Collectible/Block/Block.cs
     startLine: 189
@@ -1383,8 +1385,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Lod0Mesh
     path: Common/Collectible/Block/Block.cs
     startLine: 190
@@ -1410,8 +1412,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Lod2Mesh
     path: Common/Collectible/Block/Block.cs
     startLine: 191
@@ -1437,8 +1439,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: DoNotRenderAtLod2
     path: Common/Collectible/Block/Block.cs
     startLine: 192
@@ -1464,8 +1466,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Textures
     path: Common/Collectible/Block/Block.cs
     startLine: 198
@@ -1496,8 +1498,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: FastTextureVariants
     path: Common/Collectible/Block/Block.cs
     startLine: 204
@@ -1528,8 +1530,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: TexturesInventory
     path: Common/Collectible/Block/Block.cs
     startLine: 210
@@ -1560,8 +1562,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: FirstTextureInventory
     path: Common/Collectible/Block/Block.cs
     startLine: 215
@@ -1591,8 +1593,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: SideOpaque
     path: Common/Collectible/Block/Block.cs
     startLine: 220
@@ -1620,8 +1622,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: SideSolid
     path: Common/Collectible/Block/Block.cs
     startLine: 225
@@ -1649,8 +1651,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: SideAo
     path: Common/Collectible/Block/Block.cs
     startLine: 230
@@ -1678,8 +1680,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: EmitSideAo
     path: Common/Collectible/Block/Block.cs
     startLine: 235
@@ -1707,8 +1709,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: AllowSpawnCreatureGroups
     path: Common/Collectible/Block/Block.cs
     startLine: 240
@@ -1736,8 +1738,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: AllCreaturesAllowed
     path: Common/Collectible/Block/Block.cs
     startLine: 241
@@ -1763,8 +1765,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: FaceCullMode
     path: Common/Collectible/Block/Block.cs
     startLine: 246
@@ -1792,8 +1794,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ClimateColorMap
     path: Common/Collectible/Block/Block.cs
     startLine: 251
@@ -1821,8 +1823,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ClimateColorMapResolved
     path: Common/Collectible/Block/Block.cs
     startLine: 252
@@ -1848,8 +1850,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: SeasonColorMap
     path: Common/Collectible/Block/Block.cs
     startLine: 257
@@ -1877,8 +1879,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: SeasonColorMapResolved
     path: Common/Collectible/Block/Block.cs
     startLine: 258
@@ -1904,8 +1906,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ShapeUsesColormap
     path: Common/Collectible/Block/Block.cs
     startLine: 263
@@ -1933,8 +1935,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: LoadColorMapAnyway
     path: Common/Collectible/Block/Block.cs
     startLine: 264
@@ -1960,8 +1962,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ExtraColorBits
     path: Common/Collectible/Block/Block.cs
     startLine: 268
@@ -1989,8 +1991,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: CollisionBoxes
     path: Common/Collectible/Block/Block.cs
     startLine: 273
@@ -2018,8 +2020,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: SelectionBoxes
     path: Common/Collectible/Block/Block.cs
     startLine: 278
@@ -2047,8 +2049,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ParticleCollisionBoxes
     path: Common/Collectible/Block/Block.cs
     startLine: 283
@@ -2076,8 +2078,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Climbable
     path: Common/Collectible/Block/Block.cs
     startLine: 288
@@ -2105,8 +2107,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: RainPermeable
     path: Common/Collectible/Block/Block.cs
     startLine: 293
@@ -2134,8 +2136,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: LiquidLevel
     path: Common/Collectible/Block/Block.cs
     startLine: 298
@@ -2163,8 +2165,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: LiquidCode
     path: Common/Collectible/Block/Block.cs
     startLine: 304
@@ -2193,8 +2195,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: HasAlternates
     path: Common/Collectible/Block/Block.cs
     startLine: 309
@@ -2222,8 +2224,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: HasTiles
     path: Common/Collectible/Block/Block.cs
     startLine: 310
@@ -2249,8 +2251,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: BlockBehaviors
     path: Common/Collectible/Block/Block.cs
     startLine: 315
@@ -2278,8 +2280,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: BlockEntityBehaviors
     path: Common/Collectible/Block/Block.cs
     startLine: 320
@@ -2307,8 +2309,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Drops
     path: Common/Collectible/Block/Block.cs
     startLine: 325
@@ -2336,8 +2338,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: SplitDropStacks
     path: Common/Collectible/Block/Block.cs
     startLine: 330
@@ -2365,8 +2367,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: CropProps
     path: Common/Collectible/Block/Block.cs
     startLine: 335
@@ -2394,8 +2396,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: EntityClass
     path: Common/Collectible/Block/Block.cs
     startLine: 340
@@ -2423,8 +2425,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: CustomBlockLayerHandler
     path: Common/Collectible/Block/Block.cs
     startLine: 342
@@ -2450,8 +2452,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: PushVector
     path: Common/Collectible/Block/Block.cs
     startLine: 347
@@ -2481,8 +2483,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: TraversalCost
     path: Common/Collectible/Block/Block.cs
     startLine: 349
@@ -2508,8 +2510,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: CanStep
     path: Common/Collectible/Block/Block.cs
     startLine: 350
@@ -2535,8 +2537,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: AllowStepWhenStuck
     path: Common/Collectible/Block/Block.cs
     startLine: 351
@@ -2562,8 +2564,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: decorBehaviorFlags
     path: Common/Collectible/Block/Block.cs
     startLine: 357
@@ -2591,8 +2593,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: DecorThickness
     path: Common/Collectible/Block/Block.cs
     startLine: 361
@@ -2620,8 +2622,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: InteractionHelpYOffset
     path: Common/Collectible/Block/Block.cs
     startLine: 363
@@ -2647,8 +2649,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: TextureSubIdForBlockColor
     path: Common/Collectible/Block/Block.cs
     startLine: 365
@@ -2674,8 +2676,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ClimateColorMapForMap
     path: Common/Collectible/Block/Block.cs
     startLine: 367
@@ -2703,8 +2705,8 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: SeasonColorMapForMap
     path: Common/Collectible/Block/Block.cs
     startLine: 368
@@ -2718,6 +2720,33 @@ items:
       type: System.String
     content.vb: Public Overridable ReadOnly Property SeasonColorMapForMap As String
   overload: Vintagestory.API.Common.Block.SeasonColorMapForMap*
+- uid: Vintagestory.API.Common.Block.miningTierNames
+  commentId: F:Vintagestory.API.Common.Block.miningTierNames
+  id: miningTierNames
+  parent: Vintagestory.API.Common.Block
+  langs:
+  - csharp
+  - vb
+  name: miningTierNames
+  nameWithType: Block.miningTierNames
+  fullName: Vintagestory.API.Common.Block.miningTierNames
+  type: Field
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/Block.cs
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
+    id: miningTierNames
+    path: Common/Collectible/Block/Block.cs
+    startLine: 370
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected static string[] miningTierNames
+    return:
+      type: System.String[]
+    content.vb: Protected Shared miningTierNames As String()
 - uid: Vintagestory.API.Common.Block.#ctor
   commentId: M:Vintagestory.API.Common.Block.#ctor
   id: '#ctor'
@@ -2732,11 +2761,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: .ctor
     path: Common/Collectible/Block/Block.cs
-    startLine: 374
+    startLine: 376
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2763,11 +2792,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnLoaded
     path: Common/Collectible/Block/Block.cs
-    startLine: 387
+    startLine: 389
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2796,11 +2825,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: LoadTextureSubIdForBlockColor
     path: Common/Collectible/Block/Block.cs
-    startLine: 414
+    startLine: 416
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2822,11 +2851,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: notSnowCovered
     path: Common/Collectible/Block/Block.cs
-    startLine: 444
+    startLine: 446
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2849,11 +2878,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: snowCovered1
     path: Common/Collectible/Block/Block.cs
-    startLine: 445
+    startLine: 447
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2876,11 +2905,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: snowCovered2
     path: Common/Collectible/Block/Block.cs
-    startLine: 446
+    startLine: 448
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2903,11 +2932,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: snowCovered3
     path: Common/Collectible/Block/Block.cs
-    startLine: 447
+    startLine: 449
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2930,11 +2959,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: snowLevel
     path: Common/Collectible/Block/Block.cs
-    startLine: 448
+    startLine: 450
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2957,11 +2986,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: AllSidesOpaque
     path: Common/Collectible/Block/Block.cs
-    startLine: 454
+    startLine: 456
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -2988,11 +3017,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: DisplacesLiquids
     path: Common/Collectible/Block/Block.cs
-    startLine: 478
+    startLine: 480
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3026,11 +3055,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: SideIsSolid
     path: Common/Collectible/Block/Block.cs
-    startLine: 487
+    startLine: 489
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3067,11 +3096,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: SideIsSolid
     path: Common/Collectible/Block/Block.cs
-    startLine: 495
+    startLine: 497
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3107,11 +3136,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ShouldMergeFace
     path: Common/Collectible/Block/Block.cs
-    startLine: 507
+    startLine: 509
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3151,11 +3180,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetParticleBreakBox
     path: Common/Collectible/Block/Block.cs
-    startLine: 520
+    startLine: 522
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3192,11 +3221,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetSelectionBoxes
     path: Common/Collectible/Block/Block.cs
-    startLine: 541
+    startLine: 543
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3230,11 +3259,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetCollisionBoxes
     path: Common/Collectible/Block/Block.cs
-    startLine: 565
+    startLine: 567
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3268,11 +3297,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetParticleCollisionBoxes
     path: Common/Collectible/Block/Block.cs
-    startLine: 576
+    startLine: 578
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3306,11 +3335,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetBlockMaterial
     path: Common/Collectible/Block/Block.cs
-    startLine: 589
+    startLine: 591
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3350,11 +3379,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetResistance
     path: Common/Collectible/Block/Block.cs
-    startLine: 600
+    startLine: 602
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3388,11 +3417,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetSounds
     path: Common/Collectible/Block/Block.cs
-    startLine: 612
+    startLine: 614
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3429,11 +3458,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetAttributes
     path: Common/Collectible/Block/Block.cs
-    startLine: 634
+    startLine: 636
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3467,11 +3496,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: DoEmitSideAo
     path: Common/Collectible/Block/Block.cs
-    startLine: 639
+    startLine: 641
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3500,11 +3529,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: DoEmitSideAoByFlag
     path: Common/Collectible/Block/Block.cs
-    startLine: 644
+    startLine: 646
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3538,11 +3567,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetLightAbsorption
     path: Common/Collectible/Block/Block.cs
-    startLine: 649
+    startLine: 651
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3571,11 +3600,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetLightAbsorption
     path: Common/Collectible/Block/Block.cs
-    startLine: 654
+    startLine: 656
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3604,11 +3633,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetLiquidCode
     path: Common/Collectible/Block/Block.cs
-    startLine: 666
+    startLine: 668
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3642,11 +3671,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetDecal
     path: Common/Collectible/Block/Block.cs
-    startLine: 680
+    startLine: 682
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3689,11 +3718,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: CanAttachBlockAt
     path: Common/Collectible/Block/Block.cs
-    startLine: 696
+    startLine: 698
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3736,11 +3765,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: CanCreatureSpawnOn
     path: Common/Collectible/Block/Block.cs
-    startLine: 728
+    startLine: 730
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3780,11 +3809,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: TryPlaceBlockForWorldGen
     path: Common/Collectible/Block/Block.cs
-    startLine: 772
+    startLine: 774
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3824,11 +3853,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: TryPlaceBlock
     path: Common/Collectible/Block/Block.cs
-    startLine: 805
+    startLine: 807
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3874,11 +3903,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: CanPlaceBlock
     path: Common/Collectible/Block/Block.cs
-    startLine: 844
+    startLine: 846
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3920,11 +3949,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: DoPlaceBlock
     path: Common/Collectible/Block/Block.cs
-    startLine: 899
+    startLine: 901
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -3963,11 +3992,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnBeingLookedAt
     path: Common/Collectible/Block/Block.cs
-    startLine: 932
+    startLine: 934
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4004,11 +4033,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnGettingBroken
     path: Common/Collectible/Block/Block.cs
-    startLine: 951
+    startLine: 953
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4057,11 +4086,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: RandomSoundPitch
     path: Common/Collectible/Block/Block.cs
-    startLine: 998
+    startLine: 1000
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4088,11 +4117,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnBlockBroken
     path: Common/Collectible/Block/Block.cs
-    startLine: 1012
+    startLine: 1014
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4132,11 +4161,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: SpawnBlockBrokenParticles
     path: Common/Collectible/Block/Block.cs
-    startLine: 1066
+    startLine: 1068
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4161,11 +4190,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnBrokenAsDecor
     path: Common/Collectible/Block/Block.cs
-    startLine: 1087
+    startLine: 1089
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4194,11 +4223,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnCreatedByCrafting
     path: Common/Collectible/Block/Block.cs
-    startLine: 1114
+    startLine: 1116
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4236,11 +4265,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetDropsForHandbook
     path: Common/Collectible/Block/Block.cs
-    startLine: 1137
+    startLine: 1139
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4274,11 +4303,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetHandbookDropsFromBreakDrops
     path: Common/Collectible/Block/Block.cs
-    startLine: 1148
+    startLine: 1150
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4312,11 +4341,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetDrops
     path: Common/Collectible/Block/Block.cs
-    startLine: 1170
+    startLine: 1172
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4359,11 +4388,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnPickBlock
     path: Common/Collectible/Block/Block.cs
-    startLine: 1230
+    startLine: 1232
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4397,11 +4426,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnBlockRemoved
     path: Common/Collectible/Block/Block.cs
-    startLine: 1261
+    startLine: 1263
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4435,11 +4464,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnBlockPlaced
     path: Common/Collectible/Block/Block.cs
-    startLine: 1289
+    startLine: 1291
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4476,11 +4505,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnNeighbourBlockChange
     path: Common/Collectible/Block/Block.cs
-    startLine: 1318
+    startLine: 1320
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4514,11 +4543,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnBlockInteractStart
     path: Common/Collectible/Block/Block.cs
-    startLine: 1345
+    startLine: 1347
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4555,11 +4584,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Activate
     path: Common/Collectible/Block/Block.cs
-    startLine: 1381
+    startLine: 1383
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4596,11 +4625,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnBlockInteractStep
     path: Common/Collectible/Block/Block.cs
-    startLine: 1404
+    startLine: 1406
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4643,11 +4672,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnBlockInteractStop
     path: Common/Collectible/Block/Block.cs
-    startLine: 1434
+    startLine: 1436
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4687,11 +4716,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnBlockInteractCancel
     path: Common/Collectible/Block/Block.cs
-    startLine: 1462
+    startLine: 1464
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4736,11 +4765,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnEntityInside
     path: Common/Collectible/Block/Block.cs
-    startLine: 1491
+    startLine: 1493
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4774,11 +4803,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnEntityCollide
     path: Common/Collectible/Block/Block.cs
-    startLine: 1507
+    startLine: 1509
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4824,11 +4853,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnFallOnto
     path: Common/Collectible/Block/Block.cs
-    startLine: 1540
+    startLine: 1542
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4868,11 +4897,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ShouldReceiveClientParticleTicks
     path: Common/Collectible/Block/Block.cs
-    startLine: 1556
+    startLine: 1558
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4920,11 +4949,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ShouldPlayAmbientSound
     path: Common/Collectible/Block/Block.cs
-    startLine: 1594
+    startLine: 1596
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -4958,11 +4987,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnAsyncClientParticleTick
     path: Common/Collectible/Block/Block.cs
-    startLine: 1607
+    startLine: 1609
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5002,11 +5031,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ShouldReceiveServerGameTicks
     path: Common/Collectible/Block/Block.cs
-    startLine: 1641
+    startLine: 1643
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5058,11 +5087,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnServerGameTick
     path: Common/Collectible/Block/Block.cs
-    startLine: 1663
+    startLine: 1665
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5099,11 +5128,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnDecalTesselation
     path: Common/Collectible/Block/Block.cs
-    startLine: 1682
+    startLine: 1684
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5132,11 +5161,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: waveFlagMinY
     path: Common/Collectible/Block/Block.cs
-    startLine: 1701
+    startLine: 1703
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5159,11 +5188,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnJsonTesselation
     path: Common/Collectible/Block/Block.cs
-    startLine: 1711
+    startLine: 1713
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5206,11 +5235,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnInstancedTesselation
     path: Common/Collectible/Block/Block.cs
-    startLine: 1730
+    startLine: 1732
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5248,11 +5277,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: DetermineTopMiddlePos
     path: Common/Collectible/Block/Block.cs
-    startLine: 1740
+    startLine: 1742
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5276,11 +5305,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: IsReplacableBy
     path: Common/Collectible/Block/Block.cs
-    startLine: 1780
+    startLine: 1782
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5311,11 +5340,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: SuggestedHVOrientation
     path: Common/Collectible/Block/Block.cs
-    startLine: 1809
+    startLine: 1811
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5349,11 +5378,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: PerformSnowLevelUpdate
     path: Common/Collectible/Block/Block.cs
-    startLine: 1840
+    startLine: 1842
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5393,11 +5422,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetSnowCoveredVariant
     path: Common/Collectible/Block/Block.cs
-    startLine: 1854
+    startLine: 1856
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5434,11 +5463,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetSnowLevel
     path: Common/Collectible/Block/Block.cs
-    startLine: 1879
+    startLine: 1881
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5465,11 +5494,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetHeatRetention
     path: Common/Collectible/Block/Block.cs
-    startLine: 1890
+    startLine: 1892
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5515,11 +5544,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetRetention
     path: Common/Collectible/Block/Block.cs
-    startLine: 1904
+    startLine: 1906
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5556,11 +5585,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: IsClimbable
     path: Common/Collectible/Block/Block.cs
-    startLine: 1939
+    startLine: 1941
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5587,11 +5616,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetRotatedBlockCode
     path: Common/Collectible/Block/Block.cs
-    startLine: 1950
+    startLine: 1952
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5625,11 +5654,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetVerticallyFlippedBlockCode
     path: Common/Collectible/Block/Block.cs
-    startLine: 1978
+    startLine: 1980
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5656,11 +5685,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetHorizontallyFlippedBlockCode
     path: Common/Collectible/Block/Block.cs
-    startLine: 2008
+    startLine: 2010
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5691,11 +5720,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetBehavior
     path: Common/Collectible/Block/Block.cs
-    startLine: 2039
+    startLine: 2041
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5732,11 +5761,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetPlacedBlockInteractionHelp
     path: Common/Collectible/Block/Block.cs
-    startLine: 2073
+    startLine: 2075
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5773,11 +5802,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetPlacedBlockName
     path: Common/Collectible/Block/Block.cs
-    startLine: 2131
+    startLine: 2133
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5811,11 +5840,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetPlacedBlockInfo
     path: Common/Collectible/Block/Block.cs
-    startLine: 2148
+    startLine: 2150
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5835,6 +5864,35 @@ items:
       description: ''
     content.vb: Public Overridable Function GetPlacedBlockInfo(world As IWorldAccessor, pos As BlockPos, forPlayer As IPlayer) As String
   overload: Vintagestory.API.Common.Block.GetPlacedBlockInfo*
+- uid: Vintagestory.API.Common.Block.AddMiningTierInfo(System.Text.StringBuilder)
+  commentId: M:Vintagestory.API.Common.Block.AddMiningTierInfo(System.Text.StringBuilder)
+  id: AddMiningTierInfo(System.Text.StringBuilder)
+  parent: Vintagestory.API.Common.Block
+  langs:
+  - csharp
+  - vb
+  name: AddMiningTierInfo(StringBuilder)
+  nameWithType: Block.AddMiningTierInfo(StringBuilder)
+  fullName: Vintagestory.API.Common.Block.AddMiningTierInfo(System.Text.StringBuilder)
+  type: Method
+  source:
+    remote:
+      path: VintagestoryApi/Common/Collectible/Block/Block.cs
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
+    id: AddMiningTierInfo
+    path: Common/Collectible/Block/Block.cs
+    startLine: 2214
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual void AddMiningTierInfo(StringBuilder sb)
+    parameters:
+    - id: sb
+      type: System.Text.StringBuilder
+    content.vb: Public Overridable Sub AddMiningTierInfo(sb As StringBuilder)
+  overload: Vintagestory.API.Common.Block.AddMiningTierInfo*
 - uid: Vintagestory.API.Common.Block.GetHeldItemInfo(Vintagestory.API.Common.ItemSlot,System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor,System.Boolean)
   commentId: M:Vintagestory.API.Common.Block.GetHeldItemInfo(Vintagestory.API.Common.ItemSlot,System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor,System.Boolean)
   id: GetHeldItemInfo(Vintagestory.API.Common.ItemSlot,System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor,System.Boolean)
@@ -5849,11 +5907,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetHeldItemInfo
     path: Common/Collectible/Block/Block.cs
-    startLine: 2227
+    startLine: 2232
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5894,11 +5952,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: AddExtraHeldItemInfoPostMaterial
     path: Common/Collectible/Block/Block.cs
-    startLine: 2261
+    startLine: 2266
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5932,11 +5990,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: DoParticalSelection
     path: Common/Collectible/Block/Block.cs
-    startLine: 2271
+    startLine: 2276
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -5970,11 +6028,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetSelectionColor
     path: Common/Collectible/Block/Block.cs
-    startLine: 2282
+    startLine: 2287
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6008,11 +6066,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnCollectTextures
     path: Common/Collectible/Block/Block.cs
-    startLine: 2293
+    startLine: 2298
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6043,11 +6101,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetBlastResistance
     path: Common/Collectible/Block/Block.cs
-    startLine: 2317
+    startLine: 2322
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6087,11 +6145,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ExplosionDropChance
     path: Common/Collectible/Block/Block.cs
-    startLine: 2329
+    startLine: 2334
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6128,11 +6186,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: OnBlockExploded
     path: Common/Collectible/Block/Block.cs
-    startLine: 2340
+    startLine: 2345
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6169,11 +6227,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetRandomColor
     path: Common/Collectible/Block/Block.cs
-    startLine: 2396
+    startLine: 2401
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6216,11 +6274,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetRandomColor
     path: Common/Collectible/Block/Block.cs
-    startLine: 2422
+    startLine: 2427
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6255,11 +6313,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetColor
     path: Common/Collectible/Block/Block.cs
-    startLine: 2435
+    startLine: 2440
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6292,11 +6350,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetColorWithoutTint
     path: Common/Collectible/Block/Block.cs
-    startLine: 2453
+    startLine: 2458
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6330,11 +6388,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: AllowSnowCoverage
     path: Common/Collectible/Block/Block.cs
-    startLine: 2462
+    startLine: 2467
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6363,11 +6421,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetBlockEntity
     path: Common/Collectible/Block/Block.cs
-    startLine: 2473
+    startLine: 2478
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6404,11 +6462,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetBlockEntity
     path: Common/Collectible/Block/Block.cs
-    startLine: 2484
+    startLine: 2489
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6445,11 +6503,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetBEBehavior
     path: Common/Collectible/Block/Block.cs
-    startLine: 2495
+    startLine: 2500
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6486,11 +6544,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetInterface
     path: Common/Collectible/Block/Block.cs
-    startLine: 2511
+    startLine: 2516
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6539,11 +6597,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: Clone
     path: Common/Collectible/Block/Block.cs
-    startLine: 2533
+    startLine: 2538
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6570,11 +6628,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: HasBlockBehavior
     path: Common/Collectible/Block/Block.cs
-    startLine: 2625
+    startLine: 2630
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6611,11 +6669,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: HasBehavior
     path: Common/Collectible/Block/Block.cs
-    startLine: 2636
+    startLine: 2641
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6653,11 +6711,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: HasBehavior
     path: Common/Collectible/Block/Block.cs
-    startLine: 2642
+    startLine: 2647
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6695,11 +6753,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: HasBehavior
     path: Common/Collectible/Block/Block.cs
-    startLine: 2647
+    startLine: 2652
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6737,11 +6795,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: GetLiquidBarrierHeightOnSide
     path: Common/Collectible/Block/Block.cs
-    startLine: 2684
+    startLine: 2689
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -6772,11 +6830,11 @@ items:
   source:
     remote:
       path: VintagestoryApi/Common/Collectible/Block/Block.cs
-      branch: 406623c5a2f17e22ff6c77f3f15f3867fb8c62d4
-      repo: https://gitlab-ci-token:64_WTjX-zAYLrR6LAXA56zk@git.striver.net/vintagecraft/game.git
+      branch: f42a12683a5672fcf06b1bea827a0110728d0177
+      repo: https://gitlab-ci-token:64_g25Wum55R8kbboPMqahT@git.striver.net/vintagecraft/game.git
     id: ToString
     path: Common/Collectible/Block/Block.cs
-    startLine: 2721
+    startLine: 2726
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -14467,6 +14525,47 @@ references:
   name: GetPlacedBlockInfo
   nameWithType: Block.GetPlacedBlockInfo
   fullName: Vintagestory.API.Common.Block.GetPlacedBlockInfo
+- uid: Vintagestory.API.Common.Block.AddMiningTierInfo*
+  commentId: Overload:Vintagestory.API.Common.Block.AddMiningTierInfo
+  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_AddMiningTierInfo_System_Text_StringBuilder_
+  name: AddMiningTierInfo
+  nameWithType: Block.AddMiningTierInfo
+  fullName: Vintagestory.API.Common.Block.AddMiningTierInfo
+- uid: System.Text.StringBuilder
+  commentId: T:System.Text.StringBuilder
+  parent: System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
+  name: StringBuilder
+  nameWithType: StringBuilder
+  fullName: System.Text.StringBuilder
+- uid: System.Text
+  commentId: N:System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text
+  nameWithType: System.Text
+  fullName: System.Text
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
 - uid: Vintagestory.API.Common.CollectibleObject.GetHeldItemInfo(Vintagestory.API.Common.ItemSlot,System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor,System.Boolean)
   commentId: M:Vintagestory.API.Common.CollectibleObject.GetHeldItemInfo(Vintagestory.API.Common.ItemSlot,System.Text.StringBuilder,Vintagestory.API.Common.IWorldAccessor,System.Boolean)
   parent: Vintagestory.API.Common.CollectibleObject
@@ -14536,41 +14635,6 @@ references:
   name: GetHeldItemInfo
   nameWithType: Block.GetHeldItemInfo
   fullName: Vintagestory.API.Common.Block.GetHeldItemInfo
-- uid: System.Text.StringBuilder
-  commentId: T:System.Text.StringBuilder
-  parent: System.Text
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
-  name: StringBuilder
-  nameWithType: StringBuilder
-  fullName: System.Text.StringBuilder
-- uid: System.Text
-  commentId: N:System.Text
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Text
-  nameWithType: System.Text
-  fullName: System.Text
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Text
-    name: Text
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text
-  spec.vb:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Text
-    name: Text
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.text
 - uid: Vintagestory.API.Common.Block.AddExtraHeldItemInfoPostMaterial*
   commentId: Overload:Vintagestory.API.Common.Block.AddExtraHeldItemInfoPostMaterial
   href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_AddExtraHeldItemInfoPostMaterial_Vintagestory_API_Common_ItemSlot_System_Text_StringBuilder_Vintagestory_API_Common_IWorldAccessor_

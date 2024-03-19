@@ -368,6 +368,8 @@ namespace Vintagestory.API.Common
         public virtual string ClimateColorMapForMap => ClimateColorMap;
         public virtual string SeasonColorMapForMap => SeasonColorMap;
 
+        protected static string[] miningTierNames = new string[] { "tier_hands", "tier_stone", "tier_copper", "tier_bronze", "tier_iron", "tier_steel", "tier_titanium" };
+
 
         /// <summary>
         /// Creates a new instance of a block with default model transforms
@@ -2196,18 +2198,9 @@ namespace Vintagestory.API.Common
             }
             sb.AppendLine(string.Join("\r\n", decorLangLines.Distinct()));
 
-            string[] tiers = new string[] { Lang.Get("tier_hands"), Lang.Get("tier_stone"), Lang.Get("tier_copper"), Lang.Get("tier_bronze"), Lang.Get("tier_iron"), Lang.Get("tier_steel"), Lang.Get("tier_titanium") };
-
             if (RequiredMiningTier > 0)
             {
-                string tierName = "?";
-
-                if (RequiredMiningTier < tiers.Length)
-                {
-                    tierName = tiers[RequiredMiningTier];
-                }
-
-                sb.AppendLine(Lang.Get("Requires tool tier {0} ({1}) to break", RequiredMiningTier, tierName));
+                AddMiningTierInfo(sb);
             }
 
             foreach (BlockBehavior bh in BlockBehaviors)
@@ -2216,6 +2209,18 @@ namespace Vintagestory.API.Common
             }
 
             return sb.ToString().TrimEnd();
+        }
+
+
+        public virtual void AddMiningTierInfo(StringBuilder sb)
+        {
+            string tierName = "?";
+            if (RequiredMiningTier < miningTierNames.Length)
+            {
+                tierName = miningTierNames[RequiredMiningTier];
+            }
+
+            sb.AppendLine(Lang.Get("Requires tool tier {0} ({1}) to break", RequiredMiningTier, tierName == "?" ? tierName : Lang.Get(tierName)));
         }
 
         /// <summary>
