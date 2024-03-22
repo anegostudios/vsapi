@@ -780,11 +780,11 @@ namespace Vintagestory.API.Common
 
             PlayerAnimationManager plrAnimMngr = this.AnimManager as PlayerAnimationManager;
 
-            bool nowUseStack = interact == EnumHandInteract.BlockInteract || interact == EnumHandInteract.HeldItemInteract || (servercontrols.RightMouseDown && !servercontrols.LeftMouseDown);
-            bool wasUseStack = plrAnimMngr.IsHeldUseActive();
+            bool newUseStack = interact == EnumHandInteract.BlockInteract || interact == EnumHandInteract.HeldItemInteract || (servercontrols.RightMouseDown && !servercontrols.LeftMouseDown);
+            bool oldUseStack = plrAnimMngr.IsHeldUseActive();
 
-            bool nowHitStack = interact == EnumHandInteract.HeldItemAttack || servercontrols.LeftMouseDown;
-            bool wasHitStack = plrAnimMngr.IsHeldHitActive(1f);
+            bool newHitStack = interact == EnumHandInteract.HeldItemAttack || servercontrols.LeftMouseDown;
+            bool oldHitStack = plrAnimMngr.IsHeldHitActive(1f);
 
             string nowHeldRightUseAnim = rightstack?.Collectible.GetHeldTpUseAnimation(RightHandItemSlot, this);
             string nowHeldRightHitAnim = rightstack?.Collectible.GetHeldTpHitAnimation(RightHandItemSlot, this);
@@ -803,7 +803,7 @@ namespace Vintagestory.API.Common
 
             bool shouldRightIdleStack =
                 nowHeldRightIdleAnim != null &&
-                !nowUseStack && !nowHitStack &&
+                !newUseStack && !newHitStack &&
                 !shouldRightReadyStack &&
                 /*!isRightReadyStack &&  - why was this here?? It causes endless loops! */
                 !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldHitAnimation) &&
@@ -836,29 +836,31 @@ namespace Vintagestory.API.Common
                 haveHandUseOrHit = false;
             }
 
-            if (nowUseStack != wasUseStack || plrAnimMngr.HeldUseAnimChanged(nowHeldRightUseAnim))
+            if (newUseStack != oldUseStack || plrAnimMngr.HeldUseAnimChanged(nowHeldRightUseAnim))
             {
                 plrAnimMngr.StopHeldUseAnim();
 
-                if (nowUseStack)
+                if (newUseStack)
                 {
                     plrAnimMngr.StartHeldUseAnim(nowHeldRightUseAnim);
                     haveHandUseOrHit = true;
                 }
             }
 
-            if (nowHitStack != wasHitStack || plrAnimMngr.HeldHitAnimChanged(nowHeldRightHitAnim))
+            if (newHitStack != oldHitStack /*|| plrAnimMngr.HeldHitAnimChanged(nowHeldRightHitAnim) - why is this here? */)
             {
                 bool nowauthoritative = plrAnimMngr.IsAuthoritative(nowHeldRightHitAnim);
-                bool curauthoritative = plrAnimMngr.IsHeldHitAuthoritative();
+                bool curauthoritative = plrAnimMngr.IsHeldHitAuthoritative() && oldHitStack;
 
                 if (!curauthoritative)
                 {
                     plrAnimMngr.StopHeldAttackAnim();
                 }
 
-                if (plrAnimMngr.lastRunningHeldHitAnimation != null && curauthoritative)
-                {   
+                //if (/*plrAnimMngr.lastRunningHeldHitAnimation != null && - why is this here? */curauthoritative) - why is this curauthoritative?
+
+                if (nowauthoritative)
+                {
                     if (servercontrols.LeftMouseDown)
                     {
                         plrAnimMngr.ResetAnimation(nowHeldRightHitAnim);
@@ -869,8 +871,8 @@ namespace Vintagestory.API.Common
 
                 } else
                 {
-                    if (nowauthoritative) nowHitStack = servercontrols.LeftMouseDown;
-                    if (!curauthoritative && nowHitStack)
+                    if (nowauthoritative) newHitStack = servercontrols.LeftMouseDown;
+                    if (!curauthoritative && newHitStack)
                     {
                         plrAnimMngr.StartHeldHitAnim(nowHeldRightHitAnim);
                         haveHandUseOrHit = true;
