@@ -70,6 +70,11 @@ namespace Vintagestory.API.Common
             return false;
         }
 
+        public virtual RunningAnimation GetAnimationState(string anim)
+        {
+            return Animator.GetAnimationState(anim);
+        }
+
         /// <summary>
         /// If given animation is running, will set its progress to the first animation frame
         /// </summary>

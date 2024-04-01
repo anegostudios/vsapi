@@ -114,6 +114,18 @@ namespace Vintagestory.API.Common
             return base.IsAnimationActive(anims);
         }
 
+
+        public override RunningAnimation GetAnimationState(string anim)
+        {
+            if (useFpAnimSet && !anim.EndsWithOrdinal(fpEnding) && entity.Properties.Client.AnimationsByMetaCode.ContainsKey(anim + fpEnding))
+            {
+                return base.GetAnimationState(anim + fpEnding);
+            }
+
+            return base.GetAnimationState(anim);
+        }
+
+
         public bool IsAnimationActiveOrRunning(string anim, float untilProgress = 0.95f)
         {
             if (anim == null || Animator == null) return false;
@@ -154,6 +166,8 @@ namespace Vintagestory.API.Common
             if (beginholdAnim != lastActiveHeldReadyAnimation) StopHeldReadyAnim();
 
             if (beginholdAnim != null) StartHeldReadyAnim(beginholdAnim);
+
+            lastActiveHeldHitAnimation = null;
         }
         
 

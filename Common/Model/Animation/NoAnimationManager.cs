@@ -90,6 +90,11 @@ namespace Vintagestory.API.Common
             
         }
 
+        public RunningAnimation GetAnimationState(string anim)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Init(ICoreAPI api, Entity entity)
         {
             

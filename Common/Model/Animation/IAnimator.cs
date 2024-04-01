@@ -103,6 +103,8 @@ namespace Vintagestory.API.Common
 
         bool IsAnimationActive(params string[] anims);
 
+        RunningAnimation GetAnimationState(string anim);
+
         /// <summary>
         /// Starts an animation based on the AnimationMetaData
         /// </summary>
