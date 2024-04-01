@@ -1032,6 +1032,11 @@ namespace Vintagestory.API.Common
 
         }
 
+        public virtual void OnHeldActionAnimStart(ItemSlot slot, EntityAgent byEntity, EnumHandInteract type)
+        {
+
+        }
+
         /// <summary>
         /// Called every game tick when this collectible is in dropped form in the world (i.e. as EntityItem)
         /// </summary>

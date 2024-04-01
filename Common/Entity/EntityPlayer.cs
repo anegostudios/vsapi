@@ -867,6 +867,7 @@ namespace Vintagestory.API.Common
                         controls.HandUse = EnumHandInteract.None;
                         plrAnimMngr.StartHeldHitAnim(nowHeldRightHitAnim);
                         haveHandUseOrHit = true;
+                        RightHandItemSlot.Itemstack?.Collectible.OnHeldActionAnimStart(RightHandItemSlot, this, EnumHandInteract.HeldItemAttack);
                     }
 
                 } else
@@ -876,6 +877,7 @@ namespace Vintagestory.API.Common
                     {
                         plrAnimMngr.StartHeldHitAnim(nowHeldRightHitAnim);
                         haveHandUseOrHit = true;
+                        RightHandItemSlot.Itemstack?.Collectible.OnHeldActionAnimStart(RightHandItemSlot, this, EnumHandInteract.HeldItemAttack);
                     }
                 }
             }

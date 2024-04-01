@@ -41,6 +41,12 @@ namespace Vintagestory.API.Client
             capi.Input.MousePitch += dp;
             capi.Input.MouseYaw += (float)(Math.Sin(accum / 1.1) + Math.Sin(accum / 1.5f) + Math.Sin(accum / 5f) * 0.2f) * f;
 
+            // When mouse is in gui mode we need to manually update the players yaw, otherwise the fp hands dont rotate with the camera
+            if (!capi.Input.MouseGrabbed)
+            {
+                capi.World.Player.Entity.Pos.Yaw = capi.Input.MouseYaw;
+            }
+
             var hc = capi.World.Player.Entity.AnimManager.HeadController;
 
             hc.yawOffset = (float)(Math.Cos(accum / 1.12) + Math.Cos(accum / 1.2f) + Math.Cos(accum / 4f) * 0.2f) * f * 60f;
