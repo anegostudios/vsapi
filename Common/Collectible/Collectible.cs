@@ -430,6 +430,16 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// Sets the items durability
+        /// </summary>
+        /// <param name="itemstack"></param>
+        /// <returns></returns>
+        public virtual void SetDurability(ItemStack itemstack, int amount)
+        {
+            itemstack.Attributes.SetInt("durability", amount);
+        }
+
+        /// <summary>
         /// The amount of damage dealt when used as a weapon
         /// </summary>
         /// <param name="withItemStack"></param>
