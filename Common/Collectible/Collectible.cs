@@ -433,7 +433,6 @@ namespace Vintagestory.API.Common
         /// Sets the items durability
         /// </summary>
         /// <param name="itemstack"></param>
-        /// <returns></returns>
         public virtual void SetDurability(ItemStack itemstack, int amount)
         {
             itemstack.Attributes.SetInt("durability", amount);
