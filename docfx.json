@@ -1,47 +1,48 @@
 {
-  "metadata": [
-    {
-      "src": [
-        {
-          "src": "./",
-          "files": [
-            "**/*.csproj"
-          ]
-        }
-      ],
-      "dest": "api"
-    }
-  ],
-  "build": {
-    "content": [
-      {
-        "files": [
-          "**/*.{md,yml}"
-        ],
-        "exclude": [
-          "_site/**"
-        ]
-      }
-    ],
-    "resource": [
-      {
-        "files": [
-          "images/**"
-        ]
-      }
-    ],
-    "output": "_site",
-    "template": [
-      "default",
-      "modern"
-    ],
-    "globalMetadata": {
-      "_appName": "VintageStory API",
-      "_appTitle": "VintageStory API",
-      "_enableSearch": true,
-      "_appLogoPath": "images/logo.png",
-      "_appFaviconPath": "images/gameicon.ico",
-      "pdf": false
-    }
-  }
+	"metadata": [
+		{
+			"src": [
+				{
+					"src": "./",
+					"files": [
+						"**/*.csproj"
+					]
+				}
+			],
+			"dest": "api",
+			"disableGitFeatures": true
+		}
+	],
+	"build": {
+		"content": [
+			{
+				"files": [
+					"**/*.{md,yml}"
+				],
+				"exclude": [
+					"_site/**"
+				]
+			}
+		],
+		"resource": [
+			{
+				"files": [
+					"images/**"
+				]
+			}
+		],
+		"output": "_site",
+		"template": [
+			"default",
+			"modern"
+		],
+		"globalMetadata": {
+			"_appName": "VintageStory API",
+			"_appTitle": "VintageStory API",
+			"_enableSearch": true,
+			"_appLogoPath": "images/logo.png",
+			"_appFaviconPath": "images/gameicon.ico",
+			"pdf": false
+		}
+	}
 }

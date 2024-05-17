@@ -855,6 +855,7 @@ namespace Vintagestory.API.Common
                 if (!curauthoritative)
                 {
                     plrAnimMngr.StopHeldAttackAnim();
+                    plrAnimMngr.StopAnimation(plrAnimMngr.lastRunningHeldHitAnimation); // Needed for some reason. Doesn't stop otherwise when left mouse + empty hand and then scroll wheel active slot to pickaxe
                 }
 
                 //if (/*plrAnimMngr.lastRunningHeldHitAnimation != null && - why is this here? */curauthoritative) - why is this curauthoritative?

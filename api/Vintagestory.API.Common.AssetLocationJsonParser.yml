@@ -16,14 +16,6 @@ items:
   nameWithType: AssetLocationJsonParser
   fullName: Vintagestory.API.Common.AssetLocationJsonParser
   type: Class
-  source:
-    remote:
-      path: VintagestoryApi/Util/JsonUtil.cs
-      branch: 2664deba8b6ad7ad83a79ce9549f90bdec2d7046
-      repo: https://gitlab-ci-token:glcbt-64_XrbGJXQUv2yYeXx8TzYt@git.striver.net/vintagecraft/game.git
-    id: AssetLocationJsonParser
-    path: Util/JsonUtil.cs
-    startLine: 142
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -54,14 +46,6 @@ items:
   nameWithType: AssetLocationJsonParser.AssetLocationJsonParser(string)
   fullName: Vintagestory.API.Common.AssetLocationJsonParser.AssetLocationJsonParser(string)
   type: Constructor
-  source:
-    remote:
-      path: VintagestoryApi/Util/JsonUtil.cs
-      branch: 2664deba8b6ad7ad83a79ce9549f90bdec2d7046
-      repo: https://gitlab-ci-token:glcbt-64_XrbGJXQUv2yYeXx8TzYt@git.striver.net/vintagecraft/game.git
-    id: .ctor
-    path: Util/JsonUtil.cs
-    startLine: 146
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
@@ -86,25 +70,20 @@ items:
   nameWithType: AssetLocationJsonParser.CanConvert(Type)
   fullName: Vintagestory.API.Common.AssetLocationJsonParser.CanConvert(System.Type)
   type: Method
-  source:
-    remote:
-      path: VintagestoryApi/Util/JsonUtil.cs
-      branch: 2664deba8b6ad7ad83a79ce9549f90bdec2d7046
-      repo: https://gitlab-ci-token:glcbt-64_XrbGJXQUv2yYeXx8TzYt@git.striver.net/vintagecraft/game.git
-    id: CanConvert
-    path: Util/JsonUtil.cs
-    startLine: 151
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Determines whether this instance can convert the specified object type.
   example: []
   syntax:
     content: public override bool CanConvert(Type objectType)
     parameters:
     - id: objectType
       type: System.Type
+      description: Type of the object.
     return:
       type: System.Boolean
+      description: <code>true</code> if this instance can convert the specified object type; otherwise, <code>false</code>.
     content.vb: Public Overrides Function CanConvert(objectType As Type) As Boolean
   overridden: Newtonsoft.Json.JsonConverter.CanConvert(System.Type)
   overload: Vintagestory.API.Common.AssetLocationJsonParser.CanConvert*
@@ -119,31 +98,29 @@ items:
   nameWithType: AssetLocationJsonParser.ReadJson(JsonReader, Type, object, JsonSerializer)
   fullName: Vintagestory.API.Common.AssetLocationJsonParser.ReadJson(Newtonsoft.Json.JsonReader, System.Type, object, Newtonsoft.Json.JsonSerializer)
   type: Method
-  source:
-    remote:
-      path: VintagestoryApi/Util/JsonUtil.cs
-      branch: 2664deba8b6ad7ad83a79ce9549f90bdec2d7046
-      repo: https://gitlab-ci-token:glcbt-64_XrbGJXQUv2yYeXx8TzYt@git.striver.net/vintagecraft/game.git
-    id: ReadJson
-    path: Util/JsonUtil.cs
-    startLine: 156
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Reads the JSON representation of the object.
   example: []
   syntax:
     content: public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     parameters:
     - id: reader
       type: Newtonsoft.Json.JsonReader
+      description: The <xref href="Newtonsoft.Json.JsonReader" data-throw-if-not-resolved="false"></xref> to read from.
     - id: objectType
       type: System.Type
+      description: Type of the object.
     - id: existingValue
       type: System.Object
+      description: The existing value of object being read.
     - id: serializer
       type: Newtonsoft.Json.JsonSerializer
+      description: The calling serializer.
     return:
       type: System.Object
+      description: The object value.
     content.vb: Public Overrides Function ReadJson(reader As JsonReader, objectType As Type, existingValue As Object, serializer As JsonSerializer) As Object
   overridden: Newtonsoft.Json.JsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)
   overload: Vintagestory.API.Common.AssetLocationJsonParser.ReadJson*
@@ -161,27 +138,23 @@ items:
   nameWithType: AssetLocationJsonParser.WriteJson(JsonWriter, object, JsonSerializer)
   fullName: Vintagestory.API.Common.AssetLocationJsonParser.WriteJson(Newtonsoft.Json.JsonWriter, object, Newtonsoft.Json.JsonSerializer)
   type: Method
-  source:
-    remote:
-      path: VintagestoryApi/Util/JsonUtil.cs
-      branch: 2664deba8b6ad7ad83a79ce9549f90bdec2d7046
-      repo: https://gitlab-ci-token:glcbt-64_XrbGJXQUv2yYeXx8TzYt@git.striver.net/vintagecraft/game.git
-    id: WriteJson
-    path: Util/JsonUtil.cs
-    startLine: 165
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Writes the JSON representation of the object.
   example: []
   syntax:
     content: public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     parameters:
     - id: writer
       type: Newtonsoft.Json.JsonWriter
+      description: The <xref href="Newtonsoft.Json.JsonWriter" data-throw-if-not-resolved="false"></xref> to write to.
     - id: value
       type: System.Object
+      description: The value.
     - id: serializer
       type: Newtonsoft.Json.JsonSerializer
+      description: The calling serializer.
     content.vb: Public Overrides Sub WriteJson(writer As JsonWriter, value As Object, serializer As JsonSerializer)
   overridden: Newtonsoft.Json.JsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)
   overload: Vintagestory.API.Common.AssetLocationJsonParser.WriteJson*
@@ -572,6 +545,13 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: Newtonsoft.Json.JsonReader
+  commentId: T:Newtonsoft.Json.JsonReader
+  parent: Newtonsoft.Json
+  isExternal: true
+  name: JsonReader
+  nameWithType: JsonReader
+  fullName: Newtonsoft.Json.JsonReader
 - uid: Newtonsoft.Json.JsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)
   commentId: M:Newtonsoft.Json.JsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)
   parent: Newtonsoft.Json.JsonConverter
@@ -641,13 +621,6 @@ references:
   name: ReadJson
   nameWithType: AssetLocationJsonParser.ReadJson
   fullName: Vintagestory.API.Common.AssetLocationJsonParser.ReadJson
-- uid: Newtonsoft.Json.JsonReader
-  commentId: T:Newtonsoft.Json.JsonReader
-  parent: Newtonsoft.Json
-  isExternal: true
-  name: JsonReader
-  nameWithType: JsonReader
-  fullName: Newtonsoft.Json.JsonReader
 - uid: Newtonsoft.Json.JsonSerializer
   commentId: T:Newtonsoft.Json.JsonSerializer
   parent: Newtonsoft.Json
@@ -655,6 +628,13 @@ references:
   name: JsonSerializer
   nameWithType: JsonSerializer
   fullName: Newtonsoft.Json.JsonSerializer
+- uid: Newtonsoft.Json.JsonWriter
+  commentId: T:Newtonsoft.Json.JsonWriter
+  parent: Newtonsoft.Json
+  isExternal: true
+  name: JsonWriter
+  nameWithType: JsonWriter
+  fullName: Newtonsoft.Json.JsonWriter
 - uid: Newtonsoft.Json.JsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)
   commentId: M:Newtonsoft.Json.JsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)
   parent: Newtonsoft.Json.JsonConverter
@@ -712,10 +692,3 @@ references:
   name: WriteJson
   nameWithType: AssetLocationJsonParser.WriteJson
   fullName: Vintagestory.API.Common.AssetLocationJsonParser.WriteJson
-- uid: Newtonsoft.Json.JsonWriter
-  commentId: T:Newtonsoft.Json.JsonWriter
-  parent: Newtonsoft.Json
-  isExternal: true
-  name: JsonWriter
-  nameWithType: JsonWriter
-  fullName: Newtonsoft.Json.JsonWriter
