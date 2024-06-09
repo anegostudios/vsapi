@@ -61,7 +61,8 @@ namespace Vintagestory.API.MathTools
         Screen = 4,
         ColorDodge = 5,
         ColorBurn = 6,
-        Overlay = 7
+        Overlay = 7,
+        OverlayCutout = 8
     }
 
 
@@ -81,7 +82,8 @@ namespace Vintagestory.API.MathTools
                 Screen,
                 ColorDodge,
                 ColorBurn,
-                Overlay
+                Overlay,
+                OverlayCutout
             };
         }
 
@@ -984,6 +986,17 @@ namespace Vintagestory.API.MathTools
             return (int)ret;
         }
 
+        public static int OverlayCutout(int rgb1, int rgb2)
+        {
+            VSColor lhs = new(rgb1);
+            VSColor rhs = new(rgb2);
+        
+            if (lhs.A > 0 && rhs.A > 0)
+            {
+                return 0;
+            }
+            return ColorBlend.Overlay(rgb1, rgb2);
+        }
 
 
 
