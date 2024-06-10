@@ -990,12 +990,11 @@ namespace Vintagestory.API.MathTools
         {
             VSColor lhs = new(rgb1);
             VSColor rhs = new(rgb2);
-        
-            if (lhs.A > 0 && rhs.A > 0)
+            if (rhs.A != 0)
             {
-                return 0;
+                lhs.A = 0;
             }
-            return ColorBlend.Overlay(rgb1, rgb2);
+            return lhs.AsInt;
         }
 
 
