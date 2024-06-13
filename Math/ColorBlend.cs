@@ -61,7 +61,9 @@ namespace Vintagestory.API.MathTools
         Screen = 4,
         ColorDodge = 5,
         ColorBurn = 6,
-        Overlay = 7
+        Overlay = 7,
+        OverlayPreserveBaseAlpha = 8,
+        OverlayPreserveSecondAlpha = 9
     }
 
 
@@ -81,7 +83,9 @@ namespace Vintagestory.API.MathTools
                 Screen,
                 ColorDodge,
                 ColorBurn,
-                Overlay
+                Overlay,
+                OverlayPreserveBaseAlpha,
+                OverlayPreserveSecondAlpha
             };
         }
 
@@ -473,7 +477,51 @@ namespace Vintagestory.API.MathTools
 
             return (int)ret;
         }
+   
+        public static int OverlayPreserveBaseAlpha(int rgb1, int rgb2)
+        {
+            VSColor lhs = new VSColor(rgb1);
+            VSColor rhs = new VSColor(rgb2);
 
+            rhs.Rn *= rhs.An;
+            rhs.Gn *= rhs.An;
+            rhs.Bn *= rhs.An;
+
+            int lhsA = lhs.A;
+
+            if (lhsA < 128)
+            {
+                return 0;
+            }
+            else
+            {
+               return Overlay(rgb1, rgb2) 
+            }
+        }
+
+        
+        public static int OverlayPreserveSecondAlpha(int rgb1, int rgb2)
+        {
+            VSColor lhs = new VSColor(rgb1);
+            VSColor rhs = new VSColor(rgb2);
+
+            rhs.Rn *= rhs.An;
+            rhs.Gn *= rhs.An;
+            rhs.Bn *= rhs.An;
+
+            int rhsA = rhs.A;
+
+            if (rhsA < 128)
+            {
+                return 0;
+            }
+            else
+            {
+               return Overlay(rgb1, rgb2) 
+            }
+        }
+        
+        
         public static int Darken(int rgb1, int rgb2)
         {
             VSColor lhs = new VSColor(rgb1);
