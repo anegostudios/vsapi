@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
@@ -14,9 +16,6 @@ namespace Vintagestory.API.Common
     /// </summary>
     public class ClientAnimator : AnimatorBase
     {
-        public ShapeElement[] rootElements;
-        public List<ElementPose> RootPoses;
-
         protected HashSet<int> jointsDone = new HashSet<int>();
         public Dictionary<int, AnimationJoint> jointsById;
 
@@ -28,7 +27,9 @@ namespace Vintagestory.API.Common
 
         float[] localTransformMatrix = Mat4f.Create();
         float[] tmpMatrix = Mat4f.Create();
-        
+
+        Action<AnimationSound> onShouldPlaySoundListener = null;
+
         public static ClientAnimator CreateForEntity(Entity entity, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById)
         {
             if (entity is EntityAgent)
@@ -40,7 +41,8 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    entity.AnimManager.OnAnimationStopped
+                    entity.AnimManager.TriggerAnimationStopped,
+                    entity.AnimManager.ShouldPlaySound
                 );
             } else
             {
@@ -50,7 +52,8 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    entity.AnimManager.OnAnimationStopped
+                    entity.AnimManager.TriggerAnimationStopped,
+                    entity.AnimManager.ShouldPlaySound
                 );
             }
         }
@@ -66,7 +69,8 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    entity.AnimManager.OnAnimationStopped
+                    entity.AnimManager.TriggerAnimationStopped,
+                    entity.AnimManager.ShouldPlaySound
                 );
             } else
             {
@@ -75,32 +79,56 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    entity.AnimManager.OnAnimationStopped
+                    entity.AnimManager.TriggerAnimationStopped,
+                    entity.AnimManager.ShouldPlaySound
                 );
             }
         }
 
-        public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
+        public ClientAnimator(
+            WalkSpeedSupplierDelegate walkSpeedSupplier,
+            Animation[] animations,
+            Action<string> onAnimationStoppedListener = null,
+            Action<AnimationSound> onShouldPlaySoundListener = null
+        ) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
+            this.onShouldPlaySoundListener = onShouldPlaySoundListener;
             initFields();
         }
 
-        public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
+        public ClientAnimator(
+            WalkSpeedSupplierDelegate walkSpeedSupplier,
+            List<ElementPose> rootPoses,
+            Animation[] animations,
+            ShapeElement[] rootElements,
+            Dictionary<int, AnimationJoint> jointsById,
+            Action<string> onAnimationStoppedListener = null,
+            Action<AnimationSound> onShouldPlaySoundListener = null
+        ) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
-            this.rootElements = rootElements;
+            this.RootElements = rootElements;
             this.jointsById = jointsById;
             this.RootPoses = rootPoses;
+            this.onShouldPlaySoundListener = onShouldPlaySoundListener;
             LoadAttachmentPoints(RootPoses);
             initFields();
         }
 
-        public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
+        public ClientAnimator(
+            WalkSpeedSupplierDelegate walkSpeedSupplier,
+            Animation[] animations,
+            ShapeElement[] rootElements,
+            Dictionary<int, AnimationJoint> jointsById,
+            Action<string> onAnimationStoppedListener = null,
+            Action<AnimationSound> onShouldPlaySoundListener = null
+        ) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
-            this.rootElements = rootElements;
+            this.RootElements = rootElements;
             this.jointsById = jointsById;
 
             RootPoses = new List<ElementPose>();
             LoadPosesAndAttachmentPoints(rootElements, RootPoses);
+            this.onShouldPlaySoundListener = onShouldPlaySoundListener;
             initFields();
         }
 
@@ -118,6 +146,11 @@ namespace Vintagestory.API.Common
                 nextFrameTransformsByAnimation[i] = new List<ElementPose>[MaxConcurrentAnimations];
                 weightsByAnimationAndElement[i] = new ShapeElementWeights[MaxConcurrentAnimations][];
             }
+        }
+
+        public override void ReloadAttachmentPoints()
+        {
+            LoadAttachmentPoints(RootPoses);
         }
 
         protected virtual void LoadAttachmentPoints(List<ElementPose> cachedPoses)
@@ -219,10 +252,10 @@ namespace Vintagestory.API.Common
 
             if (anim.Animation.PrevNextKeyFrameByFrame == null)
             {
-                anim.Animation.GenerateAllFrames(rootElements, jointsById);
+                anim.Animation.GenerateAllFrames(RootElements, jointsById);
             }
 
-            anim.LoadWeights(rootElements);
+            anim.LoadWeights(RootElements);
         }
 
 
@@ -231,6 +264,8 @@ namespace Vintagestory.API.Common
         int[] prevFrame = new int[MaxConcurrentAnimations];
         int[] nextFrame = new int[MaxConcurrentAnimations];
 
+        public override int MaxJointId => jointsById.Count + 1;
+
         public override void OnFrame(Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, float dt)
         {
             for (int j = 0; j < activeAnimCount; j++)
@@ -238,7 +273,16 @@ namespace Vintagestory.API.Common
                 RunningAnimation anim = CurAnims[j];
                 if (anim.Animation.PrevNextKeyFrameByFrame == null && anim.Animation.KeyFrames.Length > 0)
                 {
-                    anim.Animation.GenerateAllFrames(rootElements, jointsById);
+                    anim.Animation.GenerateAllFrames(RootElements, jointsById);
+                }
+
+                if (anim.meta.AnimationSound != null && onShouldPlaySoundListener != null)
+                {
+                    if (anim.CurrentFrame >= anim.meta.AnimationSound.Frame && anim.SoundPlayedAtIteration != anim.Iterations)
+                    {
+                        onShouldPlaySoundListener(anim.meta.AnimationSound);
+                        anim.SoundPlayedAtIteration = anim.Iterations;
+                    }
                 }
             }
 
@@ -248,68 +292,62 @@ namespace Vintagestory.API.Common
         protected override void calculateMatrices(float dt)
         {
             if (!CalculateMatrices) return;
-            try
+            
+            jointsDone.Clear();
+
+            int animVersion = 0;
+
+            for (int j = 0; j < activeAnimCount; j++)
             {
-                jointsDone.Clear();
+                RunningAnimation anim = CurAnims[j];
+                weightsByAnimationAndElement[0][j] = anim.ElementWeights;
 
-                int animVersion = 0;
+                animVersion = Math.Max(animVersion, anim.Animation.Version);
 
-                for (int j = 0; j < activeAnimCount; j++)
+                AnimationFrame[] prevNextFrame = anim.Animation.PrevNextKeyFrameByFrame[(int)anim.CurrentFrame % anim.Animation.QuantityFrames];
+                frameByDepthByAnimation[0][j] = prevNextFrame[0].RootElementTransforms;
+                prevFrame[j] = prevNextFrame[0].FrameNumber;
+
+                if (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && (int)anim.CurrentFrame + 1 == anim.Animation.QuantityFrames)
                 {
-                    RunningAnimation anim = CurAnims[j];
-                    weightsByAnimationAndElement[0][j] = anim.ElementWeights;
-
-                    animVersion = Math.Max(animVersion, anim.Animation.Version);
-
-                    AnimationFrame[] prevNextFrame = anim.Animation.PrevNextKeyFrameByFrame[(int)anim.CurrentFrame % anim.Animation.QuantityFrames];
-                    frameByDepthByAnimation[0][j] = prevNextFrame[0].RootElementTransforms;
-                    prevFrame[j] = prevNextFrame[0].FrameNumber;
-
-                    if (anim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.Hold && (int)anim.CurrentFrame + 1 == anim.Animation.QuantityFrames)
-                    {
-                        nextFrameTransformsByAnimation[0][j] = prevNextFrame[0].RootElementTransforms;
-                        nextFrame[j] = prevNextFrame[0].FrameNumber;
-                    }
-                    else
-                    {
-                        nextFrameTransformsByAnimation[0][j] = prevNextFrame[1].RootElementTransforms;
-                        nextFrame[j] = prevNextFrame[1].FrameNumber;
-                    }
+                    nextFrameTransformsByAnimation[0][j] = prevNextFrame[0].RootElementTransforms;
+                    nextFrame[j] = prevNextFrame[0].FrameNumber;
                 }
-
-                calculateMatrices(
-                    animVersion,
-                    dt,
-                    RootPoses,
-                    weightsByAnimationAndElement[0],
-                    Mat4f.Create(),
-                    frameByDepthByAnimation[0],
-                    nextFrameTransformsByAnimation[0],
-                    0
-                );
-
-
-                for (int jointid = 0; jointid < GlobalConstants.MaxAnimatedElements; jointid++)
+                else
                 {
-                    if (jointsById.ContainsKey(jointid)) continue;
-
-                    for (int j = 0; j < 12; j++)
-                    {
-                        TransformationMatrices4x3[jointid * 12 + j] = identMat4x3[j];
-                    }
+                    nextFrameTransformsByAnimation[0][j] = prevNextFrame[1].RootElementTransforms;
+                    nextFrame[j] = prevNextFrame[1].FrameNumber;
                 }
+            }
 
-                foreach (var val in AttachmentPointByCode)
-                {
-                    for (int i = 0; i < 16; i++)
-                    {
-                        val.Value.AnimModelMatrix[i] = val.Value.CachedPose.AnimModelMatrix[i];
-                    }
-                }
+            calculateMatrices(
+                animVersion,
+                dt,
+                RootPoses,
+                weightsByAnimationAndElement[0],
+                Mat4f.Create(),
+                frameByDepthByAnimation[0],
+                nextFrameTransformsByAnimation[0],
+                0
+            );
 
-            } catch (Exception)
+
+            for (int jointid = 0; jointid < GlobalConstants.MaxAnimatedElements; jointid++)
             {
-               //entity.World.Logger.Fatal("Animation system crash. Please report this bug. curanimcount: {3}, tm-l:{0}, jbi-c: {1}, abc-c: {2}\nException: {4}", TransformationMatrices.Length, jointsById.Count, AttachmentPointByCode.Count, curAnimCount, e);
+                if (jointsById.ContainsKey(jointid)) continue;
+
+                for (int j = 0; j < 16; j++)
+                {
+                    TransformationMatrices[jointid * 16 + j] = identMat[j];
+                }
+            }
+
+            foreach (var val in AttachmentPointByCode)
+            {
+                for (int i = 0; i < 16; i++)
+                {
+                    val.Value.AnimModelMatrix[i] = val.Value.CachedPose.AnimModelMatrix[i];
+                }
             }
         }
 
@@ -344,6 +382,10 @@ namespace Vintagestory.API.Common
                 outFramePose.Clear();
 
                 float weightSum = 0f;
+#if DEBUG
+                StringBuilder sb = null;
+                if (EleWeightDebug) sb = new StringBuilder();
+#endif
                 for (int animIndex = 0; animIndex < activeAnimCount; animIndex++)
                 {
                     RunningAnimation anim = CurAnims[animIndex];
@@ -353,7 +395,18 @@ namespace Vintagestory.API.Common
                     {
                         weightSum += sew.Weight * anim.EasingFactor;
                     }
+
+#if DEBUG
+                    if (EleWeightDebug) sb.Append(string.Format("{0:0.0} from {1} (blendmode {2}), ", sew.Weight * anim.EasingFactor, anim.Animation.Code, sew.BlendMode));
+#endif
                 }
+#if DEBUG
+                if (EleWeightDebug)
+                {
+                    if (eleWeights.ContainsKey(elem.Name)) eleWeights[elem.Name] += sb.ToString();
+                    else eleWeights[elem.Name] = sb.ToString();
+                }
+#endif
 
                 for (int animIndex = 0; animIndex < activeAnimCount; animIndex++)
                 {
@@ -388,30 +441,11 @@ namespace Vintagestory.API.Common
                 {
                     Mat4f.Mul(tmpMatrix, outFramePose.AnimModelMatrix, elem.inverseModelTransform);
 
-                    // https://stackoverflow.com/questions/32565827/whats-the-purpose-of-magic-4-of-last-row-in-matrix-4x4-for-3d-graphics
-                    // We skip the last row of our 4x4 matrix, because it has no useful data
-                    // 0 4 8  12
-                    // 1 5 9  13
-                    // 2 6 10 14
-                    // 3 7 11 15
-                    // =>
-                    // 0 3 6 9
-                    // 1 4 7 10
-                    // 2 5 8 11
-                    int index = 12 * elem.JointId;
-                    TransformationMatrices4x3[index++] = tmpMatrix[0];
-                    TransformationMatrices4x3[index++] = tmpMatrix[1];
-                    TransformationMatrices4x3[index++] = tmpMatrix[2];
-                    TransformationMatrices4x3[index++] = tmpMatrix[4];
-                    TransformationMatrices4x3[index++] = tmpMatrix[5];
-                    TransformationMatrices4x3[index++] = tmpMatrix[6];
-                    TransformationMatrices4x3[index++] = tmpMatrix[8];
-                    TransformationMatrices4x3[index++] = tmpMatrix[9];
-                    TransformationMatrices4x3[index++] = tmpMatrix[10];
-                    TransformationMatrices4x3[index++] = tmpMatrix[12];
-                    TransformationMatrices4x3[index++] = tmpMatrix[13];
-                    TransformationMatrices4x3[index++] = tmpMatrix[14];
-
+                    int index = 16 * elem.JointId;
+                    for (int i = 0; i < 16; i++)
+                    {
+                        TransformationMatrices[index+i] = tmpMatrix[i];
+                    }
 
                     jointsDone.Add(elem.JointId);
                 }
@@ -432,6 +466,18 @@ namespace Vintagestory.API.Common
             }
         }
 
+
+        static bool EleWeightDebug=false;
+        Dictionary<string, string> eleWeights = new Dictionary<string, string>();
+        public override string DumpCurrentState()
+        {
+            EleWeightDebug = true;
+            eleWeights.Clear();
+            calculateMatrices(1 / 60f);
+            EleWeightDebug = false;
+
+            return base.DumpCurrentState() + "\nElement weights:\n" + string.Join("\n", eleWeights.Select(x => x.Key + ": " + x.Value));
+        }
 
     }
 }

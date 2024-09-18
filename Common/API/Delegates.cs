@@ -124,15 +124,13 @@ namespace Vintagestory.API.Common
 
     public delegate void ChunkColumnGenerationDelegate(IChunkColumnGenerateRequest request);
 
-    //public delegate void ChunkGenerationPassDelegate(IServerChunk chunk, int chunkX, int chunkY, int chunkZ);
-
     public delegate void MapChunkGeneratorDelegate(IMapChunk mapChunk, int chunkX, int chunkZ);
 
     public delegate void MapRegionGeneratorDelegate(IMapRegion mapRegion, int regionX, int regionZ, ITreeAttribute chunkGenParams = null);
 
     public delegate void WorldGenThreadDelegate(IChunkProviderThread chunkProvider);
 
-    public delegate void WorldGenHookDelegate(IBlockAccessor blockAccessor, BlockPos pos, AssetLocation instructions);
+    public delegate void WorldGenHookDelegate(IBlockAccessor blockAccessor, BlockPos pos, string param);
 
 
     public delegate void BlockUsedDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
@@ -142,6 +140,14 @@ namespace Vintagestory.API.Common
     public delegate void BlockBreakDelegate(IServerPlayer byPlayer, BlockSelection blockSel, ref float dropQuantityMultiplier, ref EnumHandling handling);
 
     public delegate bool CanUseDelegate(IServerPlayer byPlayer, BlockSelection blockSel);
+
+    /// <summary>
+    /// Test if a player has the privilege to modify a block at given block selection
+    /// </summary>
+    /// <param name="byPlayer"></param>
+    /// <param name="blockSel"></param>
+    /// <param name="claimant">Needs to be set when false is returned. Is used to display the reason why the placement was denied. Either it needs to be the name of a player/npc who owns this block, or it needs to be prefixed with custommessage- for a custom error message, e.g. "custommessage-nobuildprivilege": "No build privilege" </param>
+    /// <returns>False to deny placement</returns>
     public delegate bool CanPlaceOrBreakDelegate(IServerPlayer byPlayer, BlockSelection blockSel, out string claimant);
 
 

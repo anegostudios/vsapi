@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -265,10 +265,10 @@ Class EntityAgent
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsShadowRendered">Entity.IsShadowRendered</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HurtColor">Entity.HurtColor</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Stats">Entity.Stats</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Stats">Entity.Stats</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_fireDamageAccum">Entity.fireDamageAccum</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_touchDistanceSq">Entity.touchDistanceSq</a>
@@ -278,6 +278,12 @@ Class EntityAgent
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_hasRepulseBehavior">Entity.hasRepulseBehavior</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_trickleDownRayIntersects">Entity.trickleDownRayIntersects</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_requirePosesOnServer">Entity.requirePosesOnServer</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_packet">Entity.packet</a>
@@ -385,6 +391,27 @@ Class EntityAgent
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Ignite">Entity.Ignite()</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetTextureSource">Entity.GetTextureSource()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ShapeFresh">Entity.ShapeFresh</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_FrustumSphereRadius">Entity.FrustumSphereRadius</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_shapeFresh">Entity.shapeFresh</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_MarkShapeModified">Entity.MarkShapeModified()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_">Entity.OnTesselation(ref Shape, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselated">Entity.OnTesselated()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnFallToGround_System_Double_">Entity.OnFallToGround(double)</a>
     </div>
     <div>
@@ -401,9 +428,6 @@ Class EntityAgent
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnEntitySpawn">Entity.OnEntitySpawn()</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_">Entity.OnEntityDespawn(EntityDespawnData)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnExitedLiquid">Entity.OnExitedLiquid()</a>
@@ -454,6 +478,9 @@ Class EntityAgent
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetBehavior__1">Entity.GetBehavior&lt;T&gt;()</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetInterface__1">Entity.GetInterface&lt;T&gt;()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsActivityRunning_System_String_">Entity.IsActivityRunning(string)</a>
     </div>
     <div>
@@ -487,7 +514,10 @@ Class EntityAgent
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_DidImportOrExport_Vintagestory_API_MathTools_BlockPos_">Entity.DidImportOrExport(BlockPos)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_">Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnStoreCollectibleMappings_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__">Entity.OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_">Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int, bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetName">Entity.GetName()</a>
@@ -500,6 +530,9 @@ Class EntityAgent
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_StopAnimation_System_String_">Entity.StopAnimation(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IntersectsRay_Vintagestory_API_MathTools_Ray_Vintagestory_API_MathTools_AABBIntersectionTest_System_Double__System_Int32__">Entity.IntersectsRay(Ray, AABBIntersectionTest, out double, ref int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_Code">RegistryObject.Code</a>
@@ -590,6 +623,16 @@ Class EntityAgent
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -722,6 +765,36 @@ Class EntityAgent
 
 
 
+  <h3 id="Vintagestory_API_Common_EntityAgent_alwaysRunIdle" data-uid="Vintagestory.API.Common.EntityAgent.alwaysRunIdle">
+  alwaysRunIdle
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool alwaysRunIdle</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_EntityAgent_controls" data-uid="Vintagestory.API.Common.EntityAgent.controls">
   controls
   
@@ -740,36 +813,6 @@ Class EntityAgent
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.EntityControls.html">EntityControls</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_EntityAgent_hideClothing" data-uid="Vintagestory.API.Common.EntityAgent.hideClothing">
-  hideClothing
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool hideClothing</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -862,6 +905,36 @@ Class EntityAgent
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.EntityControls.html">EntityControls</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityAgent_sidewaysSwivelAngle" data-uid="Vintagestory.API.Common.EntityAgent.sidewaysSwivelAngle">
+  sidewaysSwivelAngle
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float sidewaysSwivelAngle</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -1004,38 +1077,6 @@ Class EntityAgent
 
 
 
-  <a id="Vintagestory_API_Common_EntityAgent_GearInventory_" data-uid="Vintagestory.API.Common.EntityAgent.GearInventory*"></a>
-
-  <h3 id="Vintagestory_API_Common_EntityAgent_GearInventory" data-uid="Vintagestory.API.Common.EntityAgent.GearInventory">
-  GearInventory
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>The inventory of the entity agent.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual IInventory GearInventory { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
   <a id="Vintagestory_API_Common_EntityAgent_HerdId_" data-uid="Vintagestory.API.Common.EntityAgent.HerdId*"></a>
 
   <h3 id="Vintagestory_API_Common_EntityAgent_HerdId" data-uid="Vintagestory.API.Common.EntityAgent.HerdId">
@@ -1145,7 +1186,7 @@ Class EntityAgent
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IMountable MountedOn { get; protected set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IMountableSeat MountedOn { get; protected set; }</code></pre>
   </div>
 
 
@@ -1154,7 +1195,7 @@ Class EntityAgent
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.IMountable.html">IMountable</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.IMountableSeat.html">IMountableSeat</a></dt>
     <dd></dd>
   </dl>
 
@@ -1530,6 +1571,38 @@ Class EntityAgent
 
 
 
+  <a id="Vintagestory_API_Common_EntityAgent_OnEntityDespawn_" data-uid="Vintagestory.API.Common.EntityAgent.OnEntityDespawn*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityAgent_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_" data-uid="Vintagestory.API.Common.EntityAgent.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)">
+  OnEntityDespawn(EntityDespawnData)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Called when the entity despawns</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnEntityDespawn(EntityDespawnData despawn)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>despawn</code> <a class="xref" href="Vintagestory.API.Common.Entities.EntityDespawnData.html">EntityDespawnData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityAgent_OnGameTick_" data-uid="Vintagestory.API.Common.EntityAgent.OnGameTick*"></a>
 
   <h3 id="Vintagestory_API_Common_EntityAgent_OnGameTick_System_Single_" data-uid="Vintagestory.API.Common.EntityAgent.OnGameTick(System.Single)">
@@ -1589,150 +1662,6 @@ Class EntityAgent
     <dt><code>mode</code> <a class="xref" href="Vintagestory.API.Common.EnumInteractMode.html">EnumInteractMode</a></dt>
     <dd><p>0 = attack, 1 = interact</p>
 </dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_EntityAgent_OnLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.EntityAgent.OnLoadCollectibleMappings*"></a>
-
-  <h3 id="Vintagestory_API_Common_EntityAgent_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_" data-uid="Vintagestory.API.Common.EntityAgent.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)">
-  OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int, bool)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called by the blockschematic loader so that you may fix any blockid/itemid mappings against the mapping of the savegame, if you store any collectibles in this blockentity.
-Note: Some vanilla blocks resolve randomized contents in this method.
-Hint: Use itemstack.FixMapping() to do the job for you.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void OnLoadCollectibleMappings(IWorldAccessor worldForResolve, Dictionary&lt;int, AssetLocation&gt; oldBlockIdMapping, Dictionary&lt;int, AssetLocation&gt; oldItemIdMapping, int schematicSeed, bool resolveImports)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>worldForResolve</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
-    <dd></dd>
-    <dt><code>oldBlockIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
-    <dd></dd>
-    <dt><code>oldItemIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
-    <dd></dd>
-    <dt><code>schematicSeed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>If you need some sort of randomness consistency accross an imported schematic, you can use this value</p>
-</dd>
-    <dt><code>resolveImports</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p>Turn it off to spawn structures as they are. For example, in this mode, instead of traders, their meta spawners will spawn</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_EntityAgent_OnNoPath_" data-uid="Vintagestory.API.Common.EntityAgent.OnNoPath*"></a>
-
-  <h3 id="Vintagestory_API_Common_EntityAgent_OnNoPath_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.EntityAgent.OnNoPath(Vintagestory.API.MathTools.Vec3d)">
-  OnNoPath(Vec3d)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when the path finder does not find a path to given target</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void OnNoPath(Vec3d target)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>target</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_EntityAgent_OnStoreCollectibleMappings_" data-uid="Vintagestory.API.Common.EntityAgent.OnStoreCollectibleMappings*"></a>
-
-  <h3 id="Vintagestory_API_Common_EntityAgent_OnStoreCollectibleMappings_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__" data-uid="Vintagestory.API.Common.EntityAgent.OnStoreCollectibleMappings(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})">
-  OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called by the worldedit schematic exporter so that it can also export the mappings of items/blocks stored inside blockentities</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt; blockIdMapping, Dictionary&lt;int, AssetLocation&gt; itemIdMapping)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>blockIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
-    <dd></dd>
-    <dt><code>itemIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_EntityAgent_OnTesselation_" data-uid="Vintagestory.API.Common.EntityAgent.OnTesselation*"></a>
-
-  <h3 id="Vintagestory_API_Common_EntityAgent_OnTesselation_Vintagestory_API_Common_Shape__System_String_" data-uid="Vintagestory.API.Common.EntityAgent.OnTesselation(Vintagestory.API.Common.Shape@,System.String)">
-  OnTesselation(ref Shape, string)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called by EntityShapeRenderer.cs before tesselating the entity shape</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void OnTesselation(ref Shape entityShape, string shapePathForLogging)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entityShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
-    <dd></dd>
-    <dt><code>shapePathForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
   </dl>
 
 
@@ -2069,22 +1998,22 @@ Hint: Use itemstack.FixMapping() to do the job for you.</p>
 
   <a id="Vintagestory_API_Common_EntityAgent_TryMount_" data-uid="Vintagestory.API.Common.EntityAgent.TryMount*"></a>
 
-  <h3 id="Vintagestory_API_Common_EntityAgent_TryMount_Vintagestory_API_Common_IMountable_" data-uid="Vintagestory.API.Common.EntityAgent.TryMount(Vintagestory.API.Common.IMountable)">
-  TryMount(IMountable)
+  <h3 id="Vintagestory_API_Common_EntityAgent_TryMount_Vintagestory_API_Common_IMountableSeat_" data-uid="Vintagestory.API.Common.EntityAgent.TryMount(Vintagestory.API.Common.IMountableSeat)">
+  TryMount(IMountableSeat)
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Attempts to mount the player on a target.</p>
+  <div class="markdown level1 summary"><p>Attempts to mount this entity on a target.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool TryMount(IMountable onmount)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool TryMount(IMountableSeat onmount)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>onmount</code> <a class="xref" href="Vintagestory.API.Common.IMountable.html">IMountable</a></dt>
+    <dt><code>onmount</code> <a class="xref" href="Vintagestory.API.Common.IMountableSeat.html">IMountableSeat</a></dt>
     <dd><p>The mount to mount</p>
 </dd>
   </dl>
@@ -2241,88 +2170,10 @@ Hint: Use itemstack.FixMapping() to do the job for you.</p>
 
 
 
-  <a id="Vintagestory_API_Common_EntityAgent_addGearToShape_" data-uid="Vintagestory.API.Common.EntityAgent.addGearToShape*"></a>
-
-  <h3 id="Vintagestory_API_Common_EntityAgent_addGearToShape_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_Shape_System_String_" data-uid="Vintagestory.API.Common.EntityAgent.addGearToShape(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.Shape,System.String)">
-  addGearToShape(ItemSlot, Shape, string)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual Shape addGearToShape(ItemSlot slot, Shape entityShape, string shapePathForLogging)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>slot</code> <a class="xref" href="Vintagestory.API.Common.ItemSlot.html">ItemSlot</a></dt>
-    <dd></dd>
-    <dt><code>entityShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
-    <dd></dd>
-    <dt><code>shapePathForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_EntityAgent_addGearToShape_" data-uid="Vintagestory.API.Common.EntityAgent.addGearToShape*"></a>
-
-  <h3 id="Vintagestory_API_Common_EntityAgent_addGearToShape_Vintagestory_API_Common_Shape__System_String_" data-uid="Vintagestory.API.Common.EntityAgent.addGearToShape(Vintagestory.API.Common.Shape@,System.String)">
-  addGearToShape(ref Shape, string)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected Shape addGearToShape(ref Shape entityShape, string shapePathForLogging)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entityShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
-    <dd></dd>
-    <dt><code>shapePathForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="Vintagestory_API_Common_EntityAgent_doMount_" data-uid="Vintagestory.API.Common.EntityAgent.doMount*"></a>
 
-  <h3 id="Vintagestory_API_Common_EntityAgent_doMount_Vintagestory_API_Common_IMountable_" data-uid="Vintagestory.API.Common.EntityAgent.doMount(Vintagestory.API.Common.IMountable)">
-  doMount(IMountable)
+  <h3 id="Vintagestory_API_Common_EntityAgent_doMount_Vintagestory_API_Common_IMountableSeat_" data-uid="Vintagestory.API.Common.EntityAgent.doMount(Vintagestory.API.Common.IMountableSeat)">
+  doMount(IMountableSeat)
   
   </h3>
 
@@ -2330,12 +2181,12 @@ Hint: Use itemstack.FixMapping() to do the job for you.</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual void doMount(IMountable mountable)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual void doMount(IMountableSeat mountable)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>mountable</code> <a class="xref" href="Vintagestory.API.Common.IMountable.html">IMountable</a></dt>
+    <dt><code>mountable</code> <a class="xref" href="Vintagestory.API.Common.IMountableSeat.html">IMountableSeat</a></dt>
     <dd></dd>
   </dl>
 

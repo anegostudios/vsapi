@@ -33,6 +33,17 @@ namespace Vintagestory.API.Client
         public float[] PointLights3;
         public float[] PointLightColors3;
 
+        public const int MaxSpheres = 3;
+        /// <summary>
+        /// Each sphere has 8 floats:
+        /// 3 floats x/y/z offset to the player
+        /// 1 float radius
+        /// 1 float density
+        /// 3 floats rgb color
+        /// </summary>
+        public float[] FogSpheres = new float[MaxSpheres * 8];
+        public int FogSphereQuantity;
+
         public Vec3f SunPositionScreen;
         public Vec3f SunPosition3D;
         public Vec3f LightPosition3D;
@@ -92,11 +103,16 @@ namespace Vintagestory.API.Client
 
 
         public Vec3f PlayerPos = new Vec3f();
+        public Vec3f PlayerPosForFoam = new Vec3f();
         public Vec3d playerReferencePos;
+        public Vec3d playerReferencePosForFoam;
         BlockPos plrPos = new BlockPos();
 
         internal float SkyDaylight;
 
+        // Set by the ambientmanager
+        public Vec4f WaterMurkColor { get; set; } = new Vec4f();
+        public float CameraUnderwater { get; set; }
 
         public DefaultShaderUniforms()
         {
@@ -126,13 +142,13 @@ namespace Vintagestory.API.Client
             WaterFlowCounter = (WaterFlowCounter + dt / 1.5f) % 6000f;
             WaterWaveCounter = (WaterWaveCounter + dt * 0.75f) % 6000f;
             
-            WindWaveCounter = (WindWaveCounter + (0.5f + 2 * GlobalConstants.CurrentWindSpeedClient.X * (1 - GlitchStrength)) * dt) % 6000f;
-            WindSpeed = GlobalConstants.CurrentWindSpeedClient.X;
+            WindWaveCounter = (WindWaveCounter + (0.5f + 2 * GlobalConstants.CurrentSurfaceWindSpeedClient.X * (1 - GlitchStrength)) * dt) % 6000f;
+            WindSpeed = GlobalConstants.CurrentSurfaceWindSpeedClient.X;
 
-            WaterWaveIntensity = 0.75f + GlobalConstants.CurrentWindSpeedClient.X * 0.9f;
+            WaterWaveIntensity = 0.75f + GlobalConstants.CurrentSurfaceWindSpeedClient.X * 0.9f;
 
             float freq = (0.4f + WindSpeed / 10);
-            WindWaveCounterHighFreq = (WindWaveCounterHighFreq + freq * (0.5f + 5 * GlobalConstants.CurrentWindSpeedClient.X * (1 - GlitchStrength)) * dt) % 6000f;
+            WindWaveCounterHighFreq = (WindWaveCounterHighFreq + freq * (0.5f + 5 * GlobalConstants.CurrentSurfaceWindSpeedClient.X * (1 - GlitchStrength)) * dt) % 6000f;
 
 
             TimeCounter += dt;

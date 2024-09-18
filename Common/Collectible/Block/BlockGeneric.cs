@@ -163,7 +163,7 @@ namespace Vintagestory.API.Common
             return allboxes.ToArray();
         }
 
-        public override bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, LCGRandom worldgenRandom)
+        public override bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, IRandom worldgenRandom, BlockPatchAttributes attributes = null)
         {
             bool result = true;
             bool preventDefault = false;
@@ -187,7 +187,7 @@ namespace Vintagestory.API.Common
 
             if (preventDefault) return result;
 
-            return base.TryPlaceBlockForWorldGen(blockAccessor, pos, onBlockFace, worldgenRandom);
+            return base.TryPlaceBlockForWorldGen(blockAccessor, pos, onBlockFace, worldgenRandom, attributes);
         }
 
         public override bool DoParticalSelection(IWorldAccessor world, BlockPos pos)

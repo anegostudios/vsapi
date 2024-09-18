@@ -13,6 +13,7 @@ items:
   - Vintagestory.API.Datastructures.ItemstackAttribute.GetAttributeId
   - Vintagestory.API.Datastructures.ItemstackAttribute.GetHashCode
   - Vintagestory.API.Datastructures.ItemstackAttribute.GetValue
+  - Vintagestory.API.Datastructures.ItemstackAttribute.SetValue(Vintagestory.API.Common.ItemStack)
   - Vintagestory.API.Datastructures.ItemstackAttribute.ToBytes(System.IO.BinaryWriter)
   - Vintagestory.API.Datastructures.ItemstackAttribute.ToJsonToken
   - Vintagestory.API.Datastructures.ItemstackAttribute.value
@@ -40,6 +41,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Datastructures.ItemstackAttribute.value
   commentId: F:Vintagestory.API.Datastructures.ItemstackAttribute.value
   id: value
@@ -150,6 +154,27 @@ items:
   overload: Vintagestory.API.Datastructures.ItemstackAttribute.GetValue*
   implements:
   - Vintagestory.API.Datastructures.IAttribute.GetValue
+- uid: Vintagestory.API.Datastructures.ItemstackAttribute.SetValue(Vintagestory.API.Common.ItemStack)
+  commentId: M:Vintagestory.API.Datastructures.ItemstackAttribute.SetValue(Vintagestory.API.Common.ItemStack)
+  id: SetValue(Vintagestory.API.Common.ItemStack)
+  parent: Vintagestory.API.Datastructures.ItemstackAttribute
+  langs:
+  - csharp
+  - vb
+  name: SetValue(ItemStack)
+  nameWithType: ItemstackAttribute.SetValue(ItemStack)
+  fullName: Vintagestory.API.Datastructures.ItemstackAttribute.SetValue(Vintagestory.API.Common.ItemStack)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public void SetValue(ItemStack newval)
+    parameters:
+    - id: newval
+      type: Vintagestory.API.Common.ItemStack
+    content.vb: Public Sub SetValue(newval As ItemStack)
+  overload: Vintagestory.API.Datastructures.ItemstackAttribute.SetValue*
 - uid: Vintagestory.API.Datastructures.ItemstackAttribute.FromBytes(System.IO.BinaryReader)
   commentId: M:Vintagestory.API.Datastructures.ItemstackAttribute.FromBytes(System.IO.BinaryReader)
   id: FromBytes(System.IO.BinaryReader)
@@ -540,6 +565,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -547,6 +634,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.ItemStack
   commentId: T:Vintagestory.API.Common.ItemStack
   parent: Vintagestory.API.Common
@@ -654,6 +838,12 @@ references:
     href: Vintagestory.API.Datastructures.IAttribute.html#Vintagestory_API_Datastructures_IAttribute_GetValue
   - name: (
   - name: )
+- uid: Vintagestory.API.Datastructures.ItemstackAttribute.SetValue*
+  commentId: Overload:Vintagestory.API.Datastructures.ItemstackAttribute.SetValue
+  href: Vintagestory.API.Datastructures.ItemstackAttribute.html#Vintagestory_API_Datastructures_ItemstackAttribute_SetValue_Vintagestory_API_Common_ItemStack_
+  name: SetValue
+  nameWithType: ItemstackAttribute.SetValue
+  fullName: Vintagestory.API.Datastructures.ItemstackAttribute.SetValue
 - uid: Vintagestory.API.Datastructures.ItemstackAttribute.FromBytes*
   commentId: Overload:Vintagestory.API.Datastructures.ItemstackAttribute.FromBytes
   href: Vintagestory.API.Datastructures.ItemstackAttribute.html#Vintagestory_API_Datastructures_ItemstackAttribute_FromBytes_System_IO_BinaryReader_

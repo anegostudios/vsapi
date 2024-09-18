@@ -24,7 +24,7 @@ namespace Vintagestory.API.Common.Entities
         protected double x;
         protected double y;
         protected double z;
-        protected int dimension;
+        public int Dimension;
         protected float roll; // "rotX"
         protected float yaw; // "rotY"
         protected float pitch; // "rotZ"
@@ -63,7 +63,7 @@ namespace Vintagestory.API.Common.Entities
         
         public virtual double InternalY
         {
-            get { return y + dimension * BlockPos.DimensionBoundary; }
+            get { return y + Dimension * BlockPos.DimensionBoundary; }
         }
 
         /// <summary>
@@ -73,6 +73,11 @@ namespace Vintagestory.API.Common.Entities
         {
             get { return z; }
             set { z = value; }
+        }
+
+        public virtual int DimensionYAdjustment
+        {
+            get { return Dimension * BlockPos.DimensionBoundary; }
         }
 
         /// <summary>
@@ -102,7 +107,6 @@ namespace Vintagestory.API.Common.Entities
             set { pitch = value; }
         }
 
-        public int Dimension;
 
         #region Position
 
@@ -111,7 +115,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public BlockPos AsBlockPos
         {
-            get { return new BlockPos((int)X, (int)Y, (int)Z, dimension);  }
+            get { return new BlockPos((int)X, (int)Y, (int)Z, Dimension);  }
         }
 
         /// <summary>
@@ -123,11 +127,11 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// Returns the position as a Vec3d object
+        /// Returns the position as a Vec3d object. Note, dimension aware
         /// </summary>
         public Vec3d XYZ
         {
-            get { return new Vec3d(X, Y, Z); }
+            get { return new Vec3d(X, InternalY, Z); }
         }
 
         /// <summary>
@@ -152,7 +156,19 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// Sets this position to a Vec3d
+        /// Sets this position to a Vec3d, including setting the dimension
+        /// </summary>
+        /// <param name="pos">The Vec3d to set to.</param>
+        public void SetPosWithDimension(Vec3d pos)
+        {
+            this.x = pos.X;
+            this.y = pos.Y % BlockPos.DimensionBoundary;
+            this.z = pos.Z;
+            this.Dimension = (int)pos.Y / BlockPos.DimensionBoundary;
+        }
+
+        /// <summary>
+        /// Sets this position to a Vec3d, without dimension information - needed in some situations where no dimension change is intended
         /// </summary>
         /// <param name="pos">The Vec3d to set to.</param>
         public void SetPos(Vec3d pos)
@@ -161,7 +177,6 @@ namespace Vintagestory.API.Common.Entities
             this.y = pos.Y;
             this.z = pos.Z;
         }
-
 
 
         #endregion
@@ -181,11 +196,31 @@ namespace Vintagestory.API.Common.Entities
             this.Roll = roll;
         }
 
+        /// <summary>
+        /// Adds given position offset
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns>Returns itself</returns>
         public EntityPos Add(double x, double y, double z)
         {
             this.X += x;
             this.Y += y;
             this.Z += z;
+            return this;
+        }
+
+        /// <summary>
+        /// Adds given position offset
+        /// </summary>
+        /// <param name="vec"></param>
+        /// <returns>Returns itself</returns>
+        public EntityPos Add(Vec3f vec)
+        {
+            this.X += vec.X;
+            this.Y += vec.Y;
+            this.Z += vec.Z;
             return this;
         }
 
@@ -281,7 +316,7 @@ namespace Vintagestory.API.Common.Entities
         public bool InRangeOf(EntityPos position, int squareDistance)
         {
             double dx = this.x - position.X;
-            double dy = this.y - position.Y;
+            double dy = this.InternalY - position.InternalY;
             double dz = this.z - position.Z;
 
             return dx*dx + dy*dy + dz*dz <= squareDistance;
@@ -298,7 +333,7 @@ namespace Vintagestory.API.Common.Entities
         public bool InRangeOf(int x, int y, int z, float squareDistance)
         {
             double dx = this.x - x;
-            double dy = this.y - y;
+            double dy = this.InternalY - y;
             double dz = this.z - z;
 
             return dx * dx + dy * dy + dz * dz <= squareDistance;
@@ -330,7 +365,7 @@ namespace Vintagestory.API.Common.Entities
         public bool InRangeOf(double x, double y, double z, float squareDistance)
         {
             double dx = this.x - x;
-            double dy = this.y - y;
+            double dy = this.InternalY - y;
             double dz = this.z - z;
 
             return dx * dx + dy * dy + dz * dz <= squareDistance;
@@ -345,7 +380,7 @@ namespace Vintagestory.API.Common.Entities
         public bool InRangeOf(BlockPos pos, float squareDistance)
         {
             double dx = this.x - pos.X;
-            double dy = this.y - pos.Y;
+            double dy = this.InternalY - pos.InternalY;
             double dz = this.z - pos.Z;
 
             return dx * dx + dy * dy + dz * dz <= squareDistance;
@@ -360,7 +395,7 @@ namespace Vintagestory.API.Common.Entities
         public bool InRangeOf(Vec3f pos, float squareDistance)
         {
             double dx = x - pos.X;
-            double dy = y - pos.Y;
+            double dy = InternalY - pos.Y;
             double dz = z - pos.Z;
 
             return dx * dx + dy * dy + dz * dz <= squareDistance;
@@ -379,7 +414,7 @@ namespace Vintagestory.API.Common.Entities
             double dz = z - position.Z;
             if (dx * dx + dz * dz > horRangeSq) return false;
 
-            double dy = y - position.Y;
+            double dy = InternalY - position.Y;
             return Math.Abs(dy) <= vertRange;
         }
 
@@ -393,14 +428,14 @@ namespace Vintagestory.API.Common.Entities
         public float SquareDistanceTo(float x, float y, float z)
         {
             double dx = this.x - x;
-            double dy = this.y - y;
+            double dy = this.InternalY - y;
             double dz = this.z - z;
 
             return (float)(dx * dx + dy * dy + dz * dz);
         }
 
         /// <summary>
-        /// Returns the squared distance of the entity to this position
+        /// Returns the squared distance of the entity to this position. Note: dimension aware, this requires the parameter y coordinate also to be based on InternalY as it should be (like EntityPos.XYZ)
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -409,21 +444,21 @@ namespace Vintagestory.API.Common.Entities
         public float SquareDistanceTo(double x, double y, double z)
         {
             double dx = this.x - x;
-            double dy = this.y - y;
+            double dy = this.InternalY - y;
             double dz = this.z - z;
 
             return (float)(dx * dx + dy * dy + dz * dz);
         }
 
         /// <summary>
-        /// Returns the squared distance of the entity to this position
+        /// Returns the squared distance of the entity to this position. Note: dimension aware, this requires the parameter Vec3d pos.Y coordinate also to be based on InternalY as it should be (like EntityPos.XYZ)
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
         public double SquareDistanceTo(Vec3d pos)
         {
             double dx = this.x - pos.X;
-            double dy = this.y - pos.Y;
+            double dy = this.InternalY - pos.Y;
             double dz = this.z - pos.Z;
 
             return (dx * dx + dy * dy + dz * dz);
@@ -445,7 +480,7 @@ namespace Vintagestory.API.Common.Entities
         public double DistanceTo(Vec3d pos)
         {
             double dx = this.x - pos.X;
-            double dy = this.y - pos.Y;
+            double dy = this.InternalY - pos.Y;
             double dz = this.z - pos.Z;
 
             return GameMath.Sqrt(dx * dx + dy * dy + dz * dz);
@@ -454,7 +489,7 @@ namespace Vintagestory.API.Common.Entities
         public double DistanceTo(EntityPos pos)
         {
             double dx = this.x - pos.x;
-            double dy = this.y - pos.y;
+            double dy = this.InternalY - pos.InternalY;
             double dz = this.z - pos.z;
 
             return GameMath.Sqrt(dx * dx + dy * dy + dz * dz);
@@ -485,7 +520,7 @@ namespace Vintagestory.API.Common.Entities
         public float SquareDistanceTo(EntityPos pos)
         {
             double dx = x - pos.X;
-            double dy = y - pos.Y;
+            double dy = InternalY - pos.InternalY;
             double dz = z - pos.Z;
 
             return (float)(dx * dx + dy * dy + dz * dz);
@@ -532,8 +567,8 @@ namespace Vintagestory.API.Common.Entities
             float cosPitch = GameMath.Cos(pitch);
             float sinPitch = GameMath.Sin(pitch);
 
-            float cosYaw = GameMath.Cos(yaw + GameMath.PI / 2);
-            float sinYaw = GameMath.Sin(yaw + GameMath.PI / 2);
+            float cosYaw = GameMath.Cos(yaw);
+            float sinYaw = GameMath.Sin(yaw);
 
             return new Vec3f(-cosPitch * sinYaw, sinPitch, -cosPitch * cosYaw);
         }
@@ -548,10 +583,12 @@ namespace Vintagestory.API.Common.Entities
             float cosPitch = GameMath.Cos(Pitch);
             float sinPitch = GameMath.Sin(Pitch);
 
-            float cosYaw = GameMath.Cos(Yaw + GameMath.PI / 2);
-            float sinYaw = GameMath.Sin(Yaw + GameMath.PI / 2);
+            float cosYaw = GameMath.Cos(Yaw);
+            float sinYaw = GameMath.Sin(Yaw);
 
-            return new EntityPos(X - cosPitch * sinYaw * offset, Y + sinPitch * offset, Z - cosPitch * cosYaw * offset, Yaw, Pitch, Roll);
+            EntityPos copy = new EntityPos(X - cosPitch * sinYaw * offset, Y + sinPitch * offset, Z - cosPitch * cosYaw * offset, Yaw, Pitch, Roll);
+            copy.Dimension = Dimension;
+            return copy;
         }
 
         /// <summary>
@@ -561,8 +598,8 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public EntityPos HorizontalAheadCopy(double offset)
         {
-            float cosYaw = GameMath.Cos(Yaw + GameMath.PI / 2);
-            float sinYaw = GameMath.Sin(Yaw + GameMath.PI / 2);
+            float cosYaw = GameMath.Cos(Yaw);
+            float sinYaw = GameMath.Sin(Yaw);
 
             return new EntityPos(X + sinYaw * offset, Y, Z + cosYaw * offset, Yaw, Pitch, Roll);
         }
@@ -574,8 +611,8 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public EntityPos BehindCopy(double offset)
         {
-            float cosYaw = GameMath.Cos(Yaw - GameMath.PI / 2);
-            float sinYaw = GameMath.Sin(Yaw - GameMath.PI / 2);
+            float cosYaw = GameMath.Cos(-Yaw);
+            float sinYaw = GameMath.Sin(-Yaw);
 
             return new EntityPos(X + sinYaw * offset, Y, Z + cosYaw * offset, Yaw, Pitch, Roll);
         }
@@ -635,16 +672,18 @@ namespace Vintagestory.API.Common.Entities
         }
 
 
+
         /// <summary>
         /// Loads the position and angles from given entity position.
         /// </summary>
         /// <param name="pos"></param>
-        public void SetFrom(EntityPos pos)
+        /// <returns>Returns itself</returns>
+        public EntityPos SetFrom(EntityPos pos)
         {
             X = pos.X;
             Y = pos.Y;
             Z = pos.Z;
-            dimension = pos.dimension;
+            Dimension = pos.Dimension;
             Roll = pos.Roll;
             Yaw = pos.Yaw;
             Pitch = pos.Pitch;
@@ -653,17 +692,22 @@ namespace Vintagestory.API.Common.Entities
             Motion.Z = pos.Motion.Z;
             HeadYaw = pos.HeadYaw;
             HeadPitch = pos.HeadPitch;
+
+            return this;
         }
 
         /// <summary>
         /// Loads the position from given position.
         /// </summary>
         /// <param name="pos"></param>
-        public void SetFrom(Vec3d pos)
+        /// <returns>Returns itself</returns>
+        public EntityPos SetFrom(Vec3d pos)
         {
             X = pos.X;
             Y = pos.Y;
             Z = pos.Z;
+
+            return this;
         }
 
 
@@ -709,8 +753,8 @@ namespace Vintagestory.API.Common.Entities
         {
             x = reader.ReadDouble();
             y = reader.ReadDouble();
-            dimension = (int)y / BlockPos.DimensionBoundary;
-            y -= dimension * BlockPos.DimensionBoundary;
+            Dimension = (int)y / BlockPos.DimensionBoundary;
+            y -= Dimension * BlockPos.DimensionBoundary;
             z = reader.ReadDouble();
             roll = reader.ReadSingle();
             yaw = reader.ReadSingle();

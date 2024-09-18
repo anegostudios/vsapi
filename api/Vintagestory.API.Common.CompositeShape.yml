@@ -12,6 +12,7 @@ items:
   - Vintagestory.API.Common.CompositeShape.CloneWithoutAlternates
   - Vintagestory.API.Common.CompositeShape.Format
   - Vintagestory.API.Common.CompositeShape.GetHashCode
+  - Vintagestory.API.Common.CompositeShape.IgnoreElements
   - Vintagestory.API.Common.CompositeShape.InsertBakedTextures
   - Vintagestory.API.Common.CompositeShape.LoadAlternates(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Common.ILogger)
   - Vintagestory.API.Common.CompositeShape.OffsetXYZCopy
@@ -20,6 +21,7 @@ items:
   - Vintagestory.API.Common.CompositeShape.RotateXYZCopy
   - Vintagestory.API.Common.CompositeShape.Scale
   - Vintagestory.API.Common.CompositeShape.SelectiveElements
+  - Vintagestory.API.Common.CompositeShape.ToString
   - Vintagestory.API.Common.CompositeShape.VoxelizeTexture
   - Vintagestory.API.Common.CompositeShape.offsetX
   - Vintagestory.API.Common.CompositeShape.offsetY
@@ -37,6 +39,15 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Holds shape data to create 3D representations of objects. Also allows shapes to be overlayed on top of one another recursively.
+  example:
+  - >-
+    <pre><code class="lang-json">"shape": { "base": "block/basic/cube" },</code></pre>
+
+    <pre><code class="lang-json">"shapeInventory": {
+     	"base": "block/plant/bamboo/{color}/{part}-1",
+     	"overlays": [ { "base": "block/plant/bamboo/{color}/{part}lod0-1" } ]
+    },</code></pre>
   syntax:
     content: public class CompositeShape
     content.vb: Public Class CompositeShape
@@ -48,7 +59,9 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.CompositeShape.Base
   commentId: F:Vintagestory.API.Common.CompositeShape.Base
   id: Base
@@ -63,6 +76,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>None</jsondefault>-->
+
+    The path to this shape file.
+  example: []
   syntax:
     content: public AssetLocation Base
     return:
@@ -82,6 +100,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>VintageStory</jsondefault>-->
+
+    The format/filetype of this shape.
+  example: []
   syntax:
     content: public EnumShapeFormat Format
     return:
@@ -101,7 +124,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Whether or not to insert baked in textures for mesh formats such as gltf into the texture atlas.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Whether or not to insert baked in textures for mesh formats such as gltf into the texture atlas.
   example: []
   syntax:
     content: public bool InsertBakedTextures
@@ -122,6 +148,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    How much, in degrees, should this shape be rotated around the X axis?
+  example: []
   syntax:
     content: public float rotateX
     return:
@@ -141,6 +172,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    How much, in degrees, should this shape be rotated around the Y axis?
+  example: []
   syntax:
     content: public float rotateY
     return:
@@ -160,6 +196,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    How much, in degrees, should this shape be rotated around the Z axis?
+  example: []
   syntax:
     content: public float rotateZ
     return:
@@ -179,6 +220,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    How much should this shape be offset on X axis?
+  example: []
   syntax:
     content: public float offsetX
     return:
@@ -198,6 +244,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    How much should this shape be offset on Y axis?
+  example: []
   syntax:
     content: public float offsetY
     return:
@@ -217,6 +268,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    How much should this shape be offset on Z axis?
+  example: []
   syntax:
     content: public float offsetZ
     return:
@@ -236,6 +292,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The scale of this shape on all axes.
+  example: []
   syntax:
     content: public float Scale
     return:
@@ -297,7 +358,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the shape is chosen.
   example: []
   syntax:
     content: public CompositeShape[] Alternates
@@ -339,6 +403,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    The shape will render all overlays on top of this shape. Can be used to group multiple shapes into one composite shape.
+  example: []
   syntax:
     content: public CompositeShape[] Overlays
     return:
@@ -358,7 +427,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: If true, the shape is created from a voxelized version of the first defined texture
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    If true, the shape is created from a voxelized version of the first defined texture
   example: []
   syntax:
     content: public bool VoxelizeTexture
@@ -379,7 +451,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: If non zero will only tesselate the first n elements of the shape
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    If non zero will only tesselate the first n elements of the shape
   example: []
   syntax:
     content: public int? QuantityElements
@@ -400,13 +475,37 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: If set will only tesselate elements with given name
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    If set will only tesselate elements with given name
   example: []
   syntax:
     content: public string[] SelectiveElements
     return:
       type: System.String[]
     content.vb: Public SelectiveElements As String()
+- uid: Vintagestory.API.Common.CompositeShape.IgnoreElements
+  commentId: F:Vintagestory.API.Common.CompositeShape.IgnoreElements
+  id: IgnoreElements
+  parent: Vintagestory.API.Common.CompositeShape
+  langs:
+  - csharp
+  - vb
+  name: IgnoreElements
+  nameWithType: CompositeShape.IgnoreElements
+  fullName: Vintagestory.API.Common.CompositeShape.IgnoreElements
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If set will not tesselate elements with given name
+  example: []
+  syntax:
+    content: public string[] IgnoreElements
+    return:
+      type: System.String[]
+    content.vb: Public IgnoreElements As String()
 - uid: Vintagestory.API.Common.CompositeShape.GetHashCode
   commentId: M:Vintagestory.API.Common.CompositeShape.GetHashCode
   id: GetHashCode
@@ -431,6 +530,30 @@ items:
     content.vb: Public Overrides Function GetHashCode() As Integer
   overridden: System.Object.GetHashCode
   overload: Vintagestory.API.Common.CompositeShape.GetHashCode*
+- uid: Vintagestory.API.Common.CompositeShape.ToString
+  commentId: M:Vintagestory.API.Common.CompositeShape.ToString
+  id: ToString
+  parent: Vintagestory.API.Common.CompositeShape
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: CompositeShape.ToString()
+  fullName: Vintagestory.API.Common.CompositeShape.ToString()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a string that represents the current object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the current object.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Vintagestory.API.Common.CompositeShape.ToString*
 - uid: Vintagestory.API.Common.CompositeShape.Clone
   commentId: M:Vintagestory.API.Common.CompositeShape.Clone
   id: Clone
@@ -715,29 +838,67 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
-- uid: System.Object.ToString
-  commentId: M:System.Object.ToString
-  parent: System.Object
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
-  name: ToString()
-  nameWithType: object.ToString()
-  fullName: object.ToString()
-  nameWithType.vb: Object.ToString()
-  fullName.vb: Object.ToString()
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
   spec.csharp:
-  - uid: System.Object.ToString
-    name: ToString
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
   - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
   spec.vb:
-  - uid: System.Object.ToString
-    name: ToString
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
   - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
 - uid: System
   commentId: N:System
@@ -746,6 +907,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.AssetLocation
   commentId: T:Vintagestory.API.Common.AssetLocation
   parent: Vintagestory.API.Common
@@ -967,6 +1225,47 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.CompositeShape.ToString*
+  commentId: Overload:Vintagestory.API.Common.CompositeShape.ToString
+  href: Vintagestory.API.Common.CompositeShape.html#Vintagestory_API_Common_CompositeShape_ToString
+  name: ToString
+  nameWithType: CompositeShape.ToString
+  fullName: Vintagestory.API.Common.CompositeShape.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
 - uid: Vintagestory.API.Common.CompositeShape.Clone*
   commentId: Overload:Vintagestory.API.Common.CompositeShape.Clone
   href: Vintagestory.API.Common.CompositeShape.html#Vintagestory_API_Common_CompositeShape_Clone

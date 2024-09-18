@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -137,22 +137,28 @@ this produces always correctly blended animations but is significantly more cost
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_identMat4x3">AnimatorBase.identMat4x3</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_identMat">AnimatorBase.identMat</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_activeAnimCount">AnimatorBase.activeAnimCount</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_RootElements">AnimatorBase.RootElements</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_RootPoses">AnimatorBase.RootPoses</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_anims">AnimatorBase.anims</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatrices4x3">AnimatorBase.TransformationMatrices4x3</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatrices">AnimatorBase.TransformationMatrices</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatricesDefaultPose4x3">AnimatorBase.TransformationMatricesDefaultPose4x3</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatricesDefaultPose">AnimatorBase.TransformationMatricesDefaultPose</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_AttachmentPointByCode">AnimatorBase.AttachmentPointByCode</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_activeAnimCount">AnimatorBase.activeAnimCount</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_CurAnims">AnimatorBase.CurAnims</a>
@@ -161,7 +167,7 @@ this produces always correctly blended animations but is significantly more cost
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_CalculateMatrices">AnimatorBase.CalculateMatrices</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_Matrices4x3">AnimatorBase.Matrices4x3</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_Matrices">AnimatorBase.Matrices</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_ActiveAnimationCount">AnimatorBase.ActiveAnimationCount</a>
@@ -170,10 +176,10 @@ this produces always correctly blended animations but is significantly more cost
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_RunningAnimations">AnimatorBase.RunningAnimations</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_GetAnimationState_System_String_">AnimatorBase.GetAnimationState(string)</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_Animations">AnimatorBase.Animations</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_DumpCurrentState">AnimatorBase.DumpCurrentState()</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_GetAnimationState_System_String_">AnimatorBase.GetAnimationState(string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_GetAttachmentPointPose_System_String_">AnimatorBase.GetAttachmentPointPose(string)</a>
@@ -201,6 +207,16 @@ this produces always correctly blended animations but is significantly more cost
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -212,8 +228,8 @@ this produces always correctly blended animations but is significantly more cost
 
   <a id="Vintagestory_API_Common_ClientAnimator__ctor_" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor*"></a>
 
-  <h3 id="Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_System_Collections_Generic_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__System_Action_System_String__" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String})">
-  ClientAnimator(WalkSpeedSupplierDelegate, List&lt;ElementPose&gt;, Animation[], ShapeElement[], Dictionary&lt;int, AnimationJoint&gt;, Action&lt;string&gt;)
+  <h3 id="Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_System_Collections_Generic_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__System_Action_System_String__System_Action_Vintagestory_API_Common_AnimationSound__" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})">
+  ClientAnimator(WalkSpeedSupplierDelegate, List&lt;ElementPose&gt;, Animation[], ShapeElement[], Dictionary&lt;int, AnimationJoint&gt;, Action&lt;string&gt;, Action&lt;AnimationSound&gt;)
   
   </h3>
 
@@ -221,7 +237,7 @@ this produces always correctly blended animations but is significantly more cost
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List&lt;ElementPose&gt; rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary&lt;int, AnimationJoint&gt; jointsById, Action&lt;string&gt; onAnimationStoppedListener = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List&lt;ElementPose&gt; rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary&lt;int, AnimationJoint&gt; jointsById, Action&lt;string&gt; onAnimationStoppedListener = null, Action&lt;AnimationSound&gt; onShouldPlaySoundListener = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -238,6 +254,8 @@ this produces always correctly blended animations but is significantly more cost
     <dd></dd>
     <dt><code>onAnimationStoppedListener</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
     <dd></dd>
+    <dt><code>onShouldPlaySoundListener</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a>&gt;</dt>
+    <dd></dd>
   </dl>
 
 
@@ -253,8 +271,8 @@ this produces always correctly blended animations but is significantly more cost
 
   <a id="Vintagestory_API_Common_ClientAnimator__ctor_" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor*"></a>
 
-  <h3 id="Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_Vintagestory_API_Common_Animation___System_Action_System_String__" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],System.Action{System.String})">
-  ClientAnimator(WalkSpeedSupplierDelegate, Animation[], Action&lt;string&gt;)
+  <h3 id="Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_Vintagestory_API_Common_Animation___System_Action_System_String__System_Action_Vintagestory_API_Common_AnimationSound__" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})">
+  ClientAnimator(WalkSpeedSupplierDelegate, Animation[], Action&lt;string&gt;, Action&lt;AnimationSound&gt;)
   
   </h3>
 
@@ -262,7 +280,7 @@ this produces always correctly blended animations but is significantly more cost
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, Action&lt;string&gt; onAnimationStoppedListener = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, Action&lt;string&gt; onAnimationStoppedListener = null, Action&lt;AnimationSound&gt; onShouldPlaySoundListener = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -273,6 +291,8 @@ this produces always correctly blended animations but is significantly more cost
     <dd></dd>
     <dt><code>onAnimationStoppedListener</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
     <dd></dd>
+    <dt><code>onShouldPlaySoundListener</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a>&gt;</dt>
+    <dd></dd>
   </dl>
 
 
@@ -288,8 +308,8 @@ this produces always correctly blended animations but is significantly more cost
 
   <a id="Vintagestory_API_Common_ClientAnimator__ctor_" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor*"></a>
 
-  <h3 id="Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__System_Action_System_String__" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String})">
-  ClientAnimator(WalkSpeedSupplierDelegate, Animation[], ShapeElement[], Dictionary&lt;int, AnimationJoint&gt;, Action&lt;string&gt;)
+  <h3 id="Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__System_Action_System_String__System_Action_Vintagestory_API_Common_AnimationSound__" data-uid="Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})">
+  ClientAnimator(WalkSpeedSupplierDelegate, Animation[], ShapeElement[], Dictionary&lt;int, AnimationJoint&gt;, Action&lt;string&gt;, Action&lt;AnimationSound&gt;)
   
   </h3>
 
@@ -297,7 +317,7 @@ this produces always correctly blended animations but is significantly more cost
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, ShapeElement[] rootElements, Dictionary&lt;int, AnimationJoint&gt; jointsById, Action&lt;string&gt; onAnimationStoppedListener = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, ShapeElement[] rootElements, Dictionary&lt;int, AnimationJoint&gt; jointsById, Action&lt;string&gt; onAnimationStoppedListener = null, Action&lt;AnimationSound&gt; onShouldPlaySoundListener = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -311,6 +331,8 @@ this produces always correctly blended animations but is significantly more cost
     <dt><code>jointsById</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AnimationJoint.html">AnimationJoint</a>&gt;</dt>
     <dd></dd>
     <dt><code>onAnimationStoppedListener</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>onShouldPlaySoundListener</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -348,36 +370,6 @@ this produces always correctly blended animations but is significantly more cost
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_ClientAnimator_RootPoses" data-uid="Vintagestory.API.Common.ClientAnimator.RootPoses">
-  RootPoses
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;ElementPose&gt; RootPoses</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -449,9 +441,14 @@ this produces always correctly blended animations but is significantly more cost
 
 
 
+  <h2 class="section" id="properties">Properties
+</h2>
 
-  <h3 id="Vintagestory_API_Common_ClientAnimator_rootElements" data-uid="Vintagestory.API.Common.ClientAnimator.rootElements">
-  rootElements
+
+  <a id="Vintagestory_API_Common_ClientAnimator_MaxJointId_" data-uid="Vintagestory.API.Common.ClientAnimator.MaxJointId*"></a>
+
+  <h3 id="Vintagestory_API_Common_ClientAnimator_MaxJointId" data-uid="Vintagestory.API.Common.ClientAnimator.MaxJointId">
+  MaxJointId
   
   </h3>
 
@@ -459,18 +456,18 @@ this produces always correctly blended animations but is significantly more cost
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ShapeElement[] rootElements</code></pre>
+    <pre><code class="lang-csharp hljs">public override int MaxJointId { get; }</code></pre>
   </div>
 
 
 
 
-  <h4 class="section">Field Value</h4>
+
+  <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>[]</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
-
 
 
 
@@ -589,6 +586,37 @@ this produces always correctly blended animations but is significantly more cost
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.ClientAnimator.html">ClientAnimator</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_ClientAnimator_DumpCurrentState_" data-uid="Vintagestory.API.Common.ClientAnimator.DumpCurrentState*"></a>
+
+  <h3 id="Vintagestory_API_Common_ClientAnimator_DumpCurrentState" data-uid="Vintagestory.API.Common.ClientAnimator.DumpCurrentState">
+  DumpCurrentState()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string DumpCurrentState()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -726,6 +754,32 @@ this produces always correctly blended animations but is significantly more cost
     <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_ClientAnimator_ReloadAttachmentPoints_" data-uid="Vintagestory.API.Common.ClientAnimator.ReloadAttachmentPoints*"></a>
+
+  <h3 id="Vintagestory_API_Common_ClientAnimator_ReloadAttachmentPoints" data-uid="Vintagestory.API.Common.ClientAnimator.ReloadAttachmentPoints">
+  ReloadAttachmentPoints()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void ReloadAttachmentPoints()</code></pre>
+  </div>
+
 
 
 

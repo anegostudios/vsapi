@@ -23,6 +23,21 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Allows you to make collectibles edible, and adds data about their nutrition.
+  example:
+  - >-
+    <pre><code class="lang-json">"nutritionPropsByType": {
+    	"*-flyagaric-*": {
+    		"saturation": 80,
+    		"health": -6.5,
+    		"foodcategory": "Vegetable"
+    	},
+    	"*-earthball-*": {
+    		"saturation": 80,
+    		"health": -8,
+    		"foodcategory": "Vegetable"
+    	},
+     ...</code></pre>
   syntax:
     content: public class FoodNutritionProperties
     content.vb: Public Class FoodNutritionProperties
@@ -36,6 +51,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.FoodNutritionProperties.FoodCategory
   commentId: F:Vintagestory.API.Common.FoodNutritionProperties.FoodCategory
   id: FoodCategory
@@ -50,7 +68,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The category of the food.
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>Fruit</jsondefault>-->
+
+    The category of the food.
   example: []
   syntax:
     content: public EnumFoodCategory FoodCategory
@@ -71,7 +92,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The saturation restored by the food.
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The saturation restored by the food.
   example: []
   syntax:
     content: public float Satiety
@@ -92,6 +116,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Obsolete</jsonoptional>-->
+
+    Obsolete - Please use <xref href="Vintagestory.API.Common.FoodNutritionProperties.Satiety" data-throw-if-not-resolved="false"></xref> instead.
+  example: []
   syntax:
     content: >-
       [Obsolete("Use Satiety instead.")]
@@ -125,6 +154,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    How much eating this will affect the player's intoxication.
+  example: []
   syntax:
     content: public float Intoxication { get; set; }
     parameters: []
@@ -146,7 +180,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The delay before that extra saturation starts to go away.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
+
+    The delay before that extra saturation starts to go away.
   example: []
   syntax:
     content: public float SaturationLossDelay
@@ -167,7 +204,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The health restored by the food.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The health restored by the food. Usually actually used to hurt the player with negative values.
   example: []
   syntax:
     content: public float Health
@@ -188,7 +228,14 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The item that was eaten.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    When an instance of this collectible is eaten, what item stack should be returned to the player?
+
+    Possible example: Eating a 'meat on a stick' item would return a single stick.
+
+    (Note: Bowl meals/liquids are specially designed to do this through their attributes and class.)
   example: []
   syntax:
     content: public JsonItemStack EatenStack
@@ -479,6 +526,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -486,6 +595,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.EnumFoodCategory
   commentId: T:Vintagestory.API.Common.EnumFoodCategory
   parent: Vintagestory.API.Common
@@ -504,6 +710,12 @@ references:
   nameWithType.vb: Single
   fullName.vb: Single
   name.vb: Single
+- uid: Vintagestory.API.Common.FoodNutritionProperties.Satiety
+  commentId: F:Vintagestory.API.Common.FoodNutritionProperties.Satiety
+  href: Vintagestory.API.Common.FoodNutritionProperties.html#Vintagestory_API_Common_FoodNutritionProperties_Satiety
+  name: Satiety
+  nameWithType: FoodNutritionProperties.Satiety
+  fullName: Vintagestory.API.Common.FoodNutritionProperties.Satiety
 - uid: Vintagestory.API.Common.FoodNutritionProperties.Saturation*
   commentId: Overload:Vintagestory.API.Common.FoodNutritionProperties.Saturation
   href: Vintagestory.API.Common.FoodNutritionProperties.html#Vintagestory_API_Common_FoodNutritionProperties_Saturation

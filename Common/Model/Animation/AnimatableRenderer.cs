@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Vintagestory.API.Client;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 
@@ -23,6 +24,7 @@ namespace Vintagestory.API.Common
         public int textureId;
 
         public float[] ModelMat = Mat4f.Create();
+        public float[] CustomTransform = null;
 
         public bool ShouldRender;
         public bool StabilityAffected = true;
@@ -88,10 +90,17 @@ namespace Vintagestory.API.Common
             Mat4f.Identity(ModelMat);
             Mat4f.Translate(ModelMat, ModelMat, (float)(pos.X - entityPlayer.CameraPos.X), (float)(pos.Y - entityPlayer.CameraPos.Y), (float)(pos.Z - entityPlayer.CameraPos.Z));
 
-            Mat4f.Translate(ModelMat, ModelMat, 0.5f, 0, 0.5f);
-            Mat4f.Scale(ModelMat, ModelMat, ScaleX, ScaleY, ScaleZ);
-            Mat4f.RotateY(ModelMat, ModelMat, rotationDeg.Y * GameMath.DEG2RAD);
-            Mat4f.Translate(ModelMat, ModelMat, -0.5f, 0, -0.5f);
+            if (CustomTransform != null)
+            {
+                Mat4f.Multiply(ModelMat, ModelMat, CustomTransform);
+            }
+            else
+            {
+                Mat4f.Translate(ModelMat, ModelMat, 0.5f, 0, 0.5f);
+                Mat4f.Scale(ModelMat, ModelMat, ScaleX, ScaleY, ScaleZ);
+                Mat4f.RotateY(ModelMat, ModelMat, rotationDeg.Y * GameMath.DEG2RAD);
+                Mat4f.Translate(ModelMat, ModelMat, -0.5f, 0, -0.5f);
+            }
 
             IRenderAPI rpi = capi.Render;
             IShaderProgram prevProg = rpi.CurrentActiveShader;
@@ -133,12 +142,7 @@ namespace Vintagestory.API.Common
             prog.UniformMatrix("projectionMatrix", rpi.CurrentProjectionMatrix);
             prog.Uniform("addRenderFlags", 0);
 
-            
-            prog.UniformMatrices4x3(
-                "elementTransforms",
-                GlobalConstants.MaxAnimatedElements,
-                animator.Matrices4x3
-            );
+            prog.UBOs["Animation"].Update(animator.Matrices, 0, animator.MaxJointId * 16 * 4);
 
             if ((stage == EnumRenderStage.Opaque || stage == EnumRenderStage.ShadowNear) && !backfaceCulling) capi.Render.GlDisableCullFace();
 

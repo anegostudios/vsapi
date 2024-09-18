@@ -50,10 +50,34 @@ namespace Vintagestory.API.Util
             return dest;
         }
 
+
+        public static T[] Slice<T>(this T[] src, int index, int count)
+        {
+            T[] dest = new T[count];
+
+            for (int i = 0; i < count; i++)
+            {
+                dest[i] = src[index + i];
+            }
+
+            return dest;
+        }
     }
 
     public static class EnumerableExtensions
     {
+        public static int IndexOf<T>(this IEnumerable<T> source, Common.ActionBoolReturn<T> onelem)
+        {
+            int i = 0;
+            foreach (var elem in source)
+            {
+                if (onelem(elem)) return i;
+                i++;
+            }
+
+            return -1;
+        }
+
         public static void Foreach<T>(this IEnumerable<T> array, Action<T> onelement)
         {
             foreach (var val in array)
@@ -190,7 +214,20 @@ namespace Vintagestory.API.Util
             return elems.ToArray();
         }
 
+        [Obsolete("Use RemoveAt instead")]
         public static T[] RemoveEntry<T>(this T[] array, int index)
+        {
+            return RemoveAt(array, index);
+        }
+
+        /// <summary>
+        /// Creates a new copy of array with element at index removed
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static T[] RemoveAt<T>(this T[] array, int index)
         {
             T[] cut = new T[array.Length - 1];
 

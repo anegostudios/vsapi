@@ -63,7 +63,7 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// Trigger the special worldgen hook, with the name "hook", if it exists
         /// </summary>
-        void TriggerWorldgenHook(string hook, IBlockAccessor blockAccessor, BlockPos pos, AssetLocation loc);
+        void TriggerWorldgenHook(string hook, IBlockAccessor blockAccessor, BlockPos pos, string param);
 
         /// <summary>
         /// Called when just loaded (or generated) a full chunkcolumn
@@ -81,7 +81,7 @@ namespace Vintagestory.API.Server
         event ChunkColumnUnloadDelegate ChunkColumnUnloaded;
 
 
-        
+
 
         /// <summary>
         /// Registers a handler to be called every time a player uses a block. The methods return value determines if the player may place/break this block.
@@ -99,7 +99,7 @@ namespace Vintagestory.API.Server
         event OnInteractDelegate OnPlayerInteractEntity;
 
         /// <summary>
-        /// Called when a new player joins 
+        /// Called when a new player joins
         /// </summary>
         event PlayerDelegate PlayerCreate;
 
@@ -124,7 +124,7 @@ namespace Vintagestory.API.Server
         event PlayerDelegate PlayerLeave;
 
         /// <summary>
-        /// Called whenever a player disconnects (timeout, leave, disconnect, kick, etc.). 
+        /// Called whenever a player disconnects (timeout, leave, disconnect, kick, etc.).
         /// </summary>
         event PlayerDelegate PlayerDisconnect;
 
@@ -179,7 +179,7 @@ namespace Vintagestory.API.Server
         event Action WorldgenStartup;
 
         /// <summary>
-        /// Triggered before the game world data is being saved to disk 
+        /// Triggered before the game world data is being saved to disk
         /// </summary>
         event Action GameWorldSave;
 

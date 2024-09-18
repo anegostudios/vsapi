@@ -13,12 +13,8 @@ items:
   - Vintagestory.API.Client.GuiDialogBlockEntity.DoSendPacket(System.Object)
   - Vintagestory.API.Client.GuiDialogBlockEntity.FloatyDialogAlign
   - Vintagestory.API.Client.GuiDialogBlockEntity.FloatyDialogPosition
-  - Vintagestory.API.Client.GuiDialogBlockEntity.FreePos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  - Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos(System.String)
   - Vintagestory.API.Client.GuiDialogBlockEntity.Inventory
   - Vintagestory.API.Client.GuiDialogBlockEntity.IsDuplicate
-  - Vintagestory.API.Client.GuiDialogBlockEntity.IsRight(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  - Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
   - Vintagestory.API.Client.GuiDialogBlockEntity.OnFinalizeFrame(System.Single)
   - Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiClosed
   - Vintagestory.API.Client.GuiDialogBlockEntity.OnGuiOpened
@@ -28,7 +24,6 @@ items:
   - Vintagestory.API.Client.GuiDialogBlockEntity.PrefersUngrabbedMouse
   - Vintagestory.API.Client.GuiDialogBlockEntity.ReloadValues
   - Vintagestory.API.Client.GuiDialogBlockEntity.TryOpen
-  - Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
   langs:
   - csharp
   - vb
@@ -110,6 +105,12 @@ items:
   - Vintagestory.API.Client.GuiDialog.Dispose
   - Vintagestory.API.Client.GuiDialog.ClearComposers
   - Vintagestory.API.Client.GuiDialog.IsInRangeOf(Vintagestory.API.MathTools.Vec3d)
+  - Vintagestory.API.Client.GuiDialog.GetFreePos(System.String)
+  - Vintagestory.API.Client.GuiDialog.OccupyPos(System.String,Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  - Vintagestory.API.Client.GuiDialog.FreePos(System.String,Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  - Vintagestory.API.Client.GuiDialog.IsRight(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  - Vintagestory.API.Client.GuiDialog.YOffsetMul(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  - Vintagestory.API.Client.GuiDialog.XOffsetMul(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetHashCode
@@ -117,6 +118,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Client.GuiDialogBlockEntity.IsDuplicate
   commentId: P:Vintagestory.API.Client.GuiDialogBlockEntity.IsDuplicate
   id: IsDuplicate
@@ -590,130 +594,6 @@ items:
     content: public void ReloadValues()
     content.vb: Public Sub ReloadValues()
   overload: Vintagestory.API.Client.GuiDialogBlockEntity.ReloadValues*
-- uid: Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos(System.String)
-  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos(System.String)
-  id: GetFreePos(System.String)
-  parent: Vintagestory.API.Client.GuiDialogBlockEntity
-  langs:
-  - csharp
-  - vb
-  name: GetFreePos(string)
-  nameWithType: GuiDialogBlockEntity.GetFreePos(string)
-  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos(string)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Client
-  syntax:
-    content: public GuiDialogBlockEntity.EnumPosFlag GetFreePos(string code)
-    parameters:
-    - id: code
-      type: System.String
-    return:
-      type: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-    content.vb: Public Function GetFreePos(code As String) As GuiDialogBlockEntity.EnumPosFlag
-  overload: Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos*
-  nameWithType.vb: GuiDialogBlockEntity.GetFreePos(String)
-  fullName.vb: Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos(String)
-  name.vb: GetFreePos(String)
-- uid: Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  id: OccupyPos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  parent: Vintagestory.API.Client.GuiDialogBlockEntity
-  langs:
-  - csharp
-  - vb
-  name: OccupyPos(string, EnumPosFlag)
-  nameWithType: GuiDialogBlockEntity.OccupyPos(string, GuiDialogBlockEntity.EnumPosFlag)
-  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos(string, Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Client
-  syntax:
-    content: public void OccupyPos(string code, GuiDialogBlockEntity.EnumPosFlag pos)
-    parameters:
-    - id: code
-      type: System.String
-    - id: pos
-      type: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-    content.vb: Public Sub OccupyPos(code As String, pos As GuiDialogBlockEntity.EnumPosFlag)
-  overload: Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos*
-  nameWithType.vb: GuiDialogBlockEntity.OccupyPos(String, GuiDialogBlockEntity.EnumPosFlag)
-  fullName.vb: Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos(String, Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  name.vb: OccupyPos(String, EnumPosFlag)
-- uid: Vintagestory.API.Client.GuiDialogBlockEntity.FreePos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.FreePos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  id: FreePos(System.String,Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  parent: Vintagestory.API.Client.GuiDialogBlockEntity
-  langs:
-  - csharp
-  - vb
-  name: FreePos(string, EnumPosFlag)
-  nameWithType: GuiDialogBlockEntity.FreePos(string, GuiDialogBlockEntity.EnumPosFlag)
-  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.FreePos(string, Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Client
-  syntax:
-    content: public void FreePos(string code, GuiDialogBlockEntity.EnumPosFlag pos)
-    parameters:
-    - id: code
-      type: System.String
-    - id: pos
-      type: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-    content.vb: Public Sub FreePos(code As String, pos As GuiDialogBlockEntity.EnumPosFlag)
-  overload: Vintagestory.API.Client.GuiDialogBlockEntity.FreePos*
-  nameWithType.vb: GuiDialogBlockEntity.FreePos(String, GuiDialogBlockEntity.EnumPosFlag)
-  fullName.vb: Vintagestory.API.Client.GuiDialogBlockEntity.FreePos(String, Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  name.vb: FreePos(String, EnumPosFlag)
-- uid: Vintagestory.API.Client.GuiDialogBlockEntity.IsRight(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.IsRight(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  id: IsRight(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  parent: Vintagestory.API.Client.GuiDialogBlockEntity
-  langs:
-  - csharp
-  - vb
-  name: IsRight(EnumPosFlag)
-  nameWithType: GuiDialogBlockEntity.IsRight(GuiDialogBlockEntity.EnumPosFlag)
-  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.IsRight(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Client
-  syntax:
-    content: protected bool IsRight(GuiDialogBlockEntity.EnumPosFlag flag)
-    parameters:
-    - id: flag
-      type: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-    return:
-      type: System.Boolean
-    content.vb: Protected Function IsRight(flag As GuiDialogBlockEntity.EnumPosFlag) As Boolean
-  overload: Vintagestory.API.Client.GuiDialogBlockEntity.IsRight*
-- uid: Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  commentId: M:Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  id: YOffsetMul(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  parent: Vintagestory.API.Client.GuiDialogBlockEntity
-  langs:
-  - csharp
-  - vb
-  name: YOffsetMul(EnumPosFlag)
-  nameWithType: GuiDialogBlockEntity.YOffsetMul(GuiDialogBlockEntity.EnumPosFlag)
-  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul(Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Client
-  syntax:
-    content: protected float YOffsetMul(GuiDialogBlockEntity.EnumPosFlag flag)
-    parameters:
-    - id: flag
-      type: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-    return:
-      type: System.Single
-    content.vb: Protected Function YOffsetMul(flag As GuiDialogBlockEntity.EnumPosFlag) As Single
-  overload: Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul*
 references:
 - uid: Vintagestory.API.Client
   commentId: N:Vintagestory.API.Client
@@ -1741,6 +1621,194 @@ references:
     name: Vec3d
     href: Vintagestory.API.MathTools.Vec3d.html
   - name: )
+- uid: Vintagestory.API.Client.GuiDialog.GetFreePos(System.String)
+  commentId: M:Vintagestory.API.Client.GuiDialog.GetFreePos(System.String)
+  parent: Vintagestory.API.Client.GuiDialog
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_GetFreePos_System_String_
+  name: GetFreePos(string)
+  nameWithType: GuiDialog.GetFreePos(string)
+  fullName: Vintagestory.API.Client.GuiDialog.GetFreePos(string)
+  nameWithType.vb: GuiDialog.GetFreePos(String)
+  fullName.vb: Vintagestory.API.Client.GuiDialog.GetFreePos(String)
+  name.vb: GetFreePos(String)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.GetFreePos(System.String)
+    name: GetFreePos
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_GetFreePos_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.GetFreePos(System.String)
+    name: GetFreePos
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_GetFreePos_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.OccupyPos(System.String,Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  commentId: M:Vintagestory.API.Client.GuiDialog.OccupyPos(System.String,Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  parent: Vintagestory.API.Client.GuiDialog
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OccupyPos_System_String_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  name: OccupyPos(string, EnumPosFlag)
+  nameWithType: GuiDialog.OccupyPos(string, GuiDialog.EnumPosFlag)
+  fullName: Vintagestory.API.Client.GuiDialog.OccupyPos(string, Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  nameWithType.vb: GuiDialog.OccupyPos(String, GuiDialog.EnumPosFlag)
+  fullName.vb: Vintagestory.API.Client.GuiDialog.OccupyPos(String, Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  name.vb: OccupyPos(String, EnumPosFlag)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.OccupyPos(System.String,Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+    name: OccupyPos
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OccupyPos_System_String_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialog.EnumPosFlag.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.OccupyPos(System.String,Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+    name: OccupyPos
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_OccupyPos_System_String_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialog.EnumPosFlag.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.FreePos(System.String,Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  commentId: M:Vintagestory.API.Client.GuiDialog.FreePos(System.String,Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  parent: Vintagestory.API.Client.GuiDialog
+  isExternal: true
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_FreePos_System_String_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  name: FreePos(string, EnumPosFlag)
+  nameWithType: GuiDialog.FreePos(string, GuiDialog.EnumPosFlag)
+  fullName: Vintagestory.API.Client.GuiDialog.FreePos(string, Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  nameWithType.vb: GuiDialog.FreePos(String, GuiDialog.EnumPosFlag)
+  fullName.vb: Vintagestory.API.Client.GuiDialog.FreePos(String, Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  name.vb: FreePos(String, EnumPosFlag)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.FreePos(System.String,Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+    name: FreePos
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_FreePos_System_String_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialog.EnumPosFlag.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.FreePos(System.String,Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+    name: FreePos
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_FreePos_System_String_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialog.EnumPosFlag.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.IsRight(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  commentId: M:Vintagestory.API.Client.GuiDialog.IsRight(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsRight_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  name: IsRight(EnumPosFlag)
+  nameWithType: GuiDialog.IsRight(GuiDialog.EnumPosFlag)
+  fullName: Vintagestory.API.Client.GuiDialog.IsRight(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.IsRight(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+    name: IsRight
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsRight_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  - name: (
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialog.EnumPosFlag.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.IsRight(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+    name: IsRight
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_IsRight_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  - name: (
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialog.EnumPosFlag.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.YOffsetMul(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  commentId: M:Vintagestory.API.Client.GuiDialog.YOffsetMul(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_YOffsetMul_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  name: YOffsetMul(EnumPosFlag)
+  nameWithType: GuiDialog.YOffsetMul(GuiDialog.EnumPosFlag)
+  fullName: Vintagestory.API.Client.GuiDialog.YOffsetMul(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.YOffsetMul(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+    name: YOffsetMul
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_YOffsetMul_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  - name: (
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialog.EnumPosFlag.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.YOffsetMul(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+    name: YOffsetMul
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_YOffsetMul_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  - name: (
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialog.EnumPosFlag.html
+  - name: )
+- uid: Vintagestory.API.Client.GuiDialog.XOffsetMul(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  commentId: M:Vintagestory.API.Client.GuiDialog.XOffsetMul(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  parent: Vintagestory.API.Client.GuiDialog
+  href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_XOffsetMul_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  name: XOffsetMul(EnumPosFlag)
+  nameWithType: GuiDialog.XOffsetMul(GuiDialog.EnumPosFlag)
+  fullName: Vintagestory.API.Client.GuiDialog.XOffsetMul(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog.XOffsetMul(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+    name: XOffsetMul
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_XOffsetMul_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  - name: (
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialog.EnumPosFlag.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog.XOffsetMul(Vintagestory.API.Client.GuiDialog.EnumPosFlag)
+    name: XOffsetMul
+    href: Vintagestory.API.Client.GuiDialog.html#Vintagestory_API_Client_GuiDialog_XOffsetMul_Vintagestory_API_Client_GuiDialog_EnumPosFlag_
+  - name: (
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialog.EnumPosFlag.html
+  - name: )
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -1960,6 +2028,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1967,6 +2097,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Client.GuiDialogBlockEntity.IsDuplicate*
   commentId: Overload:Vintagestory.API.Client.GuiDialogBlockEntity.IsDuplicate
   href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_IsDuplicate
@@ -2350,56 +2577,3 @@ references:
   name: ReloadValues
   nameWithType: GuiDialogBlockEntity.ReloadValues
   fullName: Vintagestory.API.Client.GuiDialogBlockEntity.ReloadValues
-- uid: Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos*
-  commentId: Overload:Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos
-  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_GetFreePos_System_String_
-  name: GetFreePos
-  nameWithType: GuiDialogBlockEntity.GetFreePos
-  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.GetFreePos
-- uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-  commentId: T:Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-  parent: Vintagestory.API.Client
-  href: Vintagestory.API.Client.GuiDialogBlockEntity.html
-  name: GuiDialogBlockEntity.EnumPosFlag
-  nameWithType: GuiDialogBlockEntity.EnumPosFlag
-  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-  spec.csharp:
-  - uid: Vintagestory.API.Client.GuiDialogBlockEntity
-    name: GuiDialogBlockEntity
-    href: Vintagestory.API.Client.GuiDialogBlockEntity.html
-  - name: .
-  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-    name: EnumPosFlag
-    href: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html
-  spec.vb:
-  - uid: Vintagestory.API.Client.GuiDialogBlockEntity
-    name: GuiDialogBlockEntity
-    href: Vintagestory.API.Client.GuiDialogBlockEntity.html
-  - name: .
-  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-    name: EnumPosFlag
-    href: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html
-- uid: Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos*
-  commentId: Overload:Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos
-  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_OccupyPos_System_String_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
-  name: OccupyPos
-  nameWithType: GuiDialogBlockEntity.OccupyPos
-  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.OccupyPos
-- uid: Vintagestory.API.Client.GuiDialogBlockEntity.FreePos*
-  commentId: Overload:Vintagestory.API.Client.GuiDialogBlockEntity.FreePos
-  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_FreePos_System_String_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
-  name: FreePos
-  nameWithType: GuiDialogBlockEntity.FreePos
-  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.FreePos
-- uid: Vintagestory.API.Client.GuiDialogBlockEntity.IsRight*
-  commentId: Overload:Vintagestory.API.Client.GuiDialogBlockEntity.IsRight
-  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_IsRight_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
-  name: IsRight
-  nameWithType: GuiDialogBlockEntity.IsRight
-  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.IsRight
-- uid: Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul*
-  commentId: Overload:Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul
-  href: Vintagestory.API.Client.GuiDialogBlockEntity.html#Vintagestory_API_Client_GuiDialogBlockEntity_YOffsetMul_Vintagestory_API_Client_GuiDialogBlockEntity_EnumPosFlag_
-  name: YOffsetMul
-  nameWithType: GuiDialogBlockEntity.YOffsetMul
-  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.YOffsetMul

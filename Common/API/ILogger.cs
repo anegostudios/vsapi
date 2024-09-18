@@ -109,7 +109,7 @@ namespace Vintagestory.API.Common
         /// Convenience method for logging exceptions in try/catch blocks
         /// </summary>
         void Warning(Exception e);
-        
+
         /// <summary>
         /// Adds a new <see cref="EnumLogType.Error"/> log entry with the specified format string and arguments.
         /// </summary>
@@ -274,7 +274,7 @@ namespace Vintagestory.API.Common
     {
         public DummyLoggerException(string message) : base(message)
         {
-            
+
         }
     }
 }

@@ -59,7 +59,7 @@ namespace Vintagestory.API.Common
         internal AnimationKeyFrameElement GetKeyFrameElement(ShapeElement forElem)
         {
             if (forElem == null) return null;
-            AnimationKeyFrameElement kelem = null;
+            AnimationKeyFrameElement kelem;
             ElementsByShapeElement.TryGetValue(forElem, out kelem);
             return kelem;
         }
@@ -68,7 +68,7 @@ namespace Vintagestory.API.Common
         {
             return new AnimationKeyFrame()
             {
-                Elements = new Dictionary<string, AnimationKeyFrameElement>(Elements),
+                Elements = Elements == null ? null : new Dictionary<string, AnimationKeyFrameElement>(Elements),
                 Frame = Frame
             };
 

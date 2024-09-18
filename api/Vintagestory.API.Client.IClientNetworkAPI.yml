@@ -15,8 +15,11 @@ items:
   - Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket``1(Vintagestory.API.MathTools.BlockPos,System.Int32,``0)
   - Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(System.Int64,System.Int32,System.Byte[])
   - Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(System.Int64,System.Object)
+  - Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacketWithOffset(System.Int64,System.Int32,System.Object)
   - Vintagestory.API.Client.IClientNetworkAPI.SendHandInteraction(System.Int32,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Common.EnumHandInteract,System.Int32,System.Boolean,Vintagestory.API.Common.EnumItemUseCancelReason)
+  - Vintagestory.API.Client.IClientNetworkAPI.SendMountPacket(Vintagestory.API.Common.Entities.Entity)
   - Vintagestory.API.Client.IClientNetworkAPI.SendPacketClient(System.Object)
+  - Vintagestory.API.Client.IClientNetworkAPI.SendPlayerEntityPacket(Vintagestory.API.Common.EntityPlayer)
   - Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady
   langs:
   - csharp
@@ -33,6 +36,9 @@ items:
   syntax:
     content: 'public interface IClientNetworkAPI : INetworkAPI'
     content.vb: Public Interface IClientNetworkAPI Inherits INetworkAPI
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel(System.String)
   commentId: M:Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel(System.String)
   id: RegisterChannel(System.String)
@@ -140,7 +146,10 @@ items:
   summary: Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.
   example: []
   syntax:
-    content: void SendBlockEntityPacket(int x, int y, int z, int packetId, byte[] data = null)
+    content: >-
+      [Obsolete("Not dimension aware, use BlockPos overload instead, otherwise thie BlockEntity will probably not work correctly in other dimensions")]
+
+      void SendBlockEntityPacket(int x, int y, int z, int packetId, byte[] data = null)
     parameters:
     - id: x
       type: System.Int32
@@ -157,8 +166,17 @@ items:
     - id: data
       type: System.Byte[]
       description: ''
-    content.vb: Sub SendBlockEntityPacket(x As Integer, y As Integer, z As Integer, packetId As Integer, data As Byte() = Nothing)
+    content.vb: >-
+      <Obsolete("Not dimension aware, use BlockPos overload instead, otherwise thie BlockEntity will probably not work correctly in other dimensions")>
+
+      Sub SendBlockEntityPacket(x As Integer, y As Integer, z As Integer, packetId As Integer, data As Byte() = Nothing)
   overload: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Not dimension aware, use BlockPos overload instead, otherwise thie BlockEntity will probably not work correctly in other dimensions
   nameWithType.vb: IClientNetworkAPI.SendBlockEntityPacket(Integer, Integer, Integer, Integer, Byte())
   fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(Integer, Integer, Integer, Integer, Byte())
   name.vb: SendBlockEntityPacket(Integer, Integer, Integer, Integer, Byte())
@@ -228,6 +246,54 @@ items:
   nameWithType.vb: IClientNetworkAPI.SendEntityPacket(Long, Integer, Byte())
   fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(Long, Integer, Byte())
   name.vb: SendEntityPacket(Long, Integer, Byte())
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendPlayerEntityPacket(Vintagestory.API.Common.EntityPlayer)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendPlayerEntityPacket(Vintagestory.API.Common.EntityPlayer)
+  id: SendPlayerEntityPacket(Vintagestory.API.Common.EntityPlayer)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendPlayerEntityPacket(EntityPlayer)
+  nameWithType: IClientNetworkAPI.SendPlayerEntityPacket(EntityPlayer)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendPlayerEntityPacket(Vintagestory.API.Common.EntityPlayer)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sends the players entity position via UDP to the server
+  example: []
+  syntax:
+    content: void SendPlayerEntityPacket(EntityPlayer player)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.EntityPlayer
+      description: ''
+    content.vb: Sub SendPlayerEntityPacket(player As EntityPlayer)
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendPlayerEntityPacket*
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendMountPacket(Vintagestory.API.Common.Entities.Entity)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendMountPacket(Vintagestory.API.Common.Entities.Entity)
+  id: SendMountPacket(Vintagestory.API.Common.Entities.Entity)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendMountPacket(Entity)
+  nameWithType: IClientNetworkAPI.SendMountPacket(Entity)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendMountPacket(Vintagestory.API.Common.Entities.Entity)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sends a mount position via UDP to the server
+  example: []
+  syntax:
+    content: void SendMountPacket(Entity mount)
+    parameters:
+    - id: mount
+      type: Vintagestory.API.Common.Entities.Entity
+      description: ''
+    content.vb: Sub SendMountPacket(mount As Entity)
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendMountPacket*
 - uid: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Object)
   commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Object)
   id: SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Object)
@@ -294,6 +360,38 @@ items:
   nameWithType.vb: IClientNetworkAPI.SendEntityPacket(Long, Object)
   fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacket(Long, Object)
   name.vb: SendEntityPacket(Long, Object)
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacketWithOffset(System.Int64,System.Int32,System.Object)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacketWithOffset(System.Int64,System.Int32,System.Object)
+  id: SendEntityPacketWithOffset(System.Int64,System.Int32,System.Object)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: SendEntityPacketWithOffset(long, int, object)
+  nameWithType: IClientNetworkAPI.SendEntityPacketWithOffset(long, int, object)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacketWithOffset(long, int, object)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Sends a entity interaction packet to the server. For quick an easy entity network communication without setting up a channel first.
+  example: []
+  syntax:
+    content: void SendEntityPacketWithOffset(long entityid, int packetIdOffset, object internalPacket)
+    parameters:
+    - id: entityid
+      type: System.Int64
+      description: ''
+    - id: packetIdOffset
+      type: System.Int32
+    - id: internalPacket
+      type: System.Object
+      description: ''
+    content.vb: Sub SendEntityPacketWithOffset(entityid As Long, packetIdOffset As Integer, internalPacket As Object)
+  overload: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacketWithOffset*
+  nameWithType.vb: IClientNetworkAPI.SendEntityPacketWithOffset(Long, Integer, Object)
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacketWithOffset(Long, Integer, Object)
+  name.vb: SendEntityPacketWithOffset(Long, Integer, Object)
 - uid: Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket(System.Byte[])
   commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket(System.Byte[])
   id: SendArbitraryPacket(System.Byte[])
@@ -480,6 +578,165 @@ references:
   - uid: Vintagestory.API.Client
     name: Client
     href: Vintagestory.API.Client.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel*
   commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel
   href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_RegisterChannel_System_String_
@@ -624,6 +881,100 @@ references:
   nameWithType.vb: Long
   fullName.vb: Long
   name.vb: Long
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendPlayerEntityPacket*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.SendPlayerEntityPacket
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_SendPlayerEntityPacket_Vintagestory_API_Common_EntityPlayer_
+  name: SendPlayerEntityPacket
+  nameWithType: IClientNetworkAPI.SendPlayerEntityPacket
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendPlayerEntityPacket
+- uid: Vintagestory.API.Common.EntityPlayer
+  commentId: T:Vintagestory.API.Common.EntityPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntityPlayer.html
+  name: EntityPlayer
+  nameWithType: EntityPlayer
+  fullName: Vintagestory.API.Common.EntityPlayer
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendMountPacket*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.SendMountPacket
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_SendMountPacket_Vintagestory_API_Common_Entities_Entity_
+  name: SendMountPacket
+  nameWithType: IClientNetworkAPI.SendMountPacket
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendMountPacket
+- uid: Vintagestory.API.Common.Entities.Entity
+  commentId: T:Vintagestory.API.Common.Entities.Entity
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Vintagestory.API.Common.Entities.Entity
+- uid: Vintagestory.API.Common.Entities
+  commentId: N:Vintagestory.API.Common.Entities
+  href: Vintagestory.html
+  name: Vintagestory.API.Common.Entities
+  nameWithType: Vintagestory.API.Common.Entities
+  fullName: Vintagestory.API.Common.Entities
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
 - uid: System.Object
   commentId: T:System.Object
   parent: System
@@ -635,6 +986,12 @@ references:
   nameWithType.vb: Object
   fullName.vb: Object
   name.vb: Object
+- uid: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacketWithOffset*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacketWithOffset
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_SendEntityPacketWithOffset_System_Int64_System_Int32_System_Object_
+  name: SendEntityPacketWithOffset
+  nameWithType: IClientNetworkAPI.SendEntityPacketWithOffset
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.SendEntityPacketWithOffset
 - uid: Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket*
   commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket
   href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_SendArbitraryPacket_System_Byte___
@@ -692,36 +1049,6 @@ references:
   name: EnumItemUseCancelReason
   nameWithType: EnumItemUseCancelReason
   fullName: Vintagestory.API.Common.EnumItemUseCancelReason
-- uid: Vintagestory.API.Common
-  commentId: N:Vintagestory.API.Common
-  href: Vintagestory.html
-  name: Vintagestory.API.Common
-  nameWithType: Vintagestory.API.Common
-  fullName: Vintagestory.API.Common
-  spec.csharp:
-  - uid: Vintagestory
-    name: Vintagestory
-    href: Vintagestory.html
-  - name: .
-  - uid: Vintagestory.API
-    name: API
-    href: Vintagestory.API.html
-  - name: .
-  - uid: Vintagestory.API.Common
-    name: Common
-    href: Vintagestory.API.Common.html
-  spec.vb:
-  - uid: Vintagestory
-    name: Vintagestory
-    href: Vintagestory.html
-  - name: .
-  - uid: Vintagestory.API
-    name: API
-    href: Vintagestory.API.html
-  - name: .
-  - uid: Vintagestory.API.Common
-    name: Common
-    href: Vintagestory.API.Common.html
 - uid: Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady*
   commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.SendPlayerNowReady
   href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_SendPlayerNowReady

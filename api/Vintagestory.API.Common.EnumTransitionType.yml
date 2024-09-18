@@ -11,6 +11,7 @@ items:
   - Vintagestory.API.Common.EnumTransitionType.Dry
   - Vintagestory.API.Common.EnumTransitionType.Harden
   - Vintagestory.API.Common.EnumTransitionType.Melt
+  - Vintagestory.API.Common.EnumTransitionType.None
   - Vintagestory.API.Common.EnumTransitionType.Perish
   - Vintagestory.API.Common.EnumTransitionType.Ripen
   langs:
@@ -23,9 +24,14 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Types of transition for items.
+  example: []
   syntax:
     content: public enum EnumTransitionType
     content.vb: Public Enum EnumTransitionType
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.EnumTransitionType.Perish
   commentId: F:Vintagestory.API.Common.EnumTransitionType.Perish
   id: Perish
@@ -40,7 +46,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: For food, animals or non-organic materials
+  summary: For food, animals or non-organic materials.
   example: []
   syntax:
     content: Perish = 0
@@ -60,7 +66,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Can be dried
+  summary: Can be dried.
   example: []
   syntax:
     content: Dry = 1
@@ -80,7 +86,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Can be burned to a crisp :D
+  summary: Can be burned.
   example: []
   syntax:
     content: Burn = 2
@@ -100,6 +106,8 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Can be cured, for meat.
+  example: []
   syntax:
     content: Cure = 3
     return:
@@ -118,7 +126,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: something else o.O
+  summary: Generic 'other' conversion.
   example: []
   syntax:
     content: Convert = 4
@@ -138,7 +146,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Cheese ripening
+  summary: Cheese ripening.
   example: []
   syntax:
     content: Ripen = 5
@@ -158,7 +166,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Snow/ice melting
+  summary: Snow/ice melting.
   example: []
   syntax:
     content: Melt = 6
@@ -178,10 +186,30 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Glue hardening
+  summary: Glue hardening.
   example: []
   syntax:
     content: Harden = 7
+    return:
+      type: Vintagestory.API.Common.EnumTransitionType
+- uid: Vintagestory.API.Common.EnumTransitionType.None
+  commentId: F:Vintagestory.API.Common.EnumTransitionType.None
+  id: None
+  parent: Vintagestory.API.Common.EnumTransitionType
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: EnumTransitionType.None
+  fullName: Vintagestory.API.Common.EnumTransitionType.None
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Used for cooking recipes where the output has no perishableprops, but we still need a non-null TransitionableProperties  (e.g. sulfuric acid in 1.20)
+  example: []
+  syntax:
+    content: None = 8
     return:
       type: Vintagestory.API.Common.EnumTransitionType
 references:
@@ -215,6 +243,165 @@ references:
   - uid: Vintagestory.API.Common
     name: Common
     href: Vintagestory.API.Common.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.EnumTransitionType
   commentId: T:Vintagestory.API.Common.EnumTransitionType
   parent: Vintagestory.API.Common

@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -120,6 +120,19 @@ Currently implemented by <a class="xref" href="Vintagestory.API.Common.ServerAni
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimationCache.html#Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___">AnimationCache.LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -259,6 +272,39 @@ Currently implemented by <a class="xref" href="Vintagestory.API.Common.ServerAni
 
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="Vintagestory_API_Common_IAnimationManager_CopyOverAnims_" data-uid="Vintagestory.API.Common.IAnimationManager.CopyOverAnims*"></a>
+
+  <h3 id="Vintagestory_API_Common_IAnimationManager_CopyOverAnims_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_" data-uid="Vintagestory.API.Common.IAnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)">
+  CopyOverAnims(RunningAnimation[], IAnimator)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void CopyOverAnims(RunningAnimation[] copyOverAnims, IAnimator animator)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>copyOverAnims</code> <a class="xref" href="Vintagestory.API.Common.RunningAnimation.html">RunningAnimation</a>[]</dt>
+    <dd></dd>
+    <dt><code>animator</code> <a class="xref" href="Vintagestory.API.Common.IAnimator.html">IAnimator</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_Common_IAnimationManager_FromAttributes_" data-uid="Vintagestory.API.Common.IAnimationManager.FromAttributes*"></a>
@@ -403,28 +449,41 @@ Currently implemented by <a class="xref" href="Vintagestory.API.Common.ServerAni
 
 
 
-  <a id="Vintagestory_API_Common_IAnimationManager_OnAnimationStopped_" data-uid="Vintagestory.API.Common.IAnimationManager.OnAnimationStopped*"></a>
+  <a id="Vintagestory_API_Common_IAnimationManager_LoadAnimator_" data-uid="Vintagestory.API.Common.IAnimationManager.LoadAnimator*"></a>
 
-  <h3 id="Vintagestory_API_Common_IAnimationManager_OnAnimationStopped_System_String_" data-uid="Vintagestory.API.Common.IAnimationManager.OnAnimationStopped(System.String)">
-  OnAnimationStopped(string)
+  <h3 id="Vintagestory_API_Common_IAnimationManager_LoadAnimator_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___" data-uid="Vintagestory.API.Common.IAnimationManager.LoadAnimator(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])">
+  LoadAnimator(ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The event fired when the animation is stopped.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void OnAnimationStopped(string code)</code></pre>
+    <pre><code class="lang-csharp hljs">IAnimator LoadAnimator(ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd><p>The code that the animation stopped with.</p>
-</dd>
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+    <dt><code>entity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+    <dt><code>entityShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
+    <dd></dd>
+    <dt><code>copyOverAnims</code> <a class="xref" href="Vintagestory.API.Common.RunningAnimation.html">RunningAnimation</a>[]</dt>
+    <dd></dd>
+    <dt><code>requirePosesOnServer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>requireJointsForElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
   </dl>
 
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IAnimator.html">IAnimator</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -600,6 +659,37 @@ Currently implemented by <a class="xref" href="Vintagestory.API.Common.ServerAni
 
 
 
+  <a id="Vintagestory_API_Common_IAnimationManager_ShouldPlaySound_" data-uid="Vintagestory.API.Common.IAnimationManager.ShouldPlaySound*"></a>
+
+  <h3 id="Vintagestory_API_Common_IAnimationManager_ShouldPlaySound_Vintagestory_API_Common_AnimationSound_" data-uid="Vintagestory.API.Common.IAnimationManager.ShouldPlaySound(Vintagestory.API.Common.AnimationSound)">
+  ShouldPlaySound(AnimationSound)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void ShouldPlaySound(AnimationSound sound)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sound</code> <a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_IAnimationManager_StartAnimation_" data-uid="Vintagestory.API.Common.IAnimationManager.StartAnimation*"></a>
 
   <h3 id="Vintagestory_API_Common_IAnimationManager_StartAnimation_System_String_" data-uid="Vintagestory.API.Common.IAnimationManager.StartAnimation(System.String)">
@@ -735,6 +825,133 @@ Currently implemented by <a class="xref" href="Vintagestory.API.Common.ServerAni
 
 
 
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IAnimationManager_TriggerAnimationStopped_" data-uid="Vintagestory.API.Common.IAnimationManager.TriggerAnimationStopped*"></a>
+
+  <h3 id="Vintagestory_API_Common_IAnimationManager_TriggerAnimationStopped_System_String_" data-uid="Vintagestory.API.Common.IAnimationManager.TriggerAnimationStopped(System.String)">
+  TriggerAnimationStopped(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The event fired when the animation is stopped.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void TriggerAnimationStopped(string code)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>code</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The code that the animation stopped with.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_IAnimationManager_OnAnimationReceived" data-uid="Vintagestory.API.Common.IAnimationManager.OnAnimationReceived">
+  OnAnimationReceived
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event StartAnimationDelegate OnAnimationReceived</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.StartAnimationDelegate.html">StartAnimationDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_IAnimationManager_OnAnimationStopped" data-uid="Vintagestory.API.Common.IAnimationManager.OnAnimationStopped">
+  OnAnimationStopped
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event Action&lt;string&gt; OnAnimationStopped</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_IAnimationManager_OnStartAnimation" data-uid="Vintagestory.API.Common.IAnimationManager.OnStartAnimation">
+  OnStartAnimation
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">event StartAnimationDelegate OnStartAnimation</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.StartAnimationDelegate.html">StartAnimationDelegate</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

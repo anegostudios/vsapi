@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,13 +17,13 @@ namespace Vintagestory.API.Datastructures
     {
         public static Vec3i GetVec3i(this ITreeAttribute tree, string code, Vec3i defaultValue = null)
         {
-            if (!tree.HasAttribute(code + "X")) return defaultValue;
-            return new Vec3i(tree.GetInt(code+"X"), tree.GetInt(code+"Y"), tree.GetInt(code+"Z"));
+            if (!(tree.TryGetAttribute(code + "X", out var attr) && attr is IntAttribute codeX)) return defaultValue;
+            return new Vec3i(codeX.value, tree.GetInt(code + "Y"), tree.GetInt(code + "Z"));
         }
         public static BlockPos GetBlockPos(this ITreeAttribute tree, string code, BlockPos defaultValue = null)
         {
-            if (!tree.HasAttribute(code + "X")) return defaultValue;
-            return new BlockPos(tree.GetInt(code + "X"), tree.GetInt(code + "Y"), tree.GetInt(code + "Z"));
+            if (!(tree.TryGetAttribute(code + "X", out var attr) && attr is IntAttribute codeX)) return defaultValue;
+            return new BlockPos(codeX.value, tree.GetInt(code + "Y"), tree.GetInt(code + "Z"));
         }
 
 
@@ -41,11 +43,13 @@ namespace Vintagestory.API.Datastructures
 
         public static Vec3i[] GetVec3is(this ITreeAttribute tree, string code, Vec3i[] defaultValue = null)
         {
-            if (!tree.HasAttribute(code + "X")) return defaultValue;
+            if (!(tree.TryGetAttribute(code + "X", out var attrX) && attrX is IntArrayAttribute codeX)) return defaultValue;
+            if (!(tree.TryGetAttribute(code + "Y", out var attrY) && attrY is IntArrayAttribute codeY)) return defaultValue;
+            if (!(tree.TryGetAttribute(code + "Z", out var attrZ) && attrZ is IntArrayAttribute codeZ)) return defaultValue;
 
-            int[] x = (tree[code + "X"] as IntArrayAttribute).value;
-            int[] y = (tree[code + "Y"] as IntArrayAttribute).value;
-            int[] z = (tree[code + "Z"] as IntArrayAttribute).value;
+            int[] x = codeX.value;
+            int[] y = codeY.value;
+            int[] z = codeZ.value;
 
             Vec3i[] values = new Vec3i[x.Length];
             for (int i = 0; i < x.Length; i++)
@@ -63,11 +67,12 @@ namespace Vintagestory.API.Datastructures
             int[] y = new int[value.Length];
             int[] z = new int[value.Length];
 
-            for (int i = 0; i < x.Length; i++)
+            for (int i = 0; i < value.Length; i++)
             {
-                x[i] = value[i].X;
-                y[i] = value[i].Y;
-                z[i] = value[i].Z;
+                var v = value[i];
+                x[i] = v.X;
+                y[i] = v.Y;
+                z[i] = v.Z;
             }
 
             tree[code + "X"] = new IntArrayAttribute(x);
@@ -87,9 +92,7 @@ namespace Vintagestory.API.Datastructures
 
         public static Dictionary<int, Type> AttributeIdMapping = new Dictionary<int, Type>();
 
-        internal OrderedDictionary<string, IAttribute> attributes = new OrderedDictionary<string, IAttribute>();
-
-        public object attributesLock = new object();
+        internal ConcurrentDictionary<string, IAttribute> attributes = new ConcurrentDictionary<string, IAttribute>();
 
         /// <summary>
         /// Will return null if given attribute does not exist
@@ -105,10 +108,7 @@ namespace Vintagestory.API.Datastructures
 
             set
             {
-                lock (attributesLock)
-                {
-                    attributes[key] = value;
-                }
+                attributes[key] = value;
             }
         }
 
@@ -237,20 +237,17 @@ namespace Vintagestory.API.Datastructures
 
         public virtual void ToBytes(BinaryWriter stream)
         {
-            lock (attributesLock)
+            foreach (var val in attributes)
             {
-                foreach (var val in attributes)
-                {
-                    // attrid
-                    stream.Write((byte)val.Value.GetAttributeId());
-                    // key
-                    stream.Write(val.Key);
-                    // value
-                    val.Value.ToBytes(stream);
-                }
-
-                stream.Write((byte)0);
+                // attrid
+                stream.Write((byte)val.Value.GetAttributeId());
+                // key
+                stream.Write(val.Key);
+                // value
+                val.Value.ToBytes(stream);
             }
+
+            stream.Write((byte)0);
         }
 
         public int GetAttributeId()
@@ -259,14 +256,18 @@ namespace Vintagestory.API.Datastructures
         }
 
 
+        [Obsolete("May not return consistent results if the TreeAttribute changes between calls")]
         public int IndexOf(string key)
         {
-            for (int i = 0; i < attributes.Count; i++)
+            var keys = attributes.Keys;
+            int i = 0;
+            foreach (string testkey in attributes.Keys)
             {
-                if (attributes.GetKeyAtIndex(i) == key)
+                if (testkey == key)
                 {
                     return i;
                 }
+                i++;
             }
 
             return -1;
@@ -288,8 +289,17 @@ namespace Vintagestory.API.Datastructures
             return attributes.GetEnumerator();
         }
 
-
-
+        /// <summary>
+        /// Set a value. Returns itself for method chaining
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public TreeAttribute Set(string key, IAttribute value)
+        {
+            attributes[key] = value;
+            return this;
+        }
 
 
         public IAttribute GetAttribute(string key)
@@ -307,12 +317,17 @@ namespace Vintagestory.API.Datastructures
             return attributes.ContainsKey(key);
         }
 
+        public bool TryGetAttribute(string key, out IAttribute value)
+        {
+            return attributes.TryGetValue(key, out value);
+        }
+
 
         #region Quick access methods
 
         public IAttribute GetAttributeByPath(string path)
         {
-            if (!path.Contains("/")) return this[path];
+            if (!path.Contains('/')) return this[path];
 
             string[] parts = path.Split('/');
 
@@ -368,10 +383,7 @@ namespace Vintagestory.API.Datastructures
         /// <param name="key"></param>
         public virtual void RemoveAttribute(string key)
         {
-            lock (attributesLock)
-            {
-                attributes.Remove(key);
-            }
+            attributes.Remove(key);
         }
 
         /// <summary>
@@ -381,10 +393,12 @@ namespace Vintagestory.API.Datastructures
         /// <param name="value"></param>
         public virtual void SetBool(string key, bool value)
         {
-            lock (attributesLock)
+            if (attributes.TryGetValue(key, out IAttribute attr) && attr is ScalarAttribute<bool> sattr)
             {
-                attributes[key] = new BoolAttribute(value);
+                sattr.SetValue(value);
+                return;
             }
+            attributes[key] = new BoolAttribute(value);
         }
 
         /// <summary>
@@ -395,10 +409,12 @@ namespace Vintagestory.API.Datastructures
         /// <param name="value"></param>
         public virtual void SetInt(string key, int value)
         {
-            lock (attributesLock)
+            if (attributes.TryGetValue(key, out IAttribute attr) && attr is ScalarAttribute<int> sattr)
             {
-                attributes[key] = new IntAttribute(value);
+                sattr.SetValue(value);
+                return;
             }
+            attributes[key] = new IntAttribute(value);
         }
 
         /// <summary>
@@ -408,10 +424,12 @@ namespace Vintagestory.API.Datastructures
         /// <param name="value"></param>
         public virtual void SetLong(string key, long value)
         {
-            lock (attributesLock)
+            if (attributes.TryGetValue(key, out IAttribute attr) && attr is ScalarAttribute<long> sattr)
             {
-                attributes[key] = new LongAttribute(value);
+                sattr.SetValue(value);
+                return;
             }
+            attributes[key] = new LongAttribute(value);
         }
 
         /// <summary>
@@ -421,10 +439,12 @@ namespace Vintagestory.API.Datastructures
         /// <param name="value"></param>
         public virtual void SetDouble(string key, double value)
         {
-            lock (attributesLock)
+            if (attributes.TryGetValue(key, out IAttribute attr) && attr is ScalarAttribute<double> sattr)
             {
-                attributes[key] = new DoubleAttribute(value);
+                sattr.SetValue(value);
+                return;
             }
+            attributes[key] = new DoubleAttribute(value);
         }
 
         /// <summary>
@@ -435,26 +455,32 @@ namespace Vintagestory.API.Datastructures
         /// <param name="value"></param>
         public virtual void SetFloat(string key, float value)
         {
-            lock (attributesLock)
+            if (attributes.TryGetValue(key, out IAttribute attr) && attr is ScalarAttribute<float> sattr)
             {
-                attributes[key] = new FloatAttribute(value);
+                sattr.SetValue(value);
+                return;
             }
+            attributes[key] = new FloatAttribute(value);
         }
 
         public virtual void SetString(string key, string value)
         {
-            lock (attributesLock)
+            if (attributes.TryGetValue(key, out IAttribute attr) && attr is ScalarAttribute<string> sattr)
             {
-                attributes[key] = new StringAttribute(value);
+                sattr.SetValue(value);
+                return;
             }
+            attributes[key] = new StringAttribute(value);
         }
 
         public virtual void SetStringArray(string key, string[] values)
         {
-            lock (attributesLock)
+            if (attributes.TryGetValue(key, out IAttribute attr) && attr is ScalarAttribute<string[]> sattr)
             {
-                attributes[key] = new StringArrayAttribute(values);
+                sattr.SetValue(values);
+                return;
             }
+            attributes[key] = new StringArrayAttribute(values);
         }
 
         /// <summary>
@@ -464,18 +490,17 @@ namespace Vintagestory.API.Datastructures
         /// <param name="value"></param>
         public virtual void SetBytes(string key, byte[] value)
         {
-            lock (attributesLock)
+            if (attributes.TryGetValue(key, out IAttribute attr) && attr is ScalarAttribute<byte[]> sattr)
             {
-                attributes[key] = new ByteArrayAttribute(value);
+                sattr.SetValue(value);
+                return;
             }
+            attributes[key] = new ByteArrayAttribute(value);
         }
 
         public virtual void SetAttribute(string key, IAttribute value)
         {
-            lock (attributesLock)
-            {
-                attributes[key] = value;
-            }
+            attributes[key] = value;
         }
 
         /// <summary>
@@ -485,10 +510,12 @@ namespace Vintagestory.API.Datastructures
         /// <param name="itemstack"></param>
         public void SetItemstack(string key, ItemStack itemstack)
         {
-            lock (attributesLock)
+            if (attributes.TryGetValue(key, out IAttribute attr) && attr is ItemstackAttribute sattr)
             {
-                attributes[key] = new ItemstackAttribute(itemstack);
+                sattr.SetValue(itemstack);
+                return;
             }
+            attributes[key] = new ItemstackAttribute(itemstack);
         }
 
         /// <summary>
@@ -498,12 +525,12 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public virtual bool? TryGetBool(string key)
         {
-            return ((BoolAttribute)attributes.TryGetValue(key))?.value;
+            return (attributes.TryGetValue(key) as BoolAttribute)?.value;
         }
 
         public virtual int? TryGetInt(string key)
         {
-            return ((IntAttribute)attributes.TryGetValue(key))?.value;
+            return (attributes.TryGetValue(key) as IntAttribute)?.value;
         }
 
         /// <summary>
@@ -513,7 +540,7 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public virtual double? TryGetDouble(string key)
         {
-            return ((DoubleAttribute)attributes.TryGetValue(key))?.value;
+            return (attributes.TryGetValue(key) as DoubleAttribute)?.value;
         }
 
         /// <summary>
@@ -523,7 +550,7 @@ namespace Vintagestory.API.Datastructures
         /// <returns></returns>
         public virtual float? TryGetFloat(string key)
         {
-            return ((FloatAttribute)attributes.TryGetValue(key))?.value;
+            return (attributes.TryGetValue(key) as FloatAttribute)?.value;
         }
 
         /// <summary>
@@ -923,9 +950,17 @@ namespace Vintagestory.API.Datastructures
 
 
 
-
-
         public string ToJsonToken()
+        {
+            return ToJsonToken(attributes);
+        }
+
+        public static IAttribute FromJson(string json)
+        {
+            return new JsonObject(JToken.Parse(json)).ToAttribute();
+        }
+
+        public static string ToJsonToken(IEnumerable<KeyValuePair<string, IAttribute>> attributes)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("{ ");
@@ -961,27 +996,21 @@ namespace Vintagestory.API.Datastructures
 
         protected static void MergeTree(TreeAttribute dstTree, TreeAttribute srcTree)
         {
-            lock (srcTree.attributesLock)
+            foreach (var srcVal in srcTree.attributes)
             {
-                foreach (var srcVal in srcTree.attributes)
-                {
-                    MergeAttribute(dstTree, srcVal.Key, srcVal.Value);
-                }
+                MergeAttribute(dstTree, srcVal.Key, srcVal.Value);
             }
         }
 
         protected static void MergeAttribute(TreeAttribute dstTree, string srcKey, IAttribute srcAttr)
         {
             IAttribute dstAttr;
-            lock (dstTree.attributesLock)
-            {
-                dstAttr = dstTree.attributes.TryGetValue(srcKey);
+            dstAttr = dstTree.attributes.TryGetValue(srcKey);
 
-                if (dstAttr == null)
-                {
-                    dstTree.attributes[srcKey] = srcAttr.Clone();
-                    return;
-                }
+            if (dstAttr == null)
+            {
+                dstTree.attributes[srcKey] = srcAttr.Clone();
+                return;
             }
 
             if (dstAttr.GetAttributeId() != srcAttr.GetAttributeId())
@@ -995,24 +1024,31 @@ namespace Vintagestory.API.Datastructures
             }
             else
             {
-                lock (dstTree.attributesLock)
-                {
-                    dstTree.attributes[srcKey] = srcAttr.Clone();
-                }
+                dstTree.attributes[srcKey] = srcAttr.Clone();
             }
         }
 
-        public ITreeAttribute SortedCopy(bool recursive = false)
+        public OrderedDictionary<string, IAttribute> SortedCopy(bool recursive = false)
+        {
+            var sorted = attributes.OrderBy(x => x.Key);
+            var sortedTree = new OrderedDictionary<string, IAttribute>();
+            foreach (var entry in sorted)
+            {
+                var attribute = entry.Value;
+                if (attribute is TreeAttribute tree && recursive) attribute = tree.ConsistentlyOrderedCopy();
+                sortedTree.Add(entry.Key, attribute);
+            }
+            return sortedTree;
+        }
+
+        private IAttribute ConsistentlyOrderedCopy()
         {
             var sorted = attributes.OrderBy(x => x.Key).ToDictionary(pair => pair.Key,pair => pair.Value);
-            if (recursive)
+            foreach (var (key, attribute) in sorted)
             {
-                foreach (var (key, attribute) in sorted)
+                if (attribute is TreeAttribute tree)
                 {
-                    if (attribute is ITreeAttribute tree)
-                    {
-                        sorted[key] = tree.SortedCopy(true);
-                    }
+                    sorted[key] = tree.ConsistentlyOrderedCopy();
                 }
             }
             var sortedTree = new TreeAttribute();
@@ -1027,44 +1063,50 @@ namespace Vintagestory.API.Datastructures
 
         public int GetHashCode(string[] ignoredAttributes)
         {
-            lock (attributesLock)
+            int hashcode = 0;
+            int i = 0;
+            foreach (var val in attributes)
             {
-                int hashcode = 0;
-                int i = 0;
-                foreach (var val in attributes)
-                {
-                    if (ignoredAttributes?.Contains(val.Key) == true) continue;
+                if (ignoredAttributes?.Contains(val.Key) == true) continue;
 
-                    var tree = val.Value as ITreeAttribute;
-                    if (tree != null)
+                var tree = val.Value as ITreeAttribute;
+                if (tree != null)
+                {
+                    if (i == 0)
                     {
-                        if (i == 0)
-                        {
-                            hashcode = val.Key.GetHashCode() ^ tree.GetHashCode(ignoredAttributes);
-                        }
-                        else
-                        {
-                            hashcode ^= val.Key.GetHashCode() ^ tree.GetHashCode(ignoredAttributes);
-                        }
+                        hashcode = val.Key.GetHashCode() ^ tree.GetHashCode(ignoredAttributes);
                     }
                     else
                     {
-                        if (i == 0)
-                        {
-                            hashcode = val.Key.GetHashCode() ^ val.Value.GetHashCode();
-                        }
-                        else
-                        {
-                            hashcode ^= val.Key.GetHashCode() ^ val.Value.GetHashCode();
-                        }
+                        hashcode ^= val.Key.GetHashCode() ^ tree.GetHashCode(ignoredAttributes);
                     }
-
-                    i++;
+                }
+                else
+                {
+                    if (i == 0)
+                    {
+                        hashcode = val.Key.GetHashCode() ^ val.Value.GetHashCode();
+                    }
+                    else
+                    {
+                        hashcode ^= val.Key.GetHashCode() ^ val.Value.GetHashCode();
+                    }
                 }
 
-                return hashcode;
+                i++;
             }
+
+            return hashcode;
         }
 
+    }
+
+    public static class ConcurrentDictionaryExtensions
+    {
+        public static TValue TryGetValue<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> source, TKey key)
+        {
+            source.TryGetValue(key, out TValue val);
+            return val;
+        }
     }
 }

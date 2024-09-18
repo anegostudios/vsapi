@@ -50,13 +50,13 @@ namespace Vintagestory.API.MathTools
                  line3d.End[1] - line3d.Start[1],
                  line3d.End[2] - line3d.Start[2]
             );
-            pos.Set((int)line3d.Start[0], (int)line3d.Start[1], (int)line3d.Start[2]);
+            pos.SetAndCorrectDimension((int)line3d.Start[0], (int)line3d.Start[1], (int)line3d.Start[2]);
         }
 
         public void LoadRayAndPos(Ray ray)
         {
             this.ray = ray;
-            pos.Set(ray.origin);
+            pos.SetAndCorrectDimension(ray.origin);
         }
 
         public BlockSelection GetSelectedBlock(Vec3d from, Vec3d to, BlockFilter filter = null)
@@ -98,12 +98,11 @@ namespace Vintagestory.API.MathTools
 
             if (hitPosition.SquareDistanceTo(ray.origin) > maxDistance * maxDistance) return null;
 
-
             return new BlockSelection()
             {
                 Face = hitOnBlockFace,
-                Position = pos.Copy(),
-                HitPosition = hitPosition.SubCopy(pos.X, pos.Y, pos.Z),
+                Position = pos.CopyAndCorrectDimension(),
+                HitPosition = hitPosition.SubCopy(pos.X, pos.InternalY, pos.Z),
                 SelectionBoxIndex = hitOnSelectionBox,
                 Block = blockIntersected
             };
@@ -132,7 +131,7 @@ namespace Vintagestory.API.MathTools
 
             for (int i = 0; i < selectionBoxes.Length; i++)
             {
-                tmpCuboidd.Set(selectionBoxes[i]).Translate(pos.X, pos.Y, pos.Z);
+                tmpCuboidd.Set(selectionBoxes[i]).Translate(pos.X, pos.InternalY, pos.Z);
                 if (RayIntersectsWithCuboid(tmpCuboidd, ref hitOnBlockFaceTmp, ref hitPositionTmp))
                 {
                     bool isDecor = selectionBoxes[i] is DecorSelectionBox;
@@ -163,6 +162,11 @@ namespace Vintagestory.API.MathTools
             return intersects;
         }
 
+        public bool RayIntersectsWithCuboid(Cuboidd selectionBox)
+        {
+            if (selectionBox == null) return false;
+            return RayIntersectsWithCuboid(tmpCuboidd, ref hitOnBlockFace, ref hitPosition);
+        }
 
         public bool RayIntersectsWithCuboid(Cuboidf selectionBox, double posX, double posY, double posZ)
         {
@@ -222,6 +226,7 @@ namespace Vintagestory.API.MathTools
         }
 
 
+        // This doesnt work at all FYI. Completely broken, no idea why
         public static bool RayInteresectWithCuboidSlabMethod(Cuboidd b, Ray r)
         {
             double tx1 = (b.X1 - r.dir.X) / r.dir.X;

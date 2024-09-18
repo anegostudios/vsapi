@@ -20,6 +20,7 @@ namespace Vintagestory.API.Client
         int ShadowMapFar2D { set; }
 
         int NormalShaded { set; }
+        int TempGlowMode { set; }
 
         /// <summary>
         /// The Near plane distance.
@@ -66,6 +67,11 @@ namespace Vintagestory.API.Client
         /// The color of the tint.
         /// </summary>
         Vec4f RgbaTint { set; }
+
+        /// <summary>
+        /// When TempGlowMode==1 this color is used as a reference
+        /// </summary>
+        Vec4f AverageColor { set; }
 
         /// <summary>
         /// The minimum distance for fog.

@@ -5,7 +5,7 @@ items:
   id: EntityServerProperties
   parent: Vintagestory.API.Common.Entities
   children:
-  - Vintagestory.API.Common.Entities.EntityServerProperties.#ctor(Vintagestory.API.Datastructures.JsonObject[])
+  - Vintagestory.API.Common.Entities.EntityServerProperties.#ctor(Vintagestory.API.Datastructures.JsonObject[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonObject})
   - Vintagestory.API.Common.Entities.EntityServerProperties.Clone
   - Vintagestory.API.Common.Entities.EntityServerProperties.SpawnConditions
   langs:
@@ -36,30 +36,35 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Vintagestory.API.Common.Entities.EntityServerProperties.#ctor(Vintagestory.API.Datastructures.JsonObject[])
-  commentId: M:Vintagestory.API.Common.Entities.EntityServerProperties.#ctor(Vintagestory.API.Datastructures.JsonObject[])
-  id: '#ctor(Vintagestory.API.Datastructures.JsonObject[])'
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.Entities.EntityServerProperties.#ctor(Vintagestory.API.Datastructures.JsonObject[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonObject})
+  commentId: M:Vintagestory.API.Common.Entities.EntityServerProperties.#ctor(Vintagestory.API.Datastructures.JsonObject[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonObject})
+  id: '#ctor(Vintagestory.API.Datastructures.JsonObject[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonObject})'
   parent: Vintagestory.API.Common.Entities.EntityServerProperties
   langs:
   - csharp
   - vb
-  name: EntityServerProperties(JsonObject[])
-  nameWithType: EntityServerProperties.EntityServerProperties(JsonObject[])
-  fullName: Vintagestory.API.Common.Entities.EntityServerProperties.EntityServerProperties(Vintagestory.API.Datastructures.JsonObject[])
+  name: EntityServerProperties(JsonObject[], Dictionary<string, JsonObject>)
+  nameWithType: EntityServerProperties.EntityServerProperties(JsonObject[], Dictionary<string, JsonObject>)
+  fullName: Vintagestory.API.Common.Entities.EntityServerProperties.EntityServerProperties(Vintagestory.API.Datastructures.JsonObject[], System.Collections.Generic.Dictionary<string, Vintagestory.API.Datastructures.JsonObject>)
   type: Constructor
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: public EntityServerProperties(JsonObject[] behaviors)
+    content: public EntityServerProperties(JsonObject[] behaviors, Dictionary<string, JsonObject> commonConfigs)
     parameters:
     - id: behaviors
       type: Vintagestory.API.Datastructures.JsonObject[]
-    content.vb: Public Sub New(behaviors As JsonObject())
+    - id: commonConfigs
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonObject}
+    content.vb: Public Sub New(behaviors As JsonObject(), commonConfigs As Dictionary(Of String, JsonObject))
   overload: Vintagestory.API.Common.Entities.EntityServerProperties.#ctor*
-  nameWithType.vb: EntityServerProperties.New(JsonObject())
-  fullName.vb: Vintagestory.API.Common.Entities.EntityServerProperties.New(Vintagestory.API.Datastructures.JsonObject())
-  name.vb: New(JsonObject())
+  nameWithType.vb: EntityServerProperties.New(JsonObject(), Dictionary(Of String, JsonObject))
+  fullName.vb: Vintagestory.API.Common.Entities.EntityServerProperties.New(Vintagestory.API.Datastructures.JsonObject(), System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Datastructures.JsonObject))
+  name.vb: New(JsonObject(), Dictionary(Of String, JsonObject))
 - uid: Vintagestory.API.Common.Entities.EntityServerProperties.SpawnConditions
   commentId: F:Vintagestory.API.Common.Entities.EntityServerProperties.SpawnConditions
   id: SpawnConditions
@@ -447,6 +452,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -454,9 +521,106 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.Entities.EntityServerProperties.#ctor*
   commentId: Overload:Vintagestory.API.Common.Entities.EntityServerProperties.#ctor
-  href: Vintagestory.API.Common.Entities.EntityServerProperties.html#Vintagestory_API_Common_Entities_EntityServerProperties__ctor_Vintagestory_API_Datastructures_JsonObject___
+  href: Vintagestory.API.Common.Entities.EntityServerProperties.html#Vintagestory_API_Common_Entities_EntityServerProperties__ctor_Vintagestory_API_Datastructures_JsonObject___System_Collections_Generic_Dictionary_System_String_Vintagestory_API_Datastructures_JsonObject__
   name: EntityServerProperties
   nameWithType: EntityServerProperties.EntityServerProperties
   fullName: Vintagestory.API.Common.Entities.EntityServerProperties.EntityServerProperties
@@ -484,6 +648,122 @@ references:
     href: Vintagestory.API.Datastructures.JsonObject.html
   - name: (
   - name: )
+- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonObject}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonObject}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, JsonObject>
+  nameWithType: Dictionary<string, JsonObject>
+  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Datastructures.JsonObject>
+  nameWithType.vb: Dictionary(Of String, JsonObject)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Datastructures.JsonObject)
+  name.vb: Dictionary(Of String, JsonObject)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: Vintagestory.API.Common.Entities.SpawnConditions
   commentId: T:Vintagestory.API.Common.Entities.SpawnConditions
   parent: Vintagestory.API.Common.Entities

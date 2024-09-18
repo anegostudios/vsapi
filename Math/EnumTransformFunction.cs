@@ -3,6 +3,7 @@
     /// <summary>
     /// Used for EvolvingNatFloat value transforms
     /// </summary>
+    [DocumentAsJson]
     public enum EnumTransformFunction
     {
         /// <summary>

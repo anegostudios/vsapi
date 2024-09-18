@@ -7,6 +7,8 @@ items:
   children:
   - Vintagestory.API.Common.BlockSounds.Ambient
   - Vintagestory.API.Common.BlockSounds.AmbientBlockCount
+  - Vintagestory.API.Common.BlockSounds.AmbientMaxDistanceMerge
+  - Vintagestory.API.Common.BlockSounds.AmbientSoundType
   - Vintagestory.API.Common.BlockSounds.Break
   - Vintagestory.API.Common.BlockSounds.ByTool
   - Vintagestory.API.Common.BlockSounds.Clone
@@ -29,6 +31,15 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: A set of sounds that are defined for a block. All fields use default or empty sounds if not set.
+  example:
+  - >-
+    <pre><code class="lang-json">"sounds": {
+    	"place": "block/dirt",
+    	"break": "block/dirt",
+    	"hit": "block/dirt",
+    	"walk": "walk/grass"
+    },</code></pre>
   syntax:
     content: public class BlockSounds
     content.vb: Public Class BlockSounds
@@ -42,6 +53,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.BlockSounds.Walk
   commentId: P:Vintagestory.API.Common.BlockSounds.Walk
   id: Walk
@@ -56,6 +70,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional>-->
+
+    Played when an entity walks on this block.
+  example: []
   syntax:
     content: public virtual AssetLocation Walk { get; set; }
     parameters: []
@@ -77,6 +96,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional>-->
+
+    Played when an entity moves inside this block. Primarily used for liquids.
+  example: []
   syntax:
     content: public virtual AssetLocation Inside { get; set; }
     parameters: []
@@ -98,6 +122,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional>-->
+
+    Played when this block is broken.
+  example: []
   syntax:
     content: public virtual AssetLocation Break { get; set; }
     parameters: []
@@ -119,6 +148,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional>-->
+
+    Played when this block is placed.
+  example: []
   syntax:
     content: public virtual AssetLocation Place { get; set; }
     parameters: []
@@ -140,6 +174,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional>-->
+
+    Played when this block is hit. Will be overridden by <xref href="Vintagestory.API.Common.BlockSounds.ByTool" data-throw-if-not-resolved="false"></xref> if an appropriate tool is set.
+  example: []
   syntax:
     content: public virtual AssetLocation Hit { get; set; }
     parameters: []
@@ -161,11 +200,64 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional>-->
+
+    Played in ambience for this block.
+  example: []
   syntax:
     content: public AssetLocation Ambient
     return:
       type: Vintagestory.API.Common.AssetLocation
     content.vb: Public Ambient As AssetLocation
+- uid: Vintagestory.API.Common.BlockSounds.AmbientSoundType
+  commentId: F:Vintagestory.API.Common.BlockSounds.AmbientSoundType
+  id: AmbientSoundType
+  parent: Vintagestory.API.Common.BlockSounds
+  langs:
+  - csharp
+  - vb
+  name: AmbientSoundType
+  nameWithType: BlockSounds.AmbientSoundType
+  fullName: Vintagestory.API.Common.BlockSounds.AmbientSoundType
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>Ambient</jsondefault>-->
+
+    The type of sound for this block's ambient sound.
+  example: []
+  syntax:
+    content: public EnumSoundType AmbientSoundType
+    return:
+      type: Vintagestory.API.Client.EnumSoundType
+    content.vb: Public AmbientSoundType As EnumSoundType
+- uid: Vintagestory.API.Common.BlockSounds.AmbientMaxDistanceMerge
+  commentId: F:Vintagestory.API.Common.BlockSounds.AmbientMaxDistanceMerge
+  id: AmbientMaxDistanceMerge
+  parent: Vintagestory.API.Common.BlockSounds
+  langs:
+  - csharp
+  - vb
+  name: AmbientMaxDistanceMerge
+  nameWithType: BlockSounds.AmbientMaxDistanceMerge
+  fullName: Vintagestory.API.Common.BlockSounds.AmbientMaxDistanceMerge
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>3</jsondefault>-->
+
+    Adjacent ambient sound sources are merged to avoid playing too many sounds too loudly. This is the maximum distance a sound source can be from another to allow a merge.
+  example: []
+  syntax:
+    content: public float AmbientMaxDistanceMerge
+    return:
+      type: System.Single
+    content.vb: Public AmbientMaxDistanceMerge As Single
 - uid: Vintagestory.API.Common.BlockSounds.AmbientBlockCount
   commentId: F:Vintagestory.API.Common.BlockSounds.AmbientBlockCount
   id: AmbientBlockCount
@@ -180,6 +272,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
+
+    Amount of nearby ambient sound blocks in order to reach full ambient sound volume
+  example: []
   syntax:
     content: public float AmbientBlockCount
     return:
@@ -199,7 +296,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Gets the sound that occurs when a specific tool hits a block.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    Gets the sound that occurs when a specific tool hits a block.
   example: []
   syntax:
     content: public virtual Dictionary<EnumTool, BlockSounds> ByTool { get; set; }
@@ -631,6 +731,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -638,6 +800,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.BlockSounds.Walk*
   commentId: Overload:Vintagestory.API.Common.BlockSounds.Walk
   href: Vintagestory.API.Common.BlockSounds.html#Vintagestory_API_Common_BlockSounds_Walk
@@ -669,12 +928,55 @@ references:
   name: Place
   nameWithType: BlockSounds.Place
   fullName: Vintagestory.API.Common.BlockSounds.Place
+- uid: Vintagestory.API.Common.BlockSounds.ByTool
+  commentId: P:Vintagestory.API.Common.BlockSounds.ByTool
+  href: Vintagestory.API.Common.BlockSounds.html#Vintagestory_API_Common_BlockSounds_ByTool
+  name: ByTool
+  nameWithType: BlockSounds.ByTool
+  fullName: Vintagestory.API.Common.BlockSounds.ByTool
 - uid: Vintagestory.API.Common.BlockSounds.Hit*
   commentId: Overload:Vintagestory.API.Common.BlockSounds.Hit
   href: Vintagestory.API.Common.BlockSounds.html#Vintagestory_API_Common_BlockSounds_Hit
   name: Hit
   nameWithType: BlockSounds.Hit
   fullName: Vintagestory.API.Common.BlockSounds.Hit
+- uid: Vintagestory.API.Client.EnumSoundType
+  commentId: T:Vintagestory.API.Client.EnumSoundType
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumSoundType.html
+  name: EnumSoundType
+  nameWithType: EnumSoundType
+  fullName: Vintagestory.API.Client.EnumSoundType
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
 - uid: System.Single
   commentId: T:System.Single
   parent: System

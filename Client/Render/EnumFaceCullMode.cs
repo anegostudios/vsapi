@@ -1,5 +1,9 @@
 ﻿namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Types that determine how block faces should be culled.
+    /// </summary>
+    [DocumentAsJson]
     public enum EnumFaceCullMode
     {
         /// <summary>
@@ -43,10 +47,13 @@
         /// </summary>
         Liquid = 6,
 
+        /// <summary>
+        /// 
+        /// </summary>
         MergeSnowLayer = 8,
 
         /// <summary>
-        /// /// Used for blocks similar to Farmland or StonePath, which are not themselves opaque except on the base, but can cull horizontal sides if adjacent block is opaque (or the same id)
+        /// Used for blocks similar to Farmland or StonePath, which are not themselves opaque except on the base, but can cull horizontal sides if adjacent block is opaque (or the same id)
         /// </summary>
         FlushExceptTop = 9,
 

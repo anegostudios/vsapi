@@ -20,9 +20,11 @@ items:
   - Vintagestory.API.Datastructures.JsonObject.AsString(System.String)
   - Vintagestory.API.Datastructures.JsonObject.AsStringArray(System.String[],System.String)
   - Vintagestory.API.Datastructures.JsonObject.Clone
+  - Vintagestory.API.Datastructures.JsonObject.Count
   - Vintagestory.API.Datastructures.JsonObject.Exists
   - Vintagestory.API.Datastructures.JsonObject.FillPlaceHolder(System.String,System.String)
   - Vintagestory.API.Datastructures.JsonObject.FromJson(System.String)
+  - Vintagestory.API.Datastructures.JsonObject.GetEnumerator
   - Vintagestory.API.Datastructures.JsonObject.IsArray
   - Vintagestory.API.Datastructures.JsonObject.IsTrue(System.String)
   - Vintagestory.API.Datastructures.JsonObject.Item(System.String)
@@ -44,10 +46,14 @@ items:
   summary: Elegant, yet somewhat inefficently designed (because wasteful with heap objects) wrapper class to abstract away the type-casting nightmare of JToken O.O
   example: []
   syntax:
-    content: public class JsonObject
-    content.vb: Public Class JsonObject
+    content: 'public class JsonObject : IReadOnlyCollection<JsonObject>, IEnumerable<JsonObject>, IEnumerable'
+    content.vb: Public Class JsonObject Implements IReadOnlyCollection(Of JsonObject), IEnumerable(Of JsonObject), IEnumerable
   inheritance:
   - System.Object
+  implements:
+  - System.Collections.Generic.IReadOnlyCollection{Vintagestory.API.Datastructures.JsonObject}
+  - System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}
+  - System.Collections.IEnumerable
   inheritedMembers:
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
@@ -55,6 +61,13 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Action{Vintagestory.API.Datastructures.JsonObject})
+  - System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(Vintagestory.API.Common.ActionBoolReturn{Vintagestory.API.Datastructures.JsonObject})
+  - System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Func{Vintagestory.API.Datastructures.JsonObject,System.Double})
+  - System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Func{Vintagestory.API.Datastructures.JsonObject,System.Double})
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Datastructures.JsonObject.FromJson(System.String)
   commentId: M:Vintagestory.API.Datastructures.JsonObject.FromJson(System.String)
   id: FromJson(System.String)
@@ -809,6 +822,57 @@ items:
   nameWithType.vb: JsonObject.IsTrue(String)
   fullName.vb: Vintagestory.API.Datastructures.JsonObject.IsTrue(String)
   name.vb: IsTrue(String)
+- uid: Vintagestory.API.Datastructures.JsonObject.Count
+  commentId: P:Vintagestory.API.Datastructures.JsonObject.Count
+  id: Count
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: JsonObject.Count
+  fullName: Vintagestory.API.Datastructures.JsonObject.Count
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Gets the number of elements in the collection.
+  example: []
+  syntax:
+    content: public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+      description: The number of elements in the collection.
+    content.vb: Public ReadOnly Property Count As Integer
+  overload: Vintagestory.API.Datastructures.JsonObject.Count*
+  implements:
+  - System.Collections.Generic.IReadOnlyCollection{Vintagestory.API.Datastructures.JsonObject}.Count
+- uid: Vintagestory.API.Datastructures.JsonObject.GetEnumerator
+  commentId: M:Vintagestory.API.Datastructures.JsonObject.GetEnumerator
+  id: GetEnumerator
+  parent: Vintagestory.API.Datastructures.JsonObject
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: JsonObject.GetEnumerator()
+  fullName: Vintagestory.API.Datastructures.JsonObject.GetEnumerator()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: Returns an enumerator that iterates through the collection.
+  example: []
+  syntax:
+    content: public IEnumerator<JsonObject> GetEnumerator()
+    return:
+      type: System.Collections.Generic.IEnumerator{Vintagestory.API.Datastructures.JsonObject}
+      description: An enumerator that can be used to iterate through the collection.
+    content.vb: Public Function GetEnumerator() As IEnumerator(Of JsonObject)
+  overload: Vintagestory.API.Datastructures.JsonObject.GetEnumerator*
+  implements:
+  - System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.GetEnumerator
 references:
 - uid: Vintagestory.API.Datastructures
   commentId: N:Vintagestory.API.Datastructures
@@ -851,6 +915,80 @@ references:
   nameWithType.vb: Object
   fullName.vb: Object
   name.vb: Object
+- uid: System.Collections.Generic.IReadOnlyCollection{Vintagestory.API.Datastructures.JsonObject}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{Vintagestory.API.Datastructures.JsonObject}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<JsonObject>
+  nameWithType: IReadOnlyCollection<JsonObject>
+  fullName: System.Collections.Generic.IReadOnlyCollection<Vintagestory.API.Datastructures.JsonObject>
+  nameWithType.vb: IReadOnlyCollection(Of JsonObject)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of Vintagestory.API.Datastructures.JsonObject)
+  name.vb: IReadOnlyCollection(Of JsonObject)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}
+  commentId: T:System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<JsonObject>
+  nameWithType: IEnumerable<JsonObject>
+  fullName: System.Collections.Generic.IEnumerable<Vintagestory.API.Datastructures.JsonObject>
+  nameWithType.vb: IEnumerable(Of JsonObject)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Vintagestory.API.Datastructures.JsonObject)
+  name.vb: IEnumerable(Of JsonObject)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -1046,6 +1184,406 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Action{Vintagestory.API.Datastructures.JsonObject})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  name: Foreach<JsonObject>(IEnumerable<JsonObject>, Action<JsonObject>)
+  nameWithType: EnumerableExtensions.Foreach<JsonObject>(IEnumerable<JsonObject>, Action<JsonObject>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Foreach<Vintagestory.API.Datastructures.JsonObject>(System.Collections.Generic.IEnumerable<Vintagestory.API.Datastructures.JsonObject>, System.Action<Vintagestory.API.Datastructures.JsonObject>)
+  nameWithType.vb: EnumerableExtensions.Foreach(Of JsonObject)(IEnumerable(Of JsonObject), Action(Of JsonObject))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Foreach(Of Vintagestory.API.Datastructures.JsonObject)(System.Collections.Generic.IEnumerable(Of Vintagestory.API.Datastructures.JsonObject), System.Action(Of Vintagestory.API.Datastructures.JsonObject))
+  name.vb: Foreach(Of JsonObject)(IEnumerable(Of JsonObject), Action(Of JsonObject))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject},System.Action{Vintagestory.API.Datastructures.JsonObject})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject},System.Action{Vintagestory.API.Datastructures.JsonObject})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(Vintagestory.API.Common.ActionBoolReturn{Vintagestory.API.Datastructures.JsonObject})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  name: IndexOf<JsonObject>(IEnumerable<JsonObject>, ActionBoolReturn<JsonObject>)
+  nameWithType: EnumerableExtensions.IndexOf<JsonObject>(IEnumerable<JsonObject>, ActionBoolReturn<JsonObject>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.IndexOf<Vintagestory.API.Datastructures.JsonObject>(System.Collections.Generic.IEnumerable<Vintagestory.API.Datastructures.JsonObject>, Vintagestory.API.Common.ActionBoolReturn<Vintagestory.API.Datastructures.JsonObject>)
+  nameWithType.vb: EnumerableExtensions.IndexOf(Of JsonObject)(IEnumerable(Of JsonObject), ActionBoolReturn(Of JsonObject))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.IndexOf(Of Vintagestory.API.Datastructures.JsonObject)(System.Collections.Generic.IEnumerable(Of Vintagestory.API.Datastructures.JsonObject), Vintagestory.API.Common.ActionBoolReturn(Of Vintagestory.API.Datastructures.JsonObject))
+  name.vb: IndexOf(Of JsonObject)(IEnumerable(Of JsonObject), ActionBoolReturn(Of JsonObject))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject},Vintagestory.API.Common.ActionBoolReturn{Vintagestory.API.Datastructures.JsonObject})
+    name: IndexOf
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActionBoolReturn`1
+    name: ActionBoolReturn
+    href: Vintagestory.API.Common.ActionBoolReturn-1.html
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject},Vintagestory.API.Common.ActionBoolReturn{Vintagestory.API.Datastructures.JsonObject})
+    name: IndexOf
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActionBoolReturn`1
+    name: ActionBoolReturn
+    href: Vintagestory.API.Common.ActionBoolReturn-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Func{Vintagestory.API.Datastructures.JsonObject,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: NearestDistance<JsonObject>(IEnumerable<JsonObject>, Func<JsonObject, double>)
+  nameWithType: EnumerableExtensions.NearestDistance<JsonObject>(IEnumerable<JsonObject>, Func<JsonObject, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.NearestDistance<Vintagestory.API.Datastructures.JsonObject>(System.Collections.Generic.IEnumerable<Vintagestory.API.Datastructures.JsonObject>, System.Func<Vintagestory.API.Datastructures.JsonObject, double>)
+  nameWithType.vb: EnumerableExtensions.NearestDistance(Of JsonObject)(IEnumerable(Of JsonObject), Func(Of JsonObject, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.NearestDistance(Of Vintagestory.API.Datastructures.JsonObject)(System.Collections.Generic.IEnumerable(Of Vintagestory.API.Datastructures.JsonObject), System.Func(Of Vintagestory.API.Datastructures.JsonObject, Double))
+  name.vb: NearestDistance(Of JsonObject)(IEnumerable(Of JsonObject), Func(Of JsonObject, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject},System.Func{Vintagestory.API.Datastructures.JsonObject,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject},System.Func{Vintagestory.API.Datastructures.JsonObject,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Func{Vintagestory.API.Datastructures.JsonObject,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: Nearest<JsonObject>(IEnumerable<JsonObject>, Func<JsonObject, double>)
+  nameWithType: EnumerableExtensions.Nearest<JsonObject>(IEnumerable<JsonObject>, Func<JsonObject, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Nearest<Vintagestory.API.Datastructures.JsonObject>(System.Collections.Generic.IEnumerable<Vintagestory.API.Datastructures.JsonObject>, System.Func<Vintagestory.API.Datastructures.JsonObject, double>)
+  nameWithType.vb: EnumerableExtensions.Nearest(Of JsonObject)(IEnumerable(Of JsonObject), Func(Of JsonObject, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Nearest(Of Vintagestory.API.Datastructures.JsonObject)(System.Collections.Generic.IEnumerable(Of Vintagestory.API.Datastructures.JsonObject), System.Func(Of Vintagestory.API.Datastructures.JsonObject, Double))
+  name.vb: Nearest(Of JsonObject)(IEnumerable(Of JsonObject), Func(Of JsonObject, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject},System.Func{Vintagestory.API.Datastructures.JsonObject,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject},System.Func{Vintagestory.API.Datastructures.JsonObject,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1053,6 +1591,516 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  name: Foreach<T>(IEnumerable<T>, Action<T>)
+  nameWithType: EnumerableExtensions.Foreach<T>(IEnumerable<T>, Action<T>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Foreach<T>(System.Collections.Generic.IEnumerable<T>, System.Action<T>)
+  nameWithType.vb: EnumerableExtensions.Foreach(Of T)(IEnumerable(Of T), Action(Of T))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Foreach(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Action(Of T))
+  name.vb: Foreach(Of T)(IEnumerable(Of T), Action(Of T))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})
+    name: Foreach
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions
+  commentId: T:Vintagestory.API.Util.EnumerableExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.EnumerableExtensions.html
+  name: EnumerableExtensions
+  nameWithType: EnumerableExtensions
+  fullName: Vintagestory.API.Util.EnumerableExtensions
+- uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  name: IndexOf<T>(IEnumerable<T>, ActionBoolReturn<T>)
+  nameWithType: EnumerableExtensions.IndexOf<T>(IEnumerable<T>, ActionBoolReturn<T>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.IndexOf<T>(System.Collections.Generic.IEnumerable<T>, Vintagestory.API.Common.ActionBoolReturn<T>)
+  nameWithType.vb: EnumerableExtensions.IndexOf(Of T)(IEnumerable(Of T), ActionBoolReturn(Of T))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.IndexOf(Of T)(System.Collections.Generic.IEnumerable(Of T), Vintagestory.API.Common.ActionBoolReturn(Of T))
+  name.vb: IndexOf(Of T)(IEnumerable(Of T), ActionBoolReturn(Of T))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+    name: IndexOf
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActionBoolReturn`1
+    name: ActionBoolReturn
+    href: Vintagestory.API.Common.ActionBoolReturn-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+    name: IndexOf
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActionBoolReturn`1
+    name: ActionBoolReturn
+    href: Vintagestory.API.Common.ActionBoolReturn-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: NearestDistance<T>(IEnumerable<T>, Func<T, double>)
+  nameWithType: EnumerableExtensions.NearestDistance<T>(IEnumerable<T>, Func<T, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.NearestDistance<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, double>)
+  nameWithType.vb: EnumerableExtensions.NearestDistance(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.NearestDistance(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, Double))
+  name.vb: NearestDistance(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: NearestDistance
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  name: Nearest<T>(IEnumerable<T>, Func<T, double>)
+  nameWithType: EnumerableExtensions.Nearest<T>(IEnumerable<T>, Func<T, double>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.Nearest<T>(System.Collections.Generic.IEnumerable<T>, System.Func<T, double>)
+  nameWithType.vb: EnumerableExtensions.Nearest(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.Nearest(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Func(Of T, Double))
+  name.vb: Nearest(Of T)(IEnumerable(Of T), Func(Of T, Double))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
+    name: Nearest
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Func`2
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Datastructures.JsonObject.FromJson*
   commentId: Overload:Vintagestory.API.Datastructures.JsonObject.FromJson
   href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_FromJson_System_String_
@@ -1450,3 +2498,142 @@ references:
   name: IsTrue
   nameWithType: JsonObject.IsTrue
   fullName: Vintagestory.API.Datastructures.JsonObject.IsTrue
+- uid: Vintagestory.API.Datastructures.JsonObject.Count*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.Count
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_Count
+  name: Count
+  nameWithType: JsonObject.Count
+  fullName: Vintagestory.API.Datastructures.JsonObject.Count
+- uid: System.Collections.Generic.IReadOnlyCollection{Vintagestory.API.Datastructures.JsonObject}.Count
+  commentId: P:System.Collections.Generic.IReadOnlyCollection{Vintagestory.API.Datastructures.JsonObject}.Count
+  parent: System.Collections.Generic.IReadOnlyCollection{Vintagestory.API.Datastructures.JsonObject}
+  definition: System.Collections.Generic.IReadOnlyCollection`1.Count
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1.count
+  name: Count
+  nameWithType: IReadOnlyCollection<JsonObject>.Count
+  fullName: System.Collections.Generic.IReadOnlyCollection<Vintagestory.API.Datastructures.JsonObject>.Count
+  nameWithType.vb: IReadOnlyCollection(Of JsonObject).Count
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of Vintagestory.API.Datastructures.JsonObject).Count
+- uid: System.Collections.Generic.IReadOnlyCollection`1.Count
+  commentId: P:System.Collections.Generic.IReadOnlyCollection`1.Count
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1.count
+  name: Count
+  nameWithType: IReadOnlyCollection<T>.Count
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>.Count
+  nameWithType.vb: IReadOnlyCollection(Of T).Count
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T).Count
+- uid: Vintagestory.API.Datastructures.JsonObject.GetEnumerator*
+  commentId: Overload:Vintagestory.API.Datastructures.JsonObject.GetEnumerator
+  href: Vintagestory.API.Datastructures.JsonObject.html#Vintagestory_API_Datastructures_JsonObject_GetEnumerator
+  name: GetEnumerator
+  nameWithType: JsonObject.GetEnumerator
+  fullName: Vintagestory.API.Datastructures.JsonObject.GetEnumerator
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<JsonObject>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<Vintagestory.API.Datastructures.JsonObject>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of JsonObject).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Vintagestory.API.Datastructures.JsonObject).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Datastructures.JsonObject}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator{Vintagestory.API.Datastructures.JsonObject}
+  commentId: T:System.Collections.Generic.IEnumerator{Vintagestory.API.Datastructures.JsonObject}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerator`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<JsonObject>
+  nameWithType: IEnumerator<JsonObject>
+  fullName: System.Collections.Generic.IEnumerator<Vintagestory.API.Datastructures.JsonObject>
+  nameWithType.vb: IEnumerator(Of JsonObject)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of Vintagestory.API.Datastructures.JsonObject)
+  name.vb: IEnumerator(Of JsonObject)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )

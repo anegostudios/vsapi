@@ -5,7 +5,7 @@ items:
   id: GuiElementCellList`1
   parent: Vintagestory.API.Client
   children:
-  - Vintagestory.API.Client.GuiElementCellList`1.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{`0},System.Collections.Generic.List{`0})
+  - Vintagestory.API.Client.GuiElementCellList`1.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{`0},System.Collections.Generic.IEnumerable{`0})
   - Vintagestory.API.Client.GuiElementCellList`1.AddCell(`0,System.Int32)
   - Vintagestory.API.Client.GuiElementCellList`1.BeforeCalcBounds
   - Vintagestory.API.Client.GuiElementCellList`1.CalcTotalHeight
@@ -15,7 +15,7 @@ items:
   - Vintagestory.API.Client.GuiElementCellList`1.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
   - Vintagestory.API.Client.GuiElementCellList`1.OnMouseMove(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
   - Vintagestory.API.Client.GuiElementCellList`1.OnMouseUpOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
-  - Vintagestory.API.Client.GuiElementCellList`1.ReloadCells(System.Collections.Generic.List{`0})
+  - Vintagestory.API.Client.GuiElementCellList`1.ReloadCells(System.Collections.Generic.IEnumerable{`0})
   - Vintagestory.API.Client.GuiElementCellList`1.RemoveCell(System.Int32)
   - Vintagestory.API.Client.GuiElementCellList`1.RenderInteractiveElements(System.Single)
   - Vintagestory.API.Client.GuiElementCellList`1.UnscaledCellHorPadding
@@ -110,6 +110,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
   nameWithType.vb: GuiElementCellList(Of T)
   fullName.vb: Vintagestory.API.Client.GuiElementCellList(Of T)
   name.vb: GuiElementCellList(Of T)
@@ -231,16 +234,16 @@ items:
   overload: Vintagestory.API.Client.GuiElementCellList`1.InsideClipBounds*
   nameWithType.vb: GuiElementCellList(Of T).InsideClipBounds
   fullName.vb: Vintagestory.API.Client.GuiElementCellList(Of T).InsideClipBounds
-- uid: Vintagestory.API.Client.GuiElementCellList`1.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{`0},System.Collections.Generic.List{`0})
-  commentId: M:Vintagestory.API.Client.GuiElementCellList`1.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{`0},System.Collections.Generic.List{`0})
-  id: '#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{`0},System.Collections.Generic.List{`0})'
+- uid: Vintagestory.API.Client.GuiElementCellList`1.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{`0},System.Collections.Generic.IEnumerable{`0})
+  commentId: M:Vintagestory.API.Client.GuiElementCellList`1.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{`0},System.Collections.Generic.IEnumerable{`0})
+  id: '#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{`0},System.Collections.Generic.IEnumerable{`0})'
   parent: Vintagestory.API.Client.GuiElementCellList`1
   langs:
   - csharp
   - vb
-  name: GuiElementCellList(ICoreClientAPI, ElementBounds, OnRequireCell<T>, List<T>)
-  nameWithType: GuiElementCellList<T>.GuiElementCellList(ICoreClientAPI, ElementBounds, OnRequireCell<T>, List<T>)
-  fullName: Vintagestory.API.Client.GuiElementCellList<T>.GuiElementCellList(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell<T>, System.Collections.Generic.List<T>)
+  name: GuiElementCellList(ICoreClientAPI, ElementBounds, OnRequireCell<T>, IEnumerable<T>)
+  nameWithType: GuiElementCellList<T>.GuiElementCellList(ICoreClientAPI, ElementBounds, OnRequireCell<T>, IEnumerable<T>)
+  fullName: Vintagestory.API.Client.GuiElementCellList<T>.GuiElementCellList(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell<T>, System.Collections.Generic.IEnumerable<T>)
   type: Constructor
   assemblies:
   - VintagestoryAPI
@@ -248,7 +251,7 @@ items:
   summary: Creates a new list in the current GUI.
   example: []
   syntax:
-    content: public GuiElementCellList(ICoreClientAPI capi, ElementBounds bounds, OnRequireCell<T> cellCreator, List<T> cells = null)
+    content: public GuiElementCellList(ICoreClientAPI capi, ElementBounds bounds, OnRequireCell<T> cellCreator, IEnumerable<T> cells = null)
     parameters:
     - id: capi
       type: Vintagestory.API.Client.ICoreClientAPI
@@ -260,37 +263,37 @@ items:
       type: Vintagestory.API.Client.OnRequireCell{{T}}
       description: The event fired when a cell is requested by the gui
     - id: cells
-      type: System.Collections.Generic.List{{T}}
+      type: System.Collections.Generic.IEnumerable{{T}}
       description: The array of cells initialized with the list.
-    content.vb: Public Sub New(capi As ICoreClientAPI, bounds As ElementBounds, cellCreator As OnRequireCell(Of T), cells As List(Of T) = Nothing)
+    content.vb: Public Sub New(capi As ICoreClientAPI, bounds As ElementBounds, cellCreator As OnRequireCell(Of T), cells As IEnumerable(Of T) = Nothing)
   overload: Vintagestory.API.Client.GuiElementCellList`1.#ctor*
-  nameWithType.vb: GuiElementCellList(Of T).New(ICoreClientAPI, ElementBounds, OnRequireCell(Of T), List(Of T))
-  fullName.vb: Vintagestory.API.Client.GuiElementCellList(Of T).New(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell(Of T), System.Collections.Generic.List(Of T))
-  name.vb: New(ICoreClientAPI, ElementBounds, OnRequireCell(Of T), List(Of T))
-- uid: Vintagestory.API.Client.GuiElementCellList`1.ReloadCells(System.Collections.Generic.List{`0})
-  commentId: M:Vintagestory.API.Client.GuiElementCellList`1.ReloadCells(System.Collections.Generic.List{`0})
-  id: ReloadCells(System.Collections.Generic.List{`0})
+  nameWithType.vb: GuiElementCellList(Of T).New(ICoreClientAPI, ElementBounds, OnRequireCell(Of T), IEnumerable(Of T))
+  fullName.vb: Vintagestory.API.Client.GuiElementCellList(Of T).New(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell(Of T), System.Collections.Generic.IEnumerable(Of T))
+  name.vb: New(ICoreClientAPI, ElementBounds, OnRequireCell(Of T), IEnumerable(Of T))
+- uid: Vintagestory.API.Client.GuiElementCellList`1.ReloadCells(System.Collections.Generic.IEnumerable{`0})
+  commentId: M:Vintagestory.API.Client.GuiElementCellList`1.ReloadCells(System.Collections.Generic.IEnumerable{`0})
+  id: ReloadCells(System.Collections.Generic.IEnumerable{`0})
   parent: Vintagestory.API.Client.GuiElementCellList`1
   langs:
   - csharp
   - vb
-  name: ReloadCells(List<T>)
-  nameWithType: GuiElementCellList<T>.ReloadCells(List<T>)
-  fullName: Vintagestory.API.Client.GuiElementCellList<T>.ReloadCells(System.Collections.Generic.List<T>)
+  name: ReloadCells(IEnumerable<T>)
+  nameWithType: GuiElementCellList<T>.ReloadCells(IEnumerable<T>)
+  fullName: Vintagestory.API.Client.GuiElementCellList<T>.ReloadCells(System.Collections.Generic.IEnumerable<T>)
   type: Method
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
   syntax:
-    content: public void ReloadCells(List<T> cells)
+    content: public void ReloadCells(IEnumerable<T> cells)
     parameters:
     - id: cells
-      type: System.Collections.Generic.List{{T}}
-    content.vb: Public Sub ReloadCells(cells As List(Of T))
+      type: System.Collections.Generic.IEnumerable{{T}}
+    content.vb: Public Sub ReloadCells(cells As IEnumerable(Of T))
   overload: Vintagestory.API.Client.GuiElementCellList`1.ReloadCells*
-  nameWithType.vb: GuiElementCellList(Of T).ReloadCells(List(Of T))
-  fullName.vb: Vintagestory.API.Client.GuiElementCellList(Of T).ReloadCells(System.Collections.Generic.List(Of T))
-  name.vb: ReloadCells(List(Of T))
+  nameWithType.vb: GuiElementCellList(Of T).ReloadCells(IEnumerable(Of T))
+  fullName.vb: Vintagestory.API.Client.GuiElementCellList(Of T).ReloadCells(System.Collections.Generic.IEnumerable(Of T))
+  name.vb: ReloadCells(IEnumerable(Of T))
 - uid: Vintagestory.API.Client.GuiElementCellList`1.BeforeCalcBounds
   commentId: M:Vintagestory.API.Client.GuiElementCellList`1.BeforeCalcBounds
   id: BeforeCalcBounds
@@ -3138,6 +3141,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -3145,6 +3210,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Collections.Generic.List{Vintagestory.API.Client.IGuiElementCell}
   commentId: T:System.Collections.Generic.List{Vintagestory.API.Client.IGuiElementCell}
   parent: System.Collections.Generic
@@ -3278,7 +3440,7 @@ references:
   fullName: Vintagestory.API.Client.ElementBounds
 - uid: Vintagestory.API.Client.GuiElementCellList`1.#ctor*
   commentId: Overload:Vintagestory.API.Client.GuiElementCellList`1.#ctor
-  href: Vintagestory.API.Client.GuiElementCellList-1.html#Vintagestory_API_Client_GuiElementCellList_1__ctor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell__0__System_Collections_Generic_List__0__
+  href: Vintagestory.API.Client.GuiElementCellList-1.html#Vintagestory_API_Client_GuiElementCellList_1__ctor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell__0__System_Collections_Generic_IEnumerable__0__
   name: GuiElementCellList
   nameWithType: GuiElementCellList<T>.GuiElementCellList
   fullName: Vintagestory.API.Client.GuiElementCellList<T>.GuiElementCellList
@@ -3319,30 +3481,30 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: System.Collections.Generic.List{{T}}
-  commentId: T:System.Collections.Generic.List{`0}
+- uid: System.Collections.Generic.IEnumerable{{T}}
+  commentId: T:System.Collections.Generic.IEnumerable{``0}
   parent: System.Collections.Generic
-  definition: System.Collections.Generic.List`1
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  name: List<T>
-  nameWithType: List<T>
-  fullName: System.Collections.Generic.List<T>
-  nameWithType.vb: List(Of T)
-  fullName.vb: System.Collections.Generic.List(Of T)
-  name.vb: List(Of T)
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
   spec.csharp:
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: <
   - name: T
   - name: '>'
   spec.vb:
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: (
   - name: Of
   - name: " "
@@ -3373,9 +3535,37 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: Vintagestory.API.Client.GuiElementCellList`1.ReloadCells*
   commentId: Overload:Vintagestory.API.Client.GuiElementCellList`1.ReloadCells
-  href: Vintagestory.API.Client.GuiElementCellList-1.html#Vintagestory_API_Client_GuiElementCellList_1_ReloadCells_System_Collections_Generic_List__0__
+  href: Vintagestory.API.Client.GuiElementCellList-1.html#Vintagestory_API_Client_GuiElementCellList_1_ReloadCells_System_Collections_Generic_IEnumerable__0__
   name: ReloadCells
   nameWithType: GuiElementCellList<T>.ReloadCells
   fullName: Vintagestory.API.Client.GuiElementCellList<T>.ReloadCells

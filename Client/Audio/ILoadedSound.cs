@@ -52,6 +52,7 @@ namespace Vintagestory.API.Client
         /// The params the sound was created with.
         /// </summary>
         SoundParams Params { get; }
+        bool IsPaused { get; }
 
         /// <summary>
         /// Starts the sound

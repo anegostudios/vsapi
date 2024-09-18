@@ -7,7 +7,7 @@ namespace Vintagestory.API.Datastructures
     /// <summary>
     /// Represents a List of nestable Attributes
     /// </summary>
-    public interface ITreeAttribute : IAttribute, IEnumerable<KeyValuePair<string, IAttribute>>, IEnumerable
+    public interface ITreeAttribute : IAttribute, IEnumerable<KeyValuePair<string, IAttribute>>
     {
         /// <summary>
         /// Will return null if given attribute does not exist
@@ -32,7 +32,15 @@ namespace Vintagestory.API.Datastructures
         /// <param name="key"></param>
         /// <returns></returns>
         bool HasAttribute(string key);
-        
+
+        /// <summary>
+        /// Similar to TryGetValue for a Dictionary
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        bool TryGetAttribute(string key, out IAttribute value);
+
 
         /// <summary>
         /// Removes an attribute
@@ -260,7 +268,7 @@ namespace Vintagestory.API.Datastructures
         /// </summary>
         /// <param name="recursive"></param>
         /// <returns></returns>
-        ITreeAttribute SortedCopy(bool recursive = false);
+        OrderedDictionary<string, IAttribute> SortedCopy(bool recursive = false);
 
         bool Equals(IWorldAccessor worldForResolve, IAttribute attr, params string[] ignoreSubTrees);
         bool IsSubSetOf(IWorldAccessor worldForResolve, IAttribute other);

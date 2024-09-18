@@ -32,5 +32,24 @@
             dir.Y = GameMath.Clamp(origin.Y + dir.Y, miny, maxy) - origin.Y;
             dir.Z = GameMath.Clamp(origin.Z + dir.Z, minz, maxz) - origin.Z;
         }
+
+
+        public static Ray FromAngles(Vec3d pos, float pitch, float yaw, float pickingRange)
+        {
+            return new Ray()
+            {
+                origin = pos,
+                dir = pos.AheadCopy(pickingRange, pitch, yaw).SubCopy(pos.X, pos.Y, pos.Z)
+            };
+        }
+
+        public static Ray FromPositions(Vec3d fromPos, Vec3d toPos)
+        {
+            return new Ray()
+            {
+                origin = fromPos,
+                dir = toPos.SubCopy(fromPos)
+            };
+        }
     }
 }

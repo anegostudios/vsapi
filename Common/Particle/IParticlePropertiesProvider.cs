@@ -79,6 +79,12 @@ namespace Vintagestory.API.Common
         int GetRgbaColor(ICoreClientAPI capi);
 
         /// <summary>
+        /// If this particle emits light, this is its RGBA. Does not actually brighten the scene around it, but prevents incorrect lighting of particles when everything else around it is dark
+        /// </summary>
+        int LightEmission { get; }
+
+
+        /// <summary>
         /// Return null or 1 if opacity should remain unchanged over time. lifetimeLeft is always a value between 0 and 1
         /// </summary>
         /// <returns></returns>

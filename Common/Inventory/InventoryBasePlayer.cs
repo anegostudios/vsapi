@@ -45,7 +45,7 @@ namespace Vintagestory.API.Common
         public override void DropAll(Vec3d pos, int maxStackSize = 0)
         {
             var attr = Player?.Entity?.Properties.Attributes;
-            int timer = attr == null ? GlobalConstants.TimeToDespawnPlayerInventoryDrops : attr["droppedItemsOnDeathTimer"].AsInt(GlobalConstants.TimeToDespawnPlayerInventoryDrops);
+            int despawnSeconds = attr == null ? GlobalConstants.TimeToDespawnPlayerInventoryDrops : attr["droppedItemsOnDeathTimer"].AsInt(GlobalConstants.TimeToDespawnPlayerInventoryDrops);
 
             for (int i = 0; i < Count; i++)
             {
@@ -64,13 +64,13 @@ namespace Vintagestory.API.Common
                         while (slot.StackSize > 0)
                         {
                             ItemStack split = slot.TakeOut(GameMath.Clamp(slot.StackSize, 1, maxStackSize));
-                            spawnItemEntity(split, pos, timer);
+                            spawnItemEntity(split, pos, despawnSeconds);
                         }
                     }
                     else
                     {
 
-                        spawnItemEntity(slot.Itemstack, pos, timer);
+                        spawnItemEntity(slot.Itemstack, pos, despawnSeconds);
                     }
                     
 
@@ -80,12 +80,15 @@ namespace Vintagestory.API.Common
             }
         }
 
-        protected void spawnItemEntity(ItemStack itemstack, Vec3d pos, int timer)
+        protected void spawnItemEntity(ItemStack itemstack, Vec3d pos, int despawnSeconds)
         {
             Entity eItem = Api.World.SpawnItemEntity(itemstack, pos);
-            eItem.Attributes.SetInt("minsecondsToDespawn", timer);     // Set the despawn timer to the configured value for a player's despawned items, even if the despawn timer is different for other items
+            eItem.Attributes.SetInt("minsecondsToDespawn", despawnSeconds);     // Set the despawn timer to the configured value for a player's despawned items, even if the despawn timer is different for other items
             var bh = eItem.GetBehavior("timeddespawn");   // Also set the despawn timer for the already-initialised behavior for the entity just spawned; the attribute will do the same job if the world or chunk is re-loaded
-            if (bh is ITimedDespawn bhDespawn) bhDespawn.SetTimer(timer);
+            if (bh is ITimedDespawn bhDespawn)
+            {
+                bhDespawn.DespawnSeconds = despawnSeconds;
+            }
         }
     }
 }

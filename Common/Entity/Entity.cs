@@ -104,7 +104,7 @@ namespace Vintagestory.API.Common.Entities
             bioLumiNoise = new NormalizedSimplexNoise(new double[] { 1, 0.5 }, new double[] { 5, 10 }, 097901);
         }
 
-        
+
         #region Entity Fields
 
         /// <summary>
@@ -139,8 +139,8 @@ namespace Vintagestory.API.Common.Entities
         /// An uptime value running activities. Available on the game client and server. Not synchronized.
         /// </summary>
         public Dictionary<string, long> ActivityTimers = new Dictionary<string, long>();
-        
-        
+
+
         /// <summary>
         /// Client position
         /// </summary>
@@ -159,7 +159,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// The position where the entity last had contact with the ground. Set by the game client and server.
         /// </summary>
-        public Vec3d PositionBeforeFalling = new Vec3d();        
+        public Vec3d PositionBeforeFalling = new Vec3d();
 
         public long InChunkIndex3d;
 
@@ -229,7 +229,7 @@ namespace Vintagestory.API.Common.Entities
             get
             {
                 return WatchedAttributes.GetBool("onFire");
-            } 
+            }
             set
             {
                 WatchedAttributes.SetBool("onFire", value);
@@ -290,19 +290,24 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public bool IsShadowRendered;
 
-        /// <summary>
-        /// Color used when the entity is being attacked
-        /// </summary>
-        protected int HurtColor = ColorUtil.ToRgba(255, 255, 100, 100);
-
         public EntityStats Stats;
-        float fireDamageAccum;
+        protected float fireDamageAccum;
 
 
         // Used by EntityBehaviorRepulseAgents. Added here to increase performance, as its one of the most perf heavy operations
         public double touchDistanceSq;
         public Vec3d ownPosRepulse = new Vec3d();
         public bool hasRepulseBehavior = false;
+
+        /// <summary>
+        /// If true, will call EntityBheavior.IntersectsRay. Default off to increase performance. 
+        /// </summary>
+        public bool trickleDownRayIntersects;
+        /// <summary>
+        /// If true, will fully simulate animations on the server so one has access to the positions of all attachment points.
+        /// If false, only root level attachment points will be available server side
+        /// </summary>
+        public bool requirePosesOnServer;
 
         /// <summary>
         /// Used for efficiency in multi-player servers, to avoid regenerating the packet again for each connected client
@@ -365,7 +370,7 @@ namespace Vintagestory.API.Common.Entities
         /// The height of the eyes for the given entity.
         /// </summary>
         public virtual Vec3d LocalEyePos { get; set; } = new Vec3d();
-        
+
 
         /// <summary>
         /// If gravity should applied to this entity
@@ -416,7 +421,7 @@ namespace Vintagestory.API.Common.Entities
         {
             get { return alive; /* Updated client-side from the WatchedAttributes every game tick. Updates to alive status on the server may therefore lag by up to one tick, client-side. */ }
             set {
-                WatchedAttributes.SetInt("entityDead", value ? 0 : 1); alive = value; 
+                WatchedAttributes.SetInt("entityDead", value ? 0 : 1); alive = value;
             }
 
         }
@@ -432,15 +437,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Used by some renderers to apply an overal color tint on the entity
         /// </summary>
-        public int RenderColor
-        {
-            get
-            {
-                int val = RemainingActivityTime("invulnerable");
-
-                return val > 0 ? ColorUtil.ColorOverlay(HurtColor, ColorUtil.WhiteArgb, 1f - val / 500f) : ColorUtil.WhiteArgb;
-            }
-        }
+        public int RenderColor { get; set; }
 
         /// <summary>
         /// A small offset used to prevent players from clipping through the blocks above ladders: relevant if the entity's collision box is sometimes adjusted by the game code
@@ -491,10 +488,10 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="InChunkIndex3d"></param>
         public virtual void Initialize(EntityProperties properties, ICoreAPI api, long InChunkIndex3d)
         {
-            this.World = api.World;
-            this.Api = api;
-            this.Properties = properties;
-            this.Class = properties.Class;
+            World = api.World;
+            Api = api;
+            Properties = properties;
+            Class = properties.Class;
             this.InChunkIndex3d = InChunkIndex3d;
 
             alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
@@ -507,7 +504,7 @@ namespace Vintagestory.API.Common.Entities
                 if (newOnHurtCounter == onHurtCounter) return;
 
                 onHurtCounter = newOnHurtCounter;
-                
+
                 if (Attributes.GetInt("dmgkb") == 0)
                 {
                     Attributes.SetInt("dmgkb", 1);
@@ -552,16 +549,16 @@ namespace Vintagestory.API.Common.Entities
                 if (properties.Client?.FirstTexture?.Alternates != null && !WatchedAttributes.HasAttribute("textureIndex"))
                 {
                     WatchedAttributes.SetInt("textureIndex", World.Rand.Next(properties.Client.FirstTexture.Alternates.Length + 1));
-                }                
+                }
             }
 
             this.Properties.Initialize(this, api);
 
             Properties.Client.DetermineLoadedShape(EntityId);
-            
+
             if (api.Side == EnumAppSide.Server)
             {
-                AnimManager = AnimationCache.InitManager(api, AnimManager, this, properties.Client.LoadedShapeForEntity, null, "head");
+                AnimManager.LoadAnimator(api, this, properties.Client.LoadedShapeForEntity, null, requirePosesOnServer, "head");
                 AnimManager.OnServerTick(0);
             } else
             {
@@ -573,7 +570,7 @@ namespace Vintagestory.API.Common.Entities
             TriggerOnInitialized();
         }
 
-        public void AfterInitialized(bool onFirstSpawn)
+        public virtual void AfterInitialized(bool onFirstSpawn)
         {
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
@@ -661,7 +658,16 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual bool TryGiveItemStack(ItemStack itemstack)
         {
-            return false;
+            EnumHandling handled = EnumHandling.PassThrough;
+
+            bool ok = false;
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                ok |= behavior.TryGiveItemStack(itemstack, ref handled);
+                if (handled == EnumHandling.PreventSubsequent) return ok;
+            }
+
+            return ok;
         }
 
 
@@ -750,7 +756,7 @@ namespace Vintagestory.API.Common.Entities
                         Teleporting = false;
                     }
                 });
-                
+
             }
         }
 
@@ -878,6 +884,8 @@ namespace Vintagestory.API.Common.Entities
 
             if (World.Side == EnumAppSide.Client)
             {
+                RenderColor = ColorUtil.WhiteArgb;
+
                 alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
 
                 if (World.FrameProfiler.Enabled)
@@ -906,6 +914,19 @@ namespace Vintagestory.API.Common.Entities
             }
             else   // Serverside
             {
+                if (!shapeFresh && requirePosesOnServer)
+                {
+                    CompositeShape compositeShape = Properties.Client.Shape;
+                    Shape entityShape = Properties.Client.LoadedShapeForEntity;
+
+                    if (entityShape != null)
+                    {
+                        OnTesselation(ref entityShape, compositeShape.Base.ToString());
+                        OnTesselated();
+                    }
+                }
+
+
                 if (World.FrameProfiler.Enabled)
                 {
                     World.FrameProfiler.Enter("behaviors");
@@ -925,6 +946,7 @@ namespace Vintagestory.API.Common.Entities
                 }
 
                 if (InLava) Ignite();
+
             }
 
 
@@ -1018,6 +1040,41 @@ namespace Vintagestory.API.Common.Entities
 
         #region Events
 
+        public virtual ITexPositionSource GetTextureSource()
+        {
+            if (Api.Side != EnumAppSide.Client) return null;
+            
+            ITexPositionSource texSource = null;
+
+            var bhs = Properties.Client?.Behaviors;
+            EnumHandling handling = EnumHandling.PassThrough;
+            if (bhs != null)
+            {
+                foreach (var bh in bhs)
+                {
+                    texSource = bh.GetTextureSource(ref handling);
+                    if (handling == EnumHandling.PreventSubsequent) return texSource;
+                }
+            }
+
+            if (handling == EnumHandling.PreventDefault) return texSource;
+
+            int altTexNumber = WatchedAttributes.GetInt("textureIndex", 0);
+            return (Api as ICoreClientAPI).Tesselator.GetTextureSource(this, null, altTexNumber);
+        }
+
+
+        public bool ShapeFresh => shapeFresh;
+        public virtual double FrustumSphereRadius => Math.Max(3, Math.Max(SelectionBox.XSize, SelectionBox.YSize));
+
+        protected bool shapeFresh;
+
+        public virtual void MarkShapeModified()
+        {
+            shapeFresh = false;
+        }
+
+
         /// <summary>
         /// Called by EntityShapeRenderer.cs before tesselating the entity shape
         /// </summary>
@@ -1025,8 +1082,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="shapePathForLogging"></param>
         public virtual void OnTesselation(ref Shape entityShape, string shapePathForLogging)
         {
-            entityShape.ResolveReferences(Api.Logger, shapePathForLogging);
-            AnimManager = AnimationCache.InitManager(World.Api, AnimManager, this, entityShape, AnimManager.Animator?.RunningAnimations, "head");
+            shapeFresh = true;
 
             // Clear cached values. ClientAnimator regenerates these
             if (entityShape.Animations != null)
@@ -1034,6 +1090,106 @@ namespace Vintagestory.API.Common.Entities
                 foreach (var anim in entityShape.Animations)
                 {
                     anim.PrevNextKeyFrameByFrame = null;
+                }
+            }
+
+            bool shapeIsCloned = false;
+
+            var cshape = Properties.Client.Shape;
+            if (cshape?.Overlays != null && cshape.Overlays.Length > 0)
+            {
+                shapeIsCloned = true;
+                entityShape = entityShape.Clone();
+
+                var textures = Properties.Client.Textures;
+
+                foreach (var overlay in cshape.Overlays)
+                {
+                    var shape = Api.Assets.TryGet(overlay.Base.WithPathPrefixOnce("shapes/").WithPathAppendixOnce(".json"))?.ToObject<Shape>();
+                    if (shape == null)
+                    {
+                        Api.Logger.Error("Entity {0} defines a shape overlay {1}, but no such file found. Will ignore.", this.Code, overlay.Base);
+                        continue;
+                    }
+
+                    string texturePrefixCode = null;
+
+                    if (Properties.Attributes?["wearableTexturePrefixCode"].Exists == true)
+                    {
+                        texturePrefixCode = Properties.Attributes["wearableTexturePrefixCode"].AsString();
+                    }
+
+                    entityShape.StepParentShape(shape, overlay.Base.ToShortString(), shapePathForLogging, Api.Logger, (texcode, tloc) =>
+                    {
+                        if (Api is ICoreClientAPI capi)
+                        {
+                            // Entity textures take precedence over shape textures
+                            if (texturePrefixCode == null && textures.ContainsKey(texcode)) return;
+
+                            var cmpt = textures[texturePrefixCode + "-" + texcode] = new CompositeTexture(tloc);
+                            cmpt.Bake(Api.Assets);
+                            capi.EntityTextureAtlas.GetOrInsertTexture(cmpt.Baked.TextureFilenames[0], out int textureSubid, out _);
+                            cmpt.Baked.TextureSubId = textureSubid;
+                        }
+                    });
+                }
+            }
+
+            string[] willDeleteElements = null;
+            if (Properties.Attributes?["deleteElements"].Exists == true)
+            {
+                willDeleteElements = Properties.Attributes["deleteElements"].AsArray<string>();
+            }
+
+            var bhs = World.Side == EnumAppSide.Server ? Properties.Server?.Behaviors : Properties.Client?.Behaviors;
+            EnumHandling handling = EnumHandling.PassThrough;
+            if (bhs != null)
+            {
+                foreach (var bh in bhs)
+                {
+                    bh.OnTesselation(ref entityShape, shapePathForLogging, ref shapeIsCloned, ref willDeleteElements);
+                    if (handling == EnumHandling.PreventSubsequent) break;
+                }
+            }
+
+            if (willDeleteElements != null && willDeleteElements.Length > 0)
+            {
+                if (!shapeIsCloned)
+                {
+                    // Make a full copy so we don't mess up the original
+                    Shape newShape = entityShape.Clone();
+                    entityShape = newShape;
+                    shapeIsCloned = true;
+                }
+                shapeIsCloned = true;
+
+                entityShape.RemoveElements(willDeleteElements);
+            }
+
+            if (shapeIsCloned)
+            {
+                string[] requireJointsForElements = new string[] { "head" };
+                if (Properties.Attributes?["requireJointsForElements"].Exists == true)
+                {
+                    requireJointsForElements = requireJointsForElements.Append(Properties.Attributes["requireJointsForElements"].AsArray<string>());
+                }
+
+                AnimManager.LoadAnimator(World.Api, this, entityShape, AnimManager.Animator?.Animations, requirePosesOnServer, "head");
+            }
+            else
+            {
+                AnimManager.LoadAnimatorCached(World.Api, this, entityShape, AnimManager.Animator?.Animations, requirePosesOnServer, "head");
+            }
+        }
+
+        public virtual void OnTesselated()
+        {
+            var bhs = World.Side == EnumAppSide.Server ? Properties.Server?.Behaviors : Properties.Client?.Behaviors;
+            if (bhs != null)
+            {
+                foreach (var bh in bhs)
+                {
+                    bh.OnTesselated();
                 }
             }
         }
@@ -1083,9 +1239,9 @@ namespace Vintagestory.API.Common.Entities
 
             float qmod = GameMath.Sqrt(width * height);
 
-            World.PlaySoundAt(new AssetLocation(sound), (float)pos.X, (float)pos.Y, (float)pos.Z, null);
+            World.PlaySoundAt(new AssetLocation(sound), (float)pos.X, (float)pos.InternalY, (float)pos.Z, null);
             BlockPos blockpos = pos.AsBlockPos;
-            Vec3d aboveBlockPos = new Vec3d(Pos.X, blockpos.Y + 1.02, Pos.Z);
+            Vec3d aboveBlockPos = new Vec3d(Pos.X, blockpos.InternalY + 1.02, Pos.Z);
             World.SpawnCubeParticles(blockpos, aboveBlockPos, SelectionBox.XSize, (int)(qmod * 8 * splashStrength), 0.75f);
             World.SpawnCubeParticles(blockpos, aboveBlockPos, SelectionBox.XSize, (int)(qmod * 8 * splashStrength), 0.25f);
 
@@ -1094,9 +1250,9 @@ namespace Vintagestory.API.Common.Entities
                 SplashParticleProps.BasePos.Set(pos.X - width / 2, pos.Y - 0.75, pos.Z - width / 2);
                 SplashParticleProps.AddPos.Set(width, 0.75, width);
 
-                SplashParticleProps.AddVelocity.Set((float)GameMath.Clamp(pos.Motion.X * 30f, -10, 10), 0, (float)GameMath.Clamp(pos.Motion.Z * 30f, -10, 10));
+                SplashParticleProps.AddVelocity.Set((float)GameMath.Clamp(pos.Motion.X * 30f, -2, 2), 1, (float)GameMath.Clamp(pos.Motion.Z * 30f, -2, 2));
                 SplashParticleProps.QuantityMul = (float)(splashStrength - 1) * qmod;
-                
+
                 World.SpawnParticles(SplashParticleProps);
             }
 
@@ -1132,7 +1288,7 @@ namespace Vintagestory.API.Common.Entities
             }
 
             bioLumiParticles.MinQuantity = Math.Min(200, 100 * quantityMul * (float)qmul);
-            
+
             bioLumiParticles.MinVelocity.Set(-0.2f + 2 * (float)Pos.Motion.X, -0.2f + 2 * (float)Pos.Motion.Y, -0.2f + 2*(float)Pos.Motion.Z);
             bioLumiParticles.AddVelocity.Set(0.4f + 2 * (float)Pos.Motion.X, 0.4f + 2 * (float)Pos.Motion.Y, 0.4f + 2 * (float)Pos.Motion.Z);
             World.SpawnParticles(bioLumiParticles);
@@ -1149,6 +1305,7 @@ namespace Vintagestory.API.Common.Entities
             }
 
             Properties.Client.Renderer?.OnEntityLoaded();
+            MarkShapeModified();
         }
 
         /// <summary>
@@ -1162,6 +1319,7 @@ namespace Vintagestory.API.Common.Entities
             }
 
             Properties.Client.Renderer?.OnEntityLoaded();
+            MarkShapeModified();
         }
 
         /// <summary>
@@ -1243,10 +1401,14 @@ namespace Vintagestory.API.Common.Entities
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.OnReceivedServerPos(isTeleport, ref handled);
-                if (handled == EnumHandling.PreventSubsequent) break;
+                if (handled == EnumHandling.PreventSubsequent)
+                {
+                    break;
+                }
             }
 
-            if (handled == EnumHandling.PassThrough)
+            // Position not set automatically if the entity has interpolation. I'd rather not check this every time.
+            if (handled == EnumHandling.PassThrough && GetBehavior("entityinterpolation") == null)
             {
                 Pos.SetFrom(ServerPos);
             }
@@ -1282,14 +1444,16 @@ namespace Vintagestory.API.Common.Entities
             if (packetid == 1)
             {
                 Vec3d newPos = SerializerUtil.Deserialize<Vec3d>(data);
-                this.Pos.SetPos(newPos);
-                this.ServerPos.SetPos(newPos);
-                this.World.BlockAccessor.MarkBlockDirty(newPos.AsBlockPos);
+                if (Api is ICoreClientAPI ic && ic.World.Player.Entity.EntityId == EntityId)
+                {
+                    Pos.SetPosWithDimension(newPos);
+                }
+                ServerPos.SetPosWithDimension(newPos);
+                World.BlockAccessor.MarkBlockDirty(newPos.AsBlockPos);
                 return;
             }
 
             EnumHandling handled = EnumHandling.PassThrough;
-
             foreach (EntityBehavior behavior in SidedProperties.Behaviors)
             {
                 behavior.OnReceivedServerPacket(packetid, data, ref handled);
@@ -1423,8 +1587,19 @@ namespace Vintagestory.API.Common.Entities
         {
             return (T)SidedProperties.Behaviors.FirstOrDefault(bh => bh is T);
         }
-        
-		
+
+        /// <summary>
+        /// Returns itself or the first behavior that implements the interface T
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public virtual T GetInterface<T>() where T : class
+        {
+            if (this is T) return this as T;
+            return SidedProperties.Behaviors.FirstOrDefault(bh => bh is T) as T;
+        }
+
+
         /// <summary>
         /// Returns true if given activity is running
         /// </summary>
@@ -1468,7 +1643,7 @@ namespace Vintagestory.API.Common.Entities
             if (World.Side != EnumAppSide.Client) return;
 
             DebugAttributes.SetString("Entity Id", "" + EntityId);
-            DebugAttributes.SetString("Yaw", string.Format("{0:0.##}", Pos.Yaw));
+            DebugAttributes.SetString("Yaw", string.Format("{0:0.##}", Pos.Yaw * GameMath.RAD2DEG));
 
             if (AnimManager != null) UpdateAnimationDebugAttributes();  // for EntityItem, AnimManager will be null
         }
@@ -1487,7 +1662,7 @@ namespace Vintagestory.API.Common.Entities
             StringBuilder runninganims = new StringBuilder();
             if (AnimManager.Animator != null)
             {
-                foreach (var anim in AnimManager.Animator.RunningAnimations)
+                foreach (var anim in AnimManager.Animator.Animations)
                 {
                     if (!anim.Running) continue;
 
@@ -1563,7 +1738,7 @@ namespace Vintagestory.API.Common.Entities
                 Attributes.FromBytes(reader);
             }
 
-            // In 1.8 animation data format was changed to use a TreeAttribute. 
+            // In 1.8 animation data format was changed to use a TreeAttribute.
             if (isSync || GameVersion.IsAtLeastVersion(version, "1.8.0-pre.1"))
             {
                 TreeAttribute tree = new TreeAttribute();
@@ -1598,7 +1773,7 @@ namespace Vintagestory.API.Common.Entities
             Stats.FromTreeAttributes(WatchedAttributes);
 
 
-            // Any new data loading added here should not be loaded if below version 1.8 or 
+            // Any new data loading added here should not be loaded if below version 1.8 or
             // you might get corrupt data from old binary animation data
 
 
@@ -1625,7 +1800,7 @@ namespace Vintagestory.API.Common.Entities
             {
                 writer.Write(GameVersion.ShortGameVersion);
             }
-            
+
             writer.Write(EntityId);
 
             SetHeadPositionToWatchedAttributes();
@@ -1651,7 +1826,7 @@ namespace Vintagestory.API.Common.Entities
             TreeAttribute tree = new TreeAttribute();
             // Tyron 19.oct 2019. Don't write animations to the savegame. I think it causes that some animations start but never stop
             // if we want to save the creatures current state to disk, we would also need to save the current AI state!
-            // Tyron 26 oct. Do write animations, but only the die one. 
+            // Tyron 26 oct. Do write animations, but only the die one.
             // Tyron 8 nov. Do write all animations if its for the client
             //if (forClient)
             {
@@ -1717,7 +1892,7 @@ namespace Vintagestory.API.Common.Entities
                 {
                     for (int i = 0; i < drops.Length; i++)
                     {
-                        World.SpawnItemEntity(drops[i], SidedPos.XYZ.AddCopy(0, 0.25, 0));
+                        World.SpawnItemEntity(drops[i], SidedPos.XYZ.Add(0, 0.25, 0));
                     }
                 }
 
@@ -1738,7 +1913,7 @@ namespace Vintagestory.API.Common.Entities
                         WatchedAttributes.SetString("deathByPlayer", (byEntity as EntityPlayer).Player?.PlayerName);
                     }
                 }
-                
+
 
                 foreach (EntityBehavior behavior in SidedProperties.Behaviors)
                 {
@@ -1766,10 +1941,10 @@ namespace Vintagestory.API.Common.Entities
             if (Properties.ResolvedSounds != null && Properties.ResolvedSounds.TryGetValue(type, out locations) && locations.Length > 0)
             {
                 World.PlaySoundAt(
-                    locations[World.Rand.Next(locations.Length)], 
-                    (float)SidedPos.X, (float)SidedPos.Y, (float)SidedPos.Z, 
+                    locations[World.Rand.Next(locations.Length)],
+                    (float)SidedPos.X, (float)SidedPos.InternalY, (float)SidedPos.Z,
                     dualCallByPlayer,
-                    randomizePitch, 
+                    randomizePitch,
                     range
                 );
             }
@@ -1826,8 +2001,8 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// This method is called by the BlockSchematic class a moment after a schematic containing this entity has been exported. 
-        /// Since a schematic can be placed anywhere in the world, this method has to make sure the entities position is set to the correct 
+        /// This method is called by the BlockSchematic class a moment after a schematic containing this entity has been exported.
+        /// Since a schematic can be placed anywhere in the world, this method has to make sure the entities position is set to the correct
         /// position in relation to the target position of the schematic to be imported.
         /// </summary>
         /// <param name="startPos"></param>
@@ -1859,21 +2034,6 @@ namespace Vintagestory.API.Common.Entities
             {
                 val.OnStoreCollectibleMappings(blockIdMapping, itemIdMapping);
             }
-        }
-
-        /// <summary>
-        /// Called by the blockschematic loader so that you may fix any blockid/itemid mappings against the mapping of the savegame, if you store any collectibles in this blockentity.
-        /// Note: Some vanilla blocks resolve randomized contents in this method.
-        /// Hint: Use itemstack.FixMapping() to do the job for you.
-        /// </summary>
-        /// <param name="worldForNewMappings"></param>
-        /// <param name="oldBlockIdMapping"></param>
-        /// <param name="oldItemIdMapping"></param>
-        /// <param name="schematicSeed">If you need some sort of randomness consistency accross an imported schematic, you can use this value</param>
-        [Obsolete("Use the variant with resolveImports parameter")]
-        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed)
-        {
-            OnLoadCollectibleMappings(worldForNewMappings, oldItemIdMapping, oldItemIdMapping, schematicSeed, true);
         }
 
         /// <summary>
@@ -1921,7 +2081,7 @@ namespace Vintagestory.API.Common.Entities
             }
 
             int generation = WatchedAttributes.GetInt("generation", 0);
-            
+
             if (generation > 0)
             {
                 infotext.AppendLine(Lang.Get("Generation: {0}", generation));
@@ -1934,16 +2094,10 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-            if (World.Side == EnumAppSide.Client && (World as IClientWorldAccessor).Player?.WorldData?.CurrentGameMode == EnumGameMode.Creative)
-            {
-                var healthTree = WatchedAttributes.GetTreeAttribute("health") as ITreeAttribute;
-                if (healthTree != null) infotext.AppendLine(Lang.Get("Health: {0}/{1}", healthTree.GetFloat("currenthealth"), healthTree.GetFloat("maxhealth")));
-            }
-
             if (WatchedAttributes.HasAttribute("extraInfoText"))
             {
                 ITreeAttribute tree = WatchedAttributes.GetTreeAttribute("extraInfoText");
-                foreach (var val in tree)
+                foreach (var val in tree.SortedCopy())
                 {
                     infotext.AppendLine(val.Value.ToString());
                 }
@@ -1977,5 +2131,40 @@ namespace Vintagestory.API.Common.Entities
             AnimManager.StopAnimation(code);
         }
 
+        /// <summary>
+        /// To test for player->entity selection. 
+        /// </summary>
+        /// <param name="ray"></param>
+        /// <param name="interesectionTester">Is already preloaded with the ray</param>
+        /// <param name="intersectionDistance"></param>
+        /// <returns></returns>
+        public virtual bool IntersectsRay(Ray ray, AABBIntersectionTest interesectionTester, out double intersectionDistance, ref int selectionBoxIndex)
+        {
+            if (trickleDownRayIntersects)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                bool preventDefault = false;
+                bool intersects = false;
+                intersectionDistance = 0;
+
+                foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+                {
+                    intersects |= behavior.IntersectsRay(ray, interesectionTester, out intersectionDistance, ref selectionBoxIndex, ref handled);
+                    preventDefault |= handled == EnumHandling.PreventDefault;
+                    if (handled == EnumHandling.PreventSubsequent) return intersects;
+                }
+
+                if (preventDefault) return intersects;
+            }
+
+            if (interesectionTester.RayIntersectsWithCuboid(SelectionBox, SidedPos.X, SidedPos.InternalY, SidedPos.Z))
+            {
+                intersectionDistance = Pos.SquareDistanceTo(ray.origin);
+                return true;
+            }
+
+            intersectionDistance = 0;
+            return false;
+        }
     }
 }

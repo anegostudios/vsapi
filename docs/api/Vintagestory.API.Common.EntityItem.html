@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -261,10 +261,10 @@ Class EntityItem
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsShadowRendered">Entity.IsShadowRendered</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HurtColor">Entity.HurtColor</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Stats">Entity.Stats</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Stats">Entity.Stats</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_fireDamageAccum">Entity.fireDamageAccum</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_touchDistanceSq">Entity.touchDistanceSq</a>
@@ -274,6 +274,12 @@ Class EntityItem
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_hasRepulseBehavior">Entity.hasRepulseBehavior</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_trickleDownRayIntersects">Entity.trickleDownRayIntersects</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_requirePosesOnServer">Entity.requirePosesOnServer</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_packet">Entity.packet</a>
@@ -372,16 +378,34 @@ Class EntityItem
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnAsyncParticleTick_System_Single_Vintagestory_API_Client_IAsyncParticleManager_">Entity.OnAsyncParticleTick(float, IAsyncParticleManager)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Ignite">Entity.Ignite()</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetTextureSource">Entity.GetTextureSource()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ShapeFresh">Entity.ShapeFresh</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_FrustumSphereRadius">Entity.FrustumSphereRadius</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_shapeFresh">Entity.shapeFresh</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_MarkShapeModified">Entity.MarkShapeModified()</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_">Entity.OnTesselation(ref Shape, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselated">Entity.OnTesselated()</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnFallToGround_System_Double_">Entity.OnFallToGround(double)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnCollided">Entity.OnCollided()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnCollideWithLiquid">Entity.OnCollideWithLiquid()</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SpawnWaterMovementParticles_System_Single_System_Double_System_Double_System_Double_">Entity.SpawnWaterMovementParticles(float, double, double, double)</a>
@@ -438,6 +462,9 @@ Class EntityItem
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetBehavior__1">Entity.GetBehavior&lt;T&gt;()</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetInterface__1">Entity.GetInterface&lt;T&gt;()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsActivityRunning_System_String_">Entity.IsActivityRunning(string)</a>
     </div>
     <div>
@@ -480,9 +507,6 @@ Class EntityItem
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnStoreCollectibleMappings_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__">Entity.OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_">Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int)</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_">Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int, bool)</a>
     </div>
     <div>
@@ -490,6 +514,9 @@ Class EntityItem
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetInfoText">Entity.GetInfoText()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IntersectsRay_Vintagestory_API_MathTools_Ray_Vintagestory_API_MathTools_AABBIntersectionTest_System_Double__System_Int32__">Entity.IntersectsRay(Ray, AABBIntersectionTest, out double, ref int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_Code">RegistryObject.Code</a>
@@ -580,6 +607,16 @@ Class EntityItem
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -1032,6 +1069,32 @@ Class EntityItem
 
 
 
+  <a id="Vintagestory_API_Common_EntityItem_Ignite_" data-uid="Vintagestory.API.Common.EntityItem.Ignite*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityItem_Ignite" data-uid="Vintagestory.API.Common.EntityItem.Ignite">
+  Ignite()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Ignite()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityItem_Initialize_" data-uid="Vintagestory.API.Common.EntityItem.Initialize*"></a>
 
   <h3 id="Vintagestory_API_Common_EntityItem_Initialize_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Common_ICoreAPI_System_Int64_" data-uid="Vintagestory.API.Common.EntityItem.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Common.ICoreAPI,System.Int64)">
@@ -1094,33 +1157,6 @@ Class EntityItem
     <dt><a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_EntityItem_OnCollideWithLiquid_" data-uid="Vintagestory.API.Common.EntityItem.OnCollideWithLiquid*"></a>
-
-  <h3 id="Vintagestory_API_Common_EntityItem_OnCollideWithLiquid" data-uid="Vintagestory.API.Common.EntityItem.OnCollideWithLiquid">
-  OnCollideWithLiquid()
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when the entity got in touch with a liquid</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void OnCollideWithLiquid()</code></pre>
-  </div>
-
-
 
 
 

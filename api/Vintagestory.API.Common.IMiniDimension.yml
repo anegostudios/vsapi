@@ -13,6 +13,7 @@ items:
   - Vintagestory.API.Common.IMiniDimension.GetRenderOffset(System.Single)
   - Vintagestory.API.Common.IMiniDimension.GetRenderTransformMatrix(System.Single[],Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.Common.IMiniDimension.ReceiveClientChunk(System.Int64,Vintagestory.API.Common.IWorldChunk,Vintagestory.API.Common.IWorldAccessor)
+  - Vintagestory.API.Common.IMiniDimension.SetRenderOffsetY(System.Int32)
   - Vintagestory.API.Common.IMiniDimension.SetSelectionTrackingSubId_Server(System.Int32)
   - Vintagestory.API.Common.IMiniDimension.SetSubDimensionId(System.Int32)
   - Vintagestory.API.Common.IMiniDimension.TrackSelection
@@ -80,6 +81,7 @@ items:
   - Vintagestory.API.Common.IBlockAccessor.IsValidPos(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.IsValidPos(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(System.Double,System.Double,System.Double)
+  - Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(System.Double,System.Double,System.Double,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IBlockAccessor.Commit
   - Vintagestory.API.Common.IBlockAccessor.Rollback
@@ -115,6 +117,9 @@ items:
   - Vintagestory.API.Common.IBlockAccessor.MarkChunkDecorsModified(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IBlockAccessor.IsSideSolid(System.Int32,System.Int32,System.Int32,Vintagestory.API.MathTools.BlockFacing)
   - Vintagestory.API.Common.IBlockAccessor.CreateMiniDimension(Vintagestory.API.MathTools.Vec3d)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.IMiniDimension.subDimensionId
   commentId: P:Vintagestory.API.Common.IMiniDimension.subDimensionId
   id: subDimensionId
@@ -193,11 +198,11 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: bool TrackSelection { get; }
+    content: bool TrackSelection { get; set; }
     parameters: []
     return:
       type: System.Boolean
-    content.vb: ReadOnly Property TrackSelection As Boolean
+    content.vb: Property TrackSelection As Boolean
   overload: Vintagestory.API.Common.IMiniDimension.TrackSelection*
 - uid: Vintagestory.API.Common.IMiniDimension.selectionTrackingOriginalPos
   commentId: P:Vintagestory.API.Common.IMiniDimension.selectionTrackingOriginalPos
@@ -314,6 +319,30 @@ items:
   nameWithType.vb: IMiniDimension.GetRenderOffset(Single)
   fullName.vb: Vintagestory.API.Common.IMiniDimension.GetRenderOffset(Single)
   name.vb: GetRenderOffset(Single)
+- uid: Vintagestory.API.Common.IMiniDimension.SetRenderOffsetY(System.Int32)
+  commentId: M:Vintagestory.API.Common.IMiniDimension.SetRenderOffsetY(System.Int32)
+  id: SetRenderOffsetY(System.Int32)
+  parent: Vintagestory.API.Common.IMiniDimension
+  langs:
+  - csharp
+  - vb
+  name: SetRenderOffsetY(int)
+  nameWithType: IMiniDimension.SetRenderOffsetY(int)
+  fullName: Vintagestory.API.Common.IMiniDimension.SetRenderOffsetY(int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: void SetRenderOffsetY(int offsetY)
+    parameters:
+    - id: offsetY
+      type: System.Int32
+    content.vb: Sub SetRenderOffsetY(offsetY As Integer)
+  overload: Vintagestory.API.Common.IMiniDimension.SetRenderOffsetY*
+  nameWithType.vb: IMiniDimension.SetRenderOffsetY(Integer)
+  fullName.vb: Vintagestory.API.Common.IMiniDimension.SetRenderOffsetY(Integer)
+  name.vb: SetRenderOffsetY(Integer)
 - uid: Vintagestory.API.Common.IMiniDimension.GetRenderTransformMatrix(System.Single[],Vintagestory.API.MathTools.Vec3d)
   commentId: M:Vintagestory.API.Common.IMiniDimension.GetRenderTransformMatrix(System.Single[],Vintagestory.API.MathTools.Vec3d)
   id: GetRenderTransformMatrix(System.Single[],Vintagestory.API.MathTools.Vec3d)
@@ -2274,6 +2303,73 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.double
   - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(System.Double,System.Double,System.Double,System.Int32)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(System.Double,System.Double,System.Double,System.Int32)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  isExternal: true
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_IsNotTraversable_System_Double_System_Double_System_Double_System_Int32_
+  name: IsNotTraversable(double, double, double, int)
+  nameWithType: IBlockAccessor.IsNotTraversable(double, double, double, int)
+  fullName: Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(double, double, double, int)
+  nameWithType.vb: IBlockAccessor.IsNotTraversable(Double, Double, Double, Integer)
+  fullName.vb: Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(Double, Double, Double, Integer)
+  name.vb: IsNotTraversable(Double, Double, Double, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(System.Double,System.Double,System.Double,System.Int32)
+    name: IsNotTraversable
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_IsNotTraversable_System_Double_System_Double_System_Double_System_Int32_
+  - name: (
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(System.Double,System.Double,System.Double,System.Int32)
+    name: IsNotTraversable
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_IsNotTraversable_System_Double_System_Double_System_Double_System_Int32_
+  - name: (
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
 - uid: Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(Vintagestory.API.MathTools.BlockPos)
   commentId: M:Vintagestory.API.Common.IBlockAccessor.IsNotTraversable(Vintagestory.API.MathTools.BlockPos)
   parent: Vintagestory.API.Common.IBlockAccessor
@@ -3590,6 +3686,68 @@ references:
     name: Vec3d
     href: Vintagestory.API.MathTools.Vec3d.html
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Vintagestory.API.Common.IBlockAccessor
   commentId: T:Vintagestory.API.Common.IBlockAccessor
   parent: Vintagestory.API.Common
@@ -3597,6 +3755,103 @@ references:
   name: IBlockAccessor
   nameWithType: IBlockAccessor
   fullName: Vintagestory.API.Common.IBlockAccessor
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.IMiniDimension.subDimensionId*
   commentId: Overload:Vintagestory.API.Common.IMiniDimension.subDimensionId
   href: Vintagestory.API.Common.IMiniDimension.html#Vintagestory_API_Common_IMiniDimension_subDimensionId
@@ -3801,6 +4056,12 @@ references:
   name: FastVec3d
   nameWithType: FastVec3d
   fullName: Vintagestory.API.MathTools.FastVec3d
+- uid: Vintagestory.API.Common.IMiniDimension.SetRenderOffsetY*
+  commentId: Overload:Vintagestory.API.Common.IMiniDimension.SetRenderOffsetY
+  href: Vintagestory.API.Common.IMiniDimension.html#Vintagestory_API_Common_IMiniDimension_SetRenderOffsetY_System_Int32_
+  name: SetRenderOffsetY
+  nameWithType: IMiniDimension.SetRenderOffsetY
+  fullName: Vintagestory.API.Common.IMiniDimension.SetRenderOffsetY
 - uid: Vintagestory.API.Common.IMiniDimension.GetRenderTransformMatrix*
   commentId: Overload:Vintagestory.API.Common.IMiniDimension.GetRenderTransformMatrix
   href: Vintagestory.API.Common.IMiniDimension.html#Vintagestory_API_Common_IMiniDimension_GetRenderTransformMatrix_System_Single___Vintagestory_API_MathTools_Vec3d_

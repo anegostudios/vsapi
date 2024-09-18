@@ -38,22 +38,25 @@ items:
   - Vintagestory.API.Common.Entities.Entity.FloatingSedimentParticles
   - Vintagestory.API.Common.Entities.Entity.FromBytes(System.IO.BinaryReader,System.Boolean)
   - Vintagestory.API.Common.Entities.Entity.FromBytes(System.IO.BinaryReader,System.Boolean,System.Collections.Generic.Dictionary{System.String,System.String})
+  - Vintagestory.API.Common.Entities.Entity.FrustumSphereRadius
   - Vintagestory.API.Common.Entities.Entity.GetBehavior(System.String)
   - Vintagestory.API.Common.Entities.Entity.GetBehavior``1
   - Vintagestory.API.Common.Entities.Entity.GetDrops(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer)
   - Vintagestory.API.Common.Entities.Entity.GetHeadPositionFromWatchedAttributes
   - Vintagestory.API.Common.Entities.Entity.GetInfoText
   - Vintagestory.API.Common.Entities.Entity.GetInteractionHelp(Vintagestory.API.Client.IClientWorldAccessor,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Client.IClientPlayer)
+  - Vintagestory.API.Common.Entities.Entity.GetInterface``1
   - Vintagestory.API.Common.Entities.Entity.GetName
+  - Vintagestory.API.Common.Entities.Entity.GetTextureSource
   - Vintagestory.API.Common.Entities.Entity.HasBehavior(System.String)
   - Vintagestory.API.Common.Entities.Entity.HasBehavior``1
-  - Vintagestory.API.Common.Entities.Entity.HurtColor
   - Vintagestory.API.Common.Entities.Entity.IdleSoundChanceModifier
   - Vintagestory.API.Common.Entities.Entity.Ignite
   - Vintagestory.API.Common.Entities.Entity.InChunkIndex3d
   - Vintagestory.API.Common.Entities.Entity.InLava
   - Vintagestory.API.Common.Entities.Entity.InLavaBeginTotalMs
   - Vintagestory.API.Common.Entities.Entity.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Common.ICoreAPI,System.Int64)
+  - Vintagestory.API.Common.Entities.Entity.IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@)
   - Vintagestory.API.Common.Entities.Entity.IsActivityRunning(System.String)
   - Vintagestory.API.Common.Entities.Entity.IsCreature
   - Vintagestory.API.Common.Entities.Entity.IsInteractable
@@ -64,6 +67,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.LadderFixDelta
   - Vintagestory.API.Common.Entities.Entity.LightHsv
   - Vintagestory.API.Common.Entities.Entity.LocalEyePos
+  - Vintagestory.API.Common.Entities.Entity.MarkShapeModified
   - Vintagestory.API.Common.Entities.Entity.MaterialDensity
   - Vintagestory.API.Common.Entities.Entity.Notify(System.String,System.Object)
   - Vintagestory.API.Common.Entities.Entity.OnAsyncParticleTick(System.Single,Vintagestory.API.Client.IAsyncParticleManager)
@@ -81,7 +85,6 @@ items:
   - Vintagestory.API.Common.Entities.Entity.OnHurt(Vintagestory.API.Common.DamageSource,System.Single)
   - Vintagestory.API.Common.Entities.Entity.OnInitialized
   - Vintagestory.API.Common.Entities.Entity.OnInteract(Vintagestory.API.Common.EntityAgent,Vintagestory.API.Common.ItemSlot,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.Common.EnumInteractMode)
-  - Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32)
   - Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)
   - Vintagestory.API.Common.Entities.Entity.OnReceivedClientPacket(Vintagestory.API.Server.IServerPlayer,System.Int32,System.Byte[])
   - Vintagestory.API.Common.Entities.Entity.OnReceivedServerAnimations(System.Int32[],System.Int32,System.Single[])
@@ -89,6 +92,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.OnReceivedServerPos(System.Boolean)
   - Vintagestory.API.Common.Entities.Entity.OnStateChanged(Vintagestory.API.Common.EnumEntityState)
   - Vintagestory.API.Common.Entities.Entity.OnStoreCollectibleMappings(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
+  - Vintagestory.API.Common.Entities.Entity.OnTesselated
   - Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String)
   - Vintagestory.API.Common.Entities.Entity.OriginCollisionBox
   - Vintagestory.API.Common.Entities.Entity.OriginSelectionBox
@@ -109,6 +113,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.SetCollisionBox(System.Single,System.Single)
   - Vintagestory.API.Common.Entities.Entity.SetHeadPositionToWatchedAttributes
   - Vintagestory.API.Common.Entities.Entity.SetSelectionBox(System.Single,System.Single)
+  - Vintagestory.API.Common.Entities.Entity.ShapeFresh
   - Vintagestory.API.Common.Entities.Entity.ShouldDespawn
   - Vintagestory.API.Common.Entities.Entity.ShouldReceiveDamage(Vintagestory.API.Common.DamageSource,System.Single)
   - Vintagestory.API.Common.Entities.Entity.SidedPos
@@ -140,12 +145,16 @@ items:
   - Vintagestory.API.Common.Entities.Entity.alive
   - Vintagestory.API.Common.Entities.Entity.bioLumiNoise
   - Vintagestory.API.Common.Entities.Entity.bioLumiParticles
+  - Vintagestory.API.Common.Entities.Entity.fireDamageAccum
   - Vintagestory.API.Common.Entities.Entity.hasRepulseBehavior
   - Vintagestory.API.Common.Entities.Entity.minRangeToClient
   - Vintagestory.API.Common.Entities.Entity.ownPosRepulse
   - Vintagestory.API.Common.Entities.Entity.packet
+  - Vintagestory.API.Common.Entities.Entity.requirePosesOnServer
   - Vintagestory.API.Common.Entities.Entity.resetLightHsv
+  - Vintagestory.API.Common.Entities.Entity.shapeFresh
   - Vintagestory.API.Common.Entities.Entity.touchDistanceSq
+  - Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
   - Vintagestory.API.Common.Entities.Entity.updateColSelBoxes
   - Vintagestory.API.Common.Entities.Entity.updateOnFire
   langs:
@@ -200,6 +209,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.Entities.Entity.SplashParticleProps
   commentId: F:Vintagestory.API.Common.Entities.Entity.SplashParticleProps
   id: SplashParticleProps
@@ -1150,27 +1162,6 @@ items:
     return:
       type: System.Boolean
     content.vb: Public IsShadowRendered As Boolean
-- uid: Vintagestory.API.Common.Entities.Entity.HurtColor
-  commentId: F:Vintagestory.API.Common.Entities.Entity.HurtColor
-  id: HurtColor
-  parent: Vintagestory.API.Common.Entities.Entity
-  langs:
-  - csharp
-  - vb
-  name: HurtColor
-  nameWithType: Entity.HurtColor
-  fullName: Vintagestory.API.Common.Entities.Entity.HurtColor
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common.Entities
-  summary: Color used when the entity is being attacked
-  example: []
-  syntax:
-    content: protected int HurtColor
-    return:
-      type: System.Int32
-    content.vb: Protected HurtColor As Integer
 - uid: Vintagestory.API.Common.Entities.Entity.Stats
   commentId: F:Vintagestory.API.Common.Entities.Entity.Stats
   id: Stats
@@ -1190,6 +1181,25 @@ items:
     return:
       type: Vintagestory.API.Common.EntityStats
     content.vb: Public Stats As EntityStats
+- uid: Vintagestory.API.Common.Entities.Entity.fireDamageAccum
+  commentId: F:Vintagestory.API.Common.Entities.Entity.fireDamageAccum
+  id: fireDamageAccum
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: fireDamageAccum
+  nameWithType: Entity.fireDamageAccum
+  fullName: Vintagestory.API.Common.Entities.Entity.fireDamageAccum
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: protected float fireDamageAccum
+    return:
+      type: System.Single
+    content.vb: Protected fireDamageAccum As Single
 - uid: Vintagestory.API.Common.Entities.Entity.touchDistanceSq
   commentId: F:Vintagestory.API.Common.Entities.Entity.touchDistanceSq
   id: touchDistanceSq
@@ -1247,6 +1257,51 @@ items:
     return:
       type: System.Boolean
     content.vb: Public hasRepulseBehavior As Boolean
+- uid: Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
+  commentId: F:Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
+  id: trickleDownRayIntersects
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: trickleDownRayIntersects
+  nameWithType: Entity.trickleDownRayIntersects
+  fullName: Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: If true, will call EntityBheavior.IntersectsRay. Default off to increase performance.
+  example: []
+  syntax:
+    content: public bool trickleDownRayIntersects
+    return:
+      type: System.Boolean
+    content.vb: Public trickleDownRayIntersects As Boolean
+- uid: Vintagestory.API.Common.Entities.Entity.requirePosesOnServer
+  commentId: F:Vintagestory.API.Common.Entities.Entity.requirePosesOnServer
+  id: requirePosesOnServer
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: requirePosesOnServer
+  nameWithType: Entity.requirePosesOnServer
+  fullName: Vintagestory.API.Common.Entities.Entity.requirePosesOnServer
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: >-
+    If true, will fully simulate animations on the server so one has access to the positions of all attachment points.
+
+    If false, only root level attachment points will be available server side
+  example: []
+  syntax:
+    content: public bool requirePosesOnServer
+    return:
+      type: System.Boolean
+    content.vb: Public requirePosesOnServer As Boolean
 - uid: Vintagestory.API.Common.Entities.Entity.packet
   commentId: F:Vintagestory.API.Common.Entities.Entity.packet
   id: packet
@@ -1665,11 +1720,11 @@ items:
   summary: Used by some renderers to apply an overal color tint on the entity
   example: []
   syntax:
-    content: public int RenderColor { get; }
+    content: public int RenderColor { get; set; }
     parameters: []
     return:
       type: System.Int32
-    content.vb: Public ReadOnly Property RenderColor As Integer
+    content.vb: Public Property RenderColor As Integer
   overload: Vintagestory.API.Common.Entities.Entity.RenderColor*
 - uid: Vintagestory.API.Common.Entities.Entity.LadderFixDelta
   commentId: P:Vintagestory.API.Common.Entities.Entity.LadderFixDelta
@@ -1822,11 +1877,11 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: public void AfterInitialized(bool onFirstSpawn)
+    content: public virtual void AfterInitialized(bool onFirstSpawn)
     parameters:
     - id: onFirstSpawn
       type: System.Boolean
-    content.vb: Public Sub AfterInitialized(onFirstSpawn As Boolean)
+    content.vb: Public Overridable Sub AfterInitialized(onFirstSpawn As Boolean)
   overload: Vintagestory.API.Common.Entities.Entity.AfterInitialized*
   nameWithType.vb: Entity.AfterInitialized(Boolean)
   fullName.vb: Vintagestory.API.Common.Entities.Entity.AfterInitialized(Boolean)
@@ -2289,6 +2344,105 @@ items:
     content: public virtual void Ignite()
     content.vb: Public Overridable Sub Ignite()
   overload: Vintagestory.API.Common.Entities.Entity.Ignite*
+- uid: Vintagestory.API.Common.Entities.Entity.GetTextureSource
+  commentId: M:Vintagestory.API.Common.Entities.Entity.GetTextureSource
+  id: GetTextureSource
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: GetTextureSource()
+  nameWithType: Entity.GetTextureSource()
+  fullName: Vintagestory.API.Common.Entities.Entity.GetTextureSource()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual ITexPositionSource GetTextureSource()
+    return:
+      type: Vintagestory.API.Client.ITexPositionSource
+    content.vb: Public Overridable Function GetTextureSource() As ITexPositionSource
+  overload: Vintagestory.API.Common.Entities.Entity.GetTextureSource*
+- uid: Vintagestory.API.Common.Entities.Entity.ShapeFresh
+  commentId: P:Vintagestory.API.Common.Entities.Entity.ShapeFresh
+  id: ShapeFresh
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: ShapeFresh
+  nameWithType: Entity.ShapeFresh
+  fullName: Vintagestory.API.Common.Entities.Entity.ShapeFresh
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public bool ShapeFresh { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property ShapeFresh As Boolean
+  overload: Vintagestory.API.Common.Entities.Entity.ShapeFresh*
+- uid: Vintagestory.API.Common.Entities.Entity.FrustumSphereRadius
+  commentId: P:Vintagestory.API.Common.Entities.Entity.FrustumSphereRadius
+  id: FrustumSphereRadius
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: FrustumSphereRadius
+  nameWithType: Entity.FrustumSphereRadius
+  fullName: Vintagestory.API.Common.Entities.Entity.FrustumSphereRadius
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual double FrustumSphereRadius { get; }
+    parameters: []
+    return:
+      type: System.Double
+    content.vb: Public Overridable ReadOnly Property FrustumSphereRadius As Double
+  overload: Vintagestory.API.Common.Entities.Entity.FrustumSphereRadius*
+- uid: Vintagestory.API.Common.Entities.Entity.shapeFresh
+  commentId: F:Vintagestory.API.Common.Entities.Entity.shapeFresh
+  id: shapeFresh
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: shapeFresh
+  nameWithType: Entity.shapeFresh
+  fullName: Vintagestory.API.Common.Entities.Entity.shapeFresh
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: protected bool shapeFresh
+    return:
+      type: System.Boolean
+    content.vb: Protected shapeFresh As Boolean
+- uid: Vintagestory.API.Common.Entities.Entity.MarkShapeModified
+  commentId: M:Vintagestory.API.Common.Entities.Entity.MarkShapeModified
+  id: MarkShapeModified
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: MarkShapeModified()
+  nameWithType: Entity.MarkShapeModified()
+  fullName: Vintagestory.API.Common.Entities.Entity.MarkShapeModified()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual void MarkShapeModified()
+    content.vb: Public Overridable Sub MarkShapeModified()
+  overload: Vintagestory.API.Common.Entities.Entity.MarkShapeModified*
 - uid: Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String)
   commentId: M:Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String)
   id: OnTesselation(Vintagestory.API.Common.Shape@,System.String)
@@ -2319,6 +2473,24 @@ items:
   nameWithType.vb: Entity.OnTesselation(Shape, String)
   fullName.vb: Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape, String)
   name.vb: OnTesselation(Shape, String)
+- uid: Vintagestory.API.Common.Entities.Entity.OnTesselated
+  commentId: M:Vintagestory.API.Common.Entities.Entity.OnTesselated
+  id: OnTesselated
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: OnTesselated()
+  nameWithType: Entity.OnTesselated()
+  fullName: Vintagestory.API.Common.Entities.Entity.OnTesselated()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual void OnTesselated()
+    content.vb: Public Overridable Sub OnTesselated()
+  overload: Vintagestory.API.Common.Entities.Entity.OnTesselated*
 - uid: Vintagestory.API.Common.Entities.Entity.OnFallToGround(System.Double)
   commentId: M:Vintagestory.API.Common.Entities.Entity.OnFallToGround(System.Double)
   id: OnFallToGround(System.Double)
@@ -2956,6 +3128,35 @@ items:
   nameWithType.vb: Entity.GetBehavior(Of T)()
   fullName.vb: Vintagestory.API.Common.Entities.Entity.GetBehavior(Of T)()
   name.vb: GetBehavior(Of T)()
+- uid: Vintagestory.API.Common.Entities.Entity.GetInterface``1
+  commentId: M:Vintagestory.API.Common.Entities.Entity.GetInterface``1
+  id: GetInterface``1
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: GetInterface<T>()
+  nameWithType: Entity.GetInterface<T>()
+  fullName: Vintagestory.API.Common.Entities.Entity.GetInterface<T>()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Returns itself or the first behavior that implements the interface T
+  example: []
+  syntax:
+    content: 'public virtual T GetInterface<T>() where T : class'
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Public Overridable Function GetInterface(Of T As Class)() As T
+  overload: Vintagestory.API.Common.Entities.Entity.GetInterface*
+  nameWithType.vb: Entity.GetInterface(Of T)()
+  fullName.vb: Vintagestory.API.Common.Entities.Entity.GetInterface(Of T)()
+  name.vb: GetInterface(Of T)()
 - uid: Vintagestory.API.Common.Entities.Entity.IsActivityRunning(System.String)
   commentId: M:Vintagestory.API.Common.Entities.Entity.IsActivityRunning(System.String)
   id: IsActivityRunning(System.String)
@@ -3401,9 +3602,9 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   summary: >-
-    This method is called by the BlockSchematic class a moment after a schematic containing this entity has been exported. 
+    This method is called by the BlockSchematic class a moment after a schematic containing this entity has been exported.
 
-    Since a schematic can be placed anywhere in the world, this method has to make sure the entities position is set to the correct 
+    Since a schematic can be placed anywhere in the world, this method has to make sure the entities position is set to the correct
 
     position in relation to the target position of the schematic to be imported.
   example: []
@@ -3445,59 +3646,6 @@ items:
   nameWithType.vb: Entity.OnStoreCollectibleMappings(Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation))
   fullName.vb: Vintagestory.API.Common.Entities.Entity.OnStoreCollectibleMappings(System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation), System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation))
   name.vb: OnStoreCollectibleMappings(Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation))
-- uid: Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32)
-  commentId: M:Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32)
-  id: OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32)
-  parent: Vintagestory.API.Common.Entities.Entity
-  langs:
-  - csharp
-  - vb
-  name: OnLoadCollectibleMappings(IWorldAccessor, Dictionary<int, AssetLocation>, Dictionary<int, AssetLocation>, int)
-  nameWithType: Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary<int, AssetLocation>, Dictionary<int, AssetLocation>, int)
-  fullName: Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor, System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>, System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>, int)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common.Entities
-  summary: >-
-    Called by the blockschematic loader so that you may fix any blockid/itemid mappings against the mapping of the savegame, if you store any collectibles in this blockentity.
-
-    Note: Some vanilla blocks resolve randomized contents in this method.
-
-    Hint: Use itemstack.FixMapping() to do the job for you.
-  example: []
-  syntax:
-    content: >-
-      [Obsolete("Use the variant with resolveImports parameter")]
-
-      public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed)
-    parameters:
-    - id: worldForNewMappings
-      type: Vintagestory.API.Common.IWorldAccessor
-      description: ''
-    - id: oldBlockIdMapping
-      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
-      description: ''
-    - id: oldItemIdMapping
-      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation}
-      description: ''
-    - id: schematicSeed
-      type: System.Int32
-      description: If you need some sort of randomness consistency accross an imported schematic, you can use this value
-    content.vb: >-
-      <Obsolete("Use the variant with resolveImports parameter")>
-
-      Public Overridable Sub OnLoadCollectibleMappings(worldForNewMappings As IWorldAccessor, oldBlockIdMapping As Dictionary(Of Integer, AssetLocation), oldItemIdMapping As Dictionary(Of Integer, AssetLocation), schematicSeed As Integer)
-  overload: Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings*
-  attributes:
-  - type: System.ObsoleteAttribute
-    ctor: System.ObsoleteAttribute.#ctor(System.String)
-    arguments:
-    - type: System.String
-      value: Use the variant with resolveImports parameter
-  nameWithType.vb: Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation), Integer)
-  fullName.vb: Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor, System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation), System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation), Integer)
-  name.vb: OnLoadCollectibleMappings(IWorldAccessor, Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation), Integer)
 - uid: Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)
   commentId: M:Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)
   id: OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)
@@ -3642,6 +3790,44 @@ items:
   nameWithType.vb: Entity.StopAnimation(String)
   fullName.vb: Vintagestory.API.Common.Entities.Entity.StopAnimation(String)
   name.vb: StopAnimation(String)
+- uid: Vintagestory.API.Common.Entities.Entity.IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@)
+  commentId: M:Vintagestory.API.Common.Entities.Entity.IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@)
+  id: IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@)
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: IntersectsRay(Ray, AABBIntersectionTest, out double, ref int)
+  nameWithType: Entity.IntersectsRay(Ray, AABBIntersectionTest, out double, ref int)
+  fullName: Vintagestory.API.Common.Entities.Entity.IntersectsRay(Vintagestory.API.MathTools.Ray, Vintagestory.API.MathTools.AABBIntersectionTest, out double, ref int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: To test for player-&gt;entity selection.
+  example: []
+  syntax:
+    content: public virtual bool IntersectsRay(Ray ray, AABBIntersectionTest interesectionTester, out double intersectionDistance, ref int selectionBoxIndex)
+    parameters:
+    - id: ray
+      type: Vintagestory.API.MathTools.Ray
+      description: ''
+    - id: interesectionTester
+      type: Vintagestory.API.MathTools.AABBIntersectionTest
+      description: Is already preloaded with the ray
+    - id: intersectionDistance
+      type: System.Double
+      description: ''
+    - id: selectionBoxIndex
+      type: System.Int32
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Overridable Function IntersectsRay(ray As Ray, interesectionTester As AABBIntersectionTest, intersectionDistance As Double, selectionBoxIndex As Integer) As Boolean
+  overload: Vintagestory.API.Common.Entities.Entity.IntersectsRay*
+  nameWithType.vb: Entity.IntersectsRay(Ray, AABBIntersectionTest, Double, Integer)
+  fullName.vb: Vintagestory.API.Common.Entities.Entity.IntersectsRay(Vintagestory.API.MathTools.Ray, Vintagestory.API.MathTools.AABBIntersectionTest, Double, Integer)
+  name.vb: IntersectsRay(Ray, AABBIntersectionTest, Double, Integer)
 references:
 - uid: Vintagestory.API.Common.Entities
   commentId: N:Vintagestory.API.Common.Entities
@@ -4675,6 +4861,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -4712,6 +4960,103 @@ references:
   - uid: Vintagestory.API.Common
     name: Common
     href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.WaterSplashParticles
   commentId: T:Vintagestory.API.Common.WaterSplashParticles
   parent: Vintagestory.API.Common
@@ -5103,6 +5448,17 @@ references:
   name: EntityStats
   nameWithType: EntityStats
   fullName: Vintagestory.API.Common.EntityStats
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
 - uid: System.Double
   commentId: T:System.Double
   parent: System
@@ -5182,17 +5538,6 @@ references:
   name: MaterialDensity
   nameWithType: Entity.MaterialDensity
   fullName: Vintagestory.API.Common.Entities.Entity.MaterialDensity
-- uid: System.Single
-  commentId: T:System.Single
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.single
-  name: float
-  nameWithType: float
-  fullName: float
-  nameWithType.vb: Single
-  fullName.vb: Single
-  name.vb: Single
 - uid: Vintagestory.API.Common.Entities.Entity.LightHsv*
   commentId: Overload:Vintagestory.API.Common.Entities.Entity.LightHsv
   href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_LightHsv
@@ -5467,6 +5812,37 @@ references:
   name: Ignite
   nameWithType: Entity.Ignite
   fullName: Vintagestory.API.Common.Entities.Entity.Ignite
+- uid: Vintagestory.API.Common.Entities.Entity.GetTextureSource*
+  commentId: Overload:Vintagestory.API.Common.Entities.Entity.GetTextureSource
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetTextureSource
+  name: GetTextureSource
+  nameWithType: Entity.GetTextureSource
+  fullName: Vintagestory.API.Common.Entities.Entity.GetTextureSource
+- uid: Vintagestory.API.Client.ITexPositionSource
+  commentId: T:Vintagestory.API.Client.ITexPositionSource
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ITexPositionSource.html
+  name: ITexPositionSource
+  nameWithType: ITexPositionSource
+  fullName: Vintagestory.API.Client.ITexPositionSource
+- uid: Vintagestory.API.Common.Entities.Entity.ShapeFresh*
+  commentId: Overload:Vintagestory.API.Common.Entities.Entity.ShapeFresh
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ShapeFresh
+  name: ShapeFresh
+  nameWithType: Entity.ShapeFresh
+  fullName: Vintagestory.API.Common.Entities.Entity.ShapeFresh
+- uid: Vintagestory.API.Common.Entities.Entity.FrustumSphereRadius*
+  commentId: Overload:Vintagestory.API.Common.Entities.Entity.FrustumSphereRadius
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_FrustumSphereRadius
+  name: FrustumSphereRadius
+  nameWithType: Entity.FrustumSphereRadius
+  fullName: Vintagestory.API.Common.Entities.Entity.FrustumSphereRadius
+- uid: Vintagestory.API.Common.Entities.Entity.MarkShapeModified*
+  commentId: Overload:Vintagestory.API.Common.Entities.Entity.MarkShapeModified
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_MarkShapeModified
+  name: MarkShapeModified
+  nameWithType: Entity.MarkShapeModified
+  fullName: Vintagestory.API.Common.Entities.Entity.MarkShapeModified
 - uid: Vintagestory.API.Common.Entities.Entity.OnTesselation*
   commentId: Overload:Vintagestory.API.Common.Entities.Entity.OnTesselation
   href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_
@@ -5491,6 +5867,12 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
+- uid: Vintagestory.API.Common.Entities.Entity.OnTesselated*
+  commentId: Overload:Vintagestory.API.Common.Entities.Entity.OnTesselated
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselated
+  name: OnTesselated
+  nameWithType: Entity.OnTesselated
+  fullName: Vintagestory.API.Common.Entities.Entity.OnTesselated
 - uid: Vintagestory.API.Common.Entities.Entity.OnFallToGround*
   commentId: Overload:Vintagestory.API.Common.Entities.Entity.OnFallToGround
   href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnFallToGround_System_Double_
@@ -5793,6 +6175,12 @@ references:
   name: T
   nameWithType: T
   fullName: T
+- uid: Vintagestory.API.Common.Entities.Entity.GetInterface*
+  commentId: Overload:Vintagestory.API.Common.Entities.Entity.GetInterface
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetInterface__1
+  name: GetInterface
+  nameWithType: Entity.GetInterface
+  fullName: Vintagestory.API.Common.Entities.Entity.GetInterface
 - uid: Vintagestory.API.Common.Entities.Entity.IsActivityRunning*
   commentId: Overload:Vintagestory.API.Common.Entities.Entity.IsActivityRunning
   href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsActivityRunning_System_String_
@@ -6039,7 +6427,7 @@ references:
   - name: )
 - uid: Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings*
   commentId: Overload:Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings
-  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_
   name: OnLoadCollectibleMappings
   nameWithType: Entity.OnLoadCollectibleMappings
   fullName: Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings
@@ -6067,3 +6455,23 @@ references:
   name: StopAnimation
   nameWithType: Entity.StopAnimation
   fullName: Vintagestory.API.Common.Entities.Entity.StopAnimation
+- uid: Vintagestory.API.Common.Entities.Entity.IntersectsRay*
+  commentId: Overload:Vintagestory.API.Common.Entities.Entity.IntersectsRay
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IntersectsRay_Vintagestory_API_MathTools_Ray_Vintagestory_API_MathTools_AABBIntersectionTest_System_Double__System_Int32__
+  name: IntersectsRay
+  nameWithType: Entity.IntersectsRay
+  fullName: Vintagestory.API.Common.Entities.Entity.IntersectsRay
+- uid: Vintagestory.API.MathTools.Ray
+  commentId: T:Vintagestory.API.MathTools.Ray
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Ray.html
+  name: Ray
+  nameWithType: Ray
+  fullName: Vintagestory.API.MathTools.Ray
+- uid: Vintagestory.API.MathTools.AABBIntersectionTest
+  commentId: T:Vintagestory.API.MathTools.AABBIntersectionTest
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.AABBIntersectionTest.html
+  name: AABBIntersectionTest
+  nameWithType: AABBIntersectionTest
+  fullName: Vintagestory.API.MathTools.AABBIntersectionTest

@@ -13,7 +13,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// The matrices for this No-Animator
         /// </summary>
-        public float[] Matrices4x3 => null;
+        public float[] Matrices => null;
 
         /// <summary>
         /// The active animation count for this no animator.
@@ -22,7 +22,9 @@ namespace Vintagestory.API.Common
 
         public bool CalculateMatrices { get; set; }
 
-        public RunningAnimation[] RunningAnimations => new RunningAnimation[0];
+        public RunningAnimation[] Animations => new RunningAnimation[0];
+
+        public int MaxJointId => throw new NotImplementedException();
 
         public string DumpCurrentState()
         {
@@ -58,6 +60,11 @@ namespace Vintagestory.API.Common
         {
             
         }
+
+        public void ReloadAttachmentPoints()
+        {
+            
+        }
     }
 
     /// <summary>
@@ -79,6 +86,15 @@ namespace Vintagestory.API.Common
         public Dictionary<string, AnimationMetaData> ActiveAnimationsByAnimCode => new Dictionary<string, AnimationMetaData>();
 
         public EntityHeadController HeadController { get; set; }
+
+        public event StartAnimationDelegate OnStartAnimation;
+        public event Action<string> OnAnimationStopped;
+        public event StartAnimationDelegate OnAnimationReceived;
+
+        public void CopyOverAnims(RunningAnimation[] copyOverAnims, IAnimator animator)
+        {
+            throw new NotImplementedException();
+        }
 
         public void Dispose()
         {
@@ -105,7 +121,12 @@ namespace Vintagestory.API.Common
             return false;
         }
 
-        public void OnAnimationStopped(string code)
+        public IAnimator LoadAnimator(ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TriggerAnimationStopped(string code)
         {
             
         }
@@ -150,6 +171,11 @@ namespace Vintagestory.API.Common
         }
 
         public void ToAttributes(ITreeAttribute tree, bool forClient)
+        {
+            
+        }
+
+        public void ShouldPlaySound(AnimationSound sound)
         {
             
         }

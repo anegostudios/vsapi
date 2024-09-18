@@ -4,8 +4,9 @@ using System.IO;
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
-    /// The distribution of the random numbers 
+    /// The distribution of the random numbers
     /// </summary>
+    [DocumentAsJson]
     public enum EnumDistribution
     {
         /// <summary>
@@ -58,6 +59,22 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// A more natural random number generator (nature usually doesn't grow by the exact same numbers nor does it completely randomly)
     /// </summary>
+    /// <example>
+    /// <code language="json">
+    ///"quantity": {
+    ///	"dist": "strongerinvexp",
+    ///	"avg": 6,
+    ///	"var": 4
+    ///}
+    /// </code>
+    /// <code language="json">
+    ///"quantity": {
+	///	"avg": 4,
+	/// "var": 2
+	///}
+    /// </code>
+    /// </example>
+    [DocumentAsJson]
     public class NatFloat
     {
         /// <summary>
@@ -70,16 +87,34 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public static NatFloat One { get { return new NatFloat(1, 0, EnumDistribution.UNIFORM); } }
 
-        public float offset = 0f;
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// A full offset to apply to any values returned.
+        /// </summary>
+        [DocumentAsJson] public float offset = 0f;
 
-        public float avg = 0f;
-        public float var = 0;
-        public EnumDistribution dist = EnumDistribution.UNIFORM;
+        /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+        /// The average value for the random float.
+        /// </summary>
+        [DocumentAsJson] public float avg = 0f;
+
+        /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+        /// The variation for the random float.
+        /// </summary>
+        [DocumentAsJson] public float var = 0;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>UNIFORM</jsondefault>-->
+        /// The type of distribution to use that determines the commodity of values.
+        /// </summary>
+        [DocumentAsJson] public EnumDistribution dist = EnumDistribution.UNIFORM;
 
         [ThreadStatic]
         static Random threadsafeRand;
 
-        
+
 
         public NatFloat(float averagevalue, float variance, EnumDistribution distribution)
         {
@@ -285,7 +320,7 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        public float nextFloat(float multiplier, LCGRandom rand)
+        public float nextFloat(float multiplier, IRandom rand)
         {
             float rnd;
 

@@ -111,7 +111,7 @@ namespace Vintagestory.API.Common
             if (jointsById.Count >= GlobalConstants.MaxAnimatedElements)
             {
                 if (GlobalConstants.MaxAnimatedElements < 46 && jointsById.Count <= 46) throw new Exception("Max joint cap of " + GlobalConstants.MaxAnimatedElements + " reached, needs to be at least " + jointsById.Count + ". In clientsettings.json, please try increasing the \"maxAnimatedElements\": setting to 46.  This works for most GPUs.  Otherwise you might need to disable the creature.");
-                throw new Exception("A mod's entity has " + jointsById.Count + " animations which exceeds the max joint cap of "+ GlobalConstants.MaxAnimatedElements + ". Sorry, you'll have to either disable this creature or simplify the model.");
+                throw new Exception("A mod's entity has " + jointsById.Count + " animation joints which exceeds the max joint cap of "+ GlobalConstants.MaxAnimatedElements + ". Sorry, you'll have to either disable this creature or simplify the model.");
             }
 
             for (int i = 0; i < resolvedKeyFrames.Length; i++)
@@ -142,6 +142,8 @@ namespace Vintagestory.API.Common
         protected void GenerateFrame(int indexNumber, AnimationFrame[] resKeyFrames, ShapeElement[] elements, Dictionary<int, AnimationJoint> jointsById, float[] modelMatrix, List<ElementPose> transforms, bool recursive = true)
         {
             int frameNumber = resKeyFrames[indexNumber].FrameNumber;
+
+            if (frameNumber >= QuantityFrames) throw new InvalidOperationException("Invalid animation '" + Code + "'. Has QuantityFrames set to " + QuantityFrames + " but a key frame at frame " + frameNumber + ". QuantityFrames always must be higher than frame number");
 
             for (int i = 0; i < elements.Length; i++)
             {

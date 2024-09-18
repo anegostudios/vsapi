@@ -223,6 +223,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         public byte[] SeasonColorMapIds;
 
+        public bool[] FrostableBits;
+
 
         [Obsolete("Use RenderPassesAndExtraBits instead")]
         public short[] RenderPasses => RenderPassesAndExtraBits;
@@ -1310,44 +1312,6 @@ namespace Vintagestory.API.Client
             VerticesCount = count + 1;
         }
 
-        public void AddVertexWithFlagsSkipTexture(float x, float y, float z, float u, float v, int color, int flags)
-        {
-            int count = VerticesCount;
-            if (count >= VerticesMax)
-            {
-                GrowVertexBuffer();
-            }
-
-            float[] xyz = this.xyz;
-            float[] Uv = this.Uv;
-
-            int xyzCount = count * 3;
-            xyz[xyzCount + 0] = x;
-            xyz[xyzCount + 1] = y;
-            xyz[xyzCount + 2] = z;
-
-            int uvCount = count * 2;
-            Uv[uvCount + 0] = u;
-            Uv[uvCount + 1] = v;
-
-            if (this.Flags != null)
-            {
-                this.Flags[count] = flags;
-            }
-
-            // Write int color into byte array
-            unsafe
-            {
-                fixed (byte* rgbaByte = Rgba)
-                {
-                    int* rgbaInt = (int*)rgbaByte;
-                    rgbaInt[count] = color;
-                }
-            }
-
-            VerticesCount = count + 1;
-        }
-
 
         /// <summary>
         /// Applies a vertex flag to an existing MeshData (uses binary OR)
@@ -1397,6 +1361,21 @@ namespace Vintagestory.API.Client
                 Array.Resize(ref ClimateColorMapIds, ClimateColorMapIds.Length + 32);
             }
 
+            ClimateColorMapIds[ColorMapIdsCount] = climateMapIndex;
+            SeasonColorMapIds[ColorMapIdsCount++] = seasonMapIndex;
+        }
+        public void AddColorMapIndex(byte climateMapIndex, byte seasonMapIndex, bool frostableBit)
+        {
+            if (FrostableBits == null) FrostableBits = new bool[ClimateColorMapIds.Length];
+
+            if (ColorMapIdsCount >= SeasonColorMapIds.Length)
+            {
+                Array.Resize(ref SeasonColorMapIds, SeasonColorMapIds.Length + 32);
+                Array.Resize(ref ClimateColorMapIds, ClimateColorMapIds.Length + 32);
+                Array.Resize(ref FrostableBits, FrostableBits.Length + 32);
+            }
+
+            FrostableBits[ColorMapIdsCount] = frostableBit;
             ClimateColorMapIds[ColorMapIdsCount] = climateMapIndex;
             SeasonColorMapIds[ColorMapIdsCount++] = seasonMapIndex;
         }

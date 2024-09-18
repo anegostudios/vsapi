@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace Vintagestory.API.MathTools
 {
@@ -52,7 +53,7 @@ namespace Vintagestory.API.MathTools
         {
 
             // Get base points and offsets.
-            int xrb = FastFloor(xr), yrb = FastFloor(yr), zrb = FastFloor(zr);
+            int xrb = (int)Math.Floor(xr), yrb = (int)Math.Floor(yr), zrb = (int)Math.Floor(zr);
             float xi = (float)(xr - xrb), yi = (float)(yr - yrb), zi = (float)(zr - zrb);
 
             // Prime pre-multiplication for hash. Also flip seed for second lattice copy.
@@ -244,12 +245,7 @@ namespace Vintagestory.API.MathTools
             return value;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static int FastFloor(double x)
-        {
-            int xi = (int)x;
-            return x < xi ? xi - 1 : xi;
-        }
+        
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static long HashPrimes(long seed, long xsvp, long ysvp, long zsvp)

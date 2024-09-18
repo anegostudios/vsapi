@@ -85,6 +85,12 @@ namespace Vintagestory.API.Client
             return this;
         }
 
+        public Matrixf Translate(Vec3f vec)
+        {
+            Mat4f.Translate(Values, Values, vec.X, vec.Y, vec.Z);
+            return this;
+        }
+
 
         public Matrixf Translate(float x, float y, float z)
         {
@@ -164,6 +170,11 @@ namespace Vintagestory.API.Client
         }
 
 
+        /// <summary>
+        /// Vectors with w==0 are called vectors and with w==1 are called points
+        /// </summary>
+        /// <param name="vec"></param>
+        /// <returns></returns>
         public Vec4f TransformVector(Vec4f vec)
         {
             Vec4f outval = new Vec4f();
@@ -171,6 +182,11 @@ namespace Vintagestory.API.Client
             return outval;
         }
 
+        /// <summary>
+        /// Vectors with w==0 are called vectors and with w==1 are called points
+        /// </summary>
+        /// <param name="vec"></param>
+        /// <returns></returns>
         public Vec4d TransformVector(Vec4d vec)
         {
             Vec4d outval = new Vec4d();

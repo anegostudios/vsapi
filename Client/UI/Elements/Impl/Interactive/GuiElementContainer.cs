@@ -111,6 +111,12 @@ namespace Vintagestory.API.Client
             surface.Dispose();
         }
 
+        public void Clear()
+        {
+            Elements.Clear();
+            Bounds.ChildBounds.Clear();
+        }
+
         /// <summary>
         /// Adds a cell to the list.
         /// </summary>
@@ -156,7 +162,7 @@ namespace Vintagestory.API.Client
                 i++;
             }
 
-            if (childFocusIndex >= 0 && nowFocusIndex != childFocusIndex)
+            if (childFocusIndex >= 0 && childFocusIndex < Elements.Count && nowFocusIndex != childFocusIndex)
             {
                 Elements[childFocusIndex].OnFocusLost();
             }

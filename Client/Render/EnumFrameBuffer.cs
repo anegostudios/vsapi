@@ -8,6 +8,7 @@
         BlurHorizontalMedRes = 2,
         BlurVerticalMedRes = 3,
         FindBright = 4,
+        LiquidDepth = 5,
         GodRays = 7,
         BlurVerticalLowRes = 8,
         BlurHorizontalLowRes = 9,
@@ -20,6 +21,5 @@
         SSAOBlurHorizontal = 15,
         SSAOBlurVerticalHalfRes = 16,
         SSAOBlurHorizontalHalfRes = 17
-
     }
 }

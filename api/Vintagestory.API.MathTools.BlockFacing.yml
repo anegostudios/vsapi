@@ -36,6 +36,7 @@ items:
   - Vintagestory.API.MathTools.BlockFacing.HorizontalAngleIndex
   - Vintagestory.API.MathTools.BlockFacing.HorizontalFlags
   - Vintagestory.API.MathTools.BlockFacing.HorizontalFromAngle(System.Single)
+  - Vintagestory.API.MathTools.BlockFacing.HorizontalFromYaw(System.Single)
   - Vintagestory.API.MathTools.BlockFacing.Index
   - Vintagestory.API.MathTools.BlockFacing.IsAdjacent(Vintagestory.API.MathTools.BlockFacing)
   - Vintagestory.API.MathTools.BlockFacing.IsAxisNS
@@ -45,6 +46,7 @@ items:
   - Vintagestory.API.MathTools.BlockFacing.IterateThruFacingOffsets(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.MathTools.BlockFacing.MeshDataIndex
   - Vintagestory.API.MathTools.BlockFacing.NORTH
+  - Vintagestory.API.MathTools.BlockFacing.Negative
   - Vintagestory.API.MathTools.BlockFacing.NormalByte
   - Vintagestory.API.MathTools.BlockFacing.NormalPacked
   - Vintagestory.API.MathTools.BlockFacing.NormalPackedFlags
@@ -56,6 +58,7 @@ items:
   - Vintagestory.API.MathTools.BlockFacing.Plane
   - Vintagestory.API.MathTools.BlockFacing.PlaneCenter
   - Vintagestory.API.MathTools.BlockFacing.SOUTH
+  - Vintagestory.API.MathTools.BlockFacing.ToAB(Vintagestory.API.MathTools.Vec3f)
   - Vintagestory.API.MathTools.BlockFacing.ToString
   - Vintagestory.API.MathTools.BlockFacing.UP
   - Vintagestory.API.MathTools.BlockFacing.VERTICALS
@@ -80,7 +83,7 @@ items:
   summary: >-
     Represents one of the 6 faces of a cube and all it's properties. Uses a right Handed Coordinate System. See also http://www.matrix44.net/cms/notes/opengl-3d-graphics/coordinate-systems-in-opengl
 
-    In short: 
+    In short:
 
     North: Negative Z
 
@@ -106,6 +109,9 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.MathTools.BlockFacing.NumberOfFaces
   commentId: F:Vintagestory.API.MathTools.BlockFacing.NumberOfFaces
   id: NumberOfFaces
@@ -755,11 +761,11 @@ items:
 
     bit 0: 1 if south or west
 
-    bit 1: sign bit 
+    bit 1: sign bit
 
     bit 2: 1 if up or down
 
-    bit 3: sign bit 
+    bit 3: sign bit
 
     bit 4: 1 if north or south
 
@@ -1003,6 +1009,27 @@ items:
       description: ''
     content.vb: Public ReadOnly Property Opposite As BlockFacing
   overload: Vintagestory.API.MathTools.BlockFacing.Opposite*
+- uid: Vintagestory.API.MathTools.BlockFacing.Negative
+  commentId: P:Vintagestory.API.MathTools.BlockFacing.Negative
+  id: Negative
+  parent: Vintagestory.API.MathTools.BlockFacing
+  langs:
+  - csharp
+  - vb
+  name: Negative
+  nameWithType: BlockFacing.Negative
+  fullName: Vintagestory.API.MathTools.BlockFacing.Negative
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public bool Negative { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property Negative As Boolean
+  overload: Vintagestory.API.MathTools.BlockFacing.Negative*
 - uid: Vintagestory.API.MathTools.BlockFacing.GetOpposite
   commentId: M:Vintagestory.API.MathTools.BlockFacing.GetOpposite
   id: GetOpposite
@@ -1189,6 +1216,33 @@ items:
   nameWithType.vb: BlockFacing.GetFaceBrightness(Single, Single, Single, Single())
   fullName.vb: Vintagestory.API.MathTools.BlockFacing.GetFaceBrightness(Single, Single, Single, Single())
   name.vb: GetFaceBrightness(Single, Single, Single, Single())
+- uid: Vintagestory.API.MathTools.BlockFacing.ToAB(Vintagestory.API.MathTools.Vec3f)
+  commentId: M:Vintagestory.API.MathTools.BlockFacing.ToAB(Vintagestory.API.MathTools.Vec3f)
+  id: ToAB(Vintagestory.API.MathTools.Vec3f)
+  parent: Vintagestory.API.MathTools.BlockFacing
+  langs:
+  - csharp
+  - vb
+  name: ToAB(Vec3f)
+  nameWithType: BlockFacing.ToAB(Vec3f)
+  fullName: Vintagestory.API.MathTools.BlockFacing.ToAB(Vintagestory.API.MathTools.Vec3f)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Project pos onto the block face
+  example: []
+  syntax:
+    content: public Vec2f ToAB(Vec3f pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec3f
+      description: ''
+    return:
+      type: Vintagestory.API.MathTools.Vec2f
+      description: ''
+    content.vb: Public Function ToAB(pos As Vec3f) As Vec2f
+  overload: Vintagestory.API.MathTools.BlockFacing.ToAB*
 - uid: Vintagestory.API.MathTools.BlockFacing.IterateThruFacingOffsets(Vintagestory.API.MathTools.BlockPos)
   commentId: M:Vintagestory.API.MathTools.BlockFacing.IterateThruFacingOffsets(Vintagestory.API.MathTools.BlockPos)
   id: IterateThruFacingOffsets(Vintagestory.API.MathTools.BlockPos)
@@ -1530,19 +1584,49 @@ items:
   summary: Returns the closest horizontal face from given angle (0 degree = east). Uses HORIZONTALS_ANGLEORDER
   example: []
   syntax:
-    content: public static BlockFacing HorizontalFromAngle(float radiant)
+    content: public static BlockFacing HorizontalFromAngle(float radians)
     parameters:
-    - id: radiant
+    - id: radians
       type: System.Single
       description: ''
     return:
       type: Vintagestory.API.MathTools.BlockFacing
       description: ''
-    content.vb: Public Shared Function HorizontalFromAngle(radiant As Single) As BlockFacing
+    content.vb: Public Shared Function HorizontalFromAngle(radians As Single) As BlockFacing
   overload: Vintagestory.API.MathTools.BlockFacing.HorizontalFromAngle*
   nameWithType.vb: BlockFacing.HorizontalFromAngle(Single)
   fullName.vb: Vintagestory.API.MathTools.BlockFacing.HorizontalFromAngle(Single)
   name.vb: HorizontalFromAngle(Single)
+- uid: Vintagestory.API.MathTools.BlockFacing.HorizontalFromYaw(System.Single)
+  commentId: M:Vintagestory.API.MathTools.BlockFacing.HorizontalFromYaw(System.Single)
+  id: HorizontalFromYaw(System.Single)
+  parent: Vintagestory.API.MathTools.BlockFacing
+  langs:
+  - csharp
+  - vb
+  name: HorizontalFromYaw(float)
+  nameWithType: BlockFacing.HorizontalFromYaw(float)
+  fullName: Vintagestory.API.MathTools.BlockFacing.HorizontalFromYaw(float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Returns the closest horizontal face from given angle (0 degree = north for yaw!). Uses HORIZONTALS_ANGLEORDER
+  example: []
+  syntax:
+    content: public static BlockFacing HorizontalFromYaw(float radians)
+    parameters:
+    - id: radians
+      type: System.Single
+      description: ''
+    return:
+      type: Vintagestory.API.MathTools.BlockFacing
+      description: ''
+    content.vb: Public Shared Function HorizontalFromYaw(radians As Single) As BlockFacing
+  overload: Vintagestory.API.MathTools.BlockFacing.HorizontalFromYaw*
+  nameWithType.vb: BlockFacing.HorizontalFromYaw(Single)
+  fullName.vb: Vintagestory.API.MathTools.BlockFacing.HorizontalFromYaw(Single)
+  name.vb: HorizontalFromYaw(Single)
 - uid: Vintagestory.API.MathTools.BlockFacing.FlagContains(System.Byte,Vintagestory.API.MathTools.BlockFacing)
   commentId: M:Vintagestory.API.MathTools.BlockFacing.FlagContains(System.Byte,Vintagestory.API.MathTools.BlockFacing)
   id: FlagContains(System.Byte,Vintagestory.API.MathTools.BlockFacing)
@@ -1843,6 +1927,68 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1850,6 +1996,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Int32
   commentId: T:System.Int32
   parent: System
@@ -2115,6 +2358,12 @@ references:
   name: Opposite
   nameWithType: BlockFacing.Opposite
   fullName: Vintagestory.API.MathTools.BlockFacing.Opposite
+- uid: Vintagestory.API.MathTools.BlockFacing.Negative*
+  commentId: Overload:Vintagestory.API.MathTools.BlockFacing.Negative
+  href: Vintagestory.API.MathTools.BlockFacing.html#Vintagestory_API_MathTools_BlockFacing_Negative
+  name: Negative
+  nameWithType: BlockFacing.Negative
+  fullName: Vintagestory.API.MathTools.BlockFacing.Negative
 - uid: Vintagestory.API.MathTools.BlockFacing.GetOpposite*
   commentId: Overload:Vintagestory.API.MathTools.BlockFacing.GetOpposite
   href: Vintagestory.API.MathTools.BlockFacing.html#Vintagestory_API_MathTools_BlockFacing_GetOpposite
@@ -2185,6 +2434,19 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.single
   - name: (
   - name: )
+- uid: Vintagestory.API.MathTools.BlockFacing.ToAB*
+  commentId: Overload:Vintagestory.API.MathTools.BlockFacing.ToAB
+  href: Vintagestory.API.MathTools.BlockFacing.html#Vintagestory_API_MathTools_BlockFacing_ToAB_Vintagestory_API_MathTools_Vec3f_
+  name: ToAB
+  nameWithType: BlockFacing.ToAB
+  fullName: Vintagestory.API.MathTools.BlockFacing.ToAB
+- uid: Vintagestory.API.MathTools.Vec2f
+  commentId: T:Vintagestory.API.MathTools.Vec2f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec2f.html
+  name: Vec2f
+  nameWithType: Vec2f
+  fullName: Vintagestory.API.MathTools.Vec2f
 - uid: Vintagestory.API.MathTools.BlockFacing.IterateThruFacingOffsets*
   commentId: Overload:Vintagestory.API.MathTools.BlockFacing.IterateThruFacingOffsets
   href: Vintagestory.API.MathTools.BlockFacing.html#Vintagestory_API_MathTools_BlockFacing_IterateThruFacingOffsets_Vintagestory_API_MathTools_BlockPos_
@@ -2321,6 +2583,12 @@ references:
   name: HorizontalFromAngle
   nameWithType: BlockFacing.HorizontalFromAngle
   fullName: Vintagestory.API.MathTools.BlockFacing.HorizontalFromAngle
+- uid: Vintagestory.API.MathTools.BlockFacing.HorizontalFromYaw*
+  commentId: Overload:Vintagestory.API.MathTools.BlockFacing.HorizontalFromYaw
+  href: Vintagestory.API.MathTools.BlockFacing.html#Vintagestory_API_MathTools_BlockFacing_HorizontalFromYaw_System_Single_
+  name: HorizontalFromYaw
+  nameWithType: BlockFacing.HorizontalFromYaw
+  fullName: Vintagestory.API.MathTools.BlockFacing.HorizontalFromYaw
 - uid: Vintagestory.API.MathTools.BlockFacing.FlagContains*
   commentId: Overload:Vintagestory.API.MathTools.BlockFacing.FlagContains
   href: Vintagestory.API.MathTools.BlockFacing.html#Vintagestory_API_MathTools_BlockFacing_FlagContains_System_Byte_Vintagestory_API_MathTools_BlockFacing_

@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -132,7 +132,7 @@ Class SyncedEntityPos
       <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_z">EntityPos.z</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_dimension">EntityPos.dimension</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_Dimension">EntityPos.Dimension</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_roll">EntityPos.roll</a>
@@ -159,7 +159,7 @@ Class SyncedEntityPos
       <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_InternalY">EntityPos.InternalY</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_Dimension">EntityPos.Dimension</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_DimensionYAdjustment">EntityPos.DimensionYAdjustment</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_AsBlockPos">EntityPos.AsBlockPos</a>
@@ -174,10 +174,16 @@ Class SyncedEntityPos
       <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_XYZFloat">EntityPos.XYZFloat</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_SetPosWithDimension_Vintagestory_API_MathTools_Vec3d_">EntityPos.SetPosWithDimension(Vec3d)</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_SetPos_Vintagestory_API_MathTools_Vec3d_">EntityPos.SetPos(Vec3d)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_Add_System_Double_System_Double_System_Double_">EntityPos.Add(double, double, double)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_Add_Vintagestory_API_MathTools_Vec3f_">EntityPos.Add(Vec3f)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_SetPos_System_Int32_System_Int32_System_Int32_">EntityPos.SetPos(int, int, int)</a>
@@ -316,6 +322,16 @@ Class SyncedEntityPos
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 

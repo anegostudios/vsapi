@@ -26,12 +26,10 @@ namespace Vintagestory.API.Server
         /// Sends a blockentity packet to the given player. For quick an easy network communication without setting up a channel first.
         /// </summary>
         /// <param name="player"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
+        /// <param name="pos"></param>
         /// <param name="packetId"></param>
         /// <param name="data"></param>
-        void SendBlockEntityPacket(IServerPlayer player, int x, int y, int z, int packetId, byte[] data = null);
+        void SendBlockEntityPacket(IServerPlayer player, BlockPos pos, int packetId, byte[] data = null);
 
         /// <summary>
         /// Sends a entity packet to the given player and entity. For quick an easy entity network communication without setting up a channel first.
@@ -55,12 +53,10 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// Broadcasts a blockentity packet to all connected players. For quick an easy network communication without setting up a channel first.
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
+        /// <param name="pos"></param>
         /// <param name="packetId"></param>
         /// <param name="data"></param>
-        void BroadcastBlockEntityPacket(int x, int y, int z, int packetId, byte[] data = null);
+        void BroadcastBlockEntityPacket(BlockPos pos, int packetId, byte[] data = null);
 
 
         /// <summary>

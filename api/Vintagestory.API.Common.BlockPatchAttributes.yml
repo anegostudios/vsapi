@@ -1,0 +1,1303 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.BlockPatchAttributes
+  commentId: T:Vintagestory.API.Common.BlockPatchAttributes
+  id: BlockPatchAttributes
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.BlockPatchAttributes.Coral
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralBase
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralBaseBlock
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralBaseHeight
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralBlock
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralMinSize
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralPlants
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralPlantsChance
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralRandomSize
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralReplaceOtherPatches
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralShelve
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralShelveBlock
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralShelveChance
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralStructure
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralStructureBlock
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralStructureChance
+  - Vintagestory.API.Common.BlockPatchAttributes.CoralVerticalGrowChance
+  - Vintagestory.API.Common.BlockPatchAttributes.FlowerChance
+  - Vintagestory.API.Common.BlockPatchAttributes.Height
+  - Vintagestory.API.Common.BlockPatchAttributes.Init(Vintagestory.API.Server.ICoreServerAPI,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: BlockPatchAttributes
+  nameWithType: BlockPatchAttributes
+  fullName: Vintagestory.API.Common.BlockPatchAttributes
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public class BlockPatchAttributes
+    content.vb: Public Class BlockPatchAttributes
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralBase
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralBase
+  id: CoralBase
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralBase
+  nameWithType: BlockPatchAttributes.CoralBase
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralBase
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: List of asset codes for the base (coralblock) types of a coral reef blockpatch
+  example: []
+  syntax:
+    content: public string[]? CoralBase
+    return:
+      type: System.String[]
+    content.vb: Public CoralBase As String()
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralStructure
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralStructure
+  id: CoralStructure
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralStructure
+  nameWithType: BlockPatchAttributes.CoralStructure
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralStructure
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: List of asset codes for the coral structure types of a coral reef blockpatch
+  example: []
+  syntax:
+    content: public string[]? CoralStructure
+    return:
+      type: System.String[]
+    content.vb: Public CoralStructure As String()
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralShelve
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralShelve
+  id: CoralShelve
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralShelve
+  nameWithType: BlockPatchAttributes.CoralShelve
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralShelve
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    List of asset codes for the coral shelved types of a coral reef blockpatch
+
+    These need to have HorizontalOrientable behaviour and only specify one side in here "coralshelf-north"
+  example: []
+  syntax:
+    content: public string[]? CoralShelve
+    return:
+      type: System.String[]
+    content.vb: Public CoralShelve As String()
+- uid: Vintagestory.API.Common.BlockPatchAttributes.Coral
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.Coral
+  id: Coral
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: Coral
+  nameWithType: BlockPatchAttributes.Coral
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.Coral
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: List of asset codes for the coral types of a coral reef blockpatch coral-brain, coral-fan ...
+  example: []
+  syntax:
+    content: public string[]? Coral
+    return:
+      type: System.String[]
+    content.vb: Public Coral As String()
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralMinSize
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralMinSize
+  id: CoralMinSize
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralMinSize
+  nameWithType: BlockPatchAttributes.CoralMinSize
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralMinSize
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Defines the minimum 2D size of the coral reef
+  example: []
+  syntax:
+    content: public int? CoralMinSize
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public CoralMinSize As Integer?
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralRandomSize
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralRandomSize
+  id: CoralRandomSize
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralRandomSize
+  nameWithType: BlockPatchAttributes.CoralRandomSize
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralRandomSize
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Defines the random size between 0 - X that will be added additionally to the reef
+  example: []
+  syntax:
+    content: public int? CoralRandomSize
+    return:
+      type: System.Nullable{System.Int32}
+    content.vb: Public CoralRandomSize As Integer?
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralVerticalGrowChance
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralVerticalGrowChance
+  id: CoralVerticalGrowChance
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralVerticalGrowChance
+  nameWithType: BlockPatchAttributes.CoralVerticalGrowChance
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralVerticalGrowChance
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Chance for a shelf block to spawn on a under water cliff. The chance is rolled for each height
+
+    The patch will try to spawn them until it reaches minWaterDepth
+  example: []
+  syntax:
+    content: public float? CoralVerticalGrowChance
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public CoralVerticalGrowChance As Single?
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralPlantsChance
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralPlantsChance
+  id: CoralPlantsChance
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralPlantsChance
+  nameWithType: BlockPatchAttributes.CoralPlantsChance
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralPlantsChance
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Chance that any Plant will spawn
+  example: []
+  syntax:
+    content: public float? CoralPlantsChance
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public CoralPlantsChance As Single?
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralPlants
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralPlants
+  id: CoralPlants
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralPlants
+  nameWithType: BlockPatchAttributes.CoralPlants
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralPlants
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Specifiy which plants should spawn for this blockpatch and their heigh and how often a specific plant should be choosen
+  example: []
+  syntax:
+    content: public Dictionary<string, CoralPlantConfig>? CoralPlants
+    return:
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.CoralPlantConfig}
+    content.vb: Public CoralPlants As Dictionary(Of String, CoralPlantConfig)
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralShelveChance
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralShelveChance
+  id: CoralShelveChance
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralShelveChance
+  nameWithType: BlockPatchAttributes.CoralShelveChance
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralShelveChance
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Chance that a shelf will spawn instead of a structure on top of a coralblock
+  example: []
+  syntax:
+    content: public float? CoralShelveChance
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public CoralShelveChance As Single?
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralReplaceOtherPatches
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralReplaceOtherPatches
+  id: CoralReplaceOtherPatches
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralReplaceOtherPatches
+  nameWithType: BlockPatchAttributes.CoralReplaceOtherPatches
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralReplaceOtherPatches
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Chance that coral generatin will replace all other block patches in its area
+  example: []
+  syntax:
+    content: public float? CoralReplaceOtherPatches
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public CoralReplaceOtherPatches As Single?
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralStructureChance
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralStructureChance
+  id: CoralStructureChance
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralStructureChance
+  nameWithType: BlockPatchAttributes.CoralStructureChance
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralStructureChance
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    If no shelf was spanwed this chance controls how likely a structure will spawn instead of a coral.
+
+    If a structure is spawned then a coral will spawn on top
+
+    If no shelve nor structure was spawned then also a coral will be spawned
+  example: []
+  syntax:
+    content: public float? CoralStructureChance
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public CoralStructureChance As Single?
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralBaseHeight
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralBaseHeight
+  id: CoralBaseHeight
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralBaseHeight
+  nameWithType: BlockPatchAttributes.CoralBaseHeight
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralBaseHeight
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    How thick the base coral full block layer should be for this patch (goes down into the ground, helpfull for cliffs)
+
+    1 -&gt; replace the gravel with coral
+
+    2 -&gt; go 1 block below gravel and also replace and so on
+  example: []
+  syntax:
+    content: public int CoralBaseHeight
+    return:
+      type: System.Int32
+    content.vb: Public CoralBaseHeight As Integer
+- uid: Vintagestory.API.Common.BlockPatchAttributes.FlowerChance
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.FlowerChance
+  id: FlowerChance
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: FlowerChance
+  nameWithType: BlockPatchAttributes.FlowerChance
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.FlowerChance
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Chance that a BlockCrowfoot will spawn a flower when it reaches the water surface
+  example: []
+  syntax:
+    content: public float? FlowerChance
+    return:
+      type: System.Nullable{System.Single}
+    content.vb: Public FlowerChance As Single?
+- uid: Vintagestory.API.Common.BlockPatchAttributes.Height
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.Height
+  id: Height
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: Height
+  nameWithType: BlockPatchAttributes.Height
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.Height
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Heigh distribution for BlockSeaweed and BlockCrowfoot types
+  example: []
+  syntax:
+    content: public NatFloat? Height
+    return:
+      type: Vintagestory.API.MathTools.NatFloat
+    content.vb: Public Height As NatFloat
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralBaseBlock
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralBaseBlock
+  id: CoralBaseBlock
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralBaseBlock
+  nameWithType: BlockPatchAttributes.CoralBaseBlock
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralBaseBlock
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Block[]? CoralBaseBlock
+    return:
+      type: Vintagestory.API.Common.Block[]
+    content.vb: >-
+      <JsonIgnore>
+
+      Public CoralBaseBlock As Block()
+  attributes:
+  - type: Newtonsoft.Json.JsonIgnoreAttribute
+    ctor: Newtonsoft.Json.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralStructureBlock
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralStructureBlock
+  id: CoralStructureBlock
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralStructureBlock
+  nameWithType: BlockPatchAttributes.CoralStructureBlock
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralStructureBlock
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Block[]? CoralStructureBlock
+    return:
+      type: Vintagestory.API.Common.Block[]
+    content.vb: >-
+      <JsonIgnore>
+
+      Public CoralStructureBlock As Block()
+  attributes:
+  - type: Newtonsoft.Json.JsonIgnoreAttribute
+    ctor: Newtonsoft.Json.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralShelveBlock
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralShelveBlock
+  id: CoralShelveBlock
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralShelveBlock
+  nameWithType: BlockPatchAttributes.CoralShelveBlock
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralShelveBlock
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Block[][]? CoralShelveBlock
+    return:
+      type: Vintagestory.API.Common.Block[][]
+    content.vb: >-
+      <JsonIgnore>
+
+      Public CoralShelveBlock As Block()()
+  attributes:
+  - type: Newtonsoft.Json.JsonIgnoreAttribute
+    ctor: Newtonsoft.Json.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.BlockPatchAttributes.CoralBlock
+  commentId: F:Vintagestory.API.Common.BlockPatchAttributes.CoralBlock
+  id: CoralBlock
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: CoralBlock
+  nameWithType: BlockPatchAttributes.CoralBlock
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.CoralBlock
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [JsonIgnore]
+
+      public Block[]? CoralBlock
+    return:
+      type: Vintagestory.API.Common.Block[]
+    content.vb: >-
+      <JsonIgnore>
+
+      Public CoralBlock As Block()
+  attributes:
+  - type: Newtonsoft.Json.JsonIgnoreAttribute
+    ctor: Newtonsoft.Json.JsonIgnoreAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.BlockPatchAttributes.Init(Vintagestory.API.Server.ICoreServerAPI,System.Int32)
+  commentId: M:Vintagestory.API.Common.BlockPatchAttributes.Init(Vintagestory.API.Server.ICoreServerAPI,System.Int32)
+  id: Init(Vintagestory.API.Server.ICoreServerAPI,System.Int32)
+  parent: Vintagestory.API.Common.BlockPatchAttributes
+  langs:
+  - csharp
+  - vb
+  name: Init(ICoreServerAPI, int)
+  nameWithType: BlockPatchAttributes.Init(ICoreServerAPI, int)
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.Init(Vintagestory.API.Server.ICoreServerAPI, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void Init(ICoreServerAPI sapi, int i)
+    parameters:
+    - id: sapi
+      type: Vintagestory.API.Server.ICoreServerAPI
+    - id: i
+      type: System.Int32
+    content.vb: Public Sub Init(sapi As ICoreServerAPI, i As Integer)
+  overload: Vintagestory.API.Common.BlockPatchAttributes.Init*
+  nameWithType.vb: BlockPatchAttributes.Init(ICoreServerAPI, Integer)
+  fullName.vb: Vintagestory.API.Common.BlockPatchAttributes.Init(Vintagestory.API.Server.ICoreServerAPI, Integer)
+  name.vb: Init(ICoreServerAPI, Integer)
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: System.Nullable{System.Int32}
+  commentId: T:System.Nullable{System.Int32}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int?
+  nameWithType: int?
+  fullName: int?
+  nameWithType.vb: Integer?
+  fullName.vb: Integer?
+  name.vb: Integer?
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Nullable{System.Single}
+  commentId: T:System.Nullable{System.Single}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float?
+  nameWithType: float?
+  fullName: float?
+  nameWithType.vb: Single?
+  fullName.vb: Single?
+  name.vb: Single?
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '?'
+- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.CoralPlantConfig}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.CoralPlantConfig}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, CoralPlantConfig>
+  nameWithType: Dictionary<string, CoralPlantConfig>
+  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.CoralPlantConfig>
+  nameWithType.vb: Dictionary(Of String, CoralPlantConfig)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.CoralPlantConfig)
+  name.vb: Dictionary(Of String, CoralPlantConfig)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.CoralPlantConfig
+    name: CoralPlantConfig
+    href: Vintagestory.API.Common.CoralPlantConfig.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.CoralPlantConfig
+    name: CoralPlantConfig
+    href: Vintagestory.API.Common.CoralPlantConfig.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.API.MathTools.NatFloat
+  commentId: T:Vintagestory.API.MathTools.NatFloat
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.NatFloat.html
+  name: NatFloat
+  nameWithType: NatFloat
+  fullName: Vintagestory.API.MathTools.NatFloat
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Common.Block[]
+  isExternal: true
+  href: Vintagestory.API.Common.Block.html
+  name: Block[]
+  nameWithType: Block[]
+  fullName: Vintagestory.API.Common.Block[]
+  nameWithType.vb: Block()
+  fullName.vb: Vintagestory.API.Common.Block()
+  name.vb: Block()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Block
+    name: Block
+    href: Vintagestory.API.Common.Block.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.Block
+    name: Block
+    href: Vintagestory.API.Common.Block.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.Block[][]
+  isExternal: true
+  href: Vintagestory.API.Common.Block.html
+  name: Block[][]
+  nameWithType: Block[][]
+  fullName: Vintagestory.API.Common.Block[][]
+  nameWithType.vb: Block()()
+  fullName.vb: Vintagestory.API.Common.Block()()
+  name.vb: Block()()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Block
+    name: Block
+    href: Vintagestory.API.Common.Block.html
+  - name: '['
+  - name: ']'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.Block
+    name: Block
+    href: Vintagestory.API.Common.Block.html
+  - name: (
+  - name: )
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.BlockPatchAttributes.Init*
+  commentId: Overload:Vintagestory.API.Common.BlockPatchAttributes.Init
+  href: Vintagestory.API.Common.BlockPatchAttributes.html#Vintagestory_API_Common_BlockPatchAttributes_Init_Vintagestory_API_Server_ICoreServerAPI_System_Int32_
+  name: Init
+  nameWithType: BlockPatchAttributes.Init
+  fullName: Vintagestory.API.Common.BlockPatchAttributes.Init
+- uid: Vintagestory.API.Server.ICoreServerAPI
+  commentId: T:Vintagestory.API.Server.ICoreServerAPI
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.ICoreServerAPI.html
+  name: ICoreServerAPI
+  nameWithType: ICoreServerAPI
+  fullName: Vintagestory.API.Server.ICoreServerAPI
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html

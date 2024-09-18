@@ -61,11 +61,11 @@ namespace Vintagestory.API.Server
         void Disconnect(string message);
 
         /// <summary>
-        /// Shows a vibrating red text in the players screen. If text is null the client will try to find a language entry using supplied code prefixed with 'ingameerror-' (which is recommended so that the errors are translated to the users local language)
+        /// Shows a vibrating red text in the players screen. If message is null the client will try to find a language entry using supplied code prefixed with 'ingameerror-' (which is recommended so that the errors are translated to the users local language)
         /// </summary>
         /// <param name="code"></param>
         /// <param name="message"></param>
-        /// <param name="langparams"> If text is null, these are the arguments passed into the Language translation tool</param>
+        /// <param name="langparams"> If message is null, these are the arguments passed into the Language translation tool</param>
         void SendIngameError(string code, string message = null, params object[] langparams);
         
 

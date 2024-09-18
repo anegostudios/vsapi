@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -327,7 +328,7 @@ namespace Vintagestory.API.Common.Entities
 
 
         
-        public EntitySidedProperties(JsonObject[] behaviors)
+        public EntitySidedProperties(JsonObject[] behaviors, Dictionary<string, JsonObject> commonConfigs)
         {
             BehaviorsAsJsonObj = new JsonObject[behaviors.Length];
             int count = 0;
@@ -338,8 +339,16 @@ namespace Vintagestory.API.Common.Entities
                 if (!enabled) continue;
                 string code = jobj["code"].AsString();
                 if (code == null) continue;
+
+                JsonObject mergedobj = jobj;
+                if (commonConfigs != null && commonConfigs.ContainsKey(code))
+                {
+                    var clonedObj = commonConfigs[code].Token.DeepClone() as JObject;
+                    clonedObj.Merge(jobj.Token as JObject);
+                    mergedobj = new JsonObject(clonedObj);
+                }
                 
-                BehaviorsAsJsonObj[count++] = new JsonObject_ReadOnly(jobj);
+                BehaviorsAsJsonObj[count++] = new JsonObject_ReadOnly(mergedobj);
             }
 
             if (count < behaviors.Length) Array.Resize(ref BehaviorsAsJsonObj, count);
@@ -360,6 +369,7 @@ namespace Vintagestory.API.Common.Entities
                 {
                     EntityBehavior behavior = world.ClassRegistry.CreateEntityBehavior(entity, code);
                     Behaviors.Add(behavior);
+                    behavior.FromBytes(false);
                     behavior.Initialize(properties, jobj);
                 } else
                 {
@@ -379,7 +389,7 @@ namespace Vintagestory.API.Common.Entities
     public class EntityClientProperties : EntitySidedProperties
     {
 
-        public EntityClientProperties(JsonObject[] behaviors) : base(behaviors) { }
+        public EntityClientProperties(JsonObject[] behaviors, Dictionary<string, JsonObject> commonConfigs) : base(behaviors, commonConfigs) { }
 
         /// <summary>
         /// Set by the game client
@@ -549,9 +559,9 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-            return new EntityClientProperties(BehaviorsAsJsonObj)
+            return new EntityClientProperties(BehaviorsAsJsonObj, null)
             {
-                Textures = Textures,
+                Textures = new FastSmallDictionary<string, CompositeTexture>(Textures),
                 RendererName = RendererName,
                 GlowLevel = GlowLevel,
                 PitchStep = PitchStep,
@@ -568,7 +578,7 @@ namespace Vintagestory.API.Common.Entities
 
     public class EntityServerProperties : EntitySidedProperties
     {
-        public EntityServerProperties(JsonObject[] behaviors) : base(behaviors) { }
+        public EntityServerProperties(JsonObject[] behaviors, Dictionary<string, JsonObject> commonConfigs) : base(behaviors, commonConfigs) { }
 
         /// <summary>
         /// The conditions for spawning the entity.
@@ -581,7 +591,7 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public override EntitySidedProperties Clone()
         {
-            return new EntityServerProperties(BehaviorsAsJsonObj)
+            return new EntityServerProperties(BehaviorsAsJsonObj, null)
             {
                 Attributes = Attributes,
                 SpawnConditions = SpawnConditions

@@ -6,54 +6,80 @@ using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// Used to add a set of particle properties to a collectible.
+    /// </summary>
+    [DocumentAsJson]
     [JsonObject(MemberSerialization.OptIn)]
     public class AdvancedParticleProperties : IParticlePropertiesProvider
     {
         public bool Async => false;
 
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+        /// Allows each particle to randomly change its velocity over time.
+        /// </summary>
         [JsonProperty]
         public bool RandomVelocityChange { get; set; }
 
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+        /// If true, particle dies if it falls below the rain height at its given location
+        /// </summary>
         [JsonProperty]
         public bool DieOnRainHeightmap { get; set; }
 
         /// <summary>
-        /// The Secondary particles for the JsonObject.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// More particles that spawn from this particle over time. See <see cref="SecondarySpawnInterval"/> to control rate.
         /// </summary>
         [JsonProperty]
         public AdvancedParticleProperties[] SecondaryParticles { get; set; }
 
         /// <summary>
-        /// The death particles for the JsonObject.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// More particles that spawn when this particle dies.
         /// </summary>
         [JsonProperty]
         public AdvancedParticleProperties[] DeathParticles { get; set; }
 
         /// <summary>
-        /// The inverval that the secondary particles spawn.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// The inverval that the <see cref="SecondaryParticles"/> spawn.
         /// </summary>
         [JsonProperty]
         public NatFloat SecondarySpawnInterval { get; set; } = NatFloat.createUniform(0, 0);
 
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// The amount of velocity to be kept when this particle collides with something. Directional velocity is multipled by (-Bounciness * 0.65) on any collision.
+        /// </summary>
         [JsonProperty]
         public float Bounciness { get; set; }
 
         /// <summary>
-        /// Whether or not the entity dies in air.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+        /// Whether or not the particle dies in air.
         /// </summary>
         [JsonProperty]
         public bool DieInAir { get; set; } = false;
 
         /// <summary>
-        /// Whether or not the entity dies in water.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+        /// Whether or not the particle dies in water.
         /// </summary>
         [JsonProperty]
         public bool DieInLiquid { get; set; } = false;
 
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+        /// Whether or not the particle floats on liquids.
+        /// </summary>
         [JsonProperty]
         public bool SwimOnLiquid { get; set; } = false;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Random</jsondefault>-->
         /// The Hue/Saturation/Value/Alpha for the color of the particle.
         /// </summary>
         [JsonProperty]
@@ -65,48 +91,56 @@ namespace Vintagestory.API.Common
         };
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Whether or not to color the particle by the block it's on.
         /// </summary>
         [JsonProperty]
         public bool ColorByBlock { get; set; } = false;
 
         /// <summary>
-        /// a transforming opacity value.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// A transforming opacity value.
         /// </summary>
         [JsonProperty]
         public EvolvingNatFloat OpacityEvolve { get; set; } = null;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A transforming Red value.
         /// </summary>
         [JsonProperty]
         public EvolvingNatFloat RedEvolve { get; set; } = null;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A transforming Green value.
         /// </summary>
         [JsonProperty]
         public EvolvingNatFloat GreenEvolve { get; set; } = null;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A transforming Blue value.
         /// </summary>
         [JsonProperty]
         public EvolvingNatFloat BlueEvolve { get; set; } = null;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The gravity effect on the particle.
         /// </summary>
         [JsonProperty]
         public NatFloat GravityEffect { get; set; } = NatFloat.createUniform(1, 0);
 
         /// <summary>
-        /// The life length of the particle.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+        /// The life length, in seconds, of the particle.
         /// </summary>
         [JsonProperty]
         public NatFloat LifeLength { get; set; } = NatFloat.createUniform(1, 0);
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0, 0, 0</jsondefault>-->
         /// Offset from the blocks hitboxes top middle position
         /// </summary>
         [JsonProperty]
@@ -116,24 +150,28 @@ namespace Vintagestory.API.Common
         };
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The quantity of the particles given.
         /// </summary>
         [JsonProperty]
         public NatFloat Quantity { get; set; } = NatFloat.createUniform(1, 0);
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// The size of the particles given.
         /// </summary>
         [JsonProperty]
         public NatFloat Size { get; set; } = NatFloat.createUniform(1, 0);
 
         /// <summary>
-        /// a transforming Size value.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// A transforming Size value.
         /// </summary>
         [JsonProperty]
         public EvolvingNatFloat SizeEvolve { get; set; } = EvolvingNatFloat.createIdentical(0);
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Random</jsondefault>-->
         /// The velocity of the particles.
         /// </summary>
         [JsonProperty]
@@ -143,36 +181,44 @@ namespace Vintagestory.API.Common
         };
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// A dynamic velocity value.
         /// </summary>
         [JsonProperty]
         public EvolvingNatFloat[] VelocityEvolve { get; set; } = null;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Cube</jsondefault>-->
         /// Sets the base model for the particle.
         /// </summary>
         [JsonProperty]
         public EnumParticleModel ParticleModel { get; set; } = EnumParticleModel.Cube;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// The level of glow in the particle.
         /// </summary>
         [JsonProperty]
         public int VertexFlags { get; set; } = 0;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Whether or not the particle is self propelled.
         /// </summary>
         [JsonProperty]
         public bool SelfPropelled { get; set; } = false;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>true</jsondefault>-->
         /// Whether or not the particle collides with the terrain.
         /// </summary>
         [JsonProperty]
         public bool TerrainCollision { get; set; } = true;
 
-
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// How much the particles are affected by wind.
+        /// </summary>
         [JsonProperty]
         public float WindAffectednes { get; set; } = 0;
 
@@ -201,6 +247,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public int Color;
 
+        public int LightEmission => 0;
         bool IParticlePropertiesProvider.DieInAir => DieInAir;
 
         bool IParticlePropertiesProvider.DieInLiquid => DieInLiquid;

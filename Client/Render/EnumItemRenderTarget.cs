@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Client
+﻿using System;
+
+namespace Vintagestory.API.Client
 {
     /// <summary>
     /// The render taget for an item stack
@@ -12,6 +14,7 @@
         /// <summary>
         /// Rendered in the players hand, first person mode
         /// </summary>
+        [Obsolete("Use HandTp instead")]
         HandFp,
         /// <summary>
         /// Rendered in the players hand, third person mode

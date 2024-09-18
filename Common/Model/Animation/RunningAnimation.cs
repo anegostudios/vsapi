@@ -29,6 +29,11 @@ namespace Vintagestory.API.Common
 
         public ShapeElementWeights[] ElementWeights;
 
+        public int SoundPlayedAtIteration = -1;
+
+        /// <summary>
+        /// Between 0 and 1
+        /// </summary>
         public float AnimProgress => CurrentFrame / (Animation.QuantityFrames-1);
 
         public void LoadWeights(ShapeElement[] rootElements)
@@ -156,6 +161,7 @@ namespace Vintagestory.API.Common
             CurrentFrame = 0;
             Iterations = 0;
             EasingFactor = 0;
+            SoundPlayedAtIteration = -1;
         }
 
         public void EaseOut(float dt)

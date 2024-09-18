@@ -2,15 +2,35 @@
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// Defines a set of properties that allow an object to be ground in a quern.
+    /// </summary>
+    /// <example>
+    /// <code language="json">
+    ///"grindingProps": {
+	///	"groundStack": {
+	///		"type": "item",
+	///		"code": "bonemeal"
+	///	}
+	///},
+    /// </code>
+    /// </example>
+    [DocumentAsJson]
     public class GrindingProperties
     {
         public bool usedObsoleteNotation = false;
 
         /// <summary>
-        /// If set, the block/item is grindable in a quern and this is the resulting itemstack once the grinding time is over.
+        /// <!--<jsonoptional>Required</jsonoptional>-->
+        /// If set, the collectible is grindable in a quern and this is the resulting itemstack once the grinding time is over.
         /// </summary>
-        public JsonItemStack GroundStack;
+        [DocumentAsJson] public JsonItemStack GroundStack;
 
+        /// <summary>
+        /// <!--<jsonoptional>Obsolete</jsonoptional>-->
+        /// Obsolete. Please use <see cref="GroundStack"/> instead.
+        /// </summary>
+        [DocumentAsJson]
         [Obsolete("Use GroundStack instead")]
         public JsonItemStack GrindedStack { 
             get

@@ -8,6 +8,8 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
+using Vintagestory.API.Config;
+using Vintagestory.Common.Collectible.Block;
 
 namespace Vintagestory.API.Common
 {
@@ -81,10 +83,12 @@ namespace Vintagestory.API.Common
         public List<Entity> EntitiesUnpacked = new List<Entity>();
         public Dictionary<BlockPos, Block[]> DecorsUnpacked = new Dictionary<BlockPos, Block[]>();
         public FastVec3i PackedOffset;
+        public List<BlockPosFacing> PathwayBlocksUnpacked;
 
         protected Block fillerBlock;
         protected Block pathwayBlock;
         protected Block undergroundBlock;
+        protected Block abovegroundBlock;
 
         protected ushort empty = 0;
         public bool OmitLiquids = false;
@@ -100,33 +104,49 @@ namespace Vintagestory.API.Common
         public BlockPos[][] PathwayOffsets;
 
         public BlockPos[] UndergroundCheckPositions;
+        public BlockPos[] AbovegroundCheckPositions;
 
         /// <summary>
         /// Set by the RemapperAssistant in OnFinalizeAssets
         /// <br/>Heads up!:  This is unordered, it will iterate through the different game versions' remaps not necessarily in the order they originally appear in remaps.json config.  If any block remaps over the years have duplicate original block names, behavior for those ones may be unpredictable
         /// </summary>
         public static Dictionary<string, Dictionary<string, string>> BlockRemaps { get; set; }
-        
+
         /// <summary>
         /// Set by the RemapperAssistant in OnFinalizeAssets
         /// </summary>
         public static Dictionary<string, Dictionary<string, string>> ItemRemaps { get; set; }
-        
+
         public BlockSchematic()
         {
             GameVersion = Config.GameVersion.OverallVersion;
+        }
+
+        /// <summary>
+        /// Construct a schematic from a specified area in the specified world
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="notLiquids"></param>
+        public BlockSchematic(IServerWorldAccessor world, BlockPos start, BlockPos end, bool notLiquids)
+        {
+            BlockPos startPos = new BlockPos(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y), Math.Min(start.Z, end.Z));
+            this.OmitLiquids = notLiquids;
+            this.AddArea(world, start, end);
+            this.Pack(world, startPos);
         }
 
         public virtual void Init(IBlockAccessor blockAccessor)
         {
             SemVer.TryParse(Config.GameVersion.OverallVersion, out var currentVersion);
             SemVer.TryParse(GameVersion ?? "0.0.0", out var schematicVersion);
-                
+
             if (schematicVersion < currentVersion)
             {
                 Remap();
             }
-            
+
             InitMetaBlocks(blockAccessor);
         }
 
@@ -143,7 +163,7 @@ namespace Vintagestory.API.Common
                     }
                 }
             }
-            
+
             // now do item remapping
             foreach (var map in ItemRemaps)
             {
@@ -162,6 +182,7 @@ namespace Vintagestory.API.Common
             fillerBlock = blockAccessor.GetBlock(new AssetLocation("meta-filler"));
             pathwayBlock = blockAccessor.GetBlock(new AssetLocation("meta-pathway"));
             undergroundBlock = blockAccessor.GetBlock(new AssetLocation("meta-underground"));
+            abovegroundBlock = blockAccessor.GetBlock(new AssetLocation("meta-aboveground"));
         }
 
         /// <summary>
@@ -173,6 +194,7 @@ namespace Vintagestory.API.Common
         public void LoadMetaInformationAndValidate(IBlockAccessor blockAccessor, IWorldAccessor worldForResolve, string fileNameForLogging)
         {
             List<BlockPos> undergroundPositions = new List<BlockPos>();
+            List<BlockPos> abovegroundPositions = new List<BlockPos>();
             Queue<BlockPos> pathwayPositions = new Queue<BlockPos>();
 
             HashSet<AssetLocation> missingBlocks = new HashSet<AssetLocation>();
@@ -191,16 +213,18 @@ namespace Vintagestory.API.Common
 
                 if (newBlock == null) missingBlocks.Add(blockCode);
 
-                if (newBlock != pathwayBlock && newBlock != undergroundBlock) continue;
-                
-                BlockPos pos = new BlockPos(dx, dy, dz);                
-
+                BlockPos pos = new BlockPos(dx, dy, dz);
                 if (newBlock == pathwayBlock)
                 {
                     pathwayPositions.Enqueue(pos);
-                } else
+                }
+                else if (newBlock == undergroundBlock)
                 {
                     undergroundPositions.Add(pos);
+                }
+                else if (newBlock == abovegroundBlock)
+                {
+                    abovegroundPositions.Add(pos);
                 }
             }
 
@@ -233,6 +257,7 @@ namespace Vintagestory.API.Common
 
 
             UndergroundCheckPositions = undergroundPositions.ToArray();
+            AbovegroundCheckPositions = abovegroundPositions.ToArray();
 
 
             List<List<BlockPos>> pathwayslist = new List<List<BlockPos>>();
@@ -251,7 +276,7 @@ namespace Vintagestory.API.Common
                 List<BlockPos> pathway = new List<BlockPos>() { pathwayPositions.Dequeue() };
                 pathwayslist.Add(pathway);
 
-                int i = pathwayPositions.Count;               
+                int i = pathwayPositions.Count;
 
                 while (i-- > 0)
                 {
@@ -281,7 +306,7 @@ namespace Vintagestory.API.Common
             PathwayStarts = new BlockPos[pathwayslist.Count];
             PathwayOffsets = new BlockPos[pathwayslist.Count][];
             PathwaySides = new BlockFacing[pathwayslist.Count];
-            
+
 
             for (int i = 0; i < PathwayStarts.Length; i++)
             {
@@ -316,11 +341,11 @@ namespace Vintagestory.API.Common
                     PathwayOffsets[i][j] = pathwayslist[i][j].Sub(start);
                 }
             }
-            
+
         }
 
 
-    
+
 
         /// <summary>
         /// Adds an area to the schematic.
@@ -333,33 +358,35 @@ namespace Vintagestory.API.Common
             BlockPos startPos = new BlockPos(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y), Math.Min(start.Z, end.Z));
             BlockPos finalPos = new BlockPos(Math.Max(start.X, end.X), Math.Max(start.Y, end.Y), Math.Max(start.Z, end.Z));
 
+            BlockPos readPos = new BlockPos(start.dimension);   // readPos has dimensionality, keyPos does not (because keyPos will be saved in the schematic)
             for (int x = startPos.X; x < finalPos.X; x++)
             {
                 for (int y = startPos.Y; y < finalPos.Y; y++)
                 {
                     for (int z = startPos.Z; z < finalPos.Z; z++)
                     {
-                        BlockPos pos = new BlockPos(x, y, z);
-                        int blockid = world.BlockAccessor.GetBlock(pos, BlockLayersAccess.Solid).BlockId;
-                        int fluidid = world.BlockAccessor.GetBlock(pos, BlockLayersAccess.Fluid).BlockId;
+                        readPos.Set(x, y, z);
+                        int blockid = world.BlockAccessor.GetBlock(readPos, BlockLayersAccess.Solid).BlockId;
+                        int fluidid = world.BlockAccessor.GetBlock(readPos, BlockLayersAccess.Fluid).BlockId;
                         if (fluidid == blockid) blockid = 0;
                         if (OmitLiquids) fluidid = 0;
                         if (blockid == 0 && fluidid == 0) continue;
 
-                        BlocksUnpacked[pos] = blockid;
-                        FluidsLayerUnpacked[pos] = fluidid;
+                        BlockPos keyPos = new BlockPos(x, y, z);    // We create a new BlockPos object each time because it's going to be used as a key in the BlocksUnpacked dictionary; in future for performance a long might be a better key
+                        BlocksUnpacked[keyPos] = blockid;
+                        FluidsLayerUnpacked[keyPos] = fluidid;
 
-                        BlockEntity be = world.BlockAccessor.GetBlockEntity(pos);
+                        BlockEntity be = world.BlockAccessor.GetBlockEntity(readPos);
                         if (be != null)
                         {
-                            BlockEntitiesUnpacked[pos] = EncodeBlockEntityData(be);
+                            BlockEntitiesUnpacked[keyPos] = EncodeBlockEntityData(be);
                             be.OnStoreCollectibleMappings(BlockCodes, ItemCodes);
                         }
 
-                        Block[] decors = world.BlockAccessor.GetDecors(pos);
+                        Block[] decors = world.BlockAccessor.GetDecors(readPos);
                         if (decors != null)
                         {
-                            DecorsUnpacked[pos] = decors;
+                            DecorsUnpacked[keyPos] = decors;
                         }
                     }
                 }
@@ -443,12 +470,12 @@ namespace Vintagestory.API.Common
                     BlockIds.Add(fluidid);
                 }
             }
-            
+
             // also export fluid locks that do not have any other blocks in the same position
             foreach (var (pos, blockId) in FluidsLayerUnpacked)
             {
                 if (BlocksUnpacked.ContainsKey(pos)) continue;
-                
+
                 // Store a block mapping
                 if (blockId != 0) BlockCodes[blockId] = world.BlockAccessor.GetBlock(blockId).Code;
 
@@ -502,7 +529,7 @@ namespace Vintagestory.API.Common
             }
 
             BlockPos minPos = new BlockPos(minX, minY, minZ);
-            foreach (Entity e in EntitiesUnpacked)
+            foreach (var e in EntitiesUnpacked)
             {
                 using (MemoryStream ms = new MemoryStream())
                 {
@@ -515,6 +542,16 @@ namespace Vintagestory.API.Common
                     e.DidImportOrExport(minPos);
 
                     Entities.Add(Ascii85.Encode(ms.ToArray()));
+                }
+            }
+
+            if (PathwayBlocksUnpacked != null)
+            {
+                foreach (var path in PathwayBlocksUnpacked)
+                {
+                    path.Position.X -= minX;
+                    path.Position.Y -= minY;
+                    path.Position.Z -= minZ;
                 }
             }
 
@@ -553,7 +590,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual int Place(IBlockAccessor blockAccessor, IWorldAccessor worldForCollectibleResolve, BlockPos startPos, EnumReplaceMode mode, bool replaceMetaBlocks = true)
         {
-            BlockPos curPos = new BlockPos();
+            BlockPos curPos = new BlockPos(startPos.dimension);
             int placed = 0;
 
             PlaceBlockDelegate handler = null;
@@ -602,7 +639,7 @@ namespace Vintagestory.API.Common
 
                 Block newBlock = blockAccessor.GetBlock(blockCode);
 
-                if (newBlock == null || (replaceMetaBlocks && newBlock == undergroundBlock)) continue;
+                if (newBlock == null || (replaceMetaBlocks && (newBlock == undergroundBlock || newBlock == abovegroundBlock))) continue;
 
                 curPos.Set(dx + startPos.X, dy + startPos.Y, dz + startPos.Z);
                 if (!blockAccessor.IsValidPos(curPos)) continue;    // Deal with cases where we are at the map edge
@@ -681,7 +718,8 @@ namespace Vintagestory.API.Common
         /// <param name="aroundOrigin"></param>
         /// <param name="angle"></param>
         /// <param name="flipAxis"></param>
-        public virtual void TransformWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, EnumAxis? flipAxis = null)
+        /// <param name="isDungeon"></param>
+        public virtual void TransformWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, EnumAxis? flipAxis = null, bool isDungeon = false)
         {
             BlockPos startPos = new BlockPos(1024, 1024, 1024);
 
@@ -757,7 +795,7 @@ namespace Vintagestory.API.Common
                     }
                 }
 
-                BlockPos pos = getRotatedPos(aroundOrigin, angle, dx, dy, dz);
+                BlockPos pos = GetRotatedPos(aroundOrigin, angle, dx, dy, dz);
 
                 if (newBlock.ForFluidsLayer)
                 {
@@ -798,7 +836,7 @@ namespace Vintagestory.API.Common
 
                         AssetLocation newCode = newBlock.GetVerticallyFlippedBlockCode();
                         newBlock = worldForResolve.GetBlock(newCode);
-                        if (face.IsVertical) face = face.Opposite; 
+                        if (face.IsVertical) face = face.Opposite;
                     }
 
                     if (flipAxis == EnumAxis.X)
@@ -826,7 +864,7 @@ namespace Vintagestory.API.Common
                     newBlock = worldForResolve.GetBlock(newCode);
                 }
 
-                BlockPos pos = getRotatedPos(aroundOrigin, angle, dx, dy, dz);
+                BlockPos pos = GetRotatedPos(aroundOrigin, angle, dx, dy, dz);
 
                 DecorsUnpacked.TryGetValue(pos, out Block[] decorsTmp);
                 if (decorsTmp == null)
@@ -834,7 +872,7 @@ namespace Vintagestory.API.Common
                     decorsTmp = new Block[6];
                     DecorsUnpacked[pos] = decorsTmp;
                 }
-                
+
                 decorsTmp[face.GetHorizontalRotated(angle).Index] = newBlock;
             }
 
@@ -849,7 +887,7 @@ namespace Vintagestory.API.Common
                 if (flipAxis == EnumAxis.Y) dy = SizeY - dy;
                 if (flipAxis == EnumAxis.X) dx = SizeX - dx;
                 if (flipAxis == EnumAxis.Z) dz = SizeZ - dz;
-                BlockPos pos = getRotatedPos(aroundOrigin, angle, dx, dy, dz);
+                BlockPos pos = GetRotatedPos(aroundOrigin, angle, dx, dy, dz);
 
                 string beData = val.Value;
 
@@ -904,28 +942,31 @@ namespace Vintagestory.API.Common
                     switch (angle)
                     {
                         case 90:
-                            pos.X = -z + offz; // I have no idea why i need to add offz/offx flipped here for entities, but not for blocks (－‸ლ)
-                            pos.Z = x + offx;
+                            pos.X = -z; // I have no idea why i need to add offz/offx flipped here for entities, but not for blocks (－‸ლ)
+                            pos.Z = x;
                             break;
                         case 180:
-                            pos.X = -x + offx;
-                            pos.Z = -z + offz;
+                            pos.X = -x;
+                            pos.Z = -z;
                             break;
                         case 270:
-                            pos.X = z + offz;
-                            pos.Z = -x + offx;
+                            pos.X = z;
+                            pos.Z = -x;
                             break;
+                    }
+                    if (aroundOrigin != EnumOrigin.StartPos)
+                    {
+                        pos.X += offx;
+                        pos.Z += offz;
                     }
 
                     pos.Yaw -= angle * GameMath.DEG2RAD;
-                    entity.Pos.Yaw -= angle * GameMath.DEG2RAD;
+                    entity.ServerPos.Yaw -= angle * GameMath.DEG2RAD;
 
                     entity.Pos.SetPos(pos);
+                    entity.ServerPos.SetPos(pos);
                     entity.PositionBeforeFalling.X = pos.X;
                     entity.PositionBeforeFalling.Z = pos.Z;
-
-                    entity.DidImportOrExport(startPos);
-
 
                     EntitiesUnpacked.Add(entity);
                 }
@@ -934,7 +975,7 @@ namespace Vintagestory.API.Common
             Pack(worldForResolve, startPos);
         }
 
-        private BlockPos getRotatedPos(EnumOrigin aroundOrigin, int angle, int dx, int dy, int dz)
+        public BlockPos GetRotatedPos(EnumOrigin aroundOrigin, int angle, int dx, int dy, int dz)
         {
             if (aroundOrigin != EnumOrigin.StartPos)
             {
@@ -1014,7 +1055,7 @@ namespace Vintagestory.API.Common
                 if ((be == null || replaceBlockEntities) && blockAccessor is IWorldGenBlockAccessor)
                 {
                     Block block = blockAccessor.GetBlock(curPos, BlockLayersAccess.Solid);
-                    
+
                     if (block.EntityClass != null)
                     {
                         blockAccessor.SpawnBlockEntity(block.EntityClass, curPos);
@@ -1370,8 +1411,8 @@ namespace Vintagestory.API.Common
             return 0;
         }
 
-        
-           
+
+
         /// <summary>
         /// Makes a deep copy of the packed schematic. Unpacked data and loaded meta information is not cloned.
         /// </summary>
@@ -1382,18 +1423,31 @@ namespace Vintagestory.API.Common
             cloned.SizeX = SizeX;
             cloned.SizeY = SizeY;
             cloned.SizeZ = SizeZ;
+
             cloned.GameVersion = GameVersion;
+
             cloned.BlockCodes = new Dictionary<int, AssetLocation>(BlockCodes);
             cloned.ItemCodes = new Dictionary<int, AssetLocation>(ItemCodes);
             cloned.Indices = new List<uint>(Indices);
             cloned.BlockIds = new List<int>(BlockIds);
+
             cloned.BlockEntities = new Dictionary<uint, string>(BlockEntities);
             cloned.Entities = new List<string>(Entities);
-            cloned.ReplaceMode = ReplaceMode;
-            cloned.EntranceRotation = EntranceRotation;
+
             cloned.DecorIndices = new List<uint>(DecorIndices);
             cloned.DecorIds = new List<int>(DecorIds);
+
+            cloned.ReplaceMode = ReplaceMode;
+            cloned.EntranceRotation = EntranceRotation;
             return cloned;
+        }
+
+        public void PasteToMiniDimension(ICoreServerAPI sapi, IBlockAccessor blockAccess, IMiniDimension miniDimension, BlockPos originPos, bool replaceMetaBlocks)
+        {
+            this.Init(blockAccess);
+
+            this.Place(miniDimension, sapi.World, originPos, EnumReplaceMode.ReplaceAll, replaceMetaBlocks);
+            this.PlaceDecors(miniDimension, originPos);
         }
     }
 }

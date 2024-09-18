@@ -30,7 +30,7 @@ items:
   - Vintagestory.API.MathTools.NatFloat.nextFloat
   - Vintagestory.API.MathTools.NatFloat.nextFloat(System.Single)
   - Vintagestory.API.MathTools.NatFloat.nextFloat(System.Single,System.Random)
-  - Vintagestory.API.MathTools.NatFloat.nextFloat(System.Single,Vintagestory.API.MathTools.LCGRandom)
+  - Vintagestory.API.MathTools.NatFloat.nextFloat(System.Single,Vintagestory.API.MathTools.IRandom)
   - Vintagestory.API.MathTools.NatFloat.offset
   - Vintagestory.API.MathTools.NatFloat.setOffset(System.Single)
   - Vintagestory.API.MathTools.NatFloat.var
@@ -45,7 +45,18 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
   summary: A more natural random number generator (nature usually doesn't grow by the exact same numbers nor does it completely randomly)
-  example: []
+  example:
+  - >-
+    <pre><code class="lang-json">"quantity": {
+    	"dist": "strongerinvexp",
+    	"avg": 6,
+    	"var": 4
+    }</code></pre>
+
+    <pre><code class="lang-json">"quantity": {
+    	"avg": 4,
+     "var": 2
+    }</code></pre>
   syntax:
     content: public class NatFloat
     content.vb: Public Class NatFloat
@@ -59,6 +70,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.MathTools.NatFloat.Zero
   commentId: P:Vintagestory.API.MathTools.NatFloat.Zero
   id: Zero
@@ -119,6 +133,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    A full offset to apply to any values returned.
+  example: []
   syntax:
     content: public float offset
     return:
@@ -138,6 +157,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The average value for the random float.
+  example: []
   syntax:
     content: public float avg
     return:
@@ -157,6 +181,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The variation for the random float.
+  example: []
   syntax:
     content: public float var
     return:
@@ -176,6 +205,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>UNIFORM</jsondefault>-->
+
+    The type of distribution to use that determines the commodity of values.
+  example: []
   syntax:
     content: public EnumDistribution dist
     return:
@@ -643,34 +677,34 @@ items:
   nameWithType.vb: NatFloat.nextFloat(Single, Random)
   fullName.vb: Vintagestory.API.MathTools.NatFloat.nextFloat(Single, System.Random)
   name.vb: nextFloat(Single, Random)
-- uid: Vintagestory.API.MathTools.NatFloat.nextFloat(System.Single,Vintagestory.API.MathTools.LCGRandom)
-  commentId: M:Vintagestory.API.MathTools.NatFloat.nextFloat(System.Single,Vintagestory.API.MathTools.LCGRandom)
-  id: nextFloat(System.Single,Vintagestory.API.MathTools.LCGRandom)
+- uid: Vintagestory.API.MathTools.NatFloat.nextFloat(System.Single,Vintagestory.API.MathTools.IRandom)
+  commentId: M:Vintagestory.API.MathTools.NatFloat.nextFloat(System.Single,Vintagestory.API.MathTools.IRandom)
+  id: nextFloat(System.Single,Vintagestory.API.MathTools.IRandom)
   parent: Vintagestory.API.MathTools.NatFloat
   langs:
   - csharp
   - vb
-  name: nextFloat(float, LCGRandom)
-  nameWithType: NatFloat.nextFloat(float, LCGRandom)
-  fullName: Vintagestory.API.MathTools.NatFloat.nextFloat(float, Vintagestory.API.MathTools.LCGRandom)
+  name: nextFloat(float, IRandom)
+  nameWithType: NatFloat.nextFloat(float, IRandom)
+  fullName: Vintagestory.API.MathTools.NatFloat.nextFloat(float, Vintagestory.API.MathTools.IRandom)
   type: Method
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
   syntax:
-    content: public float nextFloat(float multiplier, LCGRandom rand)
+    content: public float nextFloat(float multiplier, IRandom rand)
     parameters:
     - id: multiplier
       type: System.Single
     - id: rand
-      type: Vintagestory.API.MathTools.LCGRandom
+      type: Vintagestory.API.MathTools.IRandom
     return:
       type: System.Single
-    content.vb: Public Function nextFloat(multiplier As Single, rand As LCGRandom) As Single
+    content.vb: Public Function nextFloat(multiplier As Single, rand As IRandom) As Single
   overload: Vintagestory.API.MathTools.NatFloat.nextFloat*
-  nameWithType.vb: NatFloat.nextFloat(Single, LCGRandom)
-  fullName.vb: Vintagestory.API.MathTools.NatFloat.nextFloat(Single, Vintagestory.API.MathTools.LCGRandom)
-  name.vb: nextFloat(Single, LCGRandom)
+  nameWithType.vb: NatFloat.nextFloat(Single, IRandom)
+  fullName.vb: Vintagestory.API.MathTools.NatFloat.nextFloat(Single, Vintagestory.API.MathTools.IRandom)
+  name.vb: nextFloat(Single, IRandom)
 - uid: Vintagestory.API.MathTools.NatFloat.ClampToRange(System.Single)
   commentId: M:Vintagestory.API.MathTools.NatFloat.ClampToRange(System.Single)
   id: ClampToRange(System.Single)
@@ -1047,6 +1081,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1054,6 +1150,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.MathTools.NatFloat.Zero*
   commentId: Overload:Vintagestory.API.MathTools.NatFloat.Zero
   href: Vintagestory.API.MathTools.NatFloat.html#Vintagestory_API_MathTools_NatFloat_Zero
@@ -1192,13 +1385,13 @@ references:
   name: Random
   nameWithType: Random
   fullName: System.Random
-- uid: Vintagestory.API.MathTools.LCGRandom
-  commentId: T:Vintagestory.API.MathTools.LCGRandom
+- uid: Vintagestory.API.MathTools.IRandom
+  commentId: T:Vintagestory.API.MathTools.IRandom
   parent: Vintagestory.API.MathTools
-  href: Vintagestory.API.MathTools.LCGRandom.html
-  name: LCGRandom
-  nameWithType: LCGRandom
-  fullName: Vintagestory.API.MathTools.LCGRandom
+  href: Vintagestory.API.MathTools.IRandom.html
+  name: IRandom
+  nameWithType: IRandom
+  fullName: Vintagestory.API.MathTools.IRandom
 - uid: Vintagestory.API.MathTools.NatFloat.ClampToRange*
   commentId: Overload:Vintagestory.API.MathTools.NatFloat.ClampToRange
   href: Vintagestory.API.MathTools.NatFloat.html#Vintagestory_API_MathTools_NatFloat_ClampToRange_System_Single_

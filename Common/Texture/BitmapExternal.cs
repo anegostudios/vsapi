@@ -113,10 +113,7 @@ namespace Vintagestory.API.Common
         {
             try
             {
-                var decode = SKBitmap.Decode(new ReadOnlySpan<byte>(data, 0, dataLength));
-                bmp = new SKBitmap(decode.Width, decode.Height, SKColorType.Bgra8888, SKAlphaType.Unpremul);
-                using var canvas = new SKCanvas(bmp);
-                canvas.DrawBitmap(decode, 0, 0);
+                this.bmp = Decode(new ReadOnlySpan<byte>(data, 0, dataLength));
             }
             catch (Exception ex)
             {
@@ -124,6 +121,21 @@ namespace Vintagestory.API.Common
                 logger.Error(ex);
                 bmp = new SKBitmap(1, 1);
                 bmp.SetPixel(0, 0, SKColors.Orange);
+            }
+        }
+
+        // Copypasted from SkBitmap.cs because the simplified Decode() changes AlphaType.Unpremul into AlphaType.Premul. wtf.
+        public unsafe static SKBitmap Decode(ReadOnlySpan<byte> buffer)
+        {
+            fixed (byte* ptr = buffer)
+            {
+                using SKData data = SKData.Create((IntPtr)ptr, buffer.Length);
+                using SKCodec codec = SKCodec.Create(data);
+
+                SKImageInfo bitmapInfo = codec.Info;
+                bitmapInfo.AlphaType = SKAlphaType.Unpremul;
+
+                return SKBitmap.Decode(codec, bitmapInfo);
             }
         }
 

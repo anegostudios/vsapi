@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Util;
 
@@ -45,6 +47,11 @@ namespace Vintagestory.API.Common
             animCache.Remove(dictKey);
         }
 
+        public static IAnimationManager LoadAnimatorCached(this IAnimationManager manager, ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)
+        {
+            return InitManager(api, manager, entity, entityShape, copyOverAnims, requirePosesOnServer, requireJointsForElements);
+        }
+
         /// <summary>
         /// Initializes the cache to the Animation Manager then spits it back out.
         /// </summary>
@@ -55,7 +62,8 @@ namespace Vintagestory.API.Common
         /// <param name="copyOverAnims"></param>
         /// <param name="requireJointsForElements"></param>
         /// <returns></returns>
-        public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, params string[] requireJointsForElements)
+        [Obsolete("Use manager.LoadAnimator() or manager.LoadAnimatorCached() instead")]
+        public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)
         {
             if (entityShape == null)
             {
@@ -72,54 +80,31 @@ namespace Vintagestory.API.Common
             if (animCache.TryGetValue(dictKey, out cacheObj))
             {
                 manager.Init(entity.Api, entity);
-                
-                animator = api.Side == EnumAppSide.Client ? 
+
+                animator = api.Side == EnumAppSide.Client ?
                     ClientAnimator.CreateForEntity(entity, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, entityShape.JointsById) :
                     ServerAnimator.CreateForEntity(entity, cacheObj.RootPoses, cacheObj.Animations, cacheObj.RootElems, entityShape.JointsById)
                 ;
 
                 manager.Animator = animator;
-
-            } else {
-
-                entityShape.ResolveAndFindJoints(api.Logger, entity.Properties.Client.ShapeForEntity.Base.ToString(), requireJointsForElements);
-
-                manager.Init(entity.Api, entity);
-
-                IAnimator animatorbase = api.Side == EnumAppSide.Client ?
-                    ClientAnimator.CreateForEntity(entity, entityShape.Animations, entityShape.Elements, entityShape.JointsById) :
-                    ServerAnimator.CreateForEntity(entity, entityShape.Animations, entityShape.Elements, entityShape.JointsById)
-                ;
-
-                manager.Animator = animator = animatorbase;
-
+                manager.CopyOverAnims(copyOverAnims, animator);
+            }
+            else
+            {
+                animator = manager.LoadAnimator(api, entity, entityShape, copyOverAnims, requirePosesOnServer, requireJointsForElements);
 
                 animCache[dictKey] = new AnimCacheEntry()
                 {
                     Animations = entityShape.Animations,
-                    RootElems = (animatorbase as ClientAnimator).rootElements,
-                    RootPoses = (animatorbase as ClientAnimator).RootPoses
+                    RootElems = (animator as AnimatorBase).RootElements,
+                    RootPoses = (animator as AnimatorBase).RootPoses
                 };
-            }
+            }            
 
-            if (copyOverAnims != null && animator != null)
-            {
-                for (int i = 0; i < copyOverAnims.Length; i++)
-                {
-                    var sourceAnim = copyOverAnims[i];
-                    if (sourceAnim != null && sourceAnim.Active)
-                    {
-                        manager.ActiveAnimationsByAnimCode.TryGetValue(sourceAnim.Animation.Code, out var meta);
-                        if (meta != null)
-                        {
-                            meta.StartFrameOnce = sourceAnim.CurrentFrame;
-                        }
-                    }
-                }
-            }
-            
             return manager;
         }
+
+
 
     }
 }

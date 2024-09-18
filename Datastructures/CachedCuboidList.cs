@@ -38,7 +38,7 @@ namespace Vintagestory.API.Datastructures
             if (Count >= populatedSize)
             {
                 if (Count >= cuboids.Length) ExpandArrays();
-                cuboids[Count] = cuboid.OffsetCopyDouble(x, y, z);
+                cuboids[Count] = cuboid.OffsetCopyDouble(x, y % BlockPos.DimensionBoundary, z);
                 positions[Count] = new BlockPos(x, y, z);
                 blocks[Count] = block;
                 populatedSize++;
@@ -47,10 +47,10 @@ namespace Vintagestory.API.Datastructures
             {
                 cuboids[Count].Set(
                     cuboid.X1 + x,
-                    cuboid.Y1 + y,
+                    cuboid.Y1 + y % BlockPos.DimensionBoundary,
                     cuboid.Z1 + z,
                     cuboid.X2 + x,
-                    cuboid.Y2 + y,
+                    cuboid.Y2 + y % BlockPos.DimensionBoundary,
                     cuboid.Z2 + z
                 );
                 positions[Count].Set(x, y, z);

@@ -6,6 +6,8 @@ items:
   parent: Vintagestory.API.Common
   children:
   - Vintagestory.API.Common.BlockSchematic.#ctor
+  - Vintagestory.API.Common.BlockSchematic.#ctor(Vintagestory.API.Server.IServerWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  - Vintagestory.API.Common.BlockSchematic.AbovegroundCheckPositions
   - Vintagestory.API.Common.BlockSchematic.AddArea(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.BlockSchematic.AdjustStartPos(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumOrigin)
   - Vintagestory.API.Common.BlockSchematic.BlockCodes
@@ -26,6 +28,7 @@ items:
   - Vintagestory.API.Common.BlockSchematic.FluidsLayerUnpacked
   - Vintagestory.API.Common.BlockSchematic.GameVersion
   - Vintagestory.API.Common.BlockSchematic.GetJustPositions(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.BlockSchematic.GetRotatedPos(Vintagestory.API.Common.EnumOrigin,System.Int32,System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.BlockSchematic.GetStartPos(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumOrigin)
   - Vintagestory.API.Common.BlockSchematic.Indices
   - Vintagestory.API.Common.BlockSchematic.Init(Vintagestory.API.Common.IBlockAccessor)
@@ -38,6 +41,8 @@ items:
   - Vintagestory.API.Common.BlockSchematic.OmitLiquids
   - Vintagestory.API.Common.BlockSchematic.Pack(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.BlockSchematic.PackedOffset
+  - Vintagestory.API.Common.BlockSchematic.PasteToMiniDimension(Vintagestory.API.Server.ICoreServerAPI,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IMiniDimension,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  - Vintagestory.API.Common.BlockSchematic.PathwayBlocksUnpacked
   - Vintagestory.API.Common.BlockSchematic.PathwayOffsets
   - Vintagestory.API.Common.BlockSchematic.PathwaySides
   - Vintagestory.API.Common.BlockSchematic.PathwayStarts
@@ -57,8 +62,9 @@ items:
   - Vintagestory.API.Common.BlockSchematic.SizeZ
   - Vintagestory.API.Common.BlockSchematic.StringEncodeTreeAttribute(Vintagestory.API.Datastructures.ITreeAttribute)
   - Vintagestory.API.Common.BlockSchematic.ToJson
-  - Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.EnumOrigin,System.Int32,System.Nullable{Vintagestory.API.MathTools.EnumAxis})
+  - Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.EnumOrigin,System.Int32,System.Nullable{Vintagestory.API.MathTools.EnumAxis},System.Boolean)
   - Vintagestory.API.Common.BlockSchematic.UndergroundCheckPositions
+  - Vintagestory.API.Common.BlockSchematic.abovegroundBlock
   - Vintagestory.API.Common.BlockSchematic.empty
   - Vintagestory.API.Common.BlockSchematic.fillerBlock
   - Vintagestory.API.Common.BlockSchematic.pathwayBlock
@@ -92,6 +98,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
   attributes:
   - type: Newtonsoft.Json.JsonObjectAttribute
     ctor: Newtonsoft.Json.JsonObjectAttribute.#ctor(Newtonsoft.Json.MemberSerialization)
@@ -618,6 +627,25 @@ items:
     return:
       type: Vintagestory.API.MathTools.FastVec3i
     content.vb: Public PackedOffset As FastVec3i
+- uid: Vintagestory.API.Common.BlockSchematic.PathwayBlocksUnpacked
+  commentId: F:Vintagestory.API.Common.BlockSchematic.PathwayBlocksUnpacked
+  id: PathwayBlocksUnpacked
+  parent: Vintagestory.API.Common.BlockSchematic
+  langs:
+  - csharp
+  - vb
+  name: PathwayBlocksUnpacked
+  nameWithType: BlockSchematic.PathwayBlocksUnpacked
+  fullName: Vintagestory.API.Common.BlockSchematic.PathwayBlocksUnpacked
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public List<BlockPosFacing> PathwayBlocksUnpacked
+    return:
+      type: System.Collections.Generic.List{Vintagestory.Common.Collectible.Block.BlockPosFacing}
+    content.vb: Public PathwayBlocksUnpacked As List(Of BlockPosFacing)
 - uid: Vintagestory.API.Common.BlockSchematic.fillerBlock
   commentId: F:Vintagestory.API.Common.BlockSchematic.fillerBlock
   id: fillerBlock
@@ -675,6 +703,25 @@ items:
     return:
       type: Vintagestory.API.Common.Block
     content.vb: Protected undergroundBlock As Block
+- uid: Vintagestory.API.Common.BlockSchematic.abovegroundBlock
+  commentId: F:Vintagestory.API.Common.BlockSchematic.abovegroundBlock
+  id: abovegroundBlock
+  parent: Vintagestory.API.Common.BlockSchematic
+  langs:
+  - csharp
+  - vb
+  name: abovegroundBlock
+  nameWithType: BlockSchematic.abovegroundBlock
+  fullName: Vintagestory.API.Common.BlockSchematic.abovegroundBlock
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected Block abovegroundBlock
+    return:
+      type: Vintagestory.API.Common.Block
+    content.vb: Protected abovegroundBlock As Block
 - uid: Vintagestory.API.Common.BlockSchematic.empty
   commentId: F:Vintagestory.API.Common.BlockSchematic.empty
   id: empty
@@ -793,6 +840,25 @@ items:
     return:
       type: Vintagestory.API.MathTools.BlockPos[]
     content.vb: Public UndergroundCheckPositions As BlockPos()
+- uid: Vintagestory.API.Common.BlockSchematic.AbovegroundCheckPositions
+  commentId: F:Vintagestory.API.Common.BlockSchematic.AbovegroundCheckPositions
+  id: AbovegroundCheckPositions
+  parent: Vintagestory.API.Common.BlockSchematic
+  langs:
+  - csharp
+  - vb
+  name: AbovegroundCheckPositions
+  nameWithType: BlockSchematic.AbovegroundCheckPositions
+  fullName: Vintagestory.API.Common.BlockSchematic.AbovegroundCheckPositions
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BlockPos[] AbovegroundCheckPositions
+    return:
+      type: Vintagestory.API.MathTools.BlockPos[]
+    content.vb: Public AbovegroundCheckPositions As BlockPos()
 - uid: Vintagestory.API.Common.BlockSchematic.BlockRemaps
   commentId: P:Vintagestory.API.Common.BlockSchematic.BlockRemaps
   id: BlockRemaps
@@ -863,6 +929,42 @@ items:
   nameWithType.vb: BlockSchematic.New()
   fullName.vb: Vintagestory.API.Common.BlockSchematic.New()
   name.vb: New()
+- uid: Vintagestory.API.Common.BlockSchematic.#ctor(Vintagestory.API.Server.IServerWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  commentId: M:Vintagestory.API.Common.BlockSchematic.#ctor(Vintagestory.API.Server.IServerWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  id: '#ctor(Vintagestory.API.Server.IServerWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)'
+  parent: Vintagestory.API.Common.BlockSchematic
+  langs:
+  - csharp
+  - vb
+  name: BlockSchematic(IServerWorldAccessor, BlockPos, BlockPos, bool)
+  nameWithType: BlockSchematic.BlockSchematic(IServerWorldAccessor, BlockPos, BlockPos, bool)
+  fullName: Vintagestory.API.Common.BlockSchematic.BlockSchematic(Vintagestory.API.Server.IServerWorldAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, bool)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Construct a schematic from a specified area in the specified world
+  example: []
+  syntax:
+    content: public BlockSchematic(IServerWorldAccessor world, BlockPos start, BlockPos end, bool notLiquids)
+    parameters:
+    - id: world
+      type: Vintagestory.API.Server.IServerWorldAccessor
+      description: ''
+    - id: start
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    - id: end
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    - id: notLiquids
+      type: System.Boolean
+      description: ''
+    content.vb: Public Sub New(world As IServerWorldAccessor, start As BlockPos, [end] As BlockPos, notLiquids As Boolean)
+  overload: Vintagestory.API.Common.BlockSchematic.#ctor*
+  nameWithType.vb: BlockSchematic.New(IServerWorldAccessor, BlockPos, BlockPos, Boolean)
+  fullName.vb: Vintagestory.API.Common.BlockSchematic.New(Vintagestory.API.Server.IServerWorldAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, Boolean)
+  name.vb: New(IServerWorldAccessor, BlockPos, BlockPos, Boolean)
 - uid: Vintagestory.API.Common.BlockSchematic.Init(Vintagestory.API.Common.IBlockAccessor)
   commentId: M:Vintagestory.API.Common.BlockSchematic.Init(Vintagestory.API.Common.IBlockAccessor)
   id: Init(Vintagestory.API.Common.IBlockAccessor)
@@ -1122,16 +1224,16 @@ items:
       type: Vintagestory.API.MathTools.Rectanglei
     content.vb: Public Overridable Sub PlaceDecors(blockAccessor As IBlockAccessor, startPos As BlockPos, rect As Rectanglei)
   overload: Vintagestory.API.Common.BlockSchematic.PlaceDecors*
-- uid: Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.EnumOrigin,System.Int32,System.Nullable{Vintagestory.API.MathTools.EnumAxis})
-  commentId: M:Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.EnumOrigin,System.Int32,System.Nullable{Vintagestory.API.MathTools.EnumAxis})
-  id: TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.EnumOrigin,System.Int32,System.Nullable{Vintagestory.API.MathTools.EnumAxis})
+- uid: Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.EnumOrigin,System.Int32,System.Nullable{Vintagestory.API.MathTools.EnumAxis},System.Boolean)
+  commentId: M:Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.EnumOrigin,System.Int32,System.Nullable{Vintagestory.API.MathTools.EnumAxis},System.Boolean)
+  id: TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.EnumOrigin,System.Int32,System.Nullable{Vintagestory.API.MathTools.EnumAxis},System.Boolean)
   parent: Vintagestory.API.Common.BlockSchematic
   langs:
   - csharp
   - vb
-  name: TransformWhilePacked(IWorldAccessor, EnumOrigin, int, EnumAxis?)
-  nameWithType: BlockSchematic.TransformWhilePacked(IWorldAccessor, EnumOrigin, int, EnumAxis?)
-  fullName: Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.EnumOrigin, int, Vintagestory.API.MathTools.EnumAxis?)
+  name: TransformWhilePacked(IWorldAccessor, EnumOrigin, int, EnumAxis?, bool)
+  nameWithType: BlockSchematic.TransformWhilePacked(IWorldAccessor, EnumOrigin, int, EnumAxis?, bool)
+  fullName: Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.EnumOrigin, int, Vintagestory.API.MathTools.EnumAxis?, bool)
   type: Method
   assemblies:
   - VintagestoryAPI
@@ -1139,7 +1241,7 @@ items:
   summary: Attempts to transform each block as they are placed in directions different from the schematic.
   example: []
   syntax:
-    content: public virtual void TransformWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, EnumAxis? flipAxis = null)
+    content: public virtual void TransformWhilePacked(IWorldAccessor worldForResolve, EnumOrigin aroundOrigin, int angle, EnumAxis? flipAxis = null, bool isDungeon = false)
     parameters:
     - id: worldForResolve
       type: Vintagestory.API.Common.IWorldAccessor
@@ -1153,11 +1255,48 @@ items:
     - id: flipAxis
       type: System.Nullable{Vintagestory.API.MathTools.EnumAxis}
       description: ''
-    content.vb: Public Overridable Sub TransformWhilePacked(worldForResolve As IWorldAccessor, aroundOrigin As EnumOrigin, angle As Integer, flipAxis As EnumAxis? = Nothing)
+    - id: isDungeon
+      type: System.Boolean
+      description: ''
+    content.vb: Public Overridable Sub TransformWhilePacked(worldForResolve As IWorldAccessor, aroundOrigin As EnumOrigin, angle As Integer, flipAxis As EnumAxis? = Nothing, isDungeon As Boolean = False)
   overload: Vintagestory.API.Common.BlockSchematic.TransformWhilePacked*
-  nameWithType.vb: BlockSchematic.TransformWhilePacked(IWorldAccessor, EnumOrigin, Integer, EnumAxis?)
-  fullName.vb: Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.EnumOrigin, Integer, Vintagestory.API.MathTools.EnumAxis?)
-  name.vb: TransformWhilePacked(IWorldAccessor, EnumOrigin, Integer, EnumAxis?)
+  nameWithType.vb: BlockSchematic.TransformWhilePacked(IWorldAccessor, EnumOrigin, Integer, EnumAxis?, Boolean)
+  fullName.vb: Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.EnumOrigin, Integer, Vintagestory.API.MathTools.EnumAxis?, Boolean)
+  name.vb: TransformWhilePacked(IWorldAccessor, EnumOrigin, Integer, EnumAxis?, Boolean)
+- uid: Vintagestory.API.Common.BlockSchematic.GetRotatedPos(Vintagestory.API.Common.EnumOrigin,System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.BlockSchematic.GetRotatedPos(Vintagestory.API.Common.EnumOrigin,System.Int32,System.Int32,System.Int32,System.Int32)
+  id: GetRotatedPos(Vintagestory.API.Common.EnumOrigin,System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.BlockSchematic
+  langs:
+  - csharp
+  - vb
+  name: GetRotatedPos(EnumOrigin, int, int, int, int)
+  nameWithType: BlockSchematic.GetRotatedPos(EnumOrigin, int, int, int, int)
+  fullName: Vintagestory.API.Common.BlockSchematic.GetRotatedPos(Vintagestory.API.Common.EnumOrigin, int, int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BlockPos GetRotatedPos(EnumOrigin aroundOrigin, int angle, int dx, int dy, int dz)
+    parameters:
+    - id: aroundOrigin
+      type: Vintagestory.API.Common.EnumOrigin
+    - id: angle
+      type: System.Int32
+    - id: dx
+      type: System.Int32
+    - id: dy
+      type: System.Int32
+    - id: dz
+      type: System.Int32
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: Public Function GetRotatedPos(aroundOrigin As EnumOrigin, angle As Integer, dx As Integer, dy As Integer, dz As Integer) As BlockPos
+  overload: Vintagestory.API.Common.BlockSchematic.GetRotatedPos*
+  nameWithType.vb: BlockSchematic.GetRotatedPos(EnumOrigin, Integer, Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.BlockSchematic.GetRotatedPos(Vintagestory.API.Common.EnumOrigin, Integer, Integer, Integer, Integer)
+  name.vb: GetRotatedPos(EnumOrigin, Integer, Integer, Integer, Integer)
 - uid: Vintagestory.API.Common.BlockSchematic.PlaceEntitiesAndBlockEntities(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Boolean,System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Int32}},System.Int32,System.Collections.Generic.Dictionary{Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block},System.Boolean)
   commentId: M:Vintagestory.API.Common.BlockSchematic.PlaceEntitiesAndBlockEntities(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Boolean,System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Int32}},System.Int32,System.Collections.Generic.Dictionary{Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block},System.Boolean)
   id: PlaceEntitiesAndBlockEntities(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Boolean,System.Collections.Generic.Dictionary{System.Int32,System.Collections.Generic.Dictionary{System.Int32,System.Int32}},System.Int32,System.Collections.Generic.Dictionary{Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block},System.Boolean)
@@ -1650,6 +1789,38 @@ items:
       description: ''
     content.vb: Public Overridable Function ClonePacked() As BlockSchematic
   overload: Vintagestory.API.Common.BlockSchematic.ClonePacked*
+- uid: Vintagestory.API.Common.BlockSchematic.PasteToMiniDimension(Vintagestory.API.Server.ICoreServerAPI,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IMiniDimension,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  commentId: M:Vintagestory.API.Common.BlockSchematic.PasteToMiniDimension(Vintagestory.API.Server.ICoreServerAPI,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IMiniDimension,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  id: PasteToMiniDimension(Vintagestory.API.Server.ICoreServerAPI,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IMiniDimension,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  parent: Vintagestory.API.Common.BlockSchematic
+  langs:
+  - csharp
+  - vb
+  name: PasteToMiniDimension(ICoreServerAPI, IBlockAccessor, IMiniDimension, BlockPos, bool)
+  nameWithType: BlockSchematic.PasteToMiniDimension(ICoreServerAPI, IBlockAccessor, IMiniDimension, BlockPos, bool)
+  fullName: Vintagestory.API.Common.BlockSchematic.PasteToMiniDimension(Vintagestory.API.Server.ICoreServerAPI, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.Common.IMiniDimension, Vintagestory.API.MathTools.BlockPos, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void PasteToMiniDimension(ICoreServerAPI sapi, IBlockAccessor blockAccess, IMiniDimension miniDimension, BlockPos originPos, bool replaceMetaBlocks)
+    parameters:
+    - id: sapi
+      type: Vintagestory.API.Server.ICoreServerAPI
+    - id: blockAccess
+      type: Vintagestory.API.Common.IBlockAccessor
+    - id: miniDimension
+      type: Vintagestory.API.Common.IMiniDimension
+    - id: originPos
+      type: Vintagestory.API.MathTools.BlockPos
+    - id: replaceMetaBlocks
+      type: System.Boolean
+    content.vb: Public Sub PasteToMiniDimension(sapi As ICoreServerAPI, blockAccess As IBlockAccessor, miniDimension As IMiniDimension, originPos As BlockPos, replaceMetaBlocks As Boolean)
+  overload: Vintagestory.API.Common.BlockSchematic.PasteToMiniDimension*
+  nameWithType.vb: BlockSchematic.PasteToMiniDimension(ICoreServerAPI, IBlockAccessor, IMiniDimension, BlockPos, Boolean)
+  fullName.vb: Vintagestory.API.Common.BlockSchematic.PasteToMiniDimension(Vintagestory.API.Server.ICoreServerAPI, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.Common.IMiniDimension, Vintagestory.API.MathTools.BlockPos, Boolean)
+  name.vb: PasteToMiniDimension(ICoreServerAPI, IBlockAccessor, IMiniDimension, BlockPos, Boolean)
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -1911,6 +2082,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1918,6 +2151,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.String
   commentId: T:System.String
   parent: System
@@ -2450,6 +2780,39 @@ references:
   - uid: Vintagestory.API.MathTools
     name: MathTools
     href: Vintagestory.API.MathTools.html
+- uid: System.Collections.Generic.List{Vintagestory.Common.Collectible.Block.BlockPosFacing}
+  commentId: T:System.Collections.Generic.List{Vintagestory.Common.Collectible.Block.BlockPosFacing}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<BlockPosFacing>
+  nameWithType: List<BlockPosFacing>
+  fullName: System.Collections.Generic.List<Vintagestory.Common.Collectible.Block.BlockPosFacing>
+  nameWithType.vb: List(Of BlockPosFacing)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.Common.Collectible.Block.BlockPosFacing)
+  name.vb: List(Of BlockPosFacing)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.Common.Collectible.Block.BlockPosFacing
+    name: BlockPosFacing
+    href: Vintagestory.Common.Collectible.Block.BlockPosFacing.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.Common.Collectible.Block.BlockPosFacing
+    name: BlockPosFacing
+    href: Vintagestory.Common.Collectible.Block.BlockPosFacing.html
+  - name: )
 - uid: Vintagestory.API.Common.Block
   commentId: T:Vintagestory.API.Common.Block
   parent: Vintagestory.API.Common
@@ -2640,6 +3003,50 @@ references:
   nameWithType.vb: BlockSchematic.New
   fullName.vb: Vintagestory.API.Common.BlockSchematic.New
   name.vb: New
+- uid: Vintagestory.API.Server.IServerWorldAccessor
+  commentId: T:Vintagestory.API.Server.IServerWorldAccessor
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.IServerWorldAccessor.html
+  name: IServerWorldAccessor
+  nameWithType: IServerWorldAccessor
+  fullName: Vintagestory.API.Server.IServerWorldAccessor
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.Server
+  commentId: N:Vintagestory.API.Server
+  href: Vintagestory.html
+  name: Vintagestory.API.Server
+  nameWithType: Vintagestory.API.Server
+  fullName: Vintagestory.API.Server
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Server
+    name: Server
+    href: Vintagestory.API.Server.html
 - uid: Vintagestory.API.Common.BlockSchematic.Init*
   commentId: Overload:Vintagestory.API.Common.BlockSchematic.Init
   href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_Init_Vintagestory_API_Common_IBlockAccessor_
@@ -2678,13 +3085,6 @@ references:
   name: AddArea
   nameWithType: BlockSchematic.AddArea
   fullName: Vintagestory.API.Common.BlockSchematic.AddArea
-- uid: Vintagestory.API.MathTools.BlockPos
-  commentId: T:Vintagestory.API.MathTools.BlockPos
-  parent: Vintagestory.API.MathTools
-  href: Vintagestory.API.MathTools.BlockPos.html
-  name: BlockPos
-  nameWithType: BlockPos
-  fullName: Vintagestory.API.MathTools.BlockPos
 - uid: Vintagestory.API.Common.BlockSchematic.Pack*
   commentId: Overload:Vintagestory.API.Common.BlockSchematic.Pack
   href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_Pack_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_
@@ -2712,7 +3112,7 @@ references:
   fullName: Vintagestory.API.MathTools.Rectanglei
 - uid: Vintagestory.API.Common.BlockSchematic.TransformWhilePacked*
   commentId: Overload:Vintagestory.API.Common.BlockSchematic.TransformWhilePacked
-  href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_TransformWhilePacked_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_EnumOrigin_System_Int32_System_Nullable_Vintagestory_API_MathTools_EnumAxis__
+  href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_TransformWhilePacked_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_EnumOrigin_System_Int32_System_Nullable_Vintagestory_API_MathTools_EnumAxis__System_Boolean_
   name: TransformWhilePacked
   nameWithType: BlockSchematic.TransformWhilePacked
   fullName: Vintagestory.API.Common.BlockSchematic.TransformWhilePacked
@@ -2769,6 +3169,12 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: Vintagestory.API.Common.BlockSchematic.GetRotatedPos*
+  commentId: Overload:Vintagestory.API.Common.BlockSchematic.GetRotatedPos
+  href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_GetRotatedPos_Vintagestory_API_Common_EnumOrigin_System_Int32_System_Int32_System_Int32_System_Int32_
+  name: GetRotatedPos
+  nameWithType: BlockSchematic.GetRotatedPos
+  fullName: Vintagestory.API.Common.BlockSchematic.GetRotatedPos
 - uid: Vintagestory.API.Common.BlockSchematic.PlaceEntitiesAndBlockEntities*
   commentId: Overload:Vintagestory.API.Common.BlockSchematic.PlaceEntitiesAndBlockEntities
   href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_PlaceEntitiesAndBlockEntities_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Boolean_System_Collections_Generic_Dictionary_System_Int32_System_Collections_Generic_Dictionary_System_Int32_System_Int32___System_Int32_System_Collections_Generic_Dictionary_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block__System_Boolean_
@@ -3039,3 +3445,23 @@ references:
   name: ClonePacked
   nameWithType: BlockSchematic.ClonePacked
   fullName: Vintagestory.API.Common.BlockSchematic.ClonePacked
+- uid: Vintagestory.API.Common.BlockSchematic.PasteToMiniDimension*
+  commentId: Overload:Vintagestory.API.Common.BlockSchematic.PasteToMiniDimension
+  href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_PasteToMiniDimension_Vintagestory_API_Server_ICoreServerAPI_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_IMiniDimension_Vintagestory_API_MathTools_BlockPos_System_Boolean_
+  name: PasteToMiniDimension
+  nameWithType: BlockSchematic.PasteToMiniDimension
+  fullName: Vintagestory.API.Common.BlockSchematic.PasteToMiniDimension
+- uid: Vintagestory.API.Server.ICoreServerAPI
+  commentId: T:Vintagestory.API.Server.ICoreServerAPI
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.ICoreServerAPI.html
+  name: ICoreServerAPI
+  nameWithType: ICoreServerAPI
+  fullName: Vintagestory.API.Server.ICoreServerAPI
+- uid: Vintagestory.API.Common.IMiniDimension
+  commentId: T:Vintagestory.API.Common.IMiniDimension
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IMiniDimension.html
+  name: IMiniDimension
+  nameWithType: IMiniDimension
+  fullName: Vintagestory.API.Common.IMiniDimension

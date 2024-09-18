@@ -51,11 +51,6 @@ namespace Vintagestory.API.Datastructures
         public void MarkAllDirty()
         {
             this.allDirty = true;
-
-            /*foreach (TreeModifiedListener listener in OnModified)
-            {
-                listener.listener();
-            }*/
         }
 
 
@@ -83,27 +78,24 @@ namespace Vintagestory.API.Datastructures
         /// <param name="path"></param>
         public void MarkPathDirty(string path)
         {
-            lock (attributesLock)
+            foreach (TreeModifiedListener listener in OnModified)
             {
-                foreach (TreeModifiedListener listener in OnModified)
+                if (listener.path == null || path.StartsWithOrdinal(listener.path))
                 {
-                    if (listener.path == null || path.StartsWithOrdinal(listener.path))
-                    {
-                        listener.listener();
-                    }
+                    listener.listener();
                 }
-
-                if (allDirty) return;
-
-                if (attributePathsDirty.Count >= 10)
-                {
-                    attributePathsDirty.Clear();
-                    allDirty = true;
-                }
-
-
-                attributePathsDirty.Add(path);
             }
+
+            if (allDirty) return;
+
+            if (attributePathsDirty.Count >= 10)
+            {
+                attributePathsDirty.Clear();
+                allDirty = true;
+            }
+
+
+            attributePathsDirty.Add(path);
         }
 
 
@@ -233,7 +225,6 @@ namespace Vintagestory.API.Datastructures
                 Type t = AttributeIdMapping[attrId];
                 attr = (IAttribute)Activator.CreateInstance(t);
                 attributes[path] = attr;
-                //SetAttribute(path, attr); - cant use this, causes a mark dirty and triggers modified listeners too early
             }
 
             attr.FromBytes(reader);

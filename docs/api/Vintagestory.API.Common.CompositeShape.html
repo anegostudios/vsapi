@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class CompositeShape | VintageStory API ">
       
-      
+      <meta name="description" content="Holds shape data to create 3D representations of objects. Also allows shapes to be overlayed on top of one another recursively.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -97,7 +97,8 @@ Class CompositeShape
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Holds shape data to create 3D representations of objects. Also allows shapes to be overlayed on top of one another recursively.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -135,12 +136,26 @@ Class CompositeShape
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
-    <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
-    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
   </dd></dl>
 
 
+  <h2 id="Vintagestory_API_Common_CompositeShape_examples">Examples</h2>
+  <pre><code class="lang-json">"shape": { "base": "block/basic/cube" },</code></pre>
+<pre><code class="lang-json">"shapeInventory": {
+ 	"base": "block/plant/bamboo/{color}/{part}-1",
+ 	"overlays": [ { "base": "block/plant/bamboo/{color}/{part}lod0-1" } ]
+},</code></pre>
 
 
 
@@ -155,7 +170,8 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the shape is chosen.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -217,7 +233,9 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>None</jsondefault>-->
+<p>The path to this shape file.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -247,7 +265,9 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>VintageStory</jsondefault>-->
+<p>The format/filetype of this shape.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -272,12 +292,44 @@ Class CompositeShape
 
 
 
+  <h3 id="Vintagestory_API_Common_CompositeShape_IgnoreElements" data-uid="Vintagestory.API.Common.CompositeShape.IgnoreElements">
+  IgnoreElements
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If set will not tesselate elements with given name</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] IgnoreElements</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_CompositeShape_InsertBakedTextures" data-uid="Vintagestory.API.Common.CompositeShape.InsertBakedTextures">
   InsertBakedTextures
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether or not to insert baked in textures for mesh formats such as gltf into the texture atlas.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>Whether or not to insert baked in textures for mesh formats such as gltf into the texture atlas.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -308,7 +360,9 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>The shape will render all overlays on top of this shape. Can be used to group multiple shapes into one composite shape.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -338,7 +392,8 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If non zero will only tesselate the first n elements of the shape</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>If non zero will only tesselate the first n elements of the shape</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -369,7 +424,9 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The scale of this shape on all axes.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -399,7 +456,8 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If set will only tesselate elements with given name</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>If set will only tesselate elements with given name</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -430,7 +488,8 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If true, the shape is created from a voxelized version of the first defined texture</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>If true, the shape is created from a voxelized version of the first defined texture</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -461,7 +520,9 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>How much should this shape be offset on X axis?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -491,7 +552,9 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>How much should this shape be offset on Y axis?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -521,7 +584,9 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>How much should this shape be offset on Z axis?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -551,7 +616,9 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>How much, in degrees, should this shape be rotated around the X axis?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -581,7 +648,9 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>How much, in degrees, should this shape be rotated around the Y axis?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -611,7 +680,9 @@ Class CompositeShape
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>How much, in degrees, should this shape be rotated around the Z axis?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -825,6 +896,39 @@ Class CompositeShape
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_CompositeShape_ToString_" data-uid="Vintagestory.API.Common.CompositeShape.ToString*"></a>
+
+  <h3 id="Vintagestory_API_Common_CompositeShape_ToString" data-uid="Vintagestory.API.Common.CompositeShape.ToString">
+  ToString()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a string that represents the current object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A string that represents the current object.</p>
+</dd>
+  </dl>
 
 
 

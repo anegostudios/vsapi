@@ -38,7 +38,7 @@ namespace Vintagestory.API.Datastructures
             count = 1;
         }
 
-        public FastSmallDictionary(Dictionary<TKey, TValue> dict) : this(dict.Count)
+        public FastSmallDictionary(IDictionary<TKey, TValue> dict) : this(dict.Count)
         {
             foreach (var val in dict) Add(val);
         }

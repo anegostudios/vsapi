@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -102,7 +102,7 @@ Class JsonObject
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class JsonObject</code></pre>
+    <pre><code class="lang-csharp hljs">public class JsonObject : IReadOnlyCollection&lt;JsonObject&gt;, IEnumerable&lt;JsonObject&gt;, IEnumerable</code></pre>
   </div>
 
 
@@ -116,6 +116,14 @@ Class JsonObject
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist inheritedMembers">
@@ -141,6 +149,28 @@ Class JsonObject
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__">EnumerableExtensions.Foreach&lt;T&gt;(IEnumerable&lt;T&gt;, Action&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__">EnumerableExtensions.IndexOf&lt;T&gt;(IEnumerable&lt;T&gt;, ActionBoolReturn&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__">EnumerableExtensions.NearestDistance&lt;T&gt;(IEnumerable&lt;T&gt;, Func&lt;T, double&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__">EnumerableExtensions.Nearest&lt;T&gt;(IEnumerable&lt;T&gt;, Func&lt;T, double&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -219,6 +249,39 @@ Class JsonObject
 
   <h2 class="section" id="properties">Properties
 </h2>
+
+
+  <a id="Vintagestory_API_Datastructures_JsonObject_Count_" data-uid="Vintagestory.API.Datastructures.JsonObject.Count*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_JsonObject_Count" data-uid="Vintagestory.API.Datastructures.JsonObject.Count">
+  Count
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the number of elements in the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of elements in the collection.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_Datastructures_JsonObject_Exists_" data-uid="Vintagestory.API.Datastructures.JsonObject.Exists*"></a>
@@ -888,6 +951,39 @@ public string[] AsStringArray(string[] defaultValue = null, string defaultDomain
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
     <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_JsonObject_GetEnumerator_" data-uid="Vintagestory.API.Datastructures.JsonObject.GetEnumerator*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_JsonObject_GetEnumerator" data-uid="Vintagestory.API.Datastructures.JsonObject.GetEnumerator">
+  GetEnumerator()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns an enumerator that iterates through the collection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;JsonObject&gt; GetEnumerator()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a>&gt;</dt>
+    <dd><p>An enumerator that can be used to iterate through the collection.</p>
+</dd>
   </dl>
 
 

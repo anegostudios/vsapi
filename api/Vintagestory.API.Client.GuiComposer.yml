@@ -20,6 +20,7 @@ items:
   - Vintagestory.API.Client.GuiComposer.CurParentBounds
   - Vintagestory.API.Client.GuiComposer.CurrentElementKey
   - Vintagestory.API.Client.GuiComposer.CurrentTabIndexElement
+  - Vintagestory.API.Client.GuiComposer.DialogName
   - Vintagestory.API.Client.GuiComposer.Dispose
   - Vintagestory.API.Client.GuiComposer.Enabled
   - Vintagestory.API.Client.GuiComposer.EndChildElements
@@ -30,6 +31,7 @@ items:
   - Vintagestory.API.Client.GuiComposer.GetElement(System.String)
   - Vintagestory.API.Client.GuiComposer.Item(System.String)
   - Vintagestory.API.Client.GuiComposer.LastAddedElement
+  - Vintagestory.API.Client.GuiComposer.LastAddedElementBounds
   - Vintagestory.API.Client.GuiComposer.MaxTabIndex
   - Vintagestory.API.Client.GuiComposer.MouseOverCursor
   - Vintagestory.API.Client.GuiComposer.OnComposed
@@ -97,12 +99,14 @@ items:
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
   extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
   - Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddAutoSizeHoverText(System.String,Vintagestory.API.Client.CairoFont,System.Int32,Vintagestory.API.Client.ElementBounds,System.String)
   - Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddButton(System.String,Vintagestory.API.Common.ActionConsumable,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.EnumButtonStyle,System.String)
   - Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddButton(System.String,Vintagestory.API.Common.ActionConsumable,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.EnumButtonStyle,Vintagestory.API.Client.EnumTextOrientation,System.String)
   - Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddButton(System.String,Vintagestory.API.Common.ActionConsumable,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.EnumButtonStyle,System.String)
   - Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddButton(System.String,Vintagestory.API.Common.ActionConsumable,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.EnumButtonStyle,Vintagestory.API.Client.EnumTextOrientation,System.String)
-  - Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{{T}},System.Collections.Generic.List{{T}},System.String)
+  - Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{{T}},System.Collections.Generic.IEnumerable{{T}},System.String)
   - Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddChatInput(Vintagestory.API.Client.ElementBounds,System.Action{System.String},System.String)
   - Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddColorListPicker(System.Int32[],System.Action{System.Int32},Vintagestory.API.Client.ElementBounds,System.Int32,System.String)
   - Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddCompactVerticalScrollbar(System.Action{System.Single},Vintagestory.API.Client.ElementBounds,System.String)
@@ -312,6 +316,25 @@ items:
     return:
       type: System.Int32
     content.vb: Protected currentFocusableElementKey As Integer
+- uid: Vintagestory.API.Client.GuiComposer.DialogName
+  commentId: F:Vintagestory.API.Client.GuiComposer.DialogName
+  id: DialogName
+  parent: Vintagestory.API.Client.GuiComposer
+  langs:
+  - csharp
+  - vb
+  name: DialogName
+  nameWithType: GuiComposer.DialogName
+  fullName: Vintagestory.API.Client.GuiComposer.DialogName
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public string DialogName
+    return:
+      type: System.String
+    content.vb: Public DialogName As String
 - uid: Vintagestory.API.Client.GuiComposer.staticElementsTexture
   commentId: F:Vintagestory.API.Client.GuiComposer.staticElementsTexture
   id: staticElementsTexture
@@ -426,6 +449,27 @@ items:
     return:
       type: Vintagestory.API.Client.GuiElement
     content.vb: Protected lastAddedElement As GuiElement
+- uid: Vintagestory.API.Client.GuiComposer.LastAddedElementBounds
+  commentId: P:Vintagestory.API.Client.GuiComposer.LastAddedElementBounds
+  id: LastAddedElementBounds
+  parent: Vintagestory.API.Client.GuiComposer
+  langs:
+  - csharp
+  - vb
+  name: LastAddedElementBounds
+  nameWithType: GuiComposer.LastAddedElementBounds
+  fullName: Vintagestory.API.Client.GuiComposer.LastAddedElementBounds
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public ElementBounds LastAddedElementBounds { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.ElementBounds
+    content.vb: Public ReadOnly Property LastAddedElementBounds As ElementBounds
+  overload: Vintagestory.API.Client.GuiComposer.LastAddedElementBounds*
 - uid: Vintagestory.API.Client.GuiComposer.CurParentBounds
   commentId: P:Vintagestory.API.Client.GuiComposer.CurParentBounds
   id: CurParentBounds
@@ -1776,6 +1820,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddAutoSizeHoverText(System.String,Vintagestory.API.Client.CairoFont,System.Int32,Vintagestory.API.Client.ElementBounds,System.String)
   commentId: M:Vintagestory.API.Client.GuiComposerHelpers.AddAutoSizeHoverText(Vintagestory.API.Client.GuiComposer,System.String,Vintagestory.API.Client.CairoFont,System.Int32,Vintagestory.API.Client.ElementBounds,System.String)
   parent: Vintagestory.API.Client.GuiComposerHelpers
@@ -2233,21 +2339,21 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
-- uid: Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{{T}},System.Collections.Generic.List{{T}},System.String)
-  commentId: M:Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)
+- uid: Vintagestory.API.Client.GuiComposer.Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{{T}},System.Collections.Generic.IEnumerable{{T}},System.String)
+  commentId: M:Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)
   parent: Vintagestory.API.Client.GuiComposerHelpers
-  definition: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)
-  href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_List___0__System_String_
-  name: AddCellList<T>(GuiComposer, ElementBounds, OnRequireCell<T>, List<T>, string)
-  nameWithType: GuiComposerHelpers.AddCellList<T>(GuiComposer, ElementBounds, OnRequireCell<T>, List<T>, string)
-  fullName: Vintagestory.API.Client.GuiComposerHelpers.AddCellList<T>(Vintagestory.API.Client.GuiComposer, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell<T>, System.Collections.Generic.List<T>, string)
-  nameWithType.vb: GuiComposerHelpers.AddCellList(Of T)(GuiComposer, ElementBounds, OnRequireCell(Of T), List(Of T), String)
-  fullName.vb: Vintagestory.API.Client.GuiComposerHelpers.AddCellList(Of T)(Vintagestory.API.Client.GuiComposer, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell(Of T), System.Collections.Generic.List(Of T), String)
-  name.vb: AddCellList(Of T)(GuiComposer, ElementBounds, OnRequireCell(Of T), List(Of T), String)
+  definition: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)
+  href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_IEnumerable___0__System_String_
+  name: AddCellList<T>(GuiComposer, ElementBounds, OnRequireCell<T>, IEnumerable<T>, string)
+  nameWithType: GuiComposerHelpers.AddCellList<T>(GuiComposer, ElementBounds, OnRequireCell<T>, IEnumerable<T>, string)
+  fullName: Vintagestory.API.Client.GuiComposerHelpers.AddCellList<T>(Vintagestory.API.Client.GuiComposer, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell<T>, System.Collections.Generic.IEnumerable<T>, string)
+  nameWithType.vb: GuiComposerHelpers.AddCellList(Of T)(GuiComposer, ElementBounds, OnRequireCell(Of T), IEnumerable(Of T), String)
+  fullName.vb: Vintagestory.API.Client.GuiComposerHelpers.AddCellList(Of T)(Vintagestory.API.Client.GuiComposer, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell(Of T), System.Collections.Generic.IEnumerable(Of T), String)
+  name.vb: AddCellList(Of T)(GuiComposer, ElementBounds, OnRequireCell(Of T), IEnumerable(Of T), String)
   spec.csharp:
-  - uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)
+  - uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)
     name: AddCellList
-    href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_List___0__System_String_
+    href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_IEnumerable___0__System_String_
   - name: <
   - name: T
   - name: '>'
@@ -2270,10 +2376,10 @@ references:
   - name: '>'
   - name: ','
   - name: " "
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: <
   - name: T
   - name: '>'
@@ -2285,9 +2391,9 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
   spec.vb:
-  - uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)
+  - uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)
     name: AddCellList
-    href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_List___0__System_String_
+    href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_IEnumerable___0__System_String_
   - name: (
   - name: Of
   - name: " "
@@ -2314,10 +2420,10 @@ references:
   - name: )
   - name: ','
   - name: " "
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: (
   - name: Of
   - name: " "
@@ -8656,6 +8762,73 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Vintagestory.API.Client.GuiComposerHelpers.AddAutoSizeHoverText(Vintagestory.API.Client.GuiComposer,System.String,Vintagestory.API.Client.CairoFont,System.Int32,Vintagestory.API.Client.ElementBounds,System.String)
   commentId: M:Vintagestory.API.Client.GuiComposerHelpers.AddAutoSizeHoverText(Vintagestory.API.Client.GuiComposer,System.String,Vintagestory.API.Client.CairoFont,System.Int32,Vintagestory.API.Client.ElementBounds,System.String)
   isExternal: true
@@ -9115,20 +9288,20 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
-- uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)
-  commentId: M:Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)
+- uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)
+  commentId: M:Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)
   isExternal: true
-  href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_List___0__System_String_
-  name: AddCellList<T>(GuiComposer, ElementBounds, OnRequireCell<T>, List<T>, string)
-  nameWithType: GuiComposerHelpers.AddCellList<T>(GuiComposer, ElementBounds, OnRequireCell<T>, List<T>, string)
-  fullName: Vintagestory.API.Client.GuiComposerHelpers.AddCellList<T>(Vintagestory.API.Client.GuiComposer, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell<T>, System.Collections.Generic.List<T>, string)
-  nameWithType.vb: GuiComposerHelpers.AddCellList(Of T)(GuiComposer, ElementBounds, OnRequireCell(Of T), List(Of T), String)
-  fullName.vb: Vintagestory.API.Client.GuiComposerHelpers.AddCellList(Of T)(Vintagestory.API.Client.GuiComposer, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell(Of T), System.Collections.Generic.List(Of T), String)
-  name.vb: AddCellList(Of T)(GuiComposer, ElementBounds, OnRequireCell(Of T), List(Of T), String)
+  href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_IEnumerable___0__System_String_
+  name: AddCellList<T>(GuiComposer, ElementBounds, OnRequireCell<T>, IEnumerable<T>, string)
+  nameWithType: GuiComposerHelpers.AddCellList<T>(GuiComposer, ElementBounds, OnRequireCell<T>, IEnumerable<T>, string)
+  fullName: Vintagestory.API.Client.GuiComposerHelpers.AddCellList<T>(Vintagestory.API.Client.GuiComposer, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell<T>, System.Collections.Generic.IEnumerable<T>, string)
+  nameWithType.vb: GuiComposerHelpers.AddCellList(Of T)(GuiComposer, ElementBounds, OnRequireCell(Of T), IEnumerable(Of T), String)
+  fullName.vb: Vintagestory.API.Client.GuiComposerHelpers.AddCellList(Of T)(Vintagestory.API.Client.GuiComposer, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell(Of T), System.Collections.Generic.IEnumerable(Of T), String)
+  name.vb: AddCellList(Of T)(GuiComposer, ElementBounds, OnRequireCell(Of T), IEnumerable(Of T), String)
   spec.csharp:
-  - uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)
+  - uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)
     name: AddCellList
-    href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_List___0__System_String_
+    href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_IEnumerable___0__System_String_
   - name: <
   - name: T
   - name: '>'
@@ -9151,10 +9324,10 @@ references:
   - name: '>'
   - name: ','
   - name: " "
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: <
   - name: T
   - name: '>'
@@ -9166,9 +9339,9 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
   spec.vb:
-  - uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)
+  - uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)
     name: AddCellList
-    href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_List___0__System_String_
+    href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_IEnumerable___0__System_String_
   - name: (
   - name: Of
   - name: " "
@@ -9195,10 +9368,10 @@ references:
   - name: )
   - name: ','
   - name: " "
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: (
   - name: Of
   - name: " "
@@ -15480,6 +15653,36 @@ references:
   name: GuiElementInsetHelper
   nameWithType: GuiElementInsetHelper
   fullName: Vintagestory.API.Client.GuiElementInsetHelper
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Action
   commentId: T:System.Action
   parent: System
@@ -15660,6 +15863,17 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
 - uid: Vintagestory.API.Client.LoadedTexture
   commentId: T:Vintagestory.API.Client.LoadedTexture
   parent: Vintagestory.API.Client
@@ -15777,6 +15991,12 @@ references:
   name: GuiElement
   nameWithType: GuiElement
   fullName: Vintagestory.API.Client.GuiElement
+- uid: Vintagestory.API.Client.GuiComposer.LastAddedElementBounds*
+  commentId: Overload:Vintagestory.API.Client.GuiComposer.LastAddedElementBounds
+  href: Vintagestory.API.Client.GuiComposer.html#Vintagestory_API_Client_GuiComposer_LastAddedElementBounds
+  name: LastAddedElementBounds
+  nameWithType: GuiComposer.LastAddedElementBounds
+  fullName: Vintagestory.API.Client.GuiComposer.LastAddedElementBounds
 - uid: Vintagestory.API.Client.GuiComposer.CurParentBounds*
   commentId: Overload:Vintagestory.API.Client.GuiComposer.CurParentBounds
   href: Vintagestory.API.Client.GuiComposer.html#Vintagestory_API_Client_GuiComposer_CurParentBounds
@@ -15870,17 +16090,6 @@ references:
   nameWithType.vb: GuiComposer.this[]
   fullName.vb: Vintagestory.API.Client.GuiComposer.this[]
   name.vb: this[]
-- uid: System.String
-  commentId: T:System.String
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.string
-  name: string
-  nameWithType: string
-  fullName: string
-  nameWithType.vb: String
-  fullName.vb: String
-  name.vb: String
 - uid: Vintagestory.API.Client.GuiComposer.Bounds*
   commentId: Overload:Vintagestory.API.Client.GuiComposer.Bounds
   href: Vintagestory.API.Client.GuiComposer.html#Vintagestory_API_Client_GuiComposer_Bounds

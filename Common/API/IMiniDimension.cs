@@ -4,14 +4,14 @@ using Vintagestory.API.MathTools;
 namespace Vintagestory.API.Common
 {
     /// <summary>
-    /// Provides read/write access to the blocks of a movable mini-dimension. 
+    /// Provides read/write access to the blocks of a movable mini-dimension.
     /// </summary>
     public interface IMiniDimension : IBlockAccessor
     {
         int subDimensionId { get; set; }
         EntityPos CurrentPos { get; set; }
         bool Dirty { get; set; }
-        bool TrackSelection { get; }
+        bool TrackSelection { get; set; }
         BlockPos selectionTrackingOriginalPos { get; set; }
 
         /// <summary>
@@ -32,6 +32,8 @@ namespace Vintagestory.API.Common
         /// Used when rendering
         /// </summary>
         FastVec3d GetRenderOffset(float dt);
+
+        void SetRenderOffsetY(int offsetY);
         float[] GetRenderTransformMatrix(float[] currentModelViewMatrix, Vec3d playerPos);
         void ReceiveClientChunk(long chunkIndex3d, IWorldChunk chunk, IWorldAccessor world);
         void SetSubDimensionId(int dimensionId);

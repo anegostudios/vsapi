@@ -13,13 +13,16 @@ items:
   - Vintagestory.API.Server.IWorldManagerAPI.ChunkDeletionsInQueue
   - Vintagestory.API.Server.IWorldManagerAPI.ChunkIndex3D(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Server.IWorldManagerAPI.ChunkSize
+  - Vintagestory.API.Server.IWorldManagerAPI.CreateChunkColumnForDimension(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Server.IWorldManagerAPI.CurrentGeneratingChunkCount
   - Vintagestory.API.Server.IWorldManagerAPI.CurrentPlayStyle
   - Vintagestory.API.Server.IWorldManagerAPI.CurrentWorldName
   - Vintagestory.API.Server.IWorldManagerAPI.DefaultSpawnPosition
   - Vintagestory.API.Server.IWorldManagerAPI.DeleteChunkColumn(System.Int32,System.Int32)
   - Vintagestory.API.Server.IWorldManagerAPI.DeleteMapRegion(System.Int32,System.Int32)
+  - Vintagestory.API.Server.IWorldManagerAPI.ForceSendChunkColumn(Vintagestory.API.Server.IServerPlayer,System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Server.IWorldManagerAPI.FullRelight(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Server.IWorldManagerAPI.FullRelight(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
   - Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessor(System.Boolean,System.Boolean,System.Boolean,System.Boolean)
   - Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessorBulkUpdate(System.Boolean,System.Boolean,System.Boolean)
   - Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessorPrefetch(System.Boolean,System.Boolean)
@@ -39,6 +42,7 @@ items:
   - Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumn(System.Int32,System.Int32,System.Boolean)
   - Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnFast(System.Int32,System.Int32,System.Int32,System.Int32,Vintagestory.API.Server.ChunkLoadOptions)
   - Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnFast(System.Int32,System.Int32,Vintagestory.API.Server.ChunkLoadOptions)
+  - Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnForDimension(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnPriority(System.Int32,System.Int32,System.Int32,System.Int32,Vintagestory.API.Server.ChunkLoadOptions)
   - Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnPriority(System.Int32,System.Int32,Vintagestory.API.Server.ChunkLoadOptions)
   - Vintagestory.API.Server.IWorldManagerAPI.MapChunkIndex2D(System.Int32,System.Int32)
@@ -82,6 +86,9 @@ items:
   syntax:
     content: public interface IWorldManagerAPI
     content.vb: Public Interface IWorldManagerAPI
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Server.IWorldManagerAPI.AllLoadedMapchunks
   commentId: P:Vintagestory.API.Server.IWorldManagerAPI.AllLoadedMapchunks
   id: AllLoadedMapchunks
@@ -1753,6 +1760,39 @@ items:
       description: ''
     content.vb: Sub FullRelight(minPos As BlockPos, maxPos As BlockPos)
   overload: Vintagestory.API.Server.IWorldManagerAPI.FullRelight*
+- uid: Vintagestory.API.Server.IWorldManagerAPI.FullRelight(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  commentId: M:Vintagestory.API.Server.IWorldManagerAPI.FullRelight(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  id: FullRelight(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  parent: Vintagestory.API.Server.IWorldManagerAPI
+  langs:
+  - csharp
+  - vb
+  name: FullRelight(BlockPos, BlockPos, bool)
+  nameWithType: IWorldManagerAPI.FullRelight(BlockPos, BlockPos, bool)
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.FullRelight(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Does a complete relighting of the cuboid deliminated by given min/max pos. Can completely resend all affected chunk columns to all connected nearby clients.
+  example: []
+  syntax:
+    content: void FullRelight(BlockPos minPos, BlockPos maxPos, bool sendToClients)
+    parameters:
+    - id: minPos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    - id: maxPos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    - id: sendToClients
+      type: System.Boolean
+      description: ''
+    content.vb: Sub FullRelight(minPos As BlockPos, maxPos As BlockPos, sendToClients As Boolean)
+  overload: Vintagestory.API.Server.IWorldManagerAPI.FullRelight*
+  nameWithType.vb: IWorldManagerAPI.FullRelight(BlockPos, BlockPos, Boolean)
+  fullName.vb: Vintagestory.API.Server.IWorldManagerAPI.FullRelight(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, Boolean)
+  name.vb: FullRelight(BlockPos, BlockPos, Boolean)
 - uid: Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessor(System.Boolean,System.Boolean,System.Boolean,System.Boolean)
   commentId: M:Vintagestory.API.Server.IWorldManagerAPI.GetBlockAccessor(System.Boolean,System.Boolean,System.Boolean,System.Boolean)
   id: GetBlockAccessor(System.Boolean,System.Boolean,System.Boolean,System.Boolean)
@@ -1993,6 +2033,108 @@ items:
   nameWithType.vb: IWorldManagerAPI.GetCachingBlockAccessor(Boolean, Boolean)
   fullName.vb: Vintagestory.API.Server.IWorldManagerAPI.GetCachingBlockAccessor(Boolean, Boolean)
   name.vb: GetCachingBlockAccessor(Boolean, Boolean)
+- uid: Vintagestory.API.Server.IWorldManagerAPI.CreateChunkColumnForDimension(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Server.IWorldManagerAPI.CreateChunkColumnForDimension(System.Int32,System.Int32,System.Int32)
+  id: CreateChunkColumnForDimension(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Server.IWorldManagerAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateChunkColumnForDimension(int, int, int)
+  nameWithType: IWorldManagerAPI.CreateChunkColumnForDimension(int, int, int)
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.CreateChunkColumnForDimension(int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Creates columns of empty chunks in the specified dimension
+  example: []
+  syntax:
+    content: void CreateChunkColumnForDimension(int cx, int cz, int dim)
+    parameters:
+    - id: cx
+      type: System.Int32
+      description: ''
+    - id: cz
+      type: System.Int32
+      description: ''
+    - id: dim
+      type: System.Int32
+      description: ''
+    content.vb: Sub CreateChunkColumnForDimension(cx As Integer, cz As Integer, [dim] As Integer)
+  overload: Vintagestory.API.Server.IWorldManagerAPI.CreateChunkColumnForDimension*
+  nameWithType.vb: IWorldManagerAPI.CreateChunkColumnForDimension(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Server.IWorldManagerAPI.CreateChunkColumnForDimension(Integer, Integer, Integer)
+  name.vb: CreateChunkColumnForDimension(Integer, Integer, Integer)
+- uid: Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnForDimension(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnForDimension(System.Int32,System.Int32,System.Int32)
+  id: LoadChunkColumnForDimension(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Server.IWorldManagerAPI
+  langs:
+  - csharp
+  - vb
+  name: LoadChunkColumnForDimension(int, int, int)
+  nameWithType: IWorldManagerAPI.LoadChunkColumnForDimension(int, int, int)
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnForDimension(int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Loads chunk columns for the specified dimension
+  example: []
+  syntax:
+    content: void LoadChunkColumnForDimension(int cx, int cz, int dim)
+    parameters:
+    - id: cx
+      type: System.Int32
+      description: ''
+    - id: cz
+      type: System.Int32
+      description: ''
+    - id: dim
+      type: System.Int32
+      description: ''
+    content.vb: Sub LoadChunkColumnForDimension(cx As Integer, cz As Integer, [dim] As Integer)
+  overload: Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnForDimension*
+  nameWithType.vb: IWorldManagerAPI.LoadChunkColumnForDimension(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnForDimension(Integer, Integer, Integer)
+  name.vb: LoadChunkColumnForDimension(Integer, Integer, Integer)
+- uid: Vintagestory.API.Server.IWorldManagerAPI.ForceSendChunkColumn(Vintagestory.API.Server.IServerPlayer,System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Server.IWorldManagerAPI.ForceSendChunkColumn(Vintagestory.API.Server.IServerPlayer,System.Int32,System.Int32,System.Int32)
+  id: ForceSendChunkColumn(Vintagestory.API.Server.IServerPlayer,System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Server.IWorldManagerAPI
+  langs:
+  - csharp
+  - vb
+  name: ForceSendChunkColumn(IServerPlayer, int, int, int)
+  nameWithType: IWorldManagerAPI.ForceSendChunkColumn(IServerPlayer, int, int, int)
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.ForceSendChunkColumn(Vintagestory.API.Server.IServerPlayer, int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: API access to force send a chunk column in any dimension
+  example: []
+  syntax:
+    content: void ForceSendChunkColumn(IServerPlayer player, int cx, int cz, int dimension)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Server.IServerPlayer
+      description: ''
+    - id: cx
+      type: System.Int32
+      description: ''
+    - id: cz
+      type: System.Int32
+      description: ''
+    - id: dimension
+      type: System.Int32
+      description: ''
+    content.vb: Sub ForceSendChunkColumn(player As IServerPlayer, cx As Integer, cz As Integer, dimension As Integer)
+  overload: Vintagestory.API.Server.IWorldManagerAPI.ForceSendChunkColumn*
+  nameWithType.vb: IWorldManagerAPI.ForceSendChunkColumn(IServerPlayer, Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Server.IWorldManagerAPI.ForceSendChunkColumn(Vintagestory.API.Server.IServerPlayer, Integer, Integer, Integer)
+  name.vb: ForceSendChunkColumn(IServerPlayer, Integer, Integer, Integer)
 references:
 - uid: Vintagestory.API.Server
   commentId: N:Vintagestory.API.Server
@@ -2024,6 +2166,165 @@ references:
   - uid: Vintagestory.API.Server
     name: Server
     href: Vintagestory.API.Server.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Server.IWorldManagerAPI.AllLoadedMapchunks*
   commentId: Overload:Vintagestory.API.Server.IWorldManagerAPI.AllLoadedMapchunks
   href: Vintagestory.API.Server.IWorldManagerAPI.html#Vintagestory_API_Server_IWorldManagerAPI_AllLoadedMapchunks
@@ -2984,3 +3285,21 @@ references:
   name: ICachingBlockAccessor
   nameWithType: ICachingBlockAccessor
   fullName: Vintagestory.API.Common.ICachingBlockAccessor
+- uid: Vintagestory.API.Server.IWorldManagerAPI.CreateChunkColumnForDimension*
+  commentId: Overload:Vintagestory.API.Server.IWorldManagerAPI.CreateChunkColumnForDimension
+  href: Vintagestory.API.Server.IWorldManagerAPI.html#Vintagestory_API_Server_IWorldManagerAPI_CreateChunkColumnForDimension_System_Int32_System_Int32_System_Int32_
+  name: CreateChunkColumnForDimension
+  nameWithType: IWorldManagerAPI.CreateChunkColumnForDimension
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.CreateChunkColumnForDimension
+- uid: Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnForDimension*
+  commentId: Overload:Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnForDimension
+  href: Vintagestory.API.Server.IWorldManagerAPI.html#Vintagestory_API_Server_IWorldManagerAPI_LoadChunkColumnForDimension_System_Int32_System_Int32_System_Int32_
+  name: LoadChunkColumnForDimension
+  nameWithType: IWorldManagerAPI.LoadChunkColumnForDimension
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.LoadChunkColumnForDimension
+- uid: Vintagestory.API.Server.IWorldManagerAPI.ForceSendChunkColumn*
+  commentId: Overload:Vintagestory.API.Server.IWorldManagerAPI.ForceSendChunkColumn
+  href: Vintagestory.API.Server.IWorldManagerAPI.html#Vintagestory_API_Server_IWorldManagerAPI_ForceSendChunkColumn_Vintagestory_API_Server_IServerPlayer_System_Int32_System_Int32_System_Int32_
+  name: ForceSendChunkColumn
+  nameWithType: IWorldManagerAPI.ForceSendChunkColumn
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.ForceSendChunkColumn

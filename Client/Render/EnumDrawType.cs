@@ -1,5 +1,9 @@
 ﻿namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Draw types for blocks.
+    /// </summary>
+    [DocumentAsJson]
     public enum EnumDrawType
     {
         BlockLayer_1 = 1,
@@ -9,7 +13,12 @@
         BlockLayer_5 = 5,
         BlockLayer_6 = 6,
         BlockLayer_7 = 7,
+
+        /// <summary>
+        /// You will most likely use JSON for all assets with custom shapes.
+        /// </summary>
         JSON = 8,
+
         Empty = 9,
         Cube = 10,
         Cross = 11,

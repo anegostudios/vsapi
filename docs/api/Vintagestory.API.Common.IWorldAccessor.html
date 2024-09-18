@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -112,6 +112,16 @@ Interface IWorldAccessor
 
 
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -161,7 +171,7 @@ Interface IWorldAccessor
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets a list of all players that connected to this server at least once. When called client side you will receive the same as AllOnlinePlayers</p>
+  <div class="markdown level1 summary"><p>Gets a list of all players that connected to this server at least once while the server was running. When called client side you will receive the same as AllOnlinePlayers</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -401,6 +411,37 @@ Interface IWorldAccessor
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.IGameCalendar.html">IGameCalendar</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IWorldAccessor_ChunkProvider_" data-uid="Vintagestory.API.Common.IWorldAccessor.ChunkProvider*"></a>
+
+  <h3 id="Vintagestory_API_Common_IWorldAccessor_ChunkProvider" data-uid="Vintagestory.API.Common.IWorldAccessor.ChunkProvider">
+  ChunkProvider
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IChunkProvider ChunkProvider { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.IChunkProvider.html">IChunkProvider</a></dt>
     <dd></dd>
   </dl>
 
@@ -2421,6 +2462,54 @@ DONT FORGET: Call .Begin() before getting/setting in a tight loop. Not calling i
 
 
 
+  <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt*"></a>
+
+  <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_MathTools_BlockPos_System_Double_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,Vintagestory.API.MathTools.BlockPos,System.Double,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)">
+  PlaySoundAt(AssetLocation, BlockPos, double, IPlayer, bool, float, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Plays given sound at given position - dimension aware. Plays at the center of the BlockPos</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void PlaySoundAt(AssetLocation location, BlockPos pos, double yOffsetFromCenter, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>location</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd><p>The sound path, without sounds/ prefix or the .ogg ending</p>
+</dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>yOffsetFromCenter</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>How much above or below the central Y position of the block to play</p>
+</dd>
+    <dt><code>dualCallByPlayer</code> <a class="xref" href="Vintagestory.API.Common.IPlayer.html">IPlayer</a></dt>
+    <dd><p>If this call is made on client and on server, set this the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</p>
+</dd>
+    <dt><code>randomizePitch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>range</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd><p>The range at which the gain will be attenuated to 1% of the supplied volume</p>
+</dd>
+    <dt><code>volume</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_IWorldAccessor_PlaySoundFor_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundFor*"></a>
 
   <h3 id="Vintagestory_API_Common_IWorldAccessor_PlaySoundFor_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_" data-uid="Vintagestory.API.Common.IWorldAccessor.PlaySoundFor(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)">
@@ -3126,6 +3215,48 @@ This should be done inside it's Initialize method before base.Initialize is call
 
   <a id="Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity*"></a>
 
+  <h3 id="Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Vec3d)">
+  SpawnItemEntity(ItemStack, BlockPos, Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Spawns a dropped itemstack at given position. Will immediately disappear if stacksize==0
+Returns the entity spawned (may be null!)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Entity SpawnItemEntity(ItemStack itemstack, BlockPos pos, Vec3d velocity = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>itemstack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>velocity</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity*"></a>
+
   <h3 id="Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)">
   SpawnItemEntity(ItemStack, Vec3d, Vec3d)
   
@@ -3304,6 +3435,40 @@ Returns the entity spawned (may be null!)</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>listenerId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IWorldAccessor_UpdateEntityChunk_" data-uid="Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk*"></a>
+
+  <h3 id="Vintagestory_API_Common_IWorldAccessor_UpdateEntityChunk_Vintagestory_API_Common_Entities_Entity_System_Int64_" data-uid="Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk(Vintagestory.API.Common.Entities.Entity,System.Int64)">
+  UpdateEntityChunk(Entity, long)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes an entity from its old chunk and adds it to the chunk with newChunkIndex3d</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void UpdateEntityChunk(Entity entity, long newChunkIndex3d)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+    <dt><code>newChunkIndex3d</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
     <dd></dd>
   </dl>
 

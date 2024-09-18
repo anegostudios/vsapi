@@ -79,10 +79,16 @@ items:
   - Vintagestory.API.Common.AnimationManager.HeadController
   - Vintagestory.API.Common.AnimationManager.ActiveAnimationsByAnimCode
   - Vintagestory.API.Common.AnimationManager.Triggers
+  - Vintagestory.API.Common.AnimationManager.OnStartAnimation
+  - Vintagestory.API.Common.AnimationManager.OnAnimationReceived
+  - Vintagestory.API.Common.AnimationManager.OnAnimationStopped
   - Vintagestory.API.Common.AnimationManager.entity
+  - Vintagestory.API.Common.AnimationManager.LoadAnimator(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  - Vintagestory.API.Common.AnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
   - Vintagestory.API.Common.AnimationManager.OnServerTick(System.Single)
   - Vintagestory.API.Common.AnimationManager.Dispose
-  - Vintagestory.API.Common.AnimationManager.OnAnimationStopped(System.String)
+  - Vintagestory.API.Common.AnimationManager.TriggerAnimationStopped(System.String)
+  - Vintagestory.API.Common.AnimationManager.ShouldPlaySound(Vintagestory.API.Common.AnimationSound)
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetHashCode
@@ -90,6 +96,10 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  - Vintagestory.API.Common.IAnimationManager.Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
 - uid: Vintagestory.API.Common.PlayerAnimationManager.UseFpAnmations
   commentId: F:Vintagestory.API.Common.PlayerAnimationManager.UseFpAnmations
   id: UseFpAnmations
@@ -1323,6 +1333,27 @@ references:
   name: Triggers
   nameWithType: AnimationManager.Triggers
   fullName: Vintagestory.API.Common.AnimationManager.Triggers
+- uid: Vintagestory.API.Common.AnimationManager.OnStartAnimation
+  commentId: E:Vintagestory.API.Common.AnimationManager.OnStartAnimation
+  parent: Vintagestory.API.Common.AnimationManager
+  href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_OnStartAnimation
+  name: OnStartAnimation
+  nameWithType: AnimationManager.OnStartAnimation
+  fullName: Vintagestory.API.Common.AnimationManager.OnStartAnimation
+- uid: Vintagestory.API.Common.AnimationManager.OnAnimationReceived
+  commentId: E:Vintagestory.API.Common.AnimationManager.OnAnimationReceived
+  parent: Vintagestory.API.Common.AnimationManager
+  href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_OnAnimationReceived
+  name: OnAnimationReceived
+  nameWithType: AnimationManager.OnAnimationReceived
+  fullName: Vintagestory.API.Common.AnimationManager.OnAnimationReceived
+- uid: Vintagestory.API.Common.AnimationManager.OnAnimationStopped
+  commentId: E:Vintagestory.API.Common.AnimationManager.OnAnimationStopped
+  parent: Vintagestory.API.Common.AnimationManager
+  href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_OnAnimationStopped
+  name: OnAnimationStopped
+  nameWithType: AnimationManager.OnAnimationStopped
+  fullName: Vintagestory.API.Common.AnimationManager.OnAnimationStopped
 - uid: Vintagestory.API.Common.AnimationManager.entity
   commentId: F:Vintagestory.API.Common.AnimationManager.entity
   parent: Vintagestory.API.Common.AnimationManager
@@ -1330,6 +1361,143 @@ references:
   name: entity
   nameWithType: AnimationManager.entity
   fullName: Vintagestory.API.Common.AnimationManager.entity
+- uid: Vintagestory.API.Common.AnimationManager.LoadAnimator(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  commentId: M:Vintagestory.API.Common.AnimationManager.LoadAnimator(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  parent: Vintagestory.API.Common.AnimationManager
+  isExternal: true
+  href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_LoadAnimator_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___
+  name: LoadAnimator(ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])
+  nameWithType: AnimationManager.LoadAnimator(ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])
+  fullName: Vintagestory.API.Common.AnimationManager.LoadAnimator(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation[], bool, params string[])
+  nameWithType.vb: AnimationManager.LoadAnimator(ICoreAPI, Entity, Shape, RunningAnimation(), Boolean, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.AnimationManager.LoadAnimator(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation(), Boolean, ParamArray String())
+  name.vb: LoadAnimator(ICoreAPI, Entity, Shape, RunningAnimation(), Boolean, ParamArray String())
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AnimationManager.LoadAnimator(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+    name: LoadAnimator
+    href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_LoadAnimator_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___
+  - name: (
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Shape
+    name: Shape
+    href: Vintagestory.API.Common.Shape.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.RunningAnimation
+    name: RunningAnimation
+    href: Vintagestory.API.Common.RunningAnimation.html
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AnimationManager.LoadAnimator(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+    name: LoadAnimator
+    href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_LoadAnimator_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___
+  - name: (
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Shape
+    name: Shape
+    href: Vintagestory.API.Common.Shape.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.RunningAnimation
+    name: RunningAnimation
+    href: Vintagestory.API.Common.RunningAnimation.html
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.AnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+  commentId: M:Vintagestory.API.Common.AnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+  parent: Vintagestory.API.Common.AnimationManager
+  href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_CopyOverAnims_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_
+  name: CopyOverAnims(RunningAnimation[], IAnimator)
+  nameWithType: AnimationManager.CopyOverAnims(RunningAnimation[], IAnimator)
+  fullName: Vintagestory.API.Common.AnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[], Vintagestory.API.Common.IAnimator)
+  nameWithType.vb: AnimationManager.CopyOverAnims(RunningAnimation(), IAnimator)
+  fullName.vb: Vintagestory.API.Common.AnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation(), Vintagestory.API.Common.IAnimator)
+  name.vb: CopyOverAnims(RunningAnimation(), IAnimator)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+    name: CopyOverAnims
+    href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_CopyOverAnims_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_
+  - name: (
+  - uid: Vintagestory.API.Common.RunningAnimation
+    name: RunningAnimation
+    href: Vintagestory.API.Common.RunningAnimation.html
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IAnimator
+    name: IAnimator
+    href: Vintagestory.API.Common.IAnimator.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+    name: CopyOverAnims
+    href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_CopyOverAnims_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_
+  - name: (
+  - uid: Vintagestory.API.Common.RunningAnimation
+    name: RunningAnimation
+    href: Vintagestory.API.Common.RunningAnimation.html
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IAnimator
+    name: IAnimator
+    href: Vintagestory.API.Common.IAnimator.html
+  - name: )
 - uid: Vintagestory.API.Common.AnimationManager.OnServerTick(System.Single)
   commentId: M:Vintagestory.API.Common.AnimationManager.OnServerTick(System.Single)
   parent: Vintagestory.API.Common.AnimationManager
@@ -1380,21 +1548,21 @@ references:
     href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_Dispose
   - name: (
   - name: )
-- uid: Vintagestory.API.Common.AnimationManager.OnAnimationStopped(System.String)
-  commentId: M:Vintagestory.API.Common.AnimationManager.OnAnimationStopped(System.String)
+- uid: Vintagestory.API.Common.AnimationManager.TriggerAnimationStopped(System.String)
+  commentId: M:Vintagestory.API.Common.AnimationManager.TriggerAnimationStopped(System.String)
   parent: Vintagestory.API.Common.AnimationManager
   isExternal: true
-  href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_OnAnimationStopped_System_String_
-  name: OnAnimationStopped(string)
-  nameWithType: AnimationManager.OnAnimationStopped(string)
-  fullName: Vintagestory.API.Common.AnimationManager.OnAnimationStopped(string)
-  nameWithType.vb: AnimationManager.OnAnimationStopped(String)
-  fullName.vb: Vintagestory.API.Common.AnimationManager.OnAnimationStopped(String)
-  name.vb: OnAnimationStopped(String)
+  href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_TriggerAnimationStopped_System_String_
+  name: TriggerAnimationStopped(string)
+  nameWithType: AnimationManager.TriggerAnimationStopped(string)
+  fullName: Vintagestory.API.Common.AnimationManager.TriggerAnimationStopped(string)
+  nameWithType.vb: AnimationManager.TriggerAnimationStopped(String)
+  fullName.vb: Vintagestory.API.Common.AnimationManager.TriggerAnimationStopped(String)
+  name.vb: TriggerAnimationStopped(String)
   spec.csharp:
-  - uid: Vintagestory.API.Common.AnimationManager.OnAnimationStopped(System.String)
-    name: OnAnimationStopped
-    href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_OnAnimationStopped_System_String_
+  - uid: Vintagestory.API.Common.AnimationManager.TriggerAnimationStopped(System.String)
+    name: TriggerAnimationStopped
+    href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_TriggerAnimationStopped_System_String_
   - name: (
   - uid: System.String
     name: string
@@ -1402,14 +1570,39 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
   spec.vb:
-  - uid: Vintagestory.API.Common.AnimationManager.OnAnimationStopped(System.String)
-    name: OnAnimationStopped
-    href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_OnAnimationStopped_System_String_
+  - uid: Vintagestory.API.Common.AnimationManager.TriggerAnimationStopped(System.String)
+    name: TriggerAnimationStopped
+    href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_TriggerAnimationStopped_System_String_
   - name: (
   - uid: System.String
     name: String
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.AnimationManager.ShouldPlaySound(Vintagestory.API.Common.AnimationSound)
+  commentId: M:Vintagestory.API.Common.AnimationManager.ShouldPlaySound(Vintagestory.API.Common.AnimationSound)
+  parent: Vintagestory.API.Common.AnimationManager
+  href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_ShouldPlaySound_Vintagestory_API_Common_AnimationSound_
+  name: ShouldPlaySound(AnimationSound)
+  nameWithType: AnimationManager.ShouldPlaySound(AnimationSound)
+  fullName: Vintagestory.API.Common.AnimationManager.ShouldPlaySound(Vintagestory.API.Common.AnimationSound)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AnimationManager.ShouldPlaySound(Vintagestory.API.Common.AnimationSound)
+    name: ShouldPlaySound
+    href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_ShouldPlaySound_Vintagestory_API_Common_AnimationSound_
+  - name: (
+  - uid: Vintagestory.API.Common.AnimationSound
+    name: AnimationSound
+    href: Vintagestory.API.Common.AnimationSound.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AnimationManager.ShouldPlaySound(Vintagestory.API.Common.AnimationSound)
+    name: ShouldPlaySound
+    href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_ShouldPlaySound_Vintagestory_API_Common_AnimationSound_
+  - name: (
+  - uid: Vintagestory.API.Common.AnimationSound
+    name: AnimationSound
+    href: Vintagestory.API.Common.AnimationSound.html
   - name: )
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
@@ -1630,6 +1823,173 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Common.IAnimationManager.Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  commentId: M:Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  parent: Vintagestory.API.Common.AnimationCache
+  definition: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  href: Vintagestory.API.Common.AnimationCache.html#Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___
+  name: LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])
+  nameWithType: AnimationCache.LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])
+  fullName: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager, Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation[], bool, params string[])
+  nameWithType.vb: AnimationCache.LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation(), Boolean, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager, Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation(), Boolean, ParamArray String())
+  name.vb: LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation(), Boolean, ParamArray String())
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+    name: LoadAnimatorCached
+    href: Vintagestory.API.Common.AnimationCache.html#Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___
+  - name: (
+  - uid: Vintagestory.API.Common.IAnimationManager
+    name: IAnimationManager
+    href: Vintagestory.API.Common.IAnimationManager.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Shape
+    name: Shape
+    href: Vintagestory.API.Common.Shape.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.RunningAnimation
+    name: RunningAnimation
+    href: Vintagestory.API.Common.RunningAnimation.html
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+    name: LoadAnimatorCached
+    href: Vintagestory.API.Common.AnimationCache.html#Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___
+  - name: (
+  - uid: Vintagestory.API.Common.IAnimationManager
+    name: IAnimationManager
+    href: Vintagestory.API.Common.IAnimationManager.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Shape
+    name: Shape
+    href: Vintagestory.API.Common.Shape.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.RunningAnimation
+    name: RunningAnimation
+    href: Vintagestory.API.Common.RunningAnimation.html
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1637,6 +1997,214 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  commentId: M:Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  isExternal: true
+  href: Vintagestory.API.Common.AnimationCache.html#Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___
+  name: LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])
+  nameWithType: AnimationCache.LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])
+  fullName: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager, Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation[], bool, params string[])
+  nameWithType.vb: AnimationCache.LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation(), Boolean, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager, Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation(), Boolean, ParamArray String())
+  name.vb: LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation(), Boolean, ParamArray String())
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+    name: LoadAnimatorCached
+    href: Vintagestory.API.Common.AnimationCache.html#Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___
+  - name: (
+  - uid: Vintagestory.API.Common.IAnimationManager
+    name: IAnimationManager
+    href: Vintagestory.API.Common.IAnimationManager.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Shape
+    name: Shape
+    href: Vintagestory.API.Common.Shape.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.RunningAnimation
+    name: RunningAnimation
+    href: Vintagestory.API.Common.RunningAnimation.html
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - name: params
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+    name: LoadAnimatorCached
+    href: Vintagestory.API.Common.AnimationCache.html#Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___
+  - name: (
+  - uid: Vintagestory.API.Common.IAnimationManager
+    name: IAnimationManager
+    href: Vintagestory.API.Common.IAnimationManager.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ICoreAPI
+    name: ICoreAPI
+    href: Vintagestory.API.Common.ICoreAPI.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Shape
+    name: Shape
+    href: Vintagestory.API.Common.Shape.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.RunningAnimation
+    name: RunningAnimation
+    href: Vintagestory.API.Common.RunningAnimation.html
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - name: ParamArray
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.AnimationCache
+  commentId: T:Vintagestory.API.Common.AnimationCache
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AnimationCache.html
+  name: AnimationCache
+  nameWithType: AnimationCache
+  fullName: Vintagestory.API.Common.AnimationCache
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System

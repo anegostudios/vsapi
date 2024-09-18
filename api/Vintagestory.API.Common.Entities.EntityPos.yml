@@ -8,6 +8,7 @@ items:
   - Vintagestory.API.Common.Entities.EntityPos.#ctor
   - Vintagestory.API.Common.Entities.EntityPos.#ctor(System.Double,System.Double,System.Double,System.Single,System.Single,System.Single)
   - Vintagestory.API.Common.Entities.EntityPos.Add(System.Double,System.Double,System.Double)
+  - Vintagestory.API.Common.Entities.EntityPos.Add(Vintagestory.API.MathTools.Vec3f)
   - Vintagestory.API.Common.Entities.EntityPos.AheadCopy(System.Double)
   - Vintagestory.API.Common.Entities.EntityPos.AsBlockPos
   - Vintagestory.API.Common.Entities.EntityPos.BasicallySameAs(Vintagestory.API.Common.Entities.EntityPos,System.Double)
@@ -16,6 +17,7 @@ items:
   - Vintagestory.API.Common.Entities.EntityPos.BehindCopy(System.Double)
   - Vintagestory.API.Common.Entities.EntityPos.Copy
   - Vintagestory.API.Common.Entities.EntityPos.Dimension
+  - Vintagestory.API.Common.Entities.EntityPos.DimensionYAdjustment
   - Vintagestory.API.Common.Entities.EntityPos.DistanceTo(Vintagestory.API.Common.Entities.EntityPos)
   - Vintagestory.API.Common.Entities.EntityPos.DistanceTo(Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.Common.Entities.EntityPos.FromBytes(System.IO.BinaryReader)
@@ -48,6 +50,7 @@ items:
   - Vintagestory.API.Common.Entities.EntityPos.SetPos(Vintagestory.API.Common.Entities.EntityPos)
   - Vintagestory.API.Common.Entities.EntityPos.SetPos(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.Entities.EntityPos.SetPos(Vintagestory.API.MathTools.Vec3d)
+  - Vintagestory.API.Common.Entities.EntityPos.SetPosWithDimension(Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.Common.Entities.EntityPos.SetYaw(System.Single)
   - Vintagestory.API.Common.Entities.EntityPos.SquareDistanceTo(System.Double,System.Double,System.Double)
   - Vintagestory.API.Common.Entities.EntityPos.SquareDistanceTo(System.Single,System.Single,System.Single)
@@ -63,7 +66,6 @@ items:
   - Vintagestory.API.Common.Entities.EntityPos.Y
   - Vintagestory.API.Common.Entities.EntityPos.Yaw
   - Vintagestory.API.Common.Entities.EntityPos.Z
-  - Vintagestory.API.Common.Entities.EntityPos.dimension
   - Vintagestory.API.Common.Entities.EntityPos.pitch
   - Vintagestory.API.Common.Entities.EntityPos.roll
   - Vintagestory.API.Common.Entities.EntityPos.stance
@@ -98,6 +100,9 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.Entities.EntityPos.x
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.x
   id: x
@@ -155,25 +160,25 @@ items:
     return:
       type: System.Double
     content.vb: Protected z As Double
-- uid: Vintagestory.API.Common.Entities.EntityPos.dimension
-  commentId: F:Vintagestory.API.Common.Entities.EntityPos.dimension
-  id: dimension
+- uid: Vintagestory.API.Common.Entities.EntityPos.Dimension
+  commentId: F:Vintagestory.API.Common.Entities.EntityPos.Dimension
+  id: Dimension
   parent: Vintagestory.API.Common.Entities.EntityPos
   langs:
   - csharp
   - vb
-  name: dimension
-  nameWithType: EntityPos.dimension
-  fullName: Vintagestory.API.Common.Entities.EntityPos.dimension
+  name: Dimension
+  nameWithType: EntityPos.Dimension
+  fullName: Vintagestory.API.Common.Entities.EntityPos.Dimension
   type: Field
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: protected int dimension
+    content: public int Dimension
     return:
       type: System.Int32
-    content.vb: Protected dimension As Integer
+    content.vb: Public Dimension As Integer
 - uid: Vintagestory.API.Common.Entities.EntityPos.roll
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.roll
   id: roll
@@ -401,6 +406,27 @@ items:
       type: System.Double
     content.vb: Public Overridable Property Z As Double
   overload: Vintagestory.API.Common.Entities.EntityPos.Z*
+- uid: Vintagestory.API.Common.Entities.EntityPos.DimensionYAdjustment
+  commentId: P:Vintagestory.API.Common.Entities.EntityPos.DimensionYAdjustment
+  id: DimensionYAdjustment
+  parent: Vintagestory.API.Common.Entities.EntityPos
+  langs:
+  - csharp
+  - vb
+  name: DimensionYAdjustment
+  nameWithType: EntityPos.DimensionYAdjustment
+  fullName: Vintagestory.API.Common.Entities.EntityPos.DimensionYAdjustment
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual int DimensionYAdjustment { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overridable ReadOnly Property DimensionYAdjustment As Integer
+  overload: Vintagestory.API.Common.Entities.EntityPos.DimensionYAdjustment*
 - uid: Vintagestory.API.Common.Entities.EntityPos.Roll
   commentId: P:Vintagestory.API.Common.Entities.EntityPos.Roll
   id: Roll
@@ -470,25 +496,6 @@ items:
       type: System.Single
     content.vb: Public Overridable Property Pitch As Single
   overload: Vintagestory.API.Common.Entities.EntityPos.Pitch*
-- uid: Vintagestory.API.Common.Entities.EntityPos.Dimension
-  commentId: F:Vintagestory.API.Common.Entities.EntityPos.Dimension
-  id: Dimension
-  parent: Vintagestory.API.Common.Entities.EntityPos
-  langs:
-  - csharp
-  - vb
-  name: Dimension
-  nameWithType: EntityPos.Dimension
-  fullName: Vintagestory.API.Common.Entities.EntityPos.Dimension
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common.Entities
-  syntax:
-    content: public int Dimension
-    return:
-      type: System.Int32
-    content.vb: Public Dimension As Integer
 - uid: Vintagestory.API.Common.Entities.EntityPos.AsBlockPos
   commentId: P:Vintagestory.API.Common.Entities.EntityPos.AsBlockPos
   id: AsBlockPos
@@ -549,7 +556,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
-  summary: Returns the position as a Vec3d object
+  summary: Returns the position as a Vec3d object. Note, dimension aware
   example: []
   syntax:
     content: public Vec3d XYZ { get; }
@@ -581,6 +588,30 @@ items:
       type: Vintagestory.API.MathTools.Vec3f
     content.vb: Public ReadOnly Property XYZFloat As Vec3f
   overload: Vintagestory.API.Common.Entities.EntityPos.XYZFloat*
+- uid: Vintagestory.API.Common.Entities.EntityPos.SetPosWithDimension(Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.Common.Entities.EntityPos.SetPosWithDimension(Vintagestory.API.MathTools.Vec3d)
+  id: SetPosWithDimension(Vintagestory.API.MathTools.Vec3d)
+  parent: Vintagestory.API.Common.Entities.EntityPos
+  langs:
+  - csharp
+  - vb
+  name: SetPosWithDimension(Vec3d)
+  nameWithType: EntityPos.SetPosWithDimension(Vec3d)
+  fullName: Vintagestory.API.Common.Entities.EntityPos.SetPosWithDimension(Vintagestory.API.MathTools.Vec3d)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Sets this position to a Vec3d, including setting the dimension
+  example: []
+  syntax:
+    content: public void SetPosWithDimension(Vec3d pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec3d
+      description: The Vec3d to set to.
+    content.vb: Public Sub SetPosWithDimension(pos As Vec3d)
+  overload: Vintagestory.API.Common.Entities.EntityPos.SetPosWithDimension*
 - uid: Vintagestory.API.Common.Entities.EntityPos.SetPos(Vintagestory.API.MathTools.Vec3d)
   commentId: M:Vintagestory.API.Common.Entities.EntityPos.SetPos(Vintagestory.API.MathTools.Vec3d)
   id: SetPos(Vintagestory.API.MathTools.Vec3d)
@@ -595,7 +626,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
-  summary: Sets this position to a Vec3d
+  summary: Sets this position to a Vec3d, without dimension information - needed in some situations where no dimension change is intended
   example: []
   syntax:
     content: public void SetPos(Vec3d pos)
@@ -674,22 +705,55 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
+  summary: Adds given position offset
+  example: []
   syntax:
     content: public EntityPos Add(double x, double y, double z)
     parameters:
     - id: x
       type: System.Double
+      description: ''
     - id: y
       type: System.Double
+      description: ''
     - id: z
       type: System.Double
+      description: ''
     return:
       type: Vintagestory.API.Common.Entities.EntityPos
+      description: Returns itself
     content.vb: Public Function Add(x As Double, y As Double, z As Double) As EntityPos
   overload: Vintagestory.API.Common.Entities.EntityPos.Add*
   nameWithType.vb: EntityPos.Add(Double, Double, Double)
   fullName.vb: Vintagestory.API.Common.Entities.EntityPos.Add(Double, Double, Double)
   name.vb: Add(Double, Double, Double)
+- uid: Vintagestory.API.Common.Entities.EntityPos.Add(Vintagestory.API.MathTools.Vec3f)
+  commentId: M:Vintagestory.API.Common.Entities.EntityPos.Add(Vintagestory.API.MathTools.Vec3f)
+  id: Add(Vintagestory.API.MathTools.Vec3f)
+  parent: Vintagestory.API.Common.Entities.EntityPos
+  langs:
+  - csharp
+  - vb
+  name: Add(Vec3f)
+  nameWithType: EntityPos.Add(Vec3f)
+  fullName: Vintagestory.API.Common.Entities.EntityPos.Add(Vintagestory.API.MathTools.Vec3f)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Adds given position offset
+  example: []
+  syntax:
+    content: public EntityPos Add(Vec3f vec)
+    parameters:
+    - id: vec
+      type: Vintagestory.API.MathTools.Vec3f
+      description: ''
+    return:
+      type: Vintagestory.API.Common.Entities.EntityPos
+      description: Returns itself
+    content.vb: Public Function Add(vec As Vec3f) As EntityPos
+  overload: Vintagestory.API.Common.Entities.EntityPos.Add*
 - uid: Vintagestory.API.Common.Entities.EntityPos.SetPos(System.Int32,System.Int32,System.Int32)
   commentId: M:Vintagestory.API.Common.Entities.EntityPos.SetPos(System.Int32,System.Int32,System.Int32)
   id: SetPos(System.Int32,System.Int32,System.Int32)
@@ -1192,7 +1256,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
-  summary: Returns the squared distance of the entity to this position
+  summary: 'Returns the squared distance of the entity to this position. Note: dimension aware, this requires the parameter y coordinate also to be based on InternalY as it should be (like EntityPos.XYZ)'
   example: []
   syntax:
     content: public float SquareDistanceTo(double x, double y, double z)
@@ -1228,7 +1292,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
-  summary: Returns the squared distance of the entity to this position
+  summary: 'Returns the squared distance of the entity to this position. Note: dimension aware, this requires the parameter Vec3d pos.Y coordinate also to be based on InternalY as it should be (like EntityPos.XYZ)'
   example: []
   syntax:
     content: public double SquareDistanceTo(Vec3d pos)
@@ -1670,12 +1734,15 @@ items:
   summary: Loads the position and angles from given entity position.
   example: []
   syntax:
-    content: public void SetFrom(EntityPos pos)
+    content: public EntityPos SetFrom(EntityPos pos)
     parameters:
     - id: pos
       type: Vintagestory.API.Common.Entities.EntityPos
       description: ''
-    content.vb: Public Sub SetFrom(pos As EntityPos)
+    return:
+      type: Vintagestory.API.Common.Entities.EntityPos
+      description: Returns itself
+    content.vb: Public Function SetFrom(pos As EntityPos) As EntityPos
   overload: Vintagestory.API.Common.Entities.EntityPos.SetFrom*
 - uid: Vintagestory.API.Common.Entities.EntityPos.SetFrom(Vintagestory.API.MathTools.Vec3d)
   commentId: M:Vintagestory.API.Common.Entities.EntityPos.SetFrom(Vintagestory.API.MathTools.Vec3d)
@@ -1694,12 +1761,15 @@ items:
   summary: Loads the position from given position.
   example: []
   syntax:
-    content: public void SetFrom(Vec3d pos)
+    content: public EntityPos SetFrom(Vec3d pos)
     parameters:
     - id: pos
       type: Vintagestory.API.MathTools.Vec3d
       description: ''
-    content.vb: Public Sub SetFrom(pos As Vec3d)
+    return:
+      type: Vintagestory.API.Common.Entities.EntityPos
+      description: Returns itself
+    content.vb: Public Function SetFrom(pos As Vec3d) As EntityPos
   overload: Vintagestory.API.Common.Entities.EntityPos.SetFrom*
 - uid: Vintagestory.API.Common.Entities.EntityPos.ToString
   commentId: M:Vintagestory.API.Common.Entities.EntityPos.ToString
@@ -2058,6 +2128,68 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -2065,6 +2197,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Double
   commentId: T:System.Double
   parent: System
@@ -2159,6 +2388,12 @@ references:
   name: Z
   nameWithType: EntityPos.Z
   fullName: Vintagestory.API.Common.Entities.EntityPos.Z
+- uid: Vintagestory.API.Common.Entities.EntityPos.DimensionYAdjustment*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityPos.DimensionYAdjustment
+  href: Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_DimensionYAdjustment
+  name: DimensionYAdjustment
+  nameWithType: EntityPos.DimensionYAdjustment
+  fullName: Vintagestory.API.Common.Entities.EntityPos.DimensionYAdjustment
 - uid: Vintagestory.API.Common.Entities.EntityPos.Roll*
   commentId: Overload:Vintagestory.API.Common.Entities.EntityPos.Roll
   href: Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_Roll
@@ -2222,6 +2457,12 @@ references:
   name: Vec3f
   nameWithType: Vec3f
   fullName: Vintagestory.API.MathTools.Vec3f
+- uid: Vintagestory.API.Common.Entities.EntityPos.SetPosWithDimension*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityPos.SetPosWithDimension
+  href: Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_SetPosWithDimension_Vintagestory_API_MathTools_Vec3d_
+  name: SetPosWithDimension
+  nameWithType: EntityPos.SetPosWithDimension
+  fullName: Vintagestory.API.Common.Entities.EntityPos.SetPosWithDimension
 - uid: Vintagestory.API.Common.Entities.EntityPos.SetPos*
   commentId: Overload:Vintagestory.API.Common.Entities.EntityPos.SetPos
   href: Vintagestory.API.Common.Entities.EntityPos.html#Vintagestory_API_Common_Entities_EntityPos_SetPos_Vintagestory_API_MathTools_Vec3d_

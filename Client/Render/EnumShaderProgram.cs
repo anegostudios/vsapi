@@ -115,6 +115,7 @@
         Colorgrade = 37,
         Guigear = 38,
         Ssao = 39,
-        Bilateralblur = 40
+        Bilateralblur = 40,
+        Chunkliquiddepth=41
     }
 }

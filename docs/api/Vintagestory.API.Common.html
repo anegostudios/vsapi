@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -102,7 +102,8 @@ slot they're actively using. Such as the currently selected hotbar slot.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a></dt>
-      <dd></dd>
+      <dd><p>Used to add a set of particle properties to a collectible.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.AirBubbleParticles.html">AirBubbleParticles</a></dt>
@@ -170,11 +171,17 @@ Process</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a></dt>
+      <dd><p>Animation Meta Data is a json type that controls how an animation should be played.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.AnimationTrigger.html">AnimationTrigger</a></dt>
-      <dd></dd>
+      <dd><p>Data about when an animation should be triggered.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.AnimationUtil.html">AnimationUtil</a></dt>
@@ -195,7 +202,7 @@ Process</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
-      <dd><p>Defines a complete path to an assets, including it's domain</p>
+      <dd><p>Defines a complete path to an assets, including it's domain.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -221,12 +228,19 @@ Process</p>
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BagInventory.html">BagInventory</a></dt>
+      <dd><p>The contents of one or more bags</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.BakedBitmap.html">BakedBitmap</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.BakingProperties.html">BakingProperties</a></dt>
-      <dd></dd>
+      <dd><p>Baking Properties are collectible attribute used for baking items in a clay oven.
+You will need to add these attributes if using <a class="xref" href="Vintagestory.API.Common.EnumSmeltType.html#Vintagestory_API_Common_EnumSmeltType_Bake">Bake</a> inside <a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html#Vintagestory_API_Common_CombustibleProperties_SmeltingType">SmeltingType</a>.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.BitmapExternal.html">BitmapExternal</a></dt>
@@ -268,7 +282,7 @@ Process</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.BlockDropItemStack.html">BlockDropItemStack</a></dt>
-      <dd><p>Represents an itemstack that is dropped by chance when breaking a block</p>
+      <dd><p>Represents an itemstack that is dropped when breaking a block, with a potentially random quantity.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -283,7 +297,8 @@ Process</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.BlockEntityBehaviorType.html">BlockEntityBehaviorType</a></dt>
-      <dd></dd>
+      <dd><p>Allows adding behaviors for block entities. Remember, block entities are specific instances of blocks placed within the world.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.BlockGeneric.html">BlockGeneric</a></dt>
@@ -305,6 +320,10 @@ Process</p>
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.BlockPatchAttributes.html">BlockPatchAttributes</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.BlockSchematic.html">BlockSchematic</a></dt>
       <dd></dd>
     </dl>
@@ -315,7 +334,8 @@ Process</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.BlockSounds.html">BlockSounds</a></dt>
-      <dd></dd>
+      <dd><p>A set of sounds that are defined for a block. All fields use default or empty sounds if not set.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.BlockUpdate.html">BlockUpdate</a></dt>
@@ -356,6 +376,10 @@ this produces always correctly blended animations but is significantly more cost
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Climate.html">Climate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.ClimateCondition.html">ClimateCondition</a></dt>
       <dd></dd>
     </dl>
@@ -392,7 +416,7 @@ this produces always correctly blended animations but is significantly more cost
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html">CombustibleProperties</a></dt>
-      <dd><p>Used for an items combustible value</p>
+      <dd><p>Marks an item as combustible, either by cooking, smelting or firing. This can either imply it is used as a fuel, or can be cooked into another object.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -401,6 +425,11 @@ this produces always correctly blended animations but is significantly more cost
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
+      <dd><p>Holds shape data to create 3D representations of objects. Also allows shapes to be overlayed on top of one another recursively.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.CoralPlantConfig.html">CoralPlantConfig</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
@@ -414,7 +443,8 @@ this produces always correctly blended animations but is significantly more cost
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.CreativeTabAndStackList.html">CreativeTabAndStackList</a></dt>
-      <dd></dd>
+      <dd><p>Allows you to add a list of item stacks to put various into creative menu tabs.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.CropBehavior.html">CropBehavior</a></dt>
@@ -422,7 +452,8 @@ this produces always correctly blended animations but is significantly more cost
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.CrushingProperties.html">CrushingProperties</a></dt>
-      <dd></dd>
+      <dd><p>Defines a set of properties that allow an object to be ground in a quern.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.DamageSource.html">DamageSource</a></dt>
@@ -569,6 +600,10 @@ this produces always correctly blended animations but is significantly more cost
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.FastParticlePool.html">FastParticlePool</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.FertilizerProps.html">FertilizerProps</a></dt>
       <dd></dd>
     </dl>
@@ -582,7 +617,8 @@ this produces always correctly blended animations but is significantly more cost
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.FoodNutritionProperties.html">FoodNutritionProperties</a></dt>
-      <dd></dd>
+      <dd><p>Allows you to make collectibles edible, and adds data about their nutrition.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.FrameProfilerUtil.html">FrameProfilerUtil</a></dt>
@@ -603,11 +639,13 @@ this produces always correctly blended animations but is significantly more cost
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.GrindingProperties.html">GrindingProperties</a></dt>
-      <dd></dd>
+      <dd><p>Defines a set of properties that allow an object to be ground in a quern.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.HeldSounds.html">HeldSounds</a></dt>
-      <dd></dd>
+      <dd><p>Defines a set of sounds for a collectible object.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.HistoryState.html">HistoryState</a></dt>
@@ -657,6 +695,10 @@ this produces always correctly blended animations but is significantly more cost
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.ItemSlotBagContent.html">ItemSlotBagContent</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.ItemSlotCharacter.html">ItemSlotCharacter</a></dt>
       <dd></dd>
     </dl>
@@ -698,12 +740,13 @@ this produces always correctly blended animations but is significantly more cost
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.JsonAttributesConverter.html">JsonAttributesConverter</a></dt>
-      <dd><p>Implementation of JsonConverter that converts objects to an instance of a JsonObject</p>
-</dd>
+      <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.JsonItemStack.html">JsonItemStack</a></dt>
-      <dd></dd>
+      <dd><p>This is a representation of an item stack in JSON.
+It resembles a standard in-game item stack but can be stored before the game is loaded.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.JsonUtil.html">JsonUtil</a></dt>
@@ -779,7 +822,7 @@ also be just one.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
-      <dd><p>Used for transformations applied to a block or item model</p>
+      <dd><p>Used for transformations applied to a block or item model. Uses values from <a class="xref" href="Vintagestory.API.Common.ModelTransformNoDefaults.html">ModelTransformNoDefaults</a> but will assign defaults if not included.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -789,6 +832,11 @@ also be just one.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.ModelTransformNoDefaults.html">ModelTransformNoDefaults</a></dt>
+      <dd><p>Controls the transformations of 3D shapes. Note that defaults change depending on where this class is used.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.MountableUtil.html">MountableUtil</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
@@ -903,6 +951,10 @@ also be just one.</p>
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.SeatConfig.html">SeatConfig</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.ServerAnimator.html">ServerAnimator</a></dt>
       <dd></dd>
     </dl>
@@ -969,7 +1021,8 @@ also be just one.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.TransitionableProperties.html">TransitionableProperties</a></dt>
-      <dd></dd>
+      <dd><p>This is a versatile way of allowing a collectible to change to another after a certain time in the inventory.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.TyronThreadPool.html">TyronThreadPool</a></dt>
@@ -1239,6 +1292,11 @@ WARNING: please make sure whatever functions and fields you use with the OnTesse
 </dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IHeldBag.html">IHeldBag</a></dt>
+      <dd><p>Bag is a non-placed block container, usually one that is attached to an entity</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></dt>
       <dd><p>Basic interface representing an item inventory</p>
 </dd>
@@ -1286,11 +1344,17 @@ WARNING: please make sure whatever functions and fields you use with the OnTesse
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.IMountable.html">IMountable</a></dt>
+      <dd><p>Represents something the player can mount. Usually a block or an entity.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IMountableListener.html">IMountableListener</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Common.IMountableSupplier.html">IMountableSupplier</a></dt>
-      <dd></dd>
+      <dt><a class="xref" href="Vintagestory.API.Common.IMountableSeat.html">IMountableSeat</a></dt>
+      <dd><p>Represents a seat of a mountable object.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.INetworkAPI.html">INetworkAPI</a></dt>
@@ -1354,6 +1418,10 @@ the block entity existing in the world (yet). The modified tree will then be use
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.IVariableSeatsMountable.html">IVariableSeatsMountable</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.IWearableShapeSupplier.html">IWearableShapeSupplier</a></dt>
       <dd></dd>
     </dl>
@@ -1395,7 +1463,8 @@ Enums
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumAnimationBlendMode.html">EnumAnimationBlendMode</a></dt>
-      <dd></dd>
+      <dd><p>Defines how multiple animations should be blended together.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumAppSide.html">EnumAppSide</a></dt>
@@ -1411,8 +1480,8 @@ Enums
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumBlockMaterial.html">EnumBlockMaterial</a></dt>
-      <dd><p>Material of which a block my be made of
-Currently only used for mining speed for tools</p>
+      <dd><p>Materials of which a block may be made of.
+Currently only used for mining speed for tools and blast resistance.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -1479,7 +1548,8 @@ Currently only used for mining speed for tools</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumFoodCategory.html">EnumFoodCategory</a></dt>
-      <dd></dd>
+      <dd><p>Types of nutrition for foods.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumFreeMovAxisLock.html">EnumFreeMovAxisLock</a></dt>
@@ -1497,7 +1567,8 @@ Currently only used for mining speed for tools</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumHabitat.html">EnumHabitat</a></dt>
-      <dd></dd>
+      <dd><p>Habitats for entities. Controls some minor logic for entities.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumHand.html">EnumHand</a></dt>
@@ -1535,11 +1606,13 @@ Currently only used for mining speed for tools</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumItemClass.html">EnumItemClass</a></dt>
-      <dd></dd>
+      <dd><p>The type of collectible in an itemstack.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumItemDamageSource.html">EnumItemDamageSource</a></dt>
-      <dd></dd>
+      <dd><p>Types for how an item can damage it's durability.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumItemStorageFlags.html">EnumItemStorageFlags</a></dt>
@@ -1561,7 +1634,8 @@ Currently only used for mining speed for tools</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumMatterState.html">EnumMatterState</a></dt>
-      <dd></dd>
+      <dd><p>Various states of matter to use for collectibles.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumMergePriority.html">EnumMergePriority</a></dt>
@@ -1596,7 +1670,8 @@ what any particular mod can do.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumMouseButton.html">EnumMouseButton</a></dt>
-      <dd></dd>
+      <dd><p>A list of mouse buttons.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumOrigin.html">EnumOrigin</a></dt>
@@ -1616,7 +1691,8 @@ what any particular mod can do.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumParticleModel.html">EnumParticleModel</a></dt>
-      <dd></dd>
+      <dd><p>Types of model for a particle.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumPlayerAccessResult.html">EnumPlayerAccessResult</a></dt>
@@ -1632,7 +1708,8 @@ what any particular mod can do.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumRandomizeAxes.html">EnumRandomizeAxes</a></dt>
-      <dd></dd>
+      <dd><p>When picking a random seed for this block, what axes should we base it on?</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumReflectiveMode.html">EnumReflectiveMode</a></dt>
@@ -1653,15 +1730,18 @@ what any particular mod can do.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumShapeFormat.html">EnumShapeFormat</a></dt>
-      <dd></dd>
+      <dd><p>Types of shape that can be loaded by the game.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumSmeltType.html">EnumSmeltType</a></dt>
-      <dd></dd>
+      <dd><p>The type of smelting for the collectible. This effects how the object is smelted.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumSoilNutrient.html">EnumSoilNutrient</a></dt>
-      <dd></dd>
+      <dd><p>The three types of soil nutrient for farmland and crops.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumSpecialKey.html">EnumSpecialKey</a></dt>
@@ -1677,11 +1757,13 @@ what any particular mod can do.</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumTool.html">EnumTool</a></dt>
-      <dd></dd>
+      <dd><p>Types for each tool in the game. Some of these are unused.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumTransitionType.html">EnumTransitionType</a></dt>
-      <dd></dd>
+      <dd><p>Types of transition for items.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.EnumWindBitMode.html">EnumWindBitMode</a></dt>
@@ -1755,7 +1837,8 @@ Delegates
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.CanPlaceOrBreakDelegate.html">CanPlaceOrBreakDelegate</a></dt>
-      <dd></dd>
+      <dd><p>Test if a player has the privilege to modify a block at given block selection</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.CanSpawnNearbyDelegate.html">CanSpawnNearbyDelegate</a></dt>
@@ -1827,6 +1910,10 @@ Delegates
       <dt><a class="xref" href="Vintagestory.API.Common.EventBusListenerDelegate.html">EventBusListenerDelegate</a></dt>
       <dd><p>For handling events on the event bus</p>
 </dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.FastParticlePool.CreateParticleDelegate.html">FastParticlePool.CreateParticleDelegate</a></dt>
+      <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.Func-2.html">Func&lt;T1, TResult&gt;</a></dt>
@@ -1983,6 +2070,10 @@ For example if its an entity, you will want to store the entity id, then this me
       <dt><a class="xref" href="Vintagestory.API.Common.SolarSphericalCoordsDelegate.html">SolarSphericalCoordsDelegate</a></dt>
       <dd><p>Should return sin(solar altitude angle). i.e. -1 for 90 degrees far below horizon, 0 for horizon and 1 for vertical</p>
 </dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.StartAnimationDelegate.html">StartAnimationDelegate</a></dt>
+      <dd></dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.SuspendServerDelegate.html">SuspendServerDelegate</a></dt>

@@ -359,14 +359,14 @@ namespace Vintagestory.API.Common
         {
             double moveSpeed = dt * GlobalConstants.BaseMoveSpeed * MovespeedMultiplier * GlobalConstants.OverallSpeedMultiplier;
             
-            double dz = (Forward ? -moveSpeed : 0) + (Backward ? moveSpeed : 0);
-            double dx = (Right ? moveSpeed : 0) + (Left ? -moveSpeed : 0);
+            double dz = (Forward ? moveSpeed : 0) + (Backward ? -moveSpeed : 0);
+            double dx = (Right ? -moveSpeed : 0) + (Left ? moveSpeed : 0);
             
             double cosPitch = Math.Cos(pos.Pitch);
             double sinPitch = Math.Sin(pos.Pitch);
 
-            double cosYaw = Math.Cos(Math.PI / 2 - pos.Yaw);
-            double sinYaw = Math.Sin(Math.PI / 2 - pos.Yaw);
+            double cosYaw = Math.Cos(-pos.Yaw);
+            double sinYaw = Math.Sin(-pos.Yaw);
 
             WalkVector.Set(
                 dx * cosYaw - dz * sinYaw,
@@ -378,7 +378,7 @@ namespace Vintagestory.API.Common
 
             FlyVector.Set(
                 dx * cosYaw + dz * cosPitch * sinYaw,
-                - dz * sinPitch,
+                dz * sinPitch,
                 dx * sinYaw - dz * cosPitch * cosYaw
             );
 

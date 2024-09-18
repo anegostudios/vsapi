@@ -19,6 +19,16 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Returns if this mod should be loaded for the given app side.
         /// </summary>
+        /// <param name="api"></param>
+        /// <returns></returns>
+        public virtual bool ShouldLoad(ICoreAPI api)
+        {
+            return ShouldLoad(api.Side);
+        }
+
+        /// <summary>
+        /// Returns if this mod should be loaded for the given app side, called by ShouldLoad(ICoreApi api)
+        /// </summary>
         public virtual bool ShouldLoad(EnumAppSide forSide)
         {
             return true;

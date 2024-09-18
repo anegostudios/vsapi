@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -220,8 +220,8 @@ Class AnimationCache
 
   <a id="Vintagestory_API_Common_AnimationCache_InitManager_" data-uid="Vintagestory.API.Common.AnimationCache.InitManager*"></a>
 
-  <h3 id="Vintagestory_API_Common_AnimationCache_InitManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_String___" data-uid="Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.String[])">
-  InitManager(ICoreAPI, IAnimationManager, Entity, Shape, RunningAnimation[], params string[])
+  <h3 id="Vintagestory_API_Common_AnimationCache_InitManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___" data-uid="Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])">
+  InitManager(ICoreAPI, IAnimationManager, Entity, Shape, RunningAnimation[], bool, params string[])
   
   </h3>
 
@@ -230,7 +230,8 @@ Class AnimationCache
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, params string[] requireJointsForElements)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use manager.LoadAnimator() or manager.LoadAnimatorCached() instead&quot;)]
+public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -244,6 +245,56 @@ Class AnimationCache
     <dt><code>entityShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
     <dd></dd>
     <dt><code>copyOverAnims</code> <a class="xref" href="Vintagestory.API.Common.RunningAnimation.html">RunningAnimation</a>[]</dt>
+    <dd></dd>
+    <dt><code>requirePosesOnServer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>requireJointsForElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IAnimationManager.html">IAnimationManager</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_" data-uid="Vintagestory.API.Common.AnimationCache.LoadAnimatorCached*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___" data-uid="Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])">
+  LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static IAnimationManager LoadAnimatorCached(this IAnimationManager manager, ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>manager</code> <a class="xref" href="Vintagestory.API.Common.IAnimationManager.html">IAnimationManager</a></dt>
+    <dd></dd>
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+    <dt><code>entity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+    <dt><code>entityShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
+    <dd></dd>
+    <dt><code>copyOverAnims</code> <a class="xref" href="Vintagestory.API.Common.RunningAnimation.html">RunningAnimation</a>[]</dt>
+    <dd></dd>
+    <dt><code>requirePosesOnServer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
     <dt><code>requireJointsForElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
     <dd></dd>

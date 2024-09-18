@@ -1,0 +1,969 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.Entities.PModuleInAir
+  commentId: T:Vintagestory.API.Common.Entities.PModuleInAir
+  id: PModuleInAir
+  parent: Vintagestory.API.Common.Entities
+  children:
+  - Vintagestory.API.Common.Entities.PModuleInAir.AirMovingStrength
+  - Vintagestory.API.Common.Entities.PModuleInAir.Applicable(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  - Vintagestory.API.Common.Entities.PModuleInAir.ApplyFlying(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  - Vintagestory.API.Common.Entities.PModuleInAir.ApplyFreeFall(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  - Vintagestory.API.Common.Entities.PModuleInAir.DoApply(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  - Vintagestory.API.Common.Entities.PModuleInAir.Initialize(Vintagestory.API.Datastructures.JsonObject,Vintagestory.API.Common.Entities.Entity)
+  - Vintagestory.API.Common.Entities.PModuleInAir.WallDragFactor
+  langs:
+  - csharp
+  - vb
+  name: PModuleInAir
+  nameWithType: PModuleInAir
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: 'public class PModuleInAir : PModule'
+    content.vb: Public Class PModuleInAir Inherits PModule
+  inheritance:
+  - System.Object
+  - Vintagestory.API.Common.Entities.PModule
+  derivedClasses:
+  - Vintagestory.API.Common.Entities.PModulePlayerInAir
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.Entities.PModuleInAir.AirMovingStrength
+  commentId: F:Vintagestory.API.Common.Entities.PModuleInAir.AirMovingStrength
+  id: AirMovingStrength
+  parent: Vintagestory.API.Common.Entities.PModuleInAir
+  langs:
+  - csharp
+  - vb
+  name: AirMovingStrength
+  nameWithType: PModuleInAir.AirMovingStrength
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir.AirMovingStrength
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public float AirMovingStrength
+    return:
+      type: System.Single
+    content.vb: Public AirMovingStrength As Single
+- uid: Vintagestory.API.Common.Entities.PModuleInAir.WallDragFactor
+  commentId: F:Vintagestory.API.Common.Entities.PModuleInAir.WallDragFactor
+  id: WallDragFactor
+  parent: Vintagestory.API.Common.Entities.PModuleInAir
+  langs:
+  - csharp
+  - vb
+  name: WallDragFactor
+  nameWithType: PModuleInAir.WallDragFactor
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir.WallDragFactor
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public double WallDragFactor
+    return:
+      type: System.Double
+    content.vb: Public WallDragFactor As Double
+- uid: Vintagestory.API.Common.Entities.PModuleInAir.Initialize(Vintagestory.API.Datastructures.JsonObject,Vintagestory.API.Common.Entities.Entity)
+  commentId: M:Vintagestory.API.Common.Entities.PModuleInAir.Initialize(Vintagestory.API.Datastructures.JsonObject,Vintagestory.API.Common.Entities.Entity)
+  id: Initialize(Vintagestory.API.Datastructures.JsonObject,Vintagestory.API.Common.Entities.Entity)
+  parent: Vintagestory.API.Common.Entities.PModuleInAir
+  langs:
+  - csharp
+  - vb
+  name: Initialize(JsonObject, Entity)
+  nameWithType: PModuleInAir.Initialize(JsonObject, Entity)
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir.Initialize(Vintagestory.API.Datastructures.JsonObject, Vintagestory.API.Common.Entities.Entity)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Config passed in from the behavior in the entity class.
+  example: []
+  syntax:
+    content: public override void Initialize(JsonObject config, Entity entity)
+    parameters:
+    - id: config
+      type: Vintagestory.API.Datastructures.JsonObject
+    - id: entity
+      type: Vintagestory.API.Common.Entities.Entity
+    content.vb: Public Overrides Sub Initialize(config As JsonObject, entity As Entity)
+  overridden: Vintagestory.API.Common.Entities.PModule.Initialize(Vintagestory.API.Datastructures.JsonObject,Vintagestory.API.Common.Entities.Entity)
+  overload: Vintagestory.API.Common.Entities.PModuleInAir.Initialize*
+- uid: Vintagestory.API.Common.Entities.PModuleInAir.Applicable(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  commentId: M:Vintagestory.API.Common.Entities.PModuleInAir.Applicable(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  id: Applicable(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  parent: Vintagestory.API.Common.Entities.PModuleInAir
+  langs:
+  - csharp
+  - vb
+  name: Applicable(Entity, EntityPos, EntityControls)
+  nameWithType: PModuleInAir.Applicable(Entity, EntityPos, EntityControls)
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir.Applicable(Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, Vintagestory.API.Common.EntityControls)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: >-
+    Applicable if the player is in fly mode or the entity isn't colliding with anything including liquid.
+
+    Must be alive.
+  example: []
+  syntax:
+    content: public override bool Applicable(Entity entity, EntityPos pos, EntityControls controls)
+    parameters:
+    - id: entity
+      type: Vintagestory.API.Common.Entities.Entity
+    - id: pos
+      type: Vintagestory.API.Common.Entities.EntityPos
+    - id: controls
+      type: Vintagestory.API.Common.EntityControls
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides Function Applicable(entity As Entity, pos As EntityPos, controls As EntityControls) As Boolean
+  overridden: Vintagestory.API.Common.Entities.PModule.Applicable(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  overload: Vintagestory.API.Common.Entities.PModuleInAir.Applicable*
+- uid: Vintagestory.API.Common.Entities.PModuleInAir.DoApply(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  commentId: M:Vintagestory.API.Common.Entities.PModuleInAir.DoApply(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  id: DoApply(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  parent: Vintagestory.API.Common.Entities.PModuleInAir
+  langs:
+  - csharp
+  - vb
+  name: DoApply(float, Entity, EntityPos, EntityControls)
+  nameWithType: PModuleInAir.DoApply(float, Entity, EntityPos, EntityControls)
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir.DoApply(float, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, Vintagestory.API.Common.EntityControls)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Apply a modifier to this entity.
+  example: []
+  syntax:
+    content: public override void DoApply(float dt, Entity entity, EntityPos pos, EntityControls controls)
+    parameters:
+    - id: dt
+      type: System.Single
+    - id: entity
+      type: Vintagestory.API.Common.Entities.Entity
+    - id: pos
+      type: Vintagestory.API.Common.Entities.EntityPos
+    - id: controls
+      type: Vintagestory.API.Common.EntityControls
+    content.vb: Public Overrides Sub DoApply(dt As Single, entity As Entity, pos As EntityPos, controls As EntityControls)
+  overridden: Vintagestory.API.Common.Entities.PModule.DoApply(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  overload: Vintagestory.API.Common.Entities.PModuleInAir.DoApply*
+  nameWithType.vb: PModuleInAir.DoApply(Single, Entity, EntityPos, EntityControls)
+  fullName.vb: Vintagestory.API.Common.Entities.PModuleInAir.DoApply(Single, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, Vintagestory.API.Common.EntityControls)
+  name.vb: DoApply(Single, Entity, EntityPos, EntityControls)
+- uid: Vintagestory.API.Common.Entities.PModuleInAir.ApplyFreeFall(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  commentId: M:Vintagestory.API.Common.Entities.PModuleInAir.ApplyFreeFall(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  id: ApplyFreeFall(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  parent: Vintagestory.API.Common.Entities.PModuleInAir
+  langs:
+  - csharp
+  - vb
+  name: ApplyFreeFall(float, Entity, EntityPos, EntityControls)
+  nameWithType: PModuleInAir.ApplyFreeFall(float, Entity, EntityPos, EntityControls)
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir.ApplyFreeFall(float, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, Vintagestory.API.Common.EntityControls)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual void ApplyFreeFall(float dt, Entity entity, EntityPos pos, EntityControls controls)
+    parameters:
+    - id: dt
+      type: System.Single
+    - id: entity
+      type: Vintagestory.API.Common.Entities.Entity
+    - id: pos
+      type: Vintagestory.API.Common.Entities.EntityPos
+    - id: controls
+      type: Vintagestory.API.Common.EntityControls
+    content.vb: Public Overridable Sub ApplyFreeFall(dt As Single, entity As Entity, pos As EntityPos, controls As EntityControls)
+  overload: Vintagestory.API.Common.Entities.PModuleInAir.ApplyFreeFall*
+  nameWithType.vb: PModuleInAir.ApplyFreeFall(Single, Entity, EntityPos, EntityControls)
+  fullName.vb: Vintagestory.API.Common.Entities.PModuleInAir.ApplyFreeFall(Single, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, Vintagestory.API.Common.EntityControls)
+  name.vb: ApplyFreeFall(Single, Entity, EntityPos, EntityControls)
+- uid: Vintagestory.API.Common.Entities.PModuleInAir.ApplyFlying(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  commentId: M:Vintagestory.API.Common.Entities.PModuleInAir.ApplyFlying(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  id: ApplyFlying(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  parent: Vintagestory.API.Common.Entities.PModuleInAir
+  langs:
+  - csharp
+  - vb
+  name: ApplyFlying(float, Entity, EntityPos, EntityControls)
+  nameWithType: PModuleInAir.ApplyFlying(float, Entity, EntityPos, EntityControls)
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir.ApplyFlying(float, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, Vintagestory.API.Common.EntityControls)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Creative flight movement, possibly glider too?
+  example: []
+  syntax:
+    content: public virtual void ApplyFlying(float dt, Entity entity, EntityPos pos, EntityControls controls)
+    parameters:
+    - id: dt
+      type: System.Single
+    - id: entity
+      type: Vintagestory.API.Common.Entities.Entity
+    - id: pos
+      type: Vintagestory.API.Common.Entities.EntityPos
+    - id: controls
+      type: Vintagestory.API.Common.EntityControls
+    content.vb: Public Overridable Sub ApplyFlying(dt As Single, entity As Entity, pos As EntityPos, controls As EntityControls)
+  overload: Vintagestory.API.Common.Entities.PModuleInAir.ApplyFlying*
+  nameWithType.vb: PModuleInAir.ApplyFlying(Single, Entity, EntityPos, EntityControls)
+  fullName.vb: Vintagestory.API.Common.Entities.PModuleInAir.ApplyFlying(Single, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, Vintagestory.API.Common.EntityControls)
+  name.vb: ApplyFlying(Single, Entity, EntityPos, EntityControls)
+references:
+- uid: Vintagestory.API.Common.Entities
+  commentId: N:Vintagestory.API.Common.Entities
+  href: Vintagestory.html
+  name: Vintagestory.API.Common.Entities
+  nameWithType: Vintagestory.API.Common.Entities
+  fullName: Vintagestory.API.Common.Entities
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Vintagestory.API.Common.Entities.PModule
+  commentId: T:Vintagestory.API.Common.Entities.PModule
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.PModule.html
+  name: PModule
+  nameWithType: PModule
+  fullName: Vintagestory.API.Common.Entities.PModule
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: Vintagestory.API.Common.Entities.PModule.Initialize(Vintagestory.API.Datastructures.JsonObject,Vintagestory.API.Common.Entities.Entity)
+  commentId: M:Vintagestory.API.Common.Entities.PModule.Initialize(Vintagestory.API.Datastructures.JsonObject,Vintagestory.API.Common.Entities.Entity)
+  parent: Vintagestory.API.Common.Entities.PModule
+  href: Vintagestory.API.Common.Entities.PModule.html#Vintagestory_API_Common_Entities_PModule_Initialize_Vintagestory_API_Datastructures_JsonObject_Vintagestory_API_Common_Entities_Entity_
+  name: Initialize(JsonObject, Entity)
+  nameWithType: PModule.Initialize(JsonObject, Entity)
+  fullName: Vintagestory.API.Common.Entities.PModule.Initialize(Vintagestory.API.Datastructures.JsonObject, Vintagestory.API.Common.Entities.Entity)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.PModule.Initialize(Vintagestory.API.Datastructures.JsonObject,Vintagestory.API.Common.Entities.Entity)
+    name: Initialize
+    href: Vintagestory.API.Common.Entities.PModule.html#Vintagestory_API_Common_Entities_PModule_Initialize_Vintagestory_API_Datastructures_JsonObject_Vintagestory_API_Common_Entities_Entity_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.PModule.Initialize(Vintagestory.API.Datastructures.JsonObject,Vintagestory.API.Common.Entities.Entity)
+    name: Initialize
+    href: Vintagestory.API.Common.Entities.PModule.html#Vintagestory_API_Common_Entities_PModule_Initialize_Vintagestory_API_Datastructures_JsonObject_Vintagestory_API_Common_Entities_Entity_
+  - name: (
+  - uid: Vintagestory.API.Datastructures.JsonObject
+    name: JsonObject
+    href: Vintagestory.API.Datastructures.JsonObject.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: )
+- uid: Vintagestory.API.Common.Entities.PModuleInAir.Initialize*
+  commentId: Overload:Vintagestory.API.Common.Entities.PModuleInAir.Initialize
+  href: Vintagestory.API.Common.Entities.PModuleInAir.html#Vintagestory_API_Common_Entities_PModuleInAir_Initialize_Vintagestory_API_Datastructures_JsonObject_Vintagestory_API_Common_Entities_Entity_
+  name: Initialize
+  nameWithType: PModuleInAir.Initialize
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir.Initialize
+- uid: Vintagestory.API.Datastructures.JsonObject
+  commentId: T:Vintagestory.API.Datastructures.JsonObject
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.JsonObject.html
+  name: JsonObject
+  nameWithType: JsonObject
+  fullName: Vintagestory.API.Datastructures.JsonObject
+- uid: Vintagestory.API.Common.Entities.Entity
+  commentId: T:Vintagestory.API.Common.Entities.Entity
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Vintagestory.API.Common.Entities.Entity
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Common.Entities.PModule.Applicable(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  commentId: M:Vintagestory.API.Common.Entities.PModule.Applicable(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  parent: Vintagestory.API.Common.Entities.PModule
+  href: Vintagestory.API.Common.Entities.PModule.html#Vintagestory_API_Common_Entities_PModule_Applicable_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityPos_Vintagestory_API_Common_EntityControls_
+  name: Applicable(Entity, EntityPos, EntityControls)
+  nameWithType: PModule.Applicable(Entity, EntityPos, EntityControls)
+  fullName: Vintagestory.API.Common.Entities.PModule.Applicable(Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, Vintagestory.API.Common.EntityControls)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.PModule.Applicable(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+    name: Applicable
+    href: Vintagestory.API.Common.Entities.PModule.html#Vintagestory_API_Common_Entities_PModule_Applicable_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityPos_Vintagestory_API_Common_EntityControls_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.EntityPos
+    name: EntityPos
+    href: Vintagestory.API.Common.Entities.EntityPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EntityControls
+    name: EntityControls
+    href: Vintagestory.API.Common.EntityControls.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.PModule.Applicable(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+    name: Applicable
+    href: Vintagestory.API.Common.Entities.PModule.html#Vintagestory_API_Common_Entities_PModule_Applicable_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityPos_Vintagestory_API_Common_EntityControls_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.EntityPos
+    name: EntityPos
+    href: Vintagestory.API.Common.Entities.EntityPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EntityControls
+    name: EntityControls
+    href: Vintagestory.API.Common.EntityControls.html
+  - name: )
+- uid: Vintagestory.API.Common.Entities.PModuleInAir.Applicable*
+  commentId: Overload:Vintagestory.API.Common.Entities.PModuleInAir.Applicable
+  href: Vintagestory.API.Common.Entities.PModuleInAir.html#Vintagestory_API_Common_Entities_PModuleInAir_Applicable_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityPos_Vintagestory_API_Common_EntityControls_
+  name: Applicable
+  nameWithType: PModuleInAir.Applicable
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir.Applicable
+- uid: Vintagestory.API.Common.Entities.EntityPos
+  commentId: T:Vintagestory.API.Common.Entities.EntityPos
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.EntityPos.html
+  name: EntityPos
+  nameWithType: EntityPos
+  fullName: Vintagestory.API.Common.Entities.EntityPos
+- uid: Vintagestory.API.Common.EntityControls
+  commentId: T:Vintagestory.API.Common.EntityControls
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EntityControls.html
+  name: EntityControls
+  nameWithType: EntityControls
+  fullName: Vintagestory.API.Common.EntityControls
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Common.Entities.PModule.DoApply(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  commentId: M:Vintagestory.API.Common.Entities.PModule.DoApply(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+  parent: Vintagestory.API.Common.Entities.PModule
+  isExternal: true
+  href: Vintagestory.API.Common.Entities.PModule.html#Vintagestory_API_Common_Entities_PModule_DoApply_System_Single_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityPos_Vintagestory_API_Common_EntityControls_
+  name: DoApply(float, Entity, EntityPos, EntityControls)
+  nameWithType: PModule.DoApply(float, Entity, EntityPos, EntityControls)
+  fullName: Vintagestory.API.Common.Entities.PModule.DoApply(float, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, Vintagestory.API.Common.EntityControls)
+  nameWithType.vb: PModule.DoApply(Single, Entity, EntityPos, EntityControls)
+  fullName.vb: Vintagestory.API.Common.Entities.PModule.DoApply(Single, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, Vintagestory.API.Common.EntityControls)
+  name.vb: DoApply(Single, Entity, EntityPos, EntityControls)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.PModule.DoApply(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+    name: DoApply
+    href: Vintagestory.API.Common.Entities.PModule.html#Vintagestory_API_Common_Entities_PModule_DoApply_System_Single_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityPos_Vintagestory_API_Common_EntityControls_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.EntityPos
+    name: EntityPos
+    href: Vintagestory.API.Common.Entities.EntityPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EntityControls
+    name: EntityControls
+    href: Vintagestory.API.Common.EntityControls.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.PModule.DoApply(System.Single,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,Vintagestory.API.Common.EntityControls)
+    name: DoApply
+    href: Vintagestory.API.Common.Entities.PModule.html#Vintagestory_API_Common_Entities_PModule_DoApply_System_Single_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityPos_Vintagestory_API_Common_EntityControls_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Entities.EntityPos
+    name: EntityPos
+    href: Vintagestory.API.Common.Entities.EntityPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EntityControls
+    name: EntityControls
+    href: Vintagestory.API.Common.EntityControls.html
+  - name: )
+- uid: Vintagestory.API.Common.Entities.PModuleInAir.DoApply*
+  commentId: Overload:Vintagestory.API.Common.Entities.PModuleInAir.DoApply
+  href: Vintagestory.API.Common.Entities.PModuleInAir.html#Vintagestory_API_Common_Entities_PModuleInAir_DoApply_System_Single_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityPos_Vintagestory_API_Common_EntityControls_
+  name: DoApply
+  nameWithType: PModuleInAir.DoApply
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir.DoApply
+- uid: Vintagestory.API.Common.Entities.PModuleInAir.ApplyFreeFall*
+  commentId: Overload:Vintagestory.API.Common.Entities.PModuleInAir.ApplyFreeFall
+  href: Vintagestory.API.Common.Entities.PModuleInAir.html#Vintagestory_API_Common_Entities_PModuleInAir_ApplyFreeFall_System_Single_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityPos_Vintagestory_API_Common_EntityControls_
+  name: ApplyFreeFall
+  nameWithType: PModuleInAir.ApplyFreeFall
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir.ApplyFreeFall
+- uid: Vintagestory.API.Common.Entities.PModuleInAir.ApplyFlying*
+  commentId: Overload:Vintagestory.API.Common.Entities.PModuleInAir.ApplyFlying
+  href: Vintagestory.API.Common.Entities.PModuleInAir.html#Vintagestory_API_Common_Entities_PModuleInAir_ApplyFlying_System_Single_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityPos_Vintagestory_API_Common_EntityControls_
+  name: ApplyFlying
+  nameWithType: PModuleInAir.ApplyFlying
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir.ApplyFlying

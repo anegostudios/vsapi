@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -343,6 +343,9 @@ Class Item
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_ConsumeCraftingIngredients_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_GridRecipe_">CollectibleObject.ConsumeCraftingIngredients(ItemSlot[], ItemSlot, GridRecipe)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetDurability_Vintagestory_API_Common_ItemStack_System_Int32_">CollectibleObject.SetDurability(ItemStack, int)</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_DamageItem_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemSlot_System_Int32_">CollectibleObject.DamageItem(IWorldAccessor, Entity, ItemSlot, int)</a>
     </div>
     <div>
@@ -511,19 +514,13 @@ Class Item
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_HasTemperature_Vintagestory_API_Common_IItemStack_">CollectibleObject.HasTemperature(IItemStack)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_Double_">CollectibleObject.GetTemperature(IWorldAccessor, ItemStack, double)</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_">CollectibleObject.GetTemperature(IWorldAccessor, ItemStack)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_Single_System_Boolean_">CollectibleObject.SetTemperature(IWorldAccessor, ItemStack, float, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_">CollectibleObject.IsEmptyBackPack(IItemStack)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_">CollectibleObject.IsBackPack(IItemStack)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_">CollectibleObject.QuantityBackPackSlots(IItemStack)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_Equals_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_ItemStack_System_String___">CollectibleObject.Equals(ItemStack, ItemStack, params string[])</a>
@@ -553,6 +550,9 @@ Class Item
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetBehavior_Vintagestory_API_Common_CollectibleBehavior___System_Type_System_Boolean_">CollectibleObject.GetBehavior(CollectibleBehavior[], Type, bool)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetCollectibleInterface__1">CollectibleObject.GetCollectibleInterface&lt;T&gt;()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_HasBehavior__1_System_Boolean_">CollectibleObject.HasBehavior&lt;T&gt;(bool)</a>
     </div>
     <div>
@@ -569,6 +569,15 @@ Class Item
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnSmeltAttempt_Vintagestory_API_Common_InventoryBase_">CollectibleObject.OnSmeltAttempt(InventoryBase)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_">CollectibleObject.IsEmptyBackPack(IItemStack)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_">CollectibleObject.IsBackPack(IItemStack)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_">CollectibleObject.QuantityBackPackSlots(IItemStack)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_Code">RegistryObject.Code</a>
@@ -656,6 +665,16 @@ Class Item
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 

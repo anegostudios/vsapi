@@ -96,7 +96,7 @@ namespace Vintagestory.API.Client
 
             inventory.SlotNotified += OnSlotNotified;
 
-            DrawIconHandler = (cr, type, x, y, w, h, rgba) => api.Gui.Icons.DrawIconInt(cr, type, x, y, w, h, rgba);
+            DrawIconHandler = api.Gui.Icons.DrawIconInt;
         }
 
         private void OnSlotNotified(int slotid)
@@ -772,7 +772,7 @@ namespace Vintagestory.API.Client
                         api, 
                         renderedSlots.GetKeyAtIndex(i), 
                         args.Button, 
-                        api.Input.KeyboardKeyState[(int)GlKeys.ShiftLeft],
+                        api.Input.KeyboardKeyState[(int)GlKeys.ShiftLeft] || api.Input.KeyboardKeyState[(int)GlKeys.ShiftRight],
                         api.Input.KeyboardKeyState[(int)GlKeys.ControlLeft],
                         api.Input.KeyboardKeyState[(int)GlKeys.AltLeft]
                     );
@@ -928,18 +928,12 @@ namespace Vintagestory.API.Client
                     op.RequestedQuantity = nowSrcSize - beforeSrcSize - stacksPerSlot;
 
                     int moved = nowSrcSize - beforeSrcSize - stacksPerSlot;
-
                     object packet = api.World.Player.InventoryManager.TryTransferTo(sourceSlot, targetSlot, ref op);
-
 
                     distributeStacksAddedStackSizeBySlotId.TryGetValue(intoSlotId, out int addedBefore);
                     distributeStacksAddedStackSizeBySlotId[intoSlotId] = addedBefore + op.MovedQuantity;
 
                     distributeStacksAddedStackSizeBySlotId[sourceSlotid] -= op.MovedQuantity;
-
-                    //Console.WriteLine(distributeStacksPrevStackSizeBySlotId.Count + " client side redist stack. Move {0}-{4}-{5} from {1} to {2}, slot has now {3}x", nowSrcSize, sourceSlotid, intoSlotId, distributeStacksAddedStackSizeBySlotId[intoSlotId] + distributeStacksPrevStackSizeBySlotId[intoSlotId], beforeSrcSize, stacksPerSlot);
-
-
 
                     if (packet != null)
                     {
@@ -951,8 +945,6 @@ namespace Vintagestory.API.Client
 
         public virtual void SlotClick(ICoreClientAPI api, int slotId, EnumMouseButton mouseButton, bool shiftPressed, bool ctrlPressed, bool altPressed)
         {
-            //Console.WriteLine("client side slot click on " + slotId);
-
             List<IInventory> inventories = api.World.Player.InventoryManager.OpenedInventories;
             IInventory mouseCursorInv = api.World.Player.InventoryManager.GetOwnInventory(GlobalConstants.mousecursorInvClassName);
             object packet;
@@ -975,7 +967,25 @@ namespace Vintagestory.API.Client
             else
             {
                 op.CurrentPriority = EnumMergePriority.DirectMerge;
+                bool wasEmpty = mouseCursorInv.Empty;
+                var wasCollObj = mouseCursorInv[0].Itemstack?.Collectible;
+
                 packet = inventory.ActivateSlot(slotId, mouseCursorInv[0], ref op);
+
+                // Now picked up
+                if (wasEmpty && !mouseCursorInv.Empty)
+                {
+                    api.World.PlaySoundAt(mouseCursorInv[0].Itemstack.Collectible?.HeldSounds?.InvPickup ?? HeldSounds.InvPickUpDefault, 0, 0, 0, null, EnumSoundType.Sound, 1f);
+                }
+                else
+                {
+
+                    // Now dropped off
+                    if ((!wasEmpty && mouseCursorInv.Empty) || wasCollObj?.Id != mouseCursorInv[0].Itemstack?.Collectible?.Id)
+                    {
+                        api.World.PlaySoundAt(wasCollObj?.HeldSounds?.InvPlace ?? HeldSounds.InvPlaceDefault, 0, 0, 0, null, EnumSoundType.Sound, 1f);
+                    }
+                }
             }
 
             if (packet != null)

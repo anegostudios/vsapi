@@ -5,8 +5,8 @@ items:
   id: ITimedDespawn
   parent: Vintagestory.API.Common
   children:
-  - Vintagestory.API.Common.ITimedDespawn.SetForcedCalendarDespawn(System.Double)
-  - Vintagestory.API.Common.ITimedDespawn.SetTimer(System.Int32)
+  - Vintagestory.API.Common.ITimedDespawn.DespawnSeconds
+  - Vintagestory.API.Common.ITimedDespawn.SetDespawnByCalendarDate(System.Double)
   langs:
   - csharp
   - vb
@@ -20,54 +20,54 @@ items:
   syntax:
     content: public interface ITimedDespawn
     content.vb: Public Interface ITimedDespawn
-- uid: Vintagestory.API.Common.ITimedDespawn.SetTimer(System.Int32)
-  commentId: M:Vintagestory.API.Common.ITimedDespawn.SetTimer(System.Int32)
-  id: SetTimer(System.Int32)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.ITimedDespawn.DespawnSeconds
+  commentId: P:Vintagestory.API.Common.ITimedDespawn.DespawnSeconds
+  id: DespawnSeconds
   parent: Vintagestory.API.Common.ITimedDespawn
   langs:
   - csharp
   - vb
-  name: SetTimer(int)
-  nameWithType: ITimedDespawn.SetTimer(int)
-  fullName: Vintagestory.API.Common.ITimedDespawn.SetTimer(int)
+  name: DespawnSeconds
+  nameWithType: ITimedDespawn.DespawnSeconds
+  fullName: Vintagestory.API.Common.ITimedDespawn.DespawnSeconds
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: float DespawnSeconds { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Property DespawnSeconds As Single
+  overload: Vintagestory.API.Common.ITimedDespawn.DespawnSeconds*
+- uid: Vintagestory.API.Common.ITimedDespawn.SetDespawnByCalendarDate(System.Double)
+  commentId: M:Vintagestory.API.Common.ITimedDespawn.SetDespawnByCalendarDate(System.Double)
+  id: SetDespawnByCalendarDate(System.Double)
+  parent: Vintagestory.API.Common.ITimedDespawn
+  langs:
+  - csharp
+  - vb
+  name: SetDespawnByCalendarDate(double)
+  nameWithType: ITimedDespawn.SetDespawnByCalendarDate(double)
+  fullName: Vintagestory.API.Common.ITimedDespawn.SetDespawnByCalendarDate(double)
   type: Method
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: void SetTimer(int value)
-    parameters:
-    - id: value
-      type: System.Int32
-    content.vb: Sub SetTimer(value As Integer)
-  overload: Vintagestory.API.Common.ITimedDespawn.SetTimer*
-  nameWithType.vb: ITimedDespawn.SetTimer(Integer)
-  fullName.vb: Vintagestory.API.Common.ITimedDespawn.SetTimer(Integer)
-  name.vb: SetTimer(Integer)
-- uid: Vintagestory.API.Common.ITimedDespawn.SetForcedCalendarDespawn(System.Double)
-  commentId: M:Vintagestory.API.Common.ITimedDespawn.SetForcedCalendarDespawn(System.Double)
-  id: SetForcedCalendarDespawn(System.Double)
-  parent: Vintagestory.API.Common.ITimedDespawn
-  langs:
-  - csharp
-  - vb
-  name: SetForcedCalendarDespawn(double)
-  nameWithType: ITimedDespawn.SetForcedCalendarDespawn(double)
-  fullName: Vintagestory.API.Common.ITimedDespawn.SetForcedCalendarDespawn(double)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  syntax:
-    content: void SetForcedCalendarDespawn(double value)
+    content: void SetDespawnByCalendarDate(double value)
     parameters:
     - id: value
       type: System.Double
-    content.vb: Sub SetForcedCalendarDespawn(value As Double)
-  overload: Vintagestory.API.Common.ITimedDespawn.SetForcedCalendarDespawn*
-  nameWithType.vb: ITimedDespawn.SetForcedCalendarDespawn(Double)
-  fullName.vb: Vintagestory.API.Common.ITimedDespawn.SetForcedCalendarDespawn(Double)
-  name.vb: SetForcedCalendarDespawn(Double)
+    content.vb: Sub SetDespawnByCalendarDate(value As Double)
+  overload: Vintagestory.API.Common.ITimedDespawn.SetDespawnByCalendarDate*
+  nameWithType.vb: ITimedDespawn.SetDespawnByCalendarDate(Double)
+  fullName.vb: Vintagestory.API.Common.ITimedDespawn.SetDespawnByCalendarDate(Double)
+  name.vb: SetDespawnByCalendarDate(Double)
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -99,23 +99,182 @@ references:
   - uid: Vintagestory.API.Common
     name: Common
     href: Vintagestory.API.Common.html
-- uid: Vintagestory.API.Common.ITimedDespawn.SetTimer*
-  commentId: Overload:Vintagestory.API.Common.ITimedDespawn.SetTimer
-  href: Vintagestory.API.Common.ITimedDespawn.html#Vintagestory_API_Common_ITimedDespawn_SetTimer_System_Int32_
-  name: SetTimer
-  nameWithType: ITimedDespawn.SetTimer
-  fullName: Vintagestory.API.Common.ITimedDespawn.SetTimer
-- uid: System.Int32
-  commentId: T:System.Int32
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.ITimedDespawn.DespawnSeconds*
+  commentId: Overload:Vintagestory.API.Common.ITimedDespawn.DespawnSeconds
+  href: Vintagestory.API.Common.ITimedDespawn.html#Vintagestory_API_Common_ITimedDespawn_DespawnSeconds
+  name: DespawnSeconds
+  nameWithType: ITimedDespawn.DespawnSeconds
+  fullName: Vintagestory.API.Common.ITimedDespawn.DespawnSeconds
+- uid: System.Single
+  commentId: T:System.Single
   parent: System
   isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
 - uid: System
   commentId: N:System
   isExternal: true
@@ -123,12 +282,12 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Vintagestory.API.Common.ITimedDespawn.SetForcedCalendarDespawn*
-  commentId: Overload:Vintagestory.API.Common.ITimedDespawn.SetForcedCalendarDespawn
-  href: Vintagestory.API.Common.ITimedDespawn.html#Vintagestory_API_Common_ITimedDespawn_SetForcedCalendarDespawn_System_Double_
-  name: SetForcedCalendarDespawn
-  nameWithType: ITimedDespawn.SetForcedCalendarDespawn
-  fullName: Vintagestory.API.Common.ITimedDespawn.SetForcedCalendarDespawn
+- uid: Vintagestory.API.Common.ITimedDespawn.SetDespawnByCalendarDate*
+  commentId: Overload:Vintagestory.API.Common.ITimedDespawn.SetDespawnByCalendarDate
+  href: Vintagestory.API.Common.ITimedDespawn.html#Vintagestory_API_Common_ITimedDespawn_SetDespawnByCalendarDate_System_Double_
+  name: SetDespawnByCalendarDate
+  nameWithType: ITimedDespawn.SetDespawnByCalendarDate
+  fullName: Vintagestory.API.Common.ITimedDespawn.SetDespawnByCalendarDate
 - uid: System.Double
   commentId: T:System.Double
   parent: System

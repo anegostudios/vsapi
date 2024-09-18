@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -156,6 +156,16 @@ Class AnimatorBase
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -265,8 +275,68 @@ Class AnimatorBase
 
 
 
-  <h3 id="Vintagestory_API_Common_AnimatorBase_TransformationMatrices4x3" data-uid="Vintagestory.API.Common.AnimatorBase.TransformationMatrices4x3">
-  TransformationMatrices4x3
+  <h3 id="Vintagestory_API_Common_AnimatorBase_RootElements" data-uid="Vintagestory.API.Common.AnimatorBase.RootElements">
+  RootElements
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ShapeElement[] RootElements</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimatorBase_RootPoses" data-uid="Vintagestory.API.Common.AnimatorBase.RootPoses">
+  RootPoses
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;ElementPose&gt; RootPoses</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="Vintagestory.API.Common.ElementPose.html">ElementPose</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimatorBase_TransformationMatrices" data-uid="Vintagestory.API.Common.AnimatorBase.TransformationMatrices">
+  TransformationMatrices
   
   </h3>
 
@@ -275,7 +345,7 @@ Class AnimatorBase
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float[] TransformationMatrices4x3</code></pre>
+    <pre><code class="lang-csharp hljs">public float[] TransformationMatrices</code></pre>
   </div>
 
 
@@ -296,8 +366,8 @@ Class AnimatorBase
 
 
 
-  <h3 id="Vintagestory_API_Common_AnimatorBase_TransformationMatricesDefaultPose4x3" data-uid="Vintagestory.API.Common.AnimatorBase.TransformationMatricesDefaultPose4x3">
-  TransformationMatricesDefaultPose4x3
+  <h3 id="Vintagestory_API_Common_AnimatorBase_TransformationMatricesDefaultPose" data-uid="Vintagestory.API.Common.AnimatorBase.TransformationMatricesDefaultPose">
+  TransformationMatricesDefaultPose
   
   </h3>
 
@@ -306,7 +376,7 @@ Class AnimatorBase
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float[] TransformationMatricesDefaultPose4x3</code></pre>
+    <pre><code class="lang-csharp hljs">public float[] TransformationMatricesDefaultPose</code></pre>
   </div>
 
 
@@ -387,8 +457,8 @@ Class AnimatorBase
 
 
 
-  <h3 id="Vintagestory_API_Common_AnimatorBase_identMat4x3" data-uid="Vintagestory.API.Common.AnimatorBase.identMat4x3">
-  identMat4x3
+  <h3 id="Vintagestory_API_Common_AnimatorBase_identMat" data-uid="Vintagestory.API.Common.AnimatorBase.identMat">
+  identMat
   
   </h3>
 
@@ -396,7 +466,7 @@ Class AnimatorBase
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static readonly float[] identMat4x3</code></pre>
+    <pre><code class="lang-csharp hljs">public static readonly float[] identMat</code></pre>
   </div>
 
 
@@ -452,6 +522,38 @@ Class AnimatorBase
 
 
 
+  <a id="Vintagestory_API_Common_AnimatorBase_Animations_" data-uid="Vintagestory.API.Common.AnimatorBase.Animations*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimatorBase_Animations" data-uid="Vintagestory.API.Common.AnimatorBase.Animations">
+  Animations
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Holds data over all animations. This list always contains all animations of the creature. You have to check yourself which of them are active</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RunningAnimation[] Animations { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.RunningAnimation.html">RunningAnimation</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_AnimatorBase_CalculateMatrices_" data-uid="Vintagestory.API.Common.AnimatorBase.CalculateMatrices*"></a>
 
   <h3 id="Vintagestory_API_Common_AnimatorBase_CalculateMatrices" data-uid="Vintagestory.API.Common.AnimatorBase.CalculateMatrices">
@@ -484,10 +586,10 @@ Class AnimatorBase
 
 
 
-  <a id="Vintagestory_API_Common_AnimatorBase_Matrices4x3_" data-uid="Vintagestory.API.Common.AnimatorBase.Matrices4x3*"></a>
+  <a id="Vintagestory_API_Common_AnimatorBase_Matrices_" data-uid="Vintagestory.API.Common.AnimatorBase.Matrices*"></a>
 
-  <h3 id="Vintagestory_API_Common_AnimatorBase_Matrices4x3" data-uid="Vintagestory.API.Common.AnimatorBase.Matrices4x3">
-  Matrices4x3
+  <h3 id="Vintagestory_API_Common_AnimatorBase_Matrices" data-uid="Vintagestory.API.Common.AnimatorBase.Matrices">
+  Matrices
   
   </h3>
 
@@ -496,7 +598,7 @@ Class AnimatorBase
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float[] Matrices4x3 { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public float[] Matrices { get; }</code></pre>
   </div>
 
 
@@ -516,6 +618,37 @@ Class AnimatorBase
 
 
 
+  <a id="Vintagestory_API_Common_AnimatorBase_MaxJointId_" data-uid="Vintagestory.API.Common.AnimatorBase.MaxJointId*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimatorBase_MaxJointId" data-uid="Vintagestory.API.Common.AnimatorBase.MaxJointId">
+  MaxJointId
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract int MaxJointId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_AnimatorBase_RunningAnimations_" data-uid="Vintagestory.API.Common.AnimatorBase.RunningAnimations*"></a>
 
   <h3 id="Vintagestory_API_Common_AnimatorBase_RunningAnimations" data-uid="Vintagestory.API.Common.AnimatorBase.RunningAnimations">
@@ -523,12 +656,12 @@ Class AnimatorBase
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Holds data over all animations. This list always contains all animations of the creature. You have to check yourself which of them are active</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RunningAnimation[] RunningAnimations { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Animations instead&quot;)]
+public RunningAnimation[] RunningAnimations { get; }</code></pre>
   </div>
 
 
@@ -749,6 +882,32 @@ Class AnimatorBase
     <dt><code>dt</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AnimatorBase_ReloadAttachmentPoints_" data-uid="Vintagestory.API.Common.AnimatorBase.ReloadAttachmentPoints*"></a>
+
+  <h3 id="Vintagestory_API_Common_AnimatorBase_ReloadAttachmentPoints" data-uid="Vintagestory.API.Common.AnimatorBase.ReloadAttachmentPoints">
+  ReloadAttachmentPoints()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void ReloadAttachmentPoints()</code></pre>
+  </div>
+
 
 
 

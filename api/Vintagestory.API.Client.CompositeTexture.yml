@@ -16,10 +16,12 @@ items:
   - Vintagestory.API.Client.CompositeTexture.Baked
   - Vintagestory.API.Client.CompositeTexture.Base
   - Vintagestory.API.Client.CompositeTexture.BlendedOverlays
+  - Vintagestory.API.Client.CompositeTexture.BlendmodeSeparator
   - Vintagestory.API.Client.CompositeTexture.Clone
   - Vintagestory.API.Client.CompositeTexture.FillPlaceholder(System.String,System.String)
   - Vintagestory.API.Client.CompositeTexture.IsBasic
   - Vintagestory.API.Client.CompositeTexture.Overlays
+  - Vintagestory.API.Client.CompositeTexture.OverlaysSeparator
   - Vintagestory.API.Client.CompositeTexture.Rotation
   - Vintagestory.API.Client.CompositeTexture.RuntimeBake(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ITextureAtlasAPI)
   - Vintagestory.API.Client.CompositeTexture.Tiles
@@ -38,8 +40,34 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
-  summary: A single block texture
-  example: []
+  summary: Holds data about a texture. Also allows textures to be overlayed on top of one another.
+  example:
+  - >-
+    <pre><code class="lang-json">"textures": {
+    	"charcoal": { "base": "block/coal/charcoal" },
+    	"coke": { "base": "block/coal/coke" },
+    	"ore-anthracite": { "base": "block/coal/anthracite" },
+    	"ore-lignite": { "base": "block/coal/lignite" },
+    	"ore-bituminouscoal": { "base": "block/coal/bituminous" },
+    	"ember": { "base": "block/coal/ember" }
+    },</code></pre>
+
+    <pre><code class="lang-json">"textures": {
+    	"ore": {
+    		"base": "block/stone/rock/{rock}1",
+    		"overlays": [ "block/stone/ore/{ore}1" ]
+    	}
+    },</code></pre>
+     Connected textures example (See https://discord.com/channels/302152934249070593/479736466453561345/1134187385501007962)
+     <pre><code class="lang-json">"textures": {
+     	"all": {
+     		"base": "block/stone/cobblestone/tiling/1",
+     		"tiles": [
+     			{ "base": "block/stone/cobblestone/tiling/*" }
+     		],
+     		"tilesWidth": 4
+     	}
+     }</code></pre>
   syntax:
     content: public class CompositeTexture
     content.vb: Public Class CompositeTexture
@@ -52,6 +80,9 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Client.CompositeTexture.AlphaSeparator
   commentId: F:Vintagestory.API.Client.CompositeTexture.AlphaSeparator
   id: AlphaSeparator
@@ -90,6 +121,44 @@ items:
     return:
       type: System.String
     content.vb: Public Const AlphaSeparatorRegexSearch As String = "å\d+"
+- uid: Vintagestory.API.Client.CompositeTexture.OverlaysSeparator
+  commentId: F:Vintagestory.API.Client.CompositeTexture.OverlaysSeparator
+  id: OverlaysSeparator
+  parent: Vintagestory.API.Client.CompositeTexture
+  langs:
+  - csharp
+  - vb
+  name: OverlaysSeparator
+  nameWithType: CompositeTexture.OverlaysSeparator
+  fullName: Vintagestory.API.Client.CompositeTexture.OverlaysSeparator
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public const string OverlaysSeparator = "++"
+    return:
+      type: System.String
+    content.vb: Public Const OverlaysSeparator As String = "++"
+- uid: Vintagestory.API.Client.CompositeTexture.BlendmodeSeparator
+  commentId: F:Vintagestory.API.Client.CompositeTexture.BlendmodeSeparator
+  id: BlendmodeSeparator
+  parent: Vintagestory.API.Client.CompositeTexture
+  langs:
+  - csharp
+  - vb
+  name: BlendmodeSeparator
+  nameWithType: CompositeTexture.BlendmodeSeparator
+  fullName: Vintagestory.API.Client.CompositeTexture.BlendmodeSeparator
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public const char BlendmodeSeparator = '~'
+    return:
+      type: System.Char
+    content.vb: Public Const BlendmodeSeparator As Char = "~"c
 - uid: Vintagestory.API.Client.CompositeTexture.Base
   commentId: F:Vintagestory.API.Client.CompositeTexture.Base
   id: Base
@@ -104,7 +173,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
-  summary: The basic texture for this composite texture
+  summary: >-
+    <!--<jsonoptional>Required</jsonoptional>-->
+
+    The basic texture for this composite texture
   example: []
   syntax:
     content: public AssetLocation Base
@@ -125,7 +197,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
-  summary: (legacy setter, used BlendedOverlays instead) The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation
+  summary: >-
+    <!--<jsonoptional>Obsolete</jsonoptional>-->
+
+    Obsolete. Use <xref href="Vintagestory.API.Client.CompositeTexture.BlendedOverlays" data-throw-if-not-resolved="false"></xref> instead.
   example: []
   syntax:
     content: public AssetLocation[] Overlays { set; }
@@ -148,7 +223,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
-  summary: The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A set of textures to overlay above this texture. The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation.
   example: []
   syntax:
     content: public BlendedOverlayTexture[] BlendedOverlays
@@ -169,7 +247,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
-  summary: The texture may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    The texture may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.
   example: []
   syntax:
     content: public CompositeTexture[] Alternates
@@ -190,6 +271,19 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A way of basic support for connected textures. Textures should be named numerically from 1 to <xref href="Vintagestory.API.Client.CompositeTexture.TilesWidth" data-throw-if-not-resolved="false"></xref> squared.
+
+    <br />E.g., if <xref href="Vintagestory.API.Client.CompositeTexture.TilesWidth" data-throw-if-not-resolved="false"></xref> is 3, the order follows the pattern of:<br />
+
+    1 2 3 <br />
+
+    4 5 6 <br />
+
+    7 8 9
+  example: []
   syntax:
     content: public CompositeTexture[] Tiles
     return:
@@ -209,6 +303,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The number of tiles in one direction that make up the full connected textures defined in <xref href="Vintagestory.API.Client.CompositeTexture.Tiles" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public int TilesWidth
     return:
@@ -249,7 +348,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
-  summary: Rotation of the texture may only be a multiple of 90
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    Rotation of the texture may only be a multiple of 90
   example: []
   syntax:
     content: public int Rotation
@@ -270,7 +372,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
-  summary: Can be used to modify the opacity of the texture
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>255</jsondefault>-->
+
+    Can be used to modify the opacity of the texture. 255 is fully opaque, 0 is fully transparent.
   example: []
   syntax:
     content: public int Alpha
@@ -811,6 +916,68 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -818,6 +985,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Char
   commentId: T:System.Char
   parent: System
@@ -877,6 +1141,12 @@ references:
   - uid: Vintagestory.API.Common
     name: Common
     href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Client.CompositeTexture.BlendedOverlays
+  commentId: F:Vintagestory.API.Client.CompositeTexture.BlendedOverlays
+  href: Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_BlendedOverlays
+  name: BlendedOverlays
+  nameWithType: CompositeTexture.BlendedOverlays
+  fullName: Vintagestory.API.Client.CompositeTexture.BlendedOverlays
 - uid: Vintagestory.API.Client.CompositeTexture.Overlays*
   commentId: Overload:Vintagestory.API.Client.CompositeTexture.Overlays
   href: Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_Overlays
@@ -946,6 +1216,18 @@ references:
     href: Vintagestory.API.Client.CompositeTexture.html
   - name: (
   - name: )
+- uid: Vintagestory.API.Client.CompositeTexture.TilesWidth
+  commentId: F:Vintagestory.API.Client.CompositeTexture.TilesWidth
+  href: Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_TilesWidth
+  name: TilesWidth
+  nameWithType: CompositeTexture.TilesWidth
+  fullName: Vintagestory.API.Client.CompositeTexture.TilesWidth
+- uid: Vintagestory.API.Client.CompositeTexture.Tiles
+  commentId: F:Vintagestory.API.Client.CompositeTexture.Tiles
+  href: Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_Tiles
+  name: Tiles
+  nameWithType: CompositeTexture.Tiles
+  fullName: Vintagestory.API.Client.CompositeTexture.Tiles
 - uid: System.Int32
   commentId: T:System.Int32
   parent: System

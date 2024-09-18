@@ -24,6 +24,7 @@ items:
   - Vintagestory.API.Common.AdvancedParticleProperties.HsvaColor
   - Vintagestory.API.Common.AdvancedParticleProperties.Init(Vintagestory.API.Common.ICoreAPI)
   - Vintagestory.API.Common.AdvancedParticleProperties.LifeLength
+  - Vintagestory.API.Common.AdvancedParticleProperties.LightEmission
   - Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve
   - Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocity
   - Vintagestory.API.Common.AdvancedParticleProperties.ParentVelocityWeight
@@ -61,6 +62,8 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Used to add a set of particle properties to a collectible.
+  example: []
   syntax:
     content: >-
       [JsonObject(MemberSerialization.OptIn)]
@@ -82,6 +85,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
   attributes:
   - type: Newtonsoft.Json.JsonObjectAttribute
     ctor: Newtonsoft.Json.JsonObjectAttribute.#ctor(Newtonsoft.Json.MemberSerialization)
@@ -127,6 +133,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Allows each particle to randomly change its velocity over time.
   example: []
   syntax:
     content: >-
@@ -161,7 +171,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: If true, particle dies if it falls below the rain height at its given location
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    If true, particle dies if it falls below the rain height at its given location
   example: []
   syntax:
     content: >-
@@ -196,7 +209,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The Secondary particles for the JsonObject.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    More particles that spawn from this particle over time. See <xref href="Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval" data-throw-if-not-resolved="false"></xref> to control rate.
   example: []
   syntax:
     content: >-
@@ -229,7 +245,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The death particles for the JsonObject.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    More particles that spawn when this particle dies.
   example: []
   syntax:
     content: >-
@@ -262,7 +281,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The inverval that the secondary particles spawn.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The inverval that the <xref href="Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles" data-throw-if-not-resolved="false"></xref> spawn.
   example: []
   syntax:
     content: >-
@@ -295,6 +317,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The amount of velocity to be kept when this particle collides with something. Directional velocity is multipled by (-Bounciness * 0.65) on any collision.
   example: []
   syntax:
     content: >-
@@ -329,7 +355,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Whether or not the entity dies in air.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Whether or not the particle dies in air.
   example: []
   syntax:
     content: >-
@@ -362,7 +391,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Whether or not the entity dies in water.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Whether or not the particle dies in water.
   example: []
   syntax:
     content: >-
@@ -395,6 +427,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Whether or not the particle floats on liquids.
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -426,7 +463,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The Hue/Saturation/Value/Alpha for the color of the particle.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>Random</jsondefault>-->
+
+    The Hue/Saturation/Value/Alpha for the color of the particle.
   example: []
   syntax:
     content: >-
@@ -457,7 +497,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Whether or not to color the particle by the block it's on.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Whether or not to color the particle by the block it's on.
   example: []
   syntax:
     content: >-
@@ -490,7 +533,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: a transforming opacity value.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A transforming opacity value.
   example: []
   syntax:
     content: >-
@@ -525,7 +571,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: A transforming Red value.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A transforming Red value.
   example: []
   syntax:
     content: >-
@@ -560,7 +609,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: A transforming Green value.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A transforming Green value.
   example: []
   syntax:
     content: >-
@@ -595,7 +647,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: A transforming Blue value.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A transforming Blue value.
   example: []
   syntax:
     content: >-
@@ -630,7 +685,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The gravity effect on the particle.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The gravity effect on the particle.
   example: []
   syntax:
     content: >-
@@ -663,7 +721,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The life length of the particle.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The life length, in seconds, of the particle.
   example: []
   syntax:
     content: >-
@@ -696,7 +757,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Offset from the blocks hitboxes top middle position
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0, 0, 0</jsondefault>-->
+
+    Offset from the blocks hitboxes top middle position
   example: []
   syntax:
     content: >-
@@ -727,7 +791,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The quantity of the particles given.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The quantity of the particles given.
   example: []
   syntax:
     content: >-
@@ -760,7 +827,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The size of the particles given.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The size of the particles given.
   example: []
   syntax:
     content: >-
@@ -793,7 +863,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: a transforming Size value.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    A transforming Size value.
   example: []
   syntax:
     content: >-
@@ -828,7 +901,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The velocity of the particles.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>Random</jsondefault>-->
+
+    The velocity of the particles.
   example: []
   syntax:
     content: >-
@@ -861,7 +937,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: A dynamic velocity value.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A dynamic velocity value.
   example: []
   syntax:
     content: >-
@@ -896,7 +975,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Sets the base model for the particle.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>Cube</jsondefault>-->
+
+    Sets the base model for the particle.
   example: []
   syntax:
     content: >-
@@ -929,7 +1011,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The level of glow in the particle.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The level of glow in the particle.
   example: []
   syntax:
     content: >-
@@ -964,7 +1049,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Whether or not the particle is self propelled.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Whether or not the particle is self propelled.
   example: []
   syntax:
     content: >-
@@ -997,7 +1085,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Whether or not the particle collides with the terrain.
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>true</jsondefault>-->
+
+    Whether or not the particle collides with the terrain.
   example: []
   syntax:
     content: >-
@@ -1030,6 +1121,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    How much the particles are affected by wind.
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -1155,6 +1251,31 @@ items:
     return:
       type: System.Int32
     content.vb: Public Color As Integer
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.LightEmission
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.LightEmission
+  id: LightEmission
+  parent: Vintagestory.API.Common.AdvancedParticleProperties
+  langs:
+  - csharp
+  - vb
+  name: LightEmission
+  nameWithType: AdvancedParticleProperties.LightEmission
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.LightEmission
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: If this particle emits light, this is its RGBA. Does not actually brighten the scene around it, but prevents incorrect lighting of particles when everything else around it is dark
+  example: []
+  syntax:
+    content: public int LightEmission { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property LightEmission As Integer
+  overload: Vintagestory.API.Common.AdvancedParticleProperties.LightEmission*
+  implements:
+  - Vintagestory.API.Common.IParticlePropertiesProvider.LightEmission
 - uid: Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
   commentId: M:Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
   id: GetRgbaColor(Vintagestory.API.Client.ICoreClientAPI)
@@ -1722,6 +1843,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1729,6 +1912,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.AdvancedParticleProperties.Async*
   commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.Async
   href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_Async
@@ -1779,6 +2059,12 @@ references:
   name: DieOnRainHeightmap
   nameWithType: IParticlePropertiesProvider.DieOnRainHeightmap
   fullName: Vintagestory.API.Common.IParticlePropertiesProvider.DieOnRainHeightmap
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval
+  name: SecondarySpawnInterval
+  nameWithType: AdvancedParticleProperties.SecondarySpawnInterval
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
 - uid: Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles*
   commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
   href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles
@@ -1812,6 +2098,12 @@ references:
   name: DeathParticles
   nameWithType: AdvancedParticleProperties.DeathParticles
   fullName: Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
+  commentId: P:Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles
+  name: SecondaryParticles
+  nameWithType: AdvancedParticleProperties.SecondaryParticles
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles
 - uid: Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval*
   commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval
   href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval
@@ -2174,6 +2466,19 @@ references:
   name: ICoreAPI
   nameWithType: ICoreAPI
   fullName: Vintagestory.API.Common.ICoreAPI
+- uid: Vintagestory.API.Common.AdvancedParticleProperties.LightEmission*
+  commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.LightEmission
+  href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_LightEmission
+  name: LightEmission
+  nameWithType: AdvancedParticleProperties.LightEmission
+  fullName: Vintagestory.API.Common.AdvancedParticleProperties.LightEmission
+- uid: Vintagestory.API.Common.IParticlePropertiesProvider.LightEmission
+  commentId: P:Vintagestory.API.Common.IParticlePropertiesProvider.LightEmission
+  parent: Vintagestory.API.Common.IParticlePropertiesProvider
+  href: Vintagestory.API.Common.IParticlePropertiesProvider.html#Vintagestory_API_Common_IParticlePropertiesProvider_LightEmission
+  name: LightEmission
+  nameWithType: IParticlePropertiesProvider.LightEmission
+  fullName: Vintagestory.API.Common.IParticlePropertiesProvider.LightEmission
 - uid: Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor*
   commentId: Overload:Vintagestory.API.Common.AdvancedParticleProperties.GetRgbaColor
   href: Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_GetRgbaColor_Vintagestory_API_Client_ICoreClientAPI_

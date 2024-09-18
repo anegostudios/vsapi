@@ -26,6 +26,15 @@ namespace Vintagestory.API.Client
         LoadedTexture hoverText;
 
         /// <summary>
+        /// Create a dummy link text component for use with triggering link protocols through code. Not usable for anything gui related (it'll crash if you try)
+        /// </summary>
+        /// <param name="href"></param>
+        public LinkTextComponent(string href) : base(null, "", null)
+        {
+            this.Href = href;
+        }
+
+        /// <summary>
         /// A text component with an embedded link.
         /// </summary>
         /// <param name="api"></param>

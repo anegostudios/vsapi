@@ -247,6 +247,20 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
+        /// Adds given x/y/z coordinates to the vector
+        /// </summary>
+        /// <param name="vec"></param>
+        /// <returns></returns>
+        public Vec3f Add(Vec3d vec)
+        {
+            this.X += (float)vec.X;
+            this.Y += (float)vec.Y;
+            this.Z += (float)vec.Z;
+            return this;
+        }
+
+
+        /// <summary>
         /// Substracts given x/y/z coordinates to the vector
         /// </summary>
         /// <param name="vec"></param>
@@ -256,6 +270,20 @@ namespace Vintagestory.API.MathTools
             this.X -= vec.X;
             this.Y -= vec.Y;
             this.Z -= vec.Z;
+            return this;
+        }
+
+
+        /// <summary>
+        /// Substracts given x/y/z coordinates to the vector
+        /// </summary>
+        /// <param name="vec"></param>
+        /// <returns></returns>
+        public Vec3f Sub(Vec3d vec)
+        {
+            this.X -= (float)vec.X;
+            this.Y -= (float)vec.Y;
+            this.Z -= (float)vec.Z;
             return this;
         }
 
@@ -515,11 +543,12 @@ namespace Vintagestory.API.MathTools
         /// Sets the vector to the coordinates of given vector
         /// </summary>
         /// <param name="vec"></param>
-        public void Set(Vec3f vec)
+        public Vec3f Set(Vec3f vec)
         {
             this.X = (float)vec.X;
             this.Y = (float)vec.Y;
             this.Z = (float)vec.Z;
+            return this;
         }
 
         /// <summary>

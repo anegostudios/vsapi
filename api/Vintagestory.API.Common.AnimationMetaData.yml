@@ -6,6 +6,7 @@ items:
   parent: Vintagestory.API.Common
   children:
   - Vintagestory.API.Common.AnimationMetaData.Animation
+  - Vintagestory.API.Common.AnimationMetaData.AnimationSound
   - Vintagestory.API.Common.AnimationMetaData.AnimationSpeed
   - Vintagestory.API.Common.AnimationMetaData.Attributes
   - Vintagestory.API.Common.AnimationMetaData.BlendMode
@@ -18,6 +19,7 @@ items:
   - Vintagestory.API.Common.AnimationMetaData.ElementBlendMode
   - Vintagestory.API.Common.AnimationMetaData.ElementWeight
   - Vintagestory.API.Common.AnimationMetaData.Equals(System.Object)
+  - Vintagestory.API.Common.AnimationMetaData.FpVariant
   - Vintagestory.API.Common.AnimationMetaData.FromBytes(System.IO.BinaryReader,System.String)
   - Vintagestory.API.Common.AnimationMetaData.GetCrc32(System.String)
   - Vintagestory.API.Common.AnimationMetaData.GetCurrentAnimationSpeed(System.Single)
@@ -33,6 +35,7 @@ items:
   - Vintagestory.API.Common.AnimationMetaData.WasStartedFromTrigger
   - Vintagestory.API.Common.AnimationMetaData.Weight
   - Vintagestory.API.Common.AnimationMetaData.WeightCapFactor
+  - Vintagestory.API.Common.AnimationMetaData.WithFpVariant
   langs:
   - csharp
   - vb
@@ -43,6 +46,38 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Animation Meta Data is a json type that controls how an animation should be played.
+  example:
+  - >-
+    <pre><code class="lang-json">"animations": [
+    	{
+    		"code": "hurt",
+    		"animation": "hurt",
+    		"animationSpeed": 2.2,
+    		"weight": 10,
+    		"blendMode": "AddAverage"
+    	},
+    	{
+    		"code": "die",
+    		"animation": "death",
+    		"animationSpeed": 1.25,
+    		"weight": 10,
+    		"blendMode": "Average",
+    		"triggeredBy": { "onControls": [ "dead" ] }
+    	},
+    	{
+    		"code": "idle",
+    		"animation": "idle",
+    		"blendMode": "AddAverage",
+    		"easeOutSpeed": 4,
+    		"triggeredBy": { "defaultAnim": true }
+    	},
+    	{
+    		"code": "walk",
+    		"animation": "walk",
+    		"weight": 5
+    	}
+    ]</code></pre>
   syntax:
     content: public class AnimationMetaData
     content.vb: Public Class AnimationMetaData
@@ -54,6 +89,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.AnimationMetaData.Code
   commentId: F:Vintagestory.API.Common.AnimationMetaData.Code
   id: Code
@@ -68,7 +106,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Unique identifier to be able to reference this AnimationMetaData instance
+  summary: >-
+    <!--<jsonoptional>Required</jsonoptional>-->
+
+    Unique identifier to be able to reference this AnimationMetaData instance
   example: []
   syntax:
     content: >-
@@ -99,6 +140,19 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    Custom attributes that can be used for the animation.
+
+    Valid vanilla attributes are:<br />
+
+    - damageAtFrame (float)<br />
+
+    - soundAtFrame (float)<br />
+
+    - authorative (bool)<br />
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -137,7 +191,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The animations code identifier that we want to play
+  summary: >-
+    <!--<jsonoptional>Required</jsonoptional>-->
+
+    The animations code identifier that we want to play
   example: []
   syntax:
     content: >-
@@ -168,6 +225,13 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The weight of this animation. When using multiple animations at a time, this controls the significance of each animation.
+
+    The method for determining final animation values depends on this and <xref href="Vintagestory.API.Common.AnimationMetaData.BlendMode" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -197,6 +261,13 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A way of specifying <xref href="Vintagestory.API.Common.AnimationMetaData.Weight" data-throw-if-not-resolved="false"></xref> for each element.
+
+    Also see <xref href="Vintagestory.API.Common.AnimationMetaData.ElementBlendMode" data-throw-if-not-resolved="false"></xref> to control blend modes per element..
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -226,6 +297,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The speed this animation should play at.
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -255,6 +331,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Should this animation speed be multiplied by the movement speed of the entity?
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -285,13 +366,17 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   summary: >-
-    This property can be used in cases where a animation with high weight is played alongside another animation with low element weight. In these cases, the easeIn become unaturally fast. Setting a value of 0.8f or similar here addresses this issue
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
 
-    0f = uncapped weight
+    This property can be used in cases where a animation with high weight is played alongside another animation with low element weight.
 
-    0.5f = weight cannot exceed 2
+    In these cases, the easeIn become unaturally fast. Setting a value of 0.8f or similar here addresses this issue.<br />
 
-    1f = weight cannot exceed 1
+    - 0f = uncapped weight<br />
+
+    - 0.5f = weight cannot exceed 2<br />
+
+    - 1f = weight cannot exceed 1
   example: []
   syntax:
     content: >-
@@ -322,7 +407,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: A multiplier applied to the weight value to "ease in" the animation. Choose a high value for looping animations or it will be glitchy
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
+
+    A multiplier applied to the weight value to "ease in" the animation. Choose a high value for looping animations or it will be glitchy
   example: []
   syntax:
     content: >-
@@ -353,7 +441,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: A multiplier applied to the weight value to "ease out" the animation. Choose a high value for looping animations or it will be glitchy
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
+
+    A multiplier applied to the weight value to "ease out" the animation. Choose a high value for looping animations or it will be glitchy
   example: []
   syntax:
     content: >-
@@ -384,6 +475,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    Controls when this animation should be played.
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -413,6 +509,13 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>Add</jsondefault>-->
+
+    The animation blend mode. Controls how this animation will react with other concurrent animations.
+
+    Also see <xref href="Vintagestory.API.Common.AnimationMetaData.ElementBlendMode" data-throw-if-not-resolved="false"></xref> to control blend mode per element.
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -442,6 +545,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+
+    A way of specifying <xref href="Vintagestory.API.Common.AnimationMetaData.BlendMode" data-throw-if-not-resolved="false"></xref> per element.
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -471,6 +579,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    Should this animation stop default animations from playing?
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -500,6 +613,13 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>99</jsondefault>-->
+
+    A value that determines whether to change the first-person eye position for the camera.
+
+    Higher values will keep eye position static.
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -529,7 +649,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: If true, the server does not sync this animation
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+
+    If true, the server does not sync this animation.
   example: []
   syntax:
     content: >-
@@ -546,6 +669,83 @@ items:
   - type: Newtonsoft.Json.JsonPropertyAttribute
     ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
     arguments: []
+- uid: Vintagestory.API.Common.AnimationMetaData.WithFpVariant
+  commentId: F:Vintagestory.API.Common.AnimationMetaData.WithFpVariant
+  id: WithFpVariant
+  parent: Vintagestory.API.Common.AnimationMetaData
+  langs:
+  - csharp
+  - vb
+  name: WithFpVariant
+  nameWithType: AnimationMetaData.WithFpVariant
+  fullName: Vintagestory.API.Common.AnimationMetaData.WithFpVariant
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public bool WithFpVariant
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonProperty>
+
+      Public WithFpVariant As Boolean
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AnimationMetaData.AnimationSound
+  commentId: F:Vintagestory.API.Common.AnimationMetaData.AnimationSound
+  id: AnimationSound
+  parent: Vintagestory.API.Common.AnimationMetaData
+  langs:
+  - csharp
+  - vb
+  name: AnimationSound
+  nameWithType: AnimationMetaData.AnimationSound
+  fullName: Vintagestory.API.Common.AnimationMetaData.AnimationSound
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public AnimationSound AnimationSound
+    return:
+      type: Vintagestory.API.Common.AnimationSound
+    content.vb: >-
+      <JsonProperty>
+
+      Public AnimationSound As AnimationSound
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.AnimationMetaData.FpVariant
+  commentId: F:Vintagestory.API.Common.AnimationMetaData.FpVariant
+  id: FpVariant
+  parent: Vintagestory.API.Common.AnimationMetaData
+  langs:
+  - csharp
+  - vb
+  name: FpVariant
+  nameWithType: AnimationMetaData.FpVariant
+  fullName: Vintagestory.API.Common.AnimationMetaData.FpVariant
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public AnimationMetaData FpVariant
+    return:
+      type: Vintagestory.API.Common.AnimationMetaData
+    content.vb: Public FpVariant As AnimationMetaData
 - uid: Vintagestory.API.Common.AnimationMetaData.StartFrameOnce
   commentId: F:Vintagestory.API.Common.AnimationMetaData.StartFrameOnce
   id: StartFrameOnce
@@ -1029,6 +1229,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1036,6 +1298,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.String
   commentId: T:System.String
   parent: System
@@ -1084,6 +1443,12 @@ references:
   - uid: Vintagestory.API.Datastructures
     name: Datastructures
     href: Vintagestory.API.Datastructures.html
+- uid: Vintagestory.API.Common.AnimationMetaData.BlendMode
+  commentId: F:Vintagestory.API.Common.AnimationMetaData.BlendMode
+  href: Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_BlendMode
+  name: BlendMode
+  nameWithType: AnimationMetaData.BlendMode
+  fullName: Vintagestory.API.Common.AnimationMetaData.BlendMode
 - uid: System.Single
   commentId: T:System.Single
   parent: System
@@ -1095,6 +1460,18 @@ references:
   nameWithType.vb: Single
   fullName.vb: Single
   name.vb: Single
+- uid: Vintagestory.API.Common.AnimationMetaData.Weight
+  commentId: F:Vintagestory.API.Common.AnimationMetaData.Weight
+  href: Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_Weight
+  name: Weight
+  nameWithType: AnimationMetaData.Weight
+  fullName: Vintagestory.API.Common.AnimationMetaData.Weight
+- uid: Vintagestory.API.Common.AnimationMetaData.ElementBlendMode
+  commentId: F:Vintagestory.API.Common.AnimationMetaData.ElementBlendMode
+  href: Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_ElementBlendMode
+  name: ElementBlendMode
+  nameWithType: AnimationMetaData.ElementBlendMode
+  fullName: Vintagestory.API.Common.AnimationMetaData.ElementBlendMode
 - uid: System.Collections.Generic.Dictionary{System.String,System.Single}
   commentId: T:System.Collections.Generic.Dictionary{System.String,System.Single}
   parent: System.Collections.Generic
@@ -1283,6 +1660,20 @@ references:
     name: EnumAnimationBlendMode
     href: Vintagestory.API.Common.EnumAnimationBlendMode.html
   - name: )
+- uid: Vintagestory.API.Common.AnimationSound
+  commentId: T:Vintagestory.API.Common.AnimationSound
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AnimationSound.html
+  name: AnimationSound
+  nameWithType: AnimationSound
+  fullName: Vintagestory.API.Common.AnimationSound
+- uid: Vintagestory.API.Common.AnimationMetaData
+  commentId: T:Vintagestory.API.Common.AnimationMetaData
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AnimationMetaData.html
+  name: AnimationMetaData
+  nameWithType: AnimationMetaData
+  fullName: Vintagestory.API.Common.AnimationMetaData
 - uid: System.UInt32
   commentId: T:System.UInt32
   parent: System
@@ -1306,13 +1697,6 @@ references:
   name: Init
   nameWithType: AnimationMetaData.Init
   fullName: Vintagestory.API.Common.AnimationMetaData.Init
-- uid: Vintagestory.API.Common.AnimationMetaData
-  commentId: T:Vintagestory.API.Common.AnimationMetaData
-  parent: Vintagestory.API.Common
-  href: Vintagestory.API.Common.AnimationMetaData.html
-  name: AnimationMetaData
-  nameWithType: AnimationMetaData
-  fullName: Vintagestory.API.Common.AnimationMetaData
 - uid: Vintagestory.API.Common.AnimationMetaData.GetCrc32*
   commentId: Overload:Vintagestory.API.Common.AnimationMetaData.GetCrc32
   href: Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_GetCrc32_System_String_

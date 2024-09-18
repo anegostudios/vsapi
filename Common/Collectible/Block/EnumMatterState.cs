@@ -1,5 +1,9 @@
 ﻿namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// Various states of matter to use for collectibles.
+    /// </summary>
+    [DocumentAsJson]
     public enum EnumMatterState
     {
         /// <summary>

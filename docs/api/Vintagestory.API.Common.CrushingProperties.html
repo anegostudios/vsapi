@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class CrushingProperties | VintageStory API ">
       
-      
+      <meta name="description" content="Defines a set of properties that allow an object to be ground in a quern.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -97,7 +97,8 @@ Class CrushingProperties
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Defines a set of properties that allow an object to be ground in a quern.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -143,7 +144,37 @@ Class CrushingProperties
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
+
+  <h2 id="Vintagestory_API_Common_CrushingProperties_examples">Examples</h2>
+  <pre><code class="lang-json">"crushingPropsByType": {
+	"ore-poor-ilmenite-*": {
+		"crushedStack": {
+			"type": "item",
+			"code": "crushed-ilmenite"
+		},
+		"quantity": { "avg": 1 },
+		"hardnessTier": 4
+	},
+	"ore-poor-cassiterite-*": {
+		"crushedStack": {
+			"type": "item",
+			"code": "crushed-cassiterite"
+		},
+		"quantity": { "avg": ".33" },
+		"hardnessTier": 1
+	},
+},</code></pre>
 
 
 
@@ -158,7 +189,8 @@ Class CrushingProperties
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If set, the block/item is crusable in a pulverizer and this is the resulting itemstack once the crushing time is over.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
+<p>If set, the block/item is crusable in a pulverizer and this is the resulting itemstack once the crushing time is over.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -189,7 +221,15 @@ Class CrushingProperties
   
   </h3>
 
-  <div class="markdown level1 summary"><p>0 = stone, 1 = copper, 2 = bronze, 3 = iron, 4 = steel</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The hardness tier for this collectible. Affects what pounder cap must be used for pulverization.</p>
+<ul>
+<li>0 = stone</li>
+<li>1 = copper</li>
+<li>2 = bronze</li>
+<li>3 = iron</li>
+<li>4 = steel</li>
+</ul>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -220,7 +260,9 @@ Class CrushingProperties
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The random quantity of item to return. Note that this value is multiplied by <a class="xref" href="Vintagestory.API.Common.CrushingProperties.html#Vintagestory_API_Common_CrushingProperties_CrushedStack">CrushedStack</a>'s quantity.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">

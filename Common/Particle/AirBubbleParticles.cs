@@ -91,6 +91,8 @@ namespace Vintagestory.API.Common
             return ColorUtil.HsvToRgba(110, 20 + rand.Next(20), 220 + rand.Next(30), 120 + rand.Next(50));
         }
 
+        public int LightEmission => 0;
+
         public float Size => (float)rand.NextDouble() * 0.2f + 0.2f;
 
         public EvolvingNatFloat SizeEvolve => new EvolvingNatFloat(EnumTransformFunction.LINEAR, 0.25f);

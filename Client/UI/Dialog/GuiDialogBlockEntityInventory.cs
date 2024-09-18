@@ -53,6 +53,7 @@ namespace Vintagestory.API.Client
                 if (!capi.Settings.Bool["immersiveMouseMode"])
                 {
                     dialogBounds.fixedOffsetY += (dialogBounds.fixedHeight + 10) * YOffsetMul(screenPos);
+                    dialogBounds.fixedOffsetX += (dialogBounds.fixedWidth + 10) * XOffsetMul(screenPos);
                 }
 
                 // 4. Right of the slot grid is the scrollbar
@@ -87,6 +88,7 @@ namespace Vintagestory.API.Client
                 if (!capi.Settings.Bool["immersiveMouseMode"])
                 {
                     dialogBounds.fixedOffsetY += (dialogBounds.fixedHeight + 10) * YOffsetMul(screenPos);
+                    dialogBounds.fixedOffsetX += (dialogBounds.fixedWidth + 10) * XOffsetMul(screenPos);
                 }
 
                 SingleComposer = capi.Gui
@@ -112,7 +114,7 @@ namespace Vintagestory.API.Client
         {
             base.OnGuiOpened();
 
-            if (capi.Gui.GetDialogPosition(SingleComposer.dialogName) == null)
+            if (capi.Gui.GetDialogPosition(SingleComposer.DialogName) == null)
             {
                 OccupyPos("smallblockgui", screenPos);
             }

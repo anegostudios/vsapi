@@ -80,7 +80,7 @@ namespace Vintagestory.API.Client
             }
         }
 
-        List<T> cellsTmp = null;
+        IEnumerable<T> cellsTmp = null;
 
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Vintagestory.API.Client
         /// <param name="bounds">The bounds of the list.</param>
         /// <param name="cellCreator">The event fired when a cell is requested by the gui</param>
         /// <param name="cells">The array of cells initialized with the list.</param>
-        public GuiElementCellList(ICoreClientAPI capi, ElementBounds bounds, OnRequireCell<T> cellCreator, List<T> cells = null) : base(capi, bounds)
+        public GuiElementCellList(ICoreClientAPI capi, ElementBounds bounds, OnRequireCell<T> cellCreator, IEnumerable<T> cells = null) : base(capi, bounds)
         {
             this.cellcreator = cellCreator;
             this.cellsTmp = cells;
@@ -114,7 +114,7 @@ namespace Vintagestory.API.Client
             didInitialize = true;
         }
 
-        public void ReloadCells(List<T> cells)
+        public void ReloadCells(IEnumerable<T> cells)
         {
             
             foreach (var val in elementCells)
@@ -162,6 +162,7 @@ namespace Vintagestory.API.Client
             }
 
             Bounds.fixedHeight = height + unscaledCellSpacing;
+            Bounds.CalcWorldBounds();
         }
 
         public override void ComposeElements(Context ctx, ImageSurface surface)
@@ -317,7 +318,7 @@ namespace Vintagestory.API.Client
         /// <param name="cellCreator">the event fired when the cell is requested by the GUI</param>
         /// <param name="cells">The cells of the list.</param>
         /// <param name="key">The identifier for the list.</param>
-        public static GuiComposer AddCellList<T>(this GuiComposer composer, ElementBounds bounds, OnRequireCell<T> cellCreator, List<T> cells = null, string key = null)
+        public static GuiComposer AddCellList<T>(this GuiComposer composer, ElementBounds bounds, OnRequireCell<T> cellCreator, IEnumerable<T> cells = null, string key = null)
         {
             if (!composer.Composed)
             {

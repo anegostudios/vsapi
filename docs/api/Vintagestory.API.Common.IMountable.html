@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Interface IMountable | VintageStory API ">
       
-      
+      <meta name="description" content="Represents something the player can mount. Usually a block or an entity.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -97,7 +97,8 @@ Interface IMountable
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Represents something the player can mount. Usually a block or an entity.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -111,6 +112,25 @@ Interface IMountable
 
 
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Common.MountableUtil.html#Vintagestory_API_Common_MountableUtil_GetSeatOfMountedEntity_Vintagestory_API_Common_IMountable_Vintagestory_API_Common_Entities_Entity_">MountableUtil.GetSeatOfMountedEntity(IMountable, Entity)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Common.MountableUtil.html#Vintagestory_API_Common_MountableUtil_IsBeingControlled_Vintagestory_API_Common_IMountable_">MountableUtil.IsBeingControlled(IMountable)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Common.MountableUtil.html#Vintagestory_API_Common_MountableUtil_IsMountedBy_Vintagestory_API_Common_IMountable_Vintagestory_API_Common_Entities_Entity_">MountableUtil.IsMountedBy(IMountable, Entity)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -120,206 +140,19 @@ Interface IMountable
 </h2>
 
 
-  <a id="Vintagestory_API_Common_IMountable_AngleMode_" data-uid="Vintagestory.API.Common.IMountable.AngleMode*"></a>
+  <a id="Vintagestory_API_Common_IMountable_Controller_" data-uid="Vintagestory.API.Common.IMountable.Controller*"></a>
 
-  <h3 id="Vintagestory_API_Common_IMountable_AngleMode" data-uid="Vintagestory.API.Common.IMountable.AngleMode">
-  AngleMode
+  <h3 id="Vintagestory_API_Common_IMountable_Controller" data-uid="Vintagestory.API.Common.IMountable.Controller">
+  Controller
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">EnumMountAngleMode AngleMode { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.EnumMountAngleMode.html">EnumMountAngleMode</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IMountable_CanControl_" data-uid="Vintagestory.API.Common.IMountable.CanControl*"></a>
-
-  <h3 id="Vintagestory_API_Common_IMountable_CanControl" data-uid="Vintagestory.API.Common.IMountable.CanControl">
-  CanControl
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>If this &quot;mountable seat&quot; is the one that controls the mountable entity/block</p>
+  <div class="markdown level1 summary"><p>The entity that controls this mountable - there can only be one</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool CanControl { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IMountable_Controls_" data-uid="Vintagestory.API.Common.IMountable.Controls*"></a>
-
-  <h3 id="Vintagestory_API_Common_IMountable_Controls" data-uid="Vintagestory.API.Common.IMountable.Controls">
-  Controls
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">EntityControls Controls { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.EntityControls.html">EntityControls</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IMountable_LocalEyePos_" data-uid="Vintagestory.API.Common.IMountable.LocalEyePos*"></a>
-
-  <h3 id="Vintagestory_API_Common_IMountable_LocalEyePos" data-uid="Vintagestory.API.Common.IMountable.LocalEyePos">
-  LocalEyePos
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Vec3f LocalEyePos { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3f.html">Vec3f</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IMountable_MountPosition_" data-uid="Vintagestory.API.Common.IMountable.MountPosition*"></a>
-
-  <h3 id="Vintagestory_API_Common_IMountable_MountPosition" data-uid="Vintagestory.API.Common.IMountable.MountPosition">
-  MountPosition
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">EntityPos MountPosition { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html">EntityPos</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IMountable_MountSupplier_" data-uid="Vintagestory.API.Common.IMountable.MountSupplier*"></a>
-
-  <h3 id="Vintagestory_API_Common_IMountable_MountSupplier" data-uid="Vintagestory.API.Common.IMountable.MountSupplier">
-  MountSupplier
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Return null if you don't have a mountable supplier implementation</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IMountableSupplier MountSupplier { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.IMountableSupplier.html">IMountableSupplier</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IMountable_MountedBy_" data-uid="Vintagestory.API.Common.IMountable.MountedBy*"></a>
-
-  <h3 id="Vintagestory_API_Common_IMountable_MountedBy" data-uid="Vintagestory.API.Common.IMountable.MountedBy">
-  MountedBy
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Entity MountedBy { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">Entity Controller { get; }</code></pre>
   </div>
 
 
@@ -339,18 +172,19 @@ Interface IMountable
 
 
 
-  <a id="Vintagestory_API_Common_IMountable_SuggestedAnimation_" data-uid="Vintagestory.API.Common.IMountable.SuggestedAnimation*"></a>
+  <a id="Vintagestory_API_Common_IMountable_Position_" data-uid="Vintagestory.API.Common.IMountable.Position*"></a>
 
-  <h3 id="Vintagestory_API_Common_IMountable_SuggestedAnimation" data-uid="Vintagestory.API.Common.IMountable.SuggestedAnimation">
-  SuggestedAnimation
+  <h3 id="Vintagestory_API_Common_IMountable_Position" data-uid="Vintagestory.API.Common.IMountable.Position">
+  Position
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Position of this mountable</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string SuggestedAnimation { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">EntityPos Position { get; }</code></pre>
   </div>
 
 
@@ -359,7 +193,39 @@ Interface IMountable
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.Common.Entities.EntityPos.html">EntityPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IMountable_Seats_" data-uid="Vintagestory.API.Common.IMountable.Seats*"></a>
+
+  <h3 id="Vintagestory_API_Common_IMountable_Seats" data-uid="Vintagestory.API.Common.IMountable.Seats">
+  Seats
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The seats of this mountable</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMountableSeat[] Seats { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IMountableSeat.html">IMountableSeat</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -374,93 +240,26 @@ Interface IMountable
 </h2>
 
 
-  <a id="Vintagestory_API_Common_IMountable_DidMount_" data-uid="Vintagestory.API.Common.IMountable.DidMount*"></a>
+  <a id="Vintagestory_API_Common_IMountable_AnyMounted_" data-uid="Vintagestory.API.Common.IMountable.AnyMounted*"></a>
 
-  <h3 id="Vintagestory_API_Common_IMountable_DidMount_Vintagestory_API_Common_EntityAgent_" data-uid="Vintagestory.API.Common.IMountable.DidMount(Vintagestory.API.Common.EntityAgent)">
-  DidMount(EntityAgent)
+  <h3 id="Vintagestory_API_Common_IMountable_AnyMounted" data-uid="Vintagestory.API.Common.IMountable.AnyMounted">
+  AnyMounted()
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Called when the entity mounted himself</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void DidMount(EntityAgent entityAgent)</code></pre>
+    <pre><code class="lang-csharp hljs">bool AnyMounted()</code></pre>
   </div>
 
-  <h4 class="section">Parameters</h4>
+
+  <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><code>entityAgent</code> <a class="xref" href="Vintagestory.API.Common.EntityAgent.html">EntityAgent</a></dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IMountable_DidUnmount_" data-uid="Vintagestory.API.Common.IMountable.DidUnmount*"></a>
-
-  <h3 id="Vintagestory_API_Common_IMountable_DidUnmount_Vintagestory_API_Common_EntityAgent_" data-uid="Vintagestory.API.Common.IMountable.DidUnmount(Vintagestory.API.Common.EntityAgent)">
-  DidUnmount(EntityAgent)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called when the entity unmounted himself</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void DidUnmount(EntityAgent entityAgent)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>entityAgent</code> <a class="xref" href="Vintagestory.API.Common.EntityAgent.html">EntityAgent</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IMountable_MountableToTreeAttributes_" data-uid="Vintagestory.API.Common.IMountable.MountableToTreeAttributes*"></a>
-
-  <h3 id="Vintagestory_API_Common_IMountable_MountableToTreeAttributes_Vintagestory_API_Datastructures_TreeAttribute_" data-uid="Vintagestory.API.Common.IMountable.MountableToTreeAttributes(Vintagestory.API.Datastructures.TreeAttribute)">
-  MountableToTreeAttributes(TreeAttribute)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>When the entity unloads you should write whatever you need in here to reconstruct the IMountable after it's loaded again
-Reconstruct it by registering a mountable instancer through api.RegisterMountable(string className, GetMountableDelegate mountableInstancer)
-You must also set a string with key className, that is the same string that you used for RegisterMountable()</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void MountableToTreeAttributes(TreeAttribute tree)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>tree</code> <a class="xref" href="Vintagestory.API.Datastructures.TreeAttribute.html">TreeAttribute</a></dt>
-    <dd></dd>
-  </dl>
-
 
 
 

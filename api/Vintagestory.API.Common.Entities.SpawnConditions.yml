@@ -20,7 +20,47 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   summary: The spawn conditions assigned to various things.
-  example: []
+  example:
+  - >-
+    <pre><code class="lang-json">"spawnconditions": {
+    	"worldgen": {
+    		"TriesPerChunk": {
+    			"avg": 0.1,
+    			"var": 0
+    		},
+    		"tryOnlySurface": true,
+    		"minLightLevel": 10,
+    		"groupSize": {
+    			"dist": "verynarrowgaussian",
+    			"avg": 3,
+    			"var": 4
+    		},
+    		"insideBlockCodes": [ "air", "tallgrass-*" ],
+    		"minTemp": 5,
+    		"maxTemp": 28,
+    		"minRain": 0.45,
+    		"minForest": 0.35,
+    		"companions": [ "pig-wild-female", "pig-wild-piglet" ]
+    	},
+    	"runtime": {
+    		"group": "neutral",
+    		"tryOnlySurface": true,
+    		"chance": 0.0006,
+    		"maxQuantity": 4,
+    		"minLightLevel": 10,
+    		"groupSize": {
+    			"dist": "verynarrowgaussian",
+    			"avg": 3,
+    			"var": 4
+    		},
+    		"insideBlockCodes": [ "air", "tallgrass-*" ],
+    		"minTemp": 5,
+    		"maxTemp": 28,
+    		"minRain": 0.45,
+    		"minForestOrShrubs": 0.35,
+    		"companions": [ "pig-wild-female", "pig-wild-piglet" ]
+    	}
+    }</code></pre>
   syntax:
     content: public class SpawnConditions
     content.vb: Public Class SpawnConditions
@@ -34,6 +74,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.Entities.SpawnConditions.Climate
   commentId: F:Vintagestory.API.Common.Entities.SpawnConditions.Climate
   id: Climate
@@ -48,7 +91,16 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
-  summary: Override values for climate
+  summary: >-
+    <jsonoptional>Recommended</jsonoptional>
+
+    <jsondefault>None</jsondefault>
+
+    Control specific spawn conditions based on climate.
+
+    Note that this will override any climate values set in <xref href="Vintagestory.API.Common.Entities.SpawnConditions.Runtime" data-throw-if-not-resolved="false"></xref> and <xref href="Vintagestory.API.Common.Entities.SpawnConditions.Worldgen" data-throw-if-not-resolved="false"></xref>.
+
+    It is recommended to specify climate values here rather than setting them in the other spawn conditions.
   example: []
   syntax:
     content: public ClimateSpawnCondition Climate
@@ -69,7 +121,12 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
-  summary: Runtime requirements for the object to spawn.
+  summary: >-
+    <jsonoptional>Recommended</jsonoptional>
+
+    <jsondefault>None</jsondefault>
+
+    Runtime requirements for the object to spawn.
   example: []
   syntax:
     content: public RuntimeSpawnConditions Runtime
@@ -90,7 +147,12 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
-  summary: Worldgen/region requirements for the object to spawn.
+  summary: >-
+    <jsonoptional>Recommended</jsonoptional>
+
+    <jsondefault>None</jsondefault>
+
+    Worldgen/region requirements for the object to spawn.
   example: []
   syntax:
     content: public WorldGenSpawnConditions Worldgen
@@ -386,6 +448,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -393,6 +517,115 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.Entities.SpawnConditions.Runtime
+  commentId: F:Vintagestory.API.Common.Entities.SpawnConditions.Runtime
+  href: Vintagestory.API.Common.Entities.SpawnConditions.html#Vintagestory_API_Common_Entities_SpawnConditions_Runtime
+  name: Runtime
+  nameWithType: SpawnConditions.Runtime
+  fullName: Vintagestory.API.Common.Entities.SpawnConditions.Runtime
+- uid: Vintagestory.API.Common.Entities.SpawnConditions.Worldgen
+  commentId: F:Vintagestory.API.Common.Entities.SpawnConditions.Worldgen
+  href: Vintagestory.API.Common.Entities.SpawnConditions.html#Vintagestory_API_Common_Entities_SpawnConditions_Worldgen
+  name: Worldgen
+  nameWithType: SpawnConditions.Worldgen
+  fullName: Vintagestory.API.Common.Entities.SpawnConditions.Worldgen
 - uid: Vintagestory.API.Common.Entities.ClimateSpawnCondition
   commentId: T:Vintagestory.API.Common.Entities.ClimateSpawnCondition
   parent: Vintagestory.API.Common.Entities

@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -157,6 +157,12 @@ You add components by chaining the functions of the composer together for buildi
     <dt>Extension Methods</dt>
     <dd>
   <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  <div>
       <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddAutoSizeHoverText_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Client_CairoFont_System_Int32_Vintagestory_API_Client_ElementBounds_System_String_">GuiComposerHelpers.AddAutoSizeHoverText(GuiComposer, string, CairoFont, int, ElementBounds, string)</a>
   </div>
   <div>
@@ -172,7 +178,7 @@ You add components by chaining the functions of the composer together for buildi
       <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddButton_Vintagestory_API_Client_GuiComposer_System_String_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_EnumButtonStyle_Vintagestory_API_Client_EnumTextOrientation_System_String_">GuiComposerHelpers.AddButton(GuiComposer, string, ActionConsumable, ElementBounds, EnumButtonStyle, EnumTextOrientation, string)</a>
   </div>
   <div>
-      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_List___0__System_String_">GuiComposerHelpers.AddCellList&lt;T&gt;(GuiComposer, ElementBounds, OnRequireCell&lt;T&gt;, List&lt;T&gt;, string)</a>
+      <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_IEnumerable___0__System_String_">GuiComposerHelpers.AddCellList&lt;T&gt;(GuiComposer, ElementBounds, OnRequireCell&lt;T&gt;, IEnumerable&lt;T&gt;, string)</a>
   </div>
   <div>
       <a class="xref" href="Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddChatInput_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_System_Action_System_String__System_String_">GuiComposerHelpers.AddChatInput(GuiComposer, ElementBounds, Action&lt;string&gt;, string)</a>
@@ -542,6 +548,36 @@ You add components by chaining the functions of the composer together for buildi
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_GuiComposer_DialogName" data-uid="Vintagestory.API.Client.GuiComposer.DialogName">
+  DialogName
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DialogName</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -1223,6 +1259,37 @@ You add components by chaining the functions of the composer together for buildi
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Client.GuiElement.html">GuiElement</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_GuiComposer_LastAddedElementBounds_" data-uid="Vintagestory.API.Client.GuiComposer.LastAddedElementBounds*"></a>
+
+  <h3 id="Vintagestory_API_Client_GuiComposer_LastAddedElementBounds" data-uid="Vintagestory.API.Client.GuiComposer.LastAddedElementBounds">
+  LastAddedElementBounds
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ElementBounds LastAddedElementBounds { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.ElementBounds.html">ElementBounds</a></dt>
     <dd></dd>
   </dl>
 

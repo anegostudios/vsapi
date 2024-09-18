@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -139,6 +139,9 @@ Class EntityHumanoid
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_BodyYawServer">EntityAgent.BodyYawServer</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_sidewaysSwivelAngle">EntityAgent.sidewaysSwivelAngle</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_DeadNotify">EntityAgent.DeadNotify</a>
     </div>
     <div>
@@ -166,13 +169,13 @@ Class EntityHumanoid
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_ActiveHandItemSlot">EntityAgent.ActiveHandItemSlot</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_GearInventory">EntityAgent.GearInventory</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_ShouldDespawn">EntityAgent.ShouldDespawn</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_AllowDespawn">EntityAgent.AllowDespawn</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_alwaysRunIdle">EntityAgent.alwaysRunIdle</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_Initialize_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Common_ICoreAPI_System_Int64_">EntityAgent.Initialize(EntityProperties, ICoreAPI, long)</a>
@@ -187,13 +190,13 @@ Class EntityHumanoid
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_IsEyesSubmerged">EntityAgent.IsEyesSubmerged()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_TryMount_Vintagestory_API_Common_IMountable_">EntityAgent.TryMount(IMountable)</a>
+      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_TryMount_Vintagestory_API_Common_IMountableSeat_">EntityAgent.TryMount(IMountableSeat)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_updateMountedState">EntityAgent.updateMountedState()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_doMount_Vintagestory_API_Common_IMountable_">EntityAgent.doMount(IMountable)</a>
+      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_doMount_Vintagestory_API_Common_IMountableSeat_">EntityAgent.doMount(IMountableSeat)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_TryUnmount">EntityAgent.TryUnmount()</a>
@@ -202,7 +205,7 @@ Class EntityHumanoid
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_Die_Vintagestory_API_Common_EnumDespawnReason_Vintagestory_API_Common_DamageSource_">EntityAgent.Die(EnumDespawnReason, DamageSource)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_OnNoPath_Vintagestory_API_MathTools_Vec3d_">EntityAgent.OnNoPath(Vec3d)</a>
+      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_">EntityAgent.OnEntityDespawn(EntityDespawnData)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_OnInteract_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_ItemSlot_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_EnumInteractMode_">EntityAgent.OnInteract(EntityAgent, ItemSlot, Vec3d, EnumInteractMode)</a>
@@ -268,25 +271,7 @@ Class EntityHumanoid
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_UpdateDebugAttributes">EntityAgent.UpdateDebugAttributes()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_OnTesselation_Vintagestory_API_Common_Shape__System_String_">EntityAgent.OnTesselation(ref Shape, string)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_hideClothing">EntityAgent.hideClothing</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_addGearToShape_Vintagestory_API_Common_Shape__System_String_">EntityAgent.addGearToShape(ref Shape, string)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_addGearToShape_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_Shape_System_String_">EntityAgent.addGearToShape(ItemSlot, Shape, string)</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_TryGiveItemStack_Vintagestory_API_Common_ItemStack_">EntityAgent.TryGiveItemStack(ItemStack)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_">EntityAgent.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_OnStoreCollectibleMappings_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__">EntityAgent.OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SplashParticleProps">Entity.SplashParticleProps</a>
@@ -424,10 +409,10 @@ Class EntityHumanoid
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsShadowRendered">Entity.IsShadowRendered</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HurtColor">Entity.HurtColor</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Stats">Entity.Stats</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Stats">Entity.Stats</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_fireDamageAccum">Entity.fireDamageAccum</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_touchDistanceSq">Entity.touchDistanceSq</a>
@@ -437,6 +422,12 @@ Class EntityHumanoid
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_hasRepulseBehavior">Entity.hasRepulseBehavior</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_trickleDownRayIntersects">Entity.trickleDownRayIntersects</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_requirePosesOnServer">Entity.requirePosesOnServer</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_packet">Entity.packet</a>
@@ -544,6 +535,27 @@ Class EntityHumanoid
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Ignite">Entity.Ignite()</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetTextureSource">Entity.GetTextureSource()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ShapeFresh">Entity.ShapeFresh</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_FrustumSphereRadius">Entity.FrustumSphereRadius</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_shapeFresh">Entity.shapeFresh</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_MarkShapeModified">Entity.MarkShapeModified()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_">Entity.OnTesselation(ref Shape, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselated">Entity.OnTesselated()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnFallToGround_System_Double_">Entity.OnFallToGround(double)</a>
     </div>
     <div>
@@ -560,9 +572,6 @@ Class EntityHumanoid
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnEntitySpawn">Entity.OnEntitySpawn()</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_">Entity.OnEntityDespawn(EntityDespawnData)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnExitedLiquid">Entity.OnExitedLiquid()</a>
@@ -613,6 +622,9 @@ Class EntityHumanoid
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetBehavior__1">Entity.GetBehavior&lt;T&gt;()</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetInterface__1">Entity.GetInterface&lt;T&gt;()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsActivityRunning_System_String_">Entity.IsActivityRunning(string)</a>
     </div>
     <div>
@@ -646,7 +658,10 @@ Class EntityHumanoid
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_DidImportOrExport_Vintagestory_API_MathTools_BlockPos_">Entity.DidImportOrExport(BlockPos)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_">Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnStoreCollectibleMappings_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__">Entity.OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_">Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int, bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetName">Entity.GetName()</a>
@@ -659,6 +674,9 @@ Class EntityHumanoid
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_StopAnimation_System_String_">Entity.StopAnimation(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IntersectsRay_Vintagestory_API_MathTools_Ray_Vintagestory_API_MathTools_AABBIntersectionTest_System_Double__System_Int32__">Entity.IntersectsRay(Ray, AABBIntersectionTest, out double, ref int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_Code">RegistryObject.Code</a>
@@ -749,6 +767,16 @@ Class EntityHumanoid
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 

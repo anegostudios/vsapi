@@ -129,7 +129,6 @@ namespace Vintagestory.API.Common
                 WatchedAttributes.SetDouble("airDragFactor", airdragFactor.AsDouble(1));
             }
 
-
             itemSpawnedMilliseconds = World.ElapsedMilliseconds;
             Swimming = FeetInLiquid = World.BlockAccessor.GetBlock(Pos.AsBlockPos, BlockLayersAccess.Fluid).IsLiquid();
 
@@ -200,7 +199,7 @@ namespace Vintagestory.API.Common
                         getWindSpeedAccum = 0;
                         tmpPos.Set(Pos.XInt, Pos.YInt, Pos.ZInt);
                         windSpeed = World.BlockAccessor.GetWindSpeedAt(tmpPos);
-                        
+
                         windSpeed.X = Math.Max(0, Math.Abs(windSpeed.X) - windLoss) * Math.Sign(windSpeed.X);
                         windSpeed.Y = Math.Max(0, Math.Abs(windSpeed.Y) - windLoss) * Math.Sign(windSpeed.Y);
                         windSpeed.Z = Math.Max(0, Math.Abs(windSpeed.Z) - windLoss) * Math.Sign(windSpeed.Z);
@@ -240,38 +239,22 @@ namespace Vintagestory.API.Common
                     }
                 }
 
-                /*if (!FeetInLiquid && !InLava && Api.World.Rand.NextDouble() < 0.1f && Api.World.Side == EnumAppSide.Server)
-                {
-                    // Die on rainfall
-                    WeatherSystemBase wsys;
-                    wsys = api.ModLoader.GetModSystem<WeatherSystemBase>();
-                    BlockPos tmpPos = new BlockPos(Pos.X + 0.5, Pos.Y + 0.5, Pos.Z + 0.5);
-                    double rainLevel = wsys.GetRainFall(tmpPos);
-                    if (rainLevel > 0.04 && Api.World.Rand.NextDouble() < rainLevel * 5)
-                    {
-                        if (Api.World.BlockAccessor.GetRainMapHeightAt(Pos.X, Pos.Z) > Pos.Y) return;
-
-                        Api.World.PlaySoundAt(new AssetLocation("sounds/effect/extinguish"), Pos.X + 0.5, Pos.Y, Pos.Z + 0.5, null, false, 16);
-
-                        fuelBurnTime -= (float)rainLevel / 10f;
-
-                        if (Api.World.Rand.NextDouble() < rainLevel / 5f || fuelBurnTime <= 0)
-                        {
-                            setBlockState("cold");
-                            extinguishedTotalHours = -99;
-                            canIgniteFuel = false;
-                            fuelBurnTime = 0;
-                            maxFuelBurnTime = 0;
-                        }
-
-                        MarkDirty(true);
-                    }
-                }*/
-
             }
-            else Die();
+            else
+            {
+                Die();
+            }
 
-            World.FrameProfiler.Mark("entity-tick-droppeditems"); // " + this.GetType().Name);
+            World.FrameProfiler.Mark("entity-tick-droppeditems");
+        }
+
+        public override void Ignite()
+        {
+            var stack = this.Itemstack;
+            if (InLava || (stack != null && stack.Collectible.CombustibleProps != null && (stack.Collectible.CombustibleProps.MeltingPoint < 700 || stack.Collectible.CombustibleProps.BurnTemperature > 0)))
+            {
+                base.Ignite();
+            }
         }
 
         public override void OnEntityDespawn(EntityDespawnData despawn)
@@ -332,7 +315,7 @@ namespace Vintagestory.API.Common
             item.SimulationRange = (int)(0.75f * GlobalConstants.DefaultSimulationRange);
             item.Itemstack = itemstack;
 
-            item.ServerPos.SetPos(position);
+            item.ServerPos.SetPosWithDimension(position);
 
             if (velocity == null)
             {
@@ -356,12 +339,6 @@ namespace Vintagestory.API.Common
         public override ItemStack OnCollected(Entity byEntity)
         {
             return Slot.Itemstack;
-        }
-
-        public override void OnCollideWithLiquid()
-        {
-            base.OnCollideWithLiquid();
-            
         }
 
         public override bool ShouldReceiveDamage(DamageSource damageSource, float damage)

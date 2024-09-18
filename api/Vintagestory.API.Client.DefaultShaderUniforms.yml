@@ -7,6 +7,7 @@ items:
   children:
   - Vintagestory.API.Client.DefaultShaderUniforms.#ctor
   - Vintagestory.API.Client.DefaultShaderUniforms.BlockAtlasHeight
+  - Vintagestory.API.Client.DefaultShaderUniforms.CameraUnderwater
   - Vintagestory.API.Client.DefaultShaderUniforms.ColorMapRects4
   - Vintagestory.API.Client.DefaultShaderUniforms.DamageVignetting
   - Vintagestory.API.Client.DefaultShaderUniforms.DamageVignettingSide
@@ -18,6 +19,8 @@ items:
   - Vintagestory.API.Client.DefaultShaderUniforms.ExtraSepia
   - Vintagestory.API.Client.DefaultShaderUniforms.FlagFogDensity
   - Vintagestory.API.Client.DefaultShaderUniforms.FlatFogStartYPos
+  - Vintagestory.API.Client.DefaultShaderUniforms.FogSphereQuantity
+  - Vintagestory.API.Client.DefaultShaderUniforms.FogSpheres
   - Vintagestory.API.Client.DefaultShaderUniforms.FogWaveCounter
   - Vintagestory.API.Client.DefaultShaderUniforms.FrameWidth
   - Vintagestory.API.Client.DefaultShaderUniforms.FrostVignetting
@@ -26,10 +29,12 @@ items:
   - Vintagestory.API.Client.DefaultShaderUniforms.GlobalWorldWarp
   - Vintagestory.API.Client.DefaultShaderUniforms.GlowTextureId
   - Vintagestory.API.Client.DefaultShaderUniforms.LightPosition3D
+  - Vintagestory.API.Client.DefaultShaderUniforms.MaxSpheres
   - Vintagestory.API.Client.DefaultShaderUniforms.NightVisionStrength
   - Vintagestory.API.Client.DefaultShaderUniforms.PerceptionEffectId
   - Vintagestory.API.Client.DefaultShaderUniforms.PerceptionEffectIntensity
   - Vintagestory.API.Client.DefaultShaderUniforms.PlayerPos
+  - Vintagestory.API.Client.DefaultShaderUniforms.PlayerPosForFoam
   - Vintagestory.API.Client.DefaultShaderUniforms.PlayerToSealevelOffset
   - Vintagestory.API.Client.DefaultShaderUniforms.PlayerViewVector
   - Vintagestory.API.Client.DefaultShaderUniforms.PointLightColors3
@@ -54,6 +59,7 @@ items:
   - Vintagestory.API.Client.DefaultShaderUniforms.ToShadowMapSpaceMatrixNear
   - Vintagestory.API.Client.DefaultShaderUniforms.Update(System.Single,Vintagestory.API.Client.ICoreClientAPI)
   - Vintagestory.API.Client.DefaultShaderUniforms.WaterFlowCounter
+  - Vintagestory.API.Client.DefaultShaderUniforms.WaterMurkColor
   - Vintagestory.API.Client.DefaultShaderUniforms.WaterStillCounter
   - Vintagestory.API.Client.DefaultShaderUniforms.WaterWaveCounter
   - Vintagestory.API.Client.DefaultShaderUniforms.WaterWaveIntensity
@@ -64,6 +70,7 @@ items:
   - Vintagestory.API.Client.DefaultShaderUniforms.ZFar
   - Vintagestory.API.Client.DefaultShaderUniforms.ZNear
   - Vintagestory.API.Client.DefaultShaderUniforms.playerReferencePos
+  - Vintagestory.API.Client.DefaultShaderUniforms.playerReferencePosForFoam
   langs:
   - csharp
   - vb
@@ -87,6 +94,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Client.DefaultShaderUniforms.ZNear
   commentId: F:Vintagestory.API.Client.DefaultShaderUniforms.ZNear
   id: ZNear
@@ -338,6 +348,74 @@ items:
     return:
       type: System.Single[]
     content.vb: Public PointLightColors3 As Single()
+- uid: Vintagestory.API.Client.DefaultShaderUniforms.MaxSpheres
+  commentId: F:Vintagestory.API.Client.DefaultShaderUniforms.MaxSpheres
+  id: MaxSpheres
+  parent: Vintagestory.API.Client.DefaultShaderUniforms
+  langs:
+  - csharp
+  - vb
+  name: MaxSpheres
+  nameWithType: DefaultShaderUniforms.MaxSpheres
+  fullName: Vintagestory.API.Client.DefaultShaderUniforms.MaxSpheres
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public const int MaxSpheres = 3
+    return:
+      type: System.Int32
+    content.vb: Public Const MaxSpheres As Integer = 3
+- uid: Vintagestory.API.Client.DefaultShaderUniforms.FogSpheres
+  commentId: F:Vintagestory.API.Client.DefaultShaderUniforms.FogSpheres
+  id: FogSpheres
+  parent: Vintagestory.API.Client.DefaultShaderUniforms
+  langs:
+  - csharp
+  - vb
+  name: FogSpheres
+  nameWithType: DefaultShaderUniforms.FogSpheres
+  fullName: Vintagestory.API.Client.DefaultShaderUniforms.FogSpheres
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: >-
+    Each sphere has 8 floats:
+
+    3 floats x/y/z offset to the player
+
+    1 float radius
+
+    1 float density
+
+    3 floats rgb color
+  example: []
+  syntax:
+    content: public float[] FogSpheres
+    return:
+      type: System.Single[]
+    content.vb: Public FogSpheres As Single()
+- uid: Vintagestory.API.Client.DefaultShaderUniforms.FogSphereQuantity
+  commentId: F:Vintagestory.API.Client.DefaultShaderUniforms.FogSphereQuantity
+  id: FogSphereQuantity
+  parent: Vintagestory.API.Client.DefaultShaderUniforms
+  langs:
+  - csharp
+  - vb
+  name: FogSphereQuantity
+  nameWithType: DefaultShaderUniforms.FogSphereQuantity
+  fullName: Vintagestory.API.Client.DefaultShaderUniforms.FogSphereQuantity
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public int FogSphereQuantity
+    return:
+      type: System.Int32
+    content.vb: Public FogSphereQuantity As Integer
 - uid: Vintagestory.API.Client.DefaultShaderUniforms.SunPositionScreen
   commentId: F:Vintagestory.API.Client.DefaultShaderUniforms.SunPositionScreen
   id: SunPositionScreen
@@ -1138,6 +1216,25 @@ items:
     return:
       type: Vintagestory.API.MathTools.Vec3f
     content.vb: Public PlayerPos As Vec3f
+- uid: Vintagestory.API.Client.DefaultShaderUniforms.PlayerPosForFoam
+  commentId: F:Vintagestory.API.Client.DefaultShaderUniforms.PlayerPosForFoam
+  id: PlayerPosForFoam
+  parent: Vintagestory.API.Client.DefaultShaderUniforms
+  langs:
+  - csharp
+  - vb
+  name: PlayerPosForFoam
+  nameWithType: DefaultShaderUniforms.PlayerPosForFoam
+  fullName: Vintagestory.API.Client.DefaultShaderUniforms.PlayerPosForFoam
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public Vec3f PlayerPosForFoam
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: Public PlayerPosForFoam As Vec3f
 - uid: Vintagestory.API.Client.DefaultShaderUniforms.playerReferencePos
   commentId: F:Vintagestory.API.Client.DefaultShaderUniforms.playerReferencePos
   id: playerReferencePos
@@ -1157,6 +1254,67 @@ items:
     return:
       type: Vintagestory.API.MathTools.Vec3d
     content.vb: Public playerReferencePos As Vec3d
+- uid: Vintagestory.API.Client.DefaultShaderUniforms.playerReferencePosForFoam
+  commentId: F:Vintagestory.API.Client.DefaultShaderUniforms.playerReferencePosForFoam
+  id: playerReferencePosForFoam
+  parent: Vintagestory.API.Client.DefaultShaderUniforms
+  langs:
+  - csharp
+  - vb
+  name: playerReferencePosForFoam
+  nameWithType: DefaultShaderUniforms.playerReferencePosForFoam
+  fullName: Vintagestory.API.Client.DefaultShaderUniforms.playerReferencePosForFoam
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public Vec3d playerReferencePosForFoam
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Public playerReferencePosForFoam As Vec3d
+- uid: Vintagestory.API.Client.DefaultShaderUniforms.WaterMurkColor
+  commentId: P:Vintagestory.API.Client.DefaultShaderUniforms.WaterMurkColor
+  id: WaterMurkColor
+  parent: Vintagestory.API.Client.DefaultShaderUniforms
+  langs:
+  - csharp
+  - vb
+  name: WaterMurkColor
+  nameWithType: DefaultShaderUniforms.WaterMurkColor
+  fullName: Vintagestory.API.Client.DefaultShaderUniforms.WaterMurkColor
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public Vec4f WaterMurkColor { get; set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec4f
+    content.vb: Public Property WaterMurkColor As Vec4f
+  overload: Vintagestory.API.Client.DefaultShaderUniforms.WaterMurkColor*
+- uid: Vintagestory.API.Client.DefaultShaderUniforms.CameraUnderwater
+  commentId: P:Vintagestory.API.Client.DefaultShaderUniforms.CameraUnderwater
+  id: CameraUnderwater
+  parent: Vintagestory.API.Client.DefaultShaderUniforms
+  langs:
+  - csharp
+  - vb
+  name: CameraUnderwater
+  nameWithType: DefaultShaderUniforms.CameraUnderwater
+  fullName: Vintagestory.API.Client.DefaultShaderUniforms.CameraUnderwater
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public float CameraUnderwater { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property CameraUnderwater As Single
+  overload: Vintagestory.API.Client.DefaultShaderUniforms.CameraUnderwater*
 - uid: Vintagestory.API.Client.DefaultShaderUniforms.#ctor
   commentId: M:Vintagestory.API.Client.DefaultShaderUniforms.#ctor
   id: '#ctor'
@@ -1491,6 +1649,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1498,6 +1718,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Single
   commentId: T:System.Single
   parent: System
@@ -1587,6 +1904,25 @@ references:
   name: Vec3d
   nameWithType: Vec3d
   fullName: Vintagestory.API.MathTools.Vec3d
+- uid: Vintagestory.API.Client.DefaultShaderUniforms.WaterMurkColor*
+  commentId: Overload:Vintagestory.API.Client.DefaultShaderUniforms.WaterMurkColor
+  href: Vintagestory.API.Client.DefaultShaderUniforms.html#Vintagestory_API_Client_DefaultShaderUniforms_WaterMurkColor
+  name: WaterMurkColor
+  nameWithType: DefaultShaderUniforms.WaterMurkColor
+  fullName: Vintagestory.API.Client.DefaultShaderUniforms.WaterMurkColor
+- uid: Vintagestory.API.MathTools.Vec4f
+  commentId: T:Vintagestory.API.MathTools.Vec4f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec4f.html
+  name: Vec4f
+  nameWithType: Vec4f
+  fullName: Vintagestory.API.MathTools.Vec4f
+- uid: Vintagestory.API.Client.DefaultShaderUniforms.CameraUnderwater*
+  commentId: Overload:Vintagestory.API.Client.DefaultShaderUniforms.CameraUnderwater
+  href: Vintagestory.API.Client.DefaultShaderUniforms.html#Vintagestory_API_Client_DefaultShaderUniforms_CameraUnderwater
+  name: CameraUnderwater
+  nameWithType: DefaultShaderUniforms.CameraUnderwater
+  fullName: Vintagestory.API.Client.DefaultShaderUniforms.CameraUnderwater
 - uid: Vintagestory.API.Client.DefaultShaderUniforms.#ctor*
   commentId: Overload:Vintagestory.API.Client.DefaultShaderUniforms.#ctor
   href: Vintagestory.API.Client.DefaultShaderUniforms.html#Vintagestory_API_Client_DefaultShaderUniforms__ctor

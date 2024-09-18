@@ -22,6 +22,11 @@ namespace Vintagestory.API.Datastructures
             return value;
         }
 
+        public virtual void SetValue(T newval)
+        {
+            value = newval;
+        }
+
         public override string ToString()
         {
             return value.ToString();

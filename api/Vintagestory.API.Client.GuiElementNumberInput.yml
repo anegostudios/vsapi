@@ -7,7 +7,9 @@ items:
   children:
   - Vintagestory.API.Client.GuiElementNumberInput.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,System.Action{System.String},Vintagestory.API.Client.CairoFont)
   - Vintagestory.API.Client.GuiElementNumberInput.ComposeTextElements(Cairo.Context,Cairo.ImageSurface)
+  - Vintagestory.API.Client.GuiElementNumberInput.DisableButtonFocus
   - Vintagestory.API.Client.GuiElementNumberInput.Dispose
+  - Vintagestory.API.Client.GuiElementNumberInput.Focusable
   - Vintagestory.API.Client.GuiElementNumberInput.GetValue
   - Vintagestory.API.Client.GuiElementNumberInput.Interval
   - Vintagestory.API.Client.GuiElementNumberInput.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
@@ -62,7 +64,6 @@ items:
   - Vintagestory.API.Client.GuiElementEditableTextBase.pcaretPosInLine
   - Vintagestory.API.Client.GuiElementEditableTextBase.CaretPosLine
   - Vintagestory.API.Client.GuiElementEditableTextBase.CaretPosInLine
-  - Vintagestory.API.Client.GuiElementEditableTextBase.Focusable
   - Vintagestory.API.Client.GuiElementEditableTextBase.SetCaretPos(System.Double,System.Double)
   - Vintagestory.API.Client.GuiElementEditableTextBase.SetCaretPos(System.Int32,System.Int32)
   - Vintagestory.API.Client.GuiElementEditableTextBase.SetValue(System.Single)
@@ -150,6 +151,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Client.GuiElementNumberInput.Interval
   commentId: F:Vintagestory.API.Client.GuiElementNumberInput.Interval
   id: Interval
@@ -188,6 +192,51 @@ items:
     return:
       type: Vintagestory.API.Client.LoadedTexture
     content.vb: Public buttonHighlightTexture As LoadedTexture
+- uid: Vintagestory.API.Client.GuiElementNumberInput.Focusable
+  commentId: P:Vintagestory.API.Client.GuiElementNumberInput.Focusable
+  id: Focusable
+  parent: Vintagestory.API.Client.GuiElementNumberInput
+  langs:
+  - csharp
+  - vb
+  name: Focusable
+  nameWithType: GuiElementNumberInput.Focusable
+  fullName: Vintagestory.API.Client.GuiElementNumberInput.Focusable
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Whether or not the element can be focused.
+  example: []
+  syntax:
+    content: public override bool Focusable { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overrides ReadOnly Property Focusable As Boolean
+  overridden: Vintagestory.API.Client.GuiElementEditableTextBase.Focusable
+  overload: Vintagestory.API.Client.GuiElementNumberInput.Focusable*
+- uid: Vintagestory.API.Client.GuiElementNumberInput.DisableButtonFocus
+  commentId: F:Vintagestory.API.Client.GuiElementNumberInput.DisableButtonFocus
+  id: DisableButtonFocus
+  parent: Vintagestory.API.Client.GuiElementNumberInput
+  langs:
+  - csharp
+  - vb
+  name: DisableButtonFocus
+  nameWithType: GuiElementNumberInput.DisableButtonFocus
+  fullName: Vintagestory.API.Client.GuiElementNumberInput.DisableButtonFocus
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: When enabled and a button is clicked it wont focus on it, leaving your focus on the game to move around
+  example: []
+  syntax:
+    content: public bool DisableButtonFocus
+    return:
+      type: System.Boolean
+    content.vb: Public DisableButtonFocus As Boolean
 - uid: Vintagestory.API.Client.GuiElementNumberInput.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,System.Action{System.String},Vintagestory.API.Client.CairoFont)
   commentId: M:Vintagestory.API.Client.GuiElementNumberInput.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,System.Action{System.String},Vintagestory.API.Client.CairoFont)
   id: '#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,System.Action{System.String},Vintagestory.API.Client.CairoFont)'
@@ -723,13 +772,6 @@ references:
   name: CaretPosInLine
   nameWithType: GuiElementEditableTextBase.CaretPosInLine
   fullName: Vintagestory.API.Client.GuiElementEditableTextBase.CaretPosInLine
-- uid: Vintagestory.API.Client.GuiElementEditableTextBase.Focusable
-  commentId: P:Vintagestory.API.Client.GuiElementEditableTextBase.Focusable
-  parent: Vintagestory.API.Client.GuiElementEditableTextBase
-  href: Vintagestory.API.Client.GuiElementEditableTextBase.html#Vintagestory_API_Client_GuiElementEditableTextBase_Focusable
-  name: Focusable
-  nameWithType: GuiElementEditableTextBase.Focusable
-  fullName: Vintagestory.API.Client.GuiElementEditableTextBase.Focusable
 - uid: Vintagestory.API.Client.GuiElementEditableTextBase.SetCaretPos(System.Double,System.Double)
   commentId: M:Vintagestory.API.Client.GuiElementEditableTextBase.SetCaretPos(System.Double,System.Double)
   parent: Vintagestory.API.Client.GuiElementEditableTextBase
@@ -3825,6 +3867,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -3832,6 +3936,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Single
   commentId: T:System.Single
   parent: System
@@ -3850,6 +4051,30 @@ references:
   name: LoadedTexture
   nameWithType: LoadedTexture
   fullName: Vintagestory.API.Client.LoadedTexture
+- uid: Vintagestory.API.Client.GuiElementEditableTextBase.Focusable
+  commentId: P:Vintagestory.API.Client.GuiElementEditableTextBase.Focusable
+  parent: Vintagestory.API.Client.GuiElementEditableTextBase
+  href: Vintagestory.API.Client.GuiElementEditableTextBase.html#Vintagestory_API_Client_GuiElementEditableTextBase_Focusable
+  name: Focusable
+  nameWithType: GuiElementEditableTextBase.Focusable
+  fullName: Vintagestory.API.Client.GuiElementEditableTextBase.Focusable
+- uid: Vintagestory.API.Client.GuiElementNumberInput.Focusable*
+  commentId: Overload:Vintagestory.API.Client.GuiElementNumberInput.Focusable
+  href: Vintagestory.API.Client.GuiElementNumberInput.html#Vintagestory_API_Client_GuiElementNumberInput_Focusable
+  name: Focusable
+  nameWithType: GuiElementNumberInput.Focusable
+  fullName: Vintagestory.API.Client.GuiElementNumberInput.Focusable
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
 - uid: Vintagestory.API.Client.GuiElementNumberInput.#ctor*
   commentId: Overload:Vintagestory.API.Client.GuiElementNumberInput.#ctor
   href: Vintagestory.API.Client.GuiElementNumberInput.html#Vintagestory_API_Client_GuiElementNumberInput__ctor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_ElementBounds_System_Action_System_String__Vintagestory_API_Client_CairoFont_

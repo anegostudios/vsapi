@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -10,7 +12,7 @@ namespace Vintagestory.API.Datastructures
     /// <summary>
     /// Elegant, yet somewhat inefficently designed (because wasteful with heap objects) wrapper class to abstract away the type-casting nightmare of JToken O.O
     /// </summary>
-    public class JsonObject
+    public class JsonObject : IReadOnlyCollection<JsonObject>
     {
         JToken token;
 
@@ -64,6 +66,8 @@ namespace Vintagestory.API.Datastructures
             get { return token; } 
             set { token = value; } 
         }
+
+        
 
         /// <summary>
         /// True if the token has an element with given key
@@ -485,7 +489,7 @@ namespace Vintagestory.API.Datastructures
         /// <summary>
         /// Returns true if this object has the named bool attribute, and it is true
         /// </summary>
-        public bool IsTrue(String attrName)
+        public bool IsTrue(string attrName)
         {
             if (token == null || !(token is JObject)) return false;
             if (token[attrName] is JValue jvalue)
@@ -493,12 +497,58 @@ namespace Vintagestory.API.Datastructures
                 if (jvalue.Value is bool result) return result;
                 if (jvalue.Value is string boolString)
                 {
-                    bool val = false;
+                    bool val;
                     bool.TryParse(boolString, out val);
                     return val;
                 }
             }
             return false;
+        }
+
+        public int Count
+        {
+            get
+            {
+                if (token == null) throw new InvalidOperationException("Cannot count a null token");
+
+                if (token is JObject jobj)
+                {
+                    return jobj.Count;
+                }
+                if (token is JArray jarr)
+                {
+                    return jarr.Count;
+                }
+
+                throw new InvalidOperationException("Can iterate only over a JObject or JArray, this token is of type " + token.Type);
+            }
+        }
+
+        public IEnumerator<JsonObject> GetEnumerator()
+        {
+            if (token == null) throw new InvalidOperationException("Cannot iterate over a null token");
+
+            if (token is JObject jobj)
+            {
+                foreach (var val in jobj)
+                {
+                    yield return new JsonObject(val.Key);
+                }
+            } else
+            if (token is JArray jarr)
+            {
+                for (int i = 0; i < Count; i++)
+                {
+                    yield return new JsonObject(jarr[i]);
+                }
+            } else
+
+            throw new InvalidOperationException("Can iterate only over a JObject or JArray, this token is of type " + token.Type);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

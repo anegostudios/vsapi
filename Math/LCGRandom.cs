@@ -8,6 +8,7 @@ namespace Vintagestory.API.MathTools
         int NextInt(int max);
         int NextInt();
         double NextDouble();
+        float NextFloat();
     }
 
     public class NormalRandom : Random, IRandom
@@ -28,6 +29,11 @@ namespace Vintagestory.API.MathTools
         public int NextInt()
         {
             return this.Next();
+        }
+
+        public float NextFloat()
+        {
+            return (float)NextDouble();
         }
     }
 

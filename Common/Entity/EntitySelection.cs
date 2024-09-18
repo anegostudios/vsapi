@@ -25,6 +25,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         public Vec3d HitPosition;
 
+        /// <summary>
+        /// Which selection box was aimed at. The index corresponds to the array returned by Block.GetSelectionBoxes()
+        /// </summary>
+        public int SelectionBoxIndex;
+
 
         public EntitySelection Clone()
         {
@@ -33,7 +38,8 @@ namespace Vintagestory.API.Common
                 Entity = Entity,
                 Position = Position.Clone(),
                 Face = Face,
-                HitPosition = HitPosition.Clone()
+                HitPosition = HitPosition.Clone(),
+                SelectionBoxIndex = SelectionBoxIndex
             };
         }
     }

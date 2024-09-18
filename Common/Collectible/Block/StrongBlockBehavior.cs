@@ -46,7 +46,7 @@ namespace Vintagestory.API.Common
             handled = EnumHandling.PassThrough;
         }
 
-        public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, LCGRandom worldgenRandom, ref EnumHandling handled)
+        public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, IRandom worldgenRandom, ref EnumHandling handled)
         {
             handled = EnumHandling.PassThrough;
             return false;

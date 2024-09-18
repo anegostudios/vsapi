@@ -2,6 +2,10 @@
 
 namespace Vintagestory.API.Common.Entities
 {
+    /// <summary>
+    /// A list of activities that an entity can perform.
+    /// </summary>
+    [DocumentAsJson]
     [Flags]
     public enum EnumEntityActivity
     {

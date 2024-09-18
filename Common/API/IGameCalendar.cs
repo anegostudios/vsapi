@@ -159,6 +159,22 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
+        /// Get the suns position in the sky at given date as a normalized vector
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="totalDays"></param>
+        /// <returns></returns>
+        Vec3f GetSunPosition(Vec3d pos, double totalDays);
+
+        /// <summary>
+        /// Get the moons position in the sky at given date as a normalized vector
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="totaldays"></param>
+        /// <returns></returns>
+        Vec3f GetMoonPosition(Vec3d position, double totaldays);
+
+        /// <summary>
         /// The worlds current date, nicely formatted
         /// </summary>
         /// <returns></returns>

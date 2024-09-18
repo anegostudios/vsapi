@@ -1,4 +1,5 @@
 ﻿using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
 
 namespace Vintagestory.API.Server
 {
@@ -13,7 +14,7 @@ namespace Vintagestory.API.Server
         string ServerIp { get; }
 
         /// <summary>
-        /// All players known to the server (which joined at least once)
+        /// All players known to the server (which joined at least once while the server was running)
         /// </summary>
         IServerPlayer[] Players { get; }
 
@@ -82,7 +83,7 @@ namespace Vintagestory.API.Server
 
         /// <summary>
         /// Returns the number of seconds the server has been running since last restart
-        /// </summary>  
+        /// </summary>
         /// <value>Server uptime in seconds</value>
         int ServerUptimeSeconds { get; }
 
@@ -96,7 +97,7 @@ namespace Vintagestory.API.Server
         /// Returns the number of seconds the current world has been running. This is the playtime displayed on the singleplayer world list.
         /// </summary>
         int TotalWorldPlayTime { get; }
-        
+
 
         /// <summary>
         /// Returns a logging interface to log any log level message
@@ -112,7 +113,7 @@ namespace Vintagestory.API.Server
         /// <param name="args"></param>
         void LogChat(string message, params object[] args);
 
-        
+
         /// <summary>
         /// Log given message with type = EnumLogType.Build
         /// </summary>
@@ -163,7 +164,7 @@ namespace Vintagestory.API.Server
         void LogFatal(string message, params object[] args);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="message"></param>
         /// <param name="args"></param>
@@ -179,5 +180,17 @@ namespace Vintagestory.API.Server
         /// <br/>A mini dimension is a small set of blocks up to 4096x4096x4096 used for schematic previews, vehicles etc
         /// </summary>
         int SetMiniDimension(IMiniDimension miniDimension, int index);
+
+        /// <summary>
+        /// Remove an entity from the physics ticking system on the server.
+        /// </summary>
+        /// <param name="entityBehavior"></param>
+        public void AddPhysicsTickable(IPhysicsTickable entityBehavior);
+
+        /// <summary>
+        /// Add an entity to the physics ticking system on the server.
+        /// </summary>
+        /// <param name="entityBehavior"></param>
+        public void RemovePhysicsTickable(IPhysicsTickable entityBehavior);
     }
 }

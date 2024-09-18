@@ -259,12 +259,6 @@ namespace Vintagestory.API.MathTools
             }
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static int FastFloor(double x)
-        {
-            var xi = (int)x;
-            return x < 0.0 ? xi - 1 : xi;
-        }
 
         public SimplexNoiseOctave()
             : this(DateTime.Now.Ticks)
@@ -307,8 +301,8 @@ namespace Vintagestory.API.MathTools
             var xs = x + stretchOffset;
             var ys = y + stretchOffset;
 
-            var xsb = FastFloor(xs);
-            var ysb = FastFloor(ys);
+            var xsb = (int)Math.Floor(xs);
+            var ysb = (int)Math.Floor(ys);
 
             var squishOffset = (xsb + ysb) * SQUISH_2D;
             var dx0 = x - (xsb + squishOffset);
@@ -320,10 +314,10 @@ namespace Vintagestory.API.MathTools
             var inSum = xins + yins;
 
             var hash =
-                (int)(xins - yins + 1) |
-                (int)(inSum) << 1 |
-                (int)(inSum + yins) << 2 |
-                (int)(inSum + xins) << 4;
+                (uint)(xins - yins + 1) |
+                (uint)(inSum) << 1 |
+                (uint)(inSum + yins) << 2 |
+                (uint)(inSum + xins) << 4;
 
             var c = lookup2D[hash];
 
@@ -354,8 +348,8 @@ namespace Vintagestory.API.MathTools
             var xs = x + stretchOffset;
             var ys = y + stretchOffset;
 
-            var xsb = FastFloor(xs);
-            var ysb = FastFloor(ys);
+            var xsb = (int)Math.Floor(xs);
+            var ysb = (int)Math.Floor(ys);
 
             var squishOffset = (xsb + ysb) * SQUISH_2D;
             var dx0 = x - (xsb + squishOffset);
@@ -367,10 +361,10 @@ namespace Vintagestory.API.MathTools
             var inSum = xins + yins;
 
             var hash =
-                (int)(xins - yins + 1) |
-                (int)(inSum) << 1 |
-                (int)(inSum + yins) << 2 |
-                (int)(inSum + xins) << 4;
+                (uint)(xins - yins + 1) |
+                (uint)(inSum) << 1 |
+                (uint)(inSum + yins) << 2 |
+                (uint)(inSum + xins) << 4;
 
             var c = lookup2D[hash];
 
@@ -422,9 +416,9 @@ namespace Vintagestory.API.MathTools
             var ys = y + stretchOffset;
             var zs = z + stretchOffset;
 
-            var xsb = FastFloor(xs);
-            var ysb = FastFloor(ys);
-            var zsb = FastFloor(zs);
+            var xsb = (int)Math.Floor(xs);
+            var ysb = (int)Math.Floor(ys);
+            var zsb = (int)Math.Floor(zs);
 
             var squishOffset = (xsb + ysb + zsb) * SQUISH_3D;
             var dx0 = x - (xsb + squishOffset);
@@ -481,10 +475,10 @@ namespace Vintagestory.API.MathTools
             var zs = z + stretchOffset;
             var ws = w + stretchOffset;
 
-            var xsb = FastFloor(xs);
-            var ysb = FastFloor(ys);
-            var zsb = FastFloor(zs);
-            var wsb = FastFloor(ws);
+            var xsb = (int)Math.Floor(xs);
+            var ysb = (int)Math.Floor(ys);
+            var zsb = (int)Math.Floor(zs);
+            var wsb = (int)Math.Floor(ws);
 
             var squishOffset = (xsb + ysb + zsb + wsb) * SQUISH_4D;
             var dx0 = x - (xsb + squishOffset);

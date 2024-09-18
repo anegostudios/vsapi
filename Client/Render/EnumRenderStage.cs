@@ -26,7 +26,6 @@
         /// Shadow map done
         /// </summary>
         ShadowFarDone = 5,
-
         /// <summary>
         /// Shadow map
         /// </summary>
@@ -56,6 +55,5 @@
         /// Scene is blitted onto the default frame buffer, buffers not yet swapped though so can still render to default FB
         /// </summary>
         Done = 12
-        
     }
 }

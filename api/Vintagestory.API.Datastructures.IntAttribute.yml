@@ -34,6 +34,7 @@ items:
   - Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.Equals(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Datastructures.IAttribute)
   - Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.Equals(System.Object)
   - Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.GetValue
+  - Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.SetValue(System.Int32)
   - Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.ToString
   - Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.ToJsonToken
   - Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.GetHashCode
@@ -41,6 +42,9 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Datastructures.IntAttribute.#ctor
   commentId: M:Vintagestory.API.Datastructures.IntAttribute.#ctor
   id: '#ctor'
@@ -363,6 +367,37 @@ references:
     href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetValue
   - name: (
   - name: )
+- uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.SetValue(System.Int32)
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.SetValue(System.Int32)
+  parent: Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}
+  definition: Vintagestory.API.Datastructures.ScalarAttribute`1.SetValue(`0)
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_SetValue__0_
+  name: SetValue(int)
+  nameWithType: ScalarAttribute<int>.SetValue(int)
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<int>.SetValue(int)
+  nameWithType.vb: ScalarAttribute(Of Integer).SetValue(Integer)
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of Integer).SetValue(Integer)
+  name.vb: SetValue(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.SetValue(System.Int32)
+    name: SetValue
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_SetValue__0_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.SetValue(System.Int32)
+    name: SetValue
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_SetValue__0_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
 - uid: Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.ToString
   commentId: M:Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}.ToString
   parent: Vintagestory.API.Datastructures.ScalarAttribute{System.Int32}
@@ -567,6 +602,68 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -693,6 +790,28 @@ references:
     href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetValue
   - name: (
   - name: )
+- uid: Vintagestory.API.Datastructures.ScalarAttribute`1.SetValue(`0)
+  commentId: M:Vintagestory.API.Datastructures.ScalarAttribute`1.SetValue(`0)
+  href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_SetValue__0_
+  name: SetValue(T)
+  nameWithType: ScalarAttribute<T>.SetValue(T)
+  fullName: Vintagestory.API.Datastructures.ScalarAttribute<T>.SetValue(T)
+  nameWithType.vb: ScalarAttribute(Of T).SetValue(T)
+  fullName.vb: Vintagestory.API.Datastructures.ScalarAttribute(Of T).SetValue(T)
+  spec.csharp:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.SetValue(`0)
+    name: SetValue
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_SetValue__0_
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.SetValue(`0)
+    name: SetValue
+    href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_SetValue__0_
+  - name: (
+  - name: T
+  - name: )
 - uid: Vintagestory.API.Datastructures.ScalarAttribute`1.ToString
   commentId: M:Vintagestory.API.Datastructures.ScalarAttribute`1.ToString
   href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_ToString
@@ -753,6 +872,103 @@ references:
     href: Vintagestory.API.Datastructures.ScalarAttribute-1.html#Vintagestory_API_Datastructures_ScalarAttribute_1_GetHashCode
   - name: (
   - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Datastructures.IntAttribute.#ctor*
   commentId: Overload:Vintagestory.API.Datastructures.IntAttribute.#ctor
   href: Vintagestory.API.Datastructures.IntAttribute.html#Vintagestory_API_Datastructures_IntAttribute__ctor

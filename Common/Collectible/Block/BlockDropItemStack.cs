@@ -7,35 +7,61 @@ using Vintagestory.API.MathTools;
 namespace Vintagestory.API.Common
 {
     /// <summary>
-    /// Represents an itemstack that is dropped by chance when breaking a block
+    /// Represents an itemstack that is dropped when breaking a block, with a potentially random quantity.
     /// </summary>
+    /// <example>
+    /// <code language="json">
+    ///"drops": [
+	///	{
+	///		"type": "item",
+	///		"code": "bone",
+	///		"quantity": {
+	///			"avg": 4,
+	///			"var": 2
+	///		}
+	///	}
+	///]
+    /// </code>
+    /// </example>
+    [DocumentAsJson]
     public class BlockDropItemStack
     {
         /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>Block</jsondefault>-->
         /// Block or Item?
         /// </summary>
-        public EnumItemClass Type = EnumItemClass.Block;
+        [DocumentAsJson] public EnumItemClass Type = EnumItemClass.Block;
+
         /// <summary>
+        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// Code of the block or item
         /// </summary>
-        public AssetLocation Code;
+        [DocumentAsJson] public AssetLocation Code;
+
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// Quantity to be dropped
         /// </summary>
-        public NatFloat Quantity = NatFloat.One;
+        [DocumentAsJson] public NatFloat Quantity = NatFloat.One;
+
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// Tree Attributes that should be attached to the resulting itemstack
         /// </summary>
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
         public JsonObject Attributes;
+
         /// <summary>
-        /// If true and the quantity dropped is >=1 any subsequent drop will be ignored
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+        /// If true, and this drop occurs, no further drops will happen.
         /// </summary>
-        public bool LastDrop = false;
+        [DocumentAsJson] public bool LastDrop = false;
+
         /// <summary>
-        /// If not null then given tool is required to break this block
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// If set, then the given tool is required to make this block drop anything.
         /// </summary>
-        public EnumTool? Tool;
+        [DocumentAsJson] public EnumTool? Tool;
 
         /// <summary>
         /// The resulting ItemStack for this block being broken by a tool.
@@ -43,9 +69,10 @@ namespace Vintagestory.API.Common
         public ItemStack ResolvedItemstack;
 
         /// <summary>
-        /// If set, the drop quantity will be modified by the collecting entity stat code - entity.Stats.GetBlended(code)
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// If set, the drop quantity will be modified by the collecting entity stat code - entity.Stats.GetBlended(code).
         /// </summary>
-        public string DropModbyStat;
+        [DocumentAsJson] public string DropModbyStat;
 
 
         static Random random = new Random();

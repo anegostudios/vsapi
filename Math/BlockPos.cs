@@ -115,6 +115,11 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        /// <summary>
+        /// Not dimension aware (but existing dimension in this BlockPos will be preserved) - use SetAndCorrectDimension() for dimension awareness
+        /// </summary>
+        /// <param name="origin"></param>
+        /// <returns></returns>
         public BlockPos Set(Vec3d origin)
         {
             X = (int)origin.X;
@@ -139,11 +144,41 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        /// <summary>
+        /// Dimension aware version of Set() - use this if the Vec3d has the dimension embedded in the Y coordinate (e.g. Y == 65536+ for dimension 2)
+        /// </summary>
+        /// <param name="origin"></param>
+        /// <returns></returns>
+        public BlockPos SetAndCorrectDimension(Vec3d origin)
+        {
+            X = (int)origin.X;
+            Y = (int)origin.Y % DimensionBoundary;
+            Z = (int)origin.Z;
+            dimension = (int)origin.Y / DimensionBoundary;
+            return this;
+        }
+
+        /// <summary>
+        /// Dimension aware version of Set() - use this if there is a dimension embedded in the y coordinate (e.g. y == 65536+ for dimension 2)
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        public BlockPos SetAndCorrectDimension(int x, int y, int z)
+        {
+            X = x;
+            Y = y % DimensionBoundary;
+            Z = z;
+            dimension = y / DimensionBoundary;
+            return this;
+        }
+
 
 
 
         /// <summary>
-        /// Sets XYZ to new vlaues
+        /// Sets XYZ to new values - not dimension aware (but existing dimension will be preserved) - use SetAndCorrectDimension() for dimension awareness
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -337,6 +372,16 @@ namespace Vintagestory.API.MathTools
         }
 
 
+        /// <summary>
+        /// Creates a copy of this blocks position, obtaining the correct dimension value from the Y value
+        /// </summary>
+        /// <returns></returns>
+        public virtual BlockPos CopyAndCorrectDimension()
+        {
+            return new BlockPos(X, Y % DimensionBoundary, Z, dimension + Y / DimensionBoundary);
+        }
+
+
         #region Offseting
 
         /// <summary>
@@ -506,7 +551,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Substract a position => you'll have the manhatten distance 
+        /// Substract a position => you'll have the manhatten distance
         /// </summary>
         /// <param name="pos"></param>
         public BlockPos Sub(BlockPos pos)
@@ -516,7 +561,7 @@ namespace Vintagestory.API.MathTools
             Z -= pos.Z;
             return this;
         }
-        
+
         /// <summary>
         /// Substract a position =&gt; you'll have the manhatten distance
         /// </summary>
@@ -534,12 +579,17 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Substract a position => you'll have the manhatten distance 
+        /// Substract a position => you'll have the manhatten distance
         /// </summary>
         /// <param name="pos"></param>
         public BlockPos SubCopy(BlockPos pos)
         {
             return new BlockPos(X - pos.X, Y - pos.Y, Z - pos.Z, dimension);
+        }
+
+        public BlockPos SubCopy(int x, int y, int z)
+        {
+            return new BlockPos(X - x, Y - y, Z - z, dimension);
         }
 
 
@@ -589,7 +639,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Returns the squared Euclidean distance to between this and given position. Note this is dimension unaware
+        /// Returns the squared Euclidean distance to between this and given position. Dimension aware
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -598,7 +648,7 @@ namespace Vintagestory.API.MathTools
         public float DistanceSqTo(double x, double y, double z)
         {
             double dx = x - X;
-            double dy = y - Y;
+            double dy = y - InternalY;
             double dz = z - Z;
 
             return (float)(dx * dx + dy * dy + dz * dz);
@@ -692,7 +742,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public Vec3d ToVec3d()
         {
-            return new Vec3d(X, Y, Z);
+            return new Vec3d(X, InternalY, Z);
         }
 
         /// <summary>
@@ -702,15 +752,13 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public Vec3i ToVec3i()
         {
-            return new Vec3i(X, Y, Z);
+            return new Vec3i(X, InternalY, Z);
         }
 
         public Vec3f ToVec3f()
         {
-            return new Vec3f(X, Y, Z);
+            return new Vec3f(X, InternalY, Z);
         }
-
-
 
         public override string ToString()
         {
@@ -726,7 +774,6 @@ namespace Vintagestory.API.MathTools
         {
             return ((17 * 23 + X) * 23 + Y) * 23 + Z + dimension * 269023;
         }
-        
 
         public bool Equals(BlockPos other)
         {

@@ -4,6 +4,7 @@ using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Common
 {
@@ -12,7 +13,9 @@ namespace Vintagestory.API.Common
         Selection = 0,
         Brush = 1,
         Spawner = 2,
-        LandClaim = 3
+        LandClaim = 3,
+        SelectionStart = 4,
+        SelectionEnd = 5,
     }
 
 
@@ -41,6 +44,8 @@ namespace Vintagestory.API.Common
         /// The api interface
         /// </summary>
         ICoreAPI Api { get; }
+
+        IChunkProvider ChunkProvider { get; }
 
         /// <summary>
         /// The land claiming api interface
@@ -164,12 +169,12 @@ namespace Vintagestory.API.Common
         IList<Item> Items { get; }
 
         /// <summary>
-        /// List of all loaded entity types. 
+        /// List of all loaded entity types.
         /// </summary>
         List<EntityProperties> EntityTypes { get; }
 
         /// <summary>
-        /// List of the codes of all loaded entity types, in the AssetLocation short string format (e.g. "creature" for entities with domain game:, "domain:creature" for entities with other domains) 
+        /// List of the codes of all loaded entity types, in the AssetLocation short string format (e.g. "creature" for entities with domain game:, "domain:creature" for entities with other domains)
         /// </summary>
         List<string> EntityTypeCodes { get; }
 
@@ -249,11 +254,27 @@ namespace Vintagestory.API.Common
         Entity SpawnItemEntity(ItemStack itemstack, Vec3d position, Vec3d velocity = null);
 
         /// <summary>
+        /// Spawns a dropped itemstack at given position. Will immediately disappear if stacksize==0
+        /// Returns the entity spawned (may be null!)
+        /// </summary>
+        /// <param name="itemstack"></param>
+        /// <param name="position"></param>
+        /// <param name="velocity"></param>
+        Entity SpawnItemEntity(ItemStack itemstack, BlockPos pos, Vec3d velocity = null);
+
+        /// <summary>
         /// Creates a new entity. It's the responsibility of the given Entity to call set it's EntityType.
         /// This should be done inside it's Initialize method before base.Initialize is called.
         /// </summary>
         /// <param name="entity"></param>
         void SpawnEntity(Entity entity);
+
+        /// <summary>
+        /// Removes an entity from its old chunk and adds it to the chunk with newChunkIndex3d
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="newChunkIndex3d"></param>
+        void UpdateEntityChunk(Entity entity, long newChunkIndex3d);
 
         /// <summary>
         /// Retrieve all entities within given range and given matcher method. If now matcher method is supplied, all entities are returned.
@@ -327,7 +348,7 @@ namespace Vintagestory.API.Common
         IPlayer[] AllOnlinePlayers { get; }
 
         /// <summary>
-        /// Gets a list of all players that connected to this server at least once. When called client side you will receive the same as AllOnlinePlayers
+        /// Gets a list of all players that connected to this server at least once while the server was running. When called client side you will receive the same as AllOnlinePlayers
         /// </summary>
         /// <returns>Array containing the IDs of online players</returns>
         IPlayer[] AllPlayers { get; }
@@ -354,6 +375,18 @@ namespace Vintagestory.API.Common
         /// <param name="range">The range at which the gain will be attenuated to 1% of the supplied volume</param>
         /// <param name="volume"></param>
         void PlaySoundAt(AssetLocation location, double posx, double posy, double posz, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
+
+        /// <summary>
+        /// Plays given sound at given position - dimension aware. Plays at the center of the BlockPos
+        /// </summary>
+        /// <param name="location">The sound path, without sounds/ prefix or the .ogg ending</param>
+        /// <param name="pos"></param>
+        /// <param name="yOffsetFromCenter">How much above or below the central Y position of the block to play</param>
+        /// <param name="dualCallByPlayer">If this call is made on client and on server, set this the causing playerUID to prevent double playing. Essentially dualCall will play the sound on the client, and send it to all other players except source client</param>
+        /// <param name="randomizePitch"></param>
+        /// <param name="range">The range at which the gain will be attenuated to 1% of the supplied volume</param>
+        /// <param name="volume"></param>
+        void PlaySoundAt(AssetLocation location, BlockPos pos, double yOffsetFromCenter, IPlayer dualCallByPlayer = null, bool randomizePitch = true, float range = 32, float volume = 1f);
 
         /// <summary>
         /// Plays given sound at given position.
@@ -573,7 +606,7 @@ namespace Vintagestory.API.Common
         /// <param name="listenerId"></param>
         void UnregisterCallback(long listenerId);
 
-        
+
         /// <summary>
         /// Utility for testing intersections. Only access from main thread.
         /// </summary>
@@ -640,7 +673,7 @@ namespace Vintagestory.API.Common
         IBulkBlockAccessor GetBlockAccessorMapChunkLoading(bool synchronize, bool debug = false);
 
         /// <summary>
-        /// Same as GetBlockAccessorBulkUpdate, additionally, each Commit() stores the previous state and you can perform undo/redo operations on these. 
+        /// Same as GetBlockAccessorBulkUpdate, additionally, each Commit() stores the previous state and you can perform undo/redo operations on these.
         /// </summary>
         /// <param name="synchronize">Whether or not a call to Setblock should send the update also to all connected clients</param>
         /// <param name="relight">Whether or not to relight the chunk after a call to SetBlock and the light values changed by that</param>

@@ -2,7 +2,7 @@
 {
     public interface ITimedDespawn
     {
-        void SetTimer(int value);
-        void SetForcedCalendarDespawn(double value);
+        float DespawnSeconds { get; set; }
+        void SetDespawnByCalendarDate(double value);
     }
 }

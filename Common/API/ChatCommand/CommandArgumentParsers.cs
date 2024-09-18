@@ -61,7 +61,7 @@ namespace Vintagestory.API.Common
 
         public DoubleArgParser Double(string argName) => new DoubleArgParser(argName, 0d, true);
         public DoubleArgParser DoubleRange(string argName, double min, double max) => new DoubleArgParser(argName, min, max, true);
-        
+
         /// <summary>
         /// A currently online player
         /// </summary>
@@ -81,7 +81,7 @@ namespace Vintagestory.API.Common
         /// <param name="argName"></param>
         /// <returns></returns>
         public PlayersArgParser OptionalPlayerUids(string argName) => new PlayersArgParser(argName, api, false);
-        
+
         /// <summary>
         /// Parses IPlayerRole, only works on Serverside since it needs the Serverconfig
         /// </summary>
@@ -98,7 +98,7 @@ namespace Vintagestory.API.Common
 
         public PrivilegeArgParser Privilege(string privilege) =>
             new PrivilegeArgParser(privilege, api, true);
-        
+
         public PrivilegeArgParser OptionalPrivilege(string privilege) =>
             new PrivilegeArgParser(privilege, api, false);
 
@@ -116,7 +116,7 @@ namespace Vintagestory.API.Common
         /// <param name="argName"></param>
         /// <returns></returns>
         public ColorArgParser Color(string argName) => new ColorArgParser(argName, true);
-        
+
         /// <summary>
         /// Parses a string which is either a color name or a hex value as a <see cref="System.Drawing.Color"/>
         /// </summary>
@@ -141,14 +141,14 @@ namespace Vintagestory.API.Common
         public WordRangeArgParser WordRange(string argName, params string[] words) => new WordRangeArgParser(argName, true, words);
         public WorldPositionArgParser WorldPosition(string argName) => new WorldPositionArgParser(argName, api, true);
         public WorldPosition2DArgParser WorldPosition2D(string argName) => new WorldPosition2DArgParser(argName, api, true);
-        
+
         public Vec3iArgParser Vec3i(string argName) => new Vec3iArgParser(argName, api, true);
-        
+
         public Vec3iArgParser OptionalVec3i(string argName) => new Vec3iArgParser(argName, api, true);
-        
+
         public CollectibleArgParser Item(string argName) => new CollectibleArgParser(argName, api, EnumItemClass.Item, true);
         public CollectibleArgParser Block(string argName) => new CollectibleArgParser(argName, api, EnumItemClass.Block, true);
-        
+
         /// <summary>
         /// Defaults to caller position
         /// </summary>
@@ -201,7 +201,7 @@ namespace Vintagestory.API.Common
         }
         public virtual string GetSyntaxExplanation(string indent)
         {
-            return indent + GetSyntax();
+            return null;
         }
 
         public virtual string GetLastError()
@@ -406,7 +406,7 @@ namespace Vintagestory.API.Common
 
         public override void SetValue(object data)
         {
-            
+
         }
 
         public override EnumParseResult TryProcess(TextCommandCallingArgs args, Action<AsyncParseResults> onReady = null)
@@ -685,7 +685,7 @@ namespace Vintagestory.API.Common
 
                     this.entities = foundEntities.ToArray();
                     return EnumParseResult.Good;
-               
+
                 // Entities
                 case 'e':
                     if (range == null)
@@ -733,7 +733,7 @@ namespace Vintagestory.API.Common
                     var lookedAtEntity = eplr.Player.CurrentEntitySelection.Entity;
                     if (entityMatches(lookedAtEntity, sourcePos, type, classstr, range, box, name, alive, id))
                     {
-                        this.entities = new Entity[] { lookedAtEntity }; 
+                        this.entities = new Entity[] { lookedAtEntity };
                     }
                     else
                     {
@@ -745,7 +745,7 @@ namespace Vintagestory.API.Common
                 case 's':
                     if (entityMatches(callingEntity, sourcePos, type, classstr, range, box, name, alive, id))
                     {
-                        this.entities = new Entity[] { callingEntity }; 
+                        this.entities = new Entity[] { callingEntity };
                     }
                     else
                     {
@@ -914,7 +914,7 @@ namespace Vintagestory.API.Common
                 indent + "&nbsp;&nbsp;3 coordinates are specified as in the following examples:\n" +
                 indent + "&nbsp;&nbsp;&nbsp;&nbsp;<code>100 150 -180</code> means 100 blocks East and 180 blocks North from the map center, with height 150 blocks\n" +
                 indent + "&nbsp;&nbsp;&nbsp;&nbsp;<code>~-5 ~0 ~4</code> means 5 blocks West and 4 blocks South from the caller's position\n" +
-                indent + "&nbsp;&nbsp;&nbsp;&nbsp;<code>=512100 =150 =511880</code> means the absolute x,y,z position specified (at default settings this is near the map center)\n" +
+                indent + "&nbsp;&nbsp;&nbsp;&nbsp;<code>=512100 =150 =511880</code> means the absolute x,y,z position specified (at default settings this is near the map center)\n\n" +
                 indent + "&nbsp;&nbsp;A target selector is either a player's name (meaning that player's current position), or one of: <code>s[]</code> for self, <code>l[]</code> for looked-at entity or block, <code>p[]</code> for players, <code>e[]</code> for entities.\n" +
                 indent + "One or more filters can be specified inside the brackets.  For p[] or e[], the target will be the nearest player or entity which passes all the filters.\n" +
                 indent + "Filters include name, type, class, alive, range.  For example, <code>e[type=gazelle,range=3,alive=true]</code>.  The filters minx/miny/minz/maxx/maxy/maxz can also be used to specify a volume to search, coordinates are relative to the command caller's position.\n";
@@ -1052,7 +1052,7 @@ namespace Vintagestory.API.Common
             return pos == null ? EnumParseResult.Bad : EnumParseResult.Good;
         }
     }
-    
+
     public class Vec3iArgParser : ArgumentParserBase
     {
         private Vec3i _vector;
@@ -1119,8 +1119,8 @@ namespace Vintagestory.API.Common
         {
             if(suggestions != null)
                 return indent + GetSyntax() + " here are some suggestions: " + string.Join(", ", suggestions);
-            
-            return indent + GetSyntax() + "is a string without spaces";
+
+            return indent + GetSyntax() + " is a string without spaces";
         }
 
         public override void PreProcess(TextCommandCallingArgs args)
@@ -1755,7 +1755,7 @@ namespace Vintagestory.API.Common
         }
         public override string GetSyntaxExplanation(string indent)
         {
-            return indent + GetSyntax() + " is a date and time";
+            return indent + GetSyntax() + " is a number and time, for example 1 day, where time can be any of [" + string.Join(",", timeUnits) + "]";
         }
 
         public override object GetValue()
@@ -1784,7 +1784,7 @@ namespace Vintagestory.API.Common
                 lastErrorMessage = Lang.Get("cmdban-invalidtimespan");
                 return EnumParseResult.Bad;
             }
-            
+
             switch (timeunit)
             {
                 case "minute": datetime = DateTime.Now.AddMinutes(quantity); break;
@@ -1852,7 +1852,7 @@ namespace Vintagestory.API.Common
                     double len = (double)args.RawArgs.PopDouble(1);
                     value.Set(Face.Normali.X * len, Face.Normali.Y * len, Face.Normali.Z * len);
                 }
-                
+
                 return EnumParseResult.Good;
             }
 
@@ -1863,7 +1863,7 @@ namespace Vintagestory.API.Common
                 switch (chr)
                 {
                     case 'x':
-                        if (value.IsIntegral) value.XAsInt = (int)args.RawArgs.PopInt(1); 
+                        if (value.IsIntegral) value.XAsInt = (int)args.RawArgs.PopInt(1);
                         else value.XAsDouble = (double)args.RawArgs.PopDouble(1);
                         break;
                     case 'y':
@@ -1888,7 +1888,7 @@ namespace Vintagestory.API.Common
             value = (Vec3d)data;
         }
     }
-    
+
     public class PlayerRoleArgParser : ArgumentParserBase
     {
         private readonly ICoreServerAPI _api;
@@ -1919,7 +1919,7 @@ namespace Vintagestory.API.Common
             {
                 lastErrorMessage = Lang.Get("No such role found: " + string.Join(", ", _api.Server.Config.Roles.Select(role => role.Code)));
             }
-            
+
 
             return _value != null ? EnumParseResult.Good : EnumParseResult.Bad;
         }
@@ -1985,7 +1985,7 @@ namespace Vintagestory.API.Common
             {
                 lastErrorMessage = Lang.Get("No such privilege found: " + string.Join(", ", Privilege.AllCodes()));
             }
-            
+
 
             return Value != null ? EnumParseResult.Good : EnumParseResult.Bad;
         }
@@ -2005,7 +2005,7 @@ namespace Vintagestory.API.Common
             return Privilege.AllCodes();
         }
     }
-    
+
     public class ColorArgParser : ArgumentParserBase
     {
         private Color _value;
@@ -2013,7 +2013,7 @@ namespace Vintagestory.API.Common
         public ColorArgParser(string argName, bool isMandatoryArg) : base(argName, isMandatoryArg)
         {
         }
-        
+
         public override string GetSyntaxExplanation(string indent)
         {
             return indent + GetSyntax() + " can be either a color string like (red, blue, green,.. <a href=\"https://learn.microsoft.com/en-us/dotnet/api/system.drawing.knowncolor?view=net-7.0\">See full list</a>) or a hex value like #F9D0DC";

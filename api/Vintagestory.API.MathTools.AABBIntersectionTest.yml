@@ -12,6 +12,7 @@ items:
   - Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos(Vintagestory.API.MathTools.Ray)
   - Vintagestory.API.MathTools.AABBIntersectionTest.RayInteresectWithCuboidSlabMethod(Vintagestory.API.MathTools.Cuboidd,Vintagestory.API.MathTools.Ray)
   - Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter)
+  - Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd)
   - Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd,Vintagestory.API.MathTools.BlockFacing@,Vintagestory.API.MathTools.Vec3d@)
   - Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidf,System.Double,System.Double,System.Double)
   - Vintagestory.API.MathTools.AABBIntersectionTest.blockSelectionTester
@@ -43,6 +44,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.MathTools.AABBIntersectionTest.blockSelectionTester
   commentId: F:Vintagestory.API.MathTools.AABBIntersectionTest.blockSelectionTester
   id: blockSelectionTester
@@ -303,6 +307,29 @@ items:
       type: System.Boolean
     content.vb: Public Function RayIntersectsBlockSelectionBox(pos As BlockPos, filter As BlockFilter) As Boolean
   overload: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox*
+- uid: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd)
+  commentId: M:Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd)
+  id: RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd)
+  parent: Vintagestory.API.MathTools.AABBIntersectionTest
+  langs:
+  - csharp
+  - vb
+  name: RayIntersectsWithCuboid(Cuboidd)
+  nameWithType: AABBIntersectionTest.RayIntersectsWithCuboid(Cuboidd)
+  fullName: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public bool RayIntersectsWithCuboid(Cuboidd selectionBox)
+    parameters:
+    - id: selectionBox
+      type: Vintagestory.API.MathTools.Cuboidd
+    return:
+      type: System.Boolean
+    content.vb: Public Function RayIntersectsWithCuboid(selectionBox As Cuboidd) As Boolean
+  overload: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid*
 - uid: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidf,System.Double,System.Double,System.Double)
   commentId: M:Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidf,System.Double,System.Double,System.Double)
   id: RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidf,System.Double,System.Double,System.Double)
@@ -651,6 +678,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -658,6 +747,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.MathTools.IWorldIntersectionSupplier
   commentId: T:Vintagestory.API.MathTools.IWorldIntersectionSupplier
   parent: Vintagestory.API.MathTools
@@ -806,10 +992,17 @@ references:
   name.vb: Boolean
 - uid: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid*
   commentId: Overload:Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid
-  href: Vintagestory.API.MathTools.AABBIntersectionTest.html#Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_Vintagestory_API_MathTools_Cuboidf_System_Double_System_Double_System_Double_
+  href: Vintagestory.API.MathTools.AABBIntersectionTest.html#Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_Vintagestory_API_MathTools_Cuboidd_
   name: RayIntersectsWithCuboid
   nameWithType: AABBIntersectionTest.RayIntersectsWithCuboid
   fullName: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid
+- uid: Vintagestory.API.MathTools.Cuboidd
+  commentId: T:Vintagestory.API.MathTools.Cuboidd
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Cuboidd.html
+  name: Cuboidd
+  nameWithType: Cuboidd
+  fullName: Vintagestory.API.MathTools.Cuboidd
 - uid: Vintagestory.API.MathTools.Cuboidf
   commentId: T:Vintagestory.API.MathTools.Cuboidf
   parent: Vintagestory.API.MathTools
@@ -828,13 +1021,6 @@ references:
   nameWithType.vb: Double
   fullName.vb: Double
   name.vb: Double
-- uid: Vintagestory.API.MathTools.Cuboidd
-  commentId: T:Vintagestory.API.MathTools.Cuboidd
-  parent: Vintagestory.API.MathTools
-  href: Vintagestory.API.MathTools.Cuboidd.html
-  name: Cuboidd
-  nameWithType: Cuboidd
-  fullName: Vintagestory.API.MathTools.Cuboidd
 - uid: Vintagestory.API.MathTools.AABBIntersectionTest.RayInteresectWithCuboidSlabMethod*
   commentId: Overload:Vintagestory.API.MathTools.AABBIntersectionTest.RayInteresectWithCuboidSlabMethod
   href: Vintagestory.API.MathTools.AABBIntersectionTest.html#Vintagestory_API_MathTools_AABBIntersectionTest_RayInteresectWithCuboidSlabMethod_Vintagestory_API_MathTools_Cuboidd_Vintagestory_API_MathTools_Ray_

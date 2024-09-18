@@ -26,6 +26,7 @@ items:
   - Vintagestory.API.Common.AnimationKeyFrameElement
   - Vintagestory.API.Common.AnimationManager
   - Vintagestory.API.Common.AnimationMetaData
+  - Vintagestory.API.Common.AnimationSound
   - Vintagestory.API.Common.AnimationTrigger
   - Vintagestory.API.Common.AnimationUtil
   - Vintagestory.API.Common.AnimatorBase
@@ -37,6 +38,7 @@ items:
   - Vintagestory.API.Common.AsyncParseResults
   - Vintagestory.API.Common.AttachmentPoint
   - Vintagestory.API.Common.AttachmentPointAndPose
+  - Vintagestory.API.Common.BagInventory
   - Vintagestory.API.Common.BakedBitmap
   - Vintagestory.API.Common.BakingProperties
   - Vintagestory.API.Common.BitmapExternal
@@ -59,6 +61,7 @@ items:
   - Vintagestory.API.Common.BlockLayersAccess
   - Vintagestory.API.Common.BlockMaterialUtil
   - Vintagestory.API.Common.BlockOffsetAndNumber
+  - Vintagestory.API.Common.BlockPatchAttributes
   - Vintagestory.API.Common.BlockPlacedDelegate
   - Vintagestory.API.Common.BlockSchematic
   - Vintagestory.API.Common.BlockSelection
@@ -81,6 +84,7 @@ items:
   - Vintagestory.API.Common.ClientAnimator
   - Vintagestory.API.Common.ClientChatCommand
   - Vintagestory.API.Common.ClientChatCommandDelegate
+  - Vintagestory.API.Common.Climate
   - Vintagestory.API.Common.ClimateCondition
   - Vintagestory.API.Common.CmdArgs
   - Vintagestory.API.Common.CollectibleArgParser
@@ -94,6 +98,7 @@ items:
   - Vintagestory.API.Common.CommandArgumentParsers
   - Vintagestory.API.Common.CommandPreconditionDelegate
   - Vintagestory.API.Common.CompositeShape
+  - Vintagestory.API.Common.CoralPlantConfig
   - Vintagestory.API.Common.CraftingRecipeIngredient
   - Vintagestory.API.Common.CreativeInventoryTab
   - Vintagestory.API.Common.CreativeTabAndStackList
@@ -212,6 +217,8 @@ items:
   - Vintagestory.API.Common.ExplosionParticles
   - Vintagestory.API.Common.ExplosionSmokeParticles
   - Vintagestory.API.Common.ExtraHandbookSection
+  - Vintagestory.API.Common.FastParticlePool
+  - Vintagestory.API.Common.FastParticlePool.CreateParticleDelegate
   - Vintagestory.API.Common.FertilizerProps
   - Vintagestory.API.Common.FloatArgParser
   - Vintagestory.API.Common.FloatingSedimentParticles
@@ -270,6 +277,7 @@ items:
   - Vintagestory.API.Common.IFarmlandBlockEntity
   - Vintagestory.API.Common.IGameCalendar
   - Vintagestory.API.Common.IGeometryTester
+  - Vintagestory.API.Common.IHeldBag
   - Vintagestory.API.Common.IInventory
   - Vintagestory.API.Common.IInventoryNetworkUtil
   - Vintagestory.API.Common.IItemStack
@@ -281,7 +289,8 @@ items:
   - Vintagestory.API.Common.IMiniDimension
   - Vintagestory.API.Common.IModLoader
   - Vintagestory.API.Common.IMountable
-  - Vintagestory.API.Common.IMountableSupplier
+  - Vintagestory.API.Common.IMountableListener
+  - Vintagestory.API.Common.IMountableSeat
   - Vintagestory.API.Common.INetworkAPI
   - Vintagestory.API.Common.IParticlePropertiesProvider
   - Vintagestory.API.Common.IPlayer
@@ -296,6 +305,7 @@ items:
   - Vintagestory.API.Common.ISlotProvider
   - Vintagestory.API.Common.ITextureLocationDictionary
   - Vintagestory.API.Common.ITimedDespawn
+  - Vintagestory.API.Common.IVariableSeatsMountable
   - Vintagestory.API.Common.IWearableShapeSupplier
   - Vintagestory.API.Common.IWithDrawnHeight
   - Vintagestory.API.Common.IWorldAccessor
@@ -311,6 +321,7 @@ items:
   - Vintagestory.API.Common.ItemClassMethods
   - Vintagestory.API.Common.ItemSlot
   - Vintagestory.API.Common.ItemSlotBackpack
+  - Vintagestory.API.Common.ItemSlotBagContent
   - Vintagestory.API.Common.ItemSlotCharacter
   - Vintagestory.API.Common.ItemSlotCreative
   - Vintagestory.API.Common.ItemSlotOffhand
@@ -345,6 +356,7 @@ items:
   - Vintagestory.API.Common.ModelTransform
   - Vintagestory.API.Common.ModelTransformKeyFrame
   - Vintagestory.API.Common.ModelTransformNoDefaults
+  - Vintagestory.API.Common.MountableUtil
   - Vintagestory.API.Common.MouseButtonConverter
   - Vintagestory.API.Common.MultiblockStructure
   - Vintagestory.API.Common.NewSlotDelegate
@@ -387,6 +399,7 @@ items:
   - Vintagestory.API.Common.ResumeServerDelegate
   - Vintagestory.API.Common.RunningAnimation
   - Vintagestory.API.Common.SQLiteDBConnection
+  - Vintagestory.API.Common.SeatConfig
   - Vintagestory.API.Common.SelectedHotbarSlotDelegate
   - Vintagestory.API.Common.ServerAnimator
   - Vintagestory.API.Common.ServerChatCommand
@@ -401,6 +414,7 @@ items:
   - Vintagestory.API.Common.SourceStringComponents
   - Vintagestory.API.Common.StackCubeParticles
   - Vintagestory.API.Common.StandardWorldProperty
+  - Vintagestory.API.Common.StartAnimationDelegate
   - Vintagestory.API.Common.StringArgParser
   - Vintagestory.API.Common.StrongBlockBehavior
   - Vintagestory.API.Common.SurfaceDrawImage
@@ -1923,6 +1937,12 @@ references:
   name: IByteSerializable
   nameWithType: IByteSerializable
   fullName: Vintagestory.API.Common.IByteSerializable
+- uid: Vintagestory.API.Common.Climate
+  commentId: T:Vintagestory.API.Common.Climate
+  href: Vintagestory.API.Common.Climate.html
+  name: Climate
+  nameWithType: Climate
+  fullName: Vintagestory.API.Common.Climate
 - uid: Vintagestory.API.Common.BlockBehaviorDelegate
   commentId: T:Vintagestory.API.Common.BlockBehaviorDelegate
   href: Vintagestory.API.Common.BlockBehaviorDelegate.html
@@ -1983,6 +2003,19 @@ references:
   name: BlockGeneric
   nameWithType: BlockGeneric
   fullName: Vintagestory.API.Common.BlockGeneric
+- uid: Vintagestory.API.Common.CoralPlantConfig
+  commentId: T:Vintagestory.API.Common.CoralPlantConfig
+  href: Vintagestory.API.Common.CoralPlantConfig.html
+  name: CoralPlantConfig
+  nameWithType: CoralPlantConfig
+  fullName: Vintagestory.API.Common.CoralPlantConfig
+- uid: Vintagestory.API.Common.BlockPatchAttributes
+  commentId: T:Vintagestory.API.Common.BlockPatchAttributes
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockPatchAttributes.html
+  name: BlockPatchAttributes
+  nameWithType: BlockPatchAttributes
+  fullName: Vintagestory.API.Common.BlockPatchAttributes
 - uid: Vintagestory.API.Common.PlaceBlockDelegate
   commentId: T:Vintagestory.API.Common.PlaceBlockDelegate
   href: Vintagestory.API.Common.PlaceBlockDelegate.html
@@ -2956,13 +2989,32 @@ references:
   name: EnumMountAngleMode
   nameWithType: EnumMountAngleMode
   fullName: Vintagestory.API.Common.EnumMountAngleMode
-- uid: Vintagestory.API.Common.IMountableSupplier
-  commentId: T:Vintagestory.API.Common.IMountableSupplier
+- uid: Vintagestory.API.Common.MountableUtil
+  commentId: T:Vintagestory.API.Common.MountableUtil
   parent: Vintagestory.API.Common
-  href: Vintagestory.API.Common.IMountableSupplier.html
-  name: IMountableSupplier
-  nameWithType: IMountableSupplier
-  fullName: Vintagestory.API.Common.IMountableSupplier
+  href: Vintagestory.API.Common.MountableUtil.html
+  name: MountableUtil
+  nameWithType: MountableUtil
+  fullName: Vintagestory.API.Common.MountableUtil
+- uid: Vintagestory.API.Common.SeatConfig
+  commentId: T:Vintagestory.API.Common.SeatConfig
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.SeatConfig.html
+  name: SeatConfig
+  nameWithType: SeatConfig
+  fullName: Vintagestory.API.Common.SeatConfig
+- uid: Vintagestory.API.Common.IVariableSeatsMountable
+  commentId: T:Vintagestory.API.Common.IVariableSeatsMountable
+  href: Vintagestory.API.Common.IVariableSeatsMountable.html
+  name: IVariableSeatsMountable
+  nameWithType: IVariableSeatsMountable
+  fullName: Vintagestory.API.Common.IVariableSeatsMountable
+- uid: Vintagestory.API.Common.IMountableListener
+  commentId: T:Vintagestory.API.Common.IMountableListener
+  href: Vintagestory.API.Common.IMountableListener.html
+  name: IMountableListener
+  nameWithType: IMountableListener
+  fullName: Vintagestory.API.Common.IMountableListener
 - uid: Vintagestory.API.Common.IMountable
   commentId: T:Vintagestory.API.Common.IMountable
   parent: Vintagestory.API.Common
@@ -2970,6 +3022,32 @@ references:
   name: IMountable
   nameWithType: IMountable
   fullName: Vintagestory.API.Common.IMountable
+- uid: Vintagestory.API.Common.IMountableSeat
+  commentId: T:Vintagestory.API.Common.IMountableSeat
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IMountableSeat.html
+  name: IMountableSeat
+  nameWithType: IMountableSeat
+  fullName: Vintagestory.API.Common.IMountableSeat
+- uid: Vintagestory.API.Common.IHeldBag
+  commentId: T:Vintagestory.API.Common.IHeldBag
+  href: Vintagestory.API.Common.IHeldBag.html
+  name: IHeldBag
+  nameWithType: IHeldBag
+  fullName: Vintagestory.API.Common.IHeldBag
+- uid: Vintagestory.API.Common.ItemSlotBagContent
+  commentId: T:Vintagestory.API.Common.ItemSlotBagContent
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemSlotBagContent.html
+  name: ItemSlotBagContent
+  nameWithType: ItemSlotBagContent
+  fullName: Vintagestory.API.Common.ItemSlotBagContent
+- uid: Vintagestory.API.Common.BagInventory
+  commentId: T:Vintagestory.API.Common.BagInventory
+  href: Vintagestory.API.Common.BagInventory.html
+  name: BagInventory
+  nameWithType: BagInventory
+  fullName: Vintagestory.API.Common.BagInventory
 - uid: Vintagestory.API.Common.CreativeInventoryTab
   commentId: T:Vintagestory.API.Common.CreativeInventoryTab
   href: Vintagestory.API.Common.CreativeInventoryTab.html
@@ -3132,6 +3210,7 @@ references:
   fullName: Vintagestory.API.Common.ItemSlotOutput
 - uid: Vintagestory.API.Common.ItemSlotSurvival
   commentId: T:Vintagestory.API.Common.ItemSlotSurvival
+  parent: Vintagestory.API.Common
   href: Vintagestory.API.Common.ItemSlotSurvival.html
   name: ItemSlotSurvival
   nameWithType: ItemSlotSurvival
@@ -3247,6 +3326,7 @@ references:
   fullName: Vintagestory.API.Common.AnimCacheEntry
 - uid: Vintagestory.API.Common.AnimationCache
   commentId: T:Vintagestory.API.Common.AnimationCache
+  parent: Vintagestory.API.Common
   href: Vintagestory.API.Common.AnimationCache.html
   name: AnimationCache
   nameWithType: AnimationCache
@@ -3278,6 +3358,13 @@ references:
   name: AnimationKeyFrameElement
   nameWithType: AnimationKeyFrameElement
   fullName: Vintagestory.API.Common.AnimationKeyFrameElement
+- uid: Vintagestory.API.Common.StartAnimationDelegate
+  commentId: T:Vintagestory.API.Common.StartAnimationDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.StartAnimationDelegate.html
+  name: StartAnimationDelegate
+  nameWithType: StartAnimationDelegate
+  fullName: Vintagestory.API.Common.StartAnimationDelegate
 - uid: Vintagestory.API.Common.AnimationManager
   commentId: T:Vintagestory.API.Common.AnimationManager
   parent: Vintagestory.API.Common
@@ -3285,6 +3372,13 @@ references:
   name: AnimationManager
   nameWithType: AnimationManager
   fullName: Vintagestory.API.Common.AnimationManager
+- uid: Vintagestory.API.Common.AnimationSound
+  commentId: T:Vintagestory.API.Common.AnimationSound
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AnimationSound.html
+  name: AnimationSound
+  nameWithType: AnimationSound
+  fullName: Vintagestory.API.Common.AnimationSound
 - uid: Vintagestory.API.Common.EnumAnimationBlendMode
   commentId: T:Vintagestory.API.Common.EnumAnimationBlendMode
   parent: Vintagestory.API.Common
@@ -3556,6 +3650,35 @@ references:
   name: ExplosionSmokeParticles
   nameWithType: ExplosionSmokeParticles
   fullName: Vintagestory.API.Common.ExplosionSmokeParticles
+- uid: Vintagestory.API.Common.FastParticlePool
+  commentId: T:Vintagestory.API.Common.FastParticlePool
+  href: Vintagestory.API.Common.FastParticlePool.html
+  name: FastParticlePool
+  nameWithType: FastParticlePool
+  fullName: Vintagestory.API.Common.FastParticlePool
+- uid: Vintagestory.API.Common.FastParticlePool.CreateParticleDelegate
+  commentId: T:Vintagestory.API.Common.FastParticlePool.CreateParticleDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.FastParticlePool.html
+  name: FastParticlePool.CreateParticleDelegate
+  nameWithType: FastParticlePool.CreateParticleDelegate
+  fullName: Vintagestory.API.Common.FastParticlePool.CreateParticleDelegate
+  spec.csharp:
+  - uid: Vintagestory.API.Common.FastParticlePool
+    name: FastParticlePool
+    href: Vintagestory.API.Common.FastParticlePool.html
+  - name: .
+  - uid: Vintagestory.API.Common.FastParticlePool.CreateParticleDelegate
+    name: CreateParticleDelegate
+    href: Vintagestory.API.Common.FastParticlePool.CreateParticleDelegate.html
+  spec.vb:
+  - uid: Vintagestory.API.Common.FastParticlePool
+    name: FastParticlePool
+    href: Vintagestory.API.Common.FastParticlePool.html
+  - name: .
+  - uid: Vintagestory.API.Common.FastParticlePool.CreateParticleDelegate
+    name: CreateParticleDelegate
+    href: Vintagestory.API.Common.FastParticlePool.CreateParticleDelegate.html
 - uid: Vintagestory.API.Common.IParticlePropertiesProvider
   commentId: T:Vintagestory.API.Common.IParticlePropertiesProvider
   parent: Vintagestory.API.Common

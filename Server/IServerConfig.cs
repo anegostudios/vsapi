@@ -1,15 +1,32 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Server
 {
+    public enum EnumWhitelistMode
+    {
+        /// <summary>
+        /// Singleplayer OpenToLan: All players can join, Dedicated server: Only whitelisted players can join
+        /// </summary>
+        Default,
+        /// <summary>
+        /// All players can join 
+        /// </summary>
+        Off,
+        /// <summary>
+        /// Only whitelisted players can join
+        /// </summary>
+        On
+    }
+
     /// <summary>
     /// The servers configuration
     /// </summary>
     public interface IServerConfig
     {
         /// <summary>
-        /// The current network port 
+        /// The current network port
         /// </summary>
         int Port { get; }
 
@@ -31,7 +48,7 @@ namespace Vintagestory.API.Server
         /// </summary>
         string Password { get; set; }
         /// <summary>
-        /// How many chunks in each direction should be loaded at most for each player (1 chunk = 32 blocks) 
+        /// How many chunks in each direction should be loaded at most for each player (1 chunk = 32 blocks)
         /// </summary>
         int MaxChunkRadius { get; set; }
         /// <summary>
@@ -57,9 +74,9 @@ namespace Vintagestory.API.Server
         /// The interval of time in ms between each execution of the random tick system
         /// </summary>
         int BlockTickInterval { get; set; }
-        
+
         /// <summary>
-        /// List of player roles 
+        /// List of player roles
         /// </summary>
         List<IPlayerRole> Roles { get; }
 
@@ -76,11 +93,12 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// If true, only whitelisted players can join
         /// </summary>
-        bool OnlyWhitelisted { get; set; }
+        EnumWhitelistMode WhitelistMode { get; set; }
 
         /// <summary>
         /// Default spawn position for players
         /// </summary>
+        [Obsolete("No longer used. Retrieve value from the savegame instead")]
         PlayerSpawnPos DefaultSpawn { get; set; }
 
         /// <summary>
@@ -97,17 +115,27 @@ namespace Vintagestory.API.Server
         /// Whether or not falling blocks should fall (e.g. sand and gravel) and floating single rock blocks should break
         /// </summary>
         bool AllowFallingBlocks { get; set; }
-        
+
         /// <summary>
         /// Used to disable certain features in HostedMode (wgen commands, ...)
         /// </summary>
         bool HostedMode { get; set; }
-        
+
         /// <summary>
         /// Used to enable/disable the /moddb commands in HostedMode only
         /// </summary>
         bool HostedModeAllowMods { get; set; }
 
         float SpawnCapPlayerScaling { get; set; }
+
+        /// <summary>
+        /// Whether or not to log breaking and placing of blocks to the server-build.log
+        /// </summary>
+        public bool LogBlockBreakPlace { get; set; }
+
+        /// <summary>
+        /// After how many line we should split the log file into a new one (server-build.log -> server-build-2.log)
+        /// </summary>
+        public uint LogFileSplitAfterLine { get; set; }
     }
 }

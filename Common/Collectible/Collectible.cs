@@ -361,9 +361,10 @@ namespace Vintagestory.API.Common
 
             if (preventDefault) return storageFlags;
 
-
+            var bag = GetCollectibleInterface<IHeldBag>();
             // We clear the backpack flag if the backpack is empty
-            if ((storageFlags & EnumItemStorageFlags.Backpack) > 0 && IsEmptyBackPack(itemstack)) return EnumItemStorageFlags.General | EnumItemStorageFlags.Backpack;
+            if (bag != null && (storageFlags & EnumItemStorageFlags.Backpack) > 0 && bag.IsEmpty(itemstack)) return EnumItemStorageFlags.General | EnumItemStorageFlags.Backpack;
+
             return storageFlags;
         }
 
@@ -866,7 +867,14 @@ namespace Vintagestory.API.Common
 
 
 
-
+        /// <summary>
+        /// Sets the items durability
+        /// </summary>
+        /// <param name="itemstack"></param>
+        public virtual void SetDurability(ItemStack itemstack, int amount)
+        {
+            itemstack.Attributes.SetInt("durability", amount);
+        }
 
         /// <summary>
         /// Causes the item to be damaged. Will play a breaking sound and removes the itemstack if no more durability is left
@@ -1445,28 +1453,8 @@ namespace Vintagestory.API.Common
                 byEntity.World.SpawnCubeParticles(pos, spawnParticleStack ?? slot.Itemstack, 0.3f, 4, 0.5f, (byEntity as EntityPlayer)?.Player);
             }
 
-
             if (byEntity.World is IClientWorldAccessor)
             {
-                ModelTransform tf = new ModelTransform();
-
-                tf.EnsureDefaultValues();
-
-                tf.Origin.Set(0f, 0, 0f);
-
-                if (secondsUsed > 0.5f)
-                {
-                    tf.Translation.Y = Math.Min(0.02f, GameMath.Sin(20 * secondsUsed) / 10);
-                }
-
-                tf.Translation.X -= Math.Min(1f, secondsUsed * 4 * 1.57f);
-                tf.Translation.Y -= Math.Min(0.05f, secondsUsed * 2);
-
-                tf.Rotation.X += Math.Min(30f, secondsUsed * 350);
-                tf.Rotation.Y += Math.Min(80f, secondsUsed * 350);
-
-                byEntity.Controls.UsingHeldItemTransformAfter = tf;
-
                 return secondsUsed <= 1f;
             }
 
@@ -1615,40 +1603,34 @@ namespace Vintagestory.API.Common
                 }
 
                 dsc.Append("\n");
-
             }
 
-            if (IsBackPack(stack))
+            var bag = GetCollectibleInterface<IHeldBag>();
+            if (bag != null)
             {
-                dsc.AppendLine(Lang.Get("Storage Slots: {0}", QuantityBackPackSlots(stack)));
-                ITreeAttribute backPackTree = stack.Attributes.GetTreeAttribute("backpack");
-                if (backPackTree != null)
+                dsc.AppendLine(Lang.Get("Storage Slots: {0}", bag.GetQuantitySlots(stack)));
+
+                bool didPrint = false;
+                var stacks = bag.GetContents(stack, world);
+                if (stacks != null)
                 {
-                    bool didPrint = false;
-
-                    ITreeAttribute slotsTree = backPackTree.GetTreeAttribute("slots");
-
-                    foreach (var val in slotsTree)
+                    foreach (var cstack in stacks)
                     {
-                        ItemStack cstack = (ItemStack)val.Value?.GetValue();
+                        if (cstack == null || cstack.StackSize == 0) continue;
 
-                        if (cstack != null && cstack.StackSize > 0)
+                        if (!didPrint)
                         {
-                            if (!didPrint)
-                            {
-                                dsc.AppendLine(Lang.Get("Contents: "));
-                                didPrint = true;
-                            }
-                            cstack.ResolveBlockOrItem(world);
-                            dsc.AppendLine("- " + cstack.StackSize + "x " + cstack.GetName());
+                            dsc.AppendLine(Lang.Get("Contents: "));
+                            didPrint = true;
                         }
+                        cstack.ResolveBlockOrItem(world);
+                        dsc.AppendLine("- " + cstack.StackSize + "x " + cstack.GetName());
                     }
 
                     if (!didPrint)
                     {
                         dsc.AppendLine(Lang.Get("Empty"));
                     }
-
                 }
             }
 
@@ -2752,6 +2734,40 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="world"></param>
         /// <param name="itemstack"></param>
+        /// <param name="didReceiveHeat">The amount of time it did receive heat since last update/call to this methode</param>
+        /// <returns></returns>
+        public virtual float GetTemperature(IWorldAccessor world, ItemStack itemstack, double didReceiveHeat)
+        {
+            if (itemstack?.Attributes?["temperature"] is not ITreeAttribute)
+            {
+                return 20;
+            }
+
+            var attr = (ITreeAttribute)itemstack.Attributes["temperature"];
+
+            var nowHours = world.Calendar.TotalHours;
+            var lastUpdateHours = attr.GetDouble("temperatureLastUpdate");
+
+            var hourDiff = nowHours - (lastUpdateHours + didReceiveHeat);
+
+            var temp = attr.GetFloat("temperature", 20);
+            // 1.5 deg per irl second
+            // 1 game hour = irl 60 seconds
+            if (hourDiff > 1 / 85f && temp > 0f)
+            {
+                temp = Math.Max(0, temp - Math.Max(0, (float)(nowHours - lastUpdateHours) * attr.GetFloat("cooldownSpeed", 90)));
+                attr.SetFloat("temperature", temp);
+            }
+            attr.SetDouble("temperatureLastUpdate", nowHours);
+
+            return temp;
+        }
+
+        /// <summary>
+        /// Returns the stacks item temperature in degree celsius
+        /// </summary>
+        /// <param name="world"></param>
+        /// <param name="itemstack"></param>
         /// <returns></returns>
         public virtual float GetTemperature(IWorldAccessor world, ItemStack itemstack)
         {
@@ -2760,7 +2776,7 @@ namespace Vintagestory.API.Common
                 return 20;
             }
 
-            ITreeAttribute attr = ((ITreeAttribute)itemstack.Attributes["temperature"]);
+            ITreeAttribute attr = (ITreeAttribute)itemstack.Attributes["temperature"];
 
             double nowHours = world.Calendar.TotalHours;
             double lastUpdateHours = attr.GetDouble("temperatureLastUpdate");
@@ -2790,7 +2806,7 @@ namespace Vintagestory.API.Common
         {
             if (itemstack == null) return;
 
-            ITreeAttribute attr = ((ITreeAttribute)itemstack.Attributes["temperature"]);
+            ITreeAttribute attr = (ITreeAttribute)itemstack.Attributes["temperature"];
 
             if (attr == null)
             {
@@ -2803,50 +2819,6 @@ namespace Vintagestory.API.Common
 
             attr.SetDouble("temperatureLastUpdate", nowHours);
             attr.SetFloat("temperature", temperature);
-        }
-
-        /// <summary>
-        /// Returns true if this stack is an empty backpack
-        /// </summary>
-        /// <param name="itemstack"></param>
-        /// <returns></returns>
-        public static bool IsEmptyBackPack(IItemStack itemstack)
-        {
-            if (!IsBackPack(itemstack)) return false;
-
-            ITreeAttribute backPackTree = itemstack.Attributes.GetTreeAttribute("backpack");
-            if (backPackTree == null) return true;
-            ITreeAttribute slotsTree = backPackTree.GetTreeAttribute("slots");
-
-            foreach (var val in slotsTree)
-            {
-                IItemStack stack = (IItemStack)val.Value?.GetValue();
-                if (stack != null && stack.StackSize > 0) return false;
-            }
-            return true;
-        }
-
-
-        /// <summary>
-        /// Returns true if this stack is a backpack that can hold other items/blocks
-        /// </summary>
-        /// <param name="itemstack"></param>
-        /// <returns></returns>
-        public static bool IsBackPack(IItemStack itemstack)
-        {
-            if (itemstack == null || itemstack.Collectible.Attributes == null) return false;
-            return itemstack.Collectible.Attributes["backpack"]["quantitySlots"].AsInt() > 0;
-        }
-
-        /// <summary>
-        /// If the stack is a backpack, this returns the amount of slots it has
-        /// </summary>
-        /// <param name="itemstack"></param>
-        /// <returns></returns>
-        public static int QuantityBackPackSlots(IItemStack itemstack)
-        {
-            if (itemstack == null || itemstack.Collectible.Attributes == null) return 0;
-            return itemstack.Collectible.Attributes["backpack"]["quantitySlots"].AsInt();
         }
 
         /// <summary>
@@ -3090,6 +3062,21 @@ namespace Vintagestory.API.Common
             return null;
         }
 
+        /// <summary>
+        /// Returns instance of class that implements this interface in the following order<br/>
+        /// 1. Collectible (returns itself)<br/>
+        /// 2. CollectibleBlockBehavior (returns on of our own behavior)<br/>
+        /// </summary>
+        /// <returns></returns>
+        public virtual T GetCollectibleInterface<T>() where T : class
+        {
+            if (this is T blockt) return blockt;
+            var bh = GetCollectibleBehavior(typeof(T), true);
+            if (bh != null) return bh as T;
+
+            return null;
+        }
+
 
         /// <summary>
         /// Returns true if the block has given behavior
@@ -3157,5 +3144,41 @@ namespace Vintagestory.API.Common
         {
             return false;
         }
+
+
+
+
+        [Obsolete]
+        public static bool IsEmptyBackPack(IItemStack itemstack)
+        {
+            if (!IsBackPack(itemstack)) return false;
+
+            ITreeAttribute backPackTree = itemstack.Attributes.GetTreeAttribute("backpack");
+            if (backPackTree == null) return true;
+            ITreeAttribute slotsTree = backPackTree.GetTreeAttribute("slots");
+
+            foreach (var val in slotsTree)
+            {
+                IItemStack stack = (IItemStack)val.Value?.GetValue();
+                if (stack != null && stack.StackSize > 0) return false;
+            }
+            return true;
+        }
+
+
+        [Obsolete]
+        public static bool IsBackPack(IItemStack itemstack)
+        {
+            if (itemstack == null || itemstack.Collectible.Attributes == null) return false;
+            return itemstack.Collectible.Attributes["backpack"]["quantitySlots"].AsInt() > 0;
+        }
+
+        [Obsolete]
+        public static int QuantityBackPackSlots(IItemStack itemstack)
+        {
+            if (itemstack == null || itemstack.Collectible.Attributes == null) return 0;
+            return itemstack.Collectible.Attributes["backpack"]["quantitySlots"].AsInt();
+        }
+
     }
 }

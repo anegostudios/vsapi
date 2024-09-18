@@ -9,9 +9,13 @@ items:
   - Vintagestory.API.Common.HistoryState.Empty
   - Vintagestory.API.Common.HistoryState.EntityUpdates
   - Vintagestory.API.Common.HistoryState.NewEndMarker
+  - Vintagestory.API.Common.HistoryState.NewEndMarkerExact
   - Vintagestory.API.Common.HistoryState.NewStartMarker
+  - Vintagestory.API.Common.HistoryState.NewStartMarkerExact
   - Vintagestory.API.Common.HistoryState.OldEndMarker
+  - Vintagestory.API.Common.HistoryState.OldEndMarkerExact
   - Vintagestory.API.Common.HistoryState.OldStartMarker
+  - Vintagestory.API.Common.HistoryState.OldStartMarkerExact
   langs:
   - csharp
   - vb
@@ -35,6 +39,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.HistoryState.Empty
   commentId: M:Vintagestory.API.Common.HistoryState.Empty
   id: Empty
@@ -150,6 +157,82 @@ items:
     return:
       type: Vintagestory.API.MathTools.BlockPos
     content.vb: Public NewEndMarker As BlockPos
+- uid: Vintagestory.API.Common.HistoryState.OldStartMarkerExact
+  commentId: F:Vintagestory.API.Common.HistoryState.OldStartMarkerExact
+  id: OldStartMarkerExact
+  parent: Vintagestory.API.Common.HistoryState
+  langs:
+  - csharp
+  - vb
+  name: OldStartMarkerExact
+  nameWithType: HistoryState.OldStartMarkerExact
+  fullName: Vintagestory.API.Common.HistoryState.OldStartMarkerExact
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public Vec3d OldStartMarkerExact
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Public OldStartMarkerExact As Vec3d
+- uid: Vintagestory.API.Common.HistoryState.OldEndMarkerExact
+  commentId: F:Vintagestory.API.Common.HistoryState.OldEndMarkerExact
+  id: OldEndMarkerExact
+  parent: Vintagestory.API.Common.HistoryState
+  langs:
+  - csharp
+  - vb
+  name: OldEndMarkerExact
+  nameWithType: HistoryState.OldEndMarkerExact
+  fullName: Vintagestory.API.Common.HistoryState.OldEndMarkerExact
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public Vec3d OldEndMarkerExact
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Public OldEndMarkerExact As Vec3d
+- uid: Vintagestory.API.Common.HistoryState.NewStartMarkerExact
+  commentId: F:Vintagestory.API.Common.HistoryState.NewStartMarkerExact
+  id: NewStartMarkerExact
+  parent: Vintagestory.API.Common.HistoryState
+  langs:
+  - csharp
+  - vb
+  name: NewStartMarkerExact
+  nameWithType: HistoryState.NewStartMarkerExact
+  fullName: Vintagestory.API.Common.HistoryState.NewStartMarkerExact
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public Vec3d NewStartMarkerExact
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Public NewStartMarkerExact As Vec3d
+- uid: Vintagestory.API.Common.HistoryState.NewEndMarkerExact
+  commentId: F:Vintagestory.API.Common.HistoryState.NewEndMarkerExact
+  id: NewEndMarkerExact
+  parent: Vintagestory.API.Common.HistoryState
+  langs:
+  - csharp
+  - vb
+  name: NewEndMarkerExact
+  nameWithType: HistoryState.NewEndMarkerExact
+  fullName: Vintagestory.API.Common.HistoryState.NewEndMarkerExact
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public Vec3d NewEndMarkerExact
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Public NewEndMarkerExact As Vec3d
 - uid: Vintagestory.API.Common.HistoryState.EntityUpdates
   commentId: F:Vintagestory.API.Common.HistoryState.EntityUpdates
   id: EntityUpdates
@@ -430,6 +513,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -437,6 +582,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.HistoryState.Empty*
   commentId: Overload:Vintagestory.API.Common.HistoryState.Empty
   href: Vintagestory.API.Common.HistoryState.html#Vintagestory_API_Common_HistoryState_Empty
@@ -508,6 +750,13 @@ references:
   - uid: Vintagestory.API.MathTools
     name: MathTools
     href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.MathTools.Vec3d
+  commentId: T:Vintagestory.API.MathTools.Vec3d
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3d.html
+  name: Vec3d
+  nameWithType: Vec3d
+  fullName: Vintagestory.API.MathTools.Vec3d
 - uid: System.Collections.Generic.List{Vintagestory.API.Common.EntityUpdate}
   commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.EntityUpdate}
   parent: System.Collections.Generic

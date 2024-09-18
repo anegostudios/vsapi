@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -112,6 +112,16 @@ Interface IAssetManager
 
 
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -242,6 +252,41 @@ Interface IAssetManager
     <dt><code>domain</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
     <dt><code>fullPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IAssetManager_AddModOrigin_" data-uid="Vintagestory.API.Common.IAssetManager.AddModOrigin*"></a>
+
+  <h3 id="Vintagestory_API_Common_IAssetManager_AddModOrigin_System_String_System_String_System_String_" data-uid="Vintagestory.API.Common.IAssetManager.AddModOrigin(System.String,System.String,System.String)">
+  AddModOrigin(string, string, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void AddModOrigin(string domain, string fullPath, string pathForReservedCharsCheck)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domain</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>fullPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>pathForReservedCharsCheck</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 
@@ -447,7 +492,8 @@ void AddPathOrigin(string domain, string fullPath)</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns all assets inside given category with the given path. If no domain is specified, all domains will be searched. The returned list is considered unsorted.</p>
+  <div class="markdown level1 summary"><p>Returns all assets inside given domain with the given path. If no domain is specified, all domains will be searched.
+The returned list is considered unsorted.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -489,7 +535,9 @@ void AddPathOrigin(string domain, string fullPath)</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns all assets inside given category with the given path. If no domain is specified, all domains will be searched.
+The returned list is considered unsorted.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -499,7 +547,8 @@ void AddPathOrigin(string domain, string fullPath)</code></pre>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>categoryCode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
+    <dd><p>See class <a class="xref" href="Vintagestory.API.Common.AssetCategory.html">AssetCategory</a></p>
+</dd>
     <dt><code>pathBegins</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
     <dt><code>domain</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
@@ -531,7 +580,7 @@ void AddPathOrigin(string domain, string fullPath)</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Searches for all assets in given basepath and uses JSON.NET to automatically turn them into objects. Will log an error to given ILogger if it can't parse the json file and continue with the next asset. Remember to use lower case paths. If no domain is specified, all domains will be searched.
+  <div class="markdown level1 summary"><p>Searches for all assets in given basepath and uses Newtonsoft.Json to automatically turn them into objects. Will log an error to given ILogger if it can't parse the json file and continue with the next asset. Remember to use lower case paths. If no domain is specified, all domains will be searched.
 The returned list is considered unsorted.</p>
 </div>
   <div class="markdown level1 conceptual"></div>

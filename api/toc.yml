@@ -42,6 +42,11 @@ items:
   items:
   - uid: ProperVersion.SemVer
     name: SemVer
+- uid: Vintagestory.API
+  name: Vintagestory.API
+  items:
+  - uid: Vintagestory.API.DocumentAsJsonAttribute
+    name: DocumentAsJsonAttribute
 - uid: Vintagestory.API.Client
   name: Vintagestory.API.Client
   items:
@@ -225,10 +230,10 @@ items:
     name: GuiDialog
   - uid: Vintagestory.API.Client.GuiDialog.DlgComposers
     name: GuiDialog.DlgComposers
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: GuiDialog.EnumPosFlag
   - uid: Vintagestory.API.Client.GuiDialogBlockEntity
     name: GuiDialogBlockEntity
-  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-    name: GuiDialogBlockEntity.EnumPosFlag
   - uid: Vintagestory.API.Client.GuiDialogBlockEntityInventory
     name: GuiDialogBlockEntityInventory
   - uid: Vintagestory.API.Client.GuiDialogCharacterBase
@@ -399,6 +404,8 @@ items:
     name: IMacroManager
   - uid: Vintagestory.API.Client.IMeshPoolSupplier
     name: IMeshPoolSupplier
+  - uid: Vintagestory.API.Client.IMetaBlock
+    name: IMetaBlock
   - uid: Vintagestory.API.Client.IMusicEngine
     name: IMusicEngine
   - uid: Vintagestory.API.Client.IMusicTrack
@@ -595,8 +602,12 @@ items:
     name: TextureAtlasPosition
   - uid: Vintagestory.API.Client.TextureDictionary
     name: TextureDictionary
+  - uid: Vintagestory.API.Client.UBORef
+    name: UBORef
   - uid: Vintagestory.API.Client.VisibleTestDelegate
     name: VisibleTestDelegate
+  - uid: Vintagestory.API.Client.WireframeModes
+    name: WireframeModes
   - uid: Vintagestory.API.Client.WorldInteraction
     name: WorldInteraction
 - uid: Vintagestory.API.Client.Tesselation
@@ -653,6 +664,8 @@ items:
     name: AnimationManager
   - uid: Vintagestory.API.Common.AnimationMetaData
     name: AnimationMetaData
+  - uid: Vintagestory.API.Common.AnimationSound
+    name: AnimationSound
   - uid: Vintagestory.API.Common.AnimationTrigger
     name: AnimationTrigger
   - uid: Vintagestory.API.Common.AnimationUtil
@@ -675,6 +688,8 @@ items:
     name: AttachmentPoint
   - uid: Vintagestory.API.Common.AttachmentPointAndPose
     name: AttachmentPointAndPose
+  - uid: Vintagestory.API.Common.BagInventory
+    name: BagInventory
   - uid: Vintagestory.API.Common.BakedBitmap
     name: BakedBitmap
   - uid: Vintagestory.API.Common.BakingProperties
@@ -719,6 +734,8 @@ items:
     name: BlockMaterialUtil
   - uid: Vintagestory.API.Common.BlockOffsetAndNumber
     name: BlockOffsetAndNumber
+  - uid: Vintagestory.API.Common.BlockPatchAttributes
+    name: BlockPatchAttributes
   - uid: Vintagestory.API.Common.BlockPlacedDelegate
     name: BlockPlacedDelegate
   - uid: Vintagestory.API.Common.BlockSchematic
@@ -763,6 +780,8 @@ items:
     name: ClientChatCommand
   - uid: Vintagestory.API.Common.ClientChatCommandDelegate
     name: ClientChatCommandDelegate
+  - uid: Vintagestory.API.Common.Climate
+    name: Climate
   - uid: Vintagestory.API.Common.ClimateCondition
     name: ClimateCondition
   - uid: Vintagestory.API.Common.CmdArgs
@@ -789,6 +808,8 @@ items:
     name: CommandPreconditionDelegate
   - uid: Vintagestory.API.Common.CompositeShape
     name: CompositeShape
+  - uid: Vintagestory.API.Common.CoralPlantConfig
+    name: CoralPlantConfig
   - uid: Vintagestory.API.Common.CraftingRecipeIngredient
     name: CraftingRecipeIngredient
   - uid: Vintagestory.API.Common.CreativeInventoryTab
@@ -1025,6 +1046,10 @@ items:
     name: ExplosionSmokeParticles
   - uid: Vintagestory.API.Common.ExtraHandbookSection
     name: ExtraHandbookSection
+  - uid: Vintagestory.API.Common.FastParticlePool
+    name: FastParticlePool
+  - uid: Vintagestory.API.Common.FastParticlePool.CreateParticleDelegate
+    name: FastParticlePool.CreateParticleDelegate
   - uid: Vintagestory.API.Common.FertilizerProps
     name: FertilizerProps
   - uid: Vintagestory.API.Common.FloatArgParser
@@ -1141,6 +1166,8 @@ items:
     name: IGameCalendar
   - uid: Vintagestory.API.Common.IGeometryTester
     name: IGeometryTester
+  - uid: Vintagestory.API.Common.IHeldBag
+    name: IHeldBag
   - uid: Vintagestory.API.Common.IInventory
     name: IInventory
   - uid: Vintagestory.API.Common.IInventoryNetworkUtil
@@ -1163,8 +1190,10 @@ items:
     name: IModLoader
   - uid: Vintagestory.API.Common.IMountable
     name: IMountable
-  - uid: Vintagestory.API.Common.IMountableSupplier
-    name: IMountableSupplier
+  - uid: Vintagestory.API.Common.IMountableListener
+    name: IMountableListener
+  - uid: Vintagestory.API.Common.IMountableSeat
+    name: IMountableSeat
   - uid: Vintagestory.API.Common.INetworkAPI
     name: INetworkAPI
   - uid: Vintagestory.API.Common.IParticlePropertiesProvider
@@ -1193,6 +1222,8 @@ items:
     name: ITextureLocationDictionary
   - uid: Vintagestory.API.Common.ITimedDespawn
     name: ITimedDespawn
+  - uid: Vintagestory.API.Common.IVariableSeatsMountable
+    name: IVariableSeatsMountable
   - uid: Vintagestory.API.Common.IWearableShapeSupplier
     name: IWearableShapeSupplier
   - uid: Vintagestory.API.Common.IWithDrawnHeight
@@ -1223,6 +1254,8 @@ items:
     name: ItemSlot
   - uid: Vintagestory.API.Common.ItemSlotBackpack
     name: ItemSlotBackpack
+  - uid: Vintagestory.API.Common.ItemSlotBagContent
+    name: ItemSlotBagContent
   - uid: Vintagestory.API.Common.ItemSlotCharacter
     name: ItemSlotCharacter
   - uid: Vintagestory.API.Common.ItemSlotCreative
@@ -1291,6 +1324,8 @@ items:
     name: ModelTransformKeyFrame
   - uid: Vintagestory.API.Common.ModelTransformNoDefaults
     name: ModelTransformNoDefaults
+  - uid: Vintagestory.API.Common.MountableUtil
+    name: MountableUtil
   - uid: Vintagestory.API.Common.MouseButtonConverter
     name: MouseButtonConverter
   - uid: Vintagestory.API.Common.MultiblockStructure
@@ -1375,6 +1410,8 @@ items:
     name: RunningAnimation
   - uid: Vintagestory.API.Common.SQLiteDBConnection
     name: SQLiteDBConnection
+  - uid: Vintagestory.API.Common.SeatConfig
+    name: SeatConfig
   - uid: Vintagestory.API.Common.SelectedHotbarSlotDelegate
     name: SelectedHotbarSlotDelegate
   - uid: Vintagestory.API.Common.ServerAnimator
@@ -1403,6 +1440,8 @@ items:
     name: StackCubeParticles
   - uid: Vintagestory.API.Common.StandardWorldProperty
     name: StandardWorldProperty
+  - uid: Vintagestory.API.Common.StartAnimationDelegate
+    name: StartAnimationDelegate
   - uid: Vintagestory.API.Common.StringArgParser
     name: StringArgParser
   - uid: Vintagestory.API.Common.StrongBlockBehavior
@@ -1480,6 +1519,10 @@ items:
 - uid: Vintagestory.API.Common.CommandAbbr
   name: Vintagestory.API.Common.CommandAbbr
   items:
+  - uid: Vintagestory.API.Common.CommandAbbr.CmdUtil
+    name: CmdUtil
+  - uid: Vintagestory.API.Common.CommandAbbr.CmdUtil.EntityEachDelegate
+    name: CmdUtil.EntityEachDelegate
   - uid: Vintagestory.API.Common.CommandAbbr.IChatCommandExt
     name: IChatCommandExt
 - uid: Vintagestory.API.Common.Entities
@@ -1511,6 +1554,32 @@ items:
     name: EnumEntityActivity
   - uid: Vintagestory.API.Common.Entities.FuzzyEntityPos
     name: FuzzyEntityPos
+  - uid: Vintagestory.API.Common.Entities.IPhysicsTickable
+    name: IPhysicsTickable
+  - uid: Vintagestory.API.Common.Entities.IRemotePhysics
+    name: IRemotePhysics
+  - uid: Vintagestory.API.Common.Entities.PModule
+    name: PModule
+  - uid: Vintagestory.API.Common.Entities.PModuleGravity
+    name: PModuleGravity
+  - uid: Vintagestory.API.Common.Entities.PModuleInAir
+    name: PModuleInAir
+  - uid: Vintagestory.API.Common.Entities.PModuleInLiquid
+    name: PModuleInLiquid
+  - uid: Vintagestory.API.Common.Entities.PModuleKnockback
+    name: PModuleKnockback
+  - uid: Vintagestory.API.Common.Entities.PModuleMotionDrag
+    name: PModuleMotionDrag
+  - uid: Vintagestory.API.Common.Entities.PModuleOnGround
+    name: PModuleOnGround
+  - uid: Vintagestory.API.Common.Entities.PModulePlayerInAir
+    name: PModulePlayerInAir
+  - uid: Vintagestory.API.Common.Entities.PModulePlayerInLiquid
+    name: PModulePlayerInLiquid
+  - uid: Vintagestory.API.Common.Entities.PModuleWind
+    name: PModuleWind
+  - uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+    name: PhysicsBehaviorBase
   - uid: Vintagestory.API.Common.Entities.PhysicsTickDelegate
     name: PhysicsTickDelegate
   - uid: Vintagestory.API.Common.Entities.QuantityByGroup
@@ -1571,6 +1640,8 @@ items:
     name: CachedCuboidList
   - uid: Vintagestory.API.Datastructures.CachingConcurrentDictionary`2
     name: CachingConcurrentDictionary<TKey, TValue>
+  - uid: Vintagestory.API.Datastructures.ConcurrentDictionaryExtensions
+    name: ConcurrentDictionaryExtensions
   - uid: Vintagestory.API.Datastructures.DoubleArrayAttribute
     name: DoubleArrayAttribute
   - uid: Vintagestory.API.Datastructures.DoubleAttribute
@@ -1668,6 +1739,8 @@ items:
   items:
   - uid: Vintagestory.API.MathTools.AABBIntersectionTest
     name: AABBIntersectionTest
+  - uid: Vintagestory.API.MathTools.AngleConstraint
+    name: AngleConstraint
   - uid: Vintagestory.API.MathTools.Ascii85
     name: Ascii85
   - uid: Vintagestory.API.MathTools.BlockFacing
@@ -1758,6 +1831,8 @@ items:
     name: Mat4d
   - uid: Vintagestory.API.MathTools.Mat4f
     name: Mat4f
+  - uid: Vintagestory.API.MathTools.MultiCollisionTester
+    name: MultiCollisionTester
   - uid: Vintagestory.API.MathTools.NatFloat
     name: NatFloat
   - uid: Vintagestory.API.MathTools.NewNormalizedSimplexFractalNoise
@@ -1828,6 +1903,8 @@ items:
     name: Vec3f
   - uid: Vintagestory.API.MathTools.Vec3i
     name: Vec3i
+  - uid: Vintagestory.API.MathTools.Vec3iAndFacingFlags
+    name: Vec3iAndFacingFlags
   - uid: Vintagestory.API.MathTools.Vec4d
     name: Vec4d
   - uid: Vintagestory.API.MathTools.Vec4f
@@ -1874,6 +1951,8 @@ items:
     name: EnumServerResponse
   - uid: Vintagestory.API.Server.EnumServerRunPhase
     name: EnumServerRunPhase
+  - uid: Vintagestory.API.Server.EnumWhitelistMode
+    name: EnumWhitelistMode
   - uid: Vintagestory.API.Server.EnumWorldGenPass
     name: EnumWorldGenPass
   - uid: Vintagestory.API.Server.EnumWorldgenPreset
@@ -1967,6 +2046,8 @@ items:
     name: EnumerableExtensions
   - uid: Vintagestory.API.Util.EqualityUtil
     name: EqualityUtil
+  - uid: Vintagestory.API.Util.GCHandleProvider
+    name: GCHandleProvider
   - uid: Vintagestory.API.Util.HashsetExtensions
     name: HashsetExtensions
   - uid: Vintagestory.API.Util.IgnoreFile
@@ -1977,6 +2058,8 @@ items:
     name: NetUtil
   - uid: Vintagestory.API.Util.ObjectCacheUtil
     name: ObjectCacheUtil
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions
+    name: ObjectHandleExtensions
   - uid: Vintagestory.API.Util.PosUtil
     name: PosUtil
   - uid: Vintagestory.API.Util.ReaderWriterExtensions
@@ -2005,19 +2088,33 @@ items:
     name: WildcardUtil
   - uid: Vintagestory.API.Util.fillCallback`1
     name: fillCallback<T>
+- uid: Vintagestory.Client.NoObf
+  name: Vintagestory.Client.NoObf
+  items:
+  - uid: Vintagestory.Client.NoObf.WireframeCube
+    name: WireframeCube
+- uid: Vintagestory.Common.Collectible.Block
+  name: Vintagestory.Common.Collectible.Block
+  items:
+  - uid: Vintagestory.Common.Collectible.Block.BlockPosFacing
+    name: BlockPosFacing
+- uid: Vintagestory.Datastructures
+  name: Vintagestory.Datastructures
+  items:
+  - uid: Vintagestory.Datastructures.NaturalShape
+    name: NaturalShape
+  - uid: Vintagestory.Datastructures.ShapeCell
+    name: ShapeCell
 - uid: Vintagestory.GameContent
   name: Vintagestory.GameContent
   items:
+  - uid: Vintagestory.GameContent.IAcceptsDecor
+    name: IAcceptsDecor
   - uid: Vintagestory.GameContent.IWrenchOrientable
     name: IWrenchOrientable
-- uid: VintagestoryAPI.Math.Vector
-  name: VintagestoryAPI.Math.Vector
+- uid: Vintagestory.Util
+  name: Vintagestory.Util
   items:
-  - uid: VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags
-    name: Vec3iAndFacingFlags
-- uid: VintagestoryAPI.Util
-  name: VintagestoryAPI.Util
-  items:
-  - uid: VintagestoryAPI.Util.SKColorExtensions
+  - uid: Vintagestory.Util.SKColorExtensions
     name: SKColorExtensions
 memberLayout: SamePage

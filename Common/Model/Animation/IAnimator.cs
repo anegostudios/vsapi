@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
@@ -27,15 +28,43 @@ namespace Vintagestory.API.Common
         {
             AnimModelMatrix = Mat4f.Create();
         }
+
+        public Matrixf Mul(Matrixf m)
+        {
+            var ap = AttachPoint;
+            m.Mul(AnimModelMatrix);
+
+            m.Translate(ap.PosX / 16f, ap.PosY / 16f, ap.PosZ / 16f);
+            m.Translate(-0.5f, -0.5f, -0.5f); 
+            m.RotateX((float)ap.RotationX * GameMath.DEG2RAD);
+            m.RotateY((float)ap.RotationY * GameMath.DEG2RAD);
+            m.RotateZ((float)ap.RotationZ * GameMath.DEG2RAD);
+            m.Translate(0.5f, 0.5f, 0.5f);
+            return m;
+        }
+
+
+        public Matrixf MulUncentered(Matrixf m)
+        {
+            var ap = AttachPoint;
+            m.Mul(AnimModelMatrix);
+            m.Translate(ap.PosX / 16f, ap.PosY / 16f, ap.PosZ / 16f);
+            m.RotateX((float)ap.RotationX * GameMath.DEG2RAD);
+            m.RotateY((float)ap.RotationY * GameMath.DEG2RAD);
+            m.RotateZ((float)ap.RotationZ * GameMath.DEG2RAD);
+            return m;
+        }
     }
 
 
     public interface IAnimator
     {
+        int MaxJointId { get; }
+
         /// <summary>
         /// The 30 pose transformation matrices that go to the shader
         /// </summary>
-        float[] Matrices4x3 { get; }
+        float[] Matrices { get; }
 
         /// <summary>
         /// Amount of currently active animations
@@ -45,7 +74,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Holds data over all animations. This list always contains all animations of the creature. You have to check yourself which of them are active
         /// </summary>
-        RunningAnimation[] RunningAnimations { get; }
+        RunningAnimation[] Animations { get; }
 
         RunningAnimation GetAnimationState(string code);
 
@@ -71,6 +100,7 @@ namespace Vintagestory.API.Common
         void OnFrame(Dictionary<string, AnimationMetaData> activeAnimationsByAnimCode, float dt);
 
         string DumpCurrentState();
+        //void ReloadAttachmentPoints();
     }
 
     /// <summary>
@@ -79,6 +109,10 @@ namespace Vintagestory.API.Common
     /// </summary>
     public interface IAnimationManager : IDisposable
     {
+        event StartAnimationDelegate OnStartAnimation;
+        event StartAnimationDelegate OnAnimationReceived;
+        event Action<string> OnAnimationStopped;
+
         /// <summary>
         /// The animator for this animation manager
         /// </summary>
@@ -157,7 +191,9 @@ namespace Vintagestory.API.Common
         /// The event fired when the animation is stopped.
         /// </summary>
         /// <param name="code">The code that the animation stopped with.</param>
-        void OnAnimationStopped(string code);
+        void TriggerAnimationStopped(string code);
+
+        void ShouldPlaySound(AnimationSound sound);
 
         void OnServerTick(float dt);
 
@@ -172,6 +208,7 @@ namespace Vintagestory.API.Common
 
         void RegisterFrameCallback(AnimFrameCallback trigger);
 
-        
+        IAnimator LoadAnimator(ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements);
+        void CopyOverAnims(RunningAnimation[] copyOverAnims, IAnimator animator);
     }
 }

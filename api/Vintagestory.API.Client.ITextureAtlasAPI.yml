@@ -9,6 +9,7 @@ items:
   - Vintagestory.API.Client.ITextureAtlasAPI.AtlasTextures
   - Vintagestory.API.Client.ITextureAtlasAPI.FreeTextureSpace(System.Int32)
   - Vintagestory.API.Client.ITextureAtlasAPI.GetAverageColor(System.Int32)
+  - Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
   - Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocation,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
   - Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32)
   - Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32,System.Int32)
@@ -16,7 +17,6 @@ items:
   - Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColors(Vintagestory.API.Client.TextureAtlasPosition)
   - Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
   - Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
-  - Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
   - Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
   - Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
   - Vintagestory.API.Client.ITextureAtlasAPI.Item(Vintagestory.API.Common.AssetLocation)
@@ -43,6 +43,9 @@ items:
   syntax:
     content: public interface ITextureAtlasAPI
     content.vb: Public Interface ITextureAtlasAPI
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Client.ITextureAtlasAPI.Item(Vintagestory.API.Common.AssetLocation)
   commentId: P:Vintagestory.API.Client.ITextureAtlasAPI.Item(Vintagestory.API.Common.AssetLocation)
   id: Item(Vintagestory.API.Common.AssetLocation)
@@ -505,27 +508,24 @@ items:
   nameWithType.vb: ITextureAtlasAPI.InsertTextureCached(AssetLocation, Byte(), Integer, TextureAtlasPosition, Single)
   fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation, Byte(), Integer, Vintagestory.API.Client.TextureAtlasPosition, Single)
   name.vb: InsertTextureCached(AssetLocation, Byte(), Integer, TextureAtlasPosition, Single)
-- uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
-  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
-  id: InsertTextureCached(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
+  id: GetOrInsertTexture(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
   parent: Vintagestory.API.Client.ITextureAtlasAPI
   langs:
   - csharp
   - vb
-  name: InsertTextureCached(CompositeTexture, out int, out TextureAtlasPosition, float)
-  nameWithType: ITextureAtlasAPI.InsertTextureCached(CompositeTexture, out int, out TextureAtlasPosition, float)
-  fullName: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Client.CompositeTexture, out int, out Vintagestory.API.Client.TextureAtlasPosition, float)
+  name: GetOrInsertTexture(CompositeTexture, out int, out TextureAtlasPosition, float)
+  nameWithType: ITextureAtlasAPI.GetOrInsertTexture(CompositeTexture, out int, out TextureAtlasPosition, float)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Client.CompositeTexture, out int, out Vintagestory.API.Client.TextureAtlasPosition, float)
   type: Method
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
   syntax:
-    content: >-
-      [Obsolete("Use GetOrInsertTexture() instead. It's more efficient to load the bmp only if the texture was not found in the cache")]
-
-      bool InsertTextureCached(CompositeTexture texture, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0)
+    content: bool GetOrInsertTexture(CompositeTexture ct, out int textureSubId, out TextureAtlasPosition texPos, float alphaTest = 0)
     parameters:
-    - id: texture
+    - id: ct
       type: Vintagestory.API.Client.CompositeTexture
     - id: textureSubId
       type: System.Int32
@@ -535,20 +535,11 @@ items:
       type: System.Single
     return:
       type: System.Boolean
-    content.vb: >-
-      <Obsolete("Use GetOrInsertTexture() instead. It's more efficient to load the bmp only if the texture was not found in the cache")>
-
-      Function InsertTextureCached(texture As CompositeTexture, textureSubId As Integer, texPos As TextureAtlasPosition, alphaTest As Single = 0) As Boolean
-  overload: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached*
-  attributes:
-  - type: System.ObsoleteAttribute
-    ctor: System.ObsoleteAttribute.#ctor(System.String)
-    arguments:
-    - type: System.String
-      value: Use GetOrInsertTexture() instead. It's more efficient to load the bmp only if the texture was not found in the cache
-  nameWithType.vb: ITextureAtlasAPI.InsertTextureCached(CompositeTexture, Integer, TextureAtlasPosition, Single)
-  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Client.CompositeTexture, Integer, Vintagestory.API.Client.TextureAtlasPosition, Single)
-  name.vb: InsertTextureCached(CompositeTexture, Integer, TextureAtlasPosition, Single)
+    content.vb: Function GetOrInsertTexture(ct As CompositeTexture, textureSubId As Integer, texPos As TextureAtlasPosition, alphaTest As Single = 0) As Boolean
+  overload: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture*
+  nameWithType.vb: ITextureAtlasAPI.GetOrInsertTexture(CompositeTexture, Integer, TextureAtlasPosition, Single)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Client.CompositeTexture, Integer, Vintagestory.API.Client.TextureAtlasPosition, Single)
+  name.vb: GetOrInsertTexture(CompositeTexture, Integer, TextureAtlasPosition, Single)
 - uid: Vintagestory.API.Client.ITextureAtlasAPI.FreeTextureSpace(System.Int32)
   commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.FreeTextureSpace(System.Int32)
   id: FreeTextureSpace(System.Int32)
@@ -838,6 +829,165 @@ references:
   - uid: Vintagestory.API.Client
     name: Client
     href: Vintagestory.API.Client.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Client.ITextureAtlasAPI.Item*
   commentId: Overload:Vintagestory.API.Client.ITextureAtlasAPI.Item
   href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_Item_Vintagestory_API_Common_AssetLocation_

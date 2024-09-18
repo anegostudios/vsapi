@@ -161,7 +161,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// If set, the value is returned when GetTransitionSpeedMul() is called instead of the default value.
         /// </summary>
-        public CustomGetTransitionSpeedMulDelegate OnAcquireTransitionSpeed;
+        public event CustomGetTransitionSpeedMulDelegate OnAcquireTransitionSpeed;
 
 
         /// <summary>
@@ -800,9 +800,19 @@ namespace Vintagestory.API.Common
         public virtual float GetTransitionSpeedMul(EnumTransitionType transType, ItemStack stack)
         {
             float mul = GetDefaultTransitionSpeedMul(transType);
+            mul = InvokeTransitionSpeedDelegates(transType, stack, mul);
+
+            return mul;
+        }
+
+        public float InvokeTransitionSpeedDelegates(EnumTransitionType transType, ItemStack stack, float mul)
+        {
             if (OnAcquireTransitionSpeed != null)
             {
-                mul = OnAcquireTransitionSpeed(transType, stack, mul);
+                foreach (var val in OnAcquireTransitionSpeed.GetInvocationList())
+                {
+                    mul *= OnAcquireTransitionSpeed(transType, stack, mul);
+                }
             }
 
             return mul;

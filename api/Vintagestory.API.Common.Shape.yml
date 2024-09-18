@@ -7,15 +7,18 @@ items:
   children:
   - Vintagestory.API.Common.Shape.Animations
   - Vintagestory.API.Common.Shape.AnimationsByCrc32
-  - Vintagestory.API.Common.Shape.AttachmentPointsByCode
+  - Vintagestory.API.Common.Shape.CacheInvTransforms
+  - Vintagestory.API.Common.Shape.CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])
   - Vintagestory.API.Common.Shape.Clone
   - Vintagestory.API.Common.Shape.CloneAnimations
   - Vintagestory.API.Common.Shape.CloneElements
   - Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
   - Vintagestory.API.Common.Shape.Elements
   - Vintagestory.API.Common.Shape.GetElementByName(System.String,System.StringComparison)
+  - Vintagestory.API.Common.Shape.InitForAnimations(Vintagestory.API.Common.ILogger,System.String,System.String[])
   - Vintagestory.API.Common.Shape.JointsById
   - Vintagestory.API.Common.Shape.RemoveElementByName(System.String,System.StringComparison)
+  - Vintagestory.API.Common.Shape.RemoveElements(System.String[])
   - Vintagestory.API.Common.Shape.ResolveAndFindJoints(Vintagestory.API.Common.ILogger,System.String,System.String[])
   - Vintagestory.API.Common.Shape.ResolveAndLoadJoints(System.String[])
   - Vintagestory.API.Common.Shape.ResolveReferences(Vintagestory.API.Common.ILogger,System.String)
@@ -61,6 +64,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
   attributes:
   - type: Newtonsoft.Json.JsonObjectAttribute
     ctor: Newtonsoft.Json.JsonObjectAttribute.#ctor(Newtonsoft.Json.MemberSerialization)
@@ -289,25 +295,6 @@ items:
     return:
       type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint}
     content.vb: Public JointsById As Dictionary(Of Integer, AnimationJoint)
-- uid: Vintagestory.API.Common.Shape.AttachmentPointsByCode
-  commentId: F:Vintagestory.API.Common.Shape.AttachmentPointsByCode
-  id: AttachmentPointsByCode
-  parent: Vintagestory.API.Common.Shape
-  langs:
-  - csharp
-  - vb
-  name: AttachmentPointsByCode
-  nameWithType: Shape.AttachmentPointsByCode
-  fullName: Vintagestory.API.Common.Shape.AttachmentPointsByCode
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  syntax:
-    content: public Dictionary<string, AttachmentPoint> AttachmentPointsByCode
-    return:
-      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AttachmentPoint}
-    content.vb: Public AttachmentPointsByCode As Dictionary(Of String, AttachmentPoint)
 - uid: Vintagestory.API.Common.Shape.TrimTextureNamesAndResolveFaces(System.Runtime.Serialization.StreamingContext)
   commentId: M:Vintagestory.API.Common.Shape.TrimTextureNamesAndResolveFaces(System.Runtime.Serialization.StreamingContext)
   id: TrimTextureNamesAndResolveFaces(System.Runtime.Serialization.StreamingContext)
@@ -719,6 +706,30 @@ items:
   nameWithType.vb: Shape.GetElementByName(String, StringComparison)
   fullName.vb: Vintagestory.API.Common.Shape.GetElementByName(String, System.StringComparison)
   name.vb: GetElementByName(String, StringComparison)
+- uid: Vintagestory.API.Common.Shape.RemoveElements(System.String[])
+  commentId: M:Vintagestory.API.Common.Shape.RemoveElements(System.String[])
+  id: RemoveElements(System.String[])
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: RemoveElements(string[])
+  nameWithType: Shape.RemoveElements(string[])
+  fullName: Vintagestory.API.Common.Shape.RemoveElements(string[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void RemoveElements(string[] elementNames)
+    parameters:
+    - id: elementNames
+      type: System.String[]
+    content.vb: Public Sub RemoveElements(elementNames As String())
+  overload: Vintagestory.API.Common.Shape.RemoveElements*
+  nameWithType.vb: Shape.RemoveElements(String())
+  fullName.vb: Vintagestory.API.Common.Shape.RemoveElements(String())
+  name.vb: RemoveElements(String())
 - uid: Vintagestory.API.Common.Shape.RemoveElementByName(System.String,System.StringComparison)
   commentId: M:Vintagestory.API.Common.Shape.RemoveElementByName(System.String,System.StringComparison)
   id: RemoveElementByName(System.String,System.StringComparison)
@@ -792,6 +803,48 @@ items:
       type: Vintagestory.API.Common.Animation[]
     content.vb: Public Function CloneAnimations() As Animation()
   overload: Vintagestory.API.Common.Shape.CloneAnimations*
+- uid: Vintagestory.API.Common.Shape.CacheInvTransforms
+  commentId: M:Vintagestory.API.Common.Shape.CacheInvTransforms
+  id: CacheInvTransforms
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: CacheInvTransforms()
+  nameWithType: Shape.CacheInvTransforms()
+  fullName: Vintagestory.API.Common.Shape.CacheInvTransforms()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void CacheInvTransforms()
+    content.vb: Public Sub CacheInvTransforms()
+  overload: Vintagestory.API.Common.Shape.CacheInvTransforms*
+- uid: Vintagestory.API.Common.Shape.CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])
+  commentId: M:Vintagestory.API.Common.Shape.CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])
+  id: CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: CacheInvTransforms(ShapeElement[])
+  nameWithType: Shape.CacheInvTransforms(ShapeElement[])
+  fullName: Vintagestory.API.Common.Shape.CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static void CacheInvTransforms(ShapeElement[] elements)
+    parameters:
+    - id: elements
+      type: Vintagestory.API.Common.ShapeElement[]
+    content.vb: Public Shared Sub CacheInvTransforms(elements As ShapeElement())
+  overload: Vintagestory.API.Common.Shape.CacheInvTransforms*
+  nameWithType.vb: Shape.CacheInvTransforms(ShapeElement())
+  fullName.vb: Vintagestory.API.Common.Shape.CacheInvTransforms(Vintagestory.API.Common.ShapeElement())
+  name.vb: CacheInvTransforms(ShapeElement())
 - uid: Vintagestory.API.Common.Shape.Clone
   commentId: M:Vintagestory.API.Common.Shape.Clone
   id: Clone
@@ -806,7 +859,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Creates a deep copy of the shape
+  summary: Creates a deep copy of the shape. If the shape has animations, then it also resolves references and joints to ensure the cloned shape is fully initialized
   example: []
   syntax:
     content: public Shape Clone()
@@ -815,6 +868,34 @@ items:
       description: ''
     content.vb: Public Function Clone() As Shape
   overload: Vintagestory.API.Common.Shape.Clone*
+- uid: Vintagestory.API.Common.Shape.InitForAnimations(Vintagestory.API.Common.ILogger,System.String,System.String[])
+  commentId: M:Vintagestory.API.Common.Shape.InitForAnimations(Vintagestory.API.Common.ILogger,System.String,System.String[])
+  id: InitForAnimations(Vintagestory.API.Common.ILogger,System.String,System.String[])
+  parent: Vintagestory.API.Common.Shape
+  langs:
+  - csharp
+  - vb
+  name: InitForAnimations(ILogger, string, params string[])
+  nameWithType: Shape.InitForAnimations(ILogger, string, params string[])
+  fullName: Vintagestory.API.Common.Shape.InitForAnimations(Vintagestory.API.Common.ILogger, string, params string[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void InitForAnimations(ILogger logger, string shapeNameForLogging, params string[] requireJointsForElements)
+    parameters:
+    - id: logger
+      type: Vintagestory.API.Common.ILogger
+    - id: shapeNameForLogging
+      type: System.String
+    - id: requireJointsForElements
+      type: System.String[]
+    content.vb: Public Sub InitForAnimations(logger As ILogger, shapeNameForLogging As String, ParamArray requireJointsForElements As String())
+  overload: Vintagestory.API.Common.Shape.InitForAnimations*
+  nameWithType.vb: Shape.InitForAnimations(ILogger, String, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.Shape.InitForAnimations(Vintagestory.API.Common.ILogger, String, ParamArray String())
+  name.vb: InitForAnimations(ILogger, String, ParamArray String())
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -1076,6 +1157,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1083,6 +1226,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AssetLocation}
   commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AssetLocation}
   parent: System.Collections.Generic
@@ -1392,51 +1632,6 @@ references:
   - uid: Vintagestory.API.Common.AnimationJoint
     name: AnimationJoint
     href: Vintagestory.API.Common.AnimationJoint.html
-  - name: )
-- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AttachmentPoint}
-  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AttachmentPoint}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.Dictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  name: Dictionary<string, AttachmentPoint>
-  nameWithType: Dictionary<string, AttachmentPoint>
-  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.AttachmentPoint>
-  nameWithType.vb: Dictionary(Of String, AttachmentPoint)
-  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.AttachmentPoint)
-  name.vb: Dictionary(Of String, AttachmentPoint)
-  spec.csharp:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - uid: System.String
-    name: string
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Vintagestory.API.Common.AttachmentPoint
-    name: AttachmentPoint
-    href: Vintagestory.API.Common.AttachmentPoint.html
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.String
-    name: String
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: ','
-  - name: " "
-  - uid: Vintagestory.API.Common.AttachmentPoint
-    name: AttachmentPoint
-    href: Vintagestory.API.Common.AttachmentPoint.html
   - name: )
 - uid: Vintagestory.API.Common.Shape.TrimTextureNamesAndResolveFaces*
   commentId: Overload:Vintagestory.API.Common.Shape.TrimTextureNamesAndResolveFaces
@@ -1827,6 +2022,12 @@ references:
   name: ShapeElement
   nameWithType: ShapeElement
   fullName: Vintagestory.API.Common.ShapeElement
+- uid: Vintagestory.API.Common.Shape.RemoveElements*
+  commentId: Overload:Vintagestory.API.Common.Shape.RemoveElements
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_RemoveElements_System_String___
+  name: RemoveElements
+  nameWithType: Shape.RemoveElements
+  fullName: Vintagestory.API.Common.Shape.RemoveElements
 - uid: Vintagestory.API.Common.Shape.RemoveElementByName*
   commentId: Overload:Vintagestory.API.Common.Shape.RemoveElementByName
   href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_RemoveElementByName_System_String_System_StringComparison_
@@ -1845,9 +2046,21 @@ references:
   name: CloneAnimations
   nameWithType: Shape.CloneAnimations
   fullName: Vintagestory.API.Common.Shape.CloneAnimations
+- uid: Vintagestory.API.Common.Shape.CacheInvTransforms*
+  commentId: Overload:Vintagestory.API.Common.Shape.CacheInvTransforms
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_CacheInvTransforms
+  name: CacheInvTransforms
+  nameWithType: Shape.CacheInvTransforms
+  fullName: Vintagestory.API.Common.Shape.CacheInvTransforms
 - uid: Vintagestory.API.Common.Shape.Clone*
   commentId: Overload:Vintagestory.API.Common.Shape.Clone
   href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_Clone
   name: Clone
   nameWithType: Shape.Clone
   fullName: Vintagestory.API.Common.Shape.Clone
+- uid: Vintagestory.API.Common.Shape.InitForAnimations*
+  commentId: Overload:Vintagestory.API.Common.Shape.InitForAnimations
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_InitForAnimations_Vintagestory_API_Common_ILogger_System_String_System_String___
+  name: InitForAnimations
+  nameWithType: Shape.InitForAnimations
+  fullName: Vintagestory.API.Common.Shape.InitForAnimations

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Common.Entities;
+using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 
@@ -44,6 +45,33 @@ namespace Vintagestory.API.Common.CommandAbbr
         /// <param name="cmd"></param>
         /// <returns></returns>
         public static IChatCommand EndSub(this IChatCommand cmd) => cmd.EndSubCommand();
+    }
+
+    public static class CmdUtil
+    {
+
+        public delegate TextCommandResult EntityEachDelegate(Entity entity);
+        public static TextCommandResult EntityEach(TextCommandCallingArgs args, EntityEachDelegate onEntity, int index = 0)
+        {
+            var entities = (Entity[])args.Parsers[index].GetValue();
+            int successCnt = 0;
+
+            if (entities.Length == 0)
+            {
+                return TextCommandResult.Error(Lang.Get("No matching player/entity found"), "nonefound");
+            }
+
+            TextCommandResult lastResult = null;
+            foreach (var entity in entities)
+            {
+                lastResult = onEntity(entity);
+                if (lastResult.Status == EnumCommandStatus.Success) successCnt++;
+            }
+
+            if (entities.Length == 1) return lastResult;
+
+            return TextCommandResult.Success(Lang.Get("Executed commands on {0}/{1} entities", successCnt, entities.Length));
+        }
     }
 }   
 

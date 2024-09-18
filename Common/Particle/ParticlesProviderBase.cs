@@ -183,5 +183,7 @@ namespace Vintagestory.API.Common
         public bool WindAffected { get; set; } = false;
 
         public float ParentVelocityWeight { get; set; }
+
+        public int LightEmission { get; set; }
     }
 }

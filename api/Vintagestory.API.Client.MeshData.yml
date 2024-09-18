@@ -9,6 +9,7 @@ items:
   - Vintagestory.API.Client.MeshData.#ctor(System.Int32)
   - Vintagestory.API.Client.MeshData.#ctor(System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)
   - Vintagestory.API.Client.MeshData.AddColorMapIndex(System.Byte,System.Byte)
+  - Vintagestory.API.Client.MeshData.AddColorMapIndex(System.Byte,System.Byte,System.Boolean)
   - Vintagestory.API.Client.MeshData.AddIndex(System.Int32)
   - Vintagestory.API.Client.MeshData.AddIndices(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Client.MeshData.AddIndices(System.Int32[])
@@ -26,7 +27,6 @@ items:
   - Vintagestory.API.Client.MeshData.AddVertexSkipTex(System.Single,System.Single,System.Single,System.Int32)
   - Vintagestory.API.Client.MeshData.AddVertexWithFlags(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)
   - Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32)
-  - Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)
   - Vintagestory.API.Client.MeshData.AddWithFlagsVertex(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)
   - Vintagestory.API.Client.MeshData.AddXyzFace(System.Byte)
   - Vintagestory.API.Client.MeshData.BaseSizeInBytes
@@ -49,6 +49,7 @@ items:
   - Vintagestory.API.Client.MeshData.FlagsOffset
   - Vintagestory.API.Client.MeshData.FlagsSize
   - Vintagestory.API.Client.MeshData.FlagsStatic
+  - Vintagestory.API.Client.MeshData.FrostableBits
   - Vintagestory.API.Client.MeshData.GetIndices
   - Vintagestory.API.Client.MeshData.GetIndicesCount
   - Vintagestory.API.Client.MeshData.GetMode
@@ -171,6 +172,8 @@ items:
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
   extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
   - Vintagestory.API.Client.MeshData.Vintagestory.API.Client.MeshUtil.ClearWindFlags
   - Vintagestory.API.Client.MeshData.Vintagestory.API.Client.MeshUtil.SetWindFlag(System.Single,System.Int32)
   - Vintagestory.API.Client.MeshData.Vintagestory.API.Client.MeshUtil.ToggleWindModeSetWindData(System.Int32,System.Boolean,System.Int32)
@@ -1198,6 +1201,25 @@ items:
     return:
       type: System.Byte[]
     content.vb: Public SeasonColorMapIds As Byte()
+- uid: Vintagestory.API.Client.MeshData.FrostableBits
+  commentId: F:Vintagestory.API.Client.MeshData.FrostableBits
+  id: FrostableBits
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: FrostableBits
+  nameWithType: MeshData.FrostableBits
+  fullName: Vintagestory.API.Client.MeshData.FrostableBits
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public bool[] FrostableBits
+    return:
+      type: System.Boolean[]
+    content.vb: Public FrostableBits As Boolean()
 - uid: Vintagestory.API.Client.MeshData.RenderPasses
   commentId: P:Vintagestory.API.Client.MeshData.RenderPasses
   id: RenderPasses
@@ -2872,42 +2894,6 @@ items:
   nameWithType.vb: MeshData.AddVertexWithFlagsSkipColor(Single, Single, Single, Single, Single, Integer)
   fullName.vb: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor(Single, Single, Single, Single, Single, Integer)
   name.vb: AddVertexWithFlagsSkipColor(Single, Single, Single, Single, Single, Integer)
-- uid: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)
-  commentId: M:Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)
-  id: AddVertexWithFlagsSkipTexture(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32)
-  parent: Vintagestory.API.Client.MeshData
-  langs:
-  - csharp
-  - vb
-  name: AddVertexWithFlagsSkipTexture(float, float, float, float, float, int, int)
-  nameWithType: MeshData.AddVertexWithFlagsSkipTexture(float, float, float, float, float, int, int)
-  fullName: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture(float, float, float, float, float, int, int)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Client
-  syntax:
-    content: public void AddVertexWithFlagsSkipTexture(float x, float y, float z, float u, float v, int color, int flags)
-    parameters:
-    - id: x
-      type: System.Single
-    - id: y
-      type: System.Single
-    - id: z
-      type: System.Single
-    - id: u
-      type: System.Single
-    - id: v
-      type: System.Single
-    - id: color
-      type: System.Int32
-    - id: flags
-      type: System.Int32
-    content.vb: Public Sub AddVertexWithFlagsSkipTexture(x As Single, y As Single, z As Single, u As Single, v As Single, color As Integer, flags As Integer)
-  overload: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture*
-  nameWithType.vb: MeshData.AddVertexWithFlagsSkipTexture(Single, Single, Single, Single, Single, Integer, Integer)
-  fullName.vb: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture(Single, Single, Single, Single, Single, Integer, Integer)
-  name.vb: AddVertexWithFlagsSkipTexture(Single, Single, Single, Single, Single, Integer, Integer)
 - uid: Vintagestory.API.Client.MeshData.SetVertexFlags(System.Int32)
   commentId: M:Vintagestory.API.Client.MeshData.SetVertexFlags(System.Int32)
   id: SetVertexFlags(System.Int32)
@@ -3017,6 +3003,34 @@ items:
   nameWithType.vb: MeshData.AddColorMapIndex(Byte, Byte)
   fullName.vb: Vintagestory.API.Client.MeshData.AddColorMapIndex(Byte, Byte)
   name.vb: AddColorMapIndex(Byte, Byte)
+- uid: Vintagestory.API.Client.MeshData.AddColorMapIndex(System.Byte,System.Byte,System.Boolean)
+  commentId: M:Vintagestory.API.Client.MeshData.AddColorMapIndex(System.Byte,System.Byte,System.Boolean)
+  id: AddColorMapIndex(System.Byte,System.Byte,System.Boolean)
+  parent: Vintagestory.API.Client.MeshData
+  langs:
+  - csharp
+  - vb
+  name: AddColorMapIndex(byte, byte, bool)
+  nameWithType: MeshData.AddColorMapIndex(byte, byte, bool)
+  fullName: Vintagestory.API.Client.MeshData.AddColorMapIndex(byte, byte, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public void AddColorMapIndex(byte climateMapIndex, byte seasonMapIndex, bool frostableBit)
+    parameters:
+    - id: climateMapIndex
+      type: System.Byte
+    - id: seasonMapIndex
+      type: System.Byte
+    - id: frostableBit
+      type: System.Boolean
+    content.vb: Public Sub AddColorMapIndex(climateMapIndex As Byte, seasonMapIndex As Byte, frostableBit As Boolean)
+  overload: Vintagestory.API.Client.MeshData.AddColorMapIndex*
+  nameWithType.vb: MeshData.AddColorMapIndex(Byte, Byte, Boolean)
+  fullName.vb: Vintagestory.API.Client.MeshData.AddColorMapIndex(Byte, Byte, Boolean)
+  name.vb: AddColorMapIndex(Byte, Byte, Boolean)
 - uid: Vintagestory.API.Client.MeshData.AddRenderPass(System.Int16)
   commentId: M:Vintagestory.API.Client.MeshData.AddRenderPass(System.Int16)
   id: AddRenderPass(System.Int16)
@@ -3754,6 +3768,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Vintagestory.API.Client.MeshData.Vintagestory.API.Client.MeshUtil.ClearWindFlags
   commentId: M:Vintagestory.API.Client.MeshUtil.ClearWindFlags(Vintagestory.API.Client.MeshData)
   parent: Vintagestory.API.Client.MeshUtil
@@ -3905,6 +3981,73 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Vintagestory.API.Client.MeshUtil.ClearWindFlags(Vintagestory.API.Client.MeshData)
   commentId: M:Vintagestory.API.Client.MeshUtil.ClearWindFlags(Vintagestory.API.Client.MeshData)
   href: Vintagestory.API.Client.MeshUtil.html#Vintagestory_API_Client_MeshUtil_ClearWindFlags_Vintagestory_API_Client_MeshData_
@@ -4052,6 +4195,36 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Client.MeshDataRecycler
   commentId: T:Vintagestory.API.Client.MeshDataRecycler
   parent: Vintagestory.API.Client
@@ -4185,6 +4358,29 @@ references:
   name: EnumDrawMode
   nameWithType: EnumDrawMode
   fullName: Vintagestory.API.Client.EnumDrawMode
+- uid: System.Boolean[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool[]
+  nameWithType: bool[]
+  fullName: bool[]
+  nameWithType.vb: Boolean()
+  fullName.vb: Boolean()
+  name.vb: Boolean()
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: (
+  - name: )
 - uid: Vintagestory.API.Client.MeshData.RenderPasses*
   commentId: Overload:Vintagestory.API.Client.MeshData.RenderPasses
   href: Vintagestory.API.Client.MeshData.html#Vintagestory_API_Client_MeshData_RenderPasses
@@ -4681,12 +4877,6 @@ references:
   name: AddVertexWithFlagsSkipColor
   nameWithType: MeshData.AddVertexWithFlagsSkipColor
   fullName: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipColor
-- uid: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture*
-  commentId: Overload:Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture
-  href: Vintagestory.API.Client.MeshData.html#Vintagestory_API_Client_MeshData_AddVertexWithFlagsSkipTexture_System_Single_System_Single_System_Single_System_Single_System_Single_System_Int32_System_Int32_
-  name: AddVertexWithFlagsSkipTexture
-  nameWithType: MeshData.AddVertexWithFlagsSkipTexture
-  fullName: Vintagestory.API.Client.MeshData.AddVertexWithFlagsSkipTexture
 - uid: Vintagestory.API.Client.MeshData.SetVertexFlags*
   commentId: Overload:Vintagestory.API.Client.MeshData.SetVertexFlags
   href: Vintagestory.API.Client.MeshData.html#Vintagestory_API_Client_MeshData_SetVertexFlags_System_Int32_

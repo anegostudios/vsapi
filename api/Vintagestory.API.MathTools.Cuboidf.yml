@@ -56,6 +56,7 @@ items:
   - Vintagestory.API.MathTools.Cuboidf.Sub(Vintagestory.API.MathTools.IVec3)
   - Vintagestory.API.MathTools.Cuboidf.ToDouble
   - Vintagestory.API.MathTools.Cuboidf.ToString
+  - Vintagestory.API.MathTools.Cuboidf.TransformedCopy(System.Single[])
   - Vintagestory.API.MathTools.Cuboidf.Translate(System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.Cuboidf.Translate(Vintagestory.API.MathTools.IVec3)
   - Vintagestory.API.MathTools.Cuboidf.Width
@@ -81,7 +82,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
-  summary: Represents a three dimensional axis-aligned cuboid using two 3d coordinates. Used for collision and selection boxes.
+  summary: Represents a three dimensional axis-aligned cuboid using two 3D coordinates. Used for collision and selection boxes.
   example: []
   syntax:
     content: 'public class Cuboidf : IEquatable<Cuboidf>'
@@ -99,6 +100,9 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.MathTools.Cuboidf.X1
   commentId: F:Vintagestory.API.MathTools.Cuboidf.X1
   id: X1
@@ -113,6 +117,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    Start X Pos
+  example: []
   syntax:
     content: public float X1
     return:
@@ -132,6 +141,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    Start Y Pos
+  example: []
   syntax:
     content: public float Y1
     return:
@@ -151,6 +165,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    Start Z Pos
+  example: []
   syntax:
     content: public float Z1
     return:
@@ -170,6 +189,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    End X Pos
+  example: []
   syntax:
     content: public float X2
     return:
@@ -189,6 +213,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    End Y Pos
+  example: []
   syntax:
     content: public float Y2
     return:
@@ -208,6 +237,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+
+    End Z Pos
+  example: []
   syntax:
     content: public float Z2
     return:
@@ -1418,6 +1452,34 @@ items:
   nameWithType.vb: Cuboidf.RotatedCopy(Single, Single, Single, Vec3d)
   fullName.vb: Vintagestory.API.MathTools.Cuboidf.RotatedCopy(Single, Single, Single, Vintagestory.API.MathTools.Vec3d)
   name.vb: RotatedCopy(Single, Single, Single, Vec3d)
+- uid: Vintagestory.API.MathTools.Cuboidf.TransformedCopy(System.Single[])
+  commentId: M:Vintagestory.API.MathTools.Cuboidf.TransformedCopy(System.Single[])
+  id: TransformedCopy(System.Single[])
+  parent: Vintagestory.API.MathTools.Cuboidf
+  langs:
+  - csharp
+  - vb
+  name: TransformedCopy(float[])
+  nameWithType: Cuboidf.TransformedCopy(float[])
+  fullName: Vintagestory.API.MathTools.Cuboidf.TransformedCopy(float[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Performs a 3-dimensional rotation on the cuboid and returns a new axis-aligned cuboid resulting from this rotation. Not sure it it makes any sense to use this for other rotations than 90 degree intervals.
+  example: []
+  syntax:
+    content: public Cuboidf TransformedCopy(float[] matrix)
+    parameters:
+    - id: matrix
+      type: System.Single[]
+    return:
+      type: Vintagestory.API.MathTools.Cuboidf
+    content.vb: Public Function TransformedCopy(matrix As Single()) As Cuboidf
+  overload: Vintagestory.API.MathTools.Cuboidf.TransformedCopy*
+  nameWithType.vb: Cuboidf.TransformedCopy(Single())
+  fullName.vb: Vintagestory.API.MathTools.Cuboidf.TransformedCopy(Single())
+  name.vb: TransformedCopy(Single())
 - uid: Vintagestory.API.MathTools.Cuboidf.RotatedCopy(Vintagestory.API.MathTools.IVec3,Vintagestory.API.MathTools.Vec3d)
   commentId: M:Vintagestory.API.MathTools.Cuboidf.RotatedCopy(Vintagestory.API.MathTools.IVec3,Vintagestory.API.MathTools.Vec3d)
   id: RotatedCopy(Vintagestory.API.MathTools.IVec3,Vintagestory.API.MathTools.Vec3d)
@@ -2015,6 +2077,68 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -2050,6 +2174,103 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Single
   commentId: T:System.Single
   parent: System
@@ -2357,6 +2578,35 @@ references:
   name: RotatedCopy
   nameWithType: Cuboidf.RotatedCopy
   fullName: Vintagestory.API.MathTools.Cuboidf.RotatedCopy
+- uid: Vintagestory.API.MathTools.Cuboidf.TransformedCopy*
+  commentId: Overload:Vintagestory.API.MathTools.Cuboidf.TransformedCopy
+  href: Vintagestory.API.MathTools.Cuboidf.html#Vintagestory_API_MathTools_Cuboidf_TransformedCopy_System_Single___
+  name: TransformedCopy
+  nameWithType: Cuboidf.TransformedCopy
+  fullName: Vintagestory.API.MathTools.Cuboidf.TransformedCopy
+- uid: System.Single[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
 - uid: Vintagestory.API.MathTools.Cuboidf.OffsetCopy*
   commentId: Overload:Vintagestory.API.MathTools.Cuboidf.OffsetCopy
   href: Vintagestory.API.MathTools.Cuboidf.html#Vintagestory_API_MathTools_Cuboidf_OffsetCopy_System_Single_System_Single_System_Single_

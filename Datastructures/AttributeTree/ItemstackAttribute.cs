@@ -27,6 +27,11 @@ namespace Vintagestory.API.Datastructures
             return value;
         }
 
+        public void SetValue(ItemStack newval)
+        {
+            value = newval;
+        }
+
 
         public void FromBytes(BinaryReader stream)
         {

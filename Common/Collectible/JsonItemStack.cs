@@ -6,27 +6,56 @@ using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// This is a representation of an item stack in JSON.
+    /// It resembles a standard in-game item stack but can be stored before the game is loaded.
+    /// </summary>
+    /// <example>
+    /// <code language="json">
+    ///	"output": {
+    ///		"type": "item",
+    ///		"code": "knifeblade-flint",
+    ///		"stacksize": 1
+    ///	},
+    /// </code>
+    /// <code language="json">
+    ///	"output": {
+    ///		"type": "block",
+    ///		"code": "ladder-wood-north",
+    ///		"quantity": 3
+    ///	},
+    /// </code>
+    /// </example>
+    [DocumentAsJson]
     [ProtoContract]
     public class JsonItemStack : IRecipeOutput
     {
         /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>Block</jsondefault>-->
         /// Block or Item?
         /// </summary>
         [ProtoMember(1)]
-        public EnumItemClass Type;
+        [DocumentAsJson] public EnumItemClass Type;
+
         /// <summary>
-        /// Code of the block or item
+        /// <!--<jsonoptional>Required</jsonoptional>-->
+        /// The asset location code of the block or item.
         /// </summary>
         [ProtoMember(2)]
-        public AssetLocation Code;
+        [DocumentAsJson] public AssetLocation Code;
+
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
         /// Amount of items in this stacks
         /// </summary>
         [ProtoMember(3)]
-        public int StackSize = 1;
+        [DocumentAsJson] public int StackSize = 1;
+
         /// <summary>
-        /// Alias of <see cref="StackSize"/>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+        /// Alias of <see cref="StackSize"/>. No real need to use this instead of it.
         /// </summary>
+        [DocumentAsJson]
         public int Quantity
         {
             get { return StackSize;  }
@@ -34,7 +63,8 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// Tree Attributes that should be attached to the resulting itemstack
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// Tree Attributes that should be attached to the resulting itemstack.
         /// </summary>
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
         [ProtoMember(4)]

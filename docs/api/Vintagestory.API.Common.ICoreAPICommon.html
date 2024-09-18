@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -112,6 +112,16 @@ Interface ICoreAPICommon
 
 
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -233,7 +243,10 @@ Interface ICoreAPICommon
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Loads a config file from a prepared modconfig folder, you only need to provide a unique filename. Recommendation: Surround this call with a try/catch in case the user made a typo while changing the configuration
+Be aware that these configs are not synchronized between client and server. Each side will store their own copy of the configuration. If these configs affect gameplay, you will likely need to synchronize it to client via network packet
+Returns null if the file does not exist</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -269,8 +282,8 @@ Interface ICoreAPICommon
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Milo kept asking for a standardized way to load and store mod configuration data, so here you go :P
-Recommendation: Surround this call with a try/catch in case the user made a typo while changing the configuration
+  <div class="markdown level1 summary"><p>Loads a config file from a prepared modconfig folder, you only need to provide a unique filename. Recommendation: Surround this call with a try/catch in case the user made a typo while changing the configuration
+Be aware that these configs are not synchronized between client and server. Each side will store their own copy of the configuration. If these configs affect gameplay, you will likely need to synchronize it to client via network packet
 Returns null if the file does not exist</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -730,7 +743,9 @@ Make your your delegate also set tree.SetString(&quot;className&quot;, &quot;[yo
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Stores a config file in a prepared modconfig folder. You only need to provide a unique filename.
+Be aware that these configs are not synchronized between client and server. Each side will store their own copy of the configuration. If these configs affect gameplay, you will likely need to synchronize it to client it via network packet</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -763,8 +778,9 @@ Make your your delegate also set tree.SetString(&quot;className&quot;, &quot;[yo
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Milo kept asking for a standardized way to load and store mod configuration data, so here you go :P
-For T just make a class with all fields public - this is your configuration class. Be sure to set useful default values for your settings</p>
+  <div class="markdown level1 summary"><p>Stores a config file in a prepared modconfig folder. You only need to provide a unique filename.
+For T just make a class with all fields public - this is your configuration class. Be sure to set useful default values for your settings
+Be aware that these configs are not synchronized between client and server. Each side will store their own copy of the configuration. If these configs affect gameplay, you will likely need to synchronize it via network packet</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

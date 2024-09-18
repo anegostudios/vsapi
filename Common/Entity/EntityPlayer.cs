@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Numerics;
-using System.Reflection.Metadata;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
@@ -45,6 +43,11 @@ namespace Vintagestory.API.Common
         public Vec3d CameraPos = new Vec3d();
 
         /// <summary>
+        /// An offset which can be applied to the camera position to achieve certain special effects or special features, for example Timeswitch feature. Set only by the game client.
+        /// </summary>
+        public Vec3d CameraPosOffset = new Vec3d();
+
+        /// <summary>
         /// The yaw the player currently wants to walk towards to. Value set by the PlayerPhysics system. Set by the game client and server.
         /// </summary>
         public float WalkYaw;
@@ -69,8 +72,8 @@ namespace Vintagestory.API.Common
         public CanSpawnNearbyDelegate OnCanSpawnNearby;
 
         public EntityTalkUtil talkUtil;
-        public Vec2f BodyYawLimits;
-        public Vec2f HeadYawLimits;
+        public AngleConstraint BodyYawLimits;
+        public AngleConstraint HeadYawLimits;
 
         /// <summary>
         /// Used to assist if this EntityPlayer needs to be repartitioned
@@ -92,12 +95,13 @@ namespace Vintagestory.API.Common
             set {
                 if (BodyYawLimits != null)
                 {
-                    base.BodyYaw = GameMath.Clamp(value, BodyYawLimits.X, BodyYawLimits.Y);
+                    var range = GameMath.AngleRadDistance(BodyYawLimits.CenterRad, value);
+                    base.BodyYaw = BodyYawLimits.CenterRad + GameMath.Clamp(range, -BodyYawLimits.RangeRad, BodyYawLimits.RangeRad);
                 } else
                 {
                     base.BodyYaw = value;
                 }
-                
+
             }
         }
 
@@ -162,19 +166,6 @@ namespace Vintagestory.API.Common
             }
         }
 
-        /// <summary>
-        /// The players wearables. Available on the client and the server.
-        /// </summary>
-        public override IInventory GearInventory
-        {
-            get
-            {
-                IPlayer player = World.PlayerByUid(PlayerUID);
-                return player?.InventoryManager.GetOwnInventory(GlobalConstants.characterInvClassName);
-            }
-        }
-
-
         bool newSpawnGlow;
 
 
@@ -208,7 +199,7 @@ namespace Vintagestory.API.Common
                 {
                     if (newSpawnGlow) // Don't repeatedly set glowlevel to 0, but only once after our respawn glow expired.
                     {
-                        Properties.Client.GlowLevel = 0; 
+                        Properties.Client.GlowLevel = 0;
                         newSpawnGlow = false;
                     }
                 }
@@ -307,11 +298,14 @@ namespace Vintagestory.API.Common
         public EntityPlayer() : base()
         {
             // For the first person mode (and just for the current client player, not other players), we have animation sets with hands that are detached from the seraph body,
-            // which must only run while in first person mode and not while doing the shadow pass. 
+            // which must only run while in first person mode and not while doing the shadow pass.
             // To achieve this, we run two paralell animation managers and flip back and forth between the two as needed
             animManager = new PlayerAnimationManager();
             (animManager as PlayerAnimationManager).UseFpAnmations = false;
             selfFpAnimManager = new PlayerAnimationManager();
+
+            requirePosesOnServer = true;
+            alwaysRunIdle = true;
 
             Stats
                 .Register("healingeffectivness")
@@ -328,7 +322,7 @@ namespace Vintagestory.API.Common
                 .Register("animalLootDropRate")
                 .Register("forageDropRate")
                 .Register("wildCropDropRate")
-                
+
                 .Register("vesselContentsDropRate")
                 .Register("oreDropRate")
                 .Register("rustyGearDropRate")
@@ -340,6 +334,8 @@ namespace Vintagestory.API.Common
                 .Register("wholeVesselLootChance", EnumStatBlendType.FlatSum)
                 .Register("temporalGearTLRepairCost", EnumStatBlendType.FlatSum)
                 .Register("animalHarvestingTime")
+                .Register("gliderLiftMax")
+                .Register("gliderSpeedMax")
             ;
         }
 
@@ -413,24 +409,10 @@ namespace Vintagestory.API.Common
         }
 
 
+        bool tesselating = false;
         public override void OnTesselation(ref Shape entityShape, string shapePathForLogging)
         {
-            IInventory backPackInv = Player?.InventoryManager.GetOwnInventory(GlobalConstants.backpackInvClassName);
-
-            Dictionary<string, ItemSlot> uniqueGear = new Dictionary<string, ItemSlot>();
-            for (int i = 0; backPackInv != null && i < 4; i++)
-            {
-                ItemSlot slot = backPackInv[i];
-                if (slot.Empty) continue;
-                uniqueGear["" + slot.Itemstack.Class + slot.Itemstack.Collectible.Id] = slot;
-            }
-
-            foreach (var val in uniqueGear)
-            {
-                entityShape = addGearToShape(val.Value, entityShape, shapePathForLogging);
-            }
-
-            AnimationCache.ClearCache(Api, this);
+            tesselating = true;
 
             base.OnTesselation(ref entityShape, shapePathForLogging);
 
@@ -438,15 +420,22 @@ namespace Vintagestory.API.Common
 
             if (IsSelf)
             {
-                AnimationCache.InitManager(World.Api, OtherAnimManager, this, entityShape, OtherAnimManager.Animator?.RunningAnimations, "head");
+                OtherAnimManager.LoadAnimator(World.Api, this, entityShape, OtherAnimManager.Animator?.Animations, true, "head");
                 OtherAnimManager.HeadController = new PlayerHeadController(OtherAnimManager, this, entityShape);
             }
+        }
+
+        public override void OnTesselated()
+        {
+            tesselating = false;
         }
 
         private void updateEyeHeight(float dt)
         {
             IPlayer player = World.PlayerByUid(PlayerUID);
             PrevFrameCanStandUp = true;
+
+            if (tesselating) return;
 
             if (player != null && player?.WorldData?.CurrentGameMode != EnumGameMode.Spectator)
             {
@@ -566,8 +555,10 @@ namespace Vintagestory.API.Common
             if (Swimming) return false;   // We don't play solid block's inside sounds while swimming
 
             BlockPos tmpPos = new BlockPos((int)Pos.X, (int)Pos.Y, (int)Pos.Z, Pos.Dimension);
-            AssetLocation soundinsideTorso = GetInsideTorsoBlockSoundSource(tmpPos)?.GetSounds(Api.World.BlockAccessor, tmpPos).Inside;
-            AssetLocation soundinsideLegs = GetInsideLegsBlockSoundSource(tmpPos)?.GetSounds(Api.World.BlockAccessor, tmpPos).Inside;
+            BlockSelection blockSel = new BlockSelection() { Position = tmpPos, Face = null };
+
+            AssetLocation soundinsideTorso = GetInsideTorsoBlockSoundSource(tmpPos)?.GetSounds(Api.World.BlockAccessor, blockSel).Inside;
+            AssetLocation soundinsideLegs = GetInsideLegsBlockSoundSource(tmpPos)?.GetSounds(Api.World.BlockAccessor, blockSel).Inside;
 
             bool makingSound = false;
             if (soundinsideTorso != null)
@@ -609,15 +600,16 @@ namespace Vintagestory.API.Common
 
             EntityPos pos = SidedPos;
             BlockPos tmpPos = new BlockPos((int)pos.X, (int)pos.Y, (int)pos.Z, pos.Dimension);
+            BlockSelection blockSel = new BlockSelection() { Position = tmpPos, Face = BlockFacing.UP };
 
-            var soundWalkLoc = 
-                GetNearestBlockSoundSource(tmpPos, -0.03, BlockLayersAccess.MostSolid, true)?.GetSounds(Api.World.BlockAccessor, tmpPos)?.Walk ??
-                GetNearestBlockSoundSource(tmpPos, -0.7, BlockLayersAccess.MostSolid, true)?.GetSounds(Api.World.BlockAccessor, tmpPos)?.Walk     // When stepping stairs, seraphs is a bit floaty. And for fences we need to peek further down to find the block
+            var soundWalkLoc =
+                GetNearestBlockSoundSource(tmpPos, -0.03, BlockLayersAccess.MostSolid, true)?.GetSounds(Api.World.BlockAccessor, blockSel)?.Walk ??
+                GetNearestBlockSoundSource(tmpPos, -0.7, BlockLayersAccess.MostSolid, true)?.GetSounds(Api.World.BlockAccessor, blockSel)?.Walk     // When stepping stairs, seraphs is a bit floaty. And for fences we need to peek further down to find the block
             ;
 
             tmpPos.Set((int)pos.X, (int)(pos.Y + 0.1f), (int)pos.Z);
             var liquidblockInside = World.BlockAccessor.GetBlock(tmpPos, BlockLayersAccess.Fluid);
-            AssetLocation soundinsideliquid = liquidblockInside.GetSounds(Api.World.BlockAccessor, tmpPos)?.Inside;
+            AssetLocation soundinsideliquid = liquidblockInside.GetSounds(Api.World.BlockAccessor, blockSel)?.Inside;
 
             if (soundinsideliquid != null)
             {
@@ -636,7 +628,7 @@ namespace Vintagestory.API.Common
             bool isSelf = player.PlayerUID == (Api as ICoreClientAPI)?.World.Player?.PlayerUID;
             var srvplayer = player as IServerPlayer; // Don't send the sound to the current player, he plays the sound himself
             double x = 0, y = 0, z = 0;
-            if (!isSelf) { x = Pos.X; y = Pos.Y + yOffset; z = Pos.Z; }
+            if (!isSelf) { x = Pos.X; y = Pos.InternalY + yOffset; z = Pos.Z; }
 
             if (Api.Side == EnumAppSide.Client) return ((IClientWorldAccessor)World).PlaySoundAtAndGetDuration(sound, x, y, z, srvplayer, true, range, volume);
 
@@ -699,9 +691,9 @@ namespace Vintagestory.API.Common
 
         Cuboidf tmpCollBox = new Cuboidf();
         bool holdPosition = false;
-        
+
         float[] prevAnimModelMatrix;
-        public float sidewaysSwivelAngle;
+
 
         float secondsDead;
 
@@ -726,10 +718,10 @@ namespace Vintagestory.API.Common
 
             bool wasHoldPos = holdPosition;
             holdPosition = false;
-            
-            for (int i = 0; i < AnimManager.Animator.RunningAnimations.Length; i++)
+
+            for (int i = 0; i < AnimManager.Animator.Animations.Length; i++)
             {
-                RunningAnimation anim = AnimManager.Animator.RunningAnimations[i];
+                RunningAnimation anim = AnimManager.Animator.Animations[i];
                 if (anim.Running && anim.EasingFactor >= anim.meta.HoldEyePosAfterEasein)
                 {
                     if (!wasHoldPos)
@@ -745,7 +737,7 @@ namespace Vintagestory.API.Common
             tmpModelMat
                 .Set(ModelMat)
                 .RotateX(SidedPos.Roll + rotX * GameMath.DEG2RAD)
-                .RotateY(bodyYaw + (180 + rotY) * GameMath.DEG2RAD)
+                .RotateY(bodyYaw + (90 + rotY) * GameMath.DEG2RAD)
                 .RotateZ(bodyPitch + rotZ * GameMath.DEG2RAD)
                 .Scale(Properties.Client.Size, Properties.Client.Size, Properties.Client.Size)
                 .Translate(-0.5f, 0, -0.5f)
@@ -780,11 +772,11 @@ namespace Vintagestory.API.Common
 
             PlayerAnimationManager plrAnimMngr = this.AnimManager as PlayerAnimationManager;
 
-            bool newUseStack = interact == EnumHandInteract.BlockInteract || interact == EnumHandInteract.HeldItemInteract || (servercontrols.RightMouseDown && !servercontrols.LeftMouseDown);
-            bool oldUseStack = plrAnimMngr.IsHeldUseActive();
+            bool nowUseStack = interact == EnumHandInteract.BlockInteract || interact == EnumHandInteract.HeldItemInteract || (servercontrols.RightMouseDown && !servercontrols.LeftMouseDown);
+            bool wasUseStack = plrAnimMngr.IsHeldUseActive();
 
-            bool newHitStack = interact == EnumHandInteract.HeldItemAttack || servercontrols.LeftMouseDown;
-            bool oldHitStack = plrAnimMngr.IsHeldHitActive(1f);
+            bool nowHitStack = interact == EnumHandInteract.HeldItemAttack || servercontrols.LeftMouseDown;
+            bool wasHitStack = plrAnimMngr.IsHeldHitActive(1f);
 
             string nowHeldRightUseAnim = rightstack?.Collectible.GetHeldTpUseAnimation(RightHandItemSlot, this);
             string nowHeldRightHitAnim = rightstack?.Collectible.GetHeldTpHitAnimation(RightHandItemSlot, this);
@@ -793,9 +785,9 @@ namespace Vintagestory.API.Common
             string nowHeldRightReadyAnim = rightstack?.Collectible.GetHeldReadyAnimation(RightHandItemSlot, this, EnumHand.Right);
 
 
-            bool shouldRightReadyStack = 
-                haveHandUseOrHit 
-                && !servercontrols.LeftMouseDown && !servercontrols.RightMouseDown 
+            bool shouldRightReadyStack =
+                haveHandUseOrHit
+                && !servercontrols.LeftMouseDown && !servercontrols.RightMouseDown
             //    && Controls.HandUse == EnumHandInteract.None - Cannot wait until fully complete, need to start at 95% completion of the action
                 && !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldHitAnimation) && !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldUseAnimation)
             ;
@@ -803,7 +795,7 @@ namespace Vintagestory.API.Common
 
             bool shouldRightIdleStack =
                 nowHeldRightIdleAnim != null &&
-                !newUseStack && !newHitStack &&
+                !nowUseStack && !nowHitStack &&
                 !shouldRightReadyStack &&
                 /*!isRightReadyStack &&  - why was this here?? It causes endless loops! */
                 !plrAnimMngr.IsAnimationActiveOrRunning(plrAnimMngr.lastRunningHeldHitAnimation) &&
@@ -836,21 +828,21 @@ namespace Vintagestory.API.Common
                 haveHandUseOrHit = false;
             }
 
-            if (newUseStack != oldUseStack || plrAnimMngr.HeldUseAnimChanged(nowHeldRightUseAnim))
+            if ((nowUseStack != wasUseStack || plrAnimMngr.HeldUseAnimChanged(nowHeldRightUseAnim)) && !nowHitStack /* this prevents jitter when doing left click scything and then holding right mouse button */)
             {
                 plrAnimMngr.StopHeldUseAnim();
 
-                if (newUseStack)
+                if (nowUseStack)
                 {
                     plrAnimMngr.StartHeldUseAnim(nowHeldRightUseAnim);
                     haveHandUseOrHit = true;
                 }
             }
 
-            if (newHitStack != oldHitStack /*|| plrAnimMngr.HeldHitAnimChanged(nowHeldRightHitAnim) - why is this here? */)
+            if (nowHitStack != wasHitStack || plrAnimMngr.HeldHitAnimChanged(nowHeldRightHitAnim))
             {
                 bool nowauthoritative = plrAnimMngr.IsAuthoritative(nowHeldRightHitAnim);
-                bool curauthoritative = plrAnimMngr.IsHeldHitAuthoritative() && oldHitStack;
+                bool curauthoritative = plrAnimMngr.IsHeldHitAuthoritative();
 
                 if (!curauthoritative)
                 {
@@ -858,9 +850,7 @@ namespace Vintagestory.API.Common
                     plrAnimMngr.StopAnimation(plrAnimMngr.lastRunningHeldHitAnimation); // Needed for some reason. Doesn't stop otherwise when left mouse + empty hand and then scroll wheel active slot to pickaxe
                 }
 
-                //if (/*plrAnimMngr.lastRunningHeldHitAnimation != null && - why is this here? */curauthoritative) - why is this curauthoritative?
-
-                if (nowauthoritative)
+                if (plrAnimMngr.lastRunningHeldHitAnimation != null && curauthoritative)
                 {
                     if (servercontrols.LeftMouseDown)
                     {
@@ -873,8 +863,8 @@ namespace Vintagestory.API.Common
 
                 } else
                 {
-                    if (nowauthoritative) newHitStack = servercontrols.LeftMouseDown;
-                    if (!curauthoritative && newHitStack)
+                    if (nowauthoritative) nowHitStack = servercontrols.LeftMouseDown;
+                    if (!curauthoritative && nowHitStack)
                     {
                         plrAnimMngr.StartHeldHitAnim(nowHeldRightHitAnim);
                         haveHandUseOrHit = true;
@@ -921,7 +911,7 @@ namespace Vintagestory.API.Common
                 bool isOutside = GlobalConstants.CurrentDistanceToRainfallClient < 6;
 
                 if (isOutside && lookingIntoWind && RightHandItemSlot?.Empty == true && strongWindAccum > 2 && Player.WorldData.CurrentGameMode != EnumGameMode.Creative && !hasEyeProtectiveGear())
-                {   
+                {
                     AnimManager.StartAnimation("protecteyes");
                 }
                 else
@@ -933,7 +923,7 @@ namespace Vintagestory.API.Common
 
         private bool hasEyeProtectiveGear()
         {
-            return GearInventory != null && GearInventory.FirstOrDefault((slot) => !slot.Empty && slot.Itemstack.Collectible.Attributes?.IsTrue("eyeprotective") == true) != null;
+            return Attributes.GetBool("hasProtectiveEyeGear"); // Set in EntityBehaviorPlayerInventory.cs
         }
 
         private bool canStandUp()
@@ -945,7 +935,7 @@ namespace Vintagestory.API.Common
             tmpCollBox.Y2 = Properties.CollisionBoxSize.Y;
             tmpCollBox.Y1 += 1f; // Don't care about the bottom block
             bool collideStanding = World.CollisionTester.IsColliding(World.BlockAccessor, tmpCollBox, Pos.XYZ, false);
-            
+
             return !collideStanding || collideSneaking;
         }
 
@@ -962,7 +952,7 @@ namespace Vintagestory.API.Common
                 if (nowActive)
                 {
                     bool floorSitActive = this.AnimManager.IsAnimationActive(anim.Code);
-                    
+
                     if (canDoEdgeSit)
                     {
                         if (floorSitActive)
@@ -974,8 +964,9 @@ namespace Vintagestory.API.Common
                             AnimManager.StartAnimation("sitflooredge");
                             capi.Network.SendEntityPacket(EntityId, (int)EntityClientPacketId.SitfloorEdge, SerializerUtil.Serialize(1));
                             BodyYaw = (float)Math.Round(BodyYaw * GameMath.RAD2DEG / 90) * 90f * GameMath.DEG2RAD;
-                            BodyYawLimits = new Vec2f(BodyYaw - 0.2f, BodyYaw + 0.2f);
-                            HeadYawLimits = new Vec2f(BodyYaw - GameMath.PIHALF*0.95f, BodyYaw + GameMath.PIHALF * 0.95f);
+
+                            BodyYawLimits = new AngleConstraint(BodyYaw, 0.2f);
+                            HeadYawLimits = new AngleConstraint(BodyYaw, GameMath.PIHALF * 0.95f);
                         }
                         return true;
                     }
@@ -1009,11 +1000,11 @@ namespace Vintagestory.API.Common
             var bl = Api.World.BlockAccessor;
             var pos = Pos.XYZ;
 
-            float byaw = BodyYawLimits == null ? Pos.Yaw : (BodyYawLimits.X + BodyYawLimits.Y) / 2f;
+            float byaw = BodyYawLimits == null ? Pos.Yaw : BodyYawLimits.CenterRad;
             float cosYaw = GameMath.Cos(byaw + GameMath.PI / 2);
             float sinYaw = GameMath.Sin(byaw + GameMath.PI / 2);
             var frontBelowPos = new Vec3d(Pos.X + sinYaw * 0.3f, Pos.Y - 1, Pos.Z + cosYaw * 0.3f).AsBlockPos;
-            
+
             Block frontBelowBlock = bl.GetBlock(frontBelowPos);
             var frontBellowCollBoxes = frontBelowBlock.GetCollisionBoxes(bl, frontBelowPos);
             if (frontBellowCollBoxes == null || frontBellowCollBoxes.Length == 0) return true;
@@ -1021,28 +1012,6 @@ namespace Vintagestory.API.Common
             double sitHeight = pos.Y - (frontBelowPos.Y + frontBellowCollBoxes.Max(box => box.Y2));
 
             return sitHeight >= 0.45;
-
-            // WTF is this completely utter nonesense
-            /*var frontPos = Pos.XYZ.AsBlockPos;
-            frontPos.Y = (int)Math.Ceiling(Pos.Y);
-
-            float byaw = BodyYawLimits == null ? Pos.Yaw : (BodyYawLimits.X + BodyYawLimits.Y) / 2f;
-            float cosYaw = GameMath.Cos(byaw + GameMath.PI / 2);
-            float sinYaw = GameMath.Sin(byaw + GameMath.PI / 2);
-            var backPos = new Vec3d(Pos.X + sinYaw * -0.3f, Pos.Y - 1, Pos.Z + cosYaw * -0.3f).AsBlockPos;
-            
-            var frontBelowPos = frontPos.AddCopy(0, -1, 0);
-
-            Block frontBlock = Api.World.BlockAccessor.GetBlock(frontPos);
-            Block backBlock = Api.World.BlockAccessor.GetBlock(backPos);
-            Block frontBelowBlock = Api.World.BlockAccessor.GetBlock(frontBelowPos);
-
-            var face = BlockFacing.FromNormal(new Vec3i(backPos.X - frontPos.X, 0, backPos.Z - frontPos.Z));
-
-            var frontFree = face != null && !frontBlock.CanAttachBlockAt(Api.World.BlockAccessor, frontBlock, frontPos, face);
-            var frontBelowFree = frontBelowBlock.GetCollisionBoxes(Api.World.BlockAccessor, frontBelowPos)?.FirstOrDefault(c => c.Y2 > 0.5) == null;
-
-            return frontFree && frontBelowFree && backBlock.Replaceable < 6000;*/
         }
 
 
@@ -1065,11 +1034,13 @@ namespace Vintagestory.API.Common
             {
                 EntityPos pos = SidedPos;
                 BlockPos tmpPos = new BlockPos((int)pos.X, (int)(pos.Y - 0.1f), (int)pos.Z, pos.Dimension);
+                BlockSelection blockSel = new BlockSelection() { Position = tmpPos, Face = BlockFacing.UP };
+
                 var blockUnder = GetNearestBlockSoundSource(tmpPos, -0.1, BlockLayersAccess.MostSolid, true);
 
                 var soundWalkLoc =
-                    GetNearestBlockSoundSource(tmpPos, -0.1, BlockLayersAccess.MostSolid, true)?.GetSounds(Api.World.BlockAccessor, tmpPos)?.Walk ??
-                    GetNearestBlockSoundSource(tmpPos, -0.7, BlockLayersAccess.MostSolid, true)?.GetSounds(Api.World.BlockAccessor, tmpPos)?.Walk     // Stairs and Fences are a special snowflake
+                    GetNearestBlockSoundSource(tmpPos, -0.1, BlockLayersAccess.MostSolid, true)?.GetSounds(Api.World.BlockAccessor, blockSel)?.Walk ??
+                    GetNearestBlockSoundSource(tmpPos, -0.7, BlockLayersAccess.MostSolid, true)?.GetSounds(Api.World.BlockAccessor, blockSel)?.Walk     // Stairs and Fences are a special snowflake
                 ;
 
                 if (soundWalkLoc != null && !Swimming)
@@ -1101,10 +1072,10 @@ namespace Vintagestory.API.Common
             entityBox.SetAndTranslate(colBox, pos.X, pos.Y + yOffset, pos.Z);
             entityBox.GrowBy(-0.001, 0, -0.001);   // Prevent detection when hardly inside, just touching  (movement system or rounding errors can push an entity fractionally inside a block)
 
-
             int yo = (int)(pos.Y + yOffset);
             tmpPos.Set(pos.XInt, yo, pos.ZInt);
-            Block block = getSoundSourceBlockAt(entityBox, tmpPos, blockLayer, usecollisionboxes);
+            BlockSelection blockSel = new BlockSelection() { Position = tmpPos, Face = BlockFacing.DOWN };
+            Block block = getSoundSourceBlockAt(entityBox, blockSel, blockLayer, usecollisionboxes);
             if (block != null) return block;
 
 
@@ -1133,25 +1104,25 @@ namespace Vintagestory.API.Common
             }
 
             return
-                getSoundSourceBlockAt(entityBox, tmpPos.Set(nearerNeibX, yo, nearerNeibZ), blockLayer, usecollisionboxes) ??
-                getSoundSourceBlockAt(entityBox, tmpPos.Set(furtherNeibX, yo, furtherNeibZ), blockLayer, usecollisionboxes) ??
-                getSoundSourceBlockAt(entityBox, tmpPos.Set(adjacentX, yo, adjacentZ), blockLayer, usecollisionboxes)
+                getSoundSourceBlockAt(entityBox, blockSel.SetPos(nearerNeibX, yo, nearerNeibZ), blockLayer, usecollisionboxes) ??
+                getSoundSourceBlockAt(entityBox, blockSel.SetPos(furtherNeibX, yo, furtherNeibZ), blockLayer, usecollisionboxes) ??
+                getSoundSourceBlockAt(entityBox, blockSel.SetPos(adjacentX, yo, adjacentZ), blockLayer, usecollisionboxes)
             ;
         }
 
 
-        protected Block getSoundSourceBlockAt(Cuboidd entityBox, BlockPos tmpPos, int blockLayer, bool usecollisionboxes)
+        protected Block getSoundSourceBlockAt(Cuboidd entityBox, BlockSelection blockSel, int blockLayer, bool usecollisionboxes)
         {
-            Block block = World.BlockAccessor.GetBlock(tmpPos, blockLayer);
-            if (!usecollisionboxes && block.GetSounds(Api.World.BlockAccessor, tmpPos)?.Inside == null) return null;
+            Block block = World.BlockAccessor.GetBlock(blockSel.Position, blockLayer);
+            if (!usecollisionboxes && block.GetSounds(Api.World.BlockAccessor, blockSel)?.Inside == null) return null;
 
-            Cuboidf[] blockBoxes = usecollisionboxes ? block.GetCollisionBoxes(World.BlockAccessor, tmpPos) : block.GetSelectionBoxes(World.BlockAccessor, tmpPos);
+            Cuboidf[] blockBoxes = usecollisionboxes ? block.GetCollisionBoxes(World.BlockAccessor, blockSel.Position) : block.GetSelectionBoxes(World.BlockAccessor, blockSel.Position);
             if (blockBoxes == null) return null;
 
             for (int i = 0; i < blockBoxes.Length; i++)
             {
                 Cuboidf blockBox = blockBoxes[i];
-                if (blockBox != null && entityBox.Intersects(blockBox, tmpPos.X, tmpPos.Y, tmpPos.Z))
+                if (blockBox != null && entityBox.Intersects(blockBox, blockSel.Position.X, blockSel.Position.Y, blockSel.Position.Z))
                 {
                     return block;
                 }
@@ -1160,7 +1131,7 @@ namespace Vintagestory.API.Common
             return null;
         }
 
-        
+
 
 
 
@@ -1183,32 +1154,11 @@ namespace Vintagestory.API.Common
             TryUnmount();
             WatchedAttributes.SetFloat("intoxication", 0);
 
-            // Execute this one frame later so that in case right after this method some other code still returns an item (e.g. BlockMeal), it is also ditched
-            Api.Event.EnqueueMainThreadTask(() =>
-            {
-                if (Properties.Server?.Attributes?.GetBool("keepContents", false) != true)
-                {
-                    World.PlayerByUid(PlayerUID).InventoryManager.OnDeath();
-                }
 
-                if (Properties.Server?.Attributes?.GetBool("dropArmorOnDeath", false) == true)
-                {
-                    foreach (var slot in GearInventory)
-                    {
-                        if (slot.Empty) continue;
-                        if (slot.Itemstack.ItemAttributes?["protectionModifiers"].Exists == true)
-                        {
-                            Api.World.SpawnItemEntity(slot.Itemstack, ServerPos.XYZ);
-                            slot.Itemstack = null;
-                            slot.MarkDirty();
-                        }
-                    }
-                }
-            }, "dropinventoryondeath");
 
         }
 
-        public override bool TryMount(IMountable onmount)
+        public override bool TryMount(IMountableSeat onmount)
         {
             bool ok = base.TryMount(onmount);
             if (ok && Alive && Player != null)
@@ -1277,7 +1227,7 @@ namespace Vintagestory.API.Common
             {
                 TryStopHandAction(true, EnumItemUseCancelReason.Death);
             }
-            
+
             if (packetid == EntityTalkUtil.TalkPacketId)
             {
                 var tt = SerializerUtil.Deserialize<EnumTalkType>(data);
@@ -1447,7 +1397,7 @@ namespace Vintagestory.API.Common
                             IServerPlayer player = this.Player as IServerPlayer;
                             int chunksize = GlobalConstants.ChunkSize;
                             player.CurrentChunkSentRadius = 0;
-                            
+
                             sapi.Event.RegisterCallback((bla) => {
                                 if (player.ConnectionState == EnumClientState.Offline) return;
 
@@ -1529,7 +1479,7 @@ namespace Vintagestory.API.Common
             StringBuilder runninganims = new StringBuilder();
             if (OtherAnimManager.Animator != null)
             {
-                foreach (var anim in OtherAnimManager.Animator.RunningAnimations)
+                foreach (var anim in OtherAnimManager.Animator.Animations)
                 {
                     if (!anim.Active) continue;
 
@@ -1542,5 +1492,46 @@ namespace Vintagestory.API.Common
             }
         }
 
+        public void ChangeDimension(int dim)
+        {
+            /*  Thought cloud:
+             *      Both Server and Client
+                    1. /Change dimension in the EntityPos
+                    2. /Remove entity from chunk in old dimension, add to chunk in new dimension
+
+                    Server only:
+                    S3. /Corresponding change to Entity Partitioning   (basically do everything which happens on entity unload)
+                    S4. stretch goal? update any AITask currently targeting this entity (it should stop chasing etc. immediately on next tick)
+                        - AITaskTargetable - check IsTargetable every tick, 
+                    S5. Update chunk sending for that player (? may be unnecessary)
+                    S6. Send update to other clients
+                    S7. Do we need to force OTHER clients to run game.RemoveEntityRenderer(entity) or is changing the dimension + chunk enough?
+                        - orrr change the frustum or renderdistance check (RenderEntity.cs line 56) - note renderdistance is horizontal
+
+                    Client only:
+                    C3. Client-side clear chunk occlusion?
+                    C4. Any ChunkRenderer fixes? Certainly all chunk visibility needs to be updated
+            */
+
+            long oldChunkIndex = this.InChunkIndex3d;
+
+            this.Pos.Dimension = dim;
+            this.ServerPos.Dimension = dim;
+
+            long newchunkindex3d = Api.World.ChunkProvider.ChunkIndex3D(Pos);
+            Api.World.UpdateEntityChunk(this, newchunkindex3d);
+
+
+            if (Api is ICoreServerAPI)
+            {
+                UpdatePartitioning();
+                // Server side
+            }
+            else
+            {
+                // Client side
+            }
+
+        }
     }
 }

@@ -6,22 +6,24 @@ items:
   parent: Vintagestory.API.Common
   children:
   - Vintagestory.API.Common.EntityBehaviorPassivePhysics.#ctor(Vintagestory.API.Common.Entities.Entity)
-  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.Dispose
-  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.DoPhysics(System.Single,Vintagestory.API.Common.Entities.EntityPos)
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.AfterPhysicsTick(System.Single)
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.ApplyTests(Vintagestory.API.Common.Entities.EntityPos)
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.FlagTickDone
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.HandleRemotePhysics(System.Single,System.Boolean)
   - Vintagestory.API.Common.EntityBehaviorPassivePhysics.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Datastructures.JsonObject)
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.MotionAndCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)
   - Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
-  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnGameTick(System.Single)
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTick(System.Single)
   - Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTickCallback
-  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedClientPos(System.Int32)
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.EntityBehaviorPassivePhysics.PropertyName
-  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderOrder
-  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderRange
-  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.UsePhysicsDormancyStateClient
-  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.UsePhysicsDormancyStateServer
-  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.clientPhysicsTickTimeThreshold
-  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.collisionYExtra
-  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.duringRenderFrame
-  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.onPhysicsTick(System.Single,System.Boolean)
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.RemoteMotionAndCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetProperties(Vintagestory.API.Datastructures.JsonObject)
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetState(Vintagestory.API.Common.Entities.EntityPos)
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.Ticking
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.applyCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)
+  - Vintagestory.API.Common.EntityBehaviorPassivePhysics.newPos
   langs:
   - csharp
   - vb
@@ -33,25 +35,36 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: 'public class EntityBehaviorPassivePhysics : EntityBehavior, IRenderer, IDisposable'
-    content.vb: Public Class EntityBehaviorPassivePhysics Inherits EntityBehavior Implements IRenderer, IDisposable
+    content: 'public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickable, IRemotePhysics'
+    content.vb: Public Class EntityBehaviorPassivePhysics Inherits PhysicsBehaviorBase Implements IPhysicsTickable, IRemotePhysics
   inheritance:
   - System.Object
   - Vintagestory.API.Common.Entities.EntityBehavior
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase
   implements:
-  - Vintagestory.API.Client.IRenderer
-  - System.IDisposable
+  - Vintagestory.API.Common.Entities.IPhysicsTickable
+  - Vintagestory.API.Common.Entities.IRemotePhysics
   inheritedMembers:
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase.capi
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase.sapi
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase.clientInterval
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase.previousVersion
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase.mountableSupplier
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase.lPos
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase.nPos
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase.CollisionYExtra
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase.collisionTester
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase.Init
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase.AfterInitialized(System.Boolean)
   - Vintagestory.API.Common.Entities.EntityBehavior.entity
   - Vintagestory.API.Common.Entities.EntityBehavior.ProfilerName
-  - Vintagestory.API.Common.Entities.EntityBehavior.AfterInitialized(System.Boolean)
+  - Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(System.Single)
   - Vintagestory.API.Common.Entities.EntityBehavior.OnEntitySpawn
   - Vintagestory.API.Common.Entities.EntityBehavior.OnEntityLoaded
   - Vintagestory.API.Common.Entities.EntityBehavior.OnEntityReceiveDamage(Vintagestory.API.Common.DamageSource,System.Single@)
   - Vintagestory.API.Common.Entities.EntityBehavior.OnEntityRevive
   - Vintagestory.API.Common.Entities.EntityBehavior.OnFallToGround(Vintagestory.API.MathTools.Vec3d,System.Double)
   - Vintagestory.API.Common.Entities.EntityBehavior.OnEntityReceiveSaturation(System.Single,Vintagestory.API.Common.EnumFoodCategory,System.Single,System.Single)
-  - Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.Entities.EntityBehavior.GetDrops(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.Entities.EntityBehavior.OnStateChanged(Vintagestory.API.Common.EnumEntityState,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.Entities.EntityBehavior.Notify(System.String,System.Object)
@@ -60,15 +73,18 @@ items:
   - Vintagestory.API.Common.Entities.EntityBehavior.OnInteract(Vintagestory.API.Common.EntityAgent,Vintagestory.API.Common.ItemSlot,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.Common.EnumInteractMode,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedClientPacket(Vintagestory.API.Server.IServerPlayer,System.Int32,System.Byte[],Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPacket(System.Int32,System.Byte[],Vintagestory.API.Common.EnumHandling@)
-  - Vintagestory.API.Common.Entities.EntityBehavior.OnNoPath(Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.Common.Entities.EntityBehavior.GetInteractionHelp(Vintagestory.API.Client.IClientWorldAccessor,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Client.IClientPlayer,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.Entities.EntityBehavior.DidAttack(Vintagestory.API.Common.DamageSource,Vintagestory.API.Common.EntityAgent,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.Entities.EntityBehavior.OnStoreCollectibleMappings(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
-  - Vintagestory.API.Common.Entities.EntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
   - Vintagestory.API.Common.Entities.EntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Boolean)
   - Vintagestory.API.Common.Entities.EntityBehavior.ToBytes(System.Boolean)
   - Vintagestory.API.Common.Entities.EntityBehavior.FromBytes(System.Boolean)
   - Vintagestory.API.Common.Entities.EntityBehavior.TestCommand(System.Object)
+  - Vintagestory.API.Common.Entities.EntityBehavior.TryGiveItemStack(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.EnumHandling@)
+  - Vintagestory.API.Common.Entities.EntityBehavior.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@,System.String[]@)
+  - Vintagestory.API.Common.Entities.EntityBehavior.GetTextureSource(Vintagestory.API.Common.EnumHandling@)
+  - Vintagestory.API.Common.Entities.EntityBehavior.IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@,Vintagestory.API.Common.EnumHandling@)
+  - Vintagestory.API.Common.Entities.EntityBehavior.OnTesselated
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
   - System.Object.GetHashCode
@@ -76,260 +92,52 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.UsePhysicsDormancyStateClient
-  commentId: F:Vintagestory.API.Common.EntityBehaviorPassivePhysics.UsePhysicsDormancyStateClient
-  id: UsePhysicsDormancyStateClient
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.Ticking
+  commentId: P:Vintagestory.API.Common.EntityBehaviorPassivePhysics.Ticking
+  id: Ticking
   parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
   langs:
   - csharp
   - vb
-  name: UsePhysicsDormancyStateClient
-  nameWithType: EntityBehaviorPassivePhysics.UsePhysicsDormancyStateClient
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.UsePhysicsDormancyStateClient
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: True when theres 1000 currently loaded entities. This will cause dropped items to enter a physics dormancy state if the conditions are right. Set by ModSystemDormancyStateChecker in EntityItemRenderer.cs
-  example: []
-  syntax:
-    content: public static bool UsePhysicsDormancyStateClient
-    return:
-      type: System.Boolean
-    content.vb: Public Shared UsePhysicsDormancyStateClient As Boolean
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.UsePhysicsDormancyStateServer
-  commentId: F:Vintagestory.API.Common.EntityBehaviorPassivePhysics.UsePhysicsDormancyStateServer
-  id: UsePhysicsDormancyStateServer
-  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
-  langs:
-  - csharp
-  - vb
-  name: UsePhysicsDormancyStateServer
-  nameWithType: EntityBehaviorPassivePhysics.UsePhysicsDormancyStateServer
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.UsePhysicsDormancyStateServer
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: True when theres 1000 currently loaded entities. This will cause dropped items to enter a physics dormancy state if the conditions are right. Set by ModSystemDormancyStateChecker in EntityItemRenderer.cs
-  example: []
-  syntax:
-    content: public static bool UsePhysicsDormancyStateServer
-    return:
-      type: System.Boolean
-    content.vb: Public Shared UsePhysicsDormancyStateServer As Boolean
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.duringRenderFrame
-  commentId: F:Vintagestory.API.Common.EntityBehaviorPassivePhysics.duringRenderFrame
-  id: duringRenderFrame
-  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
-  langs:
-  - csharp
-  - vb
-  name: duringRenderFrame
-  nameWithType: EntityBehaviorPassivePhysics.duringRenderFrame
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.duringRenderFrame
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  syntax:
-    content: protected bool duringRenderFrame
-    return:
-      type: System.Boolean
-    content.vb: Protected duringRenderFrame As Boolean
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderOrder
-  commentId: P:Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderOrder
-  id: RenderOrder
-  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
-  langs:
-  - csharp
-  - vb
-  name: RenderOrder
-  nameWithType: EntityBehaviorPassivePhysics.RenderOrder
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderOrder
+  name: Ticking
+  nameWithType: EntityBehaviorPassivePhysics.Ticking
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.Ticking
   type: Property
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: >-
-    0 = drawn first, 1 = drawn last<br />
-
-    Default render orders by render stage:<br />
-
-    Before:<br />
-
-    0 = Ambient Manager<br />
-
-    0 = Camera<br /><br />
-
-    Opaque:<br />
-
-    0.1 = Blue sky (Icosahedron)<br />
-
-    0.2 = Night skybox<br />
-
-    0.3 = Sun and moon<br />
-
-    0.37 = Terrain opaque<br />
-
-    0.4 = Enitities<br />
-
-    0.5 = Decals<br />
-
-    0.5 = Debug wireframe<br />
-
-    0.6 = particles<br />
-
-    0.7 = Cinematic camera line preview<br />
-
-    0.8 = fp held item<br />
-
-    0.9 = held item opaque custom renderer<br /><br />
-
-    OIT:<br />
-
-    0.2 = Frame buffer debug screen<br />
-
-    0.35 = Clouds<br />
-
-    0.37 = Terrain oit<br />
-
-    0.4 = Enitities<br />
-
-    0.6 = particles<br />
-
-    0.9 = held item oit custom renderer<br /><br />
-
-    Shadow far:<br />
-
-    0 = shadow map init<br />
-
-    0.37 = Terrain shadow far<br />
-
-    0.4 = Enitities<br /><br />
-
-    Shadow far done:<br />
-
-    1 = shadow map finish<br /><br />
-
-    Shadow near:<br />
-
-    0 = shadow map init<br />
-
-    0.37 = Terrain shadow near<br />
-
-    0.4 = Enitities<br /><br />
-
-    Shadow near done:<br />
-
-    1 = shadow map finish<br />
-
-    Ortho:<br />
-
-    0.2 = Frame buffer debug screen<br />
-
-    0.4 = Enitities<br />
-
-    0.9 = held item ortho custom renderer<br />
-
-    0.95 = sleeping overlay<br />
-
-    0.98 = bow/spear aiming reticle<br />
-
-    1 = Gui manager<br />
-
-    1.02 = crosshair and mouse cursor<br /><br />
-
-    AfterFinalComposition:<br />
-
-    2 = screenshot<br /><br />
-
-    Done:<br />
-
-    0.1 = gui manager<br />
-
-    2 = screenshot<br /><br />
-
-    0.98 = Cinematic camera camera advancing and frame capture when recording<br />
-
-    0.99 = Chunk Tesselator Manager (uploads new/modified chunk meshes)<br />
-
-    0.999 = Compress chunks scan<br />
-
-    1 = video recorder<br />
   example: []
   syntax:
-    content: public double RenderOrder { get; }
+    content: public bool Ticking { get; set; }
     parameters: []
     return:
-      type: System.Double
-    content.vb: Public ReadOnly Property RenderOrder As Double
-  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderOrder*
+      type: System.Boolean
+    content.vb: Public Property Ticking As Boolean
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.Ticking*
   implements:
-  - Vintagestory.API.Client.IRenderer.RenderOrder
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderRange
-  commentId: P:Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderRange
-  id: RenderRange
+  - Vintagestory.API.Common.Entities.IPhysicsTickable.Ticking
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.newPos
+  commentId: F:Vintagestory.API.Common.EntityBehaviorPassivePhysics.newPos
+  id: newPos
   parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
   langs:
   - csharp
   - vb
-  name: RenderRange
-  nameWithType: EntityBehaviorPassivePhysics.RenderRange
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderRange
-  type: Property
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: Within what range to the player OnRenderFrame() should be called (currently not used!)
-  example: []
-  syntax:
-    content: public int RenderRange { get; }
-    parameters: []
-    return:
-      type: System.Int32
-    content.vb: Public ReadOnly Property RenderRange As Integer
-  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderRange*
-  implements:
-  - Vintagestory.API.Client.IRenderer.RenderRange
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.clientPhysicsTickTimeThreshold
-  commentId: F:Vintagestory.API.Common.EntityBehaviorPassivePhysics.clientPhysicsTickTimeThreshold
-  id: clientPhysicsTickTimeThreshold
-  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
-  langs:
-  - csharp
-  - vb
-  name: clientPhysicsTickTimeThreshold
-  nameWithType: EntityBehaviorPassivePhysics.clientPhysicsTickTimeThreshold
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.clientPhysicsTickTimeThreshold
+  name: newPos
+  nameWithType: EntityBehaviorPassivePhysics.newPos
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.newPos
   type: Field
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: public float clientPhysicsTickTimeThreshold
+    content: protected Vec3d newPos
     return:
-      type: System.Single
-    content.vb: Public clientPhysicsTickTimeThreshold As Single
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.collisionYExtra
-  commentId: F:Vintagestory.API.Common.EntityBehaviorPassivePhysics.collisionYExtra
-  id: collisionYExtra
-  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
-  langs:
-  - csharp
-  - vb
-  name: collisionYExtra
-  nameWithType: EntityBehaviorPassivePhysics.collisionYExtra
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.collisionYExtra
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  syntax:
-    content: public float collisionYExtra
-    return:
-      type: System.Single
-    content.vb: Public collisionYExtra As Single
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Protected newPos As Vec3d
 - uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTickCallback
   commentId: F:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTickCallback
   id: OnPhysicsTickCallback
@@ -351,31 +159,31 @@ items:
     return:
       type: System.Action{System.Single}
     content.vb: Public OnPhysicsTickCallback As Action(Of Single)
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
-  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
-  id: OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.FlagTickDone
+  commentId: P:Vintagestory.API.Common.EntityBehaviorPassivePhysics.FlagTickDone
+  id: FlagTickDone
   parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
   langs:
   - csharp
   - vb
-  name: OnEntityDespawn(EntityDespawnData)
-  nameWithType: EntityBehaviorPassivePhysics.OnEntityDespawn(EntityDespawnData)
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
-  type: Method
+  name: FlagTickDone
+  nameWithType: EntityBehaviorPassivePhysics.FlagTickDone
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.FlagTickDone
+  type: Property
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: The event fired when the entity is despawned.
+  summary: Flag for load balancer.
   example: []
   syntax:
-    content: public override void OnEntityDespawn(EntityDespawnData despawn)
-    parameters:
-    - id: despawn
-      type: Vintagestory.API.Common.Entities.EntityDespawnData
-      description: The reason the entity despawned.
-    content.vb: Public Overrides Sub OnEntityDespawn(despawn As EntityDespawnData)
-  overridden: Vintagestory.API.Common.Entities.EntityBehavior.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
-  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn*
+    content: public ref int FlagTickDone { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly ByRef Property FlagTickDone As Integer
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.FlagTickDone*
+  implements:
+  - Vintagestory.API.Common.Entities.IPhysicsTickable.FlagTickDone
 - uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.#ctor(Vintagestory.API.Common.Entities.Entity)
   commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.#ctor(Vintagestory.API.Common.Entities.Entity)
   id: '#ctor(Vintagestory.API.Common.Entities.Entity)'
@@ -400,6 +208,48 @@ items:
   nameWithType.vb: EntityBehaviorPassivePhysics.New(Entity)
   fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.New(Vintagestory.API.Common.Entities.Entity)
   name.vb: New(Entity)
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetState(Vintagestory.API.Common.Entities.EntityPos)
+  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetState(Vintagestory.API.Common.Entities.EntityPos)
+  id: SetState(Vintagestory.API.Common.Entities.EntityPos)
+  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
+  langs:
+  - csharp
+  - vb
+  name: SetState(EntityPos)
+  nameWithType: EntityBehaviorPassivePhysics.SetState(EntityPos)
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetState(Vintagestory.API.Common.Entities.EntityPos)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void SetState(EntityPos pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.Common.Entities.EntityPos
+    content.vb: Public Sub SetState(pos As EntityPos)
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetState*
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetProperties(Vintagestory.API.Datastructures.JsonObject)
+  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetProperties(Vintagestory.API.Datastructures.JsonObject)
+  id: SetProperties(Vintagestory.API.Datastructures.JsonObject)
+  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
+  langs:
+  - csharp
+  - vb
+  name: SetProperties(JsonObject)
+  nameWithType: EntityBehaviorPassivePhysics.SetProperties(JsonObject)
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetProperties(Vintagestory.API.Datastructures.JsonObject)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual void SetProperties(JsonObject attributes)
+    parameters:
+    - id: attributes
+      type: Vintagestory.API.Datastructures.JsonObject
+    content.vb: Public Overridable Sub SetProperties(attributes As JsonObject)
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetProperties*
 - uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Datastructures.JsonObject)
   commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Datastructures.JsonObject)
   id: Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Datastructures.JsonObject)
@@ -431,122 +281,273 @@ items:
     content.vb: Public Overrides Sub Initialize(properties As EntityProperties, attributes As JsonObject)
   overridden: Vintagestory.API.Common.Entities.EntityBehavior.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Datastructures.JsonObject)
   overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.Initialize*
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
-  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
-  id: OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
+  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
+  id: OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
   parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
   langs:
   - csharp
   - vb
-  name: OnRenderFrame(float, EnumRenderStage)
-  nameWithType: EntityBehaviorPassivePhysics.OnRenderFrame(float, EnumRenderStage)
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnRenderFrame(float, Vintagestory.API.Client.EnumRenderStage)
+  name: OnReceivedServerPos(bool, ref EnumHandling)
+  nameWithType: EntityBehaviorPassivePhysics.OnReceivedServerPos(bool, ref EnumHandling)
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedServerPos(bool, ref Vintagestory.API.Common.EnumHandling)
   type: Method
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Called every frame for rendering whatever you need to render
+  summary: The event fired when the server position is changed.
   example: []
   syntax:
-    content: public void OnRenderFrame(float deltaTime, EnumRenderStage stage)
+    content: public override void OnReceivedServerPos(bool isTeleport, ref EnumHandling handled)
     parameters:
-    - id: deltaTime
-      type: System.Single
-      description: ''
-    - id: stage
-      type: Vintagestory.API.Client.EnumRenderStage
-      description: ''
-    content.vb: Public Sub OnRenderFrame(deltaTime As Single, stage As EnumRenderStage)
-  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnRenderFrame*
-  implements:
-  - Vintagestory.API.Client.IRenderer.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
-  nameWithType.vb: EntityBehaviorPassivePhysics.OnRenderFrame(Single, EnumRenderStage)
-  fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnRenderFrame(Single, Vintagestory.API.Client.EnumRenderStage)
-  name.vb: OnRenderFrame(Single, EnumRenderStage)
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnGameTick(System.Single)
-  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnGameTick(System.Single)
-  id: OnGameTick(System.Single)
-  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
-  langs:
-  - csharp
-  - vb
-  name: OnGameTick(float)
-  nameWithType: EntityBehaviorPassivePhysics.OnGameTick(float)
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnGameTick(float)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: The event fired when a game ticks over.
-  example: []
-  syntax:
-    content: public override void OnGameTick(float deltaTime)
-    parameters:
-    - id: deltaTime
-      type: System.Single
-      description: ''
-    content.vb: Public Overrides Sub OnGameTick(deltaTime As Single)
-  overridden: Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(System.Single)
-  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnGameTick*
-  nameWithType.vb: EntityBehaviorPassivePhysics.OnGameTick(Single)
-  fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnGameTick(Single)
-  name.vb: OnGameTick(Single)
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.onPhysicsTick(System.Single,System.Boolean)
-  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.onPhysicsTick(System.Single,System.Boolean)
-  id: onPhysicsTick(System.Single,System.Boolean)
-  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
-  langs:
-  - csharp
-  - vb
-  name: onPhysicsTick(float, bool)
-  nameWithType: EntityBehaviorPassivePhysics.onPhysicsTick(float, bool)
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.onPhysicsTick(float, bool)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  syntax:
-    content: public void onPhysicsTick(float deltaTime, bool usePhysicsDormancyState)
-    parameters:
-    - id: deltaTime
-      type: System.Single
-    - id: usePhysicsDormancyState
+    - id: isTeleport
       type: System.Boolean
-    content.vb: Public Sub onPhysicsTick(deltaTime As Single, usePhysicsDormancyState As Boolean)
-  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.onPhysicsTick*
-  nameWithType.vb: EntityBehaviorPassivePhysics.onPhysicsTick(Single, Boolean)
-  fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.onPhysicsTick(Single, Boolean)
-  name.vb: onPhysicsTick(Single, Boolean)
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.DoPhysics(System.Single,Vintagestory.API.Common.Entities.EntityPos)
-  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.DoPhysics(System.Single,Vintagestory.API.Common.Entities.EntityPos)
-  id: DoPhysics(System.Single,Vintagestory.API.Common.Entities.EntityPos)
+      description: Whether or not this entity was teleported.
+    - id: handled
+      type: Vintagestory.API.Common.EnumHandling
+      description: How this event is handled.
+    content.vb: Public Overrides Sub OnReceivedServerPos(isTeleport As Boolean, handled As EnumHandling)
+  overridden: Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedServerPos*
+  nameWithType.vb: EntityBehaviorPassivePhysics.OnReceivedServerPos(Boolean, EnumHandling)
+  fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedServerPos(Boolean, Vintagestory.API.Common.EnumHandling)
+  name.vb: OnReceivedServerPos(Boolean, EnumHandling)
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedClientPos(System.Int32)
+  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedClientPos(System.Int32)
+  id: OnReceivedClientPos(System.Int32)
   parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
   langs:
   - csharp
   - vb
-  name: DoPhysics(float, EntityPos)
-  nameWithType: EntityBehaviorPassivePhysics.DoPhysics(float, EntityPos)
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.DoPhysics(float, Vintagestory.API.Common.Entities.EntityPos)
+  name: OnReceivedClientPos(int)
+  nameWithType: EntityBehaviorPassivePhysics.OnReceivedClientPos(int)
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedClientPos(int)
   type: Method
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Performs the physics on the specified entity.
   example: []
   syntax:
-    content: public void DoPhysics(float dt, EntityPos pos)
+    content: public void OnReceivedClientPos(int version)
+    parameters:
+    - id: version
+      type: System.Int32
+    content.vb: Public Sub OnReceivedClientPos(version As Integer)
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedClientPos*
+  implements:
+  - Vintagestory.API.Common.Entities.IRemotePhysics.OnReceivedClientPos(System.Int32)
+  nameWithType.vb: EntityBehaviorPassivePhysics.OnReceivedClientPos(Integer)
+  fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedClientPos(Integer)
+  name.vb: OnReceivedClientPos(Integer)
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.HandleRemotePhysics(System.Single,System.Boolean)
+  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.HandleRemotePhysics(System.Single,System.Boolean)
+  id: HandleRemotePhysics(System.Single,System.Boolean)
+  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
+  langs:
+  - csharp
+  - vb
+  name: HandleRemotePhysics(float, bool)
+  nameWithType: EntityBehaviorPassivePhysics.HandleRemotePhysics(float, bool)
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.HandleRemotePhysics(float, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public void HandleRemotePhysics(float dt, bool isTeleport)
     parameters:
     - id: dt
       type: System.Single
-      description: ''
+    - id: isTeleport
+      type: System.Boolean
+    content.vb: Public Sub HandleRemotePhysics(dt As Single, isTeleport As Boolean)
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.HandleRemotePhysics*
+  implements:
+  - Vintagestory.API.Common.Entities.IRemotePhysics.HandleRemotePhysics(System.Single,System.Boolean)
+  nameWithType.vb: EntityBehaviorPassivePhysics.HandleRemotePhysics(Single, Boolean)
+  fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.HandleRemotePhysics(Single, Boolean)
+  name.vb: HandleRemotePhysics(Single, Boolean)
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RemoteMotionAndCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)
+  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.RemoteMotionAndCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)
+  id: RemoteMotionAndCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)
+  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
+  langs:
+  - csharp
+  - vb
+  name: RemoteMotionAndCollision(EntityPos, float)
+  nameWithType: EntityBehaviorPassivePhysics.RemoteMotionAndCollision(EntityPos, float)
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RemoteMotionAndCollision(Vintagestory.API.Common.Entities.EntityPos, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void RemoteMotionAndCollision(EntityPos pos, float dtFactor)
+    parameters:
     - id: pos
       type: Vintagestory.API.Common.Entities.EntityPos
-      description: ''
-    content.vb: Public Sub DoPhysics(dt As Single, pos As EntityPos)
-  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.DoPhysics*
-  nameWithType.vb: EntityBehaviorPassivePhysics.DoPhysics(Single, EntityPos)
-  fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.DoPhysics(Single, Vintagestory.API.Common.Entities.EntityPos)
-  name.vb: DoPhysics(Single, EntityPos)
+    - id: dtFactor
+      type: System.Single
+    content.vb: Public Sub RemoteMotionAndCollision(pos As EntityPos, dtFactor As Single)
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RemoteMotionAndCollision*
+  nameWithType.vb: EntityBehaviorPassivePhysics.RemoteMotionAndCollision(EntityPos, Single)
+  fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RemoteMotionAndCollision(Vintagestory.API.Common.Entities.EntityPos, Single)
+  name.vb: RemoteMotionAndCollision(EntityPos, Single)
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.MotionAndCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)
+  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.MotionAndCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)
+  id: MotionAndCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)
+  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
+  langs:
+  - csharp
+  - vb
+  name: MotionAndCollision(EntityPos, float)
+  nameWithType: EntityBehaviorPassivePhysics.MotionAndCollision(EntityPos, float)
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.MotionAndCollision(Vintagestory.API.Common.Entities.EntityPos, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void MotionAndCollision(EntityPos pos, float dt)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.Common.Entities.EntityPos
+    - id: dt
+      type: System.Single
+    content.vb: Public Sub MotionAndCollision(pos As EntityPos, dt As Single)
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.MotionAndCollision*
+  nameWithType.vb: EntityBehaviorPassivePhysics.MotionAndCollision(EntityPos, Single)
+  fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.MotionAndCollision(Vintagestory.API.Common.Entities.EntityPos, Single)
+  name.vb: MotionAndCollision(EntityPos, Single)
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.applyCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)
+  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.applyCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)
+  id: applyCollision(Vintagestory.API.Common.Entities.EntityPos,System.Single)
+  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
+  langs:
+  - csharp
+  - vb
+  name: applyCollision(EntityPos, float)
+  nameWithType: EntityBehaviorPassivePhysics.applyCollision(EntityPos, float)
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.applyCollision(Vintagestory.API.Common.Entities.EntityPos, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected virtual void applyCollision(EntityPos pos, float dtFactor)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.Common.Entities.EntityPos
+    - id: dtFactor
+      type: System.Single
+    content.vb: Protected Overridable Sub applyCollision(pos As EntityPos, dtFactor As Single)
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.applyCollision*
+  nameWithType.vb: EntityBehaviorPassivePhysics.applyCollision(EntityPos, Single)
+  fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.applyCollision(Vintagestory.API.Common.Entities.EntityPos, Single)
+  name.vb: applyCollision(EntityPos, Single)
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.ApplyTests(Vintagestory.API.Common.Entities.EntityPos)
+  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.ApplyTests(Vintagestory.API.Common.Entities.EntityPos)
+  id: ApplyTests(Vintagestory.API.Common.Entities.EntityPos)
+  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
+  langs:
+  - csharp
+  - vb
+  name: ApplyTests(EntityPos)
+  nameWithType: EntityBehaviorPassivePhysics.ApplyTests(EntityPos)
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.ApplyTests(Vintagestory.API.Common.Entities.EntityPos)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void ApplyTests(EntityPos pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.Common.Entities.EntityPos
+    content.vb: Public Sub ApplyTests(pos As EntityPos)
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.ApplyTests*
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTick(System.Single)
+  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTick(System.Single)
+  id: OnPhysicsTick(System.Single)
+  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
+  langs:
+  - csharp
+  - vb
+  name: OnPhysicsTick(float)
+  nameWithType: EntityBehaviorPassivePhysics.OnPhysicsTick(float)
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTick(float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called at a fixed interval 10 times per second.
+  example: []
+  syntax:
+    content: public void OnPhysicsTick(float dt)
+    parameters:
+    - id: dt
+      type: System.Single
+    content.vb: Public Sub OnPhysicsTick(dt As Single)
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTick*
+  implements:
+  - Vintagestory.API.Common.Entities.IPhysicsTickable.OnPhysicsTick(System.Single)
+  nameWithType.vb: EntityBehaviorPassivePhysics.OnPhysicsTick(Single)
+  fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTick(Single)
+  name.vb: OnPhysicsTick(Single)
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.AfterPhysicsTick(System.Single)
+  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.AfterPhysicsTick(System.Single)
+  id: AfterPhysicsTick(System.Single)
+  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
+  langs:
+  - csharp
+  - vb
+  name: AfterPhysicsTick(float)
+  nameWithType: EntityBehaviorPassivePhysics.AfterPhysicsTick(float)
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.AfterPhysicsTick(float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called after physics has ticked and is thread-safe.
+  example: []
+  syntax:
+    content: public void AfterPhysicsTick(float dt)
+    parameters:
+    - id: dt
+      type: System.Single
+    content.vb: Public Sub AfterPhysicsTick(dt As Single)
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.AfterPhysicsTick*
+  implements:
+  - Vintagestory.API.Common.Entities.IPhysicsTickable.AfterPhysicsTick(System.Single)
+  nameWithType.vb: EntityBehaviorPassivePhysics.AfterPhysicsTick(Single)
+  fullName.vb: Vintagestory.API.Common.EntityBehaviorPassivePhysics.AfterPhysicsTick(Single)
+  name.vb: AfterPhysicsTick(Single)
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
+  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
+  id: OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
+  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
+  langs:
+  - csharp
+  - vb
+  name: OnEntityDespawn(EntityDespawnData)
+  nameWithType: EntityBehaviorPassivePhysics.OnEntityDespawn(EntityDespawnData)
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: The event fired when the entity is despawned.
+  example: []
+  syntax:
+    content: public override void OnEntityDespawn(EntityDespawnData despawn)
+    parameters:
+    - id: despawn
+      type: Vintagestory.API.Common.Entities.EntityDespawnData
+      description: The reason the entity despawned.
+    content.vb: Public Overrides Sub OnEntityDespawn(despawn As EntityDespawnData)
+  overridden: Vintagestory.API.Common.Entities.EntityBehavior.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
+  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn*
 - uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.PropertyName
   commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.PropertyName
   id: PropertyName
@@ -571,28 +572,6 @@ items:
     content.vb: Public Overrides Function PropertyName() As String
   overridden: Vintagestory.API.Common.Entities.EntityBehavior.PropertyName
   overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.PropertyName*
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.Dispose
-  commentId: M:Vintagestory.API.Common.EntityBehaviorPassivePhysics.Dispose
-  id: Dispose
-  parent: Vintagestory.API.Common.EntityBehaviorPassivePhysics
-  langs:
-  - csharp
-  - vb
-  name: Dispose()
-  nameWithType: EntityBehaviorPassivePhysics.Dispose()
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.Dispose()
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-  example: []
-  syntax:
-    content: public void Dispose()
-    content.vb: Public Sub Dispose()
-  overload: Vintagestory.API.Common.EntityBehaviorPassivePhysics.Dispose*
-  implements:
-  - System.IDisposable.Dispose
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -642,21 +621,140 @@ references:
   name: EntityBehavior
   nameWithType: EntityBehavior
   fullName: Vintagestory.API.Common.Entities.EntityBehavior
-- uid: Vintagestory.API.Client.IRenderer
-  commentId: T:Vintagestory.API.Client.IRenderer
-  parent: Vintagestory.API.Client
-  href: Vintagestory.API.Client.IRenderer.html
-  name: IRenderer
-  nameWithType: IRenderer
-  fullName: Vintagestory.API.Client.IRenderer
-- uid: System.IDisposable
-  commentId: T:System.IDisposable
-  parent: System
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  commentId: T:Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html
+  name: PhysicsBehaviorBase
+  nameWithType: PhysicsBehaviorBase
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+- uid: Vintagestory.API.Common.Entities.IPhysicsTickable
+  commentId: T:Vintagestory.API.Common.Entities.IPhysicsTickable
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.IPhysicsTickable.html
+  name: IPhysicsTickable
+  nameWithType: IPhysicsTickable
+  fullName: Vintagestory.API.Common.Entities.IPhysicsTickable
+- uid: Vintagestory.API.Common.Entities.IRemotePhysics
+  commentId: T:Vintagestory.API.Common.Entities.IRemotePhysics
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.IRemotePhysics.html
+  name: IRemotePhysics
+  nameWithType: IRemotePhysics
+  fullName: Vintagestory.API.Common.Entities.IRemotePhysics
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.capi
+  commentId: F:Vintagestory.API.Common.Entities.PhysicsBehaviorBase.capi
+  parent: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_capi
+  name: capi
+  nameWithType: PhysicsBehaviorBase.capi
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.capi
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.sapi
+  commentId: F:Vintagestory.API.Common.Entities.PhysicsBehaviorBase.sapi
+  parent: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_sapi
+  name: sapi
+  nameWithType: PhysicsBehaviorBase.sapi
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.sapi
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.clientInterval
+  commentId: F:Vintagestory.API.Common.Entities.PhysicsBehaviorBase.clientInterval
+  parent: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_clientInterval
+  name: clientInterval
+  nameWithType: PhysicsBehaviorBase.clientInterval
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.clientInterval
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.previousVersion
+  commentId: F:Vintagestory.API.Common.Entities.PhysicsBehaviorBase.previousVersion
+  parent: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_previousVersion
+  name: previousVersion
+  nameWithType: PhysicsBehaviorBase.previousVersion
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.previousVersion
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.mountableSupplier
+  commentId: F:Vintagestory.API.Common.Entities.PhysicsBehaviorBase.mountableSupplier
+  parent: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_mountableSupplier
+  name: mountableSupplier
+  nameWithType: PhysicsBehaviorBase.mountableSupplier
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.mountableSupplier
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.lPos
+  commentId: F:Vintagestory.API.Common.Entities.PhysicsBehaviorBase.lPos
+  parent: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_lPos
+  name: lPos
+  nameWithType: PhysicsBehaviorBase.lPos
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.lPos
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.nPos
+  commentId: F:Vintagestory.API.Common.Entities.PhysicsBehaviorBase.nPos
+  parent: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_nPos
+  name: nPos
+  nameWithType: PhysicsBehaviorBase.nPos
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.nPos
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.CollisionYExtra
+  commentId: F:Vintagestory.API.Common.Entities.PhysicsBehaviorBase.CollisionYExtra
+  parent: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_CollisionYExtra
+  name: CollisionYExtra
+  nameWithType: PhysicsBehaviorBase.CollisionYExtra
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.CollisionYExtra
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.collisionTester
+  commentId: F:Vintagestory.API.Common.Entities.PhysicsBehaviorBase.collisionTester
+  parent: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_collisionTester
+  name: collisionTester
+  nameWithType: PhysicsBehaviorBase.collisionTester
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.collisionTester
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.Init
+  commentId: M:Vintagestory.API.Common.Entities.PhysicsBehaviorBase.Init
+  parent: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_Init
+  name: Init()
+  nameWithType: PhysicsBehaviorBase.Init()
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.Init()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.Init
+    name: Init
+    href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_Init
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.Init
+    name: Init
+    href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_Init
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.AfterInitialized(System.Boolean)
+  commentId: M:Vintagestory.API.Common.Entities.PhysicsBehaviorBase.AfterInitialized(System.Boolean)
+  parent: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
   isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.idisposable
-  name: IDisposable
-  nameWithType: IDisposable
-  fullName: System.IDisposable
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_AfterInitialized_System_Boolean_
+  name: AfterInitialized(bool)
+  nameWithType: PhysicsBehaviorBase.AfterInitialized(bool)
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.AfterInitialized(bool)
+  nameWithType.vb: PhysicsBehaviorBase.AfterInitialized(Boolean)
+  fullName.vb: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.AfterInitialized(Boolean)
+  name.vb: AfterInitialized(Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.AfterInitialized(System.Boolean)
+    name: AfterInitialized
+    href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_AfterInitialized_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.AfterInitialized(System.Boolean)
+    name: AfterInitialized
+    href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html#Vintagestory_API_Common_Entities_PhysicsBehaviorBase_AfterInitialized_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
 - uid: Vintagestory.API.Common.Entities.EntityBehavior.entity
   commentId: F:Vintagestory.API.Common.Entities.EntityBehavior.entity
   parent: Vintagestory.API.Common.Entities.EntityBehavior
@@ -671,36 +769,36 @@ references:
   name: ProfilerName
   nameWithType: EntityBehavior.ProfilerName
   fullName: Vintagestory.API.Common.Entities.EntityBehavior.ProfilerName
-- uid: Vintagestory.API.Common.Entities.EntityBehavior.AfterInitialized(System.Boolean)
-  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.AfterInitialized(System.Boolean)
+- uid: Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(System.Single)
+  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(System.Single)
   parent: Vintagestory.API.Common.Entities.EntityBehavior
   isExternal: true
-  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_AfterInitialized_System_Boolean_
-  name: AfterInitialized(bool)
-  nameWithType: EntityBehavior.AfterInitialized(bool)
-  fullName: Vintagestory.API.Common.Entities.EntityBehavior.AfterInitialized(bool)
-  nameWithType.vb: EntityBehavior.AfterInitialized(Boolean)
-  fullName.vb: Vintagestory.API.Common.Entities.EntityBehavior.AfterInitialized(Boolean)
-  name.vb: AfterInitialized(Boolean)
+  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnGameTick_System_Single_
+  name: OnGameTick(float)
+  nameWithType: EntityBehavior.OnGameTick(float)
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(float)
+  nameWithType.vb: EntityBehavior.OnGameTick(Single)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(Single)
+  name.vb: OnGameTick(Single)
   spec.csharp:
-  - uid: Vintagestory.API.Common.Entities.EntityBehavior.AfterInitialized(System.Boolean)
-    name: AfterInitialized
-    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_AfterInitialized_System_Boolean_
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(System.Single)
+    name: OnGameTick
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnGameTick_System_Single_
   - name: (
-  - uid: System.Boolean
-    name: bool
+  - uid: System.Single
+    name: float
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
+    href: https://learn.microsoft.com/dotnet/api/system.single
   - name: )
   spec.vb:
-  - uid: Vintagestory.API.Common.Entities.EntityBehavior.AfterInitialized(System.Boolean)
-    name: AfterInitialized
-    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_AfterInitialized_System_Boolean_
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(System.Single)
+    name: OnGameTick
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnGameTick_System_Single_
   - name: (
-  - uid: System.Boolean
-    name: Boolean
+  - uid: System.Single
+    name: Single
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
+    href: https://learn.microsoft.com/dotnet/api/system.single
   - name: )
 - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnEntitySpawn
   commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.OnEntitySpawn
@@ -907,49 +1005,6 @@ references:
     name: Single
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.single
-  - name: )
-- uid: Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
-  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
-  parent: Vintagestory.API.Common.Entities.EntityBehavior
-  isExternal: true
-  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnReceivedServerPos_System_Boolean_Vintagestory_API_Common_EnumHandling__
-  name: OnReceivedServerPos(bool, ref EnumHandling)
-  nameWithType: EntityBehavior.OnReceivedServerPos(bool, ref EnumHandling)
-  fullName: Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(bool, ref Vintagestory.API.Common.EnumHandling)
-  nameWithType.vb: EntityBehavior.OnReceivedServerPos(Boolean, EnumHandling)
-  fullName.vb: Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(Boolean, Vintagestory.API.Common.EnumHandling)
-  name.vb: OnReceivedServerPos(Boolean, EnumHandling)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
-    name: OnReceivedServerPos
-    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnReceivedServerPos_System_Boolean_Vintagestory_API_Common_EnumHandling__
-  - name: (
-  - uid: System.Boolean
-    name: bool
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: ','
-  - name: " "
-  - name: ref
-  - name: " "
-  - uid: Vintagestory.API.Common.EnumHandling
-    name: EnumHandling
-    href: Vintagestory.API.Common.EnumHandling.html
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
-    name: OnReceivedServerPos
-    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnReceivedServerPos_System_Boolean_Vintagestory_API_Common_EnumHandling__
-  - name: (
-  - uid: System.Boolean
-    name: Boolean
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: ','
-  - name: " "
-  - uid: Vintagestory.API.Common.EnumHandling
-    name: EnumHandling
-    href: Vintagestory.API.Common.EnumHandling.html
   - name: )
 - uid: Vintagestory.API.Common.Entities.EntityBehavior.GetDrops(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumHandling@)
   commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.GetDrops(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.EnumHandling@)
@@ -1345,31 +1400,6 @@ references:
     name: EnumHandling
     href: Vintagestory.API.Common.EnumHandling.html
   - name: )
-- uid: Vintagestory.API.Common.Entities.EntityBehavior.OnNoPath(Vintagestory.API.MathTools.Vec3d)
-  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.OnNoPath(Vintagestory.API.MathTools.Vec3d)
-  parent: Vintagestory.API.Common.Entities.EntityBehavior
-  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnNoPath_Vintagestory_API_MathTools_Vec3d_
-  name: OnNoPath(Vec3d)
-  nameWithType: EntityBehavior.OnNoPath(Vec3d)
-  fullName: Vintagestory.API.Common.Entities.EntityBehavior.OnNoPath(Vintagestory.API.MathTools.Vec3d)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnNoPath(Vintagestory.API.MathTools.Vec3d)
-    name: OnNoPath
-    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnNoPath_Vintagestory_API_MathTools_Vec3d_
-  - name: (
-  - uid: Vintagestory.API.MathTools.Vec3d
-    name: Vec3d
-    href: Vintagestory.API.MathTools.Vec3d.html
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnNoPath(Vintagestory.API.MathTools.Vec3d)
-    name: OnNoPath
-    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnNoPath_Vintagestory_API_MathTools_Vec3d_
-  - name: (
-  - uid: Vintagestory.API.MathTools.Vec3d
-    name: Vec3d
-    href: Vintagestory.API.MathTools.Vec3d.html
-  - name: )
 - uid: Vintagestory.API.Common.Entities.EntityBehavior.GetInteractionHelp(Vintagestory.API.Client.IClientWorldAccessor,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Client.IClientPlayer,Vintagestory.API.Common.EnumHandling@)
   commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.GetInteractionHelp(Vintagestory.API.Client.IClientWorldAccessor,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Client.IClientPlayer,Vintagestory.API.Common.EnumHandling@)
   parent: Vintagestory.API.Common.Entities.EntityBehavior
@@ -1534,107 +1564,6 @@ references:
     name: OnStoreCollectibleMappings
     href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnStoreCollectibleMappings_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__
   - name: (
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: Vintagestory.API.Common.AssetLocation
-    name: AssetLocation
-    href: Vintagestory.API.Common.AssetLocation.html
-  - name: )
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: Vintagestory.API.Common.AssetLocation
-    name: AssetLocation
-    href: Vintagestory.API.Common.AssetLocation.html
-  - name: )
-  - name: )
-- uid: Vintagestory.API.Common.Entities.EntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
-  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
-  parent: Vintagestory.API.Common.Entities.EntityBehavior
-  isExternal: true
-  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__
-  name: OnLoadCollectibleMappings(IWorldAccessor, Dictionary<int, AssetLocation>, Dictionary<int, AssetLocation>)
-  nameWithType: EntityBehavior.OnLoadCollectibleMappings(IWorldAccessor, Dictionary<int, AssetLocation>, Dictionary<int, AssetLocation>)
-  fullName: Vintagestory.API.Common.Entities.EntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor, System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>, System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AssetLocation>)
-  nameWithType.vb: EntityBehavior.OnLoadCollectibleMappings(IWorldAccessor, Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation))
-  fullName.vb: Vintagestory.API.Common.Entities.EntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor, System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation), System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AssetLocation))
-  name.vb: OnLoadCollectibleMappings(IWorldAccessor, Dictionary(Of Integer, AssetLocation), Dictionary(Of Integer, AssetLocation))
-  spec.csharp:
-  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
-    name: OnLoadCollectibleMappings
-    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__
-  - name: (
-  - uid: Vintagestory.API.Common.IWorldAccessor
-    name: IWorldAccessor
-    href: Vintagestory.API.Common.IWorldAccessor.html
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: Vintagestory.API.Common.AssetLocation
-    name: AssetLocation
-    href: Vintagestory.API.Common.AssetLocation.html
-  - name: '>'
-  - name: ','
-  - name: " "
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  - name: <
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: Vintagestory.API.Common.AssetLocation
-    name: AssetLocation
-    href: Vintagestory.API.Common.AssetLocation.html
-  - name: '>'
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
-    name: OnLoadCollectibleMappings
-    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__
-  - name: (
-  - uid: Vintagestory.API.Common.IWorldAccessor
-    name: IWorldAccessor
-    href: Vintagestory.API.Common.IWorldAccessor.html
-  - name: ','
-  - name: " "
   - uid: System.Collections.Generic.Dictionary`2
     name: Dictionary
     isExternal: true
@@ -1878,6 +1807,249 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: Vintagestory.API.Common.Entities.EntityBehavior.TryGiveItemStack(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.EnumHandling@)
+  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.TryGiveItemStack(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.EnumHandling@)
+  parent: Vintagestory.API.Common.Entities.EntityBehavior
+  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_TryGiveItemStack_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumHandling__
+  name: TryGiveItemStack(ItemStack, ref EnumHandling)
+  nameWithType: EntityBehavior.TryGiveItemStack(ItemStack, ref EnumHandling)
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior.TryGiveItemStack(Vintagestory.API.Common.ItemStack, ref Vintagestory.API.Common.EnumHandling)
+  nameWithType.vb: EntityBehavior.TryGiveItemStack(ItemStack, EnumHandling)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityBehavior.TryGiveItemStack(Vintagestory.API.Common.ItemStack, Vintagestory.API.Common.EnumHandling)
+  name.vb: TryGiveItemStack(ItemStack, EnumHandling)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.TryGiveItemStack(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.EnumHandling@)
+    name: TryGiveItemStack
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_TryGiveItemStack_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumHandling__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumHandling
+    name: EnumHandling
+    href: Vintagestory.API.Common.EnumHandling.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.TryGiveItemStack(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.EnumHandling@)
+    name: TryGiveItemStack
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_TryGiveItemStack_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumHandling__
+  - name: (
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumHandling
+    name: EnumHandling
+    href: Vintagestory.API.Common.EnumHandling.html
+  - name: )
+- uid: Vintagestory.API.Common.Entities.EntityBehavior.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@,System.String[]@)
+  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@,System.String[]@)
+  parent: Vintagestory.API.Common.Entities.EntityBehavior
+  isExternal: true
+  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnTesselation_Vintagestory_API_Common_Shape__System_String_System_Boolean__System_String____
+  name: OnTesselation(ref Shape, string, ref bool, ref string[])
+  nameWithType: EntityBehavior.OnTesselation(ref Shape, string, ref bool, ref string[])
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior.OnTesselation(ref Vintagestory.API.Common.Shape, string, ref bool, ref string[])
+  nameWithType.vb: EntityBehavior.OnTesselation(Shape, String, Boolean, String())
+  fullName.vb: Vintagestory.API.Common.Entities.EntityBehavior.OnTesselation(Vintagestory.API.Common.Shape, String, Boolean, String())
+  name.vb: OnTesselation(Shape, String, Boolean, String())
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@,System.String[]@)
+    name: OnTesselation
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnTesselation_Vintagestory_API_Common_Shape__System_String_System_Boolean__System_String____
+  - name: (
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.Shape
+    name: Shape
+    href: Vintagestory.API.Common.Shape.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@,System.String[]@)
+    name: OnTesselation
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnTesselation_Vintagestory_API_Common_Shape__System_String_System_Boolean__System_String____
+  - name: (
+  - uid: Vintagestory.API.Common.Shape
+    name: Shape
+    href: Vintagestory.API.Common.Shape.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+  - name: )
+- uid: Vintagestory.API.Common.Entities.EntityBehavior.GetTextureSource(Vintagestory.API.Common.EnumHandling@)
+  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.GetTextureSource(Vintagestory.API.Common.EnumHandling@)
+  parent: Vintagestory.API.Common.Entities.EntityBehavior
+  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_GetTextureSource_Vintagestory_API_Common_EnumHandling__
+  name: GetTextureSource(ref EnumHandling)
+  nameWithType: EntityBehavior.GetTextureSource(ref EnumHandling)
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior.GetTextureSource(ref Vintagestory.API.Common.EnumHandling)
+  nameWithType.vb: EntityBehavior.GetTextureSource(EnumHandling)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityBehavior.GetTextureSource(Vintagestory.API.Common.EnumHandling)
+  name.vb: GetTextureSource(EnumHandling)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.GetTextureSource(Vintagestory.API.Common.EnumHandling@)
+    name: GetTextureSource
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_GetTextureSource_Vintagestory_API_Common_EnumHandling__
+  - name: (
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumHandling
+    name: EnumHandling
+    href: Vintagestory.API.Common.EnumHandling.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.GetTextureSource(Vintagestory.API.Common.EnumHandling@)
+    name: GetTextureSource
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_GetTextureSource_Vintagestory_API_Common_EnumHandling__
+  - name: (
+  - uid: Vintagestory.API.Common.EnumHandling
+    name: EnumHandling
+    href: Vintagestory.API.Common.EnumHandling.html
+  - name: )
+- uid: Vintagestory.API.Common.Entities.EntityBehavior.IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@,Vintagestory.API.Common.EnumHandling@)
+  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@,Vintagestory.API.Common.EnumHandling@)
+  parent: Vintagestory.API.Common.Entities.EntityBehavior
+  isExternal: true
+  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_IntersectsRay_Vintagestory_API_MathTools_Ray_Vintagestory_API_MathTools_AABBIntersectionTest_System_Double__System_Int32__Vintagestory_API_Common_EnumHandling__
+  name: IntersectsRay(Ray, AABBIntersectionTest, out double, ref int, ref EnumHandling)
+  nameWithType: EntityBehavior.IntersectsRay(Ray, AABBIntersectionTest, out double, ref int, ref EnumHandling)
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior.IntersectsRay(Vintagestory.API.MathTools.Ray, Vintagestory.API.MathTools.AABBIntersectionTest, out double, ref int, ref Vintagestory.API.Common.EnumHandling)
+  nameWithType.vb: EntityBehavior.IntersectsRay(Ray, AABBIntersectionTest, Double, Integer, EnumHandling)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityBehavior.IntersectsRay(Vintagestory.API.MathTools.Ray, Vintagestory.API.MathTools.AABBIntersectionTest, Double, Integer, Vintagestory.API.Common.EnumHandling)
+  name.vb: IntersectsRay(Ray, AABBIntersectionTest, Double, Integer, EnumHandling)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@,Vintagestory.API.Common.EnumHandling@)
+    name: IntersectsRay
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_IntersectsRay_Vintagestory_API_MathTools_Ray_Vintagestory_API_MathTools_AABBIntersectionTest_System_Double__System_Int32__Vintagestory_API_Common_EnumHandling__
+  - name: (
+  - uid: Vintagestory.API.MathTools.Ray
+    name: Ray
+    href: Vintagestory.API.MathTools.Ray.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.AABBIntersectionTest
+    name: AABBIntersectionTest
+    href: Vintagestory.API.MathTools.AABBIntersectionTest.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumHandling
+    name: EnumHandling
+    href: Vintagestory.API.Common.EnumHandling.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@,Vintagestory.API.Common.EnumHandling@)
+    name: IntersectsRay
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_IntersectsRay_Vintagestory_API_MathTools_Ray_Vintagestory_API_MathTools_AABBIntersectionTest_System_Double__System_Int32__Vintagestory_API_Common_EnumHandling__
+  - name: (
+  - uid: Vintagestory.API.MathTools.Ray
+    name: Ray
+    href: Vintagestory.API.MathTools.Ray.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.AABBIntersectionTest
+    name: AABBIntersectionTest
+    href: Vintagestory.API.MathTools.AABBIntersectionTest.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumHandling
+    name: EnumHandling
+    href: Vintagestory.API.Common.EnumHandling.html
+  - name: )
+- uid: Vintagestory.API.Common.Entities.EntityBehavior.OnTesselated
+  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.OnTesselated
+  parent: Vintagestory.API.Common.Entities.EntityBehavior
+  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnTesselated
+  name: OnTesselated()
+  nameWithType: EntityBehavior.OnTesselated()
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior.OnTesselated()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnTesselated
+    name: OnTesselated
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnTesselated
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnTesselated
+    name: OnTesselated
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnTesselated
+  - name: (
+  - name: )
 - uid: System.Object.Equals(System.Object)
   commentId: M:System.Object.Equals(System.Object)
   parent: System.Object
@@ -2097,6 +2269,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -2142,12 +2376,79 @@ references:
   - uid: Vintagestory.API.Common.Entities
     name: Entities
     href: Vintagestory.API.Common.Entities.html
-- uid: Vintagestory.API.Client
-  commentId: N:Vintagestory.API.Client
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
   href: Vintagestory.html
-  name: Vintagestory.API.Client
-  nameWithType: Vintagestory.API.Client
-  fullName: Vintagestory.API.Client
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
   spec.csharp:
   - uid: Vintagestory
     name: Vintagestory
@@ -2157,9 +2458,9 @@ references:
     name: API
     href: Vintagestory.API.html
   - name: .
-  - uid: Vintagestory.API.Client
-    name: Client
-    href: Vintagestory.API.Client.html
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
   spec.vb:
   - uid: Vintagestory
     name: Vintagestory
@@ -2169,9 +2470,22 @@ references:
     name: API
     href: Vintagestory.API.html
   - name: .
-  - uid: Vintagestory.API.Client
-    name: Client
-    href: Vintagestory.API.Client.html
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.Ticking*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.Ticking
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_Ticking
+  name: Ticking
+  nameWithType: EntityBehaviorPassivePhysics.Ticking
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.Ticking
+- uid: Vintagestory.API.Common.Entities.IPhysicsTickable.Ticking
+  commentId: P:Vintagestory.API.Common.Entities.IPhysicsTickable.Ticking
+  parent: Vintagestory.API.Common.Entities.IPhysicsTickable
+  href: Vintagestory.API.Common.Entities.IPhysicsTickable.html#Vintagestory_API_Common_Entities_IPhysicsTickable_Ticking
+  name: Ticking
+  nameWithType: IPhysicsTickable.Ticking
+  fullName: Vintagestory.API.Common.Entities.IPhysicsTickable.Ticking
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System
@@ -2183,65 +2497,43 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderOrder*
-  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderOrder
-  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_RenderOrder
-  name: RenderOrder
-  nameWithType: EntityBehaviorPassivePhysics.RenderOrder
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderOrder
-- uid: Vintagestory.API.Client.IRenderer.RenderOrder
-  commentId: P:Vintagestory.API.Client.IRenderer.RenderOrder
-  parent: Vintagestory.API.Client.IRenderer
-  href: Vintagestory.API.Client.IRenderer.html#Vintagestory_API_Client_IRenderer_RenderOrder
-  name: RenderOrder
-  nameWithType: IRenderer.RenderOrder
-  fullName: Vintagestory.API.Client.IRenderer.RenderOrder
-- uid: System.Double
-  commentId: T:System.Double
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.double
-  name: double
-  nameWithType: double
-  fullName: double
-  nameWithType.vb: Double
-  fullName.vb: Double
-  name.vb: Double
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderRange*
-  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderRange
-  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_RenderRange
-  name: RenderRange
-  nameWithType: EntityBehaviorPassivePhysics.RenderRange
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RenderRange
-- uid: Vintagestory.API.Client.IRenderer.RenderRange
-  commentId: P:Vintagestory.API.Client.IRenderer.RenderRange
-  parent: Vintagestory.API.Client.IRenderer
-  href: Vintagestory.API.Client.IRenderer.html#Vintagestory_API_Client_IRenderer_RenderRange
-  name: RenderRange
-  nameWithType: IRenderer.RenderRange
-  fullName: Vintagestory.API.Client.IRenderer.RenderRange
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
-- uid: System.Single
-  commentId: T:System.Single
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.single
-  name: float
-  nameWithType: float
-  fullName: float
-  nameWithType.vb: Single
-  fullName.vb: Single
-  name.vb: Single
+- uid: Vintagestory.API.MathTools.Vec3d
+  commentId: T:Vintagestory.API.MathTools.Vec3d
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3d.html
+  name: Vec3d
+  nameWithType: Vec3d
+  fullName: Vintagestory.API.MathTools.Vec3d
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
 - uid: System.Action{System.Single}
   commentId: T:System.Action{System.Single}
   parent: System
@@ -2305,44 +2597,30 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: Vintagestory.API.Common.Entities.EntityBehavior.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
-  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
-  parent: Vintagestory.API.Common.Entities.EntityBehavior
-  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_
-  name: OnEntityDespawn(EntityDespawnData)
-  nameWithType: EntityBehavior.OnEntityDespawn(EntityDespawnData)
-  fullName: Vintagestory.API.Common.Entities.EntityBehavior.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
-    name: OnEntityDespawn
-    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_
-  - name: (
-  - uid: Vintagestory.API.Common.Entities.EntityDespawnData
-    name: EntityDespawnData
-    href: Vintagestory.API.Common.Entities.EntityDespawnData.html
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
-    name: OnEntityDespawn
-    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_
-  - name: (
-  - uid: Vintagestory.API.Common.Entities.EntityDespawnData
-    name: EntityDespawnData
-    href: Vintagestory.API.Common.Entities.EntityDespawnData.html
-  - name: )
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn*
-  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn
-  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_
-  name: OnEntityDespawn
-  nameWithType: EntityBehaviorPassivePhysics.OnEntityDespawn
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn
-- uid: Vintagestory.API.Common.Entities.EntityDespawnData
-  commentId: T:Vintagestory.API.Common.Entities.EntityDespawnData
-  parent: Vintagestory.API.Common.Entities
-  href: Vintagestory.API.Common.Entities.EntityDespawnData.html
-  name: EntityDespawnData
-  nameWithType: EntityDespawnData
-  fullName: Vintagestory.API.Common.Entities.EntityDespawnData
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.FlagTickDone*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.FlagTickDone
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_FlagTickDone
+  name: FlagTickDone
+  nameWithType: EntityBehaviorPassivePhysics.FlagTickDone
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.FlagTickDone
+- uid: Vintagestory.API.Common.Entities.IPhysicsTickable.FlagTickDone
+  commentId: P:Vintagestory.API.Common.Entities.IPhysicsTickable.FlagTickDone
+  parent: Vintagestory.API.Common.Entities.IPhysicsTickable
+  href: Vintagestory.API.Common.Entities.IPhysicsTickable.html#Vintagestory_API_Common_Entities_IPhysicsTickable_FlagTickDone
+  name: FlagTickDone
+  nameWithType: IPhysicsTickable.FlagTickDone
+  fullName: Vintagestory.API.Common.Entities.IPhysicsTickable.FlagTickDone
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.#ctor*
   commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.#ctor
   href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics__ctor_Vintagestory_API_Common_Entities_Entity_
@@ -2359,6 +2637,62 @@ references:
   name: Entity
   nameWithType: Entity
   fullName: Vintagestory.API.Common.Entities.Entity
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetState*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetState
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_SetState_Vintagestory_API_Common_Entities_EntityPos_
+  name: SetState
+  nameWithType: EntityBehaviorPassivePhysics.SetState
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetState
+- uid: Vintagestory.API.Common.Entities.EntityPos
+  commentId: T:Vintagestory.API.Common.Entities.EntityPos
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.EntityPos.html
+  name: EntityPos
+  nameWithType: EntityPos
+  fullName: Vintagestory.API.Common.Entities.EntityPos
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetProperties*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetProperties
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_SetProperties_Vintagestory_API_Datastructures_JsonObject_
+  name: SetProperties
+  nameWithType: EntityBehaviorPassivePhysics.SetProperties
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.SetProperties
+- uid: Vintagestory.API.Datastructures.JsonObject
+  commentId: T:Vintagestory.API.Datastructures.JsonObject
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.JsonObject.html
+  name: JsonObject
+  nameWithType: JsonObject
+  fullName: Vintagestory.API.Datastructures.JsonObject
+- uid: Vintagestory.API.Datastructures
+  commentId: N:Vintagestory.API.Datastructures
+  href: Vintagestory.html
+  name: Vintagestory.API.Datastructures
+  nameWithType: Vintagestory.API.Datastructures
+  fullName: Vintagestory.API.Datastructures
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Datastructures
+    name: Datastructures
+    href: Vintagestory.API.Datastructures.html
 - uid: Vintagestory.API.Common.Entities.EntityBehavior.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Datastructures.JsonObject)
   commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Datastructures.JsonObject)
   parent: Vintagestory.API.Common.Entities.EntityBehavior
@@ -2407,112 +2741,204 @@ references:
   name: EntityProperties
   nameWithType: EntityProperties
   fullName: Vintagestory.API.Common.Entities.EntityProperties
-- uid: Vintagestory.API.Datastructures.JsonObject
-  commentId: T:Vintagestory.API.Datastructures.JsonObject
-  parent: Vintagestory.API.Datastructures
-  href: Vintagestory.API.Datastructures.JsonObject.html
-  name: JsonObject
-  nameWithType: JsonObject
-  fullName: Vintagestory.API.Datastructures.JsonObject
-- uid: Vintagestory.API.Datastructures
-  commentId: N:Vintagestory.API.Datastructures
-  href: Vintagestory.html
-  name: Vintagestory.API.Datastructures
-  nameWithType: Vintagestory.API.Datastructures
-  fullName: Vintagestory.API.Datastructures
-  spec.csharp:
-  - uid: Vintagestory
-    name: Vintagestory
-    href: Vintagestory.html
-  - name: .
-  - uid: Vintagestory.API
-    name: API
-    href: Vintagestory.API.html
-  - name: .
-  - uid: Vintagestory.API.Datastructures
-    name: Datastructures
-    href: Vintagestory.API.Datastructures.html
-  spec.vb:
-  - uid: Vintagestory
-    name: Vintagestory
-    href: Vintagestory.html
-  - name: .
-  - uid: Vintagestory.API
-    name: API
-    href: Vintagestory.API.html
-  - name: .
-  - uid: Vintagestory.API.Datastructures
-    name: Datastructures
-    href: Vintagestory.API.Datastructures.html
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnRenderFrame*
-  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnRenderFrame
-  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_OnRenderFrame_System_Single_Vintagestory_API_Client_EnumRenderStage_
-  name: OnRenderFrame
-  nameWithType: EntityBehaviorPassivePhysics.OnRenderFrame
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnRenderFrame
-- uid: Vintagestory.API.Client.IRenderer.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
-  commentId: M:Vintagestory.API.Client.IRenderer.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
-  parent: Vintagestory.API.Client.IRenderer
-  isExternal: true
-  href: Vintagestory.API.Client.IRenderer.html#Vintagestory_API_Client_IRenderer_OnRenderFrame_System_Single_Vintagestory_API_Client_EnumRenderStage_
-  name: OnRenderFrame(float, EnumRenderStage)
-  nameWithType: IRenderer.OnRenderFrame(float, EnumRenderStage)
-  fullName: Vintagestory.API.Client.IRenderer.OnRenderFrame(float, Vintagestory.API.Client.EnumRenderStage)
-  nameWithType.vb: IRenderer.OnRenderFrame(Single, EnumRenderStage)
-  fullName.vb: Vintagestory.API.Client.IRenderer.OnRenderFrame(Single, Vintagestory.API.Client.EnumRenderStage)
-  name.vb: OnRenderFrame(Single, EnumRenderStage)
-  spec.csharp:
-  - uid: Vintagestory.API.Client.IRenderer.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
-    name: OnRenderFrame
-    href: Vintagestory.API.Client.IRenderer.html#Vintagestory_API_Client_IRenderer_OnRenderFrame_System_Single_Vintagestory_API_Client_EnumRenderStage_
-  - name: (
-  - uid: System.Single
-    name: float
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.single
-  - name: ','
-  - name: " "
-  - uid: Vintagestory.API.Client.EnumRenderStage
-    name: EnumRenderStage
-    href: Vintagestory.API.Client.EnumRenderStage.html
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Client.IRenderer.OnRenderFrame(System.Single,Vintagestory.API.Client.EnumRenderStage)
-    name: OnRenderFrame
-    href: Vintagestory.API.Client.IRenderer.html#Vintagestory_API_Client_IRenderer_OnRenderFrame_System_Single_Vintagestory_API_Client_EnumRenderStage_
-  - name: (
-  - uid: System.Single
-    name: Single
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.single
-  - name: ','
-  - name: " "
-  - uid: Vintagestory.API.Client.EnumRenderStage
-    name: EnumRenderStage
-    href: Vintagestory.API.Client.EnumRenderStage.html
-  - name: )
-- uid: Vintagestory.API.Client.EnumRenderStage
-  commentId: T:Vintagestory.API.Client.EnumRenderStage
-  parent: Vintagestory.API.Client
-  href: Vintagestory.API.Client.EnumRenderStage.html
-  name: EnumRenderStage
-  nameWithType: EnumRenderStage
-  fullName: Vintagestory.API.Client.EnumRenderStage
-- uid: Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(System.Single)
-  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(System.Single)
+- uid: Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
+  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
   parent: Vintagestory.API.Common.Entities.EntityBehavior
   isExternal: true
-  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnGameTick_System_Single_
-  name: OnGameTick(float)
-  nameWithType: EntityBehavior.OnGameTick(float)
-  fullName: Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(float)
-  nameWithType.vb: EntityBehavior.OnGameTick(Single)
-  fullName.vb: Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(Single)
-  name.vb: OnGameTick(Single)
+  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnReceivedServerPos_System_Boolean_Vintagestory_API_Common_EnumHandling__
+  name: OnReceivedServerPos(bool, ref EnumHandling)
+  nameWithType: EntityBehavior.OnReceivedServerPos(bool, ref EnumHandling)
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(bool, ref Vintagestory.API.Common.EnumHandling)
+  nameWithType.vb: EntityBehavior.OnReceivedServerPos(Boolean, EnumHandling)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(Boolean, Vintagestory.API.Common.EnumHandling)
+  name.vb: OnReceivedServerPos(Boolean, EnumHandling)
   spec.csharp:
-  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(System.Single)
-    name: OnGameTick
-    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnGameTick_System_Single_
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
+    name: OnReceivedServerPos
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnReceivedServerPos_System_Boolean_Vintagestory_API_Common_EnumHandling__
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumHandling
+    name: EnumHandling
+    href: Vintagestory.API.Common.EnumHandling.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnReceivedServerPos(System.Boolean,Vintagestory.API.Common.EnumHandling@)
+    name: OnReceivedServerPos
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnReceivedServerPos_System_Boolean_Vintagestory_API_Common_EnumHandling__
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.EnumHandling
+    name: EnumHandling
+    href: Vintagestory.API.Common.EnumHandling.html
+  - name: )
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedServerPos*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedServerPos
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_OnReceivedServerPos_System_Boolean_Vintagestory_API_Common_EnumHandling__
+  name: OnReceivedServerPos
+  nameWithType: EntityBehaviorPassivePhysics.OnReceivedServerPos
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedServerPos
+- uid: Vintagestory.API.Common.EnumHandling
+  commentId: T:Vintagestory.API.Common.EnumHandling
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumHandling.html
+  name: EnumHandling
+  nameWithType: EnumHandling
+  fullName: Vintagestory.API.Common.EnumHandling
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedClientPos*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedClientPos
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_OnReceivedClientPos_System_Int32_
+  name: OnReceivedClientPos
+  nameWithType: EntityBehaviorPassivePhysics.OnReceivedClientPos
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnReceivedClientPos
+- uid: Vintagestory.API.Common.Entities.IRemotePhysics.OnReceivedClientPos(System.Int32)
+  commentId: M:Vintagestory.API.Common.Entities.IRemotePhysics.OnReceivedClientPos(System.Int32)
+  parent: Vintagestory.API.Common.Entities.IRemotePhysics
+  isExternal: true
+  href: Vintagestory.API.Common.Entities.IRemotePhysics.html#Vintagestory_API_Common_Entities_IRemotePhysics_OnReceivedClientPos_System_Int32_
+  name: OnReceivedClientPos(int)
+  nameWithType: IRemotePhysics.OnReceivedClientPos(int)
+  fullName: Vintagestory.API.Common.Entities.IRemotePhysics.OnReceivedClientPos(int)
+  nameWithType.vb: IRemotePhysics.OnReceivedClientPos(Integer)
+  fullName.vb: Vintagestory.API.Common.Entities.IRemotePhysics.OnReceivedClientPos(Integer)
+  name.vb: OnReceivedClientPos(Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.IRemotePhysics.OnReceivedClientPos(System.Int32)
+    name: OnReceivedClientPos
+    href: Vintagestory.API.Common.Entities.IRemotePhysics.html#Vintagestory_API_Common_Entities_IRemotePhysics_OnReceivedClientPos_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.IRemotePhysics.OnReceivedClientPos(System.Int32)
+    name: OnReceivedClientPos
+    href: Vintagestory.API.Common.Entities.IRemotePhysics.html#Vintagestory_API_Common_Entities_IRemotePhysics_OnReceivedClientPos_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.HandleRemotePhysics*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.HandleRemotePhysics
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_HandleRemotePhysics_System_Single_System_Boolean_
+  name: HandleRemotePhysics
+  nameWithType: EntityBehaviorPassivePhysics.HandleRemotePhysics
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.HandleRemotePhysics
+- uid: Vintagestory.API.Common.Entities.IRemotePhysics.HandleRemotePhysics(System.Single,System.Boolean)
+  commentId: M:Vintagestory.API.Common.Entities.IRemotePhysics.HandleRemotePhysics(System.Single,System.Boolean)
+  parent: Vintagestory.API.Common.Entities.IRemotePhysics
+  isExternal: true
+  href: Vintagestory.API.Common.Entities.IRemotePhysics.html#Vintagestory_API_Common_Entities_IRemotePhysics_HandleRemotePhysics_System_Single_System_Boolean_
+  name: HandleRemotePhysics(float, bool)
+  nameWithType: IRemotePhysics.HandleRemotePhysics(float, bool)
+  fullName: Vintagestory.API.Common.Entities.IRemotePhysics.HandleRemotePhysics(float, bool)
+  nameWithType.vb: IRemotePhysics.HandleRemotePhysics(Single, Boolean)
+  fullName.vb: Vintagestory.API.Common.Entities.IRemotePhysics.HandleRemotePhysics(Single, Boolean)
+  name.vb: HandleRemotePhysics(Single, Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.IRemotePhysics.HandleRemotePhysics(System.Single,System.Boolean)
+    name: HandleRemotePhysics
+    href: Vintagestory.API.Common.Entities.IRemotePhysics.html#Vintagestory_API_Common_Entities_IRemotePhysics_HandleRemotePhysics_System_Single_System_Boolean_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.IRemotePhysics.HandleRemotePhysics(System.Single,System.Boolean)
+    name: HandleRemotePhysics
+    href: Vintagestory.API.Common.Entities.IRemotePhysics.html#Vintagestory_API_Common_Entities_IRemotePhysics_HandleRemotePhysics_System_Single_System_Boolean_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RemoteMotionAndCollision*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.RemoteMotionAndCollision
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_RemoteMotionAndCollision_Vintagestory_API_Common_Entities_EntityPos_System_Single_
+  name: RemoteMotionAndCollision
+  nameWithType: EntityBehaviorPassivePhysics.RemoteMotionAndCollision
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.RemoteMotionAndCollision
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.MotionAndCollision*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.MotionAndCollision
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_MotionAndCollision_Vintagestory_API_Common_Entities_EntityPos_System_Single_
+  name: MotionAndCollision
+  nameWithType: EntityBehaviorPassivePhysics.MotionAndCollision
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.MotionAndCollision
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.applyCollision*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.applyCollision
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_applyCollision_Vintagestory_API_Common_Entities_EntityPos_System_Single_
+  name: applyCollision
+  nameWithType: EntityBehaviorPassivePhysics.applyCollision
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.applyCollision
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.ApplyTests*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.ApplyTests
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_ApplyTests_Vintagestory_API_Common_Entities_EntityPos_
+  name: ApplyTests
+  nameWithType: EntityBehaviorPassivePhysics.ApplyTests
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.ApplyTests
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTick*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTick
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_OnPhysicsTick_System_Single_
+  name: OnPhysicsTick
+  nameWithType: EntityBehaviorPassivePhysics.OnPhysicsTick
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnPhysicsTick
+- uid: Vintagestory.API.Common.Entities.IPhysicsTickable.OnPhysicsTick(System.Single)
+  commentId: M:Vintagestory.API.Common.Entities.IPhysicsTickable.OnPhysicsTick(System.Single)
+  parent: Vintagestory.API.Common.Entities.IPhysicsTickable
+  isExternal: true
+  href: Vintagestory.API.Common.Entities.IPhysicsTickable.html#Vintagestory_API_Common_Entities_IPhysicsTickable_OnPhysicsTick_System_Single_
+  name: OnPhysicsTick(float)
+  nameWithType: IPhysicsTickable.OnPhysicsTick(float)
+  fullName: Vintagestory.API.Common.Entities.IPhysicsTickable.OnPhysicsTick(float)
+  nameWithType.vb: IPhysicsTickable.OnPhysicsTick(Single)
+  fullName.vb: Vintagestory.API.Common.Entities.IPhysicsTickable.OnPhysicsTick(Single)
+  name.vb: OnPhysicsTick(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.IPhysicsTickable.OnPhysicsTick(System.Single)
+    name: OnPhysicsTick
+    href: Vintagestory.API.Common.Entities.IPhysicsTickable.html#Vintagestory_API_Common_Entities_IPhysicsTickable_OnPhysicsTick_System_Single_
   - name: (
   - uid: System.Single
     name: float
@@ -2520,40 +2946,90 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.single
   - name: )
   spec.vb:
-  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnGameTick(System.Single)
-    name: OnGameTick
-    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnGameTick_System_Single_
+  - uid: Vintagestory.API.Common.Entities.IPhysicsTickable.OnPhysicsTick(System.Single)
+    name: OnPhysicsTick
+    href: Vintagestory.API.Common.Entities.IPhysicsTickable.html#Vintagestory_API_Common_Entities_IPhysicsTickable_OnPhysicsTick_System_Single_
   - name: (
   - uid: System.Single
     name: Single
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.single
   - name: )
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnGameTick*
-  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnGameTick
-  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_OnGameTick_System_Single_
-  name: OnGameTick
-  nameWithType: EntityBehaviorPassivePhysics.OnGameTick
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnGameTick
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.onPhysicsTick*
-  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.onPhysicsTick
-  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_onPhysicsTick_System_Single_System_Boolean_
-  name: onPhysicsTick
-  nameWithType: EntityBehaviorPassivePhysics.onPhysicsTick
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.onPhysicsTick
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.DoPhysics*
-  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.DoPhysics
-  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_DoPhysics_System_Single_Vintagestory_API_Common_Entities_EntityPos_
-  name: DoPhysics
-  nameWithType: EntityBehaviorPassivePhysics.DoPhysics
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.DoPhysics
-- uid: Vintagestory.API.Common.Entities.EntityPos
-  commentId: T:Vintagestory.API.Common.Entities.EntityPos
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.AfterPhysicsTick*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.AfterPhysicsTick
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_AfterPhysicsTick_System_Single_
+  name: AfterPhysicsTick
+  nameWithType: EntityBehaviorPassivePhysics.AfterPhysicsTick
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.AfterPhysicsTick
+- uid: Vintagestory.API.Common.Entities.IPhysicsTickable.AfterPhysicsTick(System.Single)
+  commentId: M:Vintagestory.API.Common.Entities.IPhysicsTickable.AfterPhysicsTick(System.Single)
+  parent: Vintagestory.API.Common.Entities.IPhysicsTickable
+  isExternal: true
+  href: Vintagestory.API.Common.Entities.IPhysicsTickable.html#Vintagestory_API_Common_Entities_IPhysicsTickable_AfterPhysicsTick_System_Single_
+  name: AfterPhysicsTick(float)
+  nameWithType: IPhysicsTickable.AfterPhysicsTick(float)
+  fullName: Vintagestory.API.Common.Entities.IPhysicsTickable.AfterPhysicsTick(float)
+  nameWithType.vb: IPhysicsTickable.AfterPhysicsTick(Single)
+  fullName.vb: Vintagestory.API.Common.Entities.IPhysicsTickable.AfterPhysicsTick(Single)
+  name.vb: AfterPhysicsTick(Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.IPhysicsTickable.AfterPhysicsTick(System.Single)
+    name: AfterPhysicsTick
+    href: Vintagestory.API.Common.Entities.IPhysicsTickable.html#Vintagestory_API_Common_Entities_IPhysicsTickable_AfterPhysicsTick_System_Single_
+  - name: (
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.IPhysicsTickable.AfterPhysicsTick(System.Single)
+    name: AfterPhysicsTick
+    href: Vintagestory.API.Common.Entities.IPhysicsTickable.html#Vintagestory_API_Common_Entities_IPhysicsTickable_AfterPhysicsTick_System_Single_
+  - name: (
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Common.Entities.EntityBehavior.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
+  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
+  parent: Vintagestory.API.Common.Entities.EntityBehavior
+  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_
+  name: OnEntityDespawn(EntityDespawnData)
+  nameWithType: EntityBehavior.OnEntityDespawn(EntityDespawnData)
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
+    name: OnEntityDespawn
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.EntityDespawnData
+    name: EntityDespawnData
+    href: Vintagestory.API.Common.Entities.EntityDespawnData.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.EntityBehavior.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
+    name: OnEntityDespawn
+    href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.EntityDespawnData
+    name: EntityDespawnData
+    href: Vintagestory.API.Common.Entities.EntityDespawnData.html
+  - name: )
+- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn*
+  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn
+  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_
+  name: OnEntityDespawn
+  nameWithType: EntityBehaviorPassivePhysics.OnEntityDespawn
+  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.OnEntityDespawn
+- uid: Vintagestory.API.Common.Entities.EntityDespawnData
+  commentId: T:Vintagestory.API.Common.Entities.EntityDespawnData
   parent: Vintagestory.API.Common.Entities
-  href: Vintagestory.API.Common.Entities.EntityPos.html
-  name: EntityPos
-  nameWithType: EntityPos
-  fullName: Vintagestory.API.Common.Entities.EntityPos
+  href: Vintagestory.API.Common.Entities.EntityDespawnData.html
+  name: EntityDespawnData
+  nameWithType: EntityDespawnData
+  fullName: Vintagestory.API.Common.Entities.EntityDespawnData
 - uid: Vintagestory.API.Common.Entities.EntityBehavior.PropertyName
   commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.PropertyName
   parent: Vintagestory.API.Common.Entities.EntityBehavior
@@ -2590,31 +3066,3 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
-- uid: Vintagestory.API.Common.EntityBehaviorPassivePhysics.Dispose*
-  commentId: Overload:Vintagestory.API.Common.EntityBehaviorPassivePhysics.Dispose
-  href: Vintagestory.API.Common.EntityBehaviorPassivePhysics.html#Vintagestory_API_Common_EntityBehaviorPassivePhysics_Dispose
-  name: Dispose
-  nameWithType: EntityBehaviorPassivePhysics.Dispose
-  fullName: Vintagestory.API.Common.EntityBehaviorPassivePhysics.Dispose
-- uid: System.IDisposable.Dispose
-  commentId: M:System.IDisposable.Dispose
-  parent: System.IDisposable
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
-  name: Dispose()
-  nameWithType: IDisposable.Dispose()
-  fullName: System.IDisposable.Dispose()
-  spec.csharp:
-  - uid: System.IDisposable.Dispose
-    name: Dispose
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: System.IDisposable.Dispose
-    name: Dispose
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
-  - name: (
-  - name: )

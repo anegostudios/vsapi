@@ -17,7 +17,10 @@ items:
   - Vintagestory.API.Common.VertexFlags.GlowLevel
   - Vintagestory.API.Common.VertexFlags.GlowLevelBitMask
   - Vintagestory.API.Common.VertexFlags.LiquidExposedToSkyBitMask
-  - Vintagestory.API.Common.VertexFlags.LiquidWaterModeBitMask
+  - Vintagestory.API.Common.VertexFlags.LiquidFullAlphaBitMask
+  - Vintagestory.API.Common.VertexFlags.LiquidIsLavaBitMask
+  - Vintagestory.API.Common.VertexFlags.LiquidWeakFoamBitMask
+  - Vintagestory.API.Common.VertexFlags.LiquidWeakWaveBitMask
   - Vintagestory.API.Common.VertexFlags.Lod0
   - Vintagestory.API.Common.VertexFlags.Lod0BitMask
   - Vintagestory.API.Common.VertexFlags.Normal
@@ -71,7 +74,17 @@ items:
     Bit 25, 26, 27, 28: Wind mode<br />
 
     Bit 29, 30, 31: Wind data  (also sometimes used for other data, e.g. reflection mode if Reflective bit is set, or additional water surface data if this is a water block)<br />
-  example: []
+  example:
+  - >-
+    <pre><code class="lang-json">"vertexFlagsByType": {
+    	"metalblock-new-*": {
+    		"reflective": true,
+    		"windDataByType": {
+    			"*-gold": 1,
+    			"*": 1
+    		}
+    	}
+    },</code></pre>
   syntax:
     content: >-
       [JsonObject(MemberSerialization.OptIn)]
@@ -90,6 +103,9 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
   attributes:
   - type: Newtonsoft.Json.JsonObjectAttribute
     ctor: Newtonsoft.Json.JsonObjectAttribute.#ctor(Newtonsoft.Json.MemberSerialization)
@@ -343,25 +359,82 @@ items:
     return:
       type: System.Int32
     content.vb: Public Const WindBitsMask As Integer = -33554432
-- uid: Vintagestory.API.Common.VertexFlags.LiquidWaterModeBitMask
-  commentId: F:Vintagestory.API.Common.VertexFlags.LiquidWaterModeBitMask
-  id: LiquidWaterModeBitMask
+- uid: Vintagestory.API.Common.VertexFlags.LiquidIsLavaBitMask
+  commentId: F:Vintagestory.API.Common.VertexFlags.LiquidIsLavaBitMask
+  id: LiquidIsLavaBitMask
   parent: Vintagestory.API.Common.VertexFlags
   langs:
   - csharp
   - vb
-  name: LiquidWaterModeBitMask
-  nameWithType: VertexFlags.LiquidWaterModeBitMask
-  fullName: Vintagestory.API.Common.VertexFlags.LiquidWaterModeBitMask
+  name: LiquidIsLavaBitMask
+  nameWithType: VertexFlags.LiquidIsLavaBitMask
+  fullName: Vintagestory.API.Common.VertexFlags.LiquidIsLavaBitMask
   type: Field
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: public const int LiquidWaterModeBitMask = 234881024
+    content: public const int LiquidIsLavaBitMask = 33554432
     return:
       type: System.Int32
-    content.vb: Public Const LiquidWaterModeBitMask As Integer = 234881024
+    content.vb: Public Const LiquidIsLavaBitMask As Integer = 33554432
+- uid: Vintagestory.API.Common.VertexFlags.LiquidWeakFoamBitMask
+  commentId: F:Vintagestory.API.Common.VertexFlags.LiquidWeakFoamBitMask
+  id: LiquidWeakFoamBitMask
+  parent: Vintagestory.API.Common.VertexFlags
+  langs:
+  - csharp
+  - vb
+  name: LiquidWeakFoamBitMask
+  nameWithType: VertexFlags.LiquidWeakFoamBitMask
+  fullName: Vintagestory.API.Common.VertexFlags.LiquidWeakFoamBitMask
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public const int LiquidWeakFoamBitMask = 67108864
+    return:
+      type: System.Int32
+    content.vb: Public Const LiquidWeakFoamBitMask As Integer = 67108864
+- uid: Vintagestory.API.Common.VertexFlags.LiquidWeakWaveBitMask
+  commentId: F:Vintagestory.API.Common.VertexFlags.LiquidWeakWaveBitMask
+  id: LiquidWeakWaveBitMask
+  parent: Vintagestory.API.Common.VertexFlags
+  langs:
+  - csharp
+  - vb
+  name: LiquidWeakWaveBitMask
+  nameWithType: VertexFlags.LiquidWeakWaveBitMask
+  fullName: Vintagestory.API.Common.VertexFlags.LiquidWeakWaveBitMask
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public const int LiquidWeakWaveBitMask = 134217728
+    return:
+      type: System.Int32
+    content.vb: Public Const LiquidWeakWaveBitMask As Integer = 134217728
+- uid: Vintagestory.API.Common.VertexFlags.LiquidFullAlphaBitMask
+  commentId: F:Vintagestory.API.Common.VertexFlags.LiquidFullAlphaBitMask
+  id: LiquidFullAlphaBitMask
+  parent: Vintagestory.API.Common.VertexFlags
+  langs:
+  - csharp
+  - vb
+  name: LiquidFullAlphaBitMask
+  nameWithType: VertexFlags.LiquidFullAlphaBitMask
+  fullName: Vintagestory.API.Common.VertexFlags.LiquidFullAlphaBitMask
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public const int LiquidFullAlphaBitMask = 268435456
+    return:
+      type: System.Int32
+    content.vb: Public Const LiquidFullAlphaBitMask As Integer = 268435456
 - uid: Vintagestory.API.Common.VertexFlags.LiquidExposedToSkyBitMask
   commentId: F:Vintagestory.API.Common.VertexFlags.LiquidExposedToSkyBitMask
   id: LiquidExposedToSkyBitMask
@@ -490,6 +563,8 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Sets all the vertex flags from one integer.
+  example: []
   syntax:
     content: >-
       [JsonProperty]
@@ -1300,6 +1375,68 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1307,6 +1444,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Int32
   commentId: T:System.Int32
   parent: System

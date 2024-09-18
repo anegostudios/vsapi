@@ -24,7 +24,7 @@ namespace Vintagestory.API.Config
         /// <summary>
         /// Hard-enforced world size limit, above this the code may break
         /// </summary>
-        public const int MaxWorldSizeXZ = 67108864;   // 64m equivalent in base 2  (2 to the power of 26)
+        public const int MaxWorldSizeXZ = 67108864;   // 64m equivalent in base 2  (2 to the power of 26)   From 1.20 any change to this constant may break access to dimensions (for example the Devastation)
         /// <summary>
         /// Hard-enforced world height limit, above this the code may break.
         /// </summary>
@@ -42,8 +42,9 @@ namespace Vintagestory.API.Config
 
         /// <summary>
         /// Max. amount of "bones" for animated model. Limited by max amount of shader uniforms of around 60, but depends on the gfx card
+        /// This value is overriden by ClientSettings.cs
         /// </summary>
-        public static int MaxAnimatedElements = 46;
+        public static int MaxAnimatedElements = 46 * 5;
 
         /// <summary>
         /// Max. amount of "bones" for color maps. Limited by max amount of shader uniforms, but depends on the gfx card
@@ -137,6 +138,7 @@ namespace Vintagestory.API.Config
         /// Set by the WeatherSimulation System in the survival mod at the players position
         /// </summary>
         public static Vec3f CurrentWindSpeedClient = new Vec3f();
+        public static Vec3f CurrentSurfaceWindSpeedClient = new Vec3f();
 
         /// <summary>
         /// Set by the SystemPlayerEnvAwarenessTracker System in the engine at the players position, once every second. 12 horizontal, 4 vertical search distance
@@ -184,6 +186,19 @@ namespace Vintagestory.API.Config
             return x < -30 || z < -30 || y < -30 || x > blockAccessor.MapSizeX + 30 || z > blockAccessor.MapSizeZ + 30;
         }
 
+
+        /// <summary>
+        /// These reserved characters or sequences should not be used in texture filenames or asset locations, they can mess up the BakedTexture system
+        /// </summary>
+        public static string[] ReservedCharacterSequences = new string[] {
+            "" + CompositeTexture.AlphaSeparator,                // "å"
+            "" + CompositeTexture.BlendmodeSeparator,            // "~"
+            CompositeTexture.OverlaysSeparator,                  // "++"
+            "@90",
+            "@180",
+            "@270"
+            // Note: if we add any more reserved characters here, for things outside the textures system, note that the `pathForReservedCharsCheck` parameter in new PathOrigin() and new FolderOrigin() and its sub-types, at present, only ever checks the "assets/textures" sub-folder
+        };
 
         public const string WorldSaveExtension = ".vcdbs";
         public const string hotBarInvClassName = "hotbar";
@@ -321,7 +336,7 @@ namespace Vintagestory.API.Config
         public static AssetLocation EntityBlockFallingTypeCode = new AssetLocation("blockfalling");
 
         /// <summary>
-        /// Default Itemstack attributes that should be ignored during a stack.Collectible.Equals() comparison
+        /// Default Itemstack attributes that should always be ignored during a stack.Collectible.Equals() comparison
         /// </summary>
         public static string[] IgnoredStackAttributes = new string[] { "temperature", "toolMode", "renderVariant", "transitionstate" };
 

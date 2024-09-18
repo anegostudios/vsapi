@@ -19,11 +19,13 @@ items:
   - Vintagestory.API.Client.IClientWorldAccessor.IncurBlockDamage(Vintagestory.API.Common.BlockSelection,System.Nullable{Vintagestory.API.Common.EnumTool},System.Single)
   - Vintagestory.API.Client.IClientWorldAccessor.LoadSound(Vintagestory.API.Client.SoundParams)
   - Vintagestory.API.Client.IClientWorldAccessor.LoadedEntities
+  - Vintagestory.API.Client.IClientWorldAccessor.MapSizeY
   - Vintagestory.API.Client.IClientWorldAccessor.PlaySoundAtAndGetDuration(Vintagestory.API.Common.AssetLocation,System.Double,System.Double,System.Double,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)
   - Vintagestory.API.Client.IClientWorldAccessor.Player
   - Vintagestory.API.Client.IClientWorldAccessor.ReduceCameraShake(System.Single)
   - Vintagestory.API.Client.IClientWorldAccessor.SetBlocksPreviewDimension(System.Int32)
   - Vintagestory.API.Client.IClientWorldAccessor.SetCameraShake(System.Single)
+  - Vintagestory.API.Client.IClientWorldAccessor.SetChunkColumnVisible(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Client.IClientWorldAccessor.TryAttackEntity(Vintagestory.API.Common.EntitySelection)
   - Vintagestory.API.Client.IClientWorldAccessor.TryGetMiniDimension(Vintagestory.API.MathTools.Vec3i,Vintagestory.API.Common.IMiniDimension@)
   langs:
@@ -46,6 +48,7 @@ items:
   - Vintagestory.API.Common.IWorldAccessor.DefaultSpawnPosition
   - Vintagestory.API.Common.IWorldAccessor.FrameProfiler
   - Vintagestory.API.Common.IWorldAccessor.Api
+  - Vintagestory.API.Common.IWorldAccessor.ChunkProvider
   - Vintagestory.API.Common.IWorldAccessor.Claims
   - Vintagestory.API.Common.IWorldAccessor.LoadedChunkIndices
   - Vintagestory.API.Common.IWorldAccessor.LoadedMapChunkIndices
@@ -81,7 +84,9 @@ items:
   - Vintagestory.API.Common.IWorldAccessor.GetBlock(Vintagestory.API.Common.AssetLocation)
   - Vintagestory.API.Common.IWorldAccessor.GetEntityType(Vintagestory.API.Common.AssetLocation)
   - Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
+  - Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.Common.IWorldAccessor.SpawnEntity(Vintagestory.API.Common.Entities.Entity)
+  - Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk(Vintagestory.API.Common.Entities.Entity,System.Int64)
   - Vintagestory.API.Common.IWorldAccessor.GetEntitiesAround(Vintagestory.API.MathTools.Vec3d,System.Single,System.Single,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.Entities.Entity})
   - Vintagestory.API.Common.IWorldAccessor.GetEntitiesInsideCuboid(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.Entities.Entity})
   - Vintagestory.API.Common.IWorldAccessor.GetPlayersAround(Vintagestory.API.MathTools.Vec3d,System.Single,System.Single,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.IPlayer})
@@ -93,6 +98,7 @@ items:
   - Vintagestory.API.Common.IWorldAccessor.AllPlayers
   - Vintagestory.API.Common.IWorldAccessor.PlayerByUid(System.String)
   - Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,System.Double,System.Double,System.Double,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)
+  - Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,Vintagestory.API.MathTools.BlockPos,System.Double,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)
   - Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)
   - Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.IPlayer,System.Single,System.Single,System.Single)
   - Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,System.Double,System.Double,System.Double,Vintagestory.API.Common.IPlayer,System.Single,System.Single,System.Single)
@@ -126,6 +132,9 @@ items:
   - Vintagestory.API.Common.IWorldAccessor.GetBlockAccessorPrefetch(System.Boolean,System.Boolean)
   - Vintagestory.API.Common.IWorldAccessor.GetCachingBlockAccessor(System.Boolean,System.Boolean)
   - Vintagestory.API.Common.IWorldAccessor.GetLockFreeBlockAccessor
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Client.IClientWorldAccessor.GetColorMapData(Vintagestory.API.Common.Block,System.Int32,System.Int32,System.Int32)
   commentId: M:Vintagestory.API.Client.IClientWorldAccessor.GetColorMapData(Vintagestory.API.Common.Block,System.Int32,System.Int32,System.Int32)
   id: GetColorMapData(Vintagestory.API.Common.Block,System.Int32,System.Int32,System.Int32)
@@ -590,6 +599,29 @@ items:
       type: System.Collections.Generic.Dictionary{System.Int64,Vintagestory.API.Common.Entities.Entity}
     content.vb: ReadOnly Property LoadedEntities As Dictionary(Of Long, Entity)
   overload: Vintagestory.API.Client.IClientWorldAccessor.LoadedEntities*
+- uid: Vintagestory.API.Client.IClientWorldAccessor.MapSizeY
+  commentId: P:Vintagestory.API.Client.IClientWorldAccessor.MapSizeY
+  id: MapSizeY
+  parent: Vintagestory.API.Client.IClientWorldAccessor
+  langs:
+  - csharp
+  - vb
+  name: MapSizeY
+  nameWithType: IClientWorldAccessor.MapSizeY
+  fullName: Vintagestory.API.Client.IClientWorldAccessor.MapSizeY
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Gets the MapSizeY on the client, for chunk column enumeration, without this this is surprisingly hard to get...
+  example: []
+  syntax:
+    content: int MapSizeY { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property MapSizeY As Integer
+  overload: Vintagestory.API.Client.IClientWorldAccessor.MapSizeY*
 - uid: Vintagestory.API.Client.IClientWorldAccessor.Dimensions
   commentId: P:Vintagestory.API.Client.IClientWorldAccessor.Dimensions
   id: Dimensions
@@ -733,6 +765,39 @@ items:
   nameWithType.vb: IClientWorldAccessor.PlaySoundAtAndGetDuration(AssetLocation, Double, Double, Double, IPlayer, Boolean, Single, Single)
   fullName.vb: Vintagestory.API.Client.IClientWorldAccessor.PlaySoundAtAndGetDuration(Vintagestory.API.Common.AssetLocation, Double, Double, Double, Vintagestory.API.Common.IPlayer, Boolean, Single, Single)
   name.vb: PlaySoundAtAndGetDuration(AssetLocation, Double, Double, Double, IPlayer, Boolean, Single, Single)
+- uid: Vintagestory.API.Client.IClientWorldAccessor.SetChunkColumnVisible(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Client.IClientWorldAccessor.SetChunkColumnVisible(System.Int32,System.Int32,System.Int32)
+  id: SetChunkColumnVisible(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Client.IClientWorldAccessor
+  langs:
+  - csharp
+  - vb
+  name: SetChunkColumnVisible(int, int, int)
+  nameWithType: IClientWorldAccessor.SetChunkColumnVisible(int, int, int)
+  fullName: Vintagestory.API.Client.IClientWorldAccessor.SetChunkColumnVisible(int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Does exactly what it says on the tin!
+  example: []
+  syntax:
+    content: void SetChunkColumnVisible(int cx, int cz, int dimension)
+    parameters:
+    - id: cx
+      type: System.Int32
+      description: ''
+    - id: cz
+      type: System.Int32
+      description: ''
+    - id: dimension
+      type: System.Int32
+      description: ''
+    content.vb: Sub SetChunkColumnVisible(cx As Integer, cz As Integer, dimension As Integer)
+  overload: Vintagestory.API.Client.IClientWorldAccessor.SetChunkColumnVisible*
+  nameWithType.vb: IClientWorldAccessor.SetChunkColumnVisible(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Client.IClientWorldAccessor.SetChunkColumnVisible(Integer, Integer, Integer)
+  name.vb: SetChunkColumnVisible(Integer, Integer, Integer)
 references:
 - uid: Vintagestory.API.Client
   commentId: N:Vintagestory.API.Client
@@ -792,6 +857,13 @@ references:
   name: Api
   nameWithType: IWorldAccessor.Api
   fullName: Vintagestory.API.Common.IWorldAccessor.Api
+- uid: Vintagestory.API.Common.IWorldAccessor.ChunkProvider
+  commentId: P:Vintagestory.API.Common.IWorldAccessor.ChunkProvider
+  parent: Vintagestory.API.Common.IWorldAccessor
+  href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_ChunkProvider
+  name: ChunkProvider
+  nameWithType: IWorldAccessor.ChunkProvider
+  fullName: Vintagestory.API.Common.IWorldAccessor.ChunkProvider
 - uid: Vintagestory.API.Common.IWorldAccessor.Claims
   commentId: P:Vintagestory.API.Common.IWorldAccessor.Claims
   parent: Vintagestory.API.Common.IWorldAccessor
@@ -1237,6 +1309,51 @@ references:
     name: Vec3d
     href: Vintagestory.API.MathTools.Vec3d.html
   - name: )
+- uid: Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Vec3d)
+  parent: Vintagestory.API.Common.IWorldAccessor
+  href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Vec3d_
+  name: SpawnItemEntity(ItemStack, BlockPos, Vec3d)
+  nameWithType: IWorldAccessor.SpawnItemEntity(ItemStack, BlockPos, Vec3d)
+  fullName: Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity(Vintagestory.API.Common.ItemStack, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.Vec3d)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Vec3d)
+    name: SpawnItemEntity
+    href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Vec3d_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IWorldAccessor.SpawnItemEntity(Vintagestory.API.Common.ItemStack,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Vec3d)
+    name: SpawnItemEntity
+    href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Vec3d_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: )
 - uid: Vintagestory.API.Common.IWorldAccessor.SpawnEntity(Vintagestory.API.Common.Entities.Entity)
   commentId: M:Vintagestory.API.Common.IWorldAccessor.SpawnEntity(Vintagestory.API.Common.Entities.Entity)
   parent: Vintagestory.API.Common.IWorldAccessor
@@ -1261,6 +1378,47 @@ references:
   - uid: Vintagestory.API.Common.Entities.Entity
     name: Entity
     href: Vintagestory.API.Common.Entities.Entity.html
+  - name: )
+- uid: Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk(Vintagestory.API.Common.Entities.Entity,System.Int64)
+  commentId: M:Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk(Vintagestory.API.Common.Entities.Entity,System.Int64)
+  parent: Vintagestory.API.Common.IWorldAccessor
+  isExternal: true
+  href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_UpdateEntityChunk_Vintagestory_API_Common_Entities_Entity_System_Int64_
+  name: UpdateEntityChunk(Entity, long)
+  nameWithType: IWorldAccessor.UpdateEntityChunk(Entity, long)
+  fullName: Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk(Vintagestory.API.Common.Entities.Entity, long)
+  nameWithType.vb: IWorldAccessor.UpdateEntityChunk(Entity, Long)
+  fullName.vb: Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk(Vintagestory.API.Common.Entities.Entity, Long)
+  name.vb: UpdateEntityChunk(Entity, Long)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk(Vintagestory.API.Common.Entities.Entity,System.Int64)
+    name: UpdateEntityChunk
+    href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_UpdateEntityChunk_Vintagestory_API_Common_Entities_Entity_System_Int64_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk(Vintagestory.API.Common.Entities.Entity,System.Int64)
+    name: UpdateEntityChunk
+    href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_UpdateEntityChunk_Vintagestory_API_Common_Entities_Entity_System_Int64_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
   - name: )
 - uid: Vintagestory.API.Common.IWorldAccessor.GetEntitiesAround(Vintagestory.API.MathTools.Vec3d,System.Single,System.Single,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.Entities.Entity})
   commentId: M:Vintagestory.API.Common.IWorldAccessor.GetEntitiesAround(Vintagestory.API.MathTools.Vec3d,System.Single,System.Single,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.Entities.Entity})
@@ -1823,6 +1981,103 @@ references:
     name: Double
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,Vintagestory.API.MathTools.BlockPos,System.Double,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)
+  commentId: M:Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,Vintagestory.API.MathTools.BlockPos,System.Double,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)
+  parent: Vintagestory.API.Common.IWorldAccessor
+  isExternal: true
+  href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_MathTools_BlockPos_System_Double_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_
+  name: PlaySoundAt(AssetLocation, BlockPos, double, IPlayer, bool, float, float)
+  nameWithType: IWorldAccessor.PlaySoundAt(AssetLocation, BlockPos, double, IPlayer, bool, float, float)
+  fullName: Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation, Vintagestory.API.MathTools.BlockPos, double, Vintagestory.API.Common.IPlayer, bool, float, float)
+  nameWithType.vb: IWorldAccessor.PlaySoundAt(AssetLocation, BlockPos, Double, IPlayer, Boolean, Single, Single)
+  fullName.vb: Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation, Vintagestory.API.MathTools.BlockPos, Double, Vintagestory.API.Common.IPlayer, Boolean, Single, Single)
+  name.vb: PlaySoundAt(AssetLocation, BlockPos, Double, IPlayer, Boolean, Single, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,Vintagestory.API.MathTools.BlockPos,System.Double,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)
+    name: PlaySoundAt
+    href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_MathTools_BlockPos_System_Double_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IWorldAccessor.PlaySoundAt(Vintagestory.API.Common.AssetLocation,Vintagestory.API.MathTools.BlockPos,System.Double,Vintagestory.API.Common.IPlayer,System.Boolean,System.Single,System.Single)
+    name: PlaySoundAt
+    href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_MathTools_BlockPos_System_Double_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_
+  - name: (
+  - uid: Vintagestory.API.Common.AssetLocation
+    name: AssetLocation
+    href: Vintagestory.API.Common.AssetLocation.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
   - name: ','
   - name: " "
   - uid: System.Double
@@ -4197,6 +4452,68 @@ references:
     href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetLockFreeBlockAccessor
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Vintagestory.API.Common.IWorldAccessor
   commentId: T:Vintagestory.API.Common.IWorldAccessor
   parent: Vintagestory.API.Common
@@ -4204,6 +4521,73 @@ references:
   name: IWorldAccessor
   nameWithType: IWorldAccessor
   fullName: Vintagestory.API.Common.IWorldAccessor
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
   href: Vintagestory.html
@@ -4234,6 +4618,36 @@ references:
   - uid: Vintagestory.API.Common
     name: Common
     href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Client.IClientWorldAccessor.GetColorMapData*
   commentId: Overload:Vintagestory.API.Client.IClientWorldAccessor.GetColorMapData
   href: Vintagestory.API.Client.IClientWorldAccessor.html#Vintagestory_API_Client_IClientWorldAccessor_GetColorMapData_Vintagestory_API_Common_Block_System_Int32_System_Int32_System_Int32_
@@ -4631,6 +5045,12 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Client.IClientWorldAccessor.MapSizeY*
+  commentId: Overload:Vintagestory.API.Client.IClientWorldAccessor.MapSizeY
+  href: Vintagestory.API.Client.IClientWorldAccessor.html#Vintagestory_API_Client_IClientWorldAccessor_MapSizeY
+  name: MapSizeY
+  nameWithType: IClientWorldAccessor.MapSizeY
+  fullName: Vintagestory.API.Client.IClientWorldAccessor.MapSizeY
 - uid: Vintagestory.API.Client.IClientWorldAccessor.Dimensions*
   commentId: Overload:Vintagestory.API.Client.IClientWorldAccessor.Dimensions
   href: Vintagestory.API.Client.IClientWorldAccessor.html#Vintagestory_API_Client_IClientWorldAccessor_Dimensions
@@ -4752,3 +5172,9 @@ references:
   name: IPlayer
   nameWithType: IPlayer
   fullName: Vintagestory.API.Common.IPlayer
+- uid: Vintagestory.API.Client.IClientWorldAccessor.SetChunkColumnVisible*
+  commentId: Overload:Vintagestory.API.Client.IClientWorldAccessor.SetChunkColumnVisible
+  href: Vintagestory.API.Client.IClientWorldAccessor.html#Vintagestory_API_Client_IClientWorldAccessor_SetChunkColumnVisible_System_Int32_System_Int32_System_Int32_
+  name: SetChunkColumnVisible
+  nameWithType: IClientWorldAccessor.SetChunkColumnVisible
+  fullName: Vintagestory.API.Client.IClientWorldAccessor.SetChunkColumnVisible

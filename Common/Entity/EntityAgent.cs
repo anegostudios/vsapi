@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
+using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
@@ -18,13 +19,13 @@ namespace Vintagestory.API.Common
     public interface IWearableShapeSupplier
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="stack"></param>
         /// <param name="forEntity"></param>
         /// <param name="texturePrefixCode"></param>
         /// <returns>null for returning back to default behavior (read shape from attributes)</returns>
-        Shape GetShape(ItemStack stack, EntityAgent forEntity, string texturePrefixCode);
+        Shape GetShape(ItemStack stack, Entity forEntity, string texturePrefixCode);
     }
 
 
@@ -45,6 +46,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual float BodyYawServer { get; set; }
 
+        public float sidewaysSwivelAngle;
+
         /// <summary>
         /// True if all clients have to be informed about this entities death. Set to false once all clients have been notified
         /// </summary>
@@ -62,10 +65,10 @@ namespace Vintagestory.API.Common
         protected EntityControls controls;
         protected EntityControls servercontrols;
 
-        
 
 
-        public IMountable MountedOn { get; protected set; }
+
+        public IMountableSeat MountedOn { get; protected set; }
         public EnumEntityActivity CurrentControls;
 
         internal virtual bool LoadControlsFromServer
@@ -85,10 +88,6 @@ namespace Vintagestory.API.Common
 
         public virtual ItemSlot ActiveHandItemSlot => RightHandItemSlot;
 
-        /// <summary>
-        /// The inventory of the entity agent.
-        /// </summary>
-        public virtual IInventory GearInventory { get; set; }
 
         /// <summary>
         /// Whether or not the entity should despawn.
@@ -103,7 +102,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool AllowDespawn = true;
 
-
+        protected bool alwaysRunIdle = false;
 
 
 
@@ -116,9 +115,6 @@ namespace Vintagestory.API.Common
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long InChunkIndex3d)
         {
-            // Temporary code for VS 1.15 dev team to remove previously created "land" salmon which don't have the correct entity
-            if (properties.Habitat == EnumHabitat.Underwater && !(this.GetType().Name == "EntityFish")) this.Alive = false;
-
             base.Initialize(properties, api, InChunkIndex3d);
 
             if (World.Side == EnumAppSide.Server)
@@ -130,14 +126,14 @@ namespace Vintagestory.API.Common
 
             if (WatchedAttributes["mountedOn"] != null)
             {
-                MountedOn = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
+                MountedOn = World.ClassRegistry.GetMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
                 if (MountedOn != null)
                 {
                     TryMount(MountedOn);
                 }
             }
 
-            
+
         }
 
 
@@ -156,7 +152,7 @@ namespace Vintagestory.API.Common
         {
             get { return servercontrols; }
         }
-        
+
         /// <summary>
         /// Are the eyes of this entity submerged in liquid?
         /// </summary>
@@ -169,15 +165,17 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Attempts to mount the player on a target.
+        /// Attempts to mount this entity on a target.
         /// </summary>
         /// <param name="onmount">The mount to mount</param>
         /// <returns>Whether it was mounted or not.</returns>
-        public virtual bool TryMount(IMountable onmount)
+        public virtual bool TryMount(IMountableSeat onmount)
         {
+            if (!onmount.CanMount(this)) return false;
+
             // load current controls when mounting onto the mountable
             onmount.Controls.FromInt(Controls.ToInt());
-            
+
             if (MountedOn != onmount)
             {
                 if (!TryUnmount()) return false;
@@ -187,9 +185,12 @@ namespace Vintagestory.API.Common
             onmount?.MountableToTreeAttributes(mountableTree);
             WatchedAttributes["mountedOn"] = mountableTree;
 
-            var mountable = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
+            /*var mountable = World.ClassRegistry.GetMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
             if (mountable != null) WatchedAttributes.MarkPathDirty("mountedOn");
-            else doMount(onmount); // ClassRegistry.CreateMountable() might not have the onmount as a loaded entity yet
+            else doMount(onmount); // ClassRegistry.CreateMountable() might not have the onmount as a loaded entity yet*/
+            // ^ WTF is this for? This makes no sense at all
+
+            doMount(onmount);
             return true;
         }
 
@@ -197,7 +198,7 @@ namespace Vintagestory.API.Common
         {
             if (WatchedAttributes.HasAttribute("mountedOn"))
             {
-                var mountable = World.ClassRegistry.CreateMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
+                var mountable = World.ClassRegistry.GetMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
                 doMount(mountable);
             }
             else
@@ -207,7 +208,8 @@ namespace Vintagestory.API.Common
 
         }
 
-        protected virtual void doMount(IMountable mountable)
+        AnimationMetaData curMountedAnim = null;
+        protected virtual void doMount(IMountableSeat mountable)
         {
             this.MountedOn = mountable;
             controls.StopAllMovement();
@@ -220,8 +222,8 @@ namespace Vintagestory.API.Common
 
             if (MountedOn?.SuggestedAnimation != null)
             {
-                string anim = MountedOn.SuggestedAnimation.ToLowerInvariant();
-                AnimManager?.StartAnimation(anim);
+                curMountedAnim = MountedOn.SuggestedAnimation;
+                AnimManager?.StartAnimation(curMountedAnim);
             }
 
             mountable.DidMount(this);
@@ -233,10 +235,12 @@ namespace Vintagestory.API.Common
         /// <returns>Whether or not unmounting was successful</returns>
         public bool TryUnmount()
         {
-            if (MountedOn?.SuggestedAnimation != null)
+            if (MountedOn?.CanUnmount(this) == false) return false;
+
+            if (curMountedAnim != null)
             {
-                string anim = MountedOn.SuggestedAnimation.ToLowerInvariant();
-                AnimManager?.StopAnimation(anim);
+                AnimManager?.StopAnimation(curMountedAnim.Animation);
+                curMountedAnim = null;
             }
 
             MountedOn?.DidUnmount(this);
@@ -255,6 +259,10 @@ namespace Vintagestory.API.Common
             if (Alive && reason == EnumDespawnReason.Death)
             {
                 PlayEntitySound("death");
+                if (damageSourceForDeath?.GetCauseEntity() is EntityPlayer player)
+                {
+                    Api.Logger.Audit("Player {0} killed {1} at {2}", player.GetName(), Code, Pos.AsBlockPos);
+                }
             }
             if (reason != EnumDespawnReason.Death)
             {
@@ -267,16 +275,14 @@ namespace Vintagestory.API.Common
 
             base.Die(reason, damageSourceForDeath);
         }
-        
-        /// <summary>
-        /// Called when the path finder does not find a path to given target
-        /// </summary>
-        /// <param name="target"></param>
-        public void OnNoPath(Vec3d target)
+
+        public override void OnEntityDespawn(EntityDespawnData despawn)
         {
-            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            base.OnEntityDespawn(despawn);
+
+            if (despawn != null && despawn.Reason == EnumDespawnReason.Removed)
             {
-                behavior.OnNoPath(target);
+                TryUnmount();
             }
         }
 
@@ -312,7 +318,7 @@ namespace Vintagestory.API.Common
                 {
                     byPlayer = (byEntity as EntityPlayer).Player;
 
-                    World.PlaySoundAt(new AssetLocation("sounds/player/slap"), ServerPos.X, ServerPos.Y, ServerPos.Z, byPlayer);
+                    World.PlaySoundAt(new AssetLocation("sounds/player/slap"), ServerPos.X, ServerPos.InternalY, ServerPos.Z, byPlayer);
                     slot?.Itemstack?.Collectible.OnAttackingWith(byEntity.World, byEntity, this, slot);
                 }
 
@@ -334,7 +340,7 @@ namespace Vintagestory.API.Common
                             2*(float)World.Rand.NextDouble(),
                             1f - 2*(float)World.Rand.NextDouble()
                         );
-                        
+
                         World.SpawnParticles(
                             1, color, minPos, maxPos,
                             tmp, tmp, 1.5f, 1f, 0.25f + (float)World.Rand.NextDouble() * 0.25f,
@@ -356,7 +362,7 @@ namespace Vintagestory.API.Common
                 {
                     byEntity.DidAttack(dmgSource, this);
                 }
- 
+
             }
         }
 
@@ -437,6 +443,16 @@ namespace Vintagestory.API.Common
 
         public override void OnGameTick(float dt)
         {
+            var nowSuggestedAnim = MountedOn?.SuggestedAnimation;
+            
+            if (curMountedAnim?.Code != nowSuggestedAnim?.Code)
+            {
+                AnimManager?.StopAnimation(curMountedAnim?.Code);
+                if (nowSuggestedAnim != null) AnimManager?.StartAnimation(nowSuggestedAnim);
+                curMountedAnim = nowSuggestedAnim;
+            }
+
+
             if (World.Side == EnumAppSide.Client)
             {
                 bool alive = Alive;
@@ -462,6 +478,11 @@ namespace Vintagestory.API.Common
                 }
 
                 CurrentControls = CurrentControls == 0 ? EnumEntityActivity.Idle : CurrentControls;
+
+                if (MountedOn != null && MountedOn.SkipIdleAnimation)
+                {
+                    CurrentControls &= ~EnumEntityActivity.Idle;
+                }
             }
 
             HandleHandAnimations(dt);
@@ -477,10 +498,10 @@ namespace Vintagestory.API.Common
                 {
                     AnimationMetaData anim = animations[i];
                     bool wasActive = AnimManager.IsAnimationActive(anim.Animation);
-                    bool nowActive = anim.Matches((int)CurrentControls);
                     bool isDefaultAnim = anim?.TriggeredBy?.DefaultAnim == true;
+                    bool nowActive = anim.Matches((int)CurrentControls) || (isDefaultAnim && CurrentControls == EnumEntityActivity.Idle);
 
-                    anyAverageAnimActive |= nowActive || (wasActive && !anim.WasStartedFromTrigger);
+                    anyAverageAnimActive |= (nowActive && anim.TriggeredBy?.DefaultAnim != true) || (wasActive && !anim.WasStartedFromTrigger) || (MountedOn != null && MountedOn.SkipIdleAnimation);
                     skipDefaultAnim |= (nowActive || (wasActive && !anim.WasStartedFromTrigger)) && anim.SupressDefaultAnimation;
 
                     if (isDefaultAnim)
@@ -504,10 +525,16 @@ namespace Vintagestory.API.Common
                 }
 
 
-                if (!anyAverageAnimActive && defaultAnim != null && Alive && !skipDefaultAnim)
+                if (defaultAnim != null && Alive && !skipDefaultAnim)
                 {
-                    defaultAnim.WasStartedFromTrigger = true;
-                    AnimManager.StartAnimation(defaultAnim);
+                    if (anyAverageAnimActive)
+                    {
+                         if (!alwaysRunIdle) AnimManager.StopAnimation(defaultAnim.Animation);
+                    } else
+                    {
+                        defaultAnim.WasStartedFromTrigger = true;
+                        AnimManager.StartAnimation(defaultAnim);
+                    }
                 }
 
                 if ((!Alive || skipDefaultAnim) && defaultAnim != null)
@@ -531,7 +558,7 @@ namespace Vintagestory.API.Common
                 else
                 {
                     ServerPos.Pitch = 0;
-                }   
+                }
             }
 
 
@@ -680,7 +707,7 @@ namespace Vintagestory.API.Common
             } catch (EndOfStreamException e)
             {
                 throw new Exception("EndOfStreamException thrown while reading entity, you might be able to recover your savegame through repair mode", e);
-                
+
             }
 
             if (!WatchedAttributes.HasAttribute("mountedOn") && MountedOn != null)
@@ -695,12 +722,9 @@ namespace Vintagestory.API.Common
         protected override void SetHeadPositionToWatchedAttributes()
         {
             // Storing in binary form sucks when it comes to compatibility, so lets use WatchedAttributes for these 2 new fields
-            lock (WatchedAttributes.attributesLock)
-            {
-                // We don't use SetFloat to avoid triggering OnModified listeners on the server. This can be called outside the mainthread and produce deadlocks.
-                WatchedAttributes["headYaw"] = new FloatAttribute(ServerPos.HeadYaw);
-                WatchedAttributes["headPitch"] = new FloatAttribute(ServerPos.HeadPitch);
-            }
+            // We don't use SetFloat to avoid triggering OnModified listeners on the server. This can be called outside the mainthread and produce deadlocks.
+            WatchedAttributes["headYaw"] = new FloatAttribute(ServerPos.HeadYaw);
+            WatchedAttributes["headPitch"] = new FloatAttribute(ServerPos.HeadPitch);
         }
 
         /// <summary>
@@ -745,7 +769,7 @@ namespace Vintagestory.API.Common
         /// <param name="handler">the event to fire while walking the inventory.</param>
         public virtual void WalkInventory(OnInventorySlot handler)
         {
-            
+
         }
 
 
@@ -757,206 +781,23 @@ namespace Vintagestory.API.Common
         }
 
 
-        public override void OnTesselation(ref Shape entityShape, string shapePathForLogging)
-        {
-            addGearToShape(ref entityShape, shapePathForLogging);
-
-            base.OnTesselation(ref entityShape, shapePathForLogging);
-        }
-
-        public bool hideClothing;
-
-
-        protected Shape addGearToShape(ref Shape entityShape, string shapePathForLogging)
-        {
-            IInventory inv = GearInventory;
-
-            if (inv == null || (!(this is EntityPlayer) && inv.Empty)) return entityShape;
-
-            bool clearCache = false;
-
-            foreach (var slot in inv)
-            {
-                if (slot.Empty) continue;
-                if (hideClothing && !slot.Empty)
-                {
-                    continue;
-                }
-
-                if (!clearCache)
-                {
-                    // Make a full copy so we don't mess up the original
-                    Shape newShape = entityShape.Clone();
-                    entityShape = newShape;
-                }
-
-                clearCache = true;
-                entityShape = addGearToShape(slot, entityShape, shapePathForLogging);
-            }
-
-            if (clearCache)
-            {
-                AnimationCache.ClearCache(Api, this);
-            }
-
-            return entityShape;
-        }
-
-
-        protected virtual Shape addGearToShape(ItemSlot slot, Shape entityShape, string shapePathForLogging)
-        {
-            if (slot.Empty) return entityShape;
-            ItemStack stack = slot.Itemstack;
-            JsonObject attrObj = stack.Collectible.Attributes;
-
-            float damageEffect = 0;
-            if (stack.ItemAttributes?["visibleDamageEffect"].AsBool() == true)
-            {
-                damageEffect = Math.Max(0, 1 - (float)stack.Collectible.GetRemainingDurability(stack) / stack.Collectible.GetMaxDurability(stack) * 1.1f);
-            }
-
-            string[] disableElements = attrObj?["disableElements"]?.AsArray<string>(null);
-            if (disableElements != null)
-            {
-                foreach (var val in disableElements)
-                {
-                    entityShape.RemoveElementByName(val);
-                }
-            }
-
-            if (attrObj?["wearableAttachment"].Exists != true) return entityShape;
-
-            var textures = Properties.Client.Textures;
-            string texturePrefixCode = stack.Collectible.Code.ToShortString();
-
-            Shape gearShape = null;
-            AssetLocation shapePath;
-            CompositeShape compGearShape = null;
-            if (stack.Collectible is IWearableShapeSupplier iwss)
-            {
-                gearShape = iwss.GetShape(stack, this, texturePrefixCode);
-            }
-
-            if (gearShape == null) {
-                compGearShape = !attrObj["attachShape"].Exists ? (stack.Class == EnumItemClass.Item ? stack.Item.Shape : stack.Block.Shape) : attrObj["attachShape"].AsObject<CompositeShape>(null, stack.Collectible.Code.Domain);
-                shapePath = compGearShape.Base.CopyWithPath("shapes/" + compGearShape.Base.Path + ".json");
-                gearShape = Shape.TryGet(Api, shapePath);
-                if (gearShape == null)
-                {
-                    Api.World.Logger.Warning("Entity armor shape {0} defined in {1} {2} not found or errored, was supposed to be at {3}. Armor piece will be invisible.", compGearShape.Base, stack.Class, stack.Collectible.Code, shapePath);
-                    return null;
-                }
-
-                gearShape.SubclassForStepParenting(texturePrefixCode, damageEffect);
-            }
-
-            
-
-            // Item stack textures take precedence over shape textures
-            if (gearShape.Textures == null) gearShape.Textures = new Dictionary<string, AssetLocation>();
-            var collectibleDict = stack.Class == EnumItemClass.Block ? stack.Block.Textures : stack.Item.Textures;
-            foreach (var val in collectibleDict)
-            {
-                gearShape.Textures[val.Key] = val.Value.Base;
-            }
-
-            entityShape.StepParentShape(
-                gearShape, 
-                (compGearShape?.Base.ToString() ?? "Custom texture from ItemWearableShapeSupplier ") + string.Format("defined in {0} {1}", stack.Class, stack.Collectible.Code),
-                shapePathForLogging, 
-                Api.World.Logger,
-                (texcode, tloc) =>
-                {
-                    var cmpt = textures[texturePrefixCode + "-" + texcode] = new CompositeTexture(tloc);
-                    cmpt.Bake(Api.Assets);
-                    (Api as ICoreClientAPI).EntityTextureAtlas.GetOrInsertTexture(cmpt.Baked.TextureFilenames[0], out int textureSubid, out _);
-                    cmpt.Baked.TextureSubId = textureSubid;
-                }                
-            );
-
-
-            return entityShape;
-        }
-
 
         public override bool TryGiveItemStack(ItemStack itemstack)
         {
             if (itemstack == null || itemstack.StackSize == 0) return false;
 
-            ItemSlot dummySlot = new DummySlot(null);
-            dummySlot.Itemstack = itemstack.Clone();
-
-            ItemStackMoveOperation op = new ItemStackMoveOperation(World, EnumMouseButton.Left, 0, EnumMergePriority.AutoMerge, itemstack.StackSize);
-
-            if (GearInventory != null)
+            var bhs = SidedProperties?.Behaviors;
+            EnumHandling handling = EnumHandling.PassThrough;
+            if (bhs != null)
             {
-                WeightedSlot wslot = GearInventory.GetBestSuitedSlot(dummySlot, null, new List<ItemSlot>());
-                if (wslot.weight > 0)
+                foreach (var bh in bhs)
                 {
-                    dummySlot.TryPutInto(wslot.slot, ref op);
-                    itemstack.StackSize -= op.MovedQuantity;
-                    WatchedAttributes.MarkAllDirty();
-                    return op.MovedQuantity > 0;
+                    bh.TryGiveItemStack(itemstack, ref handling);
+                    if (handling == EnumHandling.PreventSubsequent) break;
                 }
             }
 
-            if (LeftHandItemSlot?.Inventory != null)
-            {
-                WeightedSlot wslot = LeftHandItemSlot.Inventory.GetBestSuitedSlot(dummySlot, null, new List<ItemSlot>());
-                if (wslot.weight > 0)
-                {
-                    dummySlot.TryPutInto(wslot.slot, ref op);
-                    itemstack.StackSize -= op.MovedQuantity;
-                    WatchedAttributes.MarkAllDirty();
-                    return op.MovedQuantity > 0;
-                }
-            }
-
-            return false;
+            return handling != EnumHandling.PassThrough;
         }
-
-
-        public override void OnLoadCollectibleMappings(IWorldAccessor worldForResolve, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, int schematicSeed, bool resolveImports)
-        {
-            base.OnLoadCollectibleMappings(worldForResolve, oldBlockIdMapping, oldItemIdMapping, schematicSeed, resolveImports);
-
-            if (GearInventory != null)
-            {
-                foreach (var slot in GearInventory)
-                {
-                    if (slot.Empty) continue;
-                    if (slot.Itemstack.FixMapping(oldBlockIdMapping, oldItemIdMapping, worldForResolve) == false)
-                    {
-                        slot.Itemstack = null;
-                    }
-                }
-            }
-        }
-
-
-        public override void OnStoreCollectibleMappings(Dictionary<int, AssetLocation> blockIdMapping, Dictionary<int, AssetLocation> itemIdMapping)
-        {
-            base.OnStoreCollectibleMappings(blockIdMapping, itemIdMapping);
-
-            if (GearInventory != null)
-            {
-                foreach (var slot in GearInventory)
-                {
-                    if (slot.Empty) continue;
-                    var stack = slot.Itemstack;
-
-                    if (stack.Class == EnumItemClass.Item)
-                    {
-                        itemIdMapping[stack.Id] = stack.Item.Code;
-                    }
-                    else
-                    {
-                        blockIdMapping[stack.Id] = stack.Block.Code;
-                    }
-                }
-                
-            }
-        }
-
     }
 }

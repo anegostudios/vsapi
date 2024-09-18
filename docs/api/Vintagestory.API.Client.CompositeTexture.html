@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class CompositeTexture | VintageStory API ">
       
-      <meta name="description" content="A single block texture">
+      <meta name="description" content="Holds data about a texture. Also allows textures to be overlayed on top of one another.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -97,7 +97,7 @@ Class CompositeTexture
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>A single block texture</p>
+  <div class="markdown summary"><p>Holds data about a texture. Also allows textures to be overlayed on top of one another.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -141,7 +141,43 @@ Class CompositeTexture
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
+
+  <h2 id="Vintagestory_API_Client_CompositeTexture_examples">Examples</h2>
+  <pre><code class="lang-json">"textures": {
+	"charcoal": { "base": "block/coal/charcoal" },
+	"coke": { "base": "block/coal/coke" },
+	"ore-anthracite": { "base": "block/coal/anthracite" },
+	"ore-lignite": { "base": "block/coal/lignite" },
+	"ore-bituminouscoal": { "base": "block/coal/bituminous" },
+	"ember": { "base": "block/coal/ember" }
+},</code></pre>
+<pre><code class="lang-json">"textures": {
+	"ore": {
+		"base": "block/stone/rock/{rock}1",
+		"overlays": [ "block/stone/ore/{ore}1" ]
+	}
+},</code></pre>
+<p>Connected textures example (See <a href="https://discord.com/channels/302152934249070593/479736466453561345/1134187385501007962">https://discord.com/channels/302152934249070593/479736466453561345/1134187385501007962</a>)</p>
+ <pre><code class="lang-json">"textures": {
+ 	"all": {
+ 		"base": "block/stone/cobblestone/tiling/1",
+ 		"tiles": [
+ 			{ "base": "block/stone/cobblestone/tiling/*" }
+ 		],
+ 		"tilesWidth": 4
+ 	}
+ }</code></pre>
 
 
 
@@ -219,7 +255,8 @@ Class CompositeTexture
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Can be used to modify the opacity of the texture</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>255</jsondefault>-->
+<p>Can be used to modify the opacity of the texture. 255 is fully opaque, 0 is fully transparent.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -310,7 +347,8 @@ Class CompositeTexture
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The texture may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>The texture may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -372,7 +410,8 @@ Class CompositeTexture
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The basic texture for this composite texture</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
+<p>The basic texture for this composite texture</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -403,7 +442,8 @@ Class CompositeTexture
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>A set of textures to overlay above this texture. The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -429,12 +469,73 @@ Class CompositeTexture
 
 
 
+  <h3 id="Vintagestory_API_Client_CompositeTexture_BlendmodeSeparator" data-uid="Vintagestory.API.Client.CompositeTexture.BlendmodeSeparator">
+  BlendmodeSeparator
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const char BlendmodeSeparator = &#39;~&#39;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.char">char</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Client_CompositeTexture_OverlaysSeparator" data-uid="Vintagestory.API.Client.CompositeTexture.OverlaysSeparator">
+  OverlaysSeparator
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string OverlaysSeparator = &quot;++&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Client_CompositeTexture_Rotation" data-uid="Vintagestory.API.Client.CompositeTexture.Rotation">
   Rotation
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Rotation of the texture may only be a multiple of 90</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>Rotation of the texture may only be a multiple of 90</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -465,7 +566,13 @@ Class CompositeTexture
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>A way of basic support for connected textures. Textures should be named numerically from 1 to <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_TilesWidth">TilesWidth</a> squared.
+<br>E.g., if <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_TilesWidth">TilesWidth</a> is 3, the order follows the pattern of:<br>
+1 2 3 <br>
+4 5 6 <br>
+7 8 9</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -495,7 +602,9 @@ Class CompositeTexture
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>The number of tiles in one direction that make up the full connected textures defined in <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_Tiles">Tiles</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -653,7 +762,8 @@ public static Dictionary&lt;AssetLocation, List&lt;IAsset&gt;&gt; wildcardsCache
   
   </h3>
 
-  <div class="markdown level1 summary"><p>(legacy setter, used BlendedOverlays instead) The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Obsolete</jsonoptional>-->
+<p>Obsolete. Use <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_BlendedOverlays">BlendedOverlays</a> instead.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

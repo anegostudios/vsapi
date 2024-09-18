@@ -9,7 +9,7 @@ namespace Vintagestory.API.Common
     {
         public bool loadFully;
 
-        public new static ServerAnimator CreateForEntity(Entity entity, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById)
+        public static ServerAnimator CreateForEntity(Entity entity, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, bool requirePosesOnServer)
         {
             if (entity is EntityAgent)
             {
@@ -20,7 +20,8 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    entity.AnimManager.OnAnimationStopped
+                    entity.AnimManager.TriggerAnimationStopped,
+                    requirePosesOnServer
                 );
             } else
             {
@@ -30,12 +31,13 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    entity.AnimManager.OnAnimationStopped
+                    entity.AnimManager.TriggerAnimationStopped,
+                    requirePosesOnServer
                 );
             }
         }
 
-        public new static ServerAnimator CreateForEntity(Entity entity, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById)
+        public static ServerAnimator CreateForEntity(Entity entity, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, bool requirePosesOnServer)
         {
             if (entity is EntityAgent)
             {
@@ -46,8 +48,8 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    entity.AnimManager.OnAnimationStopped,
-                    entity is EntityPlayer
+                    entity.AnimManager.TriggerAnimationStopped,
+                    requirePosesOnServer
                 );
             } else {
                 return new ServerAnimator(
@@ -55,15 +57,23 @@ namespace Vintagestory.API.Common
                     animations,
                     rootElements,
                     jointsById,
-                    entity.AnimManager.OnAnimationStopped
+                    entity.AnimManager.TriggerAnimationStopped,
+                    requirePosesOnServer
                 );
             }
         }
 
 
-        public ServerAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null, bool loadFully = false) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
+        public ServerAnimator(
+            WalkSpeedSupplierDelegate walkSpeedSupplier,
+            Animation[] animations,
+            ShapeElement[] rootElements,
+            Dictionary<int, AnimationJoint> jointsById,
+            Action<string> onAnimationStoppedListener = null,
+            bool loadFully = false
+        ) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
-            this.rootElements = rootElements;
+            this.RootElements = rootElements;
             this.jointsById = jointsById;
             this.loadFully = loadFully;
 
@@ -73,9 +83,17 @@ namespace Vintagestory.API.Common
         }
 
 
-        public ServerAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null, bool loadFully = false) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
+        public ServerAnimator(
+            WalkSpeedSupplierDelegate walkSpeedSupplier,
+            List<ElementPose> rootPoses,
+            Animation[] animations,
+            ShapeElement[] rootElements,
+            Dictionary<int, AnimationJoint> jointsById,
+            Action<string> onAnimationStoppedListener = null,
+            bool loadFully = false
+        ) : base(walkSpeedSupplier, animations, onAnimationStoppedListener)
         {
-            this.rootElements = rootElements;
+            this.RootElements = rootElements;
             this.jointsById = jointsById;
             this.RootPoses = rootPoses;
             this.loadFully = loadFully;

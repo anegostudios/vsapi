@@ -19,7 +19,7 @@ namespace Vintagestory.API.Client
             this.Font = font;
             this.linebreak = Lang.AvailableLanguages[Lang.CurrentLocale].LineBreakBehavior;
 
-            init();
+            if (api != null) init();
         }
 
         protected void init()

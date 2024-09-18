@@ -300,12 +300,16 @@ namespace Vintagestory.API.Client
         /// <returns>Was this dialogue successfully closed?</returns>
         public virtual bool TryClose()
         {
+            bool wasOpened = opened;
             opened = false;
             UnFocus();
-            OnGuiClosed();
-            OnClosed?.Invoke();
+            if (wasOpened)
+            {
+                OnGuiClosed();
+                OnClosed?.Invoke();
+            }
             focused = false;
-            capi.Gui.TriggerDialogClosed(this);
+            if (wasOpened) capi.Gui.TriggerDialogClosed(this);
 
             return true;
         }
@@ -729,6 +733,100 @@ namespace Vintagestory.API.Client
             double dist = pos.DistanceTo(playerEye);
 
             return dist <= capi.World.Player.WorldData.PickingRange + 0.5;
+        }
+
+
+
+
+
+
+
+        public EnumPosFlag GetFreePos(string code)
+        {
+            var values = Enum.GetValues(typeof(EnumPosFlag));
+
+            int flags = 0;
+            posFlagDict().TryGetValue(code, out flags);
+
+            foreach (EnumPosFlag flag in values)
+            {
+                if ((flags & (int)flag) > 0) continue;
+
+                return flag;
+            }
+
+            return 0;
+        }
+
+        public void OccupyPos(string code, EnumPosFlag pos)
+        {
+            int flags = 0;
+            posFlagDict().TryGetValue(code, out flags);
+            posFlagDict()[code] = flags | (int)pos;
+        }
+
+        public void FreePos(string code, EnumPosFlag pos)
+        {
+            int flags = 0;
+            posFlagDict().TryGetValue(code, out flags);
+            posFlagDict()[code] = flags & ~(int)pos;
+        }
+
+        Dictionary<string, int> posFlagDict()
+        {
+            object valObj;
+            capi.ObjectCache.TryGetValue("dialogCount", out valObj);
+            Dictionary<string, int> val = valObj as Dictionary<string, int>;
+            if (val == null) capi.ObjectCache["dialogCount"] = val = new Dictionary<string, int>();
+            return val;
+        }
+
+        protected bool IsRight(EnumPosFlag flag)
+        {
+            return flag == EnumPosFlag.RightBot || flag == EnumPosFlag.RightMid || flag == EnumPosFlag.RightTop || flag == EnumPosFlag.Right2Top || flag == EnumPosFlag.Right2Mid || flag == EnumPosFlag.Right2Bot || flag == EnumPosFlag.Right3Top || flag == EnumPosFlag.Right3Mid || flag == EnumPosFlag.Right3Bot;
+        }
+
+        protected float YOffsetMul(EnumPosFlag flag)
+        {
+            if (flag == EnumPosFlag.RightTop || flag == EnumPosFlag.LeftTop || flag == EnumPosFlag.Right2Top || flag == EnumPosFlag.Left2Top || flag == EnumPosFlag.Right3Top || flag == EnumPosFlag.Left3Top) return -1;
+            if (flag == EnumPosFlag.RightBot || flag == EnumPosFlag.LeftBot || flag == EnumPosFlag.Right2Bot || flag == EnumPosFlag.Left2Bot || flag == EnumPosFlag.Right3Bot || flag == EnumPosFlag.Left3Bot) return 1;
+            return 0;
+        }
+
+        protected float XOffsetMul(EnumPosFlag flag)
+        {
+            if (flag == EnumPosFlag.Right2Top || flag == EnumPosFlag.Right2Mid || flag == EnumPosFlag.Right2Bot) return -1;
+            if (flag == EnumPosFlag.Left2Top || flag == EnumPosFlag.Left2Mid || flag == EnumPosFlag.Left2Bot) return 1;
+
+            if (flag == EnumPosFlag.Right3Top || flag == EnumPosFlag.Right3Mid || flag == EnumPosFlag.Right3Bot) return -2;
+            if (flag == EnumPosFlag.Left3Top || flag == EnumPosFlag.Left3Mid || flag == EnumPosFlag.Left3Bot) return 2;
+            return 0;
+        }
+
+
+        [Flags]
+        public enum EnumPosFlag
+        {
+            RightMid = 1,
+            RightTop = 2,
+            RightBot = 4,
+            LeftMid = 8,
+            LeftTop = 16,
+            LeftBot = 32,
+
+            Right2Mid = 64,
+            Right2Top = 128,
+            Right2Bot = 256,
+            Left2Mid = 512,
+            Left2Top = 1024,
+            Left2Bot = 2048,
+
+            Right3Mid = 2048 * 2,
+            Right3Top = 2048 * 4,
+            Right3Bot = 2048 * 8,
+            Left3Mid = 2048 * 16,
+            Left3Top = 2048 * 32,
+            Left3Bot = 2048 * 64,
         }
     }
 }

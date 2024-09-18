@@ -15,6 +15,7 @@ items:
   - Vintagestory.API.Client.IRenderAPI.CameraOffset
   - Vintagestory.API.Client.IRenderAPI.CameraType
   - Vintagestory.API.Client.IRenderAPI.CheckGlError(System.String)
+  - Vintagestory.API.Client.IRenderAPI.CreateUBO(Vintagestory.API.Client.IShaderProgram,System.Int32,System.String,System.Int32)
   - Vintagestory.API.Client.IRenderAPI.CurrentActiveShader
   - Vintagestory.API.Client.IRenderAPI.CurrentModelviewMatrix
   - Vintagestory.API.Client.IRenderAPI.CurrentProjectionMatrix
@@ -26,6 +27,7 @@ items:
   - Vintagestory.API.Client.IRenderAPI.FogColor
   - Vintagestory.API.Client.IRenderAPI.FogDensity
   - Vintagestory.API.Client.IRenderAPI.FogMin
+  - Vintagestory.API.Client.IRenderAPI.FrameBuffer
   - Vintagestory.API.Client.IRenderAPI.FrameBuffers
   - Vintagestory.API.Client.IRenderAPI.FrameHeight
   - Vintagestory.API.Client.IRenderAPI.FrameWidth
@@ -90,7 +92,6 @@ items:
   - Vintagestory.API.Client.IRenderAPI.RenderMesh(Vintagestory.API.Client.MeshRef)
   - Vintagestory.API.Client.IRenderAPI.RenderMesh(Vintagestory.API.Client.MeshRef,System.Int32[],System.Int32[],System.Int32)
   - Vintagestory.API.Client.IRenderAPI.RenderMeshInstanced(Vintagestory.API.Client.MeshRef,System.Int32)
-  - Vintagestory.API.Client.IRenderAPI.RenderMultiTextureMesh(Vintagestory.API.Client.MultiTextureMeshRef)
   - Vintagestory.API.Client.IRenderAPI.RenderMultiTextureMesh(Vintagestory.API.Client.MultiTextureMeshRef,System.String,System.Int32)
   - Vintagestory.API.Client.IRenderAPI.RenderRectangle(System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32)
   - Vintagestory.API.Client.IRenderAPI.RenderTexture(System.Int32,System.Double,System.Double,System.Double,System.Double,System.Single,Vintagestory.API.MathTools.Vec4f)
@@ -105,6 +106,7 @@ items:
   - Vintagestory.API.Client.IRenderAPI.UpdateMesh(Vintagestory.API.Client.MeshRef,Vintagestory.API.Client.MeshData)
   - Vintagestory.API.Client.IRenderAPI.UploadMesh(Vintagestory.API.Client.MeshData)
   - Vintagestory.API.Client.IRenderAPI.UploadMultiTextureMesh(Vintagestory.API.Client.MeshData)
+  - Vintagestory.API.Client.IRenderAPI.WireframeDebugRender
   langs:
   - csharp
   - vb
@@ -120,6 +122,30 @@ items:
   syntax:
     content: public interface IRenderAPI
     content.vb: Public Interface IRenderAPI
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Client.IRenderAPI.WireframeDebugRender
+  commentId: P:Vintagestory.API.Client.IRenderAPI.WireframeDebugRender
+  id: WireframeDebugRender
+  parent: Vintagestory.API.Client.IRenderAPI
+  langs:
+  - csharp
+  - vb
+  name: WireframeDebugRender
+  nameWithType: IRenderAPI.WireframeDebugRender
+  fullName: Vintagestory.API.Client.IRenderAPI.WireframeDebugRender
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: WireframeModes WireframeDebugRender { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.WireframeModes
+    content.vb: ReadOnly Property WireframeDebugRender As WireframeModes
+  overload: Vintagestory.API.Client.IRenderAPI.WireframeDebugRender*
 - uid: Vintagestory.API.Client.IRenderAPI.PerceptionEffects
   commentId: P:Vintagestory.API.Client.IRenderAPI.PerceptionEffects
   id: PerceptionEffects
@@ -227,6 +253,29 @@ items:
       type: System.Collections.Generic.List{Vintagestory.API.Client.FrameBufferRef}
     content.vb: ReadOnly Property FrameBuffers As List(Of FrameBufferRef)
   overload: Vintagestory.API.Client.IRenderAPI.FrameBuffers*
+- uid: Vintagestory.API.Client.IRenderAPI.FrameBuffer
+  commentId: P:Vintagestory.API.Client.IRenderAPI.FrameBuffer
+  id: FrameBuffer
+  parent: Vintagestory.API.Client.IRenderAPI
+  langs:
+  - csharp
+  - vb
+  name: FrameBuffer
+  nameWithType: IRenderAPI.FrameBuffer
+  fullName: Vintagestory.API.Client.IRenderAPI.FrameBuffer
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Set the current framebuffer
+  example: []
+  syntax:
+    content: FrameBufferRef FrameBuffer { set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.FrameBufferRef
+    content.vb: WriteOnly Property FrameBuffer As FrameBufferRef
+  overload: Vintagestory.API.Client.IRenderAPI.FrameBuffer*
 - uid: Vintagestory.API.Client.IRenderAPI.ShaderUniforms
   commentId: P:Vintagestory.API.Client.IRenderAPI.ShaderUniforms
   id: ShaderUniforms
@@ -2110,6 +2159,38 @@ items:
       description: ''
     content.vb: Sub DeleteMesh(vao As MeshRef)
   overload: Vintagestory.API.Client.IRenderAPI.DeleteMesh*
+- uid: Vintagestory.API.Client.IRenderAPI.CreateUBO(Vintagestory.API.Client.IShaderProgram,System.Int32,System.String,System.Int32)
+  commentId: M:Vintagestory.API.Client.IRenderAPI.CreateUBO(Vintagestory.API.Client.IShaderProgram,System.Int32,System.String,System.Int32)
+  id: CreateUBO(Vintagestory.API.Client.IShaderProgram,System.Int32,System.String,System.Int32)
+  parent: Vintagestory.API.Client.IRenderAPI
+  langs:
+  - csharp
+  - vb
+  name: CreateUBO(IShaderProgram, int, string, int)
+  nameWithType: IRenderAPI.CreateUBO(IShaderProgram, int, string, int)
+  fullName: Vintagestory.API.Client.IRenderAPI.CreateUBO(Vintagestory.API.Client.IShaderProgram, int, string, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: UBORef CreateUBO(IShaderProgram shaderProgram, int bindingPoint, string blockName, int size)
+    parameters:
+    - id: shaderProgram
+      type: Vintagestory.API.Client.IShaderProgram
+    - id: bindingPoint
+      type: System.Int32
+    - id: blockName
+      type: System.String
+    - id: size
+      type: System.Int32
+    return:
+      type: Vintagestory.API.Client.UBORef
+    content.vb: Function CreateUBO(shaderProgram As IShaderProgram, bindingPoint As Integer, blockName As String, size As Integer) As UBORef
+  overload: Vintagestory.API.Client.IRenderAPI.CreateUBO*
+  nameWithType.vb: IRenderAPI.CreateUBO(IShaderProgram, Integer, String, Integer)
+  fullName.vb: Vintagestory.API.Client.IRenderAPI.CreateUBO(Vintagestory.API.Client.IShaderProgram, Integer, String, Integer)
+  name.vb: CreateUBO(IShaderProgram, Integer, String, Integer)
 - uid: Vintagestory.API.Client.IRenderAPI.RenderMesh(Vintagestory.API.Client.MeshRef)
   commentId: M:Vintagestory.API.Client.IRenderAPI.RenderMesh(Vintagestory.API.Client.MeshRef)
   id: RenderMesh(Vintagestory.API.Client.MeshRef)
@@ -2167,30 +2248,6 @@ items:
   nameWithType.vb: IRenderAPI.RenderMultiTextureMesh(MultiTextureMeshRef, String, Integer)
   fullName.vb: Vintagestory.API.Client.IRenderAPI.RenderMultiTextureMesh(Vintagestory.API.Client.MultiTextureMeshRef, String, Integer)
   name.vb: RenderMultiTextureMesh(MultiTextureMeshRef, String, Integer)
-- uid: Vintagestory.API.Client.IRenderAPI.RenderMultiTextureMesh(Vintagestory.API.Client.MultiTextureMeshRef)
-  commentId: M:Vintagestory.API.Client.IRenderAPI.RenderMultiTextureMesh(Vintagestory.API.Client.MultiTextureMeshRef)
-  id: RenderMultiTextureMesh(Vintagestory.API.Client.MultiTextureMeshRef)
-  parent: Vintagestory.API.Client.IRenderAPI
-  langs:
-  - csharp
-  - vb
-  name: RenderMultiTextureMesh(MultiTextureMeshRef)
-  nameWithType: IRenderAPI.RenderMultiTextureMesh(MultiTextureMeshRef)
-  fullName: Vintagestory.API.Client.IRenderAPI.RenderMultiTextureMesh(Vintagestory.API.Client.MultiTextureMeshRef)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Client
-  summary: Renders given mesh onto the screen, with the mesh requiring multiple render calls for each texture, does not asign any texture
-  example: []
-  syntax:
-    content: void RenderMultiTextureMesh(MultiTextureMeshRef mmr)
-    parameters:
-    - id: mmr
-      type: Vintagestory.API.Client.MultiTextureMeshRef
-      description: ''
-    content.vb: Sub RenderMultiTextureMesh(mmr As MultiTextureMeshRef)
-  overload: Vintagestory.API.Client.IRenderAPI.RenderMultiTextureMesh*
 - uid: Vintagestory.API.Client.IRenderAPI.RenderMeshInstanced(Vintagestory.API.Client.MeshRef,System.Int32)
   commentId: M:Vintagestory.API.Client.IRenderAPI.RenderMeshInstanced(Vintagestory.API.Client.MeshRef,System.Int32)
   id: RenderMeshInstanced(Vintagestory.API.Client.MeshRef,System.Int32)
@@ -3191,6 +3248,178 @@ references:
   - uid: Vintagestory.API.Client
     name: Client
     href: Vintagestory.API.Client.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Client.IRenderAPI.WireframeDebugRender*
+  commentId: Overload:Vintagestory.API.Client.IRenderAPI.WireframeDebugRender
+  href: Vintagestory.API.Client.IRenderAPI.html#Vintagestory_API_Client_IRenderAPI_WireframeDebugRender
+  name: WireframeDebugRender
+  nameWithType: IRenderAPI.WireframeDebugRender
+  fullName: Vintagestory.API.Client.IRenderAPI.WireframeDebugRender
+- uid: Vintagestory.API.Client.WireframeModes
+  commentId: T:Vintagestory.API.Client.WireframeModes
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.WireframeModes.html
+  name: WireframeModes
+  nameWithType: WireframeModes
+  fullName: Vintagestory.API.Client.WireframeModes
 - uid: Vintagestory.API.Client.IRenderAPI.PerceptionEffects*
   commentId: Overload:Vintagestory.API.Client.IRenderAPI.PerceptionEffects
   href: Vintagestory.API.Client.IRenderAPI.html#Vintagestory_API_Client_IRenderAPI_PerceptionEffects
@@ -3412,6 +3641,19 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: Vintagestory.API.Client.IRenderAPI.FrameBuffer*
+  commentId: Overload:Vintagestory.API.Client.IRenderAPI.FrameBuffer
+  href: Vintagestory.API.Client.IRenderAPI.html#Vintagestory_API_Client_IRenderAPI_FrameBuffer
+  name: FrameBuffer
+  nameWithType: IRenderAPI.FrameBuffer
+  fullName: Vintagestory.API.Client.IRenderAPI.FrameBuffer
+- uid: Vintagestory.API.Client.FrameBufferRef
+  commentId: T:Vintagestory.API.Client.FrameBufferRef
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.FrameBufferRef.html
+  name: FrameBufferRef
+  nameWithType: FrameBufferRef
+  fullName: Vintagestory.API.Client.FrameBufferRef
 - uid: Vintagestory.API.Client.IRenderAPI.ShaderUniforms*
   commentId: Overload:Vintagestory.API.Client.IRenderAPI.ShaderUniforms
   href: Vintagestory.API.Client.IRenderAPI.html#Vintagestory_API_Client_IRenderAPI_ShaderUniforms
@@ -4241,6 +4483,19 @@ references:
   name: DeleteMesh
   nameWithType: IRenderAPI.DeleteMesh
   fullName: Vintagestory.API.Client.IRenderAPI.DeleteMesh
+- uid: Vintagestory.API.Client.IRenderAPI.CreateUBO*
+  commentId: Overload:Vintagestory.API.Client.IRenderAPI.CreateUBO
+  href: Vintagestory.API.Client.IRenderAPI.html#Vintagestory_API_Client_IRenderAPI_CreateUBO_Vintagestory_API_Client_IShaderProgram_System_Int32_System_String_System_Int32_
+  name: CreateUBO
+  nameWithType: IRenderAPI.CreateUBO
+  fullName: Vintagestory.API.Client.IRenderAPI.CreateUBO
+- uid: Vintagestory.API.Client.UBORef
+  commentId: T:Vintagestory.API.Client.UBORef
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.UBORef.html
+  name: UBORef
+  nameWithType: UBORef
+  fullName: Vintagestory.API.Client.UBORef
 - uid: Vintagestory.API.Client.IRenderAPI.RenderMesh*
   commentId: Overload:Vintagestory.API.Client.IRenderAPI.RenderMesh
   href: Vintagestory.API.Client.IRenderAPI.html#Vintagestory_API_Client_IRenderAPI_RenderMesh_Vintagestory_API_Client_MeshRef_

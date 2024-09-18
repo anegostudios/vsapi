@@ -34,6 +34,8 @@ items:
   - Vintagestory.API.Common.IGameCalendar.OnGetLatitude
   - Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(System.Double,System.Double)
   - Vintagestory.API.Common.IGameCalendar.GetDayLightStrength(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.IGameCalendar.GetSunPosition(Vintagestory.API.MathTools.Vec3d,System.Double)
+  - Vintagestory.API.Common.IGameCalendar.GetMoonPosition(Vintagestory.API.MathTools.Vec3d,System.Double)
   - Vintagestory.API.Common.IGameCalendar.PrettyDate
   - Vintagestory.API.Common.IGameCalendar.SpeedOfTime
   - Vintagestory.API.Common.IGameCalendar.SetTimeSpeedModifier(System.String,System.Single)
@@ -66,6 +68,9 @@ items:
   - Vintagestory.API.Common.IGameCalendar.SeasonOverride
   - Vintagestory.API.Common.IGameCalendar.SetSeasonOverride(System.Nullable{System.Single})
   - Vintagestory.API.Common.IGameCalendar.Timelapse
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.IClientGameCalendar.SunPositionNormalized
   commentId: P:Vintagestory.API.Common.IClientGameCalendar.SunPositionNormalized
   id: SunPositionNormalized
@@ -413,6 +418,88 @@ references:
   - uid: Vintagestory.API.MathTools.BlockPos
     name: BlockPos
     href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.GetSunPosition(Vintagestory.API.MathTools.Vec3d,System.Double)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.GetSunPosition(Vintagestory.API.MathTools.Vec3d,System.Double)
+  parent: Vintagestory.API.Common.IGameCalendar
+  isExternal: true
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetSunPosition_Vintagestory_API_MathTools_Vec3d_System_Double_
+  name: GetSunPosition(Vec3d, double)
+  nameWithType: IGameCalendar.GetSunPosition(Vec3d, double)
+  fullName: Vintagestory.API.Common.IGameCalendar.GetSunPosition(Vintagestory.API.MathTools.Vec3d, double)
+  nameWithType.vb: IGameCalendar.GetSunPosition(Vec3d, Double)
+  fullName.vb: Vintagestory.API.Common.IGameCalendar.GetSunPosition(Vintagestory.API.MathTools.Vec3d, Double)
+  name.vb: GetSunPosition(Vec3d, Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetSunPosition(Vintagestory.API.MathTools.Vec3d,System.Double)
+    name: GetSunPosition
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetSunPosition_Vintagestory_API_MathTools_Vec3d_System_Double_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetSunPosition(Vintagestory.API.MathTools.Vec3d,System.Double)
+    name: GetSunPosition
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetSunPosition_Vintagestory_API_MathTools_Vec3d_System_Double_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Vintagestory.API.Common.IGameCalendar.GetMoonPosition(Vintagestory.API.MathTools.Vec3d,System.Double)
+  commentId: M:Vintagestory.API.Common.IGameCalendar.GetMoonPosition(Vintagestory.API.MathTools.Vec3d,System.Double)
+  parent: Vintagestory.API.Common.IGameCalendar
+  isExternal: true
+  href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetMoonPosition_Vintagestory_API_MathTools_Vec3d_System_Double_
+  name: GetMoonPosition(Vec3d, double)
+  nameWithType: IGameCalendar.GetMoonPosition(Vec3d, double)
+  fullName: Vintagestory.API.Common.IGameCalendar.GetMoonPosition(Vintagestory.API.MathTools.Vec3d, double)
+  nameWithType.vb: IGameCalendar.GetMoonPosition(Vec3d, Double)
+  fullName.vb: Vintagestory.API.Common.IGameCalendar.GetMoonPosition(Vintagestory.API.MathTools.Vec3d, Double)
+  name.vb: GetMoonPosition(Vec3d, Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetMoonPosition(Vintagestory.API.MathTools.Vec3d,System.Double)
+    name: GetMoonPosition
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetMoonPosition_Vintagestory_API_MathTools_Vec3d_System_Double_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IGameCalendar.GetMoonPosition(Vintagestory.API.MathTools.Vec3d,System.Double)
+    name: GetMoonPosition
+    href: Vintagestory.API.Common.IGameCalendar.html#Vintagestory_API_Common_IGameCalendar_GetMoonPosition_Vintagestory_API_MathTools_Vec3d_System_Double_
+  - name: (
+  - uid: Vintagestory.API.MathTools.Vec3d
+    name: Vec3d
+    href: Vintagestory.API.MathTools.Vec3d.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
   - name: )
 - uid: Vintagestory.API.Common.IGameCalendar.PrettyDate
   commentId: M:Vintagestory.API.Common.IGameCalendar.PrettyDate
@@ -814,6 +901,68 @@ references:
   name: Timelapse
   nameWithType: IGameCalendar.Timelapse
   fullName: Vintagestory.API.Common.IGameCalendar.Timelapse
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Vintagestory.API.Common.IGameCalendar
   commentId: T:Vintagestory.API.Common.IGameCalendar
   parent: Vintagestory.API.Common
@@ -821,6 +970,103 @@ references:
   name: IGameCalendar
   nameWithType: IGameCalendar
   fullName: Vintagestory.API.Common.IGameCalendar
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.IClientGameCalendar.SunPositionNormalized*
   commentId: Overload:Vintagestory.API.Common.IClientGameCalendar.SunPositionNormalized
   href: Vintagestory.API.Common.IClientGameCalendar.html#Vintagestory_API_Common_IClientGameCalendar_SunPositionNormalized

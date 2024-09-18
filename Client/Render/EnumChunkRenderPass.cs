@@ -1,8 +1,16 @@
-﻿namespace Vintagestory.API.Client
+﻿using Vintagestory.API.MathTools;
+
+namespace Vintagestory.API.Client
 {
+    public interface IMetaBlock
+    {
+        bool IsSelectable(BlockPos pos);
+    }
+
     /// <summary>
     /// The various render passes available for rendering blocks
     /// </summary>
+    [DocumentAsJson]
     public enum EnumChunkRenderPass
     {
         /// <summary>

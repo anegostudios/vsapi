@@ -1,12 +1,14 @@
-﻿using Vintagestory.API.Client;
+﻿using System;
+using Vintagestory.API.Client;
 using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
     public interface INetworkAPI
     {
-        /// <summary>   
+        /// <summary>
         /// Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.
         /// </summary>
         /// <param name="channelName">Unique channel identifier</param>
@@ -53,7 +55,7 @@ namespace Vintagestory.API.Client
     /// </summary>
     public interface IClientNetworkAPI : INetworkAPI
     {
-        /// <summary>   
+        /// <summary>
         /// Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.
         /// </summary>
         /// <param name="channelName">Unique channel identifier</param>
@@ -82,6 +84,7 @@ namespace Vintagestory.API.Client
         /// <param name="z"></param>
         /// <param name="packetId"></param>
         /// <param name="data"></param>
+        [Obsolete ("Not dimension aware, use BlockPos overload instead, otherwise thie BlockEntity will probably not work correctly in other dimensions")]
         void SendBlockEntityPacket(int x, int y, int z, int packetId, byte[] data = null);
 
         /// <summary>
@@ -99,6 +102,18 @@ namespace Vintagestory.API.Client
         /// <param name="packetId"></param>
         /// <param name="data"></param>
         void SendEntityPacket(long entityid, int packetId, byte[] data = null);
+
+        /// <summary>
+        /// Sends the players entity position via UDP to the server
+        /// </summary>
+        /// <param name="player"></param>
+        void SendPlayerEntityPacket(EntityPlayer player);
+
+        /// <summary>
+        /// Sends a mount position via UDP to the server
+        /// </summary>
+        /// <param name="mount"></param>
+        void SendMountPacket(Entity mount);
 
 
         /// <summary>
@@ -118,6 +133,13 @@ namespace Vintagestory.API.Client
         /// <param name="internalPacket"></param>
         void SendEntityPacket(long entityid, object internalPacket);
 
+        /// <summary>
+        /// Sends a entity interaction packet to the server. For quick an easy entity network communication without setting up a channel first.
+        /// </summary>
+        /// <param name="entityid"></param>
+        /// <param name="internalPacket"></param>
+        void SendEntityPacketWithOffset(long entityid, int packetIdOffset, object internalPacket);
+
 
         /// <summary>
         /// Sends given packet data to the server. This let's you mess with the raw network communication and fiddle with internal engine packets if you know the protocol. For normal network communication you probably want to register your own network channel.
@@ -127,13 +149,13 @@ namespace Vintagestory.API.Client
 
 
         /// <summary>
-        /// Sends given packet to server. For use with inventory supplied network packets only, since the packet format is not exposed to the api 
+        /// Sends given packet to server. For use with inventory supplied network packets only, since the packet format is not exposed to the api
         /// </summary>
         /// <param name="packetClient">The network packet to send.</param>
         void SendPacketClient(object packetClient);
 
         /// <summary>
-        /// Sends the current hand interaction.  
+        /// Sends the current hand interaction.
         /// </summary>
         /// <param name="mouseButton">the current mouse button press</param>
         /// <param name="blockSelection">the currently selected Block (if there is one)</param>

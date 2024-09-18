@@ -41,7 +41,7 @@ namespace Vintagestory.API.Client
         protected int currentElementKey; // Default key index if no custom key is set
         protected int currentFocusableElementKey; // Default key index if no custom key is set
 
-        internal string dialogName;
+        public string DialogName;
         protected LoadedTexture staticElementsTexture;
 
         protected ElementBounds bounds;
@@ -51,6 +51,8 @@ namespace Vintagestory.API.Client
 
         protected ElementBounds lastAddedElementBounds;
         protected GuiElement lastAddedElement;
+
+        public ElementBounds LastAddedElementBounds => lastAddedElementBounds;
 
         public ElementBounds CurParentBounds => parentBoundsForNextElement.Peek();
 
@@ -115,7 +117,7 @@ namespace Vintagestory.API.Client
         internal GuiComposer(ICoreClientAPI api, ElementBounds bounds, string dialogName)
         {
             staticElementsTexture = new LoadedTexture(api);
-            this.dialogName = dialogName;
+            this.DialogName = dialogName;
             this.bounds = bounds;
             this.Api = api;
             parentBoundsForNextElement.Push(bounds);
@@ -373,7 +375,7 @@ namespace Vintagestory.API.Client
                 bounds.CalcWorldBounds();
             } catch (Exception e)
             {
-                Api.Logger.Error("Exception thrown when trying to calculate world bounds for gui composite " + dialogName + ":");
+                Api.Logger.Error("Exception thrown when trying to calculate world bounds for gui composite " + DialogName + ":");
                 Api.Logger.Error(e);
             }
             
@@ -683,7 +685,7 @@ namespace Vintagestory.API.Client
 
             if (bounds.ParentBounds.RequiresRecalculation)
             {
-                Api.Logger.Notification("Window probably resized, recalculating dialog bounds and recomposing " + dialogName + "...");
+                Api.Logger.Notification("Window probably resized, recalculating dialog bounds and recomposing " + DialogName + "...");
                 bounds.MarkDirtyRecursive();
                 bounds.ParentBounds.CalcWorldBounds();
 

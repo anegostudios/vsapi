@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -301,6 +301,9 @@ Class InventoryGeneric
       <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnOwningEntityDeath_Vintagestory_API_MathTools_Vec3d_">InventoryBase.OnOwningEntityDeath(Vec3d)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_InvokeTransitionSpeedDelegates_Vintagestory_API_Common_EnumTransitionType_Vintagestory_API_Common_ItemStack_System_Single_">InventoryBase.InvokeTransitionSpeedDelegates(EnumTransitionType, ItemStack, float)</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_GetDefaultTransitionSpeedMul_Vintagestory_API_Common_EnumTransitionType_">InventoryBase.GetDefaultTransitionSpeedMul(EnumTransitionType)</a>
     </div>
     <div>
@@ -345,10 +348,19 @@ Class InventoryGeneric
       <a class="xref" href="Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Foreach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__">EnumerableExtensions.Foreach&lt;T&gt;(IEnumerable&lt;T&gt;, Action&lt;T&gt;)</a>
   </div>
   <div>
+      <a class="xref" href="Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__">EnumerableExtensions.IndexOf&lt;T&gt;(IEnumerable&lt;T&gt;, ActionBoolReturn&lt;T&gt;)</a>
+  </div>
+  <div>
       <a class="xref" href="Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_NearestDistance__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__">EnumerableExtensions.NearestDistance&lt;T&gt;(IEnumerable&lt;T&gt;, Func&lt;T, double&gt;)</a>
   </div>
   <div>
       <a class="xref" href="Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_Nearest__1_System_Collections_Generic_IEnumerable___0__System_Func___0_System_Double__">EnumerableExtensions.Nearest&lt;T&gt;(IEnumerable&lt;T&gt;, Func&lt;T, double&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
   </div>
   </dd></dl>
 
@@ -424,6 +436,38 @@ Class InventoryGeneric
     <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
     <dd></dd>
     <dt><code>onNewSlot</code> <a class="xref" href="Vintagestory.API.Common.NewSlotDelegate.html">NewSlotDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_InventoryGeneric__ctor_" data-uid="Vintagestory.API.Common.InventoryGeneric.#ctor*"></a>
+
+  <h3 id="Vintagestory_API_Common_InventoryGeneric__ctor_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Common.InventoryGeneric.#ctor(Vintagestory.API.Common.ICoreAPI)">
+  InventoryGeneric(ICoreAPI)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates an empty (invalid) inventory. Must call init() to propery init the inventory</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InventoryGeneric(ICoreAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
     <dd></dd>
   </dl>
 
@@ -940,6 +984,43 @@ Class InventoryGeneric
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_InventoryGeneric_Init_" data-uid="Vintagestory.API.Common.InventoryGeneric.Init*"></a>
+
+  <h3 id="Vintagestory_API_Common_InventoryGeneric_Init_System_Int32_System_String_System_String_Vintagestory_API_Common_NewSlotDelegate_" data-uid="Vintagestory.API.Common.InventoryGeneric.Init(System.Int32,System.String,System.String,Vintagestory.API.Common.NewSlotDelegate)">
+  Init(int, string, string, NewSlotDelegate)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Init(int quantitySlots, string className, string instanceId, NewSlotDelegate onNewSlot = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>quantitySlots</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>className</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>instanceId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>onNewSlot</code> <a class="xref" href="Vintagestory.API.Common.NewSlotDelegate.html">NewSlotDelegate</a></dt>
+    <dd></dd>
+  </dl>
+
 
 
 

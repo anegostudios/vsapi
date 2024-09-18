@@ -40,6 +40,7 @@ items:
   - Vintagestory.API.Common.InventoryGeneric.OnGetAutoPushIntoSlot
   - Vintagestory.API.Common.InventoryGeneric.OnGetAutoPullFromSlot
   - Vintagestory.API.Common.InventoryGeneric.BaseWeight
+  - Vintagestory.API.Common.InventoryGeneric.Init(System.Int32,System.String,System.String,Vintagestory.API.Common.NewSlotDelegate)
   - Vintagestory.API.Common.InventoryGeneric.Count
   - Vintagestory.API.Common.InventoryGeneric.Item(System.Int32)
   - Vintagestory.API.Common.InventoryGeneric.GetSuitability(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot,System.Boolean)
@@ -102,6 +103,7 @@ items:
   - Vintagestory.API.Common.InventoryBase.DropAll(Vintagestory.API.MathTools.Vec3d,System.Int32)
   - Vintagestory.API.Common.InventoryBase.Clear
   - Vintagestory.API.Common.InventoryBase.OnOwningEntityDeath(Vintagestory.API.MathTools.Vec3d)
+  - Vintagestory.API.Common.InventoryBase.InvokeTransitionSpeedDelegates(Vintagestory.API.Common.EnumTransitionType,Vintagestory.API.Common.ItemStack,System.Single)
   - Vintagestory.API.Common.InventoryBase.GetDefaultTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType)
   - Vintagestory.API.Common.InventoryBase.Open(Vintagestory.API.Common.IPlayer)
   - Vintagestory.API.Common.InventoryBase.Close(Vintagestory.API.Common.IPlayer)
@@ -116,8 +118,11 @@ items:
   - System.Object.ToString
   extensionMethods:
   - System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}.Vintagestory.API.Util.EnumerableExtensions.Foreach``1(System.Action{Vintagestory.API.Common.ItemSlot})
+  - System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}.Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(Vintagestory.API.Common.ActionBoolReturn{Vintagestory.API.Common.ItemSlot})
   - System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}.Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Func{Vintagestory.API.Common.ItemSlot,System.Double})
   - System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}.Vintagestory.API.Util.EnumerableExtensions.Nearest``1(System.Func{Vintagestory.API.Common.ItemSlot,System.Double})
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.CreativeInventoryTab.TabIndex
   commentId: F:Vintagestory.API.Common.CreativeInventoryTab.TabIndex
   id: TabIndex
@@ -443,6 +448,71 @@ references:
   name: BaseWeight
   nameWithType: InventoryGeneric.BaseWeight
   fullName: Vintagestory.API.Common.InventoryGeneric.BaseWeight
+- uid: Vintagestory.API.Common.InventoryGeneric.Init(System.Int32,System.String,System.String,Vintagestory.API.Common.NewSlotDelegate)
+  commentId: M:Vintagestory.API.Common.InventoryGeneric.Init(System.Int32,System.String,System.String,Vintagestory.API.Common.NewSlotDelegate)
+  parent: Vintagestory.API.Common.InventoryGeneric
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryGeneric.html#Vintagestory_API_Common_InventoryGeneric_Init_System_Int32_System_String_System_String_Vintagestory_API_Common_NewSlotDelegate_
+  name: Init(int, string, string, NewSlotDelegate)
+  nameWithType: InventoryGeneric.Init(int, string, string, NewSlotDelegate)
+  fullName: Vintagestory.API.Common.InventoryGeneric.Init(int, string, string, Vintagestory.API.Common.NewSlotDelegate)
+  nameWithType.vb: InventoryGeneric.Init(Integer, String, String, NewSlotDelegate)
+  fullName.vb: Vintagestory.API.Common.InventoryGeneric.Init(Integer, String, String, Vintagestory.API.Common.NewSlotDelegate)
+  name.vb: Init(Integer, String, String, NewSlotDelegate)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryGeneric.Init(System.Int32,System.String,System.String,Vintagestory.API.Common.NewSlotDelegate)
+    name: Init
+    href: Vintagestory.API.Common.InventoryGeneric.html#Vintagestory_API_Common_InventoryGeneric_Init_System_Int32_System_String_System_String_Vintagestory_API_Common_NewSlotDelegate_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.NewSlotDelegate
+    name: NewSlotDelegate
+    href: Vintagestory.API.Common.NewSlotDelegate.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryGeneric.Init(System.Int32,System.String,System.String,Vintagestory.API.Common.NewSlotDelegate)
+    name: Init
+    href: Vintagestory.API.Common.InventoryGeneric.html#Vintagestory_API_Common_InventoryGeneric_Init_System_Int32_System_String_System_String_Vintagestory_API_Common_NewSlotDelegate_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.NewSlotDelegate
+    name: NewSlotDelegate
+    href: Vintagestory.API.Common.NewSlotDelegate.html
+  - name: )
 - uid: Vintagestory.API.Common.InventoryGeneric.Count
   commentId: P:Vintagestory.API.Common.InventoryGeneric.Count
   parent: Vintagestory.API.Common.InventoryGeneric
@@ -833,7 +903,7 @@ references:
   nameWithType: InventoryBase.OnInventoryClosed
   fullName: Vintagestory.API.Common.InventoryBase.OnInventoryClosed
 - uid: Vintagestory.API.Common.InventoryBase.OnAcquireTransitionSpeed
-  commentId: F:Vintagestory.API.Common.InventoryBase.OnAcquireTransitionSpeed
+  commentId: E:Vintagestory.API.Common.InventoryBase.OnAcquireTransitionSpeed
   parent: Vintagestory.API.Common.InventoryBase
   href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_OnAcquireTransitionSpeed
   name: OnAcquireTransitionSpeed
@@ -1970,6 +2040,57 @@ references:
     name: Vec3d
     href: Vintagestory.API.MathTools.Vec3d.html
   - name: )
+- uid: Vintagestory.API.Common.InventoryBase.InvokeTransitionSpeedDelegates(Vintagestory.API.Common.EnumTransitionType,Vintagestory.API.Common.ItemStack,System.Single)
+  commentId: M:Vintagestory.API.Common.InventoryBase.InvokeTransitionSpeedDelegates(Vintagestory.API.Common.EnumTransitionType,Vintagestory.API.Common.ItemStack,System.Single)
+  parent: Vintagestory.API.Common.InventoryBase
+  isExternal: true
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_InvokeTransitionSpeedDelegates_Vintagestory_API_Common_EnumTransitionType_Vintagestory_API_Common_ItemStack_System_Single_
+  name: InvokeTransitionSpeedDelegates(EnumTransitionType, ItemStack, float)
+  nameWithType: InventoryBase.InvokeTransitionSpeedDelegates(EnumTransitionType, ItemStack, float)
+  fullName: Vintagestory.API.Common.InventoryBase.InvokeTransitionSpeedDelegates(Vintagestory.API.Common.EnumTransitionType, Vintagestory.API.Common.ItemStack, float)
+  nameWithType.vb: InventoryBase.InvokeTransitionSpeedDelegates(EnumTransitionType, ItemStack, Single)
+  fullName.vb: Vintagestory.API.Common.InventoryBase.InvokeTransitionSpeedDelegates(Vintagestory.API.Common.EnumTransitionType, Vintagestory.API.Common.ItemStack, Single)
+  name.vb: InvokeTransitionSpeedDelegates(EnumTransitionType, ItemStack, Single)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.InventoryBase.InvokeTransitionSpeedDelegates(Vintagestory.API.Common.EnumTransitionType,Vintagestory.API.Common.ItemStack,System.Single)
+    name: InvokeTransitionSpeedDelegates
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_InvokeTransitionSpeedDelegates_Vintagestory_API_Common_EnumTransitionType_Vintagestory_API_Common_ItemStack_System_Single_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumTransitionType
+    name: EnumTransitionType
+    href: Vintagestory.API.Common.EnumTransitionType.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.InventoryBase.InvokeTransitionSpeedDelegates(Vintagestory.API.Common.EnumTransitionType,Vintagestory.API.Common.ItemStack,System.Single)
+    name: InvokeTransitionSpeedDelegates
+    href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_InvokeTransitionSpeedDelegates_Vintagestory_API_Common_EnumTransitionType_Vintagestory_API_Common_ItemStack_System_Single_
+  - name: (
+  - uid: Vintagestory.API.Common.EnumTransitionType
+    name: EnumTransitionType
+    href: Vintagestory.API.Common.EnumTransitionType.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
 - uid: Vintagestory.API.Common.InventoryBase.GetDefaultTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType)
   commentId: M:Vintagestory.API.Common.InventoryBase.GetDefaultTransitionSpeedMul(Vintagestory.API.Common.EnumTransitionType)
   parent: Vintagestory.API.Common.InventoryBase
@@ -2387,6 +2508,83 @@ references:
     href: Vintagestory.API.Common.ItemSlot.html
   - name: )
   - name: )
+- uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}.Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(Vintagestory.API.Common.ActionBoolReturn{Vintagestory.API.Common.ItemSlot})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+  parent: Vintagestory.API.Util.EnumerableExtensions
+  definition: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  name: IndexOf<ItemSlot>(IEnumerable<ItemSlot>, ActionBoolReturn<ItemSlot>)
+  nameWithType: EnumerableExtensions.IndexOf<ItemSlot>(IEnumerable<ItemSlot>, ActionBoolReturn<ItemSlot>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.IndexOf<Vintagestory.API.Common.ItemSlot>(System.Collections.Generic.IEnumerable<Vintagestory.API.Common.ItemSlot>, Vintagestory.API.Common.ActionBoolReturn<Vintagestory.API.Common.ItemSlot>)
+  nameWithType.vb: EnumerableExtensions.IndexOf(Of ItemSlot)(IEnumerable(Of ItemSlot), ActionBoolReturn(Of ItemSlot))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.IndexOf(Of Vintagestory.API.Common.ItemSlot)(System.Collections.Generic.IEnumerable(Of Vintagestory.API.Common.ItemSlot), Vintagestory.API.Common.ActionBoolReturn(Of Vintagestory.API.Common.ItemSlot))
+  name.vb: IndexOf(Of ItemSlot)(IEnumerable(Of ItemSlot), ActionBoolReturn(Of ItemSlot))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot},Vintagestory.API.Common.ActionBoolReturn{Vintagestory.API.Common.ItemSlot})
+    name: IndexOf
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActionBoolReturn`1
+    name: ActionBoolReturn
+    href: Vintagestory.API.Common.ActionBoolReturn-1.html
+  - name: <
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot},Vintagestory.API.Common.ActionBoolReturn{Vintagestory.API.Common.ItemSlot})
+    name: IndexOf
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActionBoolReturn`1
+    name: ActionBoolReturn
+    href: Vintagestory.API.Common.ActionBoolReturn-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: )
+  - name: )
 - uid: System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}.Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Func{Vintagestory.API.Common.ItemSlot,System.Double})
   commentId: M:Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
   parent: Vintagestory.API.Util.EnumerableExtensions
@@ -2568,6 +2766,68 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.double
   - name: )
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
 - uid: System
   commentId: N:System
@@ -2769,6 +3029,70 @@ references:
   name: EnumerableExtensions
   nameWithType: EnumerableExtensions
   fullName: Vintagestory.API.Util.EnumerableExtensions
+- uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+  commentId: M:Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+  isExternal: true
+  href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  name: IndexOf<T>(IEnumerable<T>, ActionBoolReturn<T>)
+  nameWithType: EnumerableExtensions.IndexOf<T>(IEnumerable<T>, ActionBoolReturn<T>)
+  fullName: Vintagestory.API.Util.EnumerableExtensions.IndexOf<T>(System.Collections.Generic.IEnumerable<T>, Vintagestory.API.Common.ActionBoolReturn<T>)
+  nameWithType.vb: EnumerableExtensions.IndexOf(Of T)(IEnumerable(Of T), ActionBoolReturn(Of T))
+  fullName.vb: Vintagestory.API.Util.EnumerableExtensions.IndexOf(Of T)(System.Collections.Generic.IEnumerable(Of T), Vintagestory.API.Common.ActionBoolReturn(Of T))
+  name.vb: IndexOf(Of T)(IEnumerable(Of T), ActionBoolReturn(Of T))
+  spec.csharp:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+    name: IndexOf
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActionBoolReturn`1
+    name: ActionBoolReturn
+    href: Vintagestory.API.Common.ActionBoolReturn-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.EnumerableExtensions.IndexOf``1(System.Collections.Generic.IEnumerable{``0},Vintagestory.API.Common.ActionBoolReturn{``0})
+    name: IndexOf
+    href: Vintagestory.API.Util.EnumerableExtensions.html#Vintagestory_API_Util_EnumerableExtensions_IndexOf__1_System_Collections_Generic_IEnumerable___0__Vintagestory_API_Common_ActionBoolReturn___0__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ActionBoolReturn`1
+    name: ActionBoolReturn
+    href: Vintagestory.API.Common.ActionBoolReturn-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
 - uid: Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
   commentId: M:Vintagestory.API.Util.EnumerableExtensions.NearestDistance``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Double})
   isExternal: true
@@ -2924,6 +3248,73 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.double
   - name: )
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
 - uid: Vintagestory.API.Util
   commentId: N:Vintagestory.API.Util

@@ -7,11 +7,27 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
+    public class WireframeModes
+    {
+        public bool Chunk;
+        public bool BlockEntity;
+        public bool Region;
+        public bool LandClaim;
+        public bool ServerChunk;
+        public bool Entity;
+        public bool AmbientSounds;
+        public bool Vertex;
+        public bool Inside;
+        public bool Structures;
+    }
+
     /// <summary>
     /// The main api component to assist you in rendering pretty stuff onto the screen
     /// </summary>
     public interface IRenderAPI
     {
+        WireframeModes WireframeDebugRender { get; }
+
         PerceptionEffects PerceptionEffects { get; }
 
         Stack<ElementBounds> ScissorStack { get; }
@@ -23,6 +39,11 @@ namespace Vintagestory.API.Client
         /// List of all loaded frame buffers. To get the god rays frame buffer for exampple, do <code>Framebuffers[(int)EnumFrameBuffer.GodRays]</code>
         /// </summary>
         List<FrameBufferRef> FrameBuffers { get; }
+
+        /// <summary>
+        /// Set the current framebuffer
+        /// </summary>
+        FrameBufferRef FrameBuffer { set; }
 
         /// <summary>
         /// A number of default shader uniforms
@@ -493,7 +514,10 @@ namespace Vintagestory.API.Client
 
         #endregion
 
+        #region UBO Buffer
+        UBORef CreateUBO(IShaderProgram shaderProgram, int bindingPoint, string blockName, int size);
 
+        #endregion
 
 
 
@@ -512,12 +536,6 @@ namespace Vintagestory.API.Client
         /// <param name="textureSampleName"></param>
         /// <param name="textureNumber"></param>
         void RenderMultiTextureMesh(MultiTextureMeshRef mmr, string textureSampleName, int textureNumber = 0);
-
-        /// <summary>
-        /// Renders given mesh onto the screen, with the mesh requiring multiple render calls for each texture, does not asign any texture
-        /// </summary>
-        /// <param name="mmr"></param>
-        void RenderMultiTextureMesh(MultiTextureMeshRef mmr);
 
 
         /// <summary>

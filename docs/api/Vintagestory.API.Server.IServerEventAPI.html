@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -188,6 +188,16 @@ Interface IServerEventAPI
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -521,8 +531,8 @@ When world type is null, all handlers are returned</p>
 
   <a id="Vintagestory_API_Server_IServerEventAPI_TriggerWorldgenHook_" data-uid="Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook*"></a>
 
-  <h3 id="Vintagestory_API_Server_IServerEventAPI_TriggerWorldgenHook_System_String_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.AssetLocation)">
-  TriggerWorldgenHook(string, IBlockAccessor, BlockPos, AssetLocation)
+  <h3 id="Vintagestory_API_Server_IServerEventAPI_TriggerWorldgenHook_System_String_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_String_" data-uid="Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.String)">
+  TriggerWorldgenHook(string, IBlockAccessor, BlockPos, string)
   
   </h3>
 
@@ -531,7 +541,7 @@ When world type is null, all handlers are returned</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void TriggerWorldgenHook(string hook, IBlockAccessor blockAccessor, BlockPos pos, AssetLocation loc)</code></pre>
+    <pre><code class="lang-csharp hljs">void TriggerWorldgenHook(string hook, IBlockAccessor blockAccessor, BlockPos pos, string param)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -542,7 +552,7 @@ When world type is null, all handlers are returned</p>
     <dd></dd>
     <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
     <dd></dd>
-    <dt><code>loc</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><code>param</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 

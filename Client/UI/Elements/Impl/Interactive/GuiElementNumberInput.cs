@@ -15,7 +15,15 @@ namespace Vintagestory.API.Client
 
 
         public LoadedTexture buttonHighlightTexture;
-        
+        private bool focusable = true;
+
+        public override bool Focusable => focusable;
+
+        /// <summary>
+        /// When enabled and a button is clicked it wont focus on it, leaving your focus on the game to move around 
+        /// </summary>
+        public bool DisableButtonFocus;
+
         /// <summary>
         /// Creates a numerical input field.
         /// </summary>
@@ -193,6 +201,10 @@ namespace Vintagestory.API.Client
 
             if (mouseX >= Bounds.absX + Bounds.OuterWidth - rightSpacing && mouseX <= Bounds.absX + Bounds.OuterWidth && mouseY >= Bounds.absY && mouseY <= Bounds.absY + Bounds.OuterHeight)
             {
+                if (DisableButtonFocus)
+                {
+                    focusable = false;
+                }
                 double heightHalf = Bounds.OuterHeight / 2 - 1;
 
                 if (mouseY > Bounds.absY + heightHalf + 1)
@@ -202,6 +214,11 @@ namespace Vintagestory.API.Client
                 else
                 {
                     UpdateValue(size);
+                }
+            } else {
+                if (DisableButtonFocus)
+                {
+                    focusable = true;
                 }
             }
         }

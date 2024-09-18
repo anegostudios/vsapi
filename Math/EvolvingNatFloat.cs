@@ -9,6 +9,7 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// A number generator whose return value changes over time, parametrized by a transform function and some constants
     /// </summary>
+    [DocumentAsJson]
     [JsonObject(MemberSerialization.OptIn)]
     public class EvolvingNatFloat
     {
@@ -49,11 +50,24 @@ namespace Vintagestory.API.MathTools
             transfuncs[(int)EnumTransformFunction.SMOOTHSTEP] = (firstval, factor, seq) => { return firstval + GameMath.SmoothStep(factor * seq); };
         }
 
-
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>IDENTICAL</jsondefault>-->
+        /// The type of function to use as this value changes.
+        /// </summary>
         [JsonProperty]
         EnumTransformFunction transform = EnumTransformFunction.IDENTICAL;
+
+        /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+        /// A scale factor for the value during the transformation function.
+        /// </summary>
         [JsonProperty]
         float factor = 0;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// The maximum value this random value can return.
+        /// </summary>
         [JsonProperty]
         float? maxvalue;
 

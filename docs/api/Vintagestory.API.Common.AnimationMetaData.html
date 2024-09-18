@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class AnimationMetaData | VintageStory API ">
       
-      
+      <meta name="description" content="Animation Meta Data is a json type that controls how an animation should be played.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -97,7 +97,8 @@ Class AnimationMetaData
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Animation Meta Data is a json type that controls how an animation should be played.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -137,7 +138,48 @@ Class AnimationMetaData
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
+
+  <h2 id="Vintagestory_API_Common_AnimationMetaData_examples">Examples</h2>
+  <pre><code class="lang-json">"animations": [
+	{
+		"code": "hurt",
+		"animation": "hurt",
+		"animationSpeed": 2.2,
+		"weight": 10,
+		"blendMode": "AddAverage"
+	},
+	{
+		"code": "die",
+		"animation": "death",
+		"animationSpeed": 1.25,
+		"weight": 10,
+		"blendMode": "Average",
+		"triggeredBy": { "onControls": [ "dead" ] }
+	},
+	{
+		"code": "idle",
+		"animation": "idle",
+		"blendMode": "AddAverage",
+		"easeOutSpeed": 4,
+		"triggeredBy": { "defaultAnim": true }
+	},
+	{
+		"code": "walk",
+		"animation": "walk",
+		"weight": 5
+	}
+]</code></pre>
 
 
 
@@ -152,7 +194,8 @@ Class AnimationMetaData
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The animations code identifier that we want to play</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
+<p>The animations code identifier that we want to play</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -179,12 +222,45 @@ public string Animation</code></pre>
 
 
 
+  <h3 id="Vintagestory_API_Common_AnimationMetaData_AnimationSound" data-uid="Vintagestory.API.Common.AnimationMetaData.AnimationSound">
+  AnimationSound
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public AnimationSound AnimationSound</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AnimationSound.html">AnimationSound</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_AnimationMetaData_AnimationSpeed" data-uid="Vintagestory.API.Common.AnimationMetaData.AnimationSpeed">
   AnimationSpeed
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The speed this animation should play at.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -215,7 +291,15 @@ public float AnimationSpeed</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>Custom attributes that can be used for the animation.
+Valid vanilla attributes are:<br></p>
+<ul>
+<li>damageAtFrame (float)<br></li>
+<li>soundAtFrame (float)<br></li>
+<li>authorative (bool)<br></li>
+</ul>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -247,7 +331,10 @@ public JsonObject Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Add</jsondefault>-->
+<p>The animation blend mode. Controls how this animation will react with other concurrent animations.
+Also see <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_ElementBlendMode">ElementBlendMode</a> to control blend mode per element.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -278,7 +365,8 @@ public EnumAnimationBlendMode BlendMode</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If true, the server does not sync this animation</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>If true, the server does not sync this animation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -310,7 +398,8 @@ public bool ClientSide</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Unique identifier to be able to reference this AnimationMetaData instance</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
+<p>Unique identifier to be able to reference this AnimationMetaData instance</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -372,7 +461,8 @@ public string Code</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>A multiplier applied to the weight value to &quot;ease in&quot; the animation. Choose a high value for looping animations or it will be glitchy</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
+<p>A multiplier applied to the weight value to &quot;ease in&quot; the animation. Choose a high value for looping animations or it will be glitchy</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -404,7 +494,8 @@ public float EaseInSpeed</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>A multiplier applied to the weight value to &quot;ease out&quot; the animation. Choose a high value for looping animations or it will be glitchy</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
+<p>A multiplier applied to the weight value to &quot;ease out&quot; the animation. Choose a high value for looping animations or it will be glitchy</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -436,7 +527,9 @@ public float EaseOutSpeed</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>A way of specifying <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_BlendMode">BlendMode</a> per element.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -467,7 +560,10 @@ public Dictionary&lt;string, EnumAnimationBlendMode&gt; ElementBlendMode</code><
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>A way of specifying <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_Weight">Weight</a> for each element.
+Also see <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_ElementBlendMode">ElementBlendMode</a> to control blend modes per element..</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -493,12 +589,45 @@ public Dictionary&lt;string, float&gt; ElementWeight</code></pre>
 
 
 
+  <h3 id="Vintagestory_API_Common_AnimationMetaData_FpVariant" data-uid="Vintagestory.API.Common.AnimationMetaData.FpVariant">
+  FpVariant
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AnimationMetaData FpVariant</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html">AnimationMetaData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_AnimationMetaData_HoldEyePosAfterEasein" data-uid="Vintagestory.API.Common.AnimationMetaData.HoldEyePosAfterEasein">
   HoldEyePosAfterEasein
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>99</jsondefault>-->
+<p>A value that determines whether to change the first-person eye position for the camera.
+Higher values will keep eye position static.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -529,7 +658,9 @@ public float HoldEyePosAfterEasein</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>Should this animation speed be multiplied by the movement speed of the entity?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -590,7 +721,9 @@ public bool MulWithWalkSpeed</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>Should this animation stop default animations from playing?</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -621,7 +754,9 @@ public bool SupressDefaultAnimation</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>Controls when this animation should be played.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -682,7 +817,10 @@ public AnimationTrigger TriggeredBy</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The weight of this animation. When using multiple animations at a time, this controls the significance of each animation.
+The method for determining final animation values depends on this and <a class="xref" href="Vintagestory.API.Common.AnimationMetaData.html#Vintagestory_API_Common_AnimationMetaData_BlendMode">BlendMode</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -713,10 +851,14 @@ public float Weight</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>This property can be used in cases where a animation with high weight is played alongside another animation with low element weight. In these cases, the easeIn become unaturally fast. Setting a value of 0.8f or similar here addresses this issue
-0f = uncapped weight
-0.5f = weight cannot exceed 2
-1f = weight cannot exceed 1</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>This property can be used in cases where a animation with high weight is played alongside another animation with low element weight.
+In these cases, the easeIn become unaturally fast. Setting a value of 0.8f or similar here addresses this issue.<br></p>
+<ul>
+<li>0f = uncapped weight<br></li>
+<li>0.5f = weight cannot exceed 2<br></li>
+<li>1f = weight cannot exceed 1</li>
+</ul>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -731,6 +873,37 @@ public float WeightCapFactor</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AnimationMetaData_WithFpVariant" data-uid="Vintagestory.API.Common.AnimationMetaData.WithFpVariant">
+  WithFpVariant
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool WithFpVariant</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

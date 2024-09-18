@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ClimateSpawnCondition | VintageStory API ">
       
-      
+      <meta name="description" content="A list of conditions based on climate.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -97,7 +97,8 @@ Class ClimateSpawnCondition
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>A list of conditions based on climate.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -149,6 +150,16 @@ Class ClimateSpawnCondition
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -164,7 +175,8 @@ Class ClimateSpawnCondition
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The maximum amount of forest cover needed for the object to spawn.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The maximum amount of forest cover needed for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -195,7 +207,8 @@ Class ClimateSpawnCondition
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The maximum amount of rain for the object to spawn.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The maximum amount of rain for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -226,7 +239,8 @@ Class ClimateSpawnCondition
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The maximum amount of shrubbery needed for the object to spawn.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The maximum amount of shrubbery needed for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -257,7 +271,8 @@ Class ClimateSpawnCondition
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The maximum tempurature for the object to spawn.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>40</jsondefault>-->
+<p>The maximum tempurature for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -288,7 +303,8 @@ Class ClimateSpawnCondition
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Won't span above maxY. 0...1 is world bottom to sea level, 1...2 is sea level to world top</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>2</jsondefault>-->
+<p>Won't span above maxY. 0...1 is world bottom to sea level, 1...2 is sea level to world top</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -319,7 +335,8 @@ Class ClimateSpawnCondition
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The minimum amount of forest cover needed for the object to spawn.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>The minimum amount of forest cover needed for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -350,7 +367,8 @@ Class ClimateSpawnCondition
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The minimum amount of forest or shrubs for the object to spawn.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>The minimum amount of forest or shrubs for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -381,7 +399,8 @@ Class ClimateSpawnCondition
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The minimum amount of rain for the object to spawn.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>The minimum amount of rain for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -412,7 +431,8 @@ Class ClimateSpawnCondition
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The minimum amount of shrubbery needed for the object to spawn.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>The minimum amount of shrubbery needed for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -443,7 +463,8 @@ Class ClimateSpawnCondition
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The minimum tempurature for the object to spawn.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>-40</jsondefault>-->
+<p>The minimum tempurature for the object to spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -474,7 +495,8 @@ Class ClimateSpawnCondition
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Won't span below minY. 0...1 is world bottom to sea level, 1...2 is sea level to world top</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>Won't span below minY. 0...1 is world bottom to sea level, 1...2 is sea level to world top</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

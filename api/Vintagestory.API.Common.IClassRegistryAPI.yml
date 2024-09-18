@@ -18,7 +18,6 @@ items:
   - Vintagestory.API.Common.IClassRegistryAPI.CreateInvNetworkUtil(Vintagestory.API.Common.InventoryBase,Vintagestory.API.Common.ICoreAPI)
   - Vintagestory.API.Common.IClassRegistryAPI.CreateItem(System.String)
   - Vintagestory.API.Common.IClassRegistryAPI.CreateJsonTreeAttributeFromDict(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Datastructures.JsonTreeAttribute})
-  - Vintagestory.API.Common.IClassRegistryAPI.CreateMountable(Vintagestory.API.Datastructures.TreeAttribute)
   - Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider(System.String)
   - Vintagestory.API.Common.IClassRegistryAPI.CreateParticlePropertyProvider(System.Type)
   - Vintagestory.API.Common.IClassRegistryAPI.GetBlockBehaviorClass(System.String)
@@ -32,6 +31,7 @@ items:
   - Vintagestory.API.Common.IClassRegistryAPI.GetEntityBehaviorClass(System.String)
   - Vintagestory.API.Common.IClassRegistryAPI.GetEntityClassName(System.Type)
   - Vintagestory.API.Common.IClassRegistryAPI.GetItemClass(System.String)
+  - Vintagestory.API.Common.IClassRegistryAPI.GetMountable(Vintagestory.API.Datastructures.TreeAttribute)
   - Vintagestory.API.Common.IClassRegistryAPI.ItemClassToTypeMapping
   - Vintagestory.API.Common.IClassRegistryAPI.RegisterParticlePropertyProvider(System.String,System.Type)
   langs:
@@ -49,6 +49,9 @@ items:
   syntax:
     content: public interface IClassRegistryAPI
     content.vb: Public Interface IClassRegistryAPI
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.IClassRegistryAPI.BlockClassToTypeMapping
   commentId: P:Vintagestory.API.Common.IClassRegistryAPI.BlockClassToTypeMapping
   id: BlockClassToTypeMapping
@@ -284,16 +287,16 @@ items:
       description: ''
     content.vb: Function CreateEntity(entityType As EntityProperties) As Entity
   overload: Vintagestory.API.Common.IClassRegistryAPI.CreateEntity*
-- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateMountable(Vintagestory.API.Datastructures.TreeAttribute)
-  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateMountable(Vintagestory.API.Datastructures.TreeAttribute)
-  id: CreateMountable(Vintagestory.API.Datastructures.TreeAttribute)
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetMountable(Vintagestory.API.Datastructures.TreeAttribute)
+  commentId: M:Vintagestory.API.Common.IClassRegistryAPI.GetMountable(Vintagestory.API.Datastructures.TreeAttribute)
+  id: GetMountable(Vintagestory.API.Datastructures.TreeAttribute)
   parent: Vintagestory.API.Common.IClassRegistryAPI
   langs:
   - csharp
   - vb
-  name: CreateMountable(TreeAttribute)
-  nameWithType: IClassRegistryAPI.CreateMountable(TreeAttribute)
-  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateMountable(Vintagestory.API.Datastructures.TreeAttribute)
+  name: GetMountable(TreeAttribute)
+  nameWithType: IClassRegistryAPI.GetMountable(TreeAttribute)
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetMountable(Vintagestory.API.Datastructures.TreeAttribute)
   type: Method
   assemblies:
   - VintagestoryAPI
@@ -301,16 +304,16 @@ items:
   summary: Creates an instance of a mountable that has been registered with api.RegisterMountable
   example: []
   syntax:
-    content: IMountable CreateMountable(TreeAttribute tree)
+    content: IMountableSeat GetMountable(TreeAttribute tree)
     parameters:
     - id: tree
       type: Vintagestory.API.Datastructures.TreeAttribute
       description: ''
     return:
-      type: Vintagestory.API.Common.IMountable
+      type: Vintagestory.API.Common.IMountableSeat
       description: ''
-    content.vb: Function CreateMountable(tree As TreeAttribute) As IMountable
-  overload: Vintagestory.API.Common.IClassRegistryAPI.CreateMountable*
+    content.vb: Function GetMountable(tree As TreeAttribute) As IMountableSeat
+  overload: Vintagestory.API.Common.IClassRegistryAPI.GetMountable*
 - uid: Vintagestory.API.Common.IClassRegistryAPI.CreateBlockBehavior(Vintagestory.API.Common.Block,System.String)
   commentId: M:Vintagestory.API.Common.IClassRegistryAPI.CreateBlockBehavior(Vintagestory.API.Common.Block,System.String)
   id: CreateBlockBehavior(Vintagestory.API.Common.Block,System.String)
@@ -897,6 +900,165 @@ references:
   - uid: Vintagestory.API.Common
     name: Common
     href: Vintagestory.API.Common.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.IClassRegistryAPI.BlockClassToTypeMapping*
   commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.BlockClassToTypeMapping
   href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_BlockClassToTypeMapping
@@ -1155,12 +1317,12 @@ references:
   name: EntityProperties
   nameWithType: EntityProperties
   fullName: Vintagestory.API.Common.Entities.EntityProperties
-- uid: Vintagestory.API.Common.IClassRegistryAPI.CreateMountable*
-  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.CreateMountable
-  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_CreateMountable_Vintagestory_API_Datastructures_TreeAttribute_
-  name: CreateMountable
-  nameWithType: IClassRegistryAPI.CreateMountable
-  fullName: Vintagestory.API.Common.IClassRegistryAPI.CreateMountable
+- uid: Vintagestory.API.Common.IClassRegistryAPI.GetMountable*
+  commentId: Overload:Vintagestory.API.Common.IClassRegistryAPI.GetMountable
+  href: Vintagestory.API.Common.IClassRegistryAPI.html#Vintagestory_API_Common_IClassRegistryAPI_GetMountable_Vintagestory_API_Datastructures_TreeAttribute_
+  name: GetMountable
+  nameWithType: IClassRegistryAPI.GetMountable
+  fullName: Vintagestory.API.Common.IClassRegistryAPI.GetMountable
 - uid: Vintagestory.API.Datastructures.TreeAttribute
   commentId: T:Vintagestory.API.Datastructures.TreeAttribute
   parent: Vintagestory.API.Datastructures
@@ -1168,13 +1330,13 @@ references:
   name: TreeAttribute
   nameWithType: TreeAttribute
   fullName: Vintagestory.API.Datastructures.TreeAttribute
-- uid: Vintagestory.API.Common.IMountable
-  commentId: T:Vintagestory.API.Common.IMountable
+- uid: Vintagestory.API.Common.IMountableSeat
+  commentId: T:Vintagestory.API.Common.IMountableSeat
   parent: Vintagestory.API.Common
-  href: Vintagestory.API.Common.IMountable.html
-  name: IMountable
-  nameWithType: IMountable
-  fullName: Vintagestory.API.Common.IMountable
+  href: Vintagestory.API.Common.IMountableSeat.html
+  name: IMountableSeat
+  nameWithType: IMountableSeat
+  fullName: Vintagestory.API.Common.IMountableSeat
 - uid: Vintagestory.API.Datastructures
   commentId: N:Vintagestory.API.Datastructures
   href: Vintagestory.html

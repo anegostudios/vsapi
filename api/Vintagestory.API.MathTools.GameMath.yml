@@ -53,6 +53,7 @@ items:
   - Vintagestory.API.MathTools.GameMath.LerpByte(System.Single,System.Byte,System.Byte)
   - Vintagestory.API.MathTools.GameMath.LerpRgbColor(System.Single,System.Int32,System.Int32)
   - Vintagestory.API.MathTools.GameMath.LerpRgbaColor(System.Single,System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.GameMath.Map``1(``0,``0,``0,``0,``0)
   - Vintagestory.API.MathTools.GameMath.Max(System.Double[])
   - Vintagestory.API.MathTools.GameMath.Max(System.Int32[])
   - Vintagestory.API.MathTools.GameMath.Max(System.Single[])
@@ -77,7 +78,7 @@ items:
   - Vintagestory.API.MathTools.GameMath.RAD2DEG
   - Vintagestory.API.MathTools.GameMath.RootSumOfSquares(System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.GameMath.RoundRandom(System.Random,System.Single)
-  - Vintagestory.API.MathTools.GameMath.RoundRandom(Vintagestory.API.MathTools.LCGRandom,System.Single)
+  - Vintagestory.API.MathTools.GameMath.RoundRandom(Vintagestory.API.MathTools.IRandom,System.Single)
   - Vintagestory.API.MathTools.GameMath.Serp(System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.GameMath.Shuffle``1(System.Random,System.Collections.Generic.List{``0})
   - Vintagestory.API.MathTools.GameMath.Shuffle``1(System.Random,``0[])
@@ -1117,16 +1118,16 @@ items:
   nameWithType.vb: GameMath.RoundRandom(Random, Single)
   fullName.vb: Vintagestory.API.MathTools.GameMath.RoundRandom(System.Random, Single)
   name.vb: RoundRandom(Random, Single)
-- uid: Vintagestory.API.MathTools.GameMath.RoundRandom(Vintagestory.API.MathTools.LCGRandom,System.Single)
-  commentId: M:Vintagestory.API.MathTools.GameMath.RoundRandom(Vintagestory.API.MathTools.LCGRandom,System.Single)
-  id: RoundRandom(Vintagestory.API.MathTools.LCGRandom,System.Single)
+- uid: Vintagestory.API.MathTools.GameMath.RoundRandom(Vintagestory.API.MathTools.IRandom,System.Single)
+  commentId: M:Vintagestory.API.MathTools.GameMath.RoundRandom(Vintagestory.API.MathTools.IRandom,System.Single)
+  id: RoundRandom(Vintagestory.API.MathTools.IRandom,System.Single)
   parent: Vintagestory.API.MathTools.GameMath
   langs:
   - csharp
   - vb
-  name: RoundRandom(LCGRandom, float)
-  nameWithType: GameMath.RoundRandom(LCGRandom, float)
-  fullName: Vintagestory.API.MathTools.GameMath.RoundRandom(Vintagestory.API.MathTools.LCGRandom, float)
+  name: RoundRandom(IRandom, float)
+  nameWithType: GameMath.RoundRandom(IRandom, float)
+  fullName: Vintagestory.API.MathTools.GameMath.RoundRandom(Vintagestory.API.MathTools.IRandom, float)
   type: Method
   assemblies:
   - VintagestoryAPI
@@ -1134,10 +1135,10 @@ items:
   summary: 'Treats given value as a statistical average. Example: 2.1 will turn into 2 90% of the times and into 3 10% of times.'
   example: []
   syntax:
-    content: public static int RoundRandom(LCGRandom rand, float value)
+    content: public static int RoundRandom(IRandom rand, float value)
     parameters:
     - id: rand
-      type: Vintagestory.API.MathTools.LCGRandom
+      type: Vintagestory.API.MathTools.IRandom
       description: ''
     - id: value
       type: System.Single
@@ -1145,11 +1146,11 @@ items:
     return:
       type: System.Int32
       description: ''
-    content.vb: Public Shared Function RoundRandom(rand As LCGRandom, value As Single) As Integer
+    content.vb: Public Shared Function RoundRandom(rand As IRandom, value As Single) As Integer
   overload: Vintagestory.API.MathTools.GameMath.RoundRandom*
-  nameWithType.vb: GameMath.RoundRandom(LCGRandom, Single)
-  fullName.vb: Vintagestory.API.MathTools.GameMath.RoundRandom(Vintagestory.API.MathTools.LCGRandom, Single)
-  name.vb: RoundRandom(LCGRandom, Single)
+  nameWithType.vb: GameMath.RoundRandom(IRandom, Single)
+  fullName.vb: Vintagestory.API.MathTools.GameMath.RoundRandom(Vintagestory.API.MathTools.IRandom, Single)
+  name.vb: RoundRandom(IRandom, Single)
 - uid: Vintagestory.API.MathTools.GameMath.AngleDegDistance(System.Single,System.Single)
   commentId: M:Vintagestory.API.MathTools.GameMath.AngleDegDistance(System.Single,System.Single)
   id: AngleDegDistance(System.Single,System.Single)
@@ -3618,6 +3619,50 @@ items:
   nameWithType.vb: GameMath.BoolsFromInt(Boolean(), Integer)
   fullName.vb: Vintagestory.API.MathTools.GameMath.BoolsFromInt(Boolean(), Integer)
   name.vb: BoolsFromInt(Boolean(), Integer)
+- uid: Vintagestory.API.MathTools.GameMath.Map``1(``0,``0,``0,``0,``0)
+  commentId: M:Vintagestory.API.MathTools.GameMath.Map``1(``0,``0,``0,``0,``0)
+  id: Map``1(``0,``0,``0,``0,``0)
+  parent: Vintagestory.API.MathTools.GameMath
+  langs:
+  - csharp
+  - vb
+  name: Map<T>(T, T, T, T, T)
+  nameWithType: GameMath.Map<T>(T, T, T, T, T)
+  fullName: Vintagestory.API.MathTools.GameMath.Map<T>(T, T, T, T, T)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Map a value from one range to another
+  example: []
+  syntax:
+    content: 'public static T Map<T>(T value, T fromMin, T fromMax, T toMin, T toMax) where T : INumber<T>'
+    parameters:
+    - id: value
+      type: '{T}'
+      description: ''
+    - id: fromMin
+      type: '{T}'
+      description: ''
+    - id: fromMax
+      type: '{T}'
+      description: ''
+    - id: toMin
+      type: '{T}'
+      description: ''
+    - id: toMax
+      type: '{T}'
+      description: ''
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}'
+      description: ''
+    content.vb: Public Shared Function Map(Of T As INumber(Of T))(value As T, fromMin As T, fromMax As T, toMin As T, toMax As T) As T
+  overload: Vintagestory.API.MathTools.GameMath.Map*
+  nameWithType.vb: GameMath.Map(Of T)(T, T, T, T, T)
+  fullName.vb: Vintagestory.API.MathTools.GameMath.Map(Of T)(T, T, T, T, T)
+  name.vb: Map(Of T)(T, T, T, T, T)
 references:
 - uid: Vintagestory.API.MathTools
   commentId: N:Vintagestory.API.MathTools
@@ -4051,13 +4096,13 @@ references:
   name: Random
   nameWithType: Random
   fullName: System.Random
-- uid: Vintagestory.API.MathTools.LCGRandom
-  commentId: T:Vintagestory.API.MathTools.LCGRandom
+- uid: Vintagestory.API.MathTools.IRandom
+  commentId: T:Vintagestory.API.MathTools.IRandom
   parent: Vintagestory.API.MathTools
-  href: Vintagestory.API.MathTools.LCGRandom.html
-  name: LCGRandom
-  nameWithType: LCGRandom
-  fullName: Vintagestory.API.MathTools.LCGRandom
+  href: Vintagestory.API.MathTools.IRandom.html
+  name: IRandom
+  nameWithType: IRandom
+  fullName: Vintagestory.API.MathTools.IRandom
 - uid: Vintagestory.API.MathTools.GameMath.AngleDegDistance*
   commentId: Overload:Vintagestory.API.MathTools.GameMath.AngleDegDistance
   href: Vintagestory.API.MathTools.GameMath.html#Vintagestory_API_MathTools_GameMath_AngleDegDistance_System_Single_System_Single_
@@ -4686,6 +4731,13 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.MathTools.LCGRandom
+  commentId: T:Vintagestory.API.MathTools.LCGRandom
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.LCGRandom.html
+  name: LCGRandom
+  nameWithType: LCGRandom
+  fullName: Vintagestory.API.MathTools.LCGRandom
 - uid: Vintagestory.API.MathTools.GameMath.BresenHamPlotLine3d*
   commentId: Overload:Vintagestory.API.MathTools.GameMath.BresenHamPlotLine3d
   href: Vintagestory.API.MathTools.GameMath.html#Vintagestory_API_MathTools_GameMath_BresenHamPlotLine3d_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_System_Int32_Vintagestory_API_MathTools_PlotDelegate3D_
@@ -4781,3 +4833,19 @@ references:
   name: BoolsFromInt
   nameWithType: GameMath.BoolsFromInt
   fullName: Vintagestory.API.MathTools.GameMath.BoolsFromInt
+- uid: Vintagestory.API.MathTools.GameMath.Map*
+  commentId: Overload:Vintagestory.API.MathTools.GameMath.Map
+  href: Vintagestory.API.MathTools.GameMath.html#Vintagestory_API_MathTools_GameMath_Map__1___0___0___0___0___0_
+  name: Map
+  nameWithType: GameMath.Map
+  fullName: Vintagestory.API.MathTools.GameMath.Map
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

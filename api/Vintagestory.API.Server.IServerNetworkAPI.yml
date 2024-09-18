@@ -6,13 +6,13 @@ items:
   parent: Vintagestory.API.Server
   children:
   - Vintagestory.API.Server.IServerNetworkAPI.BroadcastArbitraryPacket(System.Byte[],Vintagestory.API.Server.IServerPlayer[])
-  - Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
+  - Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
   - Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket``1(Vintagestory.API.MathTools.BlockPos,System.Int32,``0)
   - Vintagestory.API.Server.IServerNetworkAPI.BroadcastEntityPacket(System.Int64,System.Int32,System.Byte[])
   - Vintagestory.API.Server.IServerNetworkAPI.GetChannel(System.String)
   - Vintagestory.API.Server.IServerNetworkAPI.RegisterChannel(System.String)
   - Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket(System.Byte[],Vintagestory.API.Server.IServerPlayer[])
-  - Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer,System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
+  - Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
   - Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket``1(Vintagestory.API.Server.IServerPlayer,Vintagestory.API.MathTools.BlockPos,System.Int32,``0)
   - Vintagestory.API.Server.IServerNetworkAPI.SendEntityPacket(Vintagestory.API.Server.IServerPlayer,System.Int64,System.Int32,System.Byte[])
   langs:
@@ -30,6 +30,9 @@ items:
   syntax:
     content: 'public interface IServerNetworkAPI : INetworkAPI'
     content.vb: Public Interface IServerNetworkAPI Inherits INetworkAPI
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Server.IServerNetworkAPI.RegisterChannel(System.String)
   commentId: M:Vintagestory.API.Server.IServerNetworkAPI.RegisterChannel(System.String)
   id: RegisterChannel(System.String)
@@ -90,16 +93,16 @@ items:
   nameWithType.vb: IServerNetworkAPI.GetChannel(String)
   fullName.vb: Vintagestory.API.Server.IServerNetworkAPI.GetChannel(String)
   name.vb: GetChannel(String)
-- uid: Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer,System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
-  commentId: M:Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer,System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
-  id: SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer,System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
+- uid: Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
+  commentId: M:Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
+  id: SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
   parent: Vintagestory.API.Server.IServerNetworkAPI
   langs:
   - csharp
   - vb
-  name: SendBlockEntityPacket(IServerPlayer, int, int, int, int, byte[])
-  nameWithType: IServerNetworkAPI.SendBlockEntityPacket(IServerPlayer, int, int, int, int, byte[])
-  fullName: Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer, int, int, int, int, byte[])
+  name: SendBlockEntityPacket(IServerPlayer, BlockPos, int, byte[])
+  nameWithType: IServerNetworkAPI.SendBlockEntityPacket(IServerPlayer, BlockPos, int, byte[])
+  fullName: Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer, Vintagestory.API.MathTools.BlockPos, int, byte[])
   type: Method
   assemblies:
   - VintagestoryAPI
@@ -107,19 +110,13 @@ items:
   summary: Sends a blockentity packet to the given player. For quick an easy network communication without setting up a channel first.
   example: []
   syntax:
-    content: void SendBlockEntityPacket(IServerPlayer player, int x, int y, int z, int packetId, byte[] data = null)
+    content: void SendBlockEntityPacket(IServerPlayer player, BlockPos pos, int packetId, byte[] data = null)
     parameters:
     - id: player
       type: Vintagestory.API.Server.IServerPlayer
       description: ''
-    - id: x
-      type: System.Int32
-      description: ''
-    - id: y
-      type: System.Int32
-      description: ''
-    - id: z
-      type: System.Int32
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
       description: ''
     - id: packetId
       type: System.Int32
@@ -127,11 +124,11 @@ items:
     - id: data
       type: System.Byte[]
       description: ''
-    content.vb: Sub SendBlockEntityPacket(player As IServerPlayer, x As Integer, y As Integer, z As Integer, packetId As Integer, data As Byte() = Nothing)
+    content.vb: Sub SendBlockEntityPacket(player As IServerPlayer, pos As BlockPos, packetId As Integer, data As Byte() = Nothing)
   overload: Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket*
-  nameWithType.vb: IServerNetworkAPI.SendBlockEntityPacket(IServerPlayer, Integer, Integer, Integer, Integer, Byte())
-  fullName.vb: Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer, Integer, Integer, Integer, Integer, Byte())
-  name.vb: SendBlockEntityPacket(IServerPlayer, Integer, Integer, Integer, Integer, Byte())
+  nameWithType.vb: IServerNetworkAPI.SendBlockEntityPacket(IServerPlayer, BlockPos, Integer, Byte())
+  fullName.vb: Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer, Vintagestory.API.MathTools.BlockPos, Integer, Byte())
+  name.vb: SendBlockEntityPacket(IServerPlayer, BlockPos, Integer, Byte())
 - uid: Vintagestory.API.Server.IServerNetworkAPI.SendEntityPacket(Vintagestory.API.Server.IServerPlayer,System.Int64,System.Int32,System.Byte[])
   commentId: M:Vintagestory.API.Server.IServerNetworkAPI.SendEntityPacket(Vintagestory.API.Server.IServerPlayer,System.Int64,System.Int32,System.Byte[])
   id: SendEntityPacket(Vintagestory.API.Server.IServerPlayer,System.Int64,System.Int32,System.Byte[])
@@ -201,16 +198,16 @@ items:
   nameWithType.vb: IServerNetworkAPI.BroadcastEntityPacket(Long, Integer, Byte())
   fullName.vb: Vintagestory.API.Server.IServerNetworkAPI.BroadcastEntityPacket(Long, Integer, Byte())
   name.vb: BroadcastEntityPacket(Long, Integer, Byte())
-- uid: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
-  commentId: M:Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
-  id: BroadcastBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
+- uid: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
+  commentId: M:Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
+  id: BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
   parent: Vintagestory.API.Server.IServerNetworkAPI
   langs:
   - csharp
   - vb
-  name: BroadcastBlockEntityPacket(int, int, int, int, byte[])
-  nameWithType: IServerNetworkAPI.BroadcastBlockEntityPacket(int, int, int, int, byte[])
-  fullName: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(int, int, int, int, byte[])
+  name: BroadcastBlockEntityPacket(BlockPos, int, byte[])
+  nameWithType: IServerNetworkAPI.BroadcastBlockEntityPacket(BlockPos, int, byte[])
+  fullName: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos, int, byte[])
   type: Method
   assemblies:
   - VintagestoryAPI
@@ -218,16 +215,10 @@ items:
   summary: Broadcasts a blockentity packet to all connected players. For quick an easy network communication without setting up a channel first.
   example: []
   syntax:
-    content: void BroadcastBlockEntityPacket(int x, int y, int z, int packetId, byte[] data = null)
+    content: void BroadcastBlockEntityPacket(BlockPos pos, int packetId, byte[] data = null)
     parameters:
-    - id: x
-      type: System.Int32
-      description: ''
-    - id: y
-      type: System.Int32
-      description: ''
-    - id: z
-      type: System.Int32
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
       description: ''
     - id: packetId
       type: System.Int32
@@ -235,11 +226,11 @@ items:
     - id: data
       type: System.Byte[]
       description: ''
-    content.vb: Sub BroadcastBlockEntityPacket(x As Integer, y As Integer, z As Integer, packetId As Integer, data As Byte() = Nothing)
+    content.vb: Sub BroadcastBlockEntityPacket(pos As BlockPos, packetId As Integer, data As Byte() = Nothing)
   overload: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket*
-  nameWithType.vb: IServerNetworkAPI.BroadcastBlockEntityPacket(Integer, Integer, Integer, Integer, Byte())
-  fullName.vb: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Integer, Integer, Integer, Integer, Byte())
-  name.vb: BroadcastBlockEntityPacket(Integer, Integer, Integer, Integer, Byte())
+  nameWithType.vb: IServerNetworkAPI.BroadcastBlockEntityPacket(BlockPos, Integer, Byte())
+  fullName.vb: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos, Integer, Byte())
+  name.vb: BroadcastBlockEntityPacket(BlockPos, Integer, Byte())
 - uid: Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket(System.Byte[],Vintagestory.API.Server.IServerPlayer[])
   commentId: M:Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket(System.Byte[],Vintagestory.API.Server.IServerPlayer[])
   id: SendArbitraryPacket(System.Byte[],Vintagestory.API.Server.IServerPlayer[])
@@ -406,6 +397,165 @@ references:
   - uid: Vintagestory.API.Server
     name: Server
     href: Vintagestory.API.Server.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Server.IServerNetworkAPI.RegisterChannel*
   commentId: Overload:Vintagestory.API.Server.IServerNetworkAPI.RegisterChannel
   href: Vintagestory.API.Server.IServerNetworkAPI.html#Vintagestory_API_Server_IServerNetworkAPI_RegisterChannel_System_String_
@@ -445,7 +595,7 @@ references:
   fullName: Vintagestory.API.Server.IServerNetworkAPI.GetChannel
 - uid: Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket*
   commentId: Overload:Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket
-  href: Vintagestory.API.Server.IServerNetworkAPI.html#Vintagestory_API_Server_IServerNetworkAPI_SendBlockEntityPacket_Vintagestory_API_Server_IServerPlayer_System_Int32_System_Int32_System_Int32_System_Int32_System_Byte___
+  href: Vintagestory.API.Server.IServerNetworkAPI.html#Vintagestory_API_Server_IServerNetworkAPI_SendBlockEntityPacket_Vintagestory_API_Server_IServerPlayer_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Byte___
   name: SendBlockEntityPacket
   nameWithType: IServerNetworkAPI.SendBlockEntityPacket
   fullName: Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket
@@ -456,6 +606,13 @@ references:
   name: IServerPlayer
   nameWithType: IServerPlayer
   fullName: Vintagestory.API.Server.IServerPlayer
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
 - uid: System.Int32
   commentId: T:System.Int32
   parent: System
@@ -490,6 +647,36 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.byte
   - name: (
   - name: )
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
 - uid: Vintagestory.API.Server.IServerNetworkAPI.SendEntityPacket*
   commentId: Overload:Vintagestory.API.Server.IServerNetworkAPI.SendEntityPacket
   href: Vintagestory.API.Server.IServerNetworkAPI.html#Vintagestory_API_Server_IServerNetworkAPI_SendEntityPacket_Vintagestory_API_Server_IServerPlayer_System_Int64_System_Int32_System_Byte___
@@ -515,7 +702,7 @@ references:
   fullName: Vintagestory.API.Server.IServerNetworkAPI.BroadcastEntityPacket
 - uid: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket*
   commentId: Overload:Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket
-  href: Vintagestory.API.Server.IServerNetworkAPI.html#Vintagestory_API_Server_IServerNetworkAPI_BroadcastBlockEntityPacket_System_Int32_System_Int32_System_Int32_System_Int32_System_Byte___
+  href: Vintagestory.API.Server.IServerNetworkAPI.html#Vintagestory_API_Server_IServerNetworkAPI_BroadcastBlockEntityPacket_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Byte___
   name: BroadcastBlockEntityPacket
   nameWithType: IServerNetworkAPI.BroadcastBlockEntityPacket
   fullName: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket
@@ -552,49 +739,12 @@ references:
   name: BroadcastArbitraryPacket
   nameWithType: IServerNetworkAPI.BroadcastArbitraryPacket
   fullName: Vintagestory.API.Server.IServerNetworkAPI.BroadcastArbitraryPacket
-- uid: Vintagestory.API.MathTools.BlockPos
-  commentId: T:Vintagestory.API.MathTools.BlockPos
-  parent: Vintagestory.API.MathTools
-  href: Vintagestory.API.MathTools.BlockPos.html
-  name: BlockPos
-  nameWithType: BlockPos
-  fullName: Vintagestory.API.MathTools.BlockPos
 - uid: '{T}'
   commentId: '!:T'
   definition: T
   name: T
   nameWithType: T
   fullName: T
-- uid: Vintagestory.API.MathTools
-  commentId: N:Vintagestory.API.MathTools
-  href: Vintagestory.html
-  name: Vintagestory.API.MathTools
-  nameWithType: Vintagestory.API.MathTools
-  fullName: Vintagestory.API.MathTools
-  spec.csharp:
-  - uid: Vintagestory
-    name: Vintagestory
-    href: Vintagestory.html
-  - name: .
-  - uid: Vintagestory.API
-    name: API
-    href: Vintagestory.API.html
-  - name: .
-  - uid: Vintagestory.API.MathTools
-    name: MathTools
-    href: Vintagestory.API.MathTools.html
-  spec.vb:
-  - uid: Vintagestory
-    name: Vintagestory
-    href: Vintagestory.html
-  - name: .
-  - uid: Vintagestory.API
-    name: API
-    href: Vintagestory.API.html
-  - name: .
-  - uid: Vintagestory.API.MathTools
-    name: MathTools
-    href: Vintagestory.API.MathTools.html
 - uid: T
   name: T
   nameWithType: T

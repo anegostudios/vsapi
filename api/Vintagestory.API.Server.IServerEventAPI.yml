@@ -42,7 +42,7 @@ items:
   - Vintagestory.API.Server.IServerEventAPI.ServerSuspend
   - Vintagestory.API.Server.IServerEventAPI.Timer(System.Action,System.Double)
   - Vintagestory.API.Server.IServerEventAPI.TriggerTrySpawnEntity(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Entities.EntityProperties@,Vintagestory.API.MathTools.Vec3d,System.Int64)
-  - Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.String)
   - Vintagestory.API.Server.IServerEventAPI.WorldgenHook(Vintagestory.API.Common.WorldGenHookDelegate,System.String,System.String)
   - Vintagestory.API.Server.IServerEventAPI.WorldgenStartup
   langs:
@@ -85,6 +85,9 @@ items:
   - Vintagestory.API.Common.IEventAPI.EnqueueMainThreadTask(System.Action,System.String)
   - Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)
   - Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.ItemSlot[],System.Int32)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers(System.String)
   commentId: M:Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers(System.String)
   id: GetRegisteredWorldGenHandlers(System.String)
@@ -327,16 +330,16 @@ items:
   nameWithType.vb: IServerEventAPI.WorldgenHook(WorldGenHookDelegate, String, String)
   fullName.vb: Vintagestory.API.Server.IServerEventAPI.WorldgenHook(Vintagestory.API.Common.WorldGenHookDelegate, String, String)
   name.vb: WorldgenHook(WorldGenHookDelegate, String, String)
-- uid: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.AssetLocation)
-  commentId: M:Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.AssetLocation)
-  id: TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.AssetLocation)
+- uid: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.String)
+  commentId: M:Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.String)
+  id: TriggerWorldgenHook(System.String,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.String)
   parent: Vintagestory.API.Server.IServerEventAPI
   langs:
   - csharp
   - vb
-  name: TriggerWorldgenHook(string, IBlockAccessor, BlockPos, AssetLocation)
-  nameWithType: IServerEventAPI.TriggerWorldgenHook(string, IBlockAccessor, BlockPos, AssetLocation)
-  fullName: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(string, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.Common.AssetLocation)
+  name: TriggerWorldgenHook(string, IBlockAccessor, BlockPos, string)
+  nameWithType: IServerEventAPI.TriggerWorldgenHook(string, IBlockAccessor, BlockPos, string)
+  fullName: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(string, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, string)
   type: Method
   assemblies:
   - VintagestoryAPI
@@ -344,7 +347,7 @@ items:
   summary: Trigger the special worldgen hook, with the name "hook", if it exists
   example: []
   syntax:
-    content: void TriggerWorldgenHook(string hook, IBlockAccessor blockAccessor, BlockPos pos, AssetLocation loc)
+    content: void TriggerWorldgenHook(string hook, IBlockAccessor blockAccessor, BlockPos pos, string param)
     parameters:
     - id: hook
       type: System.String
@@ -352,13 +355,13 @@ items:
       type: Vintagestory.API.Common.IBlockAccessor
     - id: pos
       type: Vintagestory.API.MathTools.BlockPos
-    - id: loc
-      type: Vintagestory.API.Common.AssetLocation
-    content.vb: Sub TriggerWorldgenHook(hook As String, blockAccessor As IBlockAccessor, pos As BlockPos, loc As AssetLocation)
+    - id: param
+      type: System.String
+    content.vb: Sub TriggerWorldgenHook(hook As String, blockAccessor As IBlockAccessor, pos As BlockPos, param As String)
   overload: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook*
-  nameWithType.vb: IServerEventAPI.TriggerWorldgenHook(String, IBlockAccessor, BlockPos, AssetLocation)
-  fullName.vb: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(String, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.Common.AssetLocation)
-  name.vb: TriggerWorldgenHook(String, IBlockAccessor, BlockPos, AssetLocation)
+  nameWithType.vb: IServerEventAPI.TriggerWorldgenHook(String, IBlockAccessor, BlockPos, String)
+  fullName.vb: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook(String, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, String)
+  name.vb: TriggerWorldgenHook(String, IBlockAccessor, BlockPos, String)
 - uid: Vintagestory.API.Server.IServerEventAPI.BeginChunkColumnLoadChunkThread
   commentId: E:Vintagestory.API.Server.IServerEventAPI.BeginChunkColumnLoadChunkThread
   id: BeginChunkColumnLoadChunkThread
@@ -1931,6 +1934,68 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Vintagestory.API.Common.IEventAPI
   commentId: T:Vintagestory.API.Common.IEventAPI
   parent: Vintagestory.API.Common
@@ -1938,6 +2003,73 @@ references:
   name: IEventAPI
   nameWithType: IEventAPI
   fullName: Vintagestory.API.Common.IEventAPI
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
   href: Vintagestory.html
@@ -1968,6 +2100,36 @@ references:
   - uid: Vintagestory.API.Common
     name: Common
     href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers*
   commentId: Overload:Vintagestory.API.Server.IServerEventAPI.GetRegisteredWorldGenHandlers
   href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_GetRegisteredWorldGenHandlers_System_String_
@@ -2204,7 +2366,7 @@ references:
   fullName: Vintagestory.API.Common.WorldGenHookDelegate
 - uid: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook*
   commentId: Overload:Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook
-  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_TriggerWorldgenHook_System_String_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_AssetLocation_
+  href: Vintagestory.API.Server.IServerEventAPI.html#Vintagestory_API_Server_IServerEventAPI_TriggerWorldgenHook_System_String_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_String_
   name: TriggerWorldgenHook
   nameWithType: IServerEventAPI.TriggerWorldgenHook
   fullName: Vintagestory.API.Server.IServerEventAPI.TriggerWorldgenHook
@@ -2215,13 +2377,6 @@ references:
   name: BlockPos
   nameWithType: BlockPos
   fullName: Vintagestory.API.MathTools.BlockPos
-- uid: Vintagestory.API.Common.AssetLocation
-  commentId: T:Vintagestory.API.Common.AssetLocation
-  parent: Vintagestory.API.Common
-  href: Vintagestory.API.Common.AssetLocation.html
-  name: AssetLocation
-  nameWithType: AssetLocation
-  fullName: Vintagestory.API.Common.AssetLocation
 - uid: Vintagestory.API.Common.ChunkColumnBeginLoadChunkThread
   commentId: T:Vintagestory.API.Common.ChunkColumnBeginLoadChunkThread
   parent: Vintagestory.API.Common

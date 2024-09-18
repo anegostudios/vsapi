@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -111,6 +111,16 @@ Interface IAnimator
 
 
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -142,6 +152,38 @@ Interface IAnimator
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IAnimator_Animations_" data-uid="Vintagestory.API.Common.IAnimator.Animations*"></a>
+
+  <h3 id="Vintagestory_API_Common_IAnimator_Animations" data-uid="Vintagestory.API.Common.IAnimator.Animations">
+  Animations
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Holds data over all animations. This list always contains all animations of the creature. You have to check yourself which of them are active</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">RunningAnimation[] Animations { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.RunningAnimation.html">RunningAnimation</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -184,10 +226,10 @@ Interface IAnimator
 
 
 
-  <a id="Vintagestory_API_Common_IAnimator_Matrices4x3_" data-uid="Vintagestory.API.Common.IAnimator.Matrices4x3*"></a>
+  <a id="Vintagestory_API_Common_IAnimator_Matrices_" data-uid="Vintagestory.API.Common.IAnimator.Matrices*"></a>
 
-  <h3 id="Vintagestory_API_Common_IAnimator_Matrices4x3" data-uid="Vintagestory.API.Common.IAnimator.Matrices4x3">
-  Matrices4x3
+  <h3 id="Vintagestory_API_Common_IAnimator_Matrices" data-uid="Vintagestory.API.Common.IAnimator.Matrices">
+  Matrices
   
   </h3>
 
@@ -196,7 +238,7 @@ Interface IAnimator
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">float[] Matrices4x3 { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">float[] Matrices { get; }</code></pre>
   </div>
 
 
@@ -216,19 +258,18 @@ Interface IAnimator
 
 
 
-  <a id="Vintagestory_API_Common_IAnimator_RunningAnimations_" data-uid="Vintagestory.API.Common.IAnimator.RunningAnimations*"></a>
+  <a id="Vintagestory_API_Common_IAnimator_MaxJointId_" data-uid="Vintagestory.API.Common.IAnimator.MaxJointId*"></a>
 
-  <h3 id="Vintagestory_API_Common_IAnimator_RunningAnimations" data-uid="Vintagestory.API.Common.IAnimator.RunningAnimations">
-  RunningAnimations
+  <h3 id="Vintagestory_API_Common_IAnimator_MaxJointId" data-uid="Vintagestory.API.Common.IAnimator.MaxJointId">
+  MaxJointId
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Holds data over all animations. This list always contains all animations of the creature. You have to check yourself which of them are active</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">RunningAnimation[] RunningAnimations { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">int MaxJointId { get; }</code></pre>
   </div>
 
 
@@ -237,7 +278,7 @@ Interface IAnimator
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.RunningAnimation.html">RunningAnimation</a>[]</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 

@@ -12,7 +12,7 @@ namespace Vintagestory.API.Common
     /// <param name="world"></param>
     /// <param name="tree"></param>
     /// <returns></returns>
-    public delegate IMountable GetMountableDelegate(IWorldAccessor world, TreeAttribute tree);
+    public delegate IMountableSeat GetMountableDelegate(IWorldAccessor world, TreeAttribute tree);
 
     /// <summary>
     /// API Methods common to the server and client
@@ -134,27 +134,40 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Milo kept asking for a standardized way to load and store mod configuration data, so here you go :P
+        /// Stores a config file in a prepared modconfig folder. You only need to provide a unique filename.
         /// For T just make a class with all fields public - this is your configuration class. Be sure to set useful default values for your settings
+        /// Be aware that these configs are not synchronized between client and server. Each side will store their own copy of the configuration. If these configs affect gameplay, you will likely need to synchronize it via network packet
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="jsonSerializeableData"></param>
         /// <param name="filename"></param>
         void StoreModConfig<T>(T jsonSerializeableData, string filename);
 
+        /// <summary>
+        /// Stores a config file in a prepared modconfig folder. You only need to provide a unique filename.
+        /// Be aware that these configs are not synchronized between client and server. Each side will store their own copy of the configuration. If these configs affect gameplay, you will likely need to synchronize it to client it via network packet
+        /// </summary>
+        /// <param name="jobj"></param>
+        /// <param name="filename"></param>
         void StoreModConfig(JsonObject jobj, string filename);
 
         /// <summary>
-        /// Milo kept asking for a standardized way to load and store mod configuration data, so here you go :P
-        /// Recommendation: Surround this call with a try/catch in case the user made a typo while changing the configuration
+        /// Loads a config file from a prepared modconfig folder, you only need to provide a unique filename. Recommendation: Surround this call with a try/catch in case the user made a typo while changing the configuration
+        /// Be aware that these configs are not synchronized between client and server. Each side will store their own copy of the configuration. If these configs affect gameplay, you will likely need to synchronize it to client via network packet
         /// Returns null if the file does not exist
-        /// 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="filename"></param>
         /// <returns></returns>
         T LoadModConfig<T>(string filename);
 
+        /// <summary>
+        /// Loads a config file from a prepared modconfig folder, you only need to provide a unique filename. Recommendation: Surround this call with a try/catch in case the user made a typo while changing the configuration
+        /// Be aware that these configs are not synchronized between client and server. Each side will store their own copy of the configuration. If these configs affect gameplay, you will likely need to synchronize it to client via network packet
+        /// Returns null if the file does not exist
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         JsonObject LoadModConfig(string filename);
     }
 

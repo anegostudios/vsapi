@@ -17,7 +17,7 @@ namespace Vintagestory.API.Client
             this.textureids = textureids;
         }
 
-        public bool Initialized => meshrefs[0].Initialized;
+        public bool Initialized => meshrefs.Length > 0 && meshrefs[0].Initialized;
 
         public void Dispose()
         {

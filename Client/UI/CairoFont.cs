@@ -280,6 +280,18 @@ namespace Vintagestory.API.Client
             return this;
         }
 
+        public static CairoFont SmallButtonText(EnumButtonStyle style = EnumButtonStyle.Normal)
+        {
+            return new CairoFont()
+            {
+                Color = (double[])GuiStyle.ButtonTextColor.Clone(),
+                FontWeight = style != EnumButtonStyle.Small ? FontWeight.Bold : FontWeight.Normal,
+                Orientation = EnumTextOrientation.Center,
+                Fontname = GuiStyle.StandardFontName,
+                UnscaledFontsize = GuiStyle.SmallFontSize
+            };
+        }
+
         /// <summary>
         /// Creates a Button Text preset.
         /// </summary>

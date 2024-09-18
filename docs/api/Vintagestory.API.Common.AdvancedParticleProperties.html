@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class AdvancedParticleProperties | VintageStory API ">
       
-      
+      <meta name="description" content="Used to add a set of particle properties to a collectible.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -97,7 +97,8 @@ Class AdvancedParticleProperties
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>Used to add a set of particle properties to a collectible.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -150,6 +151,16 @@ public class AdvancedParticleProperties : IParticlePropertiesProvider</code></pr
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -196,7 +207,8 @@ public class AdvancedParticleProperties : IParticlePropertiesProvider</code></pr
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The Hue/Saturation/Value/Alpha for the color of the particle.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Random</jsondefault>-->
+<p>The Hue/Saturation/Value/Alpha for the color of the particle.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -228,7 +240,8 @@ public NatFloat[] HsvaColor</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Offset from the blocks hitboxes top middle position</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0, 0, 0</jsondefault>-->
+<p>Offset from the blocks hitboxes top middle position</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -389,7 +402,8 @@ public NatFloat[] PosOffset</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>A transforming Blue value.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>A transforming Blue value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -422,7 +436,9 @@ public EvolvingNatFloat BlueEvolve { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>The amount of velocity to be kept when this particle collides with something. Directional velocity is multipled by (-Bounciness * 0.65) on any collision.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -454,7 +470,8 @@ public float Bounciness { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether or not to color the particle by the block it's on.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>Whether or not to color the particle by the block it's on.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -487,7 +504,8 @@ public bool ColorByBlock { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The death particles for the JsonObject.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>More particles that spawn when this particle dies.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -520,7 +538,8 @@ public AdvancedParticleProperties[] DeathParticles { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether or not the entity dies in air.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>Whether or not the particle dies in air.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -553,7 +572,8 @@ public bool DieInAir { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether or not the entity dies in water.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>Whether or not the particle dies in water.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -586,7 +606,8 @@ public bool DieInLiquid { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If true, particle dies if it falls below the rain height at its given location</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>If true, particle dies if it falls below the rain height at its given location</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -619,7 +640,8 @@ public bool DieOnRainHeightmap { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The gravity effect on the particle.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The gravity effect on the particle.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -652,7 +674,8 @@ public NatFloat GravityEffect { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>A transforming Green value.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>A transforming Green value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -685,7 +708,8 @@ public EvolvingNatFloat GreenEvolve { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The life length of the particle.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The life length, in seconds, of the particle.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -711,6 +735,38 @@ public NatFloat LifeLength { get; set; }</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_LightEmission_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.LightEmission*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_LightEmission" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.LightEmission">
+  LightEmission
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If this particle emits light, this is its RGBA. Does not actually brighten the scene around it, but prevents incorrect lighting of particles when everything else around it is dark</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LightEmission { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_AdvancedParticleProperties_OpacityEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve*"></a>
 
   <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_OpacityEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve">
@@ -718,7 +774,8 @@ public NatFloat LifeLength { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>a transforming opacity value.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>A transforming opacity value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -813,7 +870,8 @@ public EvolvingNatFloat OpacityEvolve { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Sets the base model for the particle.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Cube</jsondefault>-->
+<p>Sets the base model for the particle.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -878,7 +936,8 @@ public EnumParticleModel ParticleModel { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The quantity of the particles given.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The quantity of the particles given.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -911,7 +970,9 @@ public NatFloat Quantity { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>Allows each particle to randomly change its velocity over time.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -943,7 +1004,8 @@ public bool RandomVelocityChange { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>A transforming Red value.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>A transforming Red value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -976,7 +1038,8 @@ public EvolvingNatFloat RedEvolve { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The Secondary particles for the JsonObject.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>More particles that spawn from this particle over time. See <a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval">SecondarySpawnInterval</a> to control rate.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1009,7 +1072,8 @@ public AdvancedParticleProperties[] SecondaryParticles { get; set; }</code></pre
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The inverval that the secondary particles spawn.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>The inverval that the <a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles">SecondaryParticles</a> spawn.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1042,7 +1106,8 @@ public NatFloat SecondarySpawnInterval { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether or not the particle is self propelled.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>Whether or not the particle is self propelled.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1075,7 +1140,8 @@ public bool SelfPropelled { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The size of the particles given.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>The size of the particles given.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1108,7 +1174,8 @@ public NatFloat Size { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>a transforming Size value.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>A transforming Size value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1141,7 +1208,9 @@ public EvolvingNatFloat SizeEvolve { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>Whether or not the particle floats on liquids.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1173,7 +1242,8 @@ public bool SwimOnLiquid { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Whether or not the particle collides with the terrain.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>true</jsondefault>-->
+<p>Whether or not the particle collides with the terrain.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1206,7 +1276,8 @@ public bool TerrainCollision { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The velocity of the particles.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Random</jsondefault>-->
+<p>The velocity of the particles.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1239,7 +1310,8 @@ public NatFloat[] Velocity { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>A dynamic velocity value.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>A dynamic velocity value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1272,7 +1344,8 @@ public EvolvingNatFloat[] VelocityEvolve { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The level of glow in the particle.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>The level of glow in the particle.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -1305,7 +1378,9 @@ public int VertexFlags { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>How much the particles are affected by wind.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">

@@ -27,7 +27,7 @@ namespace Vintagestory.API.Common
         bool Exists(AssetLocation location);
 
         /// <summary>
-        /// Adds a runtime asset to the game, curently used by ModCompatiblityUtil. Allows you do add an asset found at <paramref name="path"/> but loaded from path <paramref name="asset"/>.Path. 
+        /// Adds a runtime asset to the game, curently used by ModCompatiblityUtil. Allows you do add an asset found at <paramref name="path"/> but loaded from path <paramref name="asset"/>.Path.
         /// </summary>
         /// <param name="path"></param>
         /// <param name="asset"></param>
@@ -66,7 +66,8 @@ namespace Vintagestory.API.Common
         IAsset TryGet(AssetLocation Location, bool loadAsset = true);
 
         /// <summary>
-        /// Returns all assets inside given category with the given path. If no domain is specified, all domains will be searched. The returned list is considered unsorted.
+        /// Returns all assets inside given domain with the given path. If no domain is specified, all domains will be searched.
+        /// The returned list is considered unsorted.
         /// </summary>
         /// <param name="pathBegins"></param>
         /// <param name="domain"></param>
@@ -74,10 +75,19 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         List<IAsset> GetMany(string pathBegins, string domain = null, bool loadAsset = true);
 
+        /// <summary>
+        /// Returns all assets inside given category with the given path. If no domain is specified, all domains will be searched.
+        /// The returned list is considered unsorted.
+        /// </summary>
+        /// <param name="categoryCode"> See class <see cref="AssetCategory"/> </param>
+        /// <param name="pathBegins"></param>
+        /// <param name="domain"></param>
+        /// <param name="loadAsset"></param>
+        /// <returns></returns>
         List<IAsset> GetManyInCategory(string categoryCode, string pathBegins, string domain = null, bool loadAsset = true);
 
         /// <summary>
-        /// Searches for all assets in given basepath and uses JSON.NET to automatically turn them into objects. Will log an error to given ILogger if it can't parse the json file and continue with the next asset. Remember to use lower case paths. If no domain is specified, all domains will be searched.
+        /// Searches for all assets in given basepath and uses Newtonsoft.Json to automatically turn them into objects. Will log an error to given ILogger if it can't parse the json file and continue with the next asset. Remember to use lower case paths. If no domain is specified, all domains will be searched.
         /// The returned list is considered unsorted.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -87,8 +97,6 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         Dictionary<AssetLocation, T> GetMany<T>(ILogger logger, string pathBegins, string domain = null);
 
-
-
         /// <summary>
         /// Returns all asset locations that begins with given path and domain. If no domain is specified, all domains will be searched. The returned list is considered unsorted.
         /// </summary>
@@ -96,7 +104,6 @@ namespace Vintagestory.API.Common
         /// <param name="domain"></param>
         /// <returns></returns>
         List<AssetLocation> GetLocations(string pathBegins, string domain = null);
-
 
         /// <summary>
         /// Retrieves an asset from given path within the assets folder and uses JSON.NET to automatically turn them into objects. Throws an exception when the asset does not exist or the conversion failed. Remember to use lower case paths.
@@ -130,5 +137,6 @@ namespace Vintagestory.API.Common
         [Obsolete("Use AddModOrigin")]
         void AddPathOrigin(string domain, string fullPath);
         void AddModOrigin(string domain, string fullPath);
+        void AddModOrigin(string domain, string fullPath, string pathForReservedCharsCheck);
     }
 }

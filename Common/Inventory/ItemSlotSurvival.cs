@@ -13,17 +13,17 @@
 
         public override bool CanTakeFrom(ItemSlot sourceSlot, EnumMergePriority priority = EnumMergePriority.AutoMerge)
         {
-            if (CollectibleObject.IsBackPack(sourceSlot.Itemstack) && !CollectibleObject.IsEmptyBackPack(sourceSlot.Itemstack)) return false;
+            var bag = sourceSlot.Itemstack?.Collectible.GetCollectibleInterface<IHeldBag>() ?? null;
+
+            if (bag != null && !bag.IsEmpty(sourceSlot.Itemstack)) return false;
             return base.CanTakeFrom(sourceSlot, priority);
         }
 
         public override bool CanHold(ItemSlot sourceSlot)
         {
-            return 
-                base.CanHold(sourceSlot) &&
-               (!CollectibleObject.IsBackPack(sourceSlot.Itemstack) || CollectibleObject.IsEmptyBackPack(sourceSlot.Itemstack))
-               && inventory.CanContain(this, sourceSlot)
-            ;
+            var bag = sourceSlot.Itemstack?.Collectible.GetCollectibleInterface<IHeldBag>() ?? null;
+
+            return base.CanHold(sourceSlot) && (bag == null || bag.IsEmpty(sourceSlot.Itemstack)) && inventory.CanContain(this, sourceSlot);
         }
     }
 }

@@ -9,14 +9,16 @@ items:
   - Vintagestory.API.MathTools.CollisionTester.AabbIntersect(Vintagestory.API.MathTools.Cuboidf,System.Double,System.Double,System.Double,Vintagestory.API.MathTools.Cuboidf,Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.MathTools.CollisionTester.ApplyTerrainCollision(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,System.Single,Vintagestory.API.MathTools.Vec3d@,System.Single,System.Single)
   - Vintagestory.API.MathTools.CollisionTester.CollisionBoxList
-  - Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor,System.Double,System.Double,System.Double,System.Single,System.Single)
+  - Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor,System.Double,System.Double,System.Double,System.Single,System.Single,System.Int32)
   - Vintagestory.API.MathTools.CollisionTester.GetCollidingBlock(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.Cuboidf,Vintagestory.API.MathTools.Vec3d,System.Boolean)
   - Vintagestory.API.MathTools.CollisionTester.GetCollidingCollisionBox(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.Cuboidf,Vintagestory.API.MathTools.Vec3d,System.Boolean)
   - Vintagestory.API.MathTools.CollisionTester.GetCollidingCollisionBox(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.Cuboidf,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Cuboidd@,System.Boolean)
   - Vintagestory.API.MathTools.CollisionTester.IsColliding(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.Cuboidf,Vintagestory.API.MathTools.Vec3d,System.Boolean)
+  - Vintagestory.API.MathTools.CollisionTester.PeekCollision(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,System.Single,Vintagestory.API.MathTools.Vec3d@)
   - Vintagestory.API.MathTools.CollisionTester.entityBox
   - Vintagestory.API.MathTools.CollisionTester.maxPos
   - Vintagestory.API.MathTools.CollisionTester.minPos
+  - Vintagestory.API.MathTools.CollisionTester.pos
   - Vintagestory.API.MathTools.CollisionTester.tmpPos
   - Vintagestory.API.MathTools.CollisionTester.tmpPosDelta
   langs:
@@ -44,6 +46,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.MathTools.CollisionTester.CollisionBoxList
   commentId: F:Vintagestory.API.MathTools.CollisionTester.CollisionBoxList
   id: CollisionBoxList
@@ -135,10 +140,10 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
   syntax:
-    content: protected BlockPos minPos
+    content: public BlockPos minPos
     return:
       type: Vintagestory.API.MathTools.BlockPos
-    content.vb: Protected minPos As BlockPos
+    content.vb: Public minPos As BlockPos
 - uid: Vintagestory.API.MathTools.CollisionTester.maxPos
   commentId: F:Vintagestory.API.MathTools.CollisionTester.maxPos
   id: maxPos
@@ -154,10 +159,29 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
   syntax:
-    content: protected BlockPos maxPos
+    content: public BlockPos maxPos
     return:
       type: Vintagestory.API.MathTools.BlockPos
-    content.vb: Protected maxPos As BlockPos
+    content.vb: Public maxPos As BlockPos
+- uid: Vintagestory.API.MathTools.CollisionTester.pos
+  commentId: F:Vintagestory.API.MathTools.CollisionTester.pos
+  id: pos
+  parent: Vintagestory.API.MathTools.CollisionTester
+  langs:
+  - csharp
+  - vb
+  name: pos
+  nameWithType: CollisionTester.pos
+  fullName: Vintagestory.API.MathTools.CollisionTester.pos
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public Vec3d pos
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Public pos As Vec3d
 - uid: Vintagestory.API.MathTools.CollisionTester.ApplyTerrainCollision(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,System.Single,Vintagestory.API.MathTools.Vec3d@,System.Single,System.Single)
   commentId: M:Vintagestory.API.MathTools.CollisionTester.ApplyTerrainCollision(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,System.Single,Vintagestory.API.MathTools.Vec3d@,System.Single,System.Single)
   id: ApplyTerrainCollision(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,System.Single,Vintagestory.API.MathTools.Vec3d@,System.Single,System.Single)
@@ -175,47 +199,47 @@ items:
   summary: Takes the entity positiona and motion and adds them, respecting any colliding blocks. The resulting new position is put into outposition
   example: []
   syntax:
-    content: public void ApplyTerrainCollision(Entity entity, EntityPos entitypos, float dtFac, ref Vec3d outposition, float stepHeight = 1, float YExtra = 1)
+    content: public void ApplyTerrainCollision(Entity entity, EntityPos entityPos, float dtFactor, ref Vec3d newPosition, float stepHeight = 1, float yExtra = 1)
     parameters:
     - id: entity
       type: Vintagestory.API.Common.Entities.Entity
       description: ''
-    - id: entitypos
+    - id: entityPos
       type: Vintagestory.API.Common.Entities.EntityPos
       description: ''
-    - id: dtFac
+    - id: dtFactor
       type: System.Single
       description: ''
-    - id: outposition
+    - id: newPosition
       type: Vintagestory.API.MathTools.Vec3d
       description: ''
     - id: stepHeight
       type: System.Single
       description: ''
-    - id: YExtra
+    - id: yExtra
       type: System.Single
       description: Default 1 for the extra high collision boxes of fences
-    content.vb: Public Sub ApplyTerrainCollision(entity As Entity, entitypos As EntityPos, dtFac As Single, outposition As Vec3d, stepHeight As Single = 1, YExtra As Single = 1)
+    content.vb: Public Sub ApplyTerrainCollision(entity As Entity, entityPos As EntityPos, dtFactor As Single, newPosition As Vec3d, stepHeight As Single = 1, yExtra As Single = 1)
   overload: Vintagestory.API.MathTools.CollisionTester.ApplyTerrainCollision*
   nameWithType.vb: CollisionTester.ApplyTerrainCollision(Entity, EntityPos, Single, Vec3d, Single, Single)
   fullName.vb: Vintagestory.API.MathTools.CollisionTester.ApplyTerrainCollision(Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, Single, Vintagestory.API.MathTools.Vec3d, Single, Single)
   name.vb: ApplyTerrainCollision(Entity, EntityPos, Single, Vec3d, Single, Single)
-- uid: Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor,System.Double,System.Double,System.Double,System.Single,System.Single)
-  commentId: M:Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor,System.Double,System.Double,System.Double,System.Single,System.Single)
-  id: GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor,System.Double,System.Double,System.Double,System.Single,System.Single)
+- uid: Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor,System.Double,System.Double,System.Double,System.Single,System.Single,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor,System.Double,System.Double,System.Double,System.Single,System.Single,System.Int32)
+  id: GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor,System.Double,System.Double,System.Double,System.Single,System.Single,System.Int32)
   parent: Vintagestory.API.MathTools.CollisionTester
   langs:
   - csharp
   - vb
-  name: GenerateCollisionBoxList(IBlockAccessor, double, double, double, float, float)
-  nameWithType: CollisionTester.GenerateCollisionBoxList(IBlockAccessor, double, double, double, float, float)
-  fullName: Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor, double, double, double, float, float)
+  name: GenerateCollisionBoxList(IBlockAccessor, double, double, double, float, float, int)
+  nameWithType: CollisionTester.GenerateCollisionBoxList(IBlockAccessor, double, double, double, float, float, int)
+  fullName: Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor, double, double, double, float, float, int)
   type: Method
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
   syntax:
-    content: protected virtual void GenerateCollisionBoxList(IBlockAccessor blockAccessor, double motionX, double motionY, double motionZ, float stepHeight, float yExtra)
+    content: protected virtual void GenerateCollisionBoxList(IBlockAccessor blockAccessor, double motionX, double motionY, double motionZ, float stepHeight, float yExtra, int dimension)
     parameters:
     - id: blockAccessor
       type: Vintagestory.API.Common.IBlockAccessor
@@ -229,11 +253,13 @@ items:
       type: System.Single
     - id: yExtra
       type: System.Single
-    content.vb: Protected Overridable Sub GenerateCollisionBoxList(blockAccessor As IBlockAccessor, motionX As Double, motionY As Double, motionZ As Double, stepHeight As Single, yExtra As Single)
+    - id: dimension
+      type: System.Int32
+    content.vb: Protected Overridable Sub GenerateCollisionBoxList(blockAccessor As IBlockAccessor, motionX As Double, motionY As Double, motionZ As Double, stepHeight As Single, yExtra As Single, dimension As Integer)
   overload: Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList*
-  nameWithType.vb: CollisionTester.GenerateCollisionBoxList(IBlockAccessor, Double, Double, Double, Single, Single)
-  fullName.vb: Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor, Double, Double, Double, Single, Single)
-  name.vb: GenerateCollisionBoxList(IBlockAccessor, Double, Double, Double, Single, Single)
+  nameWithType.vb: CollisionTester.GenerateCollisionBoxList(IBlockAccessor, Double, Double, Double, Single, Single, Integer)
+  fullName.vb: Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor, Double, Double, Double, Single, Single, Integer)
+  name.vb: GenerateCollisionBoxList(IBlockAccessor, Double, Double, Double, Single, Single, Integer)
 - uid: Vintagestory.API.MathTools.CollisionTester.IsColliding(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.Cuboidf,Vintagestory.API.MathTools.Vec3d,System.Boolean)
   commentId: M:Vintagestory.API.MathTools.CollisionTester.IsColliding(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.Cuboidf,Vintagestory.API.MathTools.Vec3d,System.Boolean)
   id: IsColliding(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.Cuboidf,Vintagestory.API.MathTools.Vec3d,System.Boolean)
@@ -319,7 +345,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
-  summary: Tests given cuboidf collides with the terrain. By default also checks if the cuboid is merely touching the terrain, set alsoCheckTouch to disable that.
+  summary: If given cuboidf collides with the terrain, returns the collision box it collides with. By default also checks if the cuboid is merely touching the terrain, set alsoCheckTouch to disable that.
   example: []
   syntax:
     content: public Cuboidd GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, bool alsoCheckTouch = true)
@@ -361,7 +387,7 @@ items:
   summary: Tests given cuboidf collides with the terrain. By default also checks if the cuboid is merely touching the terrain, set alsoCheckTouch to disable that.
   example: []
   syntax:
-    content: public bool GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, ref Cuboidd intoCubuid, bool alsoCheckTouch = true)
+    content: public bool GetCollidingCollisionBox(IBlockAccessor blockAccessor, Cuboidf entityBoxRel, Vec3d pos, ref Cuboidd intoCuboid, bool alsoCheckTouch = true)
     parameters:
     - id: blockAccessor
       type: Vintagestory.API.Common.IBlockAccessor
@@ -372,16 +398,15 @@ items:
     - id: pos
       type: Vintagestory.API.MathTools.Vec3d
       description: ''
-    - id: intoCubuid
+    - id: intoCuboid
       type: Vintagestory.API.MathTools.Cuboidd
-      description: ''
     - id: alsoCheckTouch
       type: System.Boolean
       description: ''
     return:
       type: System.Boolean
       description: ''
-    content.vb: Public Function GetCollidingCollisionBox(blockAccessor As IBlockAccessor, entityBoxRel As Cuboidf, pos As Vec3d, intoCubuid As Cuboidd, alsoCheckTouch As Boolean = True) As Boolean
+    content.vb: Public Function GetCollidingCollisionBox(blockAccessor As IBlockAccessor, entityBoxRel As Cuboidf, pos As Vec3d, intoCuboid As Cuboidd, alsoCheckTouch As Boolean = True) As Boolean
   overload: Vintagestory.API.MathTools.CollisionTester.GetCollidingCollisionBox*
   nameWithType.vb: CollisionTester.GetCollidingCollisionBox(IBlockAccessor, Cuboidf, Vec3d, Cuboidd, Boolean)
   fullName.vb: Vintagestory.API.MathTools.CollisionTester.GetCollidingCollisionBox(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.Cuboidf, Vintagestory.API.MathTools.Vec3d, Vintagestory.API.MathTools.Cuboidd, Boolean)
@@ -449,6 +474,42 @@ items:
       type: Vintagestory.API.MathTools.EnumIntersect
     content.vb: Public Shared Function AabbIntersect(aabb As Cuboidd, aabb2 As Cuboidd, motion As Vec3d) As EnumIntersect
   overload: Vintagestory.API.MathTools.CollisionTester.AabbIntersect*
+- uid: Vintagestory.API.MathTools.CollisionTester.PeekCollision(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,System.Single,Vintagestory.API.MathTools.Vec3d@)
+  commentId: M:Vintagestory.API.MathTools.CollisionTester.PeekCollision(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,System.Single,Vintagestory.API.MathTools.Vec3d@)
+  id: PeekCollision(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Entities.EntityPos,System.Single,Vintagestory.API.MathTools.Vec3d@)
+  parent: Vintagestory.API.MathTools.CollisionTester
+  langs:
+  - csharp
+  - vb
+  name: PeekCollision(Entity, EntityPos, float, ref Vec3d)
+  nameWithType: CollisionTester.PeekCollision(Entity, EntityPos, float, ref Vec3d)
+  fullName: Vintagestory.API.MathTools.CollisionTester.PeekCollision(Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, float, ref Vintagestory.API.MathTools.Vec3d)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Does not call block collide events or set collided flags. Used for peeking position in the future.
+  example: []
+  syntax:
+    content: public void PeekCollision(Entity entity, EntityPos entityPos, float dtFactor, ref Vec3d newPosition)
+    parameters:
+    - id: entity
+      type: Vintagestory.API.Common.Entities.Entity
+      description: ''
+    - id: entityPos
+      type: Vintagestory.API.Common.Entities.EntityPos
+      description: ''
+    - id: dtFactor
+      type: System.Single
+      description: ''
+    - id: newPosition
+      type: Vintagestory.API.MathTools.Vec3d
+      description: ''
+    content.vb: Public Sub PeekCollision(entity As Entity, entityPos As EntityPos, dtFactor As Single, newPosition As Vec3d)
+  overload: Vintagestory.API.MathTools.CollisionTester.PeekCollision*
+  nameWithType.vb: CollisionTester.PeekCollision(Entity, EntityPos, Single, Vec3d)
+  fullName.vb: Vintagestory.API.MathTools.CollisionTester.PeekCollision(Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Entities.EntityPos, Single, Vintagestory.API.MathTools.Vec3d)
+  name.vb: PeekCollision(Entity, EntityPos, Single, Vec3d)
 references:
 - uid: Vintagestory.API.MathTools
   commentId: N:Vintagestory.API.MathTools
@@ -710,6 +771,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -717,6 +840,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Datastructures.CachedCuboidList
   commentId: T:Vintagestory.API.Datastructures.CachedCuboidList
   parent: Vintagestory.API.Datastructures
@@ -846,7 +1066,7 @@ references:
     href: Vintagestory.API.Common.Entities.html
 - uid: Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList*
   commentId: Overload:Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList
-  href: Vintagestory.API.MathTools.CollisionTester.html#Vintagestory_API_MathTools_CollisionTester_GenerateCollisionBoxList_Vintagestory_API_Common_IBlockAccessor_System_Double_System_Double_System_Double_System_Single_System_Single_
+  href: Vintagestory.API.MathTools.CollisionTester.html#Vintagestory_API_MathTools_CollisionTester_GenerateCollisionBoxList_Vintagestory_API_Common_IBlockAccessor_System_Double_System_Double_System_Double_System_Single_System_Single_System_Int32_
   name: GenerateCollisionBoxList
   nameWithType: CollisionTester.GenerateCollisionBoxList
   fullName: Vintagestory.API.MathTools.CollisionTester.GenerateCollisionBoxList
@@ -868,6 +1088,17 @@ references:
   nameWithType.vb: Double
   fullName.vb: Double
   name.vb: Double
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
   href: Vintagestory.html
@@ -954,3 +1185,9 @@ references:
   name: EnumIntersect
   nameWithType: EnumIntersect
   fullName: Vintagestory.API.MathTools.EnumIntersect
+- uid: Vintagestory.API.MathTools.CollisionTester.PeekCollision*
+  commentId: Overload:Vintagestory.API.MathTools.CollisionTester.PeekCollision
+  href: Vintagestory.API.MathTools.CollisionTester.html#Vintagestory_API_MathTools_CollisionTester_PeekCollision_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Entities_EntityPos_System_Single_Vintagestory_API_MathTools_Vec3d__
+  name: PeekCollision
+  nameWithType: CollisionTester.PeekCollision
+  fullName: Vintagestory.API.MathTools.CollisionTester.PeekCollision

@@ -78,7 +78,7 @@ namespace Vintagestory.API.Client
 
         public string Name;
 
-
+        public bool AllowNoChildren;
         public bool Initialized;
 
         /// <summary>
@@ -354,6 +354,7 @@ namespace Vintagestory.API.Client
         {
             if (ChildBounds == null || ChildBounds.Count == 0)
             {
+                if (AllowNoChildren) return;
                 throw new Exception("Cant build bounds from children elements, there are no children!");
             }
 

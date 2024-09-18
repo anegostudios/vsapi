@@ -82,7 +82,7 @@ namespace Vintagestory.API.Client
         {
             if (val == null)
             {
-                Vec2i pos = api.Gui.GetDialogPosition(baseComposer.dialogName);
+                Vec2i pos = api.Gui.GetDialogPosition(baseComposer.DialogName);
                 if (pos != null)
                 {
                     movable = true;
@@ -115,7 +115,7 @@ namespace Vintagestory.API.Client
                 }
 
                 movable = false;
-                api.Gui.SetDialogPosition(baseComposer.dialogName, null);
+                api.Gui.SetDialogPosition(baseComposer.DialogName, null);
             }
             else
             {
@@ -212,16 +212,16 @@ namespace Vintagestory.API.Client
         {
             double crossSize = scaled(unscaledCloseIconSize);
             double menuSize = scaled(unscaledCloseIconSize + 2);
-            int crossWidth = 2;
+            int crossWidth = (int)Math.Round(scaled(2 - 0.1));
 
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)crossSize + 4, (int)crossSize + 4);
             Context ctx = genContext(surface);
 
             ctx.Operator = Operator.Source;
             ctx.SetSourceRGBA(0.8, 0, 0, 1);
-            api.Gui.Icons.DrawCross(ctx, 1.5, 1.5, crossWidth, crossSize);
-            ctx.SetSourceRGBA(0.8, 0, 0, 0.6);
-            api.Gui.Icons.DrawCross(ctx, 2, 2, crossWidth, crossSize);
+            api.Gui.Icons.DrawCross(ctx, 0.5, 1.5, crossWidth, crossSize);
+            ctx.SetSourceRGBA(0.8, 0.2, 0.2, 1);
+            api.Gui.Icons.DrawCross(ctx, 1, 2, crossWidth, crossSize);
 
             generateTexture(surface, ref closeIconHoverTexture);
 
@@ -230,12 +230,11 @@ namespace Vintagestory.API.Client
 
             
 
-            surface = new ImageSurface(Format.Argb32, (int)menuSize + 4, (int)menuSize + 4);
+            surface = new ImageSurface(Format.Argb32, (int)menuSize, (int)menuSize);
             ctx = genContext(surface);
 
             ctx.Operator = Operator.Source;
-            api.Gui.Icons.Drawmenuicon_svg(ctx, 1.5, 1.5, (int)menuSize, (int)menuSize, new double[] { 0.8, 0, 0, 1 });
-            api.Gui.Icons.Drawmenuicon_svg(ctx, 2, 2, (int)menuSize, (int)menuSize, new double[] { 0.8, 0, 0, 0.6 });
+            api.Gui.Icons.Drawmenuicon_svg(ctx, 0, scaled(1), (int)menuSize, (int)menuSize, new double[] { 0, 0.8, 0, 0.6 });
 
             generateTexture(surface, ref menuIconHoverTexture);
 
@@ -255,7 +254,7 @@ namespace Vintagestory.API.Client
                 double x = GameMath.Clamp((int)Bounds.ParentBounds.fixedX + Bounds.ParentBounds.fixedOffsetX, 0, maxx / scale) - Bounds.ParentBounds.fixedOffsetX;
                 double y = GameMath.Clamp((int)Bounds.ParentBounds.fixedY + Bounds.ParentBounds.fixedOffsetY, 0, maxy / scale) - Bounds.ParentBounds.fixedOffsetY;
                 
-                api.Gui.SetDialogPosition(baseComposer.dialogName, new Vec2i((int)x, (int)y));
+                api.Gui.SetDialogPosition(baseComposer.DialogName, new Vec2i((int)x, (int)y));
 
                 Bounds.ParentBounds.fixedX = x;
                 Bounds.ParentBounds.fixedY = y;
@@ -269,12 +268,12 @@ namespace Vintagestory.API.Client
 
             if (closeIconRect.PointInside(mouseX - Bounds.absX, mouseY - Bounds.absY))
             {
-                api.Render.Render2DTexturePremultipliedAlpha(closeIconHoverTexture.TextureId, Bounds.absX + closeIconRect.X - 3, Bounds.absY + closeIconRect.Y - 1, closeIconRect.Width + 4, closeIconRect.Height + 4, 200);
+                api.Render.Render2DTexturePremultipliedAlpha(closeIconHoverTexture.TextureId, Bounds.absX + closeIconRect.X - scaled(1), Bounds.absY + closeIconRect.Y, closeIconRect.Width + 4, closeIconRect.Height + 4, 200);
             }
             
             if (menuIconRect.PointInside(mouseX - Bounds.absX, mouseY - Bounds.absY) || listMenu.IsOpened)
             {
-                api.Render.Render2DTexturePremultipliedAlpha(menuIconHoverTexture.TextureId, Bounds.absX + menuIconRect.X - 2, Bounds.absY + menuIconRect.Y - 1, menuIconRect.Width + 6, menuIconRect.Height + 6, 200);
+                api.Render.Render2DTexturePremultipliedAlpha(menuIconHoverTexture.TextureId, Bounds.absX + menuIconRect.X, Bounds.absY + menuIconRect.Y, menuIconRect.Width + 4, menuIconRect.Height + 4, 200);
             }
 
             listMenu.RenderInteractiveElements(deltaTime);
@@ -318,7 +317,7 @@ namespace Vintagestory.API.Client
 
             if (moving)
             {
-                api.Gui.SetDialogPosition(baseComposer.dialogName, new Vec2i((int)Bounds.ParentBounds.fixedX, (int)Bounds.ParentBounds.fixedY));
+                api.Gui.SetDialogPosition(baseComposer.DialogName, new Vec2i((int)Bounds.ParentBounds.fixedX, (int)Bounds.ParentBounds.fixedY));
             }
 
             moving = false;

@@ -5,6 +5,7 @@ items:
   id: IServerAPI
   parent: Vintagestory.API.Server
   children:
+  - Vintagestory.API.Server.IServerAPI.AddPhysicsTickable(Vintagestory.API.Common.Entities.IPhysicsTickable)
   - Vintagestory.API.Server.IServerAPI.AddServerThread(System.String,Vintagestory.API.Server.IAsyncServerSystem)
   - Vintagestory.API.Server.IServerAPI.Config
   - Vintagestory.API.Server.IServerAPI.CurrentRunPhase
@@ -24,6 +25,7 @@ items:
   - Vintagestory.API.Server.IServerAPI.MarkConfigDirty
   - Vintagestory.API.Server.IServerAPI.PauseThread(System.String,System.Int32)
   - Vintagestory.API.Server.IServerAPI.Players
+  - Vintagestory.API.Server.IServerAPI.RemovePhysicsTickable(Vintagestory.API.Common.Entities.IPhysicsTickable)
   - Vintagestory.API.Server.IServerAPI.ResumeThread(System.String)
   - Vintagestory.API.Server.IServerAPI.ServerIp
   - Vintagestory.API.Server.IServerAPI.ServerUptimeMilliseconds
@@ -48,6 +50,9 @@ items:
   syntax:
     content: public interface IServerAPI
     content.vb: Public Interface IServerAPI
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Server.IServerAPI.ServerIp
   commentId: P:Vintagestory.API.Server.IServerAPI.ServerIp
   id: ServerIp
@@ -85,7 +90,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Server
-  summary: All players known to the server (which joined at least once)
+  summary: All players known to the server (which joined at least once while the server was running)
   example: []
   syntax:
     content: IServerPlayer[] Players { get; }
@@ -211,7 +216,7 @@ items:
       type: System.Boolean
       description: >-
         <i>true</i>
-              if server is about to shutdown
+          if server is about to shutdown
     content.vb: ReadOnly Property IsShuttingDown As Boolean
   overload: Vintagestory.API.Server.IServerAPI.IsShuttingDown*
 - uid: Vintagestory.API.Server.IServerAPI.ShutDown
@@ -792,6 +797,54 @@ items:
   nameWithType.vb: IServerAPI.SetMiniDimension(IMiniDimension, Integer)
   fullName.vb: Vintagestory.API.Server.IServerAPI.SetMiniDimension(Vintagestory.API.Common.IMiniDimension, Integer)
   name.vb: SetMiniDimension(IMiniDimension, Integer)
+- uid: Vintagestory.API.Server.IServerAPI.AddPhysicsTickable(Vintagestory.API.Common.Entities.IPhysicsTickable)
+  commentId: M:Vintagestory.API.Server.IServerAPI.AddPhysicsTickable(Vintagestory.API.Common.Entities.IPhysicsTickable)
+  id: AddPhysicsTickable(Vintagestory.API.Common.Entities.IPhysicsTickable)
+  parent: Vintagestory.API.Server.IServerAPI
+  langs:
+  - csharp
+  - vb
+  name: AddPhysicsTickable(IPhysicsTickable)
+  nameWithType: IServerAPI.AddPhysicsTickable(IPhysicsTickable)
+  fullName: Vintagestory.API.Server.IServerAPI.AddPhysicsTickable(Vintagestory.API.Common.Entities.IPhysicsTickable)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Remove an entity from the physics ticking system on the server.
+  example: []
+  syntax:
+    content: void AddPhysicsTickable(IPhysicsTickable entityBehavior)
+    parameters:
+    - id: entityBehavior
+      type: Vintagestory.API.Common.Entities.IPhysicsTickable
+      description: ''
+    content.vb: Sub AddPhysicsTickable(entityBehavior As IPhysicsTickable)
+  overload: Vintagestory.API.Server.IServerAPI.AddPhysicsTickable*
+- uid: Vintagestory.API.Server.IServerAPI.RemovePhysicsTickable(Vintagestory.API.Common.Entities.IPhysicsTickable)
+  commentId: M:Vintagestory.API.Server.IServerAPI.RemovePhysicsTickable(Vintagestory.API.Common.Entities.IPhysicsTickable)
+  id: RemovePhysicsTickable(Vintagestory.API.Common.Entities.IPhysicsTickable)
+  parent: Vintagestory.API.Server.IServerAPI
+  langs:
+  - csharp
+  - vb
+  name: RemovePhysicsTickable(IPhysicsTickable)
+  nameWithType: IServerAPI.RemovePhysicsTickable(IPhysicsTickable)
+  fullName: Vintagestory.API.Server.IServerAPI.RemovePhysicsTickable(Vintagestory.API.Common.Entities.IPhysicsTickable)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Add an entity to the physics ticking system on the server.
+  example: []
+  syntax:
+    content: void RemovePhysicsTickable(IPhysicsTickable entityBehavior)
+    parameters:
+    - id: entityBehavior
+      type: Vintagestory.API.Common.Entities.IPhysicsTickable
+      description: ''
+    content.vb: Sub RemovePhysicsTickable(entityBehavior As IPhysicsTickable)
+  overload: Vintagestory.API.Server.IServerAPI.RemovePhysicsTickable*
 references:
 - uid: Vintagestory.API.Server
   commentId: N:Vintagestory.API.Server
@@ -823,6 +876,165 @@ references:
   - uid: Vintagestory.API.Server
     name: Server
     href: Vintagestory.API.Server.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Server.IServerAPI.ServerIp*
   commentId: Overload:Vintagestory.API.Server.IServerAPI.ServerIp
   href: Vintagestory.API.Server.IServerAPI.html#Vintagestory_API_Server_IServerAPI_ServerIp
@@ -1151,3 +1363,60 @@ references:
   name: SetMiniDimension
   nameWithType: IServerAPI.SetMiniDimension
   fullName: Vintagestory.API.Server.IServerAPI.SetMiniDimension
+- uid: Vintagestory.API.Server.IServerAPI.AddPhysicsTickable*
+  commentId: Overload:Vintagestory.API.Server.IServerAPI.AddPhysicsTickable
+  href: Vintagestory.API.Server.IServerAPI.html#Vintagestory_API_Server_IServerAPI_AddPhysicsTickable_Vintagestory_API_Common_Entities_IPhysicsTickable_
+  name: AddPhysicsTickable
+  nameWithType: IServerAPI.AddPhysicsTickable
+  fullName: Vintagestory.API.Server.IServerAPI.AddPhysicsTickable
+- uid: Vintagestory.API.Common.Entities.IPhysicsTickable
+  commentId: T:Vintagestory.API.Common.Entities.IPhysicsTickable
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.IPhysicsTickable.html
+  name: IPhysicsTickable
+  nameWithType: IPhysicsTickable
+  fullName: Vintagestory.API.Common.Entities.IPhysicsTickable
+- uid: Vintagestory.API.Common.Entities
+  commentId: N:Vintagestory.API.Common.Entities
+  href: Vintagestory.html
+  name: Vintagestory.API.Common.Entities
+  nameWithType: Vintagestory.API.Common.Entities
+  fullName: Vintagestory.API.Common.Entities
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+- uid: Vintagestory.API.Server.IServerAPI.RemovePhysicsTickable*
+  commentId: Overload:Vintagestory.API.Server.IServerAPI.RemovePhysicsTickable
+  href: Vintagestory.API.Server.IServerAPI.html#Vintagestory_API_Server_IServerAPI_RemovePhysicsTickable_Vintagestory_API_Common_Entities_IPhysicsTickable_
+  name: RemovePhysicsTickable
+  nameWithType: IServerAPI.RemovePhysicsTickable
+  fullName: Vintagestory.API.Server.IServerAPI.RemovePhysicsTickable

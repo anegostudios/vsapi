@@ -26,6 +26,7 @@ items:
   - Vintagestory.API.MathTools.BlockPos.AddCopy(Vintagestory.API.MathTools.Vec3i)
   - Vintagestory.API.MathTools.BlockPos.AsVec3i
   - Vintagestory.API.MathTools.BlockPos.Copy
+  - Vintagestory.API.MathTools.BlockPos.CopyAndCorrectDimension
   - Vintagestory.API.MathTools.BlockPos.CreateFromBytes(System.IO.BinaryReader)
   - Vintagestory.API.MathTools.BlockPos.DimensionBoundary
   - Vintagestory.API.MathTools.BlockPos.DistanceSqTo(System.Double,System.Double,System.Double)
@@ -58,12 +59,15 @@ items:
   - Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.FastVec3i)
   - Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.Vec3i)
+  - Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension(System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension(Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.MathTools.BlockPos.SetAndEquals(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.MathTools.BlockPos.SetDimension(System.Int32)
   - Vintagestory.API.MathTools.BlockPos.South
   - Vintagestory.API.MathTools.BlockPos.SouthCopy(System.Int32)
   - Vintagestory.API.MathTools.BlockPos.Sub(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.MathTools.BlockPos.Sub(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.MathTools.BlockPos.SubCopy(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.MathTools.BlockPos.SubCopy(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.MathTools.BlockPos.ToBytes(System.IO.BinaryWriter)
   - Vintagestory.API.MathTools.BlockPos.ToLocalPosition(Vintagestory.API.Common.ICoreAPI)
@@ -126,6 +130,8 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
   - Vintagestory.API.MathTools.BlockPos.Vintagestory.API.Util.PosUtil.SetOrCreate(Vintagestory.API.MathTools.BlockPos)
   attributes:
   - type: ProtoBuf.ProtoContractAttribute
@@ -602,13 +608,17 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
+  summary: Not dimension aware (but existing dimension in this BlockPos will be preserved) - use SetAndCorrectDimension() for dimension awareness
+  example: []
   syntax:
     content: public BlockPos Set(Vec3d origin)
     parameters:
     - id: origin
       type: Vintagestory.API.MathTools.Vec3d
+      description: ''
     return:
       type: Vintagestory.API.MathTools.BlockPos
+      description: ''
     content.vb: Public Function [Set](origin As Vec3d) As BlockPos
   overload: Vintagestory.API.MathTools.BlockPos.Set*
 - uid: Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.Vec3i)
@@ -657,6 +667,69 @@ items:
       type: Vintagestory.API.MathTools.BlockPos
     content.vb: Public Function [Set](pos As FastVec3i) As BlockPos
   overload: Vintagestory.API.MathTools.BlockPos.Set*
+- uid: Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension(Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension(Vintagestory.API.MathTools.Vec3d)
+  id: SetAndCorrectDimension(Vintagestory.API.MathTools.Vec3d)
+  parent: Vintagestory.API.MathTools.BlockPos
+  langs:
+  - csharp
+  - vb
+  name: SetAndCorrectDimension(Vec3d)
+  nameWithType: BlockPos.SetAndCorrectDimension(Vec3d)
+  fullName: Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension(Vintagestory.API.MathTools.Vec3d)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Dimension aware version of Set() - use this if the Vec3d has the dimension embedded in the Y coordinate (e.g. Y == 65536+ for dimension 2)
+  example: []
+  syntax:
+    content: public BlockPos SetAndCorrectDimension(Vec3d origin)
+    parameters:
+    - id: origin
+      type: Vintagestory.API.MathTools.Vec3d
+      description: ''
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    content.vb: Public Function SetAndCorrectDimension(origin As Vec3d) As BlockPos
+  overload: Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension*
+- uid: Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension(System.Int32,System.Int32,System.Int32)
+  id: SetAndCorrectDimension(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.BlockPos
+  langs:
+  - csharp
+  - vb
+  name: SetAndCorrectDimension(int, int, int)
+  nameWithType: BlockPos.SetAndCorrectDimension(int, int, int)
+  fullName: Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension(int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Dimension aware version of Set() - use this if there is a dimension embedded in the y coordinate (e.g. y == 65536+ for dimension 2)
+  example: []
+  syntax:
+    content: public BlockPos SetAndCorrectDimension(int x, int y, int z)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: ''
+    - id: y
+      type: System.Int32
+      description: ''
+    - id: z
+      type: System.Int32
+      description: ''
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    content.vb: Public Function SetAndCorrectDimension(x As Integer, y As Integer, z As Integer) As BlockPos
+  overload: Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension*
+  nameWithType.vb: BlockPos.SetAndCorrectDimension(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension(Integer, Integer, Integer)
+  name.vb: SetAndCorrectDimension(Integer, Integer, Integer)
 - uid: Vintagestory.API.MathTools.BlockPos.Set(System.Int32,System.Int32,System.Int32)
   commentId: M:Vintagestory.API.MathTools.BlockPos.Set(System.Int32,System.Int32,System.Int32)
   id: Set(System.Int32,System.Int32,System.Int32)
@@ -671,7 +744,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
-  summary: Sets XYZ to new vlaues
+  summary: Sets XYZ to new values - not dimension aware (but existing dimension will be preserved) - use SetAndCorrectDimension() for dimension awareness
   example: []
   syntax:
     content: public BlockPos Set(int x, int y, int z)
@@ -1188,6 +1261,29 @@ items:
       description: ''
     content.vb: Public Overridable Function Copy() As BlockPos
   overload: Vintagestory.API.MathTools.BlockPos.Copy*
+- uid: Vintagestory.API.MathTools.BlockPos.CopyAndCorrectDimension
+  commentId: M:Vintagestory.API.MathTools.BlockPos.CopyAndCorrectDimension
+  id: CopyAndCorrectDimension
+  parent: Vintagestory.API.MathTools.BlockPos
+  langs:
+  - csharp
+  - vb
+  name: CopyAndCorrectDimension()
+  nameWithType: BlockPos.CopyAndCorrectDimension()
+  fullName: Vintagestory.API.MathTools.BlockPos.CopyAndCorrectDimension()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  summary: Creates a copy of this blocks position, obtaining the correct dimension value from the Y value
+  example: []
+  syntax:
+    content: public virtual BlockPos CopyAndCorrectDimension()
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    content.vb: Public Overridable Function CopyAndCorrectDimension() As BlockPos
+  overload: Vintagestory.API.MathTools.BlockPos.CopyAndCorrectDimension*
 - uid: Vintagestory.API.MathTools.BlockPos.Add(System.Single,System.Single,System.Single)
   commentId: M:Vintagestory.API.MathTools.BlockPos.Add(System.Single,System.Single,System.Single)
   id: Add(System.Single,System.Single,System.Single)
@@ -1678,6 +1774,36 @@ items:
       type: Vintagestory.API.MathTools.BlockPos
     content.vb: Public Function SubCopy(pos As BlockPos) As BlockPos
   overload: Vintagestory.API.MathTools.BlockPos.SubCopy*
+- uid: Vintagestory.API.MathTools.BlockPos.SubCopy(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.BlockPos.SubCopy(System.Int32,System.Int32,System.Int32)
+  id: SubCopy(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.MathTools.BlockPos
+  langs:
+  - csharp
+  - vb
+  name: SubCopy(int, int, int)
+  nameWithType: BlockPos.SubCopy(int, int, int)
+  fullName: Vintagestory.API.MathTools.BlockPos.SubCopy(int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public BlockPos SubCopy(int x, int y, int z)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    - id: z
+      type: System.Int32
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: Public Function SubCopy(x As Integer, y As Integer, z As Integer) As BlockPos
+  overload: Vintagestory.API.MathTools.BlockPos.SubCopy*
+  nameWithType.vb: BlockPos.SubCopy(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.MathTools.BlockPos.SubCopy(Integer, Integer, Integer)
+  name.vb: SubCopy(Integer, Integer, Integer)
 - uid: Vintagestory.API.MathTools.BlockPos.DivCopy(System.Int32)
   commentId: M:Vintagestory.API.MathTools.BlockPos.DivCopy(System.Int32)
   id: DivCopy(System.Int32)
@@ -1785,7 +1911,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
-  summary: Returns the squared Euclidean distance to between this and given position. Note this is dimension unaware
+  summary: Returns the squared Euclidean distance to between this and given position. Dimension aware
   example: []
   syntax:
     content: public float DistanceSqTo(double x, double y, double z)
@@ -2744,6 +2870,68 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Vintagestory.API.MathTools.BlockPos.Vintagestory.API.Util.PosUtil.SetOrCreate(Vintagestory.API.MathTools.BlockPos)
   commentId: M:Vintagestory.API.Util.PosUtil.SetOrCreate(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
   parent: Vintagestory.API.Util.PosUtil
@@ -2814,6 +3002,73 @@ references:
   - name: Of
   - name: " "
   - name: T
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
 - uid: Vintagestory.API.Util.PosUtil.SetOrCreate(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
   commentId: M:Vintagestory.API.Util.PosUtil.SetOrCreate(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
@@ -2974,6 +3229,12 @@ references:
   name: FastVec3i
   nameWithType: FastVec3i
   fullName: Vintagestory.API.MathTools.FastVec3i
+- uid: Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension*
+  commentId: Overload:Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension
+  href: Vintagestory.API.MathTools.BlockPos.html#Vintagestory_API_MathTools_BlockPos_SetAndCorrectDimension_Vintagestory_API_MathTools_Vec3d_
+  name: SetAndCorrectDimension
+  nameWithType: BlockPos.SetAndCorrectDimension
+  fullName: Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension
 - uid: System.Single
   commentId: T:System.Single
   parent: System
@@ -3185,6 +3446,12 @@ references:
   name: Copy
   nameWithType: BlockPos.Copy
   fullName: Vintagestory.API.MathTools.BlockPos.Copy
+- uid: Vintagestory.API.MathTools.BlockPos.CopyAndCorrectDimension*
+  commentId: Overload:Vintagestory.API.MathTools.BlockPos.CopyAndCorrectDimension
+  href: Vintagestory.API.MathTools.BlockPos.html#Vintagestory_API_MathTools_BlockPos_CopyAndCorrectDimension
+  name: CopyAndCorrectDimension
+  nameWithType: BlockPos.CopyAndCorrectDimension
+  fullName: Vintagestory.API.MathTools.BlockPos.CopyAndCorrectDimension
 - uid: Vintagestory.API.MathTools.BlockPos.Add*
   commentId: Overload:Vintagestory.API.MathTools.BlockPos.Add
   href: Vintagestory.API.MathTools.BlockPos.html#Vintagestory_API_MathTools_BlockPos_Add_System_Single_System_Single_System_Single_

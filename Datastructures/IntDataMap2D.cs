@@ -97,7 +97,7 @@ namespace Vintagestory.API.Datastructures
         {
             // Weird type casting is required to not loose precision on very large coordinates
             float posXInRegionMap = (float)((double)x / regionSize - x / regionSize);
-            float posZInRegionMap= (float)((double)z / regionSize - z / regionSize);
+            float posZInRegionMap = (float)((double)z / regionSize - z / regionSize);
 
             return GetUnpaddedColorLerpedForNormalizedPos(posXInRegionMap, posZInRegionMap);
         }

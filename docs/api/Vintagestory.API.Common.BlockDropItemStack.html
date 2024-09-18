@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class BlockDropItemStack | VintageStory API ">
       
-      <meta name="description" content="Represents an itemstack that is dropped by chance when breaking a block">
+      <meta name="description" content="Represents an itemstack that is dropped when breaking a block, with a potentially random quantity.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -97,7 +97,7 @@ Class BlockDropItemStack
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Represents an itemstack that is dropped by chance when breaking a block</p>
+  <div class="markdown summary"><p>Represents an itemstack that is dropped when breaking a block, with a potentially random quantity.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -144,7 +144,29 @@ Class BlockDropItemStack
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
+
+  <h2 id="Vintagestory_API_Common_BlockDropItemStack_examples">Examples</h2>
+  <pre><code class="lang-json">"drops": [
+	{
+		"type": "item",
+		"code": "bone",
+		"quantity": {
+			"avg": 4,
+			"var": 2
+		}
+	}
+]</code></pre>
 
 
 
@@ -222,7 +244,8 @@ Class BlockDropItemStack
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Tree Attributes that should be attached to the resulting itemstack</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>Tree Attributes that should be attached to the resulting itemstack</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -255,7 +278,8 @@ public JsonObject Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Code of the block or item</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Required</jsonoptional>-->
+<p>Code of the block or item</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -286,7 +310,8 @@ public JsonObject Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If set, the drop quantity will be modified by the collecting entity stat code - entity.Stats.GetBlended(code)</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>If set, the drop quantity will be modified by the collecting entity stat code - entity.Stats.GetBlended(code).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -317,7 +342,8 @@ public JsonObject Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If true and the quantity dropped is &gt;=1 any subsequent drop will be ignored</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+<p>If true, and this drop occurs, no further drops will happen.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -348,7 +374,8 @@ public JsonObject Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Quantity to be dropped</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+<p>Quantity to be dropped</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -410,7 +437,8 @@ public JsonObject Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>If not null then given tool is required to break this block</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>If set, then the given tool is required to make this block drop anything.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -441,7 +469,8 @@ public JsonObject Attributes</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Block or Item?</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>Block</jsondefault>-->
+<p>Block or Item?</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

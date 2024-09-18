@@ -11,6 +11,7 @@ items:
   - Vintagestory.API.Common.ModSystem.ExecuteOrder
   - Vintagestory.API.Common.ModSystem.Mod
   - Vintagestory.API.Common.ModSystem.ShouldLoad(Vintagestory.API.Common.EnumAppSide)
+  - Vintagestory.API.Common.ModSystem.ShouldLoad(Vintagestory.API.Common.ICoreAPI)
   - Vintagestory.API.Common.ModSystem.Start(Vintagestory.API.Common.ICoreAPI)
   - Vintagestory.API.Common.ModSystem.StartClientSide(Vintagestory.API.Client.ICoreClientAPI)
   - Vintagestory.API.Common.ModSystem.StartPre(Vintagestory.API.Common.ICoreAPI)
@@ -47,6 +48,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.ModSystem.Mod
   commentId: P:Vintagestory.API.Common.ModSystem.Mod
   id: Mod
@@ -70,6 +74,33 @@ items:
       type: Vintagestory.API.Common.Mod
     content.vb: Public Property [Mod] As [Mod]
   overload: Vintagestory.API.Common.ModSystem.Mod*
+- uid: Vintagestory.API.Common.ModSystem.ShouldLoad(Vintagestory.API.Common.ICoreAPI)
+  commentId: M:Vintagestory.API.Common.ModSystem.ShouldLoad(Vintagestory.API.Common.ICoreAPI)
+  id: ShouldLoad(Vintagestory.API.Common.ICoreAPI)
+  parent: Vintagestory.API.Common.ModSystem
+  langs:
+  - csharp
+  - vb
+  name: ShouldLoad(ICoreAPI)
+  nameWithType: ModSystem.ShouldLoad(ICoreAPI)
+  fullName: Vintagestory.API.Common.ModSystem.ShouldLoad(Vintagestory.API.Common.ICoreAPI)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns if this mod should be loaded for the given app side.
+  example: []
+  syntax:
+    content: public virtual bool ShouldLoad(ICoreAPI api)
+    parameters:
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Overridable Function ShouldLoad(api As ICoreAPI) As Boolean
+  overload: Vintagestory.API.Common.ModSystem.ShouldLoad*
 - uid: Vintagestory.API.Common.ModSystem.ShouldLoad(Vintagestory.API.Common.EnumAppSide)
   commentId: M:Vintagestory.API.Common.ModSystem.ShouldLoad(Vintagestory.API.Common.EnumAppSide)
   id: ShouldLoad(Vintagestory.API.Common.EnumAppSide)
@@ -84,7 +115,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Returns if this mod should be loaded for the given app side.
+  summary: Returns if this mod should be loaded for the given app side, called by ShouldLoad(ICoreApi api)
   example: []
   syntax:
     content: public virtual bool ShouldLoad(EnumAppSide forSide)
@@ -592,6 +623,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -599,6 +692,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.Mod
   commentId: T:Vintagestory.API.Common.Mod
   parent: Vintagestory.API.Common
@@ -614,17 +804,17 @@ references:
   fullName: Vintagestory.API.Common.ModSystem.Mod
 - uid: Vintagestory.API.Common.ModSystem.ShouldLoad*
   commentId: Overload:Vintagestory.API.Common.ModSystem.ShouldLoad
-  href: Vintagestory.API.Common.ModSystem.html#Vintagestory_API_Common_ModSystem_ShouldLoad_Vintagestory_API_Common_EnumAppSide_
+  href: Vintagestory.API.Common.ModSystem.html#Vintagestory_API_Common_ModSystem_ShouldLoad_Vintagestory_API_Common_ICoreAPI_
   name: ShouldLoad
   nameWithType: ModSystem.ShouldLoad
   fullName: Vintagestory.API.Common.ModSystem.ShouldLoad
-- uid: Vintagestory.API.Common.EnumAppSide
-  commentId: T:Vintagestory.API.Common.EnumAppSide
+- uid: Vintagestory.API.Common.ICoreAPI
+  commentId: T:Vintagestory.API.Common.ICoreAPI
   parent: Vintagestory.API.Common
-  href: Vintagestory.API.Common.EnumAppSide.html
-  name: EnumAppSide
-  nameWithType: EnumAppSide
-  fullName: Vintagestory.API.Common.EnumAppSide
+  href: Vintagestory.API.Common.ICoreAPI.html
+  name: ICoreAPI
+  nameWithType: ICoreAPI
+  fullName: Vintagestory.API.Common.ICoreAPI
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System
@@ -636,6 +826,13 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: Vintagestory.API.Common.EnumAppSide
+  commentId: T:Vintagestory.API.Common.EnumAppSide
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumAppSide.html
+  name: EnumAppSide
+  nameWithType: EnumAppSide
+  fullName: Vintagestory.API.Common.EnumAppSide
 - uid: Vintagestory.API.Common.ModSystem.ExecuteOrder*
   commentId: Overload:Vintagestory.API.Common.ModSystem.ExecuteOrder
   href: Vintagestory.API.Common.ModSystem.html#Vintagestory_API_Common_ModSystem_ExecuteOrder
@@ -659,13 +856,6 @@ references:
   name: StartPre
   nameWithType: ModSystem.StartPre
   fullName: Vintagestory.API.Common.ModSystem.StartPre
-- uid: Vintagestory.API.Common.ICoreAPI
-  commentId: T:Vintagestory.API.Common.ICoreAPI
-  parent: Vintagestory.API.Common
-  href: Vintagestory.API.Common.ICoreAPI.html
-  name: ICoreAPI
-  nameWithType: ICoreAPI
-  fullName: Vintagestory.API.Common.ICoreAPI
 - uid: Vintagestory.API.Common.ModSystem.Start*
   commentId: Overload:Vintagestory.API.Common.ModSystem.Start
   href: Vintagestory.API.Common.ModSystem.html#Vintagestory_API_Common_ModSystem_Start_Vintagestory_API_Common_ICoreAPI_

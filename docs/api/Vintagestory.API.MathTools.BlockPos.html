@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -153,6 +153,12 @@ public class BlockPos : IEquatable&lt;BlockPos&gt;, IVec3</code></pre>
   <dl class="typelist extensionMethods">
     <dt>Extension Methods</dt>
     <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
   <div>
       <a class="xref" href="Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_SetOrCreate_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_">PosUtil.SetOrCreate(BlockPos, BlockPos)</a>
   </div>
@@ -1154,6 +1160,38 @@ public int InternalY { get; set; }</code></pre>
 
 
 
+  <a id="Vintagestory_API_MathTools_BlockPos_CopyAndCorrectDimension_" data-uid="Vintagestory.API.MathTools.BlockPos.CopyAndCorrectDimension*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_BlockPos_CopyAndCorrectDimension" data-uid="Vintagestory.API.MathTools.BlockPos.CopyAndCorrectDimension">
+  CopyAndCorrectDimension()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a copy of this blocks position, obtaining the correct dimension value from the Y value</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual BlockPos CopyAndCorrectDimension()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_MathTools_BlockPos_CreateFromBytes_" data-uid="Vintagestory.API.MathTools.BlockPos.CreateFromBytes*"></a>
 
   <h3 id="Vintagestory_API_MathTools_BlockPos_CreateFromBytes_System_IO_BinaryReader_" data-uid="Vintagestory.API.MathTools.BlockPos.CreateFromBytes(System.IO.BinaryReader)">
@@ -1197,7 +1235,7 @@ public int InternalY { get; set; }</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns the squared Euclidean distance to between this and given position. Note this is dimension unaware</p>
+  <div class="markdown level1 summary"><p>Returns the squared Euclidean distance to between this and given position. Dimension aware</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2029,7 +2067,7 @@ Note this is dimension unaware</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Sets XYZ to new vlaues</p>
+  <div class="markdown level1 summary"><p>Sets XYZ to new values - not dimension aware (but existing dimension will be preserved) - use SetAndCorrectDimension() for dimension awareness</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2182,7 +2220,8 @@ Note this is dimension unaware</p>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Not dimension aware (but existing dimension in this BlockPos will be preserved) - use SetAndCorrectDimension() for dimension awareness</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -2228,6 +2267,84 @@ Note this is dimension unaware</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3i.html">Vec3i</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_BlockPos_SetAndCorrectDimension_" data-uid="Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_BlockPos_SetAndCorrectDimension_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension(System.Int32,System.Int32,System.Int32)">
+  SetAndCorrectDimension(int, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Dimension aware version of Set() - use this if there is a dimension embedded in the y coordinate (e.g. y == 65536+ for dimension 2)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockPos SetAndCorrectDimension(int x, int y, int z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_BlockPos_SetAndCorrectDimension_" data-uid="Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_BlockPos_SetAndCorrectDimension_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.MathTools.BlockPos.SetAndCorrectDimension(Vintagestory.API.MathTools.Vec3d)">
+  SetAndCorrectDimension(Vec3d)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Dimension aware version of Set() - use this if the Vec3d has the dimension embedded in the Y coordinate (e.g. Y == 65536+ for dimension 2)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockPos SetAndCorrectDimension(Vec3d origin)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>origin</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
     <dd></dd>
   </dl>
 
@@ -2452,6 +2569,46 @@ Note this is dimension unaware</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_BlockPos_SubCopy_" data-uid="Vintagestory.API.MathTools.BlockPos.SubCopy*"></a>
+
+  <h3 id="Vintagestory_API_MathTools_BlockPos_SubCopy_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.MathTools.BlockPos.SubCopy(System.Int32,System.Int32,System.Int32)">
+  SubCopy(int, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockPos SubCopy(int x, int y, int z)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 

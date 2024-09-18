@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -150,7 +150,22 @@ Class PlayerAnimationManager
       <a class="xref" href="Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_Triggers">AnimationManager.Triggers</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_OnStartAnimation">AnimationManager.OnStartAnimation</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_OnAnimationReceived">AnimationManager.OnAnimationReceived</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_OnAnimationStopped">AnimationManager.OnAnimationStopped</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_entity">AnimationManager.entity</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_LoadAnimator_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___">AnimationManager.LoadAnimator(ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_CopyOverAnims_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_">AnimationManager.CopyOverAnims(RunningAnimation[], IAnimator)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_OnServerTick_System_Single_">AnimationManager.OnServerTick(float)</a>
@@ -159,7 +174,10 @@ Class PlayerAnimationManager
       <a class="xref" href="Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_Dispose">AnimationManager.Dispose()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_OnAnimationStopped_System_String_">AnimationManager.OnAnimationStopped(string)</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_TriggerAnimationStopped_System_String_">AnimationManager.TriggerAnimationStopped(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_ShouldPlaySound_Vintagestory_API_Common_AnimationSound_">AnimationManager.ShouldPlaySound(AnimationSound)</a>
     </div>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
@@ -184,6 +202,19 @@ Class PlayerAnimationManager
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimationCache.html#Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___">AnimationCache.LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])</a>
+  </div>
+  </dd></dl>
 
 
 

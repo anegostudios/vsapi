@@ -257,6 +257,14 @@ namespace Vintagestory.API.Common
                 size = prevFont.UnscaledFontsize;
             }
 
+            if (tag.Attributes.ContainsKey("scale")) {
+                string scale = tag.Attributes["scale"];
+                if (scale.EndsWith("%") && double.TryParse(scale.Substring(0, scale.Length - 1), NumberStyles.Any, GlobalConstants.DefaultCultureInfo, out var scaled))
+                {
+                    size = prevFont.UnscaledFontsize * scaled / 100.0;
+                }
+            }
+
             if (!tag.Attributes.ContainsKey("family"))
             {
                 fontName = prevFont.Fontname;

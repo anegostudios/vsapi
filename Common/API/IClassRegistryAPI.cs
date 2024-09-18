@@ -56,7 +56,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="tree"></param>
         /// <returns></returns>
-        IMountable CreateMountable(TreeAttribute tree);
+        IMountableSeat GetMountable(TreeAttribute tree);
         
 
         /// <summary>

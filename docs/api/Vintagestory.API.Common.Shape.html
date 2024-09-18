@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -145,6 +145,16 @@ public class Shape</code></pre>
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -205,36 +215,6 @@ public Animation[] Animations</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a>, <a class="xref" href="Vintagestory.API.Common.Animation.html">Animation</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_Shape_AttachmentPointsByCode" data-uid="Vintagestory.API.Common.Shape.AttachmentPointsByCode">
-  AttachmentPointsByCode
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, AttachmentPoint&gt; AttachmentPointsByCode</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Common.AttachmentPoint.html">AttachmentPoint</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -439,6 +419,63 @@ public Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
 </h2>
 
 
+  <a id="Vintagestory_API_Common_Shape_CacheInvTransforms_" data-uid="Vintagestory.API.Common.Shape.CacheInvTransforms*"></a>
+
+  <h3 id="Vintagestory_API_Common_Shape_CacheInvTransforms" data-uid="Vintagestory.API.Common.Shape.CacheInvTransforms">
+  CacheInvTransforms()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CacheInvTransforms()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Shape_CacheInvTransforms_" data-uid="Vintagestory.API.Common.Shape.CacheInvTransforms*"></a>
+
+  <h3 id="Vintagestory_API_Common_Shape_CacheInvTransforms_Vintagestory_API_Common_ShapeElement___" data-uid="Vintagestory.API.Common.Shape.CacheInvTransforms(Vintagestory.API.Common.ShapeElement[])">
+  CacheInvTransforms(ShapeElement[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void CacheInvTransforms(ShapeElement[] elements)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>elements</code> <a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Shape_Clone_" data-uid="Vintagestory.API.Common.Shape.Clone*"></a>
 
   <h3 id="Vintagestory_API_Common_Shape_Clone" data-uid="Vintagestory.API.Common.Shape.Clone">
@@ -446,7 +483,7 @@ public Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Creates a deep copy of the shape</p>
+  <div class="markdown level1 summary"><p>Creates a deep copy of the shape. If the shape has animations, then it also resolves references and joints to ensure the cloned shape is fully initialized</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -608,6 +645,41 @@ public Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
 
 
 
+  <a id="Vintagestory_API_Common_Shape_InitForAnimations_" data-uid="Vintagestory.API.Common.Shape.InitForAnimations*"></a>
+
+  <h3 id="Vintagestory_API_Common_Shape_InitForAnimations_Vintagestory_API_Common_ILogger_System_String_System_String___" data-uid="Vintagestory.API.Common.Shape.InitForAnimations(Vintagestory.API.Common.ILogger,System.String,System.String[])">
+  InitForAnimations(ILogger, string, params string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void InitForAnimations(ILogger logger, string shapeNameForLogging, params string[] requireJointsForElements)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>logger</code> <a class="xref" href="Vintagestory.API.Common.ILogger.html">ILogger</a></dt>
+    <dd></dd>
+    <dt><code>shapeNameForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>requireJointsForElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Shape_RemoveElementByName_" data-uid="Vintagestory.API.Common.Shape.RemoveElementByName*"></a>
 
   <h3 id="Vintagestory_API_Common_Shape_RemoveElementByName_System_String_System_StringComparison_" data-uid="Vintagestory.API.Common.Shape.RemoveElementByName(System.String,System.StringComparison)">
@@ -636,6 +708,37 @@ public Dictionary&lt;string, AssetLocation&gt; Textures</code></pre>
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Shape_RemoveElements_" data-uid="Vintagestory.API.Common.Shape.RemoveElements*"></a>
+
+  <h3 id="Vintagestory_API_Common_Shape_RemoveElements_System_String___" data-uid="Vintagestory.API.Common.Shape.RemoveElements(System.String[])">
+  RemoveElements(string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveElements(string[] elementNames)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>elementNames</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
 
 
 

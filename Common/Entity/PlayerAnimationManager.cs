@@ -65,6 +65,12 @@ namespace Vintagestory.API.Common
             {
                 plrEntity.TpAnimManager.StartAnimation(animdata);
 
+                if (animdata.WithFpVariant)
+                {
+                    if (ActiveAnimationsByAnimCode.TryGetValue(animdata.FpVariant.Animation, out var activeAnimdata) && activeAnimdata == animdata.FpVariant) return false;
+                    return base.StartAnimation(animdata.FpVariant);
+                }
+
                 if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(animdata.Code + fpEnding, out var animdatafp))
                 {
                     if (ActiveAnimationsByAnimCode.TryGetValue(animdatafp.Animation, out var activeAnimdata) && activeAnimdata == animdatafp) return false;

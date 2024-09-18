@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -112,6 +112,16 @@ Interface IServerConfig
 
 
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -357,7 +367,8 @@ Interface IServerConfig
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">PlayerSpawnPos DefaultSpawn { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;No longer used. Retrieve value from the savegame instead&quot;)]
+PlayerSpawnPos DefaultSpawn { get; set; }</code></pre>
   </div>
 
 
@@ -431,6 +442,70 @@ Interface IServerConfig
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Server_IServerConfig_LogBlockBreakPlace_" data-uid="Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace*"></a>
+
+  <h3 id="Vintagestory_API_Server_IServerConfig_LogBlockBreakPlace" data-uid="Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace">
+  LogBlockBreakPlace
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether or not to log breaking and placing of blocks to the server-build.log</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool LogBlockBreakPlace { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Server_IServerConfig_LogFileSplitAfterLine_" data-uid="Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine*"></a>
+
+  <h3 id="Vintagestory_API_Server_IServerConfig_LogFileSplitAfterLine" data-uid="Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine">
+  LogFileSplitAfterLine
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>After how many line we should split the log file into a new one (server-build.log -&gt; server-build-2.log)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">uint LogFileSplitAfterLine { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
     <dd></dd>
   </dl>
 
@@ -527,38 +602,6 @@ Interface IServerConfig
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Server_IServerConfig_OnlyWhitelisted_" data-uid="Vintagestory.API.Server.IServerConfig.OnlyWhitelisted*"></a>
-
-  <h3 id="Vintagestory_API_Server_IServerConfig_OnlyWhitelisted" data-uid="Vintagestory.API.Server.IServerConfig.OnlyWhitelisted">
-  OnlyWhitelisted
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>If true, only whitelisted players can join</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">bool OnlyWhitelisted { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -814,6 +857,38 @@ Interface IServerConfig
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Server_IServerConfig_WhitelistMode_" data-uid="Vintagestory.API.Server.IServerConfig.WhitelistMode*"></a>
+
+  <h3 id="Vintagestory_API_Server_IServerConfig_WhitelistMode" data-uid="Vintagestory.API.Server.IServerConfig.WhitelistMode">
+  WhitelistMode
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, only whitelisted players can join</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">EnumWhitelistMode WhitelistMode { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.EnumWhitelistMode.html">EnumWhitelistMode</a></dt>
     <dd></dd>
   </dl>
 

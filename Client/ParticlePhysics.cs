@@ -143,17 +143,21 @@ namespace Vintagestory.API.Client
 
             EnumCollideFlags flags=0;
 
-            minPos.Set(
+            minPos.SetAndCorrectDimension(
                 (int)(particleCollBox.X1 + Math.Min(0, motion.X)),
                 (int)(particleCollBox.Y1 + Math.Min(0, motion.Y) - 1), // -1 for the extra high collision box of fences
                 (int)(particleCollBox.Z1 + Math.Min(0, motion.Z))
             );
 
-            maxPos.Set(
+            maxPos.SetAndCorrectDimension(
                 (int)(particleCollBox.X2 + Math.Max(0, motion.X)),
                 (int)(particleCollBox.Y2 + Math.Max(0, motion.Y)),
                 (int)(particleCollBox.Z2 + Math.Max(0, motion.Z))
             );
+
+            tmpPos.dimension = minPos.dimension;
+            particleCollBox.Y1 %= BlockPos.DimensionBoundary;
+            particleCollBox.Y2 %= BlockPos.DimensionBoundary;
 
             CollisionBoxList.Clear();
             BlockAccess.WalkBlocks(minPos, maxPos, (cblock, x, y, z) => {

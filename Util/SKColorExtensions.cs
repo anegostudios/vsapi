@@ -1,6 +1,6 @@
 using SkiaSharp;
 
-namespace VintagestoryAPI.Util;
+namespace Vintagestory.Util;
 
 public static class SKColorExtensions
 {

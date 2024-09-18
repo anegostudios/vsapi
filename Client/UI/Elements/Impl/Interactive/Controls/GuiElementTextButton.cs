@@ -51,6 +51,7 @@ namespace Vintagestory.API.Client
             }
         }
 
+
         /// <summary>
         /// Creates a button with text.
         /// </summary>
@@ -417,24 +418,12 @@ namespace Vintagestory.API.Client
         {
             if (!composer.Composed)
             {
-                CairoFont font1 = CairoFont.ButtonText();
-                CairoFont font2 = CairoFont.ButtonPressedText();
-                font1.Fontname = GuiStyle.StandardFontName;
-                font2.Fontname = GuiStyle.StandardFontName;
-                if (style != EnumButtonStyle.Small)
-                {
-                    font1.FontWeight = FontWeight.Bold;
-                    font2.FontWeight = FontWeight.Bold;
-                } else
-                {
-                    font1.FontWeight = FontWeight.Normal;
-                    font2.FontWeight = FontWeight.Normal;
-                }
-                font1.UnscaledFontsize = GuiStyle.SmallFontSize;
-                font2.UnscaledFontsize = GuiStyle.SmallFontSize;
+                CairoFont fontstd = CairoFont.SmallButtonText(style);
+                CairoFont fontpressed = CairoFont.SmallButtonText(style);
+                fontpressed.Color = (double[])GuiStyle.ActiveButtonTextColor.Clone();
 
-                GuiElementTextButton elem = new GuiElementTextButton(composer.Api, text, font1, font2, onClick, bounds, style);
-                elem.SetOrientation(font1.Orientation);
+                GuiElementTextButton elem = new GuiElementTextButton(composer.Api, text, fontstd, fontpressed, onClick, bounds, style);
+                elem.SetOrientation(fontstd.Orientation);
                 composer.AddInteractiveElement(elem, key);
             }
             return composer;

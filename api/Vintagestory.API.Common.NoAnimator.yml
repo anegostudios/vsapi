@@ -6,14 +6,16 @@ items:
   parent: Vintagestory.API.Common
   children:
   - Vintagestory.API.Common.NoAnimator.ActiveAnimationCount
+  - Vintagestory.API.Common.NoAnimator.Animations
   - Vintagestory.API.Common.NoAnimator.CalculateMatrices
   - Vintagestory.API.Common.NoAnimator.DumpCurrentState
   - Vintagestory.API.Common.NoAnimator.GetAnimationState(System.String)
   - Vintagestory.API.Common.NoAnimator.GetAttachmentPointPose(System.String)
   - Vintagestory.API.Common.NoAnimator.GetPosebyName(System.String,System.StringComparison)
-  - Vintagestory.API.Common.NoAnimator.Matrices4x3
+  - Vintagestory.API.Common.NoAnimator.Matrices
+  - Vintagestory.API.Common.NoAnimator.MaxJointId
   - Vintagestory.API.Common.NoAnimator.OnFrame(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},System.Single)
-  - Vintagestory.API.Common.NoAnimator.RunningAnimations
+  - Vintagestory.API.Common.NoAnimator.ReloadAttachmentPoints
   langs:
   - csharp
   - vb
@@ -41,16 +43,19 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Vintagestory.API.Common.NoAnimator.Matrices4x3
-  commentId: P:Vintagestory.API.Common.NoAnimator.Matrices4x3
-  id: Matrices4x3
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.NoAnimator.Matrices
+  commentId: P:Vintagestory.API.Common.NoAnimator.Matrices
+  id: Matrices
   parent: Vintagestory.API.Common.NoAnimator
   langs:
   - csharp
   - vb
-  name: Matrices4x3
-  nameWithType: NoAnimator.Matrices4x3
-  fullName: Vintagestory.API.Common.NoAnimator.Matrices4x3
+  name: Matrices
+  nameWithType: NoAnimator.Matrices
+  fullName: Vintagestory.API.Common.NoAnimator.Matrices
   type: Property
   assemblies:
   - VintagestoryAPI
@@ -58,14 +63,14 @@ items:
   summary: The matrices for this No-Animator
   example: []
   syntax:
-    content: public float[] Matrices4x3 { get; }
+    content: public float[] Matrices { get; }
     parameters: []
     return:
       type: System.Single[]
-    content.vb: Public ReadOnly Property Matrices4x3 As Single()
-  overload: Vintagestory.API.Common.NoAnimator.Matrices4x3*
+    content.vb: Public ReadOnly Property Matrices As Single()
+  overload: Vintagestory.API.Common.NoAnimator.Matrices*
   implements:
-  - Vintagestory.API.Common.IAnimator.Matrices4x3
+  - Vintagestory.API.Common.IAnimator.Matrices
 - uid: Vintagestory.API.Common.NoAnimator.ActiveAnimationCount
   commentId: P:Vintagestory.API.Common.NoAnimator.ActiveAnimationCount
   id: ActiveAnimationCount
@@ -116,16 +121,16 @@ items:
   overload: Vintagestory.API.Common.NoAnimator.CalculateMatrices*
   implements:
   - Vintagestory.API.Common.IAnimator.CalculateMatrices
-- uid: Vintagestory.API.Common.NoAnimator.RunningAnimations
-  commentId: P:Vintagestory.API.Common.NoAnimator.RunningAnimations
-  id: RunningAnimations
+- uid: Vintagestory.API.Common.NoAnimator.Animations
+  commentId: P:Vintagestory.API.Common.NoAnimator.Animations
+  id: Animations
   parent: Vintagestory.API.Common.NoAnimator
   langs:
   - csharp
   - vb
-  name: RunningAnimations
-  nameWithType: NoAnimator.RunningAnimations
-  fullName: Vintagestory.API.Common.NoAnimator.RunningAnimations
+  name: Animations
+  nameWithType: NoAnimator.Animations
+  fullName: Vintagestory.API.Common.NoAnimator.Animations
   type: Property
   assemblies:
   - VintagestoryAPI
@@ -133,14 +138,38 @@ items:
   summary: Holds data over all animations. This list always contains all animations of the creature. You have to check yourself which of them are active
   example: []
   syntax:
-    content: public RunningAnimation[] RunningAnimations { get; }
+    content: public RunningAnimation[] Animations { get; }
     parameters: []
     return:
       type: Vintagestory.API.Common.RunningAnimation[]
-    content.vb: Public ReadOnly Property RunningAnimations As RunningAnimation()
-  overload: Vintagestory.API.Common.NoAnimator.RunningAnimations*
+    content.vb: Public ReadOnly Property Animations As RunningAnimation()
+  overload: Vintagestory.API.Common.NoAnimator.Animations*
   implements:
-  - Vintagestory.API.Common.IAnimator.RunningAnimations
+  - Vintagestory.API.Common.IAnimator.Animations
+- uid: Vintagestory.API.Common.NoAnimator.MaxJointId
+  commentId: P:Vintagestory.API.Common.NoAnimator.MaxJointId
+  id: MaxJointId
+  parent: Vintagestory.API.Common.NoAnimator
+  langs:
+  - csharp
+  - vb
+  name: MaxJointId
+  nameWithType: NoAnimator.MaxJointId
+  fullName: Vintagestory.API.Common.NoAnimator.MaxJointId
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public int MaxJointId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property MaxJointId As Integer
+  overload: Vintagestory.API.Common.NoAnimator.MaxJointId*
+  implements:
+  - Vintagestory.API.Common.IAnimator.MaxJointId
 - uid: Vintagestory.API.Common.NoAnimator.DumpCurrentState
   commentId: M:Vintagestory.API.Common.NoAnimator.DumpCurrentState
   id: DumpCurrentState
@@ -288,6 +317,24 @@ items:
   nameWithType.vb: NoAnimator.OnFrame(Dictionary(Of String, AnimationMetaData), Single)
   fullName.vb: Vintagestory.API.Common.NoAnimator.OnFrame(System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.AnimationMetaData), Single)
   name.vb: OnFrame(Dictionary(Of String, AnimationMetaData), Single)
+- uid: Vintagestory.API.Common.NoAnimator.ReloadAttachmentPoints
+  commentId: M:Vintagestory.API.Common.NoAnimator.ReloadAttachmentPoints
+  id: ReloadAttachmentPoints
+  parent: Vintagestory.API.Common.NoAnimator
+  langs:
+  - csharp
+  - vb
+  name: ReloadAttachmentPoints()
+  nameWithType: NoAnimator.ReloadAttachmentPoints()
+  fullName: Vintagestory.API.Common.NoAnimator.ReloadAttachmentPoints()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void ReloadAttachmentPoints()
+    content.vb: Public Sub ReloadAttachmentPoints()
+  overload: Vintagestory.API.Common.NoAnimator.ReloadAttachmentPoints*
 references:
 - uid: Vintagestory.API.Common.IAnimator
   commentId: T:Vintagestory.API.Common.IAnimator
@@ -556,6 +603,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -563,19 +672,116 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Vintagestory.API.Common.NoAnimator.Matrices4x3*
-  commentId: Overload:Vintagestory.API.Common.NoAnimator.Matrices4x3
-  href: Vintagestory.API.Common.NoAnimator.html#Vintagestory_API_Common_NoAnimator_Matrices4x3
-  name: Matrices4x3
-  nameWithType: NoAnimator.Matrices4x3
-  fullName: Vintagestory.API.Common.NoAnimator.Matrices4x3
-- uid: Vintagestory.API.Common.IAnimator.Matrices4x3
-  commentId: P:Vintagestory.API.Common.IAnimator.Matrices4x3
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.NoAnimator.Matrices*
+  commentId: Overload:Vintagestory.API.Common.NoAnimator.Matrices
+  href: Vintagestory.API.Common.NoAnimator.html#Vintagestory_API_Common_NoAnimator_Matrices
+  name: Matrices
+  nameWithType: NoAnimator.Matrices
+  fullName: Vintagestory.API.Common.NoAnimator.Matrices
+- uid: Vintagestory.API.Common.IAnimator.Matrices
+  commentId: P:Vintagestory.API.Common.IAnimator.Matrices
   parent: Vintagestory.API.Common.IAnimator
-  href: Vintagestory.API.Common.IAnimator.html#Vintagestory_API_Common_IAnimator_Matrices4x3
-  name: Matrices4x3
-  nameWithType: IAnimator.Matrices4x3
-  fullName: Vintagestory.API.Common.IAnimator.Matrices4x3
+  href: Vintagestory.API.Common.IAnimator.html#Vintagestory_API_Common_IAnimator_Matrices
+  name: Matrices
+  nameWithType: IAnimator.Matrices
+  fullName: Vintagestory.API.Common.IAnimator.Matrices
 - uid: System.Single[]
   isExternal: true
   href: https://learn.microsoft.com/dotnet/api/system.single
@@ -647,19 +853,19 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
-- uid: Vintagestory.API.Common.NoAnimator.RunningAnimations*
-  commentId: Overload:Vintagestory.API.Common.NoAnimator.RunningAnimations
-  href: Vintagestory.API.Common.NoAnimator.html#Vintagestory_API_Common_NoAnimator_RunningAnimations
-  name: RunningAnimations
-  nameWithType: NoAnimator.RunningAnimations
-  fullName: Vintagestory.API.Common.NoAnimator.RunningAnimations
-- uid: Vintagestory.API.Common.IAnimator.RunningAnimations
-  commentId: P:Vintagestory.API.Common.IAnimator.RunningAnimations
+- uid: Vintagestory.API.Common.NoAnimator.Animations*
+  commentId: Overload:Vintagestory.API.Common.NoAnimator.Animations
+  href: Vintagestory.API.Common.NoAnimator.html#Vintagestory_API_Common_NoAnimator_Animations
+  name: Animations
+  nameWithType: NoAnimator.Animations
+  fullName: Vintagestory.API.Common.NoAnimator.Animations
+- uid: Vintagestory.API.Common.IAnimator.Animations
+  commentId: P:Vintagestory.API.Common.IAnimator.Animations
   parent: Vintagestory.API.Common.IAnimator
-  href: Vintagestory.API.Common.IAnimator.html#Vintagestory_API_Common_IAnimator_RunningAnimations
-  name: RunningAnimations
-  nameWithType: IAnimator.RunningAnimations
-  fullName: Vintagestory.API.Common.IAnimator.RunningAnimations
+  href: Vintagestory.API.Common.IAnimator.html#Vintagestory_API_Common_IAnimator_Animations
+  name: Animations
+  nameWithType: IAnimator.Animations
+  fullName: Vintagestory.API.Common.IAnimator.Animations
 - uid: Vintagestory.API.Common.RunningAnimation[]
   isExternal: true
   href: Vintagestory.API.Common.RunningAnimation.html
@@ -681,6 +887,19 @@ references:
     href: Vintagestory.API.Common.RunningAnimation.html
   - name: (
   - name: )
+- uid: Vintagestory.API.Common.NoAnimator.MaxJointId*
+  commentId: Overload:Vintagestory.API.Common.NoAnimator.MaxJointId
+  href: Vintagestory.API.Common.NoAnimator.html#Vintagestory_API_Common_NoAnimator_MaxJointId
+  name: MaxJointId
+  nameWithType: NoAnimator.MaxJointId
+  fullName: Vintagestory.API.Common.NoAnimator.MaxJointId
+- uid: Vintagestory.API.Common.IAnimator.MaxJointId
+  commentId: P:Vintagestory.API.Common.IAnimator.MaxJointId
+  parent: Vintagestory.API.Common.IAnimator
+  href: Vintagestory.API.Common.IAnimator.html#Vintagestory_API_Common_IAnimator_MaxJointId
+  name: MaxJointId
+  nameWithType: IAnimator.MaxJointId
+  fullName: Vintagestory.API.Common.IAnimator.MaxJointId
 - uid: Vintagestory.API.Common.NoAnimator.DumpCurrentState*
   commentId: Overload:Vintagestory.API.Common.NoAnimator.DumpCurrentState
   href: Vintagestory.API.Common.NoAnimator.html#Vintagestory_API_Common_NoAnimator_DumpCurrentState
@@ -1069,3 +1288,9 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.NoAnimator.ReloadAttachmentPoints*
+  commentId: Overload:Vintagestory.API.Common.NoAnimator.ReloadAttachmentPoints
+  href: Vintagestory.API.Common.NoAnimator.html#Vintagestory_API_Common_NoAnimator_ReloadAttachmentPoints
+  name: ReloadAttachmentPoints
+  nameWithType: NoAnimator.ReloadAttachmentPoints
+  fullName: Vintagestory.API.Common.NoAnimator.ReloadAttachmentPoints

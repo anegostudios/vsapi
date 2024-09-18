@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -125,6 +125,9 @@ Interface IServerWorldAccessor
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Api">IWorldAccessor.Api</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_ChunkProvider">IWorldAccessor.ChunkProvider</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_Claims">IWorldAccessor.Claims</a>
@@ -235,7 +238,13 @@ Interface IServerWorldAccessor
       <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_">IWorldAccessor.SpawnItemEntity(ItemStack, Vec3d, Vec3d)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SpawnItemEntity_Vintagestory_API_Common_ItemStack_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Vec3d_">IWorldAccessor.SpawnItemEntity(ItemStack, BlockPos, Vec3d)</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_SpawnEntity_Vintagestory_API_Common_Entities_Entity_">IWorldAccessor.SpawnEntity(Entity)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_UpdateEntityChunk_Vintagestory_API_Common_Entities_Entity_System_Int64_">IWorldAccessor.UpdateEntityChunk(Entity, long)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_GetEntitiesAround_Vintagestory_API_MathTools_Vec3d_System_Single_System_Single_Vintagestory_API_Common_ActionConsumable_Vintagestory_API_Common_Entities_Entity__">IWorldAccessor.GetEntitiesAround(Vec3d, float, float, ActionConsumable&lt;Entity&gt;)</a>
@@ -269,6 +278,9 @@ Interface IServerWorldAccessor
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_System_Double_System_Double_System_Double_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_">IWorldAccessor.PlaySoundAt(AssetLocation, double, double, double, IPlayer, bool, float, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_MathTools_BlockPos_System_Double_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_">IWorldAccessor.PlaySoundAt(AssetLocation, BlockPos, double, IPlayer, bool, float, float)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_PlaySoundAt_Vintagestory_API_Common_AssetLocation_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_IPlayer_System_Boolean_System_Single_System_Single_">IWorldAccessor.PlaySoundAt(AssetLocation, Entity, IPlayer, bool, float, float)</a>
@@ -371,6 +383,16 @@ Interface IServerWorldAccessor
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 

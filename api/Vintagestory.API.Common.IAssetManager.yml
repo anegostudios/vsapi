@@ -7,6 +7,7 @@ items:
   children:
   - Vintagestory.API.Common.IAssetManager.Add(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.IAsset)
   - Vintagestory.API.Common.IAssetManager.AddModOrigin(System.String,System.String)
+  - Vintagestory.API.Common.IAssetManager.AddModOrigin(System.String,System.String,System.String)
   - Vintagestory.API.Common.IAssetManager.AddPathOrigin(System.String,System.String)
   - Vintagestory.API.Common.IAssetManager.AllAssets
   - Vintagestory.API.Common.IAssetManager.Exists(Vintagestory.API.Common.AssetLocation)
@@ -37,6 +38,9 @@ items:
   syntax:
     content: public interface IAssetManager
     content.vb: Public Interface IAssetManager
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.IAssetManager.AllAssets
   commentId: P:Vintagestory.API.Common.IAssetManager.AllAssets
   id: AllAssets
@@ -257,7 +261,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Returns all assets inside given category with the given path. If no domain is specified, all domains will be searched. The returned list is considered unsorted.
+  summary: >-
+    Returns all assets inside given domain with the given path. If no domain is specified, all domains will be searched.
+
+    The returned list is considered unsorted.
   example: []
   syntax:
     content: List<IAsset> GetMany(string pathBegins, string domain = null, bool loadAsset = true)
@@ -293,19 +300,29 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    Returns all assets inside given category with the given path. If no domain is specified, all domains will be searched.
+
+    The returned list is considered unsorted.
+  example: []
   syntax:
     content: List<IAsset> GetManyInCategory(string categoryCode, string pathBegins, string domain = null, bool loadAsset = true)
     parameters:
     - id: categoryCode
       type: System.String
+      description: See class <xref href="Vintagestory.API.Common.AssetCategory" data-throw-if-not-resolved="false"></xref>
     - id: pathBegins
       type: System.String
+      description: ''
     - id: domain
       type: System.String
+      description: ''
     - id: loadAsset
       type: System.Boolean
+      description: ''
     return:
       type: System.Collections.Generic.List{Vintagestory.API.Common.IAsset}
+      description: ''
     content.vb: Function GetManyInCategory(categoryCode As String, pathBegins As String, domain As String = Nothing, loadAsset As Boolean = True) As List(Of IAsset)
   overload: Vintagestory.API.Common.IAssetManager.GetManyInCategory*
   nameWithType.vb: IAssetManager.GetManyInCategory(String, String, String, Boolean)
@@ -326,7 +343,7 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   summary: >-
-    Searches for all assets in given basepath and uses JSON.NET to automatically turn them into objects. Will log an error to given ILogger if it can't parse the json file and continue with the next asset. Remember to use lower case paths. If no domain is specified, all domains will be searched.
+    Searches for all assets in given basepath and uses Newtonsoft.Json to automatically turn them into objects. Will log an error to given ILogger if it can't parse the json file and continue with the next asset. Remember to use lower case paths. If no domain is specified, all domains will be searched.
 
     The returned list is considered unsorted.
   example: []
@@ -561,6 +578,34 @@ items:
   nameWithType.vb: IAssetManager.AddModOrigin(String, String)
   fullName.vb: Vintagestory.API.Common.IAssetManager.AddModOrigin(String, String)
   name.vb: AddModOrigin(String, String)
+- uid: Vintagestory.API.Common.IAssetManager.AddModOrigin(System.String,System.String,System.String)
+  commentId: M:Vintagestory.API.Common.IAssetManager.AddModOrigin(System.String,System.String,System.String)
+  id: AddModOrigin(System.String,System.String,System.String)
+  parent: Vintagestory.API.Common.IAssetManager
+  langs:
+  - csharp
+  - vb
+  name: AddModOrigin(string, string, string)
+  nameWithType: IAssetManager.AddModOrigin(string, string, string)
+  fullName: Vintagestory.API.Common.IAssetManager.AddModOrigin(string, string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: void AddModOrigin(string domain, string fullPath, string pathForReservedCharsCheck)
+    parameters:
+    - id: domain
+      type: System.String
+    - id: fullPath
+      type: System.String
+    - id: pathForReservedCharsCheck
+      type: System.String
+    content.vb: Sub AddModOrigin(domain As String, fullPath As String, pathForReservedCharsCheck As String)
+  overload: Vintagestory.API.Common.IAssetManager.AddModOrigin*
+  nameWithType.vb: IAssetManager.AddModOrigin(String, String, String)
+  fullName.vb: Vintagestory.API.Common.IAssetManager.AddModOrigin(String, String, String)
+  name.vb: AddModOrigin(String, String, String)
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -592,6 +637,165 @@ references:
   - uid: Vintagestory.API.Common
     name: Common
     href: Vintagestory.API.Common.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.IAssetManager.AllAssets*
   commentId: Overload:Vintagestory.API.Common.IAssetManager.AllAssets
   href: Vintagestory.API.Common.IAssetManager.html#Vintagestory_API_Common_IAssetManager_AllAssets
@@ -846,6 +1050,13 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: Vintagestory.API.Common.AssetCategory
+  commentId: T:Vintagestory.API.Common.AssetCategory
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetCategory.html
+  name: AssetCategory
+  nameWithType: AssetCategory
+  fullName: Vintagestory.API.Common.AssetCategory
 - uid: Vintagestory.API.Common.IAssetManager.GetManyInCategory*
   commentId: Overload:Vintagestory.API.Common.IAssetManager.GetManyInCategory
   href: Vintagestory.API.Common.IAssetManager.html#Vintagestory_API_Common_IAssetManager_GetManyInCategory_System_String_System_String_System_String_System_Boolean_
@@ -964,13 +1175,6 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
-- uid: Vintagestory.API.Common.AssetCategory
-  commentId: T:Vintagestory.API.Common.AssetCategory
-  parent: Vintagestory.API.Common
-  href: Vintagestory.API.Common.AssetCategory.html
-  name: AssetCategory
-  nameWithType: AssetCategory
-  fullName: Vintagestory.API.Common.AssetCategory
 - uid: Vintagestory.API.Common.IAssetManager.Origins*
   commentId: Overload:Vintagestory.API.Common.IAssetManager.Origins
   href: Vintagestory.API.Common.IAssetManager.html#Vintagestory_API_Common_IAssetManager_Origins

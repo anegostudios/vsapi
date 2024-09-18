@@ -35,6 +35,8 @@ namespace Vintagestory.API.Common
         public float MaxSize = 1f;
 
         public int Color;
+
+        public int LightEmission { get; set; }
         public int VertexFlags { get; set; }
 
         public bool Async { get; set; }

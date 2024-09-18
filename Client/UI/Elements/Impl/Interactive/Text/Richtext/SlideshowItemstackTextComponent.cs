@@ -134,7 +134,7 @@ namespace Vintagestory.API.Client
         void initSlot()
         {
             dummyInv = new DummyInventory(capi);
-            dummyInv.OnAcquireTransitionSpeed = (transType, stack, mul) =>
+            dummyInv.OnAcquireTransitionSpeed += (transType, stack, mul) =>
             {
                 return 0;
             };

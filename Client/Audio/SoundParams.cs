@@ -3,6 +3,9 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Sound types, often used to determine specific volume controls.
+    /// </summary>
     public enum EnumSoundType
     {
         Sound, 

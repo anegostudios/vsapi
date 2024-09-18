@@ -16,6 +16,7 @@ items:
   - Vintagestory.API.Util.ArrayExtensions.IndexOf``1(``0[],``0)
   - Vintagestory.API.Util.ArrayExtensions.InsertAt``1(``0[],``0,System.Int32)
   - Vintagestory.API.Util.ArrayExtensions.Nearest``1(``0[],System.Func{``0,System.Double})
+  - Vintagestory.API.Util.ArrayExtensions.RemoveAt``1(``0[],System.Int32)
   - Vintagestory.API.Util.ArrayExtensions.RemoveEntry``1(``0[],System.Int32)
   - Vintagestory.API.Util.ArrayExtensions.Remove``1(``0[],``0)
   - Vintagestory.API.Util.ArrayExtensions.Shuffle``1(``0[],System.Random)
@@ -253,7 +254,10 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Util
   syntax:
-    content: public static T[] RemoveEntry<T>(this T[] array, int index)
+    content: >-
+      [Obsolete("Use RemoveAt instead")]
+
+      public static T[] RemoveEntry<T>(this T[] array, int index)
     parameters:
     - id: array
       type: '{T}[]'
@@ -263,11 +267,57 @@ items:
     - id: T
     return:
       type: '{T}[]'
-    content.vb: Public Shared Function RemoveEntry(Of T)(array As T(), index As Integer) As T()
+    content.vb: >-
+      <Obsolete("Use RemoveAt instead")>
+
+      Public Shared Function RemoveEntry(Of T)(array As T(), index As Integer) As T()
   overload: Vintagestory.API.Util.ArrayExtensions.RemoveEntry*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use RemoveAt instead
   nameWithType.vb: ArrayExtensions.RemoveEntry(Of T)(T(), Integer)
   fullName.vb: Vintagestory.API.Util.ArrayExtensions.RemoveEntry(Of T)(T(), Integer)
   name.vb: RemoveEntry(Of T)(T(), Integer)
+- uid: Vintagestory.API.Util.ArrayExtensions.RemoveAt``1(``0[],System.Int32)
+  commentId: M:Vintagestory.API.Util.ArrayExtensions.RemoveAt``1(``0[],System.Int32)
+  id: RemoveAt``1(``0[],System.Int32)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.ArrayExtensions
+  langs:
+  - csharp
+  - vb
+  name: RemoveAt<T>(T[], int)
+  nameWithType: ArrayExtensions.RemoveAt<T>(T[], int)
+  fullName: Vintagestory.API.Util.ArrayExtensions.RemoveAt<T>(T[], int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: Creates a new copy of array with element at index removed
+  example: []
+  syntax:
+    content: public static T[] RemoveAt<T>(this T[] array, int index)
+    parameters:
+    - id: array
+      type: '{T}[]'
+      description: ''
+    - id: index
+      type: System.Int32
+      description: ''
+    typeParameters:
+    - id: T
+      description: ''
+    return:
+      type: '{T}[]'
+      description: ''
+    content.vb: Public Shared Function RemoveAt(Of T)(array As T(), index As Integer) As T()
+  overload: Vintagestory.API.Util.ArrayExtensions.RemoveAt*
+  nameWithType.vb: ArrayExtensions.RemoveAt(Of T)(T(), Integer)
+  fullName.vb: Vintagestory.API.Util.ArrayExtensions.RemoveAt(Of T)(T(), Integer)
+  name.vb: RemoveAt(Of T)(T(), Integer)
 - uid: Vintagestory.API.Util.ArrayExtensions.Append``1(``0[],``0)
   commentId: M:Vintagestory.API.Util.ArrayExtensions.Append``1(``0[],``0)
   id: Append``1(``0[],``0)
@@ -1126,6 +1176,12 @@ references:
   name: RemoveEntry
   nameWithType: ArrayExtensions.RemoveEntry
   fullName: Vintagestory.API.Util.ArrayExtensions.RemoveEntry
+- uid: Vintagestory.API.Util.ArrayExtensions.RemoveAt*
+  commentId: Overload:Vintagestory.API.Util.ArrayExtensions.RemoveAt
+  href: Vintagestory.API.Util.ArrayExtensions.html#Vintagestory_API_Util_ArrayExtensions_RemoveAt__1___0___System_Int32_
+  name: RemoveAt
+  nameWithType: ArrayExtensions.RemoveAt
+  fullName: Vintagestory.API.Util.ArrayExtensions.RemoveAt
 - uid: Vintagestory.API.Util.ArrayExtensions.Append*
   commentId: Overload:Vintagestory.API.Util.ArrayExtensions.Append
   href: Vintagestory.API.Util.ArrayExtensions.html#Vintagestory_API_Util_ArrayExtensions_Append__1___0_____0_

@@ -2,14 +2,28 @@
 {
 
     /// <summary>
-    /// Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.
+    /// Represents a vector of 3 floats. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
+    [DocumentAsJson]
     public class Size3f
     {
-        public float Width;
-        public float Height;
-        public float Length;
+        /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+        /// The X-dimension of this size.
+        /// </summary>
+        [DocumentAsJson] public float Width;
 
+        /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+        /// The Y-dimension for this size.
+        /// </summary>
+        [DocumentAsJson] public float Height;
+
+        /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+        /// The Z-dimension for this size.
+        /// </summary>
+        [DocumentAsJson] public float Length;
 
         public Size3f()
         {
@@ -35,7 +49,7 @@
     }
     
     /// <summary>
-    /// Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.
+    /// Represents a vector of 3 doubles. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
     public class Size3d
     {
@@ -70,7 +84,7 @@
 
 
     /// <summary>
-    /// Represents a vector of 2 doubles. Go bug Tyron of you need more utility methods in this class.
+    /// Represents a vector of 3 integers. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
     public class Size3i
     {

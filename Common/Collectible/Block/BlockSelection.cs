@@ -56,6 +56,26 @@ namespace Vintagestory.API.Common
             Block = block;
         }
 
+        public BlockSelection SetPos(int x, int y, int z)
+        {
+            Position.Set(x, y, z);
+            return this;
+        }
+
+        public BlockSelection AddPosCopy(int x, int y, int z)
+        {
+            var cloned = Clone();
+            cloned.Position.Add(x, y, z);
+            return cloned;
+        }
+        public BlockSelection AddPosCopy(Vec3i vec)
+        {
+            var cloned = Clone();
+            cloned.Position.Add(vec);
+            return cloned;
+        }
+
+
         /// <summary>
         /// Creates a deep copy 
         /// </summary>

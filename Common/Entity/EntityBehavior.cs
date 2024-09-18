@@ -206,14 +206,6 @@ namespace Vintagestory.API.Common.Entities
 
         }
 
-        /// <summary>
-        /// Fired when the pathfinder does not find a path to given target
-        /// </summary>
-        /// <param name="target"></param>
-        public virtual void OnNoPath(Vec3d target)
-        {
-            
-        }
 
         /// <summary>
         /// Called when a player looks at the entity with interaction help enabled
@@ -236,12 +228,6 @@ namespace Vintagestory.API.Common.Entities
         public virtual void OnStoreCollectibleMappings(Dictionary<int, AssetLocation> blockIdMapping, Dictionary<int, AssetLocation> itemIdMapping)
         {
             
-        }
-        
-        [Obsolete("Use the variant with resolveImports parameter")]
-        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping)
-        {
-            OnLoadCollectibleMappings(worldForNewMappings, oldItemIdMapping, oldItemIdMapping, true);
         }
 
         public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping, bool resolveImports)
@@ -269,6 +255,32 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public virtual void TestCommand(object arg)
         {
+        }
+
+        public virtual bool TryGiveItemStack(ItemStack itemstack, ref EnumHandling handling)
+        {
+            return false;
+        }
+
+        public virtual void OnTesselation(ref Shape entityShape, string shapePathForLogging, ref bool shapeIsCloned, ref string[] willDeleteElements)
+        {
+            
+        }
+
+        public virtual ITexPositionSource GetTextureSource(ref EnumHandling handling)
+        {
+            return null;
+        }
+
+        public virtual bool IntersectsRay(Ray ray, AABBIntersectionTest interesectionTester, out double intersectionDistance, ref int selectionBoxIndex, ref EnumHandling handled)
+        {
+            intersectionDistance = 0;
+            return false;
+        }
+
+        public virtual void OnTesselated()
+        {
+            
         }
     }
 }

@@ -51,7 +51,9 @@ namespace Vintagestory.API.Common
 
 
         public Dictionary<int, AnimationJoint> JointsById = new Dictionary<int, AnimationJoint>();
-        public Dictionary<string, AttachmentPoint> AttachmentPointsByCode = new Dictionary<string, AttachmentPoint>();
+
+        // This is never used anywhere. AnimatorBase.cs loads those separatly anyway
+        //public Dictionary<string, AttachmentPoint> AttachmentPointsByCode = new Dictionary<string, AttachmentPoint>();
 
 
         [OnDeserialized]
@@ -96,8 +98,6 @@ namespace Vintagestory.API.Common
             {
                 ShapeElement elem = Elements[i];
                 elem.ResolveRefernces();
-
-                CollectAttachmentPoints(elem);
             }
         }
 
@@ -117,6 +117,8 @@ namespace Vintagestory.API.Common
             {
                 childElem.WalkRecursive((el) =>
                 {
+                    el.Name = texturePrefixCode + el.Name;
+
                     el.DamageEffect = damageEffect;
 
                     foreach (var face in el.FacesResolved)
@@ -124,7 +126,7 @@ namespace Vintagestory.API.Common
                         if (face == null || !face.Enabled) continue;
                         textureCodes.Add(face.Texture);
 
-                        face.Texture = texturePrefixCode + "-" + face.Texture;
+                        face.Texture = texturePrefixCode + face.Texture;
                     }
                 });
             }
@@ -135,14 +137,31 @@ namespace Vintagestory.API.Common
                 TextureSizes.Clear();
                 foreach (var val in texturesizes)
                 {
-                    TextureSizes[texturePrefixCode + "-" + val.Key] = val.Value;
+                    TextureSizes[texturePrefixCode + val.Key] = val.Value;
                     textureCodes.Remove(val.Key);
                 }
 
                 // Set default texturewidth/height for those not in the TextureSizes dict
                 foreach (var code in textureCodes)
                 {
-                    TextureSizes[texturePrefixCode + "-" + code] = new int[] { TextureWidth, TextureHeight };
+                    TextureSizes[texturePrefixCode + code] = new int[] { TextureWidth, TextureHeight };
+                }
+            }
+
+            if (this.Animations != null)
+            {
+                foreach (var anim in Animations)
+                {
+                    foreach (var kf in anim.KeyFrames)
+                    {
+                        Dictionary<string, AnimationKeyFrameElement> scElements = new Dictionary<string, AnimationKeyFrameElement>();
+                        foreach (var kelem in kf.Elements)
+                        {
+                            scElements[texturePrefixCode + kelem.Key] = kelem.Value;
+                        }
+
+                        kf.Elements = scElements;
+                    }
                 }
             }
 
@@ -266,6 +285,14 @@ namespace Vintagestory.API.Common
                 {
                     TextureSizes[val.Key] = val.Value;
                 }
+
+                if (childShape.Textures.Count > 0 && childShape.TextureSizes.Count == 0)
+                {
+                    foreach (var val in childShape.Textures)
+                    {
+                        TextureSizes[val.Key] = new int[] { childShape.TextureWidth, childShape.TextureHeight };
+                    }
+                }
             }
 
             return anyElementAdded;
@@ -287,13 +314,13 @@ namespace Vintagestory.API.Common
                 var entityKeyFrame = entityAnim.KeyFrames[ei];
                 if (entityKeyFrame.Frame > frame)
                 {
-                    var kfm = new AnimationKeyFrame() { Frame = frame };
-                    entityAnim.KeyFrames = entityAnim.KeyFrames.InsertAt(kfm, frame);
+                    var kfm = new AnimationKeyFrame() { Frame = frame, Elements = new Dictionary<string, AnimationKeyFrameElement>() };
+                    entityAnim.KeyFrames = entityAnim.KeyFrames.InsertAt(kfm, ei);
                     return kfm;
                 }
             }
 
-            var kf = new AnimationKeyFrame() { Frame = frame };
+            var kf = new AnimationKeyFrame() { Frame = frame, Elements = new Dictionary<string, AnimationKeyFrameElement>() };
             entityAnim.KeyFrames = entityAnim.KeyFrames.InsertAt(kf, 0);
             return kf;
         }
@@ -530,6 +557,18 @@ namespace Vintagestory.API.Common
             return null;
         }
 
+        public void RemoveElements(string[] elementNames)
+        {
+            if (elementNames == null) return;
+            
+            foreach (var val in elementNames)
+            {
+                RemoveElementByName(val);
+                RemoveElementByName("skinpart-" + val);
+            }
+            
+        }
+
         /// <summary>
         /// Removes *all* elements with given name
         /// </summary>
@@ -558,12 +597,9 @@ namespace Vintagestory.API.Common
                     continue;
                 }
 
-                if (elems[i].Children != null)
+                if (RemoveElementByName(name, ref elems[i].Children, stringComparison))
                 {
-                    if (RemoveElementByName(name, ref elems[i].Children, stringComparison))
-                    {
-                        removed = true;
-                    }
+                    removed = true;
                 }
             }
 
@@ -598,52 +634,54 @@ namespace Vintagestory.API.Common
             return elems;
         }
 
+        public void CacheInvTransforms() => CacheInvTransforms(Elements);
+
+        public static void CacheInvTransforms(ShapeElement[] elements)
+        {
+            if (elements == null) return;
+
+            for (int i = 0; i < elements.Length; i++)
+            {
+                elements[i].CacheInverseTransformMatrix();
+                CacheInvTransforms(elements[i].Children);
+            }
+        }
+
 
         /// <summary>
-        /// Creates a deep copy of the shape
+        /// Creates a deep copy of the shape. If the shape has animations, then it also resolves references and joints to ensure the cloned shape is fully initialized
         /// </summary>
         /// <returns></returns>
         public Shape Clone()
         {
-            return new Shape()
+            var shape = new Shape()
             {
                 Elements = CloneElements(),
                 Animations = CloneAnimations(),
-                AnimationsByCrc32 = AnimationsByCrc32,
-                AttachmentPointsByCode = AttachmentPointsByCode,
-                JointsById = JointsById,
                 TextureWidth = TextureWidth,
                 TextureHeight = TextureHeight,
                 TextureSizes = TextureSizes,
                 Textures = Textures,
             };
+
+            for (int i = 0; i < shape.Elements.Length; i++)
+            {
+                shape.Elements[i].ResolveRefernces();
+            }
+
+            return shape;
         }
 
-
-
-        private void CollectAttachmentPoints(ShapeElement elem)
+        public void InitForAnimations(ILogger logger, string shapeNameForLogging, params string[] requireJointsForElements)
         {
-            if (elem.AttachmentPoints != null)
-            {
-                for (int j = 0; j < elem.AttachmentPoints.Length; j++)
-                {
-                    var point = elem.AttachmentPoints[j];
-                    AttachmentPointsByCode[point.Code] = point;
-                }
-            }
-
-            if (elem.Children != null)
-            {
-                for (int j = 0; j < elem.Children.Length; j++)
-                {
-                    CollectAttachmentPoints(elem.Children[j]);
-                }
-            }
+            CacheInvTransforms();
+            ResolveReferences(logger, shapeNameForLogging);
+            ResolveAndFindJoints(logger, shapeNameForLogging, requireJointsForElements);
         }
 
         private void ResolveReferences(ILogger errorLogger, string shapeName, Dictionary<string, ShapeElement> elementsByName, AnimationKeyFrame kf)
         {
-            if (kf == null) return;
+            if (kf?.Elements == null) return;
 
             foreach (var val in kf.Elements)
             {

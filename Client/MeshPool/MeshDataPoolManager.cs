@@ -7,7 +7,7 @@ using Vintagestory.API.MathTools;
 namespace Vintagestory.API.Client
 {
     /// <summary>
-    /// Holds a collection of pools, usually for 1 render pass 
+    /// Holds a collection of pools, usually for 1 render pass
     /// </summary>
     public class MeshDataPoolManager
     {
@@ -25,7 +25,7 @@ namespace Vintagestory.API.Client
         int defaultVertexPoolSize;
         int defaultIndexPoolSize;
         int maxPartsPerPool;
-        
+
         Vec3f tmp = new Vec3f();
 
         /// <summary>
@@ -111,14 +111,15 @@ namespace Vintagestory.API.Client
             int count = pools.Count;
             for (int i = 0; i < count; i++)
             {
-                bool revertModelviewMatrix = false;
-                bool revertMVPMatrix = false;
-                bool revertTransparency = false;
                 MeshDataPool pool = pools[i];
                 if (pool.dimensionId == Dimensions.MiniDimensions)
                 {
+                    bool revertModelviewMatrix = false;
+                    bool revertMVPMatrix = false;
+                    bool revertTransparency = false;
+
                     // Special code for movable chunks
-                    if (!capi.World.TryGetMiniDimension(pool.poolOrigin, out IMiniDimension dimension)) continue;
+                    if (!capi.World.TryGetMiniDimension(pool.poolOrigin, out IMiniDimension dimension) || dimension.selectionTrackingOriginalPos == null) continue;
 
                     pool.SetFullyVisible();
                     if (pool.indicesGroupsCount == 0)
@@ -176,7 +177,7 @@ namespace Vintagestory.API.Client
 
                     capi.Render.CurrentActiveShader.Uniform(originUniformName, tmp.Set(
                         (float)(pool.poolOrigin.X - playerpos.X),
-                        (float)(pool.poolOrigin.Y - playerpos.Y),
+                        (float)(pool.poolOrigin.Y + pool.dimensionId * BlockPos.DimensionBoundary - playerpos.Y),
                         (float)(pool.poolOrigin.Z - playerpos.Z)
                     ));
 
@@ -194,9 +195,9 @@ namespace Vintagestory.API.Client
         public void GetStats(ref long usedVideoMemory, ref long renderedTris, ref long allocatedTris)
         {
             // 1 index = 4 byte
-            // 1 vertex = 
-            // - 3 xyz floats  = 12 byte 
-            // - 2 uv floats   = 8 byte 
+            // 1 vertex =
+            // - 3 xyz floats  = 12 byte
+            // - 2 uv floats   = 8 byte
             // - 4 rgba bytes  = 4 byte
             // - 4 rgba2 bytes = 4 byte
             // - 1 flags int    = 4 byte

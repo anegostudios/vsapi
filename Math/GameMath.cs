@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
@@ -336,7 +337,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="rand"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static int RoundRandom(LCGRandom rand, float value)
+        public static int RoundRandom(IRandom rand, float value)
         {
             return (int)value + ((rand.NextDouble() < (value - (int)value)) ? 1 : 0);
         }
@@ -504,7 +505,7 @@ namespace Vintagestory.API.MathTools
             for (int inX = 0; inX < innerSize; inX++)
             {
                 for (int inZ = 0; inZ < innerSize; inZ++)
-                {                    
+                {
                     int leftTop = map.Data[(inZ+pad) * map.Size + inX + pad];
                     int rightTop = map.Data[(inZ+pad) * map.Size + inX + 1 + pad];
                     int leftBottom = map.Data[(inZ + 1 + pad) * map.Size + inX + pad];
@@ -876,7 +877,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Returns a value between 0..1. Returns 0 if val is smaller than left or greater than right. For val == (left+right)/2 the return value is 1. Every other value is a linear interpolation based on the distance to the middle value. Ascii art representation:
-        /// 
+        ///
         ///1  |      /\
         ///   |     /  \
         ///0.5|    /    \
@@ -899,7 +900,7 @@ namespace Vintagestory.API.MathTools
 
         /// <summary>
         /// Returns a value between 0..1. Returns 0 if val is smaller than left or greater than right. For val == (left+right)/2 the return value is 1. Every other value is a linear interpolation based on the distance to the middle value. Ascii art representation:
-        /// 
+        ///
         ///1  |      /\
         ///   |     /  \
         ///0.5|    /    \
@@ -922,7 +923,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Same as TriangleStep but skipping the step to calc mid and range. 
+        /// Same as TriangleStep but skipping the step to calc mid and range.
         /// </summary>
         /// <param name="val"></param>
         /// <param name="mid"></param>
@@ -970,7 +971,7 @@ namespace Vintagestory.API.MathTools
                 max = Math.Max(max, values[i]);
             }
             return max;
-        }       
+        }
 
         public static int Min(params int[] values)
         {
@@ -1042,22 +1043,22 @@ namespace Vintagestory.API.MathTools
             {
                 fixed (char* src = text)
                 {
-                    int hash1 = (5381<<16) + 5381; 
+                    int hash1 = (5381<<16) + 5381;
                     int hash2 = hash1;
 
-                    // 32 bit machines. 
+                    // 32 bit machines.
                     int* pint = (int *)src;
-                    int len = text.Length; 
-                    while (len > 2) 
+                    int len = text.Length;
+                    while (len > 2)
                     {
-                        hash1 = ((hash1 << 5) + hash1 + (hash1 >> 27)) ^ pint[0]; 
+                        hash1 = ((hash1 << 5) + hash1 + (hash1 >> 27)) ^ pint[0];
                         hash2 = ((hash2 << 5) + hash2 + (hash2 >> 27)) ^ pint[1];
                         pint += 2;
                         len  -= 4;
-                    } 
+                    }
 
-                    if (len > 0) 
-                    { 
+                    if (len > 0)
+                    {
                         hash1 = ((hash1 << 5) + hash1 + (hash1 >> 27)) ^ pint[0];
                     }
 
@@ -1082,7 +1083,7 @@ namespace Vintagestory.API.MathTools
                 // and create a string.
                 StringBuilder sBuilder = new StringBuilder();
 
-                // Loop through each byte of the hashed data 
+                // Loop through each byte of the hashed data
                 // and format each one as a hexadecimal string.
                 for (int i = 0; i < data.Length; i++)
                 {
@@ -1520,7 +1521,7 @@ namespace Vintagestory.API.MathTools
             double siny_cosp = 2 * (q.W * q.Z + q.X * q.Y);
             double cosy_cosp = 1 - 2 * (q.Y * q.Y + q.Z * q.Z);
             angles.Z = Math.Atan2(siny_cosp, cosy_cosp);
-            
+
             return angles;
         }
 
@@ -1553,6 +1554,20 @@ namespace Vintagestory.API.MathTools
             {
                 bools[i] = (v & (1 << i)) != 0;
             }
+        }
+
+        /// <summary>
+        /// Map a value from one range to another
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="fromMin"></param>
+        /// <param name="fromMax"></param>
+        /// <param name="toMin"></param>
+        /// <param name="toMax"></param>
+        /// <returns></returns>
+        public static T Map<T>(T value, T fromMin, T fromMax, T toMin, T toMax) where T : INumber<T>
+        {
+            return (value - fromMin) * (toMax - toMin) / (fromMax - fromMin) + toMin;
         }
     }
 

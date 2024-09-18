@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -131,6 +131,9 @@ Class EntityPlayer
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_BodyYawServer">EntityAgent.BodyYawServer</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_sidewaysSwivelAngle">EntityAgent.sidewaysSwivelAngle</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_DeadNotify">EntityAgent.DeadNotify</a>
     </div>
     <div>
@@ -155,6 +158,9 @@ Class EntityPlayer
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_AllowDespawn">EntityAgent.AllowDespawn</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_alwaysRunIdle">EntityAgent.alwaysRunIdle</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_Controls">EntityAgent.Controls</a>
     </div>
     <div>
@@ -167,13 +173,13 @@ Class EntityPlayer
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_updateMountedState">EntityAgent.updateMountedState()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_doMount_Vintagestory_API_Common_IMountable_">EntityAgent.doMount(IMountable)</a>
+      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_doMount_Vintagestory_API_Common_IMountableSeat_">EntityAgent.doMount(IMountableSeat)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_TryUnmount">EntityAgent.TryUnmount()</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_OnNoPath_Vintagestory_API_MathTools_Vec3d_">EntityAgent.OnNoPath(Vec3d)</a>
+      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_">EntityAgent.OnEntityDespawn(EntityDespawnData)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_OnInteract_Vintagestory_API_Common_EntityAgent_Vintagestory_API_Common_ItemSlot_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_Common_EnumInteractMode_">EntityAgent.OnInteract(EntityAgent, ItemSlot, Vec3d, EnumInteractMode)</a>
@@ -213,21 +219,6 @@ Class EntityPlayer
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_GetHeadPositionFromWatchedAttributes">EntityAgent.GetHeadPositionFromWatchedAttributes()</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_hideClothing">EntityAgent.hideClothing</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_addGearToShape_Vintagestory_API_Common_Shape__System_String_">EntityAgent.addGearToShape(ref Shape, string)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_addGearToShape_Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_Shape_System_String_">EntityAgent.addGearToShape(ItemSlot, Shape, string)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_">EntityAgent.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_OnStoreCollectibleMappings_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__">EntityAgent.OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_SplashParticleProps">Entity.SplashParticleProps</a>
@@ -362,10 +353,10 @@ Class EntityPlayer
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsShadowRendered">Entity.IsShadowRendered</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HurtColor">Entity.HurtColor</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Stats">Entity.Stats</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Stats">Entity.Stats</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_fireDamageAccum">Entity.fireDamageAccum</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_touchDistanceSq">Entity.touchDistanceSq</a>
@@ -375,6 +366,12 @@ Class EntityPlayer
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_hasRepulseBehavior">Entity.hasRepulseBehavior</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_trickleDownRayIntersects">Entity.trickleDownRayIntersects</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_requirePosesOnServer">Entity.requirePosesOnServer</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_packet">Entity.packet</a>
@@ -455,6 +452,21 @@ Class EntityPlayer
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_DieInLava">Entity.DieInLava()</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetTextureSource">Entity.GetTextureSource()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_ShapeFresh">Entity.ShapeFresh</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_FrustumSphereRadius">Entity.FrustumSphereRadius</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_shapeFresh">Entity.shapeFresh</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_MarkShapeModified">Entity.MarkShapeModified()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnCollided">Entity.OnCollided()</a>
     </div>
     <div>
@@ -465,9 +477,6 @@ Class EntityPlayer
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnEntitySpawn">Entity.OnEntitySpawn()</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnEntityDespawn_Vintagestory_API_Common_Entities_EntityDespawnData_">Entity.OnEntityDespawn(EntityDespawnData)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnExitedLiquid">Entity.OnExitedLiquid()</a>
@@ -512,6 +521,9 @@ Class EntityPlayer
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetBehavior__1">Entity.GetBehavior&lt;T&gt;()</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetInterface__1">Entity.GetInterface&lt;T&gt;()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsActivityRunning_System_String_">Entity.IsActivityRunning(string)</a>
     </div>
     <div>
@@ -539,13 +551,19 @@ Class EntityPlayer
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_DidImportOrExport_Vintagestory_API_MathTools_BlockPos_">Entity.DidImportOrExport(BlockPos)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_">Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int)</a>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnStoreCollectibleMappings_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__">Entity.OnStoreCollectibleMappings(Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_">Entity.OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int, bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_StartAnimation_System_String_">Entity.StartAnimation(string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_StopAnimation_System_String_">Entity.StopAnimation(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IntersectsRay_Vintagestory_API_MathTools_Ray_Vintagestory_API_MathTools_AABBIntersectionTest_System_Double__System_Int32__">Entity.IntersectsRay(Ray, AABBIntersectionTest, out double, ref int)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_Code">RegistryObject.Code</a>
@@ -636,6 +654,16 @@ Class EntityPlayer
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -716,7 +744,7 @@ Class EntityPlayer
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec2f BodyYawLimits</code></pre>
+    <pre><code class="lang-csharp hljs">public AngleConstraint BodyYawLimits</code></pre>
   </div>
 
 
@@ -724,7 +752,7 @@ Class EntityPlayer
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec2f.html">Vec2f</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.MathTools.AngleConstraint.html">AngleConstraint</a></dt>
     <dd></dd>
   </dl>
 
@@ -748,6 +776,37 @@ Class EntityPlayer
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Vec3d CameraPos</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_EntityPlayer_CameraPosOffset" data-uid="Vintagestory.API.Common.EntityPlayer.CameraPosOffset">
+  CameraPosOffset
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>An offset which can be applied to the camera position to achieve certain special effects or special features, for example Timeswitch feature. Set only by the game client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Vec3d CameraPosOffset</code></pre>
   </div>
 
 
@@ -839,7 +898,7 @@ Class EntityPlayer
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Vec2f HeadYawLimits</code></pre>
+    <pre><code class="lang-csharp hljs">public AngleConstraint HeadYawLimits</code></pre>
   </div>
 
 
@@ -847,7 +906,7 @@ Class EntityPlayer
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.MathTools.Vec2f.html">Vec2f</a></dt>
+    <dt><a class="xref" href="Vintagestory.API.MathTools.AngleConstraint.html">AngleConstraint</a></dt>
     <dd></dd>
   </dl>
 
@@ -1105,36 +1164,6 @@ Class EntityPlayer
 
 
 
-  <h3 id="Vintagestory_API_Common_EntityPlayer_sidewaysSwivelAngle" data-uid="Vintagestory.API.Common.EntityPlayer.sidewaysSwivelAngle">
-  sidewaysSwivelAngle
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float sidewaysSwivelAngle</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
   <h3 id="Vintagestory_API_Common_EntityPlayer_talkTypeByAnimation" data-uid="Vintagestory.API.Common.EntityPlayer.talkTypeByAnimation">
   talkTypeByAnimation
   
@@ -1316,38 +1345,6 @@ Set and Called by the Entities ServerSystem</p>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_EntityPlayer_GearInventory_" data-uid="Vintagestory.API.Common.EntityPlayer.GearInventory*"></a>
-
-  <h3 id="Vintagestory_API_Common_EntityPlayer_GearInventory" data-uid="Vintagestory.API.Common.EntityPlayer.GearInventory">
-  GearInventory
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>The players wearables. Available on the client and the server.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override IInventory GearInventory { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.IInventory.html">IInventory</a></dt>
     <dd></dd>
   </dl>
 
@@ -1772,6 +1769,37 @@ Set and Called by the Entities ServerSystem</p>
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityPlayer_ChangeDimension_" data-uid="Vintagestory.API.Common.EntityPlayer.ChangeDimension*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityPlayer_ChangeDimension_System_Int32_" data-uid="Vintagestory.API.Common.EntityPlayer.ChangeDimension(System.Int32)">
+  ChangeDimension(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ChangeDimension(int dim)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>dim</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
 
 
 
@@ -2423,6 +2451,32 @@ Packetid = 2 is used for BehaviorHarvestable</p>
 
 
 
+  <a id="Vintagestory_API_Common_EntityPlayer_OnTesselated_" data-uid="Vintagestory.API.Common.EntityPlayer.OnTesselated*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityPlayer_OnTesselated" data-uid="Vintagestory.API.Common.EntityPlayer.OnTesselated">
+  OnTesselated()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void OnTesselated()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_EntityPlayer_OnTesselation_" data-uid="Vintagestory.API.Common.EntityPlayer.OnTesselation*"></a>
 
   <h3 id="Vintagestory_API_Common_EntityPlayer_OnTesselation_Vintagestory_API_Common_Shape__System_String_" data-uid="Vintagestory.API.Common.EntityPlayer.OnTesselation(Vintagestory.API.Common.Shape@,System.String)">
@@ -2734,22 +2788,22 @@ Packetid = 2 is used for BehaviorHarvestable</p>
 
   <a id="Vintagestory_API_Common_EntityPlayer_TryMount_" data-uid="Vintagestory.API.Common.EntityPlayer.TryMount*"></a>
 
-  <h3 id="Vintagestory_API_Common_EntityPlayer_TryMount_Vintagestory_API_Common_IMountable_" data-uid="Vintagestory.API.Common.EntityPlayer.TryMount(Vintagestory.API.Common.IMountable)">
-  TryMount(IMountable)
+  <h3 id="Vintagestory_API_Common_EntityPlayer_TryMount_Vintagestory_API_Common_IMountableSeat_" data-uid="Vintagestory.API.Common.EntityPlayer.TryMount(Vintagestory.API.Common.IMountableSeat)">
+  TryMount(IMountableSeat)
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Attempts to mount the player on a target.</p>
+  <div class="markdown level1 summary"><p>Attempts to mount this entity on a target.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override bool TryMount(IMountable onmount)</code></pre>
+    <pre><code class="lang-csharp hljs">public override bool TryMount(IMountableSeat onmount)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>onmount</code> <a class="xref" href="Vintagestory.API.Common.IMountable.html">IMountable</a></dt>
+    <dt><code>onmount</code> <a class="xref" href="Vintagestory.API.Common.IMountableSeat.html">IMountableSeat</a></dt>
     <dd><p>The mount to mount</p>
 </dd>
   </dl>
@@ -2931,8 +2985,8 @@ Packetid = 2 is used for BehaviorHarvestable</p>
 
   <a id="Vintagestory_API_Common_EntityPlayer_getSoundSourceBlockAt_" data-uid="Vintagestory.API.Common.EntityPlayer.getSoundSourceBlockAt*"></a>
 
-  <h3 id="Vintagestory_API_Common_EntityPlayer_getSoundSourceBlockAt_Vintagestory_API_MathTools_Cuboidd_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Boolean_" data-uid="Vintagestory.API.Common.EntityPlayer.getSoundSourceBlockAt(Vintagestory.API.MathTools.Cuboidd,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Boolean)">
-  getSoundSourceBlockAt(Cuboidd, BlockPos, int, bool)
+  <h3 id="Vintagestory_API_Common_EntityPlayer_getSoundSourceBlockAt_Vintagestory_API_MathTools_Cuboidd_Vintagestory_API_Common_BlockSelection_System_Int32_System_Boolean_" data-uid="Vintagestory.API.Common.EntityPlayer.getSoundSourceBlockAt(Vintagestory.API.MathTools.Cuboidd,Vintagestory.API.Common.BlockSelection,System.Int32,System.Boolean)">
+  getSoundSourceBlockAt(Cuboidd, BlockSelection, int, bool)
   
   </h3>
 
@@ -2940,14 +2994,14 @@ Packetid = 2 is used for BehaviorHarvestable</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected Block getSoundSourceBlockAt(Cuboidd entityBox, BlockPos tmpPos, int blockLayer, bool usecollisionboxes)</code></pre>
+    <pre><code class="lang-csharp hljs">protected Block getSoundSourceBlockAt(Cuboidd entityBox, BlockSelection blockSel, int blockLayer, bool usecollisionboxes)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>entityBox</code> <a class="xref" href="Vintagestory.API.MathTools.Cuboidd.html">Cuboidd</a></dt>
     <dd></dd>
-    <dt><code>tmpPos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dt><code>blockSel</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
     <dd></dd>
     <dt><code>blockLayer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>

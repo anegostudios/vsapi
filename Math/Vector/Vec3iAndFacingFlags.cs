@@ -1,6 +1,4 @@
-﻿using Vintagestory.API.MathTools;
-
-namespace VintagestoryAPI.Math.Vector
+﻿namespace Vintagestory.API.MathTools
 {
     public class Vec3iAndFacingFlags
     {

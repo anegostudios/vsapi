@@ -116,6 +116,7 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// Used in blockAccessor.GetLightLevel() to determine what kind of light level you want
     /// </summary>
+    [DocumentAsJson]
     public enum EnumLightLevelType
     {
         /// <summary>
@@ -505,7 +506,18 @@ namespace Vintagestory.API.Common
         /// <param name="y"></param>
         /// <param name="z"></param>
         /// <returns></returns>
+        [Obsolete("Better to use dimension-aware version")]
         bool IsNotTraversable(double x, double y, double z);
+
+        /// <summary>
+        /// Checks if this position can be traversed by a normal player (returns false for outside map or not yet loaded chunks)
+        /// Dimension-aware version
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
+        /// <returns></returns>
+        bool IsNotTraversable(double x, double y, double z, int dim);
 
         /// <summary>
         /// Checks if this position can be traversed by a normal player (returns false for outside map or not yet loaded chunks)
@@ -794,6 +806,7 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// The type of climate values you wish to receive
     /// </summary>
+    [DocumentAsJson]
     public enum EnumGetClimateMode
     {
         /// <summary>

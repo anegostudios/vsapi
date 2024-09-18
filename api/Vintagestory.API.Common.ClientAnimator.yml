@@ -5,23 +5,24 @@ items:
   id: ClientAnimator
   parent: Vintagestory.API.Common
   children:
-  - Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String})
-  - Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],System.Action{System.String})
-  - Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String})
+  - Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})
+  - Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})
+  - Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})
   - Vintagestory.API.Common.ClientAnimator.AnimNowActive(Vintagestory.API.Common.RunningAnimation,Vintagestory.API.Common.AnimationMetaData)
   - Vintagestory.API.Common.ClientAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint})
   - Vintagestory.API.Common.ClientAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint})
+  - Vintagestory.API.Common.ClientAnimator.DumpCurrentState
   - Vintagestory.API.Common.ClientAnimator.GetPosebyName(System.String,System.StringComparison)
   - Vintagestory.API.Common.ClientAnimator.LoadAttachmentPoints(System.Collections.Generic.List{Vintagestory.API.Common.ElementPose})
   - Vintagestory.API.Common.ClientAnimator.LoadPosesAndAttachmentPoints(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.List{Vintagestory.API.Common.ElementPose})
   - Vintagestory.API.Common.ClientAnimator.MaxConcurrentAnimations
+  - Vintagestory.API.Common.ClientAnimator.MaxJointId
   - Vintagestory.API.Common.ClientAnimator.OnFrame(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},System.Single)
-  - Vintagestory.API.Common.ClientAnimator.RootPoses
+  - Vintagestory.API.Common.ClientAnimator.ReloadAttachmentPoints
   - Vintagestory.API.Common.ClientAnimator.calculateMatrices(System.Single)
   - Vintagestory.API.Common.ClientAnimator.initFields
   - Vintagestory.API.Common.ClientAnimator.jointsById
   - Vintagestory.API.Common.ClientAnimator.jointsDone
-  - Vintagestory.API.Common.ClientAnimator.rootElements
   langs:
   - csharp
   - vb
@@ -50,19 +51,21 @@ items:
   implements:
   - Vintagestory.API.Common.IAnimator
   inheritedMembers:
-  - Vintagestory.API.Common.AnimatorBase.identMat4x3
-  - Vintagestory.API.Common.AnimatorBase.anims
-  - Vintagestory.API.Common.AnimatorBase.TransformationMatrices4x3
-  - Vintagestory.API.Common.AnimatorBase.TransformationMatricesDefaultPose4x3
-  - Vintagestory.API.Common.AnimatorBase.AttachmentPointByCode
+  - Vintagestory.API.Common.AnimatorBase.identMat
   - Vintagestory.API.Common.AnimatorBase.activeAnimCount
+  - Vintagestory.API.Common.AnimatorBase.RootElements
+  - Vintagestory.API.Common.AnimatorBase.RootPoses
+  - Vintagestory.API.Common.AnimatorBase.anims
+  - Vintagestory.API.Common.AnimatorBase.TransformationMatrices
+  - Vintagestory.API.Common.AnimatorBase.TransformationMatricesDefaultPose
+  - Vintagestory.API.Common.AnimatorBase.AttachmentPointByCode
   - Vintagestory.API.Common.AnimatorBase.CurAnims
   - Vintagestory.API.Common.AnimatorBase.CalculateMatrices
-  - Vintagestory.API.Common.AnimatorBase.Matrices4x3
+  - Vintagestory.API.Common.AnimatorBase.Matrices
   - Vintagestory.API.Common.AnimatorBase.ActiveAnimationCount
   - Vintagestory.API.Common.AnimatorBase.RunningAnimations
+  - Vintagestory.API.Common.AnimatorBase.Animations
   - Vintagestory.API.Common.AnimatorBase.GetAnimationState(System.String)
-  - Vintagestory.API.Common.AnimatorBase.DumpCurrentState
   - Vintagestory.API.Common.AnimatorBase.GetAttachmentPointPose(System.String)
   - System.Object.Equals(System.Object)
   - System.Object.Equals(System.Object,System.Object)
@@ -71,44 +74,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: Vintagestory.API.Common.ClientAnimator.rootElements
-  commentId: F:Vintagestory.API.Common.ClientAnimator.rootElements
-  id: rootElements
-  parent: Vintagestory.API.Common.ClientAnimator
-  langs:
-  - csharp
-  - vb
-  name: rootElements
-  nameWithType: ClientAnimator.rootElements
-  fullName: Vintagestory.API.Common.ClientAnimator.rootElements
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  syntax:
-    content: public ShapeElement[] rootElements
-    return:
-      type: Vintagestory.API.Common.ShapeElement[]
-    content.vb: Public rootElements As ShapeElement()
-- uid: Vintagestory.API.Common.ClientAnimator.RootPoses
-  commentId: F:Vintagestory.API.Common.ClientAnimator.RootPoses
-  id: RootPoses
-  parent: Vintagestory.API.Common.ClientAnimator
-  langs:
-  - csharp
-  - vb
-  name: RootPoses
-  nameWithType: ClientAnimator.RootPoses
-  fullName: Vintagestory.API.Common.ClientAnimator.RootPoses
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  syntax:
-    content: public List<ElementPose> RootPoses
-    return:
-      type: System.Collections.Generic.List{Vintagestory.API.Common.ElementPose}
-    content.vb: Public RootPoses As List(Of ElementPose)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.ClientAnimator.jointsDone
   commentId: F:Vintagestory.API.Common.ClientAnimator.jointsDone
   id: jointsDone
@@ -232,22 +200,22 @@ items:
   nameWithType.vb: ClientAnimator.CreateForEntity(Entity, Animation(), ShapeElement(), Dictionary(Of Integer, AnimationJoint))
   fullName.vb: Vintagestory.API.Common.ClientAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Animation(), Vintagestory.API.Common.ShapeElement(), System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AnimationJoint))
   name.vb: CreateForEntity(Entity, Animation(), ShapeElement(), Dictionary(Of Integer, AnimationJoint))
-- uid: Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],System.Action{System.String})
-  commentId: M:Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],System.Action{System.String})
-  id: '#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],System.Action{System.String})'
+- uid: Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})
+  commentId: M:Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})
+  id: '#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})'
   parent: Vintagestory.API.Common.ClientAnimator
   langs:
   - csharp
   - vb
-  name: ClientAnimator(WalkSpeedSupplierDelegate, Animation[], Action<string>)
-  nameWithType: ClientAnimator.ClientAnimator(WalkSpeedSupplierDelegate, Animation[], Action<string>)
-  fullName: Vintagestory.API.Common.ClientAnimator.ClientAnimator(Vintagestory.API.Common.WalkSpeedSupplierDelegate, Vintagestory.API.Common.Animation[], System.Action<string>)
+  name: ClientAnimator(WalkSpeedSupplierDelegate, Animation[], Action<string>, Action<AnimationSound>)
+  nameWithType: ClientAnimator.ClientAnimator(WalkSpeedSupplierDelegate, Animation[], Action<string>, Action<AnimationSound>)
+  fullName: Vintagestory.API.Common.ClientAnimator.ClientAnimator(Vintagestory.API.Common.WalkSpeedSupplierDelegate, Vintagestory.API.Common.Animation[], System.Action<string>, System.Action<Vintagestory.API.Common.AnimationSound>)
   type: Constructor
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, Action<string> onAnimationStoppedListener = null)
+    content: public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, Action<string> onAnimationStoppedListener = null, Action<AnimationSound> onShouldPlaySoundListener = null)
     parameters:
     - id: walkSpeedSupplier
       type: Vintagestory.API.Common.WalkSpeedSupplierDelegate
@@ -255,27 +223,29 @@ items:
       type: Vintagestory.API.Common.Animation[]
     - id: onAnimationStoppedListener
       type: System.Action{System.String}
-    content.vb: Public Sub New(walkSpeedSupplier As WalkSpeedSupplierDelegate, animations As Animation(), onAnimationStoppedListener As Action(Of String) = Nothing)
+    - id: onShouldPlaySoundListener
+      type: System.Action{Vintagestory.API.Common.AnimationSound}
+    content.vb: Public Sub New(walkSpeedSupplier As WalkSpeedSupplierDelegate, animations As Animation(), onAnimationStoppedListener As Action(Of String) = Nothing, onShouldPlaySoundListener As Action(Of AnimationSound) = Nothing)
   overload: Vintagestory.API.Common.ClientAnimator.#ctor*
-  nameWithType.vb: ClientAnimator.New(WalkSpeedSupplierDelegate, Animation(), Action(Of String))
-  fullName.vb: Vintagestory.API.Common.ClientAnimator.New(Vintagestory.API.Common.WalkSpeedSupplierDelegate, Vintagestory.API.Common.Animation(), System.Action(Of String))
-  name.vb: New(WalkSpeedSupplierDelegate, Animation(), Action(Of String))
-- uid: Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String})
-  commentId: M:Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String})
-  id: '#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String})'
+  nameWithType.vb: ClientAnimator.New(WalkSpeedSupplierDelegate, Animation(), Action(Of String), Action(Of AnimationSound))
+  fullName.vb: Vintagestory.API.Common.ClientAnimator.New(Vintagestory.API.Common.WalkSpeedSupplierDelegate, Vintagestory.API.Common.Animation(), System.Action(Of String), System.Action(Of Vintagestory.API.Common.AnimationSound))
+  name.vb: New(WalkSpeedSupplierDelegate, Animation(), Action(Of String), Action(Of AnimationSound))
+- uid: Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})
+  commentId: M:Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})
+  id: '#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})'
   parent: Vintagestory.API.Common.ClientAnimator
   langs:
   - csharp
   - vb
-  name: ClientAnimator(WalkSpeedSupplierDelegate, List<ElementPose>, Animation[], ShapeElement[], Dictionary<int, AnimationJoint>, Action<string>)
-  nameWithType: ClientAnimator.ClientAnimator(WalkSpeedSupplierDelegate, List<ElementPose>, Animation[], ShapeElement[], Dictionary<int, AnimationJoint>, Action<string>)
-  fullName: Vintagestory.API.Common.ClientAnimator.ClientAnimator(Vintagestory.API.Common.WalkSpeedSupplierDelegate, System.Collections.Generic.List<Vintagestory.API.Common.ElementPose>, Vintagestory.API.Common.Animation[], Vintagestory.API.Common.ShapeElement[], System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AnimationJoint>, System.Action<string>)
+  name: ClientAnimator(WalkSpeedSupplierDelegate, List<ElementPose>, Animation[], ShapeElement[], Dictionary<int, AnimationJoint>, Action<string>, Action<AnimationSound>)
+  nameWithType: ClientAnimator.ClientAnimator(WalkSpeedSupplierDelegate, List<ElementPose>, Animation[], ShapeElement[], Dictionary<int, AnimationJoint>, Action<string>, Action<AnimationSound>)
+  fullName: Vintagestory.API.Common.ClientAnimator.ClientAnimator(Vintagestory.API.Common.WalkSpeedSupplierDelegate, System.Collections.Generic.List<Vintagestory.API.Common.ElementPose>, Vintagestory.API.Common.Animation[], Vintagestory.API.Common.ShapeElement[], System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AnimationJoint>, System.Action<string>, System.Action<Vintagestory.API.Common.AnimationSound>)
   type: Constructor
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null)
+    content: public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null, Action<AnimationSound> onShouldPlaySoundListener = null)
     parameters:
     - id: walkSpeedSupplier
       type: Vintagestory.API.Common.WalkSpeedSupplierDelegate
@@ -289,27 +259,29 @@ items:
       type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint}
     - id: onAnimationStoppedListener
       type: System.Action{System.String}
-    content.vb: Public Sub New(walkSpeedSupplier As WalkSpeedSupplierDelegate, rootPoses As List(Of ElementPose), animations As Animation(), rootElements As ShapeElement(), jointsById As Dictionary(Of Integer, AnimationJoint), onAnimationStoppedListener As Action(Of String) = Nothing)
+    - id: onShouldPlaySoundListener
+      type: System.Action{Vintagestory.API.Common.AnimationSound}
+    content.vb: Public Sub New(walkSpeedSupplier As WalkSpeedSupplierDelegate, rootPoses As List(Of ElementPose), animations As Animation(), rootElements As ShapeElement(), jointsById As Dictionary(Of Integer, AnimationJoint), onAnimationStoppedListener As Action(Of String) = Nothing, onShouldPlaySoundListener As Action(Of AnimationSound) = Nothing)
   overload: Vintagestory.API.Common.ClientAnimator.#ctor*
-  nameWithType.vb: ClientAnimator.New(WalkSpeedSupplierDelegate, List(Of ElementPose), Animation(), ShapeElement(), Dictionary(Of Integer, AnimationJoint), Action(Of String))
-  fullName.vb: Vintagestory.API.Common.ClientAnimator.New(Vintagestory.API.Common.WalkSpeedSupplierDelegate, System.Collections.Generic.List(Of Vintagestory.API.Common.ElementPose), Vintagestory.API.Common.Animation(), Vintagestory.API.Common.ShapeElement(), System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AnimationJoint), System.Action(Of String))
-  name.vb: New(WalkSpeedSupplierDelegate, List(Of ElementPose), Animation(), ShapeElement(), Dictionary(Of Integer, AnimationJoint), Action(Of String))
-- uid: Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String})
-  commentId: M:Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String})
-  id: '#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String})'
+  nameWithType.vb: ClientAnimator.New(WalkSpeedSupplierDelegate, List(Of ElementPose), Animation(), ShapeElement(), Dictionary(Of Integer, AnimationJoint), Action(Of String), Action(Of AnimationSound))
+  fullName.vb: Vintagestory.API.Common.ClientAnimator.New(Vintagestory.API.Common.WalkSpeedSupplierDelegate, System.Collections.Generic.List(Of Vintagestory.API.Common.ElementPose), Vintagestory.API.Common.Animation(), Vintagestory.API.Common.ShapeElement(), System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AnimationJoint), System.Action(Of String), System.Action(Of Vintagestory.API.Common.AnimationSound))
+  name.vb: New(WalkSpeedSupplierDelegate, List(Of ElementPose), Animation(), ShapeElement(), Dictionary(Of Integer, AnimationJoint), Action(Of String), Action(Of AnimationSound))
+- uid: Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})
+  commentId: M:Vintagestory.API.Common.ClientAnimator.#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})
+  id: '#ctor(Vintagestory.API.Common.WalkSpeedSupplierDelegate,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Action{System.String},System.Action{Vintagestory.API.Common.AnimationSound})'
   parent: Vintagestory.API.Common.ClientAnimator
   langs:
   - csharp
   - vb
-  name: ClientAnimator(WalkSpeedSupplierDelegate, Animation[], ShapeElement[], Dictionary<int, AnimationJoint>, Action<string>)
-  nameWithType: ClientAnimator.ClientAnimator(WalkSpeedSupplierDelegate, Animation[], ShapeElement[], Dictionary<int, AnimationJoint>, Action<string>)
-  fullName: Vintagestory.API.Common.ClientAnimator.ClientAnimator(Vintagestory.API.Common.WalkSpeedSupplierDelegate, Vintagestory.API.Common.Animation[], Vintagestory.API.Common.ShapeElement[], System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AnimationJoint>, System.Action<string>)
+  name: ClientAnimator(WalkSpeedSupplierDelegate, Animation[], ShapeElement[], Dictionary<int, AnimationJoint>, Action<string>, Action<AnimationSound>)
+  nameWithType: ClientAnimator.ClientAnimator(WalkSpeedSupplierDelegate, Animation[], ShapeElement[], Dictionary<int, AnimationJoint>, Action<string>, Action<AnimationSound>)
+  fullName: Vintagestory.API.Common.ClientAnimator.ClientAnimator(Vintagestory.API.Common.WalkSpeedSupplierDelegate, Vintagestory.API.Common.Animation[], Vintagestory.API.Common.ShapeElement[], System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.AnimationJoint>, System.Action<string>, System.Action<Vintagestory.API.Common.AnimationSound>)
   type: Constructor
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null)
+    content: public ClientAnimator(WalkSpeedSupplierDelegate walkSpeedSupplier, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, Action<string> onAnimationStoppedListener = null, Action<AnimationSound> onShouldPlaySoundListener = null)
     parameters:
     - id: walkSpeedSupplier
       type: Vintagestory.API.Common.WalkSpeedSupplierDelegate
@@ -321,11 +293,13 @@ items:
       type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint}
     - id: onAnimationStoppedListener
       type: System.Action{System.String}
-    content.vb: Public Sub New(walkSpeedSupplier As WalkSpeedSupplierDelegate, animations As Animation(), rootElements As ShapeElement(), jointsById As Dictionary(Of Integer, AnimationJoint), onAnimationStoppedListener As Action(Of String) = Nothing)
+    - id: onShouldPlaySoundListener
+      type: System.Action{Vintagestory.API.Common.AnimationSound}
+    content.vb: Public Sub New(walkSpeedSupplier As WalkSpeedSupplierDelegate, animations As Animation(), rootElements As ShapeElement(), jointsById As Dictionary(Of Integer, AnimationJoint), onAnimationStoppedListener As Action(Of String) = Nothing, onShouldPlaySoundListener As Action(Of AnimationSound) = Nothing)
   overload: Vintagestory.API.Common.ClientAnimator.#ctor*
-  nameWithType.vb: ClientAnimator.New(WalkSpeedSupplierDelegate, Animation(), ShapeElement(), Dictionary(Of Integer, AnimationJoint), Action(Of String))
-  fullName.vb: Vintagestory.API.Common.ClientAnimator.New(Vintagestory.API.Common.WalkSpeedSupplierDelegate, Vintagestory.API.Common.Animation(), Vintagestory.API.Common.ShapeElement(), System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AnimationJoint), System.Action(Of String))
-  name.vb: New(WalkSpeedSupplierDelegate, Animation(), ShapeElement(), Dictionary(Of Integer, AnimationJoint), Action(Of String))
+  nameWithType.vb: ClientAnimator.New(WalkSpeedSupplierDelegate, Animation(), ShapeElement(), Dictionary(Of Integer, AnimationJoint), Action(Of String), Action(Of AnimationSound))
+  fullName.vb: Vintagestory.API.Common.ClientAnimator.New(Vintagestory.API.Common.WalkSpeedSupplierDelegate, Vintagestory.API.Common.Animation(), Vintagestory.API.Common.ShapeElement(), System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.AnimationJoint), System.Action(Of String), System.Action(Of Vintagestory.API.Common.AnimationSound))
+  name.vb: New(WalkSpeedSupplierDelegate, Animation(), ShapeElement(), Dictionary(Of Integer, AnimationJoint), Action(Of String), Action(Of AnimationSound))
 - uid: Vintagestory.API.Common.ClientAnimator.initFields
   commentId: M:Vintagestory.API.Common.ClientAnimator.initFields
   id: initFields
@@ -344,6 +318,26 @@ items:
     content: protected virtual void initFields()
     content.vb: Protected Overridable Sub initFields()
   overload: Vintagestory.API.Common.ClientAnimator.initFields*
+- uid: Vintagestory.API.Common.ClientAnimator.ReloadAttachmentPoints
+  commentId: M:Vintagestory.API.Common.ClientAnimator.ReloadAttachmentPoints
+  id: ReloadAttachmentPoints
+  parent: Vintagestory.API.Common.ClientAnimator
+  langs:
+  - csharp
+  - vb
+  name: ReloadAttachmentPoints()
+  nameWithType: ClientAnimator.ReloadAttachmentPoints()
+  fullName: Vintagestory.API.Common.ClientAnimator.ReloadAttachmentPoints()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override void ReloadAttachmentPoints()
+    content.vb: Public Overrides Sub ReloadAttachmentPoints()
+  overridden: Vintagestory.API.Common.AnimatorBase.ReloadAttachmentPoints
+  overload: Vintagestory.API.Common.ClientAnimator.ReloadAttachmentPoints*
 - uid: Vintagestory.API.Common.ClientAnimator.LoadAttachmentPoints(System.Collections.Generic.List{Vintagestory.API.Common.ElementPose})
   commentId: M:Vintagestory.API.Common.ClientAnimator.LoadAttachmentPoints(System.Collections.Generic.List{Vintagestory.API.Common.ElementPose})
   id: LoadAttachmentPoints(System.Collections.Generic.List{Vintagestory.API.Common.ElementPose})
@@ -449,6 +443,29 @@ items:
     content.vb: Protected Overrides Sub AnimNowActive(anim As RunningAnimation, animData As AnimationMetaData)
   overridden: Vintagestory.API.Common.AnimatorBase.AnimNowActive(Vintagestory.API.Common.RunningAnimation,Vintagestory.API.Common.AnimationMetaData)
   overload: Vintagestory.API.Common.ClientAnimator.AnimNowActive*
+- uid: Vintagestory.API.Common.ClientAnimator.MaxJointId
+  commentId: P:Vintagestory.API.Common.ClientAnimator.MaxJointId
+  id: MaxJointId
+  parent: Vintagestory.API.Common.ClientAnimator
+  langs:
+  - csharp
+  - vb
+  name: MaxJointId
+  nameWithType: ClientAnimator.MaxJointId
+  fullName: Vintagestory.API.Common.ClientAnimator.MaxJointId
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override int MaxJointId { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Overrides ReadOnly Property MaxJointId As Integer
+  overridden: Vintagestory.API.Common.AnimatorBase.MaxJointId
+  overload: Vintagestory.API.Common.ClientAnimator.MaxJointId*
 - uid: Vintagestory.API.Common.ClientAnimator.OnFrame(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},System.Single)
   commentId: M:Vintagestory.API.Common.ClientAnimator.OnFrame(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},System.Single)
   id: OnFrame(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},System.Single)
@@ -506,6 +523,28 @@ items:
   nameWithType.vb: ClientAnimator.calculateMatrices(Single)
   fullName.vb: Vintagestory.API.Common.ClientAnimator.calculateMatrices(Single)
   name.vb: calculateMatrices(Single)
+- uid: Vintagestory.API.Common.ClientAnimator.DumpCurrentState
+  commentId: M:Vintagestory.API.Common.ClientAnimator.DumpCurrentState
+  id: DumpCurrentState
+  parent: Vintagestory.API.Common.ClientAnimator
+  langs:
+  - csharp
+  - vb
+  name: DumpCurrentState()
+  nameWithType: ClientAnimator.DumpCurrentState()
+  fullName: Vintagestory.API.Common.ClientAnimator.DumpCurrentState()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public override string DumpCurrentState()
+    return:
+      type: System.String
+    content.vb: Public Overrides Function DumpCurrentState() As String
+  overridden: Vintagestory.API.Common.AnimatorBase.DumpCurrentState
+  overload: Vintagestory.API.Common.ClientAnimator.DumpCurrentState*
 references:
 - uid: Vintagestory.API.Common.AnimatorBase
   commentId: T:Vintagestory.API.Common.AnimatorBase
@@ -562,41 +601,13 @@ references:
   name: IAnimator
   nameWithType: IAnimator
   fullName: Vintagestory.API.Common.IAnimator
-- uid: Vintagestory.API.Common.AnimatorBase.identMat4x3
-  commentId: F:Vintagestory.API.Common.AnimatorBase.identMat4x3
+- uid: Vintagestory.API.Common.AnimatorBase.identMat
+  commentId: F:Vintagestory.API.Common.AnimatorBase.identMat
   parent: Vintagestory.API.Common.AnimatorBase
-  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_identMat4x3
-  name: identMat4x3
-  nameWithType: AnimatorBase.identMat4x3
-  fullName: Vintagestory.API.Common.AnimatorBase.identMat4x3
-- uid: Vintagestory.API.Common.AnimatorBase.anims
-  commentId: F:Vintagestory.API.Common.AnimatorBase.anims
-  parent: Vintagestory.API.Common.AnimatorBase
-  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_anims
-  name: anims
-  nameWithType: AnimatorBase.anims
-  fullName: Vintagestory.API.Common.AnimatorBase.anims
-- uid: Vintagestory.API.Common.AnimatorBase.TransformationMatrices4x3
-  commentId: F:Vintagestory.API.Common.AnimatorBase.TransformationMatrices4x3
-  parent: Vintagestory.API.Common.AnimatorBase
-  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatrices4x3
-  name: TransformationMatrices4x3
-  nameWithType: AnimatorBase.TransformationMatrices4x3
-  fullName: Vintagestory.API.Common.AnimatorBase.TransformationMatrices4x3
-- uid: Vintagestory.API.Common.AnimatorBase.TransformationMatricesDefaultPose4x3
-  commentId: F:Vintagestory.API.Common.AnimatorBase.TransformationMatricesDefaultPose4x3
-  parent: Vintagestory.API.Common.AnimatorBase
-  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatricesDefaultPose4x3
-  name: TransformationMatricesDefaultPose4x3
-  nameWithType: AnimatorBase.TransformationMatricesDefaultPose4x3
-  fullName: Vintagestory.API.Common.AnimatorBase.TransformationMatricesDefaultPose4x3
-- uid: Vintagestory.API.Common.AnimatorBase.AttachmentPointByCode
-  commentId: F:Vintagestory.API.Common.AnimatorBase.AttachmentPointByCode
-  parent: Vintagestory.API.Common.AnimatorBase
-  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_AttachmentPointByCode
-  name: AttachmentPointByCode
-  nameWithType: AnimatorBase.AttachmentPointByCode
-  fullName: Vintagestory.API.Common.AnimatorBase.AttachmentPointByCode
+  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_identMat
+  name: identMat
+  nameWithType: AnimatorBase.identMat
+  fullName: Vintagestory.API.Common.AnimatorBase.identMat
 - uid: Vintagestory.API.Common.AnimatorBase.activeAnimCount
   commentId: F:Vintagestory.API.Common.AnimatorBase.activeAnimCount
   parent: Vintagestory.API.Common.AnimatorBase
@@ -604,6 +615,48 @@ references:
   name: activeAnimCount
   nameWithType: AnimatorBase.activeAnimCount
   fullName: Vintagestory.API.Common.AnimatorBase.activeAnimCount
+- uid: Vintagestory.API.Common.AnimatorBase.RootElements
+  commentId: F:Vintagestory.API.Common.AnimatorBase.RootElements
+  parent: Vintagestory.API.Common.AnimatorBase
+  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_RootElements
+  name: RootElements
+  nameWithType: AnimatorBase.RootElements
+  fullName: Vintagestory.API.Common.AnimatorBase.RootElements
+- uid: Vintagestory.API.Common.AnimatorBase.RootPoses
+  commentId: F:Vintagestory.API.Common.AnimatorBase.RootPoses
+  parent: Vintagestory.API.Common.AnimatorBase
+  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_RootPoses
+  name: RootPoses
+  nameWithType: AnimatorBase.RootPoses
+  fullName: Vintagestory.API.Common.AnimatorBase.RootPoses
+- uid: Vintagestory.API.Common.AnimatorBase.anims
+  commentId: F:Vintagestory.API.Common.AnimatorBase.anims
+  parent: Vintagestory.API.Common.AnimatorBase
+  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_anims
+  name: anims
+  nameWithType: AnimatorBase.anims
+  fullName: Vintagestory.API.Common.AnimatorBase.anims
+- uid: Vintagestory.API.Common.AnimatorBase.TransformationMatrices
+  commentId: F:Vintagestory.API.Common.AnimatorBase.TransformationMatrices
+  parent: Vintagestory.API.Common.AnimatorBase
+  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatrices
+  name: TransformationMatrices
+  nameWithType: AnimatorBase.TransformationMatrices
+  fullName: Vintagestory.API.Common.AnimatorBase.TransformationMatrices
+- uid: Vintagestory.API.Common.AnimatorBase.TransformationMatricesDefaultPose
+  commentId: F:Vintagestory.API.Common.AnimatorBase.TransformationMatricesDefaultPose
+  parent: Vintagestory.API.Common.AnimatorBase
+  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatricesDefaultPose
+  name: TransformationMatricesDefaultPose
+  nameWithType: AnimatorBase.TransformationMatricesDefaultPose
+  fullName: Vintagestory.API.Common.AnimatorBase.TransformationMatricesDefaultPose
+- uid: Vintagestory.API.Common.AnimatorBase.AttachmentPointByCode
+  commentId: F:Vintagestory.API.Common.AnimatorBase.AttachmentPointByCode
+  parent: Vintagestory.API.Common.AnimatorBase
+  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_AttachmentPointByCode
+  name: AttachmentPointByCode
+  nameWithType: AnimatorBase.AttachmentPointByCode
+  fullName: Vintagestory.API.Common.AnimatorBase.AttachmentPointByCode
 - uid: Vintagestory.API.Common.AnimatorBase.CurAnims
   commentId: F:Vintagestory.API.Common.AnimatorBase.CurAnims
   parent: Vintagestory.API.Common.AnimatorBase
@@ -618,13 +671,13 @@ references:
   name: CalculateMatrices
   nameWithType: AnimatorBase.CalculateMatrices
   fullName: Vintagestory.API.Common.AnimatorBase.CalculateMatrices
-- uid: Vintagestory.API.Common.AnimatorBase.Matrices4x3
-  commentId: P:Vintagestory.API.Common.AnimatorBase.Matrices4x3
+- uid: Vintagestory.API.Common.AnimatorBase.Matrices
+  commentId: P:Vintagestory.API.Common.AnimatorBase.Matrices
   parent: Vintagestory.API.Common.AnimatorBase
-  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_Matrices4x3
-  name: Matrices4x3
-  nameWithType: AnimatorBase.Matrices4x3
-  fullName: Vintagestory.API.Common.AnimatorBase.Matrices4x3
+  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_Matrices
+  name: Matrices
+  nameWithType: AnimatorBase.Matrices
+  fullName: Vintagestory.API.Common.AnimatorBase.Matrices
 - uid: Vintagestory.API.Common.AnimatorBase.ActiveAnimationCount
   commentId: P:Vintagestory.API.Common.AnimatorBase.ActiveAnimationCount
   parent: Vintagestory.API.Common.AnimatorBase
@@ -639,6 +692,13 @@ references:
   name: RunningAnimations
   nameWithType: AnimatorBase.RunningAnimations
   fullName: Vintagestory.API.Common.AnimatorBase.RunningAnimations
+- uid: Vintagestory.API.Common.AnimatorBase.Animations
+  commentId: P:Vintagestory.API.Common.AnimatorBase.Animations
+  parent: Vintagestory.API.Common.AnimatorBase
+  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_Animations
+  name: Animations
+  nameWithType: AnimatorBase.Animations
+  fullName: Vintagestory.API.Common.AnimatorBase.Animations
 - uid: Vintagestory.API.Common.AnimatorBase.GetAnimationState(System.String)
   commentId: M:Vintagestory.API.Common.AnimatorBase.GetAnimationState(System.String)
   parent: Vintagestory.API.Common.AnimatorBase
@@ -669,25 +729,6 @@ references:
     name: String
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
-  - name: )
-- uid: Vintagestory.API.Common.AnimatorBase.DumpCurrentState
-  commentId: M:Vintagestory.API.Common.AnimatorBase.DumpCurrentState
-  parent: Vintagestory.API.Common.AnimatorBase
-  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_DumpCurrentState
-  name: DumpCurrentState()
-  nameWithType: AnimatorBase.DumpCurrentState()
-  fullName: Vintagestory.API.Common.AnimatorBase.DumpCurrentState()
-  spec.csharp:
-  - uid: Vintagestory.API.Common.AnimatorBase.DumpCurrentState
-    name: DumpCurrentState
-    href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_DumpCurrentState
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.AnimatorBase.DumpCurrentState
-    name: DumpCurrentState
-    href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_DumpCurrentState
-  - name: (
   - name: )
 - uid: Vintagestory.API.Common.AnimatorBase.GetAttachmentPointPose(System.String)
   commentId: M:Vintagestory.API.Common.AnimatorBase.GetAttachmentPointPose(System.String)
@@ -939,6 +980,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -946,125 +1049,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: Vintagestory.API.Common.ShapeElement[]
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
   isExternal: true
-  href: Vintagestory.API.Common.ShapeElement.html
-  name: ShapeElement[]
-  nameWithType: ShapeElement[]
-  fullName: Vintagestory.API.Common.ShapeElement[]
-  nameWithType.vb: ShapeElement()
-  fullName.vb: Vintagestory.API.Common.ShapeElement()
-  name.vb: ShapeElement()
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
   spec.csharp:
-  - uid: Vintagestory.API.Common.ShapeElement
-    name: ShapeElement
-    href: Vintagestory.API.Common.ShapeElement.html
-  - name: '['
-  - name: ']'
-  spec.vb:
-  - uid: Vintagestory.API.Common.ShapeElement
-    name: ShapeElement
-    href: Vintagestory.API.Common.ShapeElement.html
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
   - name: (
-  - name: )
-- uid: System.Collections.Generic.List{Vintagestory.API.Common.ElementPose}
-  commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.ElementPose}
-  parent: System.Collections.Generic
-  definition: System.Collections.Generic.List`1
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  name: List<ElementPose>
-  nameWithType: List<ElementPose>
-  fullName: System.Collections.Generic.List<Vintagestory.API.Common.ElementPose>
-  nameWithType.vb: List(Of ElementPose)
-  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Common.ElementPose)
-  name.vb: List(Of ElementPose)
-  spec.csharp:
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: System.Object
+    name: object
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: <
-  - uid: Vintagestory.API.Common.ElementPose
-    name: ElementPose
-    href: Vintagestory.API.Common.ElementPose.html
-  - name: '>'
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
   spec.vb:
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
   - name: (
-  - name: Of
-  - name: " "
-  - uid: Vintagestory.API.Common.ElementPose
-    name: ElementPose
-    href: Vintagestory.API.Common.ElementPose.html
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
-- uid: System.Collections.Generic.List`1
-  commentId: T:System.Collections.Generic.List`1
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
   isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  name: List<T>
-  nameWithType: List<T>
-  fullName: System.Collections.Generic.List<T>
-  nameWithType.vb: List(Of T)
-  fullName.vb: System.Collections.Generic.List(Of T)
-  name.vb: List(Of T)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
   spec.csharp:
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  - name: <
-  - name: T
-  - name: '>'
-  spec.vb:
-  - uid: System.Collections.Generic.List`1
-    name: List
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
   - name: (
-  - name: Of
-  - name: " "
-  - name: T
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
-- uid: System.Collections.Generic
-  commentId: N:System.Collections.Generic
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system
-  name: System.Collections.Generic
-  nameWithType: System.Collections.Generic
-  fullName: System.Collections.Generic
-  spec.csharp:
-  - uid: System
-    name: System
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
-  - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
-  - name: .
-  - uid: System.Collections.Generic
-    name: Generic
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
   spec.vb:
-  - uid: System
-    name: System
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
   - name: .
-  - uid: System.Collections
-    name: Collections
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
   - name: .
-  - uid: System.Collections.Generic
-    name: Generic
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Collections.Generic.HashSet{System.Int32}
   commentId: T:System.Collections.Generic.HashSet{System.Int32}
   parent: System.Collections.Generic
@@ -1128,6 +1209,43 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
 - uid: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint}
   commentId: T:System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint}
   parent: System.Collections.Generic
@@ -1231,6 +1349,39 @@ references:
   name: Entity
   nameWithType: Entity
   fullName: Vintagestory.API.Common.Entities.Entity
+- uid: System.Collections.Generic.List{Vintagestory.API.Common.ElementPose}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.ElementPose}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<ElementPose>
+  nameWithType: List<ElementPose>
+  fullName: System.Collections.Generic.List<Vintagestory.API.Common.ElementPose>
+  nameWithType.vb: List(Of ElementPose)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Common.ElementPose)
+  name.vb: List(Of ElementPose)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.Common.ElementPose
+    name: ElementPose
+    href: Vintagestory.API.Common.ElementPose.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.ElementPose
+    name: ElementPose
+    href: Vintagestory.API.Common.ElementPose.html
+  - name: )
 - uid: Vintagestory.API.Common.Animation[]
   isExternal: true
   href: Vintagestory.API.Common.Animation.html
@@ -1250,6 +1401,27 @@ references:
   - uid: Vintagestory.API.Common.Animation
     name: Animation
     href: Vintagestory.API.Common.Animation.html
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ShapeElement[]
+  isExternal: true
+  href: Vintagestory.API.Common.ShapeElement.html
+  name: ShapeElement[]
+  nameWithType: ShapeElement[]
+  fullName: Vintagestory.API.Common.ShapeElement[]
+  nameWithType.vb: ShapeElement()
+  fullName.vb: Vintagestory.API.Common.ShapeElement()
+  name.vb: ShapeElement()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ShapeElement
+    name: ShapeElement
+    href: Vintagestory.API.Common.ShapeElement.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.ShapeElement
+    name: ShapeElement
+    href: Vintagestory.API.Common.ShapeElement.html
   - name: (
   - name: )
 - uid: Vintagestory.API.Common.ClientAnimator
@@ -1297,9 +1469,37 @@ references:
   - uid: Vintagestory.API.Common.Entities
     name: Entities
     href: Vintagestory.API.Common.Entities.html
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: Vintagestory.API.Common.ClientAnimator.#ctor*
   commentId: Overload:Vintagestory.API.Common.ClientAnimator.#ctor
-  href: Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_Vintagestory_API_Common_Animation___System_Action_System_String__
+  href: Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator__ctor_Vintagestory_API_Common_WalkSpeedSupplierDelegate_Vintagestory_API_Common_Animation___System_Action_System_String__System_Action_Vintagestory_API_Common_AnimationSound__
   name: ClientAnimator
   nameWithType: ClientAnimator.ClientAnimator
   fullName: Vintagestory.API.Common.ClientAnimator.ClientAnimator
@@ -1348,6 +1548,39 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: )
+- uid: System.Action{Vintagestory.API.Common.AnimationSound}
+  commentId: T:System.Action{Vintagestory.API.Common.AnimationSound}
+  parent: System
+  definition: System.Action`1
+  href: https://learn.microsoft.com/dotnet/api/system.action-1
+  name: Action<AnimationSound>
+  nameWithType: Action<AnimationSound>
+  fullName: System.Action<Vintagestory.API.Common.AnimationSound>
+  nameWithType.vb: Action(Of AnimationSound)
+  fullName.vb: System.Action(Of Vintagestory.API.Common.AnimationSound)
+  name.vb: Action(Of AnimationSound)
+  spec.csharp:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: <
+  - uid: Vintagestory.API.Common.AnimationSound
+    name: AnimationSound
+    href: Vintagestory.API.Common.AnimationSound.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Action`1
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.Common.AnimationSound
+    name: AnimationSound
+    href: Vintagestory.API.Common.AnimationSound.html
+  - name: )
 - uid: System.Action`1
   commentId: T:System.Action`1
   isExternal: true
@@ -1382,6 +1615,31 @@ references:
   name: initFields
   nameWithType: ClientAnimator.initFields
   fullName: Vintagestory.API.Common.ClientAnimator.initFields
+- uid: Vintagestory.API.Common.AnimatorBase.ReloadAttachmentPoints
+  commentId: M:Vintagestory.API.Common.AnimatorBase.ReloadAttachmentPoints
+  parent: Vintagestory.API.Common.AnimatorBase
+  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_ReloadAttachmentPoints
+  name: ReloadAttachmentPoints()
+  nameWithType: AnimatorBase.ReloadAttachmentPoints()
+  fullName: Vintagestory.API.Common.AnimatorBase.ReloadAttachmentPoints()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AnimatorBase.ReloadAttachmentPoints
+    name: ReloadAttachmentPoints
+    href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_ReloadAttachmentPoints
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AnimatorBase.ReloadAttachmentPoints
+    name: ReloadAttachmentPoints
+    href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_ReloadAttachmentPoints
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ClientAnimator.ReloadAttachmentPoints*
+  commentId: Overload:Vintagestory.API.Common.ClientAnimator.ReloadAttachmentPoints
+  href: Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_ReloadAttachmentPoints
+  name: ReloadAttachmentPoints
+  nameWithType: ClientAnimator.ReloadAttachmentPoints
+  fullName: Vintagestory.API.Common.ClientAnimator.ReloadAttachmentPoints
 - uid: Vintagestory.API.Common.ClientAnimator.LoadAttachmentPoints*
   commentId: Overload:Vintagestory.API.Common.ClientAnimator.LoadAttachmentPoints
   href: Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_LoadAttachmentPoints_System_Collections_Generic_List_Vintagestory_API_Common_ElementPose__
@@ -1524,6 +1782,19 @@ references:
   name: AnimationMetaData
   nameWithType: AnimationMetaData
   fullName: Vintagestory.API.Common.AnimationMetaData
+- uid: Vintagestory.API.Common.AnimatorBase.MaxJointId
+  commentId: P:Vintagestory.API.Common.AnimatorBase.MaxJointId
+  parent: Vintagestory.API.Common.AnimatorBase
+  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_MaxJointId
+  name: MaxJointId
+  nameWithType: AnimatorBase.MaxJointId
+  fullName: Vintagestory.API.Common.AnimatorBase.MaxJointId
+- uid: Vintagestory.API.Common.ClientAnimator.MaxJointId*
+  commentId: Overload:Vintagestory.API.Common.ClientAnimator.MaxJointId
+  href: Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_MaxJointId
+  name: MaxJointId
+  nameWithType: ClientAnimator.MaxJointId
+  fullName: Vintagestory.API.Common.ClientAnimator.MaxJointId
 - uid: Vintagestory.API.Common.AnimatorBase.OnFrame(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},System.Single)
   commentId: M:Vintagestory.API.Common.AnimatorBase.OnFrame(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.AnimationMetaData},System.Single)
   parent: Vintagestory.API.Common.AnimatorBase
@@ -1690,3 +1961,28 @@ references:
   name: calculateMatrices
   nameWithType: ClientAnimator.calculateMatrices
   fullName: Vintagestory.API.Common.ClientAnimator.calculateMatrices
+- uid: Vintagestory.API.Common.AnimatorBase.DumpCurrentState
+  commentId: M:Vintagestory.API.Common.AnimatorBase.DumpCurrentState
+  parent: Vintagestory.API.Common.AnimatorBase
+  href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_DumpCurrentState
+  name: DumpCurrentState()
+  nameWithType: AnimatorBase.DumpCurrentState()
+  fullName: Vintagestory.API.Common.AnimatorBase.DumpCurrentState()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.AnimatorBase.DumpCurrentState
+    name: DumpCurrentState
+    href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_DumpCurrentState
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.AnimatorBase.DumpCurrentState
+    name: DumpCurrentState
+    href: Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_DumpCurrentState
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Common.ClientAnimator.DumpCurrentState*
+  commentId: Overload:Vintagestory.API.Common.ClientAnimator.DumpCurrentState
+  href: Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_DumpCurrentState
+  name: DumpCurrentState
+  nameWithType: ClientAnimator.DumpCurrentState
+  fullName: Vintagestory.API.Common.ClientAnimator.DumpCurrentState

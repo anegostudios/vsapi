@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -219,6 +219,16 @@ Class Entity
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -771,37 +781,6 @@ Class Entity
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.FloatingSedimentParticles.html">FloatingSedimentParticles</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_Entities_Entity_HurtColor" data-uid="Vintagestory.API.Common.Entities.Entity.HurtColor">
-  HurtColor
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Color used when the entity is being attacked</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected int HurtColor</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 
@@ -1642,6 +1621,36 @@ Class Entity
 
 
 
+  <h3 id="Vintagestory_API_Common_Entities_Entity_fireDamageAccum" data-uid="Vintagestory.API.Common.Entities.Entity.fireDamageAccum">
+  fireDamageAccum
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected float fireDamageAccum</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_Entities_Entity_hasRepulseBehavior" data-uid="Vintagestory.API.Common.Entities.Entity.hasRepulseBehavior">
   hasRepulseBehavior
   
@@ -1763,6 +1772,38 @@ Class Entity
 
 
 
+  <h3 id="Vintagestory_API_Common_Entities_Entity_requirePosesOnServer" data-uid="Vintagestory.API.Common.Entities.Entity.requirePosesOnServer">
+  requirePosesOnServer
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, will fully simulate animations on the server so one has access to the positions of all attachment points.
+If false, only root level attachment points will be available server side</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool requirePosesOnServer</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_Entities_Entity_resetLightHsv" data-uid="Vintagestory.API.Common.Entities.Entity.resetLightHsv">
   resetLightHsv
   
@@ -1773,6 +1814,36 @@ Class Entity
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected bool resetLightHsv</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_shapeFresh" data-uid="Vintagestory.API.Common.Entities.Entity.shapeFresh">
+  shapeFresh
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool shapeFresh</code></pre>
   </div>
 
 
@@ -1811,6 +1882,37 @@ Class Entity
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_trickleDownRayIntersects" data-uid="Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects">
+  trickleDownRayIntersects
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If true, will call EntityBheavior.IntersectsRay. Default off to increase performance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool trickleDownRayIntersects</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -1977,6 +2079,37 @@ Set and Called by the Entities ServerSystem</p>
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_FrustumSphereRadius_" data-uid="Vintagestory.API.Common.Entities.Entity.FrustumSphereRadius*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_FrustumSphereRadius" data-uid="Vintagestory.API.Common.Entities.Entity.FrustumSphereRadius">
+  FrustumSphereRadius
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual double FrustumSphereRadius { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
     <dd></dd>
   </dl>
 
@@ -2287,7 +2420,7 @@ A density below 1000 means the entity floats on top of water if has a physics si
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int RenderColor { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int RenderColor { get; set; }</code></pre>
   </div>
 
 
@@ -2297,6 +2430,37 @@ A density below 1000 means the entity floats on top of water if has a physics si
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_ShapeFresh_" data-uid="Vintagestory.API.Common.Entities.Entity.ShapeFresh*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_ShapeFresh" data-uid="Vintagestory.API.Common.Entities.Entity.ShapeFresh">
+  ShapeFresh
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ShapeFresh { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -2513,7 +2677,7 @@ A density below 1000 means the entity floats on top of water if has a physics si
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AfterInitialized(bool onFirstSpawn)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual void AfterInitialized(bool onFirstSpawn)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -3012,6 +3176,43 @@ position in relation to the target position of the schematic to be imported.</p>
 
 
 
+  <a id="Vintagestory_API_Common_Entities_Entity_GetInterface_" data-uid="Vintagestory.API.Common.Entities.Entity.GetInterface*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_GetInterface__1" data-uid="Vintagestory.API.Common.Entities.Entity.GetInterface``1">
+  GetInterface&lt;T&gt;()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns itself or the first behavior that implements the interface T</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual T GetInterface&lt;T&gt;() where T : class</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Entities_Entity_GetName_" data-uid="Vintagestory.API.Common.Entities.Entity.GetName*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_Entity_GetName" data-uid="Vintagestory.API.Common.Entities.Entity.GetName">
@@ -3031,6 +3232,37 @@ position in relation to the target position of the schematic to be imported.</p>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_GetTextureSource_" data-uid="Vintagestory.API.Common.Entities.Entity.GetTextureSource*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_GetTextureSource" data-uid="Vintagestory.API.Common.Entities.Entity.GetTextureSource">
+  GetTextureSource()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ITexPositionSource GetTextureSource()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.ITexPositionSource.html">ITexPositionSource</a></dt>
     <dd></dd>
   </dl>
 
@@ -3179,6 +3411,50 @@ position in relation to the target position of the schematic to be imported.</p>
 
 
 
+  <a id="Vintagestory_API_Common_Entities_Entity_IntersectsRay_" data-uid="Vintagestory.API.Common.Entities.Entity.IntersectsRay*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_IntersectsRay_Vintagestory_API_MathTools_Ray_Vintagestory_API_MathTools_AABBIntersectionTest_System_Double__System_Int32__" data-uid="Vintagestory.API.Common.Entities.Entity.IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@)">
+  IntersectsRay(Ray, AABBIntersectionTest, out double, ref int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>To test for player-&gt;entity selection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IntersectsRay(Ray ray, AABBIntersectionTest interesectionTester, out double intersectionDistance, ref int selectionBoxIndex)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ray</code> <a class="xref" href="Vintagestory.API.MathTools.Ray.html">Ray</a></dt>
+    <dd></dd>
+    <dt><code>interesectionTester</code> <a class="xref" href="Vintagestory.API.MathTools.AABBIntersectionTest.html">AABBIntersectionTest</a></dt>
+    <dd><p>Is already preloaded with the ray</p>
+</dd>
+    <dt><code>intersectionDistance</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>selectionBoxIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Entities_Entity_IsActivityRunning_" data-uid="Vintagestory.API.Common.Entities.Entity.IsActivityRunning*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_Entity_IsActivityRunning_System_String_" data-uid="Vintagestory.API.Common.Entities.Entity.IsActivityRunning(System.String)">
@@ -3205,6 +3481,32 @@ position in relation to the target position of the schematic to be imported.</p>
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_MarkShapeModified_" data-uid="Vintagestory.API.Common.Entities.Entity.MarkShapeModified*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_MarkShapeModified" data-uid="Vintagestory.API.Common.Entities.Entity.MarkShapeModified">
+  MarkShapeModified()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void MarkShapeModified()</code></pre>
+  </div>
+
+
 
 
 
@@ -3628,48 +3930,6 @@ position in relation to the target position of the schematic to be imported.</p>
 
   <a id="Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings*"></a>
 
-  <h3 id="Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_" data-uid="Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32)">
-  OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Called by the blockschematic loader so that you may fix any blockid/itemid mappings against the mapping of the savegame, if you store any collectibles in this blockentity.
-Note: Some vanilla blocks resolve randomized contents in this method.
-Hint: Use itemstack.FixMapping() to do the job for you.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the variant with resolveImports parameter&quot;)]
-public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary&lt;int, AssetLocation&gt; oldBlockIdMapping, Dictionary&lt;int, AssetLocation&gt; oldItemIdMapping, int schematicSeed)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>worldForNewMappings</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
-    <dd></dd>
-    <dt><code>oldBlockIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
-    <dd></dd>
-    <dt><code>oldItemIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
-    <dd></dd>
-    <dt><code>schematicSeed</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>If you need some sort of randomness consistency accross an imported schematic, you can use this value</p>
-</dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings*"></a>
-
   <h3 id="Vintagestory_API_Common_Entities_Entity_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Int32_System_Boolean_" data-uid="Vintagestory.API.Common.Entities.Entity.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Int32,System.Boolean)">
   OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, int, bool)
   
@@ -3905,6 +4165,32 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <dt><code>itemIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
     <dd></dd>
   </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_OnTesselated_" data-uid="Vintagestory.API.Common.Entities.Entity.OnTesselated*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_OnTesselated" data-uid="Vintagestory.API.Common.Entities.Entity.OnTesselated">
+  OnTesselated()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnTesselated()</code></pre>
+  </div>
+
 
 
 

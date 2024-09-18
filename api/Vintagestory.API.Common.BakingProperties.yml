@@ -24,6 +24,48 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    Baking Properties are collectible attribute used for baking items in a clay oven.
+
+    You will need to add these attributes if using <xref href="Vintagestory.API.Common.EnumSmeltType.Bake" data-throw-if-not-resolved="false"></xref> inside <xref href="Vintagestory.API.Common.CombustibleProperties.SmeltingType" data-throw-if-not-resolved="false"></xref>.
+  example:
+  - >-
+    Example taken from bread. Note that the levelTo value in the baking stage is the same as the levelFrom in the next baking stage.
+
+    <pre><code class="lang-json">"attributesByType": {
+    	"*-partbaked": {
+    		"bakingProperties": {
+    			"temp": 160,
+    			"levelFrom": 0.25,
+    			"levelTo": 0.5,
+    			"startScaleY": 0.95,
+    			"endScaleY": 1.10,
+    			"resultCode": "bread-{type}-perfect",
+    			"initialCode": "dough-{type}"
+    		}
+    	},
+    	"*-perfect": {
+    		"bakingProperties": {
+    			"temp": 160,
+    			"levelFrom": 0.5,
+    			"levelTo": 0.75,
+    			"startScaleY": 1.10,
+    			"endScaleY": 1.13,
+    			"resultCode": "bread-{type}-charred",
+    			"initialCode": "bread-{type}-partbaked"
+    		}
+    	},
+    	"*-charred": {
+    		"bakingProperties": {
+    			"temp": 160,
+    			"levelFrom": 0.75,
+    			"levelTo": 1,
+    			"startScaleY": 1.13,
+    			"endScaleY": 1.10,
+    			"initialCode": "bread-{type}-perfect"
+    		}
+    	}
+    },</code></pre>
   syntax:
     content: public class BakingProperties
     content.vb: Public Class BakingProperties
@@ -37,6 +79,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.BakingProperties.Temp
   commentId: F:Vintagestory.API.Common.BakingProperties.Temp
   id: Temp
@@ -51,6 +96,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>160</jsondefault>-->
+
+    The temperature required to bake the item.
+  example: []
   syntax:
     content: public float? Temp
     return:
@@ -70,6 +120,13 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+
+    The initial value, from 0 to 1, that determines how cooked the item is.
+
+    When cooking an object with numerous cooking stages, these stages can be stacked using these values. Simply set the second stage's <xref href="Vintagestory.API.Common.BakingProperties.LevelFrom" data-throw-if-not-resolved="false"></xref> to the first stages <xref href="Vintagestory.API.Common.BakingProperties.LevelTo" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public float LevelFrom
     return:
@@ -89,6 +146,15 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The final value, from 0 to 1, that determines how cooked the item is.
+
+    When the cooking value reaches this value, the collectible will change into the next item.
+
+    When cooking an object with numerous cooking stages, these stages can be stacked using these values. Simply set the second stage's <xref href="Vintagestory.API.Common.BakingProperties.LevelFrom" data-throw-if-not-resolved="false"></xref> to the first stages <xref href="Vintagestory.API.Common.BakingProperties.LevelTo" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public float LevelTo
     return:
@@ -108,6 +174,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The Y scale of this collectible when it begins cooking. Value will be linearly interpolated between this and <xref href="Vintagestory.API.Common.BakingProperties.EndScaleY" data-throw-if-not-resolved="false"></xref>.
+  example: []
   syntax:
     content: public float StartScaleY
     return:
@@ -127,6 +198,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+
+    The Y scale of this collectible when it has finished cooking. Value will be linearly interpolated between <xref href="Vintagestory.API.Common.BakingProperties.StartScaleY" data-throw-if-not-resolved="false"></xref> and this.
+  example: []
   syntax:
     content: public float EndScaleY
     return:
@@ -146,6 +222,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Required</jsonoptional>-->
+
+    The code of the resulting collectible when this item finishes its cooking stage.
+  example: []
   syntax:
     content: public string ResultCode
     return:
@@ -165,6 +246,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Required</jsonoptional>-->
+
+    The code of the initial collectible that is being baked.
+  example: []
   syntax:
     content: public string InitialCode
     return:
@@ -184,6 +270,11 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: >-
+    <!--<jsonoptional>Recommended</jsonoptional><jsondefault>false</jsondefault>-->
+
+    If true, only one instance of this collectible can be baked at a time. If false, 4 of this collectible can be baked at a time.
+  example: []
   syntax:
     content: public bool LargeItem
     return:
@@ -213,6 +304,18 @@ items:
     content.vb: Public Shared Function ReadFrom(stack As ItemStack) As BakingProperties
   overload: Vintagestory.API.Common.BakingProperties.ReadFrom*
 references:
+- uid: Vintagestory.API.Common.EnumSmeltType.Bake
+  commentId: F:Vintagestory.API.Common.EnumSmeltType.Bake
+  href: Vintagestory.API.Common.EnumSmeltType.html#Vintagestory_API_Common_EnumSmeltType_Bake
+  name: Bake
+  nameWithType: EnumSmeltType.Bake
+  fullName: Vintagestory.API.Common.EnumSmeltType.Bake
+- uid: Vintagestory.API.Common.CombustibleProperties.SmeltingType
+  commentId: F:Vintagestory.API.Common.CombustibleProperties.SmeltingType
+  href: Vintagestory.API.Common.CombustibleProperties.html#Vintagestory_API_Common_CombustibleProperties_SmeltingType
+  name: SmeltingType
+  nameWithType: CombustibleProperties.SmeltingType
+  fullName: Vintagestory.API.Common.CombustibleProperties.SmeltingType
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
   href: Vintagestory.html
@@ -473,6 +576,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -480,6 +645,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Nullable{System.Single}
   commentId: T:System.Nullable{System.Single}
   parent: System
@@ -531,6 +793,18 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: Vintagestory.API.Common.BakingProperties.LevelFrom
+  commentId: F:Vintagestory.API.Common.BakingProperties.LevelFrom
+  href: Vintagestory.API.Common.BakingProperties.html#Vintagestory_API_Common_BakingProperties_LevelFrom
+  name: LevelFrom
+  nameWithType: BakingProperties.LevelFrom
+  fullName: Vintagestory.API.Common.BakingProperties.LevelFrom
+- uid: Vintagestory.API.Common.BakingProperties.LevelTo
+  commentId: F:Vintagestory.API.Common.BakingProperties.LevelTo
+  href: Vintagestory.API.Common.BakingProperties.html#Vintagestory_API_Common_BakingProperties_LevelTo
+  name: LevelTo
+  nameWithType: BakingProperties.LevelTo
+  fullName: Vintagestory.API.Common.BakingProperties.LevelTo
 - uid: System.Single
   commentId: T:System.Single
   parent: System
@@ -542,6 +816,18 @@ references:
   nameWithType.vb: Single
   fullName.vb: Single
   name.vb: Single
+- uid: Vintagestory.API.Common.BakingProperties.EndScaleY
+  commentId: F:Vintagestory.API.Common.BakingProperties.EndScaleY
+  href: Vintagestory.API.Common.BakingProperties.html#Vintagestory_API_Common_BakingProperties_EndScaleY
+  name: EndScaleY
+  nameWithType: BakingProperties.EndScaleY
+  fullName: Vintagestory.API.Common.BakingProperties.EndScaleY
+- uid: Vintagestory.API.Common.BakingProperties.StartScaleY
+  commentId: F:Vintagestory.API.Common.BakingProperties.StartScaleY
+  href: Vintagestory.API.Common.BakingProperties.html#Vintagestory_API_Common_BakingProperties_StartScaleY
+  name: StartScaleY
+  nameWithType: BakingProperties.StartScaleY
+  fullName: Vintagestory.API.Common.BakingProperties.StartScaleY
 - uid: System.String
   commentId: T:System.String
   parent: System

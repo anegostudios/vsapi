@@ -11,6 +11,30 @@ using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    [DocumentAsJson]
+    public class AnimationSound
+    {
+        public int Frame;
+        public AssetLocation Location;
+        public bool RandomizePitch = true;
+        public float Range = 32;
+
+        public AnimationSound Clone()
+        {
+            return new AnimationSound()
+            {
+                Frame = Frame,
+                Location = Location.Clone(),
+                RandomizePitch = RandomizePitch,
+                Range = Range
+            };
+        }
+    }
+
+    /// <summary>
+    /// Defines how multiple animations should be blended together.
+    /// </summary>
+    [DocumentAsJson]
     public enum EnumAnimationBlendMode
     {
         /// <summary>
@@ -27,12 +51,32 @@ namespace Vintagestory.API.Common
         AddAverage
     }
 
+    /// <summary>
+    /// Data about when an animation should be triggered.
+    /// </summary>
+    [DocumentAsJson]
     public class AnimationTrigger
     {
+        /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional>-->
+        /// An array of controls that should begin the animation.
+        /// </summary>
         [JsonProperty]
         public EnumEntityActivity[] OnControls;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+        /// If set to true, all OnControls elements need to be happening simultaneously to trigger the animation.
+        /// If set to false, at least one OnControls element needs to be happening to trigger the animation.
+        /// Defaults to false.
+        /// </summary>
         [JsonProperty]
         public bool MatchExact = false;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+        /// Is this animation the default animation for the entity?
+        /// </summary>
         [JsonProperty]
         public bool DefaultAnim = false;
 
@@ -47,64 +91,175 @@ namespace Vintagestory.API.Common
         }
     }
 
+    /// <summary>
+    /// Animation Meta Data is a json type that controls how an animation should be played.
+    /// </summary>
+    /// <example>
+    /// <code language="json">
+    ///"animations": [
+	///	{
+	///		"code": "hurt",
+	///		"animation": "hurt",
+	///		"animationSpeed": 2.2,
+	///		"weight": 10,
+	///		"blendMode": "AddAverage"
+	///	},
+	///	{
+	///		"code": "die",
+	///		"animation": "death",
+	///		"animationSpeed": 1.25,
+	///		"weight": 10,
+	///		"blendMode": "Average",
+	///		"triggeredBy": { "onControls": [ "dead" ] }
+	///	},
+	///	{
+	///		"code": "idle",
+	///		"animation": "idle",
+	///		"blendMode": "AddAverage",
+	///		"easeOutSpeed": 4,
+	///		"triggeredBy": { "defaultAnim": true }
+	///	},
+	///	{
+	///		"code": "walk",
+	///		"animation": "walk",
+	///		"weight": 5
+	///	}
+	///]
+    /// </code>
+    /// </example>
+    [DocumentAsJson]
     public class AnimationMetaData
     {
         /// <summary>
+        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// Unique identifier to be able to reference this AnimationMetaData instance
         /// </summary>
         [JsonProperty]
         public string Code;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// Custom attributes that can be used for the animation.
+        /// Valid vanilla attributes are:<br/>
+        /// - damageAtFrame (float)<br/>
+        /// - soundAtFrame (float)<br/>
+        /// - authorative (bool)<br/>
+        /// </summary>
         [JsonProperty, JsonConverter(typeof(JsonAttributesConverter))]
         public JsonObject Attributes;
+
         /// <summary>
+        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The animations code identifier that we want to play
         /// </summary>
         [JsonProperty]
         public string Animation;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+        /// The weight of this animation. When using multiple animations at a time, this controls the significance of each animation.
+        /// The method for determining final animation values depends on this and <see cref="BlendMode"/>.
+        /// </summary>
         [JsonProperty]
         public float Weight = 1f;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// A way of specifying <see cref="Weight"/> for each element.
+        /// Also see <see cref="ElementBlendMode"/> to control blend modes per element..
+        /// </summary>
         [JsonProperty]
         public Dictionary<string, float> ElementWeight = new Dictionary<string, float>();
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+        /// The speed this animation should play at.
+        /// </summary>
         [JsonProperty]
         public float AnimationSpeed = 1f;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+        /// Should this animation speed be multiplied by the movement speed of the entity?
+        /// </summary>
         [JsonProperty]
         public bool MulWithWalkSpeed = false;
+
         /// <summary>
-        /// This property can be used in cases where a animation with high weight is played alongside another animation with low element weight. In these cases, the easeIn become unaturally fast. Setting a value of 0.8f or similar here addresses this issue
-        /// 0f = uncapped weight
-        /// 0.5f = weight cannot exceed 2
-        /// 1f = weight cannot exceed 1
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// This property can be used in cases where a animation with high weight is played alongside another animation with low element weight.
+        /// In these cases, the easeIn become unaturally fast. Setting a value of 0.8f or similar here addresses this issue.<br/>
+        /// - 0f = uncapped weight<br/>
+        /// - 0.5f = weight cannot exceed 2<br/>
+        /// - 1f = weight cannot exceed 1
         /// </summary>
         [JsonProperty]
         public float WeightCapFactor = 0f;
+
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
         /// A multiplier applied to the weight value to "ease in" the animation. Choose a high value for looping animations or it will be glitchy
         /// </summary>
         [JsonProperty]
         public float EaseInSpeed = 10f;
+
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
         /// A multiplier applied to the weight value to "ease out" the animation. Choose a high value for looping animations or it will be glitchy
         /// </summary>
         [JsonProperty]
         public float EaseOutSpeed = 10f;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// Controls when this animation should be played.
+        /// </summary>
         [JsonProperty]
         public AnimationTrigger TriggeredBy;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Add</jsondefault>-->
+        /// The animation blend mode. Controls how this animation will react with other concurrent animations.
+        /// Also see <see cref="ElementBlendMode"/> to control blend mode per element.
+        /// </summary>
         [JsonProperty]
         public EnumAnimationBlendMode BlendMode = EnumAnimationBlendMode.Add;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// A way of specifying <see cref="BlendMode"/> per element.
+        /// </summary>
         [JsonProperty]
         public Dictionary<string, EnumAnimationBlendMode> ElementBlendMode = new Dictionary<string, EnumAnimationBlendMode>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+        /// Should this animation stop default animations from playing?
+        /// </summary>
         [JsonProperty]
         public bool SupressDefaultAnimation = false;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>99</jsondefault>-->
+        /// A value that determines whether to change the first-person eye position for the camera.
+        /// Higher values will keep eye position static.
+        /// </summary>
         [JsonProperty]
         public float HoldEyePosAfterEasein = 99f;
+
         /// <summary>
-        /// If true, the server does not sync this animation
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
+        /// If true, the server does not sync this animation.
         /// </summary>
         [JsonProperty]
         public bool ClientSide;
+        [JsonProperty]
+        public bool WithFpVariant;
+        [JsonProperty]
+        public AnimationSound AnimationSound;
 
+        public AnimationMetaData FpVariant;
         public float StartFrameOnce;
-
         int withActivitiesMerged;
         public uint CodeCrc32;
         public bool WasStartedFromTrigger;
@@ -125,13 +280,27 @@ namespace Vintagestory.API.Common
 
             CodeCrc32 = GetCrc32(Code);
 
+            if (WithFpVariant)
+            {
+                FpVariant = this.Clone();
+                FpVariant.WithFpVariant = false;
+                FpVariant.Animation += "-fp";
+                FpVariant.Code += "-fp";
+                FpVariant.Init();
+            }
+
+            if (AnimationSound != null)
+            {
+                AnimationSound.Location.WithPathPrefixOnce("sounds/");
+            }
+
             return this;
         }
 
         [OnDeserialized]
         internal void OnDeserializedMethod(StreamingContext context)
         {
-            Animation = Animation.ToLowerInvariant();
+            Animation = Animation?.ToLowerInvariant() ?? "";
             if (Code == null) Code = Animation;
 
             CodeCrc32 = GetCrc32(Code); 
@@ -155,6 +324,7 @@ namespace Vintagestory.API.Common
             {
                 Code = this.Code,
                 Animation = this.Animation,
+                AnimationSound = this.AnimationSound?.Clone(),
                 Weight = this.Weight,
                 Attributes = this.Attributes?.Clone(),
                 ClientSide = this.ClientSide,
@@ -237,6 +407,15 @@ namespace Vintagestory.API.Common
             writer.Write(ClientSide);
             writer.Write(Attributes?.ToString() ?? "");
             writer.Write(WeightCapFactor);
+
+            writer.Write(AnimationSound != null);
+            if (AnimationSound != null)
+            {
+                writer.Write(AnimationSound.Location.ToShortString());
+                writer.Write(AnimationSound.Range);
+                writer.Write(AnimationSound.Frame);
+                writer.Write(AnimationSound.RandomizePitch);
+            }
         }
 
         public static AnimationMetaData FromBytes(BinaryReader reader, string version)
@@ -310,6 +489,19 @@ namespace Vintagestory.API.Common
                 animdata.WeightCapFactor = reader.ReadSingle();
             }
 
+            if (GameVersion.IsAtLeastVersion(version, "1.20.0-dev.13"))
+            {
+                if (reader.ReadBoolean())
+                {
+                    animdata.AnimationSound = new AnimationSound()
+                    {
+                        Location = AssetLocation.Create(reader.ReadString()),
+                        Range = reader.ReadSingle(),
+                        Frame = reader.ReadInt32(),
+                        RandomizePitch = reader.ReadBoolean()
+                    };
+                }
+            }
 
             animdata.Init();
 

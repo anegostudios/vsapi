@@ -3,6 +3,10 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// A list of mouse buttons.
+    /// </summary>
+    [DocumentAsJson]
     public enum EnumMouseButton
     {
         Left = 0,
@@ -14,7 +18,10 @@ namespace Vintagestory.API.Common
         Button7 = 6,
         Button8 = 7,
 
-        Wheel = 13,   // Used to signal to event handlers, but not actually a button: activated when the wheel is scrolled
+        /// <summary>
+        /// Used to signal to event handlers, but not actually a button: activated when the wheel is scrolled.
+        /// </summary>
+        Wheel = 13,   
 
         None = 255,
     }

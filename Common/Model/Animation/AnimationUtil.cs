@@ -33,7 +33,7 @@ namespace Vintagestory.API.Common
         public virtual void InitializeShapeAndAnimator(string cacheDictKey, Shape shape, ITexPositionSource texSource, Vec3f rotation, out MeshData meshdata)
         {
             shape.ResolveReferences(api.World.Logger, cacheDictKey);
-            CacheInvTransforms(shape.Elements);
+            shape.CacheInvTransforms();
             shape.ResolveAndFindJoints(api.World.Logger, cacheDictKey);
 
             TesselationMetaData meta = new TesselationMetaData()
@@ -193,7 +193,7 @@ namespace Vintagestory.API.Common
                 animCache[cacheDictKey] = new AnimCacheEntry()
                 {
                     Animations = shape.Animations,
-                    RootElems = (animator as ClientAnimator).rootElements,
+                    RootElems = (animator as ClientAnimator).RootElements,
                     RootPoses = (animator as ClientAnimator).RootPoses
                 };
             }
@@ -202,17 +202,6 @@ namespace Vintagestory.API.Common
             return animator;
         }
 
-
-        public static void CacheInvTransforms(ShapeElement[] elements)
-        {
-            if (elements == null) return;
-
-            for (int i = 0; i < elements.Length; i++)
-            {
-                elements[i].CacheInverseTransformMatrix();
-                CacheInvTransforms(elements[i].Children);
-            }
-        }
 
         public void Dispose()
         {

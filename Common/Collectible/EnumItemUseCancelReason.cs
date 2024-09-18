@@ -7,6 +7,7 @@
         ChangeSlot,
         MovedAway,
         Death,
-        Destroyed
+        Destroyed,
+        OpenedGui
     }
 }

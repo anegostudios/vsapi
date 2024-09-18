@@ -8,14 +8,14 @@ namespace Vintagestory.API.MathTools
     {
         static Vec3f[][] cubicShellNormalizedVectors;
 
-        public static int maxShells = 32;
+        public static int MaxShells = 38;
 
         static ShapeUtil()
         {
-            cubicShellNormalizedVectors = new Vec3f[maxShells][];
+            cubicShellNormalizedVectors = new Vec3f[MaxShells][];
             int[] ab = new int[2];
 
-            for (int r = 1; r < maxShells; r++)
+            for (int r = 1; r < MaxShells; r++)
             {
                 cubicShellNormalizedVectors[r] = new Vec3f[(2 * r + 1) * (2 * r + 1) * 6];
                 int j = 0;

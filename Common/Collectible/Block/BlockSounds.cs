@@ -1,24 +1,84 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Vintagestory.API.Client;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// A set of sounds that are defined for a block. All fields use default or empty sounds if not set.
+    /// </summary>
+    /// <example>
+    /// <code language="json">
+    ///"sounds": {
+	///	"place": "block/dirt",
+	///	"break": "block/dirt",
+	///	"hit": "block/dirt",
+	///	"walk": "walk/grass"
+	///},
+    /// </code>
+    /// </example>
+    [DocumentAsJson]
     public class BlockSounds
     {
-        public virtual AssetLocation Walk { get; set; } = null;
-        public virtual AssetLocation Inside { get; set; } = null;
-        public virtual AssetLocation Break { get; set; } = null;
-        public virtual AssetLocation Place { get; set; } = null;
-        public virtual AssetLocation Hit { get; set; } = null;
-
-        public AssetLocation Ambient = null;
-
-        public float AmbientBlockCount = 10f;
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional>-->
+        /// Played when an entity walks on this block.
+        /// </summary>
+        [DocumentAsJson] public virtual AssetLocation Walk { get; set; } = null;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional>-->
+        /// Played when an entity moves inside this block. Primarily used for liquids.
+        /// </summary>
+        [DocumentAsJson] public virtual AssetLocation Inside { get; set; } = null;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional>-->
+        /// Played when this block is broken.
+        /// </summary>
+        [DocumentAsJson] public virtual AssetLocation Break { get; set; } = null;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional>-->
+        /// Played when this block is placed.
+        /// </summary>
+        [DocumentAsJson] public virtual AssetLocation Place { get; set; } = null;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional>-->
+        /// Played when this block is hit. Will be overridden by <see cref="ByTool"/> if an appropriate tool is set.
+        /// </summary>
+        [DocumentAsJson] public virtual AssetLocation Hit { get; set; } = null;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional>-->
+        /// Played in ambience for this block.
+        /// </summary>
+        [DocumentAsJson] public AssetLocation Ambient = null;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Ambient</jsondefault>-->
+        /// The type of sound for this block's ambient sound.
+        /// </summary>
+        [DocumentAsJson] public EnumSoundType AmbientSoundType = EnumSoundType.Ambient;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>3</jsondefault>-->
+        /// Adjacent ambient sound sources are merged to avoid playing too many sounds too loudly. This is the maximum distance a sound source can be from another to allow a merge.
+        /// </summary>
+        [DocumentAsJson] public float AmbientMaxDistanceMerge = 3;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
+        /// Amount of nearby ambient sound blocks in order to reach full ambient sound volume
+        /// </summary>
+        [DocumentAsJson] public float AmbientBlockCount = 10f;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// Gets the sound that occurs when a specific tool hits a block.
         /// </summary>
-        public virtual Dictionary<EnumTool, BlockSounds> ByTool { get; set; } = new Dictionary<EnumTool, BlockSounds>();
+        [DocumentAsJson] public virtual Dictionary<EnumTool, BlockSounds> ByTool { get; set; } = new Dictionary<EnumTool, BlockSounds>();
 
         /// <summary>
         /// Clones the block sounds.
@@ -34,7 +94,9 @@ namespace Vintagestory.API.Common
                 Place = Place == null ? null : Place.Clone(),
                 Hit = Hit == null ? null : Hit.Clone(),
                 Ambient = Ambient == null ? null : Ambient.Clone(),
-                AmbientBlockCount = AmbientBlockCount
+                AmbientBlockCount = AmbientBlockCount,
+                AmbientSoundType = AmbientSoundType,
+                AmbientMaxDistanceMerge = AmbientMaxDistanceMerge
             };
 
             foreach (var val in ByTool)

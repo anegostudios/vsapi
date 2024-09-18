@@ -4,9 +4,10 @@ using Vintagestory.API.Util;
 namespace Vintagestory.API.Common
 {
     /// <summary>
-    /// Material of which a block my be made of
-    /// Currently only used for mining speed for tools
+    /// Materials of which a block may be made of.
+    /// Currently only used for mining speed for tools and blast resistance.
     /// </summary>
+    [DocumentAsJson]
     public enum EnumBlockMaterial
     {
         Air,

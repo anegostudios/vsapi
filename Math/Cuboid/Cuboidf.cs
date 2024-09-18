@@ -1,19 +1,49 @@
 ﻿using System;
+using Vintagestory.API.Client;
 
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
-    /// Represents a three dimensional axis-aligned cuboid using two 3d coordinates. Used for collision and selection boxes.
+    /// Represents a three dimensional axis-aligned cuboid using two 3D coordinates. Used for collision and selection boxes.
     /// </summary>
+    [DocumentAsJson]
     public class Cuboidf : ICuboid<float,Cuboidf>
     {
-        public float X1;
-        public float Y1;
-        public float Z1;
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// Start X Pos
+        /// </summary>
+        [DocumentAsJson] public float X1;
 
-        public float X2;
-        public float Y2;
-        public float Z2;
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// Start Y Pos
+        /// </summary>
+        [DocumentAsJson] public float Y1;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// Start Z Pos
+        /// </summary>
+        [DocumentAsJson] public float Z1;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// End X Pos
+        /// </summary>
+        [DocumentAsJson] public float X2;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// End Y Pos
+        /// </summary>
+        [DocumentAsJson] public float Y2;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// End Z Pos
+        /// </summary>
+        [DocumentAsJson] public float Z2;
 
         /// <summary>
         /// This is equivalent to width so long as X2 > X1, but could in theory be a negative number if the box has its corners the wrong way around
@@ -414,6 +444,14 @@ namespace Vintagestory.API.MathTools
             Mat4f.RotateZ(matrix, matrix, radZ);
             Mat4f.Translate(matrix, matrix, -(float)origin.X, -(float)origin.Y, -(float)origin.Z);
 
+            return TransformedCopy(matrix);
+        }
+
+        /// <summary>
+        /// Performs a 3-dimensional rotation on the cuboid and returns a new axis-aligned cuboid resulting from this rotation. Not sure it it makes any sense to use this for other rotations than 90 degree intervals.
+        /// </summary>
+        public Cuboidf TransformedCopy(float[] matrix)
+        {
             float[] dcoord1 = Mat4f.MulWithVec4(matrix, X1, Y1, Z1, 1);
             float[] dcoord2 = Mat4f.MulWithVec4(matrix, X1, Y1, Z2, 1);
             float[] dcoord3 = Mat4f.MulWithVec4(matrix, X2, Y1, Z2, 1);

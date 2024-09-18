@@ -440,13 +440,13 @@ namespace Vintagestory.API.Server
         /// <param name="maxPos"></param>
         void FullRelight(BlockPos minPos, BlockPos maxPos);
 
-
-
-
-
-
-
-
+        /// <summary>
+        /// Does a complete relighting of the cuboid deliminated by given min/max pos. Can completely resend all affected chunk columns to all connected nearby clients.
+        /// </summary>
+        /// <param name="minPos"></param>
+        /// <param name="maxPos"></param>
+        /// <param name="sendToClients"></param>
+        void FullRelight(BlockPos minPos, BlockPos maxPos, bool sendToClients);
 
         /// <summary>
         /// Retrieve a customized interface to access blocks in the loaded game world.
@@ -499,5 +499,30 @@ namespace Vintagestory.API.Server
         /// <returns></returns>
         [Obsolete("Use api.World.GetCachingBlockAccessor instead")]
         ICachingBlockAccessor GetCachingBlockAccessor(bool synchronize, bool relight);
+
+        /// <summary>
+        /// Creates columns of empty chunks in the specified dimension
+        /// </summary>
+        /// <param name="cx"></param>
+        /// <param name="cz"></param>
+        /// <param name="dim"></param>
+        void CreateChunkColumnForDimension(int cx, int cz, int dim);
+
+        /// <summary>
+        /// Loads chunk columns for the specified dimension
+        /// </summary>
+        /// <param name="cx"></param>
+        /// <param name="cz"></param>
+        /// <param name="dim"></param>
+        void LoadChunkColumnForDimension(int cx, int cz, int dim);
+
+        /// <summary>
+        /// API access to force send a chunk column in any dimension
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="cx"></param>
+        /// <param name="cz"></param>
+        /// <param name="dimension"></param>
+        void ForceSendChunkColumn(IServerPlayer player, int cx, int cz, int dimension);
     }
 }

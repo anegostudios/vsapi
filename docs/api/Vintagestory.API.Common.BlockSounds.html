@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class BlockSounds | VintageStory API ">
       
-      
+      <meta name="description" content="A set of sounds that are defined for a block. All fields use default or empty sounds if not set.">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -97,7 +97,8 @@ Class BlockSounds
   <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"></div>
+  <div class="markdown summary"><p>A set of sounds that are defined for a block. All fields use default or empty sounds if not set.</p>
+</div>
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
@@ -143,7 +144,25 @@ Class BlockSounds
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
+
+  <h2 id="Vintagestory_API_Common_BlockSounds_examples">Examples</h2>
+  <pre><code class="lang-json">"sounds": {
+	"place": "block/dirt",
+	"break": "block/dirt",
+	"hit": "block/dirt",
+	"walk": "walk/grass"
+},</code></pre>
 
 
 
@@ -158,7 +177,9 @@ Class BlockSounds
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
+<p>Played in ambience for this block.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -188,7 +209,9 @@ Class BlockSounds
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
+<p>Amount of nearby ambient sound blocks in order to reach full ambient sound volume</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -212,6 +235,70 @@ Class BlockSounds
 
 
 
+
+  <h3 id="Vintagestory_API_Common_BlockSounds_AmbientMaxDistanceMerge" data-uid="Vintagestory.API.Common.BlockSounds.AmbientMaxDistanceMerge">
+  AmbientMaxDistanceMerge
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>3</jsondefault>-->
+<p>Adjacent ambient sound sources are merged to avoid playing too many sounds too loudly. This is the maximum distance a sound source can be from another to allow a merge.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float AmbientMaxDistanceMerge</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_BlockSounds_AmbientSoundType" data-uid="Vintagestory.API.Common.BlockSounds.AmbientSoundType">
+  AmbientSoundType
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>Ambient</jsondefault>-->
+<p>The type of sound for this block's ambient sound.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumSoundType AmbientSoundType</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.EnumSoundType.html">EnumSoundType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="properties">Properties
 </h2>
 
@@ -223,7 +310,9 @@ Class BlockSounds
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
+<p>Played when this block is broken.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -254,7 +343,8 @@ Class BlockSounds
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the sound that occurs when a specific tool hits a block.</p>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+<p>Gets the sound that occurs when a specific tool hits a block.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -286,7 +376,9 @@ Class BlockSounds
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
+<p>Played when this block is hit. Will be overridden by <a class="xref" href="Vintagestory.API.Common.BlockSounds.html#Vintagestory_API_Common_BlockSounds_ByTool">ByTool</a> if an appropriate tool is set.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -317,7 +409,9 @@ Class BlockSounds
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
+<p>Played when an entity moves inside this block. Primarily used for liquids.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -348,7 +442,9 @@ Class BlockSounds
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
+<p>Played when this block is placed.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -379,7 +475,9 @@ Class BlockSounds
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional>-->
+<p>Played when an entity walks on this block.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">

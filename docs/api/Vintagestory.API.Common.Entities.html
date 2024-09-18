@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -96,11 +96,13 @@ Classes
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.Entities.BaseSpawnConditions.html">BaseSpawnConditions</a></dt>
-      <dd></dd>
+      <dd><p>A base class for entities spawning conditions.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.Entities.ClimateSpawnCondition.html">ClimateSpawnCondition</a></dt>
-      <dd></dd>
+      <dd><p>A list of conditions based on climate.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
@@ -147,12 +149,58 @@ Classes
       <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Common.Entities.QuantityByGroup.html">QuantityByGroup</a></dt>
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.PModule.html">PModule</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Common.Entities.RuntimeSpawnConditions.html">RuntimeSpawnConditions</a></dt>
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.PModuleGravity.html">PModuleGravity</a></dt>
       <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.PModuleInAir.html">PModuleInAir</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.PModuleInLiquid.html">PModuleInLiquid</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.PModuleKnockback.html">PModuleKnockback</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.PModuleMotionDrag.html">PModuleMotionDrag</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.PModuleOnGround.html">PModuleOnGround</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.PModulePlayerInAir.html">PModulePlayerInAir</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.PModulePlayerInLiquid.html">PModulePlayerInLiquid</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.PModuleWind.html">PModuleWind</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html">PhysicsBehaviorBase</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.QuantityByGroup.html">QuantityByGroup</a></dt>
+      <dd><p>Allows you to control spawn limits based on a set of entity codes using a wildcard.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.RuntimeSpawnConditions.html">RuntimeSpawnConditions</a></dt>
+      <dd><p>A set of spawn conditions for chunks that have already been generated. Most properties are got from <a class="xref" href="Vintagestory.API.Common.Entities.BaseSpawnConditions.html">BaseSpawnConditions</a>.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.Entities.SpawnConditions.html">SpawnConditions</a></dt>
@@ -170,6 +218,18 @@ Classes
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.Entities.WorldGenSpawnConditions.html">WorldGenSpawnConditions</a></dt>
+      <dd><p>A set of spawn conditions for when chunks are generated. Most properties are got from <a class="xref" href="Vintagestory.API.Common.Entities.BaseSpawnConditions.html">BaseSpawnConditions</a>.</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.IPhysicsTickable.html">IPhysicsTickable</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Common.Entities.IRemotePhysics.html">IRemotePhysics</a></dt>
       <dd></dd>
     </dl>
     <h3 id="enums">
@@ -177,7 +237,8 @@ Enums
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Common.Entities.EnumEntityActivity.html">EnumEntityActivity</a></dt>
-      <dd></dd>
+      <dd><p>A list of activities that an entity can perform.</p>
+</dd>
     </dl>
     <h3 id="delegates">
 Delegates

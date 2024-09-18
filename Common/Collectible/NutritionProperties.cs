@@ -2,6 +2,10 @@
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// Types of nutrition for foods.
+    /// </summary>
+    [DocumentAsJson]
     public enum EnumFoodCategory
     {
         NoNutrition = -1,
@@ -13,18 +17,45 @@ namespace Vintagestory.API.Common
         Unknown = 5
     }
 
+    /// <summary>
+    /// Allows you to make collectibles edible, and adds data about their nutrition.
+    /// </summary>
+    /// <example>
+    /// <code language="json">
+    ///"nutritionPropsByType": {
+	///	"*-flyagaric-*": {
+	///		"saturation": 80,
+	///		"health": -6.5,
+	///		"foodcategory": "Vegetable"
+	///	},
+	///	"*-earthball-*": {
+	///		"saturation": 80,
+	///		"health": -8,
+	///		"foodcategory": "Vegetable"
+	///	},
+	/// ...
+    /// </code>
+    /// </example>
+    [DocumentAsJson]
     public class FoodNutritionProperties
     {
         /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>Fruit</jsondefault>-->
         /// The category of the food.
         /// </summary>
-        public EnumFoodCategory FoodCategory;
-        
+        [DocumentAsJson] public EnumFoodCategory FoodCategory;
+
         /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
         /// The saturation restored by the food.
         /// </summary>
-        public float Satiety = 0f;
+        [DocumentAsJson] public float Satiety = 0f;
 
+        /// <summary>
+        /// <!--<jsonoptional>Obsolete</jsonoptional>-->
+        /// Obsolete - Please use <see cref="Satiety"/> instead.
+        /// </summary>
+        [DocumentAsJson]
         [Obsolete("Use Satiety instead.")]
         public float Saturation
         {
@@ -32,25 +63,35 @@ namespace Vintagestory.API.Common
             set { Satiety = value; }
         }
 
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// How much eating this will affect the player's intoxication.
+        /// </summary>
+        [DocumentAsJson]
         public float Intoxication
         {
             get; set;
         }
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>10</jsondefault>-->
         /// The delay before that extra saturation starts to go away.
         /// </summary>
-        public float SaturationLossDelay = 10f;
+        [DocumentAsJson] public float SaturationLossDelay = 10f;
 
         /// <summary>
-        /// The health restored by the food.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// The health restored by the food. Usually actually used to hurt the player with negative values.
         /// </summary>
-        public float Health = 0f;
-        
+        [DocumentAsJson] public float Health = 0f;
+
         /// <summary>
-        /// The item that was eaten.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// When an instance of this collectible is eaten, what item stack should be returned to the player?
+        /// Possible example: Eating a 'meat on a stick' item would return a single stick.
+        /// (Note: Bowl meals/liquids are specially designed to do this through their attributes and class.)
         /// </summary>
-        public JsonItemStack EatenStack;
+        [DocumentAsJson] public JsonItemStack EatenStack;
 
         /// <summary>
         /// Duplicates the nutrition properties, which includes cloning the stack that was eaten.

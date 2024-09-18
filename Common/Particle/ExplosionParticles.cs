@@ -104,6 +104,7 @@ namespace Vintagestory.API.Common
         public float Bounciness { get; set; }
         public bool RandomVelocityChange { get; set; }
         public bool DieOnRainHeightmap => false;
+        public int LightEmission => 0;
         public ExplosionSmokeParticles()
         {
             color = ColorUtil.ToRgba(50, 180, 180, 180);
@@ -119,8 +120,8 @@ namespace Vintagestory.API.Common
                     new Vec3f(0.25f, 0.1f, 0.25f),
                     1.5f,
                     -0.025f,
-                    1f,
-                    2.5f,
+                    3f,
+                    7.5f,
                     EnumParticleModel.Quad
                 )
             };

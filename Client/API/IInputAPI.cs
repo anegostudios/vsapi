@@ -20,7 +20,7 @@ namespace Vintagestory.API.Client
     public delegate void OnHotKeyDelegate(string hotkeycode, KeyCombination keyComb);
 
     /// <summary>
-    /// This interface manages the inputs of the player and is used mostly on the client side.  
+    /// This interface manages the inputs of the player and is used mostly on the client side.
     /// </summary>
     public interface IInputAPI
     {
@@ -48,7 +48,7 @@ namespace Vintagestory.API.Client
         /// The current mouse button state
         /// </summary>
         MouseButtonState MouseButton { get; }
-        
+
         /// <summary>
         /// The current mouse button state outside of dialogs / clicked inside the game world
         /// </summary>
@@ -152,5 +152,9 @@ namespace Vintagestory.API.Client
         /// <param name="toggleKeyCombinationCode">the key combination code.</param>
         /// <returns>The registered hotkey.</returns>
         HotKey GetHotKeyByCode(string toggleKeyCombinationCode);
+
+        public bool IsHotKeyPressed(string hotKeyCode);
+
+        public bool IsHotKeyPressed(HotKey hotKey);
     }
 }

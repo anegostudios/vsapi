@@ -107,8 +107,13 @@ namespace Vintagestory.API.Common
     }
 
     /// <summary>
-    /// Defines a complete path to an assets, including it's domain
+    /// Defines a complete path to an assets, including it's domain.
     /// </summary>
+    /// <example>
+    /// In JSON assets, asset locations are represented as single strings in the form "domain:path". To access an asset in the vanilla game, use the domain 'game'.
+    /// <code language="json">"code": "game:vegetable-cookedcattailroot",</code>
+    /// </example>
+    [DocumentAsJson]
     [TypeConverter(typeof(StringAssetLocationConverter))]
     [ProtoContract]
     public class AssetLocation : IEquatable<AssetLocation>, IComparable<AssetLocation>
@@ -429,6 +434,17 @@ namespace Vintagestory.API.Common
         public virtual AssetLocation WithPath(string path)
         {
             this.Path = path;
+            return this;
+        }
+
+        /// <summary>
+        /// Sets the last part after the last /
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        public virtual AssetLocation WithFilename(string filename)
+        {
+            this.Path = Path.Substring(0, Path.LastIndexOf('/')+1) + filename;
             return this;
         }
 

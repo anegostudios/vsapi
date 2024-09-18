@@ -203,6 +203,16 @@ namespace Vintagestory.API.MathTools
             );
         }
 
+        public static Vec4f ToRGBAVec4f(int color)
+        {
+            return new Vec4f(
+                ((color >> 16) & 0xff) / 255f,
+                ((color >> 8) & 0xff) / 255f,
+                ((color >> 0) & 0xff) / 255f,
+                ((color >> 24) & 0xff) / 255f
+            );
+        }
+
 
         public static int ColorFromRgba(byte[] channels)
         {

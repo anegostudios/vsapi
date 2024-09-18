@@ -131,7 +131,7 @@ namespace Vintagestory.API.MathTools
         public Vec3d Add(BlockPos a)
         {
             this.X += a.X;
-            this.Y += a.Y;
+            this.Y += a.InternalY;
             this.Z += a.Z;
             return this;
         }
@@ -171,7 +171,7 @@ namespace Vintagestory.API.MathTools
 
         public Vec3d AddCopy(BlockPos pos)
         {
-            return new Vec3d(X + pos.X, Y + pos.Y, Z + pos.Z);
+            return new Vec3d(X + pos.X, Y + pos.InternalY, Z + pos.Z);
         }
 
         public Vec3d Mul(double val)
@@ -230,6 +230,11 @@ namespace Vintagestory.API.MathTools
         public double Length()
         {
             return Math.Sqrt(X * X + Y * Y + Z * Z);
+        }
+
+        public double HorLength()
+        {
+            return Math.Sqrt(X * X + Z * Z);
         }
 
         public double LengthSq()
@@ -292,7 +297,7 @@ namespace Vintagestory.API.MathTools
         public Vec3d Sub(BlockPos pos)
         {
             X -= pos.X;
-            Y -= pos.Y;
+            Y -= pos.InternalY;
             Z -= pos.Z;
             return this;
         }
@@ -392,6 +397,19 @@ namespace Vintagestory.API.MathTools
         {
             this.X = pos.X;
             this.Y = pos.Y;
+            this.Z = pos.Z;
+            return this;
+        }
+
+        /// <summary>
+        /// Include dimension info. We don't always want this, but sometimes we do
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public Vec3d SetWithDimension(Common.Entities.EntityPos pos)
+        {
+            this.X = pos.X;
+            this.Y = pos.InternalY;
             this.Z = pos.Z;
             return this;
         }
@@ -578,8 +596,8 @@ namespace Vintagestory.API.MathTools
             float cosPitch = GameMath.Cos(Pitch);
             float sinPitch = GameMath.Sin(Pitch);
 
-            float cosYaw = GameMath.Cos(Yaw + GameMath.PI / 2);
-            float sinYaw = GameMath.Sin(Yaw + GameMath.PI / 2);
+            float cosYaw = GameMath.Cos(Yaw);
+            float sinYaw = GameMath.Sin(Yaw);
 
             return new Vec3d(X - cosPitch * sinYaw * offset, Y + sinPitch * offset, Z - cosPitch * cosYaw * offset);
         }
@@ -589,8 +607,8 @@ namespace Vintagestory.API.MathTools
             double cosPitch = Math.Cos(Pitch);
             double sinPitch = Math.Sin(Pitch);
 
-            double cosYaw = Math.Cos(Yaw + Math.PI / 2);
-            double sinYaw = Math.Sin(Yaw + Math.PI / 2);
+            double cosYaw = Math.Cos(Yaw);
+            double sinYaw = Math.Sin(Yaw);
 
             return new Vec3d(X - cosPitch * sinYaw * offset, Y + sinPitch * offset, Z - cosPitch * cosYaw * offset);
         }
@@ -601,8 +619,8 @@ namespace Vintagestory.API.MathTools
             float cosPitch = GameMath.Cos(Pitch);
             float sinPitch = GameMath.Sin(Pitch);
 
-            float cosYaw = GameMath.Cos(Yaw + GameMath.PI / 2);
-            float sinYaw = GameMath.Sin(Yaw + GameMath.PI / 2);
+            float cosYaw = GameMath.Cos(Yaw);
+            float sinYaw = GameMath.Sin(Yaw);
 
             X -= cosPitch * sinYaw * offset;
             Y += sinPitch * offset;
@@ -617,8 +635,8 @@ namespace Vintagestory.API.MathTools
             double cosPitch = Math.Cos(Pitch);
             double sinPitch = Math.Sin(Pitch);
 
-            double cosYaw = Math.Cos(Yaw + Math.PI / 2);
-            double sinYaw = Math.Sin(Yaw + Math.PI / 2);
+            double cosYaw = Math.Cos(Yaw);
+            double sinYaw = Math.Sin(Yaw);
 
             X -= cosPitch * sinYaw * offset;
             Y += sinPitch * offset;

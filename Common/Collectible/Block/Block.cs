@@ -8,7 +8,6 @@ using Vintagestory.API.Config;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
-using VintagestoryAPI.Math.Vector;
 
 namespace Vintagestory.API.Common
 {
@@ -110,14 +109,6 @@ namespace Vintagestory.API.Common
         /// If true, when the player holds the sneak key and right clicks this block, calls the blocks OnBlockInteractStart first, the items OnHeldInteractStart second. Without it the order is reversed.
         /// </summary>
         public bool PlacedPriorityInteract;
-
-
-        /// <summary>
-        /// 0: West-East
-        /// 1: Up-Down
-        /// 2: North-South
-        /// </summary>
-        public bool[] LightTraversable = new bool[] { true, true, true };
 
         /// <summary>
         /// A value usually between 0-9999 that indicates which blocks may be replaced with others.
@@ -605,6 +596,13 @@ namespace Vintagestory.API.Common
             return Resistance;
         }
 
+        [Obsolete("Use GetSounds with BlockSelection instead")]
+        public virtual BlockSounds GetSounds(IBlockAccessor blockAccessor, BlockPos pos, ItemStack stack = null)
+        {
+            BlockSelection blockSel = new BlockSelection() { Position = pos };
+            return GetSounds(blockAccessor, blockSel, stack);
+        }
+
         /// <summary>
         /// Should returns the blocks sounds
         /// </summary>
@@ -612,18 +610,14 @@ namespace Vintagestory.API.Common
         /// <param name="pos">May be null and therfore stack is non-null</param>
         /// <param name="stack"></param>
         /// <returns></returns>
-        public virtual BlockSounds GetSounds(IBlockAccessor blockAccessor, BlockPos pos, ItemStack stack = null)
+        public virtual BlockSounds GetSounds(IBlockAccessor blockAccessor, BlockSelection blockSel, ItemStack stack = null)
         {
-            if (api is ICoreClientAPI capi)
-            {
-                var blockSel = capi.World.Player.CurrentBlockSelection;
-                if (blockSel != null)
-                {
-                    Block decorBlock = blockAccessor.GetDecor(pos, blockSel.Face.Index);
-                    if (decorBlock != null && decorBlock.Attributes?["ignoreSounds"].AsBool(false) != true) return decorBlock.Sounds;
-                }
-            }
+            Block decorBlock = blockSel.Face == null ? null : blockAccessor.GetDecor(blockSel.Position, blockSel.Face.Index);
 
+            if (decorBlock != null && decorBlock.Attributes?["ignoreSounds"].AsBool(false) != true)
+            {
+                return decorBlock.Sounds;
+            }
 
             return Sounds;
         }
@@ -762,8 +756,6 @@ namespace Vintagestory.API.Common
         }
 
 
-
-
         /// <summary>
         /// Currently used for wildvines and saguaro cactus
         /// </summary>
@@ -771,8 +763,10 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         /// <param name="onBlockFace"></param>
         /// <param name="worldgenRandom"></param>
+        /// <param name="attributes"></param>
         /// <returns></returns>
-        public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, LCGRandom worldgenRandom)
+        public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, IRandom worldgenRandom,
+            BlockPatchAttributes attributes = null)
         {
             Block block = blockAccessor.GetBlock(pos);
 
@@ -794,6 +788,14 @@ namespace Vintagestory.API.Common
             }
 
             return false;
+        }
+
+        public virtual bool TryPlaceBlockForWorldGenUnderwater(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace,
+            IRandom worldgenRandom, int minWaterDepth, int maxWaterDepth,
+            BlockPatchAttributes attributes = null)
+        {
+
+            return TryPlaceBlockForWorldGen(blockAccessor, pos, onBlockFace, worldgenRandom, attributes);
         }
 
         /// <summary>
@@ -985,10 +987,10 @@ namespace Vintagestory.API.Common
             if (nowMs - totalMsBreaking > 225 || resistance <= 0)
             {
                 double posx = blockSel.Position.X + blockSel.HitPosition.X;
-                double posy = blockSel.Position.Y + blockSel.HitPosition.Y;
+                double posy = blockSel.Position.InternalY + blockSel.HitPosition.Y;
                 double posz = blockSel.Position.Z + blockSel.HitPosition.Z;
 
-                BlockSounds sounds = GetSounds(api.World.BlockAccessor, blockSel.Position);
+                BlockSounds sounds = GetSounds(api.World.BlockAccessor, blockSel);
 
                 player.Entity.World.PlaySoundAt(resistance > 0 ? sounds.GetHitSound(player) : sounds.GetBreakSound(player), posx, posy, posz, player, RandomSoundPitch(api.World), 16, 1);
 
@@ -1049,17 +1051,17 @@ namespace Vintagestory.API.Common
                             {
                                 ItemStack stack = drops[i].Clone();
                                 stack.StackSize = 1;
-                                world.SpawnItemEntity(stack, new Vec3d(pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5), null);
+                                world.SpawnItemEntity(stack, pos, null);
                             }
                         } else
                         {
-                            world.SpawnItemEntity(drops[i].Clone(), new Vec3d(pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5), null);
+                            world.SpawnItemEntity(drops[i].Clone(), pos, null);
                         }
 
                     }
                 }
 
-                world.PlaySoundAt(Sounds?.GetBreakSound(byPlayer), pos.X, pos.Y, pos.Z, byPlayer);
+                world.PlaySoundAt(Sounds?.GetBreakSound(byPlayer), pos, 0, byPlayer);
             }
 
             SpawnBlockBrokenParticles(pos);
@@ -1588,15 +1590,21 @@ namespace Vintagestory.API.Common
             return false;
         }
 
+        [Obsolete("Use GetAmbientsoundStrength() instead. Method will be removed in 1.21")]
+        public virtual bool ShouldPlayAmbientSound(IWorldAccessor world, BlockPos pos)
+        {
+            return GetAmbientSoundStrength(world, pos) > 0;
+        }
+
         /// <summary>
-        /// Extra check on whether the ambient sound defined by the block should be played at this location
+        /// If this block defines an ambient sounds, the intensity the ambient should be played at. Between 0 and 1. Return 0 to not play the ambient sound.
         /// </summary>
         /// <param name="world"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public virtual bool ShouldPlayAmbientSound(IWorldAccessor world, BlockPos pos)
+        public virtual float GetAmbientSoundStrength(IWorldAccessor world, BlockPos pos)
         {
-            return true;
+            return 1f;
         }
 
 
@@ -2372,11 +2380,11 @@ namespace Vintagestory.API.Common
                         {
                             ItemStack stack = drops[i].Clone();
                             stack.StackSize = 1;
-                            world.SpawnItemEntity(stack, new Vec3d(pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5), null);
+                            world.SpawnItemEntity(stack, pos, null);
                         }
                     } else
                     {
-                        world.SpawnItemEntity(drops[i].Clone(), new Vec3d(pos.X + 0.5, pos.Y + 0.5, pos.Z + 0.5), null);
+                        world.SpawnItemEntity(drops[i].Clone(), pos, null);
                     }
                 }
             }
@@ -2519,6 +2527,8 @@ namespace Vintagestory.API.Common
             if (this is T blockt) return blockt;
             var bh = GetBehavior(typeof(T), true);
             if (bh != null) return bh as T;
+            if (pos == null) return null;
+
             var be = world.BlockAccessor.GetBlockEntity(pos);
             if (be is T bet) return bet;
 

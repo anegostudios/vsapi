@@ -7,6 +7,8 @@ items:
   children:
   - Vintagestory.API.MathTools.Ray.#ctor
   - Vintagestory.API.MathTools.Ray.#ctor(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
+  - Vintagestory.API.MathTools.Ray.FromAngles(Vintagestory.API.MathTools.Vec3d,System.Single,System.Single,System.Single)
+  - Vintagestory.API.MathTools.Ray.FromPositions(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.MathTools.Ray.Length
   - Vintagestory.API.MathTools.Ray.LimitToWalls(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.MathTools.Ray.dir
@@ -34,6 +36,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.MathTools.Ray.origin
   commentId: F:Vintagestory.API.MathTools.Ray.origin
   id: origin
@@ -174,6 +179,63 @@ items:
   nameWithType.vb: Ray.LimitToWalls(Integer, Integer, Integer, Integer, Integer, Integer)
   fullName.vb: Vintagestory.API.MathTools.Ray.LimitToWalls(Integer, Integer, Integer, Integer, Integer, Integer)
   name.vb: LimitToWalls(Integer, Integer, Integer, Integer, Integer, Integer)
+- uid: Vintagestory.API.MathTools.Ray.FromAngles(Vintagestory.API.MathTools.Vec3d,System.Single,System.Single,System.Single)
+  commentId: M:Vintagestory.API.MathTools.Ray.FromAngles(Vintagestory.API.MathTools.Vec3d,System.Single,System.Single,System.Single)
+  id: FromAngles(Vintagestory.API.MathTools.Vec3d,System.Single,System.Single,System.Single)
+  parent: Vintagestory.API.MathTools.Ray
+  langs:
+  - csharp
+  - vb
+  name: FromAngles(Vec3d, float, float, float)
+  nameWithType: Ray.FromAngles(Vec3d, float, float, float)
+  fullName: Vintagestory.API.MathTools.Ray.FromAngles(Vintagestory.API.MathTools.Vec3d, float, float, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static Ray FromAngles(Vec3d pos, float pitch, float yaw, float pickingRange)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.Vec3d
+    - id: pitch
+      type: System.Single
+    - id: yaw
+      type: System.Single
+    - id: pickingRange
+      type: System.Single
+    return:
+      type: Vintagestory.API.MathTools.Ray
+    content.vb: Public Shared Function FromAngles(pos As Vec3d, pitch As Single, yaw As Single, pickingRange As Single) As Ray
+  overload: Vintagestory.API.MathTools.Ray.FromAngles*
+  nameWithType.vb: Ray.FromAngles(Vec3d, Single, Single, Single)
+  fullName.vb: Vintagestory.API.MathTools.Ray.FromAngles(Vintagestory.API.MathTools.Vec3d, Single, Single, Single)
+  name.vb: FromAngles(Vec3d, Single, Single, Single)
+- uid: Vintagestory.API.MathTools.Ray.FromPositions(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.MathTools.Ray.FromPositions(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
+  id: FromPositions(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
+  parent: Vintagestory.API.MathTools.Ray
+  langs:
+  - csharp
+  - vb
+  name: FromPositions(Vec3d, Vec3d)
+  nameWithType: Ray.FromPositions(Vec3d, Vec3d)
+  fullName: Vintagestory.API.MathTools.Ray.FromPositions(Vintagestory.API.MathTools.Vec3d, Vintagestory.API.MathTools.Vec3d)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static Ray FromPositions(Vec3d fromPos, Vec3d toPos)
+    parameters:
+    - id: fromPos
+      type: Vintagestory.API.MathTools.Vec3d
+    - id: toPos
+      type: Vintagestory.API.MathTools.Vec3d
+    return:
+      type: Vintagestory.API.MathTools.Ray
+    content.vb: Public Shared Function FromPositions(fromPos As Vec3d, toPos As Vec3d) As Ray
+  overload: Vintagestory.API.MathTools.Ray.FromPositions*
 references:
 - uid: Vintagestory.API.MathTools
   commentId: N:Vintagestory.API.MathTools
@@ -435,6 +497,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -442,6 +566,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.MathTools.Vec3d
   commentId: T:Vintagestory.API.MathTools.Vec3d
   parent: Vintagestory.API.MathTools
@@ -492,3 +713,33 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
+- uid: Vintagestory.API.MathTools.Ray.FromAngles*
+  commentId: Overload:Vintagestory.API.MathTools.Ray.FromAngles
+  href: Vintagestory.API.MathTools.Ray.html#Vintagestory_API_MathTools_Ray_FromAngles_Vintagestory_API_MathTools_Vec3d_System_Single_System_Single_System_Single_
+  name: FromAngles
+  nameWithType: Ray.FromAngles
+  fullName: Vintagestory.API.MathTools.Ray.FromAngles
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.MathTools.Ray
+  commentId: T:Vintagestory.API.MathTools.Ray
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Ray.html
+  name: Ray
+  nameWithType: Ray
+  fullName: Vintagestory.API.MathTools.Ray
+- uid: Vintagestory.API.MathTools.Ray.FromPositions*
+  commentId: Overload:Vintagestory.API.MathTools.Ray.FromPositions
+  href: Vintagestory.API.MathTools.Ray.html#Vintagestory_API_MathTools_Ray_FromPositions_Vintagestory_API_MathTools_Vec3d_Vintagestory_API_MathTools_Vec3d_
+  name: FromPositions
+  nameWithType: Ray.FromPositions
+  fullName: Vintagestory.API.MathTools.Ray.FromPositions

@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -343,6 +343,9 @@ Class Block
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_ConsumeCraftingIngredients_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_GridRecipe_">CollectibleObject.ConsumeCraftingIngredients(ItemSlot[], ItemSlot, GridRecipe)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetDurability_Vintagestory_API_Common_ItemStack_System_Int32_">CollectibleObject.SetDurability(ItemStack, int)</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_DamageItem_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_ItemSlot_System_Int32_">CollectibleObject.DamageItem(IWorldAccessor, Entity, ItemSlot, int)</a>
     </div>
     <div>
@@ -508,19 +511,13 @@ Class Block
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_HasTemperature_Vintagestory_API_Common_IItemStack_">CollectibleObject.HasTemperature(IItemStack)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_Double_">CollectibleObject.GetTemperature(IWorldAccessor, ItemStack, double)</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_">CollectibleObject.GetTemperature(IWorldAccessor, ItemStack)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_Single_System_Boolean_">CollectibleObject.SetTemperature(IWorldAccessor, ItemStack, float, bool)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_">CollectibleObject.IsEmptyBackPack(IItemStack)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_">CollectibleObject.IsBackPack(IItemStack)</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_">CollectibleObject.QuantityBackPackSlots(IItemStack)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_Equals_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_ItemStack_System_String___">CollectibleObject.Equals(ItemStack, ItemStack, params string[])</a>
@@ -550,6 +547,9 @@ Class Block
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetBehavior_Vintagestory_API_Common_CollectibleBehavior___System_Type_System_Boolean_">CollectibleObject.GetBehavior(CollectibleBehavior[], Type, bool)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetCollectibleInterface__1">CollectibleObject.GetCollectibleInterface&lt;T&gt;()</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetBehavior_System_Type_">CollectibleObject.GetBehavior(Type)</a>
     </div>
     <div>
@@ -557,6 +557,15 @@ Class Block
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_OnSmeltAttempt_Vintagestory_API_Common_InventoryBase_">CollectibleObject.OnSmeltAttempt(InventoryBase)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_">CollectibleObject.IsEmptyBackPack(IItemStack)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_">CollectibleObject.IsBackPack(IItemStack)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_">CollectibleObject.QuantityBackPackSlots(IItemStack)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.RegistryObject.html#Vintagestory_API_Common_RegistryObject_Code">RegistryObject.Code</a>
@@ -641,6 +650,16 @@ Class Block
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -1655,39 +1674,6 @@ The outer array is indexed based on the 6 BlockFacing.Index numerals; the inner 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-  <h3 id="Vintagestory_API_Common_Block_LightTraversable" data-uid="Vintagestory.API.Common.Block.LightTraversable">
-  LightTraversable
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>0: West-East
-1: Up-Down
-2: North-South</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool[] LightTraversable</code></pre>
-  </div>
-
-
-
-
-  <h4 class="section">Field Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>[]</dt>
     <dd></dd>
   </dl>
 
@@ -3827,7 +3813,7 @@ Examples:
 
   <a id="Vintagestory_API_Common_Block_DoEmitSideAoByFlag_" data-uid="Vintagestory.API.Common.Block.DoEmitSideAoByFlag*"></a>
 
-  <h3 id="Vintagestory_API_Common_Block_DoEmitSideAoByFlag_Vintagestory_API_Common_IGeometryTester_VintagestoryAPI_Math_Vector_Vec3iAndFacingFlags_System_Int32_" data-uid="Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester,VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags,System.Int32)">
+  <h3 id="Vintagestory_API_Common_Block_DoEmitSideAoByFlag_Vintagestory_API_Common_IGeometryTester_Vintagestory_API_MathTools_Vec3iAndFacingFlags_System_Int32_" data-uid="Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester,Vintagestory.API.MathTools.Vec3iAndFacingFlags,System.Int32)">
   DoEmitSideAoByFlag(IGeometryTester, Vec3iAndFacingFlags, int)
   
   </h3>
@@ -3843,7 +3829,7 @@ Examples:
   <dl class="parameters">
     <dt><code>caller</code> <a class="xref" href="Vintagestory.API.Common.IGeometryTester.html">IGeometryTester</a></dt>
     <dd></dd>
-    <dt><code>vec</code> <a class="xref" href="VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags.html">Vec3iAndFacingFlags</a></dt>
+    <dt><code>vec</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3iAndFacingFlags.html">Vec3iAndFacingFlags</a></dt>
     <dd></dd>
     <dt><code>flags</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
@@ -3976,6 +3962,45 @@ Examples:
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Block_GetAmbientSoundStrength_" data-uid="Vintagestory.API.Common.Block.GetAmbientSoundStrength*"></a>
+
+  <h3 id="Vintagestory_API_Common_Block_GetAmbientSoundStrength_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.Block.GetAmbientSoundStrength(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)">
+  GetAmbientSoundStrength(IWorldAccessor, BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If this block defines an ambient sounds, the intensity the ambient should be played at. Between 0 and 1. Return 0 to not play the ambient sound.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual float GetAmbientSoundStrength(IWorldAccessor world, BlockPos pos)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>world</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
   </dl>
 
@@ -5432,8 +5457,8 @@ public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing)</code></pr
 
   <a id="Vintagestory_API_Common_Block_GetSounds_" data-uid="Vintagestory.API.Common.Block.GetSounds*"></a>
 
-  <h3 id="Vintagestory_API_Common_Block_GetSounds_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.Block.GetSounds(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ItemStack)">
-  GetSounds(IBlockAccessor, BlockPos, ItemStack)
+  <h3 id="Vintagestory_API_Common_Block_GetSounds_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.Block.GetSounds(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.ItemStack)">
+  GetSounds(IBlockAccessor, BlockSelection, ItemStack)
   
   </h3>
 
@@ -5442,7 +5467,48 @@ public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing)</code></pr
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual BlockSounds GetSounds(IBlockAccessor blockAccessor, BlockPos pos, ItemStack stack = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual BlockSounds GetSounds(IBlockAccessor blockAccessor, BlockSelection blockSel, ItemStack stack = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockAccessor</code> <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
+    <dd></dd>
+    <dt><code>blockSel</code> <a class="xref" href="Vintagestory.API.Common.BlockSelection.html">BlockSelection</a></dt>
+    <dd></dd>
+    <dt><code>stack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.BlockSounds.html">BlockSounds</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Block_GetSounds_" data-uid="Vintagestory.API.Common.Block.GetSounds*"></a>
+
+  <h3 id="Vintagestory_API_Common_Block_GetSounds_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ItemStack_" data-uid="Vintagestory.API.Common.Block.GetSounds(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ItemStack)">
+  GetSounds(IBlockAccessor, BlockPos, ItemStack)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetSounds with BlockSelection instead&quot;)]
+public virtual BlockSounds GetSounds(IBlockAccessor blockAccessor, BlockPos pos, ItemStack stack = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -5450,8 +5516,7 @@ public virtual int GetHeatRetention(BlockPos pos, BlockFacing facing)</code></pr
     <dt><code>blockAccessor</code> <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
     <dd></dd>
     <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
-    <dd><p>May be null and therfore stack is non-null</p>
-</dd>
+    <dd></dd>
     <dt><code>stack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
     <dd></dd>
   </dl>
@@ -6828,12 +6893,12 @@ For Worldgen you might be able to use TryPlaceBlockForWorldGen() to attach custo
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Extra check on whether the ambient sound defined by the block should be played at this location</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool ShouldPlayAmbientSound(IWorldAccessor world, BlockPos pos)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetAmbientsoundStrength() instead. Method will be removed in 1.21&quot;)]
+public virtual bool ShouldPlayAmbientSound(IWorldAccessor world, BlockPos pos)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -7186,8 +7251,8 @@ Note: Worldgen code uses the blockAccessor-aware overload of this method</p>
 
   <a id="Vintagestory_API_Common_Block_TryPlaceBlockForWorldGen_" data-uid="Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen*"></a>
 
-  <h3 id="Vintagestory_API_Common_Block_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_LCGRandom_" data-uid="Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.LCGRandom)">
-  TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, LCGRandom)
+  <h3 id="Vintagestory_API_Common_Block_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_IRandom_Vintagestory_API_Common_BlockPatchAttributes_" data-uid="Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,Vintagestory.API.Common.BlockPatchAttributes)">
+  TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, IRandom, BlockPatchAttributes)
   
   </h3>
 
@@ -7196,7 +7261,7 @@ Note: Worldgen code uses the blockAccessor-aware overload of this method</p>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, LCGRandom worldgenRandom)</code></pre>
+    <pre><code class="lang-csharp hljs">public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, IRandom worldgenRandom, BlockPatchAttributes attributes = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -7207,7 +7272,57 @@ Note: Worldgen code uses the blockAccessor-aware overload of this method</p>
     <dd></dd>
     <dt><code>onBlockFace</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></dt>
     <dd></dd>
-    <dt><code>worldgenRandom</code> <a class="xref" href="Vintagestory.API.MathTools.LCGRandom.html">LCGRandom</a></dt>
+    <dt><code>worldgenRandom</code> <a class="xref" href="Vintagestory.API.MathTools.IRandom.html">IRandom</a></dt>
+    <dd></dd>
+    <dt><code>attributes</code> <a class="xref" href="Vintagestory.API.Common.BlockPatchAttributes.html">BlockPatchAttributes</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Block_TryPlaceBlockForWorldGenUnderwater_" data-uid="Vintagestory.API.Common.Block.TryPlaceBlockForWorldGenUnderwater*"></a>
+
+  <h3 id="Vintagestory_API_Common_Block_TryPlaceBlockForWorldGenUnderwater_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_IRandom_System_Int32_System_Int32_Vintagestory_API_Common_BlockPatchAttributes_" data-uid="Vintagestory.API.Common.Block.TryPlaceBlockForWorldGenUnderwater(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,System.Int32,System.Int32,Vintagestory.API.Common.BlockPatchAttributes)">
+  TryPlaceBlockForWorldGenUnderwater(IBlockAccessor, BlockPos, BlockFacing, IRandom, int, int, BlockPatchAttributes)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool TryPlaceBlockForWorldGenUnderwater(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, IRandom worldgenRandom, int minWaterDepth, int maxWaterDepth, BlockPatchAttributes attributes = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockAccessor</code> <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html">IBlockAccessor</a></dt>
+    <dd></dd>
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>onBlockFace</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFacing.html">BlockFacing</a></dt>
+    <dd></dd>
+    <dt><code>worldgenRandom</code> <a class="xref" href="Vintagestory.API.MathTools.IRandom.html">IRandom</a></dt>
+    <dd></dd>
+    <dt><code>minWaterDepth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>maxWaterDepth</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>attributes</code> <a class="xref" href="Vintagestory.API.Common.BlockPatchAttributes.html">BlockPatchAttributes</a></dt>
     <dd></dd>
   </dl>
 

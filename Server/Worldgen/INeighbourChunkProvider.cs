@@ -1,5 +1,7 @@
 ﻿
+using System;
 using Vintagestory.API.Common;
+using Vintagestory.API.Common.Entities;
 
 namespace Vintagestory.API.Server
 {
@@ -22,12 +24,15 @@ namespace Vintagestory.API.Server
         IWorldChunk GetUnpackedChunkFast(int chunkX, int chunkY, int chunkZ, bool notRecentlyAccessed = false);
 
         /// <summary>
-        /// Index for a chunk coordinate
+        /// Index for a chunk coordinate - NOT DIMENSION AWARE
         /// </summary>
         /// <param name="chunkX"></param>
         /// <param name="chunkY"></param>
         /// <param name="chunkZ"></param>
         /// <returns></returns>
+        [Obsolete("Use dimension aware overloads instead")]
         long ChunkIndex3D(int chunkX, int chunkY, int chunkZ);
+
+        long ChunkIndex3D(EntityPos pos);
     }
 }

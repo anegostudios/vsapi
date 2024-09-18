@@ -15,10 +15,11 @@ items:
   - Vintagestory.API.Server.IServerConfig.DefaultSpawn
   - Vintagestory.API.Server.IServerConfig.HostedMode
   - Vintagestory.API.Server.IServerConfig.HostedModeAllowMods
+  - Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace
+  - Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine
   - Vintagestory.API.Server.IServerConfig.MaxChunkRadius
   - Vintagestory.API.Server.IServerConfig.MaxClients
   - Vintagestory.API.Server.IServerConfig.MaxMainThreadBlockTicks
-  - Vintagestory.API.Server.IServerConfig.OnlyWhitelisted
   - Vintagestory.API.Server.IServerConfig.Password
   - Vintagestory.API.Server.IServerConfig.Port
   - Vintagestory.API.Server.IServerConfig.RandomBlockTicksPerChunk
@@ -27,6 +28,7 @@ items:
   - Vintagestory.API.Server.IServerConfig.SpawnCapPlayerScaling
   - Vintagestory.API.Server.IServerConfig.TickTime
   - Vintagestory.API.Server.IServerConfig.WelcomeMessage
+  - Vintagestory.API.Server.IServerConfig.WhitelistMode
   langs:
   - csharp
   - vb
@@ -42,6 +44,9 @@ items:
   syntax:
     content: public interface IServerConfig
     content.vb: Public Interface IServerConfig
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Server.IServerConfig.Port
   commentId: P:Vintagestory.API.Server.IServerConfig.Port
   id: Port
@@ -364,16 +369,16 @@ items:
       type: Vintagestory.API.Server.EnumProtectionLevel
     content.vb: Property AntiAbuse As EnumProtectionLevel
   overload: Vintagestory.API.Server.IServerConfig.AntiAbuse*
-- uid: Vintagestory.API.Server.IServerConfig.OnlyWhitelisted
-  commentId: P:Vintagestory.API.Server.IServerConfig.OnlyWhitelisted
-  id: OnlyWhitelisted
+- uid: Vintagestory.API.Server.IServerConfig.WhitelistMode
+  commentId: P:Vintagestory.API.Server.IServerConfig.WhitelistMode
+  id: WhitelistMode
   parent: Vintagestory.API.Server.IServerConfig
   langs:
   - csharp
   - vb
-  name: OnlyWhitelisted
-  nameWithType: IServerConfig.OnlyWhitelisted
-  fullName: Vintagestory.API.Server.IServerConfig.OnlyWhitelisted
+  name: WhitelistMode
+  nameWithType: IServerConfig.WhitelistMode
+  fullName: Vintagestory.API.Server.IServerConfig.WhitelistMode
   type: Property
   assemblies:
   - VintagestoryAPI
@@ -381,12 +386,12 @@ items:
   summary: If true, only whitelisted players can join
   example: []
   syntax:
-    content: bool OnlyWhitelisted { get; set; }
+    content: EnumWhitelistMode WhitelistMode { get; set; }
     parameters: []
     return:
-      type: System.Boolean
-    content.vb: Property OnlyWhitelisted As Boolean
-  overload: Vintagestory.API.Server.IServerConfig.OnlyWhitelisted*
+      type: Vintagestory.API.Server.EnumWhitelistMode
+    content.vb: Property WhitelistMode As EnumWhitelistMode
+  overload: Vintagestory.API.Server.IServerConfig.WhitelistMode*
 - uid: Vintagestory.API.Server.IServerConfig.DefaultSpawn
   commentId: P:Vintagestory.API.Server.IServerConfig.DefaultSpawn
   id: DefaultSpawn
@@ -404,12 +409,24 @@ items:
   summary: Default spawn position for players
   example: []
   syntax:
-    content: PlayerSpawnPos DefaultSpawn { get; set; }
+    content: >-
+      [Obsolete("No longer used. Retrieve value from the savegame instead")]
+
+      PlayerSpawnPos DefaultSpawn { get; set; }
     parameters: []
     return:
       type: Vintagestory.API.Common.PlayerSpawnPos
-    content.vb: Property DefaultSpawn As PlayerSpawnPos
+    content.vb: >-
+      <Obsolete("No longer used. Retrieve value from the savegame instead")>
+
+      Property DefaultSpawn As PlayerSpawnPos
   overload: Vintagestory.API.Server.IServerConfig.DefaultSpawn*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: No longer used. Retrieve value from the savegame instead
 - uid: Vintagestory.API.Server.IServerConfig.AllowPvP
   commentId: P:Vintagestory.API.Server.IServerConfig.AllowPvP
   id: AllowPvP
@@ -546,6 +563,52 @@ items:
       type: System.Single
     content.vb: Property SpawnCapPlayerScaling As Single
   overload: Vintagestory.API.Server.IServerConfig.SpawnCapPlayerScaling*
+- uid: Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace
+  commentId: P:Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace
+  id: LogBlockBreakPlace
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: LogBlockBreakPlace
+  nameWithType: IServerConfig.LogBlockBreakPlace
+  fullName: Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Whether or not to log breaking and placing of blocks to the server-build.log
+  example: []
+  syntax:
+    content: bool LogBlockBreakPlace { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Property LogBlockBreakPlace As Boolean
+  overload: Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace*
+- uid: Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine
+  commentId: P:Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine
+  id: LogFileSplitAfterLine
+  parent: Vintagestory.API.Server.IServerConfig
+  langs:
+  - csharp
+  - vb
+  name: LogFileSplitAfterLine
+  nameWithType: IServerConfig.LogFileSplitAfterLine
+  fullName: Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: After how many line we should split the log file into a new one (server-build.log -&gt; server-build-2.log)
+  example: []
+  syntax:
+    content: uint LogFileSplitAfterLine { get; set; }
+    parameters: []
+    return:
+      type: System.UInt32
+    content.vb: Property LogFileSplitAfterLine As UInteger
+  overload: Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine*
 references:
 - uid: Vintagestory.API.Server
   commentId: N:Vintagestory.API.Server
@@ -577,6 +640,165 @@ references:
   - uid: Vintagestory.API.Server
     name: Server
     href: Vintagestory.API.Server.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Server.IServerConfig.Port*
   commentId: Overload:Vintagestory.API.Server.IServerConfig.Port
   href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_Port
@@ -806,23 +1028,19 @@ references:
   name: EnumProtectionLevel
   nameWithType: EnumProtectionLevel
   fullName: Vintagestory.API.Server.EnumProtectionLevel
-- uid: Vintagestory.API.Server.IServerConfig.OnlyWhitelisted*
-  commentId: Overload:Vintagestory.API.Server.IServerConfig.OnlyWhitelisted
-  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_OnlyWhitelisted
-  name: OnlyWhitelisted
-  nameWithType: IServerConfig.OnlyWhitelisted
-  fullName: Vintagestory.API.Server.IServerConfig.OnlyWhitelisted
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean
+- uid: Vintagestory.API.Server.IServerConfig.WhitelistMode*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.WhitelistMode
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_WhitelistMode
+  name: WhitelistMode
+  nameWithType: IServerConfig.WhitelistMode
+  fullName: Vintagestory.API.Server.IServerConfig.WhitelistMode
+- uid: Vintagestory.API.Server.EnumWhitelistMode
+  commentId: T:Vintagestory.API.Server.EnumWhitelistMode
+  parent: Vintagestory.API.Server
+  href: Vintagestory.API.Server.EnumWhitelistMode.html
+  name: EnumWhitelistMode
+  nameWithType: EnumWhitelistMode
+  fullName: Vintagestory.API.Server.EnumWhitelistMode
 - uid: Vintagestory.API.Server.IServerConfig.DefaultSpawn*
   commentId: Overload:Vintagestory.API.Server.IServerConfig.DefaultSpawn
   href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_DefaultSpawn
@@ -872,6 +1090,17 @@ references:
   name: AllowPvP
   nameWithType: IServerConfig.AllowPvP
   fullName: Vintagestory.API.Server.IServerConfig.AllowPvP
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
 - uid: Vintagestory.API.Server.IServerConfig.AllowFireSpread*
   commentId: Overload:Vintagestory.API.Server.IServerConfig.AllowFireSpread
   href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_AllowFireSpread
@@ -902,3 +1131,26 @@ references:
   name: SpawnCapPlayerScaling
   nameWithType: IServerConfig.SpawnCapPlayerScaling
   fullName: Vintagestory.API.Server.IServerConfig.SpawnCapPlayerScaling
+- uid: Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_LogBlockBreakPlace
+  name: LogBlockBreakPlace
+  nameWithType: IServerConfig.LogBlockBreakPlace
+  fullName: Vintagestory.API.Server.IServerConfig.LogBlockBreakPlace
+- uid: Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine*
+  commentId: Overload:Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine
+  href: Vintagestory.API.Server.IServerConfig.html#Vintagestory_API_Server_IServerConfig_LogFileSplitAfterLine
+  name: LogFileSplitAfterLine
+  nameWithType: IServerConfig.LogFileSplitAfterLine
+  fullName: Vintagestory.API.Server.IServerConfig.LogFileSplitAfterLine
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger

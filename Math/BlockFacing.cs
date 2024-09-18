@@ -8,7 +8,7 @@ namespace Vintagestory.API.MathTools
 
     /// <summary>
     /// Represents one of the 6 faces of a cube and all it's properties. Uses a right Handed Coordinate System. See also http://www.matrix44.net/cms/notes/opengl-3d-graphics/coordinate-systems-in-opengl
-    /// In short: 
+    /// In short:
     /// North: Negative Z
     /// East: Positive X
     /// South: Positive Z
@@ -36,7 +36,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public static readonly byte VerticalFlags = 16 | 32;
 
-        
+
         /// <summary>
         /// Faces towards negative Z
         /// </summary>
@@ -132,7 +132,7 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Returns a normal vector of this face
         /// </summary>
-        public Vec3i Normali { get { return normali; } } 
+        public Vec3i Normali { get { return normali; } }
         /// <summary>
         /// Returns a normal vector of this face
         /// </summary>
@@ -148,11 +148,11 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Returns a normal vector of this face encoded in 6 bits/
         /// bit 0: 1 if south or west
-        /// bit 1: sign bit 
+        /// bit 1: sign bit
         /// bit 2: 1 if up or down
-        /// bit 3: sign bit 
+        /// bit 3: sign bit
         /// bit 4: 1 if north or south
-        /// bit 5: sign bit 
+        /// bit 5: sign bit
         /// </summary>
         public byte NormalByte { get { return normalb; } }
 
@@ -234,6 +234,8 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public BlockFacing Opposite => ALLFACES[oppositeIndex];
 
+        public bool Negative => index == indexNORTH || index == indexWEST || index == indexDOWN;
+
         [Obsolete("Use Opposite property instead")]
         public BlockFacing GetOpposite()
         {
@@ -267,18 +269,18 @@ namespace Vintagestory.API.MathTools
         public BlockFacing GetHorizontalRotated(int angle)
         {
             if (horizontalAngleIndex < 0) return this;
-            var indexRot = (angle / 90 + index) % 4;
+            var indexRot = GameMath.Mod(angle / 90 + index, 4);
             return HORIZONTALS[indexRot];
         }
 
-       
+
         /// <summary>
         /// Applies a 3d rotation on the face and returns the face thats closest to the rotated face
         /// </summary>
         /// <param name="radX"></param>
         /// <param name="radY"></param>
         /// <param name="radZ"></param>
-        /// <returns></returns>     
+        /// <returns></returns>
         public BlockFacing FaceWhenRotatedBy(float radX, float radY, float radZ)
         {
             float[] matrix = Mat4f.Create();
@@ -339,6 +341,24 @@ namespace Vintagestory.API.MathTools
             }
 
             return brightness;
+        }
+
+
+        /// <summary>
+        /// Project pos onto the block face
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public Vec2f ToAB(Vec3f pos)
+        {
+            switch (this.axis)
+            {
+                case EnumAxis.X: return new Vec2f(pos.Z, pos.Y);
+                case EnumAxis.Y: return new Vec2f(pos.X, pos.Z);
+                case EnumAxis.Z: return new Vec2f(pos.X, pos.Y);
+            }
+
+            return null;
         }
 
 
@@ -423,7 +443,7 @@ namespace Vintagestory.API.MathTools
             return brightness;
         }
 
-        
+
         public bool IsAdjacent(BlockFacing facing)
         {
             if (IsVertical)
@@ -578,18 +598,31 @@ namespace Vintagestory.API.MathTools
         /// <summary>
         /// Returns the closest horizontal face from given angle (0 degree = east). Uses HORIZONTALS_ANGLEORDER
         /// </summary>
-        /// <param name="radiant"></param>
+        /// <param name="radians"></param>
         /// <returns></returns>
-        public static BlockFacing HorizontalFromAngle(float radiant)
+        public static BlockFacing HorizontalFromAngle(float radians)
         {
-            int index = GameMath.Mod(((int)(Math.Round(radiant * GameMath.RAD2DEG / 90))), 4);
+            int index = GameMath.Mod(((int)(Math.Round(radians * GameMath.RAD2DEG / 90))), 4);
 
             return HORIZONTALS_ANGLEORDER[index];
         }
 
 
         /// <summary>
-        /// Returns true if given byte flags contain given face 
+        /// Returns the closest horizontal face from given angle (0 degree = north for yaw!). Uses HORIZONTALS_ANGLEORDER
+        /// </summary>
+        /// <param name="radians"></param>
+        /// <returns></returns>
+        public static BlockFacing HorizontalFromYaw(float radians)
+        {
+            int index = GameMath.Mod(((int)(Math.Round(radians * GameMath.RAD2DEG / 90))) - 1, 4);
+
+            return HORIZONTALS_ANGLEORDER[index];
+        }
+
+
+        /// <summary>
+        /// Returns true if given byte flags contain given face
         /// </summary>
         /// <param name="flag"></param>
         /// <param name="facing"></param>

@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -129,12 +129,6 @@ Class ServerAnimator
     <dt>Inherited Members</dt>
     <dd>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_rootElements">ClientAnimator.rootElements</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_RootPoses">ClientAnimator.RootPoses</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_jointsDone">ClientAnimator.jointsDone</a>
     </div>
     <div>
@@ -144,7 +138,16 @@ Class ServerAnimator
       <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_MaxConcurrentAnimations">ClientAnimator.MaxConcurrentAnimations</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_System_Collections_Generic_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__">ClientAnimator.CreateForEntity(Entity, List&lt;ElementPose&gt;, Animation[], ShapeElement[], Dictionary&lt;int, AnimationJoint&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__">ClientAnimator.CreateForEntity(Entity, Animation[], ShapeElement[], Dictionary&lt;int, AnimationJoint&gt;)</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_initFields">ClientAnimator.initFields()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_ReloadAttachmentPoints">ClientAnimator.ReloadAttachmentPoints()</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_LoadAttachmentPoints_System_Collections_Generic_List_Vintagestory_API_Common_ElementPose__">ClientAnimator.LoadAttachmentPoints(List&lt;ElementPose&gt;)</a>
@@ -156,28 +159,40 @@ Class ServerAnimator
       <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_AnimNowActive_Vintagestory_API_Common_RunningAnimation_Vintagestory_API_Common_AnimationMetaData_">ClientAnimator.AnimNowActive(RunningAnimation, AnimationMetaData)</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_MaxJointId">ClientAnimator.MaxJointId</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_OnFrame_System_Collections_Generic_Dictionary_System_String_Vintagestory_API_Common_AnimationMetaData__System_Single_">ClientAnimator.OnFrame(Dictionary&lt;string, AnimationMetaData&gt;, float)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_calculateMatrices_System_Single_">ClientAnimator.calculateMatrices(float)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_identMat4x3">AnimatorBase.identMat4x3</a>
+      <a class="xref" href="Vintagestory.API.Common.ClientAnimator.html#Vintagestory_API_Common_ClientAnimator_DumpCurrentState">ClientAnimator.DumpCurrentState()</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_identMat">AnimatorBase.identMat</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_activeAnimCount">AnimatorBase.activeAnimCount</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_RootElements">AnimatorBase.RootElements</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_RootPoses">AnimatorBase.RootPoses</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_anims">AnimatorBase.anims</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatrices4x3">AnimatorBase.TransformationMatrices4x3</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatrices">AnimatorBase.TransformationMatrices</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatricesDefaultPose4x3">AnimatorBase.TransformationMatricesDefaultPose4x3</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_TransformationMatricesDefaultPose">AnimatorBase.TransformationMatricesDefaultPose</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_AttachmentPointByCode">AnimatorBase.AttachmentPointByCode</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_activeAnimCount">AnimatorBase.activeAnimCount</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_CurAnims">AnimatorBase.CurAnims</a>
@@ -186,7 +201,7 @@ Class ServerAnimator
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_CalculateMatrices">AnimatorBase.CalculateMatrices</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_Matrices4x3">AnimatorBase.Matrices4x3</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_Matrices">AnimatorBase.Matrices</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_ActiveAnimationCount">AnimatorBase.ActiveAnimationCount</a>
@@ -195,10 +210,10 @@ Class ServerAnimator
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_RunningAnimations">AnimatorBase.RunningAnimations</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_GetAnimationState_System_String_">AnimatorBase.GetAnimationState(string)</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_Animations">AnimatorBase.Animations</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_DumpCurrentState">AnimatorBase.DumpCurrentState()</a>
+      <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_GetAnimationState_System_String_">AnimatorBase.GetAnimationState(string)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.AnimatorBase.html#Vintagestory_API_Common_AnimatorBase_GetAttachmentPointPose_System_String_">AnimatorBase.GetAttachmentPointPose(string)</a>
@@ -226,6 +241,16 @@ Class ServerAnimator
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -359,8 +384,8 @@ Class ServerAnimator
 
   <a id="Vintagestory_API_Common_ServerAnimator_CreateForEntity_" data-uid="Vintagestory.API.Common.ServerAnimator.CreateForEntity*"></a>
 
-  <h3 id="Vintagestory_API_Common_ServerAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_System_Collections_Generic_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__" data-uid="Vintagestory.API.Common.ServerAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint})">
-  CreateForEntity(Entity, List&lt;ElementPose&gt;, Animation[], ShapeElement[], Dictionary&lt;int, AnimationJoint&gt;)
+  <h3 id="Vintagestory_API_Common_ServerAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_System_Collections_Generic_List_Vintagestory_API_Common_ElementPose__Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__System_Boolean_" data-uid="Vintagestory.API.Common.ServerAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity,System.Collections.Generic.List{Vintagestory.API.Common.ElementPose},Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Boolean)">
+  CreateForEntity(Entity, List&lt;ElementPose&gt;, Animation[], ShapeElement[], Dictionary&lt;int, AnimationJoint&gt;, bool)
   
   </h3>
 
@@ -368,7 +393,7 @@ Class ServerAnimator
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static ServerAnimator CreateForEntity(Entity entity, List&lt;ElementPose&gt; rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary&lt;int, AnimationJoint&gt; jointsById)</code></pre>
+    <pre><code class="lang-csharp hljs">public static ServerAnimator CreateForEntity(Entity entity, List&lt;ElementPose&gt; rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary&lt;int, AnimationJoint&gt; jointsById, bool requirePosesOnServer)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -382,6 +407,8 @@ Class ServerAnimator
     <dt><code>rootElements</code> <a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>[]</dt>
     <dd></dd>
     <dt><code>jointsById</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AnimationJoint.html">AnimationJoint</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>requirePosesOnServer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -403,8 +430,8 @@ Class ServerAnimator
 
   <a id="Vintagestory_API_Common_ServerAnimator_CreateForEntity_" data-uid="Vintagestory.API.Common.ServerAnimator.CreateForEntity*"></a>
 
-  <h3 id="Vintagestory_API_Common_ServerAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__" data-uid="Vintagestory.API.Common.ServerAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint})">
-  CreateForEntity(Entity, Animation[], ShapeElement[], Dictionary&lt;int, AnimationJoint&gt;)
+  <h3 id="Vintagestory_API_Common_ServerAnimator_CreateForEntity_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Animation___Vintagestory_API_Common_ShapeElement___System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AnimationJoint__System_Boolean_" data-uid="Vintagestory.API.Common.ServerAnimator.CreateForEntity(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Animation[],Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AnimationJoint},System.Boolean)">
+  CreateForEntity(Entity, Animation[], ShapeElement[], Dictionary&lt;int, AnimationJoint&gt;, bool)
   
   </h3>
 
@@ -412,7 +439,7 @@ Class ServerAnimator
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static ServerAnimator CreateForEntity(Entity entity, Animation[] animations, ShapeElement[] rootElements, Dictionary&lt;int, AnimationJoint&gt; jointsById)</code></pre>
+    <pre><code class="lang-csharp hljs">public static ServerAnimator CreateForEntity(Entity entity, Animation[] animations, ShapeElement[] rootElements, Dictionary&lt;int, AnimationJoint&gt; jointsById, bool requirePosesOnServer)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -424,6 +451,8 @@ Class ServerAnimator
     <dt><code>rootElements</code> <a class="xref" href="Vintagestory.API.Common.ShapeElement.html">ShapeElement</a>[]</dt>
     <dd></dd>
     <dt><code>jointsById</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AnimationJoint.html">AnimationJoint</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>requirePosesOnServer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

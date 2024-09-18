@@ -1,5 +1,4 @@
 ﻿using Vintagestory.API.MathTools;
-using VintagestoryAPI.Math.Vector;
 
 namespace Vintagestory.API.Common
 {

@@ -7,7 +7,8 @@ items:
   children:
   - Vintagestory.API.Common.AnimationCache.ClearCache(Vintagestory.API.Common.ICoreAPI)
   - Vintagestory.API.Common.AnimationCache.ClearCache(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity)
-  - Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.String[])
+  - Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  - Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
   langs:
   - csharp
   - vb
@@ -82,16 +83,55 @@ items:
       description: ''
     content.vb: Public Shared Sub ClearCache(api As ICoreAPI, entity As Entity)
   overload: Vintagestory.API.Common.AnimationCache.ClearCache*
-- uid: Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.String[])
-  commentId: M:Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.String[])
-  id: InitManager(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.String[])
+- uid: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  commentId: M:Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  id: LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  isExtensionMethod: true
   parent: Vintagestory.API.Common.AnimationCache
   langs:
   - csharp
   - vb
-  name: InitManager(ICoreAPI, IAnimationManager, Entity, Shape, RunningAnimation[], params string[])
-  nameWithType: AnimationCache.InitManager(ICoreAPI, IAnimationManager, Entity, Shape, RunningAnimation[], params string[])
-  fullName: Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.IAnimationManager, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation[], params string[])
+  name: LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])
+  nameWithType: AnimationCache.LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation[], bool, params string[])
+  fullName: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager, Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation[], bool, params string[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static IAnimationManager LoadAnimatorCached(this IAnimationManager manager, ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)
+    parameters:
+    - id: manager
+      type: Vintagestory.API.Common.IAnimationManager
+    - id: api
+      type: Vintagestory.API.Common.ICoreAPI
+    - id: entity
+      type: Vintagestory.API.Common.Entities.Entity
+    - id: entityShape
+      type: Vintagestory.API.Common.Shape
+    - id: copyOverAnims
+      type: Vintagestory.API.Common.RunningAnimation[]
+    - id: requirePosesOnServer
+      type: System.Boolean
+    - id: requireJointsForElements
+      type: System.String[]
+    return:
+      type: Vintagestory.API.Common.IAnimationManager
+    content.vb: Public Shared Function LoadAnimatorCached(manager As IAnimationManager, api As ICoreAPI, entity As Entity, entityShape As Shape, copyOverAnims As RunningAnimation(), requirePosesOnServer As Boolean, ParamArray requireJointsForElements As String()) As IAnimationManager
+  overload: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached*
+  nameWithType.vb: AnimationCache.LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation(), Boolean, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached(Vintagestory.API.Common.IAnimationManager, Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation(), Boolean, ParamArray String())
+  name.vb: LoadAnimatorCached(IAnimationManager, ICoreAPI, Entity, Shape, RunningAnimation(), Boolean, ParamArray String())
+- uid: Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  commentId: M:Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  id: InitManager(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.IAnimationManager,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.Shape,Vintagestory.API.Common.RunningAnimation[],System.Boolean,System.String[])
+  parent: Vintagestory.API.Common.AnimationCache
+  langs:
+  - csharp
+  - vb
+  name: InitManager(ICoreAPI, IAnimationManager, Entity, Shape, RunningAnimation[], bool, params string[])
+  nameWithType: AnimationCache.InitManager(ICoreAPI, IAnimationManager, Entity, Shape, RunningAnimation[], bool, params string[])
+  fullName: Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.IAnimationManager, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation[], bool, params string[])
   type: Method
   assemblies:
   - VintagestoryAPI
@@ -99,7 +139,10 @@ items:
   summary: Initializes the cache to the Animation Manager then spits it back out.
   example: []
   syntax:
-    content: public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, params string[] requireJointsForElements)
+    content: >-
+      [Obsolete("Use manager.LoadAnimator() or manager.LoadAnimatorCached() instead")]
+
+      public static IAnimationManager InitManager(ICoreAPI api, IAnimationManager manager, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements)
     parameters:
     - id: api
       type: Vintagestory.API.Common.ICoreAPI
@@ -116,17 +159,28 @@ items:
     - id: copyOverAnims
       type: Vintagestory.API.Common.RunningAnimation[]
       description: ''
+    - id: requirePosesOnServer
+      type: System.Boolean
     - id: requireJointsForElements
       type: System.String[]
       description: ''
     return:
       type: Vintagestory.API.Common.IAnimationManager
       description: ''
-    content.vb: Public Shared Function InitManager(api As ICoreAPI, manager As IAnimationManager, entity As Entity, entityShape As Shape, copyOverAnims As RunningAnimation(), ParamArray requireJointsForElements As String()) As IAnimationManager
+    content.vb: >-
+      <Obsolete("Use manager.LoadAnimator() or manager.LoadAnimatorCached() instead")>
+
+      Public Shared Function InitManager(api As ICoreAPI, manager As IAnimationManager, entity As Entity, entityShape As Shape, copyOverAnims As RunningAnimation(), requirePosesOnServer As Boolean, ParamArray requireJointsForElements As String()) As IAnimationManager
   overload: Vintagestory.API.Common.AnimationCache.InitManager*
-  nameWithType.vb: AnimationCache.InitManager(ICoreAPI, IAnimationManager, Entity, Shape, RunningAnimation(), ParamArray String())
-  fullName.vb: Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.IAnimationManager, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation(), ParamArray String())
-  name.vb: InitManager(ICoreAPI, IAnimationManager, Entity, Shape, RunningAnimation(), ParamArray String())
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use manager.LoadAnimator() or manager.LoadAnimatorCached() instead
+  nameWithType.vb: AnimationCache.InitManager(ICoreAPI, IAnimationManager, Entity, Shape, RunningAnimation(), Boolean, ParamArray String())
+  fullName.vb: Vintagestory.API.Common.AnimationCache.InitManager(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.IAnimationManager, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation(), Boolean, ParamArray String())
+  name.vb: InitManager(ICoreAPI, IAnimationManager, Entity, Shape, RunningAnimation(), Boolean, ParamArray String())
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -453,12 +507,12 @@ references:
   - uid: Vintagestory.API.Common.Entities
     name: Entities
     href: Vintagestory.API.Common.Entities.html
-- uid: Vintagestory.API.Common.AnimationCache.InitManager*
-  commentId: Overload:Vintagestory.API.Common.AnimationCache.InitManager
-  href: Vintagestory.API.Common.AnimationCache.html#Vintagestory_API_Common_AnimationCache_InitManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_String___
-  name: InitManager
-  nameWithType: AnimationCache.InitManager
-  fullName: Vintagestory.API.Common.AnimationCache.InitManager
+- uid: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached*
+  commentId: Overload:Vintagestory.API.Common.AnimationCache.LoadAnimatorCached
+  href: Vintagestory.API.Common.AnimationCache.html#Vintagestory_API_Common_AnimationCache_LoadAnimatorCached_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___
+  name: LoadAnimatorCached
+  nameWithType: AnimationCache.LoadAnimatorCached
+  fullName: Vintagestory.API.Common.AnimationCache.LoadAnimatorCached
 - uid: Vintagestory.API.Common.IAnimationManager
   commentId: T:Vintagestory.API.Common.IAnimationManager
   parent: Vintagestory.API.Common
@@ -494,6 +548,17 @@ references:
     href: Vintagestory.API.Common.RunningAnimation.html
   - name: (
   - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
 - uid: System.String[]
   isExternal: true
   href: https://learn.microsoft.com/dotnet/api/system.string
@@ -517,3 +582,9 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: (
   - name: )
+- uid: Vintagestory.API.Common.AnimationCache.InitManager*
+  commentId: Overload:Vintagestory.API.Common.AnimationCache.InitManager
+  href: Vintagestory.API.Common.AnimationCache.html#Vintagestory_API_Common_AnimationCache_InitManager_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_IAnimationManager_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_Shape_Vintagestory_API_Common_RunningAnimation___System_Boolean_System_String___
+  name: InitManager
+  nameWithType: AnimationCache.InitManager
+  fullName: Vintagestory.API.Common.AnimationCache.InitManager

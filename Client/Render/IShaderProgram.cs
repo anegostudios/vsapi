@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Client
@@ -32,6 +34,11 @@ namespace Vintagestory.API.Client
 
     public interface IShaderProgram : IDisposable
     {
+        /// <summary>
+        /// When loading from file this is the asset domain to load from
+        /// </summary>
+        string AssetDomain { get; set; }
+
         /// <summary>
         /// A uniqe shader pass number assigned to each shader program
         /// </summary>
@@ -97,6 +104,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         bool Disposed { get; }
         bool LoadError { get; }
+
+        OrderedDictionary<string, UBORef> UBOs { get; }
     }
 
 

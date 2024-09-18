@@ -10,35 +10,43 @@ namespace Vintagestory.API.Client
     public delegate ItemStack[] InteractionStacksDelegate(WorldInteraction wi, BlockSelection blockSelection, EntitySelection entitySelection);
     public delegate bool InteractionMatcherDelegate(WorldInteraction wi, BlockSelection blockSelection, EntitySelection entitySelection);
 
-
+    /// <summary>
+    /// A world interaction for the object. This is used to prompt the player about what a certain object can do.
+    /// </summary>
+    [DocumentAsJson]
     [JsonObject(MemberSerialization.OptIn)]
     public class WorldInteraction
     {
         /// <summary>
-        /// Left or Right mouse button?
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>Left</jsondefault>-->
+        /// What mouse button should be used for this interaction?
         /// </summary>
         [JsonProperty]
         public EnumMouseButton MouseButton;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional>-->
         /// Does it require a mouse modifier key to perform this action (e.g. "shift" or "ctrl")
         /// </summary>
         [JsonProperty]
         public string HotKeyCode;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// Does it require pressing multiple keys to perform this action (if set then HotkeyCode is ignored)
         /// </summary>
         [JsonProperty]
         public string[] HotKeyCodes { get; set; }
 
         /// <summary>
+        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The text to show, will be used in the form of Lang.Get(ActionLangCode); 
         /// </summary>
         [JsonProperty]
         public string ActionLangCode;
 
         /// <summary>
+        /// <!--<jsonalias>ItemStacks</jsonalias><jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// Does the player need to hold a certain items/blocks in hands? (e.g. a knife). You can define an array of item stacks here and the game will loop through them in a 1 second interval.
         /// This property is loaded from the entitytypes and blocktype json files and then resolved.
         /// </summary>
@@ -61,8 +69,6 @@ namespace Vintagestory.API.Client
         /// Only applicable when ItemStacks is null. If set and the method returns false, the interaction will not be displayed
         /// </summary>
         public InteractionMatcherDelegate ShouldApply;
-
-        
     }
 
     /// <summary>
@@ -165,8 +171,14 @@ namespace Vintagestory.API.Client
         /// The internal cache of all currently loaded entities. Warning: You should not set or remove anything from this dic unless you *really* know what you're doing. Use SpawnEntity/DespawnEntity instead.
         /// </summary>
         Dictionary<long, Entity> LoadedEntities { get; }
-        
+
+        /// <summary>
+        /// Gets the MapSizeY on the client, for chunk column enumeration, without this this is surprisingly hard to get...
+        /// </summary>
+        int MapSizeY { get; }
+
         Dictionary<int, IMiniDimension> Dimensions { get; }
+
         IMiniDimension GetOrCreateDimension(int dimId, Vec3d pos);
         bool TryGetMiniDimension(Vec3i origin, out IMiniDimension dimension);
         void SetBlocksPreviewDimension(int dimId);
@@ -175,5 +187,13 @@ namespace Vintagestory.API.Client
         /// Exactly like PlaySoundAt except that it returns the duration of the played sound.  (We don't want to change the method signature of PlaySoundAt for API mod breakage reasons)
         /// </summary>
         int PlaySoundAtAndGetDuration(AssetLocation sound, double x, double y, double z, IPlayer ignorePlayerUid = null, bool randomizePitch = true, float range = 32, float volume = 1f);
+
+        /// <summary>
+        /// Does exactly what it says on the tin!
+        /// </summary>
+        /// <param name="cx"></param>
+        /// <param name="cz"></param>
+        /// <param name="dimension"></param>
+        void SetChunkColumnVisible(int cx, int cz, int dimension);
     }
 }

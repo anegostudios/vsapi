@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -120,8 +120,8 @@ Class EntityBehavior
   <dl class="typelist derived">
     <dt>Derived</dt>
     <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html">PhysicsBehaviorBase</a></div>
       <div><a class="xref" href="Vintagestory.API.Common.EntityBehaviorNameTag.html">EntityBehaviorNameTag</a></div>
-      <div><a class="xref" href="Vintagestory.API.Common.EntityBehaviorPassivePhysics.html">EntityBehaviorPassivePhysics</a></div>
     </dd>
   </dl>
 
@@ -151,6 +151,16 @@ Class EntityBehavior
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -487,6 +497,42 @@ Class EntityBehavior
 
 
 
+  <a id="Vintagestory_API_Common_Entities_EntityBehavior_GetTextureSource_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.GetTextureSource*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_GetTextureSource_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.GetTextureSource(Vintagestory.API.Common.EnumHandling@)">
+  GetTextureSource(ref EnumHandling)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual ITexPositionSource GetTextureSource(ref EnumHandling handling)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.ITexPositionSource.html">ITexPositionSource</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Entities_EntityBehavior_Initialize_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.Initialize*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_Initialize_Vintagestory_API_Common_Entities_EntityProperties_Vintagestory_API_Datastructures_JsonObject_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Datastructures.JsonObject)">
@@ -513,6 +559,50 @@ Class EntityBehavior
 </dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_EntityBehavior_IntersectsRay_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.IntersectsRay*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_IntersectsRay_Vintagestory_API_MathTools_Ray_Vintagestory_API_MathTools_AABBIntersectionTest_System_Double__System_Int32__Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@,Vintagestory.API.Common.EnumHandling@)">
+  IntersectsRay(Ray, AABBIntersectionTest, out double, ref int, ref EnumHandling)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool IntersectsRay(Ray ray, AABBIntersectionTest interesectionTester, out double intersectionDistance, ref int selectionBoxIndex, ref EnumHandling handled)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>ray</code> <a class="xref" href="Vintagestory.API.MathTools.Ray.html">Ray</a></dt>
+    <dd></dd>
+    <dt><code>interesectionTester</code> <a class="xref" href="Vintagestory.API.MathTools.AABBIntersectionTest.html">AABBIntersectionTest</a></dt>
+    <dd></dd>
+    <dt><code>intersectionDistance</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>selectionBoxIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>handled</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
 
 
 
@@ -897,42 +987,6 @@ Class EntityBehavior
 
   <a id="Vintagestory_API_Common_Entities_EntityBehavior_OnLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.OnLoadCollectibleMappings*"></a>
 
-  <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})">
-  OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the variant with resolveImports parameter&quot;)]
-public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings, Dictionary&lt;int, AssetLocation&gt; oldBlockIdMapping, Dictionary&lt;int, AssetLocation&gt; oldItemIdMapping)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>worldForNewMappings</code> <a class="xref" href="Vintagestory.API.Common.IWorldAccessor.html">IWorldAccessor</a></dt>
-    <dd></dd>
-    <dt><code>oldBlockIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
-    <dd></dd>
-    <dt><code>oldItemIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_Entities_EntityBehavior_OnLoadCollectibleMappings_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.OnLoadCollectibleMappings*"></a>
-
   <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_OnLoadCollectibleMappings_Vintagestory_API_Common_IWorldAccessor_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_AssetLocation__System_Boolean_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.OnLoadCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Boolean)">
   OnLoadCollectibleMappings(IWorldAccessor, Dictionary&lt;int, AssetLocation&gt;, Dictionary&lt;int, AssetLocation&gt;, bool)
   
@@ -954,38 +1008,6 @@ public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings
     <dt><code>oldItemIdMapping</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a>&gt;</dt>
     <dd></dd>
     <dt><code>resolveImports</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_Entities_EntityBehavior_OnNoPath_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.OnNoPath*"></a>
-
-  <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_OnNoPath_Vintagestory_API_MathTools_Vec3d_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.OnNoPath(Vintagestory.API.MathTools.Vec3d)">
-  OnNoPath(Vec3d)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Fired when the pathfinder does not find a path to given target</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public virtual void OnNoPath(Vec3d target)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>target</code> <a class="xref" href="Vintagestory.API.MathTools.Vec3d.html">Vec3d</a></dt>
     <dd></dd>
   </dl>
 
@@ -1183,6 +1205,69 @@ public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings
 
 
 
+  <a id="Vintagestory_API_Common_Entities_EntityBehavior_OnTesselated_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.OnTesselated*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_OnTesselated" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.OnTesselated">
+  OnTesselated()
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnTesselated()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_EntityBehavior_OnTesselation_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.OnTesselation*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_OnTesselation_Vintagestory_API_Common_Shape__System_String_System_Boolean__System_String____" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@,System.String[]@)">
+  OnTesselation(ref Shape, string, ref bool, ref string[])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void OnTesselation(ref Shape entityShape, string shapePathForLogging, ref bool shapeIsCloned, ref string[] willDeleteElements)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
+    <dd></dd>
+    <dt><code>shapePathForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>shapeIsCloned</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>willDeleteElements</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Entities_EntityBehavior_PropertyName_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.PropertyName*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_PropertyName" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.PropertyName">
@@ -1268,6 +1353,44 @@ public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForNewMappings
     <dd></dd>
   </dl>
 
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_EntityBehavior_TryGiveItemStack_" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.TryGiveItemStack*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_EntityBehavior_TryGiveItemStack_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_EnumHandling__" data-uid="Vintagestory.API.Common.Entities.EntityBehavior.TryGiveItemStack(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.EnumHandling@)">
+  TryGiveItemStack(ItemStack, ref EnumHandling)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool TryGiveItemStack(ItemStack itemstack, ref EnumHandling handling)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>itemstack</code> <a class="xref" href="Vintagestory.API.Common.ItemStack.html">ItemStack</a></dt>
+    <dd></dd>
+    <dt><code>handling</code> <a class="xref" href="Vintagestory.API.Common.EnumHandling.html">EnumHandling</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

@@ -15,12 +15,18 @@ namespace Vintagestory.API.Common
 
         public BlockPos NewStartMarker;
         public BlockPos NewEndMarker;
+
+        public Vec3d OldStartMarkerExact;
+        public Vec3d OldEndMarkerExact;
+
+        public Vec3d NewStartMarkerExact;
+        public Vec3d NewEndMarkerExact;
         public List<EntityUpdate> EntityUpdates;
     }
 
 
     /// <summary>
-    /// Provides read/write access to the blocks of a world. 
+    /// Provides read/write access to the blocks of a world.
     /// </summary>
     public interface IBlockAccessorRevertable : IBulkBlockAccessor
     {
@@ -38,7 +44,7 @@ namespace Vintagestory.API.Common
         int CurrentHistoryState { get; }
 
         /// <summary>
-        /// 1 = perform 1 undo 
+        /// 1 = perform 1 undo
         /// -1 = perform 1 redo
         /// </summary>
         void ChangeHistoryState(int quantity = 1);
@@ -66,13 +72,13 @@ namespace Vintagestory.API.Common
         void CommitBlockEntityData();
 
         void BeginMultiEdit();
-        
+
         void EndMultiEdit();
 
         void StoreHistoryState(HistoryState state);
 
         void StoreEntitySpawnToHistory(Entity entity);
-        
+
         void StoreEntityMoveToHistory(BlockPos start, BlockPos end, Vec3i offset);
     }
 }

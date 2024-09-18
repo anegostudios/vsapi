@@ -34,7 +34,7 @@ namespace Vintagestory.API.Client
             this.capi = capi;
 
             dummyInv = new DummyInventory(capi);
-            dummyInv.OnAcquireTransitionSpeed = (transType, stack, mul) =>
+            dummyInv.OnAcquireTransitionSpeed += (transType, stack, mul) =>
             {
                 return 0;
             };

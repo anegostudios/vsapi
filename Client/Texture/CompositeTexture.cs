@@ -7,10 +7,23 @@ using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Client
 {
+    /// <summary>
+    /// Defines a texture to be overlayed on another texture.
+    /// </summary>
+    [DocumentAsJson]
     public class BlendedOverlayTexture
     {
-        public AssetLocation Base;
-        public EnumColorBlendMode BlendMode;
+        /// <summary>
+        /// <!--<jsonoptional>Required</jsonoptional>-->
+        /// The path to the texture to use as an overlay.
+        /// </summary>
+        [DocumentAsJson] public AssetLocation Base;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>Normal</jsondefault>-->
+        /// The type of blend for each pixel.
+        /// </summary>
+        [DocumentAsJson] public EnumColorBlendMode BlendMode;
 
         public BlendedOverlayTexture Clone()
         {
@@ -19,22 +32,59 @@ namespace Vintagestory.API.Client
     }
 
     /// <summary>
-    /// A single block texture
+    /// Holds data about a texture. Also allows textures to be overlayed on top of one another.
     /// </summary>
+    /// <example>
+    /// <code language="json">
+    ///"textures": {
+	///	"charcoal": { "base": "block/coal/charcoal" },
+	///	"coke": { "base": "block/coal/coke" },
+	///	"ore-anthracite": { "base": "block/coal/anthracite" },
+	///	"ore-lignite": { "base": "block/coal/lignite" },
+	///	"ore-bituminouscoal": { "base": "block/coal/bituminous" },
+	///	"ember": { "base": "block/coal/ember" }
+	///},
+    /// </code>
+    /// <code language="json">
+    ///"textures": {
+	///	"ore": {
+	///		"base": "block/stone/rock/{rock}1",
+	///		"overlays": [ "block/stone/ore/{ore}1" ]
+	///	}
+	///},
+    /// </code>
+    /// Connected textures example (See https://discord.com/channels/302152934249070593/479736466453561345/1134187385501007962)
+    /// <code language="json">
+    ///"textures": {
+	///	"all": {
+	///		"base": "block/stone/cobblestone/tiling/1",
+	///		"tiles": [
+	///			{ "base": "block/stone/cobblestone/tiling/*" }
+	///		],
+	///		"tilesWidth": 4
+	///	}
+	///}
+    /// </code>
+    /// </example>
+    [DocumentAsJson]
     public class CompositeTexture
     {
         public const char AlphaSeparator = 'å';   // This is the ASCII multiplication character (ASCII code 215), very unlikely to be used in a filename!
         public const string AlphaSeparatorRegexSearch = @"å\d+";
+        public const string OverlaysSeparator = "++";
+        public const char BlendmodeSeparator = '~';
 
         /// <summary>
+        /// <!--<jsonoptional>Required</jsonoptional>-->
         /// The basic texture for this composite texture
         /// </summary>
-        public AssetLocation Base;
+        [DocumentAsJson] public AssetLocation Base;
 
         /// <summary>
-        /// (legacy setter, used BlendedOverlays instead) The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation
+        /// <!--<jsonoptional>Obsolete</jsonoptional>-->
+        /// Obsolete. Use <see cref="BlendedOverlays"/> instead.
         /// </summary>
-        public AssetLocation[] Overlays
+        [DocumentAsJson] public AssetLocation[] Overlays
         {
             set
             {
@@ -43,17 +93,32 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
-        /// The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// A set of textures to overlay above this texture. The base texture may be overlayed with any quantity of textures. These are baked together during texture atlas creation.
         /// </summary>
-        public BlendedOverlayTexture[] BlendedOverlays = null;
+        [DocumentAsJson] public BlendedOverlayTexture[] BlendedOverlays = null;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// The texture may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.
         /// </summary>
-        public CompositeTexture[] Alternates = null;
+        [DocumentAsJson] public CompositeTexture[] Alternates = null;
 
-        public CompositeTexture[] Tiles = null;
-        public int TilesWidth;
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// A way of basic support for connected textures. Textures should be named numerically from 1 to <see cref="TilesWidth"/> squared.
+        /// <br/>E.g., if <see cref="TilesWidth"/> is 3, the order follows the pattern of:<br/>
+        /// 1 2 3 <br/>
+        /// 4 5 6 <br/>
+        /// 7 8 9
+        /// </summary>
+        [DocumentAsJson] public CompositeTexture[] Tiles = null;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// The number of tiles in one direction that make up the full connected textures defined in <see cref="Tiles"/>.
+        /// </summary>
+        [DocumentAsJson] public int TilesWidth;
 
         /// <summary>
         /// BakedCompositeTexture is an expanded, atlas friendly version of CompositeTexture. Required during texture atlas generation.
@@ -61,14 +126,16 @@ namespace Vintagestory.API.Client
         public BakedCompositeTexture Baked;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
         /// Rotation of the texture may only be a multiple of 90
         /// </summary>
-        public int Rotation = 0;
+        [DocumentAsJson] public int Rotation = 0;
 
         /// <summary>
-        /// Can be used to modify the opacity of the texture
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>255</jsondefault>-->
+        /// Can be used to modify the opacity of the texture. 255 is fully opaque, 0 is fully transparent.
         /// </summary>
-        public int Alpha = 255;
+        [DocumentAsJson] public int Alpha = 255;
 
         [ThreadStatic]    // Lovely ThreadStatic will automatically dispose of any dictionary created on a separate thread (if the thread is disposed of)
         public static Dictionary<AssetLocation, CompositeTexture> basicTexturesCache;
@@ -87,7 +154,7 @@ namespace Vintagestory.API.Client
                     var f = Alternates.Select(ct => ct.WildCardNoFiles).FirstOrDefault();
                     if (f != null) return f;
                 }
-                
+
                 return null;
             }
         }
@@ -270,7 +337,7 @@ namespace Vintagestory.API.Client
                     assets = wildcardsCache[ct.Base] = assetManager.GetManyInCategory("textures", ct.Base.Path.Substring(0, ct.Base.Path.Length - 1), ct.Base.Domain);
                 }
                 if (assets.Count == 0)
-                {                  
+                {
                     ct.WildCardNoFiles = ct.Base;
                     ct.Base = new AssetLocation("unknown");
                 }
@@ -316,7 +383,7 @@ namespace Vintagestory.API.Client
                             alternates[origLength + i - 1] = act;
                         }
                     }
-                    
+
                     ct.Alternates = alternates;
                 }
             }
@@ -333,7 +400,7 @@ namespace Vintagestory.API.Client
                 {
                     BlendedOverlayTexture bov = ct.BlendedOverlays[i];
                     bct.TextureFilenames[i + 1] = bov.Base;
-                    bct.BakedName.Path += "++" + (int)bov.BlendMode + "~" + bov.Base.ToShortString();
+                    bct.BakedName.Path += OverlaysSeparator + ((int)bov.BlendMode).ToString() + BlendmodeSeparator + bov.Base.ToShortString();
                 }
             }
             else
@@ -371,10 +438,14 @@ namespace Vintagestory.API.Client
                 }
             }
 
+            // make sure all variants are sorted by their name
+            // this is important for seagrass and similar plants that have multiple variants where top and bottom parts need to match by the same index/name
+            bct.BakedVariants = bct.BakedVariants?.OrderBy(v => v.BakedName.Path).ToArray();
+
             if (ct.Tiles != null)
             {
                 List<BakedCompositeTexture> tiles = new List<BakedCompositeTexture>();
-                
+
                 for (int i = 0; i < ct.Tiles.Length; i++)
                 {
                     var tile = ct.Tiles[i];

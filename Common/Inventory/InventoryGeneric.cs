@@ -36,6 +36,25 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// Creates an empty (invalid) inventory. Must call init() to propery init the inventory
+        /// </summary>
+        public InventoryGeneric(ICoreAPI api) : base("-", api)
+        {
+
+        }
+
+        public void Init(int quantitySlots, string className, string instanceId, NewSlotDelegate onNewSlot = null) {
+            this.instanceID = instanceId;
+            this.className = className;
+
+            OnGetSuitability = (s, t, isMerge) => isMerge ? (baseWeight + 3) : (baseWeight + 1);
+
+            this.onNewSlot = onNewSlot;
+
+            slots = GenEmptySlots(quantitySlots);
+        }
+
+        /// <summary>
         /// Create a new general purpose inventory
         /// </summary>
         /// <param name="quantitySlots"></param>
@@ -45,11 +64,7 @@ namespace Vintagestory.API.Common
         /// <param name="onNewSlot"></param>
         public InventoryGeneric(int quantitySlots, string className, string instanceId, ICoreAPI api, NewSlotDelegate onNewSlot = null) : base(className, instanceId, api)
         {
-            OnGetSuitability = (s, t, isMerge) => isMerge ? (baseWeight + 3) : (baseWeight + 1);
-
-            this.onNewSlot = onNewSlot;
-
-            slots = GenEmptySlots(quantitySlots);
+            Init(quantitySlots, className, instanceId, onNewSlot);
         }
 
         /// <summary>
@@ -162,13 +177,7 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            float outMul = baseMul;
-            if (OnAcquireTransitionSpeed != null)
-            {
-                outMul = OnAcquireTransitionSpeed(transType, stack, baseMul);
-            }
-
-            return outMul;
+            return InvokeTransitionSpeedDelegates(transType, stack, baseMul);
         }
 
 

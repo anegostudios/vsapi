@@ -1,0 +1,795 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.Client.NoObf.WireframeCube
+  commentId: T:Vintagestory.Client.NoObf.WireframeCube
+  id: WireframeCube
+  parent: Vintagestory.Client.NoObf
+  children:
+  - Vintagestory.Client.NoObf.WireframeCube.#ctor
+  - Vintagestory.Client.NoObf.WireframeCube.CreateCenterOriginCube(Vintagestory.API.Client.ICoreClientAPI,System.Int32)
+  - Vintagestory.Client.NoObf.WireframeCube.CreateUnitCube(Vintagestory.API.Client.ICoreClientAPI,System.Int32)
+  - Vintagestory.Client.NoObf.WireframeCube.Dispose
+  - Vintagestory.Client.NoObf.WireframeCube.Render(Vintagestory.API.Client.ICoreClientAPI,System.Double,System.Double,System.Double,System.Single,System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec4f)
+  - Vintagestory.Client.NoObf.WireframeCube.Render(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.Matrixf,System.Single,Vintagestory.API.MathTools.Vec4f)
+  langs:
+  - csharp
+  - vb
+  name: WireframeCube
+  nameWithType: WireframeCube
+  fullName: Vintagestory.Client.NoObf.WireframeCube
+  type: Class
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.Client.NoObf
+  syntax:
+    content: public class WireframeCube
+    content.vb: Public Class WireframeCube
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.Client.NoObf.WireframeCube.CreateUnitCube(Vintagestory.API.Client.ICoreClientAPI,System.Int32)
+  commentId: M:Vintagestory.Client.NoObf.WireframeCube.CreateUnitCube(Vintagestory.API.Client.ICoreClientAPI,System.Int32)
+  id: CreateUnitCube(Vintagestory.API.Client.ICoreClientAPI,System.Int32)
+  parent: Vintagestory.Client.NoObf.WireframeCube
+  langs:
+  - csharp
+  - vb
+  name: CreateUnitCube(ICoreClientAPI, int)
+  nameWithType: WireframeCube.CreateUnitCube(ICoreClientAPI, int)
+  fullName: Vintagestory.Client.NoObf.WireframeCube.CreateUnitCube(Vintagestory.API.Client.ICoreClientAPI, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.Client.NoObf
+  summary: Creates a cube mesh with edge points 0/0/0 and 1/1/1
+  example: []
+  syntax:
+    content: public static WireframeCube CreateUnitCube(ICoreClientAPI capi, int color = -2147483648)
+    parameters:
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+      description: ''
+    - id: color
+      type: System.Int32
+      description: ''
+    return:
+      type: Vintagestory.Client.NoObf.WireframeCube
+      description: ''
+    content.vb: Public Shared Function CreateUnitCube(capi As ICoreClientAPI, color As Integer = -2147483648) As WireframeCube
+  overload: Vintagestory.Client.NoObf.WireframeCube.CreateUnitCube*
+  nameWithType.vb: WireframeCube.CreateUnitCube(ICoreClientAPI, Integer)
+  fullName.vb: Vintagestory.Client.NoObf.WireframeCube.CreateUnitCube(Vintagestory.API.Client.ICoreClientAPI, Integer)
+  name.vb: CreateUnitCube(ICoreClientAPI, Integer)
+- uid: Vintagestory.Client.NoObf.WireframeCube.CreateCenterOriginCube(Vintagestory.API.Client.ICoreClientAPI,System.Int32)
+  commentId: M:Vintagestory.Client.NoObf.WireframeCube.CreateCenterOriginCube(Vintagestory.API.Client.ICoreClientAPI,System.Int32)
+  id: CreateCenterOriginCube(Vintagestory.API.Client.ICoreClientAPI,System.Int32)
+  parent: Vintagestory.Client.NoObf.WireframeCube
+  langs:
+  - csharp
+  - vb
+  name: CreateCenterOriginCube(ICoreClientAPI, int)
+  nameWithType: WireframeCube.CreateCenterOriginCube(ICoreClientAPI, int)
+  fullName: Vintagestory.Client.NoObf.WireframeCube.CreateCenterOriginCube(Vintagestory.API.Client.ICoreClientAPI, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.Client.NoObf
+  summary: Creates a cube mesh with edge points -1/-1/-1 and 1/1/1
+  example: []
+  syntax:
+    content: public static WireframeCube CreateCenterOriginCube(ICoreClientAPI capi, int color = -2147483648)
+    parameters:
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+      description: ''
+    - id: color
+      type: System.Int32
+      description: ''
+    return:
+      type: Vintagestory.Client.NoObf.WireframeCube
+      description: ''
+    content.vb: Public Shared Function CreateCenterOriginCube(capi As ICoreClientAPI, color As Integer = -2147483648) As WireframeCube
+  overload: Vintagestory.Client.NoObf.WireframeCube.CreateCenterOriginCube*
+  nameWithType.vb: WireframeCube.CreateCenterOriginCube(ICoreClientAPI, Integer)
+  fullName.vb: Vintagestory.Client.NoObf.WireframeCube.CreateCenterOriginCube(Vintagestory.API.Client.ICoreClientAPI, Integer)
+  name.vb: CreateCenterOriginCube(ICoreClientAPI, Integer)
+- uid: Vintagestory.Client.NoObf.WireframeCube.#ctor
+  commentId: M:Vintagestory.Client.NoObf.WireframeCube.#ctor
+  id: '#ctor'
+  parent: Vintagestory.Client.NoObf.WireframeCube
+  langs:
+  - csharp
+  - vb
+  name: WireframeCube()
+  nameWithType: WireframeCube.WireframeCube()
+  fullName: Vintagestory.Client.NoObf.WireframeCube.WireframeCube()
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.Client.NoObf
+  syntax:
+    content: public WireframeCube()
+    content.vb: Public Sub New()
+  overload: Vintagestory.Client.NoObf.WireframeCube.#ctor*
+  nameWithType.vb: WireframeCube.New()
+  fullName.vb: Vintagestory.Client.NoObf.WireframeCube.New()
+  name.vb: New()
+- uid: Vintagestory.Client.NoObf.WireframeCube.Render(Vintagestory.API.Client.ICoreClientAPI,System.Double,System.Double,System.Double,System.Single,System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec4f)
+  commentId: M:Vintagestory.Client.NoObf.WireframeCube.Render(Vintagestory.API.Client.ICoreClientAPI,System.Double,System.Double,System.Double,System.Single,System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec4f)
+  id: Render(Vintagestory.API.Client.ICoreClientAPI,System.Double,System.Double,System.Double,System.Single,System.Single,System.Single,System.Single,Vintagestory.API.MathTools.Vec4f)
+  parent: Vintagestory.Client.NoObf.WireframeCube
+  langs:
+  - csharp
+  - vb
+  name: Render(ICoreClientAPI, double, double, double, float, float, float, float, Vec4f)
+  nameWithType: WireframeCube.Render(ICoreClientAPI, double, double, double, float, float, float, float, Vec4f)
+  fullName: Vintagestory.Client.NoObf.WireframeCube.Render(Vintagestory.API.Client.ICoreClientAPI, double, double, double, float, float, float, float, Vintagestory.API.MathTools.Vec4f)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.Client.NoObf
+  syntax:
+    content: public void Render(ICoreClientAPI capi, double posx, double posy, double posz, float scalex, float scaley, float scalez, float lineWidth = 1.6, Vec4f color = null)
+    parameters:
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+    - id: posx
+      type: System.Double
+    - id: posy
+      type: System.Double
+    - id: posz
+      type: System.Double
+    - id: scalex
+      type: System.Single
+    - id: scaley
+      type: System.Single
+    - id: scalez
+      type: System.Single
+    - id: lineWidth
+      type: System.Single
+    - id: color
+      type: Vintagestory.API.MathTools.Vec4f
+    content.vb: Public Sub Render(capi As ICoreClientAPI, posx As Double, posy As Double, posz As Double, scalex As Single, scaley As Single, scalez As Single, lineWidth As Single = 1.6, color As Vec4f = Nothing)
+  overload: Vintagestory.Client.NoObf.WireframeCube.Render*
+  nameWithType.vb: WireframeCube.Render(ICoreClientAPI, Double, Double, Double, Single, Single, Single, Single, Vec4f)
+  fullName.vb: Vintagestory.Client.NoObf.WireframeCube.Render(Vintagestory.API.Client.ICoreClientAPI, Double, Double, Double, Single, Single, Single, Single, Vintagestory.API.MathTools.Vec4f)
+  name.vb: Render(ICoreClientAPI, Double, Double, Double, Single, Single, Single, Single, Vec4f)
+- uid: Vintagestory.Client.NoObf.WireframeCube.Render(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.Matrixf,System.Single,Vintagestory.API.MathTools.Vec4f)
+  commentId: M:Vintagestory.Client.NoObf.WireframeCube.Render(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.Matrixf,System.Single,Vintagestory.API.MathTools.Vec4f)
+  id: Render(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.Matrixf,System.Single,Vintagestory.API.MathTools.Vec4f)
+  parent: Vintagestory.Client.NoObf.WireframeCube
+  langs:
+  - csharp
+  - vb
+  name: Render(ICoreClientAPI, Matrixf, float, Vec4f)
+  nameWithType: WireframeCube.Render(ICoreClientAPI, Matrixf, float, Vec4f)
+  fullName: Vintagestory.Client.NoObf.WireframeCube.Render(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.Matrixf, float, Vintagestory.API.MathTools.Vec4f)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.Client.NoObf
+  syntax:
+    content: public void Render(ICoreClientAPI capi, Matrixf mat, float lineWidth = 1.6, Vec4f color = null)
+    parameters:
+    - id: capi
+      type: Vintagestory.API.Client.ICoreClientAPI
+    - id: mat
+      type: Vintagestory.API.Client.Matrixf
+    - id: lineWidth
+      type: System.Single
+    - id: color
+      type: Vintagestory.API.MathTools.Vec4f
+    content.vb: Public Sub Render(capi As ICoreClientAPI, mat As Matrixf, lineWidth As Single = 1.6, color As Vec4f = Nothing)
+  overload: Vintagestory.Client.NoObf.WireframeCube.Render*
+  nameWithType.vb: WireframeCube.Render(ICoreClientAPI, Matrixf, Single, Vec4f)
+  fullName.vb: Vintagestory.Client.NoObf.WireframeCube.Render(Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.Matrixf, Single, Vintagestory.API.MathTools.Vec4f)
+  name.vb: Render(ICoreClientAPI, Matrixf, Single, Vec4f)
+- uid: Vintagestory.Client.NoObf.WireframeCube.Dispose
+  commentId: M:Vintagestory.Client.NoObf.WireframeCube.Dispose
+  id: Dispose
+  parent: Vintagestory.Client.NoObf.WireframeCube
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: WireframeCube.Dispose()
+  fullName: Vintagestory.Client.NoObf.WireframeCube.Dispose()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.Client.NoObf
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: Vintagestory.Client.NoObf.WireframeCube.Dispose*
+references:
+- uid: Vintagestory.Client.NoObf
+  commentId: N:Vintagestory.Client.NoObf
+  href: Vintagestory.html
+  name: Vintagestory.Client.NoObf
+  nameWithType: Vintagestory.Client.NoObf
+  fullName: Vintagestory.Client.NoObf
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.Client
+    name: Client
+    href: Vintagestory.Client.html
+  - name: .
+  - uid: Vintagestory.Client.NoObf
+    name: NoObf
+    href: Vintagestory.Client.NoObf.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.Client
+    name: Client
+    href: Vintagestory.Client.html
+  - name: .
+  - uid: Vintagestory.Client.NoObf
+    name: NoObf
+    href: Vintagestory.Client.NoObf.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.Client.NoObf.WireframeCube.CreateUnitCube*
+  commentId: Overload:Vintagestory.Client.NoObf.WireframeCube.CreateUnitCube
+  href: Vintagestory.Client.NoObf.WireframeCube.html#Vintagestory_Client_NoObf_WireframeCube_CreateUnitCube_Vintagestory_API_Client_ICoreClientAPI_System_Int32_
+  name: CreateUnitCube
+  nameWithType: WireframeCube.CreateUnitCube
+  fullName: Vintagestory.Client.NoObf.WireframeCube.CreateUnitCube
+- uid: Vintagestory.API.Client.ICoreClientAPI
+  commentId: T:Vintagestory.API.Client.ICoreClientAPI
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.ICoreClientAPI.html
+  name: ICoreClientAPI
+  nameWithType: ICoreClientAPI
+  fullName: Vintagestory.API.Client.ICoreClientAPI
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Vintagestory.Client.NoObf.WireframeCube
+  commentId: T:Vintagestory.Client.NoObf.WireframeCube
+  parent: Vintagestory.Client.NoObf
+  href: Vintagestory.Client.NoObf.WireframeCube.html
+  name: WireframeCube
+  nameWithType: WireframeCube
+  fullName: Vintagestory.Client.NoObf.WireframeCube
+- uid: Vintagestory.API.Client
+  commentId: N:Vintagestory.API.Client
+  href: Vintagestory.html
+  name: Vintagestory.API.Client
+  nameWithType: Vintagestory.API.Client
+  fullName: Vintagestory.API.Client
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Client
+    name: Client
+    href: Vintagestory.API.Client.html
+- uid: Vintagestory.Client.NoObf.WireframeCube.CreateCenterOriginCube*
+  commentId: Overload:Vintagestory.Client.NoObf.WireframeCube.CreateCenterOriginCube
+  href: Vintagestory.Client.NoObf.WireframeCube.html#Vintagestory_Client_NoObf_WireframeCube_CreateCenterOriginCube_Vintagestory_API_Client_ICoreClientAPI_System_Int32_
+  name: CreateCenterOriginCube
+  nameWithType: WireframeCube.CreateCenterOriginCube
+  fullName: Vintagestory.Client.NoObf.WireframeCube.CreateCenterOriginCube
+- uid: Vintagestory.Client.NoObf.WireframeCube.#ctor*
+  commentId: Overload:Vintagestory.Client.NoObf.WireframeCube.#ctor
+  href: Vintagestory.Client.NoObf.WireframeCube.html#Vintagestory_Client_NoObf_WireframeCube__ctor
+  name: WireframeCube
+  nameWithType: WireframeCube.WireframeCube
+  fullName: Vintagestory.Client.NoObf.WireframeCube.WireframeCube
+  nameWithType.vb: WireframeCube.New
+  fullName.vb: Vintagestory.Client.NoObf.WireframeCube.New
+  name.vb: New
+- uid: Vintagestory.Client.NoObf.WireframeCube.Render*
+  commentId: Overload:Vintagestory.Client.NoObf.WireframeCube.Render
+  href: Vintagestory.Client.NoObf.WireframeCube.html#Vintagestory_Client_NoObf_WireframeCube_Render_Vintagestory_API_Client_ICoreClientAPI_System_Double_System_Double_System_Double_System_Single_System_Single_System_Single_System_Single_Vintagestory_API_MathTools_Vec4f_
+  name: Render
+  nameWithType: WireframeCube.Render
+  fullName: Vintagestory.Client.NoObf.WireframeCube.Render
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: Vintagestory.API.MathTools.Vec4f
+  commentId: T:Vintagestory.API.MathTools.Vec4f
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec4f.html
+  name: Vec4f
+  nameWithType: Vec4f
+  fullName: Vintagestory.API.MathTools.Vec4f
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Client.Matrixf
+  commentId: T:Vintagestory.API.Client.Matrixf
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.Matrixf.html
+  name: Matrixf
+  nameWithType: Matrixf
+  fullName: Vintagestory.API.Client.Matrixf
+- uid: Vintagestory.Client.NoObf.WireframeCube.Dispose*
+  commentId: Overload:Vintagestory.Client.NoObf.WireframeCube.Dispose
+  href: Vintagestory.Client.NoObf.WireframeCube.html#Vintagestory_Client_NoObf_WireframeCube_Dispose
+  name: Dispose
+  nameWithType: WireframeCube.Dispose
+  fullName: Vintagestory.Client.NoObf.WireframeCube.Dispose

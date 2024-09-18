@@ -5,8 +5,12 @@ items:
   id: Dimensions
   parent: Vintagestory.API.Config
   children:
+  - Vintagestory.API.Config.Dimensions.AltWorld
   - Vintagestory.API.Config.Dimensions.MiniDimensions
   - Vintagestory.API.Config.Dimensions.NormalWorld
+  - Vintagestory.API.Config.Dimensions.SubDimensionIdForPos(System.Int32,System.Int32)
+  - Vintagestory.API.Config.Dimensions.subDimensionIndexZMultiplier
+  - Vintagestory.API.Config.Dimensions.subDimensionSize
   langs:
   - csharp
   - vb
@@ -30,6 +34,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Config.Dimensions.NormalWorld
   commentId: F:Vintagestory.API.Config.Dimensions.NormalWorld
   id: NormalWorld
@@ -72,6 +79,95 @@ items:
     return:
       type: System.Int32
     content.vb: Public Const MiniDimensions As Integer = 1
+- uid: Vintagestory.API.Config.Dimensions.AltWorld
+  commentId: F:Vintagestory.API.Config.Dimensions.AltWorld
+  id: AltWorld
+  parent: Vintagestory.API.Config.Dimensions
+  langs:
+  - csharp
+  - vb
+  name: AltWorld
+  nameWithType: Dimensions.AltWorld
+  fullName: Vintagestory.API.Config.Dimensions.AltWorld
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: The dimension dedicated for storage of blocks in an alt-world, such as the Devastation
+  example: []
+  syntax:
+    content: public const int AltWorld = 2
+    return:
+      type: System.Int32
+    content.vb: Public Const AltWorld As Integer = 2
+- uid: Vintagestory.API.Config.Dimensions.subDimensionSize
+  commentId: F:Vintagestory.API.Config.Dimensions.subDimensionSize
+  id: subDimensionSize
+  parent: Vintagestory.API.Config.Dimensions
+  langs:
+  - csharp
+  - vb
+  name: subDimensionSize
+  nameWithType: Dimensions.subDimensionSize
+  fullName: Vintagestory.API.Config.Dimensions.subDimensionSize
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  summary: This represents the XZ size of mini-dimensions (individual BlockAccessorMovables) within an overall dimension - we can pack 16 million of these into one dimension, which should be enough!
+  example: []
+  syntax:
+    content: public const int subDimensionSize = 16384
+    return:
+      type: System.Int32
+    content.vb: Public Const subDimensionSize As Integer = 16384
+- uid: Vintagestory.API.Config.Dimensions.subDimensionIndexZMultiplier
+  commentId: F:Vintagestory.API.Config.Dimensions.subDimensionIndexZMultiplier
+  id: subDimensionIndexZMultiplier
+  parent: Vintagestory.API.Config.Dimensions
+  langs:
+  - csharp
+  - vb
+  name: subDimensionIndexZMultiplier
+  nameWithType: Dimensions.subDimensionIndexZMultiplier
+  fullName: Vintagestory.API.Config.Dimensions.subDimensionIndexZMultiplier
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  syntax:
+    content: public const int subDimensionIndexZMultiplier = 4096
+    return:
+      type: System.Int32
+    content.vb: Public Const subDimensionIndexZMultiplier As Integer = 4096
+- uid: Vintagestory.API.Config.Dimensions.SubDimensionIdForPos(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Config.Dimensions.SubDimensionIdForPos(System.Int32,System.Int32)
+  id: SubDimensionIdForPos(System.Int32,System.Int32)
+  parent: Vintagestory.API.Config.Dimensions
+  langs:
+  - csharp
+  - vb
+  name: SubDimensionIdForPos(int, int)
+  nameWithType: Dimensions.SubDimensionIdForPos(int, int)
+  fullName: Vintagestory.API.Config.Dimensions.SubDimensionIdForPos(int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Config
+  syntax:
+    content: public static int SubDimensionIdForPos(int posX, int posZ)
+    parameters:
+    - id: posX
+      type: System.Int32
+    - id: posZ
+      type: System.Int32
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function SubDimensionIdForPos(posX As Integer, posZ As Integer) As Integer
+  overload: Vintagestory.API.Config.Dimensions.SubDimensionIdForPos*
+  nameWithType.vb: Dimensions.SubDimensionIdForPos(Integer, Integer)
+  fullName.vb: Vintagestory.API.Config.Dimensions.SubDimensionIdForPos(Integer, Integer)
+  name.vb: SubDimensionIdForPos(Integer, Integer)
 references:
 - uid: Vintagestory.API.Config
   commentId: N:Vintagestory.API.Config
@@ -333,6 +429,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -340,6 +498,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: System.Int32
   commentId: T:System.Int32
   parent: System
@@ -351,3 +606,9 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
+- uid: Vintagestory.API.Config.Dimensions.SubDimensionIdForPos*
+  commentId: Overload:Vintagestory.API.Config.Dimensions.SubDimensionIdForPos
+  href: Vintagestory.API.Config.Dimensions.html#Vintagestory_API_Config_Dimensions_SubDimensionIdForPos_System_Int32_System_Int32_
+  name: SubDimensionIdForPos
+  nameWithType: Dimensions.SubDimensionIdForPos
+  fullName: Vintagestory.API.Config.Dimensions.SubDimensionIdForPos

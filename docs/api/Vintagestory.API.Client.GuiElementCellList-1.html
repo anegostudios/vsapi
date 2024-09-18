@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -335,6 +335,16 @@ Class GuiElementCellList&lt;T&gt;
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
 
 
@@ -346,8 +356,8 @@ Class GuiElementCellList&lt;T&gt;
 
   <a id="Vintagestory_API_Client_GuiElementCellList_1__ctor_" data-uid="Vintagestory.API.Client.GuiElementCellList`1.#ctor*"></a>
 
-  <h3 id="Vintagestory_API_Client_GuiElementCellList_1__ctor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell__0__System_Collections_Generic_List__0__" data-uid="Vintagestory.API.Client.GuiElementCellList`1.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{`0},System.Collections.Generic.List{`0})">
-  GuiElementCellList(ICoreClientAPI, ElementBounds, OnRequireCell&lt;T&gt;, List&lt;T&gt;)
+  <h3 id="Vintagestory_API_Client_GuiElementCellList_1__ctor_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell__0__System_Collections_Generic_IEnumerable__0__" data-uid="Vintagestory.API.Client.GuiElementCellList`1.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{`0},System.Collections.Generic.IEnumerable{`0})">
+  GuiElementCellList(ICoreClientAPI, ElementBounds, OnRequireCell&lt;T&gt;, IEnumerable&lt;T&gt;)
   
   </h3>
 
@@ -356,7 +366,7 @@ Class GuiElementCellList&lt;T&gt;
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GuiElementCellList(ICoreClientAPI capi, ElementBounds bounds, OnRequireCell&lt;T&gt; cellCreator, List&lt;T&gt; cells = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public GuiElementCellList(ICoreClientAPI capi, ElementBounds bounds, OnRequireCell&lt;T&gt; cellCreator, IEnumerable&lt;T&gt; cells = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -370,7 +380,7 @@ Class GuiElementCellList&lt;T&gt;
     <dt><code>cellCreator</code> <a class="xref" href="Vintagestory.API.Client.OnRequireCell-1.html">OnRequireCell</a>&lt;T&gt;</dt>
     <dd><p>The event fired when a cell is requested by the gui</p>
 </dd>
-    <dt><code>cells</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dt><code>cells</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
     <dd><p>The array of cells initialized with the list.</p>
 </dd>
   </dl>
@@ -815,8 +825,8 @@ Class GuiElementCellList&lt;T&gt;
 
   <a id="Vintagestory_API_Client_GuiElementCellList_1_ReloadCells_" data-uid="Vintagestory.API.Client.GuiElementCellList`1.ReloadCells*"></a>
 
-  <h3 id="Vintagestory_API_Client_GuiElementCellList_1_ReloadCells_System_Collections_Generic_List__0__" data-uid="Vintagestory.API.Client.GuiElementCellList`1.ReloadCells(System.Collections.Generic.List{`0})">
-  ReloadCells(List&lt;T&gt;)
+  <h3 id="Vintagestory_API_Client_GuiElementCellList_1_ReloadCells_System_Collections_Generic_IEnumerable__0__" data-uid="Vintagestory.API.Client.GuiElementCellList`1.ReloadCells(System.Collections.Generic.IEnumerable{`0})">
+  ReloadCells(IEnumerable&lt;T&gt;)
   
   </h3>
 
@@ -824,12 +834,12 @@ Class GuiElementCellList&lt;T&gt;
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void ReloadCells(List&lt;T&gt; cells)</code></pre>
+    <pre><code class="lang-csharp hljs">public void ReloadCells(IEnumerable&lt;T&gt; cells)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>cells</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dt><code>cells</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
     <dd></dd>
   </dl>
 

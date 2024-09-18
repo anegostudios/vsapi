@@ -14,6 +14,7 @@ namespace Vintagestory.API.Client
         public byte SeasonColorMapId;
         public int? QuantityElements;
         public string[] SelectiveElements;
+        public string[] IgnoreElements;
         public Dictionary<string, int[]> TexturesSizes;
         public string TypeForLogging;
         public bool WithJointIds;
@@ -35,6 +36,7 @@ namespace Vintagestory.API.Client
                 SeasonColorMapId = SeasonColorMapId,
                 QuantityElements = QuantityElements,
                 SelectiveElements = SelectiveElements,
+                IgnoreElements = IgnoreElements,
                 TexturesSizes = TexturesSizes,
                 TypeForLogging = TypeForLogging,
                 WithJointIds = WithJointIds,

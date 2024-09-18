@@ -120,6 +120,20 @@ namespace Vintagestory.API.Common
     /// Bit 25, 26, 27, 28: Wind mode<br/>
     /// Bit 29, 30, 31: Wind data  (also sometimes used for other data, e.g. reflection mode if Reflective bit is set, or additional water surface data if this is a water block)<br/>
     /// </summary>
+    /// <example>
+    /// <code language="json">
+    ///"vertexFlagsByType": {
+	///	"metalblock-new-*": {
+	///		"reflective": true,
+	///		"windDataByType": {
+	///			"*-gold": 1,
+	///			"*": 1
+	///		}
+	///	}
+	///},
+    /// </code>
+    /// </example>
+    [DocumentAsJson]
     [JsonObject(MemberSerialization.OptIn)]
     public class VertexFlags
     {
@@ -170,8 +184,14 @@ namespace Vintagestory.API.Common
         public const int WindBitsMask = WindModeBitsMask | WindDataBitsMask;
 
 
-        // Bit 25..28
-        public const int LiquidWaterModeBitMask = 0x7 << 25;
+        // Bit 25
+        public const int LiquidIsLavaBitMask = 1 << 25;
+        // Bit 26
+        public const int LiquidWeakFoamBitMask = 1 << 26;
+        // Bit 27
+        public const int LiquidWeakWaveBitMask = 1 << 27;
+        // Bit 28
+        public const int LiquidFullAlphaBitMask = 1 << 28;
         // Bit 29
         public const int LiquidExposedToSkyBitMask = 1 << 29;
 
@@ -193,7 +213,9 @@ namespace Vintagestory.API.Common
         EnumWindBitMode windMode;
         byte windData;
 
-
+        /// <summary>
+        /// Sets all the vertex flags from one integer.
+        /// </summary>
         [JsonProperty]
         public int All
         {
@@ -326,7 +348,6 @@ namespace Vintagestory.API.Common
         }
 
         #endregion
-
 
         [JsonProperty]
         public byte GlowLevel

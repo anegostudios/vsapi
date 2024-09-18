@@ -71,7 +71,7 @@ namespace Vintagestory.API.Common
             base.ToBytes(writer);
 
             writer.Write(blockdamage.Position.X);
-            writer.Write(blockdamage.Position.Y);
+            writer.Write(blockdamage.Position.InternalY);
             writer.Write(blockdamage.Position.Z);
             writer.Write(blockdamage.Facing.Index);
             writer.Write(blockdamage.Block.Id);
@@ -134,6 +134,7 @@ namespace Vintagestory.API.Common
 
         public abstract Vec3f GetVelocity(Vec3d pos);
         public abstract int GetRgbaColor(ICoreClientAPI capi);
+        public int LightEmission { get; set; }
         public abstract int VertexFlags { get; }
         public abstract EnumParticleModel ParticleModel { get; }
 
@@ -164,7 +165,7 @@ namespace Vintagestory.API.Common
             {
                 return new Vec3d(
                     pos.X + box.X1 + 1 / 32f + rand.NextDouble() * (box.XSize - 1 / 16f),
-                    pos.Y + box.Y1 + 1 / 32f + rand.NextDouble() * (box.YSize - 1 / 16f),
+                    pos.InternalY + box.Y1 + 1 / 32f + rand.NextDouble() * (box.YSize - 1 / 16f),
                     pos.Z + box.Z1 + 1 / 32f + rand.NextDouble() * (box.ZSize - 1 / 16f)
                 );
             }
@@ -175,7 +176,7 @@ namespace Vintagestory.API.Common
 
                 Vec3d outpos = new Vec3d(
                     pos.X + 0.5f + facev.X / 1.9f + (haveBox && facing.Axis == EnumAxis.X ? (facev.X > 0 ? box.X2 - 1 : box.X1) : 0),
-                    pos.Y + 0.5f + facev.Y / 1.9f + (haveBox && facing.Axis == EnumAxis.Y ? (facev.Y > 0 ? box.Y2 - 1 : box.Y1) : 0),
+                    pos.InternalY + 0.5f + facev.Y / 1.9f + (haveBox && facing.Axis == EnumAxis.Y ? (facev.Y > 0 ? box.Y2 - 1 : box.Y1) : 0),
                     pos.Z + 0.5f + facev.Z / 1.9f + (haveBox && facing.Axis == EnumAxis.Z ? (facev.Z > 0 ? box.Z2 - 1 : box.Z1) : 0)
                 );
 

@@ -17,6 +17,19 @@ items:
   - Vintagestory.API.Common.Entities.EntitySidedProperties
   - Vintagestory.API.Common.Entities.EnumEntityActivity
   - Vintagestory.API.Common.Entities.FuzzyEntityPos
+  - Vintagestory.API.Common.Entities.IPhysicsTickable
+  - Vintagestory.API.Common.Entities.IRemotePhysics
+  - Vintagestory.API.Common.Entities.PModule
+  - Vintagestory.API.Common.Entities.PModuleGravity
+  - Vintagestory.API.Common.Entities.PModuleInAir
+  - Vintagestory.API.Common.Entities.PModuleInLiquid
+  - Vintagestory.API.Common.Entities.PModuleKnockback
+  - Vintagestory.API.Common.Entities.PModuleMotionDrag
+  - Vintagestory.API.Common.Entities.PModuleOnGround
+  - Vintagestory.API.Common.Entities.PModulePlayerInAir
+  - Vintagestory.API.Common.Entities.PModulePlayerInLiquid
+  - Vintagestory.API.Common.Entities.PModuleWind
+  - Vintagestory.API.Common.Entities.PhysicsBehaviorBase
   - Vintagestory.API.Common.Entities.PhysicsTickDelegate
   - Vintagestory.API.Common.Entities.QuantityByGroup
   - Vintagestory.API.Common.Entities.RuntimeSpawnConditions
@@ -118,6 +131,90 @@ references:
   name: EnumEntityActivity
   nameWithType: EnumEntityActivity
   fullName: Vintagestory.API.Common.Entities.EnumEntityActivity
+- uid: Vintagestory.API.Common.Entities.IPhysicsTickable
+  commentId: T:Vintagestory.API.Common.Entities.IPhysicsTickable
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.IPhysicsTickable.html
+  name: IPhysicsTickable
+  nameWithType: IPhysicsTickable
+  fullName: Vintagestory.API.Common.Entities.IPhysicsTickable
+- uid: Vintagestory.API.Common.Entities.IRemotePhysics
+  commentId: T:Vintagestory.API.Common.Entities.IRemotePhysics
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.IRemotePhysics.html
+  name: IRemotePhysics
+  nameWithType: IRemotePhysics
+  fullName: Vintagestory.API.Common.Entities.IRemotePhysics
+- uid: Vintagestory.API.Common.Entities.PModuleGravity
+  commentId: T:Vintagestory.API.Common.Entities.PModuleGravity
+  href: Vintagestory.API.Common.Entities.PModuleGravity.html
+  name: PModuleGravity
+  nameWithType: PModuleGravity
+  fullName: Vintagestory.API.Common.Entities.PModuleGravity
+- uid: Vintagestory.API.Common.Entities.PModuleInAir
+  commentId: T:Vintagestory.API.Common.Entities.PModuleInAir
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.PModuleInAir.html
+  name: PModuleInAir
+  nameWithType: PModuleInAir
+  fullName: Vintagestory.API.Common.Entities.PModuleInAir
+- uid: Vintagestory.API.Common.Entities.PModuleInLiquid
+  commentId: T:Vintagestory.API.Common.Entities.PModuleInLiquid
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.PModuleInLiquid.html
+  name: PModuleInLiquid
+  nameWithType: PModuleInLiquid
+  fullName: Vintagestory.API.Common.Entities.PModuleInLiquid
+- uid: Vintagestory.API.Common.Entities.PModuleKnockback
+  commentId: T:Vintagestory.API.Common.Entities.PModuleKnockback
+  href: Vintagestory.API.Common.Entities.PModuleKnockback.html
+  name: PModuleKnockback
+  nameWithType: PModuleKnockback
+  fullName: Vintagestory.API.Common.Entities.PModuleKnockback
+- uid: Vintagestory.API.Common.Entities.PModuleMotionDrag
+  commentId: T:Vintagestory.API.Common.Entities.PModuleMotionDrag
+  href: Vintagestory.API.Common.Entities.PModuleMotionDrag.html
+  name: PModuleMotionDrag
+  nameWithType: PModuleMotionDrag
+  fullName: Vintagestory.API.Common.Entities.PModuleMotionDrag
+- uid: Vintagestory.API.Common.Entities.PModuleOnGround
+  commentId: T:Vintagestory.API.Common.Entities.PModuleOnGround
+  href: Vintagestory.API.Common.Entities.PModuleOnGround.html
+  name: PModuleOnGround
+  nameWithType: PModuleOnGround
+  fullName: Vintagestory.API.Common.Entities.PModuleOnGround
+- uid: Vintagestory.API.Common.Entities.PModuleWind
+  commentId: T:Vintagestory.API.Common.Entities.PModuleWind
+  href: Vintagestory.API.Common.Entities.PModuleWind.html
+  name: PModuleWind
+  nameWithType: PModuleWind
+  fullName: Vintagestory.API.Common.Entities.PModuleWind
+- uid: Vintagestory.API.Common.Entities.PModulePlayerInAir
+  commentId: T:Vintagestory.API.Common.Entities.PModulePlayerInAir
+  href: Vintagestory.API.Common.Entities.PModulePlayerInAir.html
+  name: PModulePlayerInAir
+  nameWithType: PModulePlayerInAir
+  fullName: Vintagestory.API.Common.Entities.PModulePlayerInAir
+- uid: Vintagestory.API.Common.Entities.PModulePlayerInLiquid
+  commentId: T:Vintagestory.API.Common.Entities.PModulePlayerInLiquid
+  href: Vintagestory.API.Common.Entities.PModulePlayerInLiquid.html
+  name: PModulePlayerInLiquid
+  nameWithType: PModulePlayerInLiquid
+  fullName: Vintagestory.API.Common.Entities.PModulePlayerInLiquid
+- uid: Vintagestory.API.Common.Entities.PModule
+  commentId: T:Vintagestory.API.Common.Entities.PModule
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.PModule.html
+  name: PModule
+  nameWithType: PModule
+  fullName: Vintagestory.API.Common.Entities.PModule
+- uid: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  commentId: T:Vintagestory.API.Common.Entities.PhysicsBehaviorBase
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.PhysicsBehaviorBase.html
+  name: PhysicsBehaviorBase
+  nameWithType: PhysicsBehaviorBase
+  fullName: Vintagestory.API.Common.Entities.PhysicsBehaviorBase
 - uid: Vintagestory.API.Common.Entities.TrackedPlayerProperties
   commentId: T:Vintagestory.API.Common.Entities.TrackedPlayerProperties
   parent: Vintagestory.API.Common.Entities

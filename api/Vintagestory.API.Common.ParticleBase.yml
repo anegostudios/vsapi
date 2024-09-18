@@ -6,6 +6,7 @@ items:
   parent: Vintagestory.API.Common
   children:
   - Vintagestory.API.Common.ParticleBase.Alive
+  - Vintagestory.API.Common.ParticleBase.Bounciness
   - Vintagestory.API.Common.ParticleBase.ColorAlpha
   - Vintagestory.API.Common.ParticleBase.ColorBlue
   - Vintagestory.API.Common.ParticleBase.ColorGreen
@@ -21,12 +22,17 @@ items:
   - Vintagestory.API.Common.ParticleBase.Velocity
   - Vintagestory.API.Common.ParticleBase.VertexFlags
   - Vintagestory.API.Common.ParticleBase.accum
+  - Vintagestory.API.Common.ParticleBase.flags
   - Vintagestory.API.Common.ParticleBase.lightrgbs
+  - Vintagestory.API.Common.ParticleBase.motion
   - Vintagestory.API.Common.ParticleBase.prevPosAdvance
   - Vintagestory.API.Common.ParticleBase.prevPosDeltaX
   - Vintagestory.API.Common.ParticleBase.prevPosDeltaY
   - Vintagestory.API.Common.ParticleBase.prevPosDeltaZ
-  - Vintagestory.API.Common.ParticleBase.slowTick
+  - Vintagestory.API.Common.ParticleBase.rnddrag
+  - Vintagestory.API.Common.ParticleBase.tdragnow
+  - Vintagestory.API.Common.ParticleBase.tickCount
+  - Vintagestory.API.Common.ParticleBase.updatePositionWithCollision(System.Single,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ParticlePhysics,System.Single)
   langs:
   - csharp
   - vb
@@ -52,6 +58,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.ParticleBase.Next
   commentId: F:Vintagestory.API.Common.ParticleBase.Next
   id: Next
@@ -280,6 +289,25 @@ items:
     return:
       type: Vintagestory.API.MathTools.Vec3d
     content.vb: Public Position As Vec3d
+- uid: Vintagestory.API.Common.ParticleBase.Bounciness
+  commentId: F:Vintagestory.API.Common.ParticleBase.Bounciness
+  id: Bounciness
+  parent: Vintagestory.API.Common.ParticleBase
+  langs:
+  - csharp
+  - vb
+  name: Bounciness
+  nameWithType: ParticleBase.Bounciness
+  fullName: Vintagestory.API.Common.ParticleBase.Bounciness
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public float Bounciness
+    return:
+      type: System.Single
+    content.vb: Public Bounciness As Single
 - uid: Vintagestory.API.Common.ParticleBase.prevPosDeltaX
   commentId: F:Vintagestory.API.Common.ParticleBase.prevPosDeltaX
   id: prevPosDeltaX
@@ -356,6 +384,25 @@ items:
     return:
       type: System.Single
     content.vb: Public prevPosAdvance As Single
+- uid: Vintagestory.API.Common.ParticleBase.motion
+  commentId: F:Vintagestory.API.Common.ParticleBase.motion
+  id: motion
+  parent: Vintagestory.API.Common.ParticleBase
+  langs:
+  - csharp
+  - vb
+  name: motion
+  nameWithType: ParticleBase.motion
+  fullName: Vintagestory.API.Common.ParticleBase.motion
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected Vec3f motion
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: Protected motion As Vec3f
 - uid: Vintagestory.API.Common.ParticleBase.lightrgbs
   commentId: F:Vintagestory.API.Common.ParticleBase.lightrgbs
   id: lightrgbs
@@ -394,25 +441,63 @@ items:
     return:
       type: System.Single
     content.vb: Public accum As Single
-- uid: Vintagestory.API.Common.ParticleBase.slowTick
-  commentId: F:Vintagestory.API.Common.ParticleBase.slowTick
-  id: slowTick
+- uid: Vintagestory.API.Common.ParticleBase.tickCount
+  commentId: F:Vintagestory.API.Common.ParticleBase.tickCount
+  id: tickCount
   parent: Vintagestory.API.Common.ParticleBase
   langs:
   - csharp
   - vb
-  name: slowTick
-  nameWithType: ParticleBase.slowTick
-  fullName: Vintagestory.API.Common.ParticleBase.slowTick
+  name: tickCount
+  nameWithType: ParticleBase.tickCount
+  fullName: Vintagestory.API.Common.ParticleBase.tickCount
   type: Field
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: protected byte slowTick
+    content: protected byte tickCount
     return:
       type: System.Byte
-    content.vb: Protected slowTick As Byte
+    content.vb: Protected tickCount As Byte
+- uid: Vintagestory.API.Common.ParticleBase.tdragnow
+  commentId: F:Vintagestory.API.Common.ParticleBase.tdragnow
+  id: tdragnow
+  parent: Vintagestory.API.Common.ParticleBase
+  langs:
+  - csharp
+  - vb
+  name: tdragnow
+  nameWithType: ParticleBase.tdragnow
+  fullName: Vintagestory.API.Common.ParticleBase.tdragnow
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected float tdragnow
+    return:
+      type: System.Single
+    content.vb: Protected tdragnow As Single
+- uid: Vintagestory.API.Common.ParticleBase.rnddrag
+  commentId: F:Vintagestory.API.Common.ParticleBase.rnddrag
+  id: rnddrag
+  parent: Vintagestory.API.Common.ParticleBase
+  langs:
+  - csharp
+  - vb
+  name: rnddrag
+  nameWithType: ParticleBase.rnddrag
+  fullName: Vintagestory.API.Common.ParticleBase.rnddrag
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected float rnddrag
+    return:
+      type: System.Single
+    content.vb: Protected rnddrag As Single
 - uid: Vintagestory.API.Common.ParticleBase.TickFixedStep(System.Single,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ParticlePhysics)
   commentId: M:Vintagestory.API.Common.ParticleBase.TickFixedStep(System.Single,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ParticlePhysics)
   id: TickFixedStep(System.Single,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ParticlePhysics)
@@ -449,6 +534,55 @@ items:
   nameWithType.vb: ParticleBase.TickFixedStep(Single, ICoreClientAPI, ParticlePhysics)
   fullName.vb: Vintagestory.API.Common.ParticleBase.TickFixedStep(Single, Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.ParticlePhysics)
   name.vb: TickFixedStep(Single, ICoreClientAPI, ParticlePhysics)
+- uid: Vintagestory.API.Common.ParticleBase.flags
+  commentId: F:Vintagestory.API.Common.ParticleBase.flags
+  id: flags
+  parent: Vintagestory.API.Common.ParticleBase
+  langs:
+  - csharp
+  - vb
+  name: flags
+  nameWithType: ParticleBase.flags
+  fullName: Vintagestory.API.Common.ParticleBase.flags
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected EnumCollideFlags flags
+    return:
+      type: Vintagestory.API.Client.EnumCollideFlags
+    content.vb: Protected flags As EnumCollideFlags
+- uid: Vintagestory.API.Common.ParticleBase.updatePositionWithCollision(System.Single,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ParticlePhysics,System.Single)
+  commentId: M:Vintagestory.API.Common.ParticleBase.updatePositionWithCollision(System.Single,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ParticlePhysics,System.Single)
+  id: updatePositionWithCollision(System.Single,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ParticlePhysics,System.Single)
+  parent: Vintagestory.API.Common.ParticleBase
+  langs:
+  - csharp
+  - vb
+  name: updatePositionWithCollision(float, ICoreClientAPI, ParticlePhysics, float)
+  nameWithType: ParticleBase.updatePositionWithCollision(float, ICoreClientAPI, ParticlePhysics, float)
+  fullName: Vintagestory.API.Common.ParticleBase.updatePositionWithCollision(float, Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.ParticlePhysics, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: protected void updatePositionWithCollision(float pdt, ICoreClientAPI api, ParticlePhysics physicsSim, float height)
+    parameters:
+    - id: pdt
+      type: System.Single
+    - id: api
+      type: Vintagestory.API.Client.ICoreClientAPI
+    - id: physicsSim
+      type: Vintagestory.API.Client.ParticlePhysics
+    - id: height
+      type: System.Single
+    content.vb: Protected Sub updatePositionWithCollision(pdt As Single, api As ICoreClientAPI, physicsSim As ParticlePhysics, height As Single)
+  overload: Vintagestory.API.Common.ParticleBase.updatePositionWithCollision*
+  nameWithType.vb: ParticleBase.updatePositionWithCollision(Single, ICoreClientAPI, ParticlePhysics, Single)
+  fullName.vb: Vintagestory.API.Common.ParticleBase.updatePositionWithCollision(Single, Vintagestory.API.Client.ICoreClientAPI, Vintagestory.API.Client.ParticlePhysics, Single)
+  name.vb: updatePositionWithCollision(Single, ICoreClientAPI, ParticlePhysics, Single)
 - uid: Vintagestory.API.Common.ParticleBase.TickNow(System.Single,System.Single,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ParticlePhysics)
   commentId: M:Vintagestory.API.Common.ParticleBase.TickNow(System.Single,System.Single,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ParticlePhysics)
   id: TickNow(System.Single,System.Single,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.ParticlePhysics)
@@ -772,6 +906,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -779,6 +975,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.ParticleBase
   commentId: T:Vintagestory.API.Common.ParticleBase
   parent: Vintagestory.API.Common
@@ -924,6 +1217,19 @@ references:
   - uid: Vintagestory.API.Client
     name: Client
     href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.EnumCollideFlags
+  commentId: T:Vintagestory.API.Client.EnumCollideFlags
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.EnumCollideFlags.html
+  name: EnumCollideFlags
+  nameWithType: EnumCollideFlags
+  fullName: Vintagestory.API.Client.EnumCollideFlags
+- uid: Vintagestory.API.Common.ParticleBase.updatePositionWithCollision*
+  commentId: Overload:Vintagestory.API.Common.ParticleBase.updatePositionWithCollision
+  href: Vintagestory.API.Common.ParticleBase.html#Vintagestory_API_Common_ParticleBase_updatePositionWithCollision_System_Single_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_ParticlePhysics_System_Single_
+  name: updatePositionWithCollision
+  nameWithType: ParticleBase.updatePositionWithCollision
+  fullName: Vintagestory.API.Common.ParticleBase.updatePositionWithCollision
 - uid: Vintagestory.API.Common.ParticleBase.TickNow*
   commentId: Overload:Vintagestory.API.Common.ParticleBase.TickNow
   href: Vintagestory.API.Common.ParticleBase.html#Vintagestory_API_Common_ParticleBase_TickNow_System_Single_System_Single_Vintagestory_API_Client_ICoreClientAPI_Vintagestory_API_Client_ParticlePhysics_

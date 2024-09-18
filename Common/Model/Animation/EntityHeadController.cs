@@ -43,7 +43,7 @@ namespace Vintagestory.API.Common
 
             bool overheadLookAtMode = capi.Settings.Bool["overheadLookAt"] && cameraMode == EnumCameraMode.Overhead;
 
-            if (!overheadLookAtMode)
+            if (!overheadLookAtMode && capi.Input.MouseGrabbed)
             {
                 entity.Pos.HeadYaw += (diff - entity.Pos.HeadYaw) * dt * 6;
                 entity.Pos.HeadYaw = GameMath.Clamp(entity.Pos.HeadYaw, -0.75f, 0.75f);
@@ -60,29 +60,32 @@ namespace Vintagestory.API.Common
 
             if (player?.Entity == null || angleMode == EnumMountAngleMode.Fixate || angleMode == EnumMountAngleMode.FixateYaw || cameraMode == EnumCameraMode.Overhead)
             {
-                entity.BodyYaw = entity.Pos.Yaw;
-
-                if (overheadLookAtMode)
+                if (capi.Input.MouseGrabbed)
                 {
-                    float dist = -GameMath.AngleRadDistance((entity.Api as ICoreClientAPI).Input.MouseYaw, entity.Pos.Yaw);
-                    float targetHeadYaw = GameMath.PI + dist;
-                    var targetpitch = GameMath.Clamp(-entity.Pos.Pitch - GameMath.PI + GameMath.TWOPI, -1, +0.8f);
+                    entity.BodyYaw = entity.Pos.Yaw;
 
-                    if (targetHeadYaw > GameMath.PI) targetHeadYaw -= GameMath.TWOPI;
-
-                    if (targetHeadYaw < -1f || targetHeadYaw > 1f)
+                    if (overheadLookAtMode)
                     {
-                        targetHeadYaw = 0;
+                        float dist = -GameMath.AngleRadDistance((entity.Api as ICoreClientAPI).Input.MouseYaw, entity.Pos.Yaw);
+                        float targetHeadYaw = GameMath.PI + dist;
+                        var targetpitch = GameMath.Clamp(-entity.Pos.Pitch - GameMath.PI + GameMath.TWOPI, -1, +0.8f);
 
-                        entity.Pos.HeadPitch += (GameMath.Clamp((entity.Pos.Pitch - GameMath.PI) * 0.75f, -1.2f, 1.2f) - entity.Pos.HeadPitch) * dt * 6;
-                    } else
-                    {
-                        entity.Pos.HeadPitch += (targetpitch - entity.Pos.HeadPitch) * dt * 6;
+                        if (targetHeadYaw > GameMath.PI) targetHeadYaw -= GameMath.TWOPI;
+
+                        if (targetHeadYaw < -1f || targetHeadYaw > 1f)
+                        {
+                            targetHeadYaw = 0;
+
+                            entity.Pos.HeadPitch += (GameMath.Clamp((entity.Pos.Pitch - GameMath.PI) * 0.75f, -1.2f, 1.2f) - entity.Pos.HeadPitch) * dt * 6;
+                        }
+                        else
+                        {
+                            entity.Pos.HeadPitch += (targetpitch - entity.Pos.HeadPitch) * dt * 6;
+                        }
+
+                        entity.Pos.HeadYaw += (targetHeadYaw - entity.Pos.HeadYaw) * dt * 6;
                     }
-
-                    entity.Pos.HeadYaw += (targetHeadYaw - entity.Pos.HeadYaw) * dt * 6;
                 }
-
                 
             }
             else

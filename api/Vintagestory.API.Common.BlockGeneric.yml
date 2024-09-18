@@ -12,7 +12,7 @@ items:
   - Vintagestory.API.Common.BlockGeneric.GetParticleCollisionBoxes(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.BlockGeneric.GetSelectionBoxes(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.BlockGeneric.OnDecalTesselation(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Client.MeshData,Vintagestory.API.MathTools.BlockPos)
-  - Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.LCGRandom)
+  - Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,Vintagestory.API.Common.BlockPatchAttributes)
   langs:
   - csharp
   - vb
@@ -49,7 +49,6 @@ items:
   - Vintagestory.API.Common.Block.Frostable
   - Vintagestory.API.Common.Block.LightAbsorption
   - Vintagestory.API.Common.Block.PlacedPriorityInteract
-  - Vintagestory.API.Common.Block.LightTraversable
   - Vintagestory.API.Common.Block.Replaceable
   - Vintagestory.API.Common.Block.Fertility
   - Vintagestory.API.Common.Block.RequiredMiningTier
@@ -128,14 +127,16 @@ items:
   - Vintagestory.API.Common.Block.GetBlockMaterial(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ItemStack)
   - Vintagestory.API.Common.Block.GetResistance(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.Block.GetSounds(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ItemStack)
+  - Vintagestory.API.Common.Block.GetSounds(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.ItemStack)
   - Vintagestory.API.Common.Block.GetAttributes(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.Block.DoEmitSideAo(Vintagestory.API.Common.IGeometryTester,Vintagestory.API.MathTools.BlockFacing)
-  - Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester,VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags,System.Int32)
+  - Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester,Vintagestory.API.MathTools.Vec3iAndFacingFlags,System.Int32)
   - Vintagestory.API.Common.Block.GetLightAbsorption(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.Block.GetLightAbsorption(Vintagestory.API.Common.IWorldChunk,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.Block.GetLiquidCode(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.Block.CanAttachBlockAt(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Block,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.Cuboidi)
   - Vintagestory.API.Common.Block.CanCreatureSpawnOn(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Common.Entities.BaseSpawnConditions)
+  - Vintagestory.API.Common.Block.TryPlaceBlockForWorldGenUnderwater(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,System.Int32,System.Int32,Vintagestory.API.Common.BlockPatchAttributes)
   - Vintagestory.API.Common.Block.TryPlaceBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.BlockSelection,System.String@)
   - Vintagestory.API.Common.Block.CanPlaceBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,System.String@)
   - Vintagestory.API.Common.Block.DoPlaceBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.ItemStack)
@@ -163,6 +164,7 @@ items:
   - Vintagestory.API.Common.Block.OnFallOnto(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block,Vintagestory.API.Datastructures.TreeAttribute)
   - Vintagestory.API.Common.Block.ShouldReceiveClientParticleTicks(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.MathTools.BlockPos,System.Boolean@)
   - Vintagestory.API.Common.Block.ShouldPlayAmbientSound(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.Block.GetAmbientSoundStrength(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.Block.OnAsyncClientParticleTick(Vintagestory.API.Client.IAsyncParticleManager,Vintagestory.API.MathTools.BlockPos,System.Single,System.Single)
   - Vintagestory.API.Common.Block.ShouldReceiveServerGameTicks(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Random,System.Object@)
   - Vintagestory.API.Common.Block.OnServerGameTick(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Object)
@@ -280,6 +282,7 @@ items:
   - Vintagestory.API.Common.CollectibleObject.MatchesForCrafting(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.CraftingRecipeIngredient)
   - Vintagestory.API.Common.CollectibleObject.OnConsumedByCrafting(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.CraftingRecipeIngredient,Vintagestory.API.Common.IPlayer,System.Int32)
   - Vintagestory.API.Common.CollectibleObject.ConsumeCraftingIngredients(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.GridRecipe)
+  - Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack,System.Int32)
   - Vintagestory.API.Common.CollectibleObject.DamageItem(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.ItemSlot,System.Int32)
   - Vintagestory.API.Common.CollectibleObject.RefillSlotIfEmpty(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EntityAgent,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.ItemStack})
   - Vintagestory.API.Common.CollectibleObject.GetToolModes(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Client.IClientPlayer,Vintagestory.API.Common.BlockSelection)
@@ -335,11 +338,9 @@ items:
   - Vintagestory.API.Common.CollectibleObject.CarryOverFreshness(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemStack[],Vintagestory.API.Common.TransitionableProperties)
   - Vintagestory.API.Common.CollectibleObject.IsReasonablyFresh(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack)
   - Vintagestory.API.Common.CollectibleObject.HasTemperature(Vintagestory.API.Common.IItemStack)
+  - Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.Double)
   - Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack)
   - Vintagestory.API.Common.CollectibleObject.SetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.Single,System.Boolean)
-  - Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
-  - Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
-  - Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
   - Vintagestory.API.Common.CollectibleObject.Equals(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.ItemStack,System.String[])
   - Vintagestory.API.Common.CollectibleObject.Satisfies(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.ItemStack)
   - Vintagestory.API.Common.CollectibleObject.OnStoreCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
@@ -349,9 +350,13 @@ items:
   - Vintagestory.API.Common.CollectibleObject.GetCollectibleBehavior(System.Type,System.Boolean)
   - Vintagestory.API.Common.CollectibleObject.GetCollectibleBehavior``1(System.Boolean)
   - Vintagestory.API.Common.CollectibleObject.GetBehavior(Vintagestory.API.Common.CollectibleBehavior[],System.Type,System.Boolean)
+  - Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface``1
   - Vintagestory.API.Common.CollectibleObject.GetBehavior(System.Type)
   - Vintagestory.API.Common.CollectibleObject.GetBehavior``1
   - Vintagestory.API.Common.CollectibleObject.OnSmeltAttempt(Vintagestory.API.Common.InventoryBase)
+  - Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
+  - Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
+  - Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
   - Vintagestory.API.Common.RegistryObject.Code
   - Vintagestory.API.Common.RegistryObject.VariantStrict
   - Vintagestory.API.Common.RegistryObject.Variant
@@ -379,6 +384,9 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.BlockGeneric.GetDecal(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.Client.MeshData@,Vintagestory.API.Client.MeshData@)
   commentId: M:Vintagestory.API.Common.BlockGeneric.GetDecal(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.Client.MeshData@,Vintagestory.API.Client.MeshData@)
   id: GetDecal(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.Client.MeshData@,Vintagestory.API.Client.MeshData@)
@@ -573,16 +581,16 @@ items:
     content.vb: Public Overrides Function GetSelectionBoxes(blockAccessor As IBlockAccessor, pos As BlockPos) As Cuboidf()
   overridden: Vintagestory.API.Common.Block.GetSelectionBoxes(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
   overload: Vintagestory.API.Common.BlockGeneric.GetSelectionBoxes*
-- uid: Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.LCGRandom)
-  commentId: M:Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.LCGRandom)
-  id: TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.LCGRandom)
+- uid: Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,Vintagestory.API.Common.BlockPatchAttributes)
+  commentId: M:Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,Vintagestory.API.Common.BlockPatchAttributes)
+  id: TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,Vintagestory.API.Common.BlockPatchAttributes)
   parent: Vintagestory.API.Common.BlockGeneric
   langs:
   - csharp
   - vb
-  name: TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, LCGRandom)
-  nameWithType: BlockGeneric.TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, LCGRandom)
-  fullName: Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, Vintagestory.API.MathTools.LCGRandom)
+  name: TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, IRandom, BlockPatchAttributes)
+  nameWithType: BlockGeneric.TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, IRandom, BlockPatchAttributes)
+  fullName: Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, Vintagestory.API.MathTools.IRandom, Vintagestory.API.Common.BlockPatchAttributes)
   type: Method
   assemblies:
   - VintagestoryAPI
@@ -590,7 +598,7 @@ items:
   summary: Currently used for wildvines and saguaro cactus
   example: []
   syntax:
-    content: public override bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, LCGRandom worldgenRandom)
+    content: public override bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, IRandom worldgenRandom, BlockPatchAttributes attributes = null)
     parameters:
     - id: blockAccessor
       type: Vintagestory.API.Common.IBlockAccessor
@@ -602,13 +610,16 @@ items:
       type: Vintagestory.API.MathTools.BlockFacing
       description: ''
     - id: worldgenRandom
-      type: Vintagestory.API.MathTools.LCGRandom
+      type: Vintagestory.API.MathTools.IRandom
+      description: ''
+    - id: attributes
+      type: Vintagestory.API.Common.BlockPatchAttributes
       description: ''
     return:
       type: System.Boolean
       description: ''
-    content.vb: Public Overrides Function TryPlaceBlockForWorldGen(blockAccessor As IBlockAccessor, pos As BlockPos, onBlockFace As BlockFacing, worldgenRandom As LCGRandom) As Boolean
-  overridden: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.LCGRandom)
+    content.vb: Public Overrides Function TryPlaceBlockForWorldGen(blockAccessor As IBlockAccessor, pos As BlockPos, onBlockFace As BlockFacing, worldgenRandom As IRandom, attributes As BlockPatchAttributes = Nothing) As Boolean
+  overridden: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,Vintagestory.API.Common.BlockPatchAttributes)
   overload: Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen*
 - uid: Vintagestory.API.Common.BlockGeneric.DoParticalSelection(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
   commentId: M:Vintagestory.API.Common.BlockGeneric.DoParticalSelection(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
@@ -823,13 +834,6 @@ references:
   name: PlacedPriorityInteract
   nameWithType: Block.PlacedPriorityInteract
   fullName: Vintagestory.API.Common.Block.PlacedPriorityInteract
-- uid: Vintagestory.API.Common.Block.LightTraversable
-  commentId: F:Vintagestory.API.Common.Block.LightTraversable
-  parent: Vintagestory.API.Common.Block
-  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_LightTraversable
-  name: LightTraversable
-  nameWithType: Block.LightTraversable
-  fullName: Vintagestory.API.Common.Block.LightTraversable
 - uid: Vintagestory.API.Common.Block.Replaceable
   commentId: F:Vintagestory.API.Common.Block.Replaceable
   parent: Vintagestory.API.Common.Block
@@ -1662,6 +1666,51 @@ references:
     name: ItemStack
     href: Vintagestory.API.Common.ItemStack.html
   - name: )
+- uid: Vintagestory.API.Common.Block.GetSounds(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.ItemStack)
+  commentId: M:Vintagestory.API.Common.Block.GetSounds(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.ItemStack)
+  parent: Vintagestory.API.Common.Block
+  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetSounds_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemStack_
+  name: GetSounds(IBlockAccessor, BlockSelection, ItemStack)
+  nameWithType: Block.GetSounds(IBlockAccessor, BlockSelection, ItemStack)
+  fullName: Vintagestory.API.Common.Block.GetSounds(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.Common.BlockSelection, Vintagestory.API.Common.ItemStack)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Block.GetSounds(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.ItemStack)
+    name: GetSounds
+    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetSounds_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.BlockSelection
+    name: BlockSelection
+    href: Vintagestory.API.Common.BlockSelection.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Block.GetSounds(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.ItemStack)
+    name: GetSounds
+    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetSounds_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_BlockSelection_Vintagestory_API_Common_ItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.BlockSelection
+    name: BlockSelection
+    href: Vintagestory.API.Common.BlockSelection.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: )
 - uid: Vintagestory.API.Common.Block.GetAttributes(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
   commentId: M:Vintagestory.API.Common.Block.GetAttributes(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
   parent: Vintagestory.API.Common.Block
@@ -1732,30 +1781,30 @@ references:
     name: BlockFacing
     href: Vintagestory.API.MathTools.BlockFacing.html
   - name: )
-- uid: Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester,VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags,System.Int32)
-  commentId: M:Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester,VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags,System.Int32)
+- uid: Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester,Vintagestory.API.MathTools.Vec3iAndFacingFlags,System.Int32)
+  commentId: M:Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester,Vintagestory.API.MathTools.Vec3iAndFacingFlags,System.Int32)
   parent: Vintagestory.API.Common.Block
   isExternal: true
-  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DoEmitSideAoByFlag_Vintagestory_API_Common_IGeometryTester_VintagestoryAPI_Math_Vector_Vec3iAndFacingFlags_System_Int32_
+  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DoEmitSideAoByFlag_Vintagestory_API_Common_IGeometryTester_Vintagestory_API_MathTools_Vec3iAndFacingFlags_System_Int32_
   name: DoEmitSideAoByFlag(IGeometryTester, Vec3iAndFacingFlags, int)
   nameWithType: Block.DoEmitSideAoByFlag(IGeometryTester, Vec3iAndFacingFlags, int)
-  fullName: Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester, VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags, int)
+  fullName: Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester, Vintagestory.API.MathTools.Vec3iAndFacingFlags, int)
   nameWithType.vb: Block.DoEmitSideAoByFlag(IGeometryTester, Vec3iAndFacingFlags, Integer)
-  fullName.vb: Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester, VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags, Integer)
+  fullName.vb: Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester, Vintagestory.API.MathTools.Vec3iAndFacingFlags, Integer)
   name.vb: DoEmitSideAoByFlag(IGeometryTester, Vec3iAndFacingFlags, Integer)
   spec.csharp:
-  - uid: Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester,VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags,System.Int32)
+  - uid: Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester,Vintagestory.API.MathTools.Vec3iAndFacingFlags,System.Int32)
     name: DoEmitSideAoByFlag
-    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DoEmitSideAoByFlag_Vintagestory_API_Common_IGeometryTester_VintagestoryAPI_Math_Vector_Vec3iAndFacingFlags_System_Int32_
+    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DoEmitSideAoByFlag_Vintagestory_API_Common_IGeometryTester_Vintagestory_API_MathTools_Vec3iAndFacingFlags_System_Int32_
   - name: (
   - uid: Vintagestory.API.Common.IGeometryTester
     name: IGeometryTester
     href: Vintagestory.API.Common.IGeometryTester.html
   - name: ','
   - name: " "
-  - uid: VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags
+  - uid: Vintagestory.API.MathTools.Vec3iAndFacingFlags
     name: Vec3iAndFacingFlags
-    href: VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags.html
+    href: Vintagestory.API.MathTools.Vec3iAndFacingFlags.html
   - name: ','
   - name: " "
   - uid: System.Int32
@@ -1764,18 +1813,18 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
   spec.vb:
-  - uid: Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester,VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags,System.Int32)
+  - uid: Vintagestory.API.Common.Block.DoEmitSideAoByFlag(Vintagestory.API.Common.IGeometryTester,Vintagestory.API.MathTools.Vec3iAndFacingFlags,System.Int32)
     name: DoEmitSideAoByFlag
-    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DoEmitSideAoByFlag_Vintagestory_API_Common_IGeometryTester_VintagestoryAPI_Math_Vector_Vec3iAndFacingFlags_System_Int32_
+    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DoEmitSideAoByFlag_Vintagestory_API_Common_IGeometryTester_Vintagestory_API_MathTools_Vec3iAndFacingFlags_System_Int32_
   - name: (
   - uid: Vintagestory.API.Common.IGeometryTester
     name: IGeometryTester
     href: Vintagestory.API.Common.IGeometryTester.html
   - name: ','
   - name: " "
-  - uid: VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags
+  - uid: Vintagestory.API.MathTools.Vec3iAndFacingFlags
     name: Vec3iAndFacingFlags
-    href: VintagestoryAPI.Math.Vector.Vec3iAndFacingFlags.html
+    href: Vintagestory.API.MathTools.Vec3iAndFacingFlags.html
   - name: ','
   - name: " "
   - uid: System.Int32
@@ -2007,6 +2056,99 @@ references:
   - uid: Vintagestory.API.Common.Entities.BaseSpawnConditions
     name: BaseSpawnConditions
     href: Vintagestory.API.Common.Entities.BaseSpawnConditions.html
+  - name: )
+- uid: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGenUnderwater(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,System.Int32,System.Int32,Vintagestory.API.Common.BlockPatchAttributes)
+  commentId: M:Vintagestory.API.Common.Block.TryPlaceBlockForWorldGenUnderwater(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,System.Int32,System.Int32,Vintagestory.API.Common.BlockPatchAttributes)
+  parent: Vintagestory.API.Common.Block
+  isExternal: true
+  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_TryPlaceBlockForWorldGenUnderwater_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_IRandom_System_Int32_System_Int32_Vintagestory_API_Common_BlockPatchAttributes_
+  name: TryPlaceBlockForWorldGenUnderwater(IBlockAccessor, BlockPos, BlockFacing, IRandom, int, int, BlockPatchAttributes)
+  nameWithType: Block.TryPlaceBlockForWorldGenUnderwater(IBlockAccessor, BlockPos, BlockFacing, IRandom, int, int, BlockPatchAttributes)
+  fullName: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGenUnderwater(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, Vintagestory.API.MathTools.IRandom, int, int, Vintagestory.API.Common.BlockPatchAttributes)
+  nameWithType.vb: Block.TryPlaceBlockForWorldGenUnderwater(IBlockAccessor, BlockPos, BlockFacing, IRandom, Integer, Integer, BlockPatchAttributes)
+  fullName.vb: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGenUnderwater(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, Vintagestory.API.MathTools.IRandom, Integer, Integer, Vintagestory.API.Common.BlockPatchAttributes)
+  name.vb: TryPlaceBlockForWorldGenUnderwater(IBlockAccessor, BlockPos, BlockFacing, IRandom, Integer, Integer, BlockPatchAttributes)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGenUnderwater(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,System.Int32,System.Int32,Vintagestory.API.Common.BlockPatchAttributes)
+    name: TryPlaceBlockForWorldGenUnderwater
+    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_TryPlaceBlockForWorldGenUnderwater_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_IRandom_System_Int32_System_Int32_Vintagestory_API_Common_BlockPatchAttributes_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.IRandom
+    name: IRandom
+    href: Vintagestory.API.MathTools.IRandom.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.BlockPatchAttributes
+    name: BlockPatchAttributes
+    href: Vintagestory.API.Common.BlockPatchAttributes.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGenUnderwater(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,System.Int32,System.Int32,Vintagestory.API.Common.BlockPatchAttributes)
+    name: TryPlaceBlockForWorldGenUnderwater
+    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_TryPlaceBlockForWorldGenUnderwater_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_IRandom_System_Int32_System_Int32_Vintagestory_API_Common_BlockPatchAttributes_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.IRandom
+    name: IRandom
+    href: Vintagestory.API.MathTools.IRandom.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.BlockPatchAttributes
+    name: BlockPatchAttributes
+    href: Vintagestory.API.Common.BlockPatchAttributes.html
   - name: )
 - uid: Vintagestory.API.Common.Block.TryPlaceBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.BlockSelection,System.String@)
   commentId: M:Vintagestory.API.Common.Block.TryPlaceBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.BlockSelection,System.String@)
@@ -3396,6 +3538,41 @@ references:
   - uid: Vintagestory.API.Common.Block.ShouldPlayAmbientSound(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
     name: ShouldPlayAmbientSound
     href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_ShouldPlayAmbientSound_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Common.Block.GetAmbientSoundStrength(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.Block.GetAmbientSoundStrength(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.Block
+  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetAmbientSoundStrength_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_
+  name: GetAmbientSoundStrength(IWorldAccessor, BlockPos)
+  nameWithType: Block.GetAmbientSoundStrength(IWorldAccessor, BlockPos)
+  fullName: Vintagestory.API.Common.Block.GetAmbientSoundStrength(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.MathTools.BlockPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Block.GetAmbientSoundStrength(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
+    name: GetAmbientSoundStrength
+    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetAmbientSoundStrength_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Block.GetAmbientSoundStrength(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
+    name: GetAmbientSoundStrength
+    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetAmbientSoundStrength_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_
   - name: (
   - uid: Vintagestory.API.Common.IWorldAccessor
     name: IWorldAccessor
@@ -6747,6 +6924,47 @@ references:
     name: GridRecipe
     href: Vintagestory.API.Common.GridRecipe.html
   - name: )
+- uid: Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack,System.Int32)
+  commentId: M:Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack,System.Int32)
+  parent: Vintagestory.API.Common.CollectibleObject
+  isExternal: true
+  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetDurability_Vintagestory_API_Common_ItemStack_System_Int32_
+  name: SetDurability(ItemStack, int)
+  nameWithType: CollectibleObject.SetDurability(ItemStack, int)
+  fullName: Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack, int)
+  nameWithType.vb: CollectibleObject.SetDurability(ItemStack, Integer)
+  fullName.vb: Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack, Integer)
+  name.vb: SetDurability(ItemStack, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack,System.Int32)
+    name: SetDurability
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetDurability_Vintagestory_API_Common_ItemStack_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack,System.Int32)
+    name: SetDurability
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetDurability_Vintagestory_API_Common_ItemStack_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
 - uid: Vintagestory.API.Common.CollectibleObject.DamageItem(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.ItemSlot,System.Int32)
   commentId: M:Vintagestory.API.Common.CollectibleObject.DamageItem(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.ItemSlot,System.Int32)
   parent: Vintagestory.API.Common.CollectibleObject
@@ -9606,6 +9824,57 @@ references:
     name: IItemStack
     href: Vintagestory.API.Common.IItemStack.html
   - name: )
+- uid: Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.Double)
+  commentId: M:Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.Double)
+  parent: Vintagestory.API.Common.CollectibleObject
+  isExternal: true
+  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_Double_
+  name: GetTemperature(IWorldAccessor, ItemStack, double)
+  nameWithType: CollectibleObject.GetTemperature(IWorldAccessor, ItemStack, double)
+  fullName: Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemStack, double)
+  nameWithType.vb: CollectibleObject.GetTemperature(IWorldAccessor, ItemStack, Double)
+  fullName.vb: Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemStack, Double)
+  name.vb: GetTemperature(IWorldAccessor, ItemStack, Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.Double)
+    name: GetTemperature
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_Double_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.Double)
+    name: GetTemperature
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_Double_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
 - uid: Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack)
   commentId: M:Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack)
   parent: Vintagestory.API.Common.CollectibleObject
@@ -9703,81 +9972,6 @@ references:
     name: Boolean
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-- uid: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
-  commentId: M:Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
-  parent: Vintagestory.API.Common.CollectibleObject
-  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_
-  name: IsEmptyBackPack(IItemStack)
-  nameWithType: CollectibleObject.IsEmptyBackPack(IItemStack)
-  fullName: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
-    name: IsEmptyBackPack
-    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_
-  - name: (
-  - uid: Vintagestory.API.Common.IItemStack
-    name: IItemStack
-    href: Vintagestory.API.Common.IItemStack.html
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
-    name: IsEmptyBackPack
-    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_
-  - name: (
-  - uid: Vintagestory.API.Common.IItemStack
-    name: IItemStack
-    href: Vintagestory.API.Common.IItemStack.html
-  - name: )
-- uid: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
-  commentId: M:Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
-  parent: Vintagestory.API.Common.CollectibleObject
-  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_
-  name: IsBackPack(IItemStack)
-  nameWithType: CollectibleObject.IsBackPack(IItemStack)
-  fullName: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
-    name: IsBackPack
-    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_
-  - name: (
-  - uid: Vintagestory.API.Common.IItemStack
-    name: IItemStack
-    href: Vintagestory.API.Common.IItemStack.html
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
-    name: IsBackPack
-    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_
-  - name: (
-  - uid: Vintagestory.API.Common.IItemStack
-    name: IItemStack
-    href: Vintagestory.API.Common.IItemStack.html
-  - name: )
-- uid: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
-  commentId: M:Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
-  parent: Vintagestory.API.Common.CollectibleObject
-  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_
-  name: QuantityBackPackSlots(IItemStack)
-  nameWithType: CollectibleObject.QuantityBackPackSlots(IItemStack)
-  fullName: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
-    name: QuantityBackPackSlots
-    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_
-  - name: (
-  - uid: Vintagestory.API.Common.IItemStack
-    name: IItemStack
-    href: Vintagestory.API.Common.IItemStack.html
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
-    name: QuantityBackPackSlots
-    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_
-  - name: (
-  - uid: Vintagestory.API.Common.IItemStack
-    name: IItemStack
-    href: Vintagestory.API.Common.IItemStack.html
   - name: )
 - uid: Vintagestory.API.Common.CollectibleObject.Equals(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.ItemStack,System.String[])
   commentId: M:Vintagestory.API.Common.CollectibleObject.Equals(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.ItemStack,System.String[])
@@ -10376,6 +10570,36 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
+- uid: Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface``1
+  commentId: M:Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface``1
+  parent: Vintagestory.API.Common.CollectibleObject
+  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetCollectibleInterface__1
+  name: GetCollectibleInterface<T>()
+  nameWithType: CollectibleObject.GetCollectibleInterface<T>()
+  fullName: Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface<T>()
+  nameWithType.vb: CollectibleObject.GetCollectibleInterface(Of T)()
+  fullName.vb: Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface(Of T)()
+  name.vb: GetCollectibleInterface(Of T)()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface``1
+    name: GetCollectibleInterface
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetCollectibleInterface__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface``1
+    name: GetCollectibleInterface
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetCollectibleInterface__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
 - uid: Vintagestory.API.Common.CollectibleObject.GetBehavior(System.Type)
   commentId: M:Vintagestory.API.Common.CollectibleObject.GetBehavior(System.Type)
   parent: Vintagestory.API.Common.CollectibleObject
@@ -10458,6 +10682,81 @@ references:
   - uid: Vintagestory.API.Common.InventoryBase
     name: InventoryBase
     href: Vintagestory.API.Common.InventoryBase.html
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
+  commentId: M:Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
+  parent: Vintagestory.API.Common.CollectibleObject
+  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_
+  name: IsEmptyBackPack(IItemStack)
+  nameWithType: CollectibleObject.IsEmptyBackPack(IItemStack)
+  fullName: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
+    name: IsEmptyBackPack
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IItemStack
+    name: IItemStack
+    href: Vintagestory.API.Common.IItemStack.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
+    name: IsEmptyBackPack
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IItemStack
+    name: IItemStack
+    href: Vintagestory.API.Common.IItemStack.html
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
+  commentId: M:Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
+  parent: Vintagestory.API.Common.CollectibleObject
+  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_
+  name: IsBackPack(IItemStack)
+  nameWithType: CollectibleObject.IsBackPack(IItemStack)
+  fullName: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
+    name: IsBackPack
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IItemStack
+    name: IItemStack
+    href: Vintagestory.API.Common.IItemStack.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
+    name: IsBackPack
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IItemStack
+    name: IItemStack
+    href: Vintagestory.API.Common.IItemStack.html
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
+  commentId: M:Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
+  parent: Vintagestory.API.Common.CollectibleObject
+  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_
+  name: QuantityBackPackSlots(IItemStack)
+  nameWithType: CollectibleObject.QuantityBackPackSlots(IItemStack)
+  fullName: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
+    name: QuantityBackPackSlots
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IItemStack
+    name: IItemStack
+    href: Vintagestory.API.Common.IItemStack.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
+    name: QuantityBackPackSlots
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IItemStack
+    name: IItemStack
+    href: Vintagestory.API.Common.IItemStack.html
   - name: )
 - uid: Vintagestory.API.Common.RegistryObject.Code
   commentId: F:Vintagestory.API.Common.RegistryObject.Code
@@ -11387,6 +11686,68 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -11394,6 +11755,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.Block.GetDecal(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.Client.MeshData@,Vintagestory.API.Client.MeshData@)
   commentId: M:Vintagestory.API.Common.Block.GetDecal(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Client.ITexPositionSource,Vintagestory.API.Client.MeshData@,Vintagestory.API.Client.MeshData@)
   parent: Vintagestory.API.Common.Block
@@ -11827,17 +12285,17 @@ references:
   name: GetSelectionBoxes
   nameWithType: BlockGeneric.GetSelectionBoxes
   fullName: Vintagestory.API.Common.BlockGeneric.GetSelectionBoxes
-- uid: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.LCGRandom)
-  commentId: M:Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.LCGRandom)
+- uid: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,Vintagestory.API.Common.BlockPatchAttributes)
+  commentId: M:Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,Vintagestory.API.Common.BlockPatchAttributes)
   parent: Vintagestory.API.Common.Block
-  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_LCGRandom_
-  name: TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, LCGRandom)
-  nameWithType: Block.TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, LCGRandom)
-  fullName: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, Vintagestory.API.MathTools.LCGRandom)
+  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_IRandom_Vintagestory_API_Common_BlockPatchAttributes_
+  name: TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, IRandom, BlockPatchAttributes)
+  nameWithType: Block.TryPlaceBlockForWorldGen(IBlockAccessor, BlockPos, BlockFacing, IRandom, BlockPatchAttributes)
+  fullName: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, Vintagestory.API.MathTools.IRandom, Vintagestory.API.Common.BlockPatchAttributes)
   spec.csharp:
-  - uid: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.LCGRandom)
+  - uid: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,Vintagestory.API.Common.BlockPatchAttributes)
     name: TryPlaceBlockForWorldGen
-    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_LCGRandom_
+    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_IRandom_Vintagestory_API_Common_BlockPatchAttributes_
   - name: (
   - uid: Vintagestory.API.Common.IBlockAccessor
     name: IBlockAccessor
@@ -11854,14 +12312,19 @@ references:
     href: Vintagestory.API.MathTools.BlockFacing.html
   - name: ','
   - name: " "
-  - uid: Vintagestory.API.MathTools.LCGRandom
-    name: LCGRandom
-    href: Vintagestory.API.MathTools.LCGRandom.html
+  - uid: Vintagestory.API.MathTools.IRandom
+    name: IRandom
+    href: Vintagestory.API.MathTools.IRandom.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.BlockPatchAttributes
+    name: BlockPatchAttributes
+    href: Vintagestory.API.Common.BlockPatchAttributes.html
   - name: )
   spec.vb:
-  - uid: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.LCGRandom)
+  - uid: Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,Vintagestory.API.Common.BlockPatchAttributes)
     name: TryPlaceBlockForWorldGen
-    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_LCGRandom_
+    href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_IRandom_Vintagestory_API_Common_BlockPatchAttributes_
   - name: (
   - uid: Vintagestory.API.Common.IBlockAccessor
     name: IBlockAccessor
@@ -11878,23 +12341,35 @@ references:
     href: Vintagestory.API.MathTools.BlockFacing.html
   - name: ','
   - name: " "
-  - uid: Vintagestory.API.MathTools.LCGRandom
-    name: LCGRandom
-    href: Vintagestory.API.MathTools.LCGRandom.html
+  - uid: Vintagestory.API.MathTools.IRandom
+    name: IRandom
+    href: Vintagestory.API.MathTools.IRandom.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.BlockPatchAttributes
+    name: BlockPatchAttributes
+    href: Vintagestory.API.Common.BlockPatchAttributes.html
   - name: )
 - uid: Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen*
   commentId: Overload:Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen
-  href: Vintagestory.API.Common.BlockGeneric.html#Vintagestory_API_Common_BlockGeneric_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_LCGRandom_
+  href: Vintagestory.API.Common.BlockGeneric.html#Vintagestory_API_Common_BlockGeneric_TryPlaceBlockForWorldGen_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_Vintagestory_API_MathTools_IRandom_Vintagestory_API_Common_BlockPatchAttributes_
   name: TryPlaceBlockForWorldGen
   nameWithType: BlockGeneric.TryPlaceBlockForWorldGen
   fullName: Vintagestory.API.Common.BlockGeneric.TryPlaceBlockForWorldGen
-- uid: Vintagestory.API.MathTools.LCGRandom
-  commentId: T:Vintagestory.API.MathTools.LCGRandom
+- uid: Vintagestory.API.MathTools.IRandom
+  commentId: T:Vintagestory.API.MathTools.IRandom
   parent: Vintagestory.API.MathTools
-  href: Vintagestory.API.MathTools.LCGRandom.html
-  name: LCGRandom
-  nameWithType: LCGRandom
-  fullName: Vintagestory.API.MathTools.LCGRandom
+  href: Vintagestory.API.MathTools.IRandom.html
+  name: IRandom
+  nameWithType: IRandom
+  fullName: Vintagestory.API.MathTools.IRandom
+- uid: Vintagestory.API.Common.BlockPatchAttributes
+  commentId: T:Vintagestory.API.Common.BlockPatchAttributes
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.BlockPatchAttributes.html
+  name: BlockPatchAttributes
+  nameWithType: BlockPatchAttributes
+  fullName: Vintagestory.API.Common.BlockPatchAttributes
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System

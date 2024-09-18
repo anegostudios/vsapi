@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -401,8 +401,8 @@ public static GuiComposer AddButton(this GuiComposer composer, string text, Acti
 
   <a id="Vintagestory_API_Client_GuiComposerHelpers_AddCellList_" data-uid="Vintagestory.API.Client.GuiComposerHelpers.AddCellList*"></a>
 
-  <h3 id="Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_List___0__System_String_" data-uid="Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)">
-  AddCellList&lt;T&gt;(GuiComposer, ElementBounds, OnRequireCell&lt;T&gt;, List&lt;T&gt;, string)
+  <h3 id="Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_IEnumerable___0__System_String_" data-uid="Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)">
+  AddCellList&lt;T&gt;(GuiComposer, ElementBounds, OnRequireCell&lt;T&gt;, IEnumerable&lt;T&gt;, string)
   
   </h3>
 
@@ -411,7 +411,7 @@ public static GuiComposer AddButton(this GuiComposer composer, string text, Acti
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static GuiComposer AddCellList&lt;T&gt;(this GuiComposer composer, ElementBounds bounds, OnRequireCell&lt;T&gt; cellCreator, List&lt;T&gt; cells = null, string key = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public static GuiComposer AddCellList&lt;T&gt;(this GuiComposer composer, ElementBounds bounds, OnRequireCell&lt;T&gt; cellCreator, IEnumerable&lt;T&gt; cells = null, string key = null)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -424,7 +424,7 @@ public static GuiComposer AddButton(this GuiComposer composer, string text, Acti
     <dt><code>cellCreator</code> <a class="xref" href="Vintagestory.API.Client.OnRequireCell-1.html">OnRequireCell</a>&lt;T&gt;</dt>
     <dd><p>the event fired when the cell is requested by the GUI</p>
 </dd>
-    <dt><code>cells</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;T&gt;</dt>
+    <dt><code>cells</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;T&gt;</dt>
     <dd><p>The cells of the list.</p>
 </dd>
     <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>

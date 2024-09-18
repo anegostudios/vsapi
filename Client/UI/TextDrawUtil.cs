@@ -349,6 +349,8 @@ namespace Vintagestory.API.Client
                 
                 if (gotSpace /*&& word.Length > 0*/ /*- this checks breaks empty spaces in the beginning of new lines - they are completely trimmed */) lineTextBldr.Append(" ");
 
+                if (currentSection == null) currentSection = new TextFlowPath();
+
                 if (gotLinebreak)
                 {
                     if (keepLinebreakChar) lineTextBldr.Append("\n");
@@ -373,6 +375,7 @@ namespace Vintagestory.API.Client
             }
 
             currentSection = GetCurrentFlowPathSection(flowPath, curY);
+            if (currentSection == null) currentSection = new TextFlowPath();
             usableWidth = currentSection.X2 - currentSection.X1 - curX;
             string lineTextStr = lineTextBldr.ToString();
             double endWidth = ctx.TextExtents(lineTextStr).Width;

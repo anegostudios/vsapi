@@ -94,8 +94,8 @@ items:
   - Vintagestory.API.Client.GuiComposerHelpers
   - Vintagestory.API.Client.GuiDialog
   - Vintagestory.API.Client.GuiDialog.DlgComposers
+  - Vintagestory.API.Client.GuiDialog.EnumPosFlag
   - Vintagestory.API.Client.GuiDialogBlockEntity
-  - Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
   - Vintagestory.API.Client.GuiDialogBlockEntityInventory
   - Vintagestory.API.Client.GuiDialogCharacterBase
   - Vintagestory.API.Client.GuiDialogConfirm
@@ -181,6 +181,7 @@ items:
   - Vintagestory.API.Client.IMacroBase
   - Vintagestory.API.Client.IMacroManager
   - Vintagestory.API.Client.IMeshPoolSupplier
+  - Vintagestory.API.Client.IMetaBlock
   - Vintagestory.API.Client.IMusicEngine
   - Vintagestory.API.Client.IMusicTrack
   - Vintagestory.API.Client.INetworkChannel
@@ -279,7 +280,9 @@ items:
   - Vintagestory.API.Client.TextTextureUtil
   - Vintagestory.API.Client.TextureAtlasPosition
   - Vintagestory.API.Client.TextureDictionary
+  - Vintagestory.API.Client.UBORef
   - Vintagestory.API.Client.VisibleTestDelegate
+  - Vintagestory.API.Client.WireframeModes
   - Vintagestory.API.Client.WorldInteraction
   langs:
   - csharp
@@ -553,6 +556,13 @@ references:
   name: IMacroBase
   nameWithType: IMacroBase
   fullName: Vintagestory.API.Client.IMacroBase
+- uid: Vintagestory.API.Client.WireframeModes
+  commentId: T:Vintagestory.API.Client.WireframeModes
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.WireframeModes.html
+  name: WireframeModes
+  nameWithType: WireframeModes
+  fullName: Vintagestory.API.Client.WireframeModes
 - uid: Vintagestory.API.Client.IRenderAPI
   commentId: T:Vintagestory.API.Client.IRenderAPI
   parent: Vintagestory.API.Client
@@ -701,6 +711,13 @@ references:
   name: MeshRef
   nameWithType: MeshRef
   fullName: Vintagestory.API.Client.MeshRef
+- uid: Vintagestory.API.Client.UBORef
+  commentId: T:Vintagestory.API.Client.UBORef
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.UBORef.html
+  name: UBORef
+  nameWithType: UBORef
+  fullName: Vintagestory.API.Client.UBORef
 - uid: Vintagestory.API.Client.CaveMusicTrack
   commentId: T:Vintagestory.API.Client.CaveMusicTrack
   href: Vintagestory.API.Client.CaveMusicTrack.html
@@ -1053,6 +1070,12 @@ references:
   name: EnumBlendMode
   nameWithType: EnumBlendMode
   fullName: Vintagestory.API.Client.EnumBlendMode
+- uid: Vintagestory.API.Client.IMetaBlock
+  commentId: T:Vintagestory.API.Client.IMetaBlock
+  href: Vintagestory.API.Client.IMetaBlock.html
+  name: IMetaBlock
+  nameWithType: IMetaBlock
+  fullName: Vintagestory.API.Client.IMetaBlock
 - uid: Vintagestory.API.Client.EnumChunkRenderPass
   commentId: T:Vintagestory.API.Client.EnumChunkRenderPass
   parent: Vintagestory.API.Client
@@ -1173,6 +1196,7 @@ references:
   fullName: Vintagestory.API.Client.FramebufferAttrs
 - uid: Vintagestory.API.Client.FrameBufferRef
   commentId: T:Vintagestory.API.Client.FrameBufferRef
+  parent: Vintagestory.API.Client
   href: Vintagestory.API.Client.FrameBufferRef.html
   name: FrameBufferRef
   nameWithType: FrameBufferRef
@@ -1409,6 +1433,29 @@ references:
   - uid: Vintagestory.API.Client.GuiDialog.DlgComposers
     name: DlgComposers
     href: Vintagestory.API.Client.GuiDialog.DlgComposers.html
+- uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+  commentId: T:Vintagestory.API.Client.GuiDialog.EnumPosFlag
+  parent: Vintagestory.API.Client
+  href: Vintagestory.API.Client.GuiDialog.html
+  name: GuiDialog.EnumPosFlag
+  nameWithType: GuiDialog.EnumPosFlag
+  fullName: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+  spec.csharp:
+  - uid: Vintagestory.API.Client.GuiDialog
+    name: GuiDialog
+    href: Vintagestory.API.Client.GuiDialog.html
+  - name: .
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialog.EnumPosFlag.html
+  spec.vb:
+  - uid: Vintagestory.API.Client.GuiDialog
+    name: GuiDialog
+    href: Vintagestory.API.Client.GuiDialog.html
+  - name: .
+  - uid: Vintagestory.API.Client.GuiDialog.EnumPosFlag
+    name: EnumPosFlag
+    href: Vintagestory.API.Client.GuiDialog.EnumPosFlag.html
 - uid: Vintagestory.API.Client.GuiDialogBlockEntity
   commentId: T:Vintagestory.API.Client.GuiDialogBlockEntity
   parent: Vintagestory.API.Client
@@ -1416,29 +1463,6 @@ references:
   name: GuiDialogBlockEntity
   nameWithType: GuiDialogBlockEntity
   fullName: Vintagestory.API.Client.GuiDialogBlockEntity
-- uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-  commentId: T:Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-  parent: Vintagestory.API.Client
-  href: Vintagestory.API.Client.GuiDialogBlockEntity.html
-  name: GuiDialogBlockEntity.EnumPosFlag
-  nameWithType: GuiDialogBlockEntity.EnumPosFlag
-  fullName: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-  spec.csharp:
-  - uid: Vintagestory.API.Client.GuiDialogBlockEntity
-    name: GuiDialogBlockEntity
-    href: Vintagestory.API.Client.GuiDialogBlockEntity.html
-  - name: .
-  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-    name: EnumPosFlag
-    href: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html
-  spec.vb:
-  - uid: Vintagestory.API.Client.GuiDialogBlockEntity
-    name: GuiDialogBlockEntity
-    href: Vintagestory.API.Client.GuiDialogBlockEntity.html
-  - name: .
-  - uid: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag
-    name: EnumPosFlag
-    href: Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html
 - uid: Vintagestory.API.Client.EnumBlockEntityPacketId
   commentId: T:Vintagestory.API.Client.EnumBlockEntityPacketId
   parent: Vintagestory.API.Client

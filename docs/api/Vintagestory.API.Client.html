@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -105,7 +105,8 @@ Classes
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Client.BlendedOverlayTexture.html">BlendedOverlayTexture</a></dt>
-      <dd></dd>
+      <dd><p>Defines a texture to be overlayed on another texture.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Client.CairoFont.html">CairoFont</a></dt>
@@ -138,7 +139,7 @@ Specific examples:</li>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Client.CompositeTexture.html">CompositeTexture</a></dt>
-      <dd><p>A single block texture</p>
+      <dd><p>Holds data about a texture. Also allows textures to be overlayed on top of one another.</p>
 </dd>
     </dl>
     <dl class="jumplist">
@@ -810,8 +811,17 @@ Please note, all arrays are used as a buffer. They do not tightly fit the data b
       <dd></dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Client.WorldInteraction.html">WorldInteraction</a></dt>
+      <dt><a class="xref" href="Vintagestory.API.Client.UBORef.html">UBORef</a></dt>
       <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Client.WireframeModes.html">WireframeModes</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Client.WorldInteraction.html">WorldInteraction</a></dt>
+      <dd><p>A world interaction for the object. This is used to prompt the player about what a certain object can do.</p>
+</dd>
     </dl>
     <h3 id="structs">
 Structs
@@ -916,6 +926,10 @@ Within these presets, individual color values are stored by string key.</p>
       <dd></dd>
     </dl>
     <dl class="jumplist">
+      <dt><a class="xref" href="Vintagestory.API.Client.IMetaBlock.html">IMetaBlock</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Client.IMusicEngine.html">IMusicEngine</a></dt>
       <dd></dd>
     </dl>
@@ -980,8 +994,7 @@ Texturing crash course:<br></p>
 <li>Block, Item and Entity textures are loaded from json files in the form of a CompositeTexture instance<br></li>
 <li>After connecting to a game server, the client inserts all of these textures into their type-respective texture atlasses<br></li>
 <li>After insertion a &quot;texture sub-id&quot; is left behind in the CompositeTexture.Baked Property<br></li>
-<li>You can now find the position of the texture inside the atlas through the Block/Item/Entity-TextureAtlasPositions arrays (teturesubid is the array key)<br>
-<br>
+<li>You can now find the position of the texture inside the atlas through the Block/Item/Entity-TextureAtlasPositions arrays (teturesubid is the array key)<br><br>
 Shape Tesselation crash course:<br></li>
 <li>Block and Item shapes are loaded from json files in the form of a CompositeShape instance<br></li>
 <li>A CompositeShape instance hold some block/item specific information as well as an identifier to a Shape instance<br></li>
@@ -1080,11 +1093,13 @@ Second word = Y Alignment (top, middle, bottom or fixed)</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Client.EnumDrawType.html">EnumDrawType</a></dt>
-      <dd></dd>
+      <dd><p>Draw types for blocks.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Client.EnumFaceCullMode.html">EnumFaceCullMode</a></dt>
-      <dd></dd>
+      <dd><p>Types that determine how block faces should be culled.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Client.EnumFloat.html">EnumFloat</a></dt>
@@ -1137,7 +1152,8 @@ Second word = Y Alignment (top, middle, bottom or fixed)</p>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Client.EnumSoundType.html">EnumSoundType</a></dt>
-      <dd></dd>
+      <dd><p>Sound types, often used to determine specific volume controls.</p>
+</dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.API.Client.EnumTextOrientation.html">EnumTextOrientation</a></dt>
@@ -1175,7 +1191,7 @@ Upon typing text in a Text input field it will produce the correct characters ac
 </dd>
     </dl>
     <dl class="jumplist">
-      <dt><a class="xref" href="Vintagestory.API.Client.GuiDialogBlockEntity.EnumPosFlag.html">GuiDialogBlockEntity.EnumPosFlag</a></dt>
+      <dt><a class="xref" href="Vintagestory.API.Client.GuiDialog.EnumPosFlag.html">GuiDialog.EnumPosFlag</a></dt>
       <dd></dd>
     </dl>
     <dl class="jumplist">

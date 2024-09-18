@@ -29,15 +29,15 @@
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
   </head>
-
-  <script type="module" src="./../public/docfx.min.js"></script>
-
-  <script>
-    const theme = localStorage.getItem('theme') || 'auto'
-    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
-  </script>
-
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
     <header class="bg-body border-bottom">
@@ -77,7 +77,7 @@
 
       <div class="content">
         <div class="actionbar">
-          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
             <i class="bi bi-list"></i>
           </button>
 
@@ -144,7 +144,28 @@ Class NatFloat
     </div>
   </dd></dl>
 
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_">ObjectHandleExtensions.ToGcHandle(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
+  </div>
+  </dd></dl>
 
+
+  <h2 id="Vintagestory_API_MathTools_NatFloat_examples">Examples</h2>
+  <pre><code class="lang-json">"quantity": {
+	"dist": "strongerinvexp",
+	"avg": 6,
+	"var": 4
+}</code></pre>
+<pre><code class="lang-json">"quantity": {
+	"avg": 4,
+ "var": 2
+}</code></pre>
 
 
 
@@ -198,7 +219,9 @@ Class NatFloat
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+<p>The average value for the random float.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -228,7 +251,9 @@ Class NatFloat
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>UNIFORM</jsondefault>-->
+<p>The type of distribution to use that determines the commodity of values.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -258,7 +283,9 @@ Class NatFloat
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+<p>A full offset to apply to any values returned.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -288,7 +315,9 @@ Class NatFloat
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><!--<jsonoptional>Recommended</jsonoptional><jsondefault>0</jsondefault>-->
+<p>The variation for the random float.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1111,8 +1140,8 @@ Class NatFloat
 
   <a id="Vintagestory_API_MathTools_NatFloat_nextFloat_" data-uid="Vintagestory.API.MathTools.NatFloat.nextFloat*"></a>
 
-  <h3 id="Vintagestory_API_MathTools_NatFloat_nextFloat_System_Single_Vintagestory_API_MathTools_LCGRandom_" data-uid="Vintagestory.API.MathTools.NatFloat.nextFloat(System.Single,Vintagestory.API.MathTools.LCGRandom)">
-  nextFloat(float, LCGRandom)
+  <h3 id="Vintagestory_API_MathTools_NatFloat_nextFloat_System_Single_Vintagestory_API_MathTools_IRandom_" data-uid="Vintagestory.API.MathTools.NatFloat.nextFloat(System.Single,Vintagestory.API.MathTools.IRandom)">
+  nextFloat(float, IRandom)
   
   </h3>
 
@@ -1120,14 +1149,14 @@ Class NatFloat
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float nextFloat(float multiplier, LCGRandom rand)</code></pre>
+    <pre><code class="lang-csharp hljs">public float nextFloat(float multiplier, IRandom rand)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>multiplier</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
-    <dt><code>rand</code> <a class="xref" href="Vintagestory.API.MathTools.LCGRandom.html">LCGRandom</a></dt>
+    <dt><code>rand</code> <a class="xref" href="Vintagestory.API.MathTools.IRandom.html">IRandom</a></dt>
     <dd></dd>
   </dl>
 

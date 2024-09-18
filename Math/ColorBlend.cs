@@ -52,6 +52,10 @@ namespace Vintagestory.API.MathTools
         }
     }
 
+    /// <summary>
+    /// Specifies types of per-pixel color blending.
+    /// </summary>
+    [DocumentAsJson]
     public enum EnumColorBlendMode
     {
         Normal = 0,

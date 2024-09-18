@@ -7,6 +7,7 @@ items:
   children:
   - Vintagestory.API.Client.IStandardShaderProgram.AddRenderFlags
   - Vintagestory.API.Client.IStandardShaderProgram.AlphaTest
+  - Vintagestory.API.Client.IStandardShaderProgram.AverageColor
   - Vintagestory.API.Client.IStandardShaderProgram.BaseTextureSize
   - Vintagestory.API.Client.IStandardShaderProgram.BaseUvOrigin
   - Vintagestory.API.Client.IStandardShaderProgram.DamageEffect
@@ -29,6 +30,7 @@ items:
   - Vintagestory.API.Client.IStandardShaderProgram.ShadowMapFar2D
   - Vintagestory.API.Client.IStandardShaderProgram.ShadowMapNear2D
   - Vintagestory.API.Client.IStandardShaderProgram.SsaoAttn
+  - Vintagestory.API.Client.IStandardShaderProgram.TempGlowMode
   - Vintagestory.API.Client.IStandardShaderProgram.Tex2D
   - Vintagestory.API.Client.IStandardShaderProgram.Tex2dOverlay2D
   - Vintagestory.API.Client.IStandardShaderProgram.ToShadowMapSpaceMatrixFar
@@ -51,6 +53,7 @@ items:
     content: 'public interface IStandardShaderProgram : IShaderProgram, IDisposable'
     content.vb: Public Interface IStandardShaderProgram Inherits IShaderProgram, IDisposable
   inheritedMembers:
+  - Vintagestory.API.Client.IShaderProgram.AssetDomain
   - Vintagestory.API.Client.IShaderProgram.PassId
   - Vintagestory.API.Client.IShaderProgram.PassName
   - Vintagestory.API.Client.IShaderProgram.ClampTexturesToEdge
@@ -74,7 +77,11 @@ items:
   - Vintagestory.API.Client.IShaderProgram.HasUniform(System.String)
   - Vintagestory.API.Client.IShaderProgram.Disposed
   - Vintagestory.API.Client.IShaderProgram.LoadError
+  - Vintagestory.API.Client.IShaderProgram.UBOs
   - System.IDisposable.Dispose
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Client.IStandardShaderProgram.Tex2D
   commentId: P:Vintagestory.API.Client.IStandardShaderProgram.Tex2D
   id: Tex2D
@@ -165,6 +172,27 @@ items:
       type: System.Int32
     content.vb: WriteOnly Property NormalShaded As Integer
   overload: Vintagestory.API.Client.IStandardShaderProgram.NormalShaded*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.TempGlowMode
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.TempGlowMode
+  id: TempGlowMode
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: TempGlowMode
+  nameWithType: IStandardShaderProgram.TempGlowMode
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.TempGlowMode
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: int TempGlowMode { set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: WriteOnly Property TempGlowMode As Integer
+  overload: Vintagestory.API.Client.IStandardShaderProgram.TempGlowMode*
 - uid: Vintagestory.API.Client.IStandardShaderProgram.ZNear
   commentId: P:Vintagestory.API.Client.IStandardShaderProgram.ZNear
   id: ZNear
@@ -412,6 +440,29 @@ items:
       type: Vintagestory.API.MathTools.Vec4f
     content.vb: WriteOnly Property RgbaTint As Vec4f
   overload: Vintagestory.API.Client.IStandardShaderProgram.RgbaTint*
+- uid: Vintagestory.API.Client.IStandardShaderProgram.AverageColor
+  commentId: P:Vintagestory.API.Client.IStandardShaderProgram.AverageColor
+  id: AverageColor
+  parent: Vintagestory.API.Client.IStandardShaderProgram
+  langs:
+  - csharp
+  - vb
+  name: AverageColor
+  nameWithType: IStandardShaderProgram.AverageColor
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.AverageColor
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: When TempGlowMode==1 this color is used as a reference
+  example: []
+  syntax:
+    content: Vec4f AverageColor { set; }
+    parameters: []
+    return:
+      type: Vintagestory.API.MathTools.Vec4f
+    content.vb: WriteOnly Property AverageColor As Vec4f
+  overload: Vintagestory.API.Client.IStandardShaderProgram.AverageColor*
 - uid: Vintagestory.API.Client.IStandardShaderProgram.FogMinIn
   commentId: P:Vintagestory.API.Client.IStandardShaderProgram.FogMinIn
   id: FogMinIn
@@ -818,6 +869,13 @@ references:
   - uid: Vintagestory.API.Client
     name: Client
     href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Client.IShaderProgram.AssetDomain
+  commentId: P:Vintagestory.API.Client.IShaderProgram.AssetDomain
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_AssetDomain
+  name: AssetDomain
+  nameWithType: IShaderProgram.AssetDomain
+  fullName: Vintagestory.API.Client.IShaderProgram.AssetDomain
 - uid: Vintagestory.API.Client.IShaderProgram.PassId
   commentId: P:Vintagestory.API.Client.IShaderProgram.PassId
   parent: Vintagestory.API.Client.IShaderProgram
@@ -1505,6 +1563,13 @@ references:
   name: LoadError
   nameWithType: IShaderProgram.LoadError
   fullName: Vintagestory.API.Client.IShaderProgram.LoadError
+- uid: Vintagestory.API.Client.IShaderProgram.UBOs
+  commentId: P:Vintagestory.API.Client.IShaderProgram.UBOs
+  parent: Vintagestory.API.Client.IShaderProgram
+  href: Vintagestory.API.Client.IShaderProgram.html#Vintagestory_API_Client_IShaderProgram_UBOs
+  name: UBOs
+  nameWithType: IShaderProgram.UBOs
+  fullName: Vintagestory.API.Client.IShaderProgram.UBOs
 - uid: System.IDisposable.Dispose
   commentId: M:System.IDisposable.Dispose
   parent: System.IDisposable
@@ -1527,6 +1592,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: Vintagestory.API.Client.IShaderProgram
   commentId: T:Vintagestory.API.Client.IShaderProgram
   parent: Vintagestory.API.Client
@@ -1542,6 +1669,73 @@ references:
   name: IDisposable
   nameWithType: IDisposable
   fullName: System.IDisposable
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -1549,6 +1743,36 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Client.IStandardShaderProgram.Tex2D*
   commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.Tex2D
   href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_Tex2D
@@ -1584,6 +1808,12 @@ references:
   name: NormalShaded
   nameWithType: IStandardShaderProgram.NormalShaded
   fullName: Vintagestory.API.Client.IStandardShaderProgram.NormalShaded
+- uid: Vintagestory.API.Client.IStandardShaderProgram.TempGlowMode*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.TempGlowMode
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_TempGlowMode
+  name: TempGlowMode
+  nameWithType: IStandardShaderProgram.TempGlowMode
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.TempGlowMode
 - uid: Vintagestory.API.Client.IStandardShaderProgram.ZNear*
   commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.ZNear
   href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_ZNear
@@ -1705,6 +1935,12 @@ references:
   name: RgbaTint
   nameWithType: IStandardShaderProgram.RgbaTint
   fullName: Vintagestory.API.Client.IStandardShaderProgram.RgbaTint
+- uid: Vintagestory.API.Client.IStandardShaderProgram.AverageColor*
+  commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.AverageColor
+  href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_AverageColor
+  name: AverageColor
+  nameWithType: IStandardShaderProgram.AverageColor
+  fullName: Vintagestory.API.Client.IStandardShaderProgram.AverageColor
 - uid: Vintagestory.API.Client.IStandardShaderProgram.FogMinIn*
   commentId: Overload:Vintagestory.API.Client.IStandardShaderProgram.FogMinIn
   href: Vintagestory.API.Client.IStandardShaderProgram.html#Vintagestory_API_Client_IStandardShaderProgram_FogMinIn

@@ -1,63 +1,150 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// Types of shape that can be loaded by the game.
+    /// </summary>
+    [DocumentAsJson]
     public enum EnumShapeFormat
     {
-        VintageStory,
-        Obj,
-        GltfEmbedded
+        /// <summary>
+        /// (Recommended) Imports a shape using the default JSON system.
+        /// </summary>
+        [DocumentAsJson] VintageStory,
+
+        /// <summary>
+        /// Imports a shape using an Obj file.
+        /// </summary>
+        [DocumentAsJson] Obj,
+
+        /// <summary>
+        /// Imports a shape using a Gltf file.
+        /// </summary>
+        [DocumentAsJson] GltfEmbedded
     }
 
+    /// <summary>
+    /// Holds shape data to create 3D representations of objects. Also allows shapes to be overlayed on top of one another recursively.
+    /// </summary>
+    /// <example>
+    /// <code language="json">
+    ///"shape": { "base": "block/basic/cube" },
+    /// </code>
+    /// <code language="json">
+    ///"shapeInventory": {
+	/// 	"base": "block/plant/bamboo/{color}/{part}-1",
+	/// 	"overlays": [ { "base": "block/plant/bamboo/{color}/{part}lod0-1" } ]
+	///},
+    /// </code>
+    /// </example>
+    [DocumentAsJson]
     public class CompositeShape
     {
-        public AssetLocation Base;
-        public EnumShapeFormat Format;
         /// <summary>
+        /// <!--<jsonoptional>Recommended</jsonoptional><jsondefault>None</jsondefault>-->
+        /// The path to this shape file.
+        /// </summary>
+        [DocumentAsJson] public AssetLocation Base;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>VintageStory</jsondefault>-->
+        /// The format/filetype of this shape.
+        /// </summary>
+        [DocumentAsJson] public EnumShapeFormat Format;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// Whether or not to insert baked in textures for mesh formats such as gltf into the texture atlas.
         /// </summary>
-        public bool InsertBakedTextures;
+        [DocumentAsJson] public bool InsertBakedTextures;
 
-        public float rotateX;
-        public float rotateY;
-        public float rotateZ;
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// How much, in degrees, should this shape be rotated around the X axis?
+        /// </summary>
+        [DocumentAsJson] public float rotateX;
 
-        public float offsetX;
-        public float offsetY;
-        public float offsetZ;
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// How much, in degrees, should this shape be rotated around the Y axis?
+        /// </summary>
+        [DocumentAsJson] public float rotateY;
 
-        public float Scale = 1f;
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// How much, in degrees, should this shape be rotated around the Z axis?
+        /// </summary>
+        [DocumentAsJson] public float rotateZ;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// How much should this shape be offset on X axis?
+        /// </summary>
+        [DocumentAsJson] public float offsetX;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// How much should this shape be offset on Y axis?
+        /// </summary>
+        [DocumentAsJson] public float offsetY;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>0</jsondefault>-->
+        /// How much should this shape be offset on Z axis?
+        /// </summary>
+        [DocumentAsJson] public float offsetZ;
+
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>1</jsondefault>-->
+        /// The scale of this shape on all axes.
+        /// </summary>
+        [DocumentAsJson] public float Scale = 1f;
 
         public Vec3f RotateXYZCopy => new Vec3f(rotateX, rotateY, rotateZ);
         public Vec3f OffsetXYZCopy => new Vec3f(offsetX, offsetY, offsetZ);
 
         /// <summary>
-        /// The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the block is placed in the world.
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// The block shape may consists of any amount of alternatives, one of which will be randomly chosen when the shape is chosen.
         /// </summary>
-        public CompositeShape[] Alternates = null;
+        [DocumentAsJson] public CompositeShape[] Alternates = null;
 
         /// <summary>
         /// Includes the base shape
         /// </summary>
         public CompositeShape[] BakedAlternates = null;
 
-        public CompositeShape[] Overlays = null;
+        /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
+        /// The shape will render all overlays on top of this shape. Can be used to group multiple shapes into one composite shape.
+        /// </summary>
+        [DocumentAsJson] public CompositeShape[] Overlays = null;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>false</jsondefault>-->
         /// If true, the shape is created from a voxelized version of the first defined texture
         /// </summary>
-        public bool VoxelizeTexture = false;
+        [DocumentAsJson] public bool VoxelizeTexture = false;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// If non zero will only tesselate the first n elements of the shape
         /// </summary>
-        public int? QuantityElements = null;
+        [DocumentAsJson] public int? QuantityElements = null;
 
         /// <summary>
+        /// <!--<jsonoptional>Optional</jsonoptional><jsondefault>None</jsondefault>-->
         /// If set will only tesselate elements with given name
         /// </summary>
-        public string[] SelectiveElements;
+        [DocumentAsJson] public string[] SelectiveElements;
+
+        /// <summary>
+        /// If set will not tesselate elements with given name
+        /// </summary>
+        public string[] IgnoreElements;
 
 
         public override int GetHashCode()
@@ -72,6 +159,11 @@ namespace Vintagestory.API.Common
             }
 
             return hashcode;
+        }
+
+        public override string ToString()
+        {
+            return Base.ToString();
         }
 
         /// <summary>
@@ -136,7 +228,8 @@ namespace Vintagestory.API.Common
                 Scale = Scale,
                 VoxelizeTexture = VoxelizeTexture,
                 QuantityElements = QuantityElements,
-                SelectiveElements = (string[])SelectiveElements?.Clone()
+                SelectiveElements = (string[])SelectiveElements?.Clone(),
+                IgnoreElements = (string[])IgnoreElements?.Clone(),
             };
             return ct;
         }
@@ -202,8 +295,15 @@ namespace Vintagestory.API.Common
                 {
                     altCS.SelectiveElements = SelectiveElements;
                 }
+
+                if (altCS.IgnoreElements == null)
+                {
+                    altCS.IgnoreElements = IgnoreElements;
+                }
             }
-            
+            // make sure all alternates are sorted by their name
+            // this is important for seaweed and similar plants that have multiple variants where top and bottom parts need to match by the same index/name
+            BakedAlternates = BakedAlternates.OrderBy(a => a.Base.Path).ToArray();
         }
 
 
@@ -240,7 +340,8 @@ namespace Vintagestory.API.Common
                     rotateZ = shape.rotateZ,
                     Scale = shape.Scale,
                     QuantityElements = shape.QuantityElements,
-                    SelectiveElements = shape.SelectiveElements
+                    SelectiveElements = shape.SelectiveElements,
+                    IgnoreElements = shape.IgnoreElements
                 };
             }
 

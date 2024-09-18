@@ -512,6 +512,17 @@ namespace Vintagestory.API.MathTools
             return RotatedCopy(vec.XAsDouble, vec.YAsDouble, vec.ZAsDouble, origin);
         }
 
+        public Cuboidd Offset(double dx, double dy, double dz)
+        {
+            X1 += dx;
+            Y1 += dy;
+            Z1 += dz;
+            X2 += dx;
+            Y2 += dy;
+            Z2 += dz;
+            return this;
+        }
+
         /// <summary>
         /// Returns a new cuboid offseted by given position
         /// </summary>
@@ -670,5 +681,7 @@ namespace Vintagestory.API.MathTools
         {
             return other.X1 == X1 && other.Y1 == Y1 && other.Z1 == Z1 && other.X2 == X2 && other.Y2 == Y2 && other.Z2 == Z2;
         }
+
+        
     }
 }

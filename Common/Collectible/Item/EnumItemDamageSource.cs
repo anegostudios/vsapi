@@ -1,5 +1,9 @@
 ﻿namespace Vintagestory.API.Common
 {
+    /// <summary>
+    /// Types for how an item can damage it's durability.
+    /// </summary>
+    [DocumentAsJson]
     public enum EnumItemDamageSource
     {
         /// <summary>
@@ -13,7 +17,7 @@
         Attacking,
 
         /// <summary>
-        /// the item was thrown into a fire.
+        /// Unused. The item was thrown into a fire.
         /// </summary>
         Fire
     }

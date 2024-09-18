@@ -7,6 +7,8 @@ items:
   children:
   - Vintagestory.API.Common.BlockSelection.#ctor
   - Vintagestory.API.Common.BlockSelection.#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.Common.Block)
+  - Vintagestory.API.Common.BlockSelection.AddPosCopy(System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Common.BlockSelection.AddPosCopy(Vintagestory.API.MathTools.Vec3i)
   - Vintagestory.API.Common.BlockSelection.Block
   - Vintagestory.API.Common.BlockSelection.Clone
   - Vintagestory.API.Common.BlockSelection.DidOffset
@@ -17,6 +19,7 @@ items:
   - Vintagestory.API.Common.BlockSelection.HitPosition
   - Vintagestory.API.Common.BlockSelection.Position
   - Vintagestory.API.Common.BlockSelection.SelectionBoxIndex
+  - Vintagestory.API.Common.BlockSelection.SetPos(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.BlockSelection.ToDecorIndex
   langs:
   - csharp
@@ -43,6 +46,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.BlockSelection.Position
   commentId: F:Vintagestory.API.Common.BlockSelection.Position
   id: Position
@@ -246,6 +252,89 @@ items:
   nameWithType.vb: BlockSelection.New(BlockPos, BlockFacing, Block)
   fullName.vb: Vintagestory.API.Common.BlockSelection.New(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, Vintagestory.API.Common.Block)
   name.vb: New(BlockPos, BlockFacing, Block)
+- uid: Vintagestory.API.Common.BlockSelection.SetPos(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.BlockSelection.SetPos(System.Int32,System.Int32,System.Int32)
+  id: SetPos(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.BlockSelection
+  langs:
+  - csharp
+  - vb
+  name: SetPos(int, int, int)
+  nameWithType: BlockSelection.SetPos(int, int, int)
+  fullName: Vintagestory.API.Common.BlockSelection.SetPos(int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BlockSelection SetPos(int x, int y, int z)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    - id: z
+      type: System.Int32
+    return:
+      type: Vintagestory.API.Common.BlockSelection
+    content.vb: Public Function SetPos(x As Integer, y As Integer, z As Integer) As BlockSelection
+  overload: Vintagestory.API.Common.BlockSelection.SetPos*
+  nameWithType.vb: BlockSelection.SetPos(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.BlockSelection.SetPos(Integer, Integer, Integer)
+  name.vb: SetPos(Integer, Integer, Integer)
+- uid: Vintagestory.API.Common.BlockSelection.AddPosCopy(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.BlockSelection.AddPosCopy(System.Int32,System.Int32,System.Int32)
+  id: AddPosCopy(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.BlockSelection
+  langs:
+  - csharp
+  - vb
+  name: AddPosCopy(int, int, int)
+  nameWithType: BlockSelection.AddPosCopy(int, int, int)
+  fullName: Vintagestory.API.Common.BlockSelection.AddPosCopy(int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BlockSelection AddPosCopy(int x, int y, int z)
+    parameters:
+    - id: x
+      type: System.Int32
+    - id: y
+      type: System.Int32
+    - id: z
+      type: System.Int32
+    return:
+      type: Vintagestory.API.Common.BlockSelection
+    content.vb: Public Function AddPosCopy(x As Integer, y As Integer, z As Integer) As BlockSelection
+  overload: Vintagestory.API.Common.BlockSelection.AddPosCopy*
+  nameWithType.vb: BlockSelection.AddPosCopy(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.BlockSelection.AddPosCopy(Integer, Integer, Integer)
+  name.vb: AddPosCopy(Integer, Integer, Integer)
+- uid: Vintagestory.API.Common.BlockSelection.AddPosCopy(Vintagestory.API.MathTools.Vec3i)
+  commentId: M:Vintagestory.API.Common.BlockSelection.AddPosCopy(Vintagestory.API.MathTools.Vec3i)
+  id: AddPosCopy(Vintagestory.API.MathTools.Vec3i)
+  parent: Vintagestory.API.Common.BlockSelection
+  langs:
+  - csharp
+  - vb
+  name: AddPosCopy(Vec3i)
+  nameWithType: BlockSelection.AddPosCopy(Vec3i)
+  fullName: Vintagestory.API.Common.BlockSelection.AddPosCopy(Vintagestory.API.MathTools.Vec3i)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BlockSelection AddPosCopy(Vec3i vec)
+    parameters:
+    - id: vec
+      type: Vintagestory.API.MathTools.Vec3i
+    return:
+      type: Vintagestory.API.Common.BlockSelection
+    content.vb: Public Function AddPosCopy(vec As Vec3i) As BlockSelection
+  overload: Vintagestory.API.Common.BlockSelection.AddPosCopy*
 - uid: Vintagestory.API.Common.BlockSelection.Clone
   commentId: M:Vintagestory.API.Common.BlockSelection.Clone
   id: Clone
@@ -619,6 +708,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -626,6 +777,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.MathTools.BlockPos
   commentId: T:Vintagestory.API.MathTools.BlockPos
   parent: Vintagestory.API.MathTools
@@ -721,12 +969,12 @@ references:
   name: FullPosition
   nameWithType: BlockSelection.FullPosition
   fullName: Vintagestory.API.Common.BlockSelection.FullPosition
-- uid: Vintagestory.API.Common.BlockSelection.Clone*
-  commentId: Overload:Vintagestory.API.Common.BlockSelection.Clone
-  href: Vintagestory.API.Common.BlockSelection.html#Vintagestory_API_Common_BlockSelection_Clone
-  name: Clone
-  nameWithType: BlockSelection.Clone
-  fullName: Vintagestory.API.Common.BlockSelection.Clone
+- uid: Vintagestory.API.Common.BlockSelection.SetPos*
+  commentId: Overload:Vintagestory.API.Common.BlockSelection.SetPos
+  href: Vintagestory.API.Common.BlockSelection.html#Vintagestory_API_Common_BlockSelection_SetPos_System_Int32_System_Int32_System_Int32_
+  name: SetPos
+  nameWithType: BlockSelection.SetPos
+  fullName: Vintagestory.API.Common.BlockSelection.SetPos
 - uid: Vintagestory.API.Common.BlockSelection
   commentId: T:Vintagestory.API.Common.BlockSelection
   parent: Vintagestory.API.Common
@@ -734,6 +982,25 @@ references:
   name: BlockSelection
   nameWithType: BlockSelection
   fullName: Vintagestory.API.Common.BlockSelection
+- uid: Vintagestory.API.Common.BlockSelection.AddPosCopy*
+  commentId: Overload:Vintagestory.API.Common.BlockSelection.AddPosCopy
+  href: Vintagestory.API.Common.BlockSelection.html#Vintagestory_API_Common_BlockSelection_AddPosCopy_System_Int32_System_Int32_System_Int32_
+  name: AddPosCopy
+  nameWithType: BlockSelection.AddPosCopy
+  fullName: Vintagestory.API.Common.BlockSelection.AddPosCopy
+- uid: Vintagestory.API.MathTools.Vec3i
+  commentId: T:Vintagestory.API.MathTools.Vec3i
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3i.html
+  name: Vec3i
+  nameWithType: Vec3i
+  fullName: Vintagestory.API.MathTools.Vec3i
+- uid: Vintagestory.API.Common.BlockSelection.Clone*
+  commentId: Overload:Vintagestory.API.Common.BlockSelection.Clone
+  href: Vintagestory.API.Common.BlockSelection.html#Vintagestory_API_Common_BlockSelection_Clone
+  name: Clone
+  nameWithType: BlockSelection.Clone
+  fullName: Vintagestory.API.Common.BlockSelection.Clone
 - uid: Vintagestory.API.Common.BlockSelection.ToDecorIndex*
   commentId: Overload:Vintagestory.API.Common.BlockSelection.ToDecorIndex
   href: Vintagestory.API.Common.BlockSelection.html#Vintagestory_API_Common_BlockSelection_ToDecorIndex

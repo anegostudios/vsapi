@@ -92,18 +92,6 @@ namespace Vintagestory.API.Client
             double insetHeight = Bounds.InnerHeight - 2 * padding;
 
 
-            if (alarmValue > 0 && alarmValue < maxValue)
-            {
-                float alarmValueRel = (float)alarmValue / maxValue;
-
-                alarmTextureRect = new Rectangled() { X = padding + (Bounds.InnerWidth - 2 * padding) * alarmValueRel, Y = padding, Width = (Bounds.InnerWidth - 2 * padding) * (1 - alarmValueRel), Height = Bounds.InnerHeight - 2 * padding };
-
-                ctxStatic.SetSourceRGBA(0.62, 0, 0, 0.4);
-
-                RoundRectangle(ctxStatic, Bounds.drawX + padding + insetWidth * alarmValueRel, Bounds.drawY + padding, insetWidth * (1 - alarmValueRel), insetHeight, 1);
-                ctxStatic.Fill();
-            }
-
 
             /*** 2. Handle ***/
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)handleWidth + 4, (int)handleHeight + 4);

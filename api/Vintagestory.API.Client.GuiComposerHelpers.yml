@@ -10,7 +10,7 @@ items:
   - Vintagestory.API.Client.GuiComposerHelpers.AddButton(Vintagestory.API.Client.GuiComposer,System.String,Vintagestory.API.Common.ActionConsumable,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.CairoFont,Vintagestory.API.Client.EnumButtonStyle,Vintagestory.API.Client.EnumTextOrientation,System.String)
   - Vintagestory.API.Client.GuiComposerHelpers.AddButton(Vintagestory.API.Client.GuiComposer,System.String,Vintagestory.API.Common.ActionConsumable,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.EnumButtonStyle,System.String)
   - Vintagestory.API.Client.GuiComposerHelpers.AddButton(Vintagestory.API.Client.GuiComposer,System.String,Vintagestory.API.Common.ActionConsumable,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.EnumButtonStyle,Vintagestory.API.Client.EnumTextOrientation,System.String)
-  - Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)
+  - Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)
   - Vintagestory.API.Client.GuiComposerHelpers.AddChatInput(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,System.Action{System.String},System.String)
   - Vintagestory.API.Client.GuiComposerHelpers.AddColorListPicker(Vintagestory.API.Client.GuiComposer,System.Int32[],System.Action{System.Int32},Vintagestory.API.Client.ElementBounds,System.Int32,System.String)
   - Vintagestory.API.Client.GuiComposerHelpers.AddCompactVerticalScrollbar(Vintagestory.API.Client.GuiComposer,System.Action{System.Single},Vintagestory.API.Client.ElementBounds,System.String)
@@ -1646,17 +1646,17 @@ items:
   nameWithType.vb: GuiComposerHelpers.GetVerticalTab(GuiComposer, String)
   fullName.vb: Vintagestory.API.Client.GuiComposerHelpers.GetVerticalTab(Vintagestory.API.Client.GuiComposer, String)
   name.vb: GetVerticalTab(GuiComposer, String)
-- uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)
-  commentId: M:Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)
-  id: AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.List{``0},System.String)
+- uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)
+  commentId: M:Vintagestory.API.Client.GuiComposerHelpers.AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)
+  id: AddCellList``1(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.OnRequireCell{``0},System.Collections.Generic.IEnumerable{``0},System.String)
   isExtensionMethod: true
   parent: Vintagestory.API.Client.GuiComposerHelpers
   langs:
   - csharp
   - vb
-  name: AddCellList<T>(GuiComposer, ElementBounds, OnRequireCell<T>, List<T>, string)
-  nameWithType: GuiComposerHelpers.AddCellList<T>(GuiComposer, ElementBounds, OnRequireCell<T>, List<T>, string)
-  fullName: Vintagestory.API.Client.GuiComposerHelpers.AddCellList<T>(Vintagestory.API.Client.GuiComposer, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell<T>, System.Collections.Generic.List<T>, string)
+  name: AddCellList<T>(GuiComposer, ElementBounds, OnRequireCell<T>, IEnumerable<T>, string)
+  nameWithType: GuiComposerHelpers.AddCellList<T>(GuiComposer, ElementBounds, OnRequireCell<T>, IEnumerable<T>, string)
+  fullName: Vintagestory.API.Client.GuiComposerHelpers.AddCellList<T>(Vintagestory.API.Client.GuiComposer, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell<T>, System.Collections.Generic.IEnumerable<T>, string)
   type: Method
   assemblies:
   - VintagestoryAPI
@@ -1664,7 +1664,7 @@ items:
   summary: Adds a List to the current GUI.
   example: []
   syntax:
-    content: public static GuiComposer AddCellList<T>(this GuiComposer composer, ElementBounds bounds, OnRequireCell<T> cellCreator, List<T> cells = null, string key = null)
+    content: public static GuiComposer AddCellList<T>(this GuiComposer composer, ElementBounds bounds, OnRequireCell<T> cellCreator, IEnumerable<T> cells = null, string key = null)
     parameters:
     - id: composer
       type: Vintagestory.API.Client.GuiComposer
@@ -1676,7 +1676,7 @@ items:
       type: Vintagestory.API.Client.OnRequireCell{{T}}
       description: the event fired when the cell is requested by the GUI
     - id: cells
-      type: System.Collections.Generic.List{{T}}
+      type: System.Collections.Generic.IEnumerable{{T}}
       description: The cells of the list.
     - id: key
       type: System.String
@@ -1685,11 +1685,11 @@ items:
     - id: T
     return:
       type: Vintagestory.API.Client.GuiComposer
-    content.vb: Public Shared Function AddCellList(Of T)(composer As GuiComposer, bounds As ElementBounds, cellCreator As OnRequireCell(Of T), cells As List(Of T) = Nothing, key As String = Nothing) As GuiComposer
+    content.vb: Public Shared Function AddCellList(Of T)(composer As GuiComposer, bounds As ElementBounds, cellCreator As OnRequireCell(Of T), cells As IEnumerable(Of T) = Nothing, key As String = Nothing) As GuiComposer
   overload: Vintagestory.API.Client.GuiComposerHelpers.AddCellList*
-  nameWithType.vb: GuiComposerHelpers.AddCellList(Of T)(GuiComposer, ElementBounds, OnRequireCell(Of T), List(Of T), String)
-  fullName.vb: Vintagestory.API.Client.GuiComposerHelpers.AddCellList(Of T)(Vintagestory.API.Client.GuiComposer, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell(Of T), System.Collections.Generic.List(Of T), String)
-  name.vb: AddCellList(Of T)(GuiComposer, ElementBounds, OnRequireCell(Of T), List(Of T), String)
+  nameWithType.vb: GuiComposerHelpers.AddCellList(Of T)(GuiComposer, ElementBounds, OnRequireCell(Of T), IEnumerable(Of T), String)
+  fullName.vb: Vintagestory.API.Client.GuiComposerHelpers.AddCellList(Of T)(Vintagestory.API.Client.GuiComposer, Vintagestory.API.Client.ElementBounds, Vintagestory.API.Client.OnRequireCell(Of T), System.Collections.Generic.IEnumerable(Of T), String)
+  name.vb: AddCellList(Of T)(GuiComposer, ElementBounds, OnRequireCell(Of T), IEnumerable(Of T), String)
 - uid: Vintagestory.API.Client.GuiComposerHelpers.GetCellList``1(Vintagestory.API.Client.GuiComposer,System.String)
   commentId: M:Vintagestory.API.Client.GuiComposerHelpers.GetCellList``1(Vintagestory.API.Client.GuiComposer,System.String)
   id: GetCellList``1(Vintagestory.API.Client.GuiComposer,System.String)
@@ -4694,7 +4694,7 @@ references:
   fullName: Vintagestory.API.Client.GuiElementVerticalTabs
 - uid: Vintagestory.API.Client.GuiComposerHelpers.AddCellList*
   commentId: Overload:Vintagestory.API.Client.GuiComposerHelpers.AddCellList
-  href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_List___0__System_String_
+  href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_AddCellList__1_Vintagestory_API_Client_GuiComposer_Vintagestory_API_Client_ElementBounds_Vintagestory_API_Client_OnRequireCell___0__System_Collections_Generic_IEnumerable___0__System_String_
   name: AddCellList
   nameWithType: GuiComposerHelpers.AddCellList
   fullName: Vintagestory.API.Client.GuiComposerHelpers.AddCellList
@@ -4725,30 +4725,30 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: System.Collections.Generic.List{{T}}
-  commentId: T:System.Collections.Generic.List{`0}
+- uid: System.Collections.Generic.IEnumerable{{T}}
+  commentId: T:System.Collections.Generic.IEnumerable{``0}
   parent: System.Collections.Generic
-  definition: System.Collections.Generic.List`1
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  name: List<T>
-  nameWithType: List<T>
-  fullName: System.Collections.Generic.List<T>
-  nameWithType.vb: List(Of T)
-  fullName.vb: System.Collections.Generic.List(Of T)
-  name.vb: List(Of T)
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
   spec.csharp:
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: <
   - name: T
   - name: '>'
   spec.vb:
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: (
   - name: Of
   - name: " "
@@ -4779,29 +4779,29 @@ references:
   - name: " "
   - name: T
   - name: )
-- uid: System.Collections.Generic.List`1
-  commentId: T:System.Collections.Generic.List`1
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
   isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
-  name: List<T>
-  nameWithType: List<T>
-  fullName: System.Collections.Generic.List<T>
-  nameWithType.vb: List(Of T)
-  fullName.vb: System.Collections.Generic.List(Of T)
-  name.vb: List(Of T)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
   spec.csharp:
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: <
   - name: T
   - name: '>'
   spec.vb:
-  - uid: System.Collections.Generic.List`1
-    name: List
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
   - name: (
   - name: Of
   - name: " "
@@ -5002,6 +5002,34 @@ references:
   name: ConfigItemClickDelegate
   nameWithType: ConfigItemClickDelegate
   fullName: Vintagestory.API.Client.ConfigItemClickDelegate
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: Vintagestory.API.Client.GuiComposerHelpers.GetConfigList*
   commentId: Overload:Vintagestory.API.Client.GuiComposerHelpers.GetConfigList
   href: Vintagestory.API.Client.GuiComposerHelpers.html#Vintagestory_API_Client_GuiComposerHelpers_GetConfigList_Vintagestory_API_Client_GuiComposer_System_String_

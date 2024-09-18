@@ -108,6 +108,7 @@ items:
   - Vintagestory.API.Common.CollectibleObject.OnConsumedByCrafting(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.CraftingRecipeIngredient,Vintagestory.API.Common.IPlayer,System.Int32)
   - Vintagestory.API.Common.CollectibleObject.OnCreatedByCrafting(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.GridRecipe)
   - Vintagestory.API.Common.CollectibleObject.ConsumeCraftingIngredients(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.GridRecipe)
+  - Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack,System.Int32)
   - Vintagestory.API.Common.CollectibleObject.DamageItem(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.ItemSlot,System.Int32)
   - Vintagestory.API.Common.CollectibleObject.RefillSlotIfEmpty(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EntityAgent,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.ItemStack})
   - Vintagestory.API.Common.CollectibleObject.GetToolModes(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Client.IClientPlayer,Vintagestory.API.Common.BlockSelection)
@@ -164,11 +165,9 @@ items:
   - Vintagestory.API.Common.CollectibleObject.CarryOverFreshness(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemStack[],Vintagestory.API.Common.TransitionableProperties)
   - Vintagestory.API.Common.CollectibleObject.IsReasonablyFresh(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack)
   - Vintagestory.API.Common.CollectibleObject.HasTemperature(Vintagestory.API.Common.IItemStack)
+  - Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.Double)
   - Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack)
   - Vintagestory.API.Common.CollectibleObject.SetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.Single,System.Boolean)
-  - Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
-  - Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
-  - Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
   - Vintagestory.API.Common.CollectibleObject.Equals(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.ItemStack,System.String[])
   - Vintagestory.API.Common.CollectibleObject.Satisfies(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.ItemStack)
   - Vintagestory.API.Common.CollectibleObject.OnStoreCollectibleMappings(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemSlot,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
@@ -178,12 +177,16 @@ items:
   - Vintagestory.API.Common.CollectibleObject.GetCollectibleBehavior(System.Type,System.Boolean)
   - Vintagestory.API.Common.CollectibleObject.GetCollectibleBehavior``1(System.Boolean)
   - Vintagestory.API.Common.CollectibleObject.GetBehavior(Vintagestory.API.Common.CollectibleBehavior[],System.Type,System.Boolean)
+  - Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface``1
   - Vintagestory.API.Common.CollectibleObject.HasBehavior``1(System.Boolean)
   - Vintagestory.API.Common.CollectibleObject.HasBehavior(System.Type,System.Boolean)
   - Vintagestory.API.Common.CollectibleObject.HasBehavior(System.String,Vintagestory.API.Common.IClassRegistryAPI)
   - Vintagestory.API.Common.CollectibleObject.GetBehavior(System.Type)
   - Vintagestory.API.Common.CollectibleObject.GetBehavior``1
   - Vintagestory.API.Common.CollectibleObject.OnSmeltAttempt(Vintagestory.API.Common.InventoryBase)
+  - Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
+  - Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
+  - Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
   - Vintagestory.API.Common.RegistryObject.Code
   - Vintagestory.API.Common.RegistryObject.VariantStrict
   - Vintagestory.API.Common.RegistryObject.Variant
@@ -212,6 +215,9 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
 - uid: Vintagestory.API.Common.Item.Id
   commentId: P:Vintagestory.API.Common.Item.Id
   id: Id
@@ -2063,6 +2069,47 @@ references:
   - uid: Vintagestory.API.Common.GridRecipe
     name: GridRecipe
     href: Vintagestory.API.Common.GridRecipe.html
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack,System.Int32)
+  commentId: M:Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack,System.Int32)
+  parent: Vintagestory.API.Common.CollectibleObject
+  isExternal: true
+  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetDurability_Vintagestory_API_Common_ItemStack_System_Int32_
+  name: SetDurability(ItemStack, int)
+  nameWithType: CollectibleObject.SetDurability(ItemStack, int)
+  fullName: Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack, int)
+  nameWithType.vb: CollectibleObject.SetDurability(ItemStack, Integer)
+  fullName.vb: Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack, Integer)
+  name.vb: SetDurability(ItemStack, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack,System.Int32)
+    name: SetDurability
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetDurability_Vintagestory_API_Common_ItemStack_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.CollectibleObject.SetDurability(Vintagestory.API.Common.ItemStack,System.Int32)
+    name: SetDurability
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_SetDurability_Vintagestory_API_Common_ItemStack_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
 - uid: Vintagestory.API.Common.CollectibleObject.DamageItem(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.ItemSlot,System.Int32)
   commentId: M:Vintagestory.API.Common.CollectibleObject.DamageItem(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.ItemSlot,System.Int32)
@@ -4986,6 +5033,57 @@ references:
     name: IItemStack
     href: Vintagestory.API.Common.IItemStack.html
   - name: )
+- uid: Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.Double)
+  commentId: M:Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.Double)
+  parent: Vintagestory.API.Common.CollectibleObject
+  isExternal: true
+  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_Double_
+  name: GetTemperature(IWorldAccessor, ItemStack, double)
+  nameWithType: CollectibleObject.GetTemperature(IWorldAccessor, ItemStack, double)
+  fullName: Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemStack, double)
+  nameWithType.vb: CollectibleObject.GetTemperature(IWorldAccessor, ItemStack, Double)
+  fullName.vb: Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.ItemStack, Double)
+  name.vb: GetTemperature(IWorldAccessor, ItemStack, Double)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.Double)
+    name: GetTemperature
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_Double_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack,System.Double)
+    name: GetTemperature
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetTemperature_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_Common_ItemStack_System_Double_
+  - name: (
+  - uid: Vintagestory.API.Common.IWorldAccessor
+    name: IWorldAccessor
+    href: Vintagestory.API.Common.IWorldAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ItemStack
+    name: ItemStack
+    href: Vintagestory.API.Common.ItemStack.html
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
 - uid: Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack)
   commentId: M:Vintagestory.API.Common.CollectibleObject.GetTemperature(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.ItemStack)
   parent: Vintagestory.API.Common.CollectibleObject
@@ -5083,81 +5181,6 @@ references:
     name: Boolean
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
-  - name: )
-- uid: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
-  commentId: M:Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
-  parent: Vintagestory.API.Common.CollectibleObject
-  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_
-  name: IsEmptyBackPack(IItemStack)
-  nameWithType: CollectibleObject.IsEmptyBackPack(IItemStack)
-  fullName: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
-    name: IsEmptyBackPack
-    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_
-  - name: (
-  - uid: Vintagestory.API.Common.IItemStack
-    name: IItemStack
-    href: Vintagestory.API.Common.IItemStack.html
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
-    name: IsEmptyBackPack
-    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_
-  - name: (
-  - uid: Vintagestory.API.Common.IItemStack
-    name: IItemStack
-    href: Vintagestory.API.Common.IItemStack.html
-  - name: )
-- uid: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
-  commentId: M:Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
-  parent: Vintagestory.API.Common.CollectibleObject
-  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_
-  name: IsBackPack(IItemStack)
-  nameWithType: CollectibleObject.IsBackPack(IItemStack)
-  fullName: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
-    name: IsBackPack
-    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_
-  - name: (
-  - uid: Vintagestory.API.Common.IItemStack
-    name: IItemStack
-    href: Vintagestory.API.Common.IItemStack.html
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
-    name: IsBackPack
-    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_
-  - name: (
-  - uid: Vintagestory.API.Common.IItemStack
-    name: IItemStack
-    href: Vintagestory.API.Common.IItemStack.html
-  - name: )
-- uid: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
-  commentId: M:Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
-  parent: Vintagestory.API.Common.CollectibleObject
-  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_
-  name: QuantityBackPackSlots(IItemStack)
-  nameWithType: CollectibleObject.QuantityBackPackSlots(IItemStack)
-  fullName: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
-    name: QuantityBackPackSlots
-    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_
-  - name: (
-  - uid: Vintagestory.API.Common.IItemStack
-    name: IItemStack
-    href: Vintagestory.API.Common.IItemStack.html
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
-    name: QuantityBackPackSlots
-    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_
-  - name: (
-  - uid: Vintagestory.API.Common.IItemStack
-    name: IItemStack
-    href: Vintagestory.API.Common.IItemStack.html
   - name: )
 - uid: Vintagestory.API.Common.CollectibleObject.Equals(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.ItemStack,System.String[])
   commentId: M:Vintagestory.API.Common.CollectibleObject.Equals(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.ItemStack,System.String[])
@@ -5756,6 +5779,36 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
+- uid: Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface``1
+  commentId: M:Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface``1
+  parent: Vintagestory.API.Common.CollectibleObject
+  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetCollectibleInterface__1
+  name: GetCollectibleInterface<T>()
+  nameWithType: CollectibleObject.GetCollectibleInterface<T>()
+  fullName: Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface<T>()
+  nameWithType.vb: CollectibleObject.GetCollectibleInterface(Of T)()
+  fullName.vb: Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface(Of T)()
+  name.vb: GetCollectibleInterface(Of T)()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface``1
+    name: GetCollectibleInterface
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetCollectibleInterface__1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.CollectibleObject.GetCollectibleInterface``1
+    name: GetCollectibleInterface
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_GetCollectibleInterface__1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: (
+  - name: )
 - uid: Vintagestory.API.Common.CollectibleObject.HasBehavior``1(System.Boolean)
   commentId: M:Vintagestory.API.Common.CollectibleObject.HasBehavior``1(System.Boolean)
   parent: Vintagestory.API.Common.CollectibleObject
@@ -5961,6 +6014,81 @@ references:
   - uid: Vintagestory.API.Common.InventoryBase
     name: InventoryBase
     href: Vintagestory.API.Common.InventoryBase.html
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
+  commentId: M:Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
+  parent: Vintagestory.API.Common.CollectibleObject
+  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_
+  name: IsEmptyBackPack(IItemStack)
+  nameWithType: CollectibleObject.IsEmptyBackPack(IItemStack)
+  fullName: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
+    name: IsEmptyBackPack
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IItemStack
+    name: IItemStack
+    href: Vintagestory.API.Common.IItemStack.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.CollectibleObject.IsEmptyBackPack(Vintagestory.API.Common.IItemStack)
+    name: IsEmptyBackPack
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsEmptyBackPack_Vintagestory_API_Common_IItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IItemStack
+    name: IItemStack
+    href: Vintagestory.API.Common.IItemStack.html
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
+  commentId: M:Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
+  parent: Vintagestory.API.Common.CollectibleObject
+  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_
+  name: IsBackPack(IItemStack)
+  nameWithType: CollectibleObject.IsBackPack(IItemStack)
+  fullName: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
+    name: IsBackPack
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IItemStack
+    name: IItemStack
+    href: Vintagestory.API.Common.IItemStack.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.CollectibleObject.IsBackPack(Vintagestory.API.Common.IItemStack)
+    name: IsBackPack
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_IsBackPack_Vintagestory_API_Common_IItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IItemStack
+    name: IItemStack
+    href: Vintagestory.API.Common.IItemStack.html
+  - name: )
+- uid: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
+  commentId: M:Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
+  parent: Vintagestory.API.Common.CollectibleObject
+  href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_
+  name: QuantityBackPackSlots(IItemStack)
+  nameWithType: CollectibleObject.QuantityBackPackSlots(IItemStack)
+  fullName: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
+    name: QuantityBackPackSlots
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IItemStack
+    name: IItemStack
+    href: Vintagestory.API.Common.IItemStack.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.CollectibleObject.QuantityBackPackSlots(Vintagestory.API.Common.IItemStack)
+    name: QuantityBackPackSlots
+    href: Vintagestory.API.Common.CollectibleObject.html#Vintagestory_API_Common_CollectibleObject_QuantityBackPackSlots_Vintagestory_API_Common_IItemStack_
+  - name: (
+  - uid: Vintagestory.API.Common.IItemStack
+    name: IItemStack
+    href: Vintagestory.API.Common.IItemStack.html
   - name: )
 - uid: Vintagestory.API.Common.RegistryObject.Code
   commentId: F:Vintagestory.API.Common.RegistryObject.Code
@@ -6914,6 +7042,68 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.object.tostring
   - name: (
   - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
 - uid: System
   commentId: N:System
   isExternal: true
@@ -6921,6 +7111,103 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
 - uid: Vintagestory.API.Common.CollectibleObject.Id
   commentId: P:Vintagestory.API.Common.CollectibleObject.Id
   parent: Vintagestory.API.Common.CollectibleObject
