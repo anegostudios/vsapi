@@ -52,8 +52,7 @@ namespace Vintagestory.API.Common
             this.blocks = blocks;
             this.subDimensionIndex = blocks.subDimensionId;
             (WatchedAttributes.GetAttribute("dim") as IntAttribute).value = this.subDimensionIndex;
-            this.ServerPos.SetFrom(blocks.CurrentPos);
-            this.Pos = blocks.CurrentPos;
+            this.Pos.SetFrom(blocks.CurrentPos);
         }
 
         public override void Initialize(EntityProperties properties, ICoreAPI api, long chunkindex3d)
