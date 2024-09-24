@@ -144,12 +144,13 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Client position
         /// </summary>
-        public EntityPos Pos = new EntityPos();
+        public EntityPos Pos { get; private set; } = new EntityPos();
 
-        /// <summary>
-        /// Server simulated position. May not exactly match the client positon
-        /// </summary>
-        public EntityPos ServerPos = new EntityPos();
+        [Obsolete("Use Pos instead.")]
+        public EntityPos ServerPos => Pos;
+
+        [Obsolete("Use Pos instead.")]
+        public EntityPos SidedPos => Pos;
 
         /// <summary>
         /// Server simulated position copy. Needed by Entities server system to send pos updatess only if ServerPos differs noticably from PreviousServerPos
@@ -357,15 +358,7 @@ namespace Vintagestory.API.Common.Entities
         /// CollidedVertically || CollidedHorizontally
         /// </summary>
         public bool Collided { get { return CollidedVertically || CollidedHorizontally; } }
-
-        /// <summary>
-        /// ServerPos on server, Pos on client
-        /// </summary>
-        public EntityPos SidedPos
-        {
-            get { return World.Side == EnumAppSide.Server ? ServerPos : Pos; }
-        }
-
+        
         /// <summary>
         /// The height of the eyes for the given entity.
         /// </summary>
