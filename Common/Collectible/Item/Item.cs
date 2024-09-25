@@ -76,6 +76,21 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
+        /// Returns instance of class that implements this interface in the following order<br/>
+        /// 1. Item (returns itself)<br/>
+        /// 2. CollectibleBehavior (returns one of its own behavior)<br/>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public virtual T GetInterface<T>() where T : class
+        {
+            if (this is T itemkt) return itemkt;
+            var bh = GetBehavior(CollectibleBehaviors, typeof(T), true);
+            if (bh != null) return bh as T;
+            return null;
+        }
+
+        /// <summary>
         /// Creates a deep copy of the item
         /// </summary>
         /// <returns></returns>
