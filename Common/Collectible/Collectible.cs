@@ -1655,7 +1655,7 @@ namespace Vintagestory.API.Common
 
                 if (Math.Abs(nutriProps.Health * healthLossMul) > 0.001f)
                 {
-                    dsc.AppendLine(Lang.Get("When eaten: {0} sat, {1} hp", Math.Round(nutriProps.Satiety * satLossMul), nutriProps.Health * healthLossMul));
+                    dsc.AppendLine(Lang.Get("When eaten: {0} sat, {1} hp", Math.Round(nutriProps.Satiety * satLossMul), Math.Round(nutriProps.Health * healthLossMul, 2)));
                 }
                 else
                 {
