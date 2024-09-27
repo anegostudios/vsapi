@@ -1469,7 +1469,8 @@ IWorldChunk GetChunkAtBlockPos(int posX, int posY, int posZ)</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Block[] GetDecors(BlockPos position)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use Dictionary&lt;int, Block&gt; GetSubDecors(BlockPos position)&quot;)]
+Block[] GetDecors(BlockPos position)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -2038,6 +2039,44 @@ Block GetMostSolidBlock(int x, int y, int z)</code></pre>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetSubDecors_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetSubDecors*"></a>
+
+  <h3 id="Vintagestory_API_Common_IBlockAccessor_GetSubDecors_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetSubDecors(Vintagestory.API.MathTools.BlockPos)">
+  GetSubDecors(BlockPos)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a list of all decors at this position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Dictionary&lt;int, Block&gt; GetSubDecors(BlockPos position)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>position</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>&gt;</dt>
+    <dd><p>null if this block position has no decors. Otherwise, a Dictionary with the index being the faceAndSubposition  (subposition used for cave art etc.)</p>
+</dd>
   </dl>
 
 
@@ -2919,7 +2958,7 @@ If called with a fluid block, the fluid will automatically get set in the fluid 
     <dt><code>position</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
     <dd></dd>
     <dt><code>decorIndex</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>You can get this value via <a class="xref" href="Vintagestory.API.Common.BlockSelection.html#Vintagestory_API_Common_BlockSelection_ToDecorIndex">ToDecorIndex()</a></p>
+    <dd><p>You can get this value via <a class="xref" href="Vintagestory.API.Common.BlockSelection.html#Vintagestory_API_Common_BlockSelection_ToDecorIndex">ToDecorIndex()</a> or via <a class="xref" href="Vintagestory.API.Common.BlockSelection.html#Vintagestory_API_Common_BlockSelection_GetDecorIndex_Vintagestory_API_MathTools_BlockFacing_System_Int32_System_Int32_System_Int32_">GetDecorIndex(BlockFacing, int, int, int)</a>.<br>It can include a subPosition for cave art etc.</p>
 </dd>
   </dl>
 

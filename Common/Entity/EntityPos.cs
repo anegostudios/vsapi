@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 using System.IO;
 using Vintagestory.API.Config;
 using Vintagestory.API.MathTools;
@@ -19,29 +20,40 @@ namespace Vintagestory.API.Common.Entities
     /// <summary>
     /// Represents all positional information of an entity, such as coordinates, motion and angles
     /// </summary>
+    [ProtoContract]
     public class EntityPos
     {
+        [ProtoMember(1)]
         protected double x;
+        [ProtoMember(2)]
         protected double y;
+        [ProtoMember(3)]
         protected double z;
+        [ProtoMember(4)]
         public int Dimension;
+        [ProtoMember(5)]
         protected float roll; // "rotX"
+        [ProtoMember(6)]
         protected float yaw; // "rotY"
+        [ProtoMember(7)]
         protected float pitch; // "rotZ"
+        [ProtoMember(8)]
         protected int stance;
         /// <summary>
         /// The yaw of the agents head
         /// </summary>
+        [ProtoMember(9)]
         public float HeadYaw;
 
-        
+
 
         /// <summary>
         /// The pitch of the agents head
         /// </summary>
+        [ProtoMember(10)]
         public float HeadPitch;
 
-
+        [ProtoMember(11)]
         public Vec3d Motion = new Vec3d();
 
         /// <summary>

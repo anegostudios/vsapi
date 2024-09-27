@@ -55,6 +55,7 @@ items:
   - Vintagestory.API.Common.BlockSchematic.PlaceReplaceAllNoAir(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block,System.Boolean)
   - Vintagestory.API.Common.BlockSchematic.PlaceReplaceOnlyAir(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block,System.Boolean)
   - Vintagestory.API.Common.BlockSchematic.PlaceReplaceable(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block,System.Boolean)
+  - Vintagestory.API.Common.BlockSchematic.PosBitMask
   - Vintagestory.API.Common.BlockSchematic.ReplaceMode
   - Vintagestory.API.Common.BlockSchematic.Save(System.String)
   - Vintagestory.API.Common.BlockSchematic.SizeX
@@ -386,13 +387,13 @@ items:
     content: >-
       [JsonProperty]
 
-      public List<int> DecorIds
+      public List<long> DecorIds
     return:
-      type: System.Collections.Generic.List{System.Int32}
+      type: System.Collections.Generic.List{System.Int64}
     content.vb: >-
       <JsonProperty>
 
-      Public DecorIds As List(Of Integer)
+      Public DecorIds As List(Of Long)
   attributes:
   - type: Newtonsoft.Json.JsonPropertyAttribute
     ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
@@ -604,10 +605,10 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: public Dictionary<BlockPos, Block[]> DecorsUnpacked
+    content: public Dictionary<BlockPos, Dictionary<int, Block>> DecorsUnpacked
     return:
-      type: System.Collections.Generic.Dictionary{Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block[]}
-    content.vb: Public DecorsUnpacked As Dictionary(Of BlockPos, Block())
+      type: System.Collections.Generic.Dictionary{Vintagestory.API.MathTools.BlockPos,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.Block}}
+    content.vb: Public DecorsUnpacked As Dictionary(Of BlockPos, Dictionary(Of Integer, Block))
 - uid: Vintagestory.API.Common.BlockSchematic.PackedOffset
   commentId: F:Vintagestory.API.Common.BlockSchematic.PackedOffset
   id: PackedOffset
@@ -908,6 +909,27 @@ items:
       type: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}}
     content.vb: Public Shared Property ItemRemaps As Dictionary(Of String, Dictionary(Of String, String))
   overload: Vintagestory.API.Common.BlockSchematic.ItemRemaps*
+- uid: Vintagestory.API.Common.BlockSchematic.PosBitMask
+  commentId: F:Vintagestory.API.Common.BlockSchematic.PosBitMask
+  id: PosBitMask
+  parent: Vintagestory.API.Common.BlockSchematic
+  langs:
+  - csharp
+  - vb
+  name: PosBitMask
+  nameWithType: BlockSchematic.PosBitMask
+  fullName: Vintagestory.API.Common.BlockSchematic.PosBitMask
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: This bitmask for the position in schematics
+  example: []
+  syntax:
+    content: public const uint PosBitMask = 1023
+    return:
+      type: System.UInt32
+    content.vb: Public Const PosBitMask As UInteger = 1023
 - uid: Vintagestory.API.Common.BlockSchematic.#ctor
   commentId: M:Vintagestory.API.Common.BlockSchematic.#ctor
   id: '#ctor'
@@ -2484,6 +2506,41 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
+- uid: System.Collections.Generic.List{System.Int64}
+  commentId: T:System.Collections.Generic.List{System.Int64}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<long>
+  nameWithType: List<long>
+  fullName: System.Collections.Generic.List<long>
+  nameWithType.vb: List(Of Long)
+  fullName.vb: System.Collections.Generic.List(Of Long)
+  name.vb: List(Of Long)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
 - uid: System.Collections.Generic.Dictionary{System.UInt32,System.String}
   commentId: T:System.Collections.Generic.Dictionary{System.UInt32,System.String}
   parent: System.Collections.Generic
@@ -2696,17 +2753,17 @@ references:
     name: Entity
     href: Vintagestory.API.Common.Entities.Entity.html
   - name: )
-- uid: System.Collections.Generic.Dictionary{Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block[]}
-  commentId: T:System.Collections.Generic.Dictionary{Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block[]}
+- uid: System.Collections.Generic.Dictionary{Vintagestory.API.MathTools.BlockPos,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.Block}}
+  commentId: T:System.Collections.Generic.Dictionary{Vintagestory.API.MathTools.BlockPos,System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.Block}}
   parent: System.Collections.Generic
   definition: System.Collections.Generic.Dictionary`2
   href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  name: Dictionary<BlockPos, Block[]>
-  nameWithType: Dictionary<BlockPos, Block[]>
-  fullName: System.Collections.Generic.Dictionary<Vintagestory.API.MathTools.BlockPos, Vintagestory.API.Common.Block[]>
-  nameWithType.vb: Dictionary(Of BlockPos, Block())
-  fullName.vb: System.Collections.Generic.Dictionary(Of Vintagestory.API.MathTools.BlockPos, Vintagestory.API.Common.Block())
-  name.vb: Dictionary(Of BlockPos, Block())
+  name: Dictionary<BlockPos, Dictionary<int, Block>>
+  nameWithType: Dictionary<BlockPos, Dictionary<int, Block>>
+  fullName: System.Collections.Generic.Dictionary<Vintagestory.API.MathTools.BlockPos, System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.Block>>
+  nameWithType.vb: Dictionary(Of BlockPos, Dictionary(Of Integer, Block))
+  fullName.vb: System.Collections.Generic.Dictionary(Of Vintagestory.API.MathTools.BlockPos, System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.Block))
+  name.vb: Dictionary(Of BlockPos, Dictionary(Of Integer, Block))
   spec.csharp:
   - uid: System.Collections.Generic.Dictionary`2
     name: Dictionary
@@ -2718,11 +2775,21 @@ references:
     href: Vintagestory.API.MathTools.BlockPos.html
   - name: ','
   - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
   - uid: Vintagestory.API.Common.Block
     name: Block
     href: Vintagestory.API.Common.Block.html
-  - name: '['
-  - name: ']'
+  - name: '>'
   - name: '>'
   spec.vb:
   - uid: System.Collections.Generic.Dictionary`2
@@ -2737,10 +2804,22 @@ references:
     href: Vintagestory.API.MathTools.BlockPos.html
   - name: ','
   - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
   - uid: Vintagestory.API.Common.Block
     name: Block
     href: Vintagestory.API.Common.Block.html
-  - name: (
   - name: )
   - name: )
 - uid: Vintagestory.API.MathTools.FastVec3i
@@ -2994,6 +3073,17 @@ references:
   name: ItemRemaps
   nameWithType: BlockSchematic.ItemRemaps
   fullName: Vintagestory.API.Common.BlockSchematic.ItemRemaps
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
 - uid: Vintagestory.API.Common.BlockSchematic.#ctor*
   commentId: Overload:Vintagestory.API.Common.BlockSchematic.#ctor
   href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic__ctor

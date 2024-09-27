@@ -47,12 +47,12 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="index3d"></param>
         int GetBlockIdUnsafe(int index3d);
-        
+
         /// <summary>
         /// Enter a locked section for bulk block reads from this ChunkData, using Unsafe read methods
         /// </summary>
         void TakeBulkReadLock();
-        
+
         /// <summary>
         /// Leave a locked section for bulk block reads from this ChunkData, using Unsafe read methods
         /// </summary>
@@ -129,7 +129,7 @@ namespace Vintagestory.API.Common
         IChunkBlocks MaybeBlocks { get; }
 
         /// <summary>
-        /// An array holding all Entities currently residing in this chunk. This array may be larger than the amount of entities in the chunk. 
+        /// An array holding all Entities currently residing in this chunk. This array may be larger than the amount of entities in the chunk.
         /// </summary>
         Entity[] Entities { get; }
 
@@ -139,7 +139,7 @@ namespace Vintagestory.API.Common
         int EntitiesCount { get; }
 
         /// <summary>
-        /// An array holding block Entities currently residing in this chunk. This array may be larger than the amount of block entities in the chunk. 
+        /// An array holding block Entities currently residing in this chunk. This array may be larger than the amount of block entities in the chunk.
         /// </summary>
         Dictionary<BlockPos, BlockEntity> BlockEntities { get; set; }
 
@@ -185,7 +185,7 @@ namespace Vintagestory.API.Common
         /// Returns a list of a in-chunk indexed positions of all light sources in this chunk
         /// </summary>
         HashSet<int> LightPositions { get; set; }
-        
+
         /// <summary>
         /// Whether this chunk got unloaded
         /// </summary>
@@ -214,7 +214,7 @@ namespace Vintagestory.API.Common
         void SetModdata(string key, byte[] data);
 
         /// <summary>
-        /// Removes the permanently stored data. 
+        /// Removes the permanently stored data.
         /// </summary>
         /// <param name="key"></param>
         void RemoveModdata(string key);
@@ -294,9 +294,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="block"></param>
         /// <param name="index3d"></param>
-        /// <param name="decorIndex"></param>
+        /// <param name="faceAndSubposition"></param>
         /// <returns>False if there already exists a block in this position and facing</returns>
-        bool SetDecor(Block block, int index3d, int decorIndex);
+        bool SetDecor(Block block, int index3d, int faceAndSubposition);
 
         /// <summary>
         /// If allowed by a player action, removes all decors at given position and calls OnBrokenAsDecor() on all selected decors and drops the items that are returned from Block.GetDrops()
@@ -315,14 +315,22 @@ namespace Vintagestory.API.Common
         /// <param name="index3d"></param>
         /// <param name="callOnBrokenAsDecor">When set to true it will call block.OnBrokenAsDecor(...) which is used to drop the decors of that block</param>
         void BreakAllDecorFast(IWorldAccessor world, BlockPos pos, int index3d, bool callOnBrokenAsDecor = true);
-        
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="blockAccessor"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
         Block[] GetDecors(IBlockAccessor blockAccessor, BlockPos pos);
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="blockAccessor"></param>
+        /// <param name="position"></param>
+        /// <returns></returns>
+        Dictionary<int, Block> GetSubDecors(IBlockAccessor blockAccessor, BlockPos position);
 
         Block GetDecor(IBlockAccessor blockAccessor, BlockPos pos, int decorIndex);
 

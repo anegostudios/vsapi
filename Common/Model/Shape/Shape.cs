@@ -119,7 +119,7 @@ namespace Vintagestory.API.Common
                 {
                     el.Name = texturePrefixCode + el.Name;
 
-                    el.DamageEffect = damageEffect;
+                    if (damageEffect >= 0) el.DamageEffect = damageEffect;
 
                     foreach (var face in el.FacesResolved)
                     {

@@ -46,6 +46,7 @@ items:
   - Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IBlockAccessor.GetRainMapHeightAt(System.Int32,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.GetRainMapHeightAt(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.IBlockAccessor.GetSubDecors(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IBlockAccessor.GetTerrainMapheightAt(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IBlockAccessor.GetWindSpeedAt(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IBlockAccessor.GetWindSpeedAt(Vintagestory.API.MathTools.Vec3d)
@@ -1667,7 +1668,7 @@ items:
 
     - Bulk update block accessor: Sets all blocks, relight all affected one chunks in one go and send blockupdates to clients in a packed format.
 
-    - World gen block accessor: To Recalculate the heightmap in of all updated blocks in one go 
+    - World gen block accessor: To Recalculate the heightmap in of all updated blocks in one go
 
     - Revertable block accessor: Same as bulk update block accessor plus stores a new history state.
   example: []
@@ -2509,7 +2510,7 @@ items:
       description: ''
     - id: decorIndex
       type: System.Int32
-      description: You can get this value via <xref href="Vintagestory.API.Common.BlockSelection.ToDecorIndex" data-throw-if-not-resolved="false"></xref>
+      description: You can get this value via <xref href="Vintagestory.API.Common.BlockSelection.ToDecorIndex" data-throw-if-not-resolved="false"></xref> or via <xref href="Vintagestory.API.Common.BlockSelection.GetDecorIndex(Vintagestory.API.MathTools.BlockFacing%2cSystem.Int32%2cSystem.Int32%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref>.<br />It can include a subPosition for cave art etc.
     return:
       type: System.Boolean
       description: True if the decor was sucessfully set
@@ -2535,7 +2536,10 @@ items:
   summary: Get a list of all decors at this position
   example: []
   syntax:
-    content: Block[] GetDecors(BlockPos position)
+    content: >-
+      [Obsolete("Use Dictionary<int, Block> GetSubDecors(BlockPos position)")]
+
+      Block[] GetDecors(BlockPos position)
     parameters:
     - id: position
       type: Vintagestory.API.MathTools.BlockPos
@@ -2543,8 +2547,44 @@ items:
     return:
       type: Vintagestory.API.Common.Block[]
       description: null if this block has no decors. Otherwise a 6 element long list of decor blocks, any of which may be null if not set
-    content.vb: Function GetDecors(position As BlockPos) As Block()
+    content.vb: >-
+      <Obsolete("Use Dictionary<int, Block> GetSubDecors(BlockPos position)")>
+
+      Function GetDecors(position As BlockPos) As Block()
   overload: Vintagestory.API.Common.IBlockAccessor.GetDecors*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use Dictionary<int, Block> GetSubDecors(BlockPos position)
+- uid: Vintagestory.API.Common.IBlockAccessor.GetSubDecors(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetSubDecors(Vintagestory.API.MathTools.BlockPos)
+  id: GetSubDecors(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  langs:
+  - csharp
+  - vb
+  name: GetSubDecors(BlockPos)
+  nameWithType: IBlockAccessor.GetSubDecors(BlockPos)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetSubDecors(Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Get a list of all decors at this position
+  example: []
+  syntax:
+    content: Dictionary<int, Block> GetSubDecors(BlockPos position)
+    parameters:
+    - id: position
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    return:
+      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.Block}
+      description: null if this block position has no decors. Otherwise, a Dictionary with the index being the faceAndSubposition  (subposition used for cave art etc.)
+    content.vb: Function GetSubDecors(position As BlockPos) As Dictionary(Of Integer, Block)
+  overload: Vintagestory.API.Common.IBlockAccessor.GetSubDecors*
 - uid: Vintagestory.API.Common.IBlockAccessor.GetDecor(Vintagestory.API.MathTools.BlockPos,System.Int32)
   commentId: M:Vintagestory.API.Common.IBlockAccessor.GetDecor(Vintagestory.API.MathTools.BlockPos,System.Int32)
   id: GetDecor(Vintagestory.API.MathTools.BlockPos,System.Int32)
@@ -4177,6 +4217,91 @@ references:
     name: Block
     href: Vintagestory.API.Common.Block.html
   - name: (
+  - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.GetSubDecors*
+  commentId: Overload:Vintagestory.API.Common.IBlockAccessor.GetSubDecors
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetSubDecors_Vintagestory_API_MathTools_BlockPos_
+  name: GetSubDecors
+  nameWithType: IBlockAccessor.GetSubDecors
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetSubDecors
+- uid: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.Block}
+  commentId: T:System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.Block}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<int, Block>
+  nameWithType: Dictionary<int, Block>
+  fullName: System.Collections.Generic.Dictionary<int, Vintagestory.API.Common.Block>
+  nameWithType.vb: Dictionary(Of Integer, Block)
+  fullName.vb: System.Collections.Generic.Dictionary(Of Integer, Vintagestory.API.Common.Block)
+  name.vb: Dictionary(Of Integer, Block)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Block
+    name: Block
+    href: Vintagestory.API.Common.Block.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.Block
+    name: Block
+    href: Vintagestory.API.Common.Block.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
   - name: )
 - uid: Vintagestory.API.Common.IBlockAccessor.GetDecor*
   commentId: Overload:Vintagestory.API.Common.IBlockAccessor.GetDecor

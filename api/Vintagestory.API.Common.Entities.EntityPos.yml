@@ -86,8 +86,14 @@ items:
   summary: Represents all positional information of an entity, such as coordinates, motion and angles
   example: []
   syntax:
-    content: public class EntityPos
-    content.vb: Public Class EntityPos
+    content: >-
+      [ProtoContract]
+
+      public class EntityPos
+    content.vb: >-
+      <ProtoContract>
+
+      Public Class EntityPos
   inheritance:
   - System.Object
   derivedClasses:
@@ -103,6 +109,10 @@ items:
   extensionMethods:
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  attributes:
+  - type: ProtoBuf.ProtoContractAttribute
+    ctor: ProtoBuf.ProtoContractAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.Common.Entities.EntityPos.x
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.x
   id: x
@@ -118,10 +128,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: protected double x
+    content: >-
+      [ProtoMember(1)]
+
+      protected double x
     return:
       type: System.Double
-    content.vb: Protected x As Double
+    content.vb: >-
+      <ProtoMember(1)>
+
+      Protected x As Double
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1
 - uid: Vintagestory.API.Common.Entities.EntityPos.y
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.y
   id: y
@@ -137,10 +159,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: protected double y
+    content: >-
+      [ProtoMember(2)]
+
+      protected double y
     return:
       type: System.Double
-    content.vb: Protected y As Double
+    content.vb: >-
+      <ProtoMember(2)>
+
+      Protected y As Double
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 2
 - uid: Vintagestory.API.Common.Entities.EntityPos.z
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.z
   id: z
@@ -156,10 +190,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: protected double z
+    content: >-
+      [ProtoMember(3)]
+
+      protected double z
     return:
       type: System.Double
-    content.vb: Protected z As Double
+    content.vb: >-
+      <ProtoMember(3)>
+
+      Protected z As Double
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 3
 - uid: Vintagestory.API.Common.Entities.EntityPos.Dimension
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.Dimension
   id: Dimension
@@ -175,10 +221,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: public int Dimension
+    content: >-
+      [ProtoMember(4)]
+
+      public int Dimension
     return:
       type: System.Int32
-    content.vb: Public Dimension As Integer
+    content.vb: >-
+      <ProtoMember(4)>
+
+      Public Dimension As Integer
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4
 - uid: Vintagestory.API.Common.Entities.EntityPos.roll
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.roll
   id: roll
@@ -194,10 +252,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: protected float roll
+    content: >-
+      [ProtoMember(5)]
+
+      protected float roll
     return:
       type: System.Single
-    content.vb: Protected roll As Single
+    content.vb: >-
+      <ProtoMember(5)>
+
+      Protected roll As Single
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 5
 - uid: Vintagestory.API.Common.Entities.EntityPos.yaw
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.yaw
   id: yaw
@@ -213,10 +283,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: protected float yaw
+    content: >-
+      [ProtoMember(6)]
+
+      protected float yaw
     return:
       type: System.Single
-    content.vb: Protected yaw As Single
+    content.vb: >-
+      <ProtoMember(6)>
+
+      Protected yaw As Single
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 6
 - uid: Vintagestory.API.Common.Entities.EntityPos.pitch
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.pitch
   id: pitch
@@ -232,10 +314,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: protected float pitch
+    content: >-
+      [ProtoMember(7)]
+
+      protected float pitch
     return:
       type: System.Single
-    content.vb: Protected pitch As Single
+    content.vb: >-
+      <ProtoMember(7)>
+
+      Protected pitch As Single
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 7
 - uid: Vintagestory.API.Common.Entities.EntityPos.stance
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.stance
   id: stance
@@ -251,10 +345,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: protected int stance
+    content: >-
+      [ProtoMember(8)]
+
+      protected int stance
     return:
       type: System.Int32
-    content.vb: Protected stance As Integer
+    content.vb: >-
+      <ProtoMember(8)>
+
+      Protected stance As Integer
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 8
 - uid: Vintagestory.API.Common.Entities.EntityPos.HeadYaw
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.HeadYaw
   id: HeadYaw
@@ -272,10 +378,22 @@ items:
   summary: The yaw of the agents head
   example: []
   syntax:
-    content: public float HeadYaw
+    content: >-
+      [ProtoMember(9)]
+
+      public float HeadYaw
     return:
       type: System.Single
-    content.vb: Public HeadYaw As Single
+    content.vb: >-
+      <ProtoMember(9)>
+
+      Public HeadYaw As Single
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 9
 - uid: Vintagestory.API.Common.Entities.EntityPos.HeadPitch
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.HeadPitch
   id: HeadPitch
@@ -293,10 +411,22 @@ items:
   summary: The pitch of the agents head
   example: []
   syntax:
-    content: public float HeadPitch
+    content: >-
+      [ProtoMember(10)]
+
+      public float HeadPitch
     return:
       type: System.Single
-    content.vb: Public HeadPitch As Single
+    content.vb: >-
+      <ProtoMember(10)>
+
+      Public HeadPitch As Single
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 10
 - uid: Vintagestory.API.Common.Entities.EntityPos.Motion
   commentId: F:Vintagestory.API.Common.Entities.EntityPos.Motion
   id: Motion
@@ -312,10 +442,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: public Vec3d Motion
+    content: >-
+      [ProtoMember(11)]
+
+      public Vec3d Motion
     return:
       type: Vintagestory.API.MathTools.Vec3d
-    content.vb: Public Motion As Vec3d
+    content.vb: >-
+      <ProtoMember(11)>
+
+      Public Motion As Vec3d
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 11
 - uid: Vintagestory.API.Common.Entities.EntityPos.X
   commentId: P:Vintagestory.API.Common.Entities.EntityPos.X
   id: X

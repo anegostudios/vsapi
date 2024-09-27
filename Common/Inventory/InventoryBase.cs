@@ -811,7 +811,7 @@ namespace Vintagestory.API.Common
             {
                 foreach (var val in OnAcquireTransitionSpeed.GetInvocationList())
                 {
-                    mul *= OnAcquireTransitionSpeed(transType, stack, mul);
+                    mul = OnAcquireTransitionSpeed(transType, stack, mul);
                 }
             }
 

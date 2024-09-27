@@ -8,7 +8,6 @@ using Vintagestory.API.Datastructures;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Server;
 using Vintagestory.API.Util;
-using Vintagestory.API.Config;
 using Vintagestory.Common.Collectible.Block;
 
 namespace Vintagestory.API.Common
@@ -65,7 +64,7 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public List<uint> DecorIndices = new List<uint>();
         [JsonProperty]
-        public List<int> DecorIds = new List<int>();
+        public List<long> DecorIds = new List<long>();
         [JsonProperty]
         public Dictionary<uint, string> BlockEntities = new Dictionary<uint, string>();
         [JsonProperty]
@@ -81,7 +80,7 @@ namespace Vintagestory.API.Common
         public Dictionary<BlockPos, int> FluidsLayerUnpacked = new Dictionary<BlockPos, int>();
         public Dictionary<BlockPos, string> BlockEntitiesUnpacked = new Dictionary<BlockPos, string>();
         public List<Entity> EntitiesUnpacked = new List<Entity>();
-        public Dictionary<BlockPos, Block[]> DecorsUnpacked = new Dictionary<BlockPos, Block[]>();
+        public Dictionary<BlockPos, Dictionary<int,Block>> DecorsUnpacked = new Dictionary<BlockPos, Dictionary<int,Block>>();
         public FastVec3i PackedOffset;
         public List<BlockPosFacing> PathwayBlocksUnpacked;
 
@@ -117,6 +116,11 @@ namespace Vintagestory.API.Common
         /// </summary>
         public static Dictionary<string, Dictionary<string, string>> ItemRemaps { get; set; }
 
+        /// <summary>
+        /// This bitmask for the position in schematics
+        /// </summary>
+        public const uint PosBitMask = 0x3ff;
+
         public BlockSchematic()
         {
             GameVersion = Config.GameVersion.OverallVersion;
@@ -132,9 +136,9 @@ namespace Vintagestory.API.Common
         public BlockSchematic(IServerWorldAccessor world, BlockPos start, BlockPos end, bool notLiquids)
         {
             BlockPos startPos = new BlockPos(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y), Math.Min(start.Z, end.Z));
-            this.OmitLiquids = notLiquids;
-            this.AddArea(world, start, end);
-            this.Pack(world, startPos);
+            OmitLiquids = notLiquids;
+            AddArea(world, start, end);
+            Pack(world, startPos);
         }
 
         public virtual void Init(IBlockAccessor blockAccessor)
@@ -204,9 +208,9 @@ namespace Vintagestory.API.Common
                 uint index = Indices[i];
                 int storedBlockid = BlockIds[i];
 
-                int dx = (int)(index & 0x1ff);
-                int dy = (int)((index >> 20) & 0x1ff);
-                int dz = (int)((index >> 10) & 0x1ff);
+                int dx = (int)(index & PosBitMask);
+                int dy = (int)((index >> 20) & PosBitMask);
+                int dz = (int)((index >> 10) & PosBitMask);
 
                 AssetLocation blockCode = BlockCodes[storedBlockid];
                 Block newBlock = blockAccessor.GetBlock(blockCode);
@@ -230,7 +234,7 @@ namespace Vintagestory.API.Common
 
             for (int i = 0; i < DecorIds.Count; i++)
             {
-                int storedBlockid = DecorIds[i] & 0xFFFFFF;
+                int storedBlockid = (int)DecorIds[i] & 0xFFFFFF;
                 AssetLocation blockCode = BlockCodes[storedBlockid];
                 Block newBlock = blockAccessor.GetBlock(blockCode);
                 if (newBlock == null) missingBlocks.Add(blockCode);
@@ -383,7 +387,7 @@ namespace Vintagestory.API.Common
                             be.OnStoreCollectibleMappings(BlockCodes, ItemCodes);
                         }
 
-                        Block[] decors = world.BlockAccessor.GetDecors(readPos);
+                        var decors = world.BlockAccessor.GetSubDecors(readPos);
                         if (decors != null)
                         {
                             DecorsUnpacked[keyPos] = decors;
@@ -492,26 +496,26 @@ namespace Vintagestory.API.Common
                 BlockIds.Add(blockId);
             }
 
-            foreach (var val in DecorsUnpacked)
+            foreach (var (pos, decors) in DecorsUnpacked)
             {
                 // Store relative position and the block id
-                int dx = val.Key.X - minX;
-                int dy = val.Key.Y - minY;
-                int dz = val.Key.Z - minZ;
+                int dx = pos.X - minX;
+                int dy = pos.Y - minY;
+                int dz = pos.Z - minZ;
 
                 SizeX = Math.Max(dx, SizeX);
                 SizeY = Math.Max(dy, SizeY);
                 SizeZ = Math.Max(dz, SizeZ);
 
-                for (int i = 0; i < 6; i++)
-                {
-                    // Store a block mapping
-                    Block b = val.Value[i];
-                    if (b == null) continue;
 
-                    BlockCodes[b.BlockId] = b.Code;
+                foreach (var (faceAndSubposition, decorBlock) in decors)
+                {
+                    BlockCodes[decorBlock.BlockId] = decorBlock.Code;
                     DecorIndices.Add((uint)((dy << 20) | (dz << 10) | dx));
-                    DecorIds.Add((i << 24) + b.BlockId);
+
+                    //UnpackDecorPosition(packedIndex, out var decorFaceIndex, out var subPosition);
+                    //decorFaceIndex += subPosition * 6;
+                    DecorIds.Add(((long)faceAndSubposition << 24) + decorBlock.BlockId);
                 }
             }
 
@@ -631,9 +635,9 @@ namespace Vintagestory.API.Common
                 uint index = Indices[i];
                 int storedBlockid = BlockIds[i];
 
-                int dx = (int)(index & 0x1ff);
-                int dy = (int)((index >> 20) & 0x1ff);
-                int dz = (int)((index >> 10) & 0x1ff);
+                int dx = (int)(index & PosBitMask);
+                int dy = (int)((index >> 20) & PosBitMask);
+                int dz = (int)((index >> 10) & PosBitMask);
 
                 AssetLocation blockCode = BlockCodes[storedBlockid];
 
@@ -667,11 +671,11 @@ namespace Vintagestory.API.Common
             for (int i = 0; i < DecorIndices.Count; i++)
             {
                 uint index = DecorIndices[i];
-                int posX = startPos.X + (int)(index & 0x1ff);
-                int posY = startPos.Y + (int)((index >> 20) & 0x1ff);
-                int posZ = startPos.Z + (int)((index >> 10) & 0x1ff);
-                int storedBlockid = DecorIds[i];
-                PlaceOneDecor(blockAccessor, posX, posY, posZ, storedBlockid);
+                int posX = startPos.X + (int)(index & PosBitMask);
+                int posY = startPos.Y + (int)((index >> 20) & PosBitMask);
+                int posZ = startPos.Z + (int)((index >> 10) & PosBitMask);
+                var storedDecorId = DecorIds[i];
+                PlaceOneDecor(blockAccessor, posX, posY, posZ, storedDecorId);
             }
         }
 
@@ -682,25 +686,23 @@ namespace Vintagestory.API.Common
             {
                 i++;   // increment i first, because we have various continue statements
 
-                int posX = startPos.X + (int)(index & 0x1ff);
-                int posZ = startPos.Z + (int)((index >> 10) & 0x1ff);
+                int posX = startPos.X + (int)(index & PosBitMask);
+                int posZ = startPos.Z + (int)((index >> 10) & PosBitMask);
                 if (!rect.Contains(posX, posZ)) continue;
 
-                int posY = startPos.Y + (int)((index >> 20) & 0x1ff);
+                int posY = startPos.Y + (int)((index >> 20) & PosBitMask);
 
-                int storedBlockid = DecorIds[i];
-                PlaceOneDecor(blockAccessor, posX, posY, posZ, storedBlockid);
+                var storedDecorId = DecorIds[i];
+                PlaceOneDecor(blockAccessor, posX, posY, posZ, storedDecorId);
             }
         }
 
         BlockPos curPos = new BlockPos();
-        private void PlaceOneDecor(IBlockAccessor blockAccessor, int posX, int posY, int posZ, int storedBlockid)
+        private void PlaceOneDecor(IBlockAccessor blockAccessor, int posX, int posY, int posZ, long storedBlockIdAndDecoPos)
         {
-            byte faceIndex = (byte)(storedBlockid >> 24);
-            if (faceIndex > 5) return;
-            BlockFacing face = BlockFacing.ALLFACES[faceIndex];
-            storedBlockid &= 0xFFFFFF;
-            AssetLocation blockCode = BlockCodes[storedBlockid];
+            var faceAndSubPosition = (int)(storedBlockIdAndDecoPos >> 24);
+            storedBlockIdAndDecoPos &= 0xFFFFFF;
+            AssetLocation blockCode = BlockCodes[(int)storedBlockIdAndDecoPos];
 
             Block newBlock = blockAccessor.GetBlock(blockCode);
 
@@ -708,7 +710,8 @@ namespace Vintagestory.API.Common
 
             curPos.Set(posX, posY, posZ);
             if (!blockAccessor.IsValidPos(curPos)) return;    // Deal with cases where we are at the map edge
-            blockAccessor.SetDecor(newBlock, curPos, face);
+
+            blockAccessor.SetDecor(newBlock, curPos, faceAndSubPosition);
         }
 
         /// <summary>
@@ -742,9 +745,9 @@ namespace Vintagestory.API.Common
                 uint index = Indices[i];
                 int storedBlockid = BlockIds[i];
 
-                int dx = (int)(index & 0x1ff);
-                int dy = (int)((index >> 20) & 0x1ff);
-                int dz = (int)((index >> 10) & 0x1ff);
+                int dx = (int)(index & PosBitMask);
+                int dy = (int)((index >> 20) & PosBitMask);
+                int dz = (int)((index >> 10) & PosBitMask);
 
                 AssetLocation blockCode = BlockCodes[storedBlockid];
 
@@ -807,20 +810,23 @@ namespace Vintagestory.API.Common
                 }
             }
 
-
             for (int i = 0; i < DecorIndices.Count; i++)
             {
                 uint index = DecorIndices[i];
-                int storedBlockid = DecorIds[i];
-                byte faceIndex = (byte)(storedBlockid >> 24);
-                if (faceIndex > 5) continue;
+                var storedBlockIdAndDecoPos = DecorIds[i];
+
+                var faceAndSubPosition = (int)(storedBlockIdAndDecoPos >> 24);
+                var faceIndex = faceAndSubPosition % 6;
+
+                storedBlockIdAndDecoPos &= 0xFFFFFF;
+                var blockId = (int)storedBlockIdAndDecoPos;
                 BlockFacing face = BlockFacing.ALLFACES[faceIndex];
 
-                int dx = (int)(index & 0x1ff);
-                int dy = (int)((index >> 20) & 0x1ff);
-                int dz = (int)((index >> 10) & 0x1ff);
+                int dx = (int)(index & PosBitMask);
+                int dy = (int)((index >> 20) & PosBitMask);
+                int dz = (int)((index >> 10) & PosBitMask);
 
-                AssetLocation blockCode = BlockCodes[storedBlockid & 0xFFFFFF];
+                AssetLocation blockCode = BlockCodes[blockId];
 
                 Block newBlock = worldForResolve.GetBlock(blockCode);
                 if (newBlock == null)
@@ -866,23 +872,23 @@ namespace Vintagestory.API.Common
 
                 BlockPos pos = GetRotatedPos(aroundOrigin, angle, dx, dy, dz);
 
-                DecorsUnpacked.TryGetValue(pos, out Block[] decorsTmp);
+                DecorsUnpacked.TryGetValue(pos, out var decorsTmp);
                 if (decorsTmp == null)
                 {
-                    decorsTmp = new Block[6];
+                    decorsTmp = new();
                     DecorsUnpacked[pos] = decorsTmp;
                 }
 
-                decorsTmp[face.GetHorizontalRotated(angle).Index] = newBlock;
+                decorsTmp[faceAndSubPosition / 6 * 6 + face.GetHorizontalRotated(angle).Index] = newBlock;
             }
 
 
             foreach (var val in BlockEntities)
             {
                 uint index = val.Key;
-                int dx = (int)(index & 0x1ff);
-                int dy = (int)((index >> 20) & 0x1ff);
-                int dz = (int)((index >> 10) & 0x1ff);
+                int dx = (int)(index & PosBitMask);
+                int dy = (int)((index >> 20) & PosBitMask);
+                int dz = (int)((index >> 10) & PosBitMask);
 
                 if (flipAxis == EnumAxis.Y) dy = SizeY - dy;
                 if (flipAxis == EnumAxis.X) dx = SizeX - dx;
@@ -1042,9 +1048,9 @@ namespace Vintagestory.API.Common
             foreach (var val in BlockEntities)
             {
                 uint index = val.Key;
-                int dx = (int)(index & 0x1ff);
-                int dy = (int)((index >> 20) & 0x1ff);
-                int dz = (int)((index >> 10) & 0x1ff);
+                int dx = (int)(index & PosBitMask);
+                int dy = (int)((index >> 20) & PosBitMask);
+                int dz = (int)((index >> 10) & PosBitMask);
 
                 curPos.Set(dx + startPos.X, dy + startPos.Y, dz + startPos.Z);
                 if (!blockAccessor.IsValidPos(curPos)) continue;
@@ -1171,9 +1177,9 @@ namespace Vintagestory.API.Common
             {
                 uint index = Indices[i];
 
-                int dx = (int)(index & 0x1ff);
-                int dy = (int)((index >> 20) & 0x1ff);
-                int dz = (int)((index >> 10) & 0x1ff);
+                int dx = (int)(index & PosBitMask);
+                int dy = (int)((index >> 20) & PosBitMask);
+                int dz = (int)((index >> 10) & PosBitMask);
 
                 BlockPos pos = new BlockPos(dx, dy, dz);
                 positions[i] = pos.Add(origin);
@@ -1435,7 +1441,7 @@ namespace Vintagestory.API.Common
             cloned.Entities = new List<string>(Entities);
 
             cloned.DecorIndices = new List<uint>(DecorIndices);
-            cloned.DecorIds = new List<int>(DecorIds);
+            cloned.DecorIds = new List<long>(DecorIds);
 
             cloned.ReplaceMode = ReplaceMode;
             cloned.EntranceRotation = EntranceRotation;

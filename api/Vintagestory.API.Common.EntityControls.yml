@@ -685,7 +685,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: A check whether to see if the entity is sneaking.
+  summary: >-
+    A check whether to see if the entity is sneaking. Use Controls.ShiftKey instead for mouse interaction modifiers, as it is a separable control.
+
+    <br />A test for Sneak should be used only when we want to know whether the entity is crouching or using Sneak motion, which affects things like whether it is detectable by other entities, seen on the map, or how the shield is used
   example: []
   syntax:
     content: public virtual bool Sneak { get; set; }
@@ -754,7 +757,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: A check to see whether the entity is sprinting.
+  summary: >-
+    A check to see whether the entity is sprinting. Use Controls.CtrlKey instead for mouse interaction modifiers, as it is a separable control.
+
+    <br />A test for Sprint should be used only when we want to know whether the entity is sprinting.
   example: []
   syntax:
     content: public virtual bool Sprint { get; set; }
@@ -869,7 +875,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: A check to see if the entity is holding down the Ctrl key (which may be the same as the Sprint key or one or other may have been remapped).
+  summary: >-
+    A check to see if the entity is holding down the Ctrl key (which may be the same as the Sprint key or one or other may have been remapped).
+
+    <br />Should normally be used in conjunction with a mouse button, including OnHeldInteractStart() methods etc
   example: []
   syntax:
     content: public virtual bool CtrlKey { get; set; }
@@ -892,7 +901,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: A check to see if the entity is holding down the Shift key (which may be the same as the Sneak key or one or other may have been remapped).
+  summary: >-
+    A check to see if the entity is holding down the Shift key (which may be the same as the Sneak key or one or other may have been remapped).
+
+    <br />Should normally be used in conjunction with a mouse button, including OnHeldInteractStart() methods etc
   example: []
   syntax:
     content: public virtual bool ShiftKey { get; set; }

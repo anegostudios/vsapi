@@ -797,60 +797,69 @@ namespace Vintagestory.API.Common
         /// <param name="byRecipe"></param>
         public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, GridRecipe byRecipe)
         {
-            float pSum = 0f;
-            float q = 0;
+            EnumHandling bhHandling = EnumHandling.PassThrough;
+            WalkBehaviors(
+                (CollectibleBehavior bh, ref EnumHandling hd) => {
+                    bh.OnCreatedByCrafting(allInputslots, outputSlot, ref bhHandling);
+                },
+                () => {
 
-            if (byRecipe.AverageDurability)
-            {
+                    float pSum = 0f;
+                    float q = 0;
 
-                var ingreds = byRecipe.resolvedIngredients;
-
-                foreach (ItemSlot slot in allInputslots)
-                {
-                    if (slot.Empty) continue;
-                    ItemStack stack = slot.Itemstack;
-
-                    int maxDurability = stack.Collectible.GetMaxDurability(stack);
-                    if (maxDurability == 0)
+                    if (byRecipe.AverageDurability)
                     {
-                        // An item with no durability only improves the average by 12.5%
-                        pSum += 0.125f;
-                        q += 0.125f;
-                        continue;
-                    }
+                        var ingreds = byRecipe.resolvedIngredients;
 
-                    bool skip = false;
-                    foreach (var ingred in ingreds)
-                    {
-                        if (ingred != null && ingred.IsTool && ingred.SatisfiesAsIngredient(stack))
+                        foreach (ItemSlot slot in allInputslots)
                         {
-                            skip = true;
-                            break;
+                            if (slot.Empty) continue;
+                            ItemStack stack = slot.Itemstack;
+
+                            int maxDurability = stack.Collectible.GetMaxDurability(stack);
+                            if (maxDurability == 0)
+                            {
+                                // An item with no durability only improves the average by 12.5%
+                                pSum += 0.125f;
+                                q += 0.125f;
+                                continue;
+                            }
+
+                            bool skip = false;
+                            foreach (var ingred in ingreds)
+                            {
+                                if (ingred != null && ingred.IsTool && ingred.SatisfiesAsIngredient(stack))
+                                {
+                                    skip = true;
+                                    break;
+                                }
+                            }
+                            if (skip) continue;
+
+                            q++;
+                            int leftDurability = stack.Collectible.GetRemainingDurability(stack);
+                            pSum += (float)leftDurability / maxDurability;
+
+                        }
+
+                        float pFinal = pSum / q;
+                        if (pFinal < 1)
+                        {
+                            outputSlot.Itemstack.Attributes.SetInt("durability", (int)Math.Max(1, pFinal * outputSlot.Itemstack.Collectible.GetMaxDurability(outputSlot.Itemstack)));
                         }
                     }
-                    if (skip) continue;
 
-                    q++;
-                    int leftDurability = stack.Collectible.GetRemainingDurability(stack);
-                    pSum += (float)leftDurability / maxDurability;
+
+                    TransitionableProperties[] tprops = outputSlot.Itemstack.Collectible.GetTransitionableProperties(api.World, outputSlot.Itemstack, null);
+                    var perishProps = tprops?.FirstOrDefault(p => p.Type == EnumTransitionType.Perish);
+                    if (perishProps != null)
+                    {
+                        perishProps.TransitionedStack.Resolve(api.World, "oncrafted perished stack", Code);
+                        CarryOverFreshness(api, allInputslots, new ItemStack[] { outputSlot.Itemstack }, perishProps);
+                    }
 
                 }
-
-                float pFinal = pSum / q;
-                if (pFinal < 1)
-                {
-                    outputSlot.Itemstack.Attributes.SetInt("durability", (int)Math.Max(1, pFinal * outputSlot.Itemstack.Collectible.GetMaxDurability(outputSlot.Itemstack)));
-                }
-            }
-
-
-            TransitionableProperties[] tprops = outputSlot.Itemstack.Collectible.GetTransitionableProperties(api.World, outputSlot.Itemstack, null);
-            var perishProps = tprops?.FirstOrDefault(p => p.Type == EnumTransitionType.Perish);
-            if (perishProps != null)
-            {
-                perishProps.TransitionedStack.Resolve(api.World, "oncrafted perished stack", Code);
-                CarryOverFreshness(api, allInputslots, new ItemStack[] { outputSlot.Itemstack }, perishProps);
-            }
+            );
         }
 
         /// <summary>

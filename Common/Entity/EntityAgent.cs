@@ -517,7 +517,7 @@ namespace Vintagestory.API.Common
                         AnimManager.StartAnimation(anim);
                     }
 
-                    if (wasActive && !nowActive && (anim.WasStartedFromTrigger || isDefaultAnim))
+                    if (!isDefaultAnim /* Default anim is handled below */ && wasActive && !nowActive && anim.WasStartedFromTrigger)
                     {
                         anim.WasStartedFromTrigger = false;
                         AnimManager.StopAnimation(anim.Animation);
@@ -529,11 +529,11 @@ namespace Vintagestory.API.Common
                 {
                     if (anyAverageAnimActive)
                     {
-                         if (!alwaysRunIdle) AnimManager.StopAnimation(defaultAnim.Animation);
+                         if (!alwaysRunIdle && AnimManager.IsAnimationActive(defaultAnim.Animation)) AnimManager.StopAnimation(defaultAnim.Animation);
                     } else
                     {
                         defaultAnim.WasStartedFromTrigger = true;
-                        AnimManager.StartAnimation(defaultAnim);
+                        if (!AnimManager.IsAnimationActive(defaultAnim.Animation)) AnimManager.StartAnimation(defaultAnim);
                     }
                 }
 

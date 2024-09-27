@@ -27,6 +27,7 @@ items:
   - Vintagestory.API.Common.IWorldChunk.GetLocalBlockEntityAtBlockPos(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IWorldChunk.GetModdata(System.String)
   - Vintagestory.API.Common.IWorldChunk.GetModdata``1(System.String,``0)
+  - Vintagestory.API.Common.IWorldChunk.GetSubDecors(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IWorldChunk.LightPositions
   - Vintagestory.API.Common.IWorldChunk.Lighting
   - Vintagestory.API.Common.IWorldChunk.LiveModData
@@ -924,7 +925,7 @@ items:
   summary: Sets a decor block to a specific sub-position on the side of an existing block. Use air block (id 0) to remove a decor.<br />
   example: []
   syntax:
-    content: bool SetDecor(Block block, int index3d, int decorIndex)
+    content: bool SetDecor(Block block, int index3d, int faceAndSubposition)
     parameters:
     - id: block
       type: Vintagestory.API.Common.Block
@@ -932,13 +933,13 @@ items:
     - id: index3d
       type: System.Int32
       description: ''
-    - id: decorIndex
+    - id: faceAndSubposition
       type: System.Int32
       description: ''
     return:
       type: System.Boolean
       description: False if there already exists a block in this position and facing
-    content.vb: Function SetDecor(block As Block, index3d As Integer, decorIndex As Integer) As Boolean
+    content.vb: Function SetDecor(block As Block, index3d As Integer, faceAndSubposition As Integer) As Boolean
   overload: Vintagestory.API.Common.IWorldChunk.SetDecor*
   nameWithType.vb: IWorldChunk.SetDecor(Block, Integer, Integer)
   fullName.vb: Vintagestory.API.Common.IWorldChunk.SetDecor(Vintagestory.API.Common.Block, Integer, Integer)
@@ -1047,6 +1048,36 @@ items:
       description: ''
     content.vb: Function GetDecors(blockAccessor As IBlockAccessor, pos As BlockPos) As Block()
   overload: Vintagestory.API.Common.IWorldChunk.GetDecors*
+- uid: Vintagestory.API.Common.IWorldChunk.GetSubDecors(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IWorldChunk.GetSubDecors(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
+  id: GetSubDecors(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IWorldChunk
+  langs:
+  - csharp
+  - vb
+  name: GetSubDecors(IBlockAccessor, BlockPos)
+  nameWithType: IWorldChunk.GetSubDecors(IBlockAccessor, BlockPos)
+  fullName: Vintagestory.API.Common.IWorldChunk.GetSubDecors(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: ''
+  example: []
+  syntax:
+    content: Dictionary<int, Block> GetSubDecors(IBlockAccessor blockAccessor, BlockPos position)
+    parameters:
+    - id: blockAccessor
+      type: Vintagestory.API.Common.IBlockAccessor
+      description: ''
+    - id: position
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    return:
+      type: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.Block}
+      description: ''
+    content.vb: Function GetSubDecors(blockAccessor As IBlockAccessor, position As BlockPos) As Dictionary(Of Integer, Block)
+  overload: Vintagestory.API.Common.IWorldChunk.GetSubDecors*
 - uid: Vintagestory.API.Common.IWorldChunk.GetDecor(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32)
   commentId: M:Vintagestory.API.Common.IWorldChunk.GetDecor(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32)
   id: GetDecor(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32)
@@ -2178,18 +2209,12 @@ references:
     href: Vintagestory.API.Common.Block.html
   - name: (
   - name: )
-- uid: Vintagestory.API.Common.IWorldChunk.GetDecor*
-  commentId: Overload:Vintagestory.API.Common.IWorldChunk.GetDecor
-  href: Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_GetDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_
-  name: GetDecor
-  nameWithType: IWorldChunk.GetDecor
-  fullName: Vintagestory.API.Common.IWorldChunk.GetDecor
-- uid: Vintagestory.API.Common.IWorldChunk.SetDecors*
-  commentId: Overload:Vintagestory.API.Common.IWorldChunk.SetDecors
-  href: Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_SetDecors_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_Block__
-  name: SetDecors
-  nameWithType: IWorldChunk.SetDecors
-  fullName: Vintagestory.API.Common.IWorldChunk.SetDecors
+- uid: Vintagestory.API.Common.IWorldChunk.GetSubDecors*
+  commentId: Overload:Vintagestory.API.Common.IWorldChunk.GetSubDecors
+  href: Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_GetSubDecors_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_
+  name: GetSubDecors
+  nameWithType: IWorldChunk.GetSubDecors
+  fullName: Vintagestory.API.Common.IWorldChunk.GetSubDecors
 - uid: System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.Block}
   commentId: T:System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.Block}
   parent: System.Collections.Generic
@@ -2235,6 +2260,18 @@ references:
     name: Block
     href: Vintagestory.API.Common.Block.html
   - name: )
+- uid: Vintagestory.API.Common.IWorldChunk.GetDecor*
+  commentId: Overload:Vintagestory.API.Common.IWorldChunk.GetDecor
+  href: Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_GetDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_
+  name: GetDecor
+  nameWithType: IWorldChunk.GetDecor
+  fullName: Vintagestory.API.Common.IWorldChunk.GetDecor
+- uid: Vintagestory.API.Common.IWorldChunk.SetDecors*
+  commentId: Overload:Vintagestory.API.Common.IWorldChunk.SetDecors
+  href: Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_SetDecors_System_Collections_Generic_Dictionary_System_Int32_Vintagestory_API_Common_Block__
+  name: SetDecors
+  nameWithType: IWorldChunk.SetDecors
+  fullName: Vintagestory.API.Common.IWorldChunk.SetDecors
 - uid: Vintagestory.API.Common.IWorldChunk.AdjustSelectionBoxForDecor*
   commentId: Overload:Vintagestory.API.Common.IWorldChunk.AdjustSelectionBoxForDecor
   href: Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_AdjustSelectionBoxForDecor_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_Cuboidf___

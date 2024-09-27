@@ -306,9 +306,11 @@ namespace Vintagestory.API.Common
                         if (entity.Properties.Client.AnimationsByMetaCode.TryGetValue(key, out animmetadata))
                         {
                             if (animmetadata.TriggeredBy != null && animmetadata.WasStartedFromTrigger) continue;
-                            var anim = entity.AnimManager.Animator;
-                            var runningAnim = anim?.GetAnimationState(animmetadata.Code);
-                            if (runningAnim != null && runningAnim.Active && runningAnim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.EaseOut) continue; // Let the client ease out this animation
+
+                            // Tyron Sep 2024: WTF is this good for? It prevents easing out of shiver despair animation
+                            // var anim = entity.AnimManager.Animator;
+                            //var runningAnim = anim?.GetAnimationState(animmetadata.Code);
+                            //if (runningAnim != null && runningAnim.Active && runningAnim.Animation.OnAnimationEnd == EnumEntityAnimationEndHandling.EaseOut) continue; // Let the client ease out this animation
                         }
 
                         ActiveAnimationsByAnimCode.Remove(key);

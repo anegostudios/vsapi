@@ -21,6 +21,7 @@ items:
   - Vintagestory.API.Common.CollectibleBehavior.OnBeforeRender(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Common.ItemStack,Vintagestory.API.Client.EnumItemRenderTarget,Vintagestory.API.Client.ItemRenderInfo@)
   - Vintagestory.API.Common.CollectibleBehavior.OnBlockBreaking(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.ItemSlot,System.Single,System.Single,System.Int32,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.CollectibleBehavior.OnBlockBrokenWith(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.BlockSelection,System.Single,Vintagestory.API.Common.EnumHandling@)
+  - Vintagestory.API.Common.CollectibleBehavior.OnCreatedByCrafting(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.CollectibleBehavior.OnHeldAttackCancel(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EntityAgent,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Common.EnumItemUseCancelReason,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.CollectibleBehavior.OnHeldAttackStart(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EntityAgent,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Common.EnumHandHandling@,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.CollectibleBehavior.OnHeldAttackStep(System.Single,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EntityAgent,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Common.EnumHandling@)
@@ -1036,6 +1037,34 @@ items:
   nameWithType.vb: CollectibleBehavior.GetHeldTpUseAnimation(ItemSlot, Entity, EnumHandling)
   fullName.vb: Vintagestory.API.Common.CollectibleBehavior.GetHeldTpUseAnimation(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.EnumHandling)
   name.vb: GetHeldTpUseAnimation(ItemSlot, Entity, EnumHandling)
+- uid: Vintagestory.API.Common.CollectibleBehavior.OnCreatedByCrafting(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EnumHandling@)
+  commentId: M:Vintagestory.API.Common.CollectibleBehavior.OnCreatedByCrafting(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EnumHandling@)
+  id: OnCreatedByCrafting(Vintagestory.API.Common.ItemSlot[],Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.EnumHandling@)
+  parent: Vintagestory.API.Common.CollectibleBehavior
+  langs:
+  - csharp
+  - vb
+  name: OnCreatedByCrafting(ItemSlot[], ItemSlot, ref EnumHandling)
+  nameWithType: CollectibleBehavior.OnCreatedByCrafting(ItemSlot[], ItemSlot, ref EnumHandling)
+  fullName: Vintagestory.API.Common.CollectibleBehavior.OnCreatedByCrafting(Vintagestory.API.Common.ItemSlot[], Vintagestory.API.Common.ItemSlot, ref Vintagestory.API.Common.EnumHandling)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, ref EnumHandling bhHandling)
+    parameters:
+    - id: allInputslots
+      type: Vintagestory.API.Common.ItemSlot[]
+    - id: outputSlot
+      type: Vintagestory.API.Common.ItemSlot
+    - id: bhHandling
+      type: Vintagestory.API.Common.EnumHandling
+    content.vb: Public Overridable Sub OnCreatedByCrafting(allInputslots As ItemSlot(), outputSlot As ItemSlot, bhHandling As EnumHandling)
+  overload: Vintagestory.API.Common.CollectibleBehavior.OnCreatedByCrafting*
+  nameWithType.vb: CollectibleBehavior.OnCreatedByCrafting(ItemSlot(), ItemSlot, EnumHandling)
+  fullName.vb: Vintagestory.API.Common.CollectibleBehavior.OnCreatedByCrafting(Vintagestory.API.Common.ItemSlot(), Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.EnumHandling)
+  name.vb: OnCreatedByCrafting(ItemSlot(), ItemSlot, EnumHandling)
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -1987,3 +2016,30 @@ references:
   name: GetHeldTpUseAnimation
   nameWithType: CollectibleBehavior.GetHeldTpUseAnimation
   fullName: Vintagestory.API.Common.CollectibleBehavior.GetHeldTpUseAnimation
+- uid: Vintagestory.API.Common.CollectibleBehavior.OnCreatedByCrafting*
+  commentId: Overload:Vintagestory.API.Common.CollectibleBehavior.OnCreatedByCrafting
+  href: Vintagestory.API.Common.CollectibleBehavior.html#Vintagestory_API_Common_CollectibleBehavior_OnCreatedByCrafting_Vintagestory_API_Common_ItemSlot___Vintagestory_API_Common_ItemSlot_Vintagestory_API_Common_EnumHandling__
+  name: OnCreatedByCrafting
+  nameWithType: CollectibleBehavior.OnCreatedByCrafting
+  fullName: Vintagestory.API.Common.CollectibleBehavior.OnCreatedByCrafting
+- uid: Vintagestory.API.Common.ItemSlot[]
+  isExternal: true
+  href: Vintagestory.API.Common.ItemSlot.html
+  name: ItemSlot[]
+  nameWithType: ItemSlot[]
+  fullName: Vintagestory.API.Common.ItemSlot[]
+  nameWithType.vb: ItemSlot()
+  fullName.vb: Vintagestory.API.Common.ItemSlot()
+  name.vb: ItemSlot()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.ItemSlot
+    name: ItemSlot
+    href: Vintagestory.API.Common.ItemSlot.html
+  - name: (
+  - name: )

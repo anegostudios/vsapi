@@ -298,5 +298,10 @@ namespace Vintagestory.API.Common
         {
             return null;
         }
+
+        public virtual void OnCreatedByCrafting(ItemSlot[] allInputslots, ItemSlot outputSlot, ref EnumHandling bhHandling)
+        {
+            
+        }
     }
 }

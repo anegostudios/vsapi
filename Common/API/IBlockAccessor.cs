@@ -29,13 +29,14 @@ namespace Vintagestory.API.Common
 
         public byte[] OldBlockEntityData;
         public byte[] NewBlockEntityData;
-        public DecorUpdate[] Decor;
+        public List<DecorUpdate> Decors;
+        public List<DecorUpdate> OldDecors;
     }
 
-    public class DecorUpdate
+    public struct DecorUpdate
     {
-        public int OldDecorId;
-        public int NewDecorId;
+        public int faceAndSubposition;
+        public int decorId;
     }
 
     public class EntityUpdate
@@ -44,12 +45,12 @@ namespace Vintagestory.API.Common
         /// If set this entity was spawned or Moved (position needs to be set too)
         /// </summary>
         public long EntityId = -1;
-        
+
         /// <summary>
         /// If set this entity needs to be spawned
         /// </summary>
         public EntityProperties EntityProperties;
-        
+
         /// <summary>
         /// If set the entity was moved
         /// </summary>
@@ -145,7 +146,7 @@ namespace Vintagestory.API.Common
     public interface ICachingBlockAccessor : IBlockAccessor
     {
         /// <summary>
-        /// True if the most recent GetBlock or SetBlock had a laoded chunk 
+        /// True if the most recent GetBlock or SetBlock had a laoded chunk
         /// </summary>
         bool LastChunkLoaded { get; }
         void Begin();
@@ -442,7 +443,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         Block GetBlock(AssetLocation code);
 
-        
+
 
         /// <summary>
         /// Spawn block entity at this position. Does not place it's corresponding block, you have to this yourself.
@@ -530,7 +531,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Calling this method has no effect in normal block acessors except for:
         /// - Bulk update block accessor: Sets all blocks, relight all affected one chunks in one go and send blockupdates to clients in a packed format.
-        /// - World gen block accessor: To Recalculate the heightmap in of all updated blocks in one go 
+        /// - World gen block accessor: To Recalculate the heightmap in of all updated blocks in one go
         /// - Revertable block accessor: Same as bulk update block accessor plus stores a new history state.
         /// </summary>
         /// <returns>List of changed blocks</returns>
@@ -656,7 +657,7 @@ namespace Vintagestory.API.Common
         /// <param name="posZ"></param>
         /// <returns></returns>
         int GetRainMapHeightAt(int posX, int posZ);
-        
+
 
         /// <summary>
         /// Returns the map chunk at given chunk position
@@ -748,7 +749,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="position"></param>
         /// <param name="block"></param>
-        /// <param name="decorIndex">You can get this value via <see cref="BlockSelection.ToDecorIndex()"/></param> or via <see cref="BlockSelection.GetDecorIndex(BlockFacing, int, int, int)"/>
+        /// <param name="decorIndex">You can get this value via <see cref="BlockSelection.ToDecorIndex()"/> or via <see cref="BlockSelection.GetDecorIndex(BlockFacing, int, int, int)"/>.<br/>It can include a subPosition for cave art etc.</param>
         /// <returns>True if the decor was sucessfully set</returns>
         bool SetDecor(Block block, BlockPos position, int decorIndex);
 
@@ -757,7 +758,15 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="position"></param>
         /// <returns>null if this block has no decors. Otherwise a 6 element long list of decor blocks, any of which may be null if not set</returns>
+        [Obsolete("Use Dictionary<int, Block> GetSubDecors(BlockPos position)")]
         Block[] GetDecors(BlockPos position);
+
+        /// <summary>
+        /// Get a list of all decors at this position
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns>null if this block position has no decors. Otherwise, a Dictionary with the index being the faceAndSubposition  (subposition used for cave art etc.)</returns>
+        Dictionary<int, Block> GetSubDecors(BlockPos position);
 
         /// <summary>
         /// Retrieves a single decor at given position

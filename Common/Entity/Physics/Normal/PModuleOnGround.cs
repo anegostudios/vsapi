@@ -17,6 +17,8 @@ public class PModuleOnGround : PModule
 
     // Time the player can walk off an edge before gravity applies.
     private float coyoteTimer;
+    // Getting knocked back disables coyote time for a while
+    private float antiCoyoteTimer;
 
     private readonly Vec3d motionDelta = new();
 
@@ -29,7 +31,16 @@ public class PModuleOnGround : PModule
     {
         bool onGround = entity.OnGround && !entity.Swimming;
 
-        if (onGround) coyoteTimer = 0.15f;
+        if (onGround && antiCoyoteTimer <= 0)
+        {
+            coyoteTimer = 0.15f;
+        }
+
+        if (coyoteTimer > 0 && entity.Attributes.GetInt("dmgkb") > 0)
+        {
+            coyoteTimer = 0;
+            antiCoyoteTimer = 0.16f;
+        }
 
         return onGround || coyoteTimer > 0;
     }
@@ -38,6 +49,8 @@ public class PModuleOnGround : PModule
     {
         // Tick coyote time.
         coyoteTimer -= dt;
+
+        antiCoyoteTimer = Math.Max(0, antiCoyoteTimer - dt);
 
         // Get block below.
         Block belowBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y - 0.05f), (int)pos.Z);
@@ -61,20 +74,14 @@ public class PModuleOnGround : PModule
                     motionDelta.Z + (((controls.WalkVector.Z * multiplier) - motionDelta.Z) * belowBlock.DragMultiplier)
                 );
 
-                if (entity.OnGround)
-                {
-                    pos.Motion.Add(motionDelta.X, 0, motionDelta.Z);
-                }
+                pos.Motion.Add(motionDelta.X, 0, motionDelta.Z);
             }
 
-            // Apply ground drag.
-            if (entity.OnGround)
-            {
-                double dragStrength = 1 - groundDragFactor;
+            // Apply ground drag
+            double dragStrength = 1 - groundDragFactor;
 
-                pos.Motion.X *= dragStrength;
-                pos.Motion.Z *= dragStrength;
-            }
+            pos.Motion.X *= dragStrength;
+            pos.Motion.Z *= dragStrength;
         }
 
         // Only able to jump every 500ms. Only works while on the ground.

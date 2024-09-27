@@ -6,13 +6,14 @@ items:
   parent: Vintagestory.API.Common
   children:
   - Vintagestory.API.Common.BlockUpdate.ByStack
-  - Vintagestory.API.Common.BlockUpdate.Decor
+  - Vintagestory.API.Common.BlockUpdate.Decors
   - Vintagestory.API.Common.BlockUpdate.ExchangeOnly
   - Vintagestory.API.Common.BlockUpdate.NewBlockEntityData
   - Vintagestory.API.Common.BlockUpdate.NewFluidBlockId
   - Vintagestory.API.Common.BlockUpdate.NewSolidBlockId
   - Vintagestory.API.Common.BlockUpdate.OldBlockEntityData
   - Vintagestory.API.Common.BlockUpdate.OldBlockId
+  - Vintagestory.API.Common.BlockUpdate.OldDecors
   - Vintagestory.API.Common.BlockUpdate.OldFluidBlockId
   - Vintagestory.API.Common.BlockUpdate.Pos
   langs:
@@ -220,25 +221,44 @@ items:
     return:
       type: System.Byte[]
     content.vb: Public NewBlockEntityData As Byte()
-- uid: Vintagestory.API.Common.BlockUpdate.Decor
-  commentId: F:Vintagestory.API.Common.BlockUpdate.Decor
-  id: Decor
+- uid: Vintagestory.API.Common.BlockUpdate.Decors
+  commentId: F:Vintagestory.API.Common.BlockUpdate.Decors
+  id: Decors
   parent: Vintagestory.API.Common.BlockUpdate
   langs:
   - csharp
   - vb
-  name: Decor
-  nameWithType: BlockUpdate.Decor
-  fullName: Vintagestory.API.Common.BlockUpdate.Decor
+  name: Decors
+  nameWithType: BlockUpdate.Decors
+  fullName: Vintagestory.API.Common.BlockUpdate.Decors
   type: Field
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: public DecorUpdate[] Decor
+    content: public List<DecorUpdate> Decors
     return:
-      type: Vintagestory.API.Common.DecorUpdate[]
-    content.vb: Public Decor As DecorUpdate()
+      type: System.Collections.Generic.List{Vintagestory.API.Common.DecorUpdate}
+    content.vb: Public Decors As List(Of DecorUpdate)
+- uid: Vintagestory.API.Common.BlockUpdate.OldDecors
+  commentId: F:Vintagestory.API.Common.BlockUpdate.OldDecors
+  id: OldDecors
+  parent: Vintagestory.API.Common.BlockUpdate
+  langs:
+  - csharp
+  - vb
+  name: OldDecors
+  nameWithType: BlockUpdate.OldDecors
+  fullName: Vintagestory.API.Common.BlockUpdate.OldDecors
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public List<DecorUpdate> OldDecors
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.Common.DecorUpdate}
+    content.vb: Public OldDecors As List(Of DecorUpdate)
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -755,24 +775,101 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.byte
   - name: (
   - name: )
-- uid: Vintagestory.API.Common.DecorUpdate[]
-  isExternal: true
-  href: Vintagestory.API.Common.DecorUpdate.html
-  name: DecorUpdate[]
-  nameWithType: DecorUpdate[]
-  fullName: Vintagestory.API.Common.DecorUpdate[]
-  nameWithType.vb: DecorUpdate()
-  fullName.vb: Vintagestory.API.Common.DecorUpdate()
-  name.vb: DecorUpdate()
+- uid: System.Collections.Generic.List{Vintagestory.API.Common.DecorUpdate}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.DecorUpdate}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<DecorUpdate>
+  nameWithType: List<DecorUpdate>
+  fullName: System.Collections.Generic.List<Vintagestory.API.Common.DecorUpdate>
+  nameWithType.vb: List(Of DecorUpdate)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.Common.DecorUpdate)
+  name.vb: List(Of DecorUpdate)
   spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
   - uid: Vintagestory.API.Common.DecorUpdate
     name: DecorUpdate
     href: Vintagestory.API.Common.DecorUpdate.html
-  - name: '['
-  - name: ']'
+  - name: '>'
   spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
   - uid: Vintagestory.API.Common.DecorUpdate
     name: DecorUpdate
     href: Vintagestory.API.Common.DecorUpdate.html
-  - name: (
   - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic

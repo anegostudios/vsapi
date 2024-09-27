@@ -234,7 +234,8 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// A check whether to see if the entity is sneaking.
+        /// A check whether to see if the entity is sneaking. Use Controls.ShiftKey instead for mouse interaction modifiers, as it is a separable control.
+        /// <br/>A test for Sneak should be used only when we want to know whether the entity is crouching or using Sneak motion, which affects things like whether it is detectable by other entities, seen on the map, or how the shield is used
         /// </summary>
         public virtual bool Sneak
         {
@@ -261,7 +262,8 @@ namespace Vintagestory.API.Common
         }
 
         /// <summary>
-        /// A check to see whether the entity is sprinting.
+        /// A check to see whether the entity is sprinting. Use Controls.CtrlKey instead for mouse interaction modifiers, as it is a separable control.
+        /// <br/>A test for Sprint should be used only when we want to know whether the entity is sprinting.
         /// </summary>
         public virtual bool Sprint
         {
@@ -307,6 +309,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// A check to see if the entity is holding down the Ctrl key (which may be the same as the Sprint key or one or other may have been remapped).
+        /// <br/>Should normally be used in conjunction with a mouse button, including OnHeldInteractStart() methods etc
         /// </summary>
         public virtual bool CtrlKey
         {
@@ -316,6 +319,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// A check to see if the entity is holding down the Shift key (which may be the same as the Sneak key or one or other may have been remapped).
+        /// <br/>Should normally be used in conjunction with a mouse button, including OnHeldInteractStart() methods etc
         /// </summary>
         public virtual bool ShiftKey
         {

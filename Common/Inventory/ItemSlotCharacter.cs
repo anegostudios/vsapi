@@ -58,7 +58,7 @@ namespace Vintagestory.API.Common
         {
             if (itemstack == null || itemstack.Collectible.Attributes == null) return false;
 
-            string stackDressType = itemstack.Collectible.Attributes["clothescategory"].AsString();
+            string stackDressType = itemstack.Collectible.Attributes["clothescategory"].AsString() ?? itemstack.Collectible.Attributes["attachableToEntity"]["categoryCode"].AsString();
 
             return stackDressType != null && dressType.ToString().Equals(stackDressType, StringComparison.InvariantCultureIgnoreCase);
         }

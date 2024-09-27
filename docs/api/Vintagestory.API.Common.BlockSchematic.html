@@ -425,7 +425,7 @@ public List&lt;int&gt; BlockIds</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty]
-public List&lt;int&gt; DecorIds</code></pre>
+public List&lt;long&gt; DecorIds</code></pre>
   </div>
 
 
@@ -433,7 +433,7 @@ public List&lt;int&gt; DecorIds</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -486,7 +486,7 @@ public List&lt;uint&gt; DecorIndices</code></pre>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;BlockPos, Block[]&gt; DecorsUnpacked</code></pre>
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;BlockPos, Dictionary&lt;int, Block&gt;&gt; DecorsUnpacked</code></pre>
   </div>
 
 
@@ -494,7 +494,7 @@ public List&lt;uint&gt; DecorIndices</code></pre>
 
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a>, <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>[]&gt;</dt>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>, <a class="xref" href="Vintagestory.API.Common.Block.html">Block</a>&gt;&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -892,6 +892,37 @@ public Dictionary&lt;int, AssetLocation&gt; ItemCodes</code></pre>
   <h4 class="section">Field Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_BlockSchematic_PosBitMask" data-uid="Vintagestory.API.Common.BlockSchematic.PosBitMask">
+  PosBitMask
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>This bitmask for the position in schematics</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const uint PosBitMask = 1023</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint32">uint</a></dt>
     <dd></dd>
   </dl>
 
