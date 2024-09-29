@@ -2282,6 +2282,12 @@ namespace Vintagestory.API.Common
         /// <param name="world"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
+        public virtual bool DoPartialSelection(IWorldAccessor world, BlockPos pos)
+        {
+            return PartialSelection;
+        }
+
+        [Obsolete("Use DoPartialSelection() instead")]
         public virtual bool DoParticalSelection(IWorldAccessor world, BlockPos pos)
         {
             return PartialSelection;
