@@ -2608,7 +2608,24 @@ namespace Vintagestory.API.Common
         /// <returns>The stack it should transition into</returns>
         public virtual ItemStack OnTransitionNow(ItemSlot slot, TransitionableProperties props)
         {
+            bool preventDefault = false;
             ItemStack newStack = props.TransitionedStack.ResolvedItemstack.Clone();
+
+            foreach (CollectibleBehavior behavior in CollectibleBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+                ItemStack bhStack = behavior.OnTransitionNow(slot, props, ref handled);
+                if (handled != EnumHandling.PassThrough)
+                {
+                    preventDefault = true;
+                    newStack = bhStack;
+                }
+
+                if (handled == EnumHandling.PreventSubsequent) return newStack;
+            }
+
+            if (preventDefault) return newStack;
+
             newStack.StackSize = GameMath.RoundRandom(api.World.Rand, slot.Itemstack.StackSize * props.TransitionRatio);
             return newStack;
         }

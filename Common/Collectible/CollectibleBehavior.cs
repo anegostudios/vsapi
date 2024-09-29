@@ -1,8 +1,9 @@
-﻿using System;
+﻿using System.Reflection.Metadata;
 using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
+using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
@@ -296,6 +297,18 @@ namespace Vintagestory.API.Common
 
         public virtual string GetHeldTpUseAnimation(ItemSlot activeHotbarSlot, Entity forEntity, ref EnumHandling bhHandling)
         {
+            return null;
+        }
+
+        /// <summary>
+        /// Called when any of its TransitionableProperties causes the stack to transition to another stack. Default behavior is to return props.TransitionedStack.ResolvedItemstack and set the stack size according to the transition rtio
+        /// </summary>
+        /// <param name="slot"></param>
+        /// <param name="props"></param>
+        /// <returns>The stack it should transition into</returns>
+        public virtual ItemStack OnTransitionNow(ItemSlot slot, TransitionableProperties props, ref EnumHandling handling)
+        {
+            handling = EnumHandling.PassThrough;
             return null;
         }
     }
