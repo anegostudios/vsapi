@@ -1,9 +1,7 @@
-﻿using System.Reflection.Metadata;
-using System.Text;
+﻿using System.Text;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
-using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Common
 {
