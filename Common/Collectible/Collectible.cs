@@ -1569,118 +1569,57 @@ namespace Vintagestory.API.Common
 
             string descText = GetItemDescText();
 
-            if (withDebugInfo)
+            GetDebugInfo(inSlot, dsc, withDebugInfo);
+
+            GetDurabilityInfo(dsc, stack);
+
+            GetMiningSpeedInfo(dsc);
+            GetBagInfo(dsc, world, stack);
+
+            GetNutritionInfo(inSlot, dsc, world, stack);
+
+            GetGrindingInfo(dsc);
+
+            GetCrushingInfo(dsc);
+
+            GetAttackPowerInfo(dsc, stack);
+
+            GetAttackRangeInfo(dsc, stack);
+            GetCombustibleInfo(dsc);
+
+            foreach (var bh in CollectibleBehaviors)
             {
-                dsc.AppendLine("<font color=\"#bbbbbb\">Id:" + Id + "</font>");
-                dsc.AppendLine("<font color=\"#bbbbbb\">Code: " + Code + "</font>");
-                if (api?.Side == EnumAppSide.Client && (api as ICoreClientAPI).Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftLeft])
-                {
-                    dsc.AppendLine("<font color=\"#bbbbbb\">Attributes: " + inSlot.Itemstack.Attributes.ToJsonToken() + "</font>\n");
-                }
+                bh.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
             }
 
-            int durability = GetMaxDurability(stack);
+            if (descText.Length > 0 && dsc.Length > 0) dsc.Append("\n");
+            dsc.Append(descText);
 
-            if (durability > 1)
+            GetTemperatureInfo(dsc, world, stack);
+
+            GetModInfo(dsc);
+        }
+
+        public virtual void GetModInfo(StringBuilder dsc)
+        {
+            if (Code != null && Code.Domain != "game")
             {
-                dsc.AppendLine(Lang.Get("Durability: {0} / {1}", stack.Collectible.GetRemainingDurability(stack), durability));
+                var mod = api.ModLoader.GetMod(Code.Domain);
+                dsc.AppendLine(Lang.Get("Mod: {0}", mod?.Info.Name ?? Code.Domain));
             }
+        }
 
-
-            if (MiningSpeed != null && MiningSpeed.Count > 0)
+        public virtual void GetTemperatureInfo(StringBuilder dsc, IWorldAccessor world, ItemStack stack)
+        {
+            float temp = GetTemperature(world, stack);
+            if (temp > 20)
             {
-                dsc.AppendLine(Lang.Get("Tool Tier: {0}", ToolTier));
-
-                dsc.Append(Lang.Get("item-tooltip-miningspeed"));
-                int i = 0;
-                foreach (var val in MiningSpeed)
-                {
-                    if (val.Value < 1.1) continue;
-
-                    if (i > 0) dsc.Append(", ");
-                    dsc.Append(Lang.Get(val.Key.ToString()) + " " + val.Value.ToString("#.#") + "x");
-                    i++;
-                }
-
-                dsc.Append("\n");
+                dsc.AppendLine(Lang.Get("Temperature: {0}°C", (int)temp));
             }
+        }
 
-            var bag = GetCollectibleInterface<IHeldBag>();
-            if (bag != null)
-            {
-                dsc.AppendLine(Lang.Get("Storage Slots: {0}", bag.GetQuantitySlots(stack)));
-
-                bool didPrint = false;
-                var stacks = bag.GetContents(stack, world);
-                if (stacks != null)
-                {
-                    foreach (var cstack in stacks)
-                    {
-                        if (cstack == null || cstack.StackSize == 0) continue;
-
-                        if (!didPrint)
-                        {
-                            dsc.AppendLine(Lang.Get("Contents: "));
-                            didPrint = true;
-                        }
-                        cstack.ResolveBlockOrItem(world);
-                        dsc.AppendLine("- " + cstack.StackSize + "x " + cstack.GetName());
-                    }
-
-                    if (!didPrint)
-                    {
-                        dsc.AppendLine(Lang.Get("Empty"));
-                    }
-                }
-            }
-
-            EntityPlayer entity = world.Side == EnumAppSide.Client ? (world as IClientWorldAccessor).Player.Entity : null;
-
-            float spoilState = AppendPerishableInfoText(inSlot, dsc, world);
-
-            FoodNutritionProperties nutriProps = GetNutritionProperties(world, stack, entity);
-            if (nutriProps != null)
-            {
-                float satLossMul = GlobalConstants.FoodSpoilageSatLossMul(spoilState, stack, entity);
-                float healthLossMul = GlobalConstants.FoodSpoilageHealthLossMul(spoilState, stack, entity);
-
-                if (Math.Abs(nutriProps.Health * healthLossMul) > 0.001f)
-                {
-                    dsc.AppendLine(Lang.Get("When eaten: {0} sat, {1} hp", Math.Round(nutriProps.Satiety * satLossMul), nutriProps.Health * healthLossMul));
-                }
-                else
-                {
-                    dsc.AppendLine(Lang.Get("When eaten: {0} sat", Math.Round(nutriProps.Satiety * satLossMul)));
-                }
-
-                dsc.AppendLine(Lang.Get("Food Category: {0}", Lang.Get("foodcategory-" + nutriProps.FoodCategory.ToString().ToLowerInvariant())));
-            }
-
-
-
-            if (GrindingProps?.GroundStack?.ResolvedItemstack != null)
-            {
-                dsc.AppendLine(Lang.Get("When ground: Turns into {0}x {1}", GrindingProps.GroundStack.ResolvedItemstack.StackSize, GrindingProps.GroundStack.ResolvedItemstack.GetName()));
-            }
-
-            if (CrushingProps != null)
-            {
-                float quantity = CrushingProps.Quantity.avg * CrushingProps.CrushedStack.ResolvedItemstack.StackSize;
-                dsc.AppendLine(Lang.Get("When pulverized: Turns into {0:0.#}x {1}", quantity, CrushingProps.CrushedStack.ResolvedItemstack.GetName()));
-                dsc.AppendLine(Lang.Get("Requires Pulverizer tier: {0}", CrushingProps.HardnessTier));
-            }
-
-            if (GetAttackPower(stack) > 0.5f)
-            {
-                dsc.AppendLine(Lang.Get("Attack power: -{0} hp", GetAttackPower(stack).ToString("0.#")));
-                dsc.AppendLine(Lang.Get("Attack tier: {0}", ToolTier));
-            }
-
-            if (GetAttackRange(stack) > GlobalConstants.DefaultAttackRange)
-            {
-                dsc.AppendLine(Lang.Get("Attack range: {0} m", GetAttackRange(stack).ToString("0.#")));
-            }
-
+        public virtual void GetCombustibleInfo(StringBuilder dsc)
+        {
             if (CombustibleProps != null)
             {
                 string smelttype = CombustibleProps.SmeltingType.ToString().ToLowerInvariant();
@@ -1718,25 +1657,141 @@ namespace Vintagestory.API.Common
                     dsc.AppendLine(str);
                 }
             }
+        }
 
-            foreach (var bh in CollectibleBehaviors)
+        public virtual void GetDebugInfo(ItemSlot inSlot, StringBuilder dsc, bool withDebugInfo)
+        {
+            if (withDebugInfo)
             {
-                bh.GetHeldItemInfo(inSlot, dsc, world, withDebugInfo);
+                dsc.AppendLine("<font color=\"#bbbbbb\">Id:" + Id + "</font>");
+                dsc.AppendLine("<font color=\"#bbbbbb\">Code: " + Code + "</font>");
+                if (api?.Side == EnumAppSide.Client && (api as ICoreClientAPI).Input.KeyboardKeyStateRaw[(int)GlKeys.ShiftLeft])
+                {
+                    dsc.AppendLine("<font color=\"#bbbbbb\">Attributes: " + inSlot.Itemstack.Attributes.ToJsonToken() + "</font>\n");
+                }
             }
+        }
 
-            if (descText.Length > 0 && dsc.Length > 0) dsc.Append("\n");
-            dsc.Append(descText);
-
-            float temp = GetTemperature(world, stack);
-            if (temp > 20)
+        public virtual void GetAttackRangeInfo(StringBuilder dsc, ItemStack stack)
+        {
+            if (GetAttackRange(stack) > GlobalConstants.DefaultAttackRange)
             {
-                dsc.AppendLine(Lang.Get("Temperature: {0}°C", (int)temp));
+                dsc.AppendLine(Lang.Get("Attack range: {0} m", GetAttackRange(stack).ToString("0.#")));
             }
+        }
 
-            if (Code != null && Code.Domain != "game")
+        public virtual void GetAttackPowerInfo(StringBuilder dsc, ItemStack stack)
+        {
+            if (GetAttackPower(stack) > 0.5f)
             {
-                var mod = api.ModLoader.GetMod(Code.Domain);
-                dsc.AppendLine(Lang.Get("Mod: {0}", mod?.Info.Name ?? Code.Domain));
+                dsc.AppendLine(Lang.Get("Attack power: -{0} hp", GetAttackPower(stack).ToString("0.#")));
+                dsc.AppendLine(Lang.Get("Attack tier: {0}", ToolTier));
+            }
+        }
+
+        public virtual void GetCrushingInfo(StringBuilder dsc)
+        {
+            if (CrushingProps != null)
+            {
+                float quantity = CrushingProps.Quantity.avg * CrushingProps.CrushedStack.ResolvedItemstack.StackSize;
+                dsc.AppendLine(Lang.Get("When pulverized: Turns into {0:0.#}x {1}", quantity, CrushingProps.CrushedStack.ResolvedItemstack.GetName()));
+                dsc.AppendLine(Lang.Get("Requires Pulverizer tier: {0}", CrushingProps.HardnessTier));
+            }
+        }
+
+        public virtual void GetGrindingInfo(StringBuilder dsc)
+        {
+            if (GrindingProps?.GroundStack?.ResolvedItemstack != null)
+            {
+                dsc.AppendLine(Lang.Get("When ground: Turns into {0}x {1}", GrindingProps.GroundStack.ResolvedItemstack.StackSize, GrindingProps.GroundStack.ResolvedItemstack.GetName()));
+            }
+        }
+
+        public virtual void GetNutritionInfo(ItemSlot inSlot, StringBuilder dsc, IWorldAccessor world, ItemStack stack)
+        {
+            EntityPlayer entity = world.Side == EnumAppSide.Client ? (world as IClientWorldAccessor).Player.Entity : null;
+
+            float spoilState = AppendPerishableInfoText(inSlot, dsc, world);
+
+            FoodNutritionProperties nutriProps = GetNutritionProperties(world, stack, entity);
+            if (nutriProps != null)
+            {
+                float satLossMul = GlobalConstants.FoodSpoilageSatLossMul(spoilState, stack, entity);
+                float healthLossMul = GlobalConstants.FoodSpoilageHealthLossMul(spoilState, stack, entity);
+
+                if (Math.Abs(nutriProps.Health * healthLossMul) > 0.001f)
+                {
+                    dsc.AppendLine(Lang.Get("When eaten: {0} sat, {1} hp", Math.Round(nutriProps.Satiety * satLossMul), nutriProps.Health * healthLossMul));
+                }
+                else
+                {
+                    dsc.AppendLine(Lang.Get("When eaten: {0} sat", Math.Round(nutriProps.Satiety * satLossMul)));
+                }
+
+                dsc.AppendLine(Lang.Get("Food Category: {0}", Lang.Get("foodcategory-" + nutriProps.FoodCategory.ToString().ToLowerInvariant())));
+            }
+        }
+
+        public virtual void GetBagInfo(StringBuilder dsc, IWorldAccessor world, ItemStack stack)
+        {
+            var bag = GetCollectibleInterface<IHeldBag>();
+            if (bag != null)
+            {
+                dsc.AppendLine(Lang.Get("Storage Slots: {0}", bag.GetQuantitySlots(stack)));
+
+                bool didPrint = false;
+                var stacks = bag.GetContents(stack, world);
+                if (stacks != null)
+                {
+                    foreach (var cstack in stacks)
+                    {
+                        if (cstack == null || cstack.StackSize == 0) continue;
+
+                        if (!didPrint)
+                        {
+                            dsc.AppendLine(Lang.Get("Contents: "));
+                            didPrint = true;
+                        }
+                        cstack.ResolveBlockOrItem(world);
+                        dsc.AppendLine("- " + cstack.StackSize + "x " + cstack.GetName());
+                    }
+
+                    if (!didPrint)
+                    {
+                        dsc.AppendLine(Lang.Get("Empty"));
+                    }
+                }
+            }
+        }
+
+        public virtual void GetMiningSpeedInfo(StringBuilder dsc)
+        {
+            if (MiningSpeed != null && MiningSpeed.Count > 0)
+            {
+                dsc.AppendLine(Lang.Get("Tool Tier: {0}", ToolTier));
+
+                dsc.Append(Lang.Get("item-tooltip-miningspeed"));
+                int i = 0;
+                foreach (var val in MiningSpeed)
+                {
+                    if (val.Value < 1.1) continue;
+
+                    if (i > 0) dsc.Append(", ");
+                    dsc.Append(Lang.Get(val.Key.ToString()) + " " + val.Value.ToString("#.#") + "x");
+                    i++;
+                }
+
+                dsc.Append("\n");
+            }
+        }
+
+        public virtual void GetDurabilityInfo(StringBuilder dsc, ItemStack stack)
+        {
+            int durability = GetMaxDurability(stack);
+
+            if (durability > 1)
+            {
+                dsc.AppendLine(Lang.Get("Durability: {0} / {1}", stack.Collectible.GetRemainingDurability(stack), durability));
             }
         }
 
@@ -2904,7 +2959,7 @@ namespace Vintagestory.API.Common
             OnLoadCollectibleMappings(worldForResolve, inSlot.Itemstack.Attributes, oldBlockIdMapping, oldItemIdMapping);
         }
 
-        private void OnLoadCollectibleMappings(IWorldAccessor worldForResolve, ITreeAttribute tree, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping)
+        public virtual void OnLoadCollectibleMappings(IWorldAccessor worldForResolve, ITreeAttribute tree, Dictionary<int, AssetLocation> oldBlockIdMapping, Dictionary<int, AssetLocation> oldItemIdMapping)
         {
             foreach (var val in tree)
             {
