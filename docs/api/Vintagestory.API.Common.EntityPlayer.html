@@ -101,7 +101,7 @@ Class EntityPlayer
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class EntityPlayer : EntityHumanoid</code></pre>
+    <pre><code class="lang-csharp hljs">public class EntityPlayer : EntityHumanoid, IPettable</code></pre>
   </div>
 
 
@@ -119,6 +119,12 @@ Class EntityPlayer
     </dd>
   </dl>
 
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.API.Common.Entities.IPettable.html">IPettable</a></div>
+    </dd>
+  </dl>
 
 
   <dl class="typelist inheritedMembers">
@@ -146,6 +152,9 @@ Class EntityPlayer
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_servercontrols">EntityAgent.servercontrols</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_alwaysRunIdle">EntityAgent.alwaysRunIdle</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_MountedOn">EntityAgent.MountedOn</a>
     </div>
     <div>
@@ -156,9 +165,6 @@ Class EntityPlayer
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_AllowDespawn">EntityAgent.AllowDespawn</a>
-    </div>
-    <div>
-      <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_alwaysRunIdle">EntityAgent.alwaysRunIdle</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_Controls">EntityAgent.Controls</a>
@@ -1738,6 +1744,42 @@ Set and Called by the Entities ServerSystem</p>
 
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="Vintagestory_API_Common_EntityPlayer_CanPet_" data-uid="Vintagestory.API.Common.EntityPlayer.CanPet*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityPlayer_CanPet_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Common.EntityPlayer.CanPet(Vintagestory.API.Common.Entities.Entity)">
+  CanPet(Entity)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CanPet(Entity byEntity)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>byEntity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_Common_EntityPlayer_CanSpawnNearby_" data-uid="Vintagestory.API.Common.EntityPlayer.CanSpawnNearby*"></a>

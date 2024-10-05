@@ -54,6 +54,7 @@ items:
   - Vintagestory.API.MathTools.Vec3d.Offset(Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.MathTools.Vec3d.OffsetCopy(System.Double,System.Double,System.Double)
   - Vintagestory.API.MathTools.Vec3d.OffsetCopy(System.Single,System.Single,System.Single)
+  - Vintagestory.API.MathTools.Vec3d.RotatedCopy(System.Single)
   - Vintagestory.API.MathTools.Vec3d.Scale(System.Double)
   - Vintagestory.API.MathTools.Vec3d.Set(System.Double,System.Double,System.Double)
   - Vintagestory.API.MathTools.Vec3d.Set(Vintagestory.API.Common.Entities.EntityPos)
@@ -2298,6 +2299,32 @@ items:
       type: Vintagestory.API.MathTools.Vec3d
     content.vb: Public Shared Function CreateFromBytes(reader As BinaryReader) As Vec3d
   overload: Vintagestory.API.MathTools.Vec3d.CreateFromBytes*
+- uid: Vintagestory.API.MathTools.Vec3d.RotatedCopy(System.Single)
+  commentId: M:Vintagestory.API.MathTools.Vec3d.RotatedCopy(System.Single)
+  id: RotatedCopy(System.Single)
+  parent: Vintagestory.API.MathTools.Vec3d
+  langs:
+  - csharp
+  - vb
+  name: RotatedCopy(float)
+  nameWithType: Vec3d.RotatedCopy(float)
+  fullName: Vintagestory.API.MathTools.Vec3d.RotatedCopy(float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public Vec3d RotatedCopy(float yaw)
+    parameters:
+    - id: yaw
+      type: System.Single
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Public Function RotatedCopy(yaw As Single) As Vec3d
+  overload: Vintagestory.API.MathTools.Vec3d.RotatedCopy*
+  nameWithType.vb: Vec3d.RotatedCopy(Single)
+  fullName.vb: Vintagestory.API.MathTools.Vec3d.RotatedCopy(Single)
+  name.vb: RotatedCopy(Single)
 - uid: Vintagestory.API.MathTools.Vec3d.AheadCopy(System.Double,System.Single,System.Single)
   commentId: M:Vintagestory.API.MathTools.Vec3d.AheadCopy(System.Double,System.Single,System.Single)
   id: AheadCopy(System.Double,System.Single,System.Single)
@@ -3523,6 +3550,12 @@ references:
   name: BinaryReader
   nameWithType: BinaryReader
   fullName: System.IO.BinaryReader
+- uid: Vintagestory.API.MathTools.Vec3d.RotatedCopy*
+  commentId: Overload:Vintagestory.API.MathTools.Vec3d.RotatedCopy
+  href: Vintagestory.API.MathTools.Vec3d.html#Vintagestory_API_MathTools_Vec3d_RotatedCopy_System_Single_
+  name: RotatedCopy
+  nameWithType: Vec3d.RotatedCopy
+  fullName: Vintagestory.API.MathTools.Vec3d.RotatedCopy
 - uid: Vintagestory.API.MathTools.Vec3d.AheadCopy*
   commentId: Overload:Vintagestory.API.MathTools.Vec3d.AheadCopy
   href: Vintagestory.API.MathTools.Vec3d.html#Vintagestory_API_MathTools_Vec3d_AheadCopy_System_Double_System_Single_System_Single_

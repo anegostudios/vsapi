@@ -10,20 +10,24 @@ items:
   - Vintagestory.API.Client.ILoadedSound.FadeOut(System.Single,System.Action{Vintagestory.API.Client.ILoadedSound})
   - Vintagestory.API.Client.ILoadedSound.FadeOutAndStop(System.Single)
   - Vintagestory.API.Client.ILoadedSound.FadeTo(System.Double,System.Single,System.Action{Vintagestory.API.Client.ILoadedSound})
+  - Vintagestory.API.Client.ILoadedSound.HasReverbStopped(System.Int64)
   - Vintagestory.API.Client.ILoadedSound.HasStopped
   - Vintagestory.API.Client.ILoadedSound.IsDisposed
   - Vintagestory.API.Client.ILoadedSound.IsFadingIn
   - Vintagestory.API.Client.ILoadedSound.IsFadingOut
   - Vintagestory.API.Client.ILoadedSound.IsPaused
   - Vintagestory.API.Client.ILoadedSound.IsPlaying
+  - Vintagestory.API.Client.ILoadedSound.IsReady
   - Vintagestory.API.Client.ILoadedSound.Params
   - Vintagestory.API.Client.ILoadedSound.Pause
   - Vintagestory.API.Client.ILoadedSound.PlaybackPosition
   - Vintagestory.API.Client.ILoadedSound.SetLooping(System.Boolean)
+  - Vintagestory.API.Client.ILoadedSound.SetLowPassfiltering(System.Single)
   - Vintagestory.API.Client.ILoadedSound.SetPitch(System.Single)
   - Vintagestory.API.Client.ILoadedSound.SetPitchOffset(System.Single)
   - Vintagestory.API.Client.ILoadedSound.SetPosition(System.Single,System.Single,System.Single)
   - Vintagestory.API.Client.ILoadedSound.SetPosition(Vintagestory.API.MathTools.Vec3f)
+  - Vintagestory.API.Client.ILoadedSound.SetReverb(System.Single)
   - Vintagestory.API.Client.ILoadedSound.SetVolume
   - Vintagestory.API.Client.ILoadedSound.SetVolume(System.Single)
   - Vintagestory.API.Client.ILoadedSound.SoundLengthSeconds
@@ -278,6 +282,27 @@ items:
       type: System.Boolean
     content.vb: ReadOnly Property IsPaused As Boolean
   overload: Vintagestory.API.Client.ILoadedSound.IsPaused*
+- uid: Vintagestory.API.Client.ILoadedSound.IsReady
+  commentId: P:Vintagestory.API.Client.ILoadedSound.IsReady
+  id: IsReady
+  parent: Vintagestory.API.Client.ILoadedSound
+  langs:
+  - csharp
+  - vb
+  name: IsReady
+  nameWithType: ILoadedSound.IsReady
+  fullName: Vintagestory.API.Client.ILoadedSound.IsReady
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: bool IsReady { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsReady As Boolean
+  overload: Vintagestory.API.Client.ILoadedSound.IsReady*
 - uid: Vintagestory.API.Client.ILoadedSound.Start
   commentId: M:Vintagestory.API.Client.ILoadedSound.Start
   id: Start
@@ -662,6 +687,80 @@ items:
   nameWithType.vb: ILoadedSound.FadeOutAndStop(Single)
   fullName.vb: Vintagestory.API.Client.ILoadedSound.FadeOutAndStop(Single)
   name.vb: FadeOutAndStop(Single)
+- uid: Vintagestory.API.Client.ILoadedSound.SetLowPassfiltering(System.Single)
+  commentId: M:Vintagestory.API.Client.ILoadedSound.SetLowPassfiltering(System.Single)
+  id: SetLowPassfiltering(System.Single)
+  parent: Vintagestory.API.Client.ILoadedSound
+  langs:
+  - csharp
+  - vb
+  name: SetLowPassfiltering(float)
+  nameWithType: ILoadedSound.SetLowPassfiltering(float)
+  fullName: Vintagestory.API.Client.ILoadedSound.SetLowPassfiltering(float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void SetLowPassfiltering(float value)
+    parameters:
+    - id: value
+      type: System.Single
+    content.vb: Sub SetLowPassfiltering(value As Single)
+  overload: Vintagestory.API.Client.ILoadedSound.SetLowPassfiltering*
+  nameWithType.vb: ILoadedSound.SetLowPassfiltering(Single)
+  fullName.vb: Vintagestory.API.Client.ILoadedSound.SetLowPassfiltering(Single)
+  name.vb: SetLowPassfiltering(Single)
+- uid: Vintagestory.API.Client.ILoadedSound.SetReverb(System.Single)
+  commentId: M:Vintagestory.API.Client.ILoadedSound.SetReverb(System.Single)
+  id: SetReverb(System.Single)
+  parent: Vintagestory.API.Client.ILoadedSound
+  langs:
+  - csharp
+  - vb
+  name: SetReverb(float)
+  nameWithType: ILoadedSound.SetReverb(float)
+  fullName: Vintagestory.API.Client.ILoadedSound.SetReverb(float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void SetReverb(float reverbDecayTime)
+    parameters:
+    - id: reverbDecayTime
+      type: System.Single
+    content.vb: Sub SetReverb(reverbDecayTime As Single)
+  overload: Vintagestory.API.Client.ILoadedSound.SetReverb*
+  nameWithType.vb: ILoadedSound.SetReverb(Single)
+  fullName.vb: Vintagestory.API.Client.ILoadedSound.SetReverb(Single)
+  name.vb: SetReverb(Single)
+- uid: Vintagestory.API.Client.ILoadedSound.HasReverbStopped(System.Int64)
+  commentId: M:Vintagestory.API.Client.ILoadedSound.HasReverbStopped(System.Int64)
+  id: HasReverbStopped(System.Int64)
+  parent: Vintagestory.API.Client.ILoadedSound
+  langs:
+  - csharp
+  - vb
+  name: HasReverbStopped(long)
+  nameWithType: ILoadedSound.HasReverbStopped(long)
+  fullName: Vintagestory.API.Client.ILoadedSound.HasReverbStopped(long)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: bool HasReverbStopped(long elapsedMilliseconds)
+    parameters:
+    - id: elapsedMilliseconds
+      type: System.Int64
+    return:
+      type: System.Boolean
+    content.vb: Function HasReverbStopped(elapsedMilliseconds As Long) As Boolean
+  overload: Vintagestory.API.Client.ILoadedSound.HasReverbStopped*
+  nameWithType.vb: ILoadedSound.HasReverbStopped(Long)
+  fullName.vb: Vintagestory.API.Client.ILoadedSound.HasReverbStopped(Long)
+  name.vb: HasReverbStopped(Long)
 references:
 - uid: Vintagestory.API.Client
   commentId: N:Vintagestory.API.Client
@@ -989,6 +1088,12 @@ references:
   name: IsPaused
   nameWithType: ILoadedSound.IsPaused
   fullName: Vintagestory.API.Client.ILoadedSound.IsPaused
+- uid: Vintagestory.API.Client.ILoadedSound.IsReady*
+  commentId: Overload:Vintagestory.API.Client.ILoadedSound.IsReady
+  href: Vintagestory.API.Client.ILoadedSound.html#Vintagestory_API_Client_ILoadedSound_IsReady
+  name: IsReady
+  nameWithType: ILoadedSound.IsReady
+  fullName: Vintagestory.API.Client.ILoadedSound.IsReady
 - uid: Vintagestory.API.Client.ILoadedSound.Start*
   commentId: Overload:Vintagestory.API.Client.ILoadedSound.Start
   href: Vintagestory.API.Client.ILoadedSound.html#Vintagestory_API_Client_ILoadedSound_Start
@@ -1176,3 +1281,32 @@ references:
   name: FadeOutAndStop
   nameWithType: ILoadedSound.FadeOutAndStop
   fullName: Vintagestory.API.Client.ILoadedSound.FadeOutAndStop
+- uid: Vintagestory.API.Client.ILoadedSound.SetLowPassfiltering*
+  commentId: Overload:Vintagestory.API.Client.ILoadedSound.SetLowPassfiltering
+  href: Vintagestory.API.Client.ILoadedSound.html#Vintagestory_API_Client_ILoadedSound_SetLowPassfiltering_System_Single_
+  name: SetLowPassfiltering
+  nameWithType: ILoadedSound.SetLowPassfiltering
+  fullName: Vintagestory.API.Client.ILoadedSound.SetLowPassfiltering
+- uid: Vintagestory.API.Client.ILoadedSound.SetReverb*
+  commentId: Overload:Vintagestory.API.Client.ILoadedSound.SetReverb
+  href: Vintagestory.API.Client.ILoadedSound.html#Vintagestory_API_Client_ILoadedSound_SetReverb_System_Single_
+  name: SetReverb
+  nameWithType: ILoadedSound.SetReverb
+  fullName: Vintagestory.API.Client.ILoadedSound.SetReverb
+- uid: Vintagestory.API.Client.ILoadedSound.HasReverbStopped*
+  commentId: Overload:Vintagestory.API.Client.ILoadedSound.HasReverbStopped
+  href: Vintagestory.API.Client.ILoadedSound.html#Vintagestory_API_Client_ILoadedSound_HasReverbStopped_System_Int64_
+  name: HasReverbStopped
+  nameWithType: ILoadedSound.HasReverbStopped
+  fullName: Vintagestory.API.Client.ILoadedSound.HasReverbStopped
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long

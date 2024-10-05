@@ -8,6 +8,25 @@ namespace Vintagestory.API.Client
 {
     public class TesselationMetaData
     {
+        public static float[] randomRotations = new float[] { -22.5f, 22.5f, 90 - 22.5f, 90 + 22.5f, 180 - 22.5f, 180 + 22.5f, 270 - 22.5f, 270 + 22.5f };
+        public static float[][] randomRotMatrices;
+
+        static TesselationMetaData()
+        {
+            randomRotMatrices = new float[randomRotations.Length][];
+
+            for (int i = 0; i < randomRotations.Length; i++)
+            {
+                float[] matrix = Mat4f.Create();
+                Mat4f.Translate(matrix, matrix, 0.5f, 0.5f, 0.5f);
+                Mat4f.RotateY(matrix, matrix, randomRotations[i] * GameMath.DEG2RAD);
+                Mat4f.Translate(matrix, matrix, -0.5f, -0.5f, -0.5f);
+
+                randomRotMatrices[i] = matrix;
+            }
+
+        }
+
         public ITexPositionSource TexSource;
         public int GeneralGlowLevel;
         public byte ClimateColorMapId;

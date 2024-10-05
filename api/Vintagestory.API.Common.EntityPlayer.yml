@@ -13,6 +13,7 @@ items:
   - Vintagestory.API.Common.EntityPlayer.BodyYawLimits
   - Vintagestory.API.Common.EntityPlayer.CameraPos
   - Vintagestory.API.Common.EntityPlayer.CameraPosOffset
+  - Vintagestory.API.Common.EntityPlayer.CanPet(Vintagestory.API.Common.Entities.Entity)
   - Vintagestory.API.Common.EntityPlayer.CanSpawnNearby(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.Common.Entities.RuntimeSpawnConditions)
   - Vintagestory.API.Common.EntityPlayer.ChangeDimension(System.Int32)
   - Vintagestory.API.Common.EntityPlayer.DeathReason
@@ -92,14 +93,16 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: 'public class EntityPlayer : EntityHumanoid'
-    content.vb: Public Class EntityPlayer Inherits EntityHumanoid
+    content: 'public class EntityPlayer : EntityHumanoid, IPettable'
+    content.vb: Public Class EntityPlayer Inherits EntityHumanoid Implements IPettable
   inheritance:
   - System.Object
   - Vintagestory.API.Common.RegistryObject
   - Vintagestory.API.Common.Entities.Entity
   - Vintagestory.API.Common.EntityAgent
   - Vintagestory.API.Common.EntityHumanoid
+  implements:
+  - Vintagestory.API.Common.Entities.IPettable
   inheritedMembers:
   - Vintagestory.API.Common.EntityAgent.IsCreature
   - Vintagestory.API.Common.EntityAgent.BodyYawServer
@@ -108,11 +111,11 @@ items:
   - Vintagestory.API.Common.EntityAgent.HerdId
   - Vintagestory.API.Common.EntityAgent.controls
   - Vintagestory.API.Common.EntityAgent.servercontrols
+  - Vintagestory.API.Common.EntityAgent.alwaysRunIdle
   - Vintagestory.API.Common.EntityAgent.MountedOn
   - Vintagestory.API.Common.EntityAgent.CurrentControls
   - Vintagestory.API.Common.EntityAgent.ActiveHandItemSlot
   - Vintagestory.API.Common.EntityAgent.AllowDespawn
-  - Vintagestory.API.Common.EntityAgent.alwaysRunIdle
   - Vintagestory.API.Common.EntityAgent.Controls
   - Vintagestory.API.Common.EntityAgent.ServerControls
   - Vintagestory.API.Common.EntityAgent.IsEyesSubmerged
@@ -2146,6 +2149,32 @@ items:
   nameWithType.vb: EntityPlayer.ChangeDimension(Integer)
   fullName.vb: Vintagestory.API.Common.EntityPlayer.ChangeDimension(Integer)
   name.vb: ChangeDimension(Integer)
+- uid: Vintagestory.API.Common.EntityPlayer.CanPet(Vintagestory.API.Common.Entities.Entity)
+  commentId: M:Vintagestory.API.Common.EntityPlayer.CanPet(Vintagestory.API.Common.Entities.Entity)
+  id: CanPet(Vintagestory.API.Common.Entities.Entity)
+  parent: Vintagestory.API.Common.EntityPlayer
+  langs:
+  - csharp
+  - vb
+  name: CanPet(Entity)
+  nameWithType: EntityPlayer.CanPet(Entity)
+  fullName: Vintagestory.API.Common.EntityPlayer.CanPet(Vintagestory.API.Common.Entities.Entity)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public bool CanPet(Entity byEntity)
+    parameters:
+    - id: byEntity
+      type: Vintagestory.API.Common.Entities.Entity
+    return:
+      type: System.Boolean
+    content.vb: Public Function CanPet(byEntity As Entity) As Boolean
+  overload: Vintagestory.API.Common.EntityPlayer.CanPet*
+  implements:
+  - Vintagestory.API.Common.Entities.IPettable.CanPet(Vintagestory.API.Common.Entities.Entity)
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -2216,6 +2245,13 @@ references:
   name: EntityHumanoid
   nameWithType: EntityHumanoid
   fullName: Vintagestory.API.Common.EntityHumanoid
+- uid: Vintagestory.API.Common.Entities.IPettable
+  commentId: T:Vintagestory.API.Common.Entities.IPettable
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.IPettable.html
+  name: IPettable
+  nameWithType: IPettable
+  fullName: Vintagestory.API.Common.Entities.IPettable
 - uid: Vintagestory.API.Common.EntityAgent.IsCreature
   commentId: P:Vintagestory.API.Common.EntityAgent.IsCreature
   parent: Vintagestory.API.Common.EntityAgent
@@ -2265,6 +2301,13 @@ references:
   name: servercontrols
   nameWithType: EntityAgent.servercontrols
   fullName: Vintagestory.API.Common.EntityAgent.servercontrols
+- uid: Vintagestory.API.Common.EntityAgent.alwaysRunIdle
+  commentId: F:Vintagestory.API.Common.EntityAgent.alwaysRunIdle
+  parent: Vintagestory.API.Common.EntityAgent
+  href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_alwaysRunIdle
+  name: alwaysRunIdle
+  nameWithType: EntityAgent.alwaysRunIdle
+  fullName: Vintagestory.API.Common.EntityAgent.alwaysRunIdle
 - uid: Vintagestory.API.Common.EntityAgent.MountedOn
   commentId: P:Vintagestory.API.Common.EntityAgent.MountedOn
   parent: Vintagestory.API.Common.EntityAgent
@@ -2293,13 +2336,6 @@ references:
   name: AllowDespawn
   nameWithType: EntityAgent.AllowDespawn
   fullName: Vintagestory.API.Common.EntityAgent.AllowDespawn
-- uid: Vintagestory.API.Common.EntityAgent.alwaysRunIdle
-  commentId: F:Vintagestory.API.Common.EntityAgent.alwaysRunIdle
-  parent: Vintagestory.API.Common.EntityAgent
-  href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_alwaysRunIdle
-  name: alwaysRunIdle
-  nameWithType: EntityAgent.alwaysRunIdle
-  fullName: Vintagestory.API.Common.EntityAgent.alwaysRunIdle
 - uid: Vintagestory.API.Common.EntityAgent.Controls
   commentId: P:Vintagestory.API.Common.EntityAgent.Controls
   parent: Vintagestory.API.Common.EntityAgent
@@ -8164,3 +8200,34 @@ references:
   name: ChangeDimension
   nameWithType: EntityPlayer.ChangeDimension
   fullName: Vintagestory.API.Common.EntityPlayer.ChangeDimension
+- uid: Vintagestory.API.Common.EntityPlayer.CanPet*
+  commentId: Overload:Vintagestory.API.Common.EntityPlayer.CanPet
+  href: Vintagestory.API.Common.EntityPlayer.html#Vintagestory_API_Common_EntityPlayer_CanPet_Vintagestory_API_Common_Entities_Entity_
+  name: CanPet
+  nameWithType: EntityPlayer.CanPet
+  fullName: Vintagestory.API.Common.EntityPlayer.CanPet
+- uid: Vintagestory.API.Common.Entities.IPettable.CanPet(Vintagestory.API.Common.Entities.Entity)
+  commentId: M:Vintagestory.API.Common.Entities.IPettable.CanPet(Vintagestory.API.Common.Entities.Entity)
+  parent: Vintagestory.API.Common.Entities.IPettable
+  href: Vintagestory.API.Common.Entities.IPettable.html#Vintagestory_API_Common_Entities_IPettable_CanPet_Vintagestory_API_Common_Entities_Entity_
+  name: CanPet(Entity)
+  nameWithType: IPettable.CanPet(Entity)
+  fullName: Vintagestory.API.Common.Entities.IPettable.CanPet(Vintagestory.API.Common.Entities.Entity)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.IPettable.CanPet(Vintagestory.API.Common.Entities.Entity)
+    name: CanPet
+    href: Vintagestory.API.Common.Entities.IPettable.html#Vintagestory_API_Common_Entities_IPettable_CanPet_Vintagestory_API_Common_Entities_Entity_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.IPettable.CanPet(Vintagestory.API.Common.Entities.Entity)
+    name: CanPet
+    href: Vintagestory.API.Common.Entities.IPettable.html#Vintagestory_API_Common_Entities_IPettable_CanPet_Vintagestory_API_Common_Entities_Entity_
+  - name: (
+  - uid: Vintagestory.API.Common.Entities.Entity
+    name: Entity
+    href: Vintagestory.API.Common.Entities.Entity.html
+  - name: )

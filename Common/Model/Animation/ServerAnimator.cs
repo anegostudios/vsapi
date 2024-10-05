@@ -7,7 +7,6 @@ namespace Vintagestory.API.Common
 {
     public class ServerAnimator : ClientAnimator
     {
-        public bool loadFully;
 
         public static ServerAnimator CreateForEntity(Entity entity, List<ElementPose> rootPoses, Animation[] animations, ShapeElement[] rootElements, Dictionary<int, AnimationJoint> jointsById, bool requirePosesOnServer)
         {
@@ -75,7 +74,6 @@ namespace Vintagestory.API.Common
         {
             this.RootElements = rootElements;
             this.jointsById = jointsById;
-            this.loadFully = loadFully;
 
             RootPoses = new List<ElementPose>();
             LoadPosesAndAttachmentPoints(rootElements, RootPoses);
@@ -96,7 +94,6 @@ namespace Vintagestory.API.Common
             this.RootElements = rootElements;
             this.jointsById = jointsById;
             this.RootPoses = rootPoses;
-            this.loadFully = loadFully;
 
             LoadAttachmentPoints(RootPoses);
             initFields();
@@ -104,32 +101,11 @@ namespace Vintagestory.API.Common
 
         protected override void LoadPosesAndAttachmentPoints(ShapeElement[] elements, List<ElementPose> intoPoses)
         {
-            // Only load root pose and only the ones that have attachment points
-            if (loadFully)
-            {
-                base.LoadPosesAndAttachmentPoints(elements, intoPoses);
-                return;
-            }
-
-            ElementPose pose;
-            for (int i = 0; i < elements.Length; i++)
-            {
-                ShapeElement elem = elements[i];
-                if (elem.AttachmentPoints == null) continue;
-
-                intoPoses.Add(pose = new ElementPose());
-                pose.AnimModelMatrix = Mat4f.Create();
-                pose.ForElement = elem;
-
-                for (int j = 0; j < elem.AttachmentPoints.Length; j++)
-                {
-                    AttachmentPoint apoint = elem.AttachmentPoints[j];
-                    AttachmentPointByCode[apoint.Code] = new AttachmentPointAndPose() {
-                        AttachPoint = apoint,
-                        CachedPose = pose
-                    };
-                }
-            }
+            // Tyron Oct 3, 2024: We used to only load root poses and root attachment points here server side
+            // Its just not feasible anymore with the Center AP being at non-root elements and also its inconsistent with the Client side
+            // And also this optimization does not really help much i think. We only calculate matrices server side on dead creatures anyway
+            // So the loadFully argument is now obsolete
+            base.LoadPosesAndAttachmentPoints(elements, intoPoses);
         }
     }
 }

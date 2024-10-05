@@ -12,6 +12,11 @@ using System.Text;
 
 namespace Vintagestory.API.Common.Entities
 {
+    public interface IPettable
+    {
+        bool CanPet(Entity byEntity);
+    }
+
     /// <summary>
     /// Called after a physics tick has happened
     /// </summary>

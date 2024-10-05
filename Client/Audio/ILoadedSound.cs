@@ -4,7 +4,7 @@ using Vintagestory.API.MathTools;
 namespace Vintagestory.API.Client
 {
     /// <summary>
-    /// Represents a loaded game sound 
+    /// Represents a loaded game sound
     /// </summary>
     public interface ILoadedSound : IDisposable
     {
@@ -53,6 +53,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         SoundParams Params { get; }
         bool IsPaused { get; }
+
+        bool IsReady { get; }
 
         /// <summary>
         /// Starts the sound
@@ -136,5 +138,8 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="seconds"></param>
         void FadeOutAndStop(float seconds);
+        void SetLowPassfiltering(float value);
+        void SetReverb(float reverbDecayTime);
+        bool HasReverbStopped(long elapsedMilliseconds);
     }
 }

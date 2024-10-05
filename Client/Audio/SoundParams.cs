@@ -54,6 +54,16 @@ namespace Vintagestory.API.Client
         public float Pitch = 1f;
 
         /// <summary>
+        /// 0...1
+        /// </summary>
+        public float LowPassFilter = 1f;
+
+        /// <summary>
+        /// 0...99f
+        /// </summary>
+        public float ReverbDecayTime = 0f;
+
+        /// <summary>
         /// The range in which the sound does not attenuate at all
         /// </summary>
         public float ReferenceDistance = 3f;

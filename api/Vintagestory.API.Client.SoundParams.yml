@@ -9,11 +9,13 @@ items:
   - Vintagestory.API.Client.SoundParams.#ctor(Vintagestory.API.Common.AssetLocation)
   - Vintagestory.API.Client.SoundParams.DisposeOnFinish
   - Vintagestory.API.Client.SoundParams.Location
+  - Vintagestory.API.Client.SoundParams.LowPassFilter
   - Vintagestory.API.Client.SoundParams.Pitch
   - Vintagestory.API.Client.SoundParams.Position
   - Vintagestory.API.Client.SoundParams.Range
   - Vintagestory.API.Client.SoundParams.ReferenceDistance
   - Vintagestory.API.Client.SoundParams.RelativePosition
+  - Vintagestory.API.Client.SoundParams.ReverbDecayTime
   - Vintagestory.API.Client.SoundParams.ShouldLoop
   - Vintagestory.API.Client.SoundParams.SoundType
   - Vintagestory.API.Client.SoundParams.Volume
@@ -171,6 +173,48 @@ items:
     return:
       type: System.Single
     content.vb: Public Pitch As Single
+- uid: Vintagestory.API.Client.SoundParams.LowPassFilter
+  commentId: F:Vintagestory.API.Client.SoundParams.LowPassFilter
+  id: LowPassFilter
+  parent: Vintagestory.API.Client.SoundParams
+  langs:
+  - csharp
+  - vb
+  name: LowPassFilter
+  nameWithType: SoundParams.LowPassFilter
+  fullName: Vintagestory.API.Client.SoundParams.LowPassFilter
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: 0...1
+  example: []
+  syntax:
+    content: public float LowPassFilter
+    return:
+      type: System.Single
+    content.vb: Public LowPassFilter As Single
+- uid: Vintagestory.API.Client.SoundParams.ReverbDecayTime
+  commentId: F:Vintagestory.API.Client.SoundParams.ReverbDecayTime
+  id: ReverbDecayTime
+  parent: Vintagestory.API.Client.SoundParams
+  langs:
+  - csharp
+  - vb
+  name: ReverbDecayTime
+  nameWithType: SoundParams.ReverbDecayTime
+  fullName: Vintagestory.API.Client.SoundParams.ReverbDecayTime
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: 0...99f
+  example: []
+  syntax:
+    content: public float ReverbDecayTime
+    return:
+      type: System.Single
+    content.vb: Public ReverbDecayTime As Single
 - uid: Vintagestory.API.Client.SoundParams.ReferenceDistance
   commentId: F:Vintagestory.API.Client.SoundParams.ReferenceDistance
   id: ReferenceDistance
