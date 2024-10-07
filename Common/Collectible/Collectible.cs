@@ -2050,6 +2050,11 @@ namespace Vintagestory.API.Common
                 z, (float)size * 0.58f, ColorUtil.WhiteArgb,
                 true, false, true
             );
+
+            for (int i = 0; i < CollectibleBehaviors.Length; i++)
+            {
+                CollectibleBehaviors[i].OnHandbookRecipeRender(capi, recipe, slot, x, y, z, size);
+            }
         }
 
 
