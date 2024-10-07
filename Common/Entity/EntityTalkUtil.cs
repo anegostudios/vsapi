@@ -64,7 +64,7 @@ namespace Vintagestory.API.Util
         protected Entity entity;
 
         public AssetLocation soundName = new AssetLocation("sounds/voice/saxophone");
-        public float soundLength;
+        public float soundLength=-1;
 
         protected List<SlidingPitchSound> slidingPitchSounds = new List<SlidingPitchSound>();
         protected List<SlidingPitchSound> stoppedSlidingSounds = new List<SlidingPitchSound>();
@@ -76,20 +76,28 @@ namespace Vintagestory.API.Util
 
         public bool AddSoundLengthChordDelay;
 
-        public EntityTalkUtil(ICoreAPI api, Entity atEntity)
+        public bool IsMultiSoundVoice;
+
+        public EntityTalkUtil(ICoreAPI api, Entity atEntity, bool isMultiSoundVoice)
         {
             this.sapi = api as ICoreServerAPI;
             this.capi = api as ICoreClientAPI;
             this.entity = atEntity;
+            IsMultiSoundVoice = isMultiSoundVoice;
+
             TalkSpeed = defaultTalkSpeeds();
 
             capi?.Event.RegisterRenderer(new DummyRenderer() { action = OnRenderTick }, EnumRenderStage.Before, "talkfasttilk");
+        }
 
-            if (api.Side == EnumAppSide.Client)
+        List<IAsset> sounds;
+        protected AssetLocation GetSoundLocation(float pitch, out float pitchOffset)
+        {
+            if (soundLength < 0)
             {
                 SoundParams param = new SoundParams()
                 {
-                    Location = soundName,
+                    Location = getSoundLocOnly(pitch, out _),
                     DisposeOnFinish = true,
                     ShouldLoop = false,
                 };
@@ -97,6 +105,31 @@ namespace Vintagestory.API.Util
                 soundLength = sound?.SoundLengthSeconds ?? 0.1f;
                 sound?.Dispose();
             }
+
+            return getSoundLocOnly(pitch, out pitchOffset);
+        }
+
+        private AssetLocation getSoundLocOnly(float pitch, out float pitchOffset)
+        {
+            if (IsMultiSoundVoice)
+            {
+                if (sounds == null)
+                {
+                    sounds = capi.Assets.GetMany(soundName.Path, soundName.Domain, false);
+                }
+
+                int len = sounds.Count;
+                int index = (int)GameMath.Clamp((pitch - 0.65f) * len, 0, len - 1);
+
+                float pitchPerStep = 1f / len;
+                float basePitch = index * pitchPerStep + 0.65f;
+                pitchOffset = pitch - basePitch;
+
+                return sounds[index].Location;
+            }
+
+            pitchOffset = pitch;
+            return soundName;
         }
 
         private void OnRenderTick(float dt)
@@ -174,7 +207,7 @@ namespace Vintagestory.API.Util
                             {
                                 float startpitch = 1.5f;
                                 float endpitch = totalLettersTalked > 0 ? 0.9f : 1.5f;
-                                PlaySound(startpitch, endpitch, 0.5f, 0.4f, soundLen);
+                                PlaySound(startpitch, endpitch, 1f, 0.8f, soundLen);
                                 chordDelay = 0.3f * chordDelayMul;
                             }
                             break;
@@ -182,7 +215,7 @@ namespace Vintagestory.API.Util
                         case EnumTalkType.Goodbye:
                             {
                                 float pitch = 1.25f - 0.6f * (float)totalLettersTalked / totalLettersToTalk;
-                                PlaySound(pitch, pitch * 0.9f, 0.35f, 0.3f, soundLen);
+                                PlaySound(pitch, pitch * 0.9f, 0.7f, 0.6f, soundLen);
                                 chordDelay = 0.25f * chordDelayMul;
                             }
                             break;
@@ -190,26 +223,26 @@ namespace Vintagestory.API.Util
                         case EnumTalkType.Death:
                             {
                                 soundLen = 2.3f;
-                                PlaySound(0.75f, 0.3f, 0.5f, 0.1f, soundLen);
+                                PlaySound(0.75f, 0.3f, 1f, 0.2f, soundLen);
                                 break;
                             }
 
                         case EnumTalkType.Thrust:
                             soundLen = 0.12f;
-                            PlaySound(0.5f, 0.8f, 0.2f, 0.5f, soundLen);
+                            PlaySound(0.5f, 0.8f, 0.4f, 1f, soundLen);
                             break;
 
 
                         case EnumTalkType.Shrug:
                             soundLen = 0.6f;
-                            PlaySound(0.9f, 1.5f, 0.4f, 0.4f, soundLen);
+                            PlaySound(0.9f, 1.5f, 0.8f, 0.8f, soundLen);
                             break;
 
                         case EnumTalkType.Meet:
                             {
                                 
                                 float pitch = 0.75f + 0.5f * (float)Rand.NextDouble() + (float)totalLettersTalked / totalLettersToTalk / 3;
-                                PlaySound(pitch, pitch * 1.5f, 0.25f, 0.25f, soundLen);
+                                PlaySound(pitch, pitch * 1.5f, 0.75f, 0.75f, soundLen);
 
                                 if (currentLetterInWord > 1 && capi.World.Rand.NextDouble() < 0.35)
                                 {
@@ -242,7 +275,7 @@ namespace Vintagestory.API.Util
                             {
                                 float startPitch = 0.75f + 0.25f * (float)Rand.NextDouble();
                                 float endPitch = 0.75f + 0.25f * (float)Rand.NextDouble();
-                                PlaySound(startPitch, endPitch, 0.5f, 0.5f, soundLen);
+                                PlaySound(startPitch, endPitch, 0.75f, 0.75f, soundLen);
 
                                 if (currentLetterInWord > 1 && capi.World.Rand.NextDouble() < 0.35)
                                 {
@@ -260,7 +293,7 @@ namespace Vintagestory.API.Util
 
                                 float startPitch = rnd + 1.5f - currentLetterInWord / (20f / pfac);
                                 float endPitch = startPitch - 0.05f;
-                                PlaySound(startPitch, endPitch, 0.6f, 0.6f, soundLen);
+                                PlaySound(startPitch, endPitch, 1f, 0.8f, soundLen);
 
                                 chordDelay = 0.2f * chordDelayMul * pfac;
                                 
@@ -271,7 +304,7 @@ namespace Vintagestory.API.Util
                             {
                                 float pitch = 0.75f + 0.5f * (float)Rand.NextDouble() + (1 - (float)totalLettersTalked / totalLettersToTalk);
                                 soundLen /= 4;
-                                var vol = 0.25f + (1 - (float)totalLettersTalked / totalLettersToTalk) / 2;
+                                var vol = 0.5f + (1 - (float)totalLettersTalked / totalLettersToTalk);
 
                                 PlaySound(pitch, pitch - 0.2f, vol, vol, soundLen);
 
@@ -288,7 +321,7 @@ namespace Vintagestory.API.Util
                             {
                                 float pitch = 0.75f + 0.4f * (float)Rand.NextDouble() + (1 - (float)totalLettersTalked / totalLettersToTalk);
 
-                                PlaySound(pitch, 0.25f + (1 - (float)totalLettersTalked / totalLettersToTalk) / 2.5f, soundLen);
+                                PlaySound(pitch, 0.5f + (1 - (float)totalLettersTalked / totalLettersToTalk) / 1.25f, soundLen);
 
                                 if (currentLetterInWord > 1 && capi.World.Rand.NextDouble() < 0.35)
                                 {
@@ -336,11 +369,13 @@ namespace Vintagestory.API.Util
             startvolume *= volumneModifier;
             endvolumne *= volumneModifier;
 
+            var loc = GetSoundLocation(startPitch, out var pitchOffset);
+
             SoundParams param = new SoundParams()
             {
-                Location = soundName,
+                Location = loc,
                 DisposeOnFinish = true,
-                Pitch = startPitch,
+                Pitch = pitchOffset,
                 Volume = startvolume,
                 Position = entity.Pos.XYZ.ToVec3f().Add(0, (float)entity.LocalEyePos.Y, 0),
                 ShouldLoop = false,
@@ -352,8 +387,8 @@ namespace Vintagestory.API.Util
             slidingPitchSounds.Add(new SlidingPitchSound()
             {
                 TalkType = talkType,
-                startPitch = startPitch,
-                endPitch = endPitch,
+                startPitch = pitchOffset,
+                endPitch = (endPitch - startPitch) + pitchOffset,
                 sound = sound,
                 startMs = capi.World.ElapsedMilliseconds,
                 length = length,

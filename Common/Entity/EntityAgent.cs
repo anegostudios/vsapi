@@ -64,12 +64,10 @@ namespace Vintagestory.API.Common
 
         protected EntityControls controls;
         protected EntityControls servercontrols;
-
-
-
-
+        protected bool alwaysRunIdle = false;
         public IMountableSeat MountedOn { get; protected set; }
         public EnumEntityActivity CurrentControls;
+        
 
         internal virtual bool LoadControlsFromServer
         {
@@ -102,7 +100,6 @@ namespace Vintagestory.API.Common
         /// </summary>
         public bool AllowDespawn = true;
 
-        protected bool alwaysRunIdle = false;
 
 
 
@@ -184,13 +181,8 @@ namespace Vintagestory.API.Common
             TreeAttribute mountableTree = new TreeAttribute();
             onmount?.MountableToTreeAttributes(mountableTree);
             WatchedAttributes["mountedOn"] = mountableTree;
-
-            /*var mountable = World.ClassRegistry.GetMountable(WatchedAttributes["mountedOn"] as TreeAttribute);
-            if (mountable != null) WatchedAttributes.MarkPathDirty("mountedOn");
-            else doMount(onmount); // ClassRegistry.CreateMountable() might not have the onmount as a loaded entity yet*/
-            // ^ WTF is this for? This makes no sense at all
-
             doMount(onmount);
+            WatchedAttributes.MarkPathDirty("mountedOn");
             return true;
         }
 
@@ -493,6 +485,11 @@ namespace Vintagestory.API.Common
                 bool anyAverageAnimActive = false;
                 bool skipDefaultAnim = false;
 
+                // Tyron, Sep 27
+                // Change of plans. Lets try to run the idle animation only when no other Animation runs with BlendMode Average
+                // Tyron, Oct 3
+                // Apparently we cannot do that for first person animations? It borks hard. EntityPlayer.OnGameTick() now sets alwaysRunIdle while in fp mode
+
                 AnimationMetaData[] animations = Properties.Client.Animations;
                 for (int i = 0; animations != null && i < animations.Length; i++)
                 {
@@ -501,7 +498,7 @@ namespace Vintagestory.API.Common
                     bool isDefaultAnim = anim?.TriggeredBy?.DefaultAnim == true;
                     bool nowActive = anim.Matches((int)CurrentControls) || (isDefaultAnim && CurrentControls == EnumEntityActivity.Idle);
 
-                    anyAverageAnimActive |= (nowActive && anim.TriggeredBy?.DefaultAnim != true) || (wasActive && !anim.WasStartedFromTrigger) || (MountedOn != null && MountedOn.SkipIdleAnimation);
+                    anyAverageAnimActive |= !isDefaultAnim && wasActive && anim.BlendMode == EnumAnimationBlendMode.Average; //  // (nowActive && anim.TriggeredBy?.DefaultAnim != true) || (wasActive && !anim.WasStartedFromTrigger) || (MountedOn != null && MountedOn.SkipIdleAnimation);
                     skipDefaultAnim |= (nowActive || (wasActive && !anim.WasStartedFromTrigger)) && anim.SupressDefaultAnimation;
 
                     if (isDefaultAnim)

@@ -164,8 +164,8 @@ Class EntityTalkUtil
 
   <a id="Vintagestory_API_Util_EntityTalkUtil__ctor_" data-uid="Vintagestory.API.Util.EntityTalkUtil.#ctor*"></a>
 
-  <h3 id="Vintagestory_API_Util_EntityTalkUtil__ctor_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_" data-uid="Vintagestory.API.Util.EntityTalkUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity)">
-  EntityTalkUtil(ICoreAPI, Entity)
+  <h3 id="Vintagestory_API_Util_EntityTalkUtil__ctor_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_System_Boolean_" data-uid="Vintagestory.API.Util.EntityTalkUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,System.Boolean)">
+  EntityTalkUtil(ICoreAPI, Entity, bool)
   
   </h3>
 
@@ -173,7 +173,7 @@ Class EntityTalkUtil
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EntityTalkUtil(ICoreAPI api, Entity atEntity)</code></pre>
+    <pre><code class="lang-csharp hljs">public EntityTalkUtil(ICoreAPI api, Entity atEntity, bool isMultiSoundVoice)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -181,6 +181,8 @@ Class EntityTalkUtil
     <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
     <dd></dd>
     <dt><code>atEntity</code> <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html">Entity</a></dt>
+    <dd></dd>
+    <dt><code>isMultiSoundVoice</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -210,6 +212,36 @@ Class EntityTalkUtil
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool AddSoundLengthChordDelay</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Util_EntityTalkUtil_IsMultiSoundVoice" data-uid="Vintagestory.API.Util.EntityTalkUtil.IsMultiSoundVoice">
+  IsMultiSoundVoice
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsMultiSoundVoice</code></pre>
   </div>
 
 
@@ -866,6 +898,44 @@ Class EntityTalkUtil
 
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="Vintagestory_API_Util_EntityTalkUtil_GetSoundLocation_" data-uid="Vintagestory.API.Util.EntityTalkUtil.GetSoundLocation*"></a>
+
+  <h3 id="Vintagestory_API_Util_EntityTalkUtil_GetSoundLocation_System_Single_System_Single__" data-uid="Vintagestory.API.Util.EntityTalkUtil.GetSoundLocation(System.Single,System.Single@)">
+  GetSoundLocation(float, out float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected AssetLocation GetSoundLocation(float pitch, out float pitchOffset)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pitch</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+    <dt><code>pitchOffset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_Util_EntityTalkUtil_OnGameTick_" data-uid="Vintagestory.API.Util.EntityTalkUtil.OnGameTick*"></a>

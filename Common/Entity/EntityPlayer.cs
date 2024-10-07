@@ -15,7 +15,7 @@ namespace Vintagestory.API.Common
 {
     public delegate bool CanSpawnNearbyDelegate(EntityProperties type, Vec3d spawnPosition, RuntimeSpawnConditions sc);
 
-    public class EntityPlayer : EntityHumanoid
+    public class EntityPlayer : EntityHumanoid, IPettable
     {
         /// <summary>
         /// The block position previously selected by the player
@@ -305,7 +305,6 @@ namespace Vintagestory.API.Common
             selfFpAnimManager = new PlayerAnimationManager();
 
             requirePosesOnServer = true;
-            alwaysRunIdle = true;
 
             Stats
                 .Register("healingeffectivness")
@@ -343,7 +342,7 @@ namespace Vintagestory.API.Common
         {
             controls.StopAllMovement();
 
-            talkUtil = new EntityTalkUtil(api, this);
+            talkUtil = new EntityTalkUtil(api, this, false);
 
             if (api.Side == EnumAppSide.Client)
             {
@@ -644,6 +643,7 @@ namespace Vintagestory.API.Common
             if (World.Side == EnumAppSide.Client)
             {
                 talkUtil.OnGameTick(dt);
+
             } else
             {
                 HandleSeraphHandAnimations(dt);
@@ -654,6 +654,11 @@ namespace Vintagestory.API.Common
             if (Api.Side == EnumAppSide.Server || !isSelf)
             {
                 updateEyeHeight(dt);
+            }
+
+            if (isSelf)
+            {
+                alwaysRunIdle = (Api as ICoreClientAPI).Render.CameraType == EnumCameraMode.FirstPerson && !selfNowShadowPass;
             }
 
             climateCondAccum += dt;
@@ -812,7 +817,7 @@ namespace Vintagestory.API.Common
                 nowHeldRightHitAnim = "breakhand";
                 nowHeldRightUseAnim = "interactstatic";
 
-                if (EntitySelection != null && EntitySelection.Entity.Pos.DistanceTo(Pos) <= 1.15)
+                if (EntitySelection != null && EntitySelection.Entity.Pos.DistanceTo(Pos) <= 1.15 && EntitySelection.Entity.GetInterface<IPettable>()?.CanPet(this) == true)
                 {
                     if (EntitySelection.Entity.SelectionBox.Y2 > 0.8) nowHeldRightUseAnim = "petlarge";
                     if (EntitySelection.Entity.SelectionBox.Y2 <= 0.8 && controls.Sneak) nowHeldRightUseAnim = "petsmall";
@@ -1531,7 +1536,11 @@ namespace Vintagestory.API.Common
             {
                 // Client side
             }
+        }
 
+        public bool CanPet(Entity byEntity)
+        {
+            return true;
         }
     }
 }

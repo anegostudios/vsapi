@@ -2,6 +2,7 @@
 using ProtoBuf;
 using System;
 using System.IO;
+using Vintagestory.API.Client;
 
 namespace Vintagestory.API.MathTools
 {
@@ -589,6 +590,14 @@ namespace Vintagestory.API.MathTools
         public static Vec3d CreateFromBytes(BinaryReader reader)
         {
             return new Vec3d(reader.ReadDouble(), reader.ReadDouble(), reader.ReadDouble());
+        }
+
+
+        public Vec3d RotatedCopy(float yaw)
+        {
+            Matrixf mat = new Matrixf();
+            mat.RotateY(yaw);
+            return mat.TransformVector(new Vec4d(X, Y, Z, 0)).XYZ;
         }
 
         public Vec3d AheadCopy(double offset, float Pitch, float Yaw)

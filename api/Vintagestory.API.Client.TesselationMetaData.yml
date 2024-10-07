@@ -21,6 +21,8 @@ items:
   - Vintagestory.API.Client.TesselationMetaData.WithDamageEffect
   - Vintagestory.API.Client.TesselationMetaData.WithJointIds
   - Vintagestory.API.Client.TesselationMetaData.defaultTextureSize
+  - Vintagestory.API.Client.TesselationMetaData.randomRotMatrices
+  - Vintagestory.API.Client.TesselationMetaData.randomRotations
   langs:
   - csharp
   - vb
@@ -47,6 +49,44 @@ items:
   extensionMethods:
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Client.TesselationMetaData.randomRotations
+  commentId: F:Vintagestory.API.Client.TesselationMetaData.randomRotations
+  id: randomRotations
+  parent: Vintagestory.API.Client.TesselationMetaData
+  langs:
+  - csharp
+  - vb
+  name: randomRotations
+  nameWithType: TesselationMetaData.randomRotations
+  fullName: Vintagestory.API.Client.TesselationMetaData.randomRotations
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public static float[] randomRotations
+    return:
+      type: System.Single[]
+    content.vb: Public Shared randomRotations As Single()
+- uid: Vintagestory.API.Client.TesselationMetaData.randomRotMatrices
+  commentId: F:Vintagestory.API.Client.TesselationMetaData.randomRotMatrices
+  id: randomRotMatrices
+  parent: Vintagestory.API.Client.TesselationMetaData
+  langs:
+  - csharp
+  - vb
+  name: randomRotMatrices
+  nameWithType: TesselationMetaData.randomRotMatrices
+  fullName: Vintagestory.API.Client.TesselationMetaData.randomRotMatrices
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public static float[][] randomRotMatrices
+    return:
+      type: System.Single[][]
+    content.vb: Public Shared randomRotMatrices As Single()()
 - uid: Vintagestory.API.Client.TesselationMetaData.TexSource
   commentId: F:Vintagestory.API.Client.TesselationMetaData.TexSource
   id: TexSource
@@ -779,6 +819,56 @@ references:
   - uid: Vintagestory.API.Util
     name: Util
     href: Vintagestory.API.Util.html
+- uid: System.Single[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float[]
+  nameWithType: float[]
+  fullName: float[]
+  nameWithType.vb: Single()
+  fullName.vb: Single()
+  name.vb: Single()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+- uid: System.Single[][]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float[][]
+  nameWithType: float[][]
+  fullName: float[][]
+  nameWithType.vb: Single()()
+  fullName.vb: Single()()
+  name.vb: Single()()
+  spec.csharp:
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '['
+  - name: ']'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: (
+  - name: )
+  - name: (
+  - name: )
 - uid: Vintagestory.API.Client.ITexPositionSource
   commentId: T:Vintagestory.API.Client.ITexPositionSource
   parent: Vintagestory.API.Client

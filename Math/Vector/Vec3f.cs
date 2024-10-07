@@ -2,6 +2,7 @@
 using ProtoBuf;
 using System;
 using System.IO;
+using Vintagestory.API.Client;
 
 namespace Vintagestory.API.MathTools
 {
@@ -133,6 +134,12 @@ namespace Vintagestory.API.MathTools
             this.Z = -Z;
         }
 
+        public Vec3f RotatedCopy(float yaw)
+        {
+            Matrixf mat = new Matrixf();
+            mat.RotateYDeg(yaw);
+            return mat.TransformVector(new Vec4f(X, Y, Z, 0)).XYZ;
+        }
 
 
         /// <summary>

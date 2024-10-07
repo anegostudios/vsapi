@@ -46,6 +46,7 @@ items:
   - Vintagestory.API.MathTools.Vec3f.One
   - Vintagestory.API.MathTools.Vec3f.R
   - Vintagestory.API.MathTools.Vec3f.ReduceBy(System.Single)
+  - Vintagestory.API.MathTools.Vec3f.RotatedCopy(System.Single)
   - Vintagestory.API.MathTools.Vec3f.Set(System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.Vec3f.Set(System.Single[])
   - Vintagestory.API.MathTools.Vec3f.Set(Vintagestory.API.MathTools.Vec3d)
@@ -601,6 +602,32 @@ items:
     content: public void Negate()
     content.vb: Public Sub Negate()
   overload: Vintagestory.API.MathTools.Vec3f.Negate*
+- uid: Vintagestory.API.MathTools.Vec3f.RotatedCopy(System.Single)
+  commentId: M:Vintagestory.API.MathTools.Vec3f.RotatedCopy(System.Single)
+  id: RotatedCopy(System.Single)
+  parent: Vintagestory.API.MathTools.Vec3f
+  langs:
+  - csharp
+  - vb
+  name: RotatedCopy(float)
+  nameWithType: Vec3f.RotatedCopy(float)
+  fullName: Vintagestory.API.MathTools.Vec3f.RotatedCopy(float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public Vec3f RotatedCopy(float yaw)
+    parameters:
+    - id: yaw
+      type: System.Single
+    return:
+      type: Vintagestory.API.MathTools.Vec3f
+    content.vb: Public Function RotatedCopy(yaw As Single) As Vec3f
+  overload: Vintagestory.API.MathTools.Vec3f.RotatedCopy*
+  nameWithType.vb: Vec3f.RotatedCopy(Single)
+  fullName.vb: Vintagestory.API.MathTools.Vec3f.RotatedCopy(Single)
+  name.vb: RotatedCopy(Single)
 - uid: Vintagestory.API.MathTools.Vec3f.Dot(Vintagestory.API.MathTools.Vec3f)
   commentId: M:Vintagestory.API.MathTools.Vec3f.Dot(Vintagestory.API.MathTools.Vec3f)
   id: Dot(Vintagestory.API.MathTools.Vec3f)
@@ -2591,6 +2618,12 @@ references:
   name: Negate
   nameWithType: Vec3f.Negate
   fullName: Vintagestory.API.MathTools.Vec3f.Negate
+- uid: Vintagestory.API.MathTools.Vec3f.RotatedCopy*
+  commentId: Overload:Vintagestory.API.MathTools.Vec3f.RotatedCopy
+  href: Vintagestory.API.MathTools.Vec3f.html#Vintagestory_API_MathTools_Vec3f_RotatedCopy_System_Single_
+  name: RotatedCopy
+  nameWithType: Vec3f.RotatedCopy
+  fullName: Vintagestory.API.MathTools.Vec3f.RotatedCopy
 - uid: Vintagestory.API.MathTools.Vec3f.Dot*
   commentId: Overload:Vintagestory.API.MathTools.Vec3f.Dot
   href: Vintagestory.API.MathTools.Vec3f.html#Vintagestory_API_MathTools_Vec3f_Dot_Vintagestory_API_MathTools_Vec3f_

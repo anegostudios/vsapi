@@ -5,8 +5,10 @@ items:
   id: EntityTalkUtil
   parent: Vintagestory.API.Util
   children:
-  - Vintagestory.API.Util.EntityTalkUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity)
+  - Vintagestory.API.Util.EntityTalkUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,System.Boolean)
   - Vintagestory.API.Util.EntityTalkUtil.AddSoundLengthChordDelay
+  - Vintagestory.API.Util.EntityTalkUtil.GetSoundLocation(System.Single,System.Single@)
+  - Vintagestory.API.Util.EntityTalkUtil.IsMultiSoundVoice
   - Vintagestory.API.Util.EntityTalkUtil.LongNote
   - Vintagestory.API.Util.EntityTalkUtil.OnGameTick(System.Single)
   - Vintagestory.API.Util.EntityTalkUtil.PlaySound(System.Single,System.Single,System.Single)
@@ -458,32 +460,81 @@ items:
     return:
       type: System.Boolean
     content.vb: Public AddSoundLengthChordDelay As Boolean
-- uid: Vintagestory.API.Util.EntityTalkUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity)
-  commentId: M:Vintagestory.API.Util.EntityTalkUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity)
-  id: '#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity)'
+- uid: Vintagestory.API.Util.EntityTalkUtil.IsMultiSoundVoice
+  commentId: F:Vintagestory.API.Util.EntityTalkUtil.IsMultiSoundVoice
+  id: IsMultiSoundVoice
   parent: Vintagestory.API.Util.EntityTalkUtil
   langs:
   - csharp
   - vb
-  name: EntityTalkUtil(ICoreAPI, Entity)
-  nameWithType: EntityTalkUtil.EntityTalkUtil(ICoreAPI, Entity)
-  fullName: Vintagestory.API.Util.EntityTalkUtil.EntityTalkUtil(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity)
+  name: IsMultiSoundVoice
+  nameWithType: EntityTalkUtil.IsMultiSoundVoice
+  fullName: Vintagestory.API.Util.EntityTalkUtil.IsMultiSoundVoice
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public bool IsMultiSoundVoice
+    return:
+      type: System.Boolean
+    content.vb: Public IsMultiSoundVoice As Boolean
+- uid: Vintagestory.API.Util.EntityTalkUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,System.Boolean)
+  commentId: M:Vintagestory.API.Util.EntityTalkUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,System.Boolean)
+  id: '#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,System.Boolean)'
+  parent: Vintagestory.API.Util.EntityTalkUtil
+  langs:
+  - csharp
+  - vb
+  name: EntityTalkUtil(ICoreAPI, Entity, bool)
+  nameWithType: EntityTalkUtil.EntityTalkUtil(ICoreAPI, Entity, bool)
+  fullName: Vintagestory.API.Util.EntityTalkUtil.EntityTalkUtil(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity, bool)
   type: Constructor
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Util
   syntax:
-    content: public EntityTalkUtil(ICoreAPI api, Entity atEntity)
+    content: public EntityTalkUtil(ICoreAPI api, Entity atEntity, bool isMultiSoundVoice)
     parameters:
     - id: api
       type: Vintagestory.API.Common.ICoreAPI
     - id: atEntity
       type: Vintagestory.API.Common.Entities.Entity
-    content.vb: Public Sub New(api As ICoreAPI, atEntity As Entity)
+    - id: isMultiSoundVoice
+      type: System.Boolean
+    content.vb: Public Sub New(api As ICoreAPI, atEntity As Entity, isMultiSoundVoice As Boolean)
   overload: Vintagestory.API.Util.EntityTalkUtil.#ctor*
-  nameWithType.vb: EntityTalkUtil.New(ICoreAPI, Entity)
-  fullName.vb: Vintagestory.API.Util.EntityTalkUtil.New(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity)
-  name.vb: New(ICoreAPI, Entity)
+  nameWithType.vb: EntityTalkUtil.New(ICoreAPI, Entity, Boolean)
+  fullName.vb: Vintagestory.API.Util.EntityTalkUtil.New(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity, Boolean)
+  name.vb: New(ICoreAPI, Entity, Boolean)
+- uid: Vintagestory.API.Util.EntityTalkUtil.GetSoundLocation(System.Single,System.Single@)
+  commentId: M:Vintagestory.API.Util.EntityTalkUtil.GetSoundLocation(System.Single,System.Single@)
+  id: GetSoundLocation(System.Single,System.Single@)
+  parent: Vintagestory.API.Util.EntityTalkUtil
+  langs:
+  - csharp
+  - vb
+  name: GetSoundLocation(float, out float)
+  nameWithType: EntityTalkUtil.GetSoundLocation(float, out float)
+  fullName: Vintagestory.API.Util.EntityTalkUtil.GetSoundLocation(float, out float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: protected AssetLocation GetSoundLocation(float pitch, out float pitchOffset)
+    parameters:
+    - id: pitch
+      type: System.Single
+    - id: pitchOffset
+      type: System.Single
+    return:
+      type: Vintagestory.API.Common.AssetLocation
+    content.vb: Protected Function GetSoundLocation(pitch As Single, pitchOffset As Single) As AssetLocation
+  overload: Vintagestory.API.Util.EntityTalkUtil.GetSoundLocation*
+  nameWithType.vb: EntityTalkUtil.GetSoundLocation(Single, Single)
+  fullName.vb: Vintagestory.API.Util.EntityTalkUtil.GetSoundLocation(Single, Single)
+  name.vb: GetSoundLocation(Single, Single)
 - uid: Vintagestory.API.Util.EntityTalkUtil.SetModifiers(System.Single,System.Single,System.Single)
   commentId: M:Vintagestory.API.Util.EntityTalkUtil.SetModifiers(System.Single,System.Single,System.Single)
   id: SetModifiers(System.Single,System.Single,System.Single)
@@ -1410,7 +1461,7 @@ references:
   - name: )
 - uid: Vintagestory.API.Util.EntityTalkUtil.#ctor*
   commentId: Overload:Vintagestory.API.Util.EntityTalkUtil.#ctor
-  href: Vintagestory.API.Util.EntityTalkUtil.html#Vintagestory_API_Util_EntityTalkUtil__ctor_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_
+  href: Vintagestory.API.Util.EntityTalkUtil.html#Vintagestory_API_Util_EntityTalkUtil__ctor_Vintagestory_API_Common_ICoreAPI_Vintagestory_API_Common_Entities_Entity_System_Boolean_
   name: EntityTalkUtil
   nameWithType: EntityTalkUtil.EntityTalkUtil
   fullName: Vintagestory.API.Util.EntityTalkUtil.EntityTalkUtil
@@ -1424,6 +1475,12 @@ references:
   name: ICoreAPI
   nameWithType: ICoreAPI
   fullName: Vintagestory.API.Common.ICoreAPI
+- uid: Vintagestory.API.Util.EntityTalkUtil.GetSoundLocation*
+  commentId: Overload:Vintagestory.API.Util.EntityTalkUtil.GetSoundLocation
+  href: Vintagestory.API.Util.EntityTalkUtil.html#Vintagestory_API_Util_EntityTalkUtil_GetSoundLocation_System_Single_System_Single__
+  name: GetSoundLocation
+  nameWithType: EntityTalkUtil.GetSoundLocation
+  fullName: Vintagestory.API.Util.EntityTalkUtil.GetSoundLocation
 - uid: Vintagestory.API.Util.EntityTalkUtil.SetModifiers*
   commentId: Overload:Vintagestory.API.Util.EntityTalkUtil.SetModifiers
   href: Vintagestory.API.Util.EntityTalkUtil.html#Vintagestory_API_Util_EntityTalkUtil_SetModifiers_System_Single_System_Single_System_Single_
