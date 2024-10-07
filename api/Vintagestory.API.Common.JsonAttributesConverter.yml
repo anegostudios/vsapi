@@ -51,14 +51,17 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Determines whether this instance can convert the specified object type.
   example: []
   syntax:
     content: public override bool CanConvert(Type objectType)
     parameters:
     - id: objectType
       type: System.Type
+      description: Type of the object.
     return:
       type: System.Boolean
+      description: <code>true</code> if this instance can convert the specified object type; otherwise, <code>false</code>.
     content.vb: Public Overrides Function CanConvert(objectType As Type) As Boolean
   overridden: Newtonsoft.Json.JsonConverter.CanConvert(System.Type)
   overload: Vintagestory.API.Common.JsonAttributesConverter.CanConvert*
@@ -76,20 +79,26 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Reads the JSON representation of the object.
   example: []
   syntax:
     content: public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     parameters:
     - id: reader
       type: Newtonsoft.Json.JsonReader
+      description: The <xref href="Newtonsoft.Json.JsonReader" data-throw-if-not-resolved="false"></xref> to read from.
     - id: objectType
       type: System.Type
+      description: Type of the object.
     - id: existingValue
       type: System.Object
+      description: The existing value of object being read.
     - id: serializer
       type: Newtonsoft.Json.JsonSerializer
+      description: The calling serializer.
     return:
       type: System.Object
+      description: The object value.
     content.vb: Public Overrides Function ReadJson(reader As JsonReader, objectType As Type, existingValue As Object, serializer As JsonSerializer) As Object
   overridden: Newtonsoft.Json.JsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)
   overload: Vintagestory.API.Common.JsonAttributesConverter.ReadJson*
@@ -110,16 +119,20 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
+  summary: Writes the JSON representation of the object.
   example: []
   syntax:
     content: public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     parameters:
     - id: writer
       type: Newtonsoft.Json.JsonWriter
+      description: The <xref href="Newtonsoft.Json.JsonWriter" data-throw-if-not-resolved="false"></xref> to write to.
     - id: value
       type: System.Object
+      description: The value.
     - id: serializer
       type: Newtonsoft.Json.JsonSerializer
+      description: The calling serializer.
     content.vb: Public Overrides Sub WriteJson(writer As JsonWriter, value As Object, serializer As JsonSerializer)
   overridden: Newtonsoft.Json.JsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)
   overload: Vintagestory.API.Common.JsonAttributesConverter.WriteJson*
@@ -649,6 +662,13 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: Newtonsoft.Json.JsonReader
+  commentId: T:Newtonsoft.Json.JsonReader
+  parent: Newtonsoft.Json
+  isExternal: true
+  name: JsonReader
+  nameWithType: JsonReader
+  fullName: Newtonsoft.Json.JsonReader
 - uid: Newtonsoft.Json.JsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)
   commentId: M:Newtonsoft.Json.JsonConverter.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)
   parent: Newtonsoft.Json.JsonConverter
@@ -718,13 +738,6 @@ references:
   name: ReadJson
   nameWithType: JsonAttributesConverter.ReadJson
   fullName: Vintagestory.API.Common.JsonAttributesConverter.ReadJson
-- uid: Newtonsoft.Json.JsonReader
-  commentId: T:Newtonsoft.Json.JsonReader
-  parent: Newtonsoft.Json
-  isExternal: true
-  name: JsonReader
-  nameWithType: JsonReader
-  fullName: Newtonsoft.Json.JsonReader
 - uid: Newtonsoft.Json.JsonSerializer
   commentId: T:Newtonsoft.Json.JsonSerializer
   parent: Newtonsoft.Json
@@ -732,6 +745,13 @@ references:
   name: JsonSerializer
   nameWithType: JsonSerializer
   fullName: Newtonsoft.Json.JsonSerializer
+- uid: Newtonsoft.Json.JsonWriter
+  commentId: T:Newtonsoft.Json.JsonWriter
+  parent: Newtonsoft.Json
+  isExternal: true
+  name: JsonWriter
+  nameWithType: JsonWriter
+  fullName: Newtonsoft.Json.JsonWriter
 - uid: Newtonsoft.Json.JsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)
   commentId: M:Newtonsoft.Json.JsonConverter.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)
   parent: Newtonsoft.Json.JsonConverter
@@ -789,10 +809,3 @@ references:
   name: WriteJson
   nameWithType: JsonAttributesConverter.WriteJson
   fullName: Vintagestory.API.Common.JsonAttributesConverter.WriteJson
-- uid: Newtonsoft.Json.JsonWriter
-  commentId: T:Newtonsoft.Json.JsonWriter
-  parent: Newtonsoft.Json
-  isExternal: true
-  name: JsonWriter
-  nameWithType: JsonWriter
-  fullName: Newtonsoft.Json.JsonWriter
