@@ -130,7 +130,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public int HorizontalAngleIndex { get { return horizontalAngleIndex; } }
         /// <summary>
-        /// Returns a normal vector of this face
+        /// Returns a normal vector of this face.  Classic iterating through these at a position x,y,z is unlikely to be dimension-aware, use BlockFacing.IterateThruFacingOffsets(pos) instead.
         /// </summary>
         public Vec3i Normali { get { return normali; } }
         /// <summary>
@@ -363,6 +363,7 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
+        /// In 1.20+ this is the recommended technique for examining blocks on all sides of a BlockPos position, as it is dimension-aware<br/>
         /// Successive calls to this when looping through the standard six BlockFacings will set pos to the relevant facing offset from the original position<br/>
         /// NOTE: this modifies the fields of the pos parameter, which is better for heap usage than creating a new BlockPos object for each iteration
         /// <br/>If necessary to restore the original blockPos value, call FinishIteratingAllFaces(pos)

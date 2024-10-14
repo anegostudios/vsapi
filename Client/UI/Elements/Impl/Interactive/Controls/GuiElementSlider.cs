@@ -186,7 +186,10 @@ namespace Vintagestory.API.Client
 
             api.Render.Render2DTexturePremultipliedAlpha(waterTexture.TextureId, Bounds.renderX + padding, Bounds.renderY + padding, (int)(handlePosition + 5), (int)insetHeight);
 
-            api.Render.Render2DTexturePremultipliedAlpha(handleTexture.TextureId, Bounds.renderX + handlePosition, Bounds.renderY - dy, (int)handleWidth + 4, (int)handleHeight + 4);
+            if (Enabled)
+            {
+                api.Render.Render2DTexturePremultipliedAlpha(handleTexture.TextureId, Bounds.renderX + handlePosition, Bounds.renderY - dy, (int)handleWidth + 4, (int)handleHeight + 4);
+            }
 
 
             if (mouseDownOnSlider || mouseOnSlider)

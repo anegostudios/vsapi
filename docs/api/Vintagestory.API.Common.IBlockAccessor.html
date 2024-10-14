@@ -927,6 +927,85 @@ Same as <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintag
 
 
 
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlockAbove_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockAbove*"></a>
+
+  <h3 id="Vintagestory_API_Common_IBlockAccessor_GetBlockAbove_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32)">
+  GetBlockAbove(BlockPos, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the block type of the block above the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code &quot;air&quot; and id 0</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block GetBlockAbove(BlockPos pos, int dy = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>dy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlockBelow_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockBelow*"></a>
+
+  <h3 id="Vintagestory_API_Common_IBlockAccessor_GetBlockBelow_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32)">
+  GetBlockBelow(BlockPos, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the block type of the block below the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code &quot;air&quot; and id 0
+<br>Specify a negative dy for a block above!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block GetBlockBelow(BlockPos pos, int dy = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>dy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_IBlockAccessor_GetBlockEntity_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockEntity*"></a>
 
   <h3 id="Vintagestory_API_Common_IBlockAccessor_GetBlockEntity_Vintagestory_API_MathTools_BlockPos_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockEntity(Vintagestory.API.MathTools.BlockPos)">

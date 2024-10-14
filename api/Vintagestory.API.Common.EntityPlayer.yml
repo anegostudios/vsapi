@@ -27,6 +27,7 @@ items:
   - Vintagestory.API.Common.EntityPlayer.GetNearestBlockSoundSource(Vintagestory.API.MathTools.BlockPos,System.Double,System.Int32,System.Boolean)
   - Vintagestory.API.Common.EntityPlayer.GetWalkSpeedMultiplier(System.Double)
   - Vintagestory.API.Common.EntityPlayer.HandleSeraphHandAnimations(System.Single)
+  - Vintagestory.API.Common.EntityPlayer.HeadBobbingAmplitude
   - Vintagestory.API.Common.EntityPlayer.HeadYawLimits
   - Vintagestory.API.Common.EntityPlayer.Ignite
   - Vintagestory.API.Common.EntityPlayer.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Common.ICoreAPI,System.Int64)
@@ -1199,6 +1200,27 @@ items:
     content.vb: Public Overrides Sub OnTesselated()
   overridden: Vintagestory.API.Common.Entities.Entity.OnTesselated
   overload: Vintagestory.API.Common.EntityPlayer.OnTesselated*
+- uid: Vintagestory.API.Common.EntityPlayer.HeadBobbingAmplitude
+  commentId: P:Vintagestory.API.Common.EntityPlayer.HeadBobbingAmplitude
+  id: HeadBobbingAmplitude
+  parent: Vintagestory.API.Common.EntityPlayer
+  langs:
+  - csharp
+  - vb
+  name: HeadBobbingAmplitude
+  nameWithType: EntityPlayer.HeadBobbingAmplitude
+  fullName: Vintagestory.API.Common.EntityPlayer.HeadBobbingAmplitude
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public float HeadBobbingAmplitude { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property HeadBobbingAmplitude As Single
+  overload: Vintagestory.API.Common.EntityPlayer.HeadBobbingAmplitude*
 - uid: Vintagestory.API.Common.EntityPlayer.GetInsideTorsoBlockSoundSource(Vintagestory.API.MathTools.BlockPos)
   commentId: M:Vintagestory.API.Common.EntityPlayer.GetInsideTorsoBlockSoundSource(Vintagestory.API.MathTools.BlockPos)
   id: GetInsideTorsoBlockSoundSource(Vintagestory.API.MathTools.BlockPos)
@@ -6952,6 +6974,12 @@ references:
   name: OnTesselated
   nameWithType: EntityPlayer.OnTesselated
   fullName: Vintagestory.API.Common.EntityPlayer.OnTesselated
+- uid: Vintagestory.API.Common.EntityPlayer.HeadBobbingAmplitude*
+  commentId: Overload:Vintagestory.API.Common.EntityPlayer.HeadBobbingAmplitude
+  href: Vintagestory.API.Common.EntityPlayer.html#Vintagestory_API_Common_EntityPlayer_HeadBobbingAmplitude
+  name: HeadBobbingAmplitude
+  nameWithType: EntityPlayer.HeadBobbingAmplitude
+  fullName: Vintagestory.API.Common.EntityPlayer.HeadBobbingAmplitude
 - uid: Vintagestory.API.Common.EntityPlayer.GetInsideTorsoBlockSoundSource*
   commentId: Overload:Vintagestory.API.Common.EntityPlayer.GetInsideTorsoBlockSoundSource
   href: Vintagestory.API.Common.EntityPlayer.html#Vintagestory_API_Common_EntityPlayer_GetInsideTorsoBlockSoundSource_Vintagestory_API_MathTools_BlockPos_

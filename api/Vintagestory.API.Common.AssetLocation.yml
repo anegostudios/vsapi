@@ -40,6 +40,7 @@ items:
   - Vintagestory.API.Common.AssetLocation.ToShortString
   - Vintagestory.API.Common.AssetLocation.ToString
   - Vintagestory.API.Common.AssetLocation.Valid
+  - Vintagestory.API.Common.AssetLocation.WildCardMatch(Vintagestory.API.Common.AssetLocation,System.String)
   - Vintagestory.API.Common.AssetLocation.WithFilename(System.String)
   - Vintagestory.API.Common.AssetLocation.WithLocationPrefixOnce(Vintagestory.API.Common.AssetLocation)
   - Vintagestory.API.Common.AssetLocation.WithPath(System.String)
@@ -49,6 +50,8 @@ items:
   - Vintagestory.API.Common.AssetLocation.WithPathPrefixOnce(System.String)
   - Vintagestory.API.Common.AssetLocation.WithoutPathAppendix(System.String)
   - Vintagestory.API.Common.AssetLocation.op_Equality(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Common.AssetLocation.op_Explicit(System.String)~Vintagestory.API.Common.AssetLocation
+  - Vintagestory.API.Common.AssetLocation.op_Implicit(Vintagestory.API.Common.AssetLocation)~System.String
   - Vintagestory.API.Common.AssetLocation.op_Inequality(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
   - Vintagestory.API.Common.AssetLocation.toLocations(System.String[])
   langs:
@@ -1263,6 +1266,86 @@ items:
   overload: Vintagestory.API.Common.AssetLocation.CompareTo*
   implements:
   - System.IComparable{Vintagestory.API.Common.AssetLocation}.CompareTo(Vintagestory.API.Common.AssetLocation)
+- uid: Vintagestory.API.Common.AssetLocation.WildCardMatch(Vintagestory.API.Common.AssetLocation,System.String)
+  commentId: M:Vintagestory.API.Common.AssetLocation.WildCardMatch(Vintagestory.API.Common.AssetLocation,System.String)
+  id: WildCardMatch(Vintagestory.API.Common.AssetLocation,System.String)
+  parent: Vintagestory.API.Common.AssetLocation
+  langs:
+  - csharp
+  - vb
+  name: WildCardMatch(AssetLocation, string)
+  nameWithType: AssetLocation.WildCardMatch(AssetLocation, string)
+  fullName: Vintagestory.API.Common.AssetLocation.WildCardMatch(Vintagestory.API.Common.AssetLocation, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public bool WildCardMatch(AssetLocation other, string pathAsRegex)
+    parameters:
+    - id: other
+      type: Vintagestory.API.Common.AssetLocation
+    - id: pathAsRegex
+      type: System.String
+    return:
+      type: System.Boolean
+    content.vb: Public Function WildCardMatch(other As AssetLocation, pathAsRegex As String) As Boolean
+  overload: Vintagestory.API.Common.AssetLocation.WildCardMatch*
+  nameWithType.vb: AssetLocation.WildCardMatch(AssetLocation, String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.WildCardMatch(Vintagestory.API.Common.AssetLocation, String)
+  name.vb: WildCardMatch(AssetLocation, String)
+- uid: Vintagestory.API.Common.AssetLocation.op_Implicit(Vintagestory.API.Common.AssetLocation)~System.String
+  commentId: M:Vintagestory.API.Common.AssetLocation.op_Implicit(Vintagestory.API.Common.AssetLocation)~System.String
+  id: op_Implicit(Vintagestory.API.Common.AssetLocation)~System.String
+  parent: Vintagestory.API.Common.AssetLocation
+  langs:
+  - csharp
+  - vb
+  name: implicit operator string(AssetLocation)
+  nameWithType: AssetLocation.implicit operator string(AssetLocation)
+  fullName: Vintagestory.API.Common.AssetLocation.implicit operator string(Vintagestory.API.Common.AssetLocation)
+  type: Operator
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static implicit operator string(AssetLocation loc)
+    parameters:
+    - id: loc
+      type: Vintagestory.API.Common.AssetLocation
+    return:
+      type: System.String
+    content.vb: Public Shared Widening Operator CType(loc As AssetLocation) As String
+  overload: Vintagestory.API.Common.AssetLocation.op_Implicit*
+  nameWithType.vb: AssetLocation.CType(AssetLocation)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.CType(Vintagestory.API.Common.AssetLocation)
+  name.vb: CType(AssetLocation)
+- uid: Vintagestory.API.Common.AssetLocation.op_Explicit(System.String)~Vintagestory.API.Common.AssetLocation
+  commentId: M:Vintagestory.API.Common.AssetLocation.op_Explicit(System.String)~Vintagestory.API.Common.AssetLocation
+  id: op_Explicit(System.String)~Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common.AssetLocation
+  langs:
+  - csharp
+  - vb
+  name: explicit operator AssetLocation(string)
+  nameWithType: AssetLocation.explicit operator AssetLocation(string)
+  fullName: Vintagestory.API.Common.AssetLocation.explicit operator Vintagestory.API.Common.AssetLocation(string)
+  type: Operator
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public static explicit operator AssetLocation(string code)
+    parameters:
+    - id: code
+      type: System.String
+    return:
+      type: Vintagestory.API.Common.AssetLocation
+    content.vb: Public Shared Narrowing Operator CType(code As String) As AssetLocation
+  overload: Vintagestory.API.Common.AssetLocation.op_Explicit*
+  nameWithType.vb: AssetLocation.CType(String)
+  fullName.vb: Vintagestory.API.Common.AssetLocation.CType(String)
+  name.vb: CType(String)
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -2394,3 +2477,33 @@ references:
   - name: (
   - name: T
   - name: )
+- uid: Vintagestory.API.Common.AssetLocation.WildCardMatch*
+  commentId: Overload:Vintagestory.API.Common.AssetLocation.WildCardMatch
+  href: Vintagestory.API.Common.AssetLocation.html#Vintagestory_API_Common_AssetLocation_WildCardMatch_Vintagestory_API_Common_AssetLocation_System_String_
+  name: WildCardMatch
+  nameWithType: AssetLocation.WildCardMatch
+  fullName: Vintagestory.API.Common.AssetLocation.WildCardMatch
+- uid: Vintagestory.API.Common.AssetLocation.op_Implicit*
+  commentId: Overload:Vintagestory.API.Common.AssetLocation.op_Implicit
+  name: implicit operator
+  nameWithType: AssetLocation.implicit operator
+  fullName: Vintagestory.API.Common.AssetLocation.implicit operator
+  nameWithType.vb: AssetLocation.CType
+  fullName.vb: Vintagestory.API.Common.AssetLocation.CType
+  name.vb: CType
+  spec.csharp:
+  - name: implicit
+  - name: " "
+  - name: operator
+- uid: Vintagestory.API.Common.AssetLocation.op_Explicit*
+  commentId: Overload:Vintagestory.API.Common.AssetLocation.op_Explicit
+  name: explicit operator
+  nameWithType: AssetLocation.explicit operator
+  fullName: Vintagestory.API.Common.AssetLocation.explicit operator
+  nameWithType.vb: AssetLocation.CType
+  fullName.vb: Vintagestory.API.Common.AssetLocation.CType
+  name.vb: CType
+  spec.csharp:
+  - name: explicit
+  - name: " "
+  - name: operator

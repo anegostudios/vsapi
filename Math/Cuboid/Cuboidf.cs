@@ -139,6 +139,17 @@ namespace Vintagestory.API.MathTools
 
         }
 
+        public Cuboidf(float size)
+        {
+            X1 = -size/2;
+            Y1 = -size/2;
+            Z1 = -size/2;
+
+            X2 = size / 2;
+            Y2 = size / 2;
+            Z2 = size / 2;
+        }
+
         public Cuboidf(double x1, double x2, double y1, double y2, double z1, double z2)
         {
             X1 = (float)x1;

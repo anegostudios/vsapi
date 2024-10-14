@@ -2788,10 +2788,10 @@ namespace Vintagestory.API.Common
             ITreeAttribute attr = (ITreeAttribute)itemstack.Attributes["temperature"];
 
             double nowHours = world.Calendar.TotalHours;
-            double lastUpdateHours = attr.GetDouble("temperatureLastUpdate");
+            double lastUpdateHours = attr.GetDecimal("temperatureLastUpdate");
 
             double hourDiff = nowHours - lastUpdateHours;
-            float temp = attr.GetFloat("temperature", 20);
+            float temp = (float)attr.GetDecimal("temperature", 20);
             // 1.5 deg per irl second
             // 1 game hour = irl 60 seconds
             if (hourDiff > 1/85f && temp > 0f)

@@ -5,7 +5,8 @@ items:
   id: PathfinderTask
   parent: Vintagestory.API.Server
   children:
-  - Vintagestory.API.Server.PathfinderTask.#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32)
+  - Vintagestory.API.Server.PathfinderTask.#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32,Vintagestory.API.Common.EnumAICreatureType)
+  - Vintagestory.API.Server.PathfinderTask.CreatureType
   - Vintagestory.API.Server.PathfinderTask.Finished
   - Vintagestory.API.Server.PathfinderTask.collisionBox
   - Vintagestory.API.Server.PathfinderTask.maxFallHeight
@@ -193,6 +194,25 @@ items:
     return:
       type: System.Collections.Generic.List{Vintagestory.API.MathTools.Vec3d}
     content.vb: Public waypoints As List(Of Vec3d)
+- uid: Vintagestory.API.Server.PathfinderTask.CreatureType
+  commentId: F:Vintagestory.API.Server.PathfinderTask.CreatureType
+  id: CreatureType
+  parent: Vintagestory.API.Server.PathfinderTask
+  langs:
+  - csharp
+  - vb
+  name: CreatureType
+  nameWithType: PathfinderTask.CreatureType
+  fullName: Vintagestory.API.Server.PathfinderTask.CreatureType
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: public EnumAICreatureType CreatureType
+    return:
+      type: Vintagestory.API.Common.EnumAICreatureType
+    content.vb: Public CreatureType As EnumAICreatureType
 - uid: Vintagestory.API.Server.PathfinderTask.Finished
   commentId: F:Vintagestory.API.Server.PathfinderTask.Finished
   id: Finished
@@ -212,22 +232,22 @@ items:
     return:
       type: System.Boolean
     content.vb: Public Finished As Boolean
-- uid: Vintagestory.API.Server.PathfinderTask.#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32)
-  commentId: M:Vintagestory.API.Server.PathfinderTask.#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32)
-  id: '#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32)'
+- uid: Vintagestory.API.Server.PathfinderTask.#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32,Vintagestory.API.Common.EnumAICreatureType)
+  commentId: M:Vintagestory.API.Server.PathfinderTask.#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32,Vintagestory.API.Common.EnumAICreatureType)
+  id: '#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32,Vintagestory.API.Common.EnumAICreatureType)'
   parent: Vintagestory.API.Server.PathfinderTask
   langs:
   - csharp
   - vb
-  name: PathfinderTask(BlockPos, BlockPos, int, float, Cuboidf, int, int)
-  nameWithType: PathfinderTask.PathfinderTask(BlockPos, BlockPos, int, float, Cuboidf, int, int)
-  fullName: Vintagestory.API.Server.PathfinderTask.PathfinderTask(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, int, float, Vintagestory.API.MathTools.Cuboidf, int, int)
+  name: PathfinderTask(BlockPos, BlockPos, int, float, Cuboidf, int, int, EnumAICreatureType)
+  nameWithType: PathfinderTask.PathfinderTask(BlockPos, BlockPos, int, float, Cuboidf, int, int, EnumAICreatureType)
+  fullName: Vintagestory.API.Server.PathfinderTask.PathfinderTask(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, int, float, Vintagestory.API.MathTools.Cuboidf, int, int, Vintagestory.API.Common.EnumAICreatureType)
   type: Constructor
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Server
   syntax:
-    content: public PathfinderTask(BlockPos startBlockPos, BlockPos targetBlockPos, int maxFallHeight, float stepHeight, Cuboidf collisionBox, int searchDepth, int mhdistanceTolerance = 0)
+    content: public PathfinderTask(BlockPos startBlockPos, BlockPos targetBlockPos, int maxFallHeight, float stepHeight, Cuboidf collisionBox, int searchDepth, int mhdistanceTolerance = 0, EnumAICreatureType creatureType = EnumAICreatureType.Default)
     parameters:
     - id: startBlockPos
       type: Vintagestory.API.MathTools.BlockPos
@@ -243,11 +263,13 @@ items:
       type: System.Int32
     - id: mhdistanceTolerance
       type: System.Int32
-    content.vb: Public Sub New(startBlockPos As BlockPos, targetBlockPos As BlockPos, maxFallHeight As Integer, stepHeight As Single, collisionBox As Cuboidf, searchDepth As Integer, mhdistanceTolerance As Integer = 0)
+    - id: creatureType
+      type: Vintagestory.API.Common.EnumAICreatureType
+    content.vb: Public Sub New(startBlockPos As BlockPos, targetBlockPos As BlockPos, maxFallHeight As Integer, stepHeight As Single, collisionBox As Cuboidf, searchDepth As Integer, mhdistanceTolerance As Integer = 0, creatureType As EnumAICreatureType = EnumAICreatureType.Default)
   overload: Vintagestory.API.Server.PathfinderTask.#ctor*
-  nameWithType.vb: PathfinderTask.New(BlockPos, BlockPos, Integer, Single, Cuboidf, Integer, Integer)
-  fullName.vb: Vintagestory.API.Server.PathfinderTask.New(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, Integer, Single, Vintagestory.API.MathTools.Cuboidf, Integer, Integer)
-  name.vb: New(BlockPos, BlockPos, Integer, Single, Cuboidf, Integer, Integer)
+  nameWithType.vb: PathfinderTask.New(BlockPos, BlockPos, Integer, Single, Cuboidf, Integer, Integer, EnumAICreatureType)
+  fullName.vb: Vintagestory.API.Server.PathfinderTask.New(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, Integer, Single, Vintagestory.API.MathTools.Cuboidf, Integer, Integer, Vintagestory.API.Common.EnumAICreatureType)
+  name.vb: New(BlockPos, BlockPos, Integer, Single, Cuboidf, Integer, Integer, EnumAICreatureType)
 references:
 - uid: Vintagestory.API.Server
   commentId: N:Vintagestory.API.Server
@@ -839,6 +861,43 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: Vintagestory.API.Common.EnumAICreatureType
+  commentId: T:Vintagestory.API.Common.EnumAICreatureType
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumAICreatureType.html
+  name: EnumAICreatureType
+  nameWithType: EnumAICreatureType
+  fullName: Vintagestory.API.Common.EnumAICreatureType
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System
@@ -852,7 +911,7 @@ references:
   name.vb: Boolean
 - uid: Vintagestory.API.Server.PathfinderTask.#ctor*
   commentId: Overload:Vintagestory.API.Server.PathfinderTask.#ctor
-  href: Vintagestory.API.Server.PathfinderTask.html#Vintagestory_API_Server_PathfinderTask__ctor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Single_Vintagestory_API_MathTools_Cuboidf_System_Int32_System_Int32_
+  href: Vintagestory.API.Server.PathfinderTask.html#Vintagestory_API_Server_PathfinderTask__ctor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Single_Vintagestory_API_MathTools_Cuboidf_System_Int32_System_Int32_Vintagestory_API_Common_EnumAICreatureType_
   name: PathfinderTask
   nameWithType: PathfinderTask.PathfinderTask
   fullName: Vintagestory.API.Server.PathfinderTask.PathfinderTask

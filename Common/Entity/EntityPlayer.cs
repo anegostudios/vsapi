@@ -382,8 +382,8 @@ namespace Vintagestory.API.Common
             if (Player?.WorldData.CurrentGameMode == EnumGameMode.Creative)
             {
                 // For Creative mode players, revert the normal walkspeed modifier from the block the entity is currently standing on/in
-                int y1 = (int)(SidedPos.Y - 0.05f);
-                int y2 = (int)(SidedPos.Y + 0.01f);
+                int y1 = (int)(SidedPos.InternalY - 0.05f);
+                int y2 = (int)(SidedPos.InternalY + 0.01f);
                 Block belowBlock = World.BlockAccessor.GetBlock((int)SidedPos.X, y1, (int)SidedPos.Z);
                 mul /= belowBlock.WalkSpeedMultiplier * (y1 == y2 ? 1 : insideBlock.WalkSpeedMultiplier);
             }
@@ -428,6 +428,8 @@ namespace Vintagestory.API.Common
         {
             tesselating = false;
         }
+
+        public float HeadBobbingAmplitude { get; set; } = 1;
 
         private void updateEyeHeight(float dt)
         {
@@ -481,10 +483,10 @@ namespace Vintagestory.API.Common
 
                 // Immersive fp mode has its own way of setting the eye pos
                 // but we still need to run above non-ifp code for the hitbox
-                if (player.ImmersiveFpMode || !Alive)
+                if (player.ImmersiveFpMode)
                 {
                     secondsDead = Alive ? 0 : secondsDead + dt;
-                    updateLocalEyePosImmersiveFpMode();
+                    updateLocalEyePosImmersiveFpMode(dt);
                 }
 
 
@@ -495,7 +497,7 @@ namespace Vintagestory.API.Common
 
                 double sneakDiv = (controls.Sneak ? 5 : 1.8);
 
-                double amplitude = (FeetInLiquid ? 0.8 : 1 + (controls.Sprint ? 0.07 : 0)) / (3 * sneakDiv);
+                double amplitude = (FeetInLiquid ? 0.8 : 1 + (controls.Sprint ? 0.07 : 0)) / (3 * sneakDiv) * HeadBobbingAmplitude;
                 double offset = -0.2 / sneakDiv;
 
                 double stepHeight = -Math.Max(0, Math.Abs(GameMath.Sin(5.5f * walkCounter) * amplitude) + offset);
@@ -696,30 +698,25 @@ namespace Vintagestory.API.Common
 
         Cuboidf tmpCollBox = new Cuboidf();
         bool holdPosition = false;
-
+        bool eyePosInsideBlock = false;
         float[] prevAnimModelMatrix;
-
-
+        float[] beforeAnimModelMatrix;
+        Vec3d beforeLocalEyePos;
+        Vec3d beforePos;
         float secondsDead;
 
-        void updateLocalEyePosImmersiveFpMode()
+
+
+
+
+        void updateLocalEyePosImmersiveFpMode(float dt)
         {
+            if (Api.Side == EnumAppSide.Server) return;
             if (AnimManager.Animator == null) return;
 
+            if ((Api as ICoreClientAPI).Render.CameraType != EnumCameraMode.FirstPerson && Alive) return;
+
             AttachmentPointAndPose apap = AnimManager.Animator.GetAttachmentPointPose("Eyes");
-            AttachmentPoint ap = apap.AttachPoint;
-
-            float[] ModelMat = Mat4f.Create();
-            Matrixf tmpModelMat = new Matrixf();
-
-            float bodyYaw = BodyYaw;
-            float rotX = Properties.Client.Shape != null ? Properties.Client.Shape.rotateX : 0;
-            float rotY = Properties.Client.Shape != null ? Properties.Client.Shape.rotateY : 0;
-            float rotZ = Properties.Client.Shape != null ? Properties.Client.Shape.rotateZ : 0;
-            float bodyPitch = WalkPitch;
-
-            float lookOffset = (SidedPos.Pitch - GameMath.PI) / 9f;
-            if (!Alive) lookOffset /= secondsDead * 10;
 
             bool wasHoldPos = holdPosition;
             holdPosition = false;
@@ -731,14 +728,29 @@ namespace Vintagestory.API.Common
                 {
                     if (!wasHoldPos)
                     {
-                        prevAnimModelMatrix = (float[])apap.AnimModelMatrix.Clone();
+                        this.prevAnimModelMatrix = (float[])apap.AnimModelMatrix.Clone();
                     }
                     holdPosition = true;
                     break;
                 }
             }
 
+            updateLocalEyePos(apap, holdPosition ? prevAnimModelMatrix : apap.AnimModelMatrix);
+        }
 
+        private void updateLocalEyePos(AttachmentPointAndPose apap, float[] animModelMatrix)
+        {
+            AttachmentPoint ap = apap.AttachPoint;
+            float[] ModelMat = Mat4f.Create();
+            float bodyYaw = BodyYaw;
+            float rotX = Properties.Client.Shape != null ? Properties.Client.Shape.rotateX : 0;
+            float rotY = Properties.Client.Shape != null ? Properties.Client.Shape.rotateY : 0;
+            float rotZ = Properties.Client.Shape != null ? Properties.Client.Shape.rotateZ : 0;
+            float bodyPitch = WalkPitch;
+            float lookOffset = (SidedPos.Pitch - GameMath.PI) / 9f;
+            if (!Alive) lookOffset /= secondsDead * 10;
+
+            Matrixf tmpModelMat = new Matrixf();
             tmpModelMat
                 .Set(ModelMat)
                 .RotateX(SidedPos.Roll + rotX * GameMath.DEG2RAD)
@@ -748,7 +760,7 @@ namespace Vintagestory.API.Common
                 .Translate(-0.5f, 0, -0.5f)
                 .RotateX(sidewaysSwivelAngle)
                 .Translate(ap.PosX / 16f - lookOffset * 1.3f, ap.PosY / 16f, ap.PosZ / 16f)
-                .Mul(holdPosition ? prevAnimModelMatrix : apap.AnimModelMatrix)
+                .Mul(animModelMatrix)
                 .Translate(0.07f, Alive ? 0.0f : 0.2f * Math.Min(1, secondsDead), 0f)
             ;
 
@@ -757,8 +769,6 @@ namespace Vintagestory.API.Common
 
             LocalEyePos.Set(endVec[0], endVec[1], endVec[2]);
         }
-
-
 
         float strongWindAccum = 0;
         bool haveHandUseOrHit;

@@ -2,16 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using Vintagestory.API.Client;
+using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
 using Vintagestory.API.Util;
 
 namespace Vintagestory.API.Common
 {
+    public interface IOwnedInventory
+    {
+        Entity Owner { get; }
+    }
+
     /// <summary>
     /// Bag is a non-placed block container, usually one that is attached to an entity
     /// </summary>
     public interface IHeldBag
     {
+
         /// <summary>
         /// Should true if this this bag is empty
         /// </summary>

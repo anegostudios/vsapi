@@ -164,8 +164,8 @@ Class PathfinderTask
 
   <a id="Vintagestory_API_Server_PathfinderTask__ctor_" data-uid="Vintagestory.API.Server.PathfinderTask.#ctor*"></a>
 
-  <h3 id="Vintagestory_API_Server_PathfinderTask__ctor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Single_Vintagestory_API_MathTools_Cuboidf_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.PathfinderTask.#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32)">
-  PathfinderTask(BlockPos, BlockPos, int, float, Cuboidf, int, int)
+  <h3 id="Vintagestory_API_Server_PathfinderTask__ctor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Single_Vintagestory_API_MathTools_Cuboidf_System_Int32_System_Int32_Vintagestory_API_Common_EnumAICreatureType_" data-uid="Vintagestory.API.Server.PathfinderTask.#ctor(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Single,Vintagestory.API.MathTools.Cuboidf,System.Int32,System.Int32,Vintagestory.API.Common.EnumAICreatureType)">
+  PathfinderTask(BlockPos, BlockPos, int, float, Cuboidf, int, int, EnumAICreatureType)
   
   </h3>
 
@@ -173,7 +173,7 @@ Class PathfinderTask
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public PathfinderTask(BlockPos startBlockPos, BlockPos targetBlockPos, int maxFallHeight, float stepHeight, Cuboidf collisionBox, int searchDepth, int mhdistanceTolerance = 0)</code></pre>
+    <pre><code class="lang-csharp hljs">public PathfinderTask(BlockPos startBlockPos, BlockPos targetBlockPos, int maxFallHeight, float stepHeight, Cuboidf collisionBox, int searchDepth, int mhdistanceTolerance = 0, EnumAICreatureType creatureType = EnumAICreatureType.Default)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -192,6 +192,8 @@ Class PathfinderTask
     <dd></dd>
     <dt><code>mhdistanceTolerance</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
+    <dt><code>creatureType</code> <a class="xref" href="Vintagestory.API.Common.EnumAICreatureType.html">EnumAICreatureType</a></dt>
+    <dd></dd>
   </dl>
 
 
@@ -207,6 +209,36 @@ Class PathfinderTask
 
   <h2 class="section" id="fields">Fields
 </h2>
+
+
+
+  <h3 id="Vintagestory_API_Server_PathfinderTask_CreatureType" data-uid="Vintagestory.API.Server.PathfinderTask.CreatureType">
+  CreatureType
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumAICreatureType CreatureType</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumAICreatureType.html">EnumAICreatureType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
 
 
 

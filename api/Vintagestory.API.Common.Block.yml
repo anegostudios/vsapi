@@ -92,6 +92,7 @@ items:
   - Vintagestory.API.Common.Block.GetSnowLevel(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.Block.GetSounds(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.ItemStack)
   - Vintagestory.API.Common.Block.GetSounds(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ItemStack)
+  - Vintagestory.API.Common.Block.GetTraversalCost(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumAICreatureType)
   - Vintagestory.API.Common.Block.GetVerticallyFlippedBlockCode
   - Vintagestory.API.Common.Block.HasAlternates
   - Vintagestory.API.Common.Block.HasBehavior(System.String,Vintagestory.API.Common.IClassRegistryAPI)
@@ -4461,6 +4462,41 @@ items:
       type: System.Boolean
     content.vb: Public Overridable Function IsClimbable(pos As BlockPos) As Boolean
   overload: Vintagestory.API.Common.Block.IsClimbable*
+- uid: Vintagestory.API.Common.Block.GetTraversalCost(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumAICreatureType)
+  commentId: M:Vintagestory.API.Common.Block.GetTraversalCost(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumAICreatureType)
+  id: GetTraversalCost(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumAICreatureType)
+  parent: Vintagestory.API.Common.Block
+  langs:
+  - csharp
+  - vb
+  name: GetTraversalCost(BlockPos, EnumAICreatureType)
+  nameWithType: Block.GetTraversalCost(BlockPos, EnumAICreatureType)
+  fullName: Vintagestory.API.Common.Block.GetTraversalCost(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.Common.EnumAICreatureType)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    The cost of traversing this block as part of the AI pathfinding system.
+
+    Return a negative value to prefer traversal of a block, return a positive value to avoid traversal of this block. A value over 10000f is considered impassable.
+
+    Default value is 0
+  example: []
+  syntax:
+    content: public virtual float GetTraversalCost(BlockPos pos, EnumAICreatureType creatureType)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    - id: creatureType
+      type: Vintagestory.API.Common.EnumAICreatureType
+      description: ''
+    return:
+      type: System.Single
+      description: ''
+    content.vb: Public Overridable Function GetTraversalCost(pos As BlockPos, creatureType As EnumAICreatureType) As Single
+  overload: Vintagestory.API.Common.Block.GetTraversalCost*
 - uid: Vintagestory.API.Common.Block.GetRotatedBlockCode(System.Int32)
   commentId: M:Vintagestory.API.Common.Block.GetRotatedBlockCode(System.Int32)
   id: GetRotatedBlockCode(System.Int32)
@@ -13351,6 +13387,19 @@ references:
   name: IsClimbable
   nameWithType: Block.IsClimbable
   fullName: Vintagestory.API.Common.Block.IsClimbable
+- uid: Vintagestory.API.Common.Block.GetTraversalCost*
+  commentId: Overload:Vintagestory.API.Common.Block.GetTraversalCost
+  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetTraversalCost_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_EnumAICreatureType_
+  name: GetTraversalCost
+  nameWithType: Block.GetTraversalCost
+  fullName: Vintagestory.API.Common.Block.GetTraversalCost
+- uid: Vintagestory.API.Common.EnumAICreatureType
+  commentId: T:Vintagestory.API.Common.EnumAICreatureType
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumAICreatureType.html
+  name: EnumAICreatureType
+  nameWithType: EnumAICreatureType
+  fullName: Vintagestory.API.Common.EnumAICreatureType
 - uid: Vintagestory.API.Common.Block.GetRotatedBlockCode*
   commentId: Overload:Vintagestory.API.Common.Block.GetRotatedBlockCode
   href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_GetRotatedBlockCode_System_Int32_

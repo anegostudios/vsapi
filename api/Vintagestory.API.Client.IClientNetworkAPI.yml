@@ -7,7 +7,9 @@ items:
   children:
   - Vintagestory.API.Client.IClientNetworkAPI.GetChannel(System.String)
   - Vintagestory.API.Client.IClientNetworkAPI.GetChannelState(System.String)
+  - Vintagestory.API.Client.IClientNetworkAPI.GetUdpChannel(System.String)
   - Vintagestory.API.Client.IClientNetworkAPI.RegisterChannel(System.String)
+  - Vintagestory.API.Client.IClientNetworkAPI.RegisterUdpChannel(System.String)
   - Vintagestory.API.Client.IClientNetworkAPI.SendArbitraryPacket(System.Byte[])
   - Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
   - Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Object)
@@ -83,7 +85,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
-  summary: Returns a previoulsy registered channeled, null otherwise
+  summary: Returns a previously registered channel, null otherwise
   example: []
   syntax:
     content: IClientNetworkChannel GetChannel(string channelName)
@@ -129,6 +131,66 @@ items:
   nameWithType.vb: IClientNetworkAPI.GetChannelState(String)
   fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.GetChannelState(String)
   name.vb: GetChannelState(String)
+- uid: Vintagestory.API.Client.IClientNetworkAPI.RegisterUdpChannel(System.String)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.RegisterUdpChannel(System.String)
+  id: RegisterUdpChannel(System.String)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterUdpChannel(string)
+  nameWithType: IClientNetworkAPI.RegisterUdpChannel(string)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.RegisterUdpChannel(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.
+  example: []
+  syntax:
+    content: IClientNetworkChannel RegisterUdpChannel(string channelName)
+    parameters:
+    - id: channelName
+      type: System.String
+      description: Unique channel identifier
+    return:
+      type: Vintagestory.API.Client.IClientNetworkChannel
+      description: ''
+    content.vb: Function RegisterUdpChannel(channelName As String) As IClientNetworkChannel
+  overload: Vintagestory.API.Client.IClientNetworkAPI.RegisterUdpChannel*
+  nameWithType.vb: IClientNetworkAPI.RegisterUdpChannel(String)
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.RegisterUdpChannel(String)
+  name.vb: RegisterUdpChannel(String)
+- uid: Vintagestory.API.Client.IClientNetworkAPI.GetUdpChannel(System.String)
+  commentId: M:Vintagestory.API.Client.IClientNetworkAPI.GetUdpChannel(System.String)
+  id: GetUdpChannel(System.String)
+  parent: Vintagestory.API.Client.IClientNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: GetUdpChannel(string)
+  nameWithType: IClientNetworkAPI.GetUdpChannel(string)
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.GetUdpChannel(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns a previously registered channel, null otherwise
+  example: []
+  syntax:
+    content: IClientNetworkChannel GetUdpChannel(string channelName)
+    parameters:
+    - id: channelName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Client.IClientNetworkChannel
+      description: ''
+    content.vb: Function GetUdpChannel(channelName As String) As IClientNetworkChannel
+  overload: Vintagestory.API.Client.IClientNetworkAPI.GetUdpChannel*
+  nameWithType.vb: IClientNetworkAPI.GetUdpChannel(String)
+  fullName.vb: Vintagestory.API.Client.IClientNetworkAPI.GetUdpChannel(String)
+  name.vb: GetUdpChannel(String)
 - uid: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
   commentId: M:Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
   id: SendBlockEntityPacket(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])
@@ -787,6 +849,18 @@ references:
   name: EnumChannelState
   nameWithType: EnumChannelState
   fullName: Vintagestory.API.Client.EnumChannelState
+- uid: Vintagestory.API.Client.IClientNetworkAPI.RegisterUdpChannel*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.RegisterUdpChannel
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_RegisterUdpChannel_System_String_
+  name: RegisterUdpChannel
+  nameWithType: IClientNetworkAPI.RegisterUdpChannel
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.RegisterUdpChannel
+- uid: Vintagestory.API.Client.IClientNetworkAPI.GetUdpChannel*
+  commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.GetUdpChannel
+  href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_GetUdpChannel_System_String_
+  name: GetUdpChannel
+  nameWithType: IClientNetworkAPI.GetUdpChannel
+  fullName: Vintagestory.API.Client.IClientNetworkAPI.GetUdpChannel
 - uid: Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket*
   commentId: Overload:Vintagestory.API.Client.IClientNetworkAPI.SendBlockEntityPacket
   href: Vintagestory.API.Client.IClientNetworkAPI.html#Vintagestory_API_Client_IClientNetworkAPI_SendBlockEntityPacket_System_Int32_System_Int32_System_Int32_System_Int32_System_Byte___

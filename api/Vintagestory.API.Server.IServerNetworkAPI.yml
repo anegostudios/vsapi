@@ -10,7 +10,9 @@ items:
   - Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket``1(Vintagestory.API.MathTools.BlockPos,System.Int32,``0)
   - Vintagestory.API.Server.IServerNetworkAPI.BroadcastEntityPacket(System.Int64,System.Int32,System.Byte[])
   - Vintagestory.API.Server.IServerNetworkAPI.GetChannel(System.String)
+  - Vintagestory.API.Server.IServerNetworkAPI.GetUdpChannel(System.String)
   - Vintagestory.API.Server.IServerNetworkAPI.RegisterChannel(System.String)
+  - Vintagestory.API.Server.IServerNetworkAPI.RegisterUdpChannel(System.String)
   - Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket(System.Byte[],Vintagestory.API.Server.IServerPlayer[])
   - Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
   - Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket``1(Vintagestory.API.Server.IServerPlayer,Vintagestory.API.MathTools.BlockPos,System.Int32,``0)
@@ -93,6 +95,66 @@ items:
   nameWithType.vb: IServerNetworkAPI.GetChannel(String)
   fullName.vb: Vintagestory.API.Server.IServerNetworkAPI.GetChannel(String)
   name.vb: GetChannel(String)
+- uid: Vintagestory.API.Server.IServerNetworkAPI.RegisterUdpChannel(System.String)
+  commentId: M:Vintagestory.API.Server.IServerNetworkAPI.RegisterUdpChannel(System.String)
+  id: RegisterUdpChannel(System.String)
+  parent: Vintagestory.API.Server.IServerNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterUdpChannel(string)
+  nameWithType: IServerNetworkAPI.RegisterUdpChannel(string)
+  fullName: Vintagestory.API.Server.IServerNetworkAPI.RegisterUdpChannel(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Supplies you with your very own and personal network channel that you can use to send packets across the network.  Use the same channelName on the client and server to have them link up.
+  example: []
+  syntax:
+    content: IServerNetworkChannel RegisterUdpChannel(string channelName)
+    parameters:
+    - id: channelName
+      type: System.String
+      description: Unique channel identifier
+    return:
+      type: Vintagestory.API.Server.IServerNetworkChannel
+      description: ''
+    content.vb: Function RegisterUdpChannel(channelName As String) As IServerNetworkChannel
+  overload: Vintagestory.API.Server.IServerNetworkAPI.RegisterUdpChannel*
+  nameWithType.vb: IServerNetworkAPI.RegisterUdpChannel(String)
+  fullName.vb: Vintagestory.API.Server.IServerNetworkAPI.RegisterUdpChannel(String)
+  name.vb: RegisterUdpChannel(String)
+- uid: Vintagestory.API.Server.IServerNetworkAPI.GetUdpChannel(System.String)
+  commentId: M:Vintagestory.API.Server.IServerNetworkAPI.GetUdpChannel(System.String)
+  id: GetUdpChannel(System.String)
+  parent: Vintagestory.API.Server.IServerNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: GetUdpChannel(string)
+  nameWithType: IServerNetworkAPI.GetUdpChannel(string)
+  fullName: Vintagestory.API.Server.IServerNetworkAPI.GetUdpChannel(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: Returns a previoulsy registered channeled, null otherwise
+  example: []
+  syntax:
+    content: IServerNetworkChannel GetUdpChannel(string channelName)
+    parameters:
+    - id: channelName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Server.IServerNetworkChannel
+      description: ''
+    content.vb: Function GetUdpChannel(channelName As String) As IServerNetworkChannel
+  overload: Vintagestory.API.Server.IServerNetworkAPI.GetUdpChannel*
+  nameWithType.vb: IServerNetworkAPI.GetUdpChannel(String)
+  fullName.vb: Vintagestory.API.Server.IServerNetworkAPI.GetUdpChannel(String)
+  name.vb: GetUdpChannel(String)
 - uid: Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
   commentId: M:Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
   id: SendBlockEntityPacket(Vintagestory.API.Server.IServerPlayer,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
@@ -593,6 +655,18 @@ references:
   name: GetChannel
   nameWithType: IServerNetworkAPI.GetChannel
   fullName: Vintagestory.API.Server.IServerNetworkAPI.GetChannel
+- uid: Vintagestory.API.Server.IServerNetworkAPI.RegisterUdpChannel*
+  commentId: Overload:Vintagestory.API.Server.IServerNetworkAPI.RegisterUdpChannel
+  href: Vintagestory.API.Server.IServerNetworkAPI.html#Vintagestory_API_Server_IServerNetworkAPI_RegisterUdpChannel_System_String_
+  name: RegisterUdpChannel
+  nameWithType: IServerNetworkAPI.RegisterUdpChannel
+  fullName: Vintagestory.API.Server.IServerNetworkAPI.RegisterUdpChannel
+- uid: Vintagestory.API.Server.IServerNetworkAPI.GetUdpChannel*
+  commentId: Overload:Vintagestory.API.Server.IServerNetworkAPI.GetUdpChannel
+  href: Vintagestory.API.Server.IServerNetworkAPI.html#Vintagestory_API_Server_IServerNetworkAPI_GetUdpChannel_System_String_
+  name: GetUdpChannel
+  nameWithType: IServerNetworkAPI.GetUdpChannel
+  fullName: Vintagestory.API.Server.IServerNetworkAPI.GetUdpChannel
 - uid: Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket*
   commentId: Overload:Vintagestory.API.Server.IServerNetworkAPI.SendBlockEntityPacket
   href: Vintagestory.API.Server.IServerNetworkAPI.html#Vintagestory_API_Server_IServerNetworkAPI_SendBlockEntityPacket_Vintagestory_API_Server_IServerPlayer_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Byte___

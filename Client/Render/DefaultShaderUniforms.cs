@@ -196,6 +196,9 @@ namespace Vintagestory.API.Client
             // updated by RenderPlayerEffects.cs:
             // DamageVignetting, PointLights*
 
+            // updated by AmbientManager
+            // Contrast and Sepia
+
         }
     }
 }

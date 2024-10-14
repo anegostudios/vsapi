@@ -504,7 +504,7 @@ namespace Vintagestory.API.Common
             return ToString().CompareOrdinal(other.ToString());
         }
 
-        internal bool WildCardMatch(AssetLocation other, string pathAsRegex)
+        public bool WildCardMatch(AssetLocation other, string pathAsRegex)
         {
             if (Domain == other.Domain)
             {
@@ -512,6 +512,9 @@ namespace Vintagestory.API.Common
             }
             return false;
         }
+
+        public static implicit operator string(AssetLocation loc) => loc.ToString();
+        public static explicit operator AssetLocation(string code) => new AssetLocation(code);
     }
 
     class StringAssetLocationConverter : TypeConverter

@@ -16,6 +16,7 @@ items:
   - Vintagestory.API.Common.IAmbientManager.BlendedFogColor
   - Vintagestory.API.Common.IAmbientManager.BlendedFogDensity
   - Vintagestory.API.Common.IAmbientManager.BlendedFogMin
+  - Vintagestory.API.Common.IAmbientManager.BlendedSceneBrightness
   - Vintagestory.API.Common.IAmbientManager.CurrentModifiers
   - Vintagestory.API.Common.IAmbientManager.UpdateAmbient(System.Single)
   langs:
@@ -319,6 +320,27 @@ items:
       type: System.Single
     content.vb: ReadOnly Property BlendedCloudDensity As Single
   overload: Vintagestory.API.Common.IAmbientManager.BlendedCloudDensity*
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedSceneBrightness
+  commentId: P:Vintagestory.API.Common.IAmbientManager.BlendedSceneBrightness
+  id: BlendedSceneBrightness
+  parent: Vintagestory.API.Common.IAmbientManager
+  langs:
+  - csharp
+  - vb
+  name: BlendedSceneBrightness
+  nameWithType: IAmbientManager.BlendedSceneBrightness
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedSceneBrightness
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: float BlendedSceneBrightness { get; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: ReadOnly Property BlendedSceneBrightness As Single
+  overload: Vintagestory.API.Common.IAmbientManager.BlendedSceneBrightness*
 - uid: Vintagestory.API.Common.IAmbientManager.UpdateAmbient(System.Single)
   commentId: M:Vintagestory.API.Common.IAmbientManager.UpdateAmbient(System.Single)
   id: UpdateAmbient(System.Single)
@@ -782,6 +804,12 @@ references:
   name: BlendedCloudDensity
   nameWithType: IAmbientManager.BlendedCloudDensity
   fullName: Vintagestory.API.Common.IAmbientManager.BlendedCloudDensity
+- uid: Vintagestory.API.Common.IAmbientManager.BlendedSceneBrightness*
+  commentId: Overload:Vintagestory.API.Common.IAmbientManager.BlendedSceneBrightness
+  href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_BlendedSceneBrightness
+  name: BlendedSceneBrightness
+  nameWithType: IAmbientManager.BlendedSceneBrightness
+  fullName: Vintagestory.API.Common.IAmbientManager.BlendedSceneBrightness
 - uid: Vintagestory.API.Common.IAmbientManager.UpdateAmbient*
   commentId: Overload:Vintagestory.API.Common.IAmbientManager.UpdateAmbient
   href: Vintagestory.API.Common.IAmbientManager.html#Vintagestory_API_Common_IAmbientManager_UpdateAmbient_System_Single_

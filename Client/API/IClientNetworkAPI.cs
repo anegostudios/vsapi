@@ -14,13 +14,26 @@ namespace Vintagestory.API.Common
         /// <param name="channelName">Unique channel identifier</param>
         /// <returns></returns>
         INetworkChannel RegisterChannel(string channelName);
+        /// <summary>
+        /// Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.
+        /// </summary>
+        /// <param name="channelName">Unique channel identifier</param>
+        /// <returns></returns>
+        INetworkChannel RegisterUdpChannel(string channelName);
 
         /// <summary>
-        /// Returns a previoulsy registered channeled, null otherwise
+        /// Returns a previously registered channeled, null otherwise
         /// </summary>
         /// <param name="channelName"></param>
         /// <returns></returns>
         INetworkChannel GetChannel(string channelName);
+
+        /// <summary>
+        /// Returns a previously registered channeled, null otherwise
+        /// </summary>
+        /// <param name="channelName"></param>
+        /// <returns></returns>
+        INetworkChannel GetUdpChannel(string channelName);
     }
 }
 
@@ -63,7 +76,7 @@ namespace Vintagestory.API.Client
         new IClientNetworkChannel RegisterChannel(string channelName);
 
         /// <summary>
-        /// Returns a previoulsy registered channeled, null otherwise
+        /// Returns a previously registered channel, null otherwise
         /// </summary>
         /// <param name="channelName"></param>
         /// <returns></returns>
@@ -75,6 +88,21 @@ namespace Vintagestory.API.Client
         /// <param name="channelName"></param>
         /// <returns></returns>
         EnumChannelState GetChannelState(string channelName);
+
+
+        /// <summary>
+        /// Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.
+        /// </summary>
+        /// <param name="channelName">Unique channel identifier</param>
+        /// <returns></returns>
+        new IClientNetworkChannel RegisterUdpChannel(string channelName);
+
+        /// <summary>
+        /// Returns a previously registered channel, null otherwise
+        /// </summary>
+        /// <param name="channelName"></param>
+        /// <returns></returns>
+        new IClientNetworkChannel GetUdpChannel(string channelName);
 
         /// <summary>
         /// Sends a blockentity interaction packet to the server. For quick an easy blockentity network communication without setting up a channel first.

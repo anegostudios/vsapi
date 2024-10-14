@@ -765,8 +765,7 @@ namespace Vintagestory.API.Common
         /// <param name="worldgenRandom"></param>
         /// <param name="attributes"></param>
         /// <returns></returns>
-        public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, IRandom worldgenRandom,
-            BlockPatchAttributes attributes = null)
+        public virtual bool TryPlaceBlockForWorldGen(IBlockAccessor blockAccessor, BlockPos pos, BlockFacing onBlockFace, IRandom worldgenRandom, BlockPatchAttributes attributes = null)
         {
             Block block = blockAccessor.GetBlock(pos);
 
@@ -1950,6 +1949,19 @@ namespace Vintagestory.API.Common
         public virtual bool IsClimbable(BlockPos pos)
         {
             return Climbable;
+        }
+
+        /// <summary>
+        /// The cost of traversing this block as part of the AI pathfinding system.
+        /// Return a negative value to prefer traversal of a block, return a positive value to avoid traversal of this block. A value over 10000f is considered impassable.
+        /// Default value is 0
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="creatureType"></param>
+        /// <returns></returns>
+        public virtual float GetTraversalCost(BlockPos pos, EnumAICreatureType creatureType)
+        {
+            return (1 - WalkSpeedMultiplier) * (creatureType == EnumAICreatureType.Humanoid ? 5 : 2);
         }
 
 

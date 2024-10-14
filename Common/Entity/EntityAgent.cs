@@ -173,7 +173,7 @@ namespace Vintagestory.API.Common
             // load current controls when mounting onto the mountable
             onmount.Controls.FromInt(Controls.ToInt());
 
-            if (MountedOn != onmount)
+            if (MountedOn != null && MountedOn != onmount)
             {
                 if (!TryUnmount()) return false;
             }
@@ -182,7 +182,10 @@ namespace Vintagestory.API.Common
             onmount?.MountableToTreeAttributes(mountableTree);
             WatchedAttributes["mountedOn"] = mountableTree;
             doMount(onmount);
-            WatchedAttributes.MarkPathDirty("mountedOn");
+            if (World.Side == EnumAppSide.Server)
+            {
+                WatchedAttributes.MarkPathDirty("mountedOn");
+            }
             return true;
         }
 
@@ -642,8 +645,8 @@ namespace Vintagestory.API.Common
         /// <param name="groundDragFactor">The amount of drag provided by the current ground. (Default: 0.3)</param>
         public virtual double GetWalkSpeedMultiplier(double groundDragFactor = 0.3)
         {
-            int y1 = (int)(SidedPos.Y - 0.05f);
-            int y2 = (int)(SidedPos.Y + 0.01f);
+            int y1 = (int)(SidedPos.InternalY - 0.05f);
+            int y2 = (int)(SidedPos.InternalY + 0.01f);
 
             Block belowBlock = World.BlockAccessor.GetBlock((int)SidedPos.X, y1, (int)SidedPos.Z);
 

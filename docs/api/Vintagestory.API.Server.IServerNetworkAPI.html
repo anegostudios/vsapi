@@ -315,6 +315,43 @@ Interface IServerNetworkAPI
 
 
 
+  <a id="Vintagestory_API_Server_IServerNetworkAPI_GetUdpChannel_" data-uid="Vintagestory.API.Server.IServerNetworkAPI.GetUdpChannel*"></a>
+
+  <h3 id="Vintagestory_API_Server_IServerNetworkAPI_GetUdpChannel_System_String_" data-uid="Vintagestory.API.Server.IServerNetworkAPI.GetUdpChannel(System.String)">
+  GetUdpChannel(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a previoulsy registered channeled, null otherwise</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IServerNetworkChannel GetUdpChannel(string channelName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>channelName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.IServerNetworkChannel.html">IServerNetworkChannel</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_IServerNetworkAPI_RegisterChannel_" data-uid="Vintagestory.API.Server.IServerNetworkAPI.RegisterChannel*"></a>
 
   <h3 id="Vintagestory_API_Server_IServerNetworkAPI_RegisterChannel_System_String_" data-uid="Vintagestory.API.Server.IServerNetworkAPI.RegisterChannel(System.String)">
@@ -328,6 +365,44 @@ Interface IServerNetworkAPI
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">IServerNetworkChannel RegisterChannel(string channelName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>channelName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Unique channel identifier</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.IServerNetworkChannel.html">IServerNetworkChannel</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Server_IServerNetworkAPI_RegisterUdpChannel_" data-uid="Vintagestory.API.Server.IServerNetworkAPI.RegisterUdpChannel*"></a>
+
+  <h3 id="Vintagestory_API_Server_IServerNetworkAPI_RegisterUdpChannel_System_String_" data-uid="Vintagestory.API.Server.IServerNetworkAPI.RegisterUdpChannel(System.String)">
+  RegisterUdpChannel(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Supplies you with your very own and personal network channel that you can use to send packets across the network.  Use the same channelName on the client and server to have them link up.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IServerNetworkChannel RegisterUdpChannel(string channelName)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

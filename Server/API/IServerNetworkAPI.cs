@@ -8,7 +8,7 @@ namespace Vintagestory.API.Server
     /// </summary>
     public interface IServerNetworkAPI : INetworkAPI
     {
-        /// <summary>   
+        /// <summary>
         /// Supplies you with your very own and personal network channel that you can use to send packets across the network.  Use the same channelName on the client and server to have them link up.
         /// </summary>
         /// <param name="channelName">Unique channel identifier</param>
@@ -21,6 +21,19 @@ namespace Vintagestory.API.Server
         /// <param name="channelName"></param>
         /// <returns></returns>
         new IServerNetworkChannel GetChannel(string channelName);
+        /// <summary>
+        /// Supplies you with your very own and personal network channel that you can use to send packets across the network.  Use the same channelName on the client and server to have them link up.
+        /// </summary>
+        /// <param name="channelName">Unique channel identifier</param>
+        /// <returns></returns>
+        new IServerNetworkChannel RegisterUdpChannel(string channelName);
+
+        /// <summary>
+        /// Returns a previoulsy registered channeled, null otherwise
+        /// </summary>
+        /// <param name="channelName"></param>
+        /// <returns></returns>
+        new IServerNetworkChannel GetUdpChannel(string channelName);
 
         /// <summary>
         /// Sends a blockentity packet to the given player. For quick an easy network communication without setting up a channel first.

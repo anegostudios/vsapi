@@ -1369,7 +1369,7 @@ bit 5: sign bit</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns a normal vector of this face</p>
+  <div class="markdown level1 summary"><p>Returns a normal vector of this face.  Classic iterating through these at a position x,y,z is unlikely to be dimension-aware, use BlockFacing.IterateThruFacingOffsets(pos) instead.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -2237,7 +2237,8 @@ public BlockFacing GetOpposite()</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Successive calls to this when looping through the standard six BlockFacings will set pos to the relevant facing offset from the original position<br>
+  <div class="markdown level1 summary"><p>In 1.20+ this is the recommended technique for examining blocks on all sides of a BlockPos position, as it is dimension-aware<br>
+Successive calls to this when looping through the standard six BlockFacings will set pos to the relevant facing offset from the original position<br>
 NOTE: this modifies the fields of the pos parameter, which is better for heap usage than creating a new BlockPos object for each iteration
 <br>If necessary to restore the original blockPos value, call FinishIteratingAllFaces(pos)</p>
 </div>

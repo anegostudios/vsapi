@@ -237,7 +237,10 @@ namespace Vintagestory.API.Common.Entities
             }
             set
             {
-                WatchedAttributes.SetBool("onFire", value);
+                if (value != WatchedAttributes.GetBool("onFire"))
+                {
+                    WatchedAttributes.SetBool("onFire", value);
+                }
             }
         }
         protected bool resetLightHsv;
@@ -958,7 +961,7 @@ namespace Vintagestory.API.Common.Entities
             if (IsOnFire)
             {
                 Block fluidBlock = World.BlockAccessor.GetBlock(Pos.AsBlockPos, BlockLayersAccess.Fluid);
-                if (fluidBlock.IsLiquid() && fluidBlock.LiquidCode != "lava" || World.ElapsedMilliseconds - OnFireBeginTotalMs > 12000)
+                if (((fluidBlock.IsLiquid() && fluidBlock.LiquidCode != "lava") || World.ElapsedMilliseconds - OnFireBeginTotalMs > 12000) && !InLava)
                 {
                     IsOnFire = false;
                 }

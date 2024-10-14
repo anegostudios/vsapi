@@ -1,0 +1,327 @@
+### YamlMime:ManagedReference
+items:
+- uid: Vintagestory.API.Common.EnumAICreatureType
+  commentId: T:Vintagestory.API.Common.EnumAICreatureType
+  id: EnumAICreatureType
+  parent: Vintagestory.API.Common
+  children:
+  - Vintagestory.API.Common.EnumAICreatureType.Default
+  - Vintagestory.API.Common.EnumAICreatureType.HeatProofCreature
+  - Vintagestory.API.Common.EnumAICreatureType.Humanoid
+  - Vintagestory.API.Common.EnumAICreatureType.LandCreature
+  - Vintagestory.API.Common.EnumAICreatureType.SeaCreature
+  langs:
+  - csharp
+  - vb
+  name: EnumAICreatureType
+  nameWithType: EnumAICreatureType
+  fullName: Vintagestory.API.Common.EnumAICreatureType
+  type: Enum
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Types of creatures used for pathfinding. Humanoids prefer taking paths.
+  example: []
+  syntax:
+    content: public enum EnumAICreatureType
+    content.vb: Public Enum EnumAICreatureType
+  extensionMethods:
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.EnumAICreatureType.Default
+  commentId: F:Vintagestory.API.Common.EnumAICreatureType.Default
+  id: Default
+  parent: Vintagestory.API.Common.EnumAICreatureType
+  langs:
+  - csharp
+  - vb
+  name: Default
+  nameWithType: EnumAICreatureType.Default
+  fullName: Vintagestory.API.Common.EnumAICreatureType.Default
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Dumbest version. Never enters boiling water and lava. Prefers not to be in water. Slightly prefers to walk on blocks that give a walk speed bonus.
+  example: []
+  syntax:
+    content: Default = 0
+    return:
+      type: Vintagestory.API.Common.EnumAICreatureType
+- uid: Vintagestory.API.Common.EnumAICreatureType.LandCreature
+  commentId: F:Vintagestory.API.Common.EnumAICreatureType.LandCreature
+  id: LandCreature
+  parent: Vintagestory.API.Common.EnumAICreatureType
+  langs:
+  - csharp
+  - vb
+  name: LandCreature
+  nameWithType: EnumAICreatureType.LandCreature
+  fullName: Vintagestory.API.Common.EnumAICreatureType.LandCreature
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Same as Default, Additionally never enters some types of blocks that are on fire (fire pits, coal piles and pit kilns)
+  example: []
+  syntax:
+    content: LandCreature = 1
+    return:
+      type: Vintagestory.API.Common.EnumAICreatureType
+- uid: Vintagestory.API.Common.EnumAICreatureType.Humanoid
+  commentId: F:Vintagestory.API.Common.EnumAICreatureType.Humanoid
+  id: Humanoid
+  parent: Vintagestory.API.Common.EnumAICreatureType
+  langs:
+  - csharp
+  - vb
+  name: Humanoid
+  nameWithType: EnumAICreatureType.Humanoid
+  fullName: Vintagestory.API.Common.EnumAICreatureType.Humanoid
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Same as LandCreature, additionally strongly prefers to walk on blocks that give a walk speed bonues, such as stone paths
+  example: []
+  syntax:
+    content: Humanoid = 2
+    return:
+      type: Vintagestory.API.Common.EnumAICreatureType
+- uid: Vintagestory.API.Common.EnumAICreatureType.HeatProofCreature
+  commentId: F:Vintagestory.API.Common.EnumAICreatureType.HeatProofCreature
+  id: HeatProofCreature
+  parent: Vintagestory.API.Common.EnumAICreatureType
+  langs:
+  - csharp
+  - vb
+  name: HeatProofCreature
+  nameWithType: EnumAICreatureType.HeatProofCreature
+  fullName: Vintagestory.API.Common.EnumAICreatureType.HeatProofCreature
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Does not avoid fire or boiling water. Still Avoids Lava
+  example: []
+  syntax:
+    content: HeatProofCreature = 3
+    return:
+      type: Vintagestory.API.Common.EnumAICreatureType
+- uid: Vintagestory.API.Common.EnumAICreatureType.SeaCreature
+  commentId: F:Vintagestory.API.Common.EnumAICreatureType.SeaCreature
+  id: SeaCreature
+  parent: Vintagestory.API.Common.EnumAICreatureType
+  langs:
+  - csharp
+  - vb
+  name: SeaCreature
+  nameWithType: EnumAICreatureType.SeaCreature
+  fullName: Vintagestory.API.Common.EnumAICreatureType.SeaCreature
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Does not avoid water in any way
+  example: []
+  syntax:
+    content: SeaCreature = 4
+    return:
+      type: Vintagestory.API.Common.EnumAICreatureType
+references:
+- uid: Vintagestory.API.Common
+  commentId: N:Vintagestory.API.Common
+  href: Vintagestory.html
+  name: Vintagestory.API.Common
+  nameWithType: Vintagestory.API.Common
+  fullName: Vintagestory.API.Common
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  parent: Vintagestory.API.Util.ObjectHandleExtensions
+  definition: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  name: ToGcHandle(object)
+  nameWithType: ObjectHandleExtensions.ToGcHandle(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(object)
+  nameWithType.vb: ObjectHandleExtensions.ToGcHandle(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(Object)
+  name.vb: ToGcHandle(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
+    name: ToGcHandle
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToGcHandle_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.ObjectHandleExtensions
+  commentId: T:Vintagestory.API.Util.ObjectHandleExtensions
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html
+  name: ObjectHandleExtensions
+  nameWithType: ObjectHandleExtensions
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions
+- uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+  isExternal: true
+  href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  name: ToIntPtr(object)
+  nameWithType: ObjectHandleExtensions.ToIntPtr(object)
+  fullName: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(object)
+  nameWithType.vb: ObjectHandleExtensions.ToIntPtr(Object)
+  fullName.vb: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(Object)
+  name.vb: ToIntPtr(Object)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr(System.Object)
+    name: ToIntPtr
+    href: Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util
+  commentId: N:Vintagestory.API.Util
+  href: Vintagestory.html
+  name: Vintagestory.API.Util
+  nameWithType: Vintagestory.API.Util
+  fullName: Vintagestory.API.Util
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Util
+    name: Util
+    href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.EnumAICreatureType
+  commentId: T:Vintagestory.API.Common.EnumAICreatureType
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.EnumAICreatureType.html
+  name: EnumAICreatureType
+  nameWithType: EnumAICreatureType
+  fullName: Vintagestory.API.Common.EnumAICreatureType

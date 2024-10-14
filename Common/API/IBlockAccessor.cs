@@ -281,6 +281,22 @@ namespace Vintagestory.API.Common
         Block GetBlock(BlockPos pos);
 
         /// <summary>
+        /// Get the block type of the block below the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+        /// <br/>Specify a negative dy for a block above!
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        Block GetBlockBelow(BlockPos pos, int dy = 1);
+
+
+        /// <summary>
+        /// Get the block type of the block above the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        Block GetBlockAbove(BlockPos pos, int dy = 1);
+
+        /// <summary>
         /// Get the block type of the block at the given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
         /// <br/>Reads the block from the specified layer(s), see <see cref="BlockLayersAccess"/> documentation for details.
         /// </summary>

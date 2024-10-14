@@ -43,6 +43,7 @@ namespace Vintagestory.API.Client
 
         public GridRecipeAndUnnamedIngredients CurrentVisibleRecipe;
 
+        static int[][,] variantDisplaySequence = new int[30][,];
         
 
         /// <summary>
@@ -64,6 +65,14 @@ namespace Vintagestory.API.Client
             this.size = size;
 
             Random fixedRand = new Random(123);
+
+            for (int i = 0; i < 30; i++)
+            {
+                var sq = variantDisplaySequence[i] = new int[3, 3];
+                for (int x = 0; x < 3; x++)
+                    for (int y = 0; y < 3; y++)
+                        sq[x, y] = capi.World.Rand.Next(99999);
+            };
 
             // Expand wild cards
             List<GridRecipeAndUnnamedIngredients> resolvedGridRecipes = new List<GridRecipeAndUnnamedIngredients>();
@@ -271,14 +280,14 @@ namespace Vintagestory.API.Client
             int rely = (int)(api.Input.MouseY - renderY);
             bool mouseover = bounds.PointInside(relx, rely);
 
-            GridRecipeAndUnnamedIngredients recipeunin = CurrentVisibleRecipe = GridRecipesAndUnIn[curItemIndex];
-
             if (!mouseover && (secondsVisible -= deltaTime) <= 0)
             {
                 secondsVisible = 1;
                 curItemIndex = (curItemIndex + 1) % GridRecipesAndUnIn.Length;
                 secondCounter++;
             }
+
+            GridRecipeAndUnnamedIngredients recipeunin = CurrentVisibleRecipe = GridRecipesAndUnIn[curItemIndex];
 
             LoadedTexture extraTextTexture;
             if (extraTexts.TryGetValue(curItemIndex, out extraTextTexture))
@@ -316,7 +325,7 @@ namespace Vintagestory.API.Client
                     ItemStack[] unnamedWildcardStacklist = null;
                     if (recipeunin.unnamedIngredients?.TryGetValue(index, out unnamedWildcardStacklist) == true && unnamedWildcardStacklist.Length > 0)
                     {
-                        dummyslot.Itemstack = unnamedWildcardStacklist[secondCounter % unnamedWildcardStacklist.Length];
+                        dummyslot.Itemstack = unnamedWildcardStacklist[variantDisplaySequence[secondCounter % 30][x,y] % unnamedWildcardStacklist.Length];
                         dummyslot.Itemstack.StackSize = ingred.Quantity;
                     } else
                     {
@@ -364,7 +373,7 @@ namespace Vintagestory.API.Client
                     ItemStack[] unnamedWildcardStacklist = null;
                     if (recipeunin.unnamedIngredients?.TryGetValue(index, out unnamedWildcardStacklist) == true)
                     {
-                        onStackClicked?.Invoke(unnamedWildcardStacklist[secondCounter % unnamedWildcardStacklist.Length]);
+                        onStackClicked?.Invoke(unnamedWildcardStacklist[variantDisplaySequence[secondCounter % 30][x, y] % unnamedWildcardStacklist.Length]);
                     }
                     else
                     {

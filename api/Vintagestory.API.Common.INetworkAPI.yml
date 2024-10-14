@@ -6,7 +6,9 @@ items:
   parent: Vintagestory.API.Common
   children:
   - Vintagestory.API.Common.INetworkAPI.GetChannel(System.String)
+  - Vintagestory.API.Common.INetworkAPI.GetUdpChannel(System.String)
   - Vintagestory.API.Common.INetworkAPI.RegisterChannel(System.String)
+  - Vintagestory.API.Common.INetworkAPI.RegisterUdpChannel(System.String)
   langs:
   - csharp
   - vb
@@ -53,6 +55,36 @@ items:
   nameWithType.vb: INetworkAPI.RegisterChannel(String)
   fullName.vb: Vintagestory.API.Common.INetworkAPI.RegisterChannel(String)
   name.vb: RegisterChannel(String)
+- uid: Vintagestory.API.Common.INetworkAPI.RegisterUdpChannel(System.String)
+  commentId: M:Vintagestory.API.Common.INetworkAPI.RegisterUdpChannel(System.String)
+  id: RegisterUdpChannel(System.String)
+  parent: Vintagestory.API.Common.INetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: RegisterUdpChannel(string)
+  nameWithType: INetworkAPI.RegisterUdpChannel(string)
+  fullName: Vintagestory.API.Common.INetworkAPI.RegisterUdpChannel(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.
+  example: []
+  syntax:
+    content: INetworkChannel RegisterUdpChannel(string channelName)
+    parameters:
+    - id: channelName
+      type: System.String
+      description: Unique channel identifier
+    return:
+      type: Vintagestory.API.Client.INetworkChannel
+      description: ''
+    content.vb: Function RegisterUdpChannel(channelName As String) As INetworkChannel
+  overload: Vintagestory.API.Common.INetworkAPI.RegisterUdpChannel*
+  nameWithType.vb: INetworkAPI.RegisterUdpChannel(String)
+  fullName.vb: Vintagestory.API.Common.INetworkAPI.RegisterUdpChannel(String)
+  name.vb: RegisterUdpChannel(String)
 - uid: Vintagestory.API.Common.INetworkAPI.GetChannel(System.String)
   commentId: M:Vintagestory.API.Common.INetworkAPI.GetChannel(System.String)
   id: GetChannel(System.String)
@@ -67,7 +99,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Returns a previoulsy registered channeled, null otherwise
+  summary: Returns a previously registered channeled, null otherwise
   example: []
   syntax:
     content: INetworkChannel GetChannel(string channelName)
@@ -83,6 +115,36 @@ items:
   nameWithType.vb: INetworkAPI.GetChannel(String)
   fullName.vb: Vintagestory.API.Common.INetworkAPI.GetChannel(String)
   name.vb: GetChannel(String)
+- uid: Vintagestory.API.Common.INetworkAPI.GetUdpChannel(System.String)
+  commentId: M:Vintagestory.API.Common.INetworkAPI.GetUdpChannel(System.String)
+  id: GetUdpChannel(System.String)
+  parent: Vintagestory.API.Common.INetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: GetUdpChannel(string)
+  nameWithType: INetworkAPI.GetUdpChannel(string)
+  fullName: Vintagestory.API.Common.INetworkAPI.GetUdpChannel(string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Returns a previously registered channeled, null otherwise
+  example: []
+  syntax:
+    content: INetworkChannel GetUdpChannel(string channelName)
+    parameters:
+    - id: channelName
+      type: System.String
+      description: ''
+    return:
+      type: Vintagestory.API.Client.INetworkChannel
+      description: ''
+    content.vb: Function GetUdpChannel(channelName As String) As INetworkChannel
+  overload: Vintagestory.API.Common.INetworkAPI.GetUdpChannel*
+  nameWithType.vb: INetworkAPI.GetUdpChannel(String)
+  fullName.vb: Vintagestory.API.Common.INetworkAPI.GetUdpChannel(String)
+  name.vb: GetUdpChannel(String)
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -334,9 +396,21 @@ references:
   - uid: Vintagestory.API.Client
     name: Client
     href: Vintagestory.API.Client.html
+- uid: Vintagestory.API.Common.INetworkAPI.RegisterUdpChannel*
+  commentId: Overload:Vintagestory.API.Common.INetworkAPI.RegisterUdpChannel
+  href: Vintagestory.API.Common.INetworkAPI.html#Vintagestory_API_Common_INetworkAPI_RegisterUdpChannel_System_String_
+  name: RegisterUdpChannel
+  nameWithType: INetworkAPI.RegisterUdpChannel
+  fullName: Vintagestory.API.Common.INetworkAPI.RegisterUdpChannel
 - uid: Vintagestory.API.Common.INetworkAPI.GetChannel*
   commentId: Overload:Vintagestory.API.Common.INetworkAPI.GetChannel
   href: Vintagestory.API.Common.INetworkAPI.html#Vintagestory_API_Common_INetworkAPI_GetChannel_System_String_
   name: GetChannel
   nameWithType: INetworkAPI.GetChannel
   fullName: Vintagestory.API.Common.INetworkAPI.GetChannel
+- uid: Vintagestory.API.Common.INetworkAPI.GetUdpChannel*
+  commentId: Overload:Vintagestory.API.Common.INetworkAPI.GetUdpChannel
+  href: Vintagestory.API.Common.INetworkAPI.html#Vintagestory_API_Common_INetworkAPI_GetUdpChannel_System_String_
+  name: GetUdpChannel
+  nameWithType: INetworkAPI.GetUdpChannel
+  fullName: Vintagestory.API.Common.INetworkAPI.GetUdpChannel

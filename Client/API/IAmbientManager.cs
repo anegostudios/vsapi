@@ -67,6 +67,7 @@ namespace Vintagestory.API.Common
         /// The blended cloud density, calculated every frame from the list of modifiers
         /// </summary>
         float BlendedCloudDensity { get; }
+        float BlendedSceneBrightness { get; }
 
         /// <summary>
         /// The update loop for this manager. Runs every frame.

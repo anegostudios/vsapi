@@ -1,5 +1,6 @@
 ﻿namespace Vintagestory.API.Common
 {
+
     /// <summary>
     /// Habitats for entities. Controls some minor logic for entities.
     /// </summary>

@@ -10,6 +10,7 @@ items:
   - Vintagestory.API.Common.InventoryBasePlayer.CanPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
   - Vintagestory.API.Common.InventoryBasePlayer.DropAll(Vintagestory.API.MathTools.Vec3d,System.Int32)
   - Vintagestory.API.Common.InventoryBasePlayer.HasOpened(Vintagestory.API.Common.IPlayer)
+  - Vintagestory.API.Common.InventoryBasePlayer.Owner
   - Vintagestory.API.Common.InventoryBasePlayer.Player
   - Vintagestory.API.Common.InventoryBasePlayer.RemoveOnClose
   - Vintagestory.API.Common.InventoryBasePlayer.playerUID
@@ -27,8 +28,8 @@ items:
   summary: Abstract class used for all inventories that are "on" the player. Any inventory not inheriting from this class will not be stored to the savegame as part of the players inventory.
   example: []
   syntax:
-    content: 'public abstract class InventoryBasePlayer : InventoryBase, IInventory, IReadOnlyCollection<ItemSlot>, IEnumerable<ItemSlot>, IEnumerable'
-    content.vb: Public MustInherit Class InventoryBasePlayer Inherits InventoryBase Implements IInventory, IReadOnlyCollection(Of ItemSlot), IEnumerable(Of ItemSlot), IEnumerable
+    content: 'public abstract class InventoryBasePlayer : InventoryBase, IInventory, IReadOnlyCollection<ItemSlot>, IEnumerable<ItemSlot>, IEnumerable, IOwnedInventory'
+    content.vb: Public MustInherit Class InventoryBasePlayer Inherits InventoryBase Implements IInventory, IReadOnlyCollection(Of ItemSlot), IEnumerable(Of ItemSlot), IEnumerable, IOwnedInventory
   inheritance:
   - System.Object
   - Vintagestory.API.Common.InventoryBase
@@ -37,6 +38,7 @@ items:
   - System.Collections.Generic.IReadOnlyCollection{Vintagestory.API.Common.ItemSlot}
   - System.Collections.Generic.IEnumerable{Vintagestory.API.Common.ItemSlot}
   - System.Collections.IEnumerable
+  - Vintagestory.API.Common.IOwnedInventory
   inheritedMembers:
   - Vintagestory.API.Common.InventoryBase.Api
   - Vintagestory.API.Common.InventoryBase.Pos
@@ -185,6 +187,30 @@ items:
       type: Vintagestory.API.Common.IPlayer
     content.vb: Public ReadOnly Property Player As IPlayer
   overload: Vintagestory.API.Common.InventoryBasePlayer.Player*
+- uid: Vintagestory.API.Common.InventoryBasePlayer.Owner
+  commentId: P:Vintagestory.API.Common.InventoryBasePlayer.Owner
+  id: Owner
+  parent: Vintagestory.API.Common.InventoryBasePlayer
+  langs:
+  - csharp
+  - vb
+  name: Owner
+  nameWithType: InventoryBasePlayer.Owner
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.Owner
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  example: []
+  syntax:
+    content: public Entity Owner { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Common.Entities.Entity
+    content.vb: Public ReadOnly Property Owner As Entity
+  overload: Vintagestory.API.Common.InventoryBasePlayer.Owner*
+  implements:
+  - Vintagestory.API.Common.IOwnedInventory.Owner
 - uid: Vintagestory.API.Common.InventoryBasePlayer.#ctor(System.String,System.String,Vintagestory.API.Common.ICoreAPI)
   commentId: M:Vintagestory.API.Common.InventoryBasePlayer.#ctor(System.String,System.String,Vintagestory.API.Common.ICoreAPI)
   id: '#ctor(System.String,System.String,Vintagestory.API.Common.ICoreAPI)'
@@ -486,6 +512,13 @@ references:
   name: IEnumerable
   nameWithType: IEnumerable
   fullName: System.Collections.IEnumerable
+- uid: Vintagestory.API.Common.IOwnedInventory
+  commentId: T:Vintagestory.API.Common.IOwnedInventory
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IOwnedInventory.html
+  name: IOwnedInventory
+  nameWithType: IOwnedInventory
+  fullName: Vintagestory.API.Common.IOwnedInventory
 - uid: Vintagestory.API.Common.InventoryBase.Api
   commentId: F:Vintagestory.API.Common.InventoryBase.Api
   parent: Vintagestory.API.Common.InventoryBase
@@ -3294,6 +3327,64 @@ references:
   name: IPlayer
   nameWithType: IPlayer
   fullName: Vintagestory.API.Common.IPlayer
+- uid: Vintagestory.API.Common.InventoryBasePlayer.Owner*
+  commentId: Overload:Vintagestory.API.Common.InventoryBasePlayer.Owner
+  href: Vintagestory.API.Common.InventoryBasePlayer.html#Vintagestory_API_Common_InventoryBasePlayer_Owner
+  name: Owner
+  nameWithType: InventoryBasePlayer.Owner
+  fullName: Vintagestory.API.Common.InventoryBasePlayer.Owner
+- uid: Vintagestory.API.Common.IOwnedInventory.Owner
+  commentId: P:Vintagestory.API.Common.IOwnedInventory.Owner
+  parent: Vintagestory.API.Common.IOwnedInventory
+  href: Vintagestory.API.Common.IOwnedInventory.html#Vintagestory_API_Common_IOwnedInventory_Owner
+  name: Owner
+  nameWithType: IOwnedInventory.Owner
+  fullName: Vintagestory.API.Common.IOwnedInventory.Owner
+- uid: Vintagestory.API.Common.Entities.Entity
+  commentId: T:Vintagestory.API.Common.Entities.Entity
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Vintagestory.API.Common.Entities.Entity
+- uid: Vintagestory.API.Common.Entities
+  commentId: N:Vintagestory.API.Common.Entities
+  href: Vintagestory.html
+  name: Vintagestory.API.Common.Entities
+  nameWithType: Vintagestory.API.Common.Entities
+  fullName: Vintagestory.API.Common.Entities
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.Common
+    name: Common
+    href: Vintagestory.API.Common.html
+  - name: .
+  - uid: Vintagestory.API.Common.Entities
+    name: Entities
+    href: Vintagestory.API.Common.Entities.html
 - uid: Vintagestory.API.Common.InventoryBasePlayer.#ctor*
   commentId: Overload:Vintagestory.API.Common.InventoryBasePlayer.#ctor
   href: Vintagestory.API.Common.InventoryBasePlayer.html#Vintagestory_API_Common_InventoryBasePlayer__ctor_System_String_System_String_Vintagestory_API_Common_ICoreAPI_
@@ -3358,44 +3449,6 @@ references:
   name: EntityPos
   nameWithType: EntityPos
   fullName: Vintagestory.API.Common.Entities.EntityPos
-- uid: Vintagestory.API.Common.Entities
-  commentId: N:Vintagestory.API.Common.Entities
-  href: Vintagestory.html
-  name: Vintagestory.API.Common.Entities
-  nameWithType: Vintagestory.API.Common.Entities
-  fullName: Vintagestory.API.Common.Entities
-  spec.csharp:
-  - uid: Vintagestory
-    name: Vintagestory
-    href: Vintagestory.html
-  - name: .
-  - uid: Vintagestory.API
-    name: API
-    href: Vintagestory.API.html
-  - name: .
-  - uid: Vintagestory.API.Common
-    name: Common
-    href: Vintagestory.API.Common.html
-  - name: .
-  - uid: Vintagestory.API.Common.Entities
-    name: Entities
-    href: Vintagestory.API.Common.Entities.html
-  spec.vb:
-  - uid: Vintagestory
-    name: Vintagestory
-    href: Vintagestory.html
-  - name: .
-  - uid: Vintagestory.API
-    name: API
-    href: Vintagestory.API.html
-  - name: .
-  - uid: Vintagestory.API.Common
-    name: Common
-    href: Vintagestory.API.Common.html
-  - name: .
-  - uid: Vintagestory.API.Common.Entities
-    name: Entities
-    href: Vintagestory.API.Common.Entities.html
 - uid: Vintagestory.API.Common.InventoryBase.HasOpened(Vintagestory.API.Common.IPlayer)
   commentId: M:Vintagestory.API.Common.InventoryBase.HasOpened(Vintagestory.API.Common.IPlayer)
   parent: Vintagestory.API.Common.InventoryBase

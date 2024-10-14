@@ -115,7 +115,7 @@ namespace Vintagestory.API.Common
             {
                 Vec4i offset = TransformedOffsets[i];
 
-                Block block = world.BlockAccessor.GetBlock(centerPos.X + offset.X, centerPos.Y + offset.Y, centerPos.Z + offset.Z);
+                Block block = world.BlockAccessor.GetBlock(centerPos.X + offset.X, centerPos.InternalY + offset.Y, centerPos.Z + offset.Z);
 
                 if (!WildcardUtil.Match(BlockCodes[offset.W], block.Code))
                 {
@@ -143,7 +143,7 @@ namespace Vintagestory.API.Common
             {
                 Vec4i offset = TransformedOffsets[i];
 
-                Block block = world.BlockAccessor.GetBlock(centerPos.X + offset.X, centerPos.Y + offset.Y, centerPos.Z + offset.Z);
+                Block block = world.BlockAccessor.GetBlock(centerPos.X + offset.X, centerPos.InternalY + offset.Y, centerPos.Z + offset.Z);
                 AssetLocation desireBlockLoc = BlockCodes[offset.W];
 
                 if (!WildcardUtil.Match(BlockCodes[offset.W], block.Code))

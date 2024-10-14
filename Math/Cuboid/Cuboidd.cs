@@ -59,6 +59,17 @@ namespace Vintagestory.API.MathTools
             Set(x1, y1, z1, x2, y2, z2);
         }
 
+        public Cuboidd(Vec3d start, Vec3d end)
+        {
+            this.X1 = start.X;
+            this.Y1 = start.Y;
+            this.Z1 = start.Z;
+
+            this.X2 = end.X;
+            this.Y2 = end.Y;
+            this.Z2 = end.Z;
+        }
+
         /// <summary>
         /// Sets the minimum and maximum values of the cuboid
         /// </summary>

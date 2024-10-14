@@ -7,6 +7,7 @@ items:
   children:
   - Vintagestory.API.MathTools.Cuboidd.#ctor
   - Vintagestory.API.MathTools.Cuboidd.#ctor(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)
+  - Vintagestory.API.MathTools.Cuboidd.#ctor(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.MathTools.Cuboidd.Clone
   - Vintagestory.API.MathTools.Cuboidd.Contains(System.Double,System.Double,System.Double)
   - Vintagestory.API.MathTools.Cuboidd.ContainsOrTouches(System.Double,System.Double,System.Double)
@@ -503,6 +504,32 @@ items:
   nameWithType.vb: Cuboidd.New(Double, Double, Double, Double, Double, Double)
   fullName.vb: Vintagestory.API.MathTools.Cuboidd.New(Double, Double, Double, Double, Double, Double)
   name.vb: New(Double, Double, Double, Double, Double, Double)
+- uid: Vintagestory.API.MathTools.Cuboidd.#ctor(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
+  commentId: M:Vintagestory.API.MathTools.Cuboidd.#ctor(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
+  id: '#ctor(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)'
+  parent: Vintagestory.API.MathTools.Cuboidd
+  langs:
+  - csharp
+  - vb
+  name: Cuboidd(Vec3d, Vec3d)
+  nameWithType: Cuboidd.Cuboidd(Vec3d, Vec3d)
+  fullName: Vintagestory.API.MathTools.Cuboidd.Cuboidd(Vintagestory.API.MathTools.Vec3d, Vintagestory.API.MathTools.Vec3d)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public Cuboidd(Vec3d start, Vec3d end)
+    parameters:
+    - id: start
+      type: Vintagestory.API.MathTools.Vec3d
+    - id: end
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Public Sub New(start As Vec3d, [end] As Vec3d)
+  overload: Vintagestory.API.MathTools.Cuboidd.#ctor*
+  nameWithType.vb: Cuboidd.New(Vec3d, Vec3d)
+  fullName.vb: Vintagestory.API.MathTools.Cuboidd.New(Vintagestory.API.MathTools.Vec3d, Vintagestory.API.MathTools.Vec3d)
+  name.vb: New(Vec3d, Vec3d)
 - uid: Vintagestory.API.MathTools.Cuboidd.Set(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)
   commentId: M:Vintagestory.API.MathTools.Cuboidd.Set(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)
   id: Set(System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)

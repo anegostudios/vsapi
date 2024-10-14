@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 
 namespace Vintagestory.API.Server
@@ -13,10 +14,11 @@ namespace Vintagestory.API.Server
         public int searchDepth;
         public int mhdistanceTolerance = 0;
         public List<Vec3d> waypoints;
+        public EnumAICreatureType CreatureType;
 
         public bool Finished;
 
-        public PathfinderTask(BlockPos startBlockPos, BlockPos targetBlockPos, int maxFallHeight, float stepHeight, Cuboidf collisionBox, int searchDepth, int mhdistanceTolerance = 0)
+        public PathfinderTask(BlockPos startBlockPos, BlockPos targetBlockPos, int maxFallHeight, float stepHeight, Cuboidf collisionBox, int searchDepth, int mhdistanceTolerance = 0, EnumAICreatureType creatureType = EnumAICreatureType.Default)
         {
             this.startBlockPos = startBlockPos;
             this.targetBlockPos = targetBlockPos;
@@ -25,6 +27,7 @@ namespace Vintagestory.API.Server
             this.collisionBox = collisionBox;
             this.searchDepth = searchDepth;
             this.mhdistanceTolerance = mhdistanceTolerance;
+            this.CreatureType = creatureType;
         }
     }
 }

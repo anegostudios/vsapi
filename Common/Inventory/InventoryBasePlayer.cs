@@ -7,7 +7,7 @@ namespace Vintagestory.API.Common
     /// <summary>
     /// Abstract class used for all inventories that are "on" the player. Any inventory not inheriting from this class will not be stored to the savegame as part of the players inventory.
     /// </summary>
-    public abstract class InventoryBasePlayer : InventoryBase
+    public abstract class InventoryBasePlayer : InventoryBase, IOwnedInventory
     {
         public override bool RemoveOnClose => false;
 
@@ -21,6 +21,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public IPlayer Player => Api.World.PlayerByUid(playerUID);
 
+        public Entity Owner => Player.Entity;
 
         public InventoryBasePlayer(string className, string playerUID, ICoreAPI api) : base(className, playerUID, api)
         {
