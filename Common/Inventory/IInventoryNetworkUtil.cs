@@ -1,4 +1,6 @@
-﻿namespace Vintagestory.API.Common
+﻿using Vintagestory.API.Common.Entities;
+
+namespace Vintagestory.API.Common
 {
     public interface IInventoryNetworkUtil
     {
@@ -8,7 +10,7 @@
         ICoreAPI Api { get; set; }
 
         /// <summary>
-        /// Gets the active slot packet.  
+        /// Gets the active slot packet.
         /// </summary>
         /// <param name="slotId">The slot ID</param>
         /// <param name="op">The operation of the slot.</param>
@@ -45,6 +47,5 @@
         object DidClose(IPlayer player);
 
         bool PauseInventoryUpdates { get; set; }
-
     }
 }

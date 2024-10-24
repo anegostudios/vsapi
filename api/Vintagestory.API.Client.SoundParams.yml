@@ -32,8 +32,14 @@ items:
   summary: The sound paramaters used for loading sounds on the client side
   example: []
   syntax:
-    content: public class SoundParams
-    content.vb: Public Class SoundParams
+    content: >-
+      [ProtoContract]
+
+      public class SoundParams
+    content.vb: >-
+      <ProtoContract>
+
+      Public Class SoundParams
   inheritance:
   - System.Object
   inheritedMembers:
@@ -47,6 +53,10 @@ items:
   extensionMethods:
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  attributes:
+  - type: ProtoBuf.ProtoContractAttribute
+    ctor: ProtoBuf.ProtoContractAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.Client.SoundParams.Location
   commentId: F:Vintagestory.API.Client.SoundParams.Location
   id: Location
@@ -64,10 +74,22 @@ items:
   summary: The specific sound to be played
   example: []
   syntax:
-    content: public AssetLocation Location
+    content: >-
+      [ProtoMember(1)]
+
+      public AssetLocation Location
     return:
       type: Vintagestory.API.Common.AssetLocation
-    content.vb: Public Location As AssetLocation
+    content.vb: >-
+      <ProtoMember(1)>
+
+      Public Location As AssetLocation
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1
 - uid: Vintagestory.API.Client.SoundParams.Position
   commentId: F:Vintagestory.API.Client.SoundParams.Position
   id: Position
@@ -85,10 +107,22 @@ items:
   summary: The position of the sound
   example: []
   syntax:
-    content: public Vec3f Position
+    content: >-
+      [ProtoMember(2)]
+
+      public Vec3f Position
     return:
       type: Vintagestory.API.MathTools.Vec3f
-    content.vb: Public Position As Vec3f
+    content.vb: >-
+      <ProtoMember(2)>
+
+      Public Position As Vec3f
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 2
 - uid: Vintagestory.API.Client.SoundParams.RelativePosition
   commentId: F:Vintagestory.API.Client.SoundParams.RelativePosition
   id: RelativePosition
@@ -106,10 +140,22 @@ items:
   summary: If true then Position is added relative to the players current position
   example: []
   syntax:
-    content: public bool RelativePosition
+    content: >-
+      [ProtoMember(3)]
+
+      public bool RelativePosition
     return:
       type: System.Boolean
-    content.vb: Public RelativePosition As Boolean
+    content.vb: >-
+      <ProtoMember(3)>
+
+      Public RelativePosition As Boolean
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 3
 - uid: Vintagestory.API.Client.SoundParams.ShouldLoop
   commentId: F:Vintagestory.API.Client.SoundParams.ShouldLoop
   id: ShouldLoop
@@ -127,10 +173,22 @@ items:
   summary: If the sound should start again when finished
   example: []
   syntax:
-    content: public bool ShouldLoop
+    content: >-
+      [ProtoMember(4)]
+
+      public bool ShouldLoop
     return:
       type: System.Boolean
-    content.vb: Public ShouldLoop As Boolean
+    content.vb: >-
+      <ProtoMember(4)>
+
+      Public ShouldLoop As Boolean
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4
 - uid: Vintagestory.API.Client.SoundParams.DisposeOnFinish
   commentId: F:Vintagestory.API.Client.SoundParams.DisposeOnFinish
   id: DisposeOnFinish
@@ -148,10 +206,22 @@ items:
   summary: Probably want to set this to false on looping sounds. But remember to dispose it yourself when you no longer need it
   example: []
   syntax:
-    content: public bool DisposeOnFinish
+    content: >-
+      [ProtoMember(5)]
+
+      public bool DisposeOnFinish
     return:
       type: System.Boolean
-    content.vb: Public DisposeOnFinish As Boolean
+    content.vb: >-
+      <ProtoMember(5)>
+
+      Public DisposeOnFinish As Boolean
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 5
 - uid: Vintagestory.API.Client.SoundParams.Pitch
   commentId: F:Vintagestory.API.Client.SoundParams.Pitch
   id: Pitch
@@ -169,10 +239,22 @@ items:
   summary: The sounds intial pitch.
   example: []
   syntax:
-    content: public float Pitch
+    content: >-
+      [ProtoMember(6)]
+
+      public float Pitch
     return:
       type: System.Single
-    content.vb: Public Pitch As Single
+    content.vb: >-
+      <ProtoMember(6)>
+
+      Public Pitch As Single
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 6
 - uid: Vintagestory.API.Client.SoundParams.LowPassFilter
   commentId: F:Vintagestory.API.Client.SoundParams.LowPassFilter
   id: LowPassFilter
@@ -190,10 +272,22 @@ items:
   summary: 0...1
   example: []
   syntax:
-    content: public float LowPassFilter
+    content: >-
+      [ProtoMember(7)]
+
+      public float LowPassFilter
     return:
       type: System.Single
-    content.vb: Public LowPassFilter As Single
+    content.vb: >-
+      <ProtoMember(7)>
+
+      Public LowPassFilter As Single
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 7
 - uid: Vintagestory.API.Client.SoundParams.ReverbDecayTime
   commentId: F:Vintagestory.API.Client.SoundParams.ReverbDecayTime
   id: ReverbDecayTime
@@ -211,10 +305,22 @@ items:
   summary: 0...99f
   example: []
   syntax:
-    content: public float ReverbDecayTime
+    content: >-
+      [ProtoMember(8)]
+
+      public float ReverbDecayTime
     return:
       type: System.Single
-    content.vb: Public ReverbDecayTime As Single
+    content.vb: >-
+      <ProtoMember(8)>
+
+      Public ReverbDecayTime As Single
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 8
 - uid: Vintagestory.API.Client.SoundParams.ReferenceDistance
   commentId: F:Vintagestory.API.Client.SoundParams.ReferenceDistance
   id: ReferenceDistance
@@ -232,10 +338,22 @@ items:
   summary: The range in which the sound does not attenuate at all
   example: []
   syntax:
-    content: public float ReferenceDistance
+    content: >-
+      [ProtoMember(9)]
+
+      public float ReferenceDistance
     return:
       type: System.Single
-    content.vb: Public ReferenceDistance As Single
+    content.vb: >-
+      <ProtoMember(9)>
+
+      Public ReferenceDistance As Single
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 9
 - uid: Vintagestory.API.Client.SoundParams.Volume
   commentId: P:Vintagestory.API.Client.SoundParams.Volume
   id: Volume
@@ -276,10 +394,22 @@ items:
   summary: The sounds initial range (default is 32)
   example: []
   syntax:
-    content: public float Range
+    content: >-
+      [ProtoMember(11)]
+
+      public float Range
     return:
       type: System.Single
-    content.vb: Public Range As Single
+    content.vb: >-
+      <ProtoMember(11)>
+
+      Public Range As Single
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 11
 - uid: Vintagestory.API.Client.SoundParams.SoundType
   commentId: F:Vintagestory.API.Client.SoundParams.SoundType
   id: SoundType
@@ -297,10 +427,22 @@ items:
   summary: Determines whether to apply the music or sound volumne level to the Volume
   example: []
   syntax:
-    content: public EnumSoundType SoundType
+    content: >-
+      [ProtoMember(12)]
+
+      public EnumSoundType SoundType
     return:
       type: Vintagestory.API.Client.EnumSoundType
-    content.vb: Public SoundType As EnumSoundType
+    content.vb: >-
+      <ProtoMember(12)>
+
+      Public SoundType As EnumSoundType
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 12
 - uid: Vintagestory.API.Client.SoundParams.#ctor
   commentId: M:Vintagestory.API.Client.SoundParams.#ctor
   id: '#ctor'

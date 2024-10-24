@@ -8,8 +8,10 @@ items:
   - Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Death
   - Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Emote
   - Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Hurt
+  - Vintagestory.API.Common.EntityAgent.EntityServerPacketId.PlayMusic
   - Vintagestory.API.Common.EntityAgent.EntityServerPacketId.PlayPlayerAnim
   - Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Revive
+  - Vintagestory.API.Common.EntityAgent.EntityServerPacketId.StopMusic
   langs:
   - csharp
   - vb
@@ -114,6 +116,42 @@ items:
   namespace: Vintagestory.API.Common
   syntax:
     content: PlayPlayerAnim = 200
+    return:
+      type: Vintagestory.API.Common.EntityAgent.EntityServerPacketId
+- uid: Vintagestory.API.Common.EntityAgent.EntityServerPacketId.PlayMusic
+  commentId: F:Vintagestory.API.Common.EntityAgent.EntityServerPacketId.PlayMusic
+  id: PlayMusic
+  parent: Vintagestory.API.Common.EntityAgent.EntityServerPacketId
+  langs:
+  - csharp
+  - vb
+  name: PlayMusic
+  nameWithType: EntityAgent.EntityServerPacketId.PlayMusic
+  fullName: Vintagestory.API.Common.EntityAgent.EntityServerPacketId.PlayMusic
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: PlayMusic = 201
+    return:
+      type: Vintagestory.API.Common.EntityAgent.EntityServerPacketId
+- uid: Vintagestory.API.Common.EntityAgent.EntityServerPacketId.StopMusic
+  commentId: F:Vintagestory.API.Common.EntityAgent.EntityServerPacketId.StopMusic
+  id: StopMusic
+  parent: Vintagestory.API.Common.EntityAgent.EntityServerPacketId
+  langs:
+  - csharp
+  - vb
+  name: StopMusic
+  nameWithType: EntityAgent.EntityServerPacketId.StopMusic
+  fullName: Vintagestory.API.Common.EntityAgent.EntityServerPacketId.StopMusic
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: StopMusic = 202
     return:
       type: Vintagestory.API.Common.EntityAgent.EntityServerPacketId
 references:

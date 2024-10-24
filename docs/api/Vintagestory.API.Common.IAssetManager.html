@@ -374,43 +374,6 @@ void AddPathOrigin(string domain, string fullPath)</code></pre>
 
   <a id="Vintagestory_API_Common_IAssetManager_Get_" data-uid="Vintagestory.API.Common.IAssetManager.Get*"></a>
 
-  <h3 id="Vintagestory_API_Common_IAssetManager_Get_System_String_" data-uid="Vintagestory.API.Common.IAssetManager.Get(System.String)">
-  Get(string)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Retrieves an asset from given path within the assets folder. Throws an exception when the asset does not exist. Remember to use lower case paths.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IAsset Get(string path)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.IAsset.html">IAsset</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IAssetManager_Get_" data-uid="Vintagestory.API.Common.IAssetManager.Get*"></a>
-
   <h3 id="Vintagestory_API_Common_IAssetManager_Get_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Common.IAssetManager.Get(Vintagestory.API.Common.AssetLocation)">
   Get(AssetLocation)
   
@@ -723,46 +686,6 @@ The returned list is considered unsorted.</p>
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IAssetManager_TryGet_" data-uid="Vintagestory.API.Common.IAssetManager.TryGet*"></a>
-
-  <h3 id="Vintagestory_API_Common_IAssetManager_TryGet_System_String_System_Boolean_" data-uid="Vintagestory.API.Common.IAssetManager.TryGet(System.String,System.Boolean)">
-  TryGet(string, bool)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Retrieves an asset from given path within the assets folder. Returns null when the asset does not exist. Remember to use lower case paths.
-<br><br> Mods must not call TryGet to get assets before AssetsLoaded stage in a ModSystem - do not load assets in the Start() method!  In StartClientSide() is OK though.  (Or if you absolutely have to load assets in Start(), use IAssetManager.Get(), but it will throw an exception for anything except a base asset.)</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IAsset TryGet(string Path, bool loadAsset = true)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>Path</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-    <dt><code>loadAsset</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.IAsset.html">IAsset</a></dt>
     <dd></dd>
   </dl>
 

@@ -25,7 +25,7 @@ namespace Vintagestory.API.Common
     /// </summary>
     public struct SourceStringComponents
     {
-        private readonly string text;
+        private readonly string message;
         private readonly string domain;
         private readonly string path;
         private readonly int alternate;
@@ -35,7 +35,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public SourceStringComponents(string message, string sourceDomain, string sourcePath, int sourceAlt)
         {
-            text = message;
+            this.message = message;
             domain = sourceDomain;
             path = sourcePath;
             alternate = sourceAlt;
@@ -43,8 +43,8 @@ namespace Vintagestory.API.Common
 
         public override string ToString()
         {
-            if (alternate >= 0) return text + domain + AssetLocation.LocationSeparator + path + " alternate:" + alternate;
-            return text + domain + AssetLocation.LocationSeparator + path;
+            if (alternate >= 0) return message + domain + AssetLocation.LocationSeparator + path + " alternate:" + alternate;
+            return message + domain + AssetLocation.LocationSeparator + path;
         }
     }
     
@@ -514,7 +514,7 @@ namespace Vintagestory.API.Common
         }
 
         public static implicit operator string(AssetLocation loc) => loc.ToString();
-        public static explicit operator AssetLocation(string code) => new AssetLocation(code);
+        public static implicit operator AssetLocation(string code) => AssetLocation.Create(code);
     }
 
     class StringAssetLocationConverter : TypeConverter

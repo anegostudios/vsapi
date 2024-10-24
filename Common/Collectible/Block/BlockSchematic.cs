@@ -133,11 +133,15 @@ namespace Vintagestory.API.Common
         /// <param name="start"></param>
         /// <param name="end"></param>
         /// <param name="notLiquids"></param>
-        public BlockSchematic(IServerWorldAccessor world, BlockPos start, BlockPos end, bool notLiquids)
+        public BlockSchematic(IServerWorldAccessor world, BlockPos start, BlockPos end, bool notLiquids) : this(world, world.BlockAccessor, start, end, notLiquids)
+        {
+        }
+
+        public BlockSchematic(IServerWorldAccessor world, IBlockAccessor blockAccess, BlockPos start, BlockPos end, bool notLiquids)
         {
             BlockPos startPos = new BlockPos(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y), Math.Min(start.Z, end.Z));
             OmitLiquids = notLiquids;
-            AddArea(world, start, end);
+            AddArea(world, blockAccess, start, end);
             Pack(world, startPos);
         }
 
@@ -359,6 +363,11 @@ namespace Vintagestory.API.Common
         /// <param name="end">The end position of all the blocks.</param>
         public virtual void AddArea(IWorldAccessor world, BlockPos start, BlockPos end)
         {
+            AddArea(world, world.BlockAccessor, start, end);
+        }
+
+        public virtual void AddArea(IWorldAccessor world, IBlockAccessor blockAccess, BlockPos start, BlockPos end)
+        {
             BlockPos startPos = new BlockPos(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y), Math.Min(start.Z, end.Z));
             BlockPos finalPos = new BlockPos(Math.Max(start.X, end.X), Math.Max(start.Y, end.Y), Math.Max(start.Z, end.Z));
 
@@ -370,8 +379,8 @@ namespace Vintagestory.API.Common
                     for (int z = startPos.Z; z < finalPos.Z; z++)
                     {
                         readPos.Set(x, y, z);
-                        int blockid = world.BlockAccessor.GetBlock(readPos, BlockLayersAccess.Solid).BlockId;
-                        int fluidid = world.BlockAccessor.GetBlock(readPos, BlockLayersAccess.Fluid).BlockId;
+                        int blockid = blockAccess.GetBlock(readPos, BlockLayersAccess.Solid).BlockId;
+                        int fluidid = blockAccess.GetBlock(readPos, BlockLayersAccess.Fluid).BlockId;
                         if (fluidid == blockid) blockid = 0;
                         if (OmitLiquids) fluidid = 0;
                         if (blockid == 0 && fluidid == 0) continue;
@@ -380,14 +389,15 @@ namespace Vintagestory.API.Common
                         BlocksUnpacked[keyPos] = blockid;
                         FluidsLayerUnpacked[keyPos] = fluidid;
 
-                        BlockEntity be = world.BlockAccessor.GetBlockEntity(readPos);
+                        BlockEntity be = blockAccess.GetBlockEntity(readPos);
                         if (be != null)
                         {
+                            if (be.Api == null) be.Initialize(world.Api);
                             BlockEntitiesUnpacked[keyPos] = EncodeBlockEntityData(be);
                             be.OnStoreCollectibleMappings(BlockCodes, ItemCodes);
                         }
 
-                        var decors = world.BlockAccessor.GetSubDecors(readPos);
+                        var decors = blockAccess.GetSubDecors(readPos);
                         if (decors != null)
                         {
                             DecorsUnpacked[keyPos] = decors;

@@ -6,8 +6,10 @@ items:
   parent: Vintagestory.API.Common
   children:
   - Vintagestory.API.Common.BlockSchematic.#ctor
+  - Vintagestory.API.Common.BlockSchematic.#ctor(Vintagestory.API.Server.IServerWorldAccessor,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
   - Vintagestory.API.Common.BlockSchematic.#ctor(Vintagestory.API.Server.IServerWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
   - Vintagestory.API.Common.BlockSchematic.AbovegroundCheckPositions
+  - Vintagestory.API.Common.BlockSchematic.AddArea(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.BlockSchematic.AddArea(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.BlockSchematic.AdjustStartPos(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumOrigin)
   - Vintagestory.API.Common.BlockSchematic.BlockCodes
@@ -987,6 +989,38 @@ items:
   nameWithType.vb: BlockSchematic.New(IServerWorldAccessor, BlockPos, BlockPos, Boolean)
   fullName.vb: Vintagestory.API.Common.BlockSchematic.New(Vintagestory.API.Server.IServerWorldAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, Boolean)
   name.vb: New(IServerWorldAccessor, BlockPos, BlockPos, Boolean)
+- uid: Vintagestory.API.Common.BlockSchematic.#ctor(Vintagestory.API.Server.IServerWorldAccessor,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  commentId: M:Vintagestory.API.Common.BlockSchematic.#ctor(Vintagestory.API.Server.IServerWorldAccessor,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  id: '#ctor(Vintagestory.API.Server.IServerWorldAccessor,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)'
+  parent: Vintagestory.API.Common.BlockSchematic
+  langs:
+  - csharp
+  - vb
+  name: BlockSchematic(IServerWorldAccessor, IBlockAccessor, BlockPos, BlockPos, bool)
+  nameWithType: BlockSchematic.BlockSchematic(IServerWorldAccessor, IBlockAccessor, BlockPos, BlockPos, bool)
+  fullName: Vintagestory.API.Common.BlockSchematic.BlockSchematic(Vintagestory.API.Server.IServerWorldAccessor, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, bool)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public BlockSchematic(IServerWorldAccessor world, IBlockAccessor blockAccess, BlockPos start, BlockPos end, bool notLiquids)
+    parameters:
+    - id: world
+      type: Vintagestory.API.Server.IServerWorldAccessor
+    - id: blockAccess
+      type: Vintagestory.API.Common.IBlockAccessor
+    - id: start
+      type: Vintagestory.API.MathTools.BlockPos
+    - id: end
+      type: Vintagestory.API.MathTools.BlockPos
+    - id: notLiquids
+      type: System.Boolean
+    content.vb: Public Sub New(world As IServerWorldAccessor, blockAccess As IBlockAccessor, start As BlockPos, [end] As BlockPos, notLiquids As Boolean)
+  overload: Vintagestory.API.Common.BlockSchematic.#ctor*
+  nameWithType.vb: BlockSchematic.New(IServerWorldAccessor, IBlockAccessor, BlockPos, BlockPos, Boolean)
+  fullName.vb: Vintagestory.API.Common.BlockSchematic.New(Vintagestory.API.Server.IServerWorldAccessor, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos, Boolean)
+  name.vb: New(IServerWorldAccessor, IBlockAccessor, BlockPos, BlockPos, Boolean)
 - uid: Vintagestory.API.Common.BlockSchematic.Init(Vintagestory.API.Common.IBlockAccessor)
   commentId: M:Vintagestory.API.Common.BlockSchematic.Init(Vintagestory.API.Common.IBlockAccessor)
   id: Init(Vintagestory.API.Common.IBlockAccessor)
@@ -1091,6 +1125,33 @@ items:
       type: Vintagestory.API.MathTools.BlockPos
       description: The end position of all the blocks.
     content.vb: Public Overridable Sub AddArea(world As IWorldAccessor, start As BlockPos, [end] As BlockPos)
+  overload: Vintagestory.API.Common.BlockSchematic.AddArea*
+- uid: Vintagestory.API.Common.BlockSchematic.AddArea(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.BlockSchematic.AddArea(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
+  id: AddArea(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.BlockSchematic
+  langs:
+  - csharp
+  - vb
+  name: AddArea(IWorldAccessor, IBlockAccessor, BlockPos, BlockPos)
+  nameWithType: BlockSchematic.AddArea(IWorldAccessor, IBlockAccessor, BlockPos, BlockPos)
+  fullName: Vintagestory.API.Common.BlockSchematic.AddArea(Vintagestory.API.Common.IWorldAccessor, Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public virtual void AddArea(IWorldAccessor world, IBlockAccessor blockAccess, BlockPos start, BlockPos end)
+    parameters:
+    - id: world
+      type: Vintagestory.API.Common.IWorldAccessor
+    - id: blockAccess
+      type: Vintagestory.API.Common.IBlockAccessor
+    - id: start
+      type: Vintagestory.API.MathTools.BlockPos
+    - id: end
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: Public Overridable Sub AddArea(world As IWorldAccessor, blockAccess As IBlockAccessor, start As BlockPos, [end] As BlockPos)
   overload: Vintagestory.API.Common.BlockSchematic.AddArea*
 - uid: Vintagestory.API.Common.BlockSchematic.Pack(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
   commentId: M:Vintagestory.API.Common.BlockSchematic.Pack(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
@@ -3137,12 +3198,6 @@ references:
   - uid: Vintagestory.API.Server
     name: Server
     href: Vintagestory.API.Server.html
-- uid: Vintagestory.API.Common.BlockSchematic.Init*
-  commentId: Overload:Vintagestory.API.Common.BlockSchematic.Init
-  href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_Init_Vintagestory_API_Common_IBlockAccessor_
-  name: Init
-  nameWithType: BlockSchematic.Init
-  fullName: Vintagestory.API.Common.BlockSchematic.Init
 - uid: Vintagestory.API.Common.IBlockAccessor
   commentId: T:Vintagestory.API.Common.IBlockAccessor
   parent: Vintagestory.API.Common
@@ -3150,6 +3205,12 @@ references:
   name: IBlockAccessor
   nameWithType: IBlockAccessor
   fullName: Vintagestory.API.Common.IBlockAccessor
+- uid: Vintagestory.API.Common.BlockSchematic.Init*
+  commentId: Overload:Vintagestory.API.Common.BlockSchematic.Init
+  href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_Init_Vintagestory_API_Common_IBlockAccessor_
+  name: Init
+  nameWithType: BlockSchematic.Init
+  fullName: Vintagestory.API.Common.BlockSchematic.Init
 - uid: Vintagestory.API.Common.BlockSchematic.InitMetaBlocks*
   commentId: Overload:Vintagestory.API.Common.BlockSchematic.InitMetaBlocks
   href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_InitMetaBlocks_Vintagestory_API_Common_IBlockAccessor_

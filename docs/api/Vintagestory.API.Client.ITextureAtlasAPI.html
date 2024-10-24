@@ -543,7 +543,56 @@ A subsequent call to this method will update the texture, but retain the same te
     <dt><code>texPos</code> <a class="xref" href="Vintagestory.API.Client.TextureAtlasPosition.html">TextureAtlasPosition</a></dt>
     <dd></dd>
     <dt><code>onCreate</code> <a class="xref" href="Vintagestory.API.Client.CreateTextureDelegate.html">CreateTextureDelegate</a></dt>
-    <dd><p>The method that should load the bitmap, if required. Can be left null to simply attempt to load the bmp from <code class="paramref">path</code> using method <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocation_">LoadCompositeBitmap(AssetLocation)</a></p>
+    <dd><p>The method that should load the bitmap, if required. Can be left null to simply attempt to load the bmp from <code class="paramref">path</code> using method <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocationAndSource_">LoadCompositeBitmap(AssetLocationAndSource)</a></p>
+</dd>
+    <dt><code>alphaTest</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>False if the file was not found or the insert failed</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Client_ITextureAtlasAPI_GetOrInsertTexture_" data-uid="Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture*"></a>
+
+  <h3 id="Vintagestory_API_Client_ITextureAtlasAPI_GetOrInsertTexture_Vintagestory_API_Common_AssetLocationAndSource_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__Vintagestory_API_Client_CreateTextureDelegate_System_Single_" data-uid="Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocationAndSource,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)">
+  GetOrInsertTexture(AssetLocationAndSource, out int, out TextureAtlasPosition, CreateTextureDelegate, float)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Same as <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_InsertTexture_Vintagestory_API_Common_IBitmap_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__System_Single_">InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)</a> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]
+A subsequent call to this method will update the texture, but retain the same texPos. Also a run-time texture reload will reload this texture automatically.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool GetOrInsertTexture(AssetLocationAndSource path, out int textureSubId, out TextureAtlasPosition texPos, CreateTextureDelegate onCreate = null, float alphaTest = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>path</code> <a class="xref" href="Vintagestory.API.Common.AssetLocationAndSource.html">AssetLocationAndSource</a></dt>
+    <dd><p>Used as reference for caching</p>
+</dd>
+    <dt><code>textureSubId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>texPos</code> <a class="xref" href="Vintagestory.API.Client.TextureAtlasPosition.html">TextureAtlasPosition</a></dt>
+    <dd></dd>
+    <dt><code>onCreate</code> <a class="xref" href="Vintagestory.API.Client.CreateTextureDelegate.html">CreateTextureDelegate</a></dt>
+    <dd><p>The method that should load the bitmap, if required. Can be left null to simply attempt to load the bmp from <code class="paramref">path</code> using method <a class="xref" href="Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocationAndSource_">LoadCompositeBitmap(AssetLocationAndSource)</a></p>
 </dd>
     <dt><code>alphaTest</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
@@ -903,8 +952,8 @@ bool InsertTextureCached(AssetLocation path, IBitmap bmp, out int textureSubId, 
 
   <a id="Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_" data-uid="Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap*"></a>
 
-  <h3 id="Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocation_" data-uid="Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)">
-  LoadCompositeBitmap(AssetLocation)
+  <h3 id="Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocationAndSource_" data-uid="Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)">
+  LoadCompositeBitmap(AssetLocationAndSource)
   
   </h3>
 
@@ -913,12 +962,12 @@ bool InsertTextureCached(AssetLocation path, IBitmap bmp, out int textureSubId, 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">IBitmap LoadCompositeBitmap(AssetLocation path)</code></pre>
+    <pre><code class="lang-csharp hljs">IBitmap LoadCompositeBitmap(AssetLocationAndSource path)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>path</code> <a class="xref" href="Vintagestory.API.Common.AssetLocation.html">AssetLocation</a></dt>
+    <dt><code>path</code> <a class="xref" href="Vintagestory.API.Common.AssetLocationAndSource.html">AssetLocationAndSource</a></dt>
     <dd></dd>
   </dl>
 

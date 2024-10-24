@@ -2470,6 +2470,9 @@ namespace Vintagestory.API.Common
                 itemstack.Attributes = new TreeAttribute();
             }
 
+            if (itemstack.Attributes.GetBool("timeFrozen")) return null;
+
+
             if (!(itemstack.Attributes["transitionstate"] is ITreeAttribute))
             {
                 itemstack.Attributes["transitionstate"] = new TreeAttribute();
@@ -2792,6 +2795,9 @@ namespace Vintagestory.API.Common
 
             double hourDiff = nowHours - lastUpdateHours;
             float temp = (float)attr.GetDecimal("temperature", 20);
+
+            if (itemstack.Attributes.GetBool("timeFrozen")) return temp;
+
             // 1.5 deg per irl second
             // 1 game hour = irl 60 seconds
             if (hourDiff > 1/85f && temp > 0f)

@@ -536,7 +536,7 @@ namespace Vintagestory.API.Client
         /// <param name="searchCacheNames"></param>
         public void FilterItemsBySearchText(string text, Dictionary<int, string> searchCache = null, Dictionary<int, string> searchCacheNames = null)
         {
-            searchText = text.RemoveDiacritics().ToLowerInvariant();
+            searchText = text.ToSearchFriendly().ToLowerInvariant();
 
             renderedSlots.Clear();
 

@@ -139,7 +139,11 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Will get you sunlight * sunbrightness
         /// </summary>
-        TimeOfDaySunLight
+        TimeOfDaySunLight,
+        /// <summary>
+        /// Will get you sunbrightness
+        /// </summary>
+        Sunbrightness
     }
 
 

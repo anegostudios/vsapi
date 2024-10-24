@@ -111,7 +111,7 @@ namespace Vintagestory.API.Common
 
         public void OnRenderFrame(float deltaTime, EnumRenderStage stage)
         {
-            if (animator == null || renderer == null) return; // not initialized yet
+            if (animator == null || renderer == null || (api as ICoreClientAPI)?.IsGamePaused == true) return; // not initialized yet
 
             if (activeAnimationsByAnimCode.Count > 0 || animator.ActiveAnimationCount > 0)
             {

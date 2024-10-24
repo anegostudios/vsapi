@@ -71,6 +71,8 @@ namespace Vintagestory.API.Server
         /// <param name="data"></param>
         void BroadcastBlockEntityPacket(BlockPos pos, int packetId, byte[] data = null);
 
+        void BroadcastBlockEntityPacket(BlockPos pos, int packetId, byte[] data = null, params IServerPlayer[] skipPlayers);
+
 
         /// <summary>
         /// Sends a packet data to given players. This let's you mess with the raw network communication if you know the protocol. Use with caution! For normal network communication you probably want to register your own network channel.

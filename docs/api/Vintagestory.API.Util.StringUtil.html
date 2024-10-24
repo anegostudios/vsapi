@@ -505,42 +505,6 @@ culture-specific different results even when indexing GLSL shader code or other 
 
 
 
-  <a id="Vintagestory_API_Util_StringUtil_RemoveDiacritics_" data-uid="Vintagestory.API.Util.StringUtil.RemoveDiacritics*"></a>
-
-  <h3 id="Vintagestory_API_Util_StringUtil_RemoveDiacritics_System_String_" data-uid="Vintagestory.API.Util.StringUtil.RemoveDiacritics(System.String)">
-  RemoveDiacritics(string)
-  
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string RemoveDiacritics(this string stIn)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>stIn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
   <a id="Vintagestory_API_Util_StringUtil_RemoveFileEnding_" data-uid="Vintagestory.API.Util.StringUtil.RemoveFileEnding*"></a>
 
   <h3 id="Vintagestory_API_Util_StringUtil_RemoveFileEnding_System_String_" data-uid="Vintagestory.API.Util.StringUtil.RemoveFileEnding(System.String)">
@@ -950,6 +914,43 @@ culture-specific different results even when examining strings in English, when 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Util_StringUtil_ToSearchFriendly_" data-uid="Vintagestory.API.Util.StringUtil.ToSearchFriendly*"></a>
+
+  <h3 id="Vintagestory_API_Util_StringUtil_ToSearchFriendly_System_String_" data-uid="Vintagestory.API.Util.StringUtil.ToSearchFriendly(System.String)">
+  ToSearchFriendly(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes diacritics and replaces quotation marks, guillemets and brackets with a blank space. Used to create a search friendly term</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static string ToSearchFriendly(this string stIn)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stIn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
     <dd></dd>
   </dl>
 

@@ -11,6 +11,7 @@ items:
   - Vintagestory.API.Client.ITextureAtlasAPI.GetAverageColor(System.Int32)
   - Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Client.CompositeTexture,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
   - Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocation,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
+  - Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocationAndSource,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
   - Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32)
   - Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(System.Int32,System.Int32)
   - Vintagestory.API.Client.ITextureAtlasAPI.GetRandomColor(Vintagestory.API.Client.TextureAtlasPosition,System.Int32)
@@ -20,7 +21,7 @@ items:
   - Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,System.Byte[],System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
   - Vintagestory.API.Client.ITextureAtlasAPI.InsertTextureCached(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
   - Vintagestory.API.Client.ITextureAtlasAPI.Item(Vintagestory.API.Common.AssetLocation)
-  - Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+  - Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)
   - Vintagestory.API.Client.ITextureAtlasAPI.Positions
   - Vintagestory.API.Client.ITextureAtlasAPI.RegenMipMaps(System.Int32)
   - Vintagestory.API.Client.ITextureAtlasAPI.RenderTextureIntoAtlas(System.Int32,Vintagestory.API.Client.LoadedTexture,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)
@@ -334,16 +335,16 @@ items:
   nameWithType.vb: ITextureAtlasAPI.InsertTexture(Byte(), Integer, TextureAtlasPosition, Single)
   fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Byte(), Integer, Vintagestory.API.Client.TextureAtlasPosition, Single)
   name.vb: InsertTexture(Byte(), Integer, TextureAtlasPosition, Single)
-- uid: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
-  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
-  id: LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)
+  id: LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)
   parent: Vintagestory.API.Client.ITextureAtlasAPI
   langs:
   - csharp
   - vb
-  name: LoadCompositeBitmap(AssetLocation)
-  nameWithType: ITextureAtlasAPI.LoadCompositeBitmap(AssetLocation)
-  fullName: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+  name: LoadCompositeBitmap(AssetLocationAndSource)
+  nameWithType: ITextureAtlasAPI.LoadCompositeBitmap(AssetLocationAndSource)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)
   type: Method
   assemblies:
   - VintagestoryAPI
@@ -351,16 +352,61 @@ items:
   summary: Loads a bitmap from given asset. Can use ++ syntax for texture overlay and @[int] for texture rotation
   example: []
   syntax:
-    content: IBitmap LoadCompositeBitmap(AssetLocation path)
+    content: IBitmap LoadCompositeBitmap(AssetLocationAndSource path)
     parameters:
     - id: path
-      type: Vintagestory.API.Common.AssetLocation
+      type: Vintagestory.API.Common.AssetLocationAndSource
       description: ''
     return:
       type: Vintagestory.API.Common.IBitmap
       description: ''
-    content.vb: Function LoadCompositeBitmap(path As AssetLocation) As IBitmap
+    content.vb: Function LoadCompositeBitmap(path As AssetLocationAndSource) As IBitmap
   overload: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap*
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocationAndSource,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocationAndSource,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
+  id: GetOrInsertTexture(Vintagestory.API.Common.AssetLocationAndSource,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
+  parent: Vintagestory.API.Client.ITextureAtlasAPI
+  langs:
+  - csharp
+  - vb
+  name: GetOrInsertTexture(AssetLocationAndSource, out int, out TextureAtlasPosition, CreateTextureDelegate, float)
+  nameWithType: ITextureAtlasAPI.GetOrInsertTexture(AssetLocationAndSource, out int, out TextureAtlasPosition, CreateTextureDelegate, float)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocationAndSource, out int, out Vintagestory.API.Client.TextureAtlasPosition, Vintagestory.API.Client.CreateTextureDelegate, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: >-
+    Same as <xref href="Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Vintagestory.API.Common.IBitmap%2cSystem.Int32%40%2cVintagestory.API.Client.TextureAtlasPosition%40%2cSystem.Single)" data-throw-if-not-resolved="false"></xref> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]
+
+    A subsequent call to this method will update the texture, but retain the same texPos. Also a run-time texture reload will reload this texture automatically.
+  example: []
+  syntax:
+    content: bool GetOrInsertTexture(AssetLocationAndSource path, out int textureSubId, out TextureAtlasPosition texPos, CreateTextureDelegate onCreate = null, float alphaTest = 0)
+    parameters:
+    - id: path
+      type: Vintagestory.API.Common.AssetLocationAndSource
+      description: Used as reference for caching
+    - id: textureSubId
+      type: System.Int32
+      description: ''
+    - id: texPos
+      type: Vintagestory.API.Client.TextureAtlasPosition
+      description: ''
+    - id: onCreate
+      type: Vintagestory.API.Client.CreateTextureDelegate
+      description: The method that should load the bitmap, if required. Can be left null to simply attempt to load the bmp from <code class="paramref">path</code> using method <xref href="Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)" data-throw-if-not-resolved="false"></xref>
+    - id: alphaTest
+      type: System.Single
+      description: ''
+    return:
+      type: System.Boolean
+      description: False if the file was not found or the insert failed
+    content.vb: Function GetOrInsertTexture(path As AssetLocationAndSource, textureSubId As Integer, texPos As TextureAtlasPosition, onCreate As CreateTextureDelegate = Nothing, alphaTest As Single = 0) As Boolean
+  overload: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture*
+  nameWithType.vb: ITextureAtlasAPI.GetOrInsertTexture(AssetLocationAndSource, Integer, TextureAtlasPosition, CreateTextureDelegate, Single)
+  fullName.vb: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocationAndSource, Integer, Vintagestory.API.Client.TextureAtlasPosition, Vintagestory.API.Client.CreateTextureDelegate, Single)
+  name.vb: GetOrInsertTexture(AssetLocationAndSource, Integer, TextureAtlasPosition, CreateTextureDelegate, Single)
 - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocation,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
   commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture(Vintagestory.API.Common.AssetLocation,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
   id: GetOrInsertTexture(Vintagestory.API.Common.AssetLocation,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,Vintagestory.API.Client.CreateTextureDelegate,System.Single)
@@ -394,7 +440,7 @@ items:
       description: ''
     - id: onCreate
       type: Vintagestory.API.Client.CreateTextureDelegate
-      description: The method that should load the bitmap, if required. Can be left null to simply attempt to load the bmp from <code class="paramref">path</code> using method <xref href="Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)" data-throw-if-not-resolved="false"></xref>
+      description: The method that should load the bitmap, if required. Can be left null to simply attempt to load the bmp from <code class="paramref">path</code> using method <xref href="Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)" data-throw-if-not-resolved="false"></xref>
     - id: alphaTest
       type: System.Single
       description: ''
@@ -1317,10 +1363,17 @@ references:
   - name: )
 - uid: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap*
   commentId: Overload:Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap
-  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocation_
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocationAndSource_
   name: LoadCompositeBitmap
   nameWithType: ITextureAtlasAPI.LoadCompositeBitmap
   fullName: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap
+- uid: Vintagestory.API.Common.AssetLocationAndSource
+  commentId: T:Vintagestory.API.Common.AssetLocationAndSource
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocationAndSource.html
+  name: AssetLocationAndSource
+  nameWithType: AssetLocationAndSource
+  fullName: Vintagestory.API.Common.AssetLocationAndSource
 - uid: Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
   commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.InsertTexture(Vintagestory.API.Common.IBitmap,System.Int32@,Vintagestory.API.Client.TextureAtlasPosition@,System.Single)
   parent: Vintagestory.API.Client.ITextureAtlasAPI
@@ -1388,34 +1441,34 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.single
   - name: )
-- uid: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
-  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+- uid: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)
+  commentId: M:Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)
   parent: Vintagestory.API.Client.ITextureAtlasAPI
-  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocation_
-  name: LoadCompositeBitmap(AssetLocation)
-  nameWithType: ITextureAtlasAPI.LoadCompositeBitmap(AssetLocation)
-  fullName: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocationAndSource_
+  name: LoadCompositeBitmap(AssetLocationAndSource)
+  nameWithType: ITextureAtlasAPI.LoadCompositeBitmap(AssetLocationAndSource)
+  fullName: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)
   spec.csharp:
-  - uid: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)
     name: LoadCompositeBitmap
-    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocation_
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocationAndSource_
   - name: (
-  - uid: Vintagestory.API.Common.AssetLocation
-    name: AssetLocation
-    href: Vintagestory.API.Common.AssetLocation.html
+  - uid: Vintagestory.API.Common.AssetLocationAndSource
+    name: AssetLocationAndSource
+    href: Vintagestory.API.Common.AssetLocationAndSource.html
   - name: )
   spec.vb:
-  - uid: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocation)
+  - uid: Vintagestory.API.Client.ITextureAtlasAPI.LoadCompositeBitmap(Vintagestory.API.Common.AssetLocationAndSource)
     name: LoadCompositeBitmap
-    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocation_
+    href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_LoadCompositeBitmap_Vintagestory_API_Common_AssetLocationAndSource_
   - name: (
-  - uid: Vintagestory.API.Common.AssetLocation
-    name: AssetLocation
-    href: Vintagestory.API.Common.AssetLocation.html
+  - uid: Vintagestory.API.Common.AssetLocationAndSource
+    name: AssetLocationAndSource
+    href: Vintagestory.API.Common.AssetLocationAndSource.html
   - name: )
 - uid: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture*
   commentId: Overload:Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture
-  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetOrInsertTexture_Vintagestory_API_Common_AssetLocation_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__Vintagestory_API_Client_CreateTextureDelegate_System_Single_
+  href: Vintagestory.API.Client.ITextureAtlasAPI.html#Vintagestory_API_Client_ITextureAtlasAPI_GetOrInsertTexture_Vintagestory_API_Common_AssetLocationAndSource_System_Int32__Vintagestory_API_Client_TextureAtlasPosition__Vintagestory_API_Client_CreateTextureDelegate_System_Single_
   name: GetOrInsertTexture
   nameWithType: ITextureAtlasAPI.GetOrInsertTexture
   fullName: Vintagestory.API.Client.ITextureAtlasAPI.GetOrInsertTexture

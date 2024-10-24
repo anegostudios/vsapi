@@ -115,7 +115,19 @@ namespace Vintagestory.API.Client
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>
-        IBitmap LoadCompositeBitmap(AssetLocation path);
+        IBitmap LoadCompositeBitmap(AssetLocationAndSource path);
+
+        /// <summary>
+        /// Same as <see cref="InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)"/> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]
+        /// A subsequent call to this method will update the texture, but retain the same texPos. Also a run-time texture reload will reload this texture automatically.
+        /// </summary>
+        /// <param name="path">Used as reference for caching</param>
+        /// <param name="textureSubId"></param>
+        /// <param name="texPos"></param>
+        /// <param name="onCreate">The method that should load the bitmap, if required. Can be left null to simply attempt to load the bmp from <paramref name="path"/> using method <see cref="LoadCompositeBitmap"/></param>
+        /// <param name="alphaTest"></param>
+        /// <returns>False if the file was not found or the insert failed</returns>
+        bool GetOrInsertTexture(AssetLocationAndSource path, out int textureSubId, out TextureAtlasPosition texPos, CreateTextureDelegate onCreate = null, float alphaTest = 0f);
 
         /// <summary>
         /// Same as <see cref="InsertTexture(IBitmap, out int, out TextureAtlasPosition, float)"/> but this method remembers the inserted texure, which you can access using capi.TextureAtlas[path]

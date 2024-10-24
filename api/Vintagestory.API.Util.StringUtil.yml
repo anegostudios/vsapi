@@ -14,7 +14,6 @@ items:
   - Vintagestory.API.Util.StringUtil.FastStartsWith(System.String,System.String,System.Int32)
   - Vintagestory.API.Util.StringUtil.GetNonRandomizedHashCode(System.String)
   - Vintagestory.API.Util.StringUtil.IndexOfOrdinal(System.String,System.String)
-  - Vintagestory.API.Util.StringUtil.RemoveDiacritics(System.String)
   - Vintagestory.API.Util.StringUtil.RemoveFileEnding(System.String)
   - Vintagestory.API.Util.StringUtil.StartsWithFast(System.String,System.String)
   - Vintagestory.API.Util.StringUtil.StartsWithFast(System.String,System.String,System.Int32)
@@ -26,6 +25,7 @@ items:
   - Vintagestory.API.Util.StringUtil.ToFloatOrNull(System.String,System.Nullable{System.Single})
   - Vintagestory.API.Util.StringUtil.ToInt(System.String,System.Int32)
   - Vintagestory.API.Util.StringUtil.ToLong(System.String,System.Int64)
+  - Vintagestory.API.Util.StringUtil.ToSearchFriendly(System.String)
   - Vintagestory.API.Util.StringUtil.UcFirst(System.String)
   langs:
   - csharp
@@ -706,33 +706,37 @@ items:
   nameWithType.vb: StringUtil.FastStartsWith(String, String, Integer)
   fullName.vb: Vintagestory.API.Util.StringUtil.FastStartsWith(String, String, Integer)
   name.vb: FastStartsWith(String, String, Integer)
-- uid: Vintagestory.API.Util.StringUtil.RemoveDiacritics(System.String)
-  commentId: M:Vintagestory.API.Util.StringUtil.RemoveDiacritics(System.String)
-  id: RemoveDiacritics(System.String)
+- uid: Vintagestory.API.Util.StringUtil.ToSearchFriendly(System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.ToSearchFriendly(System.String)
+  id: ToSearchFriendly(System.String)
   isExtensionMethod: true
   parent: Vintagestory.API.Util.StringUtil
   langs:
   - csharp
   - vb
-  name: RemoveDiacritics(string)
-  nameWithType: StringUtil.RemoveDiacritics(string)
-  fullName: Vintagestory.API.Util.StringUtil.RemoveDiacritics(string)
+  name: ToSearchFriendly(string)
+  nameWithType: StringUtil.ToSearchFriendly(string)
+  fullName: Vintagestory.API.Util.StringUtil.ToSearchFriendly(string)
   type: Method
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Util
+  summary: Removes diacritics and replaces quotation marks, guillemets and brackets with a blank space. Used to create a search friendly term
+  example: []
   syntax:
-    content: public static string RemoveDiacritics(this string stIn)
+    content: public static string ToSearchFriendly(this string stIn)
     parameters:
     - id: stIn
       type: System.String
+      description: ''
     return:
       type: System.String
-    content.vb: Public Shared Function RemoveDiacritics(stIn As String) As String
-  overload: Vintagestory.API.Util.StringUtil.RemoveDiacritics*
-  nameWithType.vb: StringUtil.RemoveDiacritics(String)
-  fullName.vb: Vintagestory.API.Util.StringUtil.RemoveDiacritics(String)
-  name.vb: RemoveDiacritics(String)
+      description: ''
+    content.vb: Public Shared Function ToSearchFriendly(stIn As String) As String
+  overload: Vintagestory.API.Util.StringUtil.ToSearchFriendly*
+  nameWithType.vb: StringUtil.ToSearchFriendly(String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.ToSearchFriendly(String)
+  name.vb: ToSearchFriendly(String)
 references:
 - uid: Vintagestory.API.Util
   commentId: N:Vintagestory.API.Util
@@ -1266,9 +1270,9 @@ references:
   name: FastStartsWith
   nameWithType: StringUtil.FastStartsWith
   fullName: Vintagestory.API.Util.StringUtil.FastStartsWith
-- uid: Vintagestory.API.Util.StringUtil.RemoveDiacritics*
-  commentId: Overload:Vintagestory.API.Util.StringUtil.RemoveDiacritics
-  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_RemoveDiacritics_System_String_
-  name: RemoveDiacritics
-  nameWithType: StringUtil.RemoveDiacritics
-  fullName: Vintagestory.API.Util.StringUtil.RemoveDiacritics
+- uid: Vintagestory.API.Util.StringUtil.ToSearchFriendly*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.ToSearchFriendly
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_ToSearchFriendly_System_String_
+  name: ToSearchFriendly
+  nameWithType: StringUtil.ToSearchFriendly
+  fullName: Vintagestory.API.Util.StringUtil.ToSearchFriendly

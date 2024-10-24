@@ -11,7 +11,6 @@ items:
   - Vintagestory.API.Common.IAssetManager.AddPathOrigin(System.String,System.String)
   - Vintagestory.API.Common.IAssetManager.AllAssets
   - Vintagestory.API.Common.IAssetManager.Exists(Vintagestory.API.Common.AssetLocation)
-  - Vintagestory.API.Common.IAssetManager.Get(System.String)
   - Vintagestory.API.Common.IAssetManager.Get(Vintagestory.API.Common.AssetLocation)
   - Vintagestory.API.Common.IAssetManager.GetLocations(System.String,System.String)
   - Vintagestory.API.Common.IAssetManager.GetMany(System.String,System.String,System.Boolean)
@@ -21,7 +20,6 @@ items:
   - Vintagestory.API.Common.IAssetManager.Origins
   - Vintagestory.API.Common.IAssetManager.Reload(Vintagestory.API.Common.AssetCategory)
   - Vintagestory.API.Common.IAssetManager.Reload(Vintagestory.API.Common.AssetLocation)
-  - Vintagestory.API.Common.IAssetManager.TryGet(System.String,System.Boolean)
   - Vintagestory.API.Common.IAssetManager.TryGet(Vintagestory.API.Common.AssetLocation,System.Boolean)
   langs:
   - csharp
@@ -118,36 +116,6 @@ items:
       description: ''
     content.vb: Sub Add(path As AssetLocation, asset As IAsset)
   overload: Vintagestory.API.Common.IAssetManager.Add*
-- uid: Vintagestory.API.Common.IAssetManager.Get(System.String)
-  commentId: M:Vintagestory.API.Common.IAssetManager.Get(System.String)
-  id: Get(System.String)
-  parent: Vintagestory.API.Common.IAssetManager
-  langs:
-  - csharp
-  - vb
-  name: Get(string)
-  nameWithType: IAssetManager.Get(string)
-  fullName: Vintagestory.API.Common.IAssetManager.Get(string)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: Retrieves an asset from given path within the assets folder. Throws an exception when the asset does not exist. Remember to use lower case paths.
-  example: []
-  syntax:
-    content: IAsset Get(string path)
-    parameters:
-    - id: path
-      type: System.String
-      description: ''
-    return:
-      type: Vintagestory.API.Common.IAsset
-      description: ''
-    content.vb: Function [Get](path As String) As IAsset
-  overload: Vintagestory.API.Common.IAssetManager.Get*
-  nameWithType.vb: IAssetManager.Get(String)
-  fullName.vb: Vintagestory.API.Common.IAssetManager.Get(String)
-  name.vb: Get(String)
 - uid: Vintagestory.API.Common.IAssetManager.Get(Vintagestory.API.Common.AssetLocation)
   commentId: M:Vintagestory.API.Common.IAssetManager.Get(Vintagestory.API.Common.AssetLocation)
   id: Get(Vintagestory.API.Common.AssetLocation)
@@ -175,42 +143,6 @@ items:
       description: ''
     content.vb: Function [Get](Location As AssetLocation) As IAsset
   overload: Vintagestory.API.Common.IAssetManager.Get*
-- uid: Vintagestory.API.Common.IAssetManager.TryGet(System.String,System.Boolean)
-  commentId: M:Vintagestory.API.Common.IAssetManager.TryGet(System.String,System.Boolean)
-  id: TryGet(System.String,System.Boolean)
-  parent: Vintagestory.API.Common.IAssetManager
-  langs:
-  - csharp
-  - vb
-  name: TryGet(string, bool)
-  nameWithType: IAssetManager.TryGet(string, bool)
-  fullName: Vintagestory.API.Common.IAssetManager.TryGet(string, bool)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: >-
-    Retrieves an asset from given path within the assets folder. Returns null when the asset does not exist. Remember to use lower case paths.
-
-    <br /><br /> Mods must not call TryGet to get assets before AssetsLoaded stage in a ModSystem - do not load assets in the Start() method!  In StartClientSide() is OK though.  (Or if you absolutely have to load assets in Start(), use IAssetManager.Get(), but it will throw an exception for anything except a base asset.)
-  example: []
-  syntax:
-    content: IAsset TryGet(string Path, bool loadAsset = true)
-    parameters:
-    - id: Path
-      type: System.String
-      description: ''
-    - id: loadAsset
-      type: System.Boolean
-      description: ''
-    return:
-      type: Vintagestory.API.Common.IAsset
-      description: ''
-    content.vb: Function TryGet(Path As String, loadAsset As Boolean = True) As IAsset
-  overload: Vintagestory.API.Common.IAssetManager.TryGet*
-  nameWithType.vb: IAssetManager.TryGet(String, Boolean)
-  fullName.vb: Vintagestory.API.Common.IAssetManager.TryGet(String, Boolean)
-  name.vb: TryGet(String, Boolean)
 - uid: Vintagestory.API.Common.IAssetManager.TryGet(Vintagestory.API.Common.AssetLocation,System.Boolean)
   commentId: M:Vintagestory.API.Common.IAssetManager.TryGet(Vintagestory.API.Common.AssetLocation,System.Boolean)
   id: TryGet(Vintagestory.API.Common.AssetLocation,System.Boolean)
@@ -962,10 +894,22 @@ references:
   fullName: Vintagestory.API.Common.IAsset
 - uid: Vintagestory.API.Common.IAssetManager.Get*
   commentId: Overload:Vintagestory.API.Common.IAssetManager.Get
-  href: Vintagestory.API.Common.IAssetManager.html#Vintagestory_API_Common_IAssetManager_Get_System_String_
+  href: Vintagestory.API.Common.IAssetManager.html#Vintagestory_API_Common_IAssetManager_Get_Vintagestory_API_Common_AssetLocation_
   name: Get
   nameWithType: IAssetManager.Get
   fullName: Vintagestory.API.Common.IAssetManager.Get
+- uid: Vintagestory.API.Common.IAssetManager.TryGet*
+  commentId: Overload:Vintagestory.API.Common.IAssetManager.TryGet
+  href: Vintagestory.API.Common.IAssetManager.html#Vintagestory_API_Common_IAssetManager_TryGet_Vintagestory_API_Common_AssetLocation_System_Boolean_
+  name: TryGet
+  nameWithType: IAssetManager.TryGet
+  fullName: Vintagestory.API.Common.IAssetManager.TryGet
+- uid: Vintagestory.API.Common.IAssetManager.GetMany*
+  commentId: Overload:Vintagestory.API.Common.IAssetManager.GetMany
+  href: Vintagestory.API.Common.IAssetManager.html#Vintagestory_API_Common_IAssetManager_GetMany_System_String_System_String_System_Boolean_
+  name: GetMany
+  nameWithType: IAssetManager.GetMany
+  fullName: Vintagestory.API.Common.IAssetManager.GetMany
 - uid: System.String
   commentId: T:System.String
   parent: System
@@ -977,18 +921,6 @@ references:
   nameWithType.vb: String
   fullName.vb: String
   name.vb: String
-- uid: Vintagestory.API.Common.IAssetManager.TryGet*
-  commentId: Overload:Vintagestory.API.Common.IAssetManager.TryGet
-  href: Vintagestory.API.Common.IAssetManager.html#Vintagestory_API_Common_IAssetManager_TryGet_System_String_System_Boolean_
-  name: TryGet
-  nameWithType: IAssetManager.TryGet
-  fullName: Vintagestory.API.Common.IAssetManager.TryGet
-- uid: Vintagestory.API.Common.IAssetManager.GetMany*
-  commentId: Overload:Vintagestory.API.Common.IAssetManager.GetMany
-  href: Vintagestory.API.Common.IAssetManager.html#Vintagestory_API_Common_IAssetManager_GetMany_System_String_System_String_System_Boolean_
-  name: GetMany
-  nameWithType: IAssetManager.GetMany
-  fullName: Vintagestory.API.Common.IAssetManager.GetMany
 - uid: System.Collections.Generic.List{Vintagestory.API.Common.IAsset}
   commentId: T:System.Collections.Generic.List{Vintagestory.API.Common.IAsset}
   parent: System.Collections.Generic

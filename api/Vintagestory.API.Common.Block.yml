@@ -178,7 +178,6 @@ items:
   - Vintagestory.API.Common.Block.Textures
   - Vintagestory.API.Common.Block.TexturesInventory
   - Vintagestory.API.Common.Block.ToString
-  - Vintagestory.API.Common.Block.TraversalCost
   - Vintagestory.API.Common.Block.TryPlaceBlock(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.BlockSelection,System.String@)
   - Vintagestory.API.Common.Block.TryPlaceBlockForWorldGen(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,Vintagestory.API.Common.BlockPatchAttributes)
   - Vintagestory.API.Common.Block.TryPlaceBlockForWorldGenUnderwater(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,Vintagestory.API.MathTools.IRandom,System.Int32,System.Int32,Vintagestory.API.Common.BlockPatchAttributes)
@@ -1877,25 +1876,6 @@ items:
       type: Vintagestory.API.MathTools.Vec3d
     content.vb: Public Property PushVector As Vec3d
   overload: Vintagestory.API.Common.Block.PushVector*
-- uid: Vintagestory.API.Common.Block.TraversalCost
-  commentId: F:Vintagestory.API.Common.Block.TraversalCost
-  id: TraversalCost
-  parent: Vintagestory.API.Common.Block
-  langs:
-  - csharp
-  - vb
-  name: TraversalCost
-  nameWithType: Block.TraversalCost
-  fullName: Vintagestory.API.Common.Block.TraversalCost
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  syntax:
-    content: public float TraversalCost
-    return:
-      type: System.Single
-    content.vb: Public TraversalCost As Single
 - uid: Vintagestory.API.Common.Block.CanStep
   commentId: F:Vintagestory.API.Common.Block.CanStep
   id: CanStep

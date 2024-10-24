@@ -17,7 +17,7 @@ namespace Vintagestory.API.Config
     /// <summary>
     /// Utility class for enabling i18n. Loads language entries from assets/[locale].json
     /// </summary>
-    /// <remarks>     
+    /// <remarks>
     /// Kept legacy code structure and arguments for backwards compatibility.
     /// </remarks>
     public static class Lang
@@ -150,15 +150,15 @@ namespace Vintagestory.API.Config
         /// <returns></returns>
         public static string GetL(string langcode, string key, params object[] args)
         {
-            return AvailableLanguages[langcode].HasTranslation(key, false)
-                ? AvailableLanguages[langcode].Get(key, args)
+            return AvailableLanguages.TryGetValue(langcode, out var language) && language.HasTranslation(key, false)
+                ? language.Get(key, args)
                 : AvailableLanguages[DefaultLocale].Get(key, args);
         }
 
         public static string GetMatchingL(string langcode, string key, params object[] args)
         {
-            return AvailableLanguages[langcode].HasTranslation(key)
-                ? AvailableLanguages[langcode].GetMatching(key, args)
+            return AvailableLanguages.TryGetValue(langcode, out var language) && language.HasTranslation(key)
+                ? language.GetMatching(key, args)
                 : AvailableLanguages[DefaultLocale].GetMatching(key, args);
         }
 
@@ -265,7 +265,7 @@ namespace Vintagestory.API.Config
                 {
                     hint += parts[i];
                 }
-                
+
                 if (i > 0 && i == parts.Length - 1) hint += ")";
             }
 

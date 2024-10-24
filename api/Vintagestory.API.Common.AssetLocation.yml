@@ -50,7 +50,7 @@ items:
   - Vintagestory.API.Common.AssetLocation.WithPathPrefixOnce(System.String)
   - Vintagestory.API.Common.AssetLocation.WithoutPathAppendix(System.String)
   - Vintagestory.API.Common.AssetLocation.op_Equality(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
-  - Vintagestory.API.Common.AssetLocation.op_Explicit(System.String)~Vintagestory.API.Common.AssetLocation
+  - Vintagestory.API.Common.AssetLocation.op_Implicit(System.String)~Vintagestory.API.Common.AssetLocation
   - Vintagestory.API.Common.AssetLocation.op_Implicit(Vintagestory.API.Common.AssetLocation)~System.String
   - Vintagestory.API.Common.AssetLocation.op_Inequality(Vintagestory.API.Common.AssetLocation,Vintagestory.API.Common.AssetLocation)
   - Vintagestory.API.Common.AssetLocation.toLocations(System.String[])
@@ -1320,29 +1320,29 @@ items:
   nameWithType.vb: AssetLocation.CType(AssetLocation)
   fullName.vb: Vintagestory.API.Common.AssetLocation.CType(Vintagestory.API.Common.AssetLocation)
   name.vb: CType(AssetLocation)
-- uid: Vintagestory.API.Common.AssetLocation.op_Explicit(System.String)~Vintagestory.API.Common.AssetLocation
-  commentId: M:Vintagestory.API.Common.AssetLocation.op_Explicit(System.String)~Vintagestory.API.Common.AssetLocation
-  id: op_Explicit(System.String)~Vintagestory.API.Common.AssetLocation
+- uid: Vintagestory.API.Common.AssetLocation.op_Implicit(System.String)~Vintagestory.API.Common.AssetLocation
+  commentId: M:Vintagestory.API.Common.AssetLocation.op_Implicit(System.String)~Vintagestory.API.Common.AssetLocation
+  id: op_Implicit(System.String)~Vintagestory.API.Common.AssetLocation
   parent: Vintagestory.API.Common.AssetLocation
   langs:
   - csharp
   - vb
-  name: explicit operator AssetLocation(string)
-  nameWithType: AssetLocation.explicit operator AssetLocation(string)
-  fullName: Vintagestory.API.Common.AssetLocation.explicit operator Vintagestory.API.Common.AssetLocation(string)
+  name: implicit operator AssetLocation(string)
+  nameWithType: AssetLocation.implicit operator AssetLocation(string)
+  fullName: Vintagestory.API.Common.AssetLocation.implicit operator Vintagestory.API.Common.AssetLocation(string)
   type: Operator
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: public static explicit operator AssetLocation(string code)
+    content: public static implicit operator AssetLocation(string code)
     parameters:
     - id: code
       type: System.String
     return:
       type: Vintagestory.API.Common.AssetLocation
-    content.vb: Public Shared Narrowing Operator CType(code As String) As AssetLocation
-  overload: Vintagestory.API.Common.AssetLocation.op_Explicit*
+    content.vb: Public Shared Widening Operator CType(code As String) As AssetLocation
+  overload: Vintagestory.API.Common.AssetLocation.op_Implicit*
   nameWithType.vb: AssetLocation.CType(String)
   fullName.vb: Vintagestory.API.Common.AssetLocation.CType(String)
   name.vb: CType(String)
@@ -2493,17 +2493,5 @@ references:
   name.vb: CType
   spec.csharp:
   - name: implicit
-  - name: " "
-  - name: operator
-- uid: Vintagestory.API.Common.AssetLocation.op_Explicit*
-  commentId: Overload:Vintagestory.API.Common.AssetLocation.op_Explicit
-  name: explicit operator
-  nameWithType: AssetLocation.explicit operator
-  fullName: Vintagestory.API.Common.AssetLocation.explicit operator
-  nameWithType.vb: AssetLocation.CType
-  fullName.vb: Vintagestory.API.Common.AssetLocation.CType
-  name.vb: CType
-  spec.csharp:
-  - name: explicit
   - name: " "
   - name: operator

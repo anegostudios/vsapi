@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Vintagestory.API.Common.Entities;
 
 namespace Vintagestory.API.Common
 {
@@ -40,7 +41,6 @@ namespace Vintagestory.API.Common
         /// The setter allows for replacing slots with custom ones, though caution is advised.
         /// </summary>
         ItemSlot this[int slotId] { get; set; }
-        
 
         /// <summary>
         /// The name of the class for the inventory
@@ -62,6 +62,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="player"></param>
         object Open(IPlayer player);
+
         /// <summary>
         /// Removes ability to interact with this inventory for this player. Returns a close inventory packet that can be sent to the server for synchronization.
         /// </summary>
@@ -77,7 +78,7 @@ namespace Vintagestory.API.Common
 
         /// <summary>
         /// Returns the best suited slot to hold the item from the source slot. Attached is also a weight, indicating how well the item is suited for it. If no suitable slot was found, the weight will be 0 and the slot will be null. A higher weight means the slot is better suited to hold the item. This method does not check if the player is actually allowed to access or modify this inventory.
-        /// 
+        ///
         /// Weight will be 1 for a default slot that is empty
         /// Weight will be 2 for a default slot that can take one or more items from the source slot
         /// Weight could be 10 for an empty armor slot and the source slot contains an armor itemtack
@@ -120,14 +121,14 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="slotId"></param>
         void MarkSlotDirty(int slotId);
-        
+
         /// <summary>
         /// Event that fires when a slot was modified
         /// </summary>
         event Action<int> SlotModified;
 
         /// <summary>
-        /// Event that fires when NotifySlot was called 
+        /// Event that fires when NotifySlot was called
         /// </summary>
         event Action<int> SlotNotified;
     }

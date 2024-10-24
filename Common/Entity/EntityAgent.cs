@@ -427,7 +427,9 @@ namespace Vintagestory.API.Common
             Emote = 197,
             Death = 198,
             Hurt = 199,
-            PlayPlayerAnim = 200
+            PlayPlayerAnim = 200,
+            PlayMusic = 201,
+            StopMusic = 202
         }
         public enum EntityClientPacketId
         {

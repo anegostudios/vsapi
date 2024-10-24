@@ -281,17 +281,28 @@ namespace Vintagestory.API.Util
         }
 
 
-        public static string RemoveDiacritics(this string stIn)
+        /// <summary>
+        /// Removes diacritics and replaces quotation marks, guillemets and brackets with a blank space. Used to create a search friendly term
+        /// </summary>
+        /// <param name="stIn"></param>
+        /// <returns></returns>
+        public static string ToSearchFriendly(this string stIn)
         {
             string stFormD = stIn.Normalize(NormalizationForm.FormD);
             StringBuilder sb = new StringBuilder();
 
             for (int ich = 0; ich < stFormD.Length; ich++)
             {
-                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+                var chr = stFormD[ich];
+                if (chr == '«' || chr == '»' || chr == '"' || chr == '(' || chr == ')')
+                {
+                    sb.Append(' ');
+                    continue;
+                }
+                UnicodeCategory uc = CharUnicodeInfo.GetUnicodeCategory(chr);
                 if (uc != UnicodeCategory.NonSpacingMark)
                 {
-                    sb.Append(stFormD[ich]);
+                    sb.Append(chr);
                 }
             }
 

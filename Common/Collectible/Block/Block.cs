@@ -338,10 +338,8 @@ namespace Vintagestory.API.Common
         /// </summary>
         public Vec3d PushVector { get; set; }
 
-        public float TraversalCost;
         public bool CanStep = true;
         public bool AllowStepWhenStuck = false;
-
 
         /// <summary>
         /// To allow Decor Behavior settings to be accessed through the Block API.  See DecorFlags class for interpretation.
@@ -355,6 +353,9 @@ namespace Vintagestory.API.Common
         public float InteractionHelpYOffset = 0.9f;
 
         public int TextureSubIdForBlockColor = -1;
+
+        float humanoidTraversalCost; // Read from attributes
+
 
         public virtual string ClimateColorMapForMap => ClimateColorMap;
         public virtual string SeasonColorMapForMap => SeasonColorMap;
@@ -380,6 +381,7 @@ namespace Vintagestory.API.Common
         /// <param name="api"></param>
         public override void OnLoaded(ICoreAPI api)
         {
+            humanoidTraversalCost = Attributes?["humanoidTraversalCost"]?.AsFloat(1) ?? 1;
             PushVector = Attributes?["pushVector"]?.AsObject<Vec3d>();
             AllowStepWhenStuck = Attributes?["allowStepWhenStuck"]?.AsBool(false) ?? false;
             CanStep = Attributes?["canStep"].AsBool(true) ?? true;
@@ -1951,6 +1953,8 @@ namespace Vintagestory.API.Common
             return Climbable;
         }
 
+        
+
         /// <summary>
         /// The cost of traversing this block as part of the AI pathfinding system.
         /// Return a negative value to prefer traversal of a block, return a positive value to avoid traversal of this block. A value over 10000f is considered impassable.
@@ -1961,6 +1965,10 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual float GetTraversalCost(BlockPos pos, EnumAICreatureType creatureType)
         {
+            if (creatureType == EnumAICreatureType.Humanoid)
+            {
+                return humanoidTraversalCost;
+            }
             return (1 - WalkSpeedMultiplier) * (creatureType == EnumAICreatureType.Humanoid ? 5 : 2);
         }
 

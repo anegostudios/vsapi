@@ -77,9 +77,9 @@ namespace Vintagestory.API.Client
             EmbossRoundRectangleElement(ctx, Bounds.drawX + Bounds.InnerWidth - scaled(17 + 1) * Scale, Bounds.drawY, rightSpacing * Scale, heightHalf, false, 2, 1);
 
             ctx.NewPath();
-            ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(9) * Scale, Bounds.drawY + scaled(4) * Scale);
-            ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(14) * Scale, Bounds.drawY + scaled(12) * Scale);
-            ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(4) * Scale, Bounds.drawY + scaled(12) * Scale);
+            ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(9) * Scale, Bounds.drawY + scaled(1) * Scale);
+            ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(14) * Scale, Bounds.drawY + (heightHalf - scaled(2)) * Scale);
+            ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(4) * Scale, Bounds.drawY + (heightHalf - scaled(2)) * Scale);
             ctx.ClosePath();
             ctx.SetSourceRGBA(1, 1, 1, 0.4);
             ctx.Fill();
@@ -93,9 +93,9 @@ namespace Vintagestory.API.Client
             EmbossRoundRectangleElement(ctx, Bounds.drawX + Bounds.InnerWidth - (rightSpacing + scaled(1)) * Scale, Bounds.drawY + heightHalf + scaled(1) * Scale, rightSpacing * Scale, heightHalf, false, 2, 1);
 
             ctx.NewPath();
-            ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(14) * Scale, Bounds.drawY + scaled(19) * Scale);
-            ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(4) * Scale, Bounds.drawY + scaled(19) * Scale);
-            ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(9) * Scale, Bounds.drawY + scaled(27) * Scale);
+            ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(14) * Scale, Bounds.drawY + (heightHalf + scaled(3)) * Scale);
+            ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(4) * Scale, Bounds.drawY + (heightHalf + scaled(3)) * Scale);
+            ctx.LineTo(Bounds.drawX + Bounds.InnerWidth - scaled(9) * Scale, Bounds.drawY + (heightHalf * 2) * Scale);
             ctx.ClosePath();
             ctx.SetSourceRGBA(1, 1, 1, 0.4);
             ctx.Fill();

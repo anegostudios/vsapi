@@ -68,7 +68,7 @@ namespace Vintagestory.API.Common
         /// The players that had opened the inventory.
         /// </summary>
         public HashSet<string> openedByPlayerGUIds;
-        
+
         /// <summary>
         /// The network utility for the inventory
         /// </summary>
@@ -102,7 +102,7 @@ namespace Vintagestory.API.Common
 
         public virtual int CountForNetworkPacket => Count;
 
-        
+
 
         /// <summary>
         /// Gets or sets the slot at the given slot number.
@@ -111,7 +111,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public abstract ItemSlot this[int slotId] { get; set; }
 
-        
+
 
         /// <summary>
         /// True if this inventory has to be resent to the client or when the client has to redraw them
@@ -237,7 +237,7 @@ namespace Vintagestory.API.Common
                 InvNetworkUtil = api.ClassRegistry.CreateInvNetworkUtil(this, api);
             }
         }
-        
+
         /// <summary>
         /// You can initialize an InventoryBase with null as parameters and use LateInitialize to set these values later. This is sometimes required during chunk loading.
         /// </summary>
@@ -565,7 +565,7 @@ namespace Vintagestory.API.Common
         public virtual ItemSlot[] GetSlotsIfExists(IPlayer player, string[] invIds, int[] slotIds)
         {
             ItemSlot[] slots = new ItemSlot[2];
-           
+
             // 1. Both inventories must exist and be modifiable
             InventoryBase sourceInv = (InventoryBase)player.InventoryManager.GetInventory(invIds[0]);
             InventoryBase targetInv = (InventoryBase)player.InventoryManager.GetInventory(invIds[1]);
@@ -626,7 +626,7 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            
+
 
             return slots;
         }
@@ -650,7 +650,7 @@ namespace Vintagestory.API.Common
 
             tree["slots"] = slotsTree;
         }
-        
+
 
         /// <summary>
         /// Gets a specified number of empty slots.
@@ -685,7 +685,7 @@ namespace Vintagestory.API.Common
         public virtual void MarkSlotDirty(int slotId)
         {
             if (slotId < 0) throw new Exception("Negative slotid?!");
-            dirtySlots.Add(slotId);           
+            dirtySlots.Add(slotId);
         }
 
         /// <summary>
@@ -710,7 +710,7 @@ namespace Vintagestory.API.Common
             if (Api.Side == EnumAppSide.Client) return;
             if (slot.Empty) return;
             if (player != null && player.WorldData.CurrentGameMode == EnumGameMode.Creative) return;
-            
+
             if (slot.Itemstack.Collectible.Attributes?.IsTrue("allowHotCrafting") != true && slot.Itemstack.Collectible.GetTemperature(Api.World, slot.Itemstack) > 300 && !hasHeatResistantHandGear(player))
             {
                 (Api as ICoreServerAPI).SendIngameError(player as IServerPlayer, "requiretongs", Lang.Get("Requires tongs to hold"));
@@ -834,7 +834,6 @@ namespace Vintagestory.API.Common
             openedByPlayerGUIds.Add(player.PlayerUID);
 
             OnInventoryOpened?.Invoke(player);
-
             Api.World.Logger.Audit("{0} opened inventory {1}", player.PlayerName, InventoryID);
 
             return packet;
@@ -849,9 +848,7 @@ namespace Vintagestory.API.Common
         {
             object packet = InvNetworkUtil.DidClose(player);
             openedByPlayerGUIds.Remove(player.PlayerUID);
-
             OnInventoryClosed?.Invoke(player);
-
             Api.World.Logger.Audit("{0} closed inventory {1}", player.PlayerName, InventoryID);
 
             return packet;

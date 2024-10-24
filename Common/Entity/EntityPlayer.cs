@@ -827,7 +827,7 @@ namespace Vintagestory.API.Common
                 nowHeldRightHitAnim = "breakhand";
                 nowHeldRightUseAnim = "interactstatic";
 
-                if (EntitySelection != null && EntitySelection.Entity.Pos.DistanceTo(Pos) <= 1.15 && EntitySelection.Entity.GetInterface<IPettable>()?.CanPet(this) == true)
+                if (EntitySelection != null && EntitySelection.Entity.Pos.DistanceTo(Pos) <= 1.15 && EntitySelection.Entity.GetInterface<IPettable>()?.CanPet(this) != false)
                 {
                     if (EntitySelection.Entity.SelectionBox.Y2 > 0.8) nowHeldRightUseAnim = "petlarge";
                     if (EntitySelection.Entity.SelectionBox.Y2 <= 0.8 && controls.Sneak) nowHeldRightUseAnim = "petsmall";

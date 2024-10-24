@@ -7,6 +7,7 @@ items:
   children:
   - Vintagestory.API.Server.IServerNetworkAPI.BroadcastArbitraryPacket(System.Byte[],Vintagestory.API.Server.IServerPlayer[])
   - Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[])
+  - Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[],Vintagestory.API.Server.IServerPlayer[])
   - Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket``1(Vintagestory.API.MathTools.BlockPos,System.Int32,``0)
   - Vintagestory.API.Server.IServerNetworkAPI.BroadcastEntityPacket(System.Int64,System.Int32,System.Byte[])
   - Vintagestory.API.Server.IServerNetworkAPI.GetChannel(System.String)
@@ -293,6 +294,36 @@ items:
   nameWithType.vb: IServerNetworkAPI.BroadcastBlockEntityPacket(BlockPos, Integer, Byte())
   fullName.vb: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos, Integer, Byte())
   name.vb: BroadcastBlockEntityPacket(BlockPos, Integer, Byte())
+- uid: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[],Vintagestory.API.Server.IServerPlayer[])
+  commentId: M:Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[],Vintagestory.API.Server.IServerPlayer[])
+  id: BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Byte[],Vintagestory.API.Server.IServerPlayer[])
+  parent: Vintagestory.API.Server.IServerNetworkAPI
+  langs:
+  - csharp
+  - vb
+  name: BroadcastBlockEntityPacket(BlockPos, int, byte[], params IServerPlayer[])
+  nameWithType: IServerNetworkAPI.BroadcastBlockEntityPacket(BlockPos, int, byte[], params IServerPlayer[])
+  fullName: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos, int, byte[], params Vintagestory.API.Server.IServerPlayer[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: void BroadcastBlockEntityPacket(BlockPos pos, int packetId, byte[] data = null, params IServerPlayer[] skipPlayers)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+    - id: packetId
+      type: System.Int32
+    - id: data
+      type: System.Byte[]
+    - id: skipPlayers
+      type: Vintagestory.API.Server.IServerPlayer[]
+    content.vb: Sub BroadcastBlockEntityPacket(pos As BlockPos, packetId As Integer, data As Byte() = Nothing, ParamArray skipPlayers As IServerPlayer())
+  overload: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket*
+  nameWithType.vb: IServerNetworkAPI.BroadcastBlockEntityPacket(BlockPos, Integer, Byte(), ParamArray IServerPlayer())
+  fullName.vb: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket(Vintagestory.API.MathTools.BlockPos, Integer, Byte(), ParamArray Vintagestory.API.Server.IServerPlayer())
+  name.vb: BroadcastBlockEntityPacket(BlockPos, Integer, Byte(), ParamArray IServerPlayer())
 - uid: Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket(System.Byte[],Vintagestory.API.Server.IServerPlayer[])
   commentId: M:Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket(System.Byte[],Vintagestory.API.Server.IServerPlayer[])
   id: SendArbitraryPacket(System.Byte[],Vintagestory.API.Server.IServerPlayer[])
@@ -780,12 +811,6 @@ references:
   name: BroadcastBlockEntityPacket
   nameWithType: IServerNetworkAPI.BroadcastBlockEntityPacket
   fullName: Vintagestory.API.Server.IServerNetworkAPI.BroadcastBlockEntityPacket
-- uid: Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket*
-  commentId: Overload:Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket
-  href: Vintagestory.API.Server.IServerNetworkAPI.html#Vintagestory_API_Server_IServerNetworkAPI_SendArbitraryPacket_System_Byte___Vintagestory_API_Server_IServerPlayer___
-  name: SendArbitraryPacket
-  nameWithType: IServerNetworkAPI.SendArbitraryPacket
-  fullName: Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket
 - uid: Vintagestory.API.Server.IServerPlayer[]
   isExternal: true
   href: Vintagestory.API.Server.IServerPlayer.html
@@ -807,6 +832,12 @@ references:
     href: Vintagestory.API.Server.IServerPlayer.html
   - name: (
   - name: )
+- uid: Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket*
+  commentId: Overload:Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket
+  href: Vintagestory.API.Server.IServerNetworkAPI.html#Vintagestory_API_Server_IServerNetworkAPI_SendArbitraryPacket_System_Byte___Vintagestory_API_Server_IServerPlayer___
+  name: SendArbitraryPacket
+  nameWithType: IServerNetworkAPI.SendArbitraryPacket
+  fullName: Vintagestory.API.Server.IServerNetworkAPI.SendArbitraryPacket
 - uid: Vintagestory.API.Server.IServerNetworkAPI.BroadcastArbitraryPacket*
   commentId: Overload:Vintagestory.API.Server.IServerNetworkAPI.BroadcastArbitraryPacket
   href: Vintagestory.API.Server.IServerNetworkAPI.html#Vintagestory_API_Server_IServerNetworkAPI_BroadcastArbitraryPacket_System_Byte___Vintagestory_API_Server_IServerPlayer___

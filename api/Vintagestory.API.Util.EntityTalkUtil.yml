@@ -15,6 +15,7 @@ items:
   - Vintagestory.API.Util.EntityTalkUtil.PlaySound(System.Single,System.Single,System.Single,System.Single,System.Single)
   - Vintagestory.API.Util.EntityTalkUtil.Rand
   - Vintagestory.API.Util.EntityTalkUtil.SetModifiers(System.Single,System.Single,System.Single)
+  - Vintagestory.API.Util.EntityTalkUtil.ShouldDoIdleTalk
   - Vintagestory.API.Util.EntityTalkUtil.Talk(Vintagestory.API.Util.EnumTalkType)
   - Vintagestory.API.Util.EntityTalkUtil.TalkPacketId
   - Vintagestory.API.Util.EntityTalkUtil.TalkSpeed
@@ -479,6 +480,25 @@ items:
     return:
       type: System.Boolean
     content.vb: Public IsMultiSoundVoice As Boolean
+- uid: Vintagestory.API.Util.EntityTalkUtil.ShouldDoIdleTalk
+  commentId: F:Vintagestory.API.Util.EntityTalkUtil.ShouldDoIdleTalk
+  id: ShouldDoIdleTalk
+  parent: Vintagestory.API.Util.EntityTalkUtil
+  langs:
+  - csharp
+  - vb
+  name: ShouldDoIdleTalk
+  nameWithType: EntityTalkUtil.ShouldDoIdleTalk
+  fullName: Vintagestory.API.Util.EntityTalkUtil.ShouldDoIdleTalk
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  syntax:
+    content: public bool ShouldDoIdleTalk
+    return:
+      type: System.Boolean
+    content.vb: Public ShouldDoIdleTalk As Boolean
 - uid: Vintagestory.API.Util.EntityTalkUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,System.Boolean)
   commentId: M:Vintagestory.API.Util.EntityTalkUtil.#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,System.Boolean)
   id: '#ctor(Vintagestory.API.Common.ICoreAPI,Vintagestory.API.Common.Entities.Entity,System.Boolean)'

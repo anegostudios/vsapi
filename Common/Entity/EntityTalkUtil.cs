@@ -77,6 +77,7 @@ namespace Vintagestory.API.Util
         public bool AddSoundLengthChordDelay;
 
         public bool IsMultiSoundVoice;
+        public bool ShouldDoIdleTalk=true;
 
         public EntityTalkUtil(ICoreAPI api, Entity atEntity, bool isMultiSoundVoice)
         {
@@ -350,7 +351,7 @@ namespace Vintagestory.API.Util
 
 
 
-            if (lettersLeftToTalk == 0 && capi.World.Rand.NextDouble() < idleTalkChance && entity.Alive)
+            if (lettersLeftToTalk == 0 && capi.World.Rand.NextDouble() < idleTalkChance && entity.Alive && ShouldDoIdleTalk)
             {
                 Talk(EnumTalkType.Idle);
             }
@@ -387,8 +388,8 @@ namespace Vintagestory.API.Util
             slidingPitchSounds.Add(new SlidingPitchSound()
             {
                 TalkType = talkType,
-                startPitch = pitchOffset,
-                endPitch = (endPitch - startPitch) + pitchOffset,
+                startPitch = 1 + pitchOffset,
+                endPitch = 1 + (endPitch - startPitch) + pitchOffset,
                 sound = sound,
                 startMs = capi.World.ElapsedMilliseconds,
                 length = length,

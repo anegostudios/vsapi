@@ -76,7 +76,7 @@ namespace Vintagestory.API.Common
 
 
         /// <summary>
-        /// Attributes assigned to this particular itemstack which are saved and synchronized. 
+        /// Attributes assigned to this particular itemstack which are saved and synchronized.
         /// </summary>
         public ITreeAttribute Attributes
         {
@@ -133,7 +133,7 @@ namespace Vintagestory.API.Common
             this.Class = itemClass;
             this.stacksize = stacksize;
             this.stackAttributes = stackAttributes;
-            
+
             if (Class == EnumItemClass.Block)
             {
                 block = resolver.GetBlock(this.Id);
@@ -142,7 +142,7 @@ namespace Vintagestory.API.Common
                 item = resolver.GetItem(Id);
             }
         }
-        
+
         /// <summary>
         /// Create a new itemstack from a byte serialized stream (without resolving the block/item)
         /// </summary>
@@ -258,7 +258,7 @@ namespace Vintagestory.API.Common
         public bool Equals(IWorldAccessor worldForResolve, ItemStack sourceStack, params string[] ignoreAttributeSubTrees)
         {
             if (Collectible == null) ResolveBlockOrItem(worldForResolve);
-            
+
             return
                 sourceStack != null && Collectible != null &&
                 Collectible.Equals(this, sourceStack, ignoreAttributeSubTrees)
@@ -371,7 +371,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public bool MatchesSearchText(IWorldAccessor world, string searchText)
         {
-           return 
+           return
                 GetName().CaseInsensitiveContains(searchText)
                 || GetDescription(world, new DummySlot(this), false).CaseInsensitiveContains(searchText)
             ;
@@ -440,28 +440,31 @@ namespace Vintagestory.API.Common
         public bool FixMapping(Dictionary<int, AssetLocation> oldBlockMapping, Dictionary<int, AssetLocation> oldItemMapping, IWorldAccessor worldForNewMapping)
         {
             AssetLocation code;
-            
             if (Class == EnumItemClass.Item)
             {
-                if (oldItemMapping.TryGetValue(Id, out code))
+                if (oldItemMapping.TryGetValue(Id, out code) && code != null)
                 {
                     item = worldForNewMapping.GetItem(code);
                     if (item == null)
                     {
-                        worldForNewMapping.Logger.Warning("Cannot fix itemstack mapping, item code {0} not found item registry. Will delete stack.", code);
+                        worldForNewMapping.Logger.Warning(
+                            "Cannot fix itemstack mapping, item code {0} not found item registry. Will delete stack.", code);
                         return false;
                     }
+
                     Id = item.Id;
                     return true;
                 }
-            } else
+            }
+            else
             {
-                if (oldBlockMapping.TryGetValue(Id, out code))
+                if (oldBlockMapping.TryGetValue(Id, out code) && code != null)
                 {
                     block = worldForNewMapping.GetBlock(code);
                     if (block == null)
                     {
-                        worldForNewMapping.Logger.Warning("Cannot fix itemstack mapping, block code {0} not found block registry. Will delete stack.", code);
+                        worldForNewMapping.Logger.Warning(
+                            "Cannot fix itemstack mapping, block code {0} not found block registry. Will delete stack.", code);
                         return false;
                     }
 
@@ -470,7 +473,8 @@ namespace Vintagestory.API.Common
                 }
             }
 
-            worldForNewMapping.Logger.Warning("Cannot fix itemstack mapping, item/block id {0} not found in old mapping list. Will delete stack. ({1})", Id, this.Collectible);
+            worldForNewMapping.Logger.Warning(
+                "Cannot fix itemstack mapping, item/block id {0} not found in old mapping list. Will delete stack. ({1})", Id, Collectible);
             return false;
         }
 
