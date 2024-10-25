@@ -2,6 +2,7 @@
 using ProtoBuf;
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using Vintagestory.API.Client;
 
 namespace Vintagestory.API.MathTools
@@ -9,8 +10,8 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// Represents a vector of 3 doubles. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
-
     [ProtoContract]
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public class Vec3d : IVec3, IEquatable<Vec3d>
     {
         [ProtoMember(1)]
@@ -573,7 +574,7 @@ namespace Vintagestory.API.MathTools
             return new Vec3f((float)X, (float)Y, (float)Z);
         }
 
-        
+
         public override string ToString()
         {
             return "x=" + X + ", y=" + Y + ", z=" + Z;

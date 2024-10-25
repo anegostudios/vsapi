@@ -29,7 +29,7 @@ namespace Vintagestory.API.MathTools
     /// <summary>
     /// 4x4 Matrix Math
     /// </summary>
-    public class Mat4f
+    public partial class Mat4f
     {
         /// <summary>
         /// Creates a new identity mat4

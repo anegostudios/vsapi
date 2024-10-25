@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Represents a vector of 3 ints, similar to a Vec3i or a BlockPos but this is a struct
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct FastVec3i
     {
         /// <summary>
@@ -183,7 +185,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public double DistanceSq(double x, double y, double z)
         {
-            return 
+            return
                 (X - x) * (X - x) +
                 (Y - y) * (Y - y) +
                 (Z - z) * (Z - z)

@@ -2,6 +2,7 @@
 using ProtoBuf;
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using Vintagestory.API.Client;
 
 namespace Vintagestory.API.MathTools
@@ -11,6 +12,7 @@ namespace Vintagestory.API.MathTools
     /// </summary>
     [JsonObject(MemberSerialization.OptIn)]
     [ProtoContract]
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public class Vec3f : IVec3, IEquatable<Vec3f>
     {
         /// <summary>
@@ -209,7 +211,7 @@ namespace Vintagestory.API.MathTools
         {
             X = a.Y * b.Z - a.Z * b.Y;
             Y = a.Z * b.X - a.X * b.Z;
-            Z = a.X * b.Y - a.Y * b.X;            
+            Z = a.X * b.Y - a.Y * b.X;
         }
 
         /// <summary>
@@ -354,7 +356,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public double DistanceSq(double x, double y, double z)
         {
-            return 
+            return
                 (X - x) * (X - x) +
                 (Y - y) * (Y - y) +
                 (Z - z) * (Z - z)
@@ -421,7 +423,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a new vectors that is the normalized version of this vector. 
+        /// Creates a new vectors that is the normalized version of this vector.
         /// </summary>
         /// <returns></returns>
         public Vec3f NormalizedCopy()

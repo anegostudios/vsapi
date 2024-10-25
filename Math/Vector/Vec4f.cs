@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Vintagestory.API.MathTools
 {
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public class Vec4f
     {
         public float X;

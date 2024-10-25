@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Represents a vector of 4 ints. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public class Vec4i : IEquatable<Vec4i>
     {
         public int X;

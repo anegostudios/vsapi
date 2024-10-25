@@ -23,25 +23,12 @@
 
 
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Vintagestory.API.MathTools
 {
-    public partial class Quaternionf
+    public partial class Quaterniond
     {
-        /// <summary>
-        /// Creates a new identity quat
-        /// </summary>
-        /// <returns>a new quaternion</returns>
-        public static float[] Create()
-        {
-            float[] output = new float[4];
-            output[0] = 0;
-            output[1] = 0;
-            output[2] = 0;
-            output[3] = 1;
-            return output;
-        }
-
         /// <summary>
         /// Sets a quaternion to represent the shortest rotation from one
         /// vector to another.
@@ -51,49 +38,44 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">the receiving quaternion.</param>
         /// <param name="a">the initial vector</param>
         /// <param name="b">the destination vector</param>
-        /// <returns>output</returns>
-        public static float[] RotationTo(float[] output, float[] a, float[] b)
+        public static void RotationTo(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            float[] tmpvec3 = Vec3Utilsf.Create();
-            float[] xUnitVec3 = Vec3Utilsf.FromValues(1, 0, 0);
-            float[] yUnitVec3 = Vec3Utilsf.FromValues(0, 1, 0);
+            Span<double> tmpvec3 = stackalloc double[3];
+            Span<double> xUnitVec3 = stackalloc double[3] { 1.0, 0.0, 0.0 };
+            Span<double> yUnitVec3 = stackalloc double[3] { 0.0, 1.0, 0.0 };
 
-            //    return function(output, a, b) {
-            float dot = Vec3Utilsf.Dot(a, b);
+            double dot = Vec3Utilsd.Dot(a, b);
 
-            float nines = 999999; // 0.999999
-            nines /= 1000000;
+            double nines = 999999.0 / 1000000.0; // 0.999999
 
-            float epsilon = 1; // 0.000001
-            epsilon /= 1000000;
+            double epsilon = 1.0 / 1000000.0; // 0.000001
 
             if (dot < -nines)
             {
-                Vec3Utilsf.Cross(tmpvec3, xUnitVec3, a);
-                if (Vec3Utilsf.Length_(tmpvec3) < epsilon)
-                    Vec3Utilsf.Cross(tmpvec3, yUnitVec3, a);
-                Vec3Utilsf.Normalize(tmpvec3, tmpvec3);
-                Quaternionf.SetAxisAngle(output, tmpvec3, GameMath.PI);
-                return output;
+                Vec3Utilsd.Cross(tmpvec3, xUnitVec3, a);
+                if (Vec3Utilsd.Length(tmpvec3) < epsilon)
+                    Vec3Utilsd.Cross(tmpvec3, yUnitVec3, a);
+                Vec3Utilsd.Normalize(tmpvec3, tmpvec3);
+                SetAxisAngle(output, tmpvec3, GameMath.PI);
+                return;
             }
             else if (dot > nines)
             {
-                output[0] = 0;
-                output[1] = 0;
-                output[2] = 0;
-                output[3] = 1;
-                return output;
+                output[0] = 0.0;
+                output[1] = 0.0;
+                output[2] = 0.0;
+                output[3] = 1.0;
+                return;
             }
             else
             {
-                Vec3Utilsf.Cross(tmpvec3, a, b);
+                Vec3Utilsd.Cross(tmpvec3, a, b);
                 output[0] = tmpvec3[0];
                 output[1] = tmpvec3[1];
                 output[2] = tmpvec3[2];
-                output[3] = 1 + dot;
-                return Quaternionf.Normalize(output, output);
+                output[3] = 1.0 + dot;
+                Normalize(output, output);
             }
-            //    };
         }
 
         /// <summary>
@@ -104,12 +86,10 @@ namespace Vintagestory.API.MathTools
         /// <param name="view">the vector representing the viewing direction</param>
         /// <param name="right">the vector representing the local "right" direction</param>
         /// <param name="up">the vector representing the local "up" direction</param>
-        /// <returns>output</returns>
-        public static float[] SetAxes(float[] output, float[] view, float[] right, float[] up)
+        public static void SetAxes(Span<double> output, ReadOnlySpan<double> view, ReadOnlySpan<double> right, ReadOnlySpan<double> up)
         {
-            float[] matr = Mat3f.Create();
+            Span<double> matr = stackalloc double[9];
 
-            //    return function(output, view, right, up) {
             matr[0] = right[0];
             matr[3] = right[1];
             matr[6] = right[2];
@@ -121,43 +101,8 @@ namespace Vintagestory.API.MathTools
             matr[2] = view[0];
             matr[5] = view[1];
             matr[8] = view[2];
-
-            return Quaternionf.Normalize(output, Quaternionf.FromMat3(output, matr));
-            //    };
-        }
-
-        /// <summary>
-        /// Creates a new quat initialized with values from an existing quaternion
-        /// </summary>
-        /// <param name="a">quaternion to clone</param>
-        /// <returns>a new quaternion</returns>
-        public static float[] CloneIt(float[] a)
-        {
-            return QVec4f.CloneIt(a);
-        }
-
-        /// <summary>
-        /// Creates a new quat initialized with the given values
-        /// </summary>
-        /// <param name="x">X component</param>
-        /// <param name="y">Y component</param>
-        /// <param name="z">Z component</param>
-        /// <param name="w">W component</param>
-        /// <returns>a new quaternion</returns>
-        public static float[] FromValues(float x, float y, float z, float w)
-        {
-            return QVec4f.FromValues(x, y, z, w);
-        }
-
-        /// <summary>
-        /// Copy the values from one quat to another
-        /// </summary>
-        /// <param name="output">the receiving quaternion</param>
-        /// <param name="a">the source quaternion</param>
-        /// <returns>output</returns>
-        public static float[] Copy(float[] output, float[] a)
-        {
-            return QVec4f.Copy(output, a);
+            FromMat3(output, matr);
+            Normalize(output, output);
         }
 
         /// <summary>
@@ -168,24 +113,23 @@ namespace Vintagestory.API.MathTools
         /// <param name="y">Y component</param>
         /// <param name="z">Z component</param>
         /// <param name="w">W component</param>
-        /// <returns>output</returns>
-        public static float[] Set(float[] output, float x, float y, float z, float w)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Set(Span<double> output, double x, double y, double z, double w)
         {
-            return QVec4f.Set(output, x, y, z, w);
+            QVec4d.Set(output, x, y, z, w);
         }
 
         /// <summary>
         /// Set a quat to the identity quaternion
         /// </summary>
         /// <param name="output">the receiving quaternion</param>
-        /// <returns>output</returns>
-        public static float[] Identity_(float[] output)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Identity(Span<double> output)
         {
-            output[0] = 0;
-            output[1] = 0;
-            output[2] = 0;
-            output[3] = 1;
-            return output;
+            output[0] = 0.0;
+            output[1] = 0.0;
+            output[2] = 0.0;
+            output[3] = 1.0;
         }
 
         /// <summary>
@@ -195,16 +139,15 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">the receiving quaternion</param>
         /// <param name="axis">the axis around which to rotate</param>
         /// <param name="rad">the angle in radians</param>
-        /// <returns>output</returns>
-        public static float[] SetAxisAngle(float[] output, float[] axis, float rad)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetAxisAngle(Span<double> output, ReadOnlySpan<double> axis, double rad)
         {
-            rad = rad / 2;
-            float s = GameMath.Sin(rad);
+            rad /= 2.0;
+            double s = GameMath.Sin(rad);
             output[0] = s * axis[0];
             output[1] = s * axis[1];
             output[2] = s * axis[2];
             output[3] = GameMath.Cos(rad);
-            return output;
         }
 
         /// <summary>
@@ -213,10 +156,10 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">the receiving quaternion</param>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
-        /// <returns>output</returns>
-        public static float[] Add(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Add(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            return QVec4f.Add(output, a, b);
+            QVec4d.Add(output, a, b);
         }
 
         /// <summary>
@@ -225,25 +168,24 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">the receiving quaternion</param>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
-        /// <returns>output</returns>
-        public static float[] Multiply(float[] output, float[] a, float[] b)
+        public static void Multiply(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            float ax = a[0]; float ay = a[1]; float az = a[2]; float aw = a[3];
-            float bx = b[0]; float by = b[1]; float bz = b[2]; float bw = b[3];
+            double ax = a[0]; double ay = a[1]; double az = a[2]; double aw = a[3];
+            double bx = b[0]; double by = b[1]; double bz = b[2]; double bw = b[3];
 
             output[0] = ax * bw + aw * bx + ay * bz - az * by;
             output[1] = ay * bw + aw * by + az * bx - ax * bz;
             output[2] = az * bw + aw * bz + ax * by - ay * bx;
             output[3] = aw * bw - ax * bx - ay * by - az * bz;
-            return output;
         }
 
         /// <summary>
-        /// Alias for <see cref="Multiply(float[], float[], float[])"/>
+        /// Alias for <see cref="Multiply(Span{double}, ReadOnlySpan{double}, ReadOnlySpan{double})"/>
         /// </summary>
-        public static float[] Mul(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Mul(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            return Multiply(output, a, b);
+            Multiply(output, a, b);
         }
 
         /// <summary>
@@ -252,10 +194,10 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the vector to scale</param>
         /// <param name="b">amount to scale the vector by</param>
-        /// <returns>output</returns>
-        public static float[] Scale(float[] output, float[] a, float b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Scale(Span<double> output, ReadOnlySpan<double> a, double b)
         {
-            return QVec4f.Scale(output, a, b);
+            QVec4d.Scale(output, a, b);
         }
 
         /// <summary>
@@ -264,19 +206,17 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">quat receiving operation result</param>
         /// <param name="a">quat to rotate</param>
         /// <param name="rad">angle (in radians) to rotate</param>
-        /// <returns>output</returns>
-        public static float[] RotateX(float[] output, float[] a, float rad)
+        public static void RotateX(Span<double> output, ReadOnlySpan<double> a, double rad)
         {
-            rad /= 2;
+            rad /= 2.0;
 
-            float ax = a[0]; float ay = a[1]; float az = a[2]; float aw = a[3];
-            float bx = GameMath.Sin(rad); float bw = GameMath.Cos(rad);
+            double ax = a[0]; double ay = a[1]; double az = a[2]; double aw = a[3];
+            double bx = GameMath.Sin(rad); double bw = GameMath.Cos(rad);
 
             output[0] = ax * bw + aw * bx;
             output[1] = ay * bw + az * bx;
             output[2] = az * bw - ay * bx;
             output[3] = aw * bw - ax * bx;
-            return output;
         }
 
         /// <summary>
@@ -285,19 +225,17 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">quat receiving operation result</param>
         /// <param name="a">quat to rotate</param>
         /// <param name="rad">angle (in radians) to rotate</param>
-        /// <returns>output</returns>
-        public static float[] RotateY(float[] output, float[] a, float rad)
+        public static void RotateY(Span<double> output, ReadOnlySpan<double> a, double rad)
         {
-            rad /= 2;
+            rad /= 2.0;
 
-            float ax = a[0]; float ay = a[1]; float az = a[2]; float aw = a[3];
-            float by = GameMath.Sin(rad); float bw = GameMath.Cos(rad);
+            double ax = a[0]; double ay = a[1]; double az = a[2]; double aw = a[3];
+            double by = GameMath.Sin(rad); double bw = GameMath.Cos(rad);
 
             output[0] = ax * bw - az * by;
             output[1] = ay * bw + aw * by;
             output[2] = az * bw + ax * by;
             output[3] = aw * bw - ay * by;
-            return output;
         }
 
         /// <summary>
@@ -306,19 +244,17 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">quat receiving operation result</param>
         /// <param name="a">quat to rotate</param>
         /// <param name="rad">angle (in radians) to rotate</param>
-        /// <returns>output</returns>
-        public static float[] RotateZ(float[] output, float[] a, float rad)
+        public static void RotateZ(Span<double> output, ReadOnlySpan<double> a, double rad)
         {
-            rad /= 2;
+            rad /= 2.0;
 
-            float ax = a[0]; float ay = a[1]; float az = a[2]; float aw = a[3];
-            float bz = GameMath.Sin(rad); float bw = GameMath.Cos(rad);
+            double ax = a[0]; double ay = a[1]; double az = a[2]; double aw = a[3];
+            double bz = GameMath.Sin(rad); double bw = GameMath.Cos(rad);
 
             output[0] = ax * bw + ay * bz;
             output[1] = ay * bw - ax * bz;
             output[2] = az * bw + aw * bz;
             output[3] = aw * bw - az * bz;
-            return output;
         }
 
         /// <summary>
@@ -328,17 +264,15 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output">the receiving quaternion</param>
         /// <param name="a">quat to calculate W component of</param>
-        /// <returns>output</returns>
-        public static float[] CalculateW(float[] output, float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void CalculateW(Span<double> output, ReadOnlySpan<double> a)
         {
-            float x = a[0]; float y = a[1]; float z = a[2];
+            double x = a[0]; double y = a[1]; double z = a[2];
 
             output[0] = x;
             output[1] = y;
             output[2] = z;
-            float one = 1;
-            output[3] = -GameMath.Sqrt(Math.Abs(one - x * x - y * y - z * z));
-            return output;
+            output[3] = -GameMath.Sqrt(Math.Abs(1.0 - x * x - y * y - z * z));
         }
 
         /// <summary>
@@ -347,34 +281,30 @@ namespace Vintagestory.API.MathTools
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
         /// <returns>dot product of a and b</returns>
-        public static float Dot(float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Dot(ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            return QVec4f.Dot(a, b);
+            return QVec4d.Dot(a, b);
         }
 
-
-        public static float[] ToEulerAngles(float[] quat)
+        public static void ToEulerAngles(Span<double> output, ReadOnlySpan<double> quat)
         {
-            float[] angles = new float[3];
-
             // roll (x-axis rotation)
-            float sinr_cosp = +2.0f * (quat[3] * quat[0] + quat[1] * quat[2]);
-            float cosr_cosp = +1.0f - 2.0f * (quat[0] * quat[0] + quat[1] * quat[1]);
-            angles[2] = (float)Math.Atan2(sinr_cosp, cosr_cosp);
+            double sinr_cosp = 2.0 * (quat[3] * quat[0] + quat[1] * quat[2]);
+            double cosr_cosp = 1.0 - 2.0 * (quat[0] * quat[0] + quat[1] * quat[1]);
+            output[2] = Math.Atan2(sinr_cosp, cosr_cosp);
 
             // pitch (y-axis rotation)
-            float sinp = +2.0f * (quat[3] * quat[1] - quat[2] * quat[0]);
-            if (Math.Abs(sinp) >= 1)
-                angles[1] = (float)Math.PI / 2 * Math.Sign(sinp); // use 90 degrees if out of range
+            double sinp = 2.0 * (quat[3] * quat[1] - quat[2] * quat[0]);
+            if (Math.Abs(sinp) >= 1.0)
+                output[1] = Math.PI / 2 * Math.Sign(sinp); // use 90 degrees if out of range
             else
-                angles[1] = (float)Math.Asin(sinp);
+                output[1] = Math.Asin(sinp);
 
             // yaw (z-axis rotation)
-            float siny_cosp = +2.0f * (quat[3] * quat[2] + quat[0] * quat[1]);
-            float cosy_cosp = +1.0f - 2.0f * (quat[1] * quat[1] + quat[2] * quat[2]);
-            angles[0] = (float)Math.Atan2(siny_cosp, cosy_cosp);
-
-            return angles;
+            double siny_cosp = 2.0 * (quat[3] * quat[2] + quat[0] * quat[1]);
+            double cosy_cosp = 1.0 - 2.0 * (quat[1] * quat[1] + quat[2] * quat[2]);
+            output[0] = Math.Atan2(siny_cosp, cosy_cosp);
         }
 
         /// <summary>
@@ -384,10 +314,10 @@ namespace Vintagestory.API.MathTools
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
         /// <param name="t">interpolation amount between the two inputs</param>
-        /// <returns>output</returns>
-        public static float[] Lerp(float[] output, float[] a, float[] b, float t)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Lerp(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b, double t)
         {
-            return QVec4f.Lerp(output, a, b, t);
+            QVec4d.Lerp(output, a, b, t);
         }
 
         /// <summary>
@@ -397,21 +327,20 @@ namespace Vintagestory.API.MathTools
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
         /// <param name="t">interpolation amount between the two inputs</param>
-        /// <returns>output</returns>
-        public static float[] Slerp(float[] output, float[] a, float[] b, float t)
+        public static void Slerp(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b, double t)
         {
             //    // benchmarks:
             //    //    http://jsperf.com/quaternion-slerp-implementations
 
-            float ax = a[0]; float ay = a[1]; float az = a[2]; float aw = a[3];
-            float bx = b[0]; float by = b[1]; float bz = b[2]; float bw = b[3];
+            double ax = a[0]; double ay = a[1]; double az = a[2]; double aw = a[3];
+            double bx = b[0]; double by = b[1]; double bz = b[2]; double bw = b[3];
 
-            float omega; float cosom; float sinom; float scale0; float scale1;
+            double omega; double cosom; double sinom; double scale0; double scale1;
 
             // calc cosine
             cosom = ax * bx + ay * by + az * bz + aw * bw;
             // adjust signs (if necessary)
-            if (cosom < 0)
+            if (cosom < 0.0)
             {
                 cosom = -cosom;
                 bx = -bx;
@@ -419,8 +348,8 @@ namespace Vintagestory.API.MathTools
                 bz = -bz;
                 bw = -bw;
             }
-            float one = 1;
-            float epsilon = one / 1000000;
+            double one = 1.0;
+            double epsilon = one / 1000000;
             // calculate coefficients
             if ((one - cosom) > epsilon)
             {
@@ -442,8 +371,6 @@ namespace Vintagestory.API.MathTools
             output[1] = scale0 * ay + scale1 * by;
             output[2] = scale0 * az + scale1 * bz;
             output[3] = scale0 * aw + scale1 * bw;
-
-            return output;
         }
 
         /// <summary>
@@ -451,13 +378,12 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output">the receiving quaternion</param>
         /// <param name="a">quat to calculate inverse of</param>
-        /// <returns>output</returns>
-        public float[] Invert(float[] output, float[] a)
+        public static void Invert(Span<double> output, ReadOnlySpan<double> a)
         {
-            float a0 = a[0]; float a1 = a[1]; float a2 = a[2]; float a3 = a[3];
-            float dot = a0 * a0 + a1 * a1 + a2 * a2 + a3 * a3;
-            float one = 1;
-            float invDot = (dot != 0) ? one / dot : 0;
+            double a0 = a[0]; double a1 = a[1]; double a2 = a[2]; double a3 = a[3];
+            double dot = a0 * a0 + a1 * a1 + a2 * a2 + a3 * a3;
+            double one = 1.0;
+            double invDot = (dot != 0.0) ? one / dot : 0.0;
 
             // TODO: Would be faster to return [0,0,0,0] immediately if dot == 0
 
@@ -465,7 +391,6 @@ namespace Vintagestory.API.MathTools
             output[1] = -a1 * invDot;
             output[2] = -a2 * invDot;
             output[3] = a3 * invDot;
-            return output;
         }
 
         /// <summary>
@@ -474,14 +399,13 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output">the receiving quaternion</param>
         /// <param name="a">quat to calculate conjugate of</param>
-        /// <returns>output</returns>
-        public float[] Conjugate(float[] output, float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Conjugate(Span<double> output, ReadOnlySpan<double> a)
         {
             output[0] = -a[0];
             output[1] = -a[1];
             output[2] = -a[2];
             output[3] = a[3];
-            return output;
         }
 
         /// <summary>
@@ -489,18 +413,20 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="a">vector to calculate length of</param>
         /// <returns>length of a</returns>
-        //quat.length = QVec4f.length;
-        public static float Length_(float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Length(ReadOnlySpan<double> a)
         {
-            return QVec4f.Length_(a);
+            return QVec4d.Length(a);
         }
 
         /// <summary>
-        /// Alias for <see cref="Length_(float[])"/>
+        /// Alias for <see cref="Length(ReadOnlySpan{double})"/>
         /// </summary>
-        public static float Len(float[] a)
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Len(ReadOnlySpan<double> a)
         {
-            return Length_(a);
+            return Length(a);
         }
 
         /// <summary>
@@ -508,14 +434,18 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="a">vector to calculate squared length of</param>
         /// <returns>squared length of a</returns>
-        public static float SquaredLength(float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double SquaredLength(ReadOnlySpan<double> a)
         {
-            return QVec4f.SquaredLength(a);
+            return QVec4d.SquaredLength(a);
         }
 
         /// <summary>
-        /// Alias for <see cref="SquaredLength(float[])"/>
-        public static float SqrLen(float[] a)
+        /// Alias for <see cref="SquaredLength(ReadOnlySpan{double})"/>
+        /// </summary>
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double SqrLen(ReadOnlySpan<double> a)
         {
             return SquaredLength(a);
         }
@@ -525,10 +455,10 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output">the receiving quaternion</param>
         /// <param name="a">quaternion to normalize</param>
-        /// <returns>output</returns>
-        public static float[] Normalize(float[] output, float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Normalize(Span<double> output, ReadOnlySpan<double> a)
         {
-            return QVec4f.Normalize(output, a);
+            QVec4d.Normalize(output, a);
         }
 
         /// <summary>
@@ -539,17 +469,16 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output">the receiving quaternion</param>
         /// <param name="m">rotation matrix</param>
-        /// <returns>output</returns>
-        public static float[] FromMat3(float[] output, float[] m)
+        public static void FromMat3(Span<double> output, ReadOnlySpan<double> m)
         {
             // Algorithm in Ken Shoemake's article in 1987 SIGGRAPH course notes
             // article "Quaternion Calculus and Fast Animation".
-            float fTrace = m[0] + m[4] + m[8];
-            float fRoot;
+            double fTrace = m[0] + m[4] + m[8];
+            double fRoot;
 
-            float zero = 0;
-            float one = 1;
-            float half = one / 2;
+            double zero = 0;
+            double one = 1;
+            double half = one / 2;
             if (fTrace > zero)
             {
                 // |w| > 1/2, may as well choose w > 1/2
@@ -578,109 +507,40 @@ namespace Vintagestory.API.MathTools
                 output[j] = (m[j * 3 + i] + m[i * 3 + j]) * fRoot;
                 output[k] = (m[k * 3 + i] + m[i * 3 + k]) * fRoot;
             }
-
-            return output;
         }
     }
 
-
-    partial class QVec4f
+    partial class QVec4d
     {
-
         /// <summary>
-        /// Creates a new, empty QVec4f
-        /// </summary>
-        /// <returns>a new 4D vector</returns>
-        public static float[] Create()
-        {
-            float[] output = new float[4];
-            output[0] = 0;
-            output[1] = 0;
-            output[2] = 0;
-            output[3] = 0;
-            return output;
-        }
-
-        /// <summary>
-        /// Creates a new QVec4f initialized with values from an existing vector
-        /// </summary>
-        /// <param name="a">vector to clone</param>
-        /// <returns>a new 4D vector</returns>
-        public static float[] CloneIt(float[] a)
-        {
-            float[] output = new float[4];
-            output[0] = a[0];
-            output[1] = a[1];
-            output[2] = a[2];
-            output[3] = a[3];
-            return output;
-        }
-
-        /// <summary>
-        /// Creates a new QVec4f initialized with the given values
-        /// </summary>
-        /// <param name="x">X component</param>
-        /// <param name="y">Y component</param>
-        /// <param name="z">Z component</param>
-        /// <param name="w">W component</param>
-        /// <returns>a new 4D vector</returns>
-        public static float[] FromValues(float x, float y, float z, float w)
-        {
-            float[] output = new float[4];
-            output[0] = x;
-            output[1] = y;
-            output[2] = z;
-            output[3] = w;
-            return output;
-        }
-
-        /// <summary>
-        /// Copy the values from one QVec4f to another
-        /// </summary>
-        /// <param name="output">the receiving vector</param>
-        /// <param name="a">the source vector</param>
-        /// <returns>output</returns>
-        public static float[] Copy(float[] output, float[] a)
-        {
-            output[0] = a[0];
-            output[1] = a[1];
-            output[2] = a[2];
-            output[3] = a[3];
-            return output;
-        }
-
-        /// <summary>
-        /// Set the components of a QVec4f to the given values
+        /// Set the components of a QVec4d to the given values
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="x">X component</param>
         /// <param name="y">Y component</param>
         /// <param name="z">Z component</param>
         /// <param name="w">W component</param>
-        /// <returns>output</returns>
-        public static float[] Set(float[] output, float x, float y, float z, float w)
+        public static void Set(Span<double> output, double x, double y, double z, double w)
         {
             output[0] = x;
             output[1] = y;
             output[2] = z;
             output[3] = w;
-            return output;
         }
 
         /// <summary>
-        /// Adds two QVec4f's
+        /// Adds two QVec4d's
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
-        /// <returns>output</returns>
-        public static float[] Add(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Add(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             output[0] = a[0] + b[0];
             output[1] = a[1] + b[1];
             output[2] = a[2] + b[2];
             output[3] = a[3] + b[3];
-            return output;
         }
 
         /// <summary>
@@ -689,405 +549,347 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
-        /// <returns>output</returns>
-        public static float[] Subtract(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Subtract(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             output[0] = a[0] - b[0];
             output[1] = a[1] - b[1];
             output[2] = a[2] - b[2];
             output[3] = a[3] - b[3];
-            return output;
         }
 
         /// <summary>
-        /// Alias for <see cref="Subtract(float[], float[], float[])"/>
+        /// Alias for <see cref="Subtract(Span{double}, ReadOnlySpan{double}, ReadOnlySpan{double})"/>
         /// </summary>
-        public static float[] Sub(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Sub(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            return Subtract(output, a, b);
+            Subtract(output, a, b);
         }
 
         /// <summary>
-        /// Multiplies two QVec4f's
+        /// Multiplies two QVec4d's
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
-        /// <returns>output</returns>
-        public static float[] Multiply(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Multiply(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             output[0] = a[0] * b[0];
             output[1] = a[1] * b[1];
             output[2] = a[2] * b[2];
             output[3] = a[3] * b[3];
-            return output;
         }
 
         /// <summary>
-        /// Alias for <see cref="Multiply(float[], float[], float[])"/>
+        /// Alias for <see cref="Multiply(Span{double}, ReadOnlySpan{double}, ReadOnlySpan{double})"/>
         /// </summary>
-        public static float[] Mul(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Mul(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            return Multiply(output, a, b);
+            Multiply(output, a, b);
         }
 
         /// <summary>
-        /// Divides two QVec4f's
+        /// Divides two QVec4d's
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
-        /// <returns>output</returns>
-        public static float[] Divide(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Divide(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             output[0] = a[0] / b[0];
             output[1] = a[1] / b[1];
             output[2] = a[2] / b[2];
             output[3] = a[3] / b[3];
-            return output;
         }
 
         /// <summary>
-        /// Alias for <see cref="Divide(float[], float[], float[])"/>
+        /// Alias for <see cref="Divide(Span{double}, ReadOnlySpan{double}, ReadOnlySpan{double})"/>
         /// </summary>
-        public static float[] Div(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Div(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            return Divide(output, a, b);
+            Divide(output, a, b);
         }
 
         /// <summary>
-        /// Returns the minimum of two QVec4f's
+        /// Returns the minimum of two QVec4d's
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
-        /// <returns>output</returns>
-        public static float[] Min(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Min(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             output[0] = Math.Min(a[0], b[0]);
             output[1] = Math.Min(a[1], b[1]);
             output[2] = Math.Min(a[2], b[2]);
             output[3] = Math.Min(a[3], b[3]);
-            return output;
         }
 
         /// <summary>
-        /// Returns the maximum of two QVec4f's
+        /// Returns the maximum of two QVec4d's
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
-        /// <returns>output</returns>
-        public static float[] Max(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Max(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             output[0] = Math.Max(a[0], b[0]);
             output[1] = Math.Max(a[1], b[1]);
             output[2] = Math.Max(a[2], b[2]);
             output[3] = Math.Max(a[3], b[3]);
-            return output;
         }
 
         /// <summary>
-        /// Scales a QVec4f by a scalar number
+        /// Scales a QVec4d by a scalar number
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the vector to scale</param>
         /// <param name="b">amount to scale the vector by</param>
-        /// <returns>output</returns>
-        public static float[] Scale(float[] output, float[] a, float b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Scale(Span<double> output, ReadOnlySpan<double> a, double b)
         {
             output[0] = a[0] * b;
             output[1] = a[1] * b;
             output[2] = a[2] * b;
             output[3] = a[3] * b;
-            return output;
         }
 
         /// <summary>
-        /// Adds two QVec4f's after scaling the second operand by a scalar value
+        /// Adds two QVec4d's after scaling the second operand by a scalar value
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
         /// <param name="scale">the amount to scale b by before adding</param>
-        /// <returns>output</returns>
-        public static float[] ScaleAndAdd(float[] output, float[] a, float[] b, float scale)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void ScaleAndAdd(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b, double scale)
         {
             output[0] = a[0] + (b[0] * scale);
             output[1] = a[1] + (b[1] * scale);
             output[2] = a[2] + (b[2] * scale);
             output[3] = a[3] + (b[3] * scale);
-            return output;
         }
 
         /// <summary>
-        /// Calculates the euclidian distance between two QVec4f's
+        /// Calculates the euclidian distance between two QVec4d's
         /// </summary>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
         /// <returns>distance between a and b</returns>
-        public static float Distance(float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Distance(ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            float x = b[0] - a[0];
-            float y = b[1] - a[1];
-            float z = b[2] - a[2];
-            float w = b[3] - a[3];
+            double x = b[0] - a[0];
+            double y = b[1] - a[1];
+            double z = b[2] - a[2];
+            double w = b[3] - a[3];
             return GameMath.Sqrt(x * x + y * y + z * z + w * w);
         }
 
         /// <summary>
-        /// Alias for <see cref="Distance(float[], float[])"/>
+        /// Alias for <see cref="Distance(ReadOnlySpan{double}, ReadOnlySpan{double})"/>
         /// </summary>
-        public static float Dist(float[] a, float[] b)
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Dist(ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             return Distance(a, b);
         }
 
         /// <summary>
-        /// Calculates the squared euclidian distance between two QVec4f's
+        /// Calculates the squared euclidian distance between two QVec4d's
         /// </summary>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
         /// <returns>squared distance between a and b</returns>
-        public static float SquaredDistance(float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double SquaredDistance(ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            float x = b[0] - a[0];
-            float y = b[1] - a[1];
-            float z = b[2] - a[2];
-            float w = b[3] - a[3];
+            double x = b[0] - a[0];
+            double y = b[1] - a[1];
+            double z = b[2] - a[2];
+            double w = b[3] - a[3];
             return x * x + y * y + z * z + w * w;
         }
 
         /// <summary>
-        /// Alias for <see cref="SquaredDistance(float[], float[])"/>
+        /// Alias for <see cref="SquaredDistance(ReadOnlySpan{double}, ReadOnlySpan{double})"/>
         /// </summary>
-        public static float SqrDist(float[] a, float[] b)
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double SqrDist(ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             return SquaredDistance(a, b);
         }
-
         /// <summary>
-        /// Calculates the length of a QVec4f
+        /// Calculates the length of a QVec4d
         /// </summary>
         /// <param name="a">vector to calculate length of</param>
         /// <returns>length of a</returns>
-        public static float Length_(float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Length(ReadOnlySpan<double> a)
         {
-            float x = a[0];
-            float y = a[1];
-            float z = a[2];
-            float w = a[3];
+            double x = a[0];
+            double y = a[1];
+            double z = a[2];
+            double w = a[3];
             return GameMath.Sqrt(x * x + y * y + z * z + w * w);
         }
 
         /// <summary>
-        /// Alias for <see cref="Length_(float[])"/>
+        /// Alias for <see cref="Length(ReadOnlySpan{double})"/>
         /// </summary>
-        public static float Len(float[] a)
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Len(ReadOnlySpan<double> a)
         {
-            return Length_(a);
+            return Length(a);
         }
 
         /// <summary>
-        /// Calculates the squared length of a QVec4f
+        /// Calculates the squared length of a QVec4d
         /// </summary>
         /// <param name="a">vector to calculate squared length of</param>
         /// <returns>squared length of a</returns>
-        public static float SquaredLength(float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double SquaredLength(ReadOnlySpan<double> a)
         {
-            float x = a[0];
-            float y = a[1];
-            float z = a[2];
-            float w = a[3];
+            double x = a[0];
+            double y = a[1];
+            double z = a[2];
+            double w = a[3];
             return x * x + y * y + z * z + w * w;
         }
 
         /// <summary>
-        /// Alias for <see cref="SquaredLength(float[])"/>
+        /// Alias for <see cref="SquaredLength(ReadOnlySpan{double})"/>
         /// </summary>
-        public static float SqrLen(float[] a)
+        /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double SqrLen(ReadOnlySpan<double> a)
         {
             return SquaredLength(a);
         }
 
         /// <summary>
-        /// Negates the components of a QVec4f
+        /// Negates the components of a QVec4d
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="a">vector to negate</param>
-        /// <returns>output</returns>
-        public static float[] Negate(float[] output, float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Negate(Span<double> output, ReadOnlySpan<double> a)
         {
             output[0] = -a[0];
             output[1] = -a[1];
             output[2] = -a[2];
             output[3] = -a[3];
-            return output;
         }
 
         /// <summary>
-        /// Normalize a QVec4f
+        /// Normalize a QVec4d
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="a">vector to normalize</param>
-        /// <returns>output</returns>
-        public static float[] Normalize(float[] output, float[] a)
+        public static void Normalize(Span<double> output, ReadOnlySpan<double> a)
         {
-            float x = a[0];
-            float y = a[1];
-            float z = a[2];
-            float w = a[3];
-            float len = x * x + y * y + z * z + w * w;
-            if (len > 0)
+            double x = a[0];
+            double y = a[1];
+            double z = a[2];
+            double w = a[3];
+            double len = x * x + y * y + z * z + w * w;
+            if (len > 0.0)
             {
-                float one = 1;
+                double one = 1.0;
                 len = one / GameMath.Sqrt(len);
-                output[0] = a[0] * len;
-                output[1] = a[1] * len;
-                output[2] = a[2] * len;
-                output[3] = a[3] * len;
+                output[0] = x * len;
+                output[1] = y * len;
+                output[2] = z * len;
+                output[3] = w * len;
             }
-            return output;
         }
 
         /// <summary>
-        /// Calculates the dot product of two QVec4f's
+        /// Calculates the dot product of two QVec4d's
         /// </summary>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
         /// <returns>dot product of a and b</returns>
-        public static float Dot(float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Dot(ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             return a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3];
         }
 
         /// <summary>
-        /// Performs a linear interpolation between two QVec4f's
+        /// Performs a linear interpolation between two QVec4d's
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
         /// <param name="t">interpolation amount between the two inputs</param>
-        /// <returns>output</returns>
-        public static float[] Lerp(float[] output, float[] a, float[] b, float t)
+        public static void Lerp(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b, double t)
         {
-            float ax = a[0];
-            float ay = a[1];
-            float az = a[2];
-            float aw = a[3];
+            double ax = a[0];
+            double ay = a[1];
+            double az = a[2];
+            double aw = a[3];
             output[0] = ax + t * (b[0] - ax);
             output[1] = ay + t * (b[1] - ay);
             output[2] = az + t * (b[2] - az);
             output[3] = aw + t * (b[3] - aw);
-            return output;
         }
 
 
         /// <summary>
-        /// Transforms the QVec4f with a mat4.
+        /// Transforms the QVec4d with a mat4.
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the vector to transform</param>
         /// <param name="m">matrix to transform with</param>
-        /// <returns>output</returns>
-        public static float[] TransformMat4(float[] output, float[] a, float[] m)
+        public static void TransformMat4(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> m)
         {
-            float x = a[0]; float y = a[1]; float z = a[2]; float w = a[3];
+            double x = a[0]; double y = a[1]; double z = a[2]; double w = a[3];
             output[0] = m[0] * x + m[4] * y + m[8] * z + m[12] * w;
             output[1] = m[1] * x + m[5] * y + m[9] * z + m[13] * w;
             output[2] = m[2] * x + m[6] * y + m[10] * z + m[14] * w;
             output[3] = m[3] * x + m[7] * y + m[11] * z + m[15] * w;
-            return output;
         }
 
         /// <summary>
-        /// Transforms the QVec4f with a quat
+        /// Transforms the QVec4d with a quat
         /// </summary>
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the vector to transform</param>
         /// <param name="q">quaternion to transform with</param>
-        /// <returns>output</returns>
-        public static float[] transformQuat(float[] output, float[] a, float[] q)
+        public static void transformQuat(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> q)
         {
-            float x = a[0]; float y = a[1]; float z = a[2];
-            float qx = q[0]; float qy = q[1]; float qz = q[2]; float qw = q[3];
+            double x = a[0]; double y = a[1]; double z = a[2];
+            double qx = q[0]; double qy = q[1]; double qz = q[2]; double qw = q[3];
 
             // calculate quat * vec
-            float ix = qw * x + qy * z - qz * y;
-            float iy = qw * y + qz * x - qx * z;
-            float iz = qw * z + qx * y - qy * x;
-            float iw = -qx * x - qy * y - qz * z;
+            double ix = qw * x + qy * z - qz * y;
+            double iy = qw * y + qz * x - qx * z;
+            double iz = qw * z + qx * y - qy * x;
+            double iw = -qx * x - qy * y - qz * z;
 
             // calculate result * inverse quat
             output[0] = ix * qw + iw * -qx + iy * -qz - iz * -qy;
             output[1] = iy * qw + iw * -qy + iz * -qx - ix * -qz;
             output[2] = iz * qw + iw * -qz + ix * -qy - iy * -qx;
-            return output;
         }
     }
-
-
 
     /// <summary>
     /// Don't use this class unless you need it to interoperate with Mat4d
     /// </summary>
-    public partial class Vec3Utilsf
+    public partial class Vec3Utilsd
     {
-        /// Creates a new, empty vec3
-        /// Returns {vec3} a new 3D vector.
-        public static float[] Create()
-        {
-            float[] output = new float[3];
-            output[0] = 0;
-            output[1] = 0;
-            output[2] = 0;
-            return output;
-        }
-
-        /// <summary>
-        /// Creates a new vec3 initialized with values from an existing vector. Returns {vec3} a new 3D vector
-        /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
-        public static float[] CloneIt(float[] a)
-        {
-            float[] output = new float[3];
-            output[0] = a[0];
-            output[1] = a[1];
-            output[2] = a[2];
-            return output;
-        }
-
-        /// <summary>
-        /// Creates a new vec3 initialized with the given values. Returns {vec3} a new 3D vector
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="z"></param>
-        /// <returns></returns>
-        public static float[] FromValues(float x, float y, float z)
-        {
-            float[] output = new float[3];
-            output[0] = x;
-            output[1] = y;
-            output[2] = z;
-            return output;
-        }
-
-        /// <summary>
-        /// Copy the values from one vec3 to another. Returns {vec3} out
-        /// </summary>
-        /// <param name="output">the receiving vector</param>
-        /// <param name="a">the source vector</param>
-        /// <returns></returns>
-        public static float[] Copy(float[] output, float[] a)
-        {
-            output[0] = a[0];
-            output[1] = a[1];
-            output[2] = a[2];
-            return output;
-        }
-
         /// <summary>
         /// Set the components of a vec3 to the given values
         /// </summary>
@@ -1095,13 +897,12 @@ namespace Vintagestory.API.MathTools
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="z"></param>
-        /// <returns></returns>
-        public static float[] Set(float[] output, float x, float y, float z)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Set(Span<double> output, double x, double y, double z)
         {
             output[0] = x;
             output[1] = y;
             output[2] = z;
-            return output;
         }
 
         /// <summary>
@@ -1110,13 +911,12 @@ namespace Vintagestory.API.MathTools
         /// <param name="output">the receiving vector</param>
         /// <param name="a">the first operand</param>
         /// <param name="b">the second operand</param>
-        /// <returns></returns>
-        public static float[] Add(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Add(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             output[0] = a[0] + b[0];
             output[1] = a[1] + b[1];
             output[2] = a[2] + b[2];
-            return output;
         }
 
         /// <summary>
@@ -1125,13 +925,12 @@ namespace Vintagestory.API.MathTools
         /// <param name="output"></param>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        /// <returns></returns>
-        public static float[] Substract(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Substract(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             output[0] = a[0] - b[0];
             output[1] = a[1] - b[1];
             output[2] = a[2] - b[2];
-            return output;
         }
 
 
@@ -1141,25 +940,24 @@ namespace Vintagestory.API.MathTools
         /// <param name="output"></param>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        /// <returns></returns>
-        public static float[] Multiply(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Multiply(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             output[0] = a[0] * b[0];
             output[1] = a[1] * b[1];
             output[2] = a[2] * b[2];
-            return output;
         }
 
         /// <summary>
-        /// Alias of Mul()
+        /// Alias for <see cref="Multiply(Span{double}, ReadOnlySpan{double}, ReadOnlySpan{double})"/>
         /// </summary>
         /// <param name="output"></param>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        /// <returns></returns>
-        public static float[] Mul(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Mul(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            return Multiply(output, a, b);
+            Multiply(output, a, b);
         }
 
         /// <summary>
@@ -1168,13 +966,12 @@ namespace Vintagestory.API.MathTools
         /// <param name="output"></param>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        /// <returns></returns>
-        public static float[] Divide(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Divide(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             output[0] = a[0] / b[0];
             output[1] = a[1] / b[1];
             output[2] = a[2] / b[2];
-            return output;
         }
 
         /// <summary>
@@ -1183,13 +980,12 @@ namespace Vintagestory.API.MathTools
         /// <param name="output"></param>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        /// <returns></returns>
-        public static float[] Min(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Min(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             output[0] = Math.Min(a[0], b[0]);
             output[1] = Math.Min(a[1], b[1]);
             output[2] = Math.Min(a[2], b[2]);
-            return output;
         }
 
         /// <summary>
@@ -1198,13 +994,12 @@ namespace Vintagestory.API.MathTools
         /// <param name="output"></param>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        /// <returns></returns>
-        public static float[] Max(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Max(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             output[0] = Math.Max(a[0], b[0]);
             output[1] = Math.Max(a[1], b[1]);
             output[2] = Math.Max(a[2], b[2]);
-            return output;
         }
 
         /// <summary>
@@ -1213,13 +1008,12 @@ namespace Vintagestory.API.MathTools
         /// <param name="output"></param>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        /// <returns></returns>
-        public static float[] Scale(float[] output, float[] a, float b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Scale(Span<double> output, ReadOnlySpan<double> a, double b)
         {
             output[0] = a[0] * b;
             output[1] = a[1] * b;
             output[2] = a[2] * b;
-            return output;
         }
 
         /// <summary>
@@ -1229,13 +1023,12 @@ namespace Vintagestory.API.MathTools
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <param name="scale"></param>
-        /// <returns></returns>
-        public static float[] ScaleAndAdd(float[] output, float[] a, float[] b, float scale)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void ScaleAndAdd(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b, double scale)
         {
             output[0] = a[0] + (b[0] * scale);
             output[1] = a[1] + (b[1] * scale);
             output[2] = a[2] + (b[2] * scale);
-            return output;
         }
 
         /// <summary>
@@ -1244,11 +1037,12 @@ namespace Vintagestory.API.MathTools
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static float Distance(float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Distance(ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            float x = b[0] - a[0];
-            float y = b[1] - a[1];
-            float z = b[2] - a[2];
+            double x = b[0] - a[0];
+            double y = b[1] - a[1];
+            double z = b[2] - a[2];
             return GameMath.Sqrt(x * x + y * y + z * z);
         }
 
@@ -1258,11 +1052,12 @@ namespace Vintagestory.API.MathTools
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static float SquaredDistance(float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double SquaredDistance(ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            float x = b[0] - a[0];
-            float y = b[1] - a[1];
-            float z = b[2] - a[2];
+            double x = b[0] - a[0];
+            double y = b[1] - a[1];
+            double z = b[2] - a[2];
             return x * x + y * y + z * z;
         }
 
@@ -1271,11 +1066,12 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
-        public static float Length_(float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Length(ReadOnlySpan<double> a)
         {
-            float x = a[0];
-            float y = a[1];
-            float z = a[2];
+            double x = a[0];
+            double y = a[1];
+            double z = a[2];
             return GameMath.Sqrt(x * x + y * y + z * z);
         }
 
@@ -1284,11 +1080,12 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="a"></param>
         /// <returns></returns>
-        public static float SquaredLength(float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double SquaredLength(ReadOnlySpan<double> a)
         {
-            float x = a[0];
-            float y = a[1];
-            float z = a[2];
+            double x = a[0];
+            double y = a[1];
+            double z = a[2];
             return x * x + y * y + z * z;
         }
 
@@ -1299,13 +1096,12 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output"></param>
         /// <param name="a"></param>
-        /// <returns></returns>
-        public static float[] Negate(float[] output, float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Negate(Span<double> output, ReadOnlySpan<double> a)
         {
-            output[0] = 0 - a[0];
-            output[1] = 0 - a[1];
-            output[2] = 0 - a[2];
-            return output;
+            output[0] = -a[0];
+            output[1] = -a[1];
+            output[2] = -a[2];
         }
 
         /// <summary>
@@ -1313,22 +1109,21 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="output"></param>
         /// <param name="a"></param>
-        /// <returns></returns>
-        public static float[] Normalize(float[] output, float[] a)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Normalize(Span<double> output, ReadOnlySpan<double> a)
         {
-            float x = a[0];
-            float y = a[1];
-            float z = a[2];
-            float len = x * x + y * y + z * z;
-            if (len > 0)
+            double x = a[0];
+            double y = a[1];
+            double z = a[2];
+            double len = x * x + y * y + z * z;
+            if (len > 0.0)
             {
-                float one = 1;
+                double one = 1.0;
                 len = one / GameMath.Sqrt(len);
                 output[0] = a[0] * len;
                 output[1] = a[1] * len;
                 output[2] = a[2] * len;
             }
-            return output;
         }
 
         /// <summary>
@@ -1337,7 +1132,8 @@ namespace Vintagestory.API.MathTools
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static float Dot(float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double Dot(ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
             return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
         }
@@ -1348,21 +1144,19 @@ namespace Vintagestory.API.MathTools
         /// <param name="output"></param>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        /// <returns></returns>
-        public static float[] Cross(float[] output, float[] a, float[] b)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Cross(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b)
         {
-            float ax = a[0];
-            float ay = a[1];
-            float az = a[2];
-            float bx = b[0];
-            float by = b[1];
-            float bz = b[2];
+            double ax = a[0];
+            double ay = a[1];
+            double az = a[2];
+            double bx = b[0];
+            double by = b[1];
+            double bz = b[2];
 
             output[0] = ay * bz - az * by;
             output[1] = az * bx - ax * bz;
             output[2] = ax * by - ay * bx;
-
-            return output;
         }
 
         /// <summary>
@@ -1372,16 +1166,15 @@ namespace Vintagestory.API.MathTools
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <param name="t"></param>
-        /// <returns></returns>
-        public static float[] Lerp(float[] output, float[] a, float[] b, float t)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Lerp(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> b, double t)
         {
-            float ax = a[0];
-            float ay = a[1];
-            float az = a[2];
+            double ax = a[0];
+            double ay = a[1];
+            double az = a[2];
             output[0] = ax + t * (b[0] - ax);
             output[1] = ay + t * (b[1] - ay);
             output[2] = az + t * (b[2] - az);
-            return output;
         }
 
 
@@ -1391,16 +1184,15 @@ namespace Vintagestory.API.MathTools
         /// <param name="output"></param>
         /// <param name="a"></param>
         /// <param name="m"></param>
-        /// <returns></returns>
-        public static float[] TransformMat4(float[] output, float[] a, float[] m)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void TransformMat4(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> m)
         {
-            float x = a[0];
-            float y = a[1];
-            float z = a[2];
+            double x = a[0];
+            double y = a[1];
+            double z = a[2];
             output[0] = m[0] * x + m[4] * y + m[8] * z + m[12];
             output[1] = m[1] * x + m[5] * y + m[9] * z + m[13];
             output[2] = m[2] * x + m[6] * y + m[10] * z + m[14];
-            return output;
         }
 
         /// <summary>
@@ -1409,16 +1201,15 @@ namespace Vintagestory.API.MathTools
         /// <param name="output"></param>
         /// <param name="a"></param>
         /// <param name="m"></param>
-        /// <returns></returns>
-        public static float[] TransformMat3(float[] output, float[] a, float[] m)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void TransformMat3(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> m)
         {
-            float x = a[0];
-            float y = a[1];
-            float z = a[2];
+            double x = a[0];
+            double y = a[1];
+            double z = a[2];
             output[0] = x * m[0] + y * m[3] + z * m[6];
             output[1] = x * m[1] + y * m[4] + z * m[7];
             output[2] = x * m[2] + y * m[5] + z * m[8];
-            return output;
         }
 
         /// <summary>
@@ -1427,31 +1218,27 @@ namespace Vintagestory.API.MathTools
         /// <param name="output"></param>
         /// <param name="a"></param>
         /// <param name="q"></param>
-        /// <returns></returns>
-        public static float[] TransformQuat(float[] output, float[] a, float[] q)
+        public static void TransformQuat(Span<double> output, ReadOnlySpan<double> a, ReadOnlySpan<double> q)
         {
-            float x = a[0];
-            float y = a[1];
-            float z = a[2];
+            double x = a[0];
+            double y = a[1];
+            double z = a[2];
 
-            float qx = q[0];
-            float qy = q[1];
-            float qz = q[2];
-            float qw = q[3];
+            double qx = q[0];
+            double qy = q[1];
+            double qz = q[2];
+            double qw = q[3];
 
             // calculate quat * vec
-            float ix = qw * x + qy * z - qz * y;
-            float iy = qw * y + qz * x - qx * z;
-            float iz = qw * z + qx * y - qy * x;
-            float iw = (0 - qx) * x - qy * y - qz * z;
+            double ix = qw * x + qy * z - qz * y;
+            double iy = qw * y + qz * x - qx * z;
+            double iz = qw * z + qx * y - qy * x;
+            double iw = -qx * x - qy * y - qz * z;
 
             // calculate result * inverse quat
-            output[0] = ix * qw + iw * (0 - qx) + iy * (0 - qz) - iz * (0 - qy);
-            output[1] = iy * qw + iw * (0 - qy) + iz * (0 - qx) - ix * (0 - qz);
-            output[2] = iz * qw + iw * (0 - qz) + ix * (0 - qy) - iy * (0 - qx);
-            return output;
+            output[0] = ix * qw + iw * -qx + iy * -qz - iz * -qy;
+            output[1] = iy * qw + iw * -qy + iz * -qx - ix * -qz;
+            output[2] = iz * qw + iw * -qz + ix * -qy - iy * -qx;
         }
-
     }
-
 }
