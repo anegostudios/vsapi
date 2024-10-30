@@ -1149,10 +1149,10 @@ namespace Vintagestory.API.Common.Entities
                 }
             }
 
-            string[] willDeleteElements = null;
-            if (Properties.Attributes?["deleteElements"].Exists == true)
+            string[] willDisableElements = null;
+            if (Properties.Attributes?["disableElements"].Exists == true)
             {
-                willDeleteElements = Properties.Attributes["deleteElements"].AsArray<string>();
+                willDisableElements = Properties.Attributes["disableElements"].AsArray<string>();
             }
 
             var bhs = World.Side == EnumAppSide.Server ? Properties.Server?.Behaviors : Properties.Client?.Behaviors;
@@ -1161,12 +1161,12 @@ namespace Vintagestory.API.Common.Entities
             {
                 foreach (var bh in bhs)
                 {
-                    bh.OnTesselation(ref entityShape, shapePathForLogging, ref shapeIsCloned, ref willDeleteElements);
+                    bh.OnTesselation(ref entityShape, shapePathForLogging, ref shapeIsCloned, ref willDisableElements);
                     if (handling == EnumHandling.PreventSubsequent) break;
                 }
             }
 
-            if (willDeleteElements != null && willDeleteElements.Length > 0)
+            if (willDisableElements != null && willDisableElements.Length > 0)
             {
                 if (!shapeIsCloned)
                 {
@@ -1177,7 +1177,7 @@ namespace Vintagestory.API.Common.Entities
                 }
                 shapeIsCloned = true;
 
-                entityShape.RemoveElements(willDeleteElements);
+                entityShape.RemoveElements(willDisableElements);
             }
 
             if (shapeIsCloned)

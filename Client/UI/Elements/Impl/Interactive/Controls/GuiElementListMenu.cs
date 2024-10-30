@@ -518,11 +518,11 @@ namespace Vintagestory.API.Client
                 return;
             }
 
-            double selectedElementd = ((dy + scrollOffY) / (unscaledLineHeight * scaleMul));
+            int mouseY = api.Input.MouseY;
+            int selectedElement = (int)((mouseY - Bounds.renderY - Bounds.InnerHeight + scrollOffY) / (unscaledLineHeight * scaleMul));
 
-            if (selectedElementd >= 0 && selectedElementd < Values.Length)
+            if (selectedElement >= 0 && selectedElement < Values.Length)
             {
-                int selectedElement = (int)selectedElementd;
                 if (multiSelect)
                 {
                     switches[selectedElement].OnMouseDownOnElement(api, args);
