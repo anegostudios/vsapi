@@ -134,6 +134,8 @@ namespace Vintagestory.API.MathTools
             get { return new Vec3d(MaxX, MaxY, MaxZ); }
         }
 
+        public Vec3d Center => new Vec3d(MidX, MidY, MidZ);
+
         public Cuboidf()
         {
 

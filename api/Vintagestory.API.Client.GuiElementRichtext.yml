@@ -17,6 +17,7 @@ items:
   - Vintagestory.API.Client.GuiElementRichtext.DebugLogging
   - Vintagestory.API.Client.GuiElementRichtext.Dispose
   - Vintagestory.API.Client.GuiElementRichtext.HalfComposed
+  - Vintagestory.API.Client.GuiElementRichtext.MaxHeight
   - Vintagestory.API.Client.GuiElementRichtext.MaxLineWidth
   - Vintagestory.API.Client.GuiElementRichtext.OnMouseDownOnElement(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
   - Vintagestory.API.Client.GuiElementRichtext.OnMouseMove(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.MouseEvent)
@@ -123,63 +124,6 @@ items:
   extensionMethods:
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
-- uid: Vintagestory.API.Client.GuiElementRichtext.Components
-  commentId: F:Vintagestory.API.Client.GuiElementRichtext.Components
-  id: Components
-  parent: Vintagestory.API.Client.GuiElementRichtext
-  langs:
-  - csharp
-  - vb
-  name: Components
-  nameWithType: GuiElementRichtext.Components
-  fullName: Vintagestory.API.Client.GuiElementRichtext.Components
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Client
-  syntax:
-    content: public RichTextComponentBase[] Components
-    return:
-      type: Vintagestory.API.Client.RichTextComponentBase[]
-    content.vb: Public Components As RichTextComponentBase()
-- uid: Vintagestory.API.Client.GuiElementRichtext.flowPath
-  commentId: F:Vintagestory.API.Client.GuiElementRichtext.flowPath
-  id: flowPath
-  parent: Vintagestory.API.Client.GuiElementRichtext
-  langs:
-  - csharp
-  - vb
-  name: flowPath
-  nameWithType: GuiElementRichtext.flowPath
-  fullName: Vintagestory.API.Client.GuiElementRichtext.flowPath
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Client
-  syntax:
-    content: protected TextFlowPath[] flowPath
-    return:
-      type: Vintagestory.API.Client.TextFlowPath[]
-    content.vb: Protected flowPath As TextFlowPath()
-- uid: Vintagestory.API.Client.GuiElementRichtext.zPos
-  commentId: F:Vintagestory.API.Client.GuiElementRichtext.zPos
-  id: zPos
-  parent: Vintagestory.API.Client.GuiElementRichtext
-  langs:
-  - csharp
-  - vb
-  name: zPos
-  nameWithType: GuiElementRichtext.zPos
-  fullName: Vintagestory.API.Client.GuiElementRichtext.zPos
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Client
-  syntax:
-    content: public float zPos
-    return:
-      type: System.Single
-    content.vb: Public zPos As Single
 - uid: Vintagestory.API.Client.GuiElementRichtext.DebugLogging
   commentId: F:Vintagestory.API.Client.GuiElementRichtext.DebugLogging
   id: DebugLogging
@@ -199,6 +143,63 @@ items:
     return:
       type: System.Boolean
     content.vb: Public Shared DebugLogging As Boolean
+- uid: Vintagestory.API.Client.GuiElementRichtext.flowPath
+  commentId: F:Vintagestory.API.Client.GuiElementRichtext.flowPath
+  id: flowPath
+  parent: Vintagestory.API.Client.GuiElementRichtext
+  langs:
+  - csharp
+  - vb
+  name: flowPath
+  nameWithType: GuiElementRichtext.flowPath
+  fullName: Vintagestory.API.Client.GuiElementRichtext.flowPath
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: protected TextFlowPath[] flowPath
+    return:
+      type: Vintagestory.API.Client.TextFlowPath[]
+    content.vb: Protected flowPath As TextFlowPath()
+- uid: Vintagestory.API.Client.GuiElementRichtext.Components
+  commentId: F:Vintagestory.API.Client.GuiElementRichtext.Components
+  id: Components
+  parent: Vintagestory.API.Client.GuiElementRichtext
+  langs:
+  - csharp
+  - vb
+  name: Components
+  nameWithType: GuiElementRichtext.Components
+  fullName: Vintagestory.API.Client.GuiElementRichtext.Components
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public RichTextComponentBase[] Components
+    return:
+      type: Vintagestory.API.Client.RichTextComponentBase[]
+    content.vb: Public Components As RichTextComponentBase()
+- uid: Vintagestory.API.Client.GuiElementRichtext.zPos
+  commentId: F:Vintagestory.API.Client.GuiElementRichtext.zPos
+  id: zPos
+  parent: Vintagestory.API.Client.GuiElementRichtext
+  langs:
+  - csharp
+  - vb
+  name: zPos
+  nameWithType: GuiElementRichtext.zPos
+  fullName: Vintagestory.API.Client.GuiElementRichtext.zPos
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public float zPos
+    return:
+      type: System.Single
+    content.vb: Public zPos As Single
 - uid: Vintagestory.API.Client.GuiElementRichtext.richtTextTexture
   commentId: F:Vintagestory.API.Client.GuiElementRichtext.richtTextTexture
   id: richtTextTexture
@@ -256,6 +257,27 @@ items:
     return:
       type: Vintagestory.API.MathTools.Vec4f
     content.vb: Public RenderColor As Vec4f
+- uid: Vintagestory.API.Client.GuiElementRichtext.MaxHeight
+  commentId: P:Vintagestory.API.Client.GuiElementRichtext.MaxHeight
+  id: MaxHeight
+  parent: Vintagestory.API.Client.GuiElementRichtext
+  langs:
+  - csharp
+  - vb
+  name: MaxHeight
+  nameWithType: GuiElementRichtext.MaxHeight
+  fullName: Vintagestory.API.Client.GuiElementRichtext.MaxHeight
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public int MaxHeight { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property MaxHeight As Integer
+  overload: Vintagestory.API.Client.GuiElementRichtext.MaxHeight*
 - uid: Vintagestory.API.Client.GuiElementRichtext.MaxLineWidth
   commentId: P:Vintagestory.API.Client.GuiElementRichtext.MaxLineWidth
   id: MaxLineWidth
@@ -3508,27 +3530,17 @@ references:
   - uid: Vintagestory.API.Util
     name: Util
     href: Vintagestory.API.Util.html
-- uid: Vintagestory.API.Client.RichTextComponentBase[]
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
   isExternal: true
-  href: Vintagestory.API.Client.RichTextComponentBase.html
-  name: RichTextComponentBase[]
-  nameWithType: RichTextComponentBase[]
-  fullName: Vintagestory.API.Client.RichTextComponentBase[]
-  nameWithType.vb: RichTextComponentBase()
-  fullName.vb: Vintagestory.API.Client.RichTextComponentBase()
-  name.vb: RichTextComponentBase()
-  spec.csharp:
-  - uid: Vintagestory.API.Client.RichTextComponentBase
-    name: RichTextComponentBase
-    href: Vintagestory.API.Client.RichTextComponentBase.html
-  - name: '['
-  - name: ']'
-  spec.vb:
-  - uid: Vintagestory.API.Client.RichTextComponentBase
-    name: RichTextComponentBase
-    href: Vintagestory.API.Client.RichTextComponentBase.html
-  - name: (
-  - name: )
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
 - uid: Vintagestory.API.Client.TextFlowPath[]
   isExternal: true
   href: Vintagestory.API.Client.TextFlowPath.html
@@ -3550,6 +3562,27 @@ references:
     href: Vintagestory.API.Client.TextFlowPath.html
   - name: (
   - name: )
+- uid: Vintagestory.API.Client.RichTextComponentBase[]
+  isExternal: true
+  href: Vintagestory.API.Client.RichTextComponentBase.html
+  name: RichTextComponentBase[]
+  nameWithType: RichTextComponentBase[]
+  fullName: Vintagestory.API.Client.RichTextComponentBase[]
+  nameWithType.vb: RichTextComponentBase()
+  fullName.vb: Vintagestory.API.Client.RichTextComponentBase()
+  name.vb: RichTextComponentBase()
+  spec.csharp:
+  - uid: Vintagestory.API.Client.RichTextComponentBase
+    name: RichTextComponentBase
+    href: Vintagestory.API.Client.RichTextComponentBase.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Client.RichTextComponentBase
+    name: RichTextComponentBase
+    href: Vintagestory.API.Client.RichTextComponentBase.html
+  - name: (
+  - name: )
 - uid: System.Single
   commentId: T:System.Single
   parent: System
@@ -3561,17 +3594,6 @@ references:
   nameWithType.vb: Single
   fullName.vb: Single
   name.vb: Single
-- uid: System.Boolean
-  commentId: T:System.Boolean
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.boolean
-  name: bool
-  nameWithType: bool
-  fullName: bool
-  nameWithType.vb: Boolean
-  fullName.vb: Boolean
-  name.vb: Boolean
 - uid: Vintagestory.API.Client.LoadedTexture
   commentId: T:Vintagestory.API.Client.LoadedTexture
   parent: Vintagestory.API.Client
@@ -3616,6 +3638,23 @@ references:
   - uid: Vintagestory.API.MathTools
     name: MathTools
     href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.API.Client.GuiElementRichtext.MaxHeight*
+  commentId: Overload:Vintagestory.API.Client.GuiElementRichtext.MaxHeight
+  href: Vintagestory.API.Client.GuiElementRichtext.html#Vintagestory_API_Client_GuiElementRichtext_MaxHeight
+  name: MaxHeight
+  nameWithType: GuiElementRichtext.MaxHeight
+  fullName: Vintagestory.API.Client.GuiElementRichtext.MaxHeight
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: Vintagestory.API.Client.GuiElementRichtext.MaxLineWidth*
   commentId: Overload:Vintagestory.API.Client.GuiElementRichtext.MaxLineWidth
   href: Vintagestory.API.Client.GuiElementRichtext.html#Vintagestory_API_Client_GuiElementRichtext_MaxLineWidth

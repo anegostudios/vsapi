@@ -95,6 +95,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.touchDistanceSq
   - Vintagestory.API.Common.Entities.Entity.ownPosRepulse
   - Vintagestory.API.Common.Entities.Entity.hasRepulseBehavior
+  - Vintagestory.API.Common.Entities.Entity.customRepulseBehavior
   - Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
   - Vintagestory.API.Common.Entities.Entity.requirePosesOnServer
   - Vintagestory.API.Common.Entities.Entity.packet
@@ -178,6 +179,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.GetName
   - Vintagestory.API.Common.Entities.Entity.GetInfoText
   - Vintagestory.API.Common.Entities.Entity.IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@)
+  - Vintagestory.API.Common.Entities.Entity.GetTouchDistance
   - Vintagestory.API.Common.RegistryObject.Code
   - Vintagestory.API.Common.RegistryObject.VariantStrict
   - Vintagestory.API.Common.RegistryObject.Variant
@@ -1170,6 +1172,13 @@ references:
   name: hasRepulseBehavior
   nameWithType: Entity.hasRepulseBehavior
   fullName: Vintagestory.API.Common.Entities.Entity.hasRepulseBehavior
+- uid: Vintagestory.API.Common.Entities.Entity.customRepulseBehavior
+  commentId: F:Vintagestory.API.Common.Entities.Entity.customRepulseBehavior
+  parent: Vintagestory.API.Common.Entities.Entity
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_customRepulseBehavior
+  name: customRepulseBehavior
+  nameWithType: Entity.customRepulseBehavior
+  fullName: Vintagestory.API.Common.Entities.Entity.customRepulseBehavior
 - uid: Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
   commentId: F:Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
   parent: Vintagestory.API.Common.Entities.Entity
@@ -3492,6 +3501,25 @@ references:
     name: Integer
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.Entities.Entity.GetTouchDistance
+  commentId: M:Vintagestory.API.Common.Entities.Entity.GetTouchDistance
+  parent: Vintagestory.API.Common.Entities.Entity
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetTouchDistance
+  name: GetTouchDistance()
+  nameWithType: Entity.GetTouchDistance()
+  fullName: Vintagestory.API.Common.Entities.Entity.GetTouchDistance()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.Entity.GetTouchDistance
+    name: GetTouchDistance
+    href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetTouchDistance
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.Entity.GetTouchDistance
+    name: GetTouchDistance
+    href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetTouchDistance
+  - name: (
   - name: )
 - uid: Vintagestory.API.Common.RegistryObject.Code
   commentId: F:Vintagestory.API.Common.RegistryObject.Code

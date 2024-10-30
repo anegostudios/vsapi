@@ -84,10 +84,10 @@ namespace Vintagestory.API.Common
         public FastVec3i PackedOffset;
         public List<BlockPosFacing> PathwayBlocksUnpacked;
 
-        protected Block fillerBlock;
-        protected Block pathwayBlock;
-        protected Block undergroundBlock;
-        protected Block abovegroundBlock;
+        public static int FillerBlockId;
+        public static int PathwayBlockId;
+        public static int UndergroundBlockId;
+        public static int AbovegroundBlockId;
 
         protected ushort empty = 0;
         public bool OmitLiquids = false;
@@ -154,8 +154,6 @@ namespace Vintagestory.API.Common
             {
                 Remap();
             }
-
-            InitMetaBlocks(blockAccessor);
         }
 
         private void Remap()
@@ -185,14 +183,6 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public void InitMetaBlocks(IBlockAccessor blockAccessor)
-        {
-            fillerBlock = blockAccessor.GetBlock(new AssetLocation("meta-filler"));
-            pathwayBlock = blockAccessor.GetBlock(new AssetLocation("meta-pathway"));
-            undergroundBlock = blockAccessor.GetBlock(new AssetLocation("meta-underground"));
-            abovegroundBlock = blockAccessor.GetBlock(new AssetLocation("meta-aboveground"));
-        }
-
         /// <summary>
         /// Loads the meta information for each block in the schematic.
         /// </summary>
@@ -219,20 +209,25 @@ namespace Vintagestory.API.Common
                 AssetLocation blockCode = BlockCodes[storedBlockid];
                 Block newBlock = blockAccessor.GetBlock(blockCode);
 
-                if (newBlock == null) missingBlocks.Add(blockCode);
-
-                BlockPos pos = new BlockPos(dx, dy, dz);
-                if (newBlock == pathwayBlock)
+                if (newBlock == null)
                 {
-                    pathwayPositions.Enqueue(pos);
+                    missingBlocks.Add(blockCode);
                 }
-                else if (newBlock == undergroundBlock)
+                else
                 {
-                    undergroundPositions.Add(pos);
-                }
-                else if (newBlock == abovegroundBlock)
-                {
-                    abovegroundPositions.Add(pos);
+                    BlockPos pos = new BlockPos(dx, dy, dz);
+                    if (newBlock.Id == PathwayBlockId)
+                    {
+                        pathwayPositions.Enqueue(pos);
+                    }
+                    else if (newBlock.Id == UndergroundBlockId)
+                    {
+                        undergroundPositions.Add(pos);
+                    }
+                    else if (newBlock.Id == AbovegroundBlockId)
+                    {
+                        abovegroundPositions.Add(pos);
+                    }
                 }
             }
 
@@ -272,9 +267,9 @@ namespace Vintagestory.API.Common
 
             if (pathwayPositions.Count == 0)
             {
-                this.PathwayStarts = new BlockPos[0];
-                this.PathwayOffsets = new BlockPos[0][];
-                this.PathwaySides = new BlockFacing[0];
+                PathwayStarts = new BlockPos[0];
+                PathwayOffsets = new BlockPos[0][];
+                PathwaySides = new BlockFacing[0];
                 return;
             }
 
@@ -653,7 +648,7 @@ namespace Vintagestory.API.Common
 
                 Block newBlock = blockAccessor.GetBlock(blockCode);
 
-                if (newBlock == null || (replaceMetaBlocks && (newBlock == undergroundBlock || newBlock == abovegroundBlock))) continue;
+                if (newBlock == null || (replaceMetaBlocks && (newBlock.Id == UndergroundBlockId || newBlock.Id == AbovegroundBlockId))) continue;
 
                 curPos.Set(dx + startPos.X, dy + startPos.Y, dz + startPos.Z);
                 if (!blockAccessor.IsValidPos(curPos)) continue;    // Deal with cases where we are at the map edge
@@ -1386,13 +1381,14 @@ namespace Vintagestory.API.Common
             return tree;
         }
 
-
-
-
+        public bool IsFillerOrPath(Block newBlock)
+        {
+            return (newBlock.Id == FillerBlockId || newBlock.Id == PathwayBlockId);
+        }
 
         protected virtual int PlaceReplaceAll(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock, bool replaceMeta)
         {
-            blockAccessor.SetBlock(replaceMeta && (newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
+            blockAccessor.SetBlock(replaceMeta && IsFillerOrPath(newBlock) ? empty : newBlock.BlockId, pos);
             return 1;
         }
 
@@ -1400,7 +1396,7 @@ namespace Vintagestory.API.Common
         {
             if (newBlock.ForFluidsLayer || blockAccessor.GetBlock(pos, BlockLayersAccess.MostSolid).Replaceable > newBlock.Replaceable)
             {
-                blockAccessor.SetBlock(replaceMeta && (newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
+                blockAccessor.SetBlock(replaceMeta && IsFillerOrPath(newBlock) ? empty : newBlock.BlockId, pos);
                 return 1;
             }
             return 0;
@@ -1410,7 +1406,7 @@ namespace Vintagestory.API.Common
         {
             if (newBlock.BlockId != 0)
             {
-                blockAccessor.SetBlock(replaceMeta && (newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
+                blockAccessor.SetBlock(replaceMeta && IsFillerOrPath(newBlock) ? empty : newBlock.BlockId, pos);
                 return 1;
             }
             return 0;
@@ -1421,7 +1417,7 @@ namespace Vintagestory.API.Common
             Block oldBlock = blockAccessor.GetMostSolidBlock(pos);
             if (oldBlock.BlockId == 0)
             {
-                blockAccessor.SetBlock(replaceMeta && (newBlock == fillerBlock || newBlock == pathwayBlock) ? empty : newBlock.BlockId, pos);
+                blockAccessor.SetBlock(replaceMeta && IsFillerOrPath(newBlock) ? empty : newBlock.BlockId, pos);
                 return 1;
             }
             return 0;

@@ -84,7 +84,7 @@ namespace Vintagestory.API.Client
                 }
 
                 MeshDataPool pool = MeshDataPool.AllocateNewPool(capi, vertexSize, indexSize, maxPartsPerPool, customFloats, customShorts, customBytes, customInts);
-                pool.poolOrigin = modelOrigin;
+                pool.poolOrigin = modelOrigin.Clone();
                 pool.dimensionId = dimension;
 
                 masterPool.AddModelDataPool(pool);

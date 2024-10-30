@@ -48,6 +48,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.GetInterface``1
   - Vintagestory.API.Common.Entities.Entity.GetName
   - Vintagestory.API.Common.Entities.Entity.GetTextureSource
+  - Vintagestory.API.Common.Entities.Entity.GetTouchDistance
   - Vintagestory.API.Common.Entities.Entity.HasBehavior(System.String)
   - Vintagestory.API.Common.Entities.Entity.HasBehavior``1
   - Vintagestory.API.Common.Entities.Entity.IdleSoundChanceModifier
@@ -145,6 +146,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.alive
   - Vintagestory.API.Common.Entities.Entity.bioLumiNoise
   - Vintagestory.API.Common.Entities.Entity.bioLumiParticles
+  - Vintagestory.API.Common.Entities.Entity.customRepulseBehavior
   - Vintagestory.API.Common.Entities.Entity.fireDamageAccum
   - Vintagestory.API.Common.Entities.Entity.hasRepulseBehavior
   - Vintagestory.API.Common.Entities.Entity.minRangeToClient
@@ -1257,6 +1259,25 @@ items:
     return:
       type: System.Boolean
     content.vb: Public hasRepulseBehavior As Boolean
+- uid: Vintagestory.API.Common.Entities.Entity.customRepulseBehavior
+  commentId: F:Vintagestory.API.Common.Entities.Entity.customRepulseBehavior
+  id: customRepulseBehavior
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: customRepulseBehavior
+  nameWithType: Entity.customRepulseBehavior
+  fullName: Vintagestory.API.Common.Entities.Entity.customRepulseBehavior
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public bool customRepulseBehavior
+    return:
+      type: System.Boolean
+    content.vb: Public customRepulseBehavior As Boolean
 - uid: Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
   commentId: F:Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
   id: trickleDownRayIntersects
@@ -1615,11 +1636,11 @@ items:
   summary: Whether this entity should always stay in Active model, regardless on how far away other player are
   example: []
   syntax:
-    content: public virtual bool AlwaysActive { get; }
+    content: public virtual bool AlwaysActive { get; set; }
     parameters: []
     return:
       type: System.Boolean
-    content.vb: Public Overridable ReadOnly Property AlwaysActive As Boolean
+    content.vb: Public Overridable Property AlwaysActive As Boolean
   overload: Vintagestory.API.Common.Entities.Entity.AlwaysActive*
 - uid: Vintagestory.API.Common.Entities.Entity.Alive
   commentId: P:Vintagestory.API.Common.Entities.Entity.Alive
@@ -3828,6 +3849,26 @@ items:
   nameWithType.vb: Entity.IntersectsRay(Ray, AABBIntersectionTest, Double, Integer)
   fullName.vb: Vintagestory.API.Common.Entities.Entity.IntersectsRay(Vintagestory.API.MathTools.Ray, Vintagestory.API.MathTools.AABBIntersectionTest, Double, Integer)
   name.vb: IntersectsRay(Ray, AABBIntersectionTest, Double, Integer)
+- uid: Vintagestory.API.Common.Entities.Entity.GetTouchDistance
+  commentId: M:Vintagestory.API.Common.Entities.Entity.GetTouchDistance
+  id: GetTouchDistance
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: GetTouchDistance()
+  nameWithType: Entity.GetTouchDistance()
+  fullName: Vintagestory.API.Common.Entities.Entity.GetTouchDistance()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual double GetTouchDistance()
+    return:
+      type: System.Double
+    content.vb: Public Overridable Function GetTouchDistance() As Double
+  overload: Vintagestory.API.Common.Entities.Entity.GetTouchDistance*
 references:
 - uid: Vintagestory.API.Common.Entities
   commentId: N:Vintagestory.API.Common.Entities
@@ -6475,3 +6516,9 @@ references:
   name: AABBIntersectionTest
   nameWithType: AABBIntersectionTest
   fullName: Vintagestory.API.MathTools.AABBIntersectionTest
+- uid: Vintagestory.API.Common.Entities.Entity.GetTouchDistance*
+  commentId: Overload:Vintagestory.API.Common.Entities.Entity.GetTouchDistance
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetTouchDistance
+  name: GetTouchDistance
+  nameWithType: Entity.GetTouchDistance
+  fullName: Vintagestory.API.Common.Entities.Entity.GetTouchDistance

@@ -108,6 +108,12 @@ namespace Vintagestory.API.Common
         public const int Fruit = 8 << VertexFlags.WindModeBitsPos;
 
         public const int WeakWindNoBend = 9 << VertexFlags.WindModeBitsPos;
+
+        public const int WeakWindInverseBend = 10 << VertexFlags.WindModeBitsPos;
+
+        public const int Seaweed = 11 << VertexFlags.WindModeBitsPos;
+
+        public const int FullWaterWave = 12 << VertexFlags.WindModeBitsPos;
     }
 
     /// <summary>

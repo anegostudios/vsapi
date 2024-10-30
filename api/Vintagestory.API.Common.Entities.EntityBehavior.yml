@@ -13,6 +13,7 @@ items:
   - Vintagestory.API.Common.Entities.EntityBehavior.GetInfoText(System.Text.StringBuilder)
   - Vintagestory.API.Common.Entities.EntityBehavior.GetInteractionHelp(Vintagestory.API.Client.IClientWorldAccessor,Vintagestory.API.Common.EntitySelection,Vintagestory.API.Client.IClientPlayer,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.Entities.EntityBehavior.GetTextureSource(Vintagestory.API.Common.EnumHandling@)
+  - Vintagestory.API.Common.Entities.EntityBehavior.GetTouchDistance(Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.Entities.EntityBehavior.Initialize(Vintagestory.API.Common.Entities.EntityProperties,Vintagestory.API.Datastructures.JsonObject)
   - Vintagestory.API.Common.Entities.EntityBehavior.IntersectsRay(Vintagestory.API.MathTools.Ray,Vintagestory.API.MathTools.AABBIntersectionTest,System.Double@,System.Int32@,Vintagestory.API.Common.EnumHandling@)
   - Vintagestory.API.Common.Entities.EntityBehavior.Notify(System.String,System.Object)
@@ -39,6 +40,7 @@ items:
   - Vintagestory.API.Common.Entities.EntityBehavior.TestCommand(System.Object)
   - Vintagestory.API.Common.Entities.EntityBehavior.ToBytes(System.Boolean)
   - Vintagestory.API.Common.Entities.EntityBehavior.TryGiveItemStack(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.EnumHandling@)
+  - Vintagestory.API.Common.Entities.EntityBehavior.UpdateColSelBoxes
   - Vintagestory.API.Common.Entities.EntityBehavior.entity
   langs:
   - csharp
@@ -1044,6 +1046,50 @@ items:
     content: public virtual void OnTesselated()
     content.vb: Public Overridable Sub OnTesselated()
   overload: Vintagestory.API.Common.Entities.EntityBehavior.OnTesselated*
+- uid: Vintagestory.API.Common.Entities.EntityBehavior.UpdateColSelBoxes
+  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.UpdateColSelBoxes
+  id: UpdateColSelBoxes
+  parent: Vintagestory.API.Common.Entities.EntityBehavior
+  langs:
+  - csharp
+  - vb
+  name: UpdateColSelBoxes()
+  nameWithType: EntityBehavior.UpdateColSelBoxes()
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior.UpdateColSelBoxes()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual void UpdateColSelBoxes()
+    content.vb: Public Overridable Sub UpdateColSelBoxes()
+  overload: Vintagestory.API.Common.Entities.EntityBehavior.UpdateColSelBoxes*
+- uid: Vintagestory.API.Common.Entities.EntityBehavior.GetTouchDistance(Vintagestory.API.Common.EnumHandling@)
+  commentId: M:Vintagestory.API.Common.Entities.EntityBehavior.GetTouchDistance(Vintagestory.API.Common.EnumHandling@)
+  id: GetTouchDistance(Vintagestory.API.Common.EnumHandling@)
+  parent: Vintagestory.API.Common.Entities.EntityBehavior
+  langs:
+  - csharp
+  - vb
+  name: GetTouchDistance(ref EnumHandling)
+  nameWithType: EntityBehavior.GetTouchDistance(ref EnumHandling)
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior.GetTouchDistance(ref Vintagestory.API.Common.EnumHandling)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual float GetTouchDistance(ref EnumHandling handling)
+    parameters:
+    - id: handling
+      type: Vintagestory.API.Common.EnumHandling
+    return:
+      type: System.Single
+    content.vb: Public Overridable Function GetTouchDistance(handling As EnumHandling) As Single
+  overload: Vintagestory.API.Common.Entities.EntityBehavior.GetTouchDistance*
+  nameWithType.vb: EntityBehavior.GetTouchDistance(EnumHandling)
+  fullName.vb: Vintagestory.API.Common.Entities.EntityBehavior.GetTouchDistance(Vintagestory.API.Common.EnumHandling)
+  name.vb: GetTouchDistance(EnumHandling)
 references:
 - uid: Vintagestory.API.Common.Entities
   commentId: N:Vintagestory.API.Common.Entities
@@ -2298,3 +2344,15 @@ references:
   name: OnTesselated
   nameWithType: EntityBehavior.OnTesselated
   fullName: Vintagestory.API.Common.Entities.EntityBehavior.OnTesselated
+- uid: Vintagestory.API.Common.Entities.EntityBehavior.UpdateColSelBoxes*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityBehavior.UpdateColSelBoxes
+  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_UpdateColSelBoxes
+  name: UpdateColSelBoxes
+  nameWithType: EntityBehavior.UpdateColSelBoxes
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior.UpdateColSelBoxes
+- uid: Vintagestory.API.Common.Entities.EntityBehavior.GetTouchDistance*
+  commentId: Overload:Vintagestory.API.Common.Entities.EntityBehavior.GetTouchDistance
+  href: Vintagestory.API.Common.Entities.EntityBehavior.html#Vintagestory_API_Common_Entities_EntityBehavior_GetTouchDistance_Vintagestory_API_Common_EnumHandling__
+  name: GetTouchDistance
+  nameWithType: EntityBehavior.GetTouchDistance
+  fullName: Vintagestory.API.Common.Entities.EntityBehavior.GetTouchDistance

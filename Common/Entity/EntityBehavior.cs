@@ -282,5 +282,15 @@ namespace Vintagestory.API.Common.Entities
         {
             
         }
+
+        public virtual void UpdateColSelBoxes()
+        {
+            
+        }
+
+        public virtual float GetTouchDistance(ref EnumHandling handling)
+        {
+            return 0;
+        }
     }
 }

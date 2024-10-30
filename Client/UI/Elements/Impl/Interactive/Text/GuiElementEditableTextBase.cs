@@ -255,6 +255,15 @@ namespace Vintagestory.API.Client
         }
 
         /// <summary>
+        /// Sets a numerical value to the text, appending it to the end of the text.
+        /// </summary>
+        /// <param name="value">The value to add to the text.</param>
+        public void SetValue(double value)
+        {
+            SetValue(value.ToString(GlobalConstants.DefaultCultureInfo));
+        }
+
+        /// <summary>
         /// Sets given text, sets the cursor to the end of the text
         /// </summary>
         /// <param name="text"></param>

@@ -115,6 +115,9 @@ namespace Vintagestory.API.Client
         { 
             slotBounds = new ElementBounds[availableSlots.Count];
             scissorBounds = new ElementBounds[availableSlots.Count];
+
+            if (slotQuantityTextures != null) Dispose();
+
             slotQuantityTextures = new LoadedTexture[availableSlots.Count];
             for (int k = 0; k < slotQuantityTextures.Length; k++) slotQuantityTextures[k] = new LoadedTexture(this.api);
 

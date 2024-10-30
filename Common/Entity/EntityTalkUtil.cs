@@ -376,7 +376,7 @@ namespace Vintagestory.API.Util
             {
                 Location = loc,
                 DisposeOnFinish = true,
-                Pitch = pitchOffset,
+                Pitch = IsMultiSoundVoice ? pitchOffset : startPitch,
                 Volume = startvolume,
                 Position = entity.Pos.XYZ.ToVec3f().Add(0, (float)entity.LocalEyePos.Y, 0),
                 ShouldLoop = false,
@@ -388,8 +388,8 @@ namespace Vintagestory.API.Util
             slidingPitchSounds.Add(new SlidingPitchSound()
             {
                 TalkType = talkType,
-                startPitch = 1 + pitchOffset,
-                endPitch = 1 + (endPitch - startPitch) + pitchOffset,
+                startPitch = IsMultiSoundVoice ? (1 + pitchOffset) : startPitch,
+                endPitch = IsMultiSoundVoice ? (1 + (endPitch - startPitch) + pitchOffset) : endPitch,
                 sound = sound,
                 startMs = capi.World.ElapsedMilliseconds,
                 length = length,

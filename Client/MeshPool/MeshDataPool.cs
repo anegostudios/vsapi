@@ -165,9 +165,17 @@ namespace Vintagestory.API.Client
 
             // Can't add a model data to far away from our baseposition, otherwise our floating point positions
             // become too inaccurate
-            if (poolOrigin != null && modelOrigin.SquareDistanceTo(poolOrigin) > 5000 * 5000) return null;
+            if (poolOrigin != null)
+            {
+                if (poolLocations.Count == 0)
+                {
+                    poolOrigin.Set(modelOrigin);
+                }
 
-            if (CurrentFragmentation > 0.05f)
+                if (modelOrigin.SquareDistanceTo(poolOrigin) > 5000 * 5000) return null;
+            }
+
+            if (CurrentFragmentation > 0.03f)
             {
                 ModelDataPoolLocation location = TrySqueezeInbetween(capi, modeldata, modelOrigin, frustumCullSphere);
                 if (location != null) return location;

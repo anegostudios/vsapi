@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Vintagestory.API.Config;
 
 namespace Vintagestory.API.Client
 {
@@ -19,7 +20,12 @@ namespace Vintagestory.API.Client
         /// </summary>
         public bool DelayedPoolLocationRemoval;
 
-        Queue<ModelDataPoolLocation[]>[] removalQueue = new Queue<ModelDataPoolLocation[]>[] { new Queue<ModelDataPoolLocation[]>(), new Queue<ModelDataPoolLocation[]>(), new Queue<ModelDataPoolLocation[]>(), new Queue<ModelDataPoolLocation[]>() };
+        Queue<ModelDataPoolLocation[]>[] removalQueue = new Queue<ModelDataPoolLocation[]>[] {
+            new Queue<ModelDataPoolLocation[]>(),
+            new Queue<ModelDataPoolLocation[]>(),
+            new Queue<ModelDataPoolLocation[]>(),
+            new Queue<ModelDataPoolLocation[]>()
+        };
 
 
 
@@ -88,7 +94,8 @@ namespace Vintagestory.API.Client
                     continue;
                 }
 
-                modelPools[locations[i].PoolId].RemoveLocation(locations[i]);
+                var mpool = modelPools[locations[i].PoolId];
+                mpool.RemoveLocation(locations[i]);
             }
         }
 

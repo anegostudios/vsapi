@@ -11,18 +11,16 @@ namespace Vintagestory.API.Client
 {
     public class GuiElementRichtext : GuiElement
     {
-        public RichTextComponentBase[] Components;
-        protected TextFlowPath[] flowPath;
-        public float zPos = 50;
-
         public static bool DebugLogging = false;
 
+        protected TextFlowPath[] flowPath;
+        public RichTextComponentBase[] Components;
+        public float zPos = 50;
         public LoadedTexture richtTextTexture;
-
         public bool Debug = false;
-
         public Vec4f RenderColor;
-        
+
+        public int MaxHeight { get; set; } = int.MaxValue;
 
         public double MaxLineWidth
         {
@@ -105,7 +103,7 @@ namespace Vintagestory.API.Client
                 hgt = Math.Max(1, Math.Max(hgt, richtTextTexture.Height));
             }
 
-            surface = new ImageSurface(Format.ARGB32, wdt, hgt);
+            surface = new ImageSurface(Format.ARGB32, wdt, Math.Min(MaxHeight, hgt));
             ctx = new Context(surface);
             ctx.SetSourceRGBA(0, 0, 0, 0);
             ctx.Paint();
@@ -467,7 +465,7 @@ namespace Vintagestory.API.Client
             CalcHeightAndPositions();
             Bounds.CalcWorldBounds();
 
-            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Bounds.OuterHeight);
+            ImageSurface surface = new ImageSurface(Format.Argb32, (int)Bounds.OuterWidth, (int)Math.Min(MaxHeight, Bounds.OuterHeight));
             Context ctx = genContext(surface);
             ComposeFor(Bounds.CopyOnlySize(), ctx, surface);
 

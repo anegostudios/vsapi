@@ -550,6 +550,11 @@ namespace Vintagestory.API.MathTools
             return new Vec3d(left.X / right, left.Y / right, left.Z / right);
         }
 
+        public static Vec3d operator /(Vec3d left, double right)
+        {
+            return new Vec3d(left.X / right, left.Y / right, left.Z / right);
+        }
+
 
         public static bool operator ==(Vec3d left, Vec3d right)
         {

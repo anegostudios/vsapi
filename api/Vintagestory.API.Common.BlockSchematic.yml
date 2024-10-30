@@ -8,6 +8,7 @@ items:
   - Vintagestory.API.Common.BlockSchematic.#ctor
   - Vintagestory.API.Common.BlockSchematic.#ctor(Vintagestory.API.Server.IServerWorldAccessor,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
   - Vintagestory.API.Common.BlockSchematic.#ctor(Vintagestory.API.Server.IServerWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  - Vintagestory.API.Common.BlockSchematic.AbovegroundBlockId
   - Vintagestory.API.Common.BlockSchematic.AbovegroundCheckPositions
   - Vintagestory.API.Common.BlockSchematic.AddArea(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.BlockSchematic.AddArea(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
@@ -27,6 +28,7 @@ items:
   - Vintagestory.API.Common.BlockSchematic.Entities
   - Vintagestory.API.Common.BlockSchematic.EntitiesUnpacked
   - Vintagestory.API.Common.BlockSchematic.EntranceRotation
+  - Vintagestory.API.Common.BlockSchematic.FillerBlockId
   - Vintagestory.API.Common.BlockSchematic.FluidsLayerUnpacked
   - Vintagestory.API.Common.BlockSchematic.GameVersion
   - Vintagestory.API.Common.BlockSchematic.GetJustPositions(Vintagestory.API.MathTools.BlockPos)
@@ -34,7 +36,7 @@ items:
   - Vintagestory.API.Common.BlockSchematic.GetStartPos(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.EnumOrigin)
   - Vintagestory.API.Common.BlockSchematic.Indices
   - Vintagestory.API.Common.BlockSchematic.Init(Vintagestory.API.Common.IBlockAccessor)
-  - Vintagestory.API.Common.BlockSchematic.InitMetaBlocks(Vintagestory.API.Common.IBlockAccessor)
+  - Vintagestory.API.Common.BlockSchematic.IsFillerOrPath(Vintagestory.API.Common.Block)
   - Vintagestory.API.Common.BlockSchematic.ItemCodes
   - Vintagestory.API.Common.BlockSchematic.ItemRemaps
   - Vintagestory.API.Common.BlockSchematic.LoadFromFile(System.String,System.String@)
@@ -44,6 +46,7 @@ items:
   - Vintagestory.API.Common.BlockSchematic.Pack(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.BlockSchematic.PackedOffset
   - Vintagestory.API.Common.BlockSchematic.PasteToMiniDimension(Vintagestory.API.Server.ICoreServerAPI,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IMiniDimension,Vintagestory.API.MathTools.BlockPos,System.Boolean)
+  - Vintagestory.API.Common.BlockSchematic.PathwayBlockId
   - Vintagestory.API.Common.BlockSchematic.PathwayBlocksUnpacked
   - Vintagestory.API.Common.BlockSchematic.PathwayOffsets
   - Vintagestory.API.Common.BlockSchematic.PathwaySides
@@ -66,12 +69,9 @@ items:
   - Vintagestory.API.Common.BlockSchematic.StringEncodeTreeAttribute(Vintagestory.API.Datastructures.ITreeAttribute)
   - Vintagestory.API.Common.BlockSchematic.ToJson
   - Vintagestory.API.Common.BlockSchematic.TransformWhilePacked(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.EnumOrigin,System.Int32,System.Nullable{Vintagestory.API.MathTools.EnumAxis},System.Boolean)
+  - Vintagestory.API.Common.BlockSchematic.UndergroundBlockId
   - Vintagestory.API.Common.BlockSchematic.UndergroundCheckPositions
-  - Vintagestory.API.Common.BlockSchematic.abovegroundBlock
   - Vintagestory.API.Common.BlockSchematic.empty
-  - Vintagestory.API.Common.BlockSchematic.fillerBlock
-  - Vintagestory.API.Common.BlockSchematic.pathwayBlock
-  - Vintagestory.API.Common.BlockSchematic.undergroundBlock
   langs:
   - csharp
   - vb
@@ -649,82 +649,82 @@ items:
     return:
       type: System.Collections.Generic.List{Vintagestory.Common.Collectible.Block.BlockPosFacing}
     content.vb: Public PathwayBlocksUnpacked As List(Of BlockPosFacing)
-- uid: Vintagestory.API.Common.BlockSchematic.fillerBlock
-  commentId: F:Vintagestory.API.Common.BlockSchematic.fillerBlock
-  id: fillerBlock
+- uid: Vintagestory.API.Common.BlockSchematic.FillerBlockId
+  commentId: F:Vintagestory.API.Common.BlockSchematic.FillerBlockId
+  id: FillerBlockId
   parent: Vintagestory.API.Common.BlockSchematic
   langs:
   - csharp
   - vb
-  name: fillerBlock
-  nameWithType: BlockSchematic.fillerBlock
-  fullName: Vintagestory.API.Common.BlockSchematic.fillerBlock
+  name: FillerBlockId
+  nameWithType: BlockSchematic.FillerBlockId
+  fullName: Vintagestory.API.Common.BlockSchematic.FillerBlockId
   type: Field
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: protected Block fillerBlock
+    content: public static int FillerBlockId
     return:
-      type: Vintagestory.API.Common.Block
-    content.vb: Protected fillerBlock As Block
-- uid: Vintagestory.API.Common.BlockSchematic.pathwayBlock
-  commentId: F:Vintagestory.API.Common.BlockSchematic.pathwayBlock
-  id: pathwayBlock
+      type: System.Int32
+    content.vb: Public Shared FillerBlockId As Integer
+- uid: Vintagestory.API.Common.BlockSchematic.PathwayBlockId
+  commentId: F:Vintagestory.API.Common.BlockSchematic.PathwayBlockId
+  id: PathwayBlockId
   parent: Vintagestory.API.Common.BlockSchematic
   langs:
   - csharp
   - vb
-  name: pathwayBlock
-  nameWithType: BlockSchematic.pathwayBlock
-  fullName: Vintagestory.API.Common.BlockSchematic.pathwayBlock
+  name: PathwayBlockId
+  nameWithType: BlockSchematic.PathwayBlockId
+  fullName: Vintagestory.API.Common.BlockSchematic.PathwayBlockId
   type: Field
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: protected Block pathwayBlock
+    content: public static int PathwayBlockId
     return:
-      type: Vintagestory.API.Common.Block
-    content.vb: Protected pathwayBlock As Block
-- uid: Vintagestory.API.Common.BlockSchematic.undergroundBlock
-  commentId: F:Vintagestory.API.Common.BlockSchematic.undergroundBlock
-  id: undergroundBlock
+      type: System.Int32
+    content.vb: Public Shared PathwayBlockId As Integer
+- uid: Vintagestory.API.Common.BlockSchematic.UndergroundBlockId
+  commentId: F:Vintagestory.API.Common.BlockSchematic.UndergroundBlockId
+  id: UndergroundBlockId
   parent: Vintagestory.API.Common.BlockSchematic
   langs:
   - csharp
   - vb
-  name: undergroundBlock
-  nameWithType: BlockSchematic.undergroundBlock
-  fullName: Vintagestory.API.Common.BlockSchematic.undergroundBlock
+  name: UndergroundBlockId
+  nameWithType: BlockSchematic.UndergroundBlockId
+  fullName: Vintagestory.API.Common.BlockSchematic.UndergroundBlockId
   type: Field
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: protected Block undergroundBlock
+    content: public static int UndergroundBlockId
     return:
-      type: Vintagestory.API.Common.Block
-    content.vb: Protected undergroundBlock As Block
-- uid: Vintagestory.API.Common.BlockSchematic.abovegroundBlock
-  commentId: F:Vintagestory.API.Common.BlockSchematic.abovegroundBlock
-  id: abovegroundBlock
+      type: System.Int32
+    content.vb: Public Shared UndergroundBlockId As Integer
+- uid: Vintagestory.API.Common.BlockSchematic.AbovegroundBlockId
+  commentId: F:Vintagestory.API.Common.BlockSchematic.AbovegroundBlockId
+  id: AbovegroundBlockId
   parent: Vintagestory.API.Common.BlockSchematic
   langs:
   - csharp
   - vb
-  name: abovegroundBlock
-  nameWithType: BlockSchematic.abovegroundBlock
-  fullName: Vintagestory.API.Common.BlockSchematic.abovegroundBlock
+  name: AbovegroundBlockId
+  nameWithType: BlockSchematic.AbovegroundBlockId
+  fullName: Vintagestory.API.Common.BlockSchematic.AbovegroundBlockId
   type: Field
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: protected Block abovegroundBlock
+    content: public static int AbovegroundBlockId
     return:
-      type: Vintagestory.API.Common.Block
-    content.vb: Protected abovegroundBlock As Block
+      type: System.Int32
+    content.vb: Public Shared AbovegroundBlockId As Integer
 - uid: Vintagestory.API.Common.BlockSchematic.empty
   commentId: F:Vintagestory.API.Common.BlockSchematic.empty
   id: empty
@@ -1042,27 +1042,6 @@ items:
       type: Vintagestory.API.Common.IBlockAccessor
     content.vb: Public Overridable Sub Init(blockAccessor As IBlockAccessor)
   overload: Vintagestory.API.Common.BlockSchematic.Init*
-- uid: Vintagestory.API.Common.BlockSchematic.InitMetaBlocks(Vintagestory.API.Common.IBlockAccessor)
-  commentId: M:Vintagestory.API.Common.BlockSchematic.InitMetaBlocks(Vintagestory.API.Common.IBlockAccessor)
-  id: InitMetaBlocks(Vintagestory.API.Common.IBlockAccessor)
-  parent: Vintagestory.API.Common.BlockSchematic
-  langs:
-  - csharp
-  - vb
-  name: InitMetaBlocks(IBlockAccessor)
-  nameWithType: BlockSchematic.InitMetaBlocks(IBlockAccessor)
-  fullName: Vintagestory.API.Common.BlockSchematic.InitMetaBlocks(Vintagestory.API.Common.IBlockAccessor)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  syntax:
-    content: public void InitMetaBlocks(IBlockAccessor blockAccessor)
-    parameters:
-    - id: blockAccessor
-      type: Vintagestory.API.Common.IBlockAccessor
-    content.vb: Public Sub InitMetaBlocks(blockAccessor As IBlockAccessor)
-  overload: Vintagestory.API.Common.BlockSchematic.InitMetaBlocks*
 - uid: Vintagestory.API.Common.BlockSchematic.LoadMetaInformationAndValidate(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IWorldAccessor,System.String)
   commentId: M:Vintagestory.API.Common.BlockSchematic.LoadMetaInformationAndValidate(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IWorldAccessor,System.String)
   id: LoadMetaInformationAndValidate(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IWorldAccessor,System.String)
@@ -1721,6 +1700,29 @@ items:
   nameWithType.vb: BlockSchematic.DecodeBlockEntityData(String)
   fullName.vb: Vintagestory.API.Common.BlockSchematic.DecodeBlockEntityData(String)
   name.vb: DecodeBlockEntityData(String)
+- uid: Vintagestory.API.Common.BlockSchematic.IsFillerOrPath(Vintagestory.API.Common.Block)
+  commentId: M:Vintagestory.API.Common.BlockSchematic.IsFillerOrPath(Vintagestory.API.Common.Block)
+  id: IsFillerOrPath(Vintagestory.API.Common.Block)
+  parent: Vintagestory.API.Common.BlockSchematic
+  langs:
+  - csharp
+  - vb
+  name: IsFillerOrPath(Block)
+  nameWithType: BlockSchematic.IsFillerOrPath(Block)
+  fullName: Vintagestory.API.Common.BlockSchematic.IsFillerOrPath(Vintagestory.API.Common.Block)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public bool IsFillerOrPath(Block newBlock)
+    parameters:
+    - id: newBlock
+      type: Vintagestory.API.Common.Block
+    return:
+      type: System.Boolean
+    content.vb: Public Function IsFillerOrPath(newBlock As Block) As Boolean
+  overload: Vintagestory.API.Common.BlockSchematic.IsFillerOrPath*
 - uid: Vintagestory.API.Common.BlockSchematic.PlaceReplaceAll(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block,System.Boolean)
   commentId: M:Vintagestory.API.Common.BlockSchematic.PlaceReplaceAll(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block,System.Boolean)
   id: PlaceReplaceAll(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block,System.Boolean)
@@ -2953,13 +2955,6 @@ references:
     name: BlockPosFacing
     href: Vintagestory.Common.Collectible.Block.BlockPosFacing.html
   - name: )
-- uid: Vintagestory.API.Common.Block
-  commentId: T:Vintagestory.API.Common.Block
-  parent: Vintagestory.API.Common
-  href: Vintagestory.API.Common.Block.html
-  name: Block
-  nameWithType: Block
-  fullName: Vintagestory.API.Common.Block
 - uid: System.UInt16
   commentId: T:System.UInt16
   parent: System
@@ -3211,12 +3206,6 @@ references:
   name: Init
   nameWithType: BlockSchematic.Init
   fullName: Vintagestory.API.Common.BlockSchematic.Init
-- uid: Vintagestory.API.Common.BlockSchematic.InitMetaBlocks*
-  commentId: Overload:Vintagestory.API.Common.BlockSchematic.InitMetaBlocks
-  href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_InitMetaBlocks_Vintagestory_API_Common_IBlockAccessor_
-  name: InitMetaBlocks
-  nameWithType: BlockSchematic.InitMetaBlocks
-  fullName: Vintagestory.API.Common.BlockSchematic.InitMetaBlocks
 - uid: Vintagestory.API.Common.BlockSchematic.LoadMetaInformationAndValidate*
   commentId: Overload:Vintagestory.API.Common.BlockSchematic.LoadMetaInformationAndValidate
   href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_LoadMetaInformationAndValidate_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_IWorldAccessor_System_String_
@@ -3566,6 +3555,19 @@ references:
   name: TreeAttribute
   nameWithType: TreeAttribute
   fullName: Vintagestory.API.Datastructures.TreeAttribute
+- uid: Vintagestory.API.Common.BlockSchematic.IsFillerOrPath*
+  commentId: Overload:Vintagestory.API.Common.BlockSchematic.IsFillerOrPath
+  href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_IsFillerOrPath_Vintagestory_API_Common_Block_
+  name: IsFillerOrPath
+  nameWithType: BlockSchematic.IsFillerOrPath
+  fullName: Vintagestory.API.Common.BlockSchematic.IsFillerOrPath
+- uid: Vintagestory.API.Common.Block
+  commentId: T:Vintagestory.API.Common.Block
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.Block.html
+  name: Block
+  nameWithType: Block
+  fullName: Vintagestory.API.Common.Block
 - uid: Vintagestory.API.Common.BlockSchematic.PlaceReplaceAll*
   commentId: Overload:Vintagestory.API.Common.BlockSchematic.PlaceReplaceAll
   href: Vintagestory.API.Common.BlockSchematic.html#Vintagestory_API_Common_BlockSchematic_PlaceReplaceAll_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block_System_Boolean_

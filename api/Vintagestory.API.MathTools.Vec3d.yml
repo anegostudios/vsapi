@@ -88,6 +88,7 @@ items:
   - Vintagestory.API.MathTools.Vec3d.op_Addition(Vintagestory.API.MathTools.Vec3d,System.Single)
   - Vintagestory.API.MathTools.Vec3d.op_Addition(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.MathTools.Vec3d.op_Addition(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3i)
+  - Vintagestory.API.MathTools.Vec3d.op_Division(Vintagestory.API.MathTools.Vec3d,System.Double)
   - Vintagestory.API.MathTools.Vec3d.op_Division(Vintagestory.API.MathTools.Vec3d,System.Single)
   - Vintagestory.API.MathTools.Vec3d.op_Equality(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.MathTools.Vec3d.op_Inequality(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
@@ -2155,6 +2156,34 @@ items:
   nameWithType.vb: Vec3d./(Vec3d, Single)
   fullName.vb: Vintagestory.API.MathTools.Vec3d./(Vintagestory.API.MathTools.Vec3d, Single)
   name.vb: /(Vec3d, Single)
+- uid: Vintagestory.API.MathTools.Vec3d.op_Division(Vintagestory.API.MathTools.Vec3d,System.Double)
+  commentId: M:Vintagestory.API.MathTools.Vec3d.op_Division(Vintagestory.API.MathTools.Vec3d,System.Double)
+  id: op_Division(Vintagestory.API.MathTools.Vec3d,System.Double)
+  parent: Vintagestory.API.MathTools.Vec3d
+  langs:
+  - csharp
+  - vb
+  name: operator /(Vec3d, double)
+  nameWithType: Vec3d.operator /(Vec3d, double)
+  fullName: Vintagestory.API.MathTools.Vec3d.operator /(Vintagestory.API.MathTools.Vec3d, double)
+  type: Operator
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public static Vec3d operator /(Vec3d left, double right)
+    parameters:
+    - id: left
+      type: Vintagestory.API.MathTools.Vec3d
+    - id: right
+      type: System.Double
+    return:
+      type: Vintagestory.API.MathTools.Vec3d
+    content.vb: Public Shared Operator /(left As Vec3d, right As Double) As Vec3d
+  overload: Vintagestory.API.MathTools.Vec3d.op_Division*
+  nameWithType.vb: Vec3d./(Vec3d, Double)
+  fullName.vb: Vintagestory.API.MathTools.Vec3d./(Vintagestory.API.MathTools.Vec3d, Double)
+  name.vb: /(Vec3d, Double)
 - uid: Vintagestory.API.MathTools.Vec3d.op_Equality(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
   commentId: M:Vintagestory.API.MathTools.Vec3d.op_Equality(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)
   id: op_Equality(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d)

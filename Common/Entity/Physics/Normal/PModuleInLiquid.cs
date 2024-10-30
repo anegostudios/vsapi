@@ -76,7 +76,7 @@ public class PModuleInLiquid : PModule
                 yMotion = -GameMath.Clamp(pos.Y - maxY, 0, 0.05);
             }
         }
-
+        
         // Finally add to motion for this tick.
         pos.Motion.Add(
             Swimspeed * controls.FlyVector.X * (1 + Push) * 0.03f,

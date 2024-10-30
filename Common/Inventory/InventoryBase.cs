@@ -809,9 +809,10 @@ namespace Vintagestory.API.Common
         {
             if (OnAcquireTransitionSpeed != null)
             {
-                foreach (var val in OnAcquireTransitionSpeed.GetInvocationList())
+                var invocs = OnAcquireTransitionSpeed.GetInvocationList();
+                foreach (CustomGetTransitionSpeedMulDelegate dele in invocs)
                 {
-                    mul = OnAcquireTransitionSpeed(transType, stack, mul);
+                    mul *= dele.Invoke(transType, stack, mul);
                 }
             }
 

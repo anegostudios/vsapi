@@ -306,6 +306,7 @@ namespace Vintagestory.API.Common.Entities
         public double touchDistanceSq;
         public Vec3d ownPosRepulse = new Vec3d();
         public bool hasRepulseBehavior = false;
+        public bool customRepulseBehavior = false;
 
         /// <summary>
         /// If true, will call EntityBheavior.IntersectsRay. Default off to increase performance. 
@@ -420,7 +421,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Whether this entity should always stay in Active model, regardless on how far away other player are
         /// </summary>
-        public virtual bool AlwaysActive { get { return false; } }
+        public virtual bool AlwaysActive { get; set; } = false;
 
         /// <summary>
         /// True if the entity is in state active or inactive, or generally not dead (for non-living entities, 'dead' means ready to despawn)
@@ -637,6 +638,11 @@ namespace Vintagestory.API.Common.Entities
 
             double touchdist = Math.Max(0.001f, SelectionBox.XSize / 2);
             touchDistanceSq = touchdist * touchdist;
+
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                behavior.UpdateColSelBoxes();
+            }
         }
 
         protected void updateOnFire()
@@ -2173,6 +2179,20 @@ namespace Vintagestory.API.Common.Entities
 
             intersectionDistance = 0;
             return false;
+        }
+
+        public virtual double GetTouchDistance()
+        {
+            float dist = SelectionBox.XSize / 2;
+            foreach (var val in SidedProperties.Behaviors)
+            {
+                EnumHandling handling = EnumHandling.PassThrough;
+                float d = val.GetTouchDistance(ref handling);
+                if (handling != EnumHandling.PassThrough) dist = d;
+                if (handling == EnumHandling.PreventSubsequent) break;
+            }
+
+            return dist;
         }
     }
 }

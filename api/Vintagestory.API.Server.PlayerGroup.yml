@@ -9,6 +9,7 @@ items:
   - Vintagestory.API.Server.PlayerGroup.ChatHistory
   - Vintagestory.API.Server.PlayerGroup.CreatedByPrivateMessage
   - Vintagestory.API.Server.PlayerGroup.CreatedDate
+  - Vintagestory.API.Server.PlayerGroup.JoinPolicy
   - Vintagestory.API.Server.PlayerGroup.Md5Identifier
   - Vintagestory.API.Server.PlayerGroup.Name
   - Vintagestory.API.Server.PlayerGroup.OnlinePlayers
@@ -251,6 +252,35 @@ items:
       <JsonProperty>
 
       Public CreatedByPrivateMessage As Boolean
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Server.PlayerGroup.JoinPolicy
+  commentId: F:Vintagestory.API.Server.PlayerGroup.JoinPolicy
+  id: JoinPolicy
+  parent: Vintagestory.API.Server.PlayerGroup
+  langs:
+  - csharp
+  - vb
+  name: JoinPolicy
+  nameWithType: PlayerGroup.JoinPolicy
+  fullName: Vintagestory.API.Server.PlayerGroup.JoinPolicy
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public string JoinPolicy
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonProperty>
+
+      Public JoinPolicy As String
   attributes:
   - type: Newtonsoft.Json.JsonPropertyAttribute
     ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
