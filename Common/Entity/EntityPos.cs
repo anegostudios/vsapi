@@ -127,7 +127,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public BlockPos AsBlockPos
         {
-            get { return new BlockPos((int)X, (int)Y, (int)Z, Dimension);  }
+            get { return new BlockPos((int)x, (int)y, (int)z, Dimension);  }
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public Vec3d XYZ
         {
-            get { return new Vec3d(X, InternalY, Z); }
+            get { return new Vec3d(x, InternalY, z); }
         }
 
         /// <summary>
@@ -151,20 +151,20 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public Vec3f XYZFloat
         {
-            get { return new Vec3f((float)X, (float)Y, (float)Z); }
+            get { return new Vec3f((float)x, (float)y, (float)z); }
         }
 
         internal int XInt
         {
-            get { return (int)X; }
+            get { return (int)x; }
         }
         internal int YInt
         {
-            get { return (int)Y; }
+            get { return (int)y; }
         }
         internal int ZInt
         {
-            get { return (int)Z; }
+            get { return (int)z; }
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="pos">The Vec3d to set to.</param>
         public void SetPosWithDimension(Vec3d pos)
         {
-            this.x = pos.X;
+            this.X = pos.X;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
             this.y = pos.Y % BlockPos.DimensionBoundary;
             this.z = pos.Z;
             this.Dimension = (int)pos.Y / BlockPos.DimensionBoundary;
@@ -185,7 +185,7 @@ namespace Vintagestory.API.Common.Entities
         /// <param name="pos">The Vec3d to set to.</param>
         public void SetPos(Vec3d pos)
         {
-            this.x = pos.X;
+            this.X = pos.X;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
             this.y = pos.Y;
             this.z = pos.Z;
         }
@@ -200,12 +200,12 @@ namespace Vintagestory.API.Common.Entities
 
         public EntityPos(double x, double y, double z, float heading = 0, float pitch = 0, float roll = 0)
         {
-            this.X = x;
-            this.Y = y;
-            this.Z = z;
-            this.Yaw = heading;
-            this.Pitch = pitch;
-            this.Roll = roll;
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            this.yaw = heading;
+            this.pitch = pitch;
+            this.roll = roll;
         }
 
         /// <summary>
@@ -217,9 +217,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns>Returns itself</returns>
         public EntityPos Add(double x, double y, double z)
         {
-            this.X += x;
-            this.Y += y;
-            this.Z += z;
+            this.X += x;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
+            this.y += y;
+            this.z += z;
             return this;
         }
 
@@ -230,9 +230,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns>Returns itself</returns>
         public EntityPos Add(Vec3f vec)
         {
-            this.X += vec.X;
-            this.Y += vec.Y;
-            this.Z += vec.Z;
+            this.X += vec.X;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
+            this.y += vec.Y;
+            this.z += vec.Z;
             return this;
         }
 
@@ -241,9 +241,9 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public EntityPos SetPos(int x, int y, int z)
         {
-            this.X = x;
-            this.Y = y;
-            this.Z = z;
+            this.X = x;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
+            this.y = y;
+            this.z = z;
             return this;
         }
         /// <summary>
@@ -251,9 +251,9 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public EntityPos SetPos(BlockPos pos)
         {
-            this.X = pos.X;
-            this.Y = pos.Y;
-            this.Z = pos.Z;
+            this.X = pos.X;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
+            this.y = pos.Y;
+            this.z = pos.Z;
             return this;
         }
 
@@ -262,9 +262,9 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public EntityPos SetPos(double x, double y, double z)
         {
-            this.X = x;
-            this.Y = y;
-            this.Z = z;
+            this.X = x;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
+            this.y = y;
+            this.z = z;
             return this;
         }
 
@@ -273,9 +273,9 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public EntityPos SetPos(EntityPos pos)
         {
-            this.X = pos.X;
-            this.Y = pos.Y;
-            this.Z = pos.Z;
+            this.X = pos.x;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
+            this.y = pos.y;
+            this.z = pos.z;
             return this;
         }
 
@@ -286,9 +286,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public EntityPos SetAngles(EntityPos pos)
         {
-            this.Roll = pos.Roll;
-            this.Yaw = pos.Yaw;
-            this.Pitch = pos.Pitch;
+            this.Roll = pos.roll;    // One call to .Roll{set} so that marked dirty if it's a SyncedEntityPos
+            this.yaw = pos.yaw;
+            this.pitch = pos.pitch;
             this.HeadPitch = pos.HeadPitch;
             this.HeadYaw = pos.HeadYaw;
             return this;
@@ -299,9 +299,9 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public EntityPos SetAngles(float roll, float yaw, float pitch)
         {
-            this.Roll = roll;
-            this.Yaw = yaw;
-            this.Pitch = pitch;
+            this.Roll = roll;    // One call to .Roll{set} so that marked dirty if it's a SyncedEntityPos
+            this.yaw = yaw;
+            this.pitch = pitch;
             return this;
         }
 
@@ -327,9 +327,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool InRangeOf(EntityPos position, int squareDistance)
         {
-            double dx = this.x - position.X;
+            double dx = this.x - position.x;
             double dy = this.InternalY - position.InternalY;
-            double dz = this.z - position.Z;
+            double dz = this.z - position.z;
 
             return dx*dx + dy*dy + dz*dz <= squareDistance;
         }
@@ -517,8 +517,8 @@ namespace Vintagestory.API.Common.Entities
 
         public double HorDistanceTo(EntityPos pos)
         {
-            double dx = this.x - pos.X;
-            double dz = this.z - pos.Z;
+            double dx = this.x - pos.x;
+            double dz = this.z - pos.z;
 
             return GameMath.Sqrt(dx * dx + dz * dz);
         }
@@ -531,9 +531,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public float SquareDistanceTo(EntityPos pos)
         {
-            double dx = x - pos.X;
+            double dx = x - pos.x;
             double dy = InternalY - pos.InternalY;
-            double dz = z - pos.Z;
+            double dz = z - pos.z;
 
             return (float)(dx * dx + dy * dy + dz * dz);
         }
@@ -546,15 +546,16 @@ namespace Vintagestory.API.Common.Entities
         {
             EntityPos ret = new EntityPos()
             {
-                X = X,
-                Y = Y,
-                Z = Z,
-                Yaw = Yaw,
-                Pitch = Pitch,
-                Roll = Roll,
+                X = x,
+                y = y,
+                z = z,
+                yaw = yaw,
+                pitch = pitch,
+                roll = roll,
                 HeadYaw = HeadYaw,
                 HeadPitch = HeadPitch,
-                Motion = new Vec3d(Motion.X, Motion.Y, Motion.Z)
+                Motion = new Vec3d(Motion.X, Motion.Y, Motion.Z),
+                Dimension = Dimension
             };
             
             return ret;
@@ -592,13 +593,13 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public EntityPos AheadCopy(double offset)
         {
-            float cosPitch = GameMath.Cos(Pitch);
-            float sinPitch = GameMath.Sin(Pitch);
+            float cosPitch = GameMath.Cos(pitch);
+            float sinPitch = GameMath.Sin(pitch);
 
-            float cosYaw = GameMath.Cos(Yaw);
-            float sinYaw = GameMath.Sin(Yaw);
+            float cosYaw = GameMath.Cos(yaw);
+            float sinYaw = GameMath.Sin(yaw);
 
-            EntityPos copy = new EntityPos(X - cosPitch * sinYaw * offset, Y + sinPitch * offset, Z - cosPitch * cosYaw * offset, Yaw, Pitch, Roll);
+            EntityPos copy = new EntityPos(x - cosPitch * sinYaw * offset, y + sinPitch * offset, z - cosPitch * cosYaw * offset, yaw, pitch, roll);
             copy.Dimension = Dimension;
             return copy;
         }
@@ -610,10 +611,12 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public EntityPos HorizontalAheadCopy(double offset)
         {
-            float cosYaw = GameMath.Cos(Yaw);
-            float sinYaw = GameMath.Sin(Yaw);
+            float cosYaw = GameMath.Cos(yaw);
+            float sinYaw = GameMath.Sin(yaw);
 
-            return new EntityPos(X + sinYaw * offset, Y, Z + cosYaw * offset, Yaw, Pitch, Roll);
+            var copy = new EntityPos(x + sinYaw * offset, y, z + cosYaw * offset, yaw, pitch, roll);
+            copy.Dimension = Dimension;
+            return copy;
         }
 
         /// <summary>
@@ -623,13 +626,15 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public EntityPos BehindCopy(double offset)
         {
-            float cosYaw = GameMath.Cos(-Yaw);
-            float sinYaw = GameMath.Sin(-Yaw);
+            float cosYaw = GameMath.Cos(-yaw);
+            float sinYaw = GameMath.Sin(-yaw);
 
-            return new EntityPos(X + sinYaw * offset, Y, Z + cosYaw * offset, Yaw, Pitch, Roll);
+            var copy = new EntityPos(x + sinYaw * offset, y, z + cosYaw * offset, yaw, pitch, roll);
+            copy.Dimension = Dimension;
+            return copy;
         }
 
-        
+
         /// <summary>
         /// Makes a "basiclly equals" check on the position, motions and angles using a small tolerance of epsilon=0.0001f 
         /// </summary>
@@ -638,9 +643,12 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool BasicallySameAs(EntityPos pos, double epsilon = 0.0001)
         {
+            // Math.Abs involves conditional statements; instead of comparing absolutes, it is faster (and mathematically equivalent) to compare the squared values
             double epsilonSquared = epsilon * epsilon;
+
+            if (GameMath.SumOfSquares(x - pos.x, y - pos.y, z - pos.z) >= epsilonSquared) return false;   // Early exit in the most common case
+
             return
-                GameMath.SumOfSquares(X - pos.x, Y - pos.y, Z - pos.z) < epsilonSquared &&            // Math.Abs involves conditional statements; instead of comparing absolutes, it is faster (and mathematically equivalent) to compare the squared values
                 GameMath.Square(roll - pos.roll) < epsilonSquared &&
                 GameMath.Square(yaw - pos.yaw) < epsilonSquared &&
                 GameMath.Square(pitch - pos.pitch) < epsilonSquared &&
@@ -658,10 +666,13 @@ namespace Vintagestory.API.Common.Entities
         public bool BasicallySameAsIgnoreMotion(EntityPos pos, double epsilon = 0.0001)
         {
             double epsilonSquared = epsilon * epsilon;
+
+            if (GameMath.Square(x - pos.x) >= epsilonSquared || GameMath.Square(y - pos.y) >= epsilonSquared || GameMath.Square(z - pos.z) >= epsilonSquared)
+            {
+                return false;    // Early exit in the most common case
+            }
+
             return
-                GameMath.Square(X - pos.x) < epsilonSquared &&
-                GameMath.Square(Y - pos.y) < epsilonSquared &&
-                GameMath.Square(Z - pos.z) < epsilonSquared &&
                 GameMath.Square(roll - pos.roll) < epsilonSquared &&
                 GameMath.Square(yaw - pos.yaw) < epsilonSquared &&
                 GameMath.Square(pitch - pos.pitch) < epsilonSquared
@@ -676,9 +687,11 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public bool BasicallySameAsIgnoreAngles(EntityPos pos, double epsilon = 0.0001)
         {
+            // Math.Abs involves conditional statements; instead of comparing absolutes, it is faster (and mathematically equivalent) to compare the squared values
             double epsilonSquared = epsilon * epsilon;
+
             return
-                GameMath.SumOfSquares(X - pos.x, Y - pos.y, Z - pos.z) < epsilonSquared &&            // Math.Abs involves conditional statements; instead of comparing absolutes, it is faster (and mathematically equivalent) to compare the squared values
+                GameMath.SumOfSquares(x - pos.x, y - pos.y, z - pos.z) < epsilonSquared &&
                 GameMath.SumOfSquares(Motion.X - pos.Motion.X, Motion.Y - pos.Motion.Y, Motion.Z - pos.Motion.Z) < epsilonSquared
             ;
         }
@@ -692,16 +705,14 @@ namespace Vintagestory.API.Common.Entities
         /// <returns>Returns itself</returns>
         public EntityPos SetFrom(EntityPos pos)
         {
-            X = pos.X;
-            Y = pos.Y;
-            Z = pos.Z;
+            X = pos.x;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
+            y = pos.y;
+            z = pos.z;
             Dimension = pos.Dimension;
-            Roll = pos.Roll;
-            Yaw = pos.Yaw;
-            Pitch = pos.Pitch;
-            Motion.X = pos.Motion.X;
-            Motion.Y = pos.Motion.Y;
-            Motion.Z = pos.Motion.Z;
+            roll = pos.roll;
+            yaw = pos.yaw;
+            pitch = pos.pitch;
+            Motion.Set(pos.Motion);
             HeadYaw = pos.HeadYaw;
             HeadPitch = pos.HeadPitch;
 
@@ -715,9 +726,9 @@ namespace Vintagestory.API.Common.Entities
         /// <returns>Returns itself</returns>
         public EntityPos SetFrom(Vec3d pos)
         {
-            X = pos.X;
-            Y = pos.Y;
-            Z = pos.Z;
+            X = pos.X;    // One call to .X{set} so that marked dirty if it's a SyncedEntityPos.  Otherwise more efficient to write direct to .y and .z fields
+            y = pos.Y;
+            z = pos.Z;
 
             return this;
         }

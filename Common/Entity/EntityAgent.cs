@@ -529,7 +529,7 @@ namespace Vintagestory.API.Common
 
                 if (defaultAnim != null && Alive && !skipDefaultAnim)
                 {
-                    if (anyAverageAnimActive)
+                    if (anyAverageAnimActive || MountedOn != null)
                     {
                          if (!alwaysRunIdle && AnimManager.IsAnimationActive(defaultAnim.Animation)) AnimManager.StopAnimation(defaultAnim.Animation);
                     } else

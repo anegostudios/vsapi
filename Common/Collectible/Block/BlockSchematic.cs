@@ -972,7 +972,6 @@ namespace Vintagestory.API.Common
                     }
 
                     pos.Yaw -= angle * GameMath.DEG2RAD;
-                    entity.ServerPos.Yaw -= angle * GameMath.DEG2RAD;
 
                     entity.Pos.SetPos(pos);
                     entity.ServerPos.SetPos(pos);
@@ -1388,7 +1387,8 @@ namespace Vintagestory.API.Common
 
         protected virtual int PlaceReplaceAll(IBlockAccessor blockAccessor, BlockPos pos, Block newBlock, bool replaceMeta)
         {
-            blockAccessor.SetBlock(replaceMeta && IsFillerOrPath(newBlock) ? empty : newBlock.BlockId, pos);
+            var layer = newBlock.ForFluidsLayer ? BlockLayersAccess.Fluid : BlockLayersAccess.Solid;
+            blockAccessor.SetBlock(replaceMeta && IsFillerOrPath(newBlock) ? empty : newBlock.BlockId, pos, layer);
             return 1;
         }
 
@@ -1396,7 +1396,8 @@ namespace Vintagestory.API.Common
         {
             if (newBlock.ForFluidsLayer || blockAccessor.GetBlock(pos, BlockLayersAccess.MostSolid).Replaceable > newBlock.Replaceable)
             {
-                blockAccessor.SetBlock(replaceMeta && IsFillerOrPath(newBlock) ? empty : newBlock.BlockId, pos);
+                var layer = newBlock.ForFluidsLayer ? BlockLayersAccess.Fluid : BlockLayersAccess.Solid;
+                blockAccessor.SetBlock(replaceMeta && IsFillerOrPath(newBlock) ? empty : newBlock.BlockId, pos, layer);
                 return 1;
             }
             return 0;
@@ -1406,7 +1407,8 @@ namespace Vintagestory.API.Common
         {
             if (newBlock.BlockId != 0)
             {
-                blockAccessor.SetBlock(replaceMeta && IsFillerOrPath(newBlock) ? empty : newBlock.BlockId, pos);
+                var layer = newBlock.ForFluidsLayer ? BlockLayersAccess.Fluid : BlockLayersAccess.Solid;
+                blockAccessor.SetBlock(replaceMeta && IsFillerOrPath(newBlock) ? empty : newBlock.BlockId, pos, layer);
                 return 1;
             }
             return 0;
@@ -1417,7 +1419,8 @@ namespace Vintagestory.API.Common
             Block oldBlock = blockAccessor.GetMostSolidBlock(pos);
             if (oldBlock.BlockId == 0)
             {
-                blockAccessor.SetBlock(replaceMeta && IsFillerOrPath(newBlock) ? empty : newBlock.BlockId, pos);
+                var layer = newBlock.ForFluidsLayer ? BlockLayersAccess.Fluid : BlockLayersAccess.Solid;
+                blockAccessor.SetBlock(replaceMeta && IsFillerOrPath(newBlock) ? empty : newBlock.BlockId, pos, layer);
                 return 1;
             }
             return 0;

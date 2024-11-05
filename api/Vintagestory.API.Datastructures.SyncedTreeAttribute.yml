@@ -6,8 +6,9 @@ items:
   parent: Vintagestory.API.Datastructures
   children:
   - Vintagestory.API.Datastructures.SyncedTreeAttribute.AllDirty
-  - Vintagestory.API.Datastructures.SyncedTreeAttribute.DirtyPathData(System.String[]@,System.Byte[][]@)
   - Vintagestory.API.Datastructures.SyncedTreeAttribute.FromBytes(System.IO.BinaryReader)
+  - Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData(System.String[]@,System.Byte[][]@)
+  - Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData(Vintagestory.API.Datastructures.FastMemoryStream,System.String[]@,System.Byte[][]@)
   - Vintagestory.API.Datastructures.SyncedTreeAttribute.MarkAllDirty
   - Vintagestory.API.Datastructures.SyncedTreeAttribute.MarkClean
   - Vintagestory.API.Datastructures.SyncedTreeAttribute.MarkPathDirty(System.String)
@@ -579,32 +580,60 @@ items:
   nameWithType.vb: SyncedTreeAttribute.RemoveAttribute(String)
   fullName.vb: Vintagestory.API.Datastructures.SyncedTreeAttribute.RemoveAttribute(String)
   name.vb: RemoveAttribute(String)
-- uid: Vintagestory.API.Datastructures.SyncedTreeAttribute.DirtyPathData(System.String[]@,System.Byte[][]@)
-  commentId: M:Vintagestory.API.Datastructures.SyncedTreeAttribute.DirtyPathData(System.String[]@,System.Byte[][]@)
-  id: DirtyPathData(System.String[]@,System.Byte[][]@)
+- uid: Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData(System.String[]@,System.Byte[][]@)
+  commentId: M:Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData(System.String[]@,System.Byte[][]@)
+  id: GetDirtyPathData(System.String[]@,System.Byte[][]@)
   parent: Vintagestory.API.Datastructures.SyncedTreeAttribute
   langs:
   - csharp
   - vb
-  name: DirtyPathData(out string[], out byte[][])
-  nameWithType: SyncedTreeAttribute.DirtyPathData(out string[], out byte[][])
-  fullName: Vintagestory.API.Datastructures.SyncedTreeAttribute.DirtyPathData(out string[], out byte[][])
+  name: GetDirtyPathData(out string[], out byte[][])
+  nameWithType: SyncedTreeAttribute.GetDirtyPathData(out string[], out byte[][])
+  fullName: Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData(out string[], out byte[][])
   type: Method
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Datastructures
   syntax:
-    content: public void DirtyPathData(out string[] paths, out byte[][] dirtydata)
+    content: public void GetDirtyPathData(out string[] paths, out byte[][] dirtydata)
     parameters:
     - id: paths
       type: System.String[]
     - id: dirtydata
       type: System.Byte[][]
-    content.vb: Public Sub DirtyPathData(paths As String(), dirtydata As Byte()())
-  overload: Vintagestory.API.Datastructures.SyncedTreeAttribute.DirtyPathData*
-  nameWithType.vb: SyncedTreeAttribute.DirtyPathData(String(), Byte()())
-  fullName.vb: Vintagestory.API.Datastructures.SyncedTreeAttribute.DirtyPathData(String(), Byte()())
-  name.vb: DirtyPathData(String(), Byte()())
+    content.vb: Public Sub GetDirtyPathData(paths As String(), dirtydata As Byte()())
+  overload: Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData*
+  nameWithType.vb: SyncedTreeAttribute.GetDirtyPathData(String(), Byte()())
+  fullName.vb: Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData(String(), Byte()())
+  name.vb: GetDirtyPathData(String(), Byte()())
+- uid: Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData(Vintagestory.API.Datastructures.FastMemoryStream,System.String[]@,System.Byte[][]@)
+  commentId: M:Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData(Vintagestory.API.Datastructures.FastMemoryStream,System.String[]@,System.Byte[][]@)
+  id: GetDirtyPathData(Vintagestory.API.Datastructures.FastMemoryStream,System.String[]@,System.Byte[][]@)
+  parent: Vintagestory.API.Datastructures.SyncedTreeAttribute
+  langs:
+  - csharp
+  - vb
+  name: GetDirtyPathData(FastMemoryStream, out string[], out byte[][])
+  nameWithType: SyncedTreeAttribute.GetDirtyPathData(FastMemoryStream, out string[], out byte[][])
+  fullName: Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData(Vintagestory.API.Datastructures.FastMemoryStream, out string[], out byte[][])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  syntax:
+    content: public void GetDirtyPathData(FastMemoryStream ms, out string[] paths, out byte[][] dirtydata)
+    parameters:
+    - id: ms
+      type: Vintagestory.API.Datastructures.FastMemoryStream
+    - id: paths
+      type: System.String[]
+    - id: dirtydata
+      type: System.Byte[][]
+    content.vb: Public Sub GetDirtyPathData(ms As FastMemoryStream, paths As String(), dirtydata As Byte()())
+  overload: Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData*
+  nameWithType.vb: SyncedTreeAttribute.GetDirtyPathData(FastMemoryStream, String(), Byte()())
+  fullName.vb: Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData(Vintagestory.API.Datastructures.FastMemoryStream, String(), Byte()())
+  name.vb: GetDirtyPathData(FastMemoryStream, String(), Byte()())
 - uid: Vintagestory.API.Datastructures.SyncedTreeAttribute.FromBytes(System.IO.BinaryReader)
   commentId: M:Vintagestory.API.Datastructures.SyncedTreeAttribute.FromBytes(System.IO.BinaryReader)
   id: FromBytes(System.IO.BinaryReader)
@@ -5395,12 +5424,12 @@ references:
   name: RemoveAttribute
   nameWithType: SyncedTreeAttribute.RemoveAttribute
   fullName: Vintagestory.API.Datastructures.SyncedTreeAttribute.RemoveAttribute
-- uid: Vintagestory.API.Datastructures.SyncedTreeAttribute.DirtyPathData*
-  commentId: Overload:Vintagestory.API.Datastructures.SyncedTreeAttribute.DirtyPathData
-  href: Vintagestory.API.Datastructures.SyncedTreeAttribute.html#Vintagestory_API_Datastructures_SyncedTreeAttribute_DirtyPathData_System_String____System_Byte______
-  name: DirtyPathData
-  nameWithType: SyncedTreeAttribute.DirtyPathData
-  fullName: Vintagestory.API.Datastructures.SyncedTreeAttribute.DirtyPathData
+- uid: Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData*
+  commentId: Overload:Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData
+  href: Vintagestory.API.Datastructures.SyncedTreeAttribute.html#Vintagestory_API_Datastructures_SyncedTreeAttribute_GetDirtyPathData_System_String____System_Byte______
+  name: GetDirtyPathData
+  nameWithType: SyncedTreeAttribute.GetDirtyPathData
+  fullName: Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData
 - uid: System.String[]
   isExternal: true
   href: https://learn.microsoft.com/dotnet/api/system.string
@@ -5451,6 +5480,13 @@ references:
   - name: )
   - name: (
   - name: )
+- uid: Vintagestory.API.Datastructures.FastMemoryStream
+  commentId: T:Vintagestory.API.Datastructures.FastMemoryStream
+  parent: Vintagestory.API.Datastructures
+  href: Vintagestory.API.Datastructures.FastMemoryStream.html
+  name: FastMemoryStream
+  nameWithType: FastMemoryStream
+  fullName: Vintagestory.API.Datastructures.FastMemoryStream
 - uid: Vintagestory.API.Datastructures.TreeAttribute.FromBytes(System.IO.BinaryReader)
   commentId: M:Vintagestory.API.Datastructures.TreeAttribute.FromBytes(System.IO.BinaryReader)
   parent: Vintagestory.API.Datastructures.TreeAttribute

@@ -32,6 +32,7 @@ namespace Vintagestory.API.MathTools
         readonly Cuboidd tmpBox = new();
         readonly BlockPos blockPos = new();
         readonly Vec3d blockPosVec = new();
+        readonly BlockPos collBlockPos = new();
 
         /// <summary>
         /// Takes the entity positiona and motion and adds them, respecting any colliding blocks. The resulting new position is put into outposition
@@ -70,6 +71,7 @@ namespace Vintagestory.API.MathTools
 
             int collisionBoxListCount = CollisionBoxList.Count;
 
+            collBlockPos.dimension = entityPos.Dimension;
             // ---------- Y COLLISION. Call events and set collided vertically.
             for (int i = 0; i < collisionBoxListCount; i++)
             {
@@ -78,10 +80,11 @@ namespace Vintagestory.API.MathTools
 
                 collided = true;
 
+                collBlockPos.Set(CollisionBoxList.positions[i]);
                 CollisionBoxList.blocks[i].OnEntityCollide(
                     worldAccessor,
                     entity,
-                    CollisionBoxList.positions[i],
+                    collBlockPos,
                     pushDirection == EnumPushDirection.Negative ? BlockFacing.UP : BlockFacing.DOWN,
                     tmpPosDelta.Set(motionX, motionY, motionZ),
                     !entity.CollidedVertically
@@ -117,10 +120,11 @@ namespace Vintagestory.API.MathTools
 
                     collided = true;
 
+                    collBlockPos.Set(CollisionBoxList.positions[i]);
                     CollisionBoxList.blocks[i].OnEntityCollide(
                         worldAccessor,
                         entity,
-                        CollisionBoxList.positions[i],
+                        collBlockPos,
                         pushDirection == EnumPushDirection.Negative ? BlockFacing.EAST : BlockFacing.WEST,
                         tmpPosDelta.Set(motionX, motionY, motionZ),
                         !entity.CollidedHorizontally
@@ -137,10 +141,11 @@ namespace Vintagestory.API.MathTools
 
                     collided = true;
 
+                    collBlockPos.Set(CollisionBoxList.positions[i]);
                     CollisionBoxList.blocks[i].OnEntityCollide(
                         worldAccessor,
                         entity,
-                        CollisionBoxList.positions[i],
+                        collBlockPos,
                         pushDirection == EnumPushDirection.Negative ? BlockFacing.SOUTH : BlockFacing.NORTH,
                         tmpPosDelta.Set(motionX, motionY, motionZ),
                         !entity.CollidedHorizontally

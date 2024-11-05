@@ -27,13 +27,12 @@ public class PModuleInLiquid : PModule
     {
         // If entity is alive and swimming.
         if (entity.Swimming && entity.Alive) HandleSwimming(dt, entity, pos, controls);
-
         // Move entity by push vector of block.
-        Block block = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)pos.Y, (int)pos.Z, BlockLayersAccess.Fluid);
+        Block block = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)pos.InternalY, (int)pos.Z, BlockLayersAccess.Fluid);
         if (block.PushVector != null)
         {
             // Fix for those unfair cases where there is downward flowing water in a 1 deep hole and you can't get out.
-            if (block.PushVector.Y >= 0 || !entity.World.BlockAccessor.IsSideSolid((int)pos.X, (int)pos.Y - 1, (int)pos.Z, BlockFacing.UP))
+            if (block.PushVector.Y >= 0 || !entity.World.BlockAccessor.IsSideSolid((int)pos.X, (int)pos.InternalY - 1, (int)pos.Z, BlockFacing.UP))
             {
                 pos.Motion.Add(block.PushVector);
             }
@@ -44,9 +43,9 @@ public class PModuleInLiquid : PModule
     {
         Push = Math.Max(1f, Push - (0.1f * dt * 60f));
 
-        Block inBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)pos.Y, (int)pos.Z, BlockLayersAccess.Fluid);
-        Block aboveBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
-        Block twoAboveBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 2), (int)pos.Z, BlockLayersAccess.Fluid);
+        Block inBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)pos.InternalY, (int)pos.Z, BlockLayersAccess.Fluid);
+        Block aboveBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.InternalY + 1), (int)pos.Z, BlockLayersAccess.Fluid);
+        Block twoAboveBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.InternalY + 2), (int)pos.Z, BlockLayersAccess.Fluid);
         float waterY = (int)pos.Y + (inBlock.LiquidLevel / 8f) + (aboveBlock.IsLiquid() ? 9 / 8f : 0) + (twoAboveBlock.IsLiquid() ? 9 / 8f : 0);
         float bottomSubmergedness = waterY - (float)pos.Y;
 

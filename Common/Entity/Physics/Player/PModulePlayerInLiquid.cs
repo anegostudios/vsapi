@@ -27,9 +27,9 @@ public class PModulePlayerInLiquid : PModuleInLiquid
             Push = Math.Max(1f, Push - 0.1f * dt * 60f);
         }
 
-        Block inBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)pos.Y, (int)pos.Z, BlockLayersAccess.Fluid);
-        Block aboveBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 1), (int)pos.Z, BlockLayersAccess.Fluid);
-        Block twoAboveBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.Y + 2), (int)pos.Z, BlockLayersAccess.Fluid);
+        Block inBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)pos.InternalY, (int)pos.Z, BlockLayersAccess.Fluid);
+        Block aboveBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.InternalY + 1), (int)pos.Z, BlockLayersAccess.Fluid);
+        Block twoAboveBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.InternalY + 2), (int)pos.Z, BlockLayersAccess.Fluid);
 
         float waterY = (int)pos.Y + (inBlock.LiquidLevel / 8f) + (aboveBlock.IsLiquid() ? 9 / 8f : 0) + (twoAboveBlock.IsLiquid() ? 9 / 8f : 0);
         float bottomSubmergedness = waterY - (float)pos.Y;

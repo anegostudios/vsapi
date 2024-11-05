@@ -67,7 +67,6 @@ items:
   - Vintagestory.API.Common.Entities.Entity.SelectionBox
   - Vintagestory.API.Common.Entities.Entity.OriginSelectionBox
   - Vintagestory.API.Common.Entities.Entity.Teleporting
-  - Vintagestory.API.Common.Entities.Entity.IsTeleport
   - Vintagestory.API.Common.Entities.Entity.EntityId
   - Vintagestory.API.Common.Entities.Entity.SimulationRange
   - Vintagestory.API.Common.Entities.Entity.ClimbingOnFace
@@ -96,6 +95,8 @@ items:
   - Vintagestory.API.Common.Entities.Entity.ownPosRepulse
   - Vintagestory.API.Common.Entities.Entity.hasRepulseBehavior
   - Vintagestory.API.Common.Entities.Entity.customRepulseBehavior
+  - Vintagestory.API.Common.Entities.Entity.IsTracked
+  - Vintagestory.API.Common.Entities.Entity.IsTeleport
   - Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
   - Vintagestory.API.Common.Entities.Entity.requirePosesOnServer
   - Vintagestory.API.Common.Entities.Entity.packet
@@ -111,7 +112,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.AlwaysActive
   - Vintagestory.API.Common.Entities.Entity.Alive
   - Vintagestory.API.Common.Entities.Entity.alive
-  - Vintagestory.API.Common.Entities.Entity.minRangeToClient
+  - Vintagestory.API.Common.Entities.Entity.minHorRangeToClient
   - Vintagestory.API.Common.Entities.Entity.IdleSoundChanceModifier
   - Vintagestory.API.Common.Entities.Entity.RenderColor
   - Vintagestory.API.Common.Entities.Entity.LadderFixDelta
@@ -976,13 +977,6 @@ references:
   name: Teleporting
   nameWithType: Entity.Teleporting
   fullName: Vintagestory.API.Common.Entities.Entity.Teleporting
-- uid: Vintagestory.API.Common.Entities.Entity.IsTeleport
-  commentId: F:Vintagestory.API.Common.Entities.Entity.IsTeleport
-  parent: Vintagestory.API.Common.Entities.Entity
-  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsTeleport
-  name: IsTeleport
-  nameWithType: Entity.IsTeleport
-  fullName: Vintagestory.API.Common.Entities.Entity.IsTeleport
 - uid: Vintagestory.API.Common.Entities.Entity.EntityId
   commentId: F:Vintagestory.API.Common.Entities.Entity.EntityId
   parent: Vintagestory.API.Common.Entities.Entity
@@ -1179,6 +1173,20 @@ references:
   name: customRepulseBehavior
   nameWithType: Entity.customRepulseBehavior
   fullName: Vintagestory.API.Common.Entities.Entity.customRepulseBehavior
+- uid: Vintagestory.API.Common.Entities.Entity.IsTracked
+  commentId: F:Vintagestory.API.Common.Entities.Entity.IsTracked
+  parent: Vintagestory.API.Common.Entities.Entity
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsTracked
+  name: IsTracked
+  nameWithType: Entity.IsTracked
+  fullName: Vintagestory.API.Common.Entities.Entity.IsTracked
+- uid: Vintagestory.API.Common.Entities.Entity.IsTeleport
+  commentId: F:Vintagestory.API.Common.Entities.Entity.IsTeleport
+  parent: Vintagestory.API.Common.Entities.Entity
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_IsTeleport
+  name: IsTeleport
+  nameWithType: Entity.IsTeleport
+  fullName: Vintagestory.API.Common.Entities.Entity.IsTeleport
 - uid: Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
   commentId: F:Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
   parent: Vintagestory.API.Common.Entities.Entity
@@ -1284,13 +1292,13 @@ references:
   name: alive
   nameWithType: Entity.alive
   fullName: Vintagestory.API.Common.Entities.Entity.alive
-- uid: Vintagestory.API.Common.Entities.Entity.minRangeToClient
-  commentId: F:Vintagestory.API.Common.Entities.Entity.minRangeToClient
+- uid: Vintagestory.API.Common.Entities.Entity.minHorRangeToClient
+  commentId: F:Vintagestory.API.Common.Entities.Entity.minHorRangeToClient
   parent: Vintagestory.API.Common.Entities.Entity
-  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_minRangeToClient
-  name: minRangeToClient
-  nameWithType: Entity.minRangeToClient
-  fullName: Vintagestory.API.Common.Entities.Entity.minRangeToClient
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_minHorRangeToClient
+  name: minHorRangeToClient
+  nameWithType: Entity.minHorRangeToClient
+  fullName: Vintagestory.API.Common.Entities.Entity.minHorRangeToClient
 - uid: Vintagestory.API.Common.Entities.Entity.IdleSoundChanceModifier
   commentId: P:Vintagestory.API.Common.Entities.Entity.IdleSoundChanceModifier
   parent: Vintagestory.API.Common.Entities.Entity

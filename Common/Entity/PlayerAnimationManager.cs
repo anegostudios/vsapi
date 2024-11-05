@@ -1,4 +1,6 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Linq;
+using System.Numerics;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common.Entities;
 using Vintagestory.API.Datastructures;
@@ -368,5 +370,21 @@ namespace Vintagestory.API.Common
             }
         }
 
+        public void OnIfpModeChanged(bool prev, bool now)
+        {
+            if (prev == now) return;
+
+            var animcodes = ActiveAnimationsByAnimCode.Keys.ToArray();
+
+            string stopVariant = now ? "-fp" : "-ifp";
+
+            foreach (var animcode in animcodes)
+            {
+                if (animcode.EndsWith(stopVariant))
+                {
+                    StopAnimation(animcode);
+                }
+            }
+        }
     }
 }

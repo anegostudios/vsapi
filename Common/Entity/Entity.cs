@@ -192,10 +192,6 @@ namespace Vintagestory.API.Common.Entities
         /// Used by the teleporter block
         /// </summary>
         public bool Teleporting;
-        /// <summary>
-        /// Used by the server to tell connected clients that the next entity position packet should not have its position change get interpolated. Gets set to false after the packet was sent
-        /// </summary>
-        public bool IsTeleport;
 
 
         /// <summary>
@@ -307,9 +303,18 @@ namespace Vintagestory.API.Common.Entities
         public Vec3d ownPosRepulse = new Vec3d();
         public bool hasRepulseBehavior = false;
         public bool customRepulseBehavior = false;
+        /// <summary>
+        /// Used by PhysicsManager. Added here to increase performance
+        /// 0 = not tracked, 1 = lowResTracked, 2 = fullyTracked
+        /// </summary>
+        public byte IsTracked; 
+        /// <summary>
+        /// Used by the PhysicsManager to tell connected clients that the next entity position packet should not have its position change get interpolated. Gets set to false after the packet was sent
+        /// </summary>
+        public bool IsTeleport;
 
         /// <summary>
-        /// If true, will call EntityBheavior.IntersectsRay. Default off to increase performance. 
+        /// If true, will call EntityBehavior.IntersectsRay. Default off to increase performance. 
         /// </summary>
         public bool trickleDownRayIntersects;
         /// <summary>
@@ -435,7 +440,7 @@ namespace Vintagestory.API.Common.Entities
 
         }
         protected bool alive=true;
-        public float minRangeToClient;
+        public float minHorRangeToClient;
 
         public float IdleSoundChanceModifier
         {

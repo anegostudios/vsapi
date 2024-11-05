@@ -473,10 +473,10 @@ Class SyncedTreeAttribute
 </h2>
 
 
-  <a id="Vintagestory_API_Datastructures_SyncedTreeAttribute_DirtyPathData_" data-uid="Vintagestory.API.Datastructures.SyncedTreeAttribute.DirtyPathData*"></a>
+  <a id="Vintagestory_API_Datastructures_SyncedTreeAttribute_FromBytes_" data-uid="Vintagestory.API.Datastructures.SyncedTreeAttribute.FromBytes*"></a>
 
-  <h3 id="Vintagestory_API_Datastructures_SyncedTreeAttribute_DirtyPathData_System_String____System_Byte______" data-uid="Vintagestory.API.Datastructures.SyncedTreeAttribute.DirtyPathData(System.String[]@,System.Byte[][]@)">
-  DirtyPathData(out string[], out byte[][])
+  <h3 id="Vintagestory_API_Datastructures_SyncedTreeAttribute_FromBytes_System_IO_BinaryReader_" data-uid="Vintagestory.API.Datastructures.SyncedTreeAttribute.FromBytes(System.IO.BinaryReader)">
+  FromBytes(BinaryReader)
   
   </h3>
 
@@ -484,7 +484,38 @@ Class SyncedTreeAttribute
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void DirtyPathData(out string[] paths, out byte[][] dirtydata)</code></pre>
+    <pre><code class="lang-csharp hljs">public override void FromBytes(BinaryReader stream)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Datastructures_SyncedTreeAttribute_GetDirtyPathData_" data-uid="Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData*"></a>
+
+  <h3 id="Vintagestory_API_Datastructures_SyncedTreeAttribute_GetDirtyPathData_System_String____System_Byte______" data-uid="Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData(System.String[]@,System.Byte[][]@)">
+  GetDirtyPathData(out string[], out byte[][])
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void GetDirtyPathData(out string[] paths, out byte[][] dirtydata)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -506,10 +537,10 @@ Class SyncedTreeAttribute
 
 
 
-  <a id="Vintagestory_API_Datastructures_SyncedTreeAttribute_FromBytes_" data-uid="Vintagestory.API.Datastructures.SyncedTreeAttribute.FromBytes*"></a>
+  <a id="Vintagestory_API_Datastructures_SyncedTreeAttribute_GetDirtyPathData_" data-uid="Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData*"></a>
 
-  <h3 id="Vintagestory_API_Datastructures_SyncedTreeAttribute_FromBytes_System_IO_BinaryReader_" data-uid="Vintagestory.API.Datastructures.SyncedTreeAttribute.FromBytes(System.IO.BinaryReader)">
-  FromBytes(BinaryReader)
+  <h3 id="Vintagestory_API_Datastructures_SyncedTreeAttribute_GetDirtyPathData_Vintagestory_API_Datastructures_FastMemoryStream_System_String____System_Byte______" data-uid="Vintagestory.API.Datastructures.SyncedTreeAttribute.GetDirtyPathData(Vintagestory.API.Datastructures.FastMemoryStream,System.String[]@,System.Byte[][]@)">
+  GetDirtyPathData(FastMemoryStream, out string[], out byte[][])
   
   </h3>
 
@@ -517,12 +548,16 @@ Class SyncedTreeAttribute
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public override void FromBytes(BinaryReader stream)</code></pre>
+    <pre><code class="lang-csharp hljs">public void GetDirtyPathData(FastMemoryStream ms, out string[] paths, out byte[][] dirtydata)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>stream</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dt><code>ms</code> <a class="xref" href="Vintagestory.API.Datastructures.FastMemoryStream.html">FastMemoryStream</a></dt>
+    <dd></dd>
+    <dt><code>paths</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+    <dt><code>dirtydata</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[][]</dt>
     <dd></dd>
   </dl>
 

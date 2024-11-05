@@ -173,7 +173,13 @@ namespace Vintagestory.API.Datastructures
             return tree;
         }
 
-        public void DirtyPathData(out string[] paths, out byte[][] dirtydata)
+        public void GetDirtyPathData(out string[] paths, out byte[][] dirtydata)
+        {
+            FastMemoryStream ms = new FastMemoryStream();
+            GetDirtyPathData(ms, out paths, out dirtydata);
+        }
+
+        public void GetDirtyPathData(FastMemoryStream ms, out string[] paths, out byte[][] dirtydata)
         {
             paths = attributePathsDirty.ToArray();
             dirtydata = new byte[paths.Length][];
@@ -184,7 +190,7 @@ namespace Vintagestory.API.Datastructures
                 IAttribute attr = GetAttributeByPath(paths[i]);
                 if (attr == null) continue;
 
-                MemoryStream ms = new MemoryStream();
+                ms.Reset();
                 BinaryWriter writer = new BinaryWriter(ms);
 
                 writer.Write((byte)attr.GetAttributeId());

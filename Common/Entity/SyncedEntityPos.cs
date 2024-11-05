@@ -17,11 +17,12 @@ namespace Vintagestory.API.Common.Entities
 
         public SyncedEntityPos(Vec3d position) : base(position.X, position.Y, position.Z, 0, 0)
         {
-
+            dirty = true;
         }
 
         public SyncedEntityPos(double x, double y, double z, float heading = 0, float pitch = 0) : base(x, y, z, heading, pitch)
         {
+            dirty = true;
         }
 
         public override double X

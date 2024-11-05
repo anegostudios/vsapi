@@ -65,6 +65,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.IsRendered
   - Vintagestory.API.Common.Entities.Entity.IsShadowRendered
   - Vintagestory.API.Common.Entities.Entity.IsTeleport
+  - Vintagestory.API.Common.Entities.Entity.IsTracked
   - Vintagestory.API.Common.Entities.Entity.LadderFixDelta
   - Vintagestory.API.Common.Entities.Entity.LightHsv
   - Vintagestory.API.Common.Entities.Entity.LocalEyePos
@@ -149,7 +150,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.customRepulseBehavior
   - Vintagestory.API.Common.Entities.Entity.fireDamageAccum
   - Vintagestory.API.Common.Entities.Entity.hasRepulseBehavior
-  - Vintagestory.API.Common.Entities.Entity.minRangeToClient
+  - Vintagestory.API.Common.Entities.Entity.minHorRangeToClient
   - Vintagestory.API.Common.Entities.Entity.ownPosRepulse
   - Vintagestory.API.Common.Entities.Entity.packet
   - Vintagestory.API.Common.Entities.Entity.requirePosesOnServer
@@ -693,27 +694,6 @@ items:
     return:
       type: System.Boolean
     content.vb: Public Teleporting As Boolean
-- uid: Vintagestory.API.Common.Entities.Entity.IsTeleport
-  commentId: F:Vintagestory.API.Common.Entities.Entity.IsTeleport
-  id: IsTeleport
-  parent: Vintagestory.API.Common.Entities.Entity
-  langs:
-  - csharp
-  - vb
-  name: IsTeleport
-  nameWithType: Entity.IsTeleport
-  fullName: Vintagestory.API.Common.Entities.Entity.IsTeleport
-  type: Field
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common.Entities
-  summary: Used by the server to tell connected clients that the next entity position packet should not have its position change get interpolated. Gets set to false after the packet was sent
-  example: []
-  syntax:
-    content: public bool IsTeleport
-    return:
-      type: System.Boolean
-    content.vb: Public IsTeleport As Boolean
 - uid: Vintagestory.API.Common.Entities.Entity.EntityId
   commentId: F:Vintagestory.API.Common.Entities.Entity.EntityId
   id: EntityId
@@ -1278,6 +1258,51 @@ items:
     return:
       type: System.Boolean
     content.vb: Public customRepulseBehavior As Boolean
+- uid: Vintagestory.API.Common.Entities.Entity.IsTracked
+  commentId: F:Vintagestory.API.Common.Entities.Entity.IsTracked
+  id: IsTracked
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: IsTracked
+  nameWithType: Entity.IsTracked
+  fullName: Vintagestory.API.Common.Entities.Entity.IsTracked
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: >-
+    Used by PhysicsManager. Added here to increase performance
+
+    0 = not tracked, 1 = lowResTracked, 2 = fullyTracked
+  example: []
+  syntax:
+    content: public byte IsTracked
+    return:
+      type: System.Byte
+    content.vb: Public IsTracked As Byte
+- uid: Vintagestory.API.Common.Entities.Entity.IsTeleport
+  commentId: F:Vintagestory.API.Common.Entities.Entity.IsTeleport
+  id: IsTeleport
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: IsTeleport
+  nameWithType: Entity.IsTeleport
+  fullName: Vintagestory.API.Common.Entities.Entity.IsTeleport
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Used by the PhysicsManager to tell connected clients that the next entity position packet should not have its position change get interpolated. Gets set to false after the packet was sent
+  example: []
+  syntax:
+    content: public bool IsTeleport
+    return:
+      type: System.Boolean
+    content.vb: Public IsTeleport As Boolean
 - uid: Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
   commentId: F:Vintagestory.API.Common.Entities.Entity.trickleDownRayIntersects
   id: trickleDownRayIntersects
@@ -1292,7 +1317,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
-  summary: If true, will call EntityBheavior.IntersectsRay. Default off to increase performance.
+  summary: If true, will call EntityBehavior.IntersectsRay. Default off to increase performance.
   example: []
   syntax:
     content: public bool trickleDownRayIntersects
@@ -1684,25 +1709,25 @@ items:
     return:
       type: System.Boolean
     content.vb: Protected alive As Boolean
-- uid: Vintagestory.API.Common.Entities.Entity.minRangeToClient
-  commentId: F:Vintagestory.API.Common.Entities.Entity.minRangeToClient
-  id: minRangeToClient
+- uid: Vintagestory.API.Common.Entities.Entity.minHorRangeToClient
+  commentId: F:Vintagestory.API.Common.Entities.Entity.minHorRangeToClient
+  id: minHorRangeToClient
   parent: Vintagestory.API.Common.Entities.Entity
   langs:
   - csharp
   - vb
-  name: minRangeToClient
-  nameWithType: Entity.minRangeToClient
-  fullName: Vintagestory.API.Common.Entities.Entity.minRangeToClient
+  name: minHorRangeToClient
+  nameWithType: Entity.minHorRangeToClient
+  fullName: Vintagestory.API.Common.Entities.Entity.minHorRangeToClient
   type: Field
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common.Entities
   syntax:
-    content: public float minRangeToClient
+    content: public float minHorRangeToClient
     return:
       type: System.Single
-    content.vb: Public minRangeToClient As Single
+    content.vb: Public minHorRangeToClient As Single
 - uid: Vintagestory.API.Common.Entities.Entity.IdleSoundChanceModifier
   commentId: P:Vintagestory.API.Common.Entities.Entity.IdleSoundChanceModifier
   id: IdleSoundChanceModifier
@@ -5511,6 +5536,17 @@ references:
   nameWithType.vb: Double
   fullName.vb: Double
   name.vb: Double
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
 - uid: Vintagestory.API.Common.Entities.Entity.Properties*
   commentId: Overload:Vintagestory.API.Common.Entities.Entity.Properties
   href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Properties

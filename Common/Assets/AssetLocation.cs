@@ -513,7 +513,7 @@ namespace Vintagestory.API.Common
             return false;
         }
 
-        public static implicit operator string(AssetLocation loc) => loc.ToString();
+        public static implicit operator string(AssetLocation loc) => loc?.ToString();
         public static implicit operator AssetLocation(string code) => AssetLocation.Create(code);
     }
 

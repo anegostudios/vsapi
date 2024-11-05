@@ -24,6 +24,7 @@ items:
   - Vintagestory.API.Common.PlayerAnimationManager.LeftHeldIdleChanged(System.String)
   - Vintagestory.API.Common.PlayerAnimationManager.OnActiveSlotChanged(Vintagestory.API.Common.ItemSlot)
   - Vintagestory.API.Common.PlayerAnimationManager.OnClientFrame(System.Single)
+  - Vintagestory.API.Common.PlayerAnimationManager.OnIfpModeChanged(System.Boolean,System.Boolean)
   - Vintagestory.API.Common.PlayerAnimationManager.OnReceivedServerAnimations(System.Int32[],System.Int32,System.Single[])
   - Vintagestory.API.Common.PlayerAnimationManager.RegisterFrameCallback(Vintagestory.API.Common.AnimFrameCallback)
   - Vintagestory.API.Common.PlayerAnimationManager.ResetAnimation(System.String)
@@ -1220,6 +1221,32 @@ items:
   nameWithType.vb: PlayerAnimationManager.ToAttributes(ITreeAttribute, Boolean)
   fullName.vb: Vintagestory.API.Common.PlayerAnimationManager.ToAttributes(Vintagestory.API.Datastructures.ITreeAttribute, Boolean)
   name.vb: ToAttributes(ITreeAttribute, Boolean)
+- uid: Vintagestory.API.Common.PlayerAnimationManager.OnIfpModeChanged(System.Boolean,System.Boolean)
+  commentId: M:Vintagestory.API.Common.PlayerAnimationManager.OnIfpModeChanged(System.Boolean,System.Boolean)
+  id: OnIfpModeChanged(System.Boolean,System.Boolean)
+  parent: Vintagestory.API.Common.PlayerAnimationManager
+  langs:
+  - csharp
+  - vb
+  name: OnIfpModeChanged(bool, bool)
+  nameWithType: PlayerAnimationManager.OnIfpModeChanged(bool, bool)
+  fullName: Vintagestory.API.Common.PlayerAnimationManager.OnIfpModeChanged(bool, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public void OnIfpModeChanged(bool prev, bool now)
+    parameters:
+    - id: prev
+      type: System.Boolean
+    - id: now
+      type: System.Boolean
+    content.vb: Public Sub OnIfpModeChanged(prev As Boolean, now As Boolean)
+  overload: Vintagestory.API.Common.PlayerAnimationManager.OnIfpModeChanged*
+  nameWithType.vb: PlayerAnimationManager.OnIfpModeChanged(Boolean, Boolean)
+  fullName.vb: Vintagestory.API.Common.PlayerAnimationManager.OnIfpModeChanged(Boolean, Boolean)
+  name.vb: OnIfpModeChanged(Boolean, Boolean)
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -3112,3 +3139,9 @@ references:
   name: ToAttributes
   nameWithType: PlayerAnimationManager.ToAttributes
   fullName: Vintagestory.API.Common.PlayerAnimationManager.ToAttributes
+- uid: Vintagestory.API.Common.PlayerAnimationManager.OnIfpModeChanged*
+  commentId: Overload:Vintagestory.API.Common.PlayerAnimationManager.OnIfpModeChanged
+  href: Vintagestory.API.Common.PlayerAnimationManager.html#Vintagestory_API_Common_PlayerAnimationManager_OnIfpModeChanged_System_Boolean_System_Boolean_
+  name: OnIfpModeChanged
+  nameWithType: PlayerAnimationManager.OnIfpModeChanged
+  fullName: Vintagestory.API.Common.PlayerAnimationManager.OnIfpModeChanged
