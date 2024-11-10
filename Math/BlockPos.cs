@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Newtonsoft.Json;
 using ProtoBuf;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -856,6 +857,7 @@ namespace Vintagestory.API.MathTools
 
         #endregion
 
+        [JsonIgnore]
         public Vec3i AsVec3i => new Vec3i((int)X, (int)Y, (int)Z);
 
 

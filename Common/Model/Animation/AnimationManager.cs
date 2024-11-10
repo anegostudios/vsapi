@@ -86,12 +86,12 @@ namespace Vintagestory.API.Common
                 ServerAnimator.CreateForEntity(entity, entityShape.Animations, entityShape.Elements, entityShape.JointsById, requirePosesOnServer)
             ;
 
-            CopyOverAnims(copyOverAnims, animator);
+            CopyOverAnimStates(copyOverAnims, animator);
 
             return animator;
         }
 
-        public void CopyOverAnims(RunningAnimation[] copyOverAnims, IAnimator animator)
+        public void CopyOverAnimStates(RunningAnimation[] copyOverAnims, IAnimator animator)
         {
             if (copyOverAnims != null && animator != null)
             {

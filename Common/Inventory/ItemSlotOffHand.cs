@@ -11,6 +11,15 @@
         {
             this.BackgroundIcon = "offhand";
         }
+    }
 
+    public class ItemSlotSkill : ItemSlot
+    {
+        public override EnumItemStorageFlags StorageType { get { return EnumItemStorageFlags.Skill; } }
+
+        public ItemSlotSkill(InventoryBase inventory) : base(inventory)
+        {
+            this.BackgroundIcon = "skill";
+        }
     }
 }

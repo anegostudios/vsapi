@@ -33,8 +33,10 @@ namespace Vintagestory.API.Client
         Dictionary<string, int> slotTextureIdsByBgIconAndColor = new Dictionary<string, int>();
         Dictionary<int, float> slotNotifiedZoomEffect = new Dictionary<int, float>();
 
-        protected ElementBounds[] slotBounds;
+        public ElementBounds[] SlotBounds;
         protected ElementBounds[] scissorBounds;
+
+        public LoadedTexture HighlightSlotTexture => highlightSlotTexture;
 
         protected LoadedTexture slotTexture, highlightSlotTexture;
         protected LoadedTexture crossedOutTexture;
@@ -113,7 +115,7 @@ namespace Vintagestory.API.Client
 
         void ComposeInteractiveElements()
         { 
-            slotBounds = new ElementBounds[availableSlots.Count];
+            SlotBounds = new ElementBounds[availableSlots.Count];
             scissorBounds = new ElementBounds[availableSlots.Count];
 
             if (slotQuantityTextures != null) Dispose();
@@ -295,8 +297,8 @@ namespace Vintagestory.API.Client
 
                 ItemSlot slot = inventory[val.Key];
 
-                slotBounds[slotIndex] = ElementBounds.Fixed(x, y, unscaledSlotWidth, unscaledSlotHeight).WithParent(Bounds);
-                slotBounds[slotIndex].CalcWorldBounds();
+                SlotBounds[slotIndex] = ElementBounds.Fixed(x, y, unscaledSlotWidth, unscaledSlotHeight).WithParent(Bounds);
+                SlotBounds[slotIndex].CalcWorldBounds();
 
                 scissorBounds[slotIndex] = ElementBounds.Fixed(x + 2, y + 2, unscaledSlotWidth - 4, unscaledSlotHeight - 4).WithParent(Bounds);
                 scissorBounds[slotIndex].CalcWorldBounds();
@@ -325,7 +327,7 @@ namespace Vintagestory.API.Client
             }
 
             // This is pretty slow to do this for every slot. Should be made with an atlas
-            ImageSurface textSurface = new ImageSurface(Format.Argb32, (int)slotBounds[slotIndex].InnerWidth, (int)slotBounds[slotIndex].InnerHeight);
+            ImageSurface textSurface = new ImageSurface(Format.Argb32, (int)SlotBounds[slotIndex].InnerWidth, (int)SlotBounds[slotIndex].InnerHeight);
             Context textCtx = genContext(textSurface);
             textCtx.SetSourceRGBA(0, 0, 0, 0);
             textCtx.Paint();
@@ -334,9 +336,9 @@ namespace Vintagestory.API.Client
             if (drawItemDamage)
             {
                 double x = scaled(4);
-                double y = (int)slotBounds[slotIndex].InnerHeight - scaled(3) - scaled(4);
+                double y = (int)SlotBounds[slotIndex].InnerHeight - scaled(3) - scaled(4);
                 textCtx.SetSourceRGBA(GuiStyle.DialogStrongBgColor);
-                double width = (slotBounds[slotIndex].InnerWidth - scaled(8));
+                double width = (SlotBounds[slotIndex].InnerWidth - scaled(8));
                 double height = scaled(4);
                 RoundRectangle(textCtx, x, y, width, height, 1);
                 textCtx.FillPreserve();
@@ -349,7 +351,7 @@ namespace Vintagestory.API.Client
                 int dura = slot.Itemstack.Collectible.GetMaxDurability(slot.Itemstack);
                 float health = (float)slot.Itemstack.Collectible.GetRemainingDurability(slot.Itemstack) / dura;
 
-                width = health * (slotBounds[slotIndex].InnerWidth - scaled(8));
+                width = health * (SlotBounds[slotIndex].InnerWidth - scaled(8));
 
                 RoundRectangle(textCtx, x, y, width, height, 1);
                 textCtx.FillPreserve();
@@ -434,7 +436,7 @@ namespace Vintagestory.API.Client
             int i = 0;
             foreach (var val in renderedSlots)
             {
-                ElementBounds bounds = slotBounds[i];
+                ElementBounds bounds = SlotBounds[i];
 
                 double slotStartY = bounds.absFixedY;
                 double slotEndY = slotStartY + bounds.OuterHeight;
@@ -481,8 +483,8 @@ namespace Vintagestory.API.Client
 
                     api.Render.RenderItemstackToGui(
                         slot,
-                        slotBounds[i].renderX + offset + dy,
-                        slotBounds[i].renderY + offset + dx,
+                        SlotBounds[i].renderX + offset + dy,
+                        SlotBounds[i].renderY + offset + dx,
                         90,
                         (float)(absItemstackSize),
                         ColorUtil.WhiteArgb,
@@ -498,7 +500,7 @@ namespace Vintagestory.API.Client
 
                     if (slotQuantityTextures[i].TextureId != 0)
                     {
-                        api.Render.Render2DTexturePremultipliedAlpha(slotQuantityTextures[i].TextureId, slotBounds[i]);
+                        api.Render.Render2DTexturePremultipliedAlpha(slotQuantityTextures[i].TextureId, SlotBounds[i]);
                     }
                 }
                 else
@@ -553,6 +555,11 @@ namespace Vintagestory.API.Client
                 if (searchText == null || searchText.Length == 0)
                 {
                     renderedSlots.Add(val.Key, slot);
+                    continue;
+                }
+
+                if (searchCacheNames == null)
+                {
                     continue;
                 }
 
@@ -656,11 +663,11 @@ namespace Vintagestory.API.Client
             bool ctrl = api.Input.KeyboardKeyState[(int)GlKeys.ControlLeft] || api.Input.KeyboardKeyState[(int)GlKeys.ControlRight];
             if (ctrl && KeyboardControlEnabled && IsPositionInside(api.Input.MouseX, api.Input.MouseY))
             {
-                for (int i = 0; i < slotBounds.Length; i++)
+                for (int i = 0; i < SlotBounds.Length; i++)
                 {
                     if (i >= renderedSlots.Count) break;
 
-                    if (slotBounds[i].PointInside(api.Input.MouseX, api.Input.MouseY))
+                    if (SlotBounds[i].PointInside(api.Input.MouseX, api.Input.MouseY))
                     {
                         SlotMouseWheel(renderedSlots.GetKeyAtIndex(i), args.delta);
                         args.SetHandled(true);
@@ -750,11 +757,11 @@ namespace Vintagestory.API.Client
             distributeStacksPrevStackSizeBySlotId.Clear();
             distributeStacksAddedStackSizeBySlotId.Clear();
 
-            for (int i = 0; i < slotBounds.Length; i++)
+            for (int i = 0; i < SlotBounds.Length; i++)
             {
                 if (i >= renderedSlots.Count) break;
 
-                if (slotBounds[i].PointInside(args.X, args.Y))
+                if (SlotBounds[i].PointInside(args.X, args.Y))
                 {
                     if (CanClickSlot?.Invoke(i) == false) break;
 
@@ -819,11 +826,11 @@ namespace Vintagestory.API.Client
                 return;
             }
 
-            for (int i = 0; i < slotBounds.Length; i++)
+            for (int i = 0; i < SlotBounds.Length; i++)
             {
                 if (i >= renderedSlots.Count) break;
 
-                if (slotBounds[i].PointInside(args.X, args.Y))
+                if (SlotBounds[i].PointInside(args.X, args.Y))
                 {
                     int nowHoverSlotid = renderedSlots.GetKeyAtIndex(i);
                     ItemSlot nowHoverSlot = inventory[nowHoverSlotid];

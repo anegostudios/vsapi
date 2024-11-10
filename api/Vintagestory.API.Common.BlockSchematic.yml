@@ -43,6 +43,7 @@ items:
   - Vintagestory.API.Common.BlockSchematic.LoadFromString(System.String,System.String@)
   - Vintagestory.API.Common.BlockSchematic.LoadMetaInformationAndValidate(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IWorldAccessor,System.String)
   - Vintagestory.API.Common.BlockSchematic.OmitLiquids
+  - Vintagestory.API.Common.BlockSchematic.OriginalPos
   - Vintagestory.API.Common.BlockSchematic.Pack(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.BlockSchematic.PackedOffset
   - Vintagestory.API.Common.BlockSchematic.PasteToMiniDimension(Vintagestory.API.Server.ICoreServerAPI,Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.IMiniDimension,Vintagestory.API.MathTools.BlockPos,System.Boolean)
@@ -512,6 +513,35 @@ items:
       <JsonProperty>
 
       Public EntranceRotation As Integer
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
+- uid: Vintagestory.API.Common.BlockSchematic.OriginalPos
+  commentId: F:Vintagestory.API.Common.BlockSchematic.OriginalPos
+  id: OriginalPos
+  parent: Vintagestory.API.Common.BlockSchematic
+  langs:
+  - csharp
+  - vb
+  name: OriginalPos
+  nameWithType: BlockSchematic.OriginalPos
+  fullName: Vintagestory.API.Common.BlockSchematic.OriginalPos
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: >-
+      [JsonProperty]
+
+      public BlockPos OriginalPos
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: >-
+      <JsonProperty>
+
+      Public OriginalPos As BlockPos
   attributes:
   - type: Newtonsoft.Json.JsonPropertyAttribute
     ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
@@ -2693,6 +2723,43 @@ references:
   name: EnumReplaceMode
   nameWithType: EnumReplaceMode
   fullName: Vintagestory.API.Common.EnumReplaceMode
+- uid: Vintagestory.API.MathTools.BlockPos
+  commentId: T:Vintagestory.API.MathTools.BlockPos
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.BlockPos.html
+  name: BlockPos
+  nameWithType: BlockPos
+  fullName: Vintagestory.API.MathTools.BlockPos
+- uid: Vintagestory.API.MathTools
+  commentId: N:Vintagestory.API.MathTools
+  href: Vintagestory.html
+  name: Vintagestory.API.MathTools
+  nameWithType: Vintagestory.API.MathTools
+  fullName: Vintagestory.API.MathTools
+  spec.csharp:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
+  spec.vb:
+  - uid: Vintagestory
+    name: Vintagestory
+    href: Vintagestory.html
+  - name: .
+  - uid: Vintagestory.API
+    name: API
+    href: Vintagestory.API.html
+  - name: .
+  - uid: Vintagestory.API.MathTools
+    name: MathTools
+    href: Vintagestory.API.MathTools.html
 - uid: System.Collections.Generic.Dictionary{Vintagestory.API.MathTools.BlockPos,System.Int32}
   commentId: T:System.Collections.Generic.Dictionary{Vintagestory.API.MathTools.BlockPos,System.Int32}
   parent: System.Collections.Generic
@@ -2892,36 +2959,6 @@ references:
   name: FastVec3i
   nameWithType: FastVec3i
   fullName: Vintagestory.API.MathTools.FastVec3i
-- uid: Vintagestory.API.MathTools
-  commentId: N:Vintagestory.API.MathTools
-  href: Vintagestory.html
-  name: Vintagestory.API.MathTools
-  nameWithType: Vintagestory.API.MathTools
-  fullName: Vintagestory.API.MathTools
-  spec.csharp:
-  - uid: Vintagestory
-    name: Vintagestory
-    href: Vintagestory.html
-  - name: .
-  - uid: Vintagestory.API
-    name: API
-    href: Vintagestory.API.html
-  - name: .
-  - uid: Vintagestory.API.MathTools
-    name: MathTools
-    href: Vintagestory.API.MathTools.html
-  spec.vb:
-  - uid: Vintagestory
-    name: Vintagestory
-    href: Vintagestory.html
-  - name: .
-  - uid: Vintagestory.API
-    name: API
-    href: Vintagestory.API.html
-  - name: .
-  - uid: Vintagestory.API.MathTools
-    name: MathTools
-    href: Vintagestory.API.MathTools.html
 - uid: System.Collections.Generic.List{Vintagestory.Common.Collectible.Block.BlockPosFacing}
   commentId: T:System.Collections.Generic.List{Vintagestory.Common.Collectible.Block.BlockPosFacing}
   parent: System.Collections.Generic
@@ -3156,13 +3193,6 @@ references:
   name: IServerWorldAccessor
   nameWithType: IServerWorldAccessor
   fullName: Vintagestory.API.Server.IServerWorldAccessor
-- uid: Vintagestory.API.MathTools.BlockPos
-  commentId: T:Vintagestory.API.MathTools.BlockPos
-  parent: Vintagestory.API.MathTools
-  href: Vintagestory.API.MathTools.BlockPos.html
-  name: BlockPos
-  nameWithType: BlockPos
-  fullName: Vintagestory.API.MathTools.BlockPos
 - uid: Vintagestory.API.Server
   commentId: N:Vintagestory.API.Server
   href: Vintagestory.html

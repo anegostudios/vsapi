@@ -2612,14 +2612,24 @@ items:
   namespace: Vintagestory.API.MathTools
   example: []
   syntax:
-    content: public Vec3i AsVec3i { get; }
+    content: >-
+      [JsonIgnore]
+
+      public Vec3i AsVec3i { get; }
     parameters: []
     return:
       type: Vintagestory.API.MathTools.Vec3i
-    content.vb: Public ReadOnly Property AsVec3i As Vec3i
+    content.vb: >-
+      <JsonIgnore>
+
+      Public ReadOnly Property AsVec3i As Vec3i
   overload: Vintagestory.API.MathTools.BlockPos.AsVec3i*
   implements:
   - Vintagestory.API.MathTools.IVec3.AsVec3i
+  attributes:
+  - type: Newtonsoft.Json.JsonIgnoreAttribute
+    ctor: Newtonsoft.Json.JsonIgnoreAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.MathTools.BlockPos.Walk(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Vec3i,System.Action{System.Int32,System.Int32,System.Int32})
   commentId: M:Vintagestory.API.MathTools.BlockPos.Walk(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Vec3i,System.Action{System.Int32,System.Int32,System.Int32})
   id: Walk(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.Vec3i,System.Action{System.Int32,System.Int32,System.Int32})

@@ -50,9 +50,9 @@ namespace Vintagestory.API.Common
         /// </summary>
         Arrow = 512,
         /// <summary>
-        /// Reserved for vanilla
+        /// Skill slot
         /// </summary>
-        Reserved2 = 1024,
+        Skill = 1024,
         /// <summary>
         /// Custom storage flag for mods
         /// </summary>

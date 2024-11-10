@@ -43,7 +43,7 @@ namespace Vintagestory.API.Common
         {
         }
 
-        public Vec3d FullPosition => new Vec3d(Position.X + HitPosition.X, Position.Y + HitPosition.Y, Position.Z + HitPosition.Z);
+        public Vec3d FullPosition => new Vec3d(Position.X + HitPosition.X, Position.InternalY + HitPosition.Y, Position.Z + HitPosition.Z);
 
         /// <summary>
         /// Creates a basic BlockSelection from limited data

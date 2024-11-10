@@ -209,6 +209,6 @@ namespace Vintagestory.API.Common
         void RegisterFrameCallback(AnimFrameCallback trigger);
 
         IAnimator LoadAnimator(ICoreAPI api, Entity entity, Shape entityShape, RunningAnimation[] copyOverAnims, bool requirePosesOnServer, params string[] requireJointsForElements);
-        void CopyOverAnims(RunningAnimation[] copyOverAnims, IAnimator animator);
+        void CopyOverAnimStates(RunningAnimation[] copyOverAnims, IAnimator animator);
     }
 }

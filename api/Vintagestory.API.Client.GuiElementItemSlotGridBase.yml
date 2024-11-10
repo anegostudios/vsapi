@@ -14,6 +14,7 @@ items:
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.FilterItemsBySearchText(System.String,System.Collections.Generic.Dictionary{System.Int32,System.String},System.Collections.Generic.Dictionary{System.Int32,System.String})
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.Focusable
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.HighlightSlot(System.Int32)
+  - Vintagestory.API.Client.GuiElementItemSlotGridBase.HighlightSlotTexture
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.KeyboardControlEnabled
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.OnGuiClosed(Vintagestory.API.Client.ICoreClientAPI)
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.OnKeyDown(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.KeyEvent)
@@ -28,6 +29,7 @@ items:
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.RemoveSlotHighlight
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.RenderInteractiveElements(System.Single)
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.SendPacketHandler
+  - Vintagestory.API.Client.GuiElementItemSlotGridBase.SlotBounds
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.SlotClick(Vintagestory.API.Client.ICoreClientAPI,System.Int32,Vintagestory.API.Common.EnumMouseButton,System.Boolean,System.Boolean,System.Boolean)
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.cols
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.crossedOutTexture
@@ -39,7 +41,6 @@ items:
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.rows
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.scissorBounds
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.searchText
-  - Vintagestory.API.Client.GuiElementItemSlotGridBase.slotBounds
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.slotQuantityTextures
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.slotTexture
   - Vintagestory.API.Client.GuiElementItemSlotGridBase.textComposer
@@ -228,25 +229,25 @@ items:
     return:
       type: System.Int32
     content.vb: Protected prevSlotQuantity As Integer
-- uid: Vintagestory.API.Client.GuiElementItemSlotGridBase.slotBounds
-  commentId: F:Vintagestory.API.Client.GuiElementItemSlotGridBase.slotBounds
-  id: slotBounds
+- uid: Vintagestory.API.Client.GuiElementItemSlotGridBase.SlotBounds
+  commentId: F:Vintagestory.API.Client.GuiElementItemSlotGridBase.SlotBounds
+  id: SlotBounds
   parent: Vintagestory.API.Client.GuiElementItemSlotGridBase
   langs:
   - csharp
   - vb
-  name: slotBounds
-  nameWithType: GuiElementItemSlotGridBase.slotBounds
-  fullName: Vintagestory.API.Client.GuiElementItemSlotGridBase.slotBounds
+  name: SlotBounds
+  nameWithType: GuiElementItemSlotGridBase.SlotBounds
+  fullName: Vintagestory.API.Client.GuiElementItemSlotGridBase.SlotBounds
   type: Field
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
   syntax:
-    content: protected ElementBounds[] slotBounds
+    content: public ElementBounds[] SlotBounds
     return:
       type: Vintagestory.API.Client.ElementBounds[]
-    content.vb: Protected slotBounds As ElementBounds()
+    content.vb: Public SlotBounds As ElementBounds()
 - uid: Vintagestory.API.Client.GuiElementItemSlotGridBase.scissorBounds
   commentId: F:Vintagestory.API.Client.GuiElementItemSlotGridBase.scissorBounds
   id: scissorBounds
@@ -266,6 +267,27 @@ items:
     return:
       type: Vintagestory.API.Client.ElementBounds[]
     content.vb: Protected scissorBounds As ElementBounds()
+- uid: Vintagestory.API.Client.GuiElementItemSlotGridBase.HighlightSlotTexture
+  commentId: P:Vintagestory.API.Client.GuiElementItemSlotGridBase.HighlightSlotTexture
+  id: HighlightSlotTexture
+  parent: Vintagestory.API.Client.GuiElementItemSlotGridBase
+  langs:
+  - csharp
+  - vb
+  name: HighlightSlotTexture
+  nameWithType: GuiElementItemSlotGridBase.HighlightSlotTexture
+  fullName: Vintagestory.API.Client.GuiElementItemSlotGridBase.HighlightSlotTexture
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public LoadedTexture HighlightSlotTexture { get; }
+    parameters: []
+    return:
+      type: Vintagestory.API.Client.LoadedTexture
+    content.vb: Public ReadOnly Property HighlightSlotTexture As LoadedTexture
+  overload: Vintagestory.API.Client.GuiElementItemSlotGridBase.HighlightSlotTexture*
 - uid: Vintagestory.API.Client.GuiElementItemSlotGridBase.slotTexture
   commentId: F:Vintagestory.API.Client.GuiElementItemSlotGridBase.slotTexture
   id: slotTexture
@@ -3686,6 +3708,12 @@ references:
     href: Vintagestory.API.Client.ElementBounds.html
   - name: (
   - name: )
+- uid: Vintagestory.API.Client.GuiElementItemSlotGridBase.HighlightSlotTexture*
+  commentId: Overload:Vintagestory.API.Client.GuiElementItemSlotGridBase.HighlightSlotTexture
+  href: Vintagestory.API.Client.GuiElementItemSlotGridBase.html#Vintagestory_API_Client_GuiElementItemSlotGridBase_HighlightSlotTexture
+  name: HighlightSlotTexture
+  nameWithType: GuiElementItemSlotGridBase.HighlightSlotTexture
+  fullName: Vintagestory.API.Client.GuiElementItemSlotGridBase.HighlightSlotTexture
 - uid: Vintagestory.API.Client.LoadedTexture
   commentId: T:Vintagestory.API.Client.LoadedTexture
   parent: Vintagestory.API.Client

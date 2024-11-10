@@ -208,7 +208,7 @@ namespace Vintagestory.API.Common
 
                 if (childElem.Children != null)
                 {
-                    bool added = StepParentShape(childElem, childElem.Children, childShape, childLocationForLogging, parentLocationForLogging, logger, onTexture); ;
+                    bool added = StepParentShape(childElem, childElem.Children, childShape, childLocationForLogging, parentLocationForLogging, logger, onTexture);
                     anyElementAdded |= added;
                 }
 
@@ -690,7 +690,7 @@ namespace Vintagestory.API.Common
 
                 if (elem == null)
                 {
-                    errorLogger.Error("Shape {0} has a key frame elmenent for which the referencing shape element {1} cannot be found.", shapeName, val.Key);
+                    errorLogger.Error("Shape {0} has a key frame element for which the referencing shape element {1} cannot be found.", shapeName, val.Key);
 
                     val.Value.ForElement = new ShapeElement();
                     continue;

@@ -4,6 +4,11 @@ using System.Text;
 
 namespace Vintagestory.API.Common
 {
+    public interface ISkillItemRenderer
+    {
+        void Render(float dt, float x, float y, float z);
+    }
+
     /// <summary>
     /// Let's you do various interesting things with the players inventory.
     /// </summary>

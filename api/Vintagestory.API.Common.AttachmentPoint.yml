@@ -26,8 +26,14 @@ items:
   summary: This is a spot on the shape that connects to another shape.
   example: []
   syntax:
-    content: public class AttachmentPoint
-    content.vb: Public Class AttachmentPoint
+    content: >-
+      [JsonObject(MemberSerialization.OptIn)]
+
+      public class AttachmentPoint
+    content.vb: >-
+      <JsonObject(MemberSerialization.OptIn)>
+
+      Public Class AttachmentPoint
   inheritance:
   - System.Object
   inheritedMembers:
@@ -41,6 +47,12 @@ items:
   extensionMethods:
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  attributes:
+  - type: Newtonsoft.Json.JsonObjectAttribute
+    ctor: Newtonsoft.Json.JsonObjectAttribute.#ctor(Newtonsoft.Json.MemberSerialization)
+    arguments:
+    - type: Newtonsoft.Json.MemberSerialization
+      value: 1
 - uid: Vintagestory.API.Common.AttachmentPoint.ParentElement
   commentId: F:Vintagestory.API.Common.AttachmentPoint.ParentElement
   id: ParentElement
@@ -79,10 +91,20 @@ items:
   summary: The json code of this attachment point.
   example: []
   syntax:
-    content: public string Code
+    content: >-
+      [JsonProperty]
+
+      public string Code
     return:
       type: System.String
-    content.vb: Public Code As String
+    content.vb: >-
+      <JsonProperty>
+
+      Public Code As String
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.Common.AttachmentPoint.PosX
   commentId: F:Vintagestory.API.Common.AttachmentPoint.PosX
   id: PosX
@@ -100,10 +122,20 @@ items:
   summary: The X position of the attachment point.
   example: []
   syntax:
-    content: public double PosX
+    content: >-
+      [JsonProperty]
+
+      public double PosX
     return:
       type: System.Double
-    content.vb: Public PosX As Double
+    content.vb: >-
+      <JsonProperty>
+
+      Public PosX As Double
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.Common.AttachmentPoint.PosY
   commentId: F:Vintagestory.API.Common.AttachmentPoint.PosY
   id: PosY
@@ -121,10 +153,20 @@ items:
   summary: The Y position of the attachment point.
   example: []
   syntax:
-    content: public double PosY
+    content: >-
+      [JsonProperty]
+
+      public double PosY
     return:
       type: System.Double
-    content.vb: Public PosY As Double
+    content.vb: >-
+      <JsonProperty>
+
+      Public PosY As Double
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.Common.AttachmentPoint.PosZ
   commentId: F:Vintagestory.API.Common.AttachmentPoint.PosZ
   id: PosZ
@@ -142,10 +184,20 @@ items:
   summary: The Z position of the attachment point.
   example: []
   syntax:
-    content: public double PosZ
+    content: >-
+      [JsonProperty]
+
+      public double PosZ
     return:
       type: System.Double
-    content.vb: Public PosZ As Double
+    content.vb: >-
+      <JsonProperty>
+
+      Public PosZ As Double
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.Common.AttachmentPoint.RotationX
   commentId: F:Vintagestory.API.Common.AttachmentPoint.RotationX
   id: RotationX
@@ -163,10 +215,20 @@ items:
   summary: The forward vertical rotation of the attachment point.
   example: []
   syntax:
-    content: public double RotationX
+    content: >-
+      [JsonProperty]
+
+      public double RotationX
     return:
       type: System.Double
-    content.vb: Public RotationX As Double
+    content.vb: >-
+      <JsonProperty>
+
+      Public RotationX As Double
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.Common.AttachmentPoint.RotationY
   commentId: F:Vintagestory.API.Common.AttachmentPoint.RotationY
   id: RotationY
@@ -184,10 +246,20 @@ items:
   summary: The forward horizontal rotation of the attachment point
   example: []
   syntax:
-    content: public double RotationY
+    content: >-
+      [JsonProperty]
+
+      public double RotationY
     return:
       type: System.Double
-    content.vb: Public RotationY As Double
+    content.vb: >-
+      <JsonProperty>
+
+      Public RotationY As Double
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.Common.AttachmentPoint.RotationZ
   commentId: F:Vintagestory.API.Common.AttachmentPoint.RotationZ
   id: RotationZ
@@ -205,10 +277,20 @@ items:
   summary: the left/right tilt of the attachment point
   example: []
   syntax:
-    content: public double RotationZ
+    content: >-
+      [JsonProperty]
+
+      public double RotationZ
     return:
       type: System.Double
-    content.vb: Public RotationZ As Double
+    content.vb: >-
+      <JsonProperty>
+
+      Public RotationZ As Double
+  attributes:
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common

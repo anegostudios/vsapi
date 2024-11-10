@@ -1180,7 +1180,6 @@ namespace Vintagestory.API.Common.Entities
                     entityShape = newShape;
                     shapeIsCloned = true;
                 }
-                shapeIsCloned = true;
 
                 entityShape.RemoveElements(willDisableElements);
             }

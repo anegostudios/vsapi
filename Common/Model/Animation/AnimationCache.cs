@@ -87,7 +87,7 @@ namespace Vintagestory.API.Common
                 ;
 
                 manager.Animator = animator;
-                manager.CopyOverAnims(copyOverAnims, animator);
+                manager.CopyOverAnimStates(copyOverAnims, animator);
             }
             else
             {

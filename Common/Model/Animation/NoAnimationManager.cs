@@ -91,7 +91,7 @@ namespace Vintagestory.API.Common
         public event Action<string> OnAnimationStopped;
         public event StartAnimationDelegate OnAnimationReceived;
 
-        public void CopyOverAnims(RunningAnimation[] copyOverAnims, IAnimator animator)
+        public void CopyOverAnimStates(RunningAnimation[] copyOverAnims, IAnimator animator)
         {
             throw new NotImplementedException();
         }

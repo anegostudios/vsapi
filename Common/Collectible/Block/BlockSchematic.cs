@@ -76,6 +76,9 @@ namespace Vintagestory.API.Common
         [JsonProperty]
         public int EntranceRotation = -1;
 
+        [JsonProperty]
+        public BlockPos OriginalPos;
+
         public Dictionary<BlockPos, int> BlocksUnpacked = new Dictionary<BlockPos, int>();
         public Dictionary<BlockPos, int> FluidsLayerUnpacked = new Dictionary<BlockPos, int>();
         public Dictionary<BlockPos, string> BlockEntitiesUnpacked = new Dictionary<BlockPos, string>();
@@ -365,6 +368,7 @@ namespace Vintagestory.API.Common
         {
             BlockPos startPos = new BlockPos(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y), Math.Min(start.Z, end.Z));
             BlockPos finalPos = new BlockPos(Math.Max(start.X, end.X), Math.Max(start.Y, end.Y), Math.Max(start.Z, end.Z));
+            OriginalPos = start;
 
             BlockPos readPos = new BlockPos(start.dimension);   // readPos has dimensionality, keyPos does not (because keyPos will be saved in the schematic)
             for (int x = startPos.X; x < finalPos.X; x++)
@@ -1137,7 +1141,10 @@ namespace Vintagestory.API.Common
 
                         entity.FromBytes(reader, false, ((IServerWorldAccessor)worldForCollectibleResolve).RemappedEntities);
                         entity.DidImportOrExport(startPos);
-
+                        if (OriginalPos != null)
+                        {
+                            entity.WatchedAttributes.SetBlockPos("importOffset", startPos - OriginalPos);
+                        }
                         if (worldForCollectibleResolve.GetEntityType(entity.Code) != null) // Can be null if its a no longer existent mob type
                         {
                             // Not ideal but whatever
@@ -1454,6 +1461,7 @@ namespace Vintagestory.API.Common
 
             cloned.ReplaceMode = ReplaceMode;
             cloned.EntranceRotation = EntranceRotation;
+            cloned.OriginalPos = OriginalPos;
             return cloned;
         }
 

@@ -9,7 +9,7 @@ items:
   - Vintagestory.API.Common.AnimationManager.ActiveAnimationsByAnimCode
   - Vintagestory.API.Common.AnimationManager.AnimationsDirty
   - Vintagestory.API.Common.AnimationManager.Animator
-  - Vintagestory.API.Common.AnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+  - Vintagestory.API.Common.AnimationManager.CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
   - Vintagestory.API.Common.AnimationManager.Dispose
   - Vintagestory.API.Common.AnimationManager.FromAttributes(Vintagestory.API.Datastructures.ITreeAttribute,System.String)
   - Vintagestory.API.Common.AnimationManager.GetAnimationState(System.String)
@@ -397,35 +397,35 @@ items:
   nameWithType.vb: AnimationManager.LoadAnimator(ICoreAPI, Entity, Shape, RunningAnimation(), Boolean, ParamArray String())
   fullName.vb: Vintagestory.API.Common.AnimationManager.LoadAnimator(Vintagestory.API.Common.ICoreAPI, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.Common.Shape, Vintagestory.API.Common.RunningAnimation(), Boolean, ParamArray String())
   name.vb: LoadAnimator(ICoreAPI, Entity, Shape, RunningAnimation(), Boolean, ParamArray String())
-- uid: Vintagestory.API.Common.AnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
-  commentId: M:Vintagestory.API.Common.AnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
-  id: CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+- uid: Vintagestory.API.Common.AnimationManager.CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+  commentId: M:Vintagestory.API.Common.AnimationManager.CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+  id: CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
   parent: Vintagestory.API.Common.AnimationManager
   langs:
   - csharp
   - vb
-  name: CopyOverAnims(RunningAnimation[], IAnimator)
-  nameWithType: AnimationManager.CopyOverAnims(RunningAnimation[], IAnimator)
-  fullName: Vintagestory.API.Common.AnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[], Vintagestory.API.Common.IAnimator)
+  name: CopyOverAnimStates(RunningAnimation[], IAnimator)
+  nameWithType: AnimationManager.CopyOverAnimStates(RunningAnimation[], IAnimator)
+  fullName: Vintagestory.API.Common.AnimationManager.CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation[], Vintagestory.API.Common.IAnimator)
   type: Method
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   example: []
   syntax:
-    content: public void CopyOverAnims(RunningAnimation[] copyOverAnims, IAnimator animator)
+    content: public void CopyOverAnimStates(RunningAnimation[] copyOverAnims, IAnimator animator)
     parameters:
     - id: copyOverAnims
       type: Vintagestory.API.Common.RunningAnimation[]
     - id: animator
       type: Vintagestory.API.Common.IAnimator
-    content.vb: Public Sub CopyOverAnims(copyOverAnims As RunningAnimation(), animator As IAnimator)
-  overload: Vintagestory.API.Common.AnimationManager.CopyOverAnims*
+    content.vb: Public Sub CopyOverAnimStates(copyOverAnims As RunningAnimation(), animator As IAnimator)
+  overload: Vintagestory.API.Common.AnimationManager.CopyOverAnimStates*
   implements:
-  - Vintagestory.API.Common.IAnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
-  nameWithType.vb: AnimationManager.CopyOverAnims(RunningAnimation(), IAnimator)
-  fullName.vb: Vintagestory.API.Common.AnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation(), Vintagestory.API.Common.IAnimator)
-  name.vb: CopyOverAnims(RunningAnimation(), IAnimator)
+  - Vintagestory.API.Common.IAnimationManager.CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+  nameWithType.vb: AnimationManager.CopyOverAnimStates(RunningAnimation(), IAnimator)
+  fullName.vb: Vintagestory.API.Common.AnimationManager.CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation(), Vintagestory.API.Common.IAnimator)
+  name.vb: CopyOverAnimStates(RunningAnimation(), IAnimator)
 - uid: Vintagestory.API.Common.AnimationManager.IsAnimationActive(System.String[])
   commentId: M:Vintagestory.API.Common.AnimationManager.IsAnimationActive(System.String[])
   id: IsAnimationActive(System.String[])
@@ -2165,26 +2165,26 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.string
   - name: (
   - name: )
-- uid: Vintagestory.API.Common.AnimationManager.CopyOverAnims*
-  commentId: Overload:Vintagestory.API.Common.AnimationManager.CopyOverAnims
-  href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_CopyOverAnims_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_
-  name: CopyOverAnims
-  nameWithType: AnimationManager.CopyOverAnims
-  fullName: Vintagestory.API.Common.AnimationManager.CopyOverAnims
-- uid: Vintagestory.API.Common.IAnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
-  commentId: M:Vintagestory.API.Common.IAnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+- uid: Vintagestory.API.Common.AnimationManager.CopyOverAnimStates*
+  commentId: Overload:Vintagestory.API.Common.AnimationManager.CopyOverAnimStates
+  href: Vintagestory.API.Common.AnimationManager.html#Vintagestory_API_Common_AnimationManager_CopyOverAnimStates_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_
+  name: CopyOverAnimStates
+  nameWithType: AnimationManager.CopyOverAnimStates
+  fullName: Vintagestory.API.Common.AnimationManager.CopyOverAnimStates
+- uid: Vintagestory.API.Common.IAnimationManager.CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+  commentId: M:Vintagestory.API.Common.IAnimationManager.CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
   parent: Vintagestory.API.Common.IAnimationManager
-  href: Vintagestory.API.Common.IAnimationManager.html#Vintagestory_API_Common_IAnimationManager_CopyOverAnims_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_
-  name: CopyOverAnims(RunningAnimation[], IAnimator)
-  nameWithType: IAnimationManager.CopyOverAnims(RunningAnimation[], IAnimator)
-  fullName: Vintagestory.API.Common.IAnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[], Vintagestory.API.Common.IAnimator)
-  nameWithType.vb: IAnimationManager.CopyOverAnims(RunningAnimation(), IAnimator)
-  fullName.vb: Vintagestory.API.Common.IAnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation(), Vintagestory.API.Common.IAnimator)
-  name.vb: CopyOverAnims(RunningAnimation(), IAnimator)
+  href: Vintagestory.API.Common.IAnimationManager.html#Vintagestory_API_Common_IAnimationManager_CopyOverAnimStates_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_
+  name: CopyOverAnimStates(RunningAnimation[], IAnimator)
+  nameWithType: IAnimationManager.CopyOverAnimStates(RunningAnimation[], IAnimator)
+  fullName: Vintagestory.API.Common.IAnimationManager.CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation[], Vintagestory.API.Common.IAnimator)
+  nameWithType.vb: IAnimationManager.CopyOverAnimStates(RunningAnimation(), IAnimator)
+  fullName.vb: Vintagestory.API.Common.IAnimationManager.CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation(), Vintagestory.API.Common.IAnimator)
+  name.vb: CopyOverAnimStates(RunningAnimation(), IAnimator)
   spec.csharp:
-  - uid: Vintagestory.API.Common.IAnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
-    name: CopyOverAnims
-    href: Vintagestory.API.Common.IAnimationManager.html#Vintagestory_API_Common_IAnimationManager_CopyOverAnims_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_
+  - uid: Vintagestory.API.Common.IAnimationManager.CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+    name: CopyOverAnimStates
+    href: Vintagestory.API.Common.IAnimationManager.html#Vintagestory_API_Common_IAnimationManager_CopyOverAnimStates_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_
   - name: (
   - uid: Vintagestory.API.Common.RunningAnimation
     name: RunningAnimation
@@ -2198,9 +2198,9 @@ references:
     href: Vintagestory.API.Common.IAnimator.html
   - name: )
   spec.vb:
-  - uid: Vintagestory.API.Common.IAnimationManager.CopyOverAnims(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
-    name: CopyOverAnims
-    href: Vintagestory.API.Common.IAnimationManager.html#Vintagestory_API_Common_IAnimationManager_CopyOverAnims_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_
+  - uid: Vintagestory.API.Common.IAnimationManager.CopyOverAnimStates(Vintagestory.API.Common.RunningAnimation[],Vintagestory.API.Common.IAnimator)
+    name: CopyOverAnimStates
+    href: Vintagestory.API.Common.IAnimationManager.html#Vintagestory_API_Common_IAnimationManager_CopyOverAnimStates_Vintagestory_API_Common_RunningAnimation___Vintagestory_API_Common_IAnimator_
   - name: (
   - uid: Vintagestory.API.Common.RunningAnimation
     name: RunningAnimation

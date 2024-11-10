@@ -167,10 +167,15 @@ namespace Vintagestory.API.Client
             RoundRectangle(ctx, 0, 0, btnWidth, btnHeight, 1);
             ctx.Fill();
 
+            double arrowHeight = System.Math.Min(Bounds.OuterHeight - scaled(6), scaled(16));
+            double updownspace = (Bounds.OuterHeight - arrowHeight)/2;
+            double up = updownspace;
+            double down = arrowHeight + updownspace;
+
             ctx.NewPath();
-            ctx.LineTo(btnWidth - scaled(17) * Scale, scaled(10) * Scale);
-            ctx.LineTo(btnWidth - scaled(3) * Scale, scaled(10) * Scale);
-            ctx.LineTo(btnWidth - scaled(10) * Scale, scaled(20) * Scale);
+            ctx.LineTo(btnWidth - scaled(17) * Scale, up * Scale);
+            ctx.LineTo(btnWidth - scaled(3) * Scale, up * Scale);
+            ctx.LineTo(btnWidth - scaled(10) * Scale, down * Scale);
             ctx.ClosePath();
             ctx.SetSourceRGBA(1, 1, 1, 0.6);
             ctx.Fill();
@@ -196,9 +201,9 @@ namespace Vintagestory.API.Client
             ctx.Fill();
 
             ctx.NewPath();
-            ctx.LineTo(btnWidth - scaled(17) * Scale, scaled(10) * Scale);
-            ctx.LineTo(btnWidth - scaled(3) * Scale, scaled(10) * Scale);
-            ctx.LineTo(btnWidth - scaled(10) * Scale, scaled(20) * Scale);
+            ctx.LineTo(btnWidth - scaled(17) * Scale, up * Scale);
+            ctx.LineTo(btnWidth - scaled(3) * Scale, up * Scale);
+            ctx.LineTo(btnWidth - scaled(10) * Scale, down * Scale);
             ctx.ClosePath();
             ctx.SetSourceRGBA(1, 1, 1, 0.4);
             ctx.Fill();

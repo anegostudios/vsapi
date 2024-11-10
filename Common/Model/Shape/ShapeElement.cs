@@ -132,7 +132,7 @@ namespace Vintagestory.API.Common
         /// The id of the joint attached to the parent element.
         /// </summary>
         public int JointId;
-       
+
         /// <summary>
         /// For entity animations
         /// </summary>
@@ -261,7 +261,7 @@ namespace Vintagestory.API.Common
             ShapeElement elem = this;
             if (output == null) output = Mat4f.Create();
 
-            float[] origin = new float[] { 0f, 0f, 0f };
+            Span<float> origin = stackalloc float[] { 0f, 0f, 0f };
 
             if (elem.RotationOrigin != null)
             {
@@ -270,61 +270,87 @@ namespace Vintagestory.API.Common
                 origin[2] = (float)elem.RotationOrigin[2] / 16;
             }
 
-            Mat4f.Translate(output, output, origin);
-
-            // R= rotate, S=scale, T= translate
+            // R = rotate, S = scale, T = translate
             // Version 0: R * S * T
             // Version 1: T * S * R
 
-            if (animVersion > 0)
+            if (animVersion == 1)
             {
-                Mat4f.Translate(output, output, new float[] {
-                    (float)elem.From[0] / 16 + tf.translateX,
-                    (float)elem.From[1] / 16 + tf.translateY,
-                    (float)elem.From[2] / 16 + tf.translateZ
-                });
+                // ==================================================
+                // BASE ELEMENT TRANSLATE SCALE ROTATE
+                // ==================================================
+                Mat4f.Translate(output, output, origin[0], origin[1], origin[2]);
 
-                Mat4f.Scale(output, output, new float[] { (float)elem.ScaleX * tf.scaleX, (float)elem.ScaleY * tf.scaleY, (float)elem.ScaleZ * tf.scaleZ });
+                Mat4f.Scale(output, output, (float)elem.ScaleX, (float)elem.ScaleY, (float)elem.ScaleZ);
 
-                if (elem.RotationX + tf.degX + tf.degOffX != 0)
+                if (elem.RotationX != 0)
                 {
-                    Mat4f.RotateX(output, output, (float)(elem.RotationX + tf.degX + tf.degOffX) * GameMath.DEG2RAD);
+                    Mat4f.RotateX(output, output, (float)(elem.RotationX * GameMath.DEG2RAD));
                 }
-                if (elem.RotationY + tf.degY + tf.degOffY != 0)
+                if (elem.RotationY != 0)
                 {
-                    Mat4f.RotateY(output, output, (float)(elem.RotationY + tf.degY + tf.degOffY) * GameMath.DEG2RAD);
+                    Mat4f.RotateY(output, output, (float)(elem.RotationY * GameMath.DEG2RAD));
                 }
-                if (elem.RotationZ + tf.degZ + tf.degOffZ != 0)
+                if (elem.RotationZ != 0)
                 {
-                    Mat4f.RotateZ(output, output, (float)(elem.RotationZ + tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
-                }
-
-            } else 
-            {
-                if (elem.RotationX + tf.degX + tf.degOffX != 0)
-                {
-                    Mat4f.RotateX(output, output, (float)(elem.RotationX + tf.degX + tf.degOffX) * GameMath.DEG2RAD);
-                }
-                if (elem.RotationY + tf.degY + tf.degOffY != 0)
-                {
-                    Mat4f.RotateY(output, output, (float)(elem.RotationY + tf.degY + tf.degOffY) * GameMath.DEG2RAD);
-                }
-                if (elem.RotationZ + tf.degZ + tf.degOffZ != 0)
-                {
-                    Mat4f.RotateZ(output, output, (float)(elem.RotationZ + tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
+                    Mat4f.RotateZ(output, output, (float)(elem.RotationZ * GameMath.DEG2RAD));
                 }
 
-                Mat4f.Scale(output, output, new float[] { (float)elem.ScaleX * tf.scaleX, (float)elem.ScaleY * tf.scaleY, (float)elem.ScaleZ * tf.scaleZ });
+                // note: lumped together with next translation
+                // Mat4f.Translate(output, output, -originX, -originY, -originZ);
 
-                Mat4f.Translate(output, output, new float[] {
-                    (float)elem.From[0] / 16 + tf.translateX,
-                    (float)elem.From[1] / 16 + tf.translateY,
-                    (float)elem.From[2] / 16 + tf.translateZ
-                });
+                // ==================================================
+                // KEYFRAME TRANSLATE SCALE ROTATE
+                // ==================================================
+
+                Mat4f.Translate(output, output,
+                    -origin[0] + (float)elem.From[0] / 16 + tf.translateX,
+                    -origin[1] + (float)elem.From[1] / 16 + tf.translateY,
+                    -origin[2] + (float)elem.From[2] / 16 + tf.translateZ
+                );
+
+                Mat4f.Scale(output, output, tf.scaleX, tf.scaleY, tf.scaleZ);
+
+                if (tf.degX + tf.degOffX != 0)
+                {
+                    Mat4f.RotateX(output, output, (float)(tf.degX + tf.degOffX) * GameMath.DEG2RAD);
+                }
+                if (tf.degY + tf.degOffY != 0)
+                {
+                    Mat4f.RotateY(output, output, (float)(tf.degY + tf.degOffY) * GameMath.DEG2RAD);
+                }
+                if (tf.degZ + tf.degOffZ != 0)
+                {
+                    Mat4f.RotateZ(output, output, (float)(tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
+                }
             }
-            
+            else
+            {
+                Mat4f.Translate(output, output, origin[0], origin[1], origin[2]);
 
-            Mat4f.Translate(output, output, new float[] { -origin[0], -origin[1], -origin[2] });
+                if (elem.RotationX + tf.degX + tf.degOffX != 0)
+                {
+                    Mat4f.RotateX(output, output, (float)(elem.RotationX + tf.degX + tf.degOffX) * GameMath.DEG2RAD);
+                }
+                if (elem.RotationY + tf.degY + tf.degOffY != 0)
+                {
+                    Mat4f.RotateY(output, output, (float)(elem.RotationY + tf.degY + tf.degOffY) * GameMath.DEG2RAD);
+                }
+                if (elem.RotationZ + tf.degZ + tf.degOffZ != 0)
+                {
+                    Mat4f.RotateZ(output, output, (float)(elem.RotationZ + tf.degZ + tf.degOffZ) * GameMath.DEG2RAD);
+                }
+
+                Mat4f.Scale(output, output, (float)elem.ScaleX * tf.scaleX, (float)elem.ScaleY * tf.scaleY, (float)elem.ScaleZ * tf.scaleZ);
+
+                Mat4f.Translate(output, output,
+                    (float)elem.From[0] / 16 + tf.translateX,
+                    (float)elem.From[1] / 16 + tf.translateY,
+                    (float)elem.From[2] / 16 + tf.translateZ
+                );
+
+                Mat4f.Translate(output, output, -origin[0], -origin[1], -origin[2]);
+            }
 
             return output;
         }

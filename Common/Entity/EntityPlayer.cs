@@ -162,7 +162,7 @@ namespace Vintagestory.API.Common
             get
             {
                 IPlayer player = World.PlayerByUid(PlayerUID);
-                return player?.InventoryManager?.GetHotbarInventory()?[10];
+                return player?.InventoryManager?.GetHotbarInventory()?[11];
             }
         }
 
@@ -782,6 +782,7 @@ namespace Vintagestory.API.Common
             if (Api is ICoreClientAPI capi && capi.World.Player.PlayerUID != PlayerUID) return;
 
             ItemStack rightstack = RightHandItemSlot?.Itemstack;
+            if (RightHandItemSlot is ItemSlotSkill) rightstack = null;
 
             EnumHandInteract interact = servercontrols.HandUse;
 

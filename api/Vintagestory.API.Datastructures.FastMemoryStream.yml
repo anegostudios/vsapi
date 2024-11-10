@@ -285,11 +285,10 @@ items:
   summary: When overridden in a derived class, reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.
   example: []
   syntax:
-    content: public override int Read(byte[] buffer, int offset, int count)
+    content: public override int Read(byte[] destBuffer, int offset, int count)
     parameters:
-    - id: buffer
+    - id: destBuffer
       type: System.Byte[]
-      description: An array of bytes. When this method returns, the buffer contains the specified byte array with the values between <code class="paramref">offset</code> and (<code class="paramref">offset</code> + <code class="paramref">count</code> - 1) replaced by the bytes read from the current source.
     - id: offset
       type: System.Int32
       description: The zero-based byte offset in <code class="paramref">buffer</code> at which to begin storing the data read from the current stream.
@@ -299,7 +298,7 @@ items:
     return:
       type: System.Int32
       description: The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached.
-    content.vb: Public Overrides Function Read(buffer As Byte(), offset As Integer, count As Integer) As Integer
+    content.vb: Public Overrides Function Read(destBuffer As Byte(), offset As Integer, count As Integer) As Integer
   overridden: System.IO.Stream.Read(System.Byte[],System.Int32,System.Int32)
   overload: Vintagestory.API.Datastructures.FastMemoryStream.Read*
   exceptions:
@@ -416,18 +415,16 @@ items:
   summary: When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.
   example: []
   syntax:
-    content: public override void Write(byte[] buffer, int offset, int count)
+    content: public override void Write(byte[] srcBuffer, int srcOffset, int count)
     parameters:
-    - id: buffer
+    - id: srcBuffer
       type: System.Byte[]
-      description: An array of bytes. This method copies <code class="paramref">count</code> bytes from <code class="paramref">buffer</code> to the current stream.
-    - id: offset
+    - id: srcOffset
       type: System.Int32
-      description: The zero-based byte offset in <code class="paramref">buffer</code> at which to begin copying bytes to the current stream.
     - id: count
       type: System.Int32
       description: The number of bytes to be written to the current stream.
-    content.vb: Public Overrides Sub Write(buffer As Byte(), offset As Integer, count As Integer)
+    content.vb: Public Overrides Sub Write(srcBuffer As Byte(), srcOffset As Integer, count As Integer)
   overridden: System.IO.Stream.Write(System.Byte[],System.Int32,System.Int32)
   overload: Vintagestory.API.Datastructures.FastMemoryStream.Write*
   exceptions:
