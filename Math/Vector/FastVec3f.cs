@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Represents a vector of 3 floats. Go bug Tyron of you need more utility methods in this class.
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct FastVec3f
     {
         /// <summary>
@@ -231,7 +233,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public double DistanceSq(double x, double y, double z)
         {
-            return 
+            return
                 (X - x) * (X - x) +
                 (Y - y) * (Y - y) +
                 (Z - z) * (Z - z)
@@ -289,7 +291,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a new vectors that is the normalized version of this vector. 
+        /// Creates a new vectors that is the normalized version of this vector.
         /// </summary>
         /// <returns></returns>
         public FastVec3f NormalizedCopy()

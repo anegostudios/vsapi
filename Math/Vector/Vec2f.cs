@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using ProtoBuf;
 using System;
+using System.Runtime.InteropServices;
 
 namespace Vintagestory.API.MathTools
 {
@@ -27,6 +28,7 @@ namespace Vintagestory.API.MathTools
     [DocumentAsJson]
     [JsonObject(MemberSerialization.OptIn)]
     [ProtoContract]
+    [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public class Vec2f
     {
         public static readonly Vec2f Zero = new Vec2f(0, 0);
@@ -71,7 +73,7 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        
+
 
         public override string ToString()
         {

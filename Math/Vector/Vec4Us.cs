@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Represents a vector of 4 unsigned shorts. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 2)]
     public class Vec4us : IEquatable<Vec4us>
     {
         public ushort X;

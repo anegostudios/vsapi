@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Represents a vector of 3 doubles
     /// </summary>
+    [StructLayout(LayoutKind.Sequential, Pack = 8)]
     public struct FastVec3d
     {
         /// <summary>
@@ -255,7 +257,7 @@ namespace Vintagestory.API.MathTools
         /// <returns></returns>
         public double DistanceSq(double x, double y, double z)
         {
-            return 
+            return
                 (X - x) * (X - x) +
                 (Y - y) * (Y - y) +
                 (Z - z) * (Z - z)
@@ -313,7 +315,7 @@ namespace Vintagestory.API.MathTools
         }
 
         /// <summary>
-        /// Creates a new vectors that is the normalized version of this vector. 
+        /// Creates a new vectors that is the normalized version of this vector.
         /// </summary>
         /// <returns></returns>
         public FastVec3d NormalizedCopy()
