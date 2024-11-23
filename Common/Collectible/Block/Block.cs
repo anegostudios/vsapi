@@ -1937,15 +1937,25 @@ namespace Vintagestory.API.Common
             {
                 if (type == EnumRetentionType.Sound) return 10;
 
-                var mat = GetBlockMaterial(api.World.BlockAccessor, pos);
-                if (mat == EnumBlockMaterial.Ore || mat == EnumBlockMaterial.Stone || mat == EnumBlockMaterial.Soil || mat == EnumBlockMaterial.Ceramic)
-                {
-                    return -1;
-                }
-                return 1;
+                return Insulation(pos);
             }
 
             return 0;
+        }
+
+        /// <summary>
+        /// Return an integer for use in Heat Retention calculations.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public virtual int Insulation(BlockPos pos)
+        {
+            var mat = GetBlockMaterial(api.World.BlockAccessor, pos);
+            if (mat == EnumBlockMaterial.Ore || mat == EnumBlockMaterial.Stone || mat == EnumBlockMaterial.Soil || mat == EnumBlockMaterial.Ceramic)
+            {
+                return -1;
+            }
+            return 1;
         }
 
         public virtual bool IsClimbable(BlockPos pos)
