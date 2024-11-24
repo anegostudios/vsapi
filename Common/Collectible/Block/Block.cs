@@ -1496,7 +1496,17 @@ namespace Vintagestory.API.Common
         /// <param name="pos"></param>
         public virtual void OnEntityInside(IWorldAccessor world, Entity entity, BlockPos pos)
         {
+            bool preventDefault = false;
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
 
+                behavior.OnEntityInside(world, entity, pos);
+                if (handled == EnumHandling.PreventDefault) preventDefault = true;
+                if (handled == EnumHandling.PreventSubsequent) return;
+            }
+
+            if (preventDefault) return;
         }
 
 
@@ -1512,6 +1522,18 @@ namespace Vintagestory.API.Common
         /// <param name="isImpact"></param>
         public virtual void OnEntityCollide(IWorldAccessor world, Entity entity, BlockPos pos, BlockFacing facing, Vec3d collideSpeed, bool isImpact)
         {
+            bool preventDefault = false;
+            foreach (BlockBehavior behavior in BlockBehaviors)
+            {
+                EnumHandling handled = EnumHandling.PassThrough;
+
+                behavior.OnEntityCollide(world, entity, pos, facing, collideSpeed, isImpact)
+                if (handled == EnumHandling.PreventDefault) preventDefault = true;
+                if (handled == EnumHandling.PreventSubsequent) return;
+            }
+
+            if (preventDefault) return;
+
             if (entity.Properties.CanClimb == true && (IsClimbable(pos) || entity.Properties.CanClimbAnywhere) && facing.IsHorizontal && entity is EntityAgent)
             {
                 EntityAgent ea = entity as EntityAgent;
@@ -1937,15 +1959,25 @@ namespace Vintagestory.API.Common
             {
                 if (type == EnumRetentionType.Sound) return 10;
 
-                var mat = GetBlockMaterial(api.World.BlockAccessor, pos);
-                if (mat == EnumBlockMaterial.Ore || mat == EnumBlockMaterial.Stone || mat == EnumBlockMaterial.Soil || mat == EnumBlockMaterial.Ceramic)
-                {
-                    return -1;
-                }
-                return 1;
+                return Insulation(pos);
             }
 
             return 0;
+        }
+
+        /// <summary>
+        /// Return an integer for use in Heat Retention calculations.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public virtual int Insulation(BlockPos pos)
+        {
+            var mat = GetBlockMaterial(api.World.BlockAccessor, pos);
+            if (mat == EnumBlockMaterial.Ore || mat == EnumBlockMaterial.Stone || mat == EnumBlockMaterial.Soil || mat == EnumBlockMaterial.Ceramic)
+            {
+                return -1;
+            }
+            return 1;
         }
 
         public virtual bool IsClimbable(BlockPos pos)
