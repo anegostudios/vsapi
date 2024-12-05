@@ -6,6 +6,7 @@ items:
   parent: Vintagestory.API.Client
   children:
   - Vintagestory.API.Client.GuiElementRichtext.#ctor(Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.RichTextComponentBase[],Vintagestory.API.Client.ElementBounds)
+  - Vintagestory.API.Client.GuiElementRichtext.AppendText(Vintagestory.API.Client.RichTextComponentBase[])
   - Vintagestory.API.Client.GuiElementRichtext.AppendText(Vintagestory.API.Client.RichTextComponent[])
   - Vintagestory.API.Client.GuiElementRichtext.BeforeCalcBounds
   - Vintagestory.API.Client.GuiElementRichtext.CalcHeightAndPositions
@@ -698,15 +699,51 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Client
   syntax:
-    content: public void AppendText(RichTextComponent[] comps)
+    content: >-
+      [Obsolete("Use AppendText(RichTextComponentBase[] comps) instead")]
+
+      public void AppendText(RichTextComponent[] comps)
     parameters:
     - id: comps
       type: Vintagestory.API.Client.RichTextComponent[]
-    content.vb: Public Sub AppendText(comps As RichTextComponent())
+    content.vb: >-
+      <Obsolete("Use AppendText(RichTextComponentBase[] comps) instead")>
+
+      Public Sub AppendText(comps As RichTextComponent())
   overload: Vintagestory.API.Client.GuiElementRichtext.AppendText*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use AppendText(RichTextComponentBase[] comps) instead
   nameWithType.vb: GuiElementRichtext.AppendText(RichTextComponent())
   fullName.vb: Vintagestory.API.Client.GuiElementRichtext.AppendText(Vintagestory.API.Client.RichTextComponent())
   name.vb: AppendText(RichTextComponent())
+- uid: Vintagestory.API.Client.GuiElementRichtext.AppendText(Vintagestory.API.Client.RichTextComponentBase[])
+  commentId: M:Vintagestory.API.Client.GuiElementRichtext.AppendText(Vintagestory.API.Client.RichTextComponentBase[])
+  id: AppendText(Vintagestory.API.Client.RichTextComponentBase[])
+  parent: Vintagestory.API.Client.GuiElementRichtext
+  langs:
+  - csharp
+  - vb
+  name: AppendText(RichTextComponentBase[])
+  nameWithType: GuiElementRichtext.AppendText(RichTextComponentBase[])
+  fullName: Vintagestory.API.Client.GuiElementRichtext.AppendText(Vintagestory.API.Client.RichTextComponentBase[])
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public void AppendText(RichTextComponentBase[] comps)
+    parameters:
+    - id: comps
+      type: Vintagestory.API.Client.RichTextComponentBase[]
+    content.vb: Public Sub AppendText(comps As RichTextComponentBase())
+  overload: Vintagestory.API.Client.GuiElementRichtext.AppendText*
+  nameWithType.vb: GuiElementRichtext.AppendText(RichTextComponentBase())
+  fullName.vb: Vintagestory.API.Client.GuiElementRichtext.AppendText(Vintagestory.API.Client.RichTextComponentBase())
+  name.vb: AppendText(RichTextComponentBase())
 - uid: Vintagestory.API.Client.GuiElementRichtext.SetNewTextWithoutRecompose(System.String,Vintagestory.API.Client.CairoFont,System.Action{Vintagestory.API.Client.LinkTextComponent},System.Boolean)
   commentId: M:Vintagestory.API.Client.GuiElementRichtext.SetNewTextWithoutRecompose(System.String,Vintagestory.API.Client.CairoFont,System.Action{Vintagestory.API.Client.LinkTextComponent},System.Boolean)
   id: SetNewTextWithoutRecompose(System.String,Vintagestory.API.Client.CairoFont,System.Action{Vintagestory.API.Client.LinkTextComponent},System.Boolean)

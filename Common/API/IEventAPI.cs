@@ -71,13 +71,18 @@ namespace Vintagestory.API.Common
     public delegate bool MatchGridRecipeDelegate(IPlayer player, GridRecipe recipe, ItemSlot[] ingredients, int gridWidth);
 
 
-    public delegate EnumWorldAccessResponse TestBlockAccessDelegate(IPlayer player, BlockSelection blockSel, EnumBlockAccessFlags accessType, string claimant, EnumWorldAccessResponse response);
+    public delegate EnumWorldAccessResponse TestBlockAccessDelegate(IPlayer player, BlockSelection blockSel, EnumBlockAccessFlags accessType, ref string claimant, EnumWorldAccessResponse response);
 
     /// <summary>
     /// Events that are available on the server and the client
     /// </summary>
     public interface IEventAPI
     {
+        /// <summary>
+        /// Called when a player changed dimension
+        /// </summary>
+        event PlayerCommonDelegate PlayerDimensionChanged;
+
         /// <summary>
         /// Triggered when block access is tested, allows you to override the engine response
         /// </summary>
@@ -232,6 +237,8 @@ namespace Vintagestory.API.Common
         /// <param name="code">Task category identifier for the frame profiler</param>
         void EnqueueMainThreadTask(Action action, string code);
 
+
+        void TriggerPlayerDimensionChanged(IPlayer player);
         void TriggerEntityDeath(Entity entity, DamageSource damageSourceForDeath);
         bool TriggerMatchesRecipe(IPlayer forPlayer, GridRecipe gridRecipe, ItemSlot[] ingredients, int gridWidth);
     }

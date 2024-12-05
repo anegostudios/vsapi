@@ -303,6 +303,15 @@ namespace Vintagestory.API.Client
             return composer;
         }
 
+        public static GuiComposer AddIconButton(this GuiComposer composer, string icon, CairoFont font, Action<bool> onToggle, ElementBounds bounds, string key = null)
+        {
+            if (!composer.Composed)
+            {
+                composer.AddInteractiveElement(new GuiElementToggleButton(composer.Api, icon, "", font, onToggle, bounds, false), key);
+            }
+            return composer;
+        }
+
         /// <summary>
         /// Toggles the given button.
         /// </summary>

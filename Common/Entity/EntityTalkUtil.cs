@@ -196,7 +196,7 @@ namespace Vintagestory.API.Util
 
             if (lettersLeftToTalk > 0)
             {
-                chordDelay -= dt;
+                chordDelay -= dt * (IsMultiSoundVoice ? 0.6f : 1);
 
                 if (chordDelay < 0)
                 {
@@ -369,6 +369,8 @@ namespace Vintagestory.API.Util
             endPitch *= pitchModifier;
             startvolume *= volumneModifier;
             endvolumne *= volumneModifier;
+
+            
 
             var loc = GetSoundLocation(startPitch, out var pitchOffset);
 

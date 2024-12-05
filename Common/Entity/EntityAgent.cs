@@ -37,6 +37,12 @@ namespace Vintagestory.API.Common
         public override bool IsCreature { get { return true; } }
 
         /// <summary>
+        /// No swivel when we are mounted
+        /// </summary>
+        public override bool CanSwivel => base.CanSwivel && MountedOn==null;
+        public override bool CanStepPitch => base.CanStepPitch && MountedOn == null;
+
+        /// <summary>
         /// The yaw of the agents body
         /// </summary>
         public virtual float BodyYaw { get; set; }
@@ -67,7 +73,7 @@ namespace Vintagestory.API.Common
         protected bool alwaysRunIdle = false;
         public IMountableSeat MountedOn { get; protected set; }
         public EnumEntityActivity CurrentControls;
-        
+
 
         internal virtual bool LoadControlsFromServer
         {
@@ -175,7 +181,10 @@ namespace Vintagestory.API.Common
 
             if (MountedOn != null && MountedOn != onmount)
             {
+                var seat = MountedOn.MountSupplier.GetSeatOfMountedEntity(this);
+                seat.DoTeleportOnUnmount = false;
                 if (!TryUnmount()) return false;
+                seat.DoTeleportOnUnmount = true;
             }
 
             TreeAttribute mountableTree = new TreeAttribute();
@@ -238,8 +247,10 @@ namespace Vintagestory.API.Common
                 curMountedAnim = null;
             }
 
-            MountedOn?.DidUnmount(this);
-            this.MountedOn = null;
+            // allow the tryTeleportToFreeLocation to tp the unmounted entity and not the mount
+            var oldMountedOn = MountedOn;
+            MountedOn = null;
+            oldMountedOn?.DidUnmount(this);
 
             if (WatchedAttributes.HasAttribute("mountedOn"))
             {
@@ -300,12 +311,13 @@ namespace Vintagestory.API.Common
                 float damage = slot.Itemstack == null ? 0.5f : slot.Itemstack.Collectible.GetAttackPower(slot.Itemstack);
                 int damagetier = slot.Itemstack == null ? 0 : slot.Itemstack.Collectible.ToolTier;
 
-                damage *= byEntity.Stats.GetBlended("meleeWeaponsDamage");
-
+                var dmgMultiplier = byEntity.Stats.GetBlended("meleeWeaponsDamage");
                 if (Properties.Attributes?["isMechanical"].AsBool() == true)
                 {
-                    damage *= byEntity.Stats.GetBlended("mechanicalsDamage");
+                    dmgMultiplier *= byEntity.Stats.GetBlended("mechanicalsDamage");
                 }
+
+                damage *= dmgMultiplier;
 
                 IPlayer byPlayer = null;
 
@@ -361,6 +373,25 @@ namespace Vintagestory.API.Common
             }
         }
 
+        protected bool ignoreTeleportCall;
+        public override void TeleportToDouble(double x, double y, double z, Action onTeleported = null)
+        {
+            if (ignoreTeleportCall) return;
+            ignoreTeleportCall = true;
+            if (MountedOn != null)
+            {
+                if (MountedOn.Entity == null) TryUnmount();
+                else
+                {
+                    MountedOn.Entity.TeleportToDouble(x, y, z, onTeleported);
+                    ignoreTeleportCall = false;
+                    return;
+                }
+            }
+
+            base.TeleportToDouble(x, y, z, onTeleported);
+            ignoreTeleportCall = false;
+        }
 
         public virtual void DidAttack(DamageSource source, EntityAgent targetEntity)
         {
@@ -423,13 +454,15 @@ namespace Vintagestory.API.Common
 
         public enum EntityServerPacketId
         {
+            Teleport = 1,
             Revive = 196,
             Emote = 197,
             Death = 198,
             Hurt = 199,
             PlayPlayerAnim = 200,
             PlayMusic = 201,
-            StopMusic = 202
+            StopMusic = 202,
+            Talk = 203
         }
         public enum EntityClientPacketId
         {
@@ -441,7 +474,7 @@ namespace Vintagestory.API.Common
         public override void OnGameTick(float dt)
         {
             var nowSuggestedAnim = MountedOn?.SuggestedAnimation;
-            
+
             if (curMountedAnim?.Code != nowSuggestedAnim?.Code)
             {
                 AnimManager?.StopAnimation(curMountedAnim?.Code);
@@ -594,7 +627,7 @@ namespace Vintagestory.API.Common
 
             double width = SelectionBox.XSize * 0.75f;
 
-            SplashParticleProps.BasePos.Set(herepos.X - width / 2, herepos.Y + 0, herepos.Z - width / 2);
+            SplashParticleProps.BasePos.Set(herepos.X - width / 2, herepos.InternalY + 0, herepos.Z - width / 2);
             SplashParticleProps.AddPos.Set(width, 0.5, width);
 
             float mot = (float)herepos.Motion.Length();
@@ -608,7 +641,7 @@ namespace Vintagestory.API.Common
 
             FloatingSedimentParticles FloatingSedimentParticles = new FloatingSedimentParticles();
 
-            FloatingSedimentParticles.SedimentPos.Set((int)herepos.X, (int)herepos.Y - 1, (int)herepos.Z);//  = , herepos.XYZ.Add(0, 0.25, 0), 0.25f, 2
+            FloatingSedimentParticles.SedimentPos.Set((int)herepos.X, (int)herepos.InternalY - 1, (int)herepos.Z);//  = , herepos.XYZ.Add(0, 0.25, 0), 0.25f, 2
 
             var block = FloatingSedimentParticles.SedimentBlock = World.BlockAccessor.GetBlock(FloatingSedimentParticles.SedimentPos);
             if (insideBlock != null && (block.BlockMaterial == EnumBlockMaterial.Gravel || block.BlockMaterial == EnumBlockMaterial.Soil || block.BlockMaterial == EnumBlockMaterial.Sand))
@@ -650,7 +683,7 @@ namespace Vintagestory.API.Common
             int y1 = (int)(SidedPos.InternalY - 0.05f);
             int y2 = (int)(SidedPos.InternalY + 0.01f);
 
-            Block belowBlock = World.BlockAccessor.GetBlock((int)SidedPos.X, y1, (int)SidedPos.Z);
+            Block belowBlock = World.BlockAccessor.GetBlockRaw((int)SidedPos.X, y1, (int)SidedPos.Z);
 
             insidePos.Set((int)SidedPos.X, y2, (int)SidedPos.Z);
             insideBlock = World.BlockAccessor.GetBlock(insidePos);

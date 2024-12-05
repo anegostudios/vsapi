@@ -151,10 +151,16 @@ Class EntityAgent
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnInitialized">Entity.OnInitialized</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HurtColor">Entity.HurtColor</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_World">Entity.World</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_Api">Entity.Api</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_CanSwivelNow">Entity.CanSwivelNow</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_PhysicsUpdateWatcher">Entity.PhysicsUpdateWatcher</a>
@@ -328,6 +334,9 @@ Class EntityAgent
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_StoreWithChunk">Entity.StoreWithChunk</a>
     </div>
     <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_AllowOutsideLoadedRange">Entity.AllowOutsideLoadedRange</a>
+    </div>
+    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_AlwaysActive">Entity.AlwaysActive</a>
     </div>
     <div>
@@ -370,9 +379,6 @@ Class EntityAgent
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_GetDrops_Vintagestory_API_Common_IWorldAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_IPlayer_">Entity.GetDrops(IWorldAccessor, BlockPos, IPlayer)</a>
     </div>
     <div>
-      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportToDouble_System_Double_System_Double_System_Double_System_Action_">Entity.TeleportToDouble(double, double, double, Action)</a>
-    </div>
-    <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportTo_System_Int32_System_Int32_System_Int32_">Entity.TeleportTo(int, int, int)</a>
     </div>
     <div>
@@ -413,6 +419,9 @@ Class EntityAgent
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_">Entity.OnTesselation(ref Shape, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_System_Boolean__">Entity.OnTesselation(ref Shape, string, ref bool)</a>
     </div>
     <div>
       <a class="xref" href="Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselated">Entity.OnTesselated()</a>
@@ -834,6 +843,36 @@ Class EntityAgent
 
 
 
+  <h3 id="Vintagestory_API_Common_EntityAgent_ignoreTeleportCall" data-uid="Vintagestory.API.Common.EntityAgent.ignoreTeleportCall">
+  ignoreTeleportCall
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool ignoreTeleportCall</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_EntityAgent_insideBlock" data-uid="Vintagestory.API.Common.EntityAgent.insideBlock">
   insideBlock
   
@@ -1044,6 +1083,69 @@ Class EntityAgent
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityAgent_CanStepPitch_" data-uid="Vintagestory.API.Common.EntityAgent.CanStepPitch*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityAgent_CanStepPitch" data-uid="Vintagestory.API.Common.EntityAgent.CanStepPitch">
+  CanStepPitch
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool CanStepPitch { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityAgent_CanSwivel_" data-uid="Vintagestory.API.Common.EntityAgent.CanSwivel*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityAgent_CanSwivel" data-uid="Vintagestory.API.Common.EntityAgent.CanSwivel">
+  CanSwivel
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>No swivel when we are mounted</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool CanSwivel { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -1922,6 +2024,44 @@ Class EntityAgent
     <pre><code class="lang-csharp hljs">protected virtual void SpawnSnowStepParticles()</code></pre>
   </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_EntityAgent_TeleportToDouble_" data-uid="Vintagestory.API.Common.EntityAgent.TeleportToDouble*"></a>
+
+  <h3 id="Vintagestory_API_Common_EntityAgent_TeleportToDouble_System_Double_System_Double_System_Double_System_Action_" data-uid="Vintagestory.API.Common.EntityAgent.TeleportToDouble(System.Double,System.Double,System.Double,System.Action)">
+  TeleportToDouble(double, double, double, Action)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Teleports the entity to given position. Actual teleport is delayed until target chunk is loaded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void TeleportToDouble(double x, double y, double z, Action onTeleported = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+    <dt><code>onTeleported</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action">Action</a></dt>
+    <dd></dd>
+  </dl>
 
 
 

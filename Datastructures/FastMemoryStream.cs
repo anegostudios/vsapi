@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Runtime.CompilerServices;
 
 namespace Vintagestory.API.Datastructures;
 
@@ -8,7 +8,7 @@ public class FastMemoryStream : Stream
 {
     byte[] buffer;
     int bufferlength;
-    const int MaxLength = int.MaxValue - 3;  // DWord boundary
+    const int MaxLength = int.MaxValue - 31;  // DWord boundary even when divided by 8
 
     public FastMemoryStream()
     {
@@ -85,7 +85,7 @@ public class FastMemoryStream : Stream
 
 
         // Common small cases, very simple approach
-        if (count < 256)
+        if (count < 128)
         {
             var buffer = this.buffer;                 // local copy of the buffer reference for performance
             uint pos = (uint)this.Position;           // local copy of this for performance: avoids field lookups and we want an (uint) anyhow, as Array.Copy on a (long) offset is no better (would throw exceptions)
@@ -98,29 +98,32 @@ public class FastMemoryStream : Stream
         }
 
 
-        // Mid and large cases, we roll our own version of Array.Copy, with less overhead than Array.Copy itself
+        // Mid and large cases, Array.Copy is the fastest available
         else
         {
-            // Not worth building spans for the common small cases, but definitely worth it for medium-large counts
-            ReadOnlySpan<byte> inputBuffer = new ReadOnlySpan<byte>(srcBuffer, srcOffset, count);
-            Span<byte> streamBuffer = new Span<byte>(this.buffer, (int)this.Position, count);
-            inputBuffer.CopyTo(streamBuffer);   // Uses internal Buffer.MemMove which is apparently the most efficient available (Array.Copy uses the same internally)
-
-                    // Essentially equivalent to:  Array.Copy(srcBuffer, srcOffset, this.buffer, (int)this.Position, count);   // and note that Array.Copy with a (long) dest offset is no better, just throws exceptions if the offset exceeds int.MaxValue
+            Array.Copy(srcBuffer, srcOffset, this.buffer, (int)this.Position, count);   // and note that Array.Copy with a (long) dest offset is no better, just throws exceptions if the offset exceeds int.MaxValue
         }
 
 
         Position += count;
     }
 
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private void CheckCapacity(int count)
     {
         if (Position + count > bufferlength)
         {
-            if (Position + count > MaxLength) throw new IndexOutOfRangeException("FastMemoryStream limited to 2GB in size");
+            // Normal case, we will double the size of our buffer - but if it is already 1GB in size or more, increment by 250MB steps up to the 2GB MaxLength
+            // newSize cannot exceed MaxLength under either branch
+            int newSize = bufferlength <= MaxLength / 2 ? bufferlength * 2 : (Math.Min(bufferlength, MaxLength / 8 * 7) + MaxLength / 8);
 
-            int newSize = (int)Math.Min(Math.Max((long)bufferlength * 2, Position + count), MaxLength);
-            this.buffer = FastCopy(this.buffer, (int)Position, newSize);
+            if (Position + count > newSize)   // This condition is unlikely to be met, but if it is met then we need to test for overflow and anyhow increase the newSize
+            {
+                if (Position + count > MaxLength) throw new IndexOutOfRangeException("FastMemoryStream limited to 2GB in size");
+                newSize = (int)Position + count;
+            }
+
+            buffer = FastCopy(buffer, (int)Position, newSize);
             bufferlength = newSize;
         }
     }
@@ -140,18 +143,24 @@ public class FastMemoryStream : Stream
         buffer[Position++] = p;
     }
 
+    public override void Write(ReadOnlySpan<byte> inputBuffer)
+    {
+        CheckCapacity(inputBuffer.Length);
+
+        Span<byte> streamBuffer = new Span<byte>(this.buffer, (int)this.Position, inputBuffer.Length);
+        inputBuffer.CopyTo(streamBuffer);   // Uses internal Buffer.MemMove which is similar to what Array.Copy uses internally
+
+        Position += inputBuffer.Length;
+    }
+
     private static byte[] FastCopy(byte[] buffer, int oldLength, int newSize)
     {
         if (newSize < oldLength) oldLength = newSize;    // If this condition is met, we are making a partial copy of the old buffer, up to newSize only - for example on ToArray() method
 
         byte[] bufferCopy = new byte[newSize];
-        if (oldLength > 256)
+        if (oldLength >= 128)
         {
-            // Equivalent to Array.Copy(buffer, 0, buffer2, 0, oldLength);
-
-            ReadOnlySpan<byte> oldBuffer = new ReadOnlySpan<byte>(buffer, 0, oldLength);
-            Span<byte> newBuffer = new Span<byte>(bufferCopy, 0, oldLength);
-            oldBuffer.CopyTo(newBuffer);
+            Array.Copy(buffer, 0, bufferCopy, 0, oldLength);
         }
         else
         {
@@ -179,7 +188,7 @@ public class FastMemoryStream : Stream
 
     public override void Flush()
     {
-        
+
     }
 
     public void Reset()

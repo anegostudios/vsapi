@@ -13,6 +13,7 @@ items:
   - Vintagestory.API.Client.CompositeTexture.Alternates
   - Vintagestory.API.Client.CompositeTexture.AnyWildCardNoFiles
   - Vintagestory.API.Client.CompositeTexture.Bake(Vintagestory.API.Common.IAssetManager)
+  - Vintagestory.API.Client.CompositeTexture.Bake(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.CompositeTexture)
   - Vintagestory.API.Client.CompositeTexture.Baked
   - Vintagestory.API.Client.CompositeTexture.Base
   - Vintagestory.API.Client.CompositeTexture.BlendedOverlays
@@ -27,6 +28,7 @@ items:
   - Vintagestory.API.Client.CompositeTexture.Tiles
   - Vintagestory.API.Client.CompositeTexture.TilesWidth
   - Vintagestory.API.Client.CompositeTexture.ToString
+  - Vintagestory.API.Client.CompositeTexture.ToString(System.Text.StringBuilder)
   - Vintagestory.API.Client.CompositeTexture.WildCardNoFiles
   - Vintagestory.API.Client.CompositeTexture.basicTexturesCache
   - Vintagestory.API.Client.CompositeTexture.wildcardsCache
@@ -629,6 +631,36 @@ items:
       description: The atlas to insert the baked texture.
     content.vb: Public Sub RuntimeBake(capi As ICoreClientAPI, intoAtlas As ITextureAtlasAPI)
   overload: Vintagestory.API.Client.CompositeTexture.RuntimeBake*
+- uid: Vintagestory.API.Client.CompositeTexture.Bake(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.CompositeTexture)
+  commentId: M:Vintagestory.API.Client.CompositeTexture.Bake(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.CompositeTexture)
+  id: Bake(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.CompositeTexture)
+  parent: Vintagestory.API.Client.CompositeTexture
+  langs:
+  - csharp
+  - vb
+  name: Bake(IAssetManager, CompositeTexture)
+  nameWithType: CompositeTexture.Bake(IAssetManager, CompositeTexture)
+  fullName: Vintagestory.API.Client.CompositeTexture.Bake(Vintagestory.API.Common.IAssetManager, Vintagestory.API.Client.CompositeTexture)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Expands a CompositeTexture to a texture atlas friendly version and populates the Baked field
+  example: []
+  syntax:
+    content: public static BakedCompositeTexture Bake(IAssetManager assetManager, CompositeTexture ct)
+    parameters:
+    - id: assetManager
+      type: Vintagestory.API.Common.IAssetManager
+      description: ''
+    - id: ct
+      type: Vintagestory.API.Client.CompositeTexture
+      description: ''
+    return:
+      type: Vintagestory.API.Client.BakedCompositeTexture
+      description: ''
+    content.vb: Public Shared Function Bake(assetManager As IAssetManager, ct As CompositeTexture) As BakedCompositeTexture
+  overload: Vintagestory.API.Client.CompositeTexture.Bake*
 - uid: Vintagestory.API.Client.CompositeTexture.ToString
   commentId: M:Vintagestory.API.Client.CompositeTexture.ToString
   id: ToString
@@ -652,6 +684,27 @@ items:
       description: A string that represents the current object.
     content.vb: Public Overrides Function ToString() As String
   overridden: System.Object.ToString
+  overload: Vintagestory.API.Client.CompositeTexture.ToString*
+- uid: Vintagestory.API.Client.CompositeTexture.ToString(System.Text.StringBuilder)
+  commentId: M:Vintagestory.API.Client.CompositeTexture.ToString(System.Text.StringBuilder)
+  id: ToString(System.Text.StringBuilder)
+  parent: Vintagestory.API.Client.CompositeTexture
+  langs:
+  - csharp
+  - vb
+  name: ToString(StringBuilder)
+  nameWithType: CompositeTexture.ToString(StringBuilder)
+  fullName: Vintagestory.API.Client.CompositeTexture.ToString(System.Text.StringBuilder)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public void ToString(StringBuilder sb)
+    parameters:
+    - id: sb
+      type: System.Text.StringBuilder
+    content.vb: Public Sub ToString(sb As StringBuilder)
   overload: Vintagestory.API.Client.CompositeTexture.ToString*
 - uid: Vintagestory.API.Client.CompositeTexture.FillPlaceholder(System.String,System.String)
   commentId: M:Vintagestory.API.Client.CompositeTexture.FillPlaceholder(System.String,System.String)
@@ -1525,6 +1578,41 @@ references:
   name: ToString
   nameWithType: CompositeTexture.ToString
   fullName: Vintagestory.API.Client.CompositeTexture.ToString
+- uid: System.Text.StringBuilder
+  commentId: T:System.Text.StringBuilder
+  parent: System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
+  name: StringBuilder
+  nameWithType: StringBuilder
+  fullName: System.Text.StringBuilder
+- uid: System.Text
+  commentId: N:System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text
+  nameWithType: System.Text
+  fullName: System.Text
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
 - uid: Vintagestory.API.Client.CompositeTexture.FillPlaceholder*
   commentId: Overload:Vintagestory.API.Client.CompositeTexture.FillPlaceholder
   href: Vintagestory.API.Client.CompositeTexture.html#Vintagestory_API_Client_CompositeTexture_FillPlaceholder_System_String_System_String_

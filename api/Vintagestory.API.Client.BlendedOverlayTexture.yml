@@ -8,6 +8,8 @@ items:
   - Vintagestory.API.Client.BlendedOverlayTexture.Base
   - Vintagestory.API.Client.BlendedOverlayTexture.BlendMode
   - Vintagestory.API.Client.BlendedOverlayTexture.Clone
+  - Vintagestory.API.Client.BlendedOverlayTexture.ToString
+  - Vintagestory.API.Client.BlendedOverlayTexture.ToString(System.Text.StringBuilder)
   langs:
   - csharp
   - vb
@@ -32,7 +34,6 @@ items:
   - System.Object.GetType
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
-  - System.Object.ToString
   extensionMethods:
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
@@ -104,6 +105,51 @@ items:
       type: Vintagestory.API.Client.BlendedOverlayTexture
     content.vb: Public Function Clone() As BlendedOverlayTexture
   overload: Vintagestory.API.Client.BlendedOverlayTexture.Clone*
+- uid: Vintagestory.API.Client.BlendedOverlayTexture.ToString
+  commentId: M:Vintagestory.API.Client.BlendedOverlayTexture.ToString
+  id: ToString
+  parent: Vintagestory.API.Client.BlendedOverlayTexture
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: BlendedOverlayTexture.ToString()
+  fullName: Vintagestory.API.Client.BlendedOverlayTexture.ToString()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: Returns a string that represents the current object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string that represents the current object.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: Vintagestory.API.Client.BlendedOverlayTexture.ToString*
+- uid: Vintagestory.API.Client.BlendedOverlayTexture.ToString(System.Text.StringBuilder)
+  commentId: M:Vintagestory.API.Client.BlendedOverlayTexture.ToString(System.Text.StringBuilder)
+  id: ToString(System.Text.StringBuilder)
+  parent: Vintagestory.API.Client.BlendedOverlayTexture
+  langs:
+  - csharp
+  - vb
+  name: ToString(StringBuilder)
+  nameWithType: BlendedOverlayTexture.ToString(StringBuilder)
+  fullName: Vintagestory.API.Client.BlendedOverlayTexture.ToString(System.Text.StringBuilder)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public void ToString(StringBuilder sb)
+    parameters:
+    - id: sb
+      type: System.Text.StringBuilder
+    content.vb: Public Sub ToString(sb As StringBuilder)
+  overload: Vintagestory.API.Client.BlendedOverlayTexture.ToString*
 references:
 - uid: Vintagestory.API.Client
   commentId: N:Vintagestory.API.Client
@@ -340,30 +386,6 @@ references:
     name: Object
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
-  - name: )
-- uid: System.Object.ToString
-  commentId: M:System.Object.ToString
-  parent: System.Object
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
-  name: ToString()
-  nameWithType: object.ToString()
-  fullName: object.ToString()
-  nameWithType.vb: Object.ToString()
-  fullName.vb: Object.ToString()
-  spec.csharp:
-  - uid: System.Object.ToString
-    name: ToString
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
-  - name: (
-  - name: )
-  spec.vb:
-  - uid: System.Object.ToString
-    name: ToString
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
-  - name: (
   - name: )
 - uid: System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
@@ -618,3 +640,79 @@ references:
   name: BlendedOverlayTexture
   nameWithType: BlendedOverlayTexture
   fullName: Vintagestory.API.Client.BlendedOverlayTexture
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Vintagestory.API.Client.BlendedOverlayTexture.ToString*
+  commentId: Overload:Vintagestory.API.Client.BlendedOverlayTexture.ToString
+  href: Vintagestory.API.Client.BlendedOverlayTexture.html#Vintagestory_API_Client_BlendedOverlayTexture_ToString
+  name: ToString
+  nameWithType: BlendedOverlayTexture.ToString
+  fullName: Vintagestory.API.Client.BlendedOverlayTexture.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Text.StringBuilder
+  commentId: T:System.Text.StringBuilder
+  parent: System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.stringbuilder
+  name: StringBuilder
+  nameWithType: StringBuilder
+  fullName: System.Text.StringBuilder
+- uid: System.Text
+  commentId: N:System.Text
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Text
+  nameWithType: System.Text
+  fullName: System.Text
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Text
+    name: Text
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.text

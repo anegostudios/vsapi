@@ -335,7 +335,7 @@ namespace Vintagestory.API.Common
                         if (range != null && e.Pos.DistanceTo(sourcePos) > range) continue;
                         if (type != null && !WildcardUtil.Match(type, e.Code)) continue;
                         if (alive != null && e.Alive != alive) continue;
-                        if (name != null && !WildcardUtil.Match(name, e.GetBehavior<EntityBehaviorNameTag>()?.DisplayName)) continue;
+                        if (name != null && !WildcardUtil.Match(name, e.GetName())) continue;
 
                         if (nearestEntity == null) nearestEntity = e;
                         else
@@ -767,7 +767,7 @@ namespace Vintagestory.API.Common
             if (classstr != null && classstr != e.Class.ToLowerInvariant()) return false;
             if (type != null && !WildcardUtil.Match(type, e.Code)) return false;
             if (alive != null && e.Alive != alive) return false;
-            if (name != null && !WildcardUtil.Match(name, e.GetBehavior<EntityBehaviorNameTag>()?.DisplayName)) return false;
+            if (name != null && !WildcardUtil.Match(name, e.GetName())) return false;
 
             return true;
         }

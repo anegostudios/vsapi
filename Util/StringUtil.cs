@@ -267,6 +267,33 @@ namespace Vintagestory.API.Util
             return true;
         }
 
+        /// <summary>
+        /// A fast case-insensitive string comparison for "ordinal" culture i.e. plain ASCII comparison used for internal strings such as asset paths 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="reference"></param>
+        /// <returns></returns>
+        public static bool EqualsFastIgnoreCase(this string value, string reference)
+        {
+            if (reference.Length != value.Length) return false;
+
+            char a, b;
+            // search from the right end of the reference string, as the right end is more likely to be unique
+            for (int i = reference.Length - 1; i >= 0; i--)
+            {
+                if ((a = value[i]) != (b = reference[i]))
+                {
+                    if ((a & 0xFFDF) == (b & 0xFFDF))   // Rough "toUppercase()" comparison
+                    {
+                        if ((a & 0xFFDF) >= 'A' && (a & 0xFFDF) <= 'Z') continue;  // Precise "toUppercase()" comparison
+                    }
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public static bool FastStartsWith(string value, string reference, int len)
         {
             if (len > reference.Length) throw new ArgumentException("reference must be longer than len");

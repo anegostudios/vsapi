@@ -29,6 +29,7 @@ items:
   - Vintagestory.API.Client.GuiComposerHelpers.AddHoverText(Vintagestory.API.Client.GuiComposer,System.String,Vintagestory.API.Client.CairoFont,System.Int32,Vintagestory.API.Client.ElementBounds,System.String)
   - Vintagestory.API.Client.GuiComposerHelpers.AddHoverText(Vintagestory.API.Client.GuiComposer,System.String,Vintagestory.API.Client.CairoFont,System.Int32,Vintagestory.API.Client.ElementBounds,Vintagestory.API.Client.TextBackground,System.String)
   - Vintagestory.API.Client.GuiComposerHelpers.AddIconButton(Vintagestory.API.Client.GuiComposer,System.String,System.Action{System.Boolean},Vintagestory.API.Client.ElementBounds,System.String)
+  - Vintagestory.API.Client.GuiComposerHelpers.AddIconButton(Vintagestory.API.Client.GuiComposer,System.String,Vintagestory.API.Client.CairoFont,System.Action{System.Boolean},Vintagestory.API.Client.ElementBounds,System.String)
   - Vintagestory.API.Client.GuiComposerHelpers.AddIconListPicker(Vintagestory.API.Client.GuiComposer,System.String[],System.Action{System.Int32},Vintagestory.API.Client.ElementBounds,System.Int32,System.String)
   - Vintagestory.API.Client.GuiComposerHelpers.AddIconToggleButtons(Vintagestory.API.Client.GuiComposer,System.String[],Vintagestory.API.Client.CairoFont,System.Action{System.Int32},Vintagestory.API.Client.ElementBounds[],System.String)
   - Vintagestory.API.Client.GuiComposerHelpers.AddInvStatbar(Vintagestory.API.Client.GuiComposer,Vintagestory.API.Client.ElementBounds,System.Double[],System.String)
@@ -1405,6 +1406,43 @@ items:
   nameWithType.vb: GuiComposerHelpers.AddIconButton(GuiComposer, String, Action(Of Boolean), ElementBounds, String)
   fullName.vb: Vintagestory.API.Client.GuiComposerHelpers.AddIconButton(Vintagestory.API.Client.GuiComposer, String, System.Action(Of Boolean), Vintagestory.API.Client.ElementBounds, String)
   name.vb: AddIconButton(GuiComposer, String, Action(Of Boolean), ElementBounds, String)
+- uid: Vintagestory.API.Client.GuiComposerHelpers.AddIconButton(Vintagestory.API.Client.GuiComposer,System.String,Vintagestory.API.Client.CairoFont,System.Action{System.Boolean},Vintagestory.API.Client.ElementBounds,System.String)
+  commentId: M:Vintagestory.API.Client.GuiComposerHelpers.AddIconButton(Vintagestory.API.Client.GuiComposer,System.String,Vintagestory.API.Client.CairoFont,System.Action{System.Boolean},Vintagestory.API.Client.ElementBounds,System.String)
+  id: AddIconButton(Vintagestory.API.Client.GuiComposer,System.String,Vintagestory.API.Client.CairoFont,System.Action{System.Boolean},Vintagestory.API.Client.ElementBounds,System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Client.GuiComposerHelpers
+  langs:
+  - csharp
+  - vb
+  name: AddIconButton(GuiComposer, string, CairoFont, Action<bool>, ElementBounds, string)
+  nameWithType: GuiComposerHelpers.AddIconButton(GuiComposer, string, CairoFont, Action<bool>, ElementBounds, string)
+  fullName: Vintagestory.API.Client.GuiComposerHelpers.AddIconButton(Vintagestory.API.Client.GuiComposer, string, Vintagestory.API.Client.CairoFont, System.Action<bool>, Vintagestory.API.Client.ElementBounds, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: public static GuiComposer AddIconButton(this GuiComposer composer, string icon, CairoFont font, Action<bool> onToggle, ElementBounds bounds, string key = null)
+    parameters:
+    - id: composer
+      type: Vintagestory.API.Client.GuiComposer
+    - id: icon
+      type: System.String
+    - id: font
+      type: Vintagestory.API.Client.CairoFont
+    - id: onToggle
+      type: System.Action{System.Boolean}
+    - id: bounds
+      type: Vintagestory.API.Client.ElementBounds
+    - id: key
+      type: System.String
+    return:
+      type: Vintagestory.API.Client.GuiComposer
+    content.vb: Public Shared Function AddIconButton(composer As GuiComposer, icon As String, font As CairoFont, onToggle As Action(Of Boolean), bounds As ElementBounds, key As String = Nothing) As GuiComposer
+  overload: Vintagestory.API.Client.GuiComposerHelpers.AddIconButton*
+  nameWithType.vb: GuiComposerHelpers.AddIconButton(GuiComposer, String, CairoFont, Action(Of Boolean), ElementBounds, String)
+  fullName.vb: Vintagestory.API.Client.GuiComposerHelpers.AddIconButton(Vintagestory.API.Client.GuiComposer, String, Vintagestory.API.Client.CairoFont, System.Action(Of Boolean), Vintagestory.API.Client.ElementBounds, String)
+  name.vb: AddIconButton(GuiComposer, String, CairoFont, Action(Of Boolean), ElementBounds, String)
 - uid: Vintagestory.API.Client.GuiComposerHelpers.ToggleButtonsSetValue(Vintagestory.API.Client.GuiComposer,System.String,System.Int32)
   commentId: M:Vintagestory.API.Client.GuiComposerHelpers.ToggleButtonsSetValue(Vintagestory.API.Client.GuiComposer,System.String,System.Int32)
   id: ToggleButtonsSetValue(Vintagestory.API.Client.GuiComposer,System.String,System.Int32)

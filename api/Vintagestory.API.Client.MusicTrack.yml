@@ -10,6 +10,7 @@ items:
   - Vintagestory.API.Client.MusicTrack.ContinuePlay(System.Single,Vintagestory.API.Common.Entities.TrackedPlayerProperties)
   - Vintagestory.API.Client.MusicTrack.FadeOut(System.Single,System.Action)
   - Vintagestory.API.Client.MusicTrack.FastForward(System.Single)
+  - Vintagestory.API.Client.MusicTrack.ForceActive
   - Vintagestory.API.Client.MusicTrack.Initialize(Vintagestory.API.Common.IAssetManager,Vintagestory.API.Client.ICoreClientAPI,Vintagestory.API.Client.IMusicEngine)
   - Vintagestory.API.Client.MusicTrack.IsActive
   - Vintagestory.API.Client.MusicTrack.Location
@@ -208,6 +209,27 @@ items:
   overload: Vintagestory.API.Client.MusicTrack.Name*
   implements:
   - Vintagestory.API.Client.IMusicTrack.Name
+- uid: Vintagestory.API.Client.MusicTrack.ForceActive
+  commentId: F:Vintagestory.API.Client.MusicTrack.ForceActive
+  id: ForceActive
+  parent: Vintagestory.API.Client.MusicTrack
+  langs:
+  - csharp
+  - vb
+  name: ForceActive
+  nameWithType: MusicTrack.ForceActive
+  fullName: Vintagestory.API.Client.MusicTrack.ForceActive
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  summary: If true, the music is considered active/playing until set to false and so no other track will play
+  example: []
+  syntax:
+    content: public bool ForceActive
+    return:
+      type: System.Boolean
+    content.vb: Public ForceActive As Boolean
 - uid: Vintagestory.API.Client.MusicTrack.Stop
   commentId: M:Vintagestory.API.Client.MusicTrack.Stop
   id: Stop

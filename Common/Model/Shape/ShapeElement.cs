@@ -159,6 +159,18 @@ namespace Vintagestory.API.Common
             return path;
         }
 
+        public int CountParents()
+        {
+            int count = 0;
+            ShapeElement parentElem = this.ParentElement;
+            while (parentElem != null)
+            {
+                count++;
+                parentElem = parentElem.ParentElement;
+            }
+            return count;
+        }
+
         public void CacheInverseTransformMatrix()
         {
             if (inverseModelTransform == null)

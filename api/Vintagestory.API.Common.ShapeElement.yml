@@ -12,6 +12,7 @@ items:
   - Vintagestory.API.Common.ShapeElement.ClimateColorMap
   - Vintagestory.API.Common.ShapeElement.Clone
   - Vintagestory.API.Common.ShapeElement.Color
+  - Vintagestory.API.Common.ShapeElement.CountParents
   - Vintagestory.API.Common.ShapeElement.DamageEffect
   - Vintagestory.API.Common.ShapeElement.DisableRandomDrawOffset
   - Vintagestory.API.Common.ShapeElement.Faces
@@ -913,6 +914,26 @@ items:
       description: ''
     content.vb: Public Function GetParentPath() As List(Of ShapeElement)
   overload: Vintagestory.API.Common.ShapeElement.GetParentPath*
+- uid: Vintagestory.API.Common.ShapeElement.CountParents
+  commentId: M:Vintagestory.API.Common.ShapeElement.CountParents
+  id: CountParents
+  parent: Vintagestory.API.Common.ShapeElement
+  langs:
+  - csharp
+  - vb
+  name: CountParents()
+  nameWithType: ShapeElement.CountParents()
+  fullName: Vintagestory.API.Common.ShapeElement.CountParents()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public int CountParents()
+    return:
+      type: System.Int32
+    content.vb: Public Function CountParents() As Integer
+  overload: Vintagestory.API.Common.ShapeElement.CountParents*
 - uid: Vintagestory.API.Common.ShapeElement.CacheInverseTransformMatrix
   commentId: M:Vintagestory.API.Common.ShapeElement.CacheInverseTransformMatrix
   id: CacheInverseTransformMatrix
@@ -1869,6 +1890,12 @@ references:
   - name: " "
   - name: T
   - name: )
+- uid: Vintagestory.API.Common.ShapeElement.CountParents*
+  commentId: Overload:Vintagestory.API.Common.ShapeElement.CountParents
+  href: Vintagestory.API.Common.ShapeElement.html#Vintagestory_API_Common_ShapeElement_CountParents
+  name: CountParents
+  nameWithType: ShapeElement.CountParents
+  fullName: Vintagestory.API.Common.ShapeElement.CountParents
 - uid: Vintagestory.API.Common.ShapeElement.CacheInverseTransformMatrix*
   commentId: Overload:Vintagestory.API.Common.ShapeElement.CacheInverseTransformMatrix
   href: Vintagestory.API.Common.ShapeElement.html#Vintagestory_API_Common_ShapeElement_CacheInverseTransformMatrix

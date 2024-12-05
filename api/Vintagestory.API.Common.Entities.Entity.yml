@@ -12,6 +12,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.AfterInitialized(System.Boolean)
   - Vintagestory.API.Common.Entities.Entity.AirBubbleParticleProps
   - Vintagestory.API.Common.Entities.Entity.Alive
+  - Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange
   - Vintagestory.API.Common.Entities.Entity.AlwaysActive
   - Vintagestory.API.Common.Entities.Entity.AnimManager
   - Vintagestory.API.Common.Entities.Entity.Api
@@ -19,6 +20,9 @@ items:
   - Vintagestory.API.Common.Entities.Entity.ApplyGravity
   - Vintagestory.API.Common.Entities.Entity.Attributes
   - Vintagestory.API.Common.Entities.Entity.CanCollect(Vintagestory.API.Common.Entities.Entity)
+  - Vintagestory.API.Common.Entities.Entity.CanStepPitch
+  - Vintagestory.API.Common.Entities.Entity.CanSwivel
+  - Vintagestory.API.Common.Entities.Entity.CanSwivelNow
   - Vintagestory.API.Common.Entities.Entity.ClimbingIntoFace
   - Vintagestory.API.Common.Entities.Entity.ClimbingOnCollBox
   - Vintagestory.API.Common.Entities.Entity.ClimbingOnFace
@@ -51,6 +55,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.GetTouchDistance
   - Vintagestory.API.Common.Entities.Entity.HasBehavior(System.String)
   - Vintagestory.API.Common.Entities.Entity.HasBehavior``1
+  - Vintagestory.API.Common.Entities.Entity.HurtColor
   - Vintagestory.API.Common.Entities.Entity.IdleSoundChanceModifier
   - Vintagestory.API.Common.Entities.Entity.Ignite
   - Vintagestory.API.Common.Entities.Entity.InChunkIndex3d
@@ -96,6 +101,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.OnStoreCollectibleMappings(System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation},System.Collections.Generic.Dictionary{System.Int32,Vintagestory.API.Common.AssetLocation})
   - Vintagestory.API.Common.Entities.Entity.OnTesselated
   - Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String)
+  - Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@)
   - Vintagestory.API.Common.Entities.Entity.OriginCollisionBox
   - Vintagestory.API.Common.Entities.Entity.OriginSelectionBox
   - Vintagestory.API.Common.Entities.Entity.PhysicsUpdateWatcher
@@ -348,6 +354,27 @@ items:
     return:
       type: System.Action
     content.vb: Public Event OnInitialized As Action
+- uid: Vintagestory.API.Common.Entities.Entity.HurtColor
+  commentId: F:Vintagestory.API.Common.Entities.Entity.HurtColor
+  id: HurtColor
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: HurtColor
+  nameWithType: Entity.HurtColor
+  fullName: Vintagestory.API.Common.Entities.Entity.HurtColor
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  summary: Color used when the entity is being attacked
+  example: []
+  syntax:
+    content: protected int HurtColor
+    return:
+      type: System.Int32
+    content.vb: Protected HurtColor As Integer
 - uid: Vintagestory.API.Common.Entities.Entity.World
   commentId: F:Vintagestory.API.Common.Entities.Entity.World
   id: World
@@ -418,6 +445,69 @@ items:
       type: System.Boolean
     content.vb: Public Overridable ReadOnly Property IsCreature As Boolean
   overload: Vintagestory.API.Common.Entities.Entity.IsCreature*
+- uid: Vintagestory.API.Common.Entities.Entity.CanStepPitch
+  commentId: P:Vintagestory.API.Common.Entities.Entity.CanStepPitch
+  id: CanStepPitch
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: CanStepPitch
+  nameWithType: Entity.CanStepPitch
+  fullName: Vintagestory.API.Common.Entities.Entity.CanStepPitch
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual bool CanStepPitch { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overridable ReadOnly Property CanStepPitch As Boolean
+  overload: Vintagestory.API.Common.Entities.Entity.CanStepPitch*
+- uid: Vintagestory.API.Common.Entities.Entity.CanSwivel
+  commentId: P:Vintagestory.API.Common.Entities.Entity.CanSwivel
+  id: CanSwivel
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: CanSwivel
+  nameWithType: Entity.CanSwivel
+  fullName: Vintagestory.API.Common.Entities.Entity.CanSwivel
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual bool CanSwivel { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overridable ReadOnly Property CanSwivel As Boolean
+  overload: Vintagestory.API.Common.Entities.Entity.CanSwivel*
+- uid: Vintagestory.API.Common.Entities.Entity.CanSwivelNow
+  commentId: P:Vintagestory.API.Common.Entities.Entity.CanSwivelNow
+  id: CanSwivelNow
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: CanSwivelNow
+  nameWithType: Entity.CanSwivelNow
+  fullName: Vintagestory.API.Common.Entities.Entity.CanSwivelNow
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual bool CanSwivelNow { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overridable ReadOnly Property CanSwivelNow As Boolean
+  overload: Vintagestory.API.Common.Entities.Entity.CanSwivelNow*
 - uid: Vintagestory.API.Common.Entities.Entity.PhysicsUpdateWatcher
   commentId: F:Vintagestory.API.Common.Entities.Entity.PhysicsUpdateWatcher
   id: PhysicsUpdateWatcher
@@ -1644,6 +1734,27 @@ items:
       type: System.Boolean
     content.vb: Public Overridable ReadOnly Property StoreWithChunk As Boolean
   overload: Vintagestory.API.Common.Entities.Entity.StoreWithChunk*
+- uid: Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange
+  commentId: P:Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange
+  id: AllowOutsideLoadedRange
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: AllowOutsideLoadedRange
+  nameWithType: Entity.AllowOutsideLoadedRange
+  fullName: Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: public virtual bool AllowOutsideLoadedRange { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overridable ReadOnly Property AllowOutsideLoadedRange As Boolean
+  overload: Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange*
 - uid: Vintagestory.API.Common.Entities.Entity.AlwaysActive
   commentId: P:Vintagestory.API.Common.Entities.Entity.AlwaysActive
   id: AlwaysActive
@@ -2519,6 +2630,34 @@ items:
   nameWithType.vb: Entity.OnTesselation(Shape, String)
   fullName.vb: Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape, String)
   name.vb: OnTesselation(Shape, String)
+- uid: Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@)
+  commentId: M:Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@)
+  id: OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@)
+  parent: Vintagestory.API.Common.Entities.Entity
+  langs:
+  - csharp
+  - vb
+  name: OnTesselation(ref Shape, string, ref bool)
+  nameWithType: Entity.OnTesselation(ref Shape, string, ref bool)
+  fullName: Vintagestory.API.Common.Entities.Entity.OnTesselation(ref Vintagestory.API.Common.Shape, string, ref bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common.Entities
+  syntax:
+    content: protected virtual void OnTesselation(ref Shape entityShape, string shapePathForLogging, ref bool shapeIsCloned)
+    parameters:
+    - id: entityShape
+      type: Vintagestory.API.Common.Shape
+    - id: shapePathForLogging
+      type: System.String
+    - id: shapeIsCloned
+      type: System.Boolean
+    content.vb: Protected Overridable Sub OnTesselation(entityShape As Shape, shapePathForLogging As String, shapeIsCloned As Boolean)
+  overload: Vintagestory.API.Common.Entities.Entity.OnTesselation*
+  nameWithType.vb: Entity.OnTesselation(Shape, String, Boolean)
+  fullName.vb: Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape, String, Boolean)
+  name.vb: OnTesselation(Shape, String, Boolean)
 - uid: Vintagestory.API.Common.Entities.Entity.OnTesselated
   commentId: M:Vintagestory.API.Common.Entities.Entity.OnTesselated
   id: OnTesselated
@@ -5217,6 +5356,17 @@ references:
   name: Action
   nameWithType: Action
   fullName: System.Action
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: Vintagestory.API.Common.IWorldAccessor
   commentId: T:Vintagestory.API.Common.IWorldAccessor
   parent: Vintagestory.API.Common
@@ -5248,6 +5398,24 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: Vintagestory.API.Common.Entities.Entity.CanStepPitch*
+  commentId: Overload:Vintagestory.API.Common.Entities.Entity.CanStepPitch
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_CanStepPitch
+  name: CanStepPitch
+  nameWithType: Entity.CanStepPitch
+  fullName: Vintagestory.API.Common.Entities.Entity.CanStepPitch
+- uid: Vintagestory.API.Common.Entities.Entity.CanSwivel*
+  commentId: Overload:Vintagestory.API.Common.Entities.Entity.CanSwivel
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_CanSwivel
+  name: CanSwivel
+  nameWithType: Entity.CanSwivel
+  fullName: Vintagestory.API.Common.Entities.Entity.CanSwivel
+- uid: Vintagestory.API.Common.Entities.Entity.CanSwivelNow*
+  commentId: Overload:Vintagestory.API.Common.Entities.Entity.CanSwivelNow
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_CanSwivelNow
+  name: CanSwivelNow
+  nameWithType: Entity.CanSwivelNow
+  fullName: Vintagestory.API.Common.Entities.Entity.CanSwivelNow
 - uid: Vintagestory.API.Common.Entities.PhysicsTickDelegate
   commentId: T:Vintagestory.API.Common.Entities.PhysicsTickDelegate
   parent: Vintagestory.API.Common.Entities
@@ -5425,17 +5593,6 @@ references:
   name: State
   nameWithType: Entity.State
   fullName: Vintagestory.API.Common.Entities.Entity.State
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
 - uid: Vintagestory.API.Common.Entities.Entity
   commentId: T:Vintagestory.API.Common.Entities.Entity
   parent: Vintagestory.API.Common.Entities
@@ -5656,6 +5813,12 @@ references:
   name: StoreWithChunk
   nameWithType: Entity.StoreWithChunk
   fullName: Vintagestory.API.Common.Entities.Entity.StoreWithChunk
+- uid: Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange*
+  commentId: Overload:Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_AllowOutsideLoadedRange
+  name: AllowOutsideLoadedRange
+  nameWithType: Entity.AllowOutsideLoadedRange
+  fullName: Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange
 - uid: Vintagestory.API.Common.Entities.Entity.AlwaysActive*
   commentId: Overload:Vintagestory.API.Common.Entities.Entity.AlwaysActive
   href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_AlwaysActive

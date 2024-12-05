@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Vintagestory.API.Client;
@@ -1142,6 +1143,26 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual BlockDropItemStack[] GetDropsForHandbook(ItemStack handbookStack, IPlayer forPlayer)
         {
+            if (Drops != null)
+            {
+                IEnumerable<BlockDropItemStack> drops = Array.Empty<BlockDropItemStack>();
+
+                foreach (BlockDropItemStack drop in Drops)
+                {
+                    if (drop.ResolvedItemstack.Collectible is IResolvableCollectible resolvable)
+                    {
+                        BlockDropItemStack[] resolvableStacks = resolvable.GetDropsForHandbook(handbookStack, forPlayer);
+
+                        drops = drops.Concat(resolvableStacks);
+                    }
+                    else
+                    {
+                        drops = drops.Append(drop);
+                    }
+                }
+                return drops.ToArray();
+            }
+
             return Drops;
         }
 
@@ -1739,12 +1760,6 @@ namespace Vintagestory.API.Common
             }
         }
 
-        public virtual int OnInstancedTesselation(int light, BlockPos pos, Block[] chunkExtBlocks, int extIndex3d, out int sideDisableWindwave)
-        {
-            sideDisableWindwave = 0;
-            return 0;
-        }
-
 
         /// <summary>
         /// Used as base position for particles.
@@ -2226,7 +2241,7 @@ namespace Vintagestory.API.Common
             }
             sb.AppendLine(string.Join("\r\n", decorLangLines.Distinct()));
 
-            if (RequiredMiningTier > 0)
+            if (RequiredMiningTier > 0 && api.World.Claims.TestAccess(forPlayer, pos, EnumBlockAccessFlags.BuildOrBreak) == EnumWorldAccessResponse.Granted)
             {
                 AddMiningTierInfo(sb);
             }
@@ -2350,6 +2365,15 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual double GetBlastResistance(IWorldAccessor world, BlockPos pos, Vec3f blastDirectionVector, EnumBlastType blastType)
         {
+            // A rock blast should also destroy ores
+            if (blastType == EnumBlastType.RockBlast)
+            {
+                return Math.Min(
+                    BlockMaterialUtil.MaterialBlastResistance(EnumBlastType.RockBlast, GetBlockMaterial(world.BlockAccessor, pos)),
+                    BlockMaterialUtil.MaterialBlastResistance(EnumBlastType.OreBlast, GetBlockMaterial(world.BlockAccessor, pos))
+                );
+            }
+
             return BlockMaterialUtil.MaterialBlastResistance(blastType, GetBlockMaterial(world.BlockAccessor, pos));
         }
 

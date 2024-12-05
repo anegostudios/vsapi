@@ -8,8 +8,10 @@ items:
   - Vintagestory.Datastructures.NaturalShape.#ctor(Vintagestory.API.MathTools.IRandom)
   - Vintagestory.Datastructures.NaturalShape.GetBySide(Vintagestory.Datastructures.ShapeCell,System.Int32)
   - Vintagestory.Datastructures.NaturalShape.GetOpenSides(Vintagestory.API.MathTools.Vec2i)
+  - Vintagestory.Datastructures.NaturalShape.GetPositions
   - Vintagestory.Datastructures.NaturalShape.GetPositions(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.Datastructures.NaturalShape.Grow(System.Int32)
+  - Vintagestory.Datastructures.NaturalShape.InitSquare(System.Int32,System.Int32)
   langs:
   - csharp
   - vb
@@ -60,6 +62,32 @@ items:
   nameWithType.vb: NaturalShape.New(IRandom)
   fullName.vb: Vintagestory.Datastructures.NaturalShape.New(Vintagestory.API.MathTools.IRandom)
   name.vb: New(IRandom)
+- uid: Vintagestory.Datastructures.NaturalShape.InitSquare(System.Int32,System.Int32)
+  commentId: M:Vintagestory.Datastructures.NaturalShape.InitSquare(System.Int32,System.Int32)
+  id: InitSquare(System.Int32,System.Int32)
+  parent: Vintagestory.Datastructures.NaturalShape
+  langs:
+  - csharp
+  - vb
+  name: InitSquare(int, int)
+  nameWithType: NaturalShape.InitSquare(int, int)
+  fullName: Vintagestory.Datastructures.NaturalShape.InitSquare(int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.Datastructures
+  syntax:
+    content: public void InitSquare(int sizeX, int sizeZ)
+    parameters:
+    - id: sizeX
+      type: System.Int32
+    - id: sizeZ
+      type: System.Int32
+    content.vb: Public Sub InitSquare(sizeX As Integer, sizeZ As Integer)
+  overload: Vintagestory.Datastructures.NaturalShape.InitSquare*
+  nameWithType.vb: NaturalShape.InitSquare(Integer, Integer)
+  fullName.vb: Vintagestory.Datastructures.NaturalShape.InitSquare(Integer, Integer)
+  name.vb: InitSquare(Integer, Integer)
 - uid: Vintagestory.Datastructures.NaturalShape.GetOpenSides(Vintagestory.API.MathTools.Vec2i)
   commentId: M:Vintagestory.Datastructures.NaturalShape.GetOpenSides(Vintagestory.API.MathTools.Vec2i)
   id: GetOpenSides(Vintagestory.API.MathTools.Vec2i)
@@ -157,6 +185,26 @@ items:
     return:
       type: System.Collections.Generic.List{Vintagestory.API.MathTools.BlockPos}
     content.vb: Public Function GetPositions(start As BlockPos) As List(Of BlockPos)
+  overload: Vintagestory.Datastructures.NaturalShape.GetPositions*
+- uid: Vintagestory.Datastructures.NaturalShape.GetPositions
+  commentId: M:Vintagestory.Datastructures.NaturalShape.GetPositions
+  id: GetPositions
+  parent: Vintagestory.Datastructures.NaturalShape
+  langs:
+  - csharp
+  - vb
+  name: GetPositions()
+  nameWithType: NaturalShape.GetPositions()
+  fullName: Vintagestory.Datastructures.NaturalShape.GetPositions()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.Datastructures
+  syntax:
+    content: public List<Vec2i> GetPositions()
+    return:
+      type: System.Collections.Generic.List{Vintagestory.API.MathTools.Vec2i}
+    content.vb: Public Function GetPositions() As List(Of Vec2i)
   overload: Vintagestory.Datastructures.NaturalShape.GetPositions*
 references:
 - uid: Vintagestory.Datastructures
@@ -623,6 +671,23 @@ references:
   - uid: Vintagestory.API.MathTools
     name: MathTools
     href: Vintagestory.API.MathTools.html
+- uid: Vintagestory.Datastructures.NaturalShape.InitSquare*
+  commentId: Overload:Vintagestory.Datastructures.NaturalShape.InitSquare
+  href: Vintagestory.Datastructures.NaturalShape.html#Vintagestory_Datastructures_NaturalShape_InitSquare_System_Int32_System_Int32_
+  name: InitSquare
+  nameWithType: NaturalShape.InitSquare
+  fullName: Vintagestory.Datastructures.NaturalShape.InitSquare
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
 - uid: Vintagestory.Datastructures.NaturalShape.GetOpenSides*
   commentId: Overload:Vintagestory.Datastructures.NaturalShape.GetOpenSides
   href: Vintagestory.Datastructures.NaturalShape.html#Vintagestory_Datastructures_NaturalShape_GetOpenSides_Vintagestory_API_MathTools_Vec2i_
@@ -672,17 +737,6 @@ references:
   name: ShapeCell
   nameWithType: ShapeCell
   fullName: Vintagestory.Datastructures.ShapeCell
-- uid: System.Int32
-  commentId: T:System.Int32
-  parent: System
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.int32
-  name: int
-  nameWithType: int
-  fullName: int
-  nameWithType.vb: Integer
-  fullName.vb: Integer
-  name.vb: Integer
 - uid: Vintagestory.Datastructures.NaturalShape.Grow*
   commentId: Overload:Vintagestory.Datastructures.NaturalShape.Grow
   href: Vintagestory.Datastructures.NaturalShape.html#Vintagestory_Datastructures_NaturalShape_Grow_System_Int32_
@@ -800,3 +854,36 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.List{Vintagestory.API.MathTools.Vec2i}
+  commentId: T:System.Collections.Generic.List{Vintagestory.API.MathTools.Vec2i}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Vec2i>
+  nameWithType: List<Vec2i>
+  fullName: System.Collections.Generic.List<Vintagestory.API.MathTools.Vec2i>
+  nameWithType.vb: List(Of Vec2i)
+  fullName.vb: System.Collections.Generic.List(Of Vintagestory.API.MathTools.Vec2i)
+  name.vb: List(Of Vec2i)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Vintagestory.API.MathTools.Vec2i
+    name: Vec2i
+    href: Vintagestory.API.MathTools.Vec2i.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Vintagestory.API.MathTools.Vec2i
+    name: Vec2i
+    href: Vintagestory.API.MathTools.Vec2i.html
+  - name: )

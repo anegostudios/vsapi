@@ -11,6 +11,7 @@ items:
   - Vintagestory.API.Util.StringUtil.CountChars(System.String,System.Char)
   - Vintagestory.API.Util.StringUtil.EndsWithOrdinal(System.String,System.String)
   - Vintagestory.API.Util.StringUtil.EqualsFast(System.String,System.String)
+  - Vintagestory.API.Util.StringUtil.EqualsFastIgnoreCase(System.String,System.String)
   - Vintagestory.API.Util.StringUtil.FastStartsWith(System.String,System.String,System.Int32)
   - Vintagestory.API.Util.StringUtil.GetNonRandomizedHashCode(System.String)
   - Vintagestory.API.Util.StringUtil.IndexOfOrdinal(System.String,System.String)
@@ -676,6 +677,40 @@ items:
   nameWithType.vb: StringUtil.EqualsFast(String, String)
   fullName.vb: Vintagestory.API.Util.StringUtil.EqualsFast(String, String)
   name.vb: EqualsFast(String, String)
+- uid: Vintagestory.API.Util.StringUtil.EqualsFastIgnoreCase(System.String,System.String)
+  commentId: M:Vintagestory.API.Util.StringUtil.EqualsFastIgnoreCase(System.String,System.String)
+  id: EqualsFastIgnoreCase(System.String,System.String)
+  isExtensionMethod: true
+  parent: Vintagestory.API.Util.StringUtil
+  langs:
+  - csharp
+  - vb
+  name: EqualsFastIgnoreCase(string, string)
+  nameWithType: StringUtil.EqualsFastIgnoreCase(string, string)
+  fullName: Vintagestory.API.Util.StringUtil.EqualsFastIgnoreCase(string, string)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Util
+  summary: A fast case-insensitive string comparison for "ordinal" culture i.e. plain ASCII comparison used for internal strings such as asset paths
+  example: []
+  syntax:
+    content: public static bool EqualsFastIgnoreCase(this string value, string reference)
+    parameters:
+    - id: value
+      type: System.String
+      description: ''
+    - id: reference
+      type: System.String
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Public Shared Function EqualsFastIgnoreCase(value As String, reference As String) As Boolean
+  overload: Vintagestory.API.Util.StringUtil.EqualsFastIgnoreCase*
+  nameWithType.vb: StringUtil.EqualsFastIgnoreCase(String, String)
+  fullName.vb: Vintagestory.API.Util.StringUtil.EqualsFastIgnoreCase(String, String)
+  name.vb: EqualsFastIgnoreCase(String, String)
 - uid: Vintagestory.API.Util.StringUtil.FastStartsWith(System.String,System.String,System.Int32)
   commentId: M:Vintagestory.API.Util.StringUtil.FastStartsWith(System.String,System.String,System.Int32)
   id: FastStartsWith(System.String,System.String,System.Int32)
@@ -1264,6 +1299,12 @@ references:
   name: EqualsFast
   nameWithType: StringUtil.EqualsFast
   fullName: Vintagestory.API.Util.StringUtil.EqualsFast
+- uid: Vintagestory.API.Util.StringUtil.EqualsFastIgnoreCase*
+  commentId: Overload:Vintagestory.API.Util.StringUtil.EqualsFastIgnoreCase
+  href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_EqualsFastIgnoreCase_System_String_System_String_
+  name: EqualsFastIgnoreCase
+  nameWithType: StringUtil.EqualsFastIgnoreCase
+  fullName: Vintagestory.API.Util.StringUtil.EqualsFastIgnoreCase
 - uid: Vintagestory.API.Util.StringUtil.FastStartsWith*
   commentId: Overload:Vintagestory.API.Util.StringUtil.FastStartsWith
   href: Vintagestory.API.Util.StringUtil.html#Vintagestory_API_Util_StringUtil_FastStartsWith_System_String_System_String_System_Int32_

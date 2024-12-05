@@ -5,7 +5,9 @@ items:
   id: SourceStringComponents
   parent: Vintagestory.API.Common
   children:
+  - Vintagestory.API.Common.SourceStringComponents.#ctor(System.String,System.Object[])
   - Vintagestory.API.Common.SourceStringComponents.#ctor(System.String,System.String,System.String,System.Int32)
+  - Vintagestory.API.Common.SourceStringComponents.#ctor(System.String,Vintagestory.API.Common.AssetLocation,System.Int32)
   - Vintagestory.API.Common.SourceStringComponents.ToString
   langs:
   - csharp
@@ -63,6 +65,60 @@ items:
   nameWithType.vb: SourceStringComponents.New(String, String, String, Integer)
   fullName.vb: Vintagestory.API.Common.SourceStringComponents.New(String, String, String, Integer)
   name.vb: New(String, String, String, Integer)
+- uid: Vintagestory.API.Common.SourceStringComponents.#ctor(System.String,Vintagestory.API.Common.AssetLocation,System.Int32)
+  commentId: M:Vintagestory.API.Common.SourceStringComponents.#ctor(System.String,Vintagestory.API.Common.AssetLocation,System.Int32)
+  id: '#ctor(System.String,Vintagestory.API.Common.AssetLocation,System.Int32)'
+  parent: Vintagestory.API.Common.SourceStringComponents
+  langs:
+  - csharp
+  - vb
+  name: SourceStringComponents(string, AssetLocation, int)
+  nameWithType: SourceStringComponents.SourceStringComponents(string, AssetLocation, int)
+  fullName: Vintagestory.API.Common.SourceStringComponents.SourceStringComponents(string, Vintagestory.API.Common.AssetLocation, int)
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public SourceStringComponents(string message, AssetLocation source, int sourceAlt = -1)
+    parameters:
+    - id: message
+      type: System.String
+    - id: source
+      type: Vintagestory.API.Common.AssetLocation
+    - id: sourceAlt
+      type: System.Int32
+    content.vb: Public Sub New(message As String, source As AssetLocation, sourceAlt As Integer = -1)
+  overload: Vintagestory.API.Common.SourceStringComponents.#ctor*
+  nameWithType.vb: SourceStringComponents.New(String, AssetLocation, Integer)
+  fullName.vb: Vintagestory.API.Common.SourceStringComponents.New(String, Vintagestory.API.Common.AssetLocation, Integer)
+  name.vb: New(String, AssetLocation, Integer)
+- uid: Vintagestory.API.Common.SourceStringComponents.#ctor(System.String,System.Object[])
+  commentId: M:Vintagestory.API.Common.SourceStringComponents.#ctor(System.String,System.Object[])
+  id: '#ctor(System.String,System.Object[])'
+  parent: Vintagestory.API.Common.SourceStringComponents
+  langs:
+  - csharp
+  - vb
+  name: SourceStringComponents(string, params object[])
+  nameWithType: SourceStringComponents.SourceStringComponents(string, params object[])
+  fullName: Vintagestory.API.Common.SourceStringComponents.SourceStringComponents(string, params object[])
+  type: Constructor
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: public SourceStringComponents(string formattedString, params object[] arguments)
+    parameters:
+    - id: formattedString
+      type: System.String
+    - id: arguments
+      type: System.Object[]
+    content.vb: Public Sub New(formattedString As String, ParamArray arguments As Object())
+  overload: Vintagestory.API.Common.SourceStringComponents.#ctor*
+  nameWithType.vb: SourceStringComponents.New(String, ParamArray Object())
+  fullName.vb: Vintagestory.API.Common.SourceStringComponents.New(String, ParamArray Object())
+  name.vb: New(String, ParamArray Object())
 - uid: Vintagestory.API.Common.SourceStringComponents.ToString
   commentId: M:Vintagestory.API.Common.SourceStringComponents.ToString
   id: ToString
@@ -503,6 +559,36 @@ references:
   nameWithType.vb: Integer
   fullName.vb: Integer
   name.vb: Integer
+- uid: Vintagestory.API.Common.AssetLocation
+  commentId: T:Vintagestory.API.Common.AssetLocation
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.AssetLocation.html
+  name: AssetLocation
+  nameWithType: AssetLocation
+  fullName: Vintagestory.API.Common.AssetLocation
+- uid: System.Object[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object[]
+  nameWithType: object[]
+  fullName: object[]
+  nameWithType.vb: Object()
+  fullName.vb: Object()
+  name.vb: Object()
+  spec.csharp:
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: (
+  - name: )
 - uid: System.ValueType.ToString
   commentId: M:System.ValueType.ToString
   parent: System.ValueType

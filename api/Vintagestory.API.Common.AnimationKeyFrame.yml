@@ -8,6 +8,7 @@ items:
   - Vintagestory.API.Common.AnimationKeyFrame.Clone
   - Vintagestory.API.Common.AnimationKeyFrame.Elements
   - Vintagestory.API.Common.AnimationKeyFrame.Frame
+  - Vintagestory.API.Common.AnimationKeyFrame.Resolve(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
   - Vintagestory.API.Common.AnimationKeyFrame.Resolve(Vintagestory.API.Common.ShapeElement[])
   langs:
   - csharp
@@ -126,16 +127,55 @@ items:
   summary: Resolves the keyframe animation for which elements are important.
   example: []
   syntax:
-    content: public void Resolve(ShapeElement[] allElements)
+    content: >-
+      [Obsolete("Use the overload taking a Dictionary argument instead for higher performance on large sets")]
+
+      public void Resolve(ShapeElement[] allElements)
     parameters:
     - id: allElements
       type: Vintagestory.API.Common.ShapeElement[]
       description: ''
-    content.vb: Public Sub Resolve(allElements As ShapeElement())
+    content.vb: >-
+      <Obsolete("Use the overload taking a Dictionary argument instead for higher performance on large sets")>
+
+      Public Sub Resolve(allElements As ShapeElement())
   overload: Vintagestory.API.Common.AnimationKeyFrame.Resolve*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Use the overload taking a Dictionary argument instead for higher performance on large sets
   nameWithType.vb: AnimationKeyFrame.Resolve(ShapeElement())
   fullName.vb: Vintagestory.API.Common.AnimationKeyFrame.Resolve(Vintagestory.API.Common.ShapeElement())
   name.vb: Resolve(ShapeElement())
+- uid: Vintagestory.API.Common.AnimationKeyFrame.Resolve(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
+  commentId: M:Vintagestory.API.Common.AnimationKeyFrame.Resolve(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
+  id: Resolve(System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
+  parent: Vintagestory.API.Common.AnimationKeyFrame
+  langs:
+  - csharp
+  - vb
+  name: Resolve(Dictionary<string, ShapeElement>)
+  nameWithType: AnimationKeyFrame.Resolve(Dictionary<string, ShapeElement>)
+  fullName: Vintagestory.API.Common.AnimationKeyFrame.Resolve(System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.ShapeElement>)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Resolves the keyframe animation for which elements are important.
+  example: []
+  syntax:
+    content: public void Resolve(Dictionary<string, ShapeElement> allElements)
+    parameters:
+    - id: allElements
+      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement}
+      description: ''
+    content.vb: Public Sub Resolve(allElements As Dictionary(Of String, ShapeElement))
+  overload: Vintagestory.API.Common.AnimationKeyFrame.Resolve*
+  nameWithType.vb: AnimationKeyFrame.Resolve(Dictionary(Of String, ShapeElement))
+  fullName.vb: Vintagestory.API.Common.AnimationKeyFrame.Resolve(System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.ShapeElement))
+  name.vb: Resolve(Dictionary(Of String, ShapeElement))
 - uid: Vintagestory.API.Common.AnimationKeyFrame.Clone
   commentId: M:Vintagestory.API.Common.AnimationKeyFrame.Clone
   id: Clone
@@ -736,6 +776,51 @@ references:
     name: ShapeElement
     href: Vintagestory.API.Common.ShapeElement.html
   - name: (
+  - name: )
+- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, ShapeElement>
+  nameWithType: Dictionary<string, ShapeElement>
+  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.ShapeElement>
+  nameWithType.vb: Dictionary(Of String, ShapeElement)
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.ShapeElement)
+  name.vb: Dictionary(Of String, ShapeElement)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ShapeElement
+    name: ShapeElement
+    href: Vintagestory.API.Common.ShapeElement.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.Common.ShapeElement
+    name: ShapeElement
+    href: Vintagestory.API.Common.ShapeElement.html
   - name: )
 - uid: Vintagestory.API.Common.AnimationKeyFrame.Clone*
   commentId: Overload:Vintagestory.API.Common.AnimationKeyFrame.Clone

@@ -28,8 +28,14 @@ items:
   summary: Represents a vector of 4 ints. Go bug Tyron if you need more utility methods in this class.
   example: []
   syntax:
-    content: 'public class Vec4i : IEquatable<Vec4i>'
-    content.vb: Public Class Vec4i Implements IEquatable(Of Vec4i)
+    content: >-
+      [ProtoContract]
+
+      public class Vec4i : IEquatable<Vec4i>
+    content.vb: >-
+      <ProtoContract>
+
+      Public Class Vec4i Implements IEquatable(Of Vec4i)
   inheritance:
   - System.Object
   derivedClasses:
@@ -46,6 +52,10 @@ items:
   extensionMethods:
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  attributes:
+  - type: ProtoBuf.ProtoContractAttribute
+    ctor: ProtoBuf.ProtoContractAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.MathTools.Vec4i.X
   commentId: F:Vintagestory.API.MathTools.Vec4i.X
   id: X
@@ -61,10 +71,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
   syntax:
-    content: public int X
+    content: >-
+      [ProtoMember(1)]
+
+      public int X
     return:
       type: System.Int32
-    content.vb: Public X As Integer
+    content.vb: >-
+      <ProtoMember(1)>
+
+      Public X As Integer
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 1
 - uid: Vintagestory.API.MathTools.Vec4i.Y
   commentId: F:Vintagestory.API.MathTools.Vec4i.Y
   id: Y
@@ -80,10 +102,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
   syntax:
-    content: public int Y
+    content: >-
+      [ProtoMember(2)]
+
+      public int Y
     return:
       type: System.Int32
-    content.vb: Public Y As Integer
+    content.vb: >-
+      <ProtoMember(2)>
+
+      Public Y As Integer
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 2
 - uid: Vintagestory.API.MathTools.Vec4i.Z
   commentId: F:Vintagestory.API.MathTools.Vec4i.Z
   id: Z
@@ -99,10 +133,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
   syntax:
-    content: public int Z
+    content: >-
+      [ProtoMember(3)]
+
+      public int Z
     return:
       type: System.Int32
-    content.vb: Public Z As Integer
+    content.vb: >-
+      <ProtoMember(3)>
+
+      Public Z As Integer
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 3
 - uid: Vintagestory.API.MathTools.Vec4i.W
   commentId: F:Vintagestory.API.MathTools.Vec4i.W
   id: W
@@ -118,10 +164,22 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
   syntax:
-    content: public int W
+    content: >-
+      [ProtoMember(4)]
+
+      public int W
     return:
       type: System.Int32
-    content.vb: Public W As Integer
+    content.vb: >-
+      <ProtoMember(4)>
+
+      Public W As Integer
+  attributes:
+  - type: ProtoBuf.ProtoMemberAttribute
+    ctor: ProtoBuf.ProtoMemberAttribute.#ctor(System.Int32)
+    arguments:
+    - type: System.Int32
+      value: 4
 - uid: Vintagestory.API.MathTools.Vec4i.#ctor
   commentId: M:Vintagestory.API.MathTools.Vec4i.#ctor
   id: '#ctor'

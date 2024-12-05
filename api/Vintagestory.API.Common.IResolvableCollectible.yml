@@ -5,6 +5,7 @@ items:
   id: IResolvableCollectible
   parent: Vintagestory.API.Common
   children:
+  - Vintagestory.API.Common.IResolvableCollectible.GetDropsForHandbook(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.IPlayer)
   - Vintagestory.API.Common.IResolvableCollectible.Resolve(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.IWorldAccessor,System.Boolean)
   langs:
   - csharp
@@ -52,6 +53,31 @@ items:
   nameWithType.vb: IResolvableCollectible.Resolve(ItemSlot, IWorldAccessor, Boolean)
   fullName.vb: Vintagestory.API.Common.IResolvableCollectible.Resolve(Vintagestory.API.Common.ItemSlot, Vintagestory.API.Common.IWorldAccessor, Boolean)
   name.vb: Resolve(ItemSlot, IWorldAccessor, Boolean)
+- uid: Vintagestory.API.Common.IResolvableCollectible.GetDropsForHandbook(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.IResolvableCollectible.GetDropsForHandbook(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.IPlayer)
+  id: GetDropsForHandbook(Vintagestory.API.Common.ItemStack,Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.IResolvableCollectible
+  langs:
+  - csharp
+  - vb
+  name: GetDropsForHandbook(ItemStack, IPlayer)
+  nameWithType: IResolvableCollectible.GetDropsForHandbook(ItemStack, IPlayer)
+  fullName: Vintagestory.API.Common.IResolvableCollectible.GetDropsForHandbook(Vintagestory.API.Common.ItemStack, Vintagestory.API.Common.IPlayer)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: BlockDropItemStack[] GetDropsForHandbook(ItemStack handbookStack, IPlayer forPlayer)
+    parameters:
+    - id: handbookStack
+      type: Vintagestory.API.Common.ItemStack
+    - id: forPlayer
+      type: Vintagestory.API.Common.IPlayer
+    return:
+      type: Vintagestory.API.Common.BlockDropItemStack[]
+    content.vb: Function GetDropsForHandbook(handbookStack As ItemStack, forPlayer As IPlayer) As BlockDropItemStack()
+  overload: Vintagestory.API.Common.IResolvableCollectible.GetDropsForHandbook*
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -280,3 +306,44 @@ references:
   name: System
   nameWithType: System
   fullName: System
+- uid: Vintagestory.API.Common.IResolvableCollectible.GetDropsForHandbook*
+  commentId: Overload:Vintagestory.API.Common.IResolvableCollectible.GetDropsForHandbook
+  href: Vintagestory.API.Common.IResolvableCollectible.html#Vintagestory_API_Common_IResolvableCollectible_GetDropsForHandbook_Vintagestory_API_Common_ItemStack_Vintagestory_API_Common_IPlayer_
+  name: GetDropsForHandbook
+  nameWithType: IResolvableCollectible.GetDropsForHandbook
+  fullName: Vintagestory.API.Common.IResolvableCollectible.GetDropsForHandbook
+- uid: Vintagestory.API.Common.ItemStack
+  commentId: T:Vintagestory.API.Common.ItemStack
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.ItemStack.html
+  name: ItemStack
+  nameWithType: ItemStack
+  fullName: Vintagestory.API.Common.ItemStack
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
+- uid: Vintagestory.API.Common.BlockDropItemStack[]
+  isExternal: true
+  href: Vintagestory.API.Common.BlockDropItemStack.html
+  name: BlockDropItemStack[]
+  nameWithType: BlockDropItemStack[]
+  fullName: Vintagestory.API.Common.BlockDropItemStack[]
+  nameWithType.vb: BlockDropItemStack()
+  fullName.vb: Vintagestory.API.Common.BlockDropItemStack()
+  name.vb: BlockDropItemStack()
+  spec.csharp:
+  - uid: Vintagestory.API.Common.BlockDropItemStack
+    name: BlockDropItemStack
+    href: Vintagestory.API.Common.BlockDropItemStack.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Common.BlockDropItemStack
+    name: BlockDropItemStack
+    href: Vintagestory.API.Common.BlockDropItemStack.html
+  - name: (
+  - name: )

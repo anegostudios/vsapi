@@ -164,8 +164,9 @@ namespace Vintagestory.API.Config
             {
                 result = string.Format(value, args);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                logger.Error(ex);
                 result = value;
                 if (logger != null)
                 {

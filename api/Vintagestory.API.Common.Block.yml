@@ -132,7 +132,6 @@ items:
   - Vintagestory.API.Common.Block.OnEntityInside(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.Block.OnFallOnto(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block,Vintagestory.API.Datastructures.TreeAttribute)
   - Vintagestory.API.Common.Block.OnGettingBroken(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.BlockSelection,Vintagestory.API.Common.ItemSlot,System.Single,System.Single,System.Int32)
-  - Vintagestory.API.Common.Block.OnInstancedTesselation(System.Int32,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block[],System.Int32,System.Int32@)
   - Vintagestory.API.Common.Block.OnJsonTesselation(Vintagestory.API.Client.MeshData@,System.Int32[]@,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block[],System.Int32)
   - Vintagestory.API.Common.Block.OnLoaded(Vintagestory.API.Common.ICoreAPI)
   - Vintagestory.API.Common.Block.OnNeighbourBlockChange(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos)
@@ -4141,40 +4140,6 @@ items:
   nameWithType.vb: Block.OnJsonTesselation(MeshData, Integer(), BlockPos, Block(), Integer)
   fullName.vb: Vintagestory.API.Common.Block.OnJsonTesselation(Vintagestory.API.Client.MeshData, Integer(), Vintagestory.API.MathTools.BlockPos, Vintagestory.API.Common.Block(), Integer)
   name.vb: OnJsonTesselation(MeshData, Integer(), BlockPos, Block(), Integer)
-- uid: Vintagestory.API.Common.Block.OnInstancedTesselation(System.Int32,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block[],System.Int32,System.Int32@)
-  commentId: M:Vintagestory.API.Common.Block.OnInstancedTesselation(System.Int32,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block[],System.Int32,System.Int32@)
-  id: OnInstancedTesselation(System.Int32,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.Block[],System.Int32,System.Int32@)
-  parent: Vintagestory.API.Common.Block
-  langs:
-  - csharp
-  - vb
-  name: OnInstancedTesselation(int, BlockPos, Block[], int, out int)
-  nameWithType: Block.OnInstancedTesselation(int, BlockPos, Block[], int, out int)
-  fullName: Vintagestory.API.Common.Block.OnInstancedTesselation(int, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.Common.Block[], int, out int)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  syntax:
-    content: public virtual int OnInstancedTesselation(int light, BlockPos pos, Block[] chunkExtBlocks, int extIndex3d, out int sideDisableWindwave)
-    parameters:
-    - id: light
-      type: System.Int32
-    - id: pos
-      type: Vintagestory.API.MathTools.BlockPos
-    - id: chunkExtBlocks
-      type: Vintagestory.API.Common.Block[]
-    - id: extIndex3d
-      type: System.Int32
-    - id: sideDisableWindwave
-      type: System.Int32
-    return:
-      type: System.Int32
-    content.vb: Public Overridable Function OnInstancedTesselation(light As Integer, pos As BlockPos, chunkExtBlocks As Block(), extIndex3d As Integer, sideDisableWindwave As Integer) As Integer
-  overload: Vintagestory.API.Common.Block.OnInstancedTesselation*
-  nameWithType.vb: Block.OnInstancedTesselation(Integer, BlockPos, Block(), Integer, Integer)
-  fullName.vb: Vintagestory.API.Common.Block.OnInstancedTesselation(Integer, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.Common.Block(), Integer, Integer)
-  name.vb: OnInstancedTesselation(Integer, BlockPos, Block(), Integer, Integer)
 - uid: Vintagestory.API.Common.Block.DetermineTopMiddlePos
   commentId: M:Vintagestory.API.Common.Block.DetermineTopMiddlePos
   id: DetermineTopMiddlePos
@@ -13272,12 +13237,6 @@ references:
     href: Vintagestory.API.Common.Block.html
   - name: (
   - name: )
-- uid: Vintagestory.API.Common.Block.OnInstancedTesselation*
-  commentId: Overload:Vintagestory.API.Common.Block.OnInstancedTesselation
-  href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_OnInstancedTesselation_System_Int32_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_Block___System_Int32_System_Int32__
-  name: OnInstancedTesselation
-  nameWithType: Block.OnInstancedTesselation
-  fullName: Vintagestory.API.Common.Block.OnInstancedTesselation
 - uid: Vintagestory.API.Common.Block.DetermineTopMiddlePos*
   commentId: Overload:Vintagestory.API.Common.Block.DetermineTopMiddlePos
   href: Vintagestory.API.Common.Block.html#Vintagestory_API_Common_Block_DetermineTopMiddlePos

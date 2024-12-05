@@ -12,7 +12,7 @@ items:
   - Vintagestory.API.Common.Shape.Clone
   - Vintagestory.API.Common.Shape.CloneAnimations
   - Vintagestory.API.Common.Shape.CloneElements
-  - Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
+  - Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.IDictionary{System.String,Vintagestory.API.Common.ShapeElement})
   - Vintagestory.API.Common.Shape.Elements
   - Vintagestory.API.Common.Shape.GetElementByName(System.String,System.StringComparison)
   - Vintagestory.API.Common.Shape.InitForAnimations(Vintagestory.API.Common.ILogger,System.String,System.String[])
@@ -479,16 +479,16 @@ items:
   nameWithType.vb: Shape.StepParentShape(Shape, String, String, ILogger, Action(Of String, AssetLocation))
   fullName.vb: Vintagestory.API.Common.Shape.StepParentShape(Vintagestory.API.Common.Shape, String, String, Vintagestory.API.Common.ILogger, System.Action(Of String, Vintagestory.API.Common.AssetLocation))
   name.vb: StepParentShape(Shape, String, String, ILogger, Action(Of String, AssetLocation))
-- uid: Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
-  commentId: M:Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
-  id: CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement})
+- uid: Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.IDictionary{System.String,Vintagestory.API.Common.ShapeElement})
+  commentId: M:Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.IDictionary{System.String,Vintagestory.API.Common.ShapeElement})
+  id: CollectElements(Vintagestory.API.Common.ShapeElement[],System.Collections.Generic.IDictionary{System.String,Vintagestory.API.Common.ShapeElement})
   parent: Vintagestory.API.Common.Shape
   langs:
   - csharp
   - vb
-  name: CollectElements(ShapeElement[], Dictionary<string, ShapeElement>)
-  nameWithType: Shape.CollectElements(ShapeElement[], Dictionary<string, ShapeElement>)
-  fullName: Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[], System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.ShapeElement>)
+  name: CollectElements(ShapeElement[], IDictionary<string, ShapeElement>)
+  nameWithType: Shape.CollectElements(ShapeElement[], IDictionary<string, ShapeElement>)
+  fullName: Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement[], System.Collections.Generic.IDictionary<string, Vintagestory.API.Common.ShapeElement>)
   type: Method
   assemblies:
   - VintagestoryAPI
@@ -496,19 +496,19 @@ items:
   summary: Collects all the elements in the shape recursively.
   example: []
   syntax:
-    content: public void CollectElements(ShapeElement[] elements, Dictionary<string, ShapeElement> elementsByName)
+    content: public void CollectElements(ShapeElement[] elements, IDictionary<string, ShapeElement> elementsByName)
     parameters:
     - id: elements
       type: Vintagestory.API.Common.ShapeElement[]
       description: ''
     - id: elementsByName
-      type: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement}
+      type: System.Collections.Generic.IDictionary{System.String,Vintagestory.API.Common.ShapeElement}
       description: ''
-    content.vb: Public Sub CollectElements(elements As ShapeElement(), elementsByName As Dictionary(Of String, ShapeElement))
+    content.vb: Public Sub CollectElements(elements As ShapeElement(), elementsByName As IDictionary(Of String, ShapeElement))
   overload: Vintagestory.API.Common.Shape.CollectElements*
-  nameWithType.vb: Shape.CollectElements(ShapeElement(), Dictionary(Of String, ShapeElement))
-  fullName.vb: Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement(), System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.ShapeElement))
-  name.vb: CollectElements(ShapeElement(), Dictionary(Of String, ShapeElement))
+  nameWithType.vb: Shape.CollectElements(ShapeElement(), IDictionary(Of String, ShapeElement))
+  fullName.vb: Vintagestory.API.Common.Shape.CollectElements(Vintagestory.API.Common.ShapeElement(), System.Collections.Generic.IDictionary(Of String, Vintagestory.API.Common.ShapeElement))
+  name.vb: CollectElements(ShapeElement(), IDictionary(Of String, ShapeElement))
 - uid: Vintagestory.API.Common.Shape.ResolveAndLoadJoints(System.String[])
   commentId: M:Vintagestory.API.Common.Shape.ResolveAndLoadJoints(System.String[])
   id: ResolveAndLoadJoints(System.String[])
@@ -690,18 +690,18 @@ items:
   summary: Recursively searches the element by name from the shape.
   example: []
   syntax:
-    content: public ShapeElement GetElementByName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+    content: public ShapeElement GetElementByName(string name, StringComparison stringComparison = StringComparison.OrdinalIgnoreCase)
     parameters:
     - id: name
       type: System.String
       description: The name of the element to get.
     - id: stringComparison
       type: System.StringComparison
-      description: ''
+      description: Ignored but retained for API backwards compatibility. The implementation always uses OrdinalIgnoreCase comparison
     return:
       type: Vintagestory.API.Common.ShapeElement
       description: The shape element or null if none was found
-    content.vb: Public Function GetElementByName(name As String, stringComparison As StringComparison = StringComparison.InvariantCultureIgnoreCase) As ShapeElement
+    content.vb: Public Function GetElementByName(name As String, stringComparison As StringComparison = StringComparison.OrdinalIgnoreCase) As ShapeElement
   overload: Vintagestory.API.Common.Shape.GetElementByName*
   nameWithType.vb: Shape.GetElementByName(String, StringComparison)
   fullName.vb: Vintagestory.API.Common.Shape.GetElementByName(String, System.StringComparison)
@@ -1830,26 +1830,26 @@ references:
   - name: )
 - uid: Vintagestory.API.Common.Shape.CollectElements*
   commentId: Overload:Vintagestory.API.Common.Shape.CollectElements
-  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_CollectElements_Vintagestory_API_Common_ShapeElement___System_Collections_Generic_Dictionary_System_String_Vintagestory_API_Common_ShapeElement__
+  href: Vintagestory.API.Common.Shape.html#Vintagestory_API_Common_Shape_CollectElements_Vintagestory_API_Common_ShapeElement___System_Collections_Generic_IDictionary_System_String_Vintagestory_API_Common_ShapeElement__
   name: CollectElements
   nameWithType: Shape.CollectElements
   fullName: Vintagestory.API.Common.Shape.CollectElements
-- uid: System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement}
-  commentId: T:System.Collections.Generic.Dictionary{System.String,Vintagestory.API.Common.ShapeElement}
+- uid: System.Collections.Generic.IDictionary{System.String,Vintagestory.API.Common.ShapeElement}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,Vintagestory.API.Common.ShapeElement}
   parent: System.Collections.Generic
-  definition: System.Collections.Generic.Dictionary`2
-  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
-  name: Dictionary<string, ShapeElement>
-  nameWithType: Dictionary<string, ShapeElement>
-  fullName: System.Collections.Generic.Dictionary<string, Vintagestory.API.Common.ShapeElement>
-  nameWithType.vb: Dictionary(Of String, ShapeElement)
-  fullName.vb: System.Collections.Generic.Dictionary(Of String, Vintagestory.API.Common.ShapeElement)
-  name.vb: Dictionary(Of String, ShapeElement)
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<string, ShapeElement>
+  nameWithType: IDictionary<string, ShapeElement>
+  fullName: System.Collections.Generic.IDictionary<string, Vintagestory.API.Common.ShapeElement>
+  nameWithType.vb: IDictionary(Of String, ShapeElement)
+  fullName.vb: System.Collections.Generic.IDictionary(Of String, Vintagestory.API.Common.ShapeElement)
+  name.vb: IDictionary(Of String, ShapeElement)
   spec.csharp:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
   - name: <
   - uid: System.String
     name: string
@@ -1862,10 +1862,10 @@ references:
     href: Vintagestory.API.Common.ShapeElement.html
   - name: '>'
   spec.vb:
-  - uid: System.Collections.Generic.Dictionary`2
-    name: Dictionary
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
     isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
   - name: (
   - name: Of
   - name: " "
@@ -1878,6 +1878,40 @@ references:
   - uid: Vintagestory.API.Common.ShapeElement
     name: ShapeElement
     href: Vintagestory.API.Common.ShapeElement.html
+  - name: )
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
   - name: )
 - uid: Vintagestory.API.Common.Shape.ResolveAndLoadJoints*
   commentId: Overload:Vintagestory.API.Common.Shape.ResolveAndLoadJoints

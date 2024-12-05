@@ -21,6 +21,7 @@ items:
   - Vintagestory.API.Datastructures.FastMemoryStream.SetLength(System.Int64)
   - Vintagestory.API.Datastructures.FastMemoryStream.ToArray
   - Vintagestory.API.Datastructures.FastMemoryStream.Write(System.Byte[],System.Int32,System.Int32)
+  - Vintagestory.API.Datastructures.FastMemoryStream.Write(System.ReadOnlySpan{System.Byte})
   - Vintagestory.API.Datastructures.FastMemoryStream.WriteByte(System.Byte)
   langs:
   - csharp
@@ -75,7 +76,6 @@ items:
   - System.IO.Stream.Synchronized(System.IO.Stream)
   - System.IO.Stream.ValidateBufferArguments(System.Byte[],System.Int32,System.Int32)
   - System.IO.Stream.ValidateCopyToArguments(System.IO.Stream,System.Int32)
-  - System.IO.Stream.Write(System.ReadOnlySpan{System.Byte})
   - System.IO.Stream.WriteAsync(System.Byte[],System.Int32,System.Int32)
   - System.IO.Stream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
   - System.IO.Stream.WriteAsync(System.ReadOnlyMemory{System.Byte},System.Threading.CancellationToken)
@@ -517,6 +517,33 @@ items:
   nameWithType.vb: FastMemoryStream.WriteByte(Byte)
   fullName.vb: Vintagestory.API.Datastructures.FastMemoryStream.WriteByte(Byte)
   name.vb: WriteByte(Byte)
+- uid: Vintagestory.API.Datastructures.FastMemoryStream.Write(System.ReadOnlySpan{System.Byte})
+  commentId: M:Vintagestory.API.Datastructures.FastMemoryStream.Write(System.ReadOnlySpan{System.Byte})
+  id: Write(System.ReadOnlySpan{System.Byte})
+  parent: Vintagestory.API.Datastructures.FastMemoryStream
+  langs:
+  - csharp
+  - vb
+  name: Write(ReadOnlySpan<byte>)
+  nameWithType: FastMemoryStream.Write(ReadOnlySpan<byte>)
+  fullName: Vintagestory.API.Datastructures.FastMemoryStream.Write(System.ReadOnlySpan<byte>)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Datastructures
+  summary: When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.
+  example: []
+  syntax:
+    content: public override void Write(ReadOnlySpan<byte> inputBuffer)
+    parameters:
+    - id: inputBuffer
+      type: System.ReadOnlySpan{System.Byte}
+    content.vb: Public Overrides Sub Write(inputBuffer As ReadOnlySpan(Of Byte))
+  overridden: System.IO.Stream.Write(System.ReadOnlySpan{System.Byte})
+  overload: Vintagestory.API.Datastructures.FastMemoryStream.Write*
+  nameWithType.vb: FastMemoryStream.Write(ReadOnlySpan(Of Byte))
+  fullName.vb: Vintagestory.API.Datastructures.FastMemoryStream.Write(System.ReadOnlySpan(Of Byte))
+  name.vb: Write(ReadOnlySpan(Of Byte))
 - uid: Vintagestory.API.Datastructures.FastMemoryStream.Flush
   commentId: M:Vintagestory.API.Datastructures.FastMemoryStream.Flush
   id: Flush
@@ -2130,53 +2157,6 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
-- uid: System.IO.Stream.Write(System.ReadOnlySpan{System.Byte})
-  commentId: M:System.IO.Stream.Write(System.ReadOnlySpan{System.Byte})
-  parent: System.IO.Stream
-  isExternal: true
-  href: https://learn.microsoft.com/dotnet/api/system.io.stream.write#system-io-stream-write(system-readonlyspan((system-byte)))
-  name: Write(ReadOnlySpan<byte>)
-  nameWithType: Stream.Write(ReadOnlySpan<byte>)
-  fullName: System.IO.Stream.Write(System.ReadOnlySpan<byte>)
-  nameWithType.vb: Stream.Write(ReadOnlySpan(Of Byte))
-  fullName.vb: System.IO.Stream.Write(System.ReadOnlySpan(Of Byte))
-  name.vb: Write(ReadOnlySpan(Of Byte))
-  spec.csharp:
-  - uid: System.IO.Stream.Write(System.ReadOnlySpan{System.Byte})
-    name: Write
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.io.stream.write#system-io-stream-write(system-readonlyspan((system-byte)))
-  - name: (
-  - uid: System.ReadOnlySpan`1
-    name: ReadOnlySpan
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
-  - name: <
-  - uid: System.Byte
-    name: byte
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.byte
-  - name: '>'
-  - name: )
-  spec.vb:
-  - uid: System.IO.Stream.Write(System.ReadOnlySpan{System.Byte})
-    name: Write
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.io.stream.write#system-io-stream-write(system-readonlyspan((system-byte)))
-  - name: (
-  - uid: System.ReadOnlySpan`1
-    name: ReadOnlySpan
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
-  - name: (
-  - name: Of
-  - name: " "
-  - uid: System.Byte
-    name: Byte
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.byte
-  - name: )
-  - name: )
 - uid: System.IO.Stream.WriteAsync(System.Byte[],System.Int32,System.Int32)
   commentId: M:System.IO.Stream.WriteAsync(System.Byte[],System.Int32,System.Int32)
   parent: System.IO.Stream
@@ -3323,6 +3303,116 @@ references:
   nameWithType.vb: Byte
   fullName.vb: Byte
   name.vb: Byte
+- uid: System.IO.Stream.Write(System.ReadOnlySpan{System.Byte})
+  commentId: M:System.IO.Stream.Write(System.ReadOnlySpan{System.Byte})
+  parent: System.IO.Stream
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.stream.write#system-io-stream-write(system-readonlyspan((system-byte)))
+  name: Write(ReadOnlySpan<byte>)
+  nameWithType: Stream.Write(ReadOnlySpan<byte>)
+  fullName: System.IO.Stream.Write(System.ReadOnlySpan<byte>)
+  nameWithType.vb: Stream.Write(ReadOnlySpan(Of Byte))
+  fullName.vb: System.IO.Stream.Write(System.ReadOnlySpan(Of Byte))
+  name.vb: Write(ReadOnlySpan(Of Byte))
+  spec.csharp:
+  - uid: System.IO.Stream.Write(System.ReadOnlySpan{System.Byte})
+    name: Write
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.stream.write#system-io-stream-write(system-readonlyspan((system-byte)))
+  - name: (
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: System.IO.Stream.Write(System.ReadOnlySpan{System.Byte})
+    name: Write
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io.stream.write#system-io-stream-write(system-readonlyspan((system-byte)))
+  - name: (
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+  - name: )
+- uid: System.ReadOnlySpan{System.Byte}
+  commentId: T:System.ReadOnlySpan{System.Byte}
+  parent: System
+  definition: System.ReadOnlySpan`1
+  href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  name: ReadOnlySpan<byte>
+  nameWithType: ReadOnlySpan<byte>
+  fullName: System.ReadOnlySpan<byte>
+  nameWithType.vb: ReadOnlySpan(Of Byte)
+  fullName.vb: System.ReadOnlySpan(Of Byte)
+  name.vb: ReadOnlySpan(Of Byte)
+  spec.csharp:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.ReadOnlySpan`1
+  commentId: T:System.ReadOnlySpan`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  name: ReadOnlySpan<T>
+  nameWithType: ReadOnlySpan<T>
+  fullName: System.ReadOnlySpan<T>
+  nameWithType.vb: ReadOnlySpan(Of T)
+  fullName.vb: System.ReadOnlySpan(Of T)
+  name.vb: ReadOnlySpan(Of T)
+  spec.csharp:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.ReadOnlySpan`1
+    name: ReadOnlySpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.readonlyspan-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
 - uid: System.IO.Stream.Flush
   commentId: M:System.IO.Stream.Flush
   parent: System.IO.Stream

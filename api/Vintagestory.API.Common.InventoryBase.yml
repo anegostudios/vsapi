@@ -10,6 +10,7 @@ items:
   - Vintagestory.API.Common.InventoryBase.ActivateSlot(System.Int32,Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemStackMoveOperation@)
   - Vintagestory.API.Common.InventoryBase.AfterBlocksLoaded(Vintagestory.API.Common.IWorldAccessor)
   - Vintagestory.API.Common.InventoryBase.Api
+  - Vintagestory.API.Common.InventoryBase.AuditLogAccess
   - Vintagestory.API.Common.InventoryBase.CanContain(Vintagestory.API.Common.ItemSlot,Vintagestory.API.Common.ItemSlot)
   - Vintagestory.API.Common.InventoryBase.CanPlayerAccess(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
   - Vintagestory.API.Common.InventoryBase.CanPlayerModify(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.Entities.EntityPos)
@@ -765,6 +766,32 @@ items:
       type: Vintagestory.API.Common.ItemSlot
     content.vb: Public ReadOnly Property FirstNonEmptySlot As ItemSlot
   overload: Vintagestory.API.Common.InventoryBase.FirstNonEmptySlot*
+- uid: Vintagestory.API.Common.InventoryBase.AuditLogAccess
+  commentId: P:Vintagestory.API.Common.InventoryBase.AuditLogAccess
+  id: AuditLogAccess
+  parent: Vintagestory.API.Common.InventoryBase
+  langs:
+  - csharp
+  - vb
+  name: AuditLogAccess
+  nameWithType: InventoryBase.AuditLogAccess
+  fullName: Vintagestory.API.Common.InventoryBase.AuditLogAccess
+  type: Property
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    If opening or closing should produce a log line in the audit log.
+
+    Since when items are moved the source and destination is logged already
+  example: []
+  syntax:
+    content: public virtual bool AuditLogAccess { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Overridable Property AuditLogAccess As Boolean
+  overload: Vintagestory.API.Common.InventoryBase.AuditLogAccess*
 - uid: Vintagestory.API.Common.InventoryBase.#ctor(System.String,System.String,Vintagestory.API.Common.ICoreAPI)
   commentId: M:Vintagestory.API.Common.InventoryBase.#ctor(System.String,System.String,Vintagestory.API.Common.ICoreAPI)
   id: '#ctor(System.String,System.String,Vintagestory.API.Common.ICoreAPI)'
@@ -1845,13 +1872,13 @@ items:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
   syntax:
-    content: protected virtual float GetDefaultTransitionSpeedMul(EnumTransitionType transType)
+    content: protected virtual float GetDefaultTransitionSpeedMul(EnumTransitionType transitionType)
     parameters:
-    - id: transType
+    - id: transitionType
       type: Vintagestory.API.Common.EnumTransitionType
     return:
       type: System.Single
-    content.vb: Protected Overridable Function GetDefaultTransitionSpeedMul(transType As EnumTransitionType) As Single
+    content.vb: Protected Overridable Function GetDefaultTransitionSpeedMul(transitionType As EnumTransitionType) As Single
   overload: Vintagestory.API.Common.InventoryBase.GetDefaultTransitionSpeedMul*
 - uid: Vintagestory.API.Common.InventoryBase.Open(Vintagestory.API.Common.IPlayer)
   commentId: M:Vintagestory.API.Common.InventoryBase.Open(Vintagestory.API.Common.IPlayer)
@@ -3787,6 +3814,12 @@ references:
   name: FirstNonEmptySlot
   nameWithType: InventoryBase.FirstNonEmptySlot
   fullName: Vintagestory.API.Common.InventoryBase.FirstNonEmptySlot
+- uid: Vintagestory.API.Common.InventoryBase.AuditLogAccess*
+  commentId: Overload:Vintagestory.API.Common.InventoryBase.AuditLogAccess
+  href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase_AuditLogAccess
+  name: AuditLogAccess
+  nameWithType: InventoryBase.AuditLogAccess
+  fullName: Vintagestory.API.Common.InventoryBase.AuditLogAccess
 - uid: Vintagestory.API.Common.InventoryBase.#ctor*
   commentId: Overload:Vintagestory.API.Common.InventoryBase.#ctor
   href: Vintagestory.API.Common.InventoryBase.html#Vintagestory_API_Common_InventoryBase__ctor_System_String_System_String_Vintagestory_API_Common_ICoreAPI_

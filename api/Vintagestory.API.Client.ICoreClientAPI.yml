@@ -38,6 +38,7 @@ items:
   - Vintagestory.API.Client.ICoreClientAPI.Settings
   - Vintagestory.API.Client.ICoreClientAPI.Shader
   - Vintagestory.API.Client.ICoreClientAPI.ShowChatMessage(System.String)
+  - Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Client.MusicTrack,System.Single,Vintagestory.API.Client.EnumSoundType,System.Boolean)
   - Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Common.AssetLocation,System.Single,Vintagestory.API.Client.EnumSoundType,System.Action{Vintagestory.API.Client.ILoadedSound})
   - Vintagestory.API.Client.ICoreClientAPI.TagConverters
   - Vintagestory.API.Client.ICoreClientAPI.Tesselator
@@ -1110,6 +1111,36 @@ items:
   nameWithType.vb: ICoreClientAPI.StartTrack(AssetLocation, Single, EnumSoundType, Action(Of ILoadedSound))
   fullName.vb: Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Common.AssetLocation, Single, Vintagestory.API.Client.EnumSoundType, System.Action(Of Vintagestory.API.Client.ILoadedSound))
   name.vb: StartTrack(AssetLocation, Single, EnumSoundType, Action(Of ILoadedSound))
+- uid: Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Client.MusicTrack,System.Single,Vintagestory.API.Client.EnumSoundType,System.Boolean)
+  commentId: M:Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Client.MusicTrack,System.Single,Vintagestory.API.Client.EnumSoundType,System.Boolean)
+  id: StartTrack(Vintagestory.API.Client.MusicTrack,System.Single,Vintagestory.API.Client.EnumSoundType,System.Boolean)
+  parent: Vintagestory.API.Client.ICoreClientAPI
+  langs:
+  - csharp
+  - vb
+  name: StartTrack(MusicTrack, float, EnumSoundType, bool)
+  nameWithType: ICoreClientAPI.StartTrack(MusicTrack, float, EnumSoundType, bool)
+  fullName: Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Client.MusicTrack, float, Vintagestory.API.Client.EnumSoundType, bool)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Client
+  syntax:
+    content: void StartTrack(MusicTrack track, float priority, EnumSoundType soundType, bool playnow = true)
+    parameters:
+    - id: track
+      type: Vintagestory.API.Client.MusicTrack
+    - id: priority
+      type: System.Single
+    - id: soundType
+      type: Vintagestory.API.Client.EnumSoundType
+    - id: playnow
+      type: System.Boolean
+    content.vb: Sub StartTrack(track As MusicTrack, priority As Single, soundType As EnumSoundType, playnow As Boolean = True)
+  overload: Vintagestory.API.Client.ICoreClientAPI.StartTrack*
+  nameWithType.vb: ICoreClientAPI.StartTrack(MusicTrack, Single, EnumSoundType, Boolean)
+  fullName.vb: Vintagestory.API.Client.ICoreClientAPI.StartTrack(Vintagestory.API.Client.MusicTrack, Single, Vintagestory.API.Client.EnumSoundType, Boolean)
+  name.vb: StartTrack(MusicTrack, Single, EnumSoundType, Boolean)
 - uid: Vintagestory.API.Client.ICoreClientAPI.CurrentMusicTrack
   commentId: P:Vintagestory.API.Client.ICoreClientAPI.CurrentMusicTrack
   id: CurrentMusicTrack

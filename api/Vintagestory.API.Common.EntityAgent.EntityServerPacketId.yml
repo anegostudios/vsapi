@@ -12,6 +12,8 @@ items:
   - Vintagestory.API.Common.EntityAgent.EntityServerPacketId.PlayPlayerAnim
   - Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Revive
   - Vintagestory.API.Common.EntityAgent.EntityServerPacketId.StopMusic
+  - Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Talk
+  - Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Teleport
   langs:
   - csharp
   - vb
@@ -28,6 +30,24 @@ items:
   extensionMethods:
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Teleport
+  commentId: F:Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Teleport
+  id: Teleport
+  parent: Vintagestory.API.Common.EntityAgent.EntityServerPacketId
+  langs:
+  - csharp
+  - vb
+  name: Teleport
+  nameWithType: EntityAgent.EntityServerPacketId.Teleport
+  fullName: Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Teleport
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Teleport = 1
+    return:
+      type: Vintagestory.API.Common.EntityAgent.EntityServerPacketId
 - uid: Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Revive
   commentId: F:Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Revive
   id: Revive
@@ -152,6 +172,24 @@ items:
   namespace: Vintagestory.API.Common
   syntax:
     content: StopMusic = 202
+    return:
+      type: Vintagestory.API.Common.EntityAgent.EntityServerPacketId
+- uid: Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Talk
+  commentId: F:Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Talk
+  id: Talk
+  parent: Vintagestory.API.Common.EntityAgent.EntityServerPacketId
+  langs:
+  - csharp
+  - vb
+  name: Talk
+  nameWithType: EntityAgent.EntityServerPacketId.Talk
+  fullName: Vintagestory.API.Common.EntityAgent.EntityServerPacketId.Talk
+  type: Field
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: Talk = 203
     return:
       type: Vintagestory.API.Common.EntityAgent.EntityServerPacketId
 references:

@@ -9,6 +9,7 @@ using System;
 using System.Linq;
 using Vintagestory.API.Util;
 using System.Text;
+using static Vintagestory.API.Common.EntityAgent;
 
 namespace Vintagestory.API.Common.Entities
 {
@@ -109,6 +110,12 @@ namespace Vintagestory.API.Common.Entities
             bioLumiNoise = new NormalizedSimplexNoise(new double[] { 1, 0.5 }, new double[] { 5, 10 }, 097901);
         }
 
+        /// <summary>
+        /// Color used when the entity is being attacked
+        /// </summary>
+        protected int HurtColor = ColorUtil.ToRgba(255, 255, 100, 100);
+
+
 
         #region Entity Fields
 
@@ -128,6 +135,10 @@ namespace Vintagestory.API.Common.Entities
         /// <br/>Note 2: Straw Dummy we count as a Creature, because weapons can target it and bees can attack it. In contrast, Armor Stand we count as Inanimate, because nothing should ever attack or target it.
         /// </summary>
         public virtual bool IsCreature { get { return false; } }
+
+        public virtual bool CanStepPitch => Properties.Habitat != EnumHabitat.Air;
+        public virtual bool CanSwivel => Properties.Habitat != EnumHabitat.Air && (Properties.Habitat != EnumHabitat.Land || !Swimming);
+        public virtual bool CanSwivelNow => OnGround;
 
         /// <summary>
         /// The vanilla physics systems will call this method if a physics behavior was assigned to it. The game client for example requires this to be called for the current player to properly render the player. Available on the game client and server.
@@ -307,14 +318,14 @@ namespace Vintagestory.API.Common.Entities
         /// Used by PhysicsManager. Added here to increase performance
         /// 0 = not tracked, 1 = lowResTracked, 2 = fullyTracked
         /// </summary>
-        public byte IsTracked; 
+        public byte IsTracked;
         /// <summary>
         /// Used by the PhysicsManager to tell connected clients that the next entity position packet should not have its position change get interpolated. Gets set to false after the packet was sent
         /// </summary>
         public bool IsTeleport;
 
         /// <summary>
-        /// If true, will call EntityBehavior.IntersectsRay. Default off to increase performance. 
+        /// If true, will call EntityBehavior.IntersectsRay. Default off to increase performance.
         /// </summary>
         public bool trickleDownRayIntersects;
         /// <summary>
@@ -423,6 +434,8 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public virtual bool StoreWithChunk { get { return true; } }
 
+        public virtual bool AllowOutsideLoadedRange => false;
+
         /// <summary>
         /// Whether this entity should always stay in Active model, regardless on how far away other player are
         /// </summary>
@@ -437,7 +450,6 @@ namespace Vintagestory.API.Common.Entities
             set {
                 WatchedAttributes.SetInt("entityDead", value ? 0 : 1); alive = value;
             }
-
         }
         protected bool alive=true;
         public float minHorRangeToClient;
@@ -451,7 +463,7 @@ namespace Vintagestory.API.Common.Entities
         /// <summary>
         /// Used by some renderers to apply an overal color tint on the entity
         /// </summary>
-        public int RenderColor { get; set; }
+        public int RenderColor { get; set; } = ColorUtil.WhiteArgb;
 
         /// <summary>
         /// A small offset used to prevent players from clipping through the blocks above ladders: relevant if the entity's collision box is sometimes adjusted by the game code
@@ -903,7 +915,11 @@ namespace Vintagestory.API.Common.Entities
 
             if (World.Side == EnumAppSide.Client)
             {
-                RenderColor = ColorUtil.WhiteArgb;
+                int val = RemainingActivityTime("invulnerable");
+                if (val >= 0)
+                {
+                    RenderColor = ColorUtil.ColorOverlay(HurtColor, ColorUtil.WhiteArgb, 1f - val / 500f);
+                }
 
                 alive = WatchedAttributes.GetInt("entityDead", 0) == 0;
 
@@ -1062,7 +1078,7 @@ namespace Vintagestory.API.Common.Entities
         public virtual ITexPositionSource GetTextureSource()
         {
             if (Api.Side != EnumAppSide.Client) return null;
-            
+
             ITexPositionSource texSource = null;
 
             var bhs = Properties.Client?.Behaviors;
@@ -1084,7 +1100,7 @@ namespace Vintagestory.API.Common.Entities
 
 
         public bool ShapeFresh => shapeFresh;
-        public virtual double FrustumSphereRadius => Math.Max(3, Math.Max(SelectionBox.XSize, SelectionBox.YSize));
+        public virtual double FrustumSphereRadius => Math.Max(3, Math.Max(SelectionBox?.XSize ?? 1, SelectionBox?.YSize ?? 1));
 
         protected bool shapeFresh;
 
@@ -1113,7 +1129,11 @@ namespace Vintagestory.API.Common.Entities
             }
 
             bool shapeIsCloned = false;
-
+            OnTesselation(ref entityShape, shapePathForLogging, ref shapeIsCloned);
+        }
+        protected virtual void OnTesselation(ref Shape entityShape, string shapePathForLogging, ref bool shapeIsCloned)
+        {
+            shapeFresh = true;
             var cshape = Properties.Client.Shape;
             if (cshape?.Overlays != null && cshape.Overlays.Length > 0)
             {
@@ -1186,12 +1206,6 @@ namespace Vintagestory.API.Common.Entities
 
             if (shapeIsCloned)
             {
-                string[] requireJointsForElements = new string[] { "head" };
-                if (Properties.Attributes?["requireJointsForElements"].Exists == true)
-                {
-                    requireJointsForElements = requireJointsForElements.Append(Properties.Attributes["requireJointsForElements"].AsArray<string>());
-                }
-
                 AnimManager.LoadAnimator(World.Api, this, entityShape, AnimManager.Animator?.Animations, requirePosesOnServer, "head");
             }
             else
@@ -1459,7 +1473,7 @@ namespace Vintagestory.API.Common.Entities
         public virtual void OnReceivedServerPacket(int packetid, byte[] data)
         {
             // Teleport packet
-            if (packetid == 1)
+            if (packetid == (int)EntityServerPacketId.Teleport)
             {
                 Vec3d newPos = SerializerUtil.Deserialize<Vec3d>(data);
                 if (Api is ICoreClientAPI ic && ic.World.Player.Entity.EntityId == EntityId)
@@ -1661,7 +1675,7 @@ namespace Vintagestory.API.Common.Entities
             if (World.Side != EnumAppSide.Client) return;
 
             DebugAttributes.SetString("Entity Id", "" + EntityId);
-            DebugAttributes.SetString("Yaw", string.Format("{0:0.##}", Pos.Yaw * GameMath.RAD2DEG));
+            DebugAttributes.SetString("Yaw, Pitch", string.Format("{0:0.##}, {1:0.##}", Pos.Yaw * GameMath.RAD2DEG, Pos.Pitch * GameMath.RAD2DEG));
 
             if (AnimManager != null) UpdateAnimationDebugAttributes();  // for EntityItem, AnimManager will be null
         }
@@ -2029,10 +2043,12 @@ namespace Vintagestory.API.Common.Entities
             ServerPos.X += startPos.X;
             ServerPos.Y += startPos.Y;
             ServerPos.Z += startPos.Z;
+            ServerPos.Dimension = startPos.dimension;
 
             Pos.X += startPos.X;
             Pos.Y += startPos.Y;
             Pos.Z += startPos.Z;
+            Pos.Dimension = startPos.dimension;
 
             PositionBeforeFalling.X += startPos.X;
             PositionBeforeFalling.Y += startPos.Y;
@@ -2078,6 +2094,17 @@ namespace Vintagestory.API.Common.Entities
         /// <returns></returns>
         public virtual string GetName()
         {
+            string name = null;
+            foreach (EntityBehavior behavior in SidedProperties.Behaviors)
+            {
+                EnumHandling handling = EnumHandling.PassThrough;
+                string bhname = behavior.GetName(ref handling);
+                if (handling == EnumHandling.PreventSubsequent) return name;
+                if (handling == EnumHandling.PreventDefault) name = bhname;
+            }
+
+            if (name != null) return name;
+
             if (!Alive)
             {
                 return Lang.GetMatching(Code.Domain + ":item-dead-creature-" + Code.Path);
@@ -2150,7 +2177,7 @@ namespace Vintagestory.API.Common.Entities
         }
 
         /// <summary>
-        /// To test for player->entity selection. 
+        /// To test for player->entity selection.
         /// </summary>
         /// <param name="ray"></param>
         /// <param name="interesectionTester">Is already preloaded with the ray</param>

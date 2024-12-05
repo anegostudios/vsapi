@@ -9,6 +9,9 @@ items:
   - Vintagestory.API.Server.IWorldManagerAPI.AllLoadedMapRegions
   - Vintagestory.API.Server.IWorldManagerAPI.AllLoadedMapchunks
   - Vintagestory.API.Server.IWorldManagerAPI.AutoGenerateChunks
+  - Vintagestory.API.Server.IWorldManagerAPI.BlockingLoadChunkColumn(System.Int32,System.Int32)
+  - Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapChunkExists(System.Int32,System.Int32)
+  - Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapRegionExists(System.Int32,System.Int32)
   - Vintagestory.API.Server.IWorldManagerAPI.BroadcastChunk(System.Int32,System.Int32,System.Int32,System.Boolean)
   - Vintagestory.API.Server.IWorldManagerAPI.ChunkDeletionsInQueue
   - Vintagestory.API.Server.IWorldManagerAPI.ChunkIndex3D(System.Int32,System.Int32,System.Int32)
@@ -2135,6 +2138,116 @@ items:
   nameWithType.vb: IWorldManagerAPI.ForceSendChunkColumn(IServerPlayer, Integer, Integer, Integer)
   fullName.vb: Vintagestory.API.Server.IWorldManagerAPI.ForceSendChunkColumn(Vintagestory.API.Server.IServerPlayer, Integer, Integer, Integer)
   name.vb: ForceSendChunkColumn(IServerPlayer, Integer, Integer, Integer)
+- uid: Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapRegionExists(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapRegionExists(System.Int32,System.Int32)
+  id: BlockingTestMapRegionExists(System.Int32,System.Int32)
+  parent: Vintagestory.API.Server.IWorldManagerAPI
+  langs:
+  - csharp
+  - vb
+  name: BlockingTestMapRegionExists(int, int)
+  nameWithType: IWorldManagerAPI.BlockingTestMapRegionExists(int, int)
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapRegionExists(int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Test if the given map region exists, can only be called before EnumServerRunPhase.RunGame.
+
+    Used in InitWorldgen to check chunks before the games is running
+  example: []
+  syntax:
+    content: bool BlockingTestMapRegionExists(int regionX, int regionZ)
+    parameters:
+    - id: regionX
+      type: System.Int32
+      description: ''
+    - id: regionZ
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function BlockingTestMapRegionExists(regionX As Integer, regionZ As Integer) As Boolean
+  overload: Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapRegionExists*
+  nameWithType.vb: IWorldManagerAPI.BlockingTestMapRegionExists(Integer, Integer)
+  fullName.vb: Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapRegionExists(Integer, Integer)
+  name.vb: BlockingTestMapRegionExists(Integer, Integer)
+- uid: Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapChunkExists(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapChunkExists(System.Int32,System.Int32)
+  id: BlockingTestMapChunkExists(System.Int32,System.Int32)
+  parent: Vintagestory.API.Server.IWorldManagerAPI
+  langs:
+  - csharp
+  - vb
+  name: BlockingTestMapChunkExists(int, int)
+  nameWithType: IWorldManagerAPI.BlockingTestMapChunkExists(int, int)
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapChunkExists(int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Test if the given map chunk exists, can only be called before EnumServerRunPhase.RunGame.
+
+    Used in InitWorldgen to check chunks before the games is running
+  example: []
+  syntax:
+    content: bool BlockingTestMapChunkExists(int chunkX, int chunkZ)
+    parameters:
+    - id: chunkX
+      type: System.Int32
+      description: ''
+    - id: chunkZ
+      type: System.Int32
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function BlockingTestMapChunkExists(chunkX As Integer, chunkZ As Integer) As Boolean
+  overload: Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapChunkExists*
+  nameWithType.vb: IWorldManagerAPI.BlockingTestMapChunkExists(Integer, Integer)
+  fullName.vb: Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapChunkExists(Integer, Integer)
+  name.vb: BlockingTestMapChunkExists(Integer, Integer)
+- uid: Vintagestory.API.Server.IWorldManagerAPI.BlockingLoadChunkColumn(System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Server.IWorldManagerAPI.BlockingLoadChunkColumn(System.Int32,System.Int32)
+  id: BlockingLoadChunkColumn(System.Int32,System.Int32)
+  parent: Vintagestory.API.Server.IWorldManagerAPI
+  langs:
+  - csharp
+  - vb
+  name: BlockingLoadChunkColumn(int, int)
+  nameWithType: IWorldManagerAPI.BlockingLoadChunkColumn(int, int)
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.BlockingLoadChunkColumn(int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Server
+  summary: >-
+    Load the given map chunk , can only be called before EnumServerRunPhase.RunGame.
+
+    This only loads and deserializes the chunk data, you need to call .Dispose() after you do not need them anymore
+
+    Used in InitWorldgen to check chunks before the games is running
+  example: []
+  syntax:
+    content: IServerChunk[] BlockingLoadChunkColumn(int chunkX, int chunkZ)
+    parameters:
+    - id: chunkX
+      type: System.Int32
+      description: ''
+    - id: chunkZ
+      type: System.Int32
+      description: ''
+    return:
+      type: Vintagestory.API.Server.IServerChunk[]
+      description: ''
+    content.vb: Function BlockingLoadChunkColumn(chunkX As Integer, chunkZ As Integer) As IServerChunk()
+  overload: Vintagestory.API.Server.IWorldManagerAPI.BlockingLoadChunkColumn*
+  nameWithType.vb: IWorldManagerAPI.BlockingLoadChunkColumn(Integer, Integer)
+  fullName.vb: Vintagestory.API.Server.IWorldManagerAPI.BlockingLoadChunkColumn(Integer, Integer)
+  name.vb: BlockingLoadChunkColumn(Integer, Integer)
 references:
 - uid: Vintagestory.API.Server
   commentId: N:Vintagestory.API.Server
@@ -3303,3 +3416,42 @@ references:
   name: ForceSendChunkColumn
   nameWithType: IWorldManagerAPI.ForceSendChunkColumn
   fullName: Vintagestory.API.Server.IWorldManagerAPI.ForceSendChunkColumn
+- uid: Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapRegionExists*
+  commentId: Overload:Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapRegionExists
+  href: Vintagestory.API.Server.IWorldManagerAPI.html#Vintagestory_API_Server_IWorldManagerAPI_BlockingTestMapRegionExists_System_Int32_System_Int32_
+  name: BlockingTestMapRegionExists
+  nameWithType: IWorldManagerAPI.BlockingTestMapRegionExists
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapRegionExists
+- uid: Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapChunkExists*
+  commentId: Overload:Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapChunkExists
+  href: Vintagestory.API.Server.IWorldManagerAPI.html#Vintagestory_API_Server_IWorldManagerAPI_BlockingTestMapChunkExists_System_Int32_System_Int32_
+  name: BlockingTestMapChunkExists
+  nameWithType: IWorldManagerAPI.BlockingTestMapChunkExists
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapChunkExists
+- uid: Vintagestory.API.Server.IWorldManagerAPI.BlockingLoadChunkColumn*
+  commentId: Overload:Vintagestory.API.Server.IWorldManagerAPI.BlockingLoadChunkColumn
+  href: Vintagestory.API.Server.IWorldManagerAPI.html#Vintagestory_API_Server_IWorldManagerAPI_BlockingLoadChunkColumn_System_Int32_System_Int32_
+  name: BlockingLoadChunkColumn
+  nameWithType: IWorldManagerAPI.BlockingLoadChunkColumn
+  fullName: Vintagestory.API.Server.IWorldManagerAPI.BlockingLoadChunkColumn
+- uid: Vintagestory.API.Server.IServerChunk[]
+  isExternal: true
+  href: Vintagestory.API.Server.IServerChunk.html
+  name: IServerChunk[]
+  nameWithType: IServerChunk[]
+  fullName: Vintagestory.API.Server.IServerChunk[]
+  nameWithType.vb: IServerChunk()
+  fullName.vb: Vintagestory.API.Server.IServerChunk()
+  name.vb: IServerChunk()
+  spec.csharp:
+  - uid: Vintagestory.API.Server.IServerChunk
+    name: IServerChunk
+    href: Vintagestory.API.Server.IServerChunk.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: Vintagestory.API.Server.IServerChunk
+    name: IServerChunk
+    href: Vintagestory.API.Server.IServerChunk.html
+  - name: (
+  - name: )

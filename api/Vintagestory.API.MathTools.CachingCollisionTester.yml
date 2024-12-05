@@ -7,6 +7,7 @@ items:
   children:
   - Vintagestory.API.MathTools.CachingCollisionTester.GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor,System.Double,System.Double,System.Double,System.Single,System.Single,System.Int32)
   - Vintagestory.API.MathTools.CachingCollisionTester.NewTick(Vintagestory.API.Common.Entities.EntityPos)
+  - Vintagestory.API.MathTools.CachingCollisionTester.PushOutFromBlocks(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.MathTools.Vec3d,System.Single)
   langs:
   - csharp
   - vb
@@ -110,6 +111,36 @@ items:
   nameWithType.vb: CachingCollisionTester.GenerateCollisionBoxList(IBlockAccessor, Double, Double, Double, Single, Single, Integer)
   fullName.vb: Vintagestory.API.MathTools.CachingCollisionTester.GenerateCollisionBoxList(Vintagestory.API.Common.IBlockAccessor, Double, Double, Double, Single, Single, Integer)
   name.vb: GenerateCollisionBoxList(IBlockAccessor, Double, Double, Double, Single, Single, Integer)
+- uid: Vintagestory.API.MathTools.CachingCollisionTester.PushOutFromBlocks(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.MathTools.Vec3d,System.Single)
+  commentId: M:Vintagestory.API.MathTools.CachingCollisionTester.PushOutFromBlocks(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.MathTools.Vec3d,System.Single)
+  id: PushOutFromBlocks(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.Common.Entities.Entity,Vintagestory.API.MathTools.Vec3d,System.Single)
+  parent: Vintagestory.API.MathTools.CachingCollisionTester
+  langs:
+  - csharp
+  - vb
+  name: PushOutFromBlocks(IBlockAccessor, Entity, Vec3d, float)
+  nameWithType: CachingCollisionTester.PushOutFromBlocks(IBlockAccessor, Entity, Vec3d, float)
+  fullName: Vintagestory.API.MathTools.CachingCollisionTester.PushOutFromBlocks(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.MathTools.Vec3d, float)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public void PushOutFromBlocks(IBlockAccessor blockAccessor, Entity entity, Vec3d tmpVec, float clippingLimit)
+    parameters:
+    - id: blockAccessor
+      type: Vintagestory.API.Common.IBlockAccessor
+    - id: entity
+      type: Vintagestory.API.Common.Entities.Entity
+    - id: tmpVec
+      type: Vintagestory.API.MathTools.Vec3d
+    - id: clippingLimit
+      type: System.Single
+    content.vb: Public Sub PushOutFromBlocks(blockAccessor As IBlockAccessor, entity As Entity, tmpVec As Vec3d, clippingLimit As Single)
+  overload: Vintagestory.API.MathTools.CachingCollisionTester.PushOutFromBlocks*
+  nameWithType.vb: CachingCollisionTester.PushOutFromBlocks(IBlockAccessor, Entity, Vec3d, Single)
+  fullName.vb: Vintagestory.API.MathTools.CachingCollisionTester.PushOutFromBlocks(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.Common.Entities.Entity, Vintagestory.API.MathTools.Vec3d, Single)
+  name.vb: PushOutFromBlocks(IBlockAccessor, Entity, Vec3d, Single)
 references:
 - uid: Vintagestory.API.MathTools
   commentId: N:Vintagestory.API.MathTools
@@ -1357,3 +1388,23 @@ references:
   - uid: Vintagestory.API.Common
     name: Common
     href: Vintagestory.API.Common.html
+- uid: Vintagestory.API.MathTools.CachingCollisionTester.PushOutFromBlocks*
+  commentId: Overload:Vintagestory.API.MathTools.CachingCollisionTester.PushOutFromBlocks
+  href: Vintagestory.API.MathTools.CachingCollisionTester.html#Vintagestory_API_MathTools_CachingCollisionTester_PushOutFromBlocks_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_MathTools_Vec3d_System_Single_
+  name: PushOutFromBlocks
+  nameWithType: CachingCollisionTester.PushOutFromBlocks
+  fullName: Vintagestory.API.MathTools.CachingCollisionTester.PushOutFromBlocks
+- uid: Vintagestory.API.Common.Entities.Entity
+  commentId: T:Vintagestory.API.Common.Entities.Entity
+  parent: Vintagestory.API.Common.Entities
+  href: Vintagestory.API.Common.Entities.Entity.html
+  name: Entity
+  nameWithType: Entity
+  fullName: Vintagestory.API.Common.Entities.Entity
+- uid: Vintagestory.API.MathTools.Vec3d
+  commentId: T:Vintagestory.API.MathTools.Vec3d
+  parent: Vintagestory.API.MathTools
+  href: Vintagestory.API.MathTools.Vec3d.html
+  name: Vec3d
+  nameWithType: Vec3d
+  fullName: Vintagestory.API.MathTools.Vec3d

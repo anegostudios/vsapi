@@ -18,13 +18,12 @@ items:
   - Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.Common.AssetLocation)
   - Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  - Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  - Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.GetBlockEntity(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IBlockAccessor.GetBlockEntity``1(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.GetBlockId(Vintagestory.API.MathTools.BlockPos)
   - Vintagestory.API.Common.IBlockAccessor.GetBlockOrNull(System.Int32,System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(System.Int32,System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.GetChunk(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.GetChunk(System.Int64)
   - Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
@@ -107,6 +106,9 @@ items:
   extensionMethods:
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  - Vintagestory.API.Common.IBlockAccessor.Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IBlockAccessor.Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IBlockAccessor.Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
 - uid: Vintagestory.API.Common.IBlockAccessor.ChunkSize
   commentId: P:Vintagestory.API.Common.IBlockAccessor.ChunkSize
   id: ChunkSize
@@ -433,6 +435,195 @@ items:
   nameWithType.vb: IBlockAccessor.GetMapRegion(Integer, Integer)
   fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetMapRegion(Integer, Integer)
   name.vb: GetMapRegion(Integer, Integer)
+- uid: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)
+  id: GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  langs:
+  - csharp
+  - vb
+  name: GetChunkAtBlockPos(BlockPos)
+  nameWithType: IBlockAccessor.GetChunkAtBlockPos(BlockPos)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Retrieve chunk at given block position, returns null if chunk is not loaded
+  example: []
+  syntax:
+    content: IWorldChunk GetChunkAtBlockPos(BlockPos pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    return:
+      type: Vintagestory.API.Common.IWorldChunk
+      description: ''
+    content.vb: Function GetChunkAtBlockPos(pos As BlockPos) As IWorldChunk
+  overload: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos*
+- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockId(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockId(Vintagestory.API.MathTools.BlockPos)
+  id: GetBlockId(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  langs:
+  - csharp
+  - vb
+  name: GetBlockId(BlockPos)
+  nameWithType: IBlockAccessor.GetBlockId(BlockPos)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockId(Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Get the block id of the block at the given world coordinate
+  example: []
+  syntax:
+    content: int GetBlockId(BlockPos pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    return:
+      type: System.Int32
+      description: ''
+    content.vb: Function GetBlockId(pos As BlockPos) As Integer
+  overload: Vintagestory.API.Common.IBlockAccessor.GetBlockId*
+- uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos)
+  id: GetBlock(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  langs:
+  - csharp
+  - vb
+  name: GetBlock(BlockPos)
+  nameWithType: IBlockAccessor.GetBlock(BlockPos)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Get the block type of the block at the given world coordinate, dimension aware. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+
+    Same as <xref href="Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref> with BlockLayersAccess.Default as layer
+  example: []
+  syntax:
+    content: Block GetBlock(BlockPos pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    return:
+      type: Vintagestory.API.Common.Block
+      description: ''
+    content.vb: Function GetBlock(pos As BlockPos) As Block
+  overload: Vintagestory.API.Common.IBlockAccessor.GetBlock*
+- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(System.Int32,System.Int32,System.Int32,System.Int32)
+  id: GetBlockRaw(System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  langs:
+  - csharp
+  - vb
+  name: GetBlockRaw(int, int, int, int)
+  nameWithType: IBlockAccessor.GetBlockRaw(int, int, int, int)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(int, int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Direct raw coordinate access to blocks. PLEASE NOTE: The caller has to ensure dimension awareness (i.e. pos.InternalY when using BlockPos)<br />
+
+    Gets the block type of the block at the given world coordinate.
+  example: []
+  syntax:
+    content: Block GetBlockRaw(int x, int y, int z, int layer = 0)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: x coordinate
+    - id: y
+      type: System.Int32
+      description: y coordinate
+    - id: z
+      type: System.Int32
+      description: z coordinate
+    - id: layer
+      type: System.Int32
+      description: The block layer to retrieve from. See also <xref href="Vintagestory.API.Common.BlockLayersAccess" data-throw-if-not-resolved="false"></xref>
+    return:
+      type: Vintagestory.API.Common.Block
+      description: Never null. For unpopulated locations or invalid coordinates you'll get a block instance with block code "air" and id 0
+    content.vb: Function GetBlockRaw(x As Integer, y As Integer, z As Integer, layer As Integer = 0) As Block
+  overload: Vintagestory.API.Common.IBlockAccessor.GetBlockRaw*
+  nameWithType.vb: IBlockAccessor.GetBlockRaw(Integer, Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(Integer, Integer, Integer, Integer)
+  name.vb: GetBlockRaw(Integer, Integer, Integer, Integer)
+- uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos,System.Int32)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos,System.Int32)
+  id: GetBlock(Vintagestory.API.MathTools.BlockPos,System.Int32)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  langs:
+  - csharp
+  - vb
+  name: GetBlock(BlockPos, int)
+  nameWithType: IBlockAccessor.GetBlock(BlockPos, int)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Get block type at given world coordinate, dimension aware. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+
+    <br />Reads the block from the specified layer(s), see BlockLayersAccess documentation for details.
+  example: []
+  syntax:
+    content: Block GetBlock(BlockPos pos, int layer)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    - id: layer
+      type: System.Int32
+      description: blocks layer e.g. solid, fluid etc.
+    return:
+      type: Vintagestory.API.Common.Block
+      description: ''
+    content.vb: Function GetBlock(pos As BlockPos, layer As Integer) As Block
+  overload: Vintagestory.API.Common.IBlockAccessor.GetBlock*
+  nameWithType.vb: IBlockAccessor.GetBlock(BlockPos, Integer)
+  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos, Integer)
+  name.vb: GetBlock(BlockPos, Integer)
+- uid: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
+  id: GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  langs:
+  - csharp
+  - vb
+  name: GetMostSolidBlock(BlockPos)
+  nameWithType: IBlockAccessor.GetMostSolidBlock(BlockPos)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Same as <xref href="Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref> with BlockLayersAccess.MostSolid as layer
+  example: []
+  syntax:
+    content: Block GetMostSolidBlock(BlockPos pos)
+    parameters:
+    - id: pos
+      type: Vintagestory.API.MathTools.BlockPos
+      description: ''
+    return:
+      type: Vintagestory.API.Common.Block
+      description: ''
+    content.vb: Function GetMostSolidBlock(pos As BlockPos) As Block
+  overload: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock*
 - uid: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
   commentId: M:Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
   id: GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
@@ -481,33 +672,6 @@ items:
   nameWithType.vb: IBlockAccessor.GetChunkAtBlockPos(Integer, Integer, Integer)
   fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Integer, Integer, Integer)
   name.vb: GetChunkAtBlockPos(Integer, Integer, Integer)
-- uid: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)
-  id: GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  langs:
-  - csharp
-  - vb
-  name: GetChunkAtBlockPos(BlockPos)
-  nameWithType: IBlockAccessor.GetChunkAtBlockPos(BlockPos)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: Retrieve chunk at given block position, returns null if chunk is not loaded
-  example: []
-  syntax:
-    content: IWorldChunk GetChunkAtBlockPos(BlockPos pos)
-    parameters:
-    - id: pos
-      type: Vintagestory.API.MathTools.BlockPos
-      description: ''
-    return:
-      type: Vintagestory.API.Common.IWorldChunk
-      description: ''
-    content.vb: Function GetChunkAtBlockPos(pos As BlockPos) As IWorldChunk
-  overload: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos*
 - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
   commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
   id: GetBlockId(System.Int32,System.Int32,System.Int32)
@@ -556,271 +720,6 @@ items:
   nameWithType.vb: IBlockAccessor.GetBlockId(Integer, Integer, Integer)
   fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlockId(Integer, Integer, Integer)
   name.vb: GetBlockId(Integer, Integer, Integer)
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockId(Vintagestory.API.MathTools.BlockPos)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockId(Vintagestory.API.MathTools.BlockPos)
-  id: GetBlockId(Vintagestory.API.MathTools.BlockPos)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  langs:
-  - csharp
-  - vb
-  name: GetBlockId(BlockPos)
-  nameWithType: IBlockAccessor.GetBlockId(BlockPos)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockId(Vintagestory.API.MathTools.BlockPos)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: Get the block id of the block at the given world coordinate
-  example: []
-  syntax:
-    content: int GetBlockId(BlockPos pos)
-    parameters:
-    - id: pos
-      type: Vintagestory.API.MathTools.BlockPos
-      description: ''
-    return:
-      type: System.Int32
-      description: ''
-    content.vb: Function GetBlockId(pos As BlockPos) As Integer
-  overload: Vintagestory.API.Common.IBlockAccessor.GetBlockId*
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
-  id: GetBlock(System.Int32,System.Int32,System.Int32)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  langs:
-  - csharp
-  - vb
-  name: GetBlock(int, int, int)
-  nameWithType: IBlockAccessor.GetBlock(int, int, int)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock(int, int, int)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: >-
-    Get the block type of the block at the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-
-    Same as <xref href="Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref> with BlockLayersAccess.Default as layer
-  example: []
-  syntax:
-    content: >-
-      [Obsolete("Please use BlockPos version instead, for dimension awareness")]
-
-      Block GetBlock(int posX, int posY, int posZ)
-    parameters:
-    - id: posX
-      type: System.Int32
-      description: ''
-    - id: posY
-      type: System.Int32
-      description: ''
-    - id: posZ
-      type: System.Int32
-      description: ''
-    return:
-      type: Vintagestory.API.Common.Block
-      description: ''
-    content.vb: >-
-      <Obsolete("Please use BlockPos version instead, for dimension awareness")>
-
-      Function GetBlock(posX As Integer, posY As Integer, posZ As Integer) As Block
-  overload: Vintagestory.API.Common.IBlockAccessor.GetBlock*
-  attributes:
-  - type: System.ObsoleteAttribute
-    ctor: System.ObsoleteAttribute.#ctor(System.String)
-    arguments:
-    - type: System.String
-      value: Please use BlockPos version instead, for dimension awareness
-  nameWithType.vb: IBlockAccessor.GetBlock(Integer, Integer, Integer)
-  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlock(Integer, Integer, Integer)
-  name.vb: GetBlock(Integer, Integer, Integer)
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos)
-  id: GetBlock(Vintagestory.API.MathTools.BlockPos)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  langs:
-  - csharp
-  - vb
-  name: GetBlock(BlockPos)
-  nameWithType: IBlockAccessor.GetBlock(BlockPos)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: >-
-    Get the block type of the block at the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-
-    Same as <xref href="Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref> with BlockLayersAccess.Default as layer
-  example: []
-  syntax:
-    content: Block GetBlock(BlockPos pos)
-    parameters:
-    - id: pos
-      type: Vintagestory.API.MathTools.BlockPos
-      description: ''
-    return:
-      type: Vintagestory.API.Common.Block
-      description: ''
-    content.vb: Function GetBlock(pos As BlockPos) As Block
-  overload: Vintagestory.API.Common.IBlockAccessor.GetBlock*
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  id: GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  langs:
-  - csharp
-  - vb
-  name: GetBlockBelow(BlockPos, int)
-  nameWithType: IBlockAccessor.GetBlockBelow(BlockPos, int)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos, int)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: >-
-    Get the block type of the block below the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-
-    <br />Specify a negative dy for a block above!
-  example: []
-  syntax:
-    content: Block GetBlockBelow(BlockPos pos, int dy = 1)
-    parameters:
-    - id: pos
-      type: Vintagestory.API.MathTools.BlockPos
-      description: ''
-    - id: dy
-      type: System.Int32
-    return:
-      type: Vintagestory.API.Common.Block
-      description: ''
-    content.vb: Function GetBlockBelow(pos As BlockPos, dy As Integer = 1) As Block
-  overload: Vintagestory.API.Common.IBlockAccessor.GetBlockBelow*
-  nameWithType.vb: IBlockAccessor.GetBlockBelow(BlockPos, Integer)
-  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos, Integer)
-  name.vb: GetBlockBelow(BlockPos, Integer)
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  id: GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  langs:
-  - csharp
-  - vb
-  name: GetBlockAbove(BlockPos, int)
-  nameWithType: IBlockAccessor.GetBlockAbove(BlockPos, int)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos, int)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: Get the block type of the block above the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-  example: []
-  syntax:
-    content: Block GetBlockAbove(BlockPos pos, int dy = 1)
-    parameters:
-    - id: pos
-      type: Vintagestory.API.MathTools.BlockPos
-      description: ''
-    - id: dy
-      type: System.Int32
-    return:
-      type: Vintagestory.API.Common.Block
-      description: ''
-    content.vb: Function GetBlockAbove(pos As BlockPos, dy As Integer = 1) As Block
-  overload: Vintagestory.API.Common.IBlockAccessor.GetBlockAbove*
-  nameWithType.vb: IBlockAccessor.GetBlockAbove(BlockPos, Integer)
-  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos, Integer)
-  name.vb: GetBlockAbove(BlockPos, Integer)
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
-  id: GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  langs:
-  - csharp
-  - vb
-  name: GetBlock(int, int, int, int)
-  nameWithType: IBlockAccessor.GetBlock(int, int, int, int)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock(int, int, int, int)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: >-
-    Get the block type of the block at the given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-
-    <br />Reads the block from the specified layer(s), see <xref href="Vintagestory.API.Common.BlockLayersAccess" data-throw-if-not-resolved="false"></xref> documentation for details.
-  example: []
-  syntax:
-    content: >-
-      [Obsolete("Please use BlockPos version instead, for dimension awareness")]
-
-      Block GetBlock(int x, int y, int z, int layer)
-    parameters:
-    - id: x
-      type: System.Int32
-      description: x coordinate
-    - id: y
-      type: System.Int32
-      description: y coordinate
-    - id: z
-      type: System.Int32
-      description: z coordinate
-    - id: layer
-      type: System.Int32
-      description: blocks layer e.g. solid, fluid etc.
-    return:
-      type: Vintagestory.API.Common.Block
-      description: ID of the block at the given position
-    content.vb: >-
-      <Obsolete("Please use BlockPos version instead, for dimension awareness")>
-
-      Function GetBlock(x As Integer, y As Integer, z As Integer, layer As Integer) As Block
-  overload: Vintagestory.API.Common.IBlockAccessor.GetBlock*
-  attributes:
-  - type: System.ObsoleteAttribute
-    ctor: System.ObsoleteAttribute.#ctor(System.String)
-    arguments:
-    - type: System.String
-      value: Please use BlockPos version instead, for dimension awareness
-  nameWithType.vb: IBlockAccessor.GetBlock(Integer, Integer, Integer, Integer)
-  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlock(Integer, Integer, Integer, Integer)
-  name.vb: GetBlock(Integer, Integer, Integer, Integer)
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  id: GetBlock(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  langs:
-  - csharp
-  - vb
-  name: GetBlock(BlockPos, int)
-  nameWithType: IBlockAccessor.GetBlock(BlockPos, int)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos, int)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: >-
-    Get block type at given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-
-    <br />Reads the block from the specified layer(s), see BlockLayersAccess documentation for details.
-  example: []
-  syntax:
-    content: Block GetBlock(BlockPos pos, int layer)
-    parameters:
-    - id: pos
-      type: Vintagestory.API.MathTools.BlockPos
-      description: ''
-    - id: layer
-      type: System.Int32
-      description: blocks layer e.g. solid, fluid etc.
-    return:
-      type: Vintagestory.API.Common.Block
-      description: ''
-    content.vb: Function GetBlock(pos As BlockPos, layer As Integer) As Block
-  overload: Vintagestory.API.Common.IBlockAccessor.GetBlock*
-  nameWithType.vb: IBlockAccessor.GetBlock(BlockPos, Integer)
-  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos, Integer)
-  name.vb: GetBlock(BlockPos, Integer)
 - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockOrNull(System.Int32,System.Int32,System.Int32,System.Int32)
   commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockOrNull(System.Int32,System.Int32,System.Int32,System.Int32)
   id: GetBlockOrNull(System.Int32,System.Int32,System.Int32,System.Int32)
@@ -872,6 +771,113 @@ items:
   nameWithType.vb: IBlockAccessor.GetBlockOrNull(Integer, Integer, Integer, Integer)
   fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlockOrNull(Integer, Integer, Integer, Integer)
   name.vb: GetBlockOrNull(Integer, Integer, Integer, Integer)
+- uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
+  id: GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  langs:
+  - csharp
+  - vb
+  name: GetBlock(int, int, int, int)
+  nameWithType: IBlockAccessor.GetBlock(int, int, int, int)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock(int, int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Get the block type of the block at the given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+
+    <br />Reads the block from the specified layer(s), see <xref href="Vintagestory.API.Common.BlockLayersAccess" data-throw-if-not-resolved="false"></xref> documentation for details.
+
+    <br />If this must be used even though it's deprecated, please consider using .GetBlockRaw() instead where calling code is explicitly dimension-aware
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Please use BlockPos version instead, for dimension awareness")]
+
+      Block GetBlock(int x, int y, int z, int layer)
+    parameters:
+    - id: x
+      type: System.Int32
+      description: x coordinate
+    - id: y
+      type: System.Int32
+      description: y coordinate
+    - id: z
+      type: System.Int32
+      description: z coordinate
+    - id: layer
+      type: System.Int32
+      description: blocks layer e.g. solid, fluid etc.
+    return:
+      type: Vintagestory.API.Common.Block
+      description: ID of the block at the given position
+    content.vb: >-
+      <Obsolete("Please use BlockPos version instead, for dimension awareness")>
+
+      Function GetBlock(x As Integer, y As Integer, z As Integer, layer As Integer) As Block
+  overload: Vintagestory.API.Common.IBlockAccessor.GetBlock*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Please use BlockPos version instead, for dimension awareness
+  nameWithType.vb: IBlockAccessor.GetBlock(Integer, Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlock(Integer, Integer, Integer, Integer)
+  name.vb: GetBlock(Integer, Integer, Integer, Integer)
+- uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
+  id: GetBlock(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  langs:
+  - csharp
+  - vb
+  name: GetBlock(int, int, int)
+  nameWithType: IBlockAccessor.GetBlock(int, int, int)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock(int, int, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: >-
+    Get the block type of the block at the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+
+    Same as <xref href="Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref> with BlockLayersAccess.Default as layer
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("Please use BlockPos version instead, for dimension awareness")]
+
+      Block GetBlock(int posX, int posY, int posZ)
+    parameters:
+    - id: posX
+      type: System.Int32
+      description: ''
+    - id: posY
+      type: System.Int32
+      description: ''
+    - id: posZ
+      type: System.Int32
+      description: ''
+    return:
+      type: Vintagestory.API.Common.Block
+      description: ''
+    content.vb: >-
+      <Obsolete("Please use BlockPos version instead, for dimension awareness")>
+
+      Function GetBlock(posX As Integer, posY As Integer, posZ As Integer) As Block
+  overload: Vintagestory.API.Common.IBlockAccessor.GetBlock*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Please use BlockPos version instead, for dimension awareness
+  nameWithType.vb: IBlockAccessor.GetBlock(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlock(Integer, Integer, Integer)
+  name.vb: GetBlock(Integer, Integer, Integer)
 - uid: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(System.Int32,System.Int32,System.Int32)
   commentId: M:Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(System.Int32,System.Int32,System.Int32)
   id: GetMostSolidBlock(System.Int32,System.Int32,System.Int32)
@@ -920,33 +926,6 @@ items:
   nameWithType.vb: IBlockAccessor.GetMostSolidBlock(Integer, Integer, Integer)
   fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Integer, Integer, Integer)
   name.vb: GetMostSolidBlock(Integer, Integer, Integer)
-- uid: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
-  id: GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  langs:
-  - csharp
-  - vb
-  name: GetMostSolidBlock(BlockPos)
-  nameWithType: IBlockAccessor.GetMostSolidBlock(BlockPos)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
-  type: Method
-  assemblies:
-  - VintagestoryAPI
-  namespace: Vintagestory.API.Common
-  summary: Same as <xref href="Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos%2cSystem.Int32)" data-throw-if-not-resolved="false"></xref> with BlockLayersAccess.MostSolid as layer
-  example: []
-  syntax:
-    content: Block GetMostSolidBlock(BlockPos pos)
-    parameters:
-    - id: pos
-      type: Vintagestory.API.MathTools.BlockPos
-      description: ''
-    return:
-      type: Vintagestory.API.Common.Block
-      description: ''
-    content.vb: Function GetMostSolidBlock(pos As BlockPos) As Block
-  overload: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock*
 - uid: Vintagestory.API.Common.IBlockAccessor.WalkBlocks(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Action{Vintagestory.API.Common.Block,System.Int32,System.Int32,System.Int32},System.Boolean)
   commentId: M:Vintagestory.API.Common.IBlockAccessor.WalkBlocks(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Action{Vintagestory.API.Common.Block,System.Int32,System.Int32,System.Int32},System.Boolean)
   id: WalkBlocks(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Action{Vintagestory.API.Common.Block,System.Int32,System.Int32,System.Int32},System.Boolean)
@@ -2154,7 +2133,7 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.Common
-  summary: Returns a number of how many blocks away there is rain fall. Does a cheap 2D bfs up to 4 blocks away. Returns 99 if none was found within 4 blocks
+  summary: Returns a number of how many blocks away there is rain fall. Does a cheap 2D bfs up to x blocks away. Returns 99 if none was found within given blocks
   example: []
   syntax:
     content: int GetDistanceToRainFall(BlockPos pos, int horziontalSearchWidth = 4, int verticalSearchWidth = 1)
@@ -2907,6 +2886,193 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  parent: Vintagestory.API.Util.PosUtil
+  definition: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  name: GetBlockAbove(IBlockAccessor, BlockPos, int, int)
+  nameWithType: PosUtil.GetBlockAbove(IBlockAccessor, BlockPos, int, int)
+  fullName: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, int, int)
+  nameWithType.vb: PosUtil.GetBlockAbove(IBlockAccessor, BlockPos, Integer, Integer)
+  fullName.vb: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Integer, Integer)
+  name.vb: GetBlockAbove(IBlockAccessor, BlockPos, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockAbove
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockAbove
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  parent: Vintagestory.API.Util.PosUtil
+  definition: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  name: GetBlockBelow(IBlockAccessor, BlockPos, int, int)
+  nameWithType: PosUtil.GetBlockBelow(IBlockAccessor, BlockPos, int, int)
+  fullName: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, int, int)
+  nameWithType.vb: PosUtil.GetBlockBelow(IBlockAccessor, BlockPos, Integer, Integer)
+  fullName.vb: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Integer, Integer)
+  name.vb: GetBlockBelow(IBlockAccessor, BlockPos, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockBelow
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockBelow
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+  commentId: M:Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+  parent: Vintagestory.API.Util.PosUtil
+  definition: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+  href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_
+  name: GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, int)
+  nameWithType: PosUtil.GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, int)
+  fullName: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, int)
+  nameWithType.vb: PosUtil.GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, Integer)
+  fullName.vb: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, Integer)
+  name.vb: GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+    name: GetBlockOnSide
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+    name: GetBlockOnSide
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
 - uid: Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
   commentId: M:Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle(System.Object)
   isExternal: true
@@ -2973,6 +3139,197 @@ references:
     name: Object
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  isExternal: true
+  href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  name: GetBlockAbove(IBlockAccessor, BlockPos, int, int)
+  nameWithType: PosUtil.GetBlockAbove(IBlockAccessor, BlockPos, int, int)
+  fullName: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, int, int)
+  nameWithType.vb: PosUtil.GetBlockAbove(IBlockAccessor, BlockPos, Integer, Integer)
+  fullName.vb: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Integer, Integer)
+  name.vb: GetBlockAbove(IBlockAccessor, BlockPos, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockAbove
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockAbove
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Util.PosUtil
+  commentId: T:Vintagestory.API.Util.PosUtil
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.PosUtil.html
+  name: PosUtil
+  nameWithType: PosUtil
+  fullName: Vintagestory.API.Util.PosUtil
+- uid: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  isExternal: true
+  href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  name: GetBlockBelow(IBlockAccessor, BlockPos, int, int)
+  nameWithType: PosUtil.GetBlockBelow(IBlockAccessor, BlockPos, int, int)
+  fullName: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, int, int)
+  nameWithType.vb: PosUtil.GetBlockBelow(IBlockAccessor, BlockPos, Integer, Integer)
+  fullName.vb: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Integer, Integer)
+  name.vb: GetBlockBelow(IBlockAccessor, BlockPos, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockBelow
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockBelow
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+  commentId: M:Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+  isExternal: true
+  href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_
+  name: GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, int)
+  nameWithType: PosUtil.GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, int)
+  fullName: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, int)
+  nameWithType.vb: PosUtil.GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, Integer)
+  fullName.vb: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, Integer)
+  name.vb: GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+    name: GetBlockOnSide
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+    name: GetBlockOnSide
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
 - uid: Vintagestory.API.Util
   commentId: N:Vintagestory.API.Util
@@ -3169,7 +3526,7 @@ references:
   fullName: Vintagestory.API.Common.IMapRegion
 - uid: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos*
   commentId: Overload:Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_System_Int32_System_Int32_System_Int32_
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_Vintagestory_API_MathTools_BlockPos_
   name: GetChunkAtBlockPos
   nameWithType: IBlockAccessor.GetChunkAtBlockPos
   fullName: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos
@@ -3182,7 +3539,7 @@ references:
   fullName: Vintagestory.API.MathTools.BlockPos
 - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockId*
   commentId: Overload:Vintagestory.API.Common.IBlockAccessor.GetBlockId
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockId_System_Int32_System_Int32_System_Int32_
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockId_Vintagestory_API_MathTools_BlockPos_
   name: GetBlockId
   nameWithType: IBlockAccessor.GetBlockId
   fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockId
@@ -3229,7 +3586,7 @@ references:
   - name: )
 - uid: Vintagestory.API.Common.IBlockAccessor.GetBlock*
   commentId: Overload:Vintagestory.API.Common.IBlockAccessor.GetBlock
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_Vintagestory_API_MathTools_BlockPos_
   name: GetBlock
   nameWithType: IBlockAccessor.GetBlock
   fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock
@@ -3247,24 +3604,24 @@ references:
   name: IBlockAccessor
   nameWithType: IBlockAccessor
   fullName: Vintagestory.API.Common.IBlockAccessor
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockBelow*
-  commentId: Overload:Vintagestory.API.Common.IBlockAccessor.GetBlockBelow
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockBelow_Vintagestory_API_MathTools_BlockPos_System_Int32_
-  name: GetBlockBelow
-  nameWithType: IBlockAccessor.GetBlockBelow
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockBelow
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockAbove*
-  commentId: Overload:Vintagestory.API.Common.IBlockAccessor.GetBlockAbove
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockAbove_Vintagestory_API_MathTools_BlockPos_System_Int32_
-  name: GetBlockAbove
-  nameWithType: IBlockAccessor.GetBlockAbove
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockAbove
 - uid: Vintagestory.API.Common.BlockLayersAccess
   commentId: T:Vintagestory.API.Common.BlockLayersAccess
   href: Vintagestory.API.Common.BlockLayersAccess.html
   name: BlockLayersAccess
   nameWithType: BlockLayersAccess
   fullName: Vintagestory.API.Common.BlockLayersAccess
+- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockRaw*
+  commentId: Overload:Vintagestory.API.Common.IBlockAccessor.GetBlockRaw
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockRaw_System_Int32_System_Int32_System_Int32_System_Int32_
+  name: GetBlockRaw
+  nameWithType: IBlockAccessor.GetBlockRaw
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockRaw
+- uid: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock*
+  commentId: Overload:Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMostSolidBlock_Vintagestory_API_MathTools_BlockPos_
+  name: GetMostSolidBlock
+  nameWithType: IBlockAccessor.GetMostSolidBlock
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock
 - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockOrNull*
   commentId: Overload:Vintagestory.API.Common.IBlockAccessor.GetBlockOrNull
   href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockOrNull_System_Int32_System_Int32_System_Int32_System_Int32_
@@ -3338,12 +3695,6 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
-- uid: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock*
-  commentId: Overload:Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMostSolidBlock_System_Int32_System_Int32_System_Int32_
-  name: GetMostSolidBlock
-  nameWithType: IBlockAccessor.GetMostSolidBlock
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock
 - uid: Vintagestory.API.Common.IBlockAccessor.WalkBlocks*
   commentId: Overload:Vintagestory.API.Common.IBlockAccessor.WalkBlocks
   href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_WalkBlocks_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockPos_System_Action_Vintagestory_API_Common_Block_System_Int32_System_Int32_System_Int32__System_Boolean_

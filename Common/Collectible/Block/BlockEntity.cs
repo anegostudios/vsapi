@@ -37,7 +37,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public List<BlockEntityBehavior> Behaviors = new List<BlockEntityBehavior>();
 
-        
+
         /// <summary>
         /// Creats an empty instance. Use initialize to initialize it with the api.
         /// </summary>
@@ -57,7 +57,7 @@ namespace Vintagestory.API.Common
 
             return null;
         }
-        
+
 
         /// <summary>
         /// This method is called right after the block entity was spawned or right after it was loaded from a newly loaded chunk. You do have access to the world and its blocks at this point.
@@ -69,9 +69,16 @@ namespace Vintagestory.API.Common
         {
             this.Api = api;
 
-            foreach (var val in Behaviors)
+            if (api.World.FrameProfiler?.Enabled == true)
             {
-                val.Initialize(api, val.properties);
+                foreach (var val in Behaviors)
+                {
+                    val.Initialize(api, val.properties);
+                    api.World.FrameProfiler.Mark("initbebehavior-" + val.GetType());
+                }
+            } else
+            {
+                foreach (var val in Behaviors) val.Initialize(api, val.properties);
             }
         }
 
@@ -176,7 +183,7 @@ namespace Vintagestory.API.Common
             //api?.World.Logger.VerboseDebug("OnBlockRemoved(): {0}@{1}", this, pos);
         }
 
-        //Adds/Removes block entity behaviors to reflect the new block properties. 
+        //Adds/Removes block entity behaviors to reflect the new block properties.
         /// <summary>
         /// Called when blockAccessor.ExchangeBlock() is used to exchange this block. Make sure to call the base method when overriding.
         /// </summary>
@@ -214,11 +221,11 @@ namespace Vintagestory.API.Common
                     this.Behaviors.RemoveAll(bh => bh.GetType() == type);
                 }
             }*/
-            
+
         }
 
         /// <summary>
-        /// Called when the block was broken in survival mode or through explosions and similar. Generally in situations where you probably want 
+        /// Called when the block was broken in survival mode or through explosions and similar. Generally in situations where you probably want
         /// to drop the block entity contents, if it has any
         /// </summary>
         public virtual void OnBlockBroken(IPlayer byPlayer = null)
@@ -234,7 +241,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         public virtual void HistoryStateRestore()
         {
-            
+
         }
 
         /// <summary>

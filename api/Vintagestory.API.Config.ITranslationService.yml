@@ -166,7 +166,7 @@ items:
       description: The arguments to interpolate into the resulting string.
     return:
       type: System.String
-      description: Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated value.
+      description: Returns null if no results are found; otherwise returns the pre-formatted, translated value.
     content.vb: Function GetIfExists(key As String, ParamArray args As Object()) As String
   overload: Vintagestory.API.Config.ITranslationService.GetIfExists*
   nameWithType.vb: ITranslationService.GetIfExists(String, ParamArray Object())
@@ -199,7 +199,7 @@ items:
       description: The arguments to interpolate into the resulting string.
     return:
       type: System.String
-      description: Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated value.
+      description: Returns the key if no results are found; otherwise returns the pre-formatted, translated value.
     content.vb: Function [Get](key As String, ParamArray args As Object()) As String
   overload: Vintagestory.API.Config.ITranslationService.Get*
   nameWithType.vb: ITranslationService.Get(String, ParamArray Object())
@@ -252,7 +252,7 @@ items:
       description: The key.
     return:
       type: System.String
-      description: Returns the key as a default value, if no results are found; otherwise returns the unformatted, translated value.
+      description: Returns the key if no results are found; otherwise returns the unformatted, translated value.
     content.vb: Function GetUnformatted(key As String) As String
   overload: Vintagestory.API.Config.ITranslationService.GetUnformatted*
   nameWithType.vb: ITranslationService.GetUnformatted(String)
@@ -285,7 +285,7 @@ items:
       description: The arguments to interpolate into the resulting string.
     return:
       type: System.String
-      description: Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated value.
+      description: Returns the key if no results are found; otherwise returns the pre-formatted, translated value.
     content.vb: Function GetMatching(key As String, ParamArray args As Object()) As String
   overload: Vintagestory.API.Config.ITranslationService.GetMatching*
   nameWithType.vb: ITranslationService.GetMatching(String, ParamArray Object())
@@ -318,7 +318,7 @@ items:
       description: The arguments to interpolate into the resulting string.
     return:
       type: System.String
-      description: Returns <code>null</code> as a default value, if no results are found; otherwise returns the pre-formatted, translated value.
+      description: Returns <code>null</code> if no results are found; otherwise returns the pre-formatted, translated value.
     content.vb: Function GetMatchingIfExists(key As String, ParamArray args As Object()) As String
   overload: Vintagestory.API.Config.ITranslationService.GetMatchingIfExists*
   nameWithType.vb: ITranslationService.GetMatchingIfExists(String, ParamArray Object())

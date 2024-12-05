@@ -52,6 +52,7 @@ items:
   - Vintagestory.API.Common.IWorldAccessor.HighlightBlocks(Vintagestory.API.Common.IPlayer,System.Int32,System.Collections.Generic.List{Vintagestory.API.MathTools.BlockPos},Vintagestory.API.Client.EnumHighlightBlocksMode,Vintagestory.API.Common.EnumHighlightShape)
   - Vintagestory.API.Common.IWorldAccessor.InteresectionTester
   - Vintagestory.API.Common.IWorldAccessor.Items
+  - Vintagestory.API.Common.IWorldAccessor.LoadEntity(Vintagestory.API.Common.Entities.Entity,System.Int64)
   - Vintagestory.API.Common.IWorldAccessor.LoadedChunkIndices
   - Vintagestory.API.Common.IWorldAccessor.LoadedMapChunkIndices
   - Vintagestory.API.Common.IWorldAccessor.Logger
@@ -1176,6 +1177,39 @@ items:
       description: ''
     content.vb: Sub SpawnEntity(entity As Entity)
   overload: Vintagestory.API.Common.IWorldAccessor.SpawnEntity*
+- uid: Vintagestory.API.Common.IWorldAccessor.LoadEntity(Vintagestory.API.Common.Entities.Entity,System.Int64)
+  commentId: M:Vintagestory.API.Common.IWorldAccessor.LoadEntity(Vintagestory.API.Common.Entities.Entity,System.Int64)
+  id: LoadEntity(Vintagestory.API.Common.Entities.Entity,System.Int64)
+  parent: Vintagestory.API.Common.IWorldAccessor
+  langs:
+  - csharp
+  - vb
+  name: LoadEntity(Entity, long)
+  nameWithType: IWorldAccessor.LoadEntity(Entity, long)
+  fullName: Vintagestory.API.Common.IWorldAccessor.LoadEntity(Vintagestory.API.Common.Entities.Entity, long)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Loads a previously created entity into the loadedEntities list. Used when a chunk is loaded.
+  example: []
+  syntax:
+    content: bool LoadEntity(Entity entity, long fromChunkIndex3d)
+    parameters:
+    - id: entity
+      type: Vintagestory.API.Common.Entities.Entity
+      description: ''
+    - id: fromChunkIndex3d
+      type: System.Int64
+      description: ''
+    return:
+      type: System.Boolean
+      description: ''
+    content.vb: Function LoadEntity(entity As Entity, fromChunkIndex3d As Long) As Boolean
+  overload: Vintagestory.API.Common.IWorldAccessor.LoadEntity*
+  nameWithType.vb: IWorldAccessor.LoadEntity(Entity, Long)
+  fullName.vb: Vintagestory.API.Common.IWorldAccessor.LoadEntity(Vintagestory.API.Common.Entities.Entity, Long)
+  name.vb: LoadEntity(Entity, Long)
 - uid: Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk(Vintagestory.API.Common.Entities.Entity,System.Int64)
   commentId: M:Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk(Vintagestory.API.Common.Entities.Entity,System.Int64)
   id: UpdateEntityChunk(Vintagestory.API.Common.Entities.Entity,System.Int64)
@@ -4028,6 +4062,12 @@ references:
   name: SpawnEntity
   nameWithType: IWorldAccessor.SpawnEntity
   fullName: Vintagestory.API.Common.IWorldAccessor.SpawnEntity
+- uid: Vintagestory.API.Common.IWorldAccessor.LoadEntity*
+  commentId: Overload:Vintagestory.API.Common.IWorldAccessor.LoadEntity
+  href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_LoadEntity_Vintagestory_API_Common_Entities_Entity_System_Int64_
+  name: LoadEntity
+  nameWithType: IWorldAccessor.LoadEntity
+  fullName: Vintagestory.API.Common.IWorldAccessor.LoadEntity
 - uid: Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk*
   commentId: Overload:Vintagestory.API.Common.IWorldAccessor.UpdateEntityChunk
   href: Vintagestory.API.Common.IWorldAccessor.html#Vintagestory_API_Common_IWorldAccessor_UpdateEntityChunk_Vintagestory_API_Common_Entities_Entity_System_Int64_

@@ -17,6 +17,7 @@ items:
   - Vintagestory.API.Common.IEventAPI.OnGetClimate
   - Vintagestory.API.Common.IEventAPI.OnGetWindSpeed
   - Vintagestory.API.Common.IEventAPI.OnTestBlockAccess
+  - Vintagestory.API.Common.IEventAPI.PlayerDimensionChanged
   - Vintagestory.API.Common.IEventAPI.PushEvent(System.String,Vintagestory.API.Datastructures.IAttribute)
   - Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32)
   - Vintagestory.API.Common.IEventAPI.RegisterCallback(System.Action{System.Single},System.Int32,System.Boolean)
@@ -27,6 +28,7 @@ items:
   - Vintagestory.API.Common.IEventAPI.RegisterGameTickListener(System.Action{Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Single},Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
   - Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)
   - Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.ItemSlot[],System.Int32)
+  - Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged(Vintagestory.API.Common.IPlayer)
   - Vintagestory.API.Common.IEventAPI.UnregisterCallback(System.Int64)
   - Vintagestory.API.Common.IEventAPI.UnregisterGameTickListener(System.Int64)
   langs:
@@ -47,6 +49,27 @@ items:
   extensionMethods:
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+- uid: Vintagestory.API.Common.IEventAPI.PlayerDimensionChanged
+  commentId: E:Vintagestory.API.Common.IEventAPI.PlayerDimensionChanged
+  id: PlayerDimensionChanged
+  parent: Vintagestory.API.Common.IEventAPI
+  langs:
+  - csharp
+  - vb
+  name: PlayerDimensionChanged
+  nameWithType: IEventAPI.PlayerDimensionChanged
+  fullName: Vintagestory.API.Common.IEventAPI.PlayerDimensionChanged
+  type: Event
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Called when a player changed dimension
+  example: []
+  syntax:
+    content: event PlayerCommonDelegate PlayerDimensionChanged
+    return:
+      type: Vintagestory.API.Common.PlayerCommonDelegate
+    content.vb: Event PlayerDimensionChanged As PlayerCommonDelegate
 - uid: Vintagestory.API.Common.IEventAPI.OnTestBlockAccess
   commentId: E:Vintagestory.API.Common.IEventAPI.OnTestBlockAccess
   id: OnTestBlockAccess
@@ -648,6 +671,27 @@ items:
   nameWithType.vb: IEventAPI.EnqueueMainThreadTask(Action, String)
   fullName.vb: Vintagestory.API.Common.IEventAPI.EnqueueMainThreadTask(System.Action, String)
   name.vb: EnqueueMainThreadTask(Action, String)
+- uid: Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged(Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged(Vintagestory.API.Common.IPlayer)
+  id: TriggerPlayerDimensionChanged(Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.IEventAPI
+  langs:
+  - csharp
+  - vb
+  name: TriggerPlayerDimensionChanged(IPlayer)
+  nameWithType: IEventAPI.TriggerPlayerDimensionChanged(IPlayer)
+  fullName: Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged(Vintagestory.API.Common.IPlayer)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  syntax:
+    content: void TriggerPlayerDimensionChanged(IPlayer player)
+    parameters:
+    - id: player
+      type: Vintagestory.API.Common.IPlayer
+    content.vb: Sub TriggerPlayerDimensionChanged(player As IPlayer)
+  overload: Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged*
 - uid: Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)
   commentId: M:Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)
   id: TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)
@@ -893,6 +937,13 @@ references:
   - uid: Vintagestory.API.Util
     name: Util
     href: Vintagestory.API.Util.html
+- uid: Vintagestory.API.Common.PlayerCommonDelegate
+  commentId: T:Vintagestory.API.Common.PlayerCommonDelegate
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.PlayerCommonDelegate.html
+  name: PlayerCommonDelegate
+  nameWithType: PlayerCommonDelegate
+  fullName: Vintagestory.API.Common.PlayerCommonDelegate
 - uid: Vintagestory.API.Common.TestBlockAccessDelegate
   commentId: T:Vintagestory.API.Common.TestBlockAccessDelegate
   parent: Vintagestory.API.Common
@@ -1349,6 +1400,19 @@ references:
   name: Action
   nameWithType: Action
   fullName: System.Action
+- uid: Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged*
+  commentId: Overload:Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerPlayerDimensionChanged_Vintagestory_API_Common_IPlayer_
+  name: TriggerPlayerDimensionChanged
+  nameWithType: IEventAPI.TriggerPlayerDimensionChanged
+  fullName: Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged
+- uid: Vintagestory.API.Common.IPlayer
+  commentId: T:Vintagestory.API.Common.IPlayer
+  parent: Vintagestory.API.Common
+  href: Vintagestory.API.Common.IPlayer.html
+  name: IPlayer
+  nameWithType: IPlayer
+  fullName: Vintagestory.API.Common.IPlayer
 - uid: Vintagestory.API.Common.IEventAPI.TriggerEntityDeath*
   commentId: Overload:Vintagestory.API.Common.IEventAPI.TriggerEntityDeath
   href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerEntityDeath_Vintagestory_API_Common_Entities_Entity_Vintagestory_API_Common_DamageSource_
@@ -1413,13 +1477,6 @@ references:
   name: TriggerMatchesRecipe
   nameWithType: IEventAPI.TriggerMatchesRecipe
   fullName: Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe
-- uid: Vintagestory.API.Common.IPlayer
-  commentId: T:Vintagestory.API.Common.IPlayer
-  parent: Vintagestory.API.Common
-  href: Vintagestory.API.Common.IPlayer.html
-  name: IPlayer
-  nameWithType: IPlayer
-  fullName: Vintagestory.API.Common.IPlayer
 - uid: Vintagestory.API.Common.GridRecipe
   commentId: T:Vintagestory.API.Common.GridRecipe
   parent: Vintagestory.API.Common

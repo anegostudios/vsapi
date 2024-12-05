@@ -11,6 +11,7 @@ public class NaturalShape
 
     private readonly IRandom rand;
     private readonly NatFloat natFloat;
+    private bool hasSquareStart;
 
     public NaturalShape(IRandom rand)
     {
@@ -26,6 +27,46 @@ public class NaturalShape
     {
         var tmpVec = new Vec2i();
         outline.Add(tmpVec, new ShapeCell(tmpVec, new[] { true, true, true, true }));
+    }
+
+    public void InitSquare(int sizeX, int sizeZ)
+    {
+        hasSquareStart = true;
+        inside.Clear();
+        outline.Clear();
+        for (int x = 0; x < sizeX; x++)
+        {
+            for (int z = 0; z < sizeZ; z++)
+            {
+                var pos = new Vec2i(x, z);
+                var openSide = new[] { false, false, false, false };
+                if (z == 0) // N
+                {
+                    openSide[0] = true;
+                }
+                else if (z == sizeZ-1) // S
+                {
+                    openSide[2] = true;
+                }
+                if (x == 0) // W
+                {
+                    openSide[3] = true;
+                }
+                else if (x == sizeX-1) // E
+                {
+                    openSide[1] = true;
+                }
+                var shapeCell = new ShapeCell(pos,openSide);
+                if(!openSide.Any(s => s))
+                {
+                    inside.Add(pos);
+                }
+                else
+                {
+                    outline.Add(pos, shapeCell);
+                }
+            }
+        }
     }
 
     public bool[] GetOpenSides(Vec2i c)
@@ -77,8 +118,16 @@ public class NaturalShape
     {
         for (var i = 0; i < steps; i++)
         {
-            natFloat.avg = outline.Count * 0.5f;
-            natFloat.var = outline.Count * 0.15f;
+            if (hasSquareStart)
+            {
+                natFloat.avg = outline.Count * 0.5f;
+                natFloat.var = outline.Count * 0.5f;
+            }
+            else
+            {
+                natFloat.avg = outline.Count * 0.85f;
+                natFloat.var = outline.Count * 0.15f;
+            }
             var next = (int)natFloat.nextFloat(1f, rand);
             var cell = outline.ElementAt(next);
 
@@ -134,6 +183,22 @@ public class NaturalShape
         foreach (var pos in inside)
         {
             list.Add(new BlockPos(start.X + pos.X, start.Y, start.Z + pos.Y, 0));
+        }
+
+        return list;
+    }
+
+    public List<Vec2i> GetPositions()
+    {
+        var list = new List<Vec2i>();
+        foreach (var (pos, _) in outline)
+        {
+            list.Add(pos);
+        }
+
+        foreach (var pos in inside)
+        {
+            list.Add(pos);
         }
 
         return list;

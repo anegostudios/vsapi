@@ -56,19 +56,18 @@ items:
   - Vintagestory.API.Common.IBlockAccessor.GetChunk(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.GetChunk(System.Int64)
   - Vintagestory.API.Common.IBlockAccessor.GetMapRegion(System.Int32,System.Int32)
-  - Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)
-  - Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.GetBlockId(Vintagestory.API.MathTools.BlockPos)
-  - Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos)
-  - Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  - Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  - Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(System.Int32,System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  - Vintagestory.API.Common.IBlockAccessor.GetBlockOrNull(System.Int32,System.Int32,System.Int32,System.Int32)
-  - Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IBlockAccessor.GetBlockOrNull(System.Int32,System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.IBlockAccessor.WalkBlocks(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Action{Vintagestory.API.Common.Block,System.Int32,System.Int32,System.Int32},System.Boolean)
   - Vintagestory.API.Common.IBlockAccessor.SearchBlocks(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.Block,Vintagestory.API.MathTools.BlockPos},System.Action{System.Int32,System.Int32,System.Int32})
   - Vintagestory.API.Common.IBlockAccessor.SearchFluidBlocks(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ActionConsumable{Vintagestory.API.Common.Block,Vintagestory.API.MathTools.BlockPos},System.Action{System.Int32,System.Int32,System.Int32})
@@ -130,6 +129,9 @@ items:
   extensionMethods:
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
+  - Vintagestory.API.Common.IBlockAccessor.Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IBlockAccessor.Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  - Vintagestory.API.Common.IBlockAccessor.Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
 - uid: Vintagestory.API.Common.IBlockAccessorRevertable.OnStoreHistoryState
   commentId: E:Vintagestory.API.Common.IBlockAccessorRevertable.OnStoreHistoryState
   id: OnStoreHistoryState
@@ -932,61 +934,6 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
-- uid: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  isExternal: true
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_System_Int32_System_Int32_System_Int32_
-  name: GetChunkAtBlockPos(int, int, int)
-  nameWithType: IBlockAccessor.GetChunkAtBlockPos(int, int, int)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(int, int, int)
-  nameWithType.vb: IBlockAccessor.GetChunkAtBlockPos(Integer, Integer, Integer)
-  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Integer, Integer, Integer)
-  name.vb: GetChunkAtBlockPos(Integer, Integer, Integer)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
-    name: GetChunkAtBlockPos
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_System_Int32_System_Int32_System_Int32_
-  - name: (
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
-    name: GetChunkAtBlockPos
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_System_Int32_System_Int32_System_Int32_
-  - name: (
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
 - uid: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)
   commentId: M:Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Vintagestory.API.MathTools.BlockPos)
   parent: Vintagestory.API.Common.IBlockAccessor
@@ -1011,61 +958,6 @@ references:
   - uid: Vintagestory.API.MathTools.BlockPos
     name: BlockPos
     href: Vintagestory.API.MathTools.BlockPos.html
-  - name: )
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  isExternal: true
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockId_System_Int32_System_Int32_System_Int32_
-  name: GetBlockId(int, int, int)
-  nameWithType: IBlockAccessor.GetBlockId(int, int, int)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockId(int, int, int)
-  nameWithType.vb: IBlockAccessor.GetBlockId(Integer, Integer, Integer)
-  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlockId(Integer, Integer, Integer)
-  name.vb: GetBlockId(Integer, Integer, Integer)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
-    name: GetBlockId
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockId_System_Int32_System_Int32_System_Int32_
-  - name: (
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
-    name: GetBlockId
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockId_System_Int32_System_Int32_System_Int32_
-  - name: (
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
 - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockId(Vintagestory.API.MathTools.BlockPos)
   commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockId(Vintagestory.API.MathTools.BlockPos)
@@ -1092,61 +984,6 @@ references:
     name: BlockPos
     href: Vintagestory.API.MathTools.BlockPos.html
   - name: )
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  isExternal: true
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_
-  name: GetBlock(int, int, int)
-  nameWithType: IBlockAccessor.GetBlock(int, int, int)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock(int, int, int)
-  nameWithType.vb: IBlockAccessor.GetBlock(Integer, Integer, Integer)
-  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlock(Integer, Integer, Integer)
-  name.vb: GetBlock(Integer, Integer, Integer)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
-    name: GetBlock
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_
-  - name: (
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
-    name: GetBlock
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_
-  - name: (
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
 - uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos)
   commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(Vintagestory.API.MathTools.BlockPos)
   parent: Vintagestory.API.Common.IBlockAccessor
@@ -1172,103 +1009,21 @@ references:
     name: BlockPos
     href: Vintagestory.API.MathTools.BlockPos.html
   - name: )
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32)
+- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(System.Int32,System.Int32,System.Int32,System.Int32)
   parent: Vintagestory.API.Common.IBlockAccessor
   isExternal: true
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockBelow_Vintagestory_API_MathTools_BlockPos_System_Int32_
-  name: GetBlockBelow(BlockPos, int)
-  nameWithType: IBlockAccessor.GetBlockBelow(BlockPos, int)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos, int)
-  nameWithType.vb: IBlockAccessor.GetBlockBelow(BlockPos, Integer)
-  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos, Integer)
-  name.vb: GetBlockBelow(BlockPos, Integer)
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockRaw_System_Int32_System_Int32_System_Int32_System_Int32_
+  name: GetBlockRaw(int, int, int, int)
+  nameWithType: IBlockAccessor.GetBlockRaw(int, int, int, int)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(int, int, int, int)
+  nameWithType.vb: IBlockAccessor.GetBlockRaw(Integer, Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(Integer, Integer, Integer, Integer)
+  name.vb: GetBlockRaw(Integer, Integer, Integer, Integer)
   spec.csharp:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32)
-    name: GetBlockBelow
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockBelow_Vintagestory_API_MathTools_BlockPos_System_Int32_
-  - name: (
-  - uid: Vintagestory.API.MathTools.BlockPos
-    name: BlockPos
-    href: Vintagestory.API.MathTools.BlockPos.html
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32)
-    name: GetBlockBelow
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockBelow_Vintagestory_API_MathTools_BlockPos_System_Int32_
-  - name: (
-  - uid: Vintagestory.API.MathTools.BlockPos
-    name: BlockPos
-    href: Vintagestory.API.MathTools.BlockPos.html
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  isExternal: true
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockAbove_Vintagestory_API_MathTools_BlockPos_System_Int32_
-  name: GetBlockAbove(BlockPos, int)
-  nameWithType: IBlockAccessor.GetBlockAbove(BlockPos, int)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos, int)
-  nameWithType.vb: IBlockAccessor.GetBlockAbove(BlockPos, Integer)
-  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos, Integer)
-  name.vb: GetBlockAbove(BlockPos, Integer)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32)
-    name: GetBlockAbove
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockAbove_Vintagestory_API_MathTools_BlockPos_System_Int32_
-  - name: (
-  - uid: Vintagestory.API.MathTools.BlockPos
-    name: BlockPos
-    href: Vintagestory.API.MathTools.BlockPos.html
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: int
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32)
-    name: GetBlockAbove
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockAbove_Vintagestory_API_MathTools_BlockPos_System_Int32_
-  - name: (
-  - uid: Vintagestory.API.MathTools.BlockPos
-    name: BlockPos
-    href: Vintagestory.API.MathTools.BlockPos.html
-  - name: ','
-  - name: " "
-  - uid: System.Int32
-    name: Integer
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
-- uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  isExternal: true
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_System_Int32_
-  name: GetBlock(int, int, int, int)
-  nameWithType: IBlockAccessor.GetBlock(int, int, int, int)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock(int, int, int, int)
-  nameWithType.vb: IBlockAccessor.GetBlock(Integer, Integer, Integer, Integer)
-  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlock(Integer, Integer, Integer, Integer)
-  name.vb: GetBlock(Integer, Integer, Integer, Integer)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
-    name: GetBlock
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_System_Int32_
+  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(System.Int32,System.Int32,System.Int32,System.Int32)
+    name: GetBlockRaw
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockRaw_System_Int32_System_Int32_System_Int32_System_Int32_
   - name: (
   - uid: System.Int32
     name: int
@@ -1294,9 +1049,9 @@ references:
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
   spec.vb:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
-    name: GetBlock
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_System_Int32_
+  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(System.Int32,System.Int32,System.Int32,System.Int32)
+    name: GetBlockRaw
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockRaw_System_Int32_System_Int32_System_Int32_System_Int32_
   - name: (
   - uid: System.Int32
     name: Integer
@@ -1355,6 +1110,141 @@ references:
   - uid: Vintagestory.API.MathTools.BlockPos
     name: BlockPos
     href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMostSolidBlock_Vintagestory_API_MathTools_BlockPos_
+  name: GetMostSolidBlock(BlockPos)
+  nameWithType: IBlockAccessor.GetMostSolidBlock(BlockPos)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
+    name: GetMostSolidBlock
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMostSolidBlock_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
+    name: GetMostSolidBlock
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMostSolidBlock_Vintagestory_API_MathTools_BlockPos_
+  - name: (
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  isExternal: true
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_System_Int32_System_Int32_System_Int32_
+  name: GetChunkAtBlockPos(int, int, int)
+  nameWithType: IBlockAccessor.GetChunkAtBlockPos(int, int, int)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(int, int, int)
+  nameWithType.vb: IBlockAccessor.GetChunkAtBlockPos(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(Integer, Integer, Integer)
+  name.vb: GetChunkAtBlockPos(Integer, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
+    name: GetChunkAtBlockPos
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_System_Int32_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IBlockAccessor.GetChunkAtBlockPos(System.Int32,System.Int32,System.Int32)
+    name: GetChunkAtBlockPos
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetChunkAtBlockPos_System_Int32_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  isExternal: true
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockId_System_Int32_System_Int32_System_Int32_
+  name: GetBlockId(int, int, int)
+  nameWithType: IBlockAccessor.GetBlockId(int, int, int)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlockId(int, int, int)
+  nameWithType.vb: IBlockAccessor.GetBlockId(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlockId(Integer, Integer, Integer)
+  name.vb: GetBlockId(Integer, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
+    name: GetBlockId
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockId_System_Int32_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlockId(System.Int32,System.Int32,System.Int32)
+    name: GetBlockId
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlockId_System_Int32_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: ','
   - name: " "
   - uid: System.Int32
@@ -1429,6 +1319,128 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  isExternal: true
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_System_Int32_
+  name: GetBlock(int, int, int, int)
+  nameWithType: IBlockAccessor.GetBlock(int, int, int, int)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock(int, int, int, int)
+  nameWithType.vb: IBlockAccessor.GetBlock(Integer, Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlock(Integer, Integer, Integer, Integer)
+  name.vb: GetBlock(Integer, Integer, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
+    name: GetBlock
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32,System.Int32)
+    name: GetBlock
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
+  parent: Vintagestory.API.Common.IBlockAccessor
+  isExternal: true
+  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_
+  name: GetBlock(int, int, int)
+  nameWithType: IBlockAccessor.GetBlock(int, int, int)
+  fullName: Vintagestory.API.Common.IBlockAccessor.GetBlock(int, int, int)
+  nameWithType.vb: IBlockAccessor.GetBlock(Integer, Integer, Integer)
+  fullName.vb: Vintagestory.API.Common.IBlockAccessor.GetBlock(Integer, Integer, Integer)
+  name.vb: GetBlock(Integer, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
+    name: GetBlock
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IBlockAccessor.GetBlock(System.Int32,System.Int32,System.Int32)
+    name: GetBlock
+    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_System_Int32_System_Int32_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
 - uid: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(System.Int32,System.Int32,System.Int32)
   commentId: M:Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(System.Int32,System.Int32,System.Int32)
   parent: Vintagestory.API.Common.IBlockAccessor
@@ -1483,31 +1495,6 @@ references:
     name: Integer
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.int32
-  - name: )
-- uid: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
-  commentId: M:Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
-  parent: Vintagestory.API.Common.IBlockAccessor
-  href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMostSolidBlock_Vintagestory_API_MathTools_BlockPos_
-  name: GetMostSolidBlock(BlockPos)
-  nameWithType: IBlockAccessor.GetMostSolidBlock(BlockPos)
-  fullName: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
-    name: GetMostSolidBlock
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMostSolidBlock_Vintagestory_API_MathTools_BlockPos_
-  - name: (
-  - uid: Vintagestory.API.MathTools.BlockPos
-    name: BlockPos
-    href: Vintagestory.API.MathTools.BlockPos.html
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.IBlockAccessor.GetMostSolidBlock(Vintagestory.API.MathTools.BlockPos)
-    name: GetMostSolidBlock
-    href: Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetMostSolidBlock_Vintagestory_API_MathTools_BlockPos_
-  - name: (
-  - uid: Vintagestory.API.MathTools.BlockPos
-    name: BlockPos
-    href: Vintagestory.API.MathTools.BlockPos.html
   - name: )
 - uid: Vintagestory.API.Common.IBlockAccessor.WalkBlocks(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Action{Vintagestory.API.Common.Block,System.Int32,System.Int32,System.Int32},System.Boolean)
   commentId: M:Vintagestory.API.Common.IBlockAccessor.WalkBlocks(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockPos,System.Action{Vintagestory.API.Common.Block,System.Int32,System.Int32,System.Int32},System.Boolean)
@@ -4089,6 +4076,193 @@ references:
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
   - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  parent: Vintagestory.API.Util.PosUtil
+  definition: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  name: GetBlockAbove(IBlockAccessor, BlockPos, int, int)
+  nameWithType: PosUtil.GetBlockAbove(IBlockAccessor, BlockPos, int, int)
+  fullName: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, int, int)
+  nameWithType.vb: PosUtil.GetBlockAbove(IBlockAccessor, BlockPos, Integer, Integer)
+  fullName.vb: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Integer, Integer)
+  name.vb: GetBlockAbove(IBlockAccessor, BlockPos, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockAbove
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockAbove
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  parent: Vintagestory.API.Util.PosUtil
+  definition: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  name: GetBlockBelow(IBlockAccessor, BlockPos, int, int)
+  nameWithType: PosUtil.GetBlockBelow(IBlockAccessor, BlockPos, int, int)
+  fullName: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, int, int)
+  nameWithType.vb: PosUtil.GetBlockBelow(IBlockAccessor, BlockPos, Integer, Integer)
+  fullName.vb: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Integer, Integer)
+  name.vb: GetBlockBelow(IBlockAccessor, BlockPos, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockBelow
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockBelow
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Common.IBlockAccessor.Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+  commentId: M:Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+  parent: Vintagestory.API.Util.PosUtil
+  definition: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+  href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_
+  name: GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, int)
+  nameWithType: PosUtil.GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, int)
+  fullName: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, int)
+  nameWithType.vb: PosUtil.GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, Integer)
+  fullName.vb: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, Integer)
+  name.vb: GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+    name: GetBlockOnSide
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+    name: GetBlockOnSide
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
 - uid: Vintagestory.API.Common.IBulkBlockAccessor
   commentId: T:Vintagestory.API.Common.IBulkBlockAccessor
   parent: Vintagestory.API.Common
@@ -4169,6 +4343,197 @@ references:
     name: Object
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  isExternal: true
+  href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  name: GetBlockAbove(IBlockAccessor, BlockPos, int, int)
+  nameWithType: PosUtil.GetBlockAbove(IBlockAccessor, BlockPos, int, int)
+  fullName: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, int, int)
+  nameWithType.vb: PosUtil.GetBlockAbove(IBlockAccessor, BlockPos, Integer, Integer)
+  fullName.vb: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Integer, Integer)
+  name.vb: GetBlockAbove(IBlockAccessor, BlockPos, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockAbove
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockAbove(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockAbove
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Util.PosUtil
+  commentId: T:Vintagestory.API.Util.PosUtil
+  parent: Vintagestory.API.Util
+  href: Vintagestory.API.Util.PosUtil.html
+  name: PosUtil
+  nameWithType: PosUtil
+  fullName: Vintagestory.API.Util.PosUtil
+- uid: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  commentId: M:Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+  isExternal: true
+  href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  name: GetBlockBelow(IBlockAccessor, BlockPos, int, int)
+  nameWithType: PosUtil.GetBlockBelow(IBlockAccessor, BlockPos, int, int)
+  fullName: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, int, int)
+  nameWithType.vb: PosUtil.GetBlockBelow(IBlockAccessor, BlockPos, Integer, Integer)
+  fullName.vb: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Integer, Integer)
+  name.vb: GetBlockBelow(IBlockAccessor, BlockPos, Integer, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockBelow
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockBelow(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Int32)
+    name: GetBlockBelow
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+  commentId: M:Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+  isExternal: true
+  href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_
+  name: GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, int)
+  nameWithType: PosUtil.GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, int)
+  fullName: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, int)
+  nameWithType.vb: PosUtil.GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, Integer)
+  fullName.vb: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor, Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFacing, Integer)
+  name.vb: GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, Integer)
+  spec.csharp:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+    name: GetBlockOnSide
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Util.PosUtil.GetBlockOnSide(Vintagestory.API.Common.IBlockAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Int32)
+    name: GetBlockOnSide
+    href: Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_
+  - name: (
+  - uid: Vintagestory.API.Common.IBlockAccessor
+    name: IBlockAccessor
+    href: Vintagestory.API.Common.IBlockAccessor.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockPos
+    name: BlockPos
+    href: Vintagestory.API.MathTools.BlockPos.html
+  - name: ','
+  - name: " "
+  - uid: Vintagestory.API.MathTools.BlockFacing
+    name: BlockFacing
+    href: Vintagestory.API.MathTools.BlockFacing.html
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
   - name: )
 - uid: Vintagestory.API.Util
   commentId: N:Vintagestory.API.Util

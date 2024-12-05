@@ -61,6 +61,7 @@ items:
     content: 'public interface IServerEventAPI : IEventAPI'
     content.vb: Public Interface IServerEventAPI Inherits IEventAPI
   inheritedMembers:
+  - Vintagestory.API.Common.IEventAPI.PlayerDimensionChanged
   - Vintagestory.API.Common.IEventAPI.OnTestBlockAccess
   - Vintagestory.API.Common.IEventAPI.OnEntitySpawn
   - Vintagestory.API.Common.IEventAPI.OnEntityLoaded
@@ -83,6 +84,7 @@ items:
   - Vintagestory.API.Common.IEventAPI.UnregisterCallback(System.Int64)
   - Vintagestory.API.Common.IEventAPI.UnregisterGameTickListener(System.Int64)
   - Vintagestory.API.Common.IEventAPI.EnqueueMainThreadTask(System.Action,System.String)
+  - Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged(Vintagestory.API.Common.IPlayer)
   - Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)
   - Vintagestory.API.Common.IEventAPI.TriggerMatchesRecipe(Vintagestory.API.Common.IPlayer,Vintagestory.API.Common.GridRecipe,Vintagestory.API.Common.ItemSlot[],System.Int32)
   extensionMethods:
@@ -1082,6 +1084,13 @@ references:
   - uid: Vintagestory.API.Server
     name: Server
     href: Vintagestory.API.Server.html
+- uid: Vintagestory.API.Common.IEventAPI.PlayerDimensionChanged
+  commentId: E:Vintagestory.API.Common.IEventAPI.PlayerDimensionChanged
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_PlayerDimensionChanged
+  name: PlayerDimensionChanged
+  nameWithType: IEventAPI.PlayerDimensionChanged
+  fullName: Vintagestory.API.Common.IEventAPI.PlayerDimensionChanged
 - uid: Vintagestory.API.Common.IEventAPI.OnTestBlockAccess
   commentId: E:Vintagestory.API.Common.IEventAPI.OnTestBlockAccess
   parent: Vintagestory.API.Common.IEventAPI
@@ -1833,6 +1842,31 @@ references:
     name: String
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged(Vintagestory.API.Common.IPlayer)
+  commentId: M:Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged(Vintagestory.API.Common.IPlayer)
+  parent: Vintagestory.API.Common.IEventAPI
+  href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerPlayerDimensionChanged_Vintagestory_API_Common_IPlayer_
+  name: TriggerPlayerDimensionChanged(IPlayer)
+  nameWithType: IEventAPI.TriggerPlayerDimensionChanged(IPlayer)
+  fullName: Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged(Vintagestory.API.Common.IPlayer)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged(Vintagestory.API.Common.IPlayer)
+    name: TriggerPlayerDimensionChanged
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerPlayerDimensionChanged_Vintagestory_API_Common_IPlayer_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.IEventAPI.TriggerPlayerDimensionChanged(Vintagestory.API.Common.IPlayer)
+    name: TriggerPlayerDimensionChanged
+    href: Vintagestory.API.Common.IEventAPI.html#Vintagestory_API_Common_IEventAPI_TriggerPlayerDimensionChanged_Vintagestory_API_Common_IPlayer_
+  - name: (
+  - uid: Vintagestory.API.Common.IPlayer
+    name: IPlayer
+    href: Vintagestory.API.Common.IPlayer.html
   - name: )
 - uid: Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)
   commentId: M:Vintagestory.API.Common.IEventAPI.TriggerEntityDeath(Vintagestory.API.Common.Entities.Entity,Vintagestory.API.Common.DamageSource)

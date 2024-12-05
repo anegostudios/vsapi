@@ -1,15 +1,21 @@
-﻿using System;
+﻿using ProtoBuf;
+using System;
 
 namespace Vintagestory.API.MathTools
 {
     /// <summary>
     /// Represents a vector of 4 ints. Go bug Tyron if you need more utility methods in this class.
     /// </summary>
+    [ProtoContract]
     public class Vec4i : IEquatable<Vec4i>
     {
+        [ProtoMember(1)]
         public int X;
+        [ProtoMember(2)]
         public int Y;
+        [ProtoMember(3)]
         public int Z;
+        [ProtoMember(4)]
         public int W;
 
         public Vec4i()
@@ -20,7 +26,7 @@ namespace Vintagestory.API.MathTools
         public Vec4i(BlockPos pos, int w)
         {
             this.X = pos.X;
-            this.Y = pos.Y;
+            this.Y = pos.InternalY;
             this.Z = pos.Z;
             this.W = w;
         }

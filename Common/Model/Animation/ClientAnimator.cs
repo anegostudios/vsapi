@@ -278,7 +278,7 @@ namespace Vintagestory.API.Common
 
                 if (anim.meta.AnimationSound != null && onShouldPlaySoundListener != null)
                 {
-                    if (anim.CurrentFrame >= anim.meta.AnimationSound.Frame && anim.SoundPlayedAtIteration != anim.Iterations)
+                    if (anim.CurrentFrame >= anim.meta.AnimationSound.Frame && anim.SoundPlayedAtIteration != anim.Iterations && anim.Active)
                     {
                         onShouldPlaySoundListener(anim.meta.AnimationSound);
                         anim.SoundPlayedAtIteration = anim.Iterations;

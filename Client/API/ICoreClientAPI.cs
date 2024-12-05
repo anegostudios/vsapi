@@ -240,6 +240,8 @@ namespace Vintagestory.API.Client
         /// <returns></returns>
         MusicTrack StartTrack(AssetLocation soundLocation, float priority, EnumSoundType soundType, Action<ILoadedSound> onLoaded = null);
 
+        void StartTrack(MusicTrack track, float priority, EnumSoundType soundType, bool playnow=true);
+
 
         /// <summary>
         /// Returns the currently playing music track, if any is playing

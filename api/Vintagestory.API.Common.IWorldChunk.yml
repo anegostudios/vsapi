@@ -13,6 +13,7 @@ items:
   - Vintagestory.API.Common.IWorldChunk.BreakAllDecorFast(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,System.Int32,System.Boolean)
   - Vintagestory.API.Common.IWorldChunk.BreakDecor(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFacing,System.Nullable{System.Int32})
   - Vintagestory.API.Common.IWorldChunk.Data
+  - Vintagestory.API.Common.IWorldChunk.Dispose
   - Vintagestory.API.Common.IWorldChunk.Disposed
   - Vintagestory.API.Common.IWorldChunk.Empty
   - Vintagestory.API.Common.IWorldChunk.Entities
@@ -1275,6 +1276,26 @@ items:
     content: void ReleaseBlockReadLock()
     content.vb: Sub ReleaseBlockReadLock()
   overload: Vintagestory.API.Common.IWorldChunk.ReleaseBlockReadLock*
+- uid: Vintagestory.API.Common.IWorldChunk.Dispose
+  commentId: M:Vintagestory.API.Common.IWorldChunk.Dispose
+  id: Dispose
+  parent: Vintagestory.API.Common.IWorldChunk
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: IWorldChunk.Dispose()
+  fullName: Vintagestory.API.Common.IWorldChunk.Dispose()
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.Common
+  summary: Free up chunk data and pool
+  example: []
+  syntax:
+    content: void Dispose()
+    content.vb: Sub Dispose()
+  overload: Vintagestory.API.Common.IWorldChunk.Dispose*
 references:
 - uid: Vintagestory.API.Common
   commentId: N:Vintagestory.API.Common
@@ -2384,3 +2405,9 @@ references:
   name: ReleaseBlockReadLock
   nameWithType: IWorldChunk.ReleaseBlockReadLock
   fullName: Vintagestory.API.Common.IWorldChunk.ReleaseBlockReadLock
+- uid: Vintagestory.API.Common.IWorldChunk.Dispose*
+  commentId: Overload:Vintagestory.API.Common.IWorldChunk.Dispose
+  href: Vintagestory.API.Common.IWorldChunk.html#Vintagestory_API_Common_IWorldChunk_Dispose
+  name: Dispose
+  nameWithType: IWorldChunk.Dispose
+  fullName: Vintagestory.API.Common.IWorldChunk.Dispose

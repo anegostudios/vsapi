@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
 using Vintagestory.API.Util;
@@ -28,6 +29,18 @@ namespace Vintagestory.API.Client
         public BlendedOverlayTexture Clone()
         {
             return new BlendedOverlayTexture() { Base = this.Base.Clone(), BlendMode = BlendMode };
+        }
+
+        public override string ToString()
+        {
+            return Base.ToString() + "-b" + BlendMode;
+        }
+
+        public void ToString(StringBuilder sb)
+        {
+            sb.Append(Base.ToString());
+            sb.Append("-b");
+            sb.Append(BlendMode);
         }
     }
 
@@ -323,7 +336,7 @@ namespace Vintagestory.API.Client
         /// <param name="assetManager"></param>
         /// <param name="ct"></param>
         /// <returns></returns>
-        static BakedCompositeTexture Bake(IAssetManager assetManager, CompositeTexture ct)
+        public static BakedCompositeTexture Bake(IAssetManager assetManager, CompositeTexture ct)
         {
             BakedCompositeTexture bct = new BakedCompositeTexture();
 
@@ -487,8 +500,65 @@ namespace Vintagestory.API.Client
 
         public override string ToString()
         {
-            return Base.ToString() + "@" + Rotation + "a" + Alpha;
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append(Base.ToString());
+            sb.Append("@");
+            sb.Append(Rotation);
+            sb.Append("a");
+
+            sb.Append(Alpha);
+            if (Alternates != null)
+            {
+                sb.Append("alts:");
+                foreach (var val in Alternates)
+                {
+                    val.ToString(sb);
+                    sb.Append(",");
+                }
+            }
+            if (BlendedOverlays != null)
+            {
+                sb.Append("ovs:");
+                foreach (var val in BlendedOverlays)
+                {
+                    val.ToString(sb);
+                    sb.Append(",");
+                }
+            }
+
+            return sb.ToString();            
         }
+
+        public void ToString(StringBuilder sb)
+        {
+            sb.Append(Base.ToString());
+            sb.Append("@");
+            sb.Append(Rotation);
+            sb.Append("a");
+
+            sb.Append(Alpha);
+            if (Alternates != null)
+            {
+                sb.Append("alts:");
+                foreach (var val in Alternates)
+                {
+                    sb.Append(val.ToString());
+                    sb.Append(",");
+                }
+            }
+            if (BlendedOverlays != null)
+            {
+                sb.Append("ovs:");
+                foreach (var val in BlendedOverlays)
+                {
+                    sb.Append(val.ToString());
+                    sb.Append(",");
+                }
+            }
+        }
+
+
         public void FillPlaceholder(string search, string replace)
         {
             Base.Path = Base.Path.Replace(search, replace);

@@ -25,6 +25,7 @@ namespace Vintagestory.API.Common
         /// Resolves the keyframe animation for which elements are important.
         /// </summary>
         /// <param name="allElements"></param>
+        [System.Obsolete("Use the overload taking a Dictionary argument instead for higher performance on large sets")]
         public void Resolve(ShapeElement[] allElements)
         {
             if (Elements == null) return;
@@ -36,24 +37,26 @@ namespace Vintagestory.API.Common
 
             foreach (ShapeElement elem in allElements)
             {
-                AnimationKeyFrameElement kelem = FindKeyFrameElement(elem);
-                if (kelem != null) ElementsByShapeElement[elem] = kelem;
+                if (elem == null) continue;
+                if (Elements.TryGetValue(elem.Name, out AnimationKeyFrameElement kelem)) ElementsByShapeElement[elem] = kelem;
             }
         }
 
-        AnimationKeyFrameElement FindKeyFrameElement(ShapeElement forElem)
+        /// <summary>
+        /// Resolves the keyframe animation for which elements are important.
+        /// </summary>
+        /// <param name="allElements"></param>
+        public void Resolve(Dictionary<string, ShapeElement> allElements)
         {
-            if (forElem == null) return null;
+            if (Elements == null) return;
 
             foreach (var val in Elements)
             {
-                if (forElem.Name == val.Key)
-                {
-                    return val.Value;
-                }
+                AnimationKeyFrameElement kelem = val.Value;
+                kelem.Frame = Frame;
+                allElements.TryGetValue(val.Key, out ShapeElement elem);
+                if (elem != null) ElementsByShapeElement[elem] = kelem;
             }
-
-            return null;
         }
 
         internal AnimationKeyFrameElement GetKeyFrameElement(ShapeElement forElem)

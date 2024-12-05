@@ -28,7 +28,7 @@ namespace Vintagestory.API.Server
         /// <summary>
         /// This will run all scheduled block light updates at once. Should be called after all lighting has been completed.
         /// </summary>
-        void RunScheduledBlockLightUpdates();
+        void RunScheduledBlockLightUpdates(int chunkx, int chunkz);
 
         /// <summary>
         /// Adds given initialized entity to the world. Requires you to set the Pos and ServerPos fields.

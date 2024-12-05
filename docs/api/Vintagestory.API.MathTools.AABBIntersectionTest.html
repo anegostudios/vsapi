@@ -198,8 +198,8 @@ Class AABBIntersectionTest
 
 
 
-  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_blockSelectionTester" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.blockSelectionTester">
-  blockSelectionTester
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_bsTester" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.bsTester">
+  bsTester
   
   </h3>
 
@@ -207,7 +207,7 @@ Class AABBIntersectionTest
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IWorldIntersectionSupplier blockSelectionTester</code></pre>
+    <pre><code class="lang-csharp hljs">public IWorldIntersectionSupplier bsTester</code></pre>
   </div>
 
 
@@ -383,8 +383,8 @@ Class AABBIntersectionTest
 
   <a id="Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock*"></a>
 
-  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_System_Single_Vintagestory_API_MathTools_BlockFilter_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(System.Single,Vintagestory.API.MathTools.BlockFilter)">
-  GetSelectedBlock(float, BlockFilter)
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_GetSelectedBlock_System_Single_Vintagestory_API_MathTools_BlockFilter_System_Boolean_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(System.Single,Vintagestory.API.MathTools.BlockFilter,System.Boolean)">
+  GetSelectedBlock(float, BlockFilter, bool)
   
   </h3>
 
@@ -392,7 +392,7 @@ Class AABBIntersectionTest
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BlockSelection GetSelectedBlock(float maxDistance, BlockFilter filter = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public BlockSelection GetSelectedBlock(float maxDistance, BlockFilter filter = null, bool testCollide = false)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -400,6 +400,8 @@ Class AABBIntersectionTest
     <dt><code>maxDistance</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
     <dd></dd>
     <dt><code>filter</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFilter.html">BlockFilter</a></dt>
+    <dd></dd>
+    <dt><code>testCollide</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 
@@ -561,8 +563,8 @@ Class AABBIntersectionTest
 
   <a id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsBlockSelectionBox_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox*"></a>
 
-  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsBlockSelectionBox_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFilter_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter)">
-  RayIntersectsBlockSelectionBox(BlockPos, BlockFilter)
+  <h3 id="Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsBlockSelectionBox_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFilter_System_Boolean_" data-uid="Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter,System.Boolean)">
+  RayIntersectsBlockSelectionBox(BlockPos, BlockFilter, bool)
   
   </h3>
 
@@ -570,7 +572,7 @@ Class AABBIntersectionTest
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool RayIntersectsBlockSelectionBox(BlockPos pos, BlockFilter filter)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool RayIntersectsBlockSelectionBox(BlockPos pos, BlockFilter filter, bool testCollide = false)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -578,6 +580,8 @@ Class AABBIntersectionTest
     <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
     <dd></dd>
     <dt><code>filter</code> <a class="xref" href="Vintagestory.API.MathTools.BlockFilter.html">BlockFilter</a></dt>
+    <dd></dd>
+    <dt><code>testCollide</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

@@ -6,16 +6,16 @@ items:
   parent: Vintagestory.API.MathTools
   children:
   - Vintagestory.API.MathTools.AABBIntersectionTest.#ctor(Vintagestory.API.MathTools.IWorldIntersectionSupplier)
-  - Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(System.Single,Vintagestory.API.MathTools.BlockFilter)
+  - Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(System.Single,Vintagestory.API.MathTools.BlockFilter,System.Boolean)
   - Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.MathTools.BlockFilter)
   - Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos(Vintagestory.API.MathTools.Line3D)
   - Vintagestory.API.MathTools.AABBIntersectionTest.LoadRayAndPos(Vintagestory.API.MathTools.Ray)
   - Vintagestory.API.MathTools.AABBIntersectionTest.RayInteresectWithCuboidSlabMethod(Vintagestory.API.MathTools.Cuboidd,Vintagestory.API.MathTools.Ray)
-  - Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter)
+  - Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter,System.Boolean)
   - Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd)
   - Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd,Vintagestory.API.MathTools.BlockFacing@,Vintagestory.API.MathTools.Vec3d@)
   - Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidf,System.Double,System.Double,System.Double)
-  - Vintagestory.API.MathTools.AABBIntersectionTest.blockSelectionTester
+  - Vintagestory.API.MathTools.AABBIntersectionTest.bsTester
   - Vintagestory.API.MathTools.AABBIntersectionTest.hitOnBlockFace
   - Vintagestory.API.MathTools.AABBIntersectionTest.hitOnSelectionBox
   - Vintagestory.API.MathTools.AABBIntersectionTest.hitPosition
@@ -47,25 +47,25 @@ items:
   extensionMethods:
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToGcHandle
   - System.Object.Vintagestory.API.Util.ObjectHandleExtensions.ToIntPtr
-- uid: Vintagestory.API.MathTools.AABBIntersectionTest.blockSelectionTester
-  commentId: F:Vintagestory.API.MathTools.AABBIntersectionTest.blockSelectionTester
-  id: blockSelectionTester
+- uid: Vintagestory.API.MathTools.AABBIntersectionTest.bsTester
+  commentId: F:Vintagestory.API.MathTools.AABBIntersectionTest.bsTester
+  id: bsTester
   parent: Vintagestory.API.MathTools.AABBIntersectionTest
   langs:
   - csharp
   - vb
-  name: blockSelectionTester
-  nameWithType: AABBIntersectionTest.blockSelectionTester
-  fullName: Vintagestory.API.MathTools.AABBIntersectionTest.blockSelectionTester
+  name: bsTester
+  nameWithType: AABBIntersectionTest.bsTester
+  fullName: Vintagestory.API.MathTools.AABBIntersectionTest.bsTester
   type: Field
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
   syntax:
-    content: public IWorldIntersectionSupplier blockSelectionTester
+    content: public IWorldIntersectionSupplier bsTester
     return:
       type: Vintagestory.API.MathTools.IWorldIntersectionSupplier
-    content.vb: Public blockSelectionTester As IWorldIntersectionSupplier
+    content.vb: Public bsTester As IWorldIntersectionSupplier
 - uid: Vintagestory.API.MathTools.AABBIntersectionTest.hitPosition
   commentId: F:Vintagestory.API.MathTools.AABBIntersectionTest.hitPosition
   id: hitPosition
@@ -254,59 +254,66 @@ items:
       type: Vintagestory.API.Common.BlockSelection
     content.vb: Public Function GetSelectedBlock(from As Vec3d, [to] As Vec3d, filter As BlockFilter = Nothing) As BlockSelection
   overload: Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock*
-- uid: Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(System.Single,Vintagestory.API.MathTools.BlockFilter)
-  commentId: M:Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(System.Single,Vintagestory.API.MathTools.BlockFilter)
-  id: GetSelectedBlock(System.Single,Vintagestory.API.MathTools.BlockFilter)
+- uid: Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(System.Single,Vintagestory.API.MathTools.BlockFilter,System.Boolean)
+  commentId: M:Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(System.Single,Vintagestory.API.MathTools.BlockFilter,System.Boolean)
+  id: GetSelectedBlock(System.Single,Vintagestory.API.MathTools.BlockFilter,System.Boolean)
   parent: Vintagestory.API.MathTools.AABBIntersectionTest
   langs:
   - csharp
   - vb
-  name: GetSelectedBlock(float, BlockFilter)
-  nameWithType: AABBIntersectionTest.GetSelectedBlock(float, BlockFilter)
-  fullName: Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(float, Vintagestory.API.MathTools.BlockFilter)
+  name: GetSelectedBlock(float, BlockFilter, bool)
+  nameWithType: AABBIntersectionTest.GetSelectedBlock(float, BlockFilter, bool)
+  fullName: Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(float, Vintagestory.API.MathTools.BlockFilter, bool)
   type: Method
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
   syntax:
-    content: public BlockSelection GetSelectedBlock(float maxDistance, BlockFilter filter = null)
+    content: public BlockSelection GetSelectedBlock(float maxDistance, BlockFilter filter = null, bool testCollide = false)
     parameters:
     - id: maxDistance
       type: System.Single
     - id: filter
       type: Vintagestory.API.MathTools.BlockFilter
+    - id: testCollide
+      type: System.Boolean
     return:
       type: Vintagestory.API.Common.BlockSelection
-    content.vb: Public Function GetSelectedBlock(maxDistance As Single, filter As BlockFilter = Nothing) As BlockSelection
+    content.vb: Public Function GetSelectedBlock(maxDistance As Single, filter As BlockFilter = Nothing, testCollide As Boolean = False) As BlockSelection
   overload: Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock*
-  nameWithType.vb: AABBIntersectionTest.GetSelectedBlock(Single, BlockFilter)
-  fullName.vb: Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(Single, Vintagestory.API.MathTools.BlockFilter)
-  name.vb: GetSelectedBlock(Single, BlockFilter)
-- uid: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter)
-  commentId: M:Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter)
-  id: RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter)
+  nameWithType.vb: AABBIntersectionTest.GetSelectedBlock(Single, BlockFilter, Boolean)
+  fullName.vb: Vintagestory.API.MathTools.AABBIntersectionTest.GetSelectedBlock(Single, Vintagestory.API.MathTools.BlockFilter, Boolean)
+  name.vb: GetSelectedBlock(Single, BlockFilter, Boolean)
+- uid: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter,System.Boolean)
+  commentId: M:Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter,System.Boolean)
+  id: RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.MathTools.BlockFilter,System.Boolean)
   parent: Vintagestory.API.MathTools.AABBIntersectionTest
   langs:
   - csharp
   - vb
-  name: RayIntersectsBlockSelectionBox(BlockPos, BlockFilter)
-  nameWithType: AABBIntersectionTest.RayIntersectsBlockSelectionBox(BlockPos, BlockFilter)
-  fullName: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFilter)
+  name: RayIntersectsBlockSelectionBox(BlockPos, BlockFilter, bool)
+  nameWithType: AABBIntersectionTest.RayIntersectsBlockSelectionBox(BlockPos, BlockFilter, bool)
+  fullName: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFilter, bool)
   type: Method
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
   syntax:
-    content: public bool RayIntersectsBlockSelectionBox(BlockPos pos, BlockFilter filter)
+    content: public bool RayIntersectsBlockSelectionBox(BlockPos pos, BlockFilter filter, bool testCollide = false)
     parameters:
     - id: pos
       type: Vintagestory.API.MathTools.BlockPos
     - id: filter
       type: Vintagestory.API.MathTools.BlockFilter
+    - id: testCollide
+      type: System.Boolean
     return:
       type: System.Boolean
-    content.vb: Public Function RayIntersectsBlockSelectionBox(pos As BlockPos, filter As BlockFilter) As Boolean
+    content.vb: Public Function RayIntersectsBlockSelectionBox(pos As BlockPos, filter As BlockFilter, testCollide As Boolean = False) As Boolean
   overload: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox*
+  nameWithType.vb: AABBIntersectionTest.RayIntersectsBlockSelectionBox(BlockPos, BlockFilter, Boolean)
+  fullName.vb: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox(Vintagestory.API.MathTools.BlockPos, Vintagestory.API.MathTools.BlockFilter, Boolean)
+  name.vb: RayIntersectsBlockSelectionBox(BlockPos, BlockFilter, Boolean)
 - uid: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd)
   commentId: M:Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd)
   id: RayIntersectsWithCuboid(Vintagestory.API.MathTools.Cuboidd)
@@ -973,12 +980,6 @@ references:
   nameWithType.vb: Single
   fullName.vb: Single
   name.vb: Single
-- uid: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox*
-  commentId: Overload:Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox
-  href: Vintagestory.API.MathTools.AABBIntersectionTest.html#Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsBlockSelectionBox_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFilter_
-  name: RayIntersectsBlockSelectionBox
-  nameWithType: AABBIntersectionTest.RayIntersectsBlockSelectionBox
-  fullName: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox
 - uid: System.Boolean
   commentId: T:System.Boolean
   parent: System
@@ -990,6 +991,12 @@ references:
   nameWithType.vb: Boolean
   fullName.vb: Boolean
   name.vb: Boolean
+- uid: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox*
+  commentId: Overload:Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox
+  href: Vintagestory.API.MathTools.AABBIntersectionTest.html#Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsBlockSelectionBox_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFilter_System_Boolean_
+  name: RayIntersectsBlockSelectionBox
+  nameWithType: AABBIntersectionTest.RayIntersectsBlockSelectionBox
+  fullName: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsBlockSelectionBox
 - uid: Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid*
   commentId: Overload:Vintagestory.API.MathTools.AABBIntersectionTest.RayIntersectsWithCuboid
   href: Vintagestory.API.MathTools.AABBIntersectionTest.html#Vintagestory_API_MathTools_AABBIntersectionTest_RayIntersectsWithCuboid_Vintagestory_API_MathTools_Cuboidd_

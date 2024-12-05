@@ -793,6 +793,37 @@ Class Entity
 
 
 
+  <h3 id="Vintagestory_API_Common_Entities_Entity_HurtColor" data-uid="Vintagestory.API.Common.Entities.Entity.HurtColor">
+  HurtColor
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Color used when the entity is being attacked</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected int HurtColor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <h3 id="Vintagestory_API_Common_Entities_Entity_InChunkIndex3d" data-uid="Vintagestory.API.Common.Entities.Entity.InChunkIndex3d">
   InChunkIndex3d
   
@@ -2022,6 +2053,37 @@ If false, only root level attachment points will be available server side</p>
 
 
 
+  <a id="Vintagestory_API_Common_Entities_Entity_AllowOutsideLoadedRange_" data-uid="Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_AllowOutsideLoadedRange" data-uid="Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange">
+  AllowOutsideLoadedRange
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool AllowOutsideLoadedRange { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_Entities_Entity_AlwaysActive_" data-uid="Vintagestory.API.Common.Entities.Entity.AlwaysActive*"></a>
 
   <h3 id="Vintagestory_API_Common_Entities_Entity_AlwaysActive" data-uid="Vintagestory.API.Common.Entities.Entity.AlwaysActive">
@@ -2100,6 +2162,99 @@ Set and Called by the Entities ServerSystem</p>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public virtual bool ApplyGravity { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_CanStepPitch_" data-uid="Vintagestory.API.Common.Entities.Entity.CanStepPitch*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_CanStepPitch" data-uid="Vintagestory.API.Common.Entities.Entity.CanStepPitch">
+  CanStepPitch
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool CanStepPitch { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_CanSwivel_" data-uid="Vintagestory.API.Common.Entities.Entity.CanSwivel*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_CanSwivel" data-uid="Vintagestory.API.Common.Entities.Entity.CanSwivel">
+  CanSwivel
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool CanSwivel { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_CanSwivelNow_" data-uid="Vintagestory.API.Common.Entities.Entity.CanSwivelNow*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_CanSwivelNow" data-uid="Vintagestory.API.Common.Entities.Entity.CanSwivelNow">
+  CanSwivelNow
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool CanSwivelNow { get; }</code></pre>
   </div>
 
 
@@ -4316,6 +4471,41 @@ Packetid = 2 is used for BehaviorHarvestable</p>
     <dt><code>entityShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
     <dd></dd>
     <dt><code>shapePathForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_Entities_Entity_OnTesselation_" data-uid="Vintagestory.API.Common.Entities.Entity.OnTesselation*"></a>
+
+  <h3 id="Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_System_Boolean__" data-uid="Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@)">
+  OnTesselation(ref Shape, string, ref bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnTesselation(ref Shape entityShape, string shapePathForLogging, ref bool shapeIsCloned)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entityShape</code> <a class="xref" href="Vintagestory.API.Common.Shape.html">Shape</a></dt>
+    <dd></dd>
+    <dt><code>shapePathForLogging</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>shapeIsCloned</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
     <dd></dd>
   </dl>
 

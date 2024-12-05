@@ -27,6 +27,8 @@ items:
   - Vintagestory.API.Common.EntityPlayer
   inheritedMembers:
   - Vintagestory.API.Common.EntityAgent.IsCreature
+  - Vintagestory.API.Common.EntityAgent.CanSwivel
+  - Vintagestory.API.Common.EntityAgent.CanStepPitch
   - Vintagestory.API.Common.EntityAgent.BodyYaw
   - Vintagestory.API.Common.EntityAgent.BodyYawServer
   - Vintagestory.API.Common.EntityAgent.sidewaysSwivelAngle
@@ -53,6 +55,8 @@ items:
   - Vintagestory.API.Common.EntityAgent.Die(Vintagestory.API.Common.EnumDespawnReason,Vintagestory.API.Common.DamageSource)
   - Vintagestory.API.Common.EntityAgent.OnEntityDespawn(Vintagestory.API.Common.Entities.EntityDespawnData)
   - Vintagestory.API.Common.EntityAgent.OnInteract(Vintagestory.API.Common.EntityAgent,Vintagestory.API.Common.ItemSlot,Vintagestory.API.MathTools.Vec3d,Vintagestory.API.Common.EnumInteractMode)
+  - Vintagestory.API.Common.EntityAgent.ignoreTeleportCall
+  - Vintagestory.API.Common.EntityAgent.TeleportToDouble(System.Double,System.Double,System.Double,System.Action)
   - Vintagestory.API.Common.EntityAgent.DidAttack(Vintagestory.API.Common.DamageSource,Vintagestory.API.Common.EntityAgent)
   - Vintagestory.API.Common.EntityAgent.ShouldReceiveDamage(Vintagestory.API.Common.DamageSource,System.Single)
   - Vintagestory.API.Common.EntityAgent.ReceiveDamage(Vintagestory.API.Common.DamageSource,System.Single)
@@ -81,8 +85,10 @@ items:
   - Vintagestory.API.Common.Entities.Entity.bioLumiParticles
   - Vintagestory.API.Common.Entities.Entity.bioLumiNoise
   - Vintagestory.API.Common.Entities.Entity.OnInitialized
+  - Vintagestory.API.Common.Entities.Entity.HurtColor
   - Vintagestory.API.Common.Entities.Entity.World
   - Vintagestory.API.Common.Entities.Entity.Api
+  - Vintagestory.API.Common.Entities.Entity.CanSwivelNow
   - Vintagestory.API.Common.Entities.Entity.PhysicsUpdateWatcher
   - Vintagestory.API.Common.Entities.Entity.AnimManager
   - Vintagestory.API.Common.Entities.Entity.ActivityTimers
@@ -140,6 +146,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.MaterialDensity
   - Vintagestory.API.Common.Entities.Entity.LightHsv
   - Vintagestory.API.Common.Entities.Entity.StoreWithChunk
+  - Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange
   - Vintagestory.API.Common.Entities.Entity.AlwaysActive
   - Vintagestory.API.Common.Entities.Entity.Alive
   - Vintagestory.API.Common.Entities.Entity.alive
@@ -154,7 +161,6 @@ items:
   - Vintagestory.API.Common.Entities.Entity.updateColSelBoxes
   - Vintagestory.API.Common.Entities.Entity.updateOnFire
   - Vintagestory.API.Common.Entities.Entity.GetDrops(Vintagestory.API.Common.IWorldAccessor,Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.IPlayer)
-  - Vintagestory.API.Common.Entities.Entity.TeleportToDouble(System.Double,System.Double,System.Double,System.Action)
   - Vintagestory.API.Common.Entities.Entity.TeleportTo(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.Common.Entities.Entity.TeleportTo(Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.Common.Entities.Entity.TeleportTo(Vintagestory.API.MathTools.BlockPos)
@@ -169,6 +175,7 @@ items:
   - Vintagestory.API.Common.Entities.Entity.shapeFresh
   - Vintagestory.API.Common.Entities.Entity.MarkShapeModified
   - Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String)
+  - Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@)
   - Vintagestory.API.Common.Entities.Entity.OnTesselated
   - Vintagestory.API.Common.Entities.Entity.OnFallToGround(System.Double)
   - Vintagestory.API.Common.Entities.Entity.OnCollided
@@ -314,6 +321,20 @@ references:
   name: IsCreature
   nameWithType: EntityAgent.IsCreature
   fullName: Vintagestory.API.Common.EntityAgent.IsCreature
+- uid: Vintagestory.API.Common.EntityAgent.CanSwivel
+  commentId: P:Vintagestory.API.Common.EntityAgent.CanSwivel
+  parent: Vintagestory.API.Common.EntityAgent
+  href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_CanSwivel
+  name: CanSwivel
+  nameWithType: EntityAgent.CanSwivel
+  fullName: Vintagestory.API.Common.EntityAgent.CanSwivel
+- uid: Vintagestory.API.Common.EntityAgent.CanStepPitch
+  commentId: P:Vintagestory.API.Common.EntityAgent.CanStepPitch
+  parent: Vintagestory.API.Common.EntityAgent
+  href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_CanStepPitch
+  name: CanStepPitch
+  nameWithType: EntityAgent.CanStepPitch
+  fullName: Vintagestory.API.Common.EntityAgent.CanStepPitch
 - uid: Vintagestory.API.Common.EntityAgent.BodyYaw
   commentId: P:Vintagestory.API.Common.EntityAgent.BodyYaw
   parent: Vintagestory.API.Common.EntityAgent
@@ -705,6 +726,80 @@ references:
   - uid: Vintagestory.API.Common.EnumInteractMode
     name: EnumInteractMode
     href: Vintagestory.API.Common.EnumInteractMode.html
+  - name: )
+- uid: Vintagestory.API.Common.EntityAgent.ignoreTeleportCall
+  commentId: F:Vintagestory.API.Common.EntityAgent.ignoreTeleportCall
+  parent: Vintagestory.API.Common.EntityAgent
+  href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_ignoreTeleportCall
+  name: ignoreTeleportCall
+  nameWithType: EntityAgent.ignoreTeleportCall
+  fullName: Vintagestory.API.Common.EntityAgent.ignoreTeleportCall
+- uid: Vintagestory.API.Common.EntityAgent.TeleportToDouble(System.Double,System.Double,System.Double,System.Action)
+  commentId: M:Vintagestory.API.Common.EntityAgent.TeleportToDouble(System.Double,System.Double,System.Double,System.Action)
+  parent: Vintagestory.API.Common.EntityAgent
+  isExternal: true
+  href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_TeleportToDouble_System_Double_System_Double_System_Double_System_Action_
+  name: TeleportToDouble(double, double, double, Action)
+  nameWithType: EntityAgent.TeleportToDouble(double, double, double, Action)
+  fullName: Vintagestory.API.Common.EntityAgent.TeleportToDouble(double, double, double, System.Action)
+  nameWithType.vb: EntityAgent.TeleportToDouble(Double, Double, Double, Action)
+  fullName.vb: Vintagestory.API.Common.EntityAgent.TeleportToDouble(Double, Double, Double, System.Action)
+  name.vb: TeleportToDouble(Double, Double, Double, Action)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.EntityAgent.TeleportToDouble(System.Double,System.Double,System.Double,System.Action)
+    name: TeleportToDouble
+    href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_TeleportToDouble_System_Double_System_Double_System_Double_System_Action_
+  - name: (
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Action
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.EntityAgent.TeleportToDouble(System.Double,System.Double,System.Double,System.Action)
+    name: TeleportToDouble
+    href: Vintagestory.API.Common.EntityAgent.html#Vintagestory_API_Common_EntityAgent_TeleportToDouble_System_Double_System_Double_System_Double_System_Action_
+  - name: (
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: System.Action
+    name: Action
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.action
   - name: )
 - uid: Vintagestory.API.Common.EntityAgent.DidAttack(Vintagestory.API.Common.DamageSource,Vintagestory.API.Common.EntityAgent)
   commentId: M:Vintagestory.API.Common.EntityAgent.DidAttack(Vintagestory.API.Common.DamageSource,Vintagestory.API.Common.EntityAgent)
@@ -1440,6 +1535,13 @@ references:
   name: OnInitialized
   nameWithType: Entity.OnInitialized
   fullName: Vintagestory.API.Common.Entities.Entity.OnInitialized
+- uid: Vintagestory.API.Common.Entities.Entity.HurtColor
+  commentId: F:Vintagestory.API.Common.Entities.Entity.HurtColor
+  parent: Vintagestory.API.Common.Entities.Entity
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_HurtColor
+  name: HurtColor
+  nameWithType: Entity.HurtColor
+  fullName: Vintagestory.API.Common.Entities.Entity.HurtColor
 - uid: Vintagestory.API.Common.Entities.Entity.World
   commentId: F:Vintagestory.API.Common.Entities.Entity.World
   parent: Vintagestory.API.Common.Entities.Entity
@@ -1454,6 +1556,13 @@ references:
   name: Api
   nameWithType: Entity.Api
   fullName: Vintagestory.API.Common.Entities.Entity.Api
+- uid: Vintagestory.API.Common.Entities.Entity.CanSwivelNow
+  commentId: P:Vintagestory.API.Common.Entities.Entity.CanSwivelNow
+  parent: Vintagestory.API.Common.Entities.Entity
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_CanSwivelNow
+  name: CanSwivelNow
+  nameWithType: Entity.CanSwivelNow
+  fullName: Vintagestory.API.Common.Entities.Entity.CanSwivelNow
 - uid: Vintagestory.API.Common.Entities.Entity.PhysicsUpdateWatcher
   commentId: F:Vintagestory.API.Common.Entities.Entity.PhysicsUpdateWatcher
   parent: Vintagestory.API.Common.Entities.Entity
@@ -1853,6 +1962,13 @@ references:
   name: StoreWithChunk
   nameWithType: Entity.StoreWithChunk
   fullName: Vintagestory.API.Common.Entities.Entity.StoreWithChunk
+- uid: Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange
+  commentId: P:Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange
+  parent: Vintagestory.API.Common.Entities.Entity
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_AllowOutsideLoadedRange
+  name: AllowOutsideLoadedRange
+  nameWithType: Entity.AllowOutsideLoadedRange
+  fullName: Vintagestory.API.Common.Entities.Entity.AllowOutsideLoadedRange
 - uid: Vintagestory.API.Common.Entities.Entity.AlwaysActive
   commentId: P:Vintagestory.API.Common.Entities.Entity.AlwaysActive
   parent: Vintagestory.API.Common.Entities.Entity
@@ -2100,73 +2216,6 @@ references:
   - uid: Vintagestory.API.Common.IPlayer
     name: IPlayer
     href: Vintagestory.API.Common.IPlayer.html
-  - name: )
-- uid: Vintagestory.API.Common.Entities.Entity.TeleportToDouble(System.Double,System.Double,System.Double,System.Action)
-  commentId: M:Vintagestory.API.Common.Entities.Entity.TeleportToDouble(System.Double,System.Double,System.Double,System.Action)
-  parent: Vintagestory.API.Common.Entities.Entity
-  isExternal: true
-  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportToDouble_System_Double_System_Double_System_Double_System_Action_
-  name: TeleportToDouble(double, double, double, Action)
-  nameWithType: Entity.TeleportToDouble(double, double, double, Action)
-  fullName: Vintagestory.API.Common.Entities.Entity.TeleportToDouble(double, double, double, System.Action)
-  nameWithType.vb: Entity.TeleportToDouble(Double, Double, Double, Action)
-  fullName.vb: Vintagestory.API.Common.Entities.Entity.TeleportToDouble(Double, Double, Double, System.Action)
-  name.vb: TeleportToDouble(Double, Double, Double, Action)
-  spec.csharp:
-  - uid: Vintagestory.API.Common.Entities.Entity.TeleportToDouble(System.Double,System.Double,System.Double,System.Action)
-    name: TeleportToDouble
-    href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportToDouble_System_Double_System_Double_System_Double_System_Action_
-  - name: (
-  - uid: System.Double
-    name: double
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.double
-  - name: ','
-  - name: " "
-  - uid: System.Double
-    name: double
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.double
-  - name: ','
-  - name: " "
-  - uid: System.Double
-    name: double
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.double
-  - name: ','
-  - name: " "
-  - uid: System.Action
-    name: Action
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.action
-  - name: )
-  spec.vb:
-  - uid: Vintagestory.API.Common.Entities.Entity.TeleportToDouble(System.Double,System.Double,System.Double,System.Action)
-    name: TeleportToDouble
-    href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_TeleportToDouble_System_Double_System_Double_System_Double_System_Action_
-  - name: (
-  - uid: System.Double
-    name: Double
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.double
-  - name: ','
-  - name: " "
-  - uid: System.Double
-    name: Double
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.double
-  - name: ','
-  - name: " "
-  - uid: System.Double
-    name: Double
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.double
-  - name: ','
-  - name: " "
-  - uid: System.Action
-    name: Action
-    isExternal: true
-    href: https://learn.microsoft.com/dotnet/api/system.action
   - name: )
 - uid: Vintagestory.API.Common.Entities.Entity.TeleportTo(System.Int32,System.Int32,System.Int32)
   commentId: M:Vintagestory.API.Common.Entities.Entity.TeleportTo(System.Int32,System.Int32,System.Int32)
@@ -2522,6 +2571,63 @@ references:
     name: String
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@)
+  commentId: M:Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@)
+  parent: Vintagestory.API.Common.Entities.Entity
+  isExternal: true
+  href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_System_Boolean__
+  name: OnTesselation(ref Shape, string, ref bool)
+  nameWithType: Entity.OnTesselation(ref Shape, string, ref bool)
+  fullName: Vintagestory.API.Common.Entities.Entity.OnTesselation(ref Vintagestory.API.Common.Shape, string, ref bool)
+  nameWithType.vb: Entity.OnTesselation(Shape, String, Boolean)
+  fullName.vb: Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape, String, Boolean)
+  name.vb: OnTesselation(Shape, String, Boolean)
+  spec.csharp:
+  - uid: Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@)
+    name: OnTesselation
+    href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_System_Boolean__
+  - name: (
+  - name: ref
+  - name: " "
+  - uid: Vintagestory.API.Common.Shape
+    name: Shape
+    href: Vintagestory.API.Common.Shape.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: ref
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Vintagestory.API.Common.Entities.Entity.OnTesselation(Vintagestory.API.Common.Shape@,System.String,System.Boolean@)
+    name: OnTesselation
+    href: Vintagestory.API.Common.Entities.Entity.html#Vintagestory_API_Common_Entities_Entity_OnTesselation_Vintagestory_API_Common_Shape__System_String_System_Boolean__
+  - name: (
+  - uid: Vintagestory.API.Common.Shape
+    name: Shape
+    href: Vintagestory.API.Common.Shape.html
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
   - name: )
 - uid: Vintagestory.API.Common.Entities.Entity.OnTesselated
   commentId: M:Vintagestory.API.Common.Entities.Entity.OnTesselated

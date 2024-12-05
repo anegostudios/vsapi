@@ -264,10 +264,10 @@ namespace Vintagestory.API.Client
                 }
             }
 
-            // When naturally stopped, give the player a break from the cave sounds (3-10 minutes)
+            // When naturally stopped, give the player a break from the cave sounds (2-7 minutes)
             if (!wasInterupted)
             {
-                cooldownUntilMs = capi.World.ElapsedMilliseconds + (long)(1000 * (3*60 + rand.NextDouble() * 7*60));
+                cooldownUntilMs = capi.World.ElapsedMilliseconds + (long)(1000 * (2*60 + rand.NextDouble() * 5*60));
             }
         }
         

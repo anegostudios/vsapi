@@ -5,6 +5,7 @@ using System.Linq;
 using Vintagestory.API.Util;
 using System.Runtime.Serialization;
 using System.Xml.Linq;
+using Vintagestory.API.Datastructures;
 
 namespace Vintagestory.API.Common
 {
@@ -70,34 +71,39 @@ namespace Vintagestory.API.Common
         public void ResolveReferences(ILogger errorLogger, string shapeNameForLogging)
         {
             Dictionary<string, ShapeElement> elementsByName = new Dictionary<string, ShapeElement>();
+            var Elements = this.Elements;
             CollectElements(Elements, elementsByName);
 
-            for (int i = 0; Animations != null && i < Animations.Length; i++)
+            var Animations = this.Animations;   // iterating a local reference to an array is quicker, as optimiser then knows the array object is unchanging
+            if (Animations != null)
             {
-                Animation anim = Animations[i];
-                for (int j = 0; j < anim.KeyFrames.Length; j++)
+                for (int i = 0; i < Animations.Length; i++)
                 {
-                    AnimationKeyFrame keyframe = anim.KeyFrames[j];
-                    ResolveReferences(errorLogger, shapeNameForLogging, elementsByName, keyframe);
-
-                    foreach (AnimationKeyFrameElement kelem in keyframe.Elements.Values)
+                    Animation anim = Animations[i];
+                    var KeyFrames = anim.KeyFrames;
+                    for (int j = 0; j < KeyFrames.Length; j++)
                     {
-                        kelem.Frame = keyframe.Frame;
+                        AnimationKeyFrame keyframe = KeyFrames[j];
+                        ResolveReferences(errorLogger, shapeNameForLogging, elementsByName, keyframe);
+
+                        foreach (AnimationKeyFrameElement kelem in keyframe.Elements.Values)
+                        {
+                            kelem.Frame = keyframe.Frame;
+                        }
                     }
-                }
 
-                if (anim.Code == null || anim.Code.Length == 0)
-                {
-                    anim.Code = anim.Name.ToLowerInvariant().Replace(" ", "");
-                }
+                    if (anim.Code == null || anim.Code.Length == 0)
+                    {
+                        anim.Code = anim.Name.ToLowerInvariant().Replace(" ", "");
+                    }
 
-                AnimationsByCrc32[AnimationMetaData.GetCrc32(anim.Code)] = anim;
+                    AnimationsByCrc32[AnimationMetaData.GetCrc32(anim.Code)] = anim;
+                }
             }
 
             for (int i = 0; i < Elements.Length; i++)
             {
-                ShapeElement elem = Elements[i];
-                elem.ResolveRefernces();
+                Elements[i].ResolveRefernces();
             }
         }
 
@@ -261,9 +267,10 @@ namespace Vintagestory.API.Common
                     var entityAnim = Animations.FirstOrDefault(anim => anim.Code == gearAnim.Code);
                     if (entityAnim == null) continue;
 
-                    for (int gi = 0; gi < gearAnim.KeyFrames.Length; gi++)
+                    var gearKeyFrames = gearAnim.KeyFrames;
+                    for (int gi = 0; gi < gearKeyFrames.Length; gi++)
                     {
-                        var gearKeyFrame = gearAnim.KeyFrames[gi];
+                        var gearKeyFrame = gearKeyFrames[gi];
                         var entityKeyFrame = getOrCreateKeyFrame(entityAnim, gearKeyFrame.Frame);
 
                         foreach (var val in gearKeyFrame.Elements)
@@ -332,7 +339,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="elements"></param>
         /// <param name="elementsByName"></param>
-        public void CollectElements(ShapeElement[] elements, Dictionary<string, ShapeElement> elementsByName)
+        public void CollectElements(ShapeElement[] elements, IDictionary<string, ShapeElement> elementsByName)
         {
             if (elements == null) return;
 
@@ -360,13 +367,12 @@ namespace Vintagestory.API.Common
         /// <param name="errorLogger"></param>
         public void ResolveAndFindJoints(ILogger errorLogger, string shapeName, params string[] requireJointsForElements)
         {
+            var Animations = this.Animations;
             if (Animations == null) return;
 
-            Dictionary<string, ShapeElement> elementsByName = new Dictionary<string, ShapeElement>();
+            Dictionary<string, ShapeElement> elementsByName = new Dictionary<string, ShapeElement>(Elements.Length);
             CollectElements(Elements, elementsByName);
 
-            ShapeElement[] allElements = elementsByName.Values.ToArray();
-            
             int jointCount = 0;
 
             HashSet<string> AnimatedElements = new HashSet<string>();
@@ -380,11 +386,10 @@ namespace Vintagestory.API.Common
             {
                 Animation anim = Animations[i];
 
-                if (animationCodes.Contains(anim.Code))
+                if (!animationCodes.Add(anim.Code))
                 {
                     errorLogger?.Warning("Shape {0}: Two or more animations use the same code '{1}'. This will lead to undefined behavior.", shapeName, anim.Code);
                 }
-                animationCodes.Add(anim.Code);
 
                 if (version == -1) version = anim.Version;
                 else if (version != anim.Version)
@@ -393,12 +398,12 @@ namespace Vintagestory.API.Common
                     errorLogged = true;
                 }
 
-                for (int j = 0; j < anim.KeyFrames.Length; j++)
+                var KeyFrames = anim.KeyFrames;
+                for (int j = 0; j < KeyFrames.Length; j++)
                 {
-                    AnimationKeyFrame kf = anim.KeyFrames[j];
-                    AnimatedElements.AddRange(kf.Elements.Keys.ToArray());
-
-                    kf.Resolve(allElements);
+                    AnimationKeyFrame kf = KeyFrames[j];
+                    foreach (var key in kf.Elements.Keys) AnimatedElements.Add(key);
+                    kf.Resolve(elementsByName);
                 }
             }
 
@@ -411,13 +416,12 @@ namespace Vintagestory.API.Common
 
             foreach (string code in AnimatedElements)
             {
-                ShapeElement elem;
-                elementsByName.TryGetValue(code, out elem);
+                elementsByName.TryGetValue(code, out ShapeElement elem);
                 if (elem == null) continue;
                 AnimationJoint joint = new AnimationJoint() { JointId = ++jointCount, Element = elem };
-                JointsById[joint.JointId] = joint;
+                JointsById[jointCount] = joint;
                 
-                maxDepth = Math.Max(maxDepth, elem.GetParentPath().Count);
+                maxDepth = Math.Max(maxDepth, elem.CountParents());
             }
 
             // Currently used to require a joint for the head for head control, but not really used because
@@ -431,10 +435,10 @@ namespace Vintagestory.API.Common
 
                     AnimationJoint joint = new AnimationJoint() { JointId = ++jointCount, Element = elem };
                     JointsById[joint.JointId] = joint;
-                    maxDepth = Math.Max(maxDepth, elem.GetParentPath().Count);
+                    maxDepth = Math.Max(maxDepth, elem.CountParents());
                 }
             }
-            
+
 
 
             // Iteratively and recursively assign the lowest depth to highest depth joints to all elements
@@ -443,11 +447,11 @@ namespace Vintagestory.API.Common
             {
                 foreach (AnimationJoint joint in JointsById.Values)
                 {
-                    if (joint.Element.GetParentPath().Count != depth) continue;
+                    if (joint.Element.CountParents() != depth) continue;
 
                     joint.Element.SetJointId(joint.JointId);
                 }
-            }   
+            }
         }
 
         /// <summary>
@@ -533,23 +537,23 @@ namespace Vintagestory.API.Common
         /// Recursively searches the element by name from the shape.
         /// </summary>
         /// <param name="name">The name of the element to get.</param>
-        /// <param name="stringComparison"></param>
+        /// <param name="stringComparison">Ignored but retained for API backwards compatibility. The implementation always uses OrdinalIgnoreCase comparison</param>
         /// <returns>The shape element or null if none was found</returns>
-        public ShapeElement GetElementByName(string name, StringComparison stringComparison = StringComparison.InvariantCultureIgnoreCase)
+        public ShapeElement GetElementByName(string name, StringComparison stringComparison = StringComparison.OrdinalIgnoreCase)
         {
-            return GetElementByName(name, Elements, stringComparison);
+            if (Elements == null) return null;
+
+            return GetElementByName(name, Elements);
         }
 
-        ShapeElement GetElementByName(string name, ShapeElement[] elems, StringComparison stringComparison)
+        ShapeElement GetElementByName(string name, ShapeElement[] elems)
         {
-            if (elems == null) return null;
-
             foreach (ShapeElement elem in elems)
             {
-                if (elem.Name.Equals(name, stringComparison)) return elem;
+                if (elem.Name.EqualsFastIgnoreCase(name)) return elem;
                 if (elem.Children != null)
                 {
-                    ShapeElement foundElem = GetElementByName(name, elem.Children, stringComparison);
+                    ShapeElement foundElem = GetElementByName(name, elem.Children);
                     if (foundElem != null) return foundElem;
                 }
             }
@@ -686,17 +690,16 @@ namespace Vintagestory.API.Common
             foreach (var val in kf.Elements)
             {
                 ShapeElement elem;
-                elementsByName.TryGetValue(val.Key, out elem);
-
-                if (elem == null)
+                if (elementsByName.TryGetValue(val.Key, out elem))
+                {
+                    val.Value.ForElement = elem;
+                }
+                else
                 {
                     errorLogger.Error("Shape {0} has a key frame element for which the referencing shape element {1} cannot be found.", shapeName, val.Key);
 
                     val.Value.ForElement = new ShapeElement();
-                    continue;
                 }
-
-                val.Value.ForElement = elem;
             }
         }
 

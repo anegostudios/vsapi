@@ -56,6 +56,7 @@ items:
   - Vintagestory.API.MathTools.BlockPos.Set(System.Int32,System.Int32,System.Int32)
   - Vintagestory.API.MathTools.BlockPos.Set(System.Single,System.Single,System.Single)
   - Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.BlockPos)
+  - Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.BlockPos,System.Int32)
   - Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.FastVec3i)
   - Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.Vec3d)
   - Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.Vec3i)
@@ -112,9 +113,13 @@ items:
     content: >-
       [ProtoContract]
 
+      [JsonObject(MemberSerialization.OptIn)]
+
       public class BlockPos : IEquatable<BlockPos>, IVec3
     content.vb: >-
       <ProtoContract>
+
+      <JsonObject(MemberSerialization.OptIn)>
 
       Public Class BlockPos Implements IEquatable(Of BlockPos), IVec3
   inheritance:
@@ -137,6 +142,11 @@ items:
   - type: ProtoBuf.ProtoContractAttribute
     ctor: ProtoBuf.ProtoContractAttribute.#ctor
     arguments: []
+  - type: Newtonsoft.Json.JsonObjectAttribute
+    ctor: Newtonsoft.Json.JsonObjectAttribute.#ctor(Newtonsoft.Json.MemberSerialization)
+    arguments:
+    - type: Newtonsoft.Json.MemberSerialization
+      value: 1
 - uid: Vintagestory.API.MathTools.BlockPos.X
   commentId: F:Vintagestory.API.MathTools.BlockPos.X
   id: X
@@ -155,11 +165,15 @@ items:
     content: >-
       [ProtoMember(1)]
 
+      [JsonProperty]
+
       public int X
     return:
       type: System.Int32
     content.vb: >-
       <ProtoMember(1)>
+
+      <JsonProperty>
 
       Public X As Integer
   attributes:
@@ -168,6 +182,9 @@ items:
     arguments:
     - type: System.Int32
       value: 1
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.MathTools.BlockPos.InternalY
   commentId: P:Vintagestory.API.MathTools.BlockPos.InternalY
   id: InternalY
@@ -186,12 +203,16 @@ items:
     content: >-
       [ProtoMember(2)]
 
+      [JsonProperty]
+
       public int InternalY { get; set; }
     parameters: []
     return:
       type: System.Int32
     content.vb: >-
       <ProtoMember(2)>
+
+      <JsonProperty>
 
       Public Property InternalY As Integer
   overload: Vintagestory.API.MathTools.BlockPos.InternalY*
@@ -201,6 +222,9 @@ items:
     arguments:
     - type: System.Int32
       value: 2
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.MathTools.BlockPos.Z
   commentId: F:Vintagestory.API.MathTools.BlockPos.Z
   id: Z
@@ -219,11 +243,15 @@ items:
     content: >-
       [ProtoMember(3)]
 
+      [JsonProperty]
+
       public int Z
     return:
       type: System.Int32
     content.vb: >-
       <ProtoMember(3)>
+
+      <JsonProperty>
 
       Public Z As Integer
   attributes:
@@ -232,6 +260,9 @@ items:
     arguments:
     - type: System.Int32
       value: 3
+  - type: Newtonsoft.Json.JsonPropertyAttribute
+    ctor: Newtonsoft.Json.JsonPropertyAttribute.#ctor
+    arguments: []
 - uid: Vintagestory.API.MathTools.BlockPos.Y
   commentId: F:Vintagestory.API.MathTools.BlockPos.Y
   id: Y
@@ -360,29 +391,25 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
-  syntax:
-    content: >-
-      [Obsolete("Not dimension-aware. Use overload with a dimension parameter instead")]
+  summary: >-
+    The new BlockPos takes its dimension from the supplied y value, if the y value is higher than the DimensionBoundary (32768 blocks).
 
-      public BlockPos(int x, int y, int z)
+    This constructor is therefore dimension-aware, so long as the y parameter was originally based on .InternalY, including for example a Vec3d created originally from .InternalY
+  example: []
+  syntax:
+    content: public BlockPos(int x, int y, int z)
     parameters:
     - id: x
       type: System.Int32
+      description: ''
     - id: y
       type: System.Int32
+      description: ''
     - id: z
       type: System.Int32
-    content.vb: >-
-      <Obsolete("Not dimension-aware. Use overload with a dimension parameter instead")>
-
-      Public Sub New(x As Integer, y As Integer, z As Integer)
+      description: ''
+    content.vb: Public Sub New(x As Integer, y As Integer, z As Integer)
   overload: Vintagestory.API.MathTools.BlockPos.#ctor*
-  attributes:
-  - type: System.ObsoleteAttribute
-    ctor: System.ObsoleteAttribute.#ctor(System.String)
-    arguments:
-    - type: System.String
-      value: Not dimension-aware. Use overload with a dimension parameter instead
   nameWithType.vb: BlockPos.New(Integer, Integer, Integer)
   fullName.vb: Vintagestory.API.MathTools.BlockPos.New(Integer, Integer, Integer)
   name.vb: New(Integer, Integer, Integer)
@@ -818,6 +845,34 @@ items:
       type: Vintagestory.API.MathTools.BlockPos
     content.vb: Public Function [Set](blockPos As BlockPos) As BlockPos
   overload: Vintagestory.API.MathTools.BlockPos.Set*
+- uid: Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.BlockPos,System.Int32)
+  commentId: M:Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.BlockPos,System.Int32)
+  id: Set(Vintagestory.API.MathTools.BlockPos,System.Int32)
+  parent: Vintagestory.API.MathTools.BlockPos
+  langs:
+  - csharp
+  - vb
+  name: Set(BlockPos, int)
+  nameWithType: BlockPos.Set(BlockPos, int)
+  fullName: Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.BlockPos, int)
+  type: Method
+  assemblies:
+  - VintagestoryAPI
+  namespace: Vintagestory.API.MathTools
+  syntax:
+    content: public BlockPos Set(BlockPos blockPos, int dim)
+    parameters:
+    - id: blockPos
+      type: Vintagestory.API.MathTools.BlockPos
+    - id: dim
+      type: System.Int32
+    return:
+      type: Vintagestory.API.MathTools.BlockPos
+    content.vb: Public Function [Set](blockPos As BlockPos, [dim] As Integer) As BlockPos
+  overload: Vintagestory.API.MathTools.BlockPos.Set*
+  nameWithType.vb: BlockPos.Set(BlockPos, Integer)
+  fullName.vb: Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.BlockPos, Integer)
+  name.vb: Set(BlockPos, Integer)
 - uid: Vintagestory.API.MathTools.BlockPos.SetDimension(System.Int32)
   commentId: M:Vintagestory.API.MathTools.BlockPos.SetDimension(System.Int32)
   id: SetDimension(System.Int32)
@@ -1762,7 +1817,10 @@ items:
   assemblies:
   - VintagestoryAPI
   namespace: Vintagestory.API.MathTools
-  summary: Substract a position =&gt; you'll have the manhatten distance
+  summary: >-
+    Substract a position =&gt; you'll have the manhatten distance.
+
+    <br />If used within a non-zero dimension the resulting BlockPos will be dimensionless as it's a distance or offset between two positions
   example: []
   syntax:
     content: public BlockPos SubCopy(BlockPos pos)

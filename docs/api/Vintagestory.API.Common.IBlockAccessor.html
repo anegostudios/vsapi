@@ -121,6 +121,15 @@ Interface IBlockAccessor
   <div>
       <a class="xref" href="Vintagestory.API.Util.ObjectHandleExtensions.html#Vintagestory_API_Util_ObjectHandleExtensions_ToIntPtr_System_Object_">ObjectHandleExtensions.ToIntPtr(object)</a>
   </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockAbove_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_">PosUtil.GetBlockAbove(IBlockAccessor, BlockPos, int, int)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockBelow_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_System_Int32_System_Int32_">PosUtil.GetBlockBelow(IBlockAccessor, BlockPos, int, int)</a>
+  </div>
+  <div>
+      <a class="xref" href="Vintagestory.API.Util.PosUtil.html#Vintagestory_API_Util_PosUtil_GetBlockOnSide_Vintagestory_API_Common_IBlockAccessor_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_MathTools_BlockFacing_System_Int32_">PosUtil.GetBlockOnSide(IBlockAccessor, BlockPos, BlockFacing, int)</a>
+  </div>
   </dd></dl>
 
 
@@ -769,7 +778,8 @@ Block GetBlock(int posX, int posY, int posZ)</code></pre>
   </h3>
 
   <div class="markdown level1 summary"><p>Get the block type of the block at the given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code &quot;air&quot; and id 0
-<br>Reads the block from the specified layer(s), see <a class="xref" href="Vintagestory.API.Common.BlockLayersAccess.html">BlockLayersAccess</a> documentation for details.</p>
+<br>Reads the block from the specified layer(s), see <a class="xref" href="Vintagestory.API.Common.BlockLayersAccess.html">BlockLayersAccess</a> documentation for details.
+<br>If this must be used even though it's deprecated, please consider using .GetBlockRaw() instead where calling code is explicitly dimension-aware</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -855,7 +865,7 @@ Block GetBlock(int x, int y, int z, int layer)</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Get the block type of the block at the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code &quot;air&quot; and id 0
+  <div class="markdown level1 summary"><p>Get the block type of the block at the given world coordinate, dimension aware. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code &quot;air&quot; and id 0
 Same as <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintagestory_API_Common_IBlockAccessor_GetBlock_Vintagestory_API_MathTools_BlockPos_System_Int32_">GetBlock(BlockPos, int)</a> with BlockLayersAccess.Default as layer</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -893,7 +903,7 @@ Same as <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintag
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Get block type at given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code &quot;air&quot; and id 0
+  <div class="markdown level1 summary"><p>Get block type at given world coordinate, dimension aware. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code &quot;air&quot; and id 0
 <br>Reads the block from the specified layer(s), see BlockLayersAccess documentation for details.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -909,85 +919,6 @@ Same as <a class="xref" href="Vintagestory.API.Common.IBlockAccessor.html#Vintag
     <dt><code>layer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd><p>blocks layer e.g. solid, fluid etc.</p>
 </dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlockAbove_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockAbove*"></a>
-
-  <h3 id="Vintagestory_API_Common_IBlockAccessor_GetBlockAbove_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockAbove(Vintagestory.API.MathTools.BlockPos,System.Int32)">
-  GetBlockAbove(BlockPos, int)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Get the block type of the block above the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code &quot;air&quot; and id 0</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Block GetBlockAbove(BlockPos pos, int dy = 1)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
-    <dd></dd>
-    <dt><code>dy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlockBelow_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockBelow*"></a>
-
-  <h3 id="Vintagestory_API_Common_IBlockAccessor_GetBlockBelow_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockBelow(Vintagestory.API.MathTools.BlockPos,System.Int32)">
-  GetBlockBelow(BlockPos, int)
-  
-  </h3>
-
-  <div class="markdown level1 summary"><p>Get the block type of the block below the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code &quot;air&quot; and id 0
-<br>Specify a negative dy for a block above!</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Block GetBlockBelow(BlockPos pos, int dy = 1)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
-    <dd></dd>
-    <dt><code>dy</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
@@ -1200,6 +1131,55 @@ Block GetBlockOrNull(int x, int y, int z, int layer = 4)</code></pre>
   <dl class="parameters">
     <dt><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
     <dd><p>ID of the block at the given position</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_IBlockAccessor_GetBlockRaw_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockRaw*"></a>
+
+  <h3 id="Vintagestory_API_Common_IBlockAccessor_GetBlockRaw_System_Int32_System_Int32_System_Int32_System_Int32_" data-uid="Vintagestory.API.Common.IBlockAccessor.GetBlockRaw(System.Int32,System.Int32,System.Int32,System.Int32)">
+  GetBlockRaw(int, int, int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Direct raw coordinate access to blocks. PLEASE NOTE: The caller has to ensure dimension awareness (i.e. pos.InternalY when using BlockPos)<br>
+Gets the block type of the block at the given world coordinate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Block GetBlockRaw(int x, int y, int z, int layer = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>x</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>x coordinate</p>
+</dd>
+    <dt><code>y</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>y coordinate</p>
+</dd>
+    <dt><code>z</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>z coordinate</p>
+</dd>
+    <dt><code>layer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The block layer to retrieve from. See also <a class="xref" href="Vintagestory.API.Common.BlockLayersAccess.html">BlockLayersAccess</a></p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.Block.html">Block</a></dt>
+    <dd><p>Never null. For unpopulated locations or invalid coordinates you'll get a block instance with block code &quot;air&quot; and id 0</p>
 </dd>
   </dl>
 
@@ -1582,7 +1562,7 @@ Block[] GetDecors(BlockPos position)</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns a number of how many blocks away there is rain fall. Does a cheap 2D bfs up to 4 blocks away. Returns 99 if none was found within 4 blocks</p>
+  <div class="markdown level1 summary"><p>Returns a number of how many blocks away there is rain fall. Does a cheap 2D bfs up to x blocks away. Returns 99 if none was found within given blocks</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
