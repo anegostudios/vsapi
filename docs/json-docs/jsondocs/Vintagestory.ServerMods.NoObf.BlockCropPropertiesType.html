@@ -1,0 +1,551 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class BlockCropPropertiesType | VintageStory Json Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BlockCropPropertiesType | VintageStory Json Docs ">
+      
+      <meta name="description" content="Used for crop blocks that grow over time.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory Json Docs">
+            VintageStory Json Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType">
+
+
+
+  <h1 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType" class="text-break">
+Class BlockCropPropertiesType  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.ServerMods.html">ServerMods</a>.<a class="xref" href="Vintagestory.ServerMods.NoObf.html">NoObf</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VSEssentials.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Used for crop blocks that grow over time.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class BlockCropPropertiesType</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">BlockCropPropertiesType</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+  <h2 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_examples">Examples</h2>
+  <pre><code class="lang-json">"cropProps": {
+	"requiredNutrient": "K",
+	"nutrientConsumption": 40,
+	"growthStages": 7,
+	"totalGrowthMonths": 1.2,
+	"coldDamageBelow": -10,
+	"damageGrowthStuntMul": 0.75,
+	"coldDamageRipeMul": 0.5,
+	"heatDamageAbove": 32
+},</code></pre>
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_Behaviors" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.Behaviors">
+  Behaviors (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Allows customization of crop growth behavior. BlockEntityFarmland calls methods on all behaviors to allow greater control.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CropBehaviorType[] Behaviors</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.CropBehaviorType.html">CropBehaviorType</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_ColdDamageBelow" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.ColdDamageBelow">
+  ColdDamageBelow (Optional) (Default: -5)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The crop will be damaged if it falls below this temperature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float ColdDamageBelow</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_ColdDamageRipeMul" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.ColdDamageRipeMul">
+  ColdDamageRipeMul (Optional) (Default: 0.5)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If this crop is damaged from cold or heat and the crop is already grown, the yield will be multiplied by this amount.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float ColdDamageRipeMul</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_DamageGrowthStuntMul" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.DamageGrowthStuntMul">
+  DamageGrowthStuntMul (Optional) (Default: 0.5)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If this crop is growing and damaged from cold or heat, the final yield will be multiplied by this amount.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float DamageGrowthStuntMul</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_GrowthStages" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.GrowthStages">
+  GrowthStages (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Amount of growth stages this crop has.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GrowthStages</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_HarvestGrowthStageLoss" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.HarvestGrowthStageLoss">
+  HarvestGrowthStageLoss (Unused) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Currently unused. <!--When <see cref="MultipleHarvests"/> is true, this is the amount of growth stages the crop should go back when harvested.--></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int HarvestGrowthStageLoss</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_HeatDamageAbove" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.HeatDamageAbove">
+  HeatDamageAbove (Optional) (Default: 40)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The crop will be damaged if it goes above this temperature.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float HeatDamageAbove</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_MultipleHarvests" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.MultipleHarvests">
+  MultipleHarvests (Unused) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Currently unused. <!--If true, the player may harvests from the crop multiple times.--></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool MultipleHarvests</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_NutrientConsumption" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.NutrientConsumption">
+  NutrientConsumption (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Total amount of nutrient consumed to reach full maturity. (100 is the maximum available for farmland)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float NutrientConsumption</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_RequiredNutrient" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.RequiredNutrient">
+  RequiredNutrient (Recommended) (Default: N)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Which nutrient category this crop requires to grow</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EnumSoilNutrient RequiredNutrient</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumSoilNutrient.html">EnumSoilNutrient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_TotalGrowthDays" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.TotalGrowthDays">
+  TotalGrowthDays (Obsolete)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Obsolete. Please use <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.html#Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_TotalGrowthMonths">TotalGrowthMonths</a> instead. Total time in ingame days required for the crop to reach full maturity assuming full nutrient levels</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float TotalGrowthDays</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockCropPropertiesType_TotalGrowthMonths" data-uid="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.TotalGrowthMonths">
+  TotalGrowthMonths (Required)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Total time in ingame months required for the crop to reach full maturity assuming full nutrient levels.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float TotalGrowthMonths</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

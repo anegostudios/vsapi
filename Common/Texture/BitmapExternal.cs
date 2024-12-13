@@ -3,6 +3,7 @@ using SkiaSharp;
 using System;
 using System.IO;
 using Vintagestory.API.Client;
+using Vintagestory.API.Config;
 using Vintagestory.API.Util;
 
 
@@ -113,7 +114,17 @@ namespace Vintagestory.API.Common
         {
             try
             {
-                this.bmp = Decode(new ReadOnlySpan<byte>(data, 0, dataLength));
+                if (RuntimeEnv.OS == OS.Mac)
+                {
+                    var decode = SKBitmap.Decode(new ReadOnlySpan<byte>(data, 0, dataLength));
+                    bmp = new SKBitmap(decode.Width, decode.Height, SKColorType.Bgra8888, SKAlphaType.Unpremul);
+                    using var canvas = new SKCanvas(bmp);
+                    canvas.DrawBitmap(decode, 0, 0);
+                }
+                else
+                {
+                    bmp = Decode(new ReadOnlySpan<byte>(data, 0, dataLength));
+                }
             }
             catch (Exception ex)
             {

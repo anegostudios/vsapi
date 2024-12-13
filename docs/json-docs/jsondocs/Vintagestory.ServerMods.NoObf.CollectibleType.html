@@ -1,0 +1,1586 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class CollectibleType | VintageStory Json Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class CollectibleType | VintageStory Json Docs ">
+      
+      <meta name="description" content="A type of in-game collectible object. Extends from . This is mainly used to control items (and block&#39;s items) when they are in the inventory. s get most of their data from here, s use this as well as their own specific data.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory Json Docs">
+            VintageStory Json Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.ServerMods.NoObf.CollectibleType">
+
+
+
+  <h1 id="Vintagestory_ServerMods_NoObf_CollectibleType" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType" class="text-break">
+Class CollectibleType  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.ServerMods.html">ServerMods</a>.<a class="xref" href="Vintagestory.ServerMods.NoObf.html">NoObf</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VSEssentials.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>A type of in-game collectible object. Extends from <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html">RegistryObjectType</a>.
+This is mainly used to control items (and block's items) when they are in the inventory.
+<a class="xref" href="Vintagestory.ServerMods.NoObf.ItemType.html">ItemType</a>s get most of their data from here, <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html">BlockType</a>s use this as well as their own specific data.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+public abstract class CollectibleType : RegistryObjectType</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html">RegistryObjectType</a></div>
+      <div><span class="xref">CollectibleType</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html">BlockType</a></div>
+      <div><a class="xref" href="Vintagestory.ServerMods.NoObf.ItemType.html">ItemType</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_Enabled">RegistryObjectType.Enabled</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_Code">RegistryObjectType.Code</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_VariantGroups">RegistryObjectType.VariantGroups</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_Interactions">RegistryObjectType.Interactions</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_SkipVariants">RegistryObjectType.SkipVariants</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_AllowedVariants">RegistryObjectType.AllowedVariants</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_Class">RegistryObjectType.Class</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_AttackPower" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.AttackPower">
+  AttackPower (Optional) (Default: 0.5)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>How much damage this collectible deals when used as a weapon.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float AttackPower</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_AttackRange" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.AttackRange">
+  AttackRange (Optional) (Default: 1.5)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The maximum distance an entity can be for you to attack it with this object.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float AttackRange</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_Attributes" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Attributes">
+  Attributes (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Custom Attributes that're always associated with this collectible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+[JsonConverter(typeof(JsonAttributesConverter))]
+public JsonObject Attributes</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.JsonObject.html">JsonObject</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_Behaviors" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Behaviors">
+  Behaviors (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Modifiers that can alter the behavior of the item or block, mostly for held interactions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public CollectibleBehaviorType[] Behaviors</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleBehaviorType.html">CollectibleBehaviorType</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_CombustibleProps" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.CombustibleProps">
+  CombustibleProps (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Information about the burnable states and results from cooking.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public CombustibleProperties CombustibleProps</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CombustibleProperties.html">CombustibleProperties</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_CreativeInventory" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.CreativeInventory">
+  CreativeInventory (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A list of creative tabs and variant codes for each.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Dictionary&lt;string, string[]&gt; CreativeInventory</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_CreativeInventoryStacks" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.CreativeInventoryStacks">
+  CreativeInventoryStacks (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A list of specific item stacks to place in specific creative tabs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public CreativeTabAndStackList[] CreativeInventoryStacks</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CreativeTabAndStackList.html">CreativeTabAndStackList</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_CrushingProps" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.CrushingProps">
+  CrushingProps (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If set, the collectible can be crushed into something else using a pulverizer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public CrushingProperties CrushingProps</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CrushingProperties.html">CrushingProperties</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_DamagedBy" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.DamagedBy">
+  DamagedBy (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>From which damage sources does the item takes durability damage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EnumItemDamageSource[] DamagedBy</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumItemDamageSource.html">EnumItemDamageSource</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_Dimensions" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Dimensions">
+  Dimensions (Optional) (Default: 0.5, 0.5, 0.5)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Physical size of this collectible, 0.5 x 0.5 x 0.5 meters by default.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Size3f Dimensions</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.Size3f.html">Size3f</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_Durability" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Durability">
+  Durability (Optional) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>How many uses does this collectible has when being used. Item disappears at durability 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public int Durability</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_FpHandTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.FpHandTransform">
+  FpHandTransform (Obsolete)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Deprecated - Use <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_TpHandTransform">TpHandTransform</a> instead.
+Used for scaling, rotation or offseting the block when rendered in the first person mode hand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ModelTransform FpHandTransform</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_GrindingProps" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.GrindingProps">
+  GrindingProps (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If set, the collectible can be ground into something else using a quern.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public GrindingProperties GrindingProps</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.GrindingProperties.html">GrindingProperties</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_GroundTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.GroundTransform">
+  GroundTransform (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Used for scaling, rotation or offseting the rendered as a dropped item on the ground.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ModelTransform GroundTransform</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_GuiTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.GuiTransform">
+  GuiTransform (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Used for scaling, rotation or offseting the block when rendered in guis.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ModelTransform GuiTransform</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldLeftReadyAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldLeftReadyAnimation">
+  HeldLeftReadyAnimation (Optional) (Default: &quot;helditemready&quot;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The animation to play in 3rd person when returning to idle from use in the left hand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string HeldLeftReadyAnimation</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldLeftTpIdleAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldLeftTpIdleAnimation">
+  HeldLeftTpIdleAnimation (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The animation to play in 3rd person mode when holding this collectible in the left hand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string HeldLeftTpIdleAnimation</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldOldTpIdleAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldOldTpIdleAnimation">
+  HeldOldTpIdleAnimation (Obsolete)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Deprecated. Use <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_HeldRightTpIdleAnimation">HeldRightTpIdleAnimation</a> instead.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;heldTpIdleAnimation&quot;)]
+private string HeldOldTpIdleAnimation</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldRightReadyAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldRightReadyAnimation">
+  HeldRightReadyAnimation (Optional) (Default: &quot;helditemready&quot;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The animation to play in 3rd person when returning to idle from use in the right hand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string HeldRightReadyAnimation</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldRightTpIdleAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldRightTpIdleAnimation">
+  HeldRightTpIdleAnimation (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The animation to play in 3rd person mode when holding this collectible in the right hand</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string HeldRightTpIdleAnimation</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldSounds" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldSounds">
+  HeldSounds (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If set, defines a specific sound set for this collectible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public HeldSounds HeldSounds</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.HeldSounds.html">HeldSounds</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldTpHitAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldTpHitAnimation">
+  HeldTpHitAnimation (Optional) (Default: &quot;breakhand&quot;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The animation to play in 3rd person mode when hitting with this collectible</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string HeldTpHitAnimation</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_HeldTpUseAnimation" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.HeldTpUseAnimation">
+  HeldTpUseAnimation (Optional) (Default: &quot;interactstatic&quot;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The animation to play in 3rd person mod when using this collectible</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string HeldTpUseAnimation</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_LightHsv" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.LightHsv">
+  LightHsv (Optional) (Default: [0, 0, 0])
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>For light emitting collectibles: hue, saturation and brightness value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public byte[] LightHsv</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.byte">byte</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_LiquidSelectable" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.LiquidSelectable">
+  LiquidSelectable (Optional) (Default: False)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>When this item is held, can the player select liquids?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool LiquidSelectable</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_MaterialDensity" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.MaterialDensity">
+  MaterialDensity (Optional) (Default: 9999)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Determines on whether an object floats on liquids or not. Water has a density of 1000.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public int MaterialDensity</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_MatterState" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.MatterState">
+  MatterState (Optional) (Default: Solid)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>What kind of matter is this collectible? Liquids are handled and rendered differently than solid blocks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EnumMatterState MatterState</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumMatterState.html">EnumMatterState</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_MaxStackSize" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.MaxStackSize">
+  MaxStackSize (Optional) (Default: 1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Max amount of collectible that one default inventory slot can hold.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public int MaxStackSize</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_MiningSpeed" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.MiningSpeed">
+  MiningSpeed (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Modifies how fast the player can break a block when holding this item</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Dictionary&lt;EnumBlockMaterial, float&gt; MiningSpeed</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="Vintagestory.API.Common.EnumBlockMaterial.html">EnumBlockMaterial</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_NutritionProps" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.NutritionProps">
+  NutritionProps (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Information about the nutrition states (e.g. edible properties). Setting this will make the collectible edible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public FoodNutritionProperties NutritionProps</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.FoodNutritionProperties.html">FoodNutritionProperties</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_ParticleProperties" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.ParticleProperties">
+  ParticleProperties (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Particles that should spawn in regular intervals from this block or item when held in hands</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public AdvancedParticleProperties[] ParticleProperties</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_RenderAlphaTest" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.RenderAlphaTest">
+  RenderAlphaTest (Optional) (Default: 0.05)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Alpha test value for rendering in gui, fp hand, tp hand or on the ground.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float RenderAlphaTest</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_Shape" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Shape">
+  Shape (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Details about the 3D model of this collectible.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public CompositeShape Shape</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_StorageFlags" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.StorageFlags">
+  StorageFlags (Optional) (Default: 1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Determines in which kind of bags the item can be stored in.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public int StorageFlags</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_Texture" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Texture">
+  Texture (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Details about the texture of this collectible. Used if the shape only has one texture. Use <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_Textures">Textures</a> if using more than one texture.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public CompositeTexture Texture</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.CompositeTexture.html">CompositeTexture</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_Textures" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Textures">
+  Textures (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Details about a set of textures of this collectible. Each string key should correlate to a texture value in this the collectible's shape's textures. You can use <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_Texture">Texture</a> if only using one texture.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Dictionary&lt;string, CompositeTexture&gt; Textures</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html">CompositeTexture</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_Tool" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.Tool">
+  Tool (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If set, this item will be classified as given tool.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EnumTool? Tool</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumTool.html">EnumTool</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_ToolTier" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.ToolTier">
+  ToolTier (Optional) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The object can mine any blocks with the same or lower tier than this.
+If this object is a weapon, this also determines the object's damage tier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public int ToolTier</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_TpHandTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.TpHandTransform">
+  TpHandTransform (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Used for scaling, rotation or offseting the block when rendered in the third person mode hand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ModelTransform TpHandTransform</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_TpOffHandTransform" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.TpOffHandTransform">
+  TpOffHandTransform (Recommended) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Used for scaling, rotation or offseting the block when rendered in the third person mode offhand.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ModelTransform TpOffHandTransform</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.ModelTransform.html">ModelTransform</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_TransitionableProps" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.TransitionableProps">
+  TransitionableProps (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Information about the transitionable states - Should this collectible turn into another item after a period of time?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public TransitionableProperties[] TransitionableProps</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.TransitionableProperties.html">TransitionableProperties</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_ServerMods_NoObf_CollectibleType_MiningTier_" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.MiningTier*"></a>
+
+  <h3 id="Vintagestory_ServerMods_NoObf_CollectibleType_MiningTier" data-uid="Vintagestory.ServerMods.NoObf.CollectibleType.MiningTier">
+  MiningTier (Obsolete)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Deprecated. Use <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_ToolTier">ToolTier</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+[Obsolete(&quot;Use tool tier&quot;)]
+public int MiningTier { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

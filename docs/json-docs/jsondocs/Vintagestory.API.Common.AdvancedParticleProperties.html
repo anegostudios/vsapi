@@ -1,0 +1,1110 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class AdvancedParticleProperties | VintageStory Json Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AdvancedParticleProperties | VintageStory Json Docs ">
+      
+      <meta name="description" content="Used to add a set of particle properties to a collectible.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory Json Docs">
+            VintageStory Json Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.API.Common.AdvancedParticleProperties">
+
+
+
+  <h1 id="Vintagestory_API_Common_AdvancedParticleProperties" data-uid="Vintagestory.API.Common.AdvancedParticleProperties" class="text-break">
+Class AdvancedParticleProperties  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.API.html">API</a>.<a class="xref" href="Vintagestory.API.Common.html">Common</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VintagestoryAPI.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Used to add a set of particle properties to a collectible.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+public class AdvancedParticleProperties</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AdvancedParticleProperties</span></div>
+    </dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_HsvaColor" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.HsvaColor">
+  HsvaColor (Optional) (Default: Random)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The Hue/Saturation/Value/Alpha for the color of the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat[] HsvaColor</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_PosOffset" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.PosOffset">
+  PosOffset (Optional) (Default: 0, 0, 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Offset from the blocks hitboxes top middle position</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat[] PosOffset</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_BlueEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_BlueEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.BlueEvolve">
+  BlueEvolve (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A transforming Blue value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EvolvingNatFloat BlueEvolve { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Bounciness_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Bounciness*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Bounciness" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Bounciness">
+  Bounciness (Optional) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The amount of velocity to be kept when this particle collides with something. Directional velocity is multipled by (-Bounciness * 0.65) on any collision.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float Bounciness { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_ColorByBlock_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_ColorByBlock" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ColorByBlock">
+  ColorByBlock (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Whether or not to color the particle by the block it's on.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool ColorByBlock { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_DeathParticles_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_DeathParticles" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DeathParticles">
+  DeathParticles (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>More particles that spawn when this particle dies.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public AdvancedParticleProperties[] DeathParticles { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_DieInAir_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInAir*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_DieInAir" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInAir">
+  DieInAir (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Whether or not the particle dies in air.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool DieInAir { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_DieInLiquid_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_DieInLiquid" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieInLiquid">
+  DieInLiquid (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Whether or not the particle dies in water.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool DieInLiquid { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_DieOnRainHeightmap_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_DieOnRainHeightmap" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.DieOnRainHeightmap">
+  DieOnRainHeightmap (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If true, particle dies if it falls below the rain height at its given location</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool DieOnRainHeightmap { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_GravityEffect_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_GravityEffect" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GravityEffect">
+  GravityEffect (Optional) (Default: 1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The gravity effect on the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat GravityEffect { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_GreenEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_GreenEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.GreenEvolve">
+  GreenEvolve (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A transforming Green value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EvolvingNatFloat GreenEvolve { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_LifeLength_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.LifeLength*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_LifeLength" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.LifeLength">
+  LifeLength (Optional) (Default: 1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The life length, in seconds, of the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat LifeLength { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_OpacityEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_OpacityEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.OpacityEvolve">
+  OpacityEvolve (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A transforming opacity value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EvolvingNatFloat OpacityEvolve { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_ParticleModel_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_ParticleModel" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.ParticleModel">
+  ParticleModel (Optional) (Default: Cube)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Sets the base model for the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EnumParticleModel ParticleModel { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumParticleModel.html">EnumParticleModel</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Quantity_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Quantity*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Quantity" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Quantity">
+  Quantity (Optional) (Default: 1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The quantity of the particles given.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat Quantity { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_RandomVelocityChange_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_RandomVelocityChange" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RandomVelocityChange">
+  RandomVelocityChange (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Allows each particle to randomly change its velocity over time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool RandomVelocityChange { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_RedEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_RedEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.RedEvolve">
+  RedEvolve (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A transforming Red value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EvolvingNatFloat RedEvolve { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SecondaryParticles">
+  SecondaryParticles (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>More particles that spawn from this particle over time. See <a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval">SecondarySpawnInterval</a> to control rate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public AdvancedParticleProperties[] SecondaryParticles { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html">AdvancedParticleProperties</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_SecondarySpawnInterval" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SecondarySpawnInterval">
+  SecondarySpawnInterval (Optional) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The inverval that the <a class="xref" href="Vintagestory.API.Common.AdvancedParticleProperties.html#Vintagestory_API_Common_AdvancedParticleProperties_SecondaryParticles">SecondaryParticles</a> spawn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat SecondarySpawnInterval { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SelfPropelled_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_SelfPropelled" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SelfPropelled">
+  SelfPropelled (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Whether or not the particle is self propelled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool SelfPropelled { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Size_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Size*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Size" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Size">
+  Size (Optional) (Default: 1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The size of the particles given.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat Size { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SizeEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_SizeEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SizeEvolve">
+  SizeEvolve (Optional) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A transforming Size value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EvolvingNatFloat SizeEvolve { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_SwimOnLiquid_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_SwimOnLiquid" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.SwimOnLiquid">
+  SwimOnLiquid (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Whether or not the particle floats on liquids.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool SwimOnLiquid { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_TerrainCollision_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_TerrainCollision" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.TerrainCollision">
+  TerrainCollision (Optional) (Default: true)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Whether or not the particle collides with the terrain.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool TerrainCollision { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_Velocity_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Velocity*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_Velocity" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.Velocity">
+  Velocity (Optional) (Default: Random)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The velocity of the particles.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public NatFloat[] Velocity { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.NatFloat.html">NatFloat</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_VelocityEvolve_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_VelocityEvolve" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.VelocityEvolve">
+  VelocityEvolve (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A dynamic velocity value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EvolvingNatFloat[] VelocityEvolve { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.EvolvingNatFloat.html">EvolvingNatFloat</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_VertexFlags_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_VertexFlags" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.VertexFlags">
+  VertexFlags (Optional) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The level of glow in the particle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public int VertexFlags { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednes_" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes*"></a>
+
+  <h3 id="Vintagestory_API_Common_AdvancedParticleProperties_WindAffectednes" data-uid="Vintagestory.API.Common.AdvancedParticleProperties.WindAffectednes">
+  WindAffectednes (Optional) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>How much the particles are affected by wind.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float WindAffectednes { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

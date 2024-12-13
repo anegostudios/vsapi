@@ -232,7 +232,7 @@ namespace Vintagestory.API.Common
 
             if (inventoryID != null)
             {
-                string[] elems = inventoryID.Split(new char[] { '-' }, 2);
+                string[] elems = inventoryID.Split('-', 2);
                 className = elems[0];
                 instanceID = elems[1];
             }
@@ -252,7 +252,7 @@ namespace Vintagestory.API.Common
         public virtual void LateInitialize(string inventoryID, ICoreAPI api)
         {
             this.Api = api;
-            string[] elems = inventoryID.Split(new char[] { '-' }, 2);
+            string[] elems = inventoryID.Split('-', 2);
             className = elems[0];
             instanceID = elems[1];
 

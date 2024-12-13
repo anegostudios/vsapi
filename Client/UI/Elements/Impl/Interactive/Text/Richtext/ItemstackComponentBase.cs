@@ -43,8 +43,8 @@ namespace Vintagestory.API.Client
             stackInfoBounds =
                 ElementBounds
                 .FixedSize(EnumDialogArea.None, GuiElementItemstackInfo.BoxWidth, 0)
-                .WithFixedPadding(10)
-                .WithFixedPosition(20, 40)
+                .WithFixedPadding(6 + 4 * RuntimeEnv.GUIScale)
+                .WithFixedPosition(12 + 8 / RuntimeEnv.GUIScale, 28 + 12 / RuntimeEnv.GUIScale)
             ;
 
             parentBounds = ElementBounds.Fixed(0, 0, 1, 1);

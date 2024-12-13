@@ -47,10 +47,5 @@ namespace Vintagestory.API.Server
         Dictionary<string, string> RemappedEntities { get; }
 
         bool IsFullyLoadedChunk(BlockPos pos);
-
-        /// <summary>
-        /// Used for server-side entity physics ticking
-        /// </summary>
-        void AddPhysicsTick(IServerPhysicsTicker entitybehavior);
     }
 }

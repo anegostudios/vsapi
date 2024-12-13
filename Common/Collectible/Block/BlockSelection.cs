@@ -101,53 +101,19 @@ namespace Vintagestory.API.Common
             int x = (int)(HitPosition.X * 16);
             int y = 15 - (int)(HitPosition.Y * 16);
             int z = (int)(HitPosition.Z * 16);
-            return GetDecorIndex(Face, x, y, z);
+            return new DecorBits(Face, x, y, z);
         }
 
-        /// <summary>
-        /// Turn face and local voxel position to a decor index
-        /// </summary>
-        /// <param name="face"></param>
-        /// <param name="vx">0..15</param>
-        /// <param name="vy">0..15</param>
-        /// <param name="vz">0..15</param>
-        /// <returns></returns>
-        public static int GetDecorIndex(BlockFacing face, int vx, int vy, int vz)
+        [System.Obsolete("Use (int)new DecorBits(face, x, y, z) instead, which has the same functionality")]
+        public static int GetDecorIndex(BlockFacing face, int x, int y, int z)
         {
-            int offset = 0;
-            switch (face.Index)
-            {
-                case 0:
-                    offset = (15 - vx) + vy * 16;
-                    break;
-                case 1:
-                    offset = (15 - vz) + vy * 16;
-                    break;
-                case 2:
-                    offset = vx + vy * 16;
-                    break;
-                case 3:
-                    offset = vz + vy * 16;
-                    break;
-                case 4:
-                    offset = vx + vz * 16;
-                    break;
-                case 5:
-                    offset = vx + (15 - vz) * 16;
-                    break;
-            }
-
-            return face.Index + 6 * (1 + offset);
+            return new DecorBits(face, x, y, z);
         }
 
-        /// <summary>
-        /// Turn face to a decor index
-        /// </summary>
-        /// <param name="face"></param>
-        /// <returns></returns>
+        [System.Obsolete("Use (int)new DecorBits(face) instead, which has the same functionality")]
         public static int GetDecorIndex(BlockFacing face)
         {
-            return face.Index;
+            return new DecorBits(face);
         }
     }
 

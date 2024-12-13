@@ -1,4 +1,7 @@
-﻿using Vintagestory.API.MathTools;
+﻿using System;
+using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
+using Vintagestory.API.Server;
 
 namespace Vintagestory.API.Config
 {
@@ -13,9 +16,13 @@ namespace Vintagestory.API.Config
         /// </summary>
         public const int MiniDimensions = 1;
         /// <summary>
-        /// The dimension dedicated for storage of blocks in an alt-world, such as the Devastation
+        /// The dimension dedicated for storage of blocks in an timeswitched alt-world, such as the Devastation
         /// </summary>
         public const int AltWorld = 2;
+        /// <summary>
+        /// The subdimension Id, within the MiniDimensions system, for the World Edit Blocks Preview dimension.  Accessed client-side only
+        /// </summary>
+        public static int BlocksPreviewSubDimension_Client = -1;
 
 
         /// <summary>
@@ -27,6 +34,21 @@ namespace Vintagestory.API.Config
         public static int SubDimensionIdForPos(int posX, int posZ)
         {
             return posZ / subDimensionSize * subDimensionIndexZMultiplier + posX / subDimensionSize;
+        }
+
+        /// <summary>
+        /// Indicates whether a given BlockPos should not be ticked due to being in an unusual dimension, such as the preview minidimension
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        public static bool ShouldNotTick(BlockPos pos, ICoreAPI api)
+        {
+            if (pos.dimension != MiniDimensions) return false;
+            int subId = SubDimensionIdForPos(pos.X, pos.Z);
+            if (!(api is ICoreServerAPI sapi)) return subId == BlocksPreviewSubDimension_Client;
+            IMiniDimension dim = sapi.Server.GetMiniDimension(subId);
+            if (dim == null) return false;
+            return dim.BlocksPreviewSubDimension_Server == subId;
         }
     }
 }

@@ -587,6 +587,44 @@ if server is about to shutdown</p>
 
 
 
+  <a id="Vintagestory_API_Server_IServerAPI_GetMiniDimension_" data-uid="Vintagestory.API.Server.IServerAPI.GetMiniDimension*"></a>
+
+  <h3 id="Vintagestory_API_Server_IServerAPI_GetMiniDimension_System_Int32_" data-uid="Vintagestory.API.Server.IServerAPI.GetMiniDimension(System.Int32)">
+  GetMiniDimension(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the mini-dimension at the specified subdimension index; returns null if none exists
+<br>A mini dimension is a small set of blocks up to 4096x4096x4096 used for schematic previews, vehicles etc</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IMiniDimension GetMiniDimension(int subId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>subId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.IMiniDimension.html">IMiniDimension</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_IServerAPI_LoadMiniDimension_" data-uid="Vintagestory.API.Server.IServerAPI.LoadMiniDimension*"></a>
 
   <h3 id="Vintagestory_API_Server_IServerAPI_LoadMiniDimension_Vintagestory_API_Common_IMiniDimension_" data-uid="Vintagestory.API.Server.IServerAPI.LoadMiniDimension(Vintagestory.API.Common.IMiniDimension)">
@@ -594,7 +632,7 @@ if server is about to shutdown</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Add the specified dimension to the LoadedMiniDimensions, and return its index.
+  <div class="markdown level1 summary"><p>Add the specified dimension to the LoadedMiniDimensions, and return its allocated subdimension index.
 <br>A mini dimension is a small set of blocks up to 4096x4096x4096 used for schematic previews, vehicles etc</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1067,20 +1105,20 @@ if server is about to shutdown</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Set the specified dimension at the specified LoadedMiniDimensions index, and return its index
+  <div class="markdown level1 summary"><p>Set the specified mini-dimension at the specified subdimension index, and return its index
 <br>A mini dimension is a small set of blocks up to 4096x4096x4096 used for schematic previews, vehicles etc</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">int SetMiniDimension(IMiniDimension miniDimension, int index)</code></pre>
+    <pre><code class="lang-csharp hljs">int SetMiniDimension(IMiniDimension miniDimension, int subId)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>miniDimension</code> <a class="xref" href="Vintagestory.API.Common.IMiniDimension.html">IMiniDimension</a></dt>
     <dd></dd>
-    <dt><code>index</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dt><code>subId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
     <dd></dd>
   </dl>
 

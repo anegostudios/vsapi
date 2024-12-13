@@ -11,9 +11,6 @@ namespace Vintagestory.API.Common
 {
     public class TyronThreadPool
     {
-        /*public Thread[] threads;
-        public ConcurrentQueue<Action> queue = new ConcurrentQueue<Action>();*/
-
         public static TyronThreadPool Inst = new TyronThreadPool();
         public ILogger Logger;
 
@@ -22,6 +19,10 @@ namespace Vintagestory.API.Common
         int keyCounter = 0;
         int dedicatedCounter = 0;
 
+        public TyronThreadPool()
+        {
+            ThreadPool.SetMaxThreads(10, 1);
+        }
 
         private int MarkStarted(string caller)
         {
@@ -46,7 +47,7 @@ namespace Vintagestory.API.Common
             if (sb.Length == 0) sb.Append("[empty]");
             sb.AppendLine();
 
-            return "Current threadpool tasks: " + sb.ToString();
+            return "Current threadpool tasks: " + sb.ToString() + "\nThread pool thread count: " + ThreadPool.ThreadCount;
         }
 
         public string ListAllThreads()
@@ -114,7 +115,7 @@ namespace Vintagestory.API.Common
             {
                 Inst.Logger.VerboseDebug("QueueTask." + Environment.StackTrace);
             }
-            //Inst.queue.Enqueue(callback);
+            
             ThreadPool.QueueUserWorkItem((a) =>
             {
                 callback();
@@ -128,7 +129,6 @@ namespace Vintagestory.API.Common
                 Inst.Logger.VerboseDebug("QueueTask." + Environment.StackTrace);
             }
 
-            //Inst.queue.Enqueue(callback);
             ThreadPool.QueueUserWorkItem((a) =>
             {
                 callback();

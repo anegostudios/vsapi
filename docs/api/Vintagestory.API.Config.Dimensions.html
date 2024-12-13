@@ -168,12 +168,43 @@ Class Dimensions
   
   </h3>
 
-  <div class="markdown level1 summary"><p>The dimension dedicated for storage of blocks in an alt-world, such as the Devastation</p>
+  <div class="markdown level1 summary"><p>The dimension dedicated for storage of blocks in an timeswitched alt-world, such as the Devastation</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public const int AltWorld = 2</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_API_Config_Dimensions_BlocksPreviewSubDimension_Client" data-uid="Vintagestory.API.Config.Dimensions.BlocksPreviewSubDimension_Client">
+  BlocksPreviewSubDimension_Client
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The subdimension Id, within the MiniDimensions system, for the World Edit Blocks Preview dimension.  Accessed client-side only</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int BlocksPreviewSubDimension_Client</code></pre>
   </div>
 
 
@@ -318,6 +349,45 @@ Class Dimensions
 
   <h2 class="section" id="methods">Methods
 </h2>
+
+
+  <a id="Vintagestory_API_Config_Dimensions_ShouldNotTick_" data-uid="Vintagestory.API.Config.Dimensions.ShouldNotTick*"></a>
+
+  <h3 id="Vintagestory_API_Config_Dimensions_ShouldNotTick_Vintagestory_API_MathTools_BlockPos_Vintagestory_API_Common_ICoreAPI_" data-uid="Vintagestory.API.Config.Dimensions.ShouldNotTick(Vintagestory.API.MathTools.BlockPos,Vintagestory.API.Common.ICoreAPI)">
+  ShouldNotTick(BlockPos, ICoreAPI)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Indicates whether a given BlockPos should not be ticked due to being in an unusual dimension, such as the preview minidimension</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool ShouldNotTick(BlockPos pos, ICoreAPI api)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>api</code> <a class="xref" href="Vintagestory.API.Common.ICoreAPI.html">ICoreAPI</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
 
 
   <a id="Vintagestory_API_Config_Dimensions_SubDimensionIdForPos_" data-uid="Vintagestory.API.Config.Dimensions.SubDimensionIdForPos*"></a>

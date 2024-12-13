@@ -542,7 +542,7 @@ namespace Vintagestory.API.Common
                 BlockEntities[(uint)((dy << 20) | (dz << 10) | dx)] = val.Value;
             }
 
-            BlockPos minPos = new BlockPos(minX, minY, minZ);
+            BlockPos minPos = new BlockPos(minX, minY, minZ, startPos.dimension);
             foreach (var e in EntitiesUnpacked)
             {
                 using (MemoryStream ms = new MemoryStream())

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenTK.Windowing.GraphicsLibraryFramework;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using Vintagestory.API.Config;
@@ -60,7 +61,8 @@ namespace Vintagestory.API.Client
             if (Ctrl) keys.Add("CTRL");
             if (Alt) keys.Add("ALT");
             if (Shift) keys.Add("SHIFT");
-            keys.Add("" + GlKeyNames.ToString((GlKeys)KeyCode));
+            if (KeyCode == (int)GlKeys.Escape) keys.Add("Esc");
+            else keys.Add("" + GlKeyNames.ToString((GlKeys)KeyCode));
             if (SecondKeyCode != null && SecondKeyCode > 0) keys.Add(SecondaryAsString());
 
             return string.Join(" + ", keys.ToArray());
@@ -78,6 +80,7 @@ namespace Vintagestory.API.Client
         public string PrimaryAsString()
         {
             if (IsMouseButton(KeyCode)) return MouseButtonAsString(KeyCode);
+            if (KeyCode == (int)GlKeys.Escape) return "Esc";
             return GlKeyNames.ToString((GlKeys)KeyCode);
         }
 

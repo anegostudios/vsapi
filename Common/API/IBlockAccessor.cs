@@ -165,6 +165,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Width, Length and Height of a chunk
         /// </summary>
+        [Obsolete("Use GlobalConstants.ChunkSize instead.  Fetching a property in inner-loop code is needlessly inefficient!")]
         int ChunkSize { get; }
 
         /// <summary>
@@ -771,7 +772,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="position"></param>
         /// <param name="block"></param>
-        /// <param name="decorIndex">You can get this value via <see cref="BlockSelection.ToDecorIndex()"/> or via <see cref="BlockSelection.GetDecorIndex(BlockFacing, int, int, int)"/>.<br/>It can include a subPosition for cave art etc.</param>
+        /// <param name="decorIndex">You can get this value via <see cref="BlockSelection.ToDecorIndex()"/> or via constructor <see cref="DecorBits(BlockFacing)"/> or <see cref="DecorBits(BlockFacing, int, int, int)"/>. It can include a subPosition for cave art etc.</param>
         /// <returns>True if the decor was sucessfully set</returns>
         bool SetDecor(Block block, BlockPos position, int decorIndex);
 
@@ -787,14 +788,14 @@ namespace Vintagestory.API.Common
         /// Get a list of all decors at this position
         /// </summary>
         /// <param name="position"></param>
-        /// <returns>null if this block position has no decors. Otherwise, a Dictionary with the index being the faceAndSubposition  (subposition used for cave art etc.)</returns>
+        /// <returns>null if this block position has no decors. Otherwise, a Dictionary with the index being the faceAndSubposition (subposition used for cave art etc.), see <see cref="DecorBits"/></returns>
         Dictionary<int, Block> GetSubDecors(BlockPos position);
 
         /// <summary>
         /// Retrieves a single decor at given position
         /// </summary>
         /// <param name="pos"></param>
-        /// <param name="decorIndex">You can get this value via <see cref="BlockSelection.ToDecorIndex()"/></param> or via <see cref="BlockSelection.GetDecorIndex(BlockFacing, int, int, int)"/>
+        /// <param name="decorIndex">You can get this value via <see cref="BlockSelection.ToDecorIndex()"/> or via constructor <see cref="DecorBits(BlockFacing)"/> or <see cref="DecorBits(BlockFacing, int, int, int)"/></param>
         /// <returns></returns>
         Block GetDecor(BlockPos pos, int decorIndex);
 
@@ -803,7 +804,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="side">If not null, breaks all the decor on given block face, otherwise the decor blocks on all sides are removed</param>
-        /// <param name="decorIndex">If not null breaks only this part of the decor for give face. You can get this value via <see cref="BlockSelection.ToDecorIndex()"/></param> or via <see cref="BlockSelection.GetDecorIndex(BlockFacing, int, int, int)"/>
+        /// <param name="decorIndex">If not null breaks only this part of the decor for give face. You can get this value via <see cref="BlockSelection.ToDecorIndex()"/> or via constructor <see cref="DecorBits(BlockFacing)"/> or <see cref="DecorBits(BlockFacing, int, int, int)"/></param>
         /// <returns>True if a decor was removed</returns>
         bool BreakDecor(BlockPos pos, BlockFacing side = null, int? decorIndex = null);
 

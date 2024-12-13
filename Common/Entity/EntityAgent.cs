@@ -182,9 +182,9 @@ namespace Vintagestory.API.Common
             if (MountedOn != null && MountedOn != onmount)
             {
                 var seat = MountedOn.MountSupplier.GetSeatOfMountedEntity(this);
-                seat.DoTeleportOnUnmount = false;
+                if (seat != null) seat.DoTeleportOnUnmount = false;
                 if (!TryUnmount()) return false;
-                seat.DoTeleportOnUnmount = true;
+                if (seat != null) seat.DoTeleportOnUnmount = true;
             }
 
             TreeAttribute mountableTree = new TreeAttribute();

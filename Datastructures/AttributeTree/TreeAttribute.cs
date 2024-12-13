@@ -88,11 +88,10 @@ namespace Vintagestory.API.Datastructures
     /// </summary>
     public class TreeAttribute : ITreeAttribute
     {
-        protected int depth = 0;
-
         public static Dictionary<int, Type> AttributeIdMapping = new Dictionary<int, Type>();
 
-        internal ConcurrentDictionary<string, IAttribute> attributes = new ConcurrentDictionary<string, IAttribute>();
+        protected int depth = 0;
+        internal IDictionary<string, IAttribute> attributes = new Vintagestory.Common.ConcurrentSmallDictionary<string, IAttribute>(0);
 
         /// <summary>
         /// Will return null if given attribute does not exist
@@ -125,12 +124,12 @@ namespace Vintagestory.API.Datastructures
         /// </summary>
         public IAttribute[] Values
         {
-            get { return attributes.Values.ToArray(); }
+            get { return (IAttribute[])attributes.Values; }
         }
 
         public string[] Keys
         {
-            get { return attributes.Keys.ToArray(); }
+            get { return (string[])attributes.Keys; }
         }
 
 
@@ -1101,9 +1100,9 @@ namespace Vintagestory.API.Datastructures
 
     }
 
-    public static class ConcurrentDictionaryExtensions
+    public static class DictionaryExtensions
     {
-        public static TValue TryGetValue<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> source, TKey key)
+        public static TValue TryGetValue<TKey, TValue>(this IDictionary<TKey, TValue> source, TKey key)
         {
             source.TryGetValue(key, out TValue val);
             return val;

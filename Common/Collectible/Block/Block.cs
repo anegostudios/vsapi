@@ -615,7 +615,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual BlockSounds GetSounds(IBlockAccessor blockAccessor, BlockSelection blockSel, ItemStack stack = null)
         {
-            Block decorBlock = blockSel.Face == null ? null : blockAccessor.GetDecor(blockSel.Position, blockSel.Face.Index);
+            Block decorBlock = blockSel.Face == null ? null : blockAccessor.GetDecor(blockSel.Position, new DecorBits(blockSel.Face));
 
             if (decorBlock != null && decorBlock.Attributes?["ignoreSounds"].AsBool(false) != true)
             {
@@ -2510,7 +2510,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual int GetColorWithoutTint(ICoreClientAPI capi, BlockPos pos)
         {
-            var block = HasBehavior("Decor", api.ClassRegistry) ? null : capi.World.BlockAccessor.GetDecor(pos, BlockFacing.UP.Index);
+            var block = HasBehavior("Decor", api.ClassRegistry) ? null : capi.World.BlockAccessor.GetDecor(pos, new DecorBits(BlockFacing.UP));
             if (block != null && block != this) return block.GetColorWithoutTint(capi, pos);
 
             if (TextureSubIdForBlockColor < 0) return ColorUtil.WhiteArgb;

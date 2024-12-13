@@ -25,6 +25,8 @@ namespace Vintagestory.API.Datastructures
 
         public bool IsReadOnly => false;
 
+        public int Count => count;
+
         public FastSmallDictionary(int size)
         {
             keys = new TKey[size];
@@ -89,6 +91,17 @@ namespace Vintagestory.API.Datastructures
                 keys[count] = key;
                 values[count++] = value;
             }
+        }
+
+        public TValue TryGetValue(string key)
+        {
+            for (int i = 0; i < keys.Length; i++)
+            {
+                if (i >= count) break;
+                if (key.Equals(keys[i])) return values[i];
+            }
+
+            return default(TValue);
         }
 
         private void ExpandArrays()
@@ -249,5 +262,6 @@ namespace Vintagestory.API.Datastructures
             Array.Copy(ourArray, 0, array, arrayIndex, count);
         }
 
+        
     }
 }

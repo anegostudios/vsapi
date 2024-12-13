@@ -112,6 +112,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         public virtual long RegisterGameTickListener(Action<float> onGameTick, int millisecondInterval, int initialDelayOffsetMs = 0)
         {
+            if (Dimensions.ShouldNotTick(Pos, Api)) return 0L;
             long listenerId = Api.Event.RegisterGameTickListener(onGameTick, TickingExceptionHandler, millisecondInterval, initialDelayOffsetMs);
             if (TickHandlers == null) TickHandlers = new List<long>(1);
             TickHandlers.Add(listenerId);
@@ -126,6 +127,17 @@ namespace Vintagestory.API.Common
         {
             Api.Event.UnregisterGameTickListener(listenerId);
             TickHandlers?.Remove(listenerId);
+        }
+
+        public virtual void UnregisterAllTickListeners()
+        {
+            if (TickHandlers != null)
+            {
+                foreach (long handlerId in TickHandlers)
+                {
+                    Api.Event.UnregisterGameTickListener(handlerId);
+                }
+            }
         }
 
         /// <summary>
@@ -165,10 +177,7 @@ namespace Vintagestory.API.Common
         /// Called when the block at this position was removed in some way. Removes the game tick listeners, so still call the base method
         /// </summary>
         public virtual void OnBlockRemoved() {
-            if (TickHandlers != null) foreach (long handlerId in TickHandlers)
-            {
-                Api.Event.UnregisterGameTickListener(handlerId);
-            }
+            UnregisterAllTickListeners();
 
             if (CallbackHandlers != null) foreach (long handlerId in CallbackHandlers)
             {
@@ -251,10 +260,7 @@ namespace Vintagestory.API.Common
         {
             if (Api != null)
             {
-                if (TickHandlers != null) foreach (long handlerId in TickHandlers)
-                {
-                    Api.Event.UnregisterGameTickListener(handlerId);
-                }
+                UnregisterAllTickListeners();
 
                 if (CallbackHandlers != null) foreach (long handlerId in CallbackHandlers)
                 {
