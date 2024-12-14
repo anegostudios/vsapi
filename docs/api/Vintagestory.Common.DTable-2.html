@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class DTable&lt;TKey, TValue&gt; | VintageStory API ">
       
-      <meta name="description" content="A single object to allow the arrays in ConcurrentSmallDictionary to be replaced atomically. Keys, once entered in the keys array, are invariable: if we need to remove a key we create a new DTable">
+      <meta name="description" content="A single object to allow the arrays in ConcurrentSmallDictionary to be replaced atomically. Keys, once entered in the keys array within a DTable, are invariable: if we ever need to remove a key we will create a new DTable">
       <link rel="icon" href="../images/gameicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -98,7 +98,7 @@ Class DTable&lt;TKey, TValue&gt;
   </div>
 
   <div class="markdown summary"><p>A single object to allow the arrays in ConcurrentSmallDictionary to be replaced atomically.
-Keys, once entered in the keys array, are invariable: if we need to remove a key we create a new DTable</p>
+Keys, once entered in the keys array within a DTable, are invariable: if we ever need to remove a key we will create a new DTable</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -209,7 +209,7 @@ Keys, once entered in the keys array, are invariable: if we need to remove a key
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Special constructor which copies the old arrays and removes one element</p>
+  <div class="markdown level1 summary"><p>Special constructor which copies the old arrays and removes one entry</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -222,7 +222,7 @@ Keys, once entered in the keys array, are invariable: if we need to remove a key
     <dt><code>old</code> <a class="xref" href="Vintagestory.Common.DTable-2.html">DTable</a>&lt;TKey, TValue&gt;</dt>
     <dd></dd>
     <dt><code>toRemove</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>the index of the item to remove</p>
+    <dd><p>the index of the entry to remove</p>
 </dd>
   </dl>
 
@@ -244,7 +244,7 @@ Keys, once entered in the keys array, are invariable: if we need to remove a key
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Special constructor which copies the old arrays and adds one new element at the end - all will be atomic when the Dictionary replaces contents with the results of this</p>
+  <div class="markdown level1 summary"><p>Special constructor which copies the old arrays and adds one new entry at the end - all will be atomic when the Dictionary replaces contents with the results of this</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

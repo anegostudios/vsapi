@@ -96,16 +96,16 @@ Classes
 </h3>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.Common.ConcurrentSmallDictionary-2.html">ConcurrentSmallDictionary&lt;TKey, TValue&gt;</a></dt>
-      <dd><p>Similar to a FastSmallDictionary, but this one is thread-safe for simultaneous reads and writes - will not throw a ConcurrentModificationException
-Low-lock: there is no lock or interlocked operation except when adding new keys or when removing entries
-Low-memory: and contains only a single null field, if it is empty
-Two simultaneous writes at the same time on different threads: small chance of a ConcurrentModificationException if both have the same keys, otherwise it's virtually impossible for us to preserve the rule that the Dictionary holds exactly one entry per key</p>
+      <dd><p>Use like any IDictionary. Similar to a FastSmallDictionary, but this one is thread-safe for simultaneous reads and writes - will not throw a ConcurrentModificationException
+<br>Low-lock: there is no lock or interlocked operation except when adding new keys or when removing entries
+<br>Low-memory: and contains only a single null field, if it is empty
+<br>Two simultaneous writes, with the same key, at the same time, on different threads: small chance of throwing an intentional ConcurrentModificationException if both have the same keys, otherwise it's virtually impossible for us to preserve the rule that the Dictionary holds exactly one entry per key</p>
 </dd>
     </dl>
     <dl class="jumplist">
       <dt><a class="xref" href="Vintagestory.Common.DTable-2.html">DTable&lt;TKey, TValue&gt;</a></dt>
       <dd><p>A single object to allow the arrays in ConcurrentSmallDictionary to be replaced atomically.
-Keys, once entered in the keys array, are invariable: if we need to remove a key we create a new DTable</p>
+Keys, once entered in the keys array within a DTable, are invariable: if we ever need to remove a key we will create a new DTable</p>
 </dd>
     </dl>
 

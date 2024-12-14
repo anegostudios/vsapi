@@ -9,11 +9,12 @@ using Vintagestory.API.Common;
 namespace Vintagestory.Common
 {
     /// <summary>
-    /// Similar to a FastSmallDictionary, but this one is thread-safe for simultaneous reads and writes - will not throw a ConcurrentModificationException
-    /// Low-lock: there is no lock or interlocked operation except when adding new keys or when removing entries
-    /// Low-memory: and contains only a single null field, if it is empty
-    /// Two simultaneous writes at the same time on different threads: small chance of a ConcurrentModificationException if both have the same keys, otherwise it's virtually impossible for us to preserve the rule that the Dictionary holds exactly one entry per key
+    /// Use like any IDictionary. Similar to a FastSmallDictionary, but this one is thread-safe for simultaneous reads and writes - will not throw a ConcurrentModificationException
+    /// <br/>Low-lock: there is no lock or interlocked operation except when adding new keys or when removing entries
+    /// <br/>Low-memory: and contains only a single null field, if it is empty
+    /// <br/>Two simultaneous writes, with the same key, at the same time, on different threads: small chance of throwing an intentional ConcurrentModificationException if both have the same keys, otherwise it's virtually impossible for us to preserve the rule that the Dictionary holds exactly one entry per key
     /// </summary>
+    /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
     public class ConcurrentSmallDictionary<TKey, TValue> : IDictionary<TKey, TValue>
     {
@@ -50,7 +51,7 @@ namespace Vintagestory.Common
         }
 
         /// <summary>
-        /// Amount of items currently in the stack
+        /// Amount of entries currently in the Dictionary
         /// </summary>
         public int Count
         {
@@ -72,7 +73,7 @@ namespace Vintagestory.Common
         {
             get
             {
-                return contents.GetValue(key);   // Will intentionally throw an NRE if the contents is empty (key not found)
+                return contents.GetValue(key);   // If the key is not found, will intentionally throw an exception, either NRE if the contents is empty (null) or a KeyNotFoundException
             }
             set
             {
@@ -173,8 +174,8 @@ namespace Vintagestory.Common
 
 
         /// <summary>
-        /// Threadsafe: could occasionally a value which has meanwhile been removed from the Dictionary by a different thread
-        /// Iterate over .Keys or .Values instead if an instantaneous snapshot is required (which will also therefore be a historical snapshot if another thread meanwhile makes changes)
+        /// Threadsafe: but this might occasionally enumerate over a value which has, meanwhile, been removed from the Dictionary by a different thread
+        /// Iterate over .Keys or .Values instead if an instantaneous snapshot is required (which will also therefore be a historical snapshot, if another thread meanwhile makes changes)
         /// </summary>
         /// <returns></returns>
         public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
@@ -182,10 +183,10 @@ namespace Vintagestory.Common
             var contents = this.contents;
             if (contents != null)
             {
-                int end_snapshot = contents.count;   // We take a snapshot of the end value, this ensures consistent iteration even if there are changes meanwhile
+                int end_snapshot = contents.count;   // We take a snapshot of the end value, this ensures consistent iteration even if there are changes to the contents meanwhile
                 for (int pos = 0; pos < end_snapshot; pos++)
                 {
-                    yield return new KeyValuePair<TKey, TValue>(contents.keys[pos], contents.values[pos]);   // The (ushort) operation ensures a positive index
+                    yield return new KeyValuePair<TKey, TValue>(contents.keys[pos], contents.values[pos]);
                 }
             }
         }
@@ -206,7 +207,7 @@ namespace Vintagestory.Common
 
     /// <summary>
     /// A single object to allow the arrays in ConcurrentSmallDictionary to be replaced atomically.
-    /// Keys, once entered in the keys array, are invariable: if we need to remove a key we create a new DTable
+    /// Keys, once entered in the keys array within a DTable, are invariable: if we ever need to remove a key we will create a new DTable
     /// </summary>
     /// <typeparam name="TKey"></typeparam>
     /// <typeparam name="TValue"></typeparam>
@@ -242,7 +243,7 @@ namespace Vintagestory.Common
         }
 
         /// <summary>
-        /// Special constructor which copies the old arrays and adds one new element at the end - all will be atomic when the Dictionary replaces contents with the results of this
+        /// Special constructor which copies the old arrays and adds one new entry at the end - all will be atomic when the Dictionary replaces contents with the results of this
         /// </summary>
         /// <param name="old"></param>
         /// <param name="key"></param>
@@ -263,10 +264,10 @@ namespace Vintagestory.Common
         }
 
         /// <summary>
-        /// Special constructor which copies the old arrays and removes one element
+        /// Special constructor which copies the old arrays and removes one entry
         /// </summary>
         /// <param name="old"></param>
-        /// <param name="toRemove">the index of the item to remove</param>
+        /// <param name="toRemove">the index of the entry to remove</param>
         public DTable(DTable<TKey, TValue> old, int toRemove)
         {
             int capacity = old.values.Length;
@@ -275,9 +276,12 @@ namespace Vintagestory.Common
             int count = (int)old.count;
             if (toRemove >= count)
             {
-                toRemove = count++;    // the ++ post-increment is intended, see the later "this.count = count - 1" statement
+                // no removal in this situation, the index was outside the count
+                toRemove = count;
                 CopyArray(old.keys, this.keys, 0, 0, toRemove);
                 CopyArray(old.values, this.values, 0, 0, toRemove);
+                this.count = count;
+                this.countBleedingEdge = count;
             }
             else
             {
@@ -285,22 +289,27 @@ namespace Vintagestory.Common
                 CopyArray(old.keys, this.keys, toRemove + 1, toRemove, count);
                 CopyArray(old.values, this.values, 0, 0, toRemove);
                 CopyArray(old.values, this.values, toRemove + 1, toRemove, count);
+                this.count = count - 1;
+                this.countBleedingEdge = count - 1;
             }
-
-            this.count = count - 1;
-            this.countBleedingEdge = count - 1;
         }
 
-        private void CopyArray(TKey[] source, TKey[] dest, int sourcestart, int deststart, int end)
+        private void CopyArray<T>(T[] source, T[] dest, int sourceStart, int destStart, int sourceEnd)
         {
-            // We can add performance optimisations here for short arrays, but let's get this working first
-            Array.Copy(source, sourcestart, dest, deststart, end - sourcestart);
-        }
-
-        private void CopyArray(TValue[] source, TValue[] dest, int sourcestart, int deststart, int end)
-        {
-            // We can add performance optimisations here for short arrays, but let's get this working first
-            Array.Copy(source, sourcestart, dest, deststart, end - sourcestart);
+            if (sourceEnd - sourceStart < 32)
+            {
+                // Fast simple loop for small copy tasks
+                int dAdjust = destStart - sourceStart;
+                for (int i = sourceStart; i < source.Length; i++)
+                {
+                    if (i >= sourceEnd) break;
+                    dest[i + dAdjust] = source[i];
+                }
+            }
+            else
+            {
+                Array.Copy(source, sourceStart, dest, destStart, sourceEnd - sourceStart);
+            }
         }
 
         internal TValue GetValue(TKey key)
@@ -311,7 +320,7 @@ namespace Vintagestory.Common
                 if (i >= count) break;
                 if (key.Equals(keys[i])) return values[i];
             }
-            throw new KeyNotFoundException("The key " + key.ToString() + " was not found");
+            throw new KeyNotFoundException("The key " + key.ToString() + " was not found");   // Intentional exception, like a system Dictionary
         }
 
         internal TValue TryGetValue(TKey key)
@@ -402,21 +411,37 @@ namespace Vintagestory.Common
         internal ICollection<TKey> KeysCopy()
         {
             TKey[] result = new TKey[count];
-            Array.Copy(keys, result, result.Length);
+            if (result.Length < 32)
+            {
+                var source = this.keys;
+                for (int i = 0; i < result.Length; i++) result[i] = source[i];
+            }
+            else
+            {
+                Array.Copy(keys, result, result.Length);
+            }
             return result;
         }
 
         internal ICollection<TValue> ValuesCopy()
         {
             TValue[] result = new TValue[count];
-            Array.Copy(keys, result, result.Length);
+            if (result.Length < 32)
+            {
+                var source = this.values;
+                for (int i = 0; i < result.Length; i++) result[i] = source[i];
+            }
+            else
+            {
+                Array.Copy(values, result, result.Length);
+            }
             return result;
         }
 
         /// <summary>
-        /// Add the element to the table.  Fails (adds nothing and returns false) if the table is full
+        /// Add the key value pair to the table.  Fails (adds nothing and returns false) if the table is full
         /// </summary>
-        internal bool Add(TKey key, TValue elem)
+        internal bool Add(TKey key, TValue value)
         {
             // A threadsafe way to add to the end of the arrays
             int pos = countBleedingEdge;
@@ -425,9 +450,9 @@ namespace Vintagestory.Common
                 pos++;
             }
             if (pos >= values.Length) return false;   // Signal we exceeded capacity, so a new table will be required
-            keys[pos] = key;   // We know this space is available for us because we have uniquely reserved it just above
-            values[pos] = elem;
-            Interlocked.Increment(ref count);   // We update count last so that it can't accidentally iterate the new values before they have been added to the arrays.  And we use increment instead of setting count equal to countBleedingEdge, so that in case of a race condition it doesn't matter which thread reaches this line first
+            keys[pos] = key;   // We know this space is available for us because we have uniquely reserved it by the countBleedingEdge mechanism just above
+            values[pos] = value;
+            Interlocked.Increment(ref count);   // We update count last so that an Enumerator can't accidentally iterate the new values before they have been added to the arrays.  And we use increment instead of setting count equal to countBleedingEdge, so that in case of a race condition it doesn't matter which thread reaches this line first
             return true;
         }
 
