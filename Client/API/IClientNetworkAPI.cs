@@ -16,6 +16,7 @@ namespace Vintagestory.API.Common
         INetworkChannel RegisterChannel(string channelName);
         /// <summary>
         /// Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.
+        /// Do not send larger messages then 508 bytes since some clients may be behind NAT/firwalls that may drop your packets if they get fragmented
         /// </summary>
         /// <param name="channelName">Unique channel identifier</param>
         /// <returns></returns>
@@ -92,6 +93,7 @@ namespace Vintagestory.API.Client
 
         /// <summary>
         /// Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.
+        /// Do not send larger messages then 508 bytes since some clients may be behind NAT/firwalls that may drop your packets if they get fragmented
         /// </summary>
         /// <param name="channelName">Unique channel identifier</param>
         /// <returns></returns>
