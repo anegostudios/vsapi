@@ -2225,19 +2225,18 @@ namespace Vintagestory.API.Common
             sb.Append(desc);
 
             var decors = world.BlockAccessor.GetDecors(pos);
-            List<string> decorLangCodes = new List<string>();
-            for (int i = 0; decors != null && i < 6; i++)
-            {
-                if (decors[i] == null) continue;
-
-                decorLangCodes.Add(decors[i].Code.Domain + ":" + ItemClass.ToString().ToLowerInvariant() + "-" + decors[i].Code.Path);
-            }
-
             List<string> decorLangLines = new List<string>();
-            foreach (var langCode in decorLangCodes)
+            if (decors != null)
             {
-                string decorBlockName = Lang.GetMatching(langCode);
-                decorLangLines.Add(Lang.Get("block-with-decorname", decorBlockName));
+                for (int i = 0; i < decors.Length; i++)
+                {
+                    if (decors[i] == null) continue;
+
+                    AssetLocation decorCode = decors[i].Code;
+                    string langCode = (decorCode.Domain + ":" + ItemClass.ToString().ToLowerInvariant() + "-" + decorCode.Path);
+                    string decorBlockName = Lang.GetMatching(langCode);
+                    decorLangLines.Add(Lang.Get("block-with-decorname", decorBlockName));
+                }
             }
             sb.AppendLine(string.Join("\r\n", decorLangLines.Distinct()));
 

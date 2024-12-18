@@ -1316,12 +1316,13 @@ namespace Vintagestory.API.Common
                 bool heal = damageSource.Type == EnumDamageType.Heal;
                 string msg;
 
+                string damageTypeLocalised = Lang.Get("damagetype-" + damageSource.Type.ToString().ToLowerInvariant());
                 if (damageSource.Type == EnumDamageType.BluntAttack || damageSource.Type == EnumDamageType.PiercingAttack || damageSource.Type == EnumDamageType.SlashingAttack)
                 {
-                    msg = Lang.Get(heal ? "damagelog-heal-attack" : "damagelog-damage-attack", damage, damageSource.Type.ToString().ToLowerInvariant(), damageSource.Source);
+                    msg = Lang.Get(heal ? "damagelog-heal-attack" : "damagelog-damage-attack", damage, damageTypeLocalised, damageSource.Source);
                 } else
                 {
-                    msg = Lang.Get(heal ? "damagelog-heal" : "damagelog-damage", damage, damageSource.Type.ToString().ToLowerInvariant());
+                    msg = Lang.Get(heal ? "damagelog-heal" : "damagelog-damage", damage, damageTypeLocalised);
                 }
 
                 if (damageSource.Source == EnumDamageSource.Player)

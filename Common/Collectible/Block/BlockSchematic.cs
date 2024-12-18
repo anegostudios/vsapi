@@ -127,7 +127,7 @@ namespace Vintagestory.API.Common
 
         public BlockSchematic()
         {
-            GameVersion = Config.GameVersion.OverallVersion;
+            GameVersion = Config.GameVersion.ShortGameVersion;
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Vintagestory.API.Common
 
         public virtual void Init(IBlockAccessor blockAccessor)
         {
-            SemVer.TryParse(Config.GameVersion.OverallVersion, out var currentVersion);
+            SemVer.TryParse(Config.GameVersion.ShortGameVersion, out var currentVersion);
             SemVer.TryParse(GameVersion ?? "0.0.0", out var schematicVersion);
 
             if (schematicVersion < currentVersion)
@@ -160,7 +160,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        private void Remap()
+        public void Remap()
         {
             // now do block remapping
             foreach (var map in BlockRemaps)

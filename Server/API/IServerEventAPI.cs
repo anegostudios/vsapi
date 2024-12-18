@@ -179,6 +179,11 @@ namespace Vintagestory.API.Server
         event Action WorldgenStartup;
 
         /// <summary>
+        /// Triggered when a new multithreaded physics thread starts (for example, use this to initialise any ThreadStatic element which must be initialised per-thread)
+        /// </summary>
+        event Action PhysicsThreadStart;
+
+        /// <summary>
         /// Triggered before the game world data is being saved to disk
         /// </summary>
         event Action GameWorldSave;
