@@ -178,7 +178,7 @@ namespace Vintagestory.API.Server
         long GetNextUniqueId();
 
         /// <summary>
-        /// Completely disables automatic generation of chunks that normally builds up a radius of chunks around the player. 
+        /// Completely disables automatic generation of chunks that normally builds up a radius of chunks around the player.
         /// </summary>
         bool AutoGenerateChunks { get; set; }
 
@@ -189,7 +189,7 @@ namespace Vintagestory.API.Server
 
 
         /// <summary>
-        /// Asynchronly high priority load a chunk column at given coordinate. 
+        /// Asynchronly high priority load a chunk column at given coordinate.
         /// </summary>
         /// <param name="chunkX"></param>
         /// <param name="chunkZ"></param>
@@ -198,7 +198,7 @@ namespace Vintagestory.API.Server
         void LoadChunkColumnFast(int chunkX, int chunkZ, ChunkLoadOptions options = null);
 
         /// <summary>
-        /// Asynchronly high priority load a chunk column at given coordinate. 
+        /// Asynchronly high priority load a chunk column at given coordinate.
         /// </summary>
         /// <param name="chunkX"></param>
         /// <param name="chunkZ"></param>
@@ -375,16 +375,16 @@ namespace Vintagestory.API.Server
         /// <value>The map seed</value>
         int Seed { get; }
 
-        
 
-        
+
+
 
         /// <summary>
         /// The current world filename
         /// </summary>
         string CurrentWorldName { get; }
 
-        
+
         /// <summary>
         /// Retrieves the default spawnpoint (x/y/z coordinate)
         /// </summary>
@@ -399,7 +399,7 @@ namespace Vintagestory.API.Server
         /// <param name = "z">Z coordinate of new spawnpoint</param>
         void SetDefaultSpawnPosition(int x, int y, int z);
 
-        
+
 
         #endregion
 
@@ -413,7 +413,7 @@ namespace Vintagestory.API.Server
         /// <returns>ID of the BlockType</returns>
         int GetBlockId(AssetLocation name);
 
-        
+
         #endregion
 
         /// <summary>
@@ -472,7 +472,7 @@ namespace Vintagestory.API.Server
 
 
         /// <summary>
-        /// Same as GetBlockAccessorBulkUpdate, additionally, each Commit() stores the previous state and you can perform undo/redo operations on these. 
+        /// Same as GetBlockAccessorBulkUpdate, additionally, each Commit() stores the previous state and you can perform undo/redo operations on these.
         /// </summary>
         /// <param name="synchronize">Whether or not a call to Setblock should send the update also to all connected clients</param>
         /// <param name="relight">Whether or not to relight the chunk after a call to SetBlock and the light values changed by that</param>
@@ -524,5 +524,33 @@ namespace Vintagestory.API.Server
         /// <param name="cz"></param>
         /// <param name="dimension"></param>
         void ForceSendChunkColumn(IServerPlayer player, int cx, int cz, int dimension);
+
+        /// <summary>
+        /// Test if the given map region exists, can only be called before EnumServerRunPhase.RunGame.
+        /// Used in InitWorldgen to check chunks before the games is running
+        /// </summary>
+        /// <param name="regionX"></param>
+        /// <param name="regionZ"></param>
+        /// <returns></returns>
+        bool BlockingTestMapRegionExists(int regionX, int regionZ);
+
+        /// <summary>
+        /// Test if the given map chunk exists, can only be called before EnumServerRunPhase.RunGame.
+        /// Used in InitWorldgen to check chunks before the games is running
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkZ"></param>
+        /// <returns></returns>
+        bool BlockingTestMapChunkExists(int chunkX, int chunkZ);
+
+        /// <summary>
+        /// Load the given map chunk , can only be called before EnumServerRunPhase.RunGame.
+        /// This only loads and deserializes the chunk data, you need to call .Dispose() after you do not need them anymore
+        /// Used in InitWorldgen to check chunks before the games is running
+        /// </summary>
+        /// <param name="chunkX"></param>
+        /// <param name="chunkZ"></param>
+        /// <returns></returns>
+        IServerChunk[] BlockingLoadChunkColumn(int chunkX, int chunkZ);
     }
 }

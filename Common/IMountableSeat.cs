@@ -130,6 +130,7 @@ namespace Vintagestory.API.Common
         SeatConfig Config { get; set; }
         string SeatId { get; set; }
         long PassengerEntityIdForInit { get; set; }
+        bool DoTeleportOnUnmount { get; set; }
 
         /// <summary>
         /// The entity behind this mountable supplier, if any
@@ -149,7 +150,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// If this "mountable seat" is the one that controls the mountable entity/block
         /// </summary>
-        bool CanControl { get; }      
+        bool CanControl { get; }
 
         /// <summary>
         /// How the mounted entity should rotate
@@ -174,7 +175,7 @@ namespace Vintagestory.API.Common
         Vec3f LocalEyePos { get; }
 
         /// <summary>
-        /// Exact position of this seat 
+        /// Exact position of this seat
         /// </summary>
         EntityPos SeatPosition { get; }
 

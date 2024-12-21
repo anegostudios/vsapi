@@ -1,0 +1,1942 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class BlockType | VintageStory Json Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class BlockType | VintageStory Json Docs ">
+      
+      <meta name="description" content="Defines an in-game block using a json file. BlockTypes use all properties from  and , but also contain some unique properties. Any json file placed in your &amp;quot;assets/blocktypes&amp;quot; folder will be loaded as a blocktype in the game.">
+      <link rel="icon" href="../images/gameicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="VintageStory Json Docs">
+            VintageStory Json Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Vintagestory.ServerMods.NoObf.BlockType">
+
+
+
+  <h1 id="Vintagestory_ServerMods_NoObf_BlockType" data-uid="Vintagestory.ServerMods.NoObf.BlockType" class="text-break">
+Class BlockType  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Vintagestory.html">Vintagestory</a>.<a class="xref" href="Vintagestory.ServerMods.html">ServerMods</a>.<a class="xref" href="Vintagestory.ServerMods.NoObf.html">NoObf</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>VSEssentials.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Defines an in-game block using a json file. BlockTypes use all properties from <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html">CollectibleType</a> and <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html">RegistryObjectType</a>, but also contain some unique properties.
+Any json file placed in your &quot;assets/blocktypes&quot; folder will be loaded as a blocktype in the game.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonObject(MemberSerialization.OptIn)]
+public class BlockType : CollectibleType</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html">RegistryObjectType</a></div>
+      <div><a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html">CollectibleType</a></div>
+      <div><span class="xref">BlockType</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_Behaviors">CollectibleType.Behaviors</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_LightHsv">CollectibleType.LightHsv</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_RenderAlphaTest">CollectibleType.RenderAlphaTest</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_StorageFlags">CollectibleType.StorageFlags</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_MaxStackSize">CollectibleType.MaxStackSize</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_AttackPower">CollectibleType.AttackPower</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_Durability">CollectibleType.Durability</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_Dimensions">CollectibleType.Dimensions</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_DamagedBy">CollectibleType.DamagedBy</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_Tool">CollectibleType.Tool</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_AttackRange">CollectibleType.AttackRange</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_MiningSpeed">CollectibleType.MiningSpeed</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_ToolTier">CollectibleType.ToolTier</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_MiningTier">CollectibleType.MiningTier</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_MatterState">CollectibleType.MatterState</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_HeldSounds">CollectibleType.HeldSounds</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_MaterialDensity">CollectibleType.MaterialDensity</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_Attributes">CollectibleType.Attributes</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_Shape">CollectibleType.Shape</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_GuiTransform">CollectibleType.GuiTransform</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_FpHandTransform">CollectibleType.FpHandTransform</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_TpHandTransform">CollectibleType.TpHandTransform</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_TpOffHandTransform">CollectibleType.TpOffHandTransform</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_GroundTransform">CollectibleType.GroundTransform</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_Texture">CollectibleType.Texture</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_Textures">CollectibleType.Textures</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_CombustibleProps">CollectibleType.CombustibleProps</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_NutritionProps">CollectibleType.NutritionProps</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_TransitionableProps">CollectibleType.TransitionableProps</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_GrindingProps">CollectibleType.GrindingProps</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_CrushingProps">CollectibleType.CrushingProps</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_LiquidSelectable">CollectibleType.LiquidSelectable</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_CreativeInventory">CollectibleType.CreativeInventory</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_CreativeInventoryStacks">CollectibleType.CreativeInventoryStacks</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_HeldTpHitAnimation">CollectibleType.HeldTpHitAnimation</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_HeldRightTpIdleAnimation">CollectibleType.HeldRightTpIdleAnimation</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_HeldLeftTpIdleAnimation">CollectibleType.HeldLeftTpIdleAnimation</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_HeldLeftReadyAnimation">CollectibleType.HeldLeftReadyAnimation</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_HeldRightReadyAnimation">CollectibleType.HeldRightReadyAnimation</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_HeldOldTpIdleAnimation">CollectibleType.HeldOldTpIdleAnimation</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_HeldTpUseAnimation">CollectibleType.HeldTpUseAnimation</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.CollectibleType.html#Vintagestory_ServerMods_NoObf_CollectibleType_ParticleProperties">CollectibleType.ParticleProperties</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_Enabled">RegistryObjectType.Enabled</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_Code">RegistryObjectType.Code</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_VariantGroups">RegistryObjectType.VariantGroups</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_Interactions">RegistryObjectType.Interactions</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_SkipVariants">RegistryObjectType.SkipVariants</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_AllowedVariants">RegistryObjectType.AllowedVariants</a>
+    </div>
+    <div>
+      <a class="xref" href="Vintagestory.ServerMods.NoObf.RegistryObjectType.html#Vintagestory_ServerMods_NoObf_RegistryObjectType_Class">RegistryObjectType.Class</a>
+    </div>
+  </dd></dl>
+
+
+
+  <h2 id="Vintagestory_ServerMods_NoObf_BlockType_examples">Examples</h2>
+  <pre><code class="lang-json">{
+  "code": "leather",
+  "class": "Block",
+  "shape": { "base": "block/basic/cube" },
+  "drawtype": "Cube",
+  "attributes": {
+    ...
+  },
+  "blockmaterial": "Cloth",
+  "creativeinventory": {
+    ...
+  },
+  "replaceable": 700,
+  "resistance": 1.5,
+  "lightAbsorption": 99,
+  "textures": {
+    ...
+  },
+  "combustibleProps": {
+    ...
+  },
+  "sounds": {
+    ...
+  },
+  "materialDensity": 400
+}</code></pre>
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_AllowSpawnCreatureGroups" data-uid="Vintagestory.ServerMods.NoObf.BlockType.AllowSpawnCreatureGroups">
+  AllowSpawnCreatureGroups (Optional) (Default: All ( [&quot;*&quot;] ))
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Defines what creature groups may spawn on this block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string[] AllowSpawnCreatureGroups</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Ambientocclusion" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Ambientocclusion">
+  Ambientocclusion (Unused)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Currently not used. Maybe you're looking for <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_SideAo">SideAo</a> or <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_SideSolidOpaqueAo">SideSolidOpaqueAo</a>?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool Ambientocclusion</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_BlockMaterial" data-uid="Vintagestory.ServerMods.NoObf.BlockType.BlockMaterial">
+  BlockMaterial (Recommended) (Default: Stone)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A way to categorize blocks. Used for getting the mining speed for each tool type, amongst other things.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EnumBlockMaterial BlockMaterial</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumBlockMaterial.html">EnumBlockMaterial</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_ClimateColorMap" data-uid="Vintagestory.ServerMods.NoObf.BlockType.ClimateColorMap">
+  ClimateColorMap (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The color map for climate color mapping. Leave null for no coloring by climate</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string ClimateColorMap</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Climbable" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Climbable">
+  Climbable (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Used for ladders. If true, walking against this blocks collisionbox will make the player climb.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool Climbable</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_CollisionBoxR" data-uid="Vintagestory.ServerMods.NoObf.BlockType.CollisionBoxR">
+  CollisionBox (Optional) (Default: Default Collision Box)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>
+Defines the area with which the player character collides with.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;CollisionBox&quot;)]
+private RotatableCube CollisionBoxR</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.RotatableCube.html">RotatableCube</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_CollisionBoxesR" data-uid="Vintagestory.ServerMods.NoObf.BlockType.CollisionBoxesR">
+  CollisionBoxes (Optional) (Default: Default Collision Box)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>
+Defines multiple areas with which the player character collides with.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;CollisionBoxes&quot;)]
+private RotatableCube[] CollisionBoxesR</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.RotatableCube.html">RotatableCube</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_CollisionSelectionBoxR" data-uid="Vintagestory.ServerMods.NoObf.BlockType.CollisionSelectionBoxR">
+  CollisionSelectionBox (Optional) (Default: Default Collision Box)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>
+Shorthand way of setting <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_CollisionBoxR">CollisionBoxR</a> and <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_SelectionBoxR">SelectionBoxR</a> at the same time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;CollisionSelectionBox&quot;)]
+private RotatableCube CollisionSelectionBoxR</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.RotatableCube.html">RotatableCube</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_CollisionSelectionBoxesR" data-uid="Vintagestory.ServerMods.NoObf.BlockType.CollisionSelectionBoxesR">
+  CollisionSelectionBoxes (Optional) (Default: Default Collision Box)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>
+Shorthand way of setting <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_CollisionBoxesR">CollisionBoxesR</a> and <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_SelectionBoxesR">SelectionBoxesR</a> at the same time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;CollisionSelectionBoxes&quot;)]
+private RotatableCube[] CollisionSelectionBoxesR</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.RotatableCube.html">RotatableCube</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_CropProps" data-uid="Vintagestory.ServerMods.NoObf.BlockType.CropProps">
+  CropProps (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Information about the blocks as a crop.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public BlockCropPropertiesType CropProps</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.ServerMods.NoObf.BlockCropPropertiesType.html">BlockCropPropertiesType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_DoNotRenderAtLod2" data-uid="Vintagestory.ServerMods.NoObf.BlockType.DoNotRenderAtLod2">
+  DoNotRenderAtLod2 (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If set to true, this block will not be rendered if it is too far away from the camera.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool DoNotRenderAtLod2</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_DragMultiplier" data-uid="Vintagestory.ServerMods.NoObf.BlockType.DragMultiplier">
+  DragMultiplier (Optional) (Default: 1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Drag multiplier applied to entities standing on it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float DragMultiplier</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_DrawType" data-uid="Vintagestory.ServerMods.NoObf.BlockType.DrawType">
+  DrawType (Optional) (Default: JSON)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If not set to JSON it will use an efficient hardcoded model</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EnumDrawType DrawType</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.EnumDrawType.html">EnumDrawType</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Drops" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Drops">
+  Drops (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The items that should drop from breaking this block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public BlockDropItemStack[] Drops</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.BlockDropItemStack.html">BlockDropItemStack</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_EmitSideAo" data-uid="Vintagestory.ServerMods.NoObf.BlockType.EmitSideAo">
+  EmitSideAo (Optional) (Default: See desc.)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Defines which of the 6 block neighbours should receive AO if this block is in front of them. If this block's <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_LightAbsorption">LightAbsorption</a> &gt; 0, default is all true. Otherwise, all false..</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Dictionary&lt;string, bool&gt; EmitSideAo</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_EntityBehaviors" data-uid="Vintagestory.ServerMods.NoObf.BlockType.EntityBehaviors">
+  EntityBehaviors (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>This array adds modifiers that can alter the behavior of a block entity defined in <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_EntityClass">EntityClass</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public BlockEntityBehaviorType[] EntityBehaviors</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.BlockEntityBehaviorType.html">BlockEntityBehaviorType</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_EntityClass" data-uid="Vintagestory.ServerMods.NoObf.BlockType.EntityClass">
+  EntityClass (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A 'block entity' is stored per specific instance of a block in the world.
+To attach a block entity to a block, add the block entity code here..</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string EntityClass</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_FaceCullMode" data-uid="Vintagestory.ServerMods.NoObf.BlockType.FaceCullMode">
+  FaceCullMode (Optional) (Default: Default)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Determines which sides of the blocks should be rendered</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EnumFaceCullMode FaceCullMode</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.EnumFaceCullMode.html">EnumFaceCullMode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Fertility" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Fertility">
+  Fertility (Optional) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>0 = nothing can grow, 10 = some tallgrass and small trees can be grow on it, 100 = all grass and trees can grow on it</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public int Fertility</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Frostable" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Frostable">
+  Frostable (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A bit uploaded to the shader to add a frost overlay below freezing temperature</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool Frostable</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_LightAbsorption" data-uid="Vintagestory.ServerMods.NoObf.BlockType.LightAbsorption">
+  LightAbsorption (Optional) (Default: 99)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>For light blocking blocks. Any value above 32 will completely block all light.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public ushort LightAbsorption</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uint16">ushort</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_LiquidCode" data-uid="Vintagestory.ServerMods.NoObf.BlockType.LiquidCode">
+  LiquidCode (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If this block is or contains a liquid, this should be the code (or &quot;identifier&quot;) of the liquid.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string LiquidCode</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_LiquidLevel" data-uid="Vintagestory.ServerMods.NoObf.BlockType.LiquidLevel">
+  LiquidLevel (Optional) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Value between 0 to 7. Determines the height of the liquid, if <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_LiquidCode">LiquidCode</a> is set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public int LiquidLevel</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Lod0Shape" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Lod0Shape">
+  Lod0Shape (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A specific shape to use when this block is near the camera. Used to add more detail to closer objects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public CompositeShape Lod0Shape</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Lod2Shape" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Lod2Shape">
+  Lod2Shape (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A specific shape to use when this block is far away from the camera. Used to lower detail from further away objects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public CompositeShape Lod2Shape</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_ParticleCollisionBoxR" data-uid="Vintagestory.ServerMods.NoObf.BlockType.ParticleCollisionBoxR">
+  ParticleCollisionBox (Optional) (Default: Default Collision Box)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>
+Defines the area with which particles collide with. If not provided, will use <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_CollisionBoxR">CollisionBoxR</a> or <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_CollisionBoxesR">CollisionBoxesR</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;ParticleCollisionBox&quot;)]
+private RotatableCube ParticleCollisionBoxR</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.RotatableCube.html">RotatableCube</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_ParticleCollisionBoxesR" data-uid="Vintagestory.ServerMods.NoObf.BlockType.ParticleCollisionBoxesR">
+  ParticleCollisionBoxes (Optional) (Default: Default Collision Box)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>
+Defines multiple areas with which particles collide with. If not provided, will use <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_CollisionBoxR">CollisionBoxR</a> or <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_CollisionBoxesR">CollisionBoxesR</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;ParticleCollisionBoxes&quot;)]
+private RotatableCube[] ParticleCollisionBoxesR</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.RotatableCube.html">RotatableCube</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RainPermeable" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RainPermeable">
+  RainPermeable (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Will be used for not rendering rain below this block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool RainPermeable</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RandomDrawOffset" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RandomDrawOffset">
+  RandomDrawOffset (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If true then the block will be randomly offseted by 1/3 of a block when placed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool RandomDrawOffset</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RandomSizeAdjust" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RandomSizeAdjust">
+  RandomSizeAdjust (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If set, the block will have a random size between 1 and 1+RandomSizeAdjust.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float RandomSizeAdjust</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RandomizeAxes" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RandomizeAxes">
+  RandomizeAxes (Optional) (Default: XYZ)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Whether or not to use the Y axis when picking a random value based on the block's position.
+If placing an instance of this block on top of one another, setting this to XZ will ensure that all vertical instances have the same random size, offset, and rotations if used.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EnumRandomizeAxes RandomizeAxes</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.EnumRandomizeAxes.html">EnumRandomizeAxes</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RandomizeRotations" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RandomizeRotations">
+  RandomizeRotations (Optional) (Default: false)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>If true, the block will have a random rotation apploed to it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public bool RandomizeRotations</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RenderPass" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RenderPass">
+  RenderPass (Optional) (Default: Opaque)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>During which render pass this block should be rendered.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public EnumChunkRenderPass RenderPass</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Client.EnumChunkRenderPass.html">EnumChunkRenderPass</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Replaceable" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Replaceable">
+  Replaceable (Optional) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>A value usually between 0-9999 that indicates which blocks may be replaced with others.</p>
+<ul>
+<li>Any block with replaceable value above 5000 will be washed away by water</li>
+<li>Any block with replaceable value above 6000 will replaced when the player tries to place a block
+Examples:
+0 = Bedrock
+6000 = Tallgrass
+9000 = Lava
+9500 = Water
+9999 = Air</li>
+</ul>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public int Replaceable</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_RequiredMiningTier" data-uid="Vintagestory.ServerMods.NoObf.BlockType.RequiredMiningTier">
+  RequiredMiningTier (Recommended) (Default: 0)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The mining tier required to break this block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public int RequiredMiningTier</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Resistance" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Resistance">
+  Resistance (Recommended) (Default: 6)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>How long it takes to break this block in seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float Resistance</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_SeasonColorMap" data-uid="Vintagestory.ServerMods.NoObf.BlockType.SeasonColorMap">
+  SeasonColorMap (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The color map for season color mapping. Leave null for no coloring by season</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public string SeasonColorMap</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_SelectionBoxR" data-uid="Vintagestory.ServerMods.NoObf.BlockType.SelectionBoxR">
+  SelectionBox (Optional) (Default: Default Collision Box)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>
+Defines the area which the players mouse pointer collides with for selection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;SelectionBox&quot;)]
+private RotatableCube SelectionBoxR</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.RotatableCube.html">RotatableCube</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_SelectionBoxesR" data-uid="Vintagestory.ServerMods.NoObf.BlockType.SelectionBoxesR">
+  SelectionBoxes (Optional) (Default: Default Collision Box)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>
+Defines multiple areas which the players mouse pointer collides with for selection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;SelectionBoxes&quot;)]
+private RotatableCube[] SelectionBoxesR</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Datastructures.RotatableCube.html">RotatableCube</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_ShapeInventory" data-uid="Vintagestory.ServerMods.NoObf.BlockType.ShapeInventory">
+  ShapeInventory (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The block shape to be used when displayed in the inventory gui, held in hand or dropped on the ground.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public CompositeShape ShapeInventory</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.CompositeShape.html">CompositeShape</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_SideAo" data-uid="Vintagestory.ServerMods.NoObf.BlockType.SideAo">
+  SideAo (Optional) (Default: All true)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Defines which of the 6 block side should be shaded with ambient occlusion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Dictionary&lt;string, bool&gt; SideAo</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_SideOpaque" data-uid="Vintagestory.ServerMods.NoObf.BlockType.SideOpaque">
+  SideOpaque (Optional) (Default: All true)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Defines which of the 6 block sides are completely opaque. Used to determine which block faces can be culled during tesselation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Dictionary&lt;string, bool&gt; SideOpaque</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_SideSolid" data-uid="Vintagestory.ServerMods.NoObf.BlockType.SideSolid">
+  SideSolid (Optional) (Default: All true)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Defines which of the 6 block side are solid. Used to determine if attachable blocks can be attached to this block. Also used to determine if snow can rest on top of this block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Dictionary&lt;string, bool&gt; SideSolid</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_SideSolidOpaqueAo" data-uid="Vintagestory.ServerMods.NoObf.BlockType.SideSolidOpaqueAo">
+  SideSolidOpaqueAo (Optional)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Quick way of defining <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_SideSolid">SideSolid</a>, <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_SideOpaque">SideOpaque</a>, and <a class="xref" href="Vintagestory.ServerMods.NoObf.BlockType.html#Vintagestory_ServerMods_NoObf_BlockType_SideAo">SideAo</a>. Using this property overrides any values to those.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Dictionary&lt;string, bool&gt; SideSolidOpaqueAo</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_Sounds" data-uid="Vintagestory.ServerMods.NoObf.BlockType.Sounds">
+  Sounds (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>The sounds played for this block during step, break, build and walk. Use GetSounds() to query if not performance critical.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public BlockSounds Sounds</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.BlockSounds.html">BlockSounds</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_TexturesInventory" data-uid="Vintagestory.ServerMods.NoObf.BlockType.TexturesInventory">
+  TexturesInventory (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Textures to be used for this block in the inventory gui, held in hand or dropped on the ground</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public Dictionary&lt;string, CompositeTexture&gt; TexturesInventory</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2">Dictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="Vintagestory.API.Client.CompositeTexture.html">CompositeTexture</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_VertexFlags" data-uid="Vintagestory.ServerMods.NoObf.BlockType.VertexFlags">
+  VertexFlags (Optional) (Default: None)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Data thats passed on to the graphics card for every vertex of the blocks model</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public VertexFlags VertexFlags</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Common.VertexFlags.html">VertexFlags</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="Vintagestory_ServerMods_NoObf_BlockType_WalkspeedMultiplier" data-uid="Vintagestory.ServerMods.NoObf.BlockType.WalkspeedMultiplier">
+  WalkspeedMultiplier (Optional) (Default: 1)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><!---->
+<p>Walk speed when standing or inside this block.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty]
+public float WalkspeedMultiplier</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

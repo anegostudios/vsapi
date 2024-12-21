@@ -86,8 +86,9 @@ namespace Vintagestory.API.Common
 
                 foreach (Cuboidi area in Areas)
                 {
-                    Vec3i center = area.Center;
-                    centerSum += center * area.SizeXYZ / sizeSum;
+                    Vec3i centeri = area.Center;
+                    Vec3d center = new Vec3d(centeri.X, centeri.Y, centeri.Z);
+                    centerSum += center * ((double)area.SizeXYZ / sizeSum);
                 }
 
                 return new BlockPos(
@@ -140,7 +141,7 @@ namespace Vintagestory.API.Common
 
         public static LandClaim CreateClaim(EntityAgent entity, int protectionLevel = 1)
         {
-            string entityName = entity.GetBehavior<EntityBehaviorNameTag>()?.DisplayName;
+            string entityName = entity.GetName();
 
             return new LandClaim()
             {

@@ -343,6 +343,8 @@ namespace Vintagestory.API.MathTools
         }
 
 
+
+
         /// <summary>
         /// Returns the shortest distance between 2 angles
         /// See also https://stackoverflow.com/a/14498790/1873041

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using Vintagestory.API.Common;
 
 namespace Vintagestory.API.Server
@@ -51,5 +52,10 @@ namespace Vintagestory.API.Server
         /// Extra land claim areas (beyond whats granted by the role)
         /// </summary>
         int ExtraLandClaimAreas { get; set; }
+
+        public string FirstJoinDate { get; set; }
+        public string LastJoinDate { get; set; }
+        public string LastCharacterSelectionDate { get; set; }
+
     }
 }

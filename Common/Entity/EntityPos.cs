@@ -13,7 +13,7 @@ namespace Vintagestory.API.Common.Entities
 
         public FuzzyEntityPos(double x, double y, double z, float heading = 0, float pitch = 0, float roll = 0) : base(x, y, z, heading, pitch, roll)
         {
-            
+
         }
     }
 
@@ -63,7 +63,7 @@ namespace Vintagestory.API.Common.Entities
             get { return x; }
             set { x = value; }
         }
-        
+
         /// <summary>
         /// The Y position of the Entity.
         /// </summary>
@@ -72,7 +72,7 @@ namespace Vintagestory.API.Common.Entities
             get { return y; }
             set { y = value; }
         }
-        
+
         public virtual double InternalY
         {
             get { return y + Dimension * BlockPos.DimensionBoundary; }
@@ -107,7 +107,7 @@ namespace Vintagestory.API.Common.Entities
         public virtual float Yaw
         {
             get { return yaw; }
-            set { yaw = value; } 
+            set { yaw = value; }
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public Vec3i XYZInt
         {
-            get { return new Vec3i(XInt, YInt, ZInt); }
+            get { return new Vec3i((int)x, (int)InternalY, (int)z); }
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Vintagestory.API.Common.Entities
         /// </summary>
         public Vec3f XYZFloat
         {
-            get { return new Vec3f((float)x, (float)y, (float)z); }
+            get { return new Vec3f((float)x, (float)InternalY, (float)z); }
         }
 
         internal int XInt
@@ -557,7 +557,7 @@ namespace Vintagestory.API.Common.Entities
                 Motion = new Vec3d(Motion.X, Motion.Y, Motion.Z),
                 Dimension = Dimension
             };
-            
+
             return ret;
         }
 
@@ -636,7 +636,7 @@ namespace Vintagestory.API.Common.Entities
 
 
         /// <summary>
-        /// Makes a "basiclly equals" check on the position, motions and angles using a small tolerance of epsilon=0.0001f 
+        /// Makes a "basiclly equals" check on the position, motions and angles using a small tolerance of epsilon=0.0001f
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="epsilon"></param>
@@ -736,7 +736,7 @@ namespace Vintagestory.API.Common.Entities
 
         public override string ToString()
         {
-            return "XYZ: " + X + "/" + Y + "/" + Z + ", YPR " + Yaw + "/" + Pitch + "/" + Roll;
+            return "XYZ: " + X + "/" + Y + "/" + Z + ", YPR " + Yaw + "/" + Pitch + "/" + Roll + ", Dim " + Dimension;
         }
 
         public string OnlyPosToString()

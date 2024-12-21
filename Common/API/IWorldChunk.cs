@@ -375,5 +375,10 @@ namespace Vintagestory.API.Common
         /// <br/>Make sure always to call ReleaseBulkReadLock() when finished.  Use a try/finally block if necessary, and complete all read operations within 8 seconds
         /// </summary>
         void ReleaseBlockReadLock();
+
+        /// <summary>
+        /// Free up chunk data and pool
+        /// </summary>
+        void Dispose();
     }
 }

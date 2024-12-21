@@ -270,6 +270,14 @@ namespace Vintagestory.API.Common
         void SpawnEntity(Entity entity);
 
         /// <summary>
+        /// Loads a previously created entity into the loadedEntities list. Used when a chunk is loaded.
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="fromChunkIndex3d"></param>
+        /// <returns></returns>
+        bool LoadEntity(Entity entity, long fromChunkIndex3d);
+
+        /// <summary>
         /// Removes an entity from its old chunk and adds it to the chunk with newChunkIndex3d
         /// </summary>
         /// <param name="entity"></param>

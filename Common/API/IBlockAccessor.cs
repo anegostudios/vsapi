@@ -165,6 +165,7 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Width, Length and Height of a chunk
         /// </summary>
+        [Obsolete("Use GlobalConstants.ChunkSize instead.  Fetching a property in inner-loop code is needlessly inefficient!")]
         int ChunkSize { get; }
 
         /// <summary>
@@ -233,20 +234,68 @@ namespace Vintagestory.API.Common
         /// <summary>
         /// Retrieve chunk at given block position, returns null if chunk is not loaded
         /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        IWorldChunk GetChunkAtBlockPos(BlockPos pos);
+
+
+        /// <summary>
+        /// Get the block id of the block at the given world coordinate
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        int GetBlockId(BlockPos pos);
+
+        /// <summary>
+        /// Get the block type of the block at the given world coordinate, dimension aware. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+        /// Same as <see cref="GetBlock(BlockPos, int)"/> with BlockLayersAccess.Default as layer
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        Block GetBlock(BlockPos pos);
+
+        /// <summary>
+        /// Direct raw coordinate access to blocks. PLEASE NOTE: The caller has to ensure dimension awareness (i.e. pos.InternalY when using BlockPos)<br/>
+        /// Gets the block type of the block at the given world coordinate.
+        /// </summary>
+        /// <param name="x">x coordinate</param>
+        /// <param name="y">y coordinate</param>
+        /// <param name="z">z coordinate</param>
+        /// <param name="layer">The block layer to retrieve from. See also <see cref="BlockLayersAccess"/></param>
+        /// <returns>Never null. For unpopulated locations or invalid coordinates you'll get a block instance with block code "air" and id 0</returns>
+        Block GetBlockRaw(int x, int y, int z, int layer = BlockLayersAccess.Default);
+
+        /// <summary>
+        /// Get block type at given world coordinate, dimension aware. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+        /// <br/>Reads the block from the specified layer(s), see BlockLayersAccess documentation for details.
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name = "layer">blocks layer e.g. solid, fluid etc.</param>
+        /// <returns></returns>
+        Block GetBlock(BlockPos pos, int layer);
+
+
+        /// <summary>
+        /// Same as <see cref="GetBlock(BlockPos, int)"/> with BlockLayersAccess.MostSolid as layer
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
+        Block GetMostSolidBlock(BlockPos pos);
+
+
+
+        #region Obsolete GetBlock methods
+
+
+        /// <summary>
+        /// Retrieve chunk at given block position, returns null if chunk is not loaded
+        /// </summary>
         /// <param name="posX"></param>
         /// <param name="posY"></param>
         /// <param name="posZ"></param>
         /// <returns></returns>
         [Obsolete("Please use BlockPos version instead, for dimension awareness")]
         IWorldChunk GetChunkAtBlockPos(int posX, int posY, int posZ);
-
-        /// <summary>
-        /// Retrieve chunk at given block position, returns null if chunk is not loaded
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        IWorldChunk GetChunkAtBlockPos(BlockPos pos);
-
 
         /// <summary>
         /// Get the block id of the block at the given world coordinate
@@ -257,70 +306,6 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         [Obsolete("Please use BlockPos version instead, for dimension awareness")]
         int GetBlockId(int posX, int posY, int posZ);
-
-        /// <summary>
-        /// Get the block id of the block at the given world coordinate
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        int GetBlockId(BlockPos pos);
-
-        /// <summary>
-        /// Get the block type of the block at the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-        /// Same as <see cref="GetBlock(BlockPos, int)"/> with BlockLayersAccess.Default as layer
-        /// </summary>
-        /// <param name="posX"></param>
-        /// <param name="posY"></param>
-        /// <param name="posZ"></param>
-        /// <returns></returns>
-        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
-        Block GetBlock(int posX, int posY, int posZ);
-
-        /// <summary>
-        /// Get the block type of the block at the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-        /// Same as <see cref="GetBlock(BlockPos, int)"/> with BlockLayersAccess.Default as layer
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        Block GetBlock(BlockPos pos);
-
-        /// <summary>
-        /// Get the block type of the block below the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-        /// <br/>Specify a negative dy for a block above!
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        Block GetBlockBelow(BlockPos pos, int dy = 1);
-
-
-        /// <summary>
-        /// Get the block type of the block above the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        Block GetBlockAbove(BlockPos pos, int dy = 1);
-
-        /// <summary>
-        /// Get the block type of the block at the given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-        /// <br/>Reads the block from the specified layer(s), see <see cref="BlockLayersAccess"/> documentation for details.
-        /// </summary>
-        /// <param name = "x">x coordinate</param>
-        /// <param name = "y">y coordinate</param>
-        /// <param name = "z">z coordinate</param>
-        /// <param name = "layer">blocks layer e.g. solid, fluid etc.</param>
-        /// <returns>ID of the block at the given position</returns>
-        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
-        Block GetBlock(int x, int y, int z, int layer);
-
-        /// <summary>
-        /// Get block type at given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
-        /// <br/>Reads the block from the specified layer(s), see BlockLayersAccess documentation for details.
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <param name = "layer">blocks layer e.g. solid, fluid etc.</param>
-        /// <returns></returns>
-        Block GetBlock(BlockPos pos, int layer);
-
 
         /// <summary>
         /// Get the block type of the block at the given world coordinate. For invalid or unloaded coordinates this method returns null.
@@ -334,6 +319,30 @@ namespace Vintagestory.API.Common
         Block GetBlockOrNull(int x, int y, int z, int layer = BlockLayersAccess.MostSolid);
 
 
+        /// <summary>
+        /// Get the block type of the block at the given world coordinate. Will never return null. For airblocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+        /// <br/>Reads the block from the specified layer(s), see <see cref="BlockLayersAccess"/> documentation for details.
+        /// <br/>If this must be used even though it's deprecated, please consider using .GetBlockRaw() instead where calling code is explicitly dimension-aware
+        /// </summary>
+        /// <param name = "x">x coordinate</param>
+        /// <param name = "y">y coordinate</param>
+        /// <param name = "z">z coordinate</param>
+        /// <param name = "layer">blocks layer e.g. solid, fluid etc.</param>
+        /// <returns>ID of the block at the given position</returns>
+        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
+        Block GetBlock(int x, int y, int z, int layer);
+
+        /// <summary>
+        /// Get the block type of the block at the given world coordinate. Will never return null. For air blocks or invalid coordinates you'll get a block instance with block code "air" and id 0
+        /// Same as <see cref="GetBlock(BlockPos, int)"/> with BlockLayersAccess.Default as layer
+        /// </summary>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
+        /// <param name="posZ"></param>
+        /// <returns></returns>
+        [Obsolete("Please use BlockPos version instead, for dimension awareness")]
+        Block GetBlock(int posX, int posY, int posZ);
+
 
         /// <summary>
         /// Same as <see cref="GetBlock(int, int, int, int)"/> with BlockLayersAccess.MostSolid as layer
@@ -344,13 +353,7 @@ namespace Vintagestory.API.Common
         /// <returns></returns>
         [Obsolete("Please use BlockPos version instead, for dimension awareness")]
         Block GetMostSolidBlock(int x, int y, int z);
-
-        /// <summary>
-        /// Same as <see cref="GetBlock(BlockPos, int)"/> with BlockLayersAccess.MostSolid as layer
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        Block GetMostSolidBlock(BlockPos pos);
+        #endregion
 
         /// <summary>
         /// A method to iterate over blocks in an area. Less overhead than when calling GetBlock(pos) many times. If there is liquids in the liquid layer, the onBlock method will be called twice. Currently used for more efficient collision testing.
@@ -661,7 +664,7 @@ namespace Vintagestory.API.Common
         int GetRainMapHeightAt(BlockPos pos);
 
         /// <summary>
-        /// Returns a number of how many blocks away there is rain fall. Does a cheap 2D bfs up to 4 blocks away. Returns 99 if none was found within 4 blocks
+        /// Returns a number of how many blocks away there is rain fall. Does a cheap 2D bfs up to x blocks away. Returns 99 if none was found within given blocks
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="horziontalSearchWidth">Horizontal search distance, 4 default</param>
@@ -769,7 +772,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="position"></param>
         /// <param name="block"></param>
-        /// <param name="decorIndex">You can get this value via <see cref="BlockSelection.ToDecorIndex()"/> or via <see cref="BlockSelection.GetDecorIndex(BlockFacing, int, int, int)"/>.<br/>It can include a subPosition for cave art etc.</param>
+        /// <param name="decorIndex">You can get this value via <see cref="BlockSelection.ToDecorIndex()"/> or via constructor <see cref="DecorBits(BlockFacing)"/> or <see cref="DecorBits(BlockFacing, int, int, int)"/>. It can include a subPosition for cave art etc.</param>
         /// <returns>True if the decor was sucessfully set</returns>
         bool SetDecor(Block block, BlockPos position, int decorIndex);
 
@@ -785,14 +788,14 @@ namespace Vintagestory.API.Common
         /// Get a list of all decors at this position
         /// </summary>
         /// <param name="position"></param>
-        /// <returns>null if this block position has no decors. Otherwise, a Dictionary with the index being the faceAndSubposition  (subposition used for cave art etc.)</returns>
+        /// <returns>null if this block position has no decors. Otherwise, a Dictionary with the index being the faceAndSubposition (subposition used for cave art etc.), see <see cref="DecorBits"/></returns>
         Dictionary<int, Block> GetSubDecors(BlockPos position);
 
         /// <summary>
         /// Retrieves a single decor at given position
         /// </summary>
         /// <param name="pos"></param>
-        /// <param name="decorIndex">You can get this value via <see cref="BlockSelection.ToDecorIndex()"/></param> or via <see cref="BlockSelection.GetDecorIndex(BlockFacing, int, int, int)"/>
+        /// <param name="decorIndex">You can get this value via <see cref="BlockSelection.ToDecorIndex()"/> or via constructor <see cref="DecorBits(BlockFacing)"/> or <see cref="DecorBits(BlockFacing, int, int, int)"/></param>
         /// <returns></returns>
         Block GetDecor(BlockPos pos, int decorIndex);
 
@@ -801,7 +804,7 @@ namespace Vintagestory.API.Common
         /// </summary>
         /// <param name="pos"></param>
         /// <param name="side">If not null, breaks all the decor on given block face, otherwise the decor blocks on all sides are removed</param>
-        /// <param name="decorIndex">If not null breaks only this part of the decor for give face. You can get this value via <see cref="BlockSelection.ToDecorIndex()"/></param> or via <see cref="BlockSelection.GetDecorIndex(BlockFacing, int, int, int)"/>
+        /// <param name="decorIndex">If not null breaks only this part of the decor for give face. You can get this value via <see cref="BlockSelection.ToDecorIndex()"/> or via constructor <see cref="DecorBits(BlockFacing)"/> or <see cref="DecorBits(BlockFacing, int, int, int)"/></param>
         /// <returns>True if a decor was removed</returns>
         bool BreakDecor(BlockPos pos, BlockFacing side = null, int? decorIndex = null);
 

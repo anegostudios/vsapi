@@ -322,7 +322,7 @@ Interface IServerNetworkAPI
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns a previoulsy registered channeled, null otherwise</p>
+  <div class="markdown level1 summary"><p>Returns a previously registered channeled, null otherwise</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -359,7 +359,7 @@ Interface IServerNetworkAPI
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Returns a previoulsy registered channeled, null otherwise</p>
+  <div class="markdown level1 summary"><p>Returns a previously registered channeled, null otherwise</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 
@@ -434,7 +434,8 @@ Interface IServerNetworkAPI
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Supplies you with your very own and personal network channel that you can use to send packets across the network.  Use the same channelName on the client and server to have them link up.</p>
+  <div class="markdown level1 summary"><p>Supplies you with your very own and personal network channel that you can use to send packets across the network.  Use the same channelName on the client and server to have them link up.
+Do not send larger messages then 508 bytes since some clients may be behind NAT/firwalls that may drop your packets if they get fragmented</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

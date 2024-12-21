@@ -101,7 +101,7 @@ Delegate TestBlockAccessDelegate
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public delegate EnumWorldAccessResponse TestBlockAccessDelegate(IPlayer player, BlockSelection blockSel, EnumBlockAccessFlags accessType, string claimant, EnumWorldAccessResponse response)</code></pre>
+    <pre><code class="lang-csharp hljs">public delegate EnumWorldAccessResponse TestBlockAccessDelegate(IPlayer player, BlockSelection blockSel, EnumBlockAccessFlags accessType, ref string claimant, EnumWorldAccessResponse response)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>

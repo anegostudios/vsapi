@@ -549,6 +549,39 @@ Class InventoryBase
 </h2>
 
 
+  <a id="Vintagestory_API_Common_InventoryBase_AuditLogAccess_" data-uid="Vintagestory.API.Common.InventoryBase.AuditLogAccess*"></a>
+
+  <h3 id="Vintagestory_API_Common_InventoryBase_AuditLogAccess" data-uid="Vintagestory.API.Common.InventoryBase.AuditLogAccess">
+  AuditLogAccess
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If opening or closing should produce a log line in the audit log.
+Since when items are moved the source and destination is logged already</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool AuditLogAccess { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Common_InventoryBase_ClassName_" data-uid="Vintagestory.API.Common.InventoryBase.ClassName*"></a>
 
   <h3 id="Vintagestory_API_Common_InventoryBase_ClassName" data-uid="Vintagestory.API.Common.InventoryBase.ClassName">
@@ -1674,12 +1707,12 @@ public WeightedSlot GetBestSuitedSlot(ItemSlot sourceSlot, List&lt;ItemSlot&gt; 
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected virtual float GetDefaultTransitionSpeedMul(EnumTransitionType transType)</code></pre>
+    <pre><code class="lang-csharp hljs">protected virtual float GetDefaultTransitionSpeedMul(EnumTransitionType transitionType)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>transType</code> <a class="xref" href="Vintagestory.API.Common.EnumTransitionType.html">EnumTransitionType</a></dt>
+    <dt><code>transitionType</code> <a class="xref" href="Vintagestory.API.Common.EnumTransitionType.html">EnumTransitionType</a></dt>
     <dd></dd>
   </dl>
 

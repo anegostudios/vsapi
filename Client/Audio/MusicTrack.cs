@@ -32,7 +32,7 @@ namespace Vintagestory.API.Client
         {
             get
             {
-                return loading || (Sound != null && Sound.IsPlaying);
+                return ForceActive || loading || (Sound != null && Sound.IsPlaying);
             }
         }
 
@@ -53,6 +53,11 @@ namespace Vintagestory.API.Client
         IMusicEngine musicEngine;
 
         bool docontinue = true;
+
+        /// <summary>
+        /// If true, the music is considered active/playing until set to false and so no other track will play
+        /// </summary>
+        public bool ForceActive;
 
         /// <summary>
         /// Stops the track immediately
@@ -118,6 +123,8 @@ namespace Vintagestory.API.Client
         /// <returns>Cool or not cool?</returns>
         public virtual bool ContinuePlay(float dt, TrackedPlayerProperties props)
         {
+            if (ForceActive) return true;
+
             if (!IsActive && !ManualDispose)
             {
                 Sound?.Dispose();

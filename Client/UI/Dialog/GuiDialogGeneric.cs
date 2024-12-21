@@ -89,7 +89,7 @@ namespace Vintagestory.API.Client
                 //Vec3d playerEye = capi.World.Player.Entity.Pos.XYZ.Add(0, capi.World.Player.Entity.EyeHeight, 0);
                 Vec3d playerEye = capi.World.Player.Entity.Pos.XYZ.Add(capi.World.Player.Entity.LocalEyePos);
 
-                dist = Math.Min(dist, box.ToDouble().Translate(blockEntityPos.X, blockEntityPos.Y, blockEntityPos.Z).ShortestDistanceFrom(playerEye));
+                dist = Math.Min(dist, box.ToDouble().Translate(blockEntityPos.X, blockEntityPos.InternalY, blockEntityPos.Z).ShortestDistanceFrom(playerEye));
             }
 
             return dist <= capi.World.Player.WorldData.PickingRange + 0.5;

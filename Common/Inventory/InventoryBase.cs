@@ -195,6 +195,12 @@ namespace Vintagestory.API.Common
             }
         }
 
+        /// <summary>
+        /// If opening or closing should produce a log line in the audit log.
+        /// Since when items are moved the source and destination is logged already
+        /// </summary>
+        public virtual bool AuditLogAccess { get; set; } = false;
+
 
         /// <summary>
         /// Create a new instance of an inventory. You may choose any value for className and instanceID, but if more than one of these inventories can be opened at the same time, make sure for both of them to have a different id
@@ -226,7 +232,7 @@ namespace Vintagestory.API.Common
 
             if (inventoryID != null)
             {
-                string[] elems = inventoryID.Split(new char[] { '-' }, 2);
+                string[] elems = inventoryID.Split('-', 2);
                 className = elems[0];
                 instanceID = elems[1];
             }
@@ -246,7 +252,7 @@ namespace Vintagestory.API.Common
         public virtual void LateInitialize(string inventoryID, ICoreAPI api)
         {
             this.Api = api;
-            string[] elems = inventoryID.Split(new char[] { '-' }, 2);
+            string[] elems = inventoryID.Split('-', 2);
             className = elems[0];
             instanceID = elems[1];
 
@@ -819,9 +825,18 @@ namespace Vintagestory.API.Common
             return mul;
         }
 
-        protected virtual float GetDefaultTransitionSpeedMul(EnumTransitionType transType)
+        protected virtual float GetDefaultTransitionSpeedMul(EnumTransitionType transitionType)
         {
-            return (transType == EnumTransitionType.Perish || transType == EnumTransitionType.Cure || transType == EnumTransitionType.Dry || transType == EnumTransitionType.Melt || transType == EnumTransitionType.Harden) ? 1 : 0;
+            return transitionType switch
+            {
+                EnumTransitionType.Perish =>1,
+                EnumTransitionType.Dry => 1,
+                EnumTransitionType.Cure => 1,
+                EnumTransitionType.Ripen => 1,
+                EnumTransitionType.Melt => 1,
+                EnumTransitionType.Harden => 1,
+                _ => 0,
+            };
         }
 
         /// <summary>
@@ -835,7 +850,11 @@ namespace Vintagestory.API.Common
             openedByPlayerGUIds.Add(player.PlayerUID);
 
             OnInventoryOpened?.Invoke(player);
-            Api.World.Logger.Audit("{0} opened inventory {1}", player.PlayerName, InventoryID);
+
+            if(AuditLogAccess)
+            {
+                Api.World.Logger.Audit("{0} opened inventory {1}", player.PlayerName, InventoryID);
+            }
 
             return packet;
         }
@@ -850,7 +869,11 @@ namespace Vintagestory.API.Common
             object packet = InvNetworkUtil.DidClose(player);
             openedByPlayerGUIds.Remove(player.PlayerUID);
             OnInventoryClosed?.Invoke(player);
-            Api.World.Logger.Audit("{0} closed inventory {1}", player.PlayerName, InventoryID);
+
+            if(AuditLogAccess)
+            {
+                Api.World.Logger.Audit("{0} closed inventory {1}", player.PlayerName, InventoryID);
+            }
 
             return packet;
         }

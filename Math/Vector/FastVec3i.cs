@@ -270,6 +270,11 @@ namespace Vintagestory.API.MathTools
             this.Z = vec.Z;
         }
 
+        public override int GetHashCode()
+        {
+            return ((17 * 23 + X) * 23 + Y) * 23 + Z;
+        }
+
         /// <summary>
         /// Simple string represenation of the x/y/z components
         /// </summary>

@@ -13,6 +13,10 @@ namespace Vintagestory.API.Common
         bool Dirty { get; set; }
         bool TrackSelection { get; set; }
         BlockPos selectionTrackingOriginalPos { get; set; }
+        /// <summary>
+        /// If this matches the subDimensionId, it indicates that this is a blocks preview minidimension
+        /// </summary>
+        int BlocksPreviewSubDimension_Server { get; set; }
 
         /// <summary>
         /// Sends dirty chunks to nearby clients

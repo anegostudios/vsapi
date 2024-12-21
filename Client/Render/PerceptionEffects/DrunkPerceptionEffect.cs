@@ -68,7 +68,7 @@ namespace Vintagestory.API.Client
         public override void ApplyToTpPlayer(EntityPlayer entityPlr, float[] modelMatrix, float? playerIntensity = null)
         {
             var rplr = entityPlr.Player as IClientPlayer;
-            if (rplr.CameraMode == EnumCameraMode.FirstPerson && !rplr.ImmersiveFpMode) return;
+            if (rplr == null || entityPlr.AnimManager.Animator == null || (rplr.CameraMode == EnumCameraMode.FirstPerson && !rplr.ImmersiveFpMode)) return;
 
             float inten = playerIntensity == null ? Intensity : (float)playerIntensity;
 

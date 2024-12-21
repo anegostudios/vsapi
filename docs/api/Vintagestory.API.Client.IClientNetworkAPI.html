@@ -287,7 +287,8 @@ Interface IClientNetworkAPI
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.</p>
+  <div class="markdown level1 summary"><p>Supplies you with your very own and personal network channel with which you can send packets to the server. Use the same channelName on the client and server to have them link up.
+Do not send larger messages then 508 bytes since some clients may be behind NAT/firwalls that may drop your packets if they get fragmented</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

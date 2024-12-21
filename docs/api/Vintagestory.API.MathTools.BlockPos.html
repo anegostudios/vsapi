@@ -104,6 +104,7 @@ Valuable Hint: Make use of Copy() or the XXXCopy() variants where needed. A comm
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoContract]
+[JsonObject(MemberSerialization.OptIn)]
 public class BlockPos : IEquatable&lt;BlockPos&gt;, IVec3</code></pre>
   </div>
 
@@ -237,12 +238,13 @@ public BlockPos()</code></pre>
   
   </h3>
 
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>The new BlockPos takes its dimension from the supplied y value, if the y value is higher than the DimensionBoundary (32768 blocks).
+This constructor is therefore dimension-aware, so long as the y parameter was originally based on .InternalY, including for example a Vec3d created originally from .InternalY</p>
+</div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Not dimension-aware. Use overload with a dimension parameter instead&quot;)]
-public BlockPos(int x, int y, int z)</code></pre>
+    <pre><code class="lang-csharp hljs">public BlockPos(int x, int y, int z)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -445,6 +447,7 @@ public BlockPos(Vec3i vec)</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(1)]
+[JsonProperty]
 public int X</code></pre>
   </div>
 
@@ -506,6 +509,7 @@ public int X</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(3)]
+[JsonProperty]
 public int Z</code></pre>
   </div>
 
@@ -604,6 +608,7 @@ public Vec3i AsVec3i { get; }</code></pre>
 
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[ProtoMember(2)]
+[JsonProperty]
 public int InternalY { get; set; }</code></pre>
   </div>
 
@@ -2180,6 +2185,44 @@ Note this is dimension unaware</p>
 
   <a id="Vintagestory_API_MathTools_BlockPos_Set_" data-uid="Vintagestory.API.MathTools.BlockPos.Set*"></a>
 
+  <h3 id="Vintagestory_API_MathTools_BlockPos_Set_Vintagestory_API_MathTools_BlockPos_System_Int32_" data-uid="Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.BlockPos,System.Int32)">
+  Set(BlockPos, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BlockPos Set(BlockPos blockPos, int dim)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blockPos</code> <a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+    <dt><code>dim</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.MathTools.BlockPos.html">BlockPos</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_MathTools_BlockPos_Set_" data-uid="Vintagestory.API.MathTools.BlockPos.Set*"></a>
+
   <h3 id="Vintagestory_API_MathTools_BlockPos_Set_Vintagestory_API_MathTools_FastVec3i_" data-uid="Vintagestory.API.MathTools.BlockPos.Set(Vintagestory.API.MathTools.FastVec3i)">
   Set(FastVec3i)
   
@@ -2636,7 +2679,8 @@ Note this is dimension unaware</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Substract a position =&gt; you'll have the manhatten distance</p>
+  <div class="markdown level1 summary"><p>Substract a position =&gt; you'll have the manhatten distance.
+<br>If used within a non-zero dimension the resulting BlockPos will be dimensionless as it's a distance or offset between two positions</p>
 </div>
   <div class="markdown level1 conceptual"></div>
 

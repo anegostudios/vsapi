@@ -115,7 +115,7 @@ namespace Vintagestory.API.Client
         /// </summary>
         int MapSizeY { get; }
 
-        Dictionary<int, IMiniDimension> Dimensions { get; }
+        Dictionary<int, IMiniDimension> MiniDimensions { get; }
 
         IMiniDimension GetOrCreateDimension(int dimId, Vec3d pos);
         bool TryGetMiniDimension(Vec3i origin, out IMiniDimension dimension);

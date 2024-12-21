@@ -26,7 +26,7 @@ namespace Vintagestory.API.MathTools
         Vec3d hitPositionTmp = new Vec3d();
 
         Vec3d lastExitedBlockFacePos = new Vec3d();
-        public IWorldIntersectionSupplier blockSelectionTester;
+        public IWorldIntersectionSupplier bsTester;
         Cuboidd tmpCuboidd = new Cuboidd();
 
         public Vec3d hitPosition = new Vec3d();
@@ -40,7 +40,7 @@ namespace Vintagestory.API.MathTools
 
         public AABBIntersectionTest(IWorldIntersectionSupplier blockSelectionTester)
         {
-            this.blockSelectionTester = blockSelectionTester;
+            this.bsTester = blockSelectionTester;
         }
 
         public void LoadRayAndPos(Line3D line3d)
@@ -72,7 +72,7 @@ namespace Vintagestory.API.MathTools
             return GetSelectedBlock(maxDistance, filter);
         }
 
-        public BlockSelection GetSelectedBlock(float maxDistance, BlockFilter filter = null)
+        public BlockSelection GetSelectedBlock(float maxDistance, BlockFilter filter = null, bool testCollide = false)
         {
             float distanceSq = 0;
 
@@ -83,7 +83,7 @@ namespace Vintagestory.API.MathTools
             float maxDistanceSq = (maxDistance + 1) * (maxDistance + 1);
 
             // Wander along the block exiting faces until we collide with a block selection box
-            while (!RayIntersectsBlockSelectionBox(pos, filter))
+            while (!RayIntersectsBlockSelectionBox(pos, filter, testCollide))
             {
                 if (distanceSq >= maxDistanceSq) return null;
 
@@ -110,31 +110,31 @@ namespace Vintagestory.API.MathTools
 
 
         Block blockIntersected;
-        public bool RayIntersectsBlockSelectionBox(BlockPos pos, BlockFilter filter)
+        public bool RayIntersectsBlockSelectionBox(BlockPos pos, BlockFilter filter, bool testCollide = false)
         {
-            Cuboidf[] selectionBoxes;
-            Block block = blockSelectionTester.blockAccessor.GetBlock(pos, BlockLayersAccess.Fluid);
+            Cuboidf[] hitboxes;
+            Block block = bsTester.blockAccessor.GetBlock(pos, BlockLayersAccess.Fluid);
             if (block.SideSolid.Any)   // It's ice!
             {
-                selectionBoxes = block.GetSelectionBoxes(blockSelectionTester.blockAccessor, pos);
+                hitboxes = testCollide ? block.GetCollisionBoxes(bsTester.blockAccessor, pos) : block.GetSelectionBoxes(bsTester.blockAccessor, pos);
             }
             else
             {
-                block = blockSelectionTester.GetBlock(pos);
-                selectionBoxes = blockSelectionTester.GetBlockIntersectionBoxes(pos);
+                block = bsTester.GetBlock(pos);
+                hitboxes = testCollide ? block.GetCollisionBoxes(bsTester.blockAccessor, pos) : bsTester.GetBlockIntersectionBoxes(pos);
             }
-            if (selectionBoxes == null) return false;
+            if (hitboxes == null) return false;
             if (filter?.Invoke(pos, block) == false) return false;
 
             bool intersects = false;
             bool wasDecor = false;
 
-            for (int i = 0; i < selectionBoxes.Length; i++)
+            for (int i = 0; i < hitboxes.Length; i++)
             {
-                tmpCuboidd.Set(selectionBoxes[i]).Translate(pos.X, pos.InternalY, pos.Z);
+                tmpCuboidd.Set(hitboxes[i]).Translate(pos.X, pos.InternalY, pos.Z);
                 if (RayIntersectsWithCuboid(tmpCuboidd, ref hitOnBlockFaceTmp, ref hitPositionTmp))
                 {
-                    bool isDecor = selectionBoxes[i] is DecorSelectionBox;
+                    bool isDecor = hitboxes[i] is DecorSelectionBox;
                     if (intersects && (!wasDecor || isDecor) && hitPosition.SquareDistanceTo(ray.origin) <= hitPositionTmp.SquareDistanceTo(ray.origin))
                     {
                         continue;
@@ -148,13 +148,13 @@ namespace Vintagestory.API.MathTools
                 }
             }
 
-            if (intersects && selectionBoxes[hitOnSelectionBox] is DecorSelectionBox dsb)
+            if (intersects && hitboxes[hitOnSelectionBox] is DecorSelectionBox dsb)
             {
                 Vec3i posAdjust = dsb.PosAdjust;
                 if (posAdjust != null)
                 {
                     pos.Add(posAdjust);
-                    block = blockSelectionTester.GetBlock(pos);
+                    block = bsTester.GetBlock(pos);
                 }
             }
 

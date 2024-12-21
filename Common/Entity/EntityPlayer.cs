@@ -384,7 +384,7 @@ namespace Vintagestory.API.Common
                 // For Creative mode players, revert the normal walkspeed modifier from the block the entity is currently standing on/in
                 int y1 = (int)(SidedPos.InternalY - 0.05f);
                 int y2 = (int)(SidedPos.InternalY + 0.01f);
-                Block belowBlock = World.BlockAccessor.GetBlock((int)SidedPos.X, y1, (int)SidedPos.Z);
+                Block belowBlock = World.BlockAccessor.GetBlockRaw((int)SidedPos.X, y1, (int)SidedPos.Z);
                 mul /= belowBlock.WalkSpeedMultiplier * (y1 == y2 ? 1 : insideBlock.WalkSpeedMultiplier);
             }
 
@@ -1169,9 +1169,6 @@ namespace Vintagestory.API.Common
             TryStopHandAction(true, EnumItemUseCancelReason.Death);
             TryUnmount();
             WatchedAttributes.SetFloat("intoxication", 0);
-
-
-
         }
 
         public override bool TryMount(IMountableSeat onmount)
@@ -1258,6 +1255,18 @@ namespace Vintagestory.API.Common
                 AnimManager.StartAnimation(SerializerUtil.Deserialize<string>(data));
             }
 
+            if (packetid == (int)EntityServerPacketId.Teleport && MountedOn?.Entity != null)
+            {
+                var mountentity = MountedOn.Entity;
+
+                Vec3d newPos = SerializerUtil.Deserialize<Vec3d>(data);
+                if ((Api as ICoreClientAPI).World.Player.Entity.EntityId == EntityId)
+                {
+                    mountentity.Pos.SetPosWithDimension(newPos);
+                }
+                mountentity.ServerPos.SetPosWithDimension(newPos);
+            }
+
             base.OnReceivedServerPacket(packetid, data);
     	}
         public override void OnReceivedClientPacket(IServerPlayer player, int packetid, byte[] data)
@@ -1307,12 +1316,13 @@ namespace Vintagestory.API.Common
                 bool heal = damageSource.Type == EnumDamageType.Heal;
                 string msg;
 
+                string damageTypeLocalised = Lang.Get("damagetype-" + damageSource.Type.ToString().ToLowerInvariant());
                 if (damageSource.Type == EnumDamageType.BluntAttack || damageSource.Type == EnumDamageType.PiercingAttack || damageSource.Type == EnumDamageType.SlashingAttack)
                 {
-                    msg = Lang.Get(heal ? "damagelog-heal-attack" : "damagelog-damage-attack", damage, damageSource.Type.ToString().ToLowerInvariant(), damageSource.Source);
+                    msg = Lang.Get(heal ? "damagelog-heal-attack" : "damagelog-damage-attack", damage, damageTypeLocalised, damageSource.Source);
                 } else
                 {
-                    msg = Lang.Get(heal ? "damagelog-heal" : "damagelog-damage", damage, damageSource.Type.ToString().ToLowerInvariant());
+                    msg = Lang.Get(heal ? "damagelog-heal" : "damagelog-damage", damage, damageTypeLocalised);
                 }
 
                 if (damageSource.Source == EnumDamageSource.Player)
@@ -1391,62 +1401,78 @@ namespace Vintagestory.API.Common
 
 
 
-
+        
         public override void TeleportToDouble(double x, double y, double z, Action onTeleported = null)
         {
-            Teleporting = true;
+            if (ignoreTeleportCall) return;
             ICoreServerAPI sapi = this.World.Api as ICoreServerAPI;
-            if (sapi != null)
+            if (sapi == null) return;
+            ignoreTeleportCall = true;
+
+            if (MountedOn != null)
             {
-                sapi.WorldManager.LoadChunkColumnPriority((int)ServerPos.X / GlobalConstants.ChunkSize, (int)ServerPos.Z / GlobalConstants.ChunkSize, new ChunkLoadOptions()
+                if (MountedOn.Entity == null) TryUnmount();
+                else
                 {
-                    OnLoaded = () =>
+                    MountedOn.Entity.TeleportToDouble(x,y,z, () =>
                     {
-                        Pos.SetPos(x, y, z);
-                        ServerPos.SetPos(x, y, z);
-                        PreviousServerPos.SetPos(-99, -99, -99);
-                        PositionBeforeFalling.Set(x, y, z);
-                        Pos.Motion.Set(0, 0, 0);
-                        if (this is EntityPlayer)
-                        {
-                            sapi.Network.BroadcastEntityPacket(EntityId, 1, SerializerUtil.Serialize(ServerPos.XYZ));
-                            IServerPlayer player = this.Player as IServerPlayer;
-                            int chunksize = GlobalConstants.ChunkSize;
-                            player.CurrentChunkSentRadius = 0;
-
-                            sapi.Event.RegisterCallback((bla) => {
-                                if (player.ConnectionState == EnumClientState.Offline) return;
-
-                                if (!sapi.WorldManager.HasChunk((int)x / chunksize, (int)y / chunksize, (int)z / chunksize, player))
-                                {
-                                    sapi.WorldManager.SendChunk((int)x / chunksize, (int)y / chunksize, (int)z / chunksize, player, false);
-                                }
-
-                                // Oherwise we get an endlessly looping exception spam and break the server
-                                player.CurrentChunkSentRadius = 0;
-
-                            }, 50);
-
-                        }
-
-                        WatchedAttributes.SetInt("positionVersionNumber", WatchedAttributes.GetInt("positionVersionNumber", 0) + 1);
-
-
+                        onplrteleported(x, y, z, onTeleported, sapi);
                         onTeleported?.Invoke();
-
-                        Teleporting = false;
-                    },
-                });
-
+                    });
+                    ignoreTeleportCall = false;
+                    return;
+                }
             }
+
+            Teleporting = true;
+            
+           sapi.WorldManager.LoadChunkColumnPriority((int)ServerPos.X / GlobalConstants.ChunkSize, (int)ServerPos.Z / GlobalConstants.ChunkSize, new ChunkLoadOptions()
+            {
+                OnLoaded = () =>
+                {
+                    onplrteleported(x, y, z, onTeleported, sapi);
+                    Teleporting = false;
+                },
+           });
+
+            ignoreTeleportCall = false;
         }
 
-
-        public override string GetName()
+        private void onplrteleported(double x, double y, double z, Action onTeleported, ICoreServerAPI sapi)
         {
-            string name = GetBehavior<EntityBehaviorNameTag>()?.DisplayName;
-            if (name == null) return base.GetName();
-            return name;
+            Pos.SetPos(x, y, z);
+            ServerPos.SetPos(x, y, z);
+            PreviousServerPos.SetPos(-99, -99, -99);
+            PositionBeforeFalling.Set(x, y, z);
+            Pos.Motion.Set(0, 0, 0);
+            sapi.Network.BroadcastEntityPacket(EntityId, (int)EntityServerPacketId.Teleport, SerializerUtil.Serialize(ServerPos.XYZ));
+            IServerPlayer player = this.Player as IServerPlayer;
+            int chunksize = GlobalConstants.ChunkSize;
+            player.CurrentChunkSentRadius = 0;
+
+            sapi.Event.RegisterCallback((bla) =>
+            {
+                if (player.ConnectionState == EnumClientState.Offline) return;
+
+                if (!sapi.WorldManager.HasChunk((int)x / chunksize, (int)y / chunksize, (int)z / chunksize, player))
+                {
+                    sapi.WorldManager.SendChunk((int)x / chunksize, (int)y / chunksize, (int)z / chunksize, player, false);
+                }
+
+                // Oherwise we get an endlessly looping exception spam and break the server
+                player.CurrentChunkSentRadius = 0;
+
+            }, 50);
+
+            WatchedAttributes.SetInt("positionVersionNumber", WatchedAttributes.GetInt("positionVersionNumber", 0) + 1);
+            onTeleported?.Invoke();
+        }
+
+        public void SetName(string name)
+        {
+            var tree = WatchedAttributes.GetTreeAttribute("nametag");
+            if (tree == null) WatchedAttributes["nametag"] = new TreeAttribute();
+            tree.SetString("name", name);
         }
 
         public override string GetInfoText()
@@ -1534,19 +1560,11 @@ namespace Vintagestory.API.Common
             this.Pos.Dimension = dim;
             this.ServerPos.Dimension = dim;
 
+            Api.Event.TriggerPlayerDimensionChanged(this.Player);
+
+
             long newchunkindex3d = Api.World.ChunkProvider.ChunkIndex3D(Pos);
             Api.World.UpdateEntityChunk(this, newchunkindex3d);
-
-
-            if (Api is ICoreServerAPI)
-            {
-                UpdatePartitioning();
-                // Server side
-            }
-            else
-            {
-                // Client side
-            }
         }
 
         public bool CanPet(Entity byEntity)

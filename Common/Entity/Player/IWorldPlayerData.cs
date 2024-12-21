@@ -90,5 +90,8 @@
         /// <param name="key"></param>
         /// <returns></returns>
         byte[] GetModdata(string key);
+
+        void SetModData<T>(string key, T data);
+        T GetModData<T>(string key, T defaultValue = default(T));
     }
 }

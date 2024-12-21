@@ -680,6 +680,127 @@ Interface IWorldManagerAPI
 </h2>
 
 
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_BlockingLoadChunkColumn_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.BlockingLoadChunkColumn*"></a>
+
+  <h3 id="Vintagestory_API_Server_IWorldManagerAPI_BlockingLoadChunkColumn_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.BlockingLoadChunkColumn(System.Int32,System.Int32)">
+  BlockingLoadChunkColumn(int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Load the given map chunk , can only be called before EnumServerRunPhase.RunGame.
+This only loads and deserializes the chunk data, you need to call .Dispose() after you do not need them anymore
+Used in InitWorldgen to check chunks before the games is running</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">IServerChunk[] BlockingLoadChunkColumn(int chunkX, int chunkZ)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>chunkX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>chunkZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Vintagestory.API.Server.IServerChunk.html">IServerChunk</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_BlockingTestMapChunkExists_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapChunkExists*"></a>
+
+  <h3 id="Vintagestory_API_Server_IWorldManagerAPI_BlockingTestMapChunkExists_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapChunkExists(System.Int32,System.Int32)">
+  BlockingTestMapChunkExists(int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Test if the given map chunk exists, can only be called before EnumServerRunPhase.RunGame.
+Used in InitWorldgen to check chunks before the games is running</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool BlockingTestMapChunkExists(int chunkX, int chunkZ)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>chunkX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>chunkZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Vintagestory_API_Server_IWorldManagerAPI_BlockingTestMapRegionExists_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapRegionExists*"></a>
+
+  <h3 id="Vintagestory_API_Server_IWorldManagerAPI_BlockingTestMapRegionExists_System_Int32_System_Int32_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.BlockingTestMapRegionExists(System.Int32,System.Int32)">
+  BlockingTestMapRegionExists(int, int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Test if the given map region exists, can only be called before EnumServerRunPhase.RunGame.
+Used in InitWorldgen to check chunks before the games is running</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool BlockingTestMapRegionExists(int regionX, int regionZ)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>regionX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+    <dt><code>regionZ</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Vintagestory_API_Server_IWorldManagerAPI_BroadcastChunk_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.BroadcastChunk*"></a>
 
   <h3 id="Vintagestory_API_Server_IWorldManagerAPI_BroadcastChunk_System_Int32_System_Int32_System_Int32_System_Boolean_" data-uid="Vintagestory.API.Server.IWorldManagerAPI.BroadcastChunk(System.Int32,System.Int32,System.Int32,System.Boolean)">

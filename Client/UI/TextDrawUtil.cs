@@ -20,7 +20,11 @@ namespace Vintagestory.API.Client
         /// <summary>
         /// After any character
         /// </summary>
-        AfterCharacter
+        AfterCharacter,
+        /// <summary>
+        /// Do not auto-line break, only explicitly after \n
+        /// </summary>
+        None
     }
 
     public class TextFlowPath
@@ -416,12 +420,14 @@ namespace Vintagestory.API.Client
             gotLinebreak = false;
             gotSpace = false;
 
+            bool autobreak = linebreakBh != EnumLinebreakBehavior.None;
+
             while (caretPos < fulltext.Length)
             {
                 chr = fulltext[caretPos];
                 caretPos++;
 
-                if (chr == ' ')
+                if (chr == ' ' && autobreak)
                 {
                     gotSpace = true;
                     break;

@@ -28,11 +28,16 @@ public abstract class PhysicsBehaviorBase : EntityBehavior
 
     static PhysicsBehaviorBase()
     {
-        collisionTester = new CachingCollisionTester();
     }
 
     public PhysicsBehaviorBase(Entity entity) : base(entity)
     {
+    }
+
+    public static void InitServerMT(ICoreServerAPI sapi)
+    {
+        collisionTester = new CachingCollisionTester();
+        sapi.Event.PhysicsThreadStart += () => collisionTester = new CachingCollisionTester();
     }
 
     public void Init()

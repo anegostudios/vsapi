@@ -171,15 +171,21 @@ namespace Vintagestory.API.Server
         void LogEvent(string message, params object[] args);
 
         /// <summary>
-        /// Add the specified dimension to the LoadedMiniDimensions, and return its index.
+        /// Add the specified dimension to the LoadedMiniDimensions, and return its allocated subdimension index.
         /// <br/>A mini dimension is a small set of blocks up to 4096x4096x4096 used for schematic previews, vehicles etc
         /// </summary>
         int LoadMiniDimension(IMiniDimension blocks);
         /// <summary>
-        /// Set the specified dimension at the specified LoadedMiniDimensions index, and return its index
+        /// Set the specified mini-dimension at the specified subdimension index, and return its index
         /// <br/>A mini dimension is a small set of blocks up to 4096x4096x4096 used for schematic previews, vehicles etc
         /// </summary>
-        int SetMiniDimension(IMiniDimension miniDimension, int index);
+        int SetMiniDimension(IMiniDimension miniDimension, int subId);
+
+        /// <summary>
+        /// Get the mini-dimension at the specified subdimension index; returns null if none exists
+        /// <br/>A mini dimension is a small set of blocks up to 4096x4096x4096 used for schematic previews, vehicles etc
+        /// </summary>
+        IMiniDimension GetMiniDimension(int subId);
 
         /// <summary>
         /// Remove an entity from the physics ticking system on the server.

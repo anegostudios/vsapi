@@ -292,5 +292,10 @@ namespace Vintagestory.API.Common.Entities
         {
             return 0;
         }
+
+        public virtual string GetName(ref EnumHandling handling)
+        {
+            return null;
+        }
     }
 }

@@ -513,5 +513,57 @@ namespace Vintagestory.API.MathTools
                 }
             }, true);
         }
+
+        public void PushOutFromBlocks(IBlockAccessor blockAccessor, Entity entity, Vec3d tmpVec, float clippingLimit)
+        {
+            if (IsColliding(blockAccessor, entity.CollisionBox, tmpVec, false))
+            {
+                Vec3d pos = entity.SidedPos.XYZ;
+                entityBox.SetAndTranslate(entity.CollisionBox, pos.X, pos.Y, pos.Z);
+
+                GenerateCollisionBoxList(blockAccessor, 0, 0, 0, 0.5f, 0, entity.SidedPos.Dimension);
+
+                int collisionBoxListCount = CollisionBoxList.Count;
+                if (collisionBoxListCount == 0) return;
+
+                double deltaX = 0;
+                double deltaZ = 0;
+                EnumPushDirection pushDirection = EnumPushDirection.None;
+                var reducedBox = entity.CollisionBox.ToDouble();
+                reducedBox.Translate(pos.X, pos.Y, pos.Z);
+                reducedBox.GrowBy(-clippingLimit, 0, -clippingLimit);
+
+                for (int i = 0; i < collisionBoxListCount; i++)
+                {
+                    deltaX = CollisionBoxList.cuboids[i].pushOutX(reducedBox, clippingLimit, ref pushDirection);
+                }
+                if (deltaX == clippingLimit)
+                {
+                    for (int i = 0; i < collisionBoxListCount; i++)
+                    {
+                        deltaX = CollisionBoxList.cuboids[i].pushOutX(reducedBox, -clippingLimit, ref pushDirection);
+                    }
+                    deltaX += clippingLimit;
+                }
+                else deltaX -= clippingLimit;
+
+                for (int i = 0; i < collisionBoxListCount; i++)
+                {
+                    deltaZ = CollisionBoxList.cuboids[i].pushOutZ(reducedBox, clippingLimit, ref pushDirection);
+                }
+                if (deltaZ == clippingLimit)
+                {
+                    for (int i = 0; i < collisionBoxListCount; i++)
+                    {
+                        deltaZ = CollisionBoxList.cuboids[i].pushOutZ(reducedBox, -clippingLimit, ref pushDirection);
+                    }
+                    deltaZ += clippingLimit;
+                }
+                else deltaZ -= clippingLimit;
+
+                entity.SidedPos.X = pos.X + deltaX;
+                entity.SidedPos.Z = pos.Z + deltaZ;
+            }
+        }
     }
 }

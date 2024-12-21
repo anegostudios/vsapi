@@ -293,7 +293,7 @@ public class EntityBehaviorPassivePhysics : PhysicsBehaviorBase, IPhysicsTickabl
             entity.OnCollideWithLiquid();
         }
 
-        if ((swimmingBefore && !entity.Swimming && !entity.FeetInLiquid) || (feetInLiquidBefore && !entity.FeetInLiquid && !entity.Swimming))
+        if ((swimmingBefore || feetInLiquidBefore ) && !entity.Swimming && !entity.FeetInLiquid)
         {
             entity.OnExitedLiquid();
         }

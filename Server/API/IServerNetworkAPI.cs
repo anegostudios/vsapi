@@ -16,20 +16,21 @@ namespace Vintagestory.API.Server
         new IServerNetworkChannel RegisterChannel(string channelName);
 
         /// <summary>
-        /// Returns a previoulsy registered channeled, null otherwise
+        /// Returns a previously registered channeled, null otherwise
         /// </summary>
         /// <param name="channelName"></param>
         /// <returns></returns>
         new IServerNetworkChannel GetChannel(string channelName);
         /// <summary>
         /// Supplies you with your very own and personal network channel that you can use to send packets across the network.  Use the same channelName on the client and server to have them link up.
+        /// Do not send larger messages then 508 bytes since some clients may be behind NAT/firwalls that may drop your packets if they get fragmented
         /// </summary>
         /// <param name="channelName">Unique channel identifier</param>
         /// <returns></returns>
         new IServerNetworkChannel RegisterUdpChannel(string channelName);
 
         /// <summary>
-        /// Returns a previoulsy registered channeled, null otherwise
+        /// Returns a previously registered channeled, null otherwise
         /// </summary>
         /// <param name="channelName"></param>
         /// <returns></returns>

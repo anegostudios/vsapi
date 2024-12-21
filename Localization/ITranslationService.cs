@@ -39,7 +39,7 @@ namespace Vintagestory.API.Config
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="args">The arguments to interpolate into the resulting string.</param>
-        /// <returns>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated value.</returns>
+        /// <returns>Returns null if no results are found; otherwise returns the pre-formatted, translated value.</returns>
         string GetIfExists(string key, params object[] args);
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Vintagestory.API.Config
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="args">The arguments to interpolate into the resulting string.</param>
-        /// <returns>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated value.</returns>
+        /// <returns>Returns the key if no results are found; otherwise returns the pre-formatted, translated value.</returns>
         string Get(string key, params object[] args);
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Vintagestory.API.Config
         ///     Gets the raw, unformatted translated value for the key provided.
         /// </summary>
         /// <param name="key">The key.</param>
-        /// <returns>Returns the key as a default value, if no results are found; otherwise returns the unformatted, translated value.</returns>
+        /// <returns>Returns the key if no results are found; otherwise returns the unformatted, translated value.</returns>
         string GetUnformatted(string key);
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Vintagestory.API.Config
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="args">The arguments to interpolate into the resulting string.</param>
-        /// <returns>Returns the key as a default value, if no results are found; otherwise returns the pre-formatted, translated value.</returns>
+        /// <returns>Returns the key if no results are found; otherwise returns the pre-formatted, translated value.</returns>
         string GetMatching(string key, params object[] args);
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Vintagestory.API.Config
         /// </summary>
         /// <param name="key">The key.</param>
         /// <param name="args">The arguments to interpolate into the resulting string.</param>
-        /// <returns>Returns <c>null</c> as a default value, if no results are found; otherwise returns the pre-formatted, translated value.</returns>
+        /// <returns>Returns <c>null</c> if no results are found; otherwise returns the pre-formatted, translated value.</returns>
         string GetMatchingIfExists(string key, params object[] args);
 
         /// <summary>

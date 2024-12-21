@@ -64,12 +64,12 @@ namespace Vintagestory.API.Client
             foreach (var part in parts)
             {
                 var w = Font.GetTextExtents(part).Width + GuiElement.scaled(symbolspacing + 2 * leftRightPad);
-                if (textWidth > 0) w += GuiElement.scaled(symbolspacing) + pluswdith;  // i.e. if not the first!
+                if (textWidth > 0) w += GuiElement.scaled(symbolspacing) + pluswdith;
                 textWidth += w;
             }
            
-            double textHeight = Font.GetFontExtents().Height + 2;
-            int lineheight = (int)textHeight + 2;
+            double textHeight = Font.GetFontExtents().Height;
+            int lineheight = (int)textHeight;
 
             ImageSurface surface = new ImageSurface(Format.Argb32, (int)textWidth + 3, lineheight + 5);
             Context ctx = new Context(surface);
@@ -79,7 +79,7 @@ namespace Vintagestory.API.Client
             double y = 0;
             foreach (string part in parts)
             {
-                hx = DrawHotkey(api, part, hx, y, ctx, Font, lineheight - 4, textHeight, pluswdith, symbolspacing, leftRightPad, Font.Color);
+                hx = DrawHotkey(api, part, hx, y, ctx, Font, lineheight, textHeight, pluswdith, symbolspacing, leftRightPad, Font.Color);
             }
 
             api.Gui.LoadOrUpdateCairoTexture(surface, true, ref hotkeyTexture);
@@ -103,10 +103,11 @@ namespace Vintagestory.API.Client
         {
             GenHotkeyTexture();
 
+            linebreak = EnumLinebreakBehavior.None;
             var res = base.CalcBounds(flowPath, currentLineHeight, offsetX, lineY, out nextOffsetX);
 
-            BoundsPerLine[0].Width += RuntimeEnv.GUIScale * 6;
-            nextOffsetX += RuntimeEnv.GUIScale * 6;
+            BoundsPerLine[0].Width += RuntimeEnv.GUIScale * 4;
+            nextOffsetX += RuntimeEnv.GUIScale * 4;
 
             return res;
         }
@@ -124,7 +125,7 @@ namespace Vintagestory.API.Client
         {
             if (x > 0)
             {
-                capi.Gui.Text.DrawTextLine(ctx, font, "+", x + symbolspacing, y + (lineheight - textHeight) / 2 + 2);
+                capi.Gui.Text.DrawTextLine(ctx, font, "+", x + symbolspacing, y + (lineheight - textHeight) / 2 + GuiElement.scaled(2));
                 x += pluswdith + 2 * symbolspacing;
             }
 
@@ -140,7 +141,7 @@ namespace Vintagestory.API.Client
             ctx.SetSourceRGBA(new double[] { 1, 1, 1, 1 });
 
             int textX = (int)(x + 1 + GuiElement.scaled(leftRightPadding));
-            int textY = (int)(y + (lineheight - textHeight) / 2 + 2);
+            int textY = (int)(y + (lineheight - textHeight) / 2 + GuiElement.scaled(2));
             
             capi.Gui.Text.DrawTextLine(ctx, font, keycode, textX, textY);
 

@@ -194,7 +194,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public bool Contains(BlockPos pos)
         {
-            return pos.X >= MinX && pos.X < MaxX && pos.Y >= MinY && pos.Y < MaxY && pos.Z >= MinZ && pos.Z < MaxZ;
+            return pos.X >= MinX && pos.X < MaxX && pos.InternalY >= MinY && pos.InternalY < MaxY && pos.Z >= MinZ && pos.Z < MaxZ;
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         public bool ContainsOrTouches(BlockPos pos)
         {
-            return pos.X >= MinX && pos.X <= MaxX && pos.Y >= MinY && pos.Y <= MaxY && pos.Z >= MinZ && pos.Z <= MaxZ;
+            return pos.X >= MinX && pos.X <= MaxX && pos.InternalY >= MinY && pos.InternalY <= MaxY && pos.Z >= MinZ && pos.Z <= MaxZ;
         }
 
         /// <summary>

@@ -29,6 +29,7 @@ namespace Vintagestory.API.Common
         private readonly string domain;
         private readonly string path;
         private readonly int alternate;
+        private readonly object[] formattedArguments;
 
         /// <summary>
         /// Store references to the source strings, to be able to build a logging string later if necessary
@@ -41,8 +42,23 @@ namespace Vintagestory.API.Common
             alternate = sourceAlt;
         }
 
+        public SourceStringComponents(string message, AssetLocation source, int sourceAlt = -1)
+        {
+            this.message = message;
+            domain = source.Domain;
+            path = source.Path;
+            alternate = -1;
+        }
+
+        public SourceStringComponents(string formattedString, params object[] arguments)
+        {
+            this.message = formattedString;
+            this.formattedArguments = arguments;
+        }
+
         public override string ToString()
         {
+            if (formattedArguments != null) return String.Format(message, formattedArguments);
             if (alternate >= 0) return message + domain + AssetLocation.LocationSeparator + path + " alternate:" + alternate;
             return message + domain + AssetLocation.LocationSeparator + path;
         }
@@ -75,7 +91,7 @@ namespace Vintagestory.API.Common
 
         public AssetLocationAndSource(AssetLocation loc, string message, AssetLocation sourceLoc, int alternateNo = -1) : base(loc.Domain, loc.Path)
         {
-            this.Source = new SourceStringComponents(message, sourceLoc.Domain, sourceLoc.Path, alternateNo);
+            this.Source = new SourceStringComponents(message, sourceLoc, alternateNo);
         }
 
         public AssetLocationAndSource(string domain, string path, string message, string sourceDomain, string sourcePath, int alternateNo = -1) : base(domain, path)

@@ -558,7 +558,14 @@ namespace Vintagestory.API.Client
             RecomposeText();
         }
 
+        [Obsolete("Use AppendText(RichTextComponentBase[] comps) instead")]
         public void AppendText(RichTextComponent[] comps)
+        {
+            this.Components = this.Components.Append(comps);
+            RecomposeText();
+        }
+
+        public void AppendText(RichTextComponentBase[] comps)
         {
             this.Components = this.Components.Append(comps);
             RecomposeText();

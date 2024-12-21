@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using Vintagestory.API.Client;
 using Vintagestory.API.Common;
 using Vintagestory.API.Config;
@@ -643,6 +644,5 @@ namespace Vintagestory.API.MathTools
         {
             return (flag & HorizontalFlags) > 0;
         }
-
     }
 }

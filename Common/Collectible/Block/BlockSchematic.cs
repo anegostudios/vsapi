@@ -118,6 +118,7 @@ namespace Vintagestory.API.Common
         /// Set by the RemapperAssistant in OnFinalizeAssets
         /// </summary>
         public static Dictionary<string, Dictionary<string, string>> ItemRemaps { get; set; }
+        static BlockPos Zero = new BlockPos(0, 0, 0);
 
         /// <summary>
         /// This bitmask for the position in schematics
@@ -126,7 +127,7 @@ namespace Vintagestory.API.Common
 
         public BlockSchematic()
         {
-            GameVersion = Config.GameVersion.OverallVersion;
+            GameVersion = Config.GameVersion.ShortGameVersion;
         }
 
         /// <summary>
@@ -150,7 +151,7 @@ namespace Vintagestory.API.Common
 
         public virtual void Init(IBlockAccessor blockAccessor)
         {
-            SemVer.TryParse(Config.GameVersion.OverallVersion, out var currentVersion);
+            SemVer.TryParse(Config.GameVersion.ShortGameVersion, out var currentVersion);
             SemVer.TryParse(GameVersion ?? "0.0.0", out var schematicVersion);
 
             if (schematicVersion < currentVersion)
@@ -159,7 +160,7 @@ namespace Vintagestory.API.Common
             }
         }
 
-        private void Remap()
+        public void Remap()
         {
             // now do block remapping
             foreach (var map in BlockRemaps)
@@ -366,8 +367,8 @@ namespace Vintagestory.API.Common
 
         public virtual void AddArea(IWorldAccessor world, IBlockAccessor blockAccess, BlockPos start, BlockPos end)
         {
-            BlockPos startPos = new BlockPos(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y), Math.Min(start.Z, end.Z));
-            BlockPos finalPos = new BlockPos(Math.Max(start.X, end.X), Math.Max(start.Y, end.Y), Math.Max(start.Z, end.Z));
+            BlockPos startPos = new BlockPos(Math.Min(start.X, end.X), Math.Min(start.Y, end.Y), Math.Min(start.Z, end.Z), start.dimension);
+            BlockPos finalPos = new BlockPos(Math.Max(start.X, end.X), Math.Max(start.Y, end.Y), Math.Max(start.Z, end.Z), start.dimension);
             OriginalPos = start;
 
             BlockPos readPos = new BlockPos(start.dimension);   // readPos has dimensionality, keyPos does not (because keyPos will be saved in the schematic)
@@ -541,7 +542,7 @@ namespace Vintagestory.API.Common
                 BlockEntities[(uint)((dy << 20) | (dz << 10) | dx)] = val.Value;
             }
 
-            BlockPos minPos = new BlockPos(minX, minY, minZ);
+            BlockPos minPos = new BlockPos(minX, minY, minZ, startPos.dimension);
             foreach (var e in EntitiesUnpacked)
             {
                 using (MemoryStream ms = new MemoryStream())
@@ -662,7 +663,7 @@ namespace Vintagestory.API.Common
                 if (newBlock.LightHsv[2] > 0 && blockAccessor is IWorldGenBlockAccessor)
                 {
                     Block oldBlock = blockAccessor.GetBlock(curPos);
-                    ((IWorldGenBlockAccessor)blockAccessor).ScheduleBlockLightUpdate(curPos.Copy(), oldBlock.BlockId, newBlock.BlockId);
+                    ((IWorldGenBlockAccessor)blockAccessor).ScheduleBlockLightUpdate(curPos, oldBlock.BlockId, newBlock.BlockId);
                 }
             }
 
@@ -1128,6 +1129,8 @@ namespace Vintagestory.API.Common
                 }
             }
 
+            if(blockAccessor is IMiniDimension) return;
+
             foreach (string entityData in Entities)
             {
                 using (MemoryStream ms = new MemoryStream(Ascii85.Decode(entityData)))
@@ -1143,6 +1146,7 @@ namespace Vintagestory.API.Common
                         entity.DidImportOrExport(startPos);
                         if (OriginalPos != null)
                         {
+                            var prevOffset = entity.WatchedAttributes.GetBlockPos("importOffset", Zero);
                             entity.WatchedAttributes.SetBlockPos("importOffset", startPos - OriginalPos);
                         }
                         if (worldForCollectibleResolve.GetEntityType(entity.Code) != null) // Can be null if its a no longer existent mob type

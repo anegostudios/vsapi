@@ -111,6 +111,7 @@ namespace Vintagestory.API.Common
     public delegate void HitEntityDelegate(IServerPlayer byPlayer, int chunkx, int chunky, int chunkz, int id);
 
     public delegate void PlayerDelegate(IServerPlayer byPlayer);
+    public delegate void PlayerCommonDelegate(IPlayer byPlayer);
 
     public delegate void EntityDelegate(Entity entity);
 

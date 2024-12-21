@@ -53,7 +53,7 @@ public class PModuleOnGround : PModule
         antiCoyoteTimer = Math.Max(0, antiCoyoteTimer - dt);
 
         // Get block below.
-        Block belowBlock = entity.World.BlockAccessor.GetBlock((int)pos.X, (int)(pos.InternalY - 0.05f), (int)pos.Z);
+        Block belowBlock = entity.World.BlockAccessor.GetBlockRaw((int)pos.X, (int)(pos.InternalY - 0.05f), (int)pos.Z);
 
         // Only accumulator in physics modules.
         accum = Math.Min(1, accum + dt);

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 using ProtoBuf;
 using Vintagestory.API.Common;
@@ -12,16 +13,22 @@ namespace Vintagestory.API.MathTools
     /// Valuable Hint: Make use of Copy() or the XXXCopy() variants where needed. A common pitfall is writing code like: BlockPos abovePos = pos.Up(); - with this code abovePos and pos will reference to the same object!
     /// </summary>
     [ProtoContract()]
+    [JsonObject(MemberSerialization.OptIn)]
     public class BlockPos : IEquatable<BlockPos>, IVec3
     {
         [ProtoMember(1)]
+        [JsonProperty]
         public int X;
+
         [ProtoMember(2)]
+        [JsonProperty]
         public int InternalY {
             get { return Y + dimension * DimensionBoundary; }
             set { Y = value % DimensionBoundary; dimension = value / DimensionBoundary; }
         }
+
         [ProtoMember(3)]
+        [JsonProperty]
         public int Z;
 
         public int Y;
@@ -40,7 +47,13 @@ namespace Vintagestory.API.MathTools
         }
 
 
-        [Obsolete("Not dimension-aware. Use overload with a dimension parameter instead")]
+        /// <summary>
+        /// The new BlockPos takes its dimension from the supplied y value, if the y value is higher than the DimensionBoundary (32768 blocks).
+        /// This constructor is therefore dimension-aware, so long as the y parameter was originally based on .InternalY, including for example a Vec3d created originally from .InternalY
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="z"></param>
         public BlockPos(int x, int y, int z)
         {
             this.X = x;
@@ -208,6 +221,15 @@ namespace Vintagestory.API.MathTools
             return this;
         }
 
+        public BlockPos Set(BlockPos blockPos, int dim)
+        {
+            X = blockPos.X;
+            Y = blockPos.Y;
+            Z = blockPos.Z;
+            dimension = dim;
+            return this;
+        }
+
         public BlockPos SetDimension(int dim)
         {
             dimension = dim;
@@ -304,6 +326,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos WestCopy(int length = 1)
         {
             return new BlockPos(X - length, Y, Z, dimension);
@@ -316,6 +339,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos SouthCopy(int length = 1)
         {
             return new BlockPos(X, Y, Z + length, dimension);
@@ -327,6 +351,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos EastCopy(int length = 1)
         {
             return new BlockPos(X + length, Y, Z, dimension);
@@ -337,6 +362,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos NorthCopy(int length = 1)
         {
             return new BlockPos(X, Y, Z - length, dimension);
@@ -347,6 +373,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos DownCopy(int length = 1)
         {
             return new BlockPos(X, Y - length, Z, dimension);
@@ -357,6 +384,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="length"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos UpCopy(int length = 1)
         {
             return new BlockPos(X, Y + length, Z, dimension);
@@ -367,6 +395,7 @@ namespace Vintagestory.API.MathTools
         /// Creates a copy of this blocks position
         /// </summary>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual BlockPos Copy()
         {
             return new BlockPos(X, Y, Z, dimension);
@@ -377,6 +406,7 @@ namespace Vintagestory.API.MathTools
         /// Creates a copy of this blocks position, obtaining the correct dimension value from the Y value
         /// </summary>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public virtual BlockPos CopyAndCorrectDimension()
         {
             return new BlockPos(X, Y % DimensionBoundary, Z, dimension + Y / DimensionBoundary);
@@ -392,6 +422,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="dy"></param>
         /// <param name="dz"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos Add(float dx, float dy, float dz)
         {
             X += (int)dx;
@@ -408,6 +439,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="dy"></param>
         /// <param name="dz"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos Add(int dx, int dy, int dz)
         {
             X += dx;
@@ -421,6 +453,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="vector"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos Add(Vec3i vector)
         {
             X += vector.X;
@@ -434,6 +467,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="vector"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos Add(FastVec3i vector)
         {
             X += vector.X;
@@ -448,6 +482,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos Add(BlockPos pos)
         {
             X += pos.X;
@@ -463,11 +498,13 @@ namespace Vintagestory.API.MathTools
         /// <param name="facing"></param>
         /// <param name="length"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos Add(BlockFacing facing, int length = 1)
         {
-            X += facing.Normali.X * length;
-            Y += facing.Normali.Y * length;
-            Z += facing.Normali.Z * length;
+            var faceNormals = facing.Normali;
+            X += faceNormals.X * length;
+            Y += faceNormals.Y * length;
+            Z += faceNormals.Z * length;
             return this;
         }
 
@@ -476,11 +513,13 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="facing"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos Offset(BlockFacing facing)
         {
-            X += facing.Normali.X;
-            Y += facing.Normali.Y;
-            Z += facing.Normali.Z;
+            var faceNormals = facing.Normali;
+            X += faceNormals.X;
+            Y += faceNormals.Y;
+            Z += faceNormals.Z;
             return this;
         }
 
@@ -491,6 +530,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="dy"></param>
         /// <param name="dz"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos AddCopy(float dx, float dy, float dz)
         {
             return new BlockPos((int)(X + dx), (int)(Y + dy), (int)(Z + dz), dimension);
@@ -503,6 +543,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="dy"></param>
         /// <param name="dz"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos AddCopy(int dx, int dy, int dz)
         {
             return new BlockPos(X + dx, Y + dy, Z + dz, dimension);
@@ -513,6 +554,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="xyz"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos AddCopy(int xyz)
         {
             return new BlockPos(X + xyz, Y + xyz, Z + xyz, dimension);
@@ -524,6 +566,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="vector"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos AddCopy(Vec3i vector)
         {
             return new BlockPos(X + vector.X, Y + vector.Y, Z + vector.Z, dimension);
@@ -534,6 +577,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="facing"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos AddCopy(BlockFacing facing)
         {
             return new BlockPos(X + facing.Normali.X, Y + facing.Normali.Y, Z + facing.Normali.Z, dimension);
@@ -545,6 +589,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="facing"></param>
         /// <param name="length"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos AddCopy(BlockFacing facing, int length)
         {
             return new BlockPos(X + facing.Normali.X * length, Y + facing.Normali.Y * length, Z + facing.Normali.Z * length, dimension);
@@ -555,6 +600,7 @@ namespace Vintagestory.API.MathTools
         /// Substract a position => you'll have the manhatten distance
         /// </summary>
         /// <param name="pos"></param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos Sub(BlockPos pos)
         {
             X -= pos.X;
@@ -570,6 +616,7 @@ namespace Vintagestory.API.MathTools
         /// <param name="y"></param>
         /// <param name="z"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos Sub(int x, int y, int z)
         {
             X -= x;
@@ -580,14 +627,17 @@ namespace Vintagestory.API.MathTools
 
 
         /// <summary>
-        /// Substract a position => you'll have the manhatten distance
+        /// Substract a position => you'll have the manhatten distance.
+        /// <br/>If used within a non-zero dimension the resulting BlockPos will be dimensionless as it's a distance or offset between two positions
         /// </summary>
         /// <param name="pos"></param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos SubCopy(BlockPos pos)
         {
-            return new BlockPos(X - pos.X, Y - pos.Y, Z - pos.Z, dimension);
+            return new BlockPos(X - pos.X, InternalY - pos.InternalY, Z - pos.Z, 0);
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos SubCopy(int x, int y, int z)
         {
             return new BlockPos(X - x, Y - y, Z - z, dimension);
@@ -599,6 +649,7 @@ namespace Vintagestory.API.MathTools
         /// </summary>
         /// <param name="factor"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BlockPos DivCopy(int factor)
         {
             return new BlockPos(X / factor, Y / factor, Z / factor, dimension);
